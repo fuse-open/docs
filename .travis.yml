@@ -25,3 +25,12 @@ addons:
     packages:
       - imagemagick
       - pngquant
+
+deploy:
+  provider: pages
+  local-dir: _site
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN
+  keep-history: true
+  on:
+    branch: master
