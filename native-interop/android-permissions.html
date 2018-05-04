@@ -1,0 +1,762 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Android Permissions API - Fuse Documentation</title>
+    <link rel="stylesheet" href="https://fuse-open.github.io/docs/font-awesome.css?_v=20180504135303">
+    <link rel="stylesheet" href="https://fuse-open.github.io/docs/bootstrap.css?_v=20180504135303">
+    <link rel="stylesheet" href="https://fuse-open.github.io/docs/prism.css?_v=20180504135303">
+    <link rel="stylesheet" href="https://fuse-open.github.io/docs/site.css?_v=20180504135303">
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="https://fuse-open.github.io/docs/">Fuse: Documentation</a>
+      <div class="search d-none d-lg-block">
+        <script>
+          (function() {
+            var cx = '003990228577991558032:1dgsgv066lc';
+            var gcse = document.createElement('script');
+            gcse.type = 'text/javascript';
+            gcse.async = true;
+            gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(gcse, s);
+          })();
+          window.onload = function() {
+            document.getElementById('gsc-i-id1').placeholder = 'Search';
+          }
+        </script>
+        <gcse:search></gcse:search>
+      </div>
+    </nav>
+
+    <div class="container-fluid main-content-wrapper">
+      <div class="row">
+        <div class="col-12 col-lg-2 order-2 order-lg-1 bg-light sidebar">
+          <div class="sidebar-sticky">
+            <ul class="list-unstyled outline-nav outline-nav-level-0">
+	<li>
+		<a href="https://fuse-open.github.io/docs/index.html">Fuse</a>
+	<ul class="list-unstyled outline-nav outline-nav-level-1">
+		<li>
+			<a href="https://fuse-open.github.io/docs/basics/basics.html">Fuse Basics</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/basics/supported-platforms.html">Supported platforms</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/basics/installation-and-quickstart.html">Installation and quickstart</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/basics/introduction-to-fuse.html">Introduction to Fuse</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/basics/preview-and-export.html">Preview and export</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/componentization.html">Componentization</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/layout/responsive-layout.html">Responsive layout</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/declarative-animation.html">Declarative animation</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse-for-designers.html">Fuse for designers</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/structuring-app-resources.html">Structuring app resources</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/basics/feature-overview.html">Feature overview</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/basics/faq.html">FAQ</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/packages.html">Community Packages</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/fuse-studio/fuse-studio.html">Fuse Studio (Pro)</a>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/tutorial/tutorial.html">Tutorial</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/tutorial/edit-hike-view.html">1. Edit Hike view</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/tutorial/multiple-hikes.html">2. Multiple hikes</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/tutorial/splitting-up-components.html">3. Splitting up components</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/tutorial/navigation-and-routing.html">4. Navigation and routing</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/tutorial/mock-backend.html">5. Mocking our Backend</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/tutorial/look-and-feel.html">6. Tweaking the look/feel</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/tutorial/splash-screen.html">7. Splash screen</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/tutorial/final-thoughts.html">8. Final thoughts</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/reference.html">Full Reference</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/full-ux-class-reference.html">UX Class Reference</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/basics/uno-projects.html">Uno projects (.unoproj) Reference</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/ux-markup/ux-markup.html">UX Markup</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/literals.html">Literals</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/expressions.html">Expressions</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/names.html">Names (ux:Name)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/classes.html">Classes (ux:Class)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/dependencies.html">Dependencies (ux:Dependency)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/properties.html">Properties (ux:Property)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/resources.html">Resources (ux:Key)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/globals.html">Globals (ux:Global)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/templates.html">Templates (ux:Template)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/binding-and-auto-bind.html">Binding (ux:Binding &amp; ux:AutoBind)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/testing/testing.html">Testing (ux:Test)</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/xcode-and-android-studio-integration/tutorial.html">XCode &amp; Android Studio Integration (Pro)</a>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/primitives/primitives.html">Primitives</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/text.html">Text</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/rectangle.html">Rectangle</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/circle.html">Circle</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/curve.html">Curve</a>
+			<ul class="list-unstyled outline-nav outline-nav-level-3">
+				<li>
+					<a href="https://fuse-open.github.io/docs/fuse/controls/curvepoint.html">CurvePoint</a>
+				</li>
+			</ul>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/path.html">Path</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/image.html">Image</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/video.html">Video</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/charting/charting.html">Charting (Pro)</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/charting/plot.html">Plot</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/charting/dataseries.html">DataSeries</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/charting/plotaxis.html">PlotAxis</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/charting/plotdata.html">PlotData</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/charting/plotpoint.html">PlotPoint</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/charting/plotbar.html">PlotBar</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/charting/plotcurvepoint.html">PlotCurvePoint</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/layout/layout.html">Layout</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/elements/element.html">Element</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/panel.html">Panel</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/stackpanel.html">StackPanel</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/dockpanel.html">DockPanel</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/grid.html">Grid</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/wrappanel.html">WrapPanel</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/layouts/columnlayout.html">ColumnLayout</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/layouts/circlelayout.html">CircleLayout</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/scrollview.html">ScrollView</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/fuse/controls/control.html">Controls</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/button.html">Button</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/textinput.html">TextInput</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/textview.html">TextView</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/slider.html">Slider</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/switch.html">Switch</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/cameraviewbase.html">CameraView (Pro)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/mapview.html">MapView</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/webview.html">WebView</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/nativeviewhost.html">NativeViewHost</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/graphicsview.html">GraphicsView</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/scripting/scripting.html">Scripting &amp; Data</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/reactive/javascript.html">JavaScript</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/scripting/debugging.html">Debugging</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/reactive/databinding.html">DataBinding</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/reactive/each.html">Each</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/reactive/with.html">With</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/reactive/match.html">Match</a>
+			<ul class="list-unstyled outline-nav outline-nav-level-3">
+				<li>
+					<a href="https://fuse-open.github.io/docs/fuse/reactive/case.html">Case</a>
+				</li>
+			</ul>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/fusejs/observable.html">Observables</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/observable-api.html">API reference</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/observable-patterns.html">Patterns</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/navigation/navigation.html">Navigation</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/page.html">Page</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/pagecontrol.html">PageControl</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/navigation/router.html">Router</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/navigator.html">Navigator</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/triggers/transition.html">Transitions</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/fusejs/fusejs.html">JavaScript APIs</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/polyfills.html">Polyfills</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/eventemitter.html">EventEmitter</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/filesystem/filesystemmodule.html">FileSystem</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/storage/storagemodule.html">Storage</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/bundle.html">Bundle</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/lifecycle.html">Lifecycle</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/reactive/fusejs/interapp.html">InterApp</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/share/sharemodule.html">Share</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/http.html">HTTP</a>
+			<ul class="list-unstyled outline-nav outline-nav-level-3">
+				<li>
+					<a href="https://fuse-open.github.io/docs/backend/rest-apis.html">Working with REST APIs</a>
+				</li>
+			</ul>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/environment.html">Environment</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/reactive/fusejs/phone.html">Phone</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/camera/camera.html">Camera</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/cameraroll/cameraroll.html">CameraRoll</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/vibration/vibrationmodule.html">Vibration</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/geolocation/geolocation.html">GeoLocation</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/pushnotifications/push.html">Push notifications</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/localnotifications/localnotify.html">Local notifications</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/base64.html">Base64</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/reactive/fusejs/timermodule.html">Timer</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/imagetools/imagetools.html">ImageTools</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/third-party-modules.html">Third-party modules</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/uno/ux/resource.html">Resources</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/font.html">Fonts</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/resources/imagesource.html">Image sources</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/assets/bundle.html">Bundled files</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/assets/sketch-import.html">Import from Sketch</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/assets/sketch-symbol-import.html">Sketch symbols (Beta)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/assets/iconfont-import.html">Import icon fonts</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/fuse/triggers/trigger.html">Triggers &amp; Animation</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/transform.html">Transforms</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/gestures/transformgesture.html">Gestures</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/animations/animator.html">Animators</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/triggers/timeline.html">Timeline</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/triggers/actions/triggeraction.html">Actions</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/selection/selection.html">Selection</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/triggers/stategroup.html">StateGroups</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/multilayoutpanel.html">MultiLayoutPanel</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/triggers/busy.html">Busy</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/effects/effects.html">Effects</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/effects/dropshadow.html">DropShadow</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/effects/blur.html">Blur</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/effects/halftone.html">Halftone</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/native-interop/native-interop.html">Native interop (Uno)</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/root-ns.html">Full Uno Class Reference</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/native-ux-components.html">Native UX components</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/native-js-modules.html">Native JS modules</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/foreign-code.html">Foreign code</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/using-third-party-sdks.html">Using 3rd party SDKs</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/unolibs/activity-utils.html">Activity utils</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/facebook-login.html">Facebook login using foreign code</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/gradle-support.html">Gradle Support</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/build-settings.html">Build settings</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/android-permissions.html">Android permissions</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/android-start-activity.html">Starting an Android Activity</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/ios-capabilities.html">iOS Capabilities</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/alive/alive.html">Alive UX Kit (Pro)</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/alive.html">Components</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/alive/themes.html">Themes</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/technical-corner/technical-corner.html">Technical corner</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/technical-corner/fuse-protocol.html">Fuse plugin API</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/preview-and-export/preview-details.html">How preview works</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/technical-corner/uxl-handbook.html">UXL handbook</a>
+			</li>
+		</ul>
+		</li>
+	</ul>
+	</li>
+</ul>
+
+          </div>
+        </div>
+        <div role="main" class="col-12 col-lg-10 ml-sm-auto order-1 order-lg-2 px-4 main-content">
+          <h1 id="android-permissions-api">Android Permissions API</h1>
+<p>Android has an interesting way of handling permissions. You first have to declare the permission in the <code>AndroidManifest.xml</code> file, and then at runtime some permissions need to be 'requested' which gives the user and opportunity to deny that permission after your app is installed.</p>
+<p>It was not always this way however. Before Android 6 you only had to declare the permission in the manifest (and the runtime request api was not available).</p>
+<p>Fuse unifies these two different declarations to hopefully make android's approach slightly easier to work with.</p>
+<p>Let's look and an example and then we will break it down:</p>
+<pre><code>public void TakePicture(object a1, EventArgs a2)
+{
+    var permissionPromise = Permissions.Request(Permissions.Android.CAMERA); // [0]
+    permissionPromise.Then(OnPermitted, OnRejected); // [1]
+}
+
+void OnPermitted(PlatformPermission permission)
+{
+    debug_log &quot;Woo, we can take the picture now&quot;;
+}
+
+void OnRejected(Exception e)
+{
+    debug_log &quot;Blast: &quot; + e.Message;
+}
+</code></pre>
+<p><code>[0]</code> - Here we request the permission by calling the <code>Request</code> method and passing in the permission we want to be granted. Simply be referencing that permission Fuse will add it to your <code>AndroidManifest.xml</code> file.</p>
+<p><code>[1]</code> - We now specify which method to call if the permission is granted or if the permission is rejected.</p>
+<p>And that's all there is to it!</p>
+<h2 id="what-happens-on-older-android-versions">What happens on older Android versions?</h2>
+<p>If you are on and older version of Android (from before the runtime permission request API) the request will always succeed.</p>
+<h2 id="can-i-request-multiple-permissions-at-once">Can I request multiple permissions at once?</h2>
+<p>Yes! Just pass an array of <code>PlatformPermission</code> objects to the <code>Request</code> method and make sure your <code>OnPermitted</code> method also takes an array of <code>PlatformPermission</code> objects.</p>
+<h2 id="what-permissions-are-requestable-by-default">What permissions are requestable by default?</h2>
+<ul>
+<li><code>ACCESS_CHECKIN_PROPERTIES</code></li>
+<li><code>ACCESS_COARSE_LOCATION</code></li>
+<li><code>ACCESS_FINE_LOCATION</code></li>
+<li><code>ACCESS_LOCATION_EXTRA_COMMANDS</code></li>
+<li><code>ACCESS_MOCK_LOCATION</code></li>
+<li><code>ACCESS_NETWORK_STATE</code></li>
+<li><code>ACCESS_SURFACE_FLINGER</code></li>
+<li><code>ACCESS_WIFI_STATE</code></li>
+<li><code>ACCOUNT_MANAGER</code></li>
+<li><code>ADD_VOICEMAIL</code></li>
+<li><code>AUTHENTICATE_ACCOUNTS</code></li>
+<li><code>BATTERY_STATS</code></li>
+<li><code>BIND_ACCESSIBILITY_SERVICE</code></li>
+<li><code>BIND_APPWIDGET</code></li>
+<li><code>BIND_DEVICE_ADMIN</code></li>
+<li><code>BIND_DREAM_SERVICE</code></li>
+<li><code>BIND_INPUT_METHOD</code></li>
+<li><code>BIND_NFC_SERVICE</code></li>
+<li><code>BIND_NOTIFICATION_LISTENER_SERVICE</code></li>
+<li><code>BIND_PRINT_SERVICE</code></li>
+<li><code>BIND_REMOTEVIEWS</code></li>
+<li><code>BIND_TEXT_SERVICE</code></li>
+<li><code>BIND_TV_INPUT</code></li>
+<li><code>BIND_VOICE_INTERACTION</code></li>
+<li><code>BIND_VPN_SERVICE</code></li>
+<li><code>BIND_WALLPAPER</code></li>
+<li><code>BLUETOOTH</code></li>
+<li><code>BLUETOOTH_ADMIN</code></li>
+<li><code>BLUETOOTH_PRIVILEGED</code></li>
+<li><code>BODY_SENSORS</code></li>
+<li><code>BRICK</code></li>
+<li><code>BROADCAST_PACKAGE_REMOVED</code></li>
+<li><code>BROADCAST_SMS</code></li>
+<li><code>BROADCAST_STICKY</code></li>
+<li><code>BROADCAST_WAP_PUSH</code></li>
+<li><code>CALL_PHONE</code></li>
+<li><code>CALL_PRIVILEGED</code></li>
+<li><code>CAMERA</code></li>
+<li><code>CAPTURE_AUDIO_OUTPUT</code></li>
+<li><code>CAPTURE_SECURE_VIDEO_OUTPUT</code></li>
+<li><code>CAPTURE_VIDEO_OUTPUT</code></li>
+<li><code>CHANGE_COMPONENT_ENABLED_STATE</code></li>
+<li><code>CHANGE_CONFIGURATION</code></li>
+<li><code>CHANGE_NETWORK_STATE</code></li>
+<li><code>CHANGE_WIFI_MULTICAST_STATE</code></li>
+<li><code>CHANGE_WIFI_STATE</code></li>
+<li><code>CLEAR_APP_CACHE</code></li>
+<li><code>CLEAR_APP_USER_DATA</code></li>
+<li><code>CONTROL_LOCATION_UPDATES</code></li>
+<li><code>DELETE_CACHE_FILES</code></li>
+<li><code>DELETE_PACKAGES</code></li>
+<li><code>DEVICE_POWER</code></li>
+<li><code>DIAGNOSTIC</code></li>
+<li><code>DISABLE_KEYGUARD</code></li>
+<li><code>DUMP</code></li>
+<li><code>EXPAND_STATUS_BAR</code></li>
+<li><code>FACTORY_TEST</code></li>
+<li><code>FLASHLIGHT</code></li>
+<li><code>FORCE_BACK</code></li>
+<li><code>GET_ACCOUNTS</code></li>
+<li><code>GET_PACKAGE_SIZE</code></li>
+<li><code>GET_TASKS</code></li>
+<li><code>GET_TOP_ACTIVITY_INFO</code></li>
+<li><code>GLOBAL_SEARCH</code></li>
+<li><code>HARDWARE_TEST</code></li>
+<li><code>INJECT_EVENTS</code></li>
+<li><code>INSTALL_LOCATION_PROVIDER</code></li>
+<li><code>INSTALL_PACKAGES</code></li>
+<li><code>INSTALL_SHORTCUT</code></li>
+<li><code>INTERNAL_SYSTEM_WINDOW</code></li>
+<li><code>INTERNET</code></li>
+<li><code>KILL_BACKGROUND_PROCESSES</code></li>
+<li><code>LOCATION_HARDWARE</code></li>
+<li><code>MANAGE_ACCOUNTS</code></li>
+<li><code>MANAGE_APP_TOKENS</code></li>
+<li><code>MANAGE_DOCUMENTS</code></li>
+<li><code>MASTER_CLEAR</code></li>
+<li><code>MEDIA_CONTENT_CONTROL</code></li>
+<li><code>MODIFY_AUDIO_SETTINGS</code></li>
+<li><code>MODIFY_PHONE_STATE</code></li>
+<li><code>MOUNT_FORMAT_FILESYSTEMS</code></li>
+<li><code>MOUNT_UNMOUNT_FILESYSTEMS</code></li>
+<li><code>NFC</code></li>
+<li><code>PERSISTENT_ACTIVITY</code></li>
+<li><code>PROCESS_OUTGOING_CALLS</code></li>
+<li><code>READ_CALENDAR</code></li>
+<li><code>READ_CALL_LOG</code></li>
+<li><code>READ_CONTACTS</code></li>
+<li><code>READ_EXTERNAL_STORAGE</code></li>
+<li><code>READ_FRAME_BUFFER</code></li>
+<li><code>READ_HISTORY_BOOKMARKS</code></li>
+<li><code>READ_INPUT_STATE</code></li>
+<li><code>READ_LOGS</code></li>
+<li><code>READ_PHONE_STATE</code></li>
+<li><code>READ_PROFILE</code></li>
+<li><code>READ_SMS</code></li>
+<li><code>READ_SOCIAL_STREAM</code></li>
+<li><code>READ_SYNC_SETTINGS</code></li>
+<li><code>READ_SYNC_STATS</code></li>
+<li><code>READ_USER_DICTIONARY</code></li>
+<li><code>READ_VOICEMAIL</code></li>
+<li><code>REBOOT</code></li>
+<li><code>RECEIVE_BOOT_COMPLETED</code></li>
+<li><code>RECEIVE_MMS</code></li>
+<li><code>RECEIVE_SMS</code></li>
+<li><code>RECEIVE_WAP_PUSH</code></li>
+<li><code>RECORD_AUDIO</code></li>
+<li><code>REORDER_TASKS</code></li>
+<li><code>RESTART_PACKAGES</code></li>
+<li><code>SEND_RESPOND_VIA_MESSAGE</code></li>
+<li><code>SEND_SMS</code></li>
+<li><code>SET_ACTIVITY_WATCHER</code></li>
+<li><code>SET_ALARM</code></li>
+<li><code>SET_ALWAYS_FINISH</code></li>
+<li><code>SET_ANIMATION_SCALE</code></li>
+<li><code>SET_DEBUG_APP</code></li>
+<li><code>SET_ORIENTATION</code></li>
+<li><code>SET_POINTER_SPEED</code></li>
+<li><code>SET_PREFERRED_APPLICATIONS</code></li>
+<li><code>SET_PROCESS_LIMIT</code></li>
+<li><code>SET_TIME</code></li>
+<li><code>SET_TIME_ZONE</code></li>
+<li><code>SET_WALLPAPER</code></li>
+<li><code>SET_WALLPAPER_HINTS</code></li>
+<li><code>SIGNAL_PERSISTENT_PROCESSES</code></li>
+<li><code>STATUS_BAR</code></li>
+<li><code>SUBSCRIBED_FEEDS_READ</code></li>
+<li><code>SUBSCRIBED_FEEDS_WRITE</code></li>
+<li><code>SYSTEM_ALERT_WINDOW</code></li>
+<li><code>TRANSMIT_IR</code></li>
+<li><code>UNINSTALL_SHORTCUT</code></li>
+<li><code>UPDATE_DEVICE_STATS</code></li>
+<li><code>USE_CREDENTIALS</code></li>
+<li><code>USE_SIP</code></li>
+<li><code>VIBRATE</code></li>
+<li><code>WAKE_LOCK</code></li>
+<li><code>WRITE_APN_SETTINGS</code></li>
+<li><code>WRITE_CALENDAR</code></li>
+<li><code>WRITE_CALL_LOG</code></li>
+<li><code>WRITE_CONTACTS</code></li>
+<li><code>WRITE_EXTERNAL_STORAGE</code></li>
+<li><code>WRITE_GSERVICES</code></li>
+<li><code>WRITE_HISTORY_BOOKMARKS</code></li>
+<li><code>WRITE_PROFILE</code></li>
+<li><code>WRITE_SECURE_SETTINGS</code></li>
+<li><code>WRITE_SETTINGS</code></li>
+<li><code>WRITE_SMS</code></li>
+<li><code>WRITE_SOCIAL_STREAM</code></li>
+<li><code>WRITE_SYNC_SETTINGS</code></li>
+<li><code>WRITE_USER_DICTIONARY</code></li>
+<li><code>WRITE_VOICEMAIL</code></li>
+</ul>
+
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="https://fuse-open.github.io/docs/jquery.js?_v=20180504135303"></script>
+    <script type="text/javascript" src="https://fuse-open.github.io/docs/popper.js?_v=20180504135303"></script>
+    <script type="text/javascript" src="https://fuse-open.github.io/docs/bootstrap.js?_v=20180504135303"></script>
+    <script type="text/javascript" src="https://fuse-open.github.io/docs/prism.js?_v=20180504135303"></script>
+    <script type="text/javascript" src="https://fuse-open.github.io/docs/site.js?_v=20180504135303"></script>
+  </body>
+</html>

@@ -1,0 +1,2349 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Fuse.Reactive Namespace - Fuse Documentation</title>
+    <link rel="stylesheet" href="https://fuse-open.github.io/docs/font-awesome.css?_v=20180504135303">
+    <link rel="stylesheet" href="https://fuse-open.github.io/docs/bootstrap.css?_v=20180504135303">
+    <link rel="stylesheet" href="https://fuse-open.github.io/docs/prism.css?_v=20180504135303">
+    <link rel="stylesheet" href="https://fuse-open.github.io/docs/site.css?_v=20180504135303">
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="https://fuse-open.github.io/docs/">Fuse: Documentation</a>
+      <div class="search d-none d-lg-block">
+        <script>
+          (function() {
+            var cx = '003990228577991558032:1dgsgv066lc';
+            var gcse = document.createElement('script');
+            gcse.type = 'text/javascript';
+            gcse.async = true;
+            gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(gcse, s);
+          })();
+          window.onload = function() {
+            document.getElementById('gsc-i-id1').placeholder = 'Search';
+          }
+        </script>
+        <gcse:search></gcse:search>
+      </div>
+    </nav>
+
+    <div class="container-fluid main-content-wrapper">
+      <div class="row">
+        <div class="col-12 col-lg-2 order-2 order-lg-1 bg-light sidebar">
+          <div class="sidebar-sticky">
+            <ul class="list-unstyled outline-nav outline-nav-level-0">
+	<li>
+		<a href="https://fuse-open.github.io/docs/index.html">Fuse</a>
+	<ul class="list-unstyled outline-nav outline-nav-level-1">
+		<li>
+			<a href="https://fuse-open.github.io/docs/basics/basics.html">Fuse Basics</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/basics/supported-platforms.html">Supported platforms</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/basics/installation-and-quickstart.html">Installation and quickstart</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/basics/introduction-to-fuse.html">Introduction to Fuse</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/basics/preview-and-export.html">Preview and export</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/componentization.html">Componentization</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/layout/responsive-layout.html">Responsive layout</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/declarative-animation.html">Declarative animation</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse-for-designers.html">Fuse for designers</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/structuring-app-resources.html">Structuring app resources</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/basics/feature-overview.html">Feature overview</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/basics/faq.html">FAQ</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/packages.html">Community Packages</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/fuse-studio/fuse-studio.html">Fuse Studio (Pro)</a>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/tutorial/tutorial.html">Tutorial</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/tutorial/edit-hike-view.html">1. Edit Hike view</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/tutorial/multiple-hikes.html">2. Multiple hikes</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/tutorial/splitting-up-components.html">3. Splitting up components</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/tutorial/navigation-and-routing.html">4. Navigation and routing</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/tutorial/mock-backend.html">5. Mocking our Backend</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/tutorial/look-and-feel.html">6. Tweaking the look/feel</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/tutorial/splash-screen.html">7. Splash screen</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/tutorial/final-thoughts.html">8. Final thoughts</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/reference.html">Full Reference</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/full-ux-class-reference.html">UX Class Reference</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/basics/uno-projects.html">Uno projects (.unoproj) Reference</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/ux-markup/ux-markup.html">UX Markup</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/literals.html">Literals</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/expressions.html">Expressions</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/names.html">Names (ux:Name)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/classes.html">Classes (ux:Class)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/dependencies.html">Dependencies (ux:Dependency)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/properties.html">Properties (ux:Property)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/resources.html">Resources (ux:Key)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/globals.html">Globals (ux:Global)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/templates.html">Templates (ux:Template)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/binding-and-auto-bind.html">Binding (ux:Binding &amp; ux:AutoBind)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/testing/testing.html">Testing (ux:Test)</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/xcode-and-android-studio-integration/tutorial.html">XCode &amp; Android Studio Integration (Pro)</a>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/primitives/primitives.html">Primitives</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/text.html">Text</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/rectangle.html">Rectangle</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/circle.html">Circle</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/curve.html">Curve</a>
+			<ul class="list-unstyled outline-nav outline-nav-level-3">
+				<li>
+					<a href="https://fuse-open.github.io/docs/fuse/controls/curvepoint.html">CurvePoint</a>
+				</li>
+			</ul>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/path.html">Path</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/image.html">Image</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/video.html">Video</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/charting/charting.html">Charting (Pro)</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/charting/plot.html">Plot</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/charting/dataseries.html">DataSeries</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/charting/plotaxis.html">PlotAxis</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/charting/plotdata.html">PlotData</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/charting/plotpoint.html">PlotPoint</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/charting/plotbar.html">PlotBar</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/charting/plotcurvepoint.html">PlotCurvePoint</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/layout/layout.html">Layout</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/elements/element.html">Element</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/panel.html">Panel</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/stackpanel.html">StackPanel</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/dockpanel.html">DockPanel</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/grid.html">Grid</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/wrappanel.html">WrapPanel</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/layouts/columnlayout.html">ColumnLayout</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/layouts/circlelayout.html">CircleLayout</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/scrollview.html">ScrollView</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/fuse/controls/control.html">Controls</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/button.html">Button</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/textinput.html">TextInput</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/textview.html">TextView</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/slider.html">Slider</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/switch.html">Switch</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/cameraviewbase.html">CameraView (Pro)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/mapview.html">MapView</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/webview.html">WebView</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/nativeviewhost.html">NativeViewHost</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/graphicsview.html">GraphicsView</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/scripting/scripting.html">Scripting &amp; Data</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/reactive/javascript.html">JavaScript</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/scripting/debugging.html">Debugging</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/reactive/databinding.html">DataBinding</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/reactive/each.html">Each</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/reactive/with.html">With</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/reactive/match.html">Match</a>
+			<ul class="list-unstyled outline-nav outline-nav-level-3">
+				<li>
+					<a href="https://fuse-open.github.io/docs/fuse/reactive/case.html">Case</a>
+				</li>
+			</ul>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/fusejs/observable.html">Observables</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/observable-api.html">API reference</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/observable-patterns.html">Patterns</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/navigation/navigation.html">Navigation</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/page.html">Page</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/pagecontrol.html">PageControl</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/navigation/router.html">Router</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/navigator.html">Navigator</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/triggers/transition.html">Transitions</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/fusejs/fusejs.html">JavaScript APIs</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/polyfills.html">Polyfills</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/eventemitter.html">EventEmitter</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/filesystem/filesystemmodule.html">FileSystem</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/storage/storagemodule.html">Storage</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/bundle.html">Bundle</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/lifecycle.html">Lifecycle</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/reactive/fusejs/interapp.html">InterApp</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/share/sharemodule.html">Share</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/http.html">HTTP</a>
+			<ul class="list-unstyled outline-nav outline-nav-level-3">
+				<li>
+					<a href="https://fuse-open.github.io/docs/backend/rest-apis.html">Working with REST APIs</a>
+				</li>
+			</ul>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/environment.html">Environment</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/reactive/fusejs/phone.html">Phone</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/camera/camera.html">Camera</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/cameraroll/cameraroll.html">CameraRoll</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/vibration/vibrationmodule.html">Vibration</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/geolocation/geolocation.html">GeoLocation</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/pushnotifications/push.html">Push notifications</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/localnotifications/localnotify.html">Local notifications</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/base64.html">Base64</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/reactive/fusejs/timermodule.html">Timer</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/imagetools/imagetools.html">ImageTools</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/third-party-modules.html">Third-party modules</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/uno/ux/resource.html">Resources</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/font.html">Fonts</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/resources/imagesource.html">Image sources</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/assets/bundle.html">Bundled files</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/assets/sketch-import.html">Import from Sketch</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/assets/sketch-symbol-import.html">Sketch symbols (Beta)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/assets/iconfont-import.html">Import icon fonts</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/fuse/triggers/trigger.html">Triggers &amp; Animation</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/transform.html">Transforms</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/gestures/transformgesture.html">Gestures</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/animations/animator.html">Animators</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/triggers/timeline.html">Timeline</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/triggers/actions/triggeraction.html">Actions</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/selection/selection.html">Selection</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/triggers/stategroup.html">StateGroups</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/multilayoutpanel.html">MultiLayoutPanel</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/triggers/busy.html">Busy</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/effects/effects.html">Effects</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/effects/dropshadow.html">DropShadow</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/effects/blur.html">Blur</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/effects/halftone.html">Halftone</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/native-interop/native-interop.html">Native interop (Uno)</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/root-ns.html">Full Uno Class Reference</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/native-ux-components.html">Native UX components</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/native-js-modules.html">Native JS modules</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/foreign-code.html">Foreign code</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/using-third-party-sdks.html">Using 3rd party SDKs</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/unolibs/activity-utils.html">Activity utils</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/facebook-login.html">Facebook login using foreign code</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/gradle-support.html">Gradle Support</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/build-settings.html">Build settings</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/android-permissions.html">Android permissions</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/android-start-activity.html">Starting an Android Activity</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/ios-capabilities.html">iOS Capabilities</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/alive/alive.html">Alive UX Kit (Pro)</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/alive.html">Components</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/alive/themes.html">Themes</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/technical-corner/technical-corner.html">Technical corner</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/technical-corner/fuse-protocol.html">Fuse plugin API</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/preview-and-export/preview-details.html">How preview works</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/technical-corner/uxl-handbook.html">UXL handbook</a>
+			</li>
+		</ul>
+		</li>
+	</ul>
+	</li>
+</ul>
+
+          </div>
+        </div>
+        <div role="main" class="col-12 col-lg-10 ml-sm-auto order-1 order-lg-2 px-4 main-content">
+          <header class="page-header">
+<h2 id="section-introduction">
+Fuse.Reactive Namespace
+</h2>
+<form class="advanced-toggle">
+<div class="form-check">
+<input class="form-check-input" type="checkbox" id="showAdvancedCheckbox">
+<label class="form-check-label" for="showAdvancedCheckbox">
+Show advanced things
+</label>
+</div>
+</form>
+</header>
+<section class="section-jump">
+<ul class="nav nav-pills">
+<li class="nav-item"><a class="nav-link disabled" href="#">Jump to:</a></li>
+<li class="nav-item"><a class="nav-link" href="#section-table-of-contents">Table of Contents</a></li>
+</ul>
+</section>
+<section class="table-of-contents">
+<h3 id="section-table-of-contents">Namespaces</h3>
+<section class="table-of-contents-section">
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-namespace fa fa-gears" title="Namespace"></span>
+<h5 id="fuse-reactive-fusejs-uno">
+<a href="../fuse/reactive/fusejs.html">
+Fuse.Reactive.FuseJS
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+</section>
+<h3 id="section-table-of-contents">UX Classes</h3>
+<section class="table-of-contents-section">
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="abs-ux">
+<a href="../fuse/reactive/abs.html">
+Abs
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="acos-ux">
+<a href="../fuse/reactive/acos.html">
+Acos
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>The invserse trigonometric cosine of the input</p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="add-ux">
+<a href="../fuse/reactive/add.html">
+Add
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="alternate-ux">
+<a href="../fuse/reactive/alternate.html">
+Alternate
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Alternate between true/false values for ranges of integers. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fuse/reactive/alternate.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="asin-ux">
+<a href="../fuse/reactive/asin.html">
+Asin
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>The invserse trigonometric sine of the input</p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="atan-ux">
+<a href="../fuse/reactive/atan.html">
+Atan
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>The invserse trigonometric tangent of the input</p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="atan2-ux">
+<a href="../fuse/reactive/atan2.html">
+Atan2
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>The invserse trigonometric tangent of the input components <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fuse/reactive/atan2.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="atanvector-ux">
+<a href="../fuse/reactive/atanvector.html">
+AtanVector
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>The inverse trigonometric tangent of the input components. Like <code>atan2</code> but uses the input vector for the X and Y values. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fuse/reactive/atanvector.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="case-ux">
+<a href="../fuse/reactive/case.html">
+Case
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Specifies a constant and an associated visual tree that will be used with <a href="../fuse/reactive/match.html">Match</a>. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fuse/reactive/case.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="ceil-ux">
+<a href="../fuse/reactive/ceil.html">
+Ceil
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="clamp-ux">
+<a href="../fuse/reactive/clamp.html">
+Clamp
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Restricts the range of a value to between two numbers. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fuse/reactive/clamp.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="closure-ux">
+<a href="../fuse/reactive/closure.html">
+Closure
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Captures the named UX objects and dependencies in the scope and sends them to a script
+event when ready.</p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="concat-ux">
+<a href="../fuse/reactive/concat.html">
+Concat
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="conditional-ux">
+<a href="../fuse/reactive/conditional.html">
+Conditional
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="constant-ux">
+<a href="../fuse/reactive/constant.html">
+Constant
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="cos-ux">
+<a href="../fuse/reactive/cos.html">
+Cos
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>The trigonometric cosine of the input angle (in radians)</p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="data-ux">
+<a href="../fuse/reactive/data.html">
+Data
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="databinding-ux">
+<a href="../fuse/reactive/databinding.html">
+DataBinding
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Data bindings allow you to bind properties on UX markup objects to values coming from
+a <a href="../fuse/reactive/javascript.html">JavaScript</a> or other data context. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fuse/reactive/databinding.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="datafunction-ux">
+<a href="../fuse/reactive/datafunction.html">
+DataFunction
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Binds to the prime context data of this node. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fuse/reactive/datafunction.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="datatoresource-ux">
+<a href="../fuse/reactive/datatoresource.html">
+DataToResource
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Binds to a resource with the key provided in a context variable. This allows selecting resources from <a href="../fuse/reactive/javascript.html">JavaScript</a> by key name. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fuse/reactive/datatoresource.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="degreestoradians-ux">
+<a href="../fuse/reactive/degreestoradians.html">
+DegreesToRadians
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="divide-ux">
+<a href="../fuse/reactive/divide.html">
+Divide
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="each-ux">
+<a href="../fuse/reactive/each.html">
+Each
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Displays a collection of objects using the given template(s) for each item. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fuse/reactive/each.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="equal-ux">
+<a href="../fuse/reactive/equal.html">
+Equal
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="even-ux">
+<a href="../fuse/reactive/even.html">
+Even
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>True if the rounded value is even, false otherwise</p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="eventbinding-ux">
+<a href="../fuse/reactive/eventbinding.html">
+EventBinding
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Event bindings allows binding events to to JavaScript functions. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fuse/reactive/eventbinding.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="exp-ux">
+<a href="../fuse/reactive/exp.html">
+Exp
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="exp2-ux">
+<a href="../fuse/reactive/exp2.html">
+Exp2
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="floor-ux">
+<a href="../fuse/reactive/floor.html">
+Floor
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="fract-ux">
+<a href="../fuse/reactive/fract.html">
+Fract
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="greaterorequal-ux">
+<a href="../fuse/reactive/greaterorequal.html">
+GreaterOrEqual
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="greaterthan-ux">
+<a href="../fuse/reactive/greaterthan.html">
+GreaterThan
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="indexfunction-ux">
+<a href="../fuse/reactive/indexfunction.html">
+IndexFunction
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="instance-ux">
+<a href="../fuse/reactive/instance.html">
+Instance
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Creates and inserts an instance of the given template(s).  The templates are only created when the node is rooted. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fuse/reactive/instance.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="isandroidfunction-ux">
+<a href="../fuse/reactive/isandroidfunction.html">
+IsAndroidFunction
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p><code>true</code> if running on an Android device</p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="isdesktopfunction-ux">
+<a href="../fuse/reactive/isdesktopfunction.html">
+IsDesktopFunction
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p><code>true</code> if running on a desktop</p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="isiosfunction-ux">
+<a href="../fuse/reactive/isiosfunction.html">
+IsIOSFunction
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p><code>true</code> if running on an iOS device</p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="ismobilefunction-ux">
+<a href="../fuse/reactive/ismobilefunction.html">
+IsMobileFunction
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p><code>true</code> if running on an Mobile device</p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="isnull-ux">
+<a href="../fuse/reactive/isnull.html">
+IsNull
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Returns false if the value exists and is non-null, true otherwise. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fuse/reactive/isnull.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="isosxfunction-ux">
+<a href="../fuse/reactive/isosxfunction.html">
+IsOSXFunction
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p><code>true</code> if running on OSX</p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="iswindowsfunction-ux">
+<a href="../fuse/reactive/iswindowsfunction.html">
+IsWindowsFunction
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p><code>true</code> if running on Windows</p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="javascript-ux">
+<a href="../fuse/reactive/javascript.html">
+JavaScript
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>The <code>JavaScript</code> tag is used to run JavaScript and assigns its <code>module.exports</code> as data context for the parent visual. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fuse/reactive/javascript.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="lerp-ux">
+<a href="../fuse/reactive/lerp.html">
+Lerp
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Calculates the linear interpolation between two values. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fuse/reactive/lerp.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="lessorequal-ux">
+<a href="../fuse/reactive/lessorequal.html">
+LessOrEqual
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="lessthan-ux">
+<a href="../fuse/reactive/lessthan.html">
+LessThan
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="let-ux">
+<a href="../fuse/reactive/let.html">
+Let
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Binds an expression or value to a name in the data context. This simplifies repeated calculations and allows introduction of new variables. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fuse/reactive/let.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="letbool-ux">
+<a href="../fuse/reactive/letbool.html">
+LetBool
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>A LetType that specifies a <code>bool</code> value.</p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="letfloat-ux">
+<a href="../fuse/reactive/letfloat.html">
+LetFloat
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>A LetType that specifies a <code>float</code> value.</p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="letfloat2-ux">
+<a href="../fuse/reactive/letfloat2.html">
+LetFloat2
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>A LetType that specifies a <code>float2</code> value.</p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="letfloat3-ux">
+<a href="../fuse/reactive/letfloat3.html">
+LetFloat3
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>A LetType that specifies a <code>float3</code> value.</p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="letfloat4-ux">
+<a href="../fuse/reactive/letfloat4.html">
+LetFloat4
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>A LetType that specifies a <code>float4</code> value.</p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="letsize-ux">
+<a href="../fuse/reactive/letsize.html">
+LetSize
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>A LetType that specifies a <code>Size</code> value.</p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="letsize2-ux">
+<a href="../fuse/reactive/letsize2.html">
+LetSize2
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>A LetType that specifies a <code>Size2</code> value.</p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="letstring-ux">
+<a href="../fuse/reactive/letstring.html">
+LetString
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>A LetType that specifies a <code>string</code> value.</p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="log-ux">
+<a href="../fuse/reactive/log.html">
+Log
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="log2-ux">
+<a href="../fuse/reactive/log2.html">
+Log2
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="logicaland-ux">
+<a href="../fuse/reactive/logicaland.html">
+LogicalAnd
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="logicalnot-ux">
+<a href="../fuse/reactive/logicalnot.html">
+LogicalNot
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="logicalor-ux">
+<a href="../fuse/reactive/logicalor.html">
+LogicalOr
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="lookup-ux">
+<a href="../fuse/reactive/lookup.html">
+LookUp
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Represents a reactive look-up operation, with a computed index (number) or key (string). <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fuse/reactive/lookup.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="match-ux">
+<a href="../fuse/reactive/match.html">
+Match
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Compares a value with a set of constants, and activates/deactivates visual trees associated with those constants. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fuse/reactive/match.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="max-ux">
+<a href="../fuse/reactive/max.html">
+Max
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="member-ux">
+<a href="../fuse/reactive/member.html">
+Member
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Represents a reactive object-member look-up operation.</p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="min-ux">
+<a href="../fuse/reactive/min.html">
+Min
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="mod-ux">
+<a href="../fuse/reactive/mod.html">
+Mod
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="multiply-ux">
+<a href="../fuse/reactive/multiply.html">
+Multiply
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="namedfunctioncall-ux">
+<a href="../fuse/reactive/namedfunctioncall.html">
+NamedFunctionCall
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="namevaluepair-ux">
+<a href="../fuse/reactive/namevaluepair.html">
+NameValuePair
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Creates a <code>Fuse.NameValuePair</code> from a name and a value.</p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="negate-ux">
+<a href="../fuse/reactive/negate.html">
+Negate
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="notequal-ux">
+<a href="../fuse/reactive/notequal.html">
+NotEqual
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="nullcoalesce-ux">
+<a href="../fuse/reactive/nullcoalesce.html">
+NullCoalesce
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="object-ux">
+<a href="../fuse/reactive/object.html">
+Object
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Creates an <code>IObject</code> from an arbitrary number of NameValuePairs. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fuse/reactive/object.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="odd-ux">
+<a href="../fuse/reactive/odd.html">
+Odd
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>True if the rounded value is odd, false otherwise</p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="offsetindexfunction-ux">
+<a href="../fuse/reactive/offsetindexfunction.html">
+OffsetIndexFunction
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="parameter-ux">
+<a href="../fuse/reactive/parameter.html">
+Parameter
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Returns the parameter of the given page (visual), parsed from a JSON string. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fuse/reactive/parameter.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="pow-ux">
+<a href="../fuse/reactive/pow.html">
+Pow
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="property-ux">
+<a href="../fuse/reactive/property.html">
+Property
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="propertybinding-ux">
+<a href="../fuse/reactive/propertybinding.html">
+PropertyBinding
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="radianstodegrees-ux">
+<a href="../fuse/reactive/radianstodegrees.html">
+RadiansToDegrees
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="resource-ux">
+<a href="../fuse/reactive/resource.html">
+Resource
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="resourcebinding-ux">
+<a href="../fuse/reactive/resourcebinding.html">
+ResourceBinding
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="round-ux">
+<a href="../fuse/reactive/round.html">
+Round
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="select-ux">
+<a href="../fuse/reactive/select.html">
+Select
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Deprecated (&lt; 2017-01-01)</p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="sign-ux">
+<a href="../fuse/reactive/sign.html">
+Sign
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="sin-ux">
+<a href="../fuse/reactive/sin.html">
+Sin
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>The trigonometric sine of the input angle (in radians)</p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="snapshot-ux">
+<a href="../fuse/reactive/snapshot.html">
+Snapshot
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Returns the first value to propagate from the source expression, and then stops listening.</p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="sqrt-ux">
+<a href="../fuse/reactive/sqrt.html">
+Sqrt
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="subtract-ux">
+<a href="../fuse/reactive/subtract.html">
+Subtract
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="tan-ux">
+<a href="../fuse/reactive/tan.html">
+Tan
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>The trigonometric tangent of the input angle (in radians)</p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="tofloat-ux">
+<a href="../fuse/reactive/tofloat.html">
+ToFloat
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Forces a conversion to floating point. This supports any 1-4 component float vector.</p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="tolower-ux">
+<a href="../fuse/reactive/tolower.html">
+ToLower
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="tosize-ux">
+<a href="../fuse/reactive/tosize.html">
+ToSize
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Forces conversion to a Size or Size2 depending on input size. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fuse/reactive/tosize.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="tostring-ux">
+<a href="../fuse/reactive/tostring.html">
+ToString
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Forces conversion to a string value.</p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="toupper-ux">
+<a href="../fuse/reactive/toupper.html">
+ToUpper
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="trunc-ux">
+<a href="../fuse/reactive/trunc.html">
+Trunc
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Rounds to the next whole integer closer to zero</p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="vector-ux">
+<a href="../fuse/reactive/vector.html">
+Vector
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Creates an <code>IArray</code> from an arbitrary number of arguments.
+An <code>IArray</code> can be automatically marshalled to any Uno vector type (e.g. <code>float4</code>)</p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="vectorw-ux">
+<a href="../fuse/reactive/vectorw.html">
+VectorW
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Returns the <code>W</code> value of a <code>float4</code> value.</p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="vectorz-ux">
+<a href="../fuse/reactive/vectorz.html">
+VectorZ
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Returns the <code>Z</code> value of a <code>float3</code> or <code>float4</code> value.</p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="whilecount-ux">
+<a href="../fuse/reactive/whilecount.html">
+WhileCount
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Active when the number of items in a collection fulfills some criteria. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fuse/reactive/whilecount.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="whileempty-ux">
+<a href="../fuse/reactive/whileempty.html">
+WhileEmpty
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Active when the number of items in a collection is 0. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fuse/reactive/whileempty.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="whilenotempty-ux">
+<a href="../fuse/reactive/whilenotempty.html">
+WhileNotEmpty
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Active when the number of items in a collection is greater than 0. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fuse/reactive/whilenotempty.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="windowfunction-ux">
+<a href="../fuse/reactive/windowfunction.html">
+WindowFunction
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Provides details about the device and view needed for layout. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fuse/reactive/windowfunction.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="with-ux">
+<a href="../fuse/reactive/with.html">
+With
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Represents a scope in which the current data context is narrowed down. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fuse/reactive/with.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
+</article>
+
+</section>
+<h3 id="section-table-of-contents">Classes</h3>
+<section class="table-of-contents-section">
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-class fa fa-cog" title="Class"></span>
+<h5 id="binaryfloatoperator-uno">
+<a href="../fuse/reactive/binaryfloatoperator.html">
+BinaryFloatOperator
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>[subclass Fuse.Reactive.BinaryFloatOperator]</p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-class fa fa-cog" title="Class"></span>
+<h5 id="binaryoperator-uno">
+<a href="../fuse/reactive/binaryoperator.html">
+BinaryOperator
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Base class for reactive functions/operators that take two arguments/operands.</p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-class fa fa-cog" title="Class"></span>
+<h5 id="capsobject-uno">
+<a href="../fuse/reactive/capsobject.html">
+CapsObject
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-class fa fa-cog" title="Class"></span>
+<h5 id="closureargs-uno">
+<a href="../fuse/reactive/closureargs.html">
+ClosureArgs
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-class fa fa-cog" title="Class"></span>
+<h5 id="computeexpression-uno">
+<a href="../fuse/reactive/computeexpression.html">
+ComputeExpression
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Base class for UX expression functions that take arguments and compute a value from them. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fuse/reactive/computeexpression.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-class fa fa-cog" title="Class"></span>
+<h5 id="constantexpression-uno">
+<a href="../fuse/reactive/constantexpression.html">
+ConstantExpression
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-class fa fa-cog" title="Class"></span>
+<h5 id="devicecaps-uno">
+<a href="../fuse/reactive/devicecaps.html">
+DeviceCaps
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Provides information about the device. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fuse/reactive/devicecaps.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-class fa fa-cog" title="Class"></span>
+<h5 id="expression-uno">
+<a href="../fuse/reactive/expression.html">
+Expression
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-class fa fa-cog" title="Class"></span>
+<h5 id="expressionbinding-uno">
+<a href="../fuse/reactive/expressionbinding.html">
+ExpressionBinding
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-class fa fa-cog" title="Class"></span>
+<h5 id="expressionlistener-uno">
+<a href="../fuse/reactive/expressionlistener.html">
+ExpressionListener
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>A base class for common expression subscriptions. This handles the basic bookkeeping. Derived classes should implement <code>OnArguments</code> (coming from the base class). The members <code>ClearData</code> and <code>SetData</code> should be called to set the output state. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fuse/reactive/expressionlistener.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-class fa fa-cog" title="Class"></span>
+<h5 id="expressionsubscriber-uno">
+<a href="../fuse/reactive/expressionsubscriber.html">
+ExpressionSubscriber
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Subscribes to many argument expressions used in higher level functions. This collects common
+behaviour and means to simplify higher-level code. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fuse/reactive/expressionsubscriber.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-class fa fa-cog" title="Class"></span>
+<h5 id="infixoperator-uno">
+<a href="../fuse/reactive/infixoperator.html">
+InfixOperator
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-class fa fa-cog" title="Class"></span>
+<h5 id="innerlistener-uno">
+<a href="../fuse/reactive/innerlistener.html">
+InnerListener
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Using this class directly is unusual. <code>ComputeExpression</code> is the preferred option for functions, and <code>ExpressionListener</code> for when that doesn't apply. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fuse/reactive/innerlistener.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-class fa fa-cog" title="Class"></span>
+<h5 id="instantiator-uno">
+<a href="../fuse/reactive/instantiator.html">
+Instantiator
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Base class for behaviors that can instantiate templates from a source. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fuse/reactive/instantiator.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-class fa fa-cog" title="Class"></span>
+<h5 id="instantiatorfunction-uno">
+<a href="../fuse/reactive/instantiatorfunction.html">
+InstantiatorFunction
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Common base for functions that work with an item in an instantiator</p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-class fa fa-cog" title="Class"></span>
+<h5 id="letbase-uno">
+<a href="../fuse/reactive/letbase.html">
+LetBase
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Provides an implementation for <code>Let</code> and the various <code>LetType</code> forms.
+hide</p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-class fa fa-cog" title="Class"></span>
+<h5 id="lettype-lt-t-gt-uno">
+<a href="../fuse/reactive/lettype_1.html">
+LetType&lt;T&gt;
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Provides a bindable value for use in UX. This assists in combining animations and transitions in the UX without needing to use JavaScript intermediates. It is not meant to store application state, being intended only for UI level changes and effects. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fuse/reactive/lettype_1.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-class fa fa-cog" title="Class"></span>
+<h5 id="platformfunction-uno">
+<a href="../fuse/reactive/platformfunction.html">
+PlatformFunction
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>A series of functions to check the device platform. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fuse/reactive/platformfunction.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-class fa fa-cog" title="Class"></span>
+<h5 id="quaternaryoperator-uno">
+<a href="../fuse/reactive/quaternaryoperator.html">
+QuaternaryOperator
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Base class for reactive functions/operators that take four arguments/operands.</p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-class fa fa-cog" title="Class"></span>
+<h5 id="simplevarargfunction-uno">
+<a href="../fuse/reactive/simplevarargfunction.html">
+SimpleVarArgFunction
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>For VarArg functions that do not need a custom subscription and can work directly with the
+values of the arguments.</p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-class fa fa-cog" title="Class"></span>
+<h5 id="ternaryoperator-uno">
+<a href="../fuse/reactive/ternaryoperator.html">
+TernaryOperator
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Base class for reactive functions/operators that take three arguments/operands.</p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-class fa fa-cog" title="Class"></span>
+<h5 id="unaryfloatoperator-uno">
+<a href="../fuse/reactive/unaryfloatoperator.html">
+UnaryFloatOperator
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Common base for floating point operations <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fuse/reactive/unaryfloatoperator.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-class fa fa-cog" title="Class"></span>
+<h5 id="unaryoperator-uno">
+<a href="../fuse/reactive/unaryoperator.html">
+UnaryOperator
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Optimized base class for reactive functions/operators that take a single argument/operand.</p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-class fa fa-cog" title="Class"></span>
+<h5 id="varargfunction-uno">
+<a href="../fuse/reactive/varargfunction.html">
+VarArgFunction
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Base class for UX functions that accept a variable number of arguments. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fuse/reactive/varargfunction.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
+</article>
+
+</section>
+<h3 id="section-table-of-contents">Delegates</h3>
+<section class="table-of-contents-section">
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-delegate fa fa-arrow-circle-o-right" title="Delegate"></span>
+<h5 id="closurehandler-object-closureargs-uno">
+<a href="../fuse/reactive/closurehandler.html">
+ClosureHandler (object, ClosureArgs)
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+</section>
+<h3 id="section-table-of-contents">Enums</h3>
+<section class="table-of-contents-section">
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-enum fa fa-tags" title="Enum"></span>
+<h5 id="bindingmode-uno">
+<a href="../fuse/reactive/bindingmode.html">
+BindingMode
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-enum fa fa-tags" title="Enum"></span>
+<h5 id="instancedefaults-uno">
+<a href="../fuse/reactive/instancedefaults.html">
+InstanceDefaults
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Which templates are instantiating when no specific match is found.</p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-enum fa fa-tags" title="Enum"></span>
+<h5 id="instancedefer-uno">
+<a href="../fuse/reactive/instancedefer.html">
+InstanceDefer
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Allows for the deferred creation of items to avoid processing bottlenecks.</p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-enum fa fa-tags" title="Enum"></span>
+<h5 id="instanceidentity-uno">
+<a href="../fuse/reactive/instanceidentity.html">
+InstanceIdentity
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>How Instance and <a href="../fuse/reactive/each.html">Each</a> recognize an object is the same.</p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-enum fa fa-tags" title="Enum"></span>
+<h5 id="instancereuse-uno">
+<a href="../fuse/reactive/instancereuse.html">
+InstanceReuse
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Which nodes can be reused as the items list changes.</p>
+
+</div>
+</article>
+
+</section>
+<h3 id="section-table-of-contents">Interfaces</h3>
+<section class="table-of-contents-section">
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-interface fa fa-file-o" title="Interface"></span>
+<h5 id="icontext-uno">
+<a href="../fuse/reactive/icontext.html">
+IContext
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-interface fa fa-file-o" title="Interface"></span>
+<h5 id="ieventhandler-uno">
+<a href="../fuse/reactive/ieventhandler.html">
+IEventHandler
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-interface fa fa-file-o" title="Interface"></span>
+<h5 id="ieventrecord-uno">
+<a href="../fuse/reactive/ieventrecord.html">
+IEventRecord
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-interface fa fa-file-o" title="Interface"></span>
+<h5 id="iexpression-uno">
+<a href="../fuse/reactive/iexpression.html">
+IExpression
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-interface fa fa-file-o" title="Interface"></span>
+<h5 id="ilistener-uno">
+<a href="../fuse/reactive/ilistener.html">
+IListener
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-interface fa fa-file-o" title="Interface"></span>
+<h5 id="iwriteable-uno">
+<a href="../fuse/reactive/iwriteable.html">
+IWriteable
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Represents a subscription that might support write-back.</p>
+
+</div>
+</article>
+
+</section>
+</section>
+
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="https://fuse-open.github.io/docs/jquery.js?_v=20180504135303"></script>
+    <script type="text/javascript" src="https://fuse-open.github.io/docs/popper.js?_v=20180504135303"></script>
+    <script type="text/javascript" src="https://fuse-open.github.io/docs/bootstrap.js?_v=20180504135303"></script>
+    <script type="text/javascript" src="https://fuse-open.github.io/docs/prism.js?_v=20180504135303"></script>
+    <script type="text/javascript" src="https://fuse-open.github.io/docs/site.js?_v=20180504135303"></script>
+  </body>
+</html>

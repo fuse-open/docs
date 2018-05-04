@@ -1,0 +1,1469 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>string Class - Fuse Documentation</title>
+    <link rel="stylesheet" href="https://fuse-open.github.io/docs/font-awesome.css?_v=20180504135303">
+    <link rel="stylesheet" href="https://fuse-open.github.io/docs/bootstrap.css?_v=20180504135303">
+    <link rel="stylesheet" href="https://fuse-open.github.io/docs/prism.css?_v=20180504135303">
+    <link rel="stylesheet" href="https://fuse-open.github.io/docs/site.css?_v=20180504135303">
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="https://fuse-open.github.io/docs/">Fuse: Documentation</a>
+      <div class="search d-none d-lg-block">
+        <script>
+          (function() {
+            var cx = '003990228577991558032:1dgsgv066lc';
+            var gcse = document.createElement('script');
+            gcse.type = 'text/javascript';
+            gcse.async = true;
+            gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(gcse, s);
+          })();
+          window.onload = function() {
+            document.getElementById('gsc-i-id1').placeholder = 'Search';
+          }
+        </script>
+        <gcse:search></gcse:search>
+      </div>
+    </nav>
+
+    <div class="container-fluid main-content-wrapper">
+      <div class="row">
+        <div class="col-12 col-lg-2 order-2 order-lg-1 bg-light sidebar">
+          <div class="sidebar-sticky">
+            <ul class="list-unstyled outline-nav outline-nav-level-0">
+	<li>
+		<a href="https://fuse-open.github.io/docs/index.html">Fuse</a>
+	<ul class="list-unstyled outline-nav outline-nav-level-1">
+		<li>
+			<a href="https://fuse-open.github.io/docs/basics/basics.html">Fuse Basics</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/basics/supported-platforms.html">Supported platforms</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/basics/installation-and-quickstart.html">Installation and quickstart</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/basics/introduction-to-fuse.html">Introduction to Fuse</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/basics/preview-and-export.html">Preview and export</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/componentization.html">Componentization</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/layout/responsive-layout.html">Responsive layout</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/declarative-animation.html">Declarative animation</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse-for-designers.html">Fuse for designers</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/structuring-app-resources.html">Structuring app resources</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/basics/feature-overview.html">Feature overview</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/basics/faq.html">FAQ</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/packages.html">Community Packages</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/fuse-studio/fuse-studio.html">Fuse Studio (Pro)</a>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/tutorial/tutorial.html">Tutorial</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/tutorial/edit-hike-view.html">1. Edit Hike view</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/tutorial/multiple-hikes.html">2. Multiple hikes</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/tutorial/splitting-up-components.html">3. Splitting up components</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/tutorial/navigation-and-routing.html">4. Navigation and routing</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/tutorial/mock-backend.html">5. Mocking our Backend</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/tutorial/look-and-feel.html">6. Tweaking the look/feel</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/tutorial/splash-screen.html">7. Splash screen</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/tutorial/final-thoughts.html">8. Final thoughts</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/reference.html">Full Reference</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/full-ux-class-reference.html">UX Class Reference</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/basics/uno-projects.html">Uno projects (.unoproj) Reference</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/ux-markup/ux-markup.html">UX Markup</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/literals.html">Literals</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/expressions.html">Expressions</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/names.html">Names (ux:Name)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/classes.html">Classes (ux:Class)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/dependencies.html">Dependencies (ux:Dependency)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/properties.html">Properties (ux:Property)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/resources.html">Resources (ux:Key)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/globals.html">Globals (ux:Global)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/templates.html">Templates (ux:Template)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/binding-and-auto-bind.html">Binding (ux:Binding &amp; ux:AutoBind)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/testing/testing.html">Testing (ux:Test)</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/xcode-and-android-studio-integration/tutorial.html">XCode &amp; Android Studio Integration (Pro)</a>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/primitives/primitives.html">Primitives</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/text.html">Text</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/rectangle.html">Rectangle</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/circle.html">Circle</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/curve.html">Curve</a>
+			<ul class="list-unstyled outline-nav outline-nav-level-3">
+				<li>
+					<a href="https://fuse-open.github.io/docs/fuse/controls/curvepoint.html">CurvePoint</a>
+				</li>
+			</ul>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/path.html">Path</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/image.html">Image</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/video.html">Video</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/charting/charting.html">Charting (Pro)</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/charting/plot.html">Plot</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/charting/dataseries.html">DataSeries</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/charting/plotaxis.html">PlotAxis</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/charting/plotdata.html">PlotData</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/charting/plotpoint.html">PlotPoint</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/charting/plotbar.html">PlotBar</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/charting/plotcurvepoint.html">PlotCurvePoint</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/layout/layout.html">Layout</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/elements/element.html">Element</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/panel.html">Panel</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/stackpanel.html">StackPanel</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/dockpanel.html">DockPanel</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/grid.html">Grid</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/wrappanel.html">WrapPanel</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/layouts/columnlayout.html">ColumnLayout</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/layouts/circlelayout.html">CircleLayout</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/scrollview.html">ScrollView</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/fuse/controls/control.html">Controls</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/button.html">Button</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/textinput.html">TextInput</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/textview.html">TextView</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/slider.html">Slider</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/switch.html">Switch</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/cameraviewbase.html">CameraView (Pro)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/mapview.html">MapView</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/webview.html">WebView</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/nativeviewhost.html">NativeViewHost</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/graphicsview.html">GraphicsView</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/scripting/scripting.html">Scripting &amp; Data</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/reactive/javascript.html">JavaScript</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/scripting/debugging.html">Debugging</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/reactive/databinding.html">DataBinding</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/reactive/each.html">Each</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/reactive/with.html">With</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/reactive/match.html">Match</a>
+			<ul class="list-unstyled outline-nav outline-nav-level-3">
+				<li>
+					<a href="https://fuse-open.github.io/docs/fuse/reactive/case.html">Case</a>
+				</li>
+			</ul>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/fusejs/observable.html">Observables</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/observable-api.html">API reference</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/observable-patterns.html">Patterns</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/navigation/navigation.html">Navigation</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/page.html">Page</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/pagecontrol.html">PageControl</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/navigation/router.html">Router</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/navigator.html">Navigator</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/triggers/transition.html">Transitions</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/fusejs/fusejs.html">JavaScript APIs</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/polyfills.html">Polyfills</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/eventemitter.html">EventEmitter</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/filesystem/filesystemmodule.html">FileSystem</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/storage/storagemodule.html">Storage</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/bundle.html">Bundle</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/lifecycle.html">Lifecycle</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/reactive/fusejs/interapp.html">InterApp</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/share/sharemodule.html">Share</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/http.html">HTTP</a>
+			<ul class="list-unstyled outline-nav outline-nav-level-3">
+				<li>
+					<a href="https://fuse-open.github.io/docs/backend/rest-apis.html">Working with REST APIs</a>
+				</li>
+			</ul>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/environment.html">Environment</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/reactive/fusejs/phone.html">Phone</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/camera/camera.html">Camera</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/cameraroll/cameraroll.html">CameraRoll</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/vibration/vibrationmodule.html">Vibration</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/geolocation/geolocation.html">GeoLocation</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/pushnotifications/push.html">Push notifications</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/localnotifications/localnotify.html">Local notifications</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/base64.html">Base64</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/reactive/fusejs/timermodule.html">Timer</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/imagetools/imagetools.html">ImageTools</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/third-party-modules.html">Third-party modules</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/uno/ux/resource.html">Resources</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/font.html">Fonts</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/resources/imagesource.html">Image sources</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/assets/bundle.html">Bundled files</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/assets/sketch-import.html">Import from Sketch</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/assets/sketch-symbol-import.html">Sketch symbols (Beta)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/assets/iconfont-import.html">Import icon fonts</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/fuse/triggers/trigger.html">Triggers &amp; Animation</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/transform.html">Transforms</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/gestures/transformgesture.html">Gestures</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/animations/animator.html">Animators</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/triggers/timeline.html">Timeline</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/triggers/actions/triggeraction.html">Actions</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/selection/selection.html">Selection</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/triggers/stategroup.html">StateGroups</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/multilayoutpanel.html">MultiLayoutPanel</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/triggers/busy.html">Busy</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/effects/effects.html">Effects</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/effects/dropshadow.html">DropShadow</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/effects/blur.html">Blur</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/effects/halftone.html">Halftone</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/native-interop/native-interop.html">Native interop (Uno)</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/root-ns.html">Full Uno Class Reference</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/native-ux-components.html">Native UX components</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/native-js-modules.html">Native JS modules</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/foreign-code.html">Foreign code</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/using-third-party-sdks.html">Using 3rd party SDKs</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/unolibs/activity-utils.html">Activity utils</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/facebook-login.html">Facebook login using foreign code</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/gradle-support.html">Gradle Support</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/build-settings.html">Build settings</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/android-permissions.html">Android permissions</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/android-start-activity.html">Starting an Android Activity</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/ios-capabilities.html">iOS Capabilities</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/alive/alive.html">Alive UX Kit (Pro)</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/alive.html">Components</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/alive/themes.html">Themes</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/technical-corner/technical-corner.html">Technical corner</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/technical-corner/fuse-protocol.html">Fuse plugin API</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/preview-and-export/preview-details.html">How preview works</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/technical-corner/uxl-handbook.html">UXL handbook</a>
+			</li>
+		</ul>
+		</li>
+	</ul>
+	</li>
+</ul>
+
+          </div>
+        </div>
+        <div role="main" class="col-12 col-lg-10 ml-sm-auto order-1 order-lg-2 px-4 main-content">
+          <header class="page-header">
+<h2 id="section-introduction">
+string Class
+</h2>
+<form class="advanced-toggle">
+<div class="form-check">
+<input class="form-check-input" type="checkbox" id="showAdvancedCheckbox" checked="">
+<label class="form-check-label" for="showAdvancedCheckbox">
+Show advanced things
+</label>
+</div>
+</form>
+</header>
+<div class="alert alert-info alert-api-advanced-only">
+This page contains documentation for advanced Fuse features, so we have 
+taken the liberty to tick the "Show advanced things" checkbox above for 
+you in advance to be able to provide you with some additional information.
+</div>
+<section class="section-jump">
+<ul class="nav nav-pills">
+<li class="nav-item"><a class="nav-link disabled" href="#">Jump to:</a></li>
+<li class="nav-item"><a class="nav-link" href="#section-table-of-contents">Table of Contents</a></li>
+</ul>
+</section>
+<p>Represents text as a sequence of UTF-16 code units.</p>
+
+<section class="type-location">
+<h3 id="section-location">Location</h3>
+<dl>
+<dt>Namespace</dt>
+<dd>
+<a href="../uno.html">
+Uno
+</a>
+</dd>
+<dt>Package</dt>
+<dd>UnoCore 1.8.0-rc1</dd>
+</dl>
+</section>
+<section class="table-of-contents">
+<h3 id="section-table-of-contents">
+Interface of string
+</h3>
+<section class="table-of-contents-section has-advanced-items only-advanced-items">
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-property fa fa-wrench" title="Property"></span>
+<h5 id="-int-char-uno">
+<a href="../uno/string/item_56ad0a96.html">
+[int]
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../uno/char.html">
+char
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-method fa fa-square-o" title="Method"></span>
+<h5 id="compare-string-string-int-uno">
+<a href="../uno/string/compare_e671fcec.html">
+Compare(string, string)
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../uno/int.html">
+int
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-method fa fa-square-o" title="Method"></span>
+<h5 id="concat-object-object-string-uno">
+<a href="../uno/string/concat_7a29de68.html">
+Concat(object, object)
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../uno/string.html">
+string
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-method fa fa-square-o" title="Method"></span>
+<h5 id="concat-string-string-string-uno">
+<a href="../uno/string/concat_e671fcec.html">
+Concat(string, string)
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../uno/string.html">
+string
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-method fa fa-square-o" title="Method"></span>
+<h5 id="contains-string-bool-uno">
+<a href="../uno/string/contains_968f99a6.html">
+Contains(string)
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../uno/bool.html">
+bool
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-field fa fa-circle-o" title="Field"></span>
+<h5 id="empty-string-uno">
+<a href="../uno/string/empty.html">
+Empty
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../uno/string.html">
+string
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-method fa fa-square-o" title="Method"></span>
+<h5 id="endswith-string-bool-uno">
+<a href="../uno/string/endswith_968f99a6.html">
+EndsWith(string)
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../uno/bool.html">
+bool
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-method fa fa-square-o" title="Method"></span>
+<h5 id="equals-string-string-bool-uno">
+<a href="../uno/string/equals_e671fcec.html">
+Equals(string, string)
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../uno/bool.html">
+bool
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-method fa fa-square-o" title="Method"></span>
+<h5 id="equals-string-bool-uno">
+<a href="../uno/string/equals_968f99a6.html">
+Equals(string)
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../uno/bool.html">
+bool
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-method fa fa-square-o" title="Method"></span>
+<h5 id="format-string-object-string-uno">
+<a href="../uno/string/format_a2e97a1c.html">
+Format(string, object[])
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../uno/string.html">
+string
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-method fa fa-square-o" title="Method"></span>
+<h5 id="indexof-char-int-int-int-uno">
+<a href="../uno/string/indexof_5a9256c1.html">
+IndexOf(char, int, int)
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../uno/int.html">
+int
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-method fa fa-square-o" title="Method"></span>
+<h5 id="indexof-char-int-int-uno">
+<a href="../uno/string/indexof_4aa54bba.html">
+IndexOf(char, int)
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../uno/int.html">
+int
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-method fa fa-square-o" title="Method"></span>
+<h5 id="indexof-char-int-uno">
+<a href="../uno/string/indexof_29b61e24.html">
+IndexOf(char)
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../uno/int.html">
+int
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-method fa fa-square-o" title="Method"></span>
+<h5 id="indexof-string-int-int-uno">
+<a href="../uno/string/indexof_a7e8d4c1.html">
+IndexOf(string, int)
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../uno/int.html">
+int
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-method fa fa-square-o" title="Method"></span>
+<h5 id="indexofany-char-int-int-int-uno">
+<a href="../uno/string/indexofany_6ea925b6.html">
+IndexOfAny(char[], int, int)
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../uno/int.html">
+int
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-method fa fa-square-o" title="Method"></span>
+<h5 id="indexofany-char-int-int-uno">
+<a href="../uno/string/indexofany_2c73883f.html">
+IndexOfAny(char[], int)
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../uno/int.html">
+int
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-method fa fa-square-o" title="Method"></span>
+<h5 id="indexofany-char-int-uno">
+<a href="../uno/string/indexofany_06ab4e5a.html">
+IndexOfAny(char[])
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../uno/int.html">
+int
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-method fa fa-square-o" title="Method"></span>
+<h5 id="insert-int-string-string-uno">
+<a href="../uno/string/insert_32266908.html">
+Insert(int, string)
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../uno/string.html">
+string
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-method fa fa-square-o" title="Method"></span>
+<h5 id="isnullorempty-string-bool-uno">
+<a href="../uno/string/isnullorempty_968f99a6.html">
+IsNullOrEmpty(string)
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../uno/bool.html">
+bool
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-method fa fa-square-o" title="Method"></span>
+<h5 id="isnullorwhitespace-string-bool-uno">
+<a href="../uno/string/isnullorwhitespace_968f99a6.html">
+IsNullOrWhiteSpace(string)
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../uno/bool.html">
+bool
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-method fa fa-square-o" title="Method"></span>
+<h5 id="join-string-string-string-uno">
+<a href="../uno/string/join_4b8c5f8f.html">
+Join(string, string[])
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../uno/string.html">
+string
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-method fa fa-square-o" title="Method"></span>
+<h5 id="lastindexof-char-int-int-int-uno">
+<a href="../uno/string/lastindexof_5a9256c1.html">
+LastIndexOf(char, int, int)
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../uno/int.html">
+int
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-method fa fa-square-o" title="Method"></span>
+<h5 id="lastindexof-char-int-int-uno">
+<a href="../uno/string/lastindexof_4aa54bba.html">
+LastIndexOf(char, int)
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../uno/int.html">
+int
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-method fa fa-square-o" title="Method"></span>
+<h5 id="lastindexof-char-int-uno">
+<a href="../uno/string/lastindexof_29b61e24.html">
+LastIndexOf(char)
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../uno/int.html">
+int
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-method fa fa-square-o" title="Method"></span>
+<h5 id="lastindexofany-char-int-int-int-uno">
+<a href="../uno/string/lastindexofany_6ea925b6.html">
+LastIndexOfAny(char[], int, int)
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../uno/int.html">
+int
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-method fa fa-square-o" title="Method"></span>
+<h5 id="lastindexofany-char-int-int-uno">
+<a href="../uno/string/lastindexofany_2c73883f.html">
+LastIndexOfAny(char[], int)
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../uno/int.html">
+int
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-method fa fa-square-o" title="Method"></span>
+<h5 id="lastindexofany-char-int-uno">
+<a href="../uno/string/lastindexofany_06ab4e5a.html">
+LastIndexOfAny(char[])
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../uno/int.html">
+int
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-property fa fa-wrench" title="Property"></span>
+<h5 id="length-int-uno">
+<a href="../uno/string/length.html">
+Length
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../uno/int.html">
+int
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-operator fa fa-asterisk" title="Operator"></span>
+<h5 id="object-string-string-uno">
+<a href="../uno/string/op_addition_4c3ac72d.html">
+object + string
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../uno/string.html">
+string
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-method fa fa-square-o" title="Method"></span>
+<h5 id="padleft-int-char-string-uno">
+<a href="../uno/string/padleft_1abcda6c.html">
+PadLeft(int, char)
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../uno/string.html">
+string
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-method fa fa-square-o" title="Method"></span>
+<h5 id="padleft-int-string-uno">
+<a href="../uno/string/padleft_56ad0a96.html">
+PadLeft(int)
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../uno/string.html">
+string
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-method fa fa-square-o" title="Method"></span>
+<h5 id="padright-int-char-string-uno">
+<a href="../uno/string/padright_1abcda6c.html">
+PadRight(int, char)
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../uno/string.html">
+string
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-method fa fa-square-o" title="Method"></span>
+<h5 id="padright-int-string-uno">
+<a href="../uno/string/padright_56ad0a96.html">
+PadRight(int)
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../uno/string.html">
+string
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-method fa fa-square-o" title="Method"></span>
+<h5 id="replace-char-char-string-uno">
+<a href="../uno/string/replace_1b727a86.html">
+Replace(char, char)
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../uno/string.html">
+string
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-method fa fa-square-o" title="Method"></span>
+<h5 id="replace-string-string-string-uno">
+<a href="../uno/string/replace_e671fcec.html">
+Replace(string, string)
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../uno/string.html">
+string
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-method fa fa-square-o" title="Method"></span>
+<h5 id="split-char-string-uno">
+<a href="../uno/string/split_06ab4e5a.html">
+Split(char[])
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../uno/string.html">
+string[]
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-method fa fa-square-o" title="Method"></span>
+<h5 id="startswith-string-bool-uno">
+<a href="../uno/string/startswith_968f99a6.html">
+StartsWith(string)
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../uno/bool.html">
+bool
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-operator fa fa-asterisk" title="Operator"></span>
+<h5 id="string-string-bool-uno">
+<a href="../uno/string/op_inequality_e671fcec.html">
+string != string
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../uno/bool.html">
+bool
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-operator fa fa-asterisk" title="Operator"></span>
+<h5 id="string-object-string-uno">
+<a href="../uno/string/op_addition_d062e5a9.html">
+string + object
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../uno/string.html">
+string
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-operator fa fa-asterisk" title="Operator"></span>
+<h5 id="string-string-string-uno">
+<a href="../uno/string/op_addition_e671fcec.html">
+string + string
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../uno/string.html">
+string
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-operator fa fa-asterisk" title="Operator"></span>
+<h5 id="string-string-bool-uno">
+<a href="../uno/string/op_equality_e671fcec.html">
+string == string
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../uno/bool.html">
+bool
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-constructor fa fa-check" title="Constructor"></span>
+<h5 id="string-char-constructor-uno">
+<a href="../uno/string/_ctor_06ab4e5a.html">
+string(char[]) Constructor
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-method fa fa-square-o" title="Method"></span>
+<h5 id="substring-int-int-string-uno">
+<a href="../uno/string/substring_5f74a7fb.html">
+Substring(int, int)
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../uno/string.html">
+string
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-method fa fa-square-o" title="Method"></span>
+<h5 id="substring-int-string-uno">
+<a href="../uno/string/substring_56ad0a96.html">
+Substring(int)
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../uno/string.html">
+string
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-method fa fa-square-o" title="Method"></span>
+<h5 id="tochararray-char-uno">
+<a href="../uno/string/tochararray.html">
+ToCharArray
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../uno/char.html">
+char[]
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-method fa fa-square-o" title="Method"></span>
+<h5 id="tochararray-int-int-char-uno">
+<a href="../uno/string/tochararray_5f74a7fb.html">
+ToCharArray(int, int)
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../uno/char.html">
+char[]
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-method fa fa-square-o" title="Method"></span>
+<h5 id="tolower-string-uno">
+<a href="../uno/string/tolower.html">
+ToLower
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../uno/string.html">
+string
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-method fa fa-square-o" title="Method"></span>
+<h5 id="toupper-string-uno">
+<a href="../uno/string/toupper.html">
+ToUpper
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../uno/string.html">
+string
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-method fa fa-square-o" title="Method"></span>
+<h5 id="trim-string-uno">
+<a href="../uno/string/trim.html">
+Trim
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../uno/string.html">
+string
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-method fa fa-square-o" title="Method"></span>
+<h5 id="trim-char-string-uno">
+<a href="../uno/string/trim_06ab4e5a.html">
+Trim(char[])
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../uno/string.html">
+string
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-method fa fa-square-o" title="Method"></span>
+<h5 id="trimend-char-string-uno">
+<a href="../uno/string/trimend_06ab4e5a.html">
+TrimEnd(char[])
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../uno/string.html">
+string
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-method fa fa-square-o" title="Method"></span>
+<h5 id="trimstart-char-string-uno">
+<a href="../uno/string/trimstart_06ab4e5a.html">
+TrimStart(char[])
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../uno/string.html">
+string
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+</section>
+<section class="table-of-contents-section has-advanced-items only-advanced-items inherited">
+<h4 id="section-table-of-contents-inherited-from-uno-object">
+Inherited from
+<a href="../uno/object.html">
+object
+</a>
+</h4>
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-method fa fa-square-o" title="Method"></span>
+<h5 id="equals-object-bool-uno">
+<a href="../uno/object/equals_a09c80e3.html">
+Equals(object)
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../uno/bool.html">
+bool
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-method fa fa-square-o" title="Method"></span>
+<h5 id="gethashcode-int-uno">
+<a href="../uno/object/gethashcode.html">
+GetHashCode
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../uno/int.html">
+int
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-method fa fa-square-o" title="Method"></span>
+<h5 id="gettype-type-uno">
+<a href="../uno/object/gettype.html">
+GetType
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../uno/type.html">
+Type
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-method fa fa-square-o" title="Method"></span>
+<h5 id="tostring-string-uno">
+<a href="../uno/object/tostring.html">
+ToString
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../uno/string.html">
+string
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+</section>
+</section>
+
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="https://fuse-open.github.io/docs/jquery.js?_v=20180504135303"></script>
+    <script type="text/javascript" src="https://fuse-open.github.io/docs/popper.js?_v=20180504135303"></script>
+    <script type="text/javascript" src="https://fuse-open.github.io/docs/bootstrap.js?_v=20180504135303"></script>
+    <script type="text/javascript" src="https://fuse-open.github.io/docs/prism.js?_v=20180504135303"></script>
+    <script type="text/javascript" src="https://fuse-open.github.io/docs/site.js?_v=20180504135303"></script>
+  </body>
+</html>

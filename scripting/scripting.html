@@ -1,0 +1,788 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Scripting &amp;amp; Data-binding - Fuse Documentation</title>
+    <link rel="stylesheet" href="https://fuse-open.github.io/docs/font-awesome.css?_v=20180504135303">
+    <link rel="stylesheet" href="https://fuse-open.github.io/docs/bootstrap.css?_v=20180504135303">
+    <link rel="stylesheet" href="https://fuse-open.github.io/docs/prism.css?_v=20180504135303">
+    <link rel="stylesheet" href="https://fuse-open.github.io/docs/site.css?_v=20180504135303">
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="https://fuse-open.github.io/docs/">Fuse: Documentation</a>
+      <div class="search d-none d-lg-block">
+        <script>
+          (function() {
+            var cx = '003990228577991558032:1dgsgv066lc';
+            var gcse = document.createElement('script');
+            gcse.type = 'text/javascript';
+            gcse.async = true;
+            gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(gcse, s);
+          })();
+          window.onload = function() {
+            document.getElementById('gsc-i-id1').placeholder = 'Search';
+          }
+        </script>
+        <gcse:search></gcse:search>
+      </div>
+    </nav>
+
+    <div class="container-fluid main-content-wrapper">
+      <div class="row">
+        <div class="col-12 col-lg-2 order-2 order-lg-1 bg-light sidebar">
+          <div class="sidebar-sticky">
+            <ul class="list-unstyled outline-nav outline-nav-level-0">
+	<li>
+		<a href="https://fuse-open.github.io/docs/index.html">Fuse</a>
+	<ul class="list-unstyled outline-nav outline-nav-level-1">
+		<li>
+			<a href="https://fuse-open.github.io/docs/basics/basics.html">Fuse Basics</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/basics/supported-platforms.html">Supported platforms</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/basics/installation-and-quickstart.html">Installation and quickstart</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/basics/introduction-to-fuse.html">Introduction to Fuse</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/basics/preview-and-export.html">Preview and export</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/componentization.html">Componentization</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/layout/responsive-layout.html">Responsive layout</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/declarative-animation.html">Declarative animation</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse-for-designers.html">Fuse for designers</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/structuring-app-resources.html">Structuring app resources</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/basics/feature-overview.html">Feature overview</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/basics/faq.html">FAQ</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/packages.html">Community Packages</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/fuse-studio/fuse-studio.html">Fuse Studio (Pro)</a>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/tutorial/tutorial.html">Tutorial</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/tutorial/edit-hike-view.html">1. Edit Hike view</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/tutorial/multiple-hikes.html">2. Multiple hikes</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/tutorial/splitting-up-components.html">3. Splitting up components</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/tutorial/navigation-and-routing.html">4. Navigation and routing</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/tutorial/mock-backend.html">5. Mocking our Backend</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/tutorial/look-and-feel.html">6. Tweaking the look/feel</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/tutorial/splash-screen.html">7. Splash screen</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/tutorial/final-thoughts.html">8. Final thoughts</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/reference.html">Full Reference</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/full-ux-class-reference.html">UX Class Reference</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/basics/uno-projects.html">Uno projects (.unoproj) Reference</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/ux-markup/ux-markup.html">UX Markup</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/literals.html">Literals</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/expressions.html">Expressions</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/names.html">Names (ux:Name)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/classes.html">Classes (ux:Class)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/dependencies.html">Dependencies (ux:Dependency)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/properties.html">Properties (ux:Property)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/resources.html">Resources (ux:Key)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/globals.html">Globals (ux:Global)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/templates.html">Templates (ux:Template)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/binding-and-auto-bind.html">Binding (ux:Binding &amp; ux:AutoBind)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/testing/testing.html">Testing (ux:Test)</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/xcode-and-android-studio-integration/tutorial.html">XCode &amp; Android Studio Integration (Pro)</a>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/primitives/primitives.html">Primitives</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/text.html">Text</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/rectangle.html">Rectangle</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/circle.html">Circle</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/curve.html">Curve</a>
+			<ul class="list-unstyled outline-nav outline-nav-level-3">
+				<li>
+					<a href="https://fuse-open.github.io/docs/fuse/controls/curvepoint.html">CurvePoint</a>
+				</li>
+			</ul>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/path.html">Path</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/image.html">Image</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/video.html">Video</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/charting/charting.html">Charting (Pro)</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/charting/plot.html">Plot</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/charting/dataseries.html">DataSeries</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/charting/plotaxis.html">PlotAxis</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/charting/plotdata.html">PlotData</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/charting/plotpoint.html">PlotPoint</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/charting/plotbar.html">PlotBar</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/charting/plotcurvepoint.html">PlotCurvePoint</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/layout/layout.html">Layout</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/elements/element.html">Element</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/panel.html">Panel</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/stackpanel.html">StackPanel</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/dockpanel.html">DockPanel</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/grid.html">Grid</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/wrappanel.html">WrapPanel</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/layouts/columnlayout.html">ColumnLayout</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/layouts/circlelayout.html">CircleLayout</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/scrollview.html">ScrollView</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/fuse/controls/control.html">Controls</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/button.html">Button</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/textinput.html">TextInput</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/textview.html">TextView</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/slider.html">Slider</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/switch.html">Switch</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/cameraviewbase.html">CameraView (Pro)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/mapview.html">MapView</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/webview.html">WebView</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/nativeviewhost.html">NativeViewHost</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/graphicsview.html">GraphicsView</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/scripting/scripting.html">Scripting &amp; Data</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/reactive/javascript.html">JavaScript</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/scripting/debugging.html">Debugging</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/reactive/databinding.html">DataBinding</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/reactive/each.html">Each</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/reactive/with.html">With</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/reactive/match.html">Match</a>
+			<ul class="list-unstyled outline-nav outline-nav-level-3">
+				<li>
+					<a href="https://fuse-open.github.io/docs/fuse/reactive/case.html">Case</a>
+				</li>
+			</ul>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/fusejs/observable.html">Observables</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/observable-api.html">API reference</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/observable-patterns.html">Patterns</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/navigation/navigation.html">Navigation</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/page.html">Page</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/pagecontrol.html">PageControl</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/navigation/router.html">Router</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/navigator.html">Navigator</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/triggers/transition.html">Transitions</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/fusejs/fusejs.html">JavaScript APIs</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/polyfills.html">Polyfills</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/eventemitter.html">EventEmitter</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/filesystem/filesystemmodule.html">FileSystem</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/storage/storagemodule.html">Storage</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/bundle.html">Bundle</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/lifecycle.html">Lifecycle</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/reactive/fusejs/interapp.html">InterApp</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/share/sharemodule.html">Share</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/http.html">HTTP</a>
+			<ul class="list-unstyled outline-nav outline-nav-level-3">
+				<li>
+					<a href="https://fuse-open.github.io/docs/backend/rest-apis.html">Working with REST APIs</a>
+				</li>
+			</ul>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/environment.html">Environment</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/reactive/fusejs/phone.html">Phone</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/camera/camera.html">Camera</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/cameraroll/cameraroll.html">CameraRoll</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/vibration/vibrationmodule.html">Vibration</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/geolocation/geolocation.html">GeoLocation</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/pushnotifications/push.html">Push notifications</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/localnotifications/localnotify.html">Local notifications</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/base64.html">Base64</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/reactive/fusejs/timermodule.html">Timer</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/imagetools/imagetools.html">ImageTools</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/third-party-modules.html">Third-party modules</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/uno/ux/resource.html">Resources</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/font.html">Fonts</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/resources/imagesource.html">Image sources</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/assets/bundle.html">Bundled files</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/assets/sketch-import.html">Import from Sketch</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/assets/sketch-symbol-import.html">Sketch symbols (Beta)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/assets/iconfont-import.html">Import icon fonts</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/fuse/triggers/trigger.html">Triggers &amp; Animation</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/transform.html">Transforms</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/gestures/transformgesture.html">Gestures</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/animations/animator.html">Animators</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/triggers/timeline.html">Timeline</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/triggers/actions/triggeraction.html">Actions</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/selection/selection.html">Selection</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/triggers/stategroup.html">StateGroups</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/multilayoutpanel.html">MultiLayoutPanel</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/triggers/busy.html">Busy</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/effects/effects.html">Effects</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/effects/dropshadow.html">DropShadow</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/effects/blur.html">Blur</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/effects/halftone.html">Halftone</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/native-interop/native-interop.html">Native interop (Uno)</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/root-ns.html">Full Uno Class Reference</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/native-ux-components.html">Native UX components</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/native-js-modules.html">Native JS modules</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/foreign-code.html">Foreign code</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/using-third-party-sdks.html">Using 3rd party SDKs</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/unolibs/activity-utils.html">Activity utils</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/facebook-login.html">Facebook login using foreign code</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/gradle-support.html">Gradle Support</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/build-settings.html">Build settings</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/android-permissions.html">Android permissions</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/android-start-activity.html">Starting an Android Activity</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/ios-capabilities.html">iOS Capabilities</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/alive/alive.html">Alive UX Kit (Pro)</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/alive.html">Components</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/alive/themes.html">Themes</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/technical-corner/technical-corner.html">Technical corner</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/technical-corner/fuse-protocol.html">Fuse plugin API</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/preview-and-export/preview-details.html">How preview works</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/technical-corner/uxl-handbook.html">UXL handbook</a>
+			</li>
+		</ul>
+		</li>
+	</ul>
+	</li>
+</ul>
+
+          </div>
+        </div>
+        <div role="main" class="col-12 col-lg-10 ml-sm-auto order-1 order-lg-2 px-4 main-content">
+          <h1 id="scripting-amp-data-binding">Scripting &amp; Data-binding</h1>
+<p>The <code>&lt;JavaScript&gt;</code> tag in UX Markup creates a module which is instantiated for each instance of the containing scope.</p>
+<p>Fuse implements the CommonJS module system, which means that we can export variables to the outside world by attaching them to the <code>module.exports</code> object.</p>
+<p>Data-binding is then done using the curly brace syntax, <code>Property=&quot;{variable}&quot;</code>.</p>
+<h2 id="app-global-scripts">App-global scripts</h2>
+<p>We can place a <code>&lt;JavaScript&gt;</code> tag anywhere inline in the UX markup by using the <code>&lt;JavaScript/&gt;</code> tag, for example directly in the <code>&lt;App&gt;</code> tag to create an app-global module:</p>
+<pre><code>&lt;App&gt;
+	&lt;JavaScript&gt;
+		module.exports.foo = &quot;bar&quot;;
+	&lt;/JavaScript&gt;
+	&lt;Panel&gt;
+		&lt;Text Value=&quot;{foo}&quot;/&gt;
+	&lt;/Panel&gt;
+&lt;/App&gt;
+</code></pre>
+<p>Code does not need to be inline in the UX markup. We can put it in a separate file, and reference it by name. This has the samme effect:</p>
+<pre><code>&lt;App&gt;
+	&lt;JavaScript File=&quot;Main.js&quot;/&gt;
+	&lt;Panel&gt;
+		&lt;Text Value=&quot;{foo}&quot;/&gt;
+	&lt;/Panel&gt;
+&lt;/App&gt;
+</code></pre>
+<h2 id="component-local-scripts">Component-local scripts</h2>
+<p>We can also place <code>&lt;JavaScript&gt;</code> tags inside an <code>ux:Class</code>. This will evaluate the module for each instance of the class, giving us component-local state and data.</p>
+<pre><code>&lt;Panel ux:Class=&quot;MyComponent&quot;&gt;
+	&lt;JavaScript&gt;
+		var Observable = require(&quot;FuseJS/Observable&quot;);
+		var foo = Observable(10); 
+		module.exports = { foo }
+	&lt;/JavaScript&gt;
+
+	&lt;Text Value=&quot;{foo}&quot; /&gt;
+&lt;/Panel&gt;
+</code></pre>
+<p>The 'foo' variable now exists for each instance of MyComponent, and the data binding below</p>
+<h2 id="important-note-about-javascript-in-fuse">Important note about JavaScript in Fuse</h2>
+<p>The business logic in Fuse is can be written in JavaScript or any language that compiles to JavaScript, for example using external transpilers like Babel or TypeScript.</p>
+<p>It is important to explain that Fuse is not a web or browser-based platform despite using markup and JavaScript. The ways Fuse handle data binding, layout and animation are all tailored for the Fuse platform. Much like how any Node.js library that depends on modules like <code>process</code> and <code>fs</code> wouldn't be expected to work in a web page, Fuse's approach to JS is the same.</p>
+<p>In short: you'll have greater success with Fuse (and more fun!) if you approach it as a new thing rather than a typical DOM-based JS framework. :)</p>
+<h2 id="data-binding-example">Data-binding example</h2>
+<p>The curly brace syntax binds to the closest object in the data context that matches the binding path.</p>
+<pre><code>&lt;App&gt;
+	&lt;JavaScript&gt;
+		var hello = &quot;world&quot;;
+
+		function writeHello(){
+			console.log(&quot;hello &quot; + hello);
+		}
+
+		module.exports = {
+			hello : hello,
+			writeHello : writeHello
+		};
+	&lt;/JavaScript&gt;
+	&lt;Panel&gt;
+		&lt;Text Value=&quot;{hello}&quot; Clicked=&quot;{writeHello}&quot;/&gt;
+	&lt;/Panel&gt;
+&lt;/App&gt;
+</code></pre>
+<h2 id="binding-functions">Binding functions</h2>
+<p>We can also bind functions to events like <code>Clicked</code>, <code>Tapped</code> and <code>Callback.Handler</code>. Bound functions are passed a parameter containing various properties. These properties also vary depending on which event the function has been bound to:</p>
+<ul>
+<li>Pointer events provide (for events like <code>Clicked</code> and <code>Tapped</code>):
+<ul>
+<li><code>x</code>, <code>y</code>: Global pointer coordinates</li>
+<li><code>localX</code>, <code>localY</code>: pointer coordinates relative to the component origin</li>
+<li><code>eventName</code>: Name of the event fired</li>
+</ul>
+</li>
+<li><a href="../fuse/controls/mapview.html">MapView</a>'s <code>MarkedTapped</code> event provides:
+<ul>
+<li><code>label</code> -  name of the marker which has been tapped</li>
+</ul>
+</li>
+<li><a href="../fuse/controls/mapview.html">MapView</a>'s <code>LocationTapped</code> and <code>LocationLongPressed</code> events provide:
+<ul>
+<li><code>latitude</code>, <code>longitude</code> - coordinates relevant to the fired event.</li>
+</ul>
+</li>
+<li><a href="../fuse/controls/navigator.html">Navigator</a>
+<ul>
+<li><code>Navigated</code> and <code>PageProgressChanged</code> provide <code>name</code>, the name of the page being navigated to.</li>
+</ul>
+</li>
+<li><a href="../fuse/controls/image.html">Image</a> and <a href="../fuse/resources/imagesource.html">ImageSource</a>'s <code>Error</code> event provides:
+<ul>
+<li><code>reason</code> - The reason which caused the error</li>
+</ul>
+</li>
+<li><a href="../fuse/elements/element.html">Element</a>'s <code>Placed</code> event provides:
+<ul>
+<li><code>x</code>, <code>y</code> - New coordinates of element</li>
+<li><code>width</code>, <code>height</code> - New width and height of element</li>
+</ul>
+</li>
+<li><a href="../fuse/controls/scrollview.html">ScrollView</a>' <code>ScrollPositionChanged</code> provides:
+<ul>
+<li><code>value</code> - Current scroll value, as an array containing x at [0] and y at [1]</li>
+<li><code>relativePosition</code> - The amount of change in scroll since the user started a scroll</li>
+</ul>
+</li>
+<li>OnUserEvent provides custom parameters you pass in through <code>event.raise()</code>. You can read more about this <a href="../fuse/userevent.html">here.</a></li>
+</ul>
+<p>In all cases, we additionally get a <code>data</code> property, which contains the data context of the node from which the function was called. A normal use of this property, is to retrieve the data object from which the node was created, for example when using the <code>Each</code> class.</p>
+<p>The following example shows how the age value can be retrieved from a clicked event happening on an item in an <code>Each</code> tag.</p>
+<pre><code>&lt;JavaScript&gt;
+	function clicked(arg) {
+		console.log(&quot;Age: &quot; + arg.data.age);
+	}
+	module.exports = {
+		clicked: clicked,
+		items: [
+			{ name: &quot;Jake&quot;, age: 24 },
+			{ name: &quot;Julie&quot;, age: 25 },
+			{ name: &quot;Jerard&quot;, age: 26 }
+		]
+	};
+	&lt;/JavaScript&gt;
+	&lt;StackPanel&gt;
+	&lt;Each Items=&quot;{items}&quot;&gt;
+		&lt;StackPanel Clicked=&quot;{clicked}&quot; Margin=&quot;10&quot;&gt;
+			&lt;Text Value=&quot;{name}&quot; /&gt;
+		&lt;/StackPanel&gt;
+	&lt;/Each&gt;
+&lt;/StackPanel&gt;
+</code></pre>
+<h2 id="data-binding-to-arrays">Data-binding to arrays</h2>
+<p>We can data-bind to an array using the <a href="../fuse/reactive/each.html">Each</a> behavior:</p>
+<pre><code>&lt;App&gt;
+	&lt;JavaScript&gt;
+		var colors = [&quot;#f00&quot;, &quot;#0f0&quot;, &quot;#00f&quot;];
+
+		module.exports = {
+			colors: colors
+		};
+		&lt;/JavaScript&gt;
+	&lt;StackPanel&gt;
+		&lt;Each Items=&quot;{colors}&quot;&gt;
+			&lt;Rectangle Color=&quot;{}&quot; Height=&quot;40&quot;/&gt;
+		&lt;/Each&gt;
+	&lt;/StackPanel&gt;
+&lt;/App&gt;
+</code></pre>
+<p>The <a href="../fuse/reactive/each.html">Each</a> behavior will instantiate its children once for each item in its bound array. That item then becomes the data context for that instance which is why we can data-bind to the color value by an empty set of curly braces <code>{}</code>.</p>
+<h2 id="making-the-ui-react-to-changes">Making the UI react to changes</h2>
+<p>Most of the time one wants to display dynamic data that changes over the lifetime of the app. This is simply done by storing the data in an <code>Observable</code>. The <code>Observable</code> is a core part of the Fuse reactive data-binding system, and is used everywhere in Fuse apps.</p>
+<p>Observables act like a single value or a list of values. Any data-bound <code>Observable</code> will update the view automatically when its value is changed:</p>
+<pre><code>&lt;App&gt;
+	&lt;JavaScript&gt;
+		var Observable = require('FuseJS/Observable');
+		var count = Observable(0);
+		function increment(){
+			count.value = count.value + 1;
+		};
+		module.exports = {
+			count : count,
+			increment : increment
+		};
+	&lt;/JavaScript&gt;
+	&lt;StackPanel&gt;
+		&lt;Text Value=&quot;{count}&quot;/&gt;
+		&lt;Button Text=&quot;increment&quot; Clicked=&quot;{increment}&quot;/&gt;
+	&lt;/StackPanel&gt;
+&lt;/App&gt;
+</code></pre>
+<h3 id="changing-lists">Changing lists</h3>
+<p>We can also add more items to and <code>Observable</code> by using the <code>add</code> method:</p>
+<pre><code>&lt;App&gt;
+	&lt;JavaScript&gt;
+		var Observable = require('FuseJS/Observable');
+		var numbers = Observable(0);
+		function increment(){
+			numbers.add(numbers.length);
+		};
+		module.exports = {
+			numbers : numbers,
+			increment : increment
+		};
+	&lt;/JavaScript&gt;
+	&lt;DockPanel&gt;
+		&lt;Button Text=&quot;increment&quot; Clicked=&quot;{increment}&quot; Dock=&quot;Top&quot;/&gt;
+		&lt;StackPanel&gt;
+			&lt;Each Items=&quot;{numbers}&quot;&gt;
+				&lt;Text Value=&quot;{}&quot;/&gt;
+			&lt;/Each&gt;
+		&lt;/StackPanel&gt;
+	&lt;/DockPanel&gt;
+&lt;/App&gt;
+</code></pre>
+<p>The <a href="../fuse/reactive/each.html">Each</a> behavior will update itself when the contents of its data-bound <a href="../fusejs/observable.html">Observable</a> changes.</p>
+<h3 id="adding-public-javascript-functions-to-components">Adding public JavaScript functions to components</h3>
+<p>We can add our own functions to a component, and call them from anywhere the component is instantiated:</p>
+<pre><code>&lt;Panel ux:Class=&quot;TestThing&quot; &gt;
+	&lt;JavaScript&gt;
+		this.doThing = function() {
+			console.log(&quot;thing&quot;);
+		};
+	&lt;/JavaScript&gt;
+&lt;/Panel&gt;
+&lt;JavaScript&gt;
+	exports.thingPressed = function() {
+		thing.doThing();
+	};
+&lt;/JavaScript&gt;
+&lt;TestThing ux:Name=&quot;thing&quot; /&gt;
+&lt;Button Text=&quot;Press me&quot; Clicked=&quot;{thingPressed}&quot; /&gt;
+</code></pre>
+
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="https://fuse-open.github.io/docs/jquery.js?_v=20180504135303"></script>
+    <script type="text/javascript" src="https://fuse-open.github.io/docs/popper.js?_v=20180504135303"></script>
+    <script type="text/javascript" src="https://fuse-open.github.io/docs/bootstrap.js?_v=20180504135303"></script>
+    <script type="text/javascript" src="https://fuse-open.github.io/docs/prism.js?_v=20180504135303"></script>
+    <script type="text/javascript" src="https://fuse-open.github.io/docs/site.js?_v=20180504135303"></script>
+  </body>
+</html>

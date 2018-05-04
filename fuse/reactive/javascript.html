@@ -1,0 +1,1433 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>JavaScript&#xA;JavaScript Class - Fuse Documentation</title>
+    <link rel="stylesheet" href="https://fuse-open.github.io/docs/font-awesome.css?_v=20180504135303">
+    <link rel="stylesheet" href="https://fuse-open.github.io/docs/bootstrap.css?_v=20180504135303">
+    <link rel="stylesheet" href="https://fuse-open.github.io/docs/prism.css?_v=20180504135303">
+    <link rel="stylesheet" href="https://fuse-open.github.io/docs/site.css?_v=20180504135303">
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="https://fuse-open.github.io/docs/">Fuse: Documentation</a>
+      <div class="search d-none d-lg-block">
+        <script>
+          (function() {
+            var cx = '003990228577991558032:1dgsgv066lc';
+            var gcse = document.createElement('script');
+            gcse.type = 'text/javascript';
+            gcse.async = true;
+            gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(gcse, s);
+          })();
+          window.onload = function() {
+            document.getElementById('gsc-i-id1').placeholder = 'Search';
+          }
+        </script>
+        <gcse:search></gcse:search>
+      </div>
+    </nav>
+
+    <div class="container-fluid main-content-wrapper">
+      <div class="row">
+        <div class="col-12 col-lg-2 order-2 order-lg-1 bg-light sidebar">
+          <div class="sidebar-sticky">
+            <ul class="list-unstyled outline-nav outline-nav-level-0">
+	<li>
+		<a href="https://fuse-open.github.io/docs/index.html">Fuse</a>
+	<ul class="list-unstyled outline-nav outline-nav-level-1">
+		<li>
+			<a href="https://fuse-open.github.io/docs/basics/basics.html">Fuse Basics</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/basics/supported-platforms.html">Supported platforms</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/basics/installation-and-quickstart.html">Installation and quickstart</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/basics/introduction-to-fuse.html">Introduction to Fuse</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/basics/preview-and-export.html">Preview and export</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/componentization.html">Componentization</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/layout/responsive-layout.html">Responsive layout</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/declarative-animation.html">Declarative animation</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse-for-designers.html">Fuse for designers</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/structuring-app-resources.html">Structuring app resources</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/basics/feature-overview.html">Feature overview</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/basics/faq.html">FAQ</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/packages.html">Community Packages</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/fuse-studio/fuse-studio.html">Fuse Studio (Pro)</a>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/tutorial/tutorial.html">Tutorial</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/tutorial/edit-hike-view.html">1. Edit Hike view</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/tutorial/multiple-hikes.html">2. Multiple hikes</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/tutorial/splitting-up-components.html">3. Splitting up components</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/tutorial/navigation-and-routing.html">4. Navigation and routing</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/tutorial/mock-backend.html">5. Mocking our Backend</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/tutorial/look-and-feel.html">6. Tweaking the look/feel</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/tutorial/splash-screen.html">7. Splash screen</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/tutorial/final-thoughts.html">8. Final thoughts</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/reference.html">Full Reference</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/full-ux-class-reference.html">UX Class Reference</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/basics/uno-projects.html">Uno projects (.unoproj) Reference</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/ux-markup/ux-markup.html">UX Markup</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/literals.html">Literals</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/expressions.html">Expressions</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/names.html">Names (ux:Name)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/classes.html">Classes (ux:Class)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/dependencies.html">Dependencies (ux:Dependency)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/properties.html">Properties (ux:Property)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/resources.html">Resources (ux:Key)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/globals.html">Globals (ux:Global)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/templates.html">Templates (ux:Template)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/binding-and-auto-bind.html">Binding (ux:Binding &amp; ux:AutoBind)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/testing/testing.html">Testing (ux:Test)</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/xcode-and-android-studio-integration/tutorial.html">XCode &amp; Android Studio Integration (Pro)</a>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/primitives/primitives.html">Primitives</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/text.html">Text</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/rectangle.html">Rectangle</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/circle.html">Circle</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/curve.html">Curve</a>
+			<ul class="list-unstyled outline-nav outline-nav-level-3">
+				<li>
+					<a href="https://fuse-open.github.io/docs/fuse/controls/curvepoint.html">CurvePoint</a>
+				</li>
+			</ul>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/path.html">Path</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/image.html">Image</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/video.html">Video</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/charting/charting.html">Charting (Pro)</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/charting/plot.html">Plot</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/charting/dataseries.html">DataSeries</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/charting/plotaxis.html">PlotAxis</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/charting/plotdata.html">PlotData</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/charting/plotpoint.html">PlotPoint</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/charting/plotbar.html">PlotBar</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/charting/plotcurvepoint.html">PlotCurvePoint</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/layout/layout.html">Layout</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/elements/element.html">Element</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/panel.html">Panel</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/stackpanel.html">StackPanel</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/dockpanel.html">DockPanel</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/grid.html">Grid</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/wrappanel.html">WrapPanel</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/layouts/columnlayout.html">ColumnLayout</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/layouts/circlelayout.html">CircleLayout</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/scrollview.html">ScrollView</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/fuse/controls/control.html">Controls</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/button.html">Button</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/textinput.html">TextInput</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/textview.html">TextView</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/slider.html">Slider</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/switch.html">Switch</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/cameraviewbase.html">CameraView (Pro)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/mapview.html">MapView</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/webview.html">WebView</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/nativeviewhost.html">NativeViewHost</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/graphicsview.html">GraphicsView</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/scripting/scripting.html">Scripting &amp; Data</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/reactive/javascript.html">JavaScript</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/scripting/debugging.html">Debugging</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/reactive/databinding.html">DataBinding</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/reactive/each.html">Each</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/reactive/with.html">With</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/reactive/match.html">Match</a>
+			<ul class="list-unstyled outline-nav outline-nav-level-3">
+				<li>
+					<a href="https://fuse-open.github.io/docs/fuse/reactive/case.html">Case</a>
+				</li>
+			</ul>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/fusejs/observable.html">Observables</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/observable-api.html">API reference</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/observable-patterns.html">Patterns</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/navigation/navigation.html">Navigation</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/page.html">Page</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/pagecontrol.html">PageControl</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/navigation/router.html">Router</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/navigator.html">Navigator</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/triggers/transition.html">Transitions</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/fusejs/fusejs.html">JavaScript APIs</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/polyfills.html">Polyfills</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/eventemitter.html">EventEmitter</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/filesystem/filesystemmodule.html">FileSystem</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/storage/storagemodule.html">Storage</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/bundle.html">Bundle</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/lifecycle.html">Lifecycle</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/reactive/fusejs/interapp.html">InterApp</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/share/sharemodule.html">Share</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/http.html">HTTP</a>
+			<ul class="list-unstyled outline-nav outline-nav-level-3">
+				<li>
+					<a href="https://fuse-open.github.io/docs/backend/rest-apis.html">Working with REST APIs</a>
+				</li>
+			</ul>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/environment.html">Environment</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/reactive/fusejs/phone.html">Phone</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/camera/camera.html">Camera</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/cameraroll/cameraroll.html">CameraRoll</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/vibration/vibrationmodule.html">Vibration</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/geolocation/geolocation.html">GeoLocation</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/pushnotifications/push.html">Push notifications</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/localnotifications/localnotify.html">Local notifications</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/base64.html">Base64</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/reactive/fusejs/timermodule.html">Timer</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/imagetools/imagetools.html">ImageTools</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/third-party-modules.html">Third-party modules</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/uno/ux/resource.html">Resources</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/font.html">Fonts</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/resources/imagesource.html">Image sources</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/assets/bundle.html">Bundled files</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/assets/sketch-import.html">Import from Sketch</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/assets/sketch-symbol-import.html">Sketch symbols (Beta)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/assets/iconfont-import.html">Import icon fonts</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/fuse/triggers/trigger.html">Triggers &amp; Animation</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/transform.html">Transforms</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/gestures/transformgesture.html">Gestures</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/animations/animator.html">Animators</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/triggers/timeline.html">Timeline</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/triggers/actions/triggeraction.html">Actions</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/selection/selection.html">Selection</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/triggers/stategroup.html">StateGroups</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/multilayoutpanel.html">MultiLayoutPanel</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/triggers/busy.html">Busy</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/effects/effects.html">Effects</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/effects/dropshadow.html">DropShadow</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/effects/blur.html">Blur</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/effects/halftone.html">Halftone</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/native-interop/native-interop.html">Native interop (Uno)</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/root-ns.html">Full Uno Class Reference</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/native-ux-components.html">Native UX components</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/native-js-modules.html">Native JS modules</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/foreign-code.html">Foreign code</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/using-third-party-sdks.html">Using 3rd party SDKs</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/unolibs/activity-utils.html">Activity utils</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/facebook-login.html">Facebook login using foreign code</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/gradle-support.html">Gradle Support</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/build-settings.html">Build settings</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/android-permissions.html">Android permissions</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/android-start-activity.html">Starting an Android Activity</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/ios-capabilities.html">iOS Capabilities</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/alive/alive.html">Alive UX Kit (Pro)</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/alive.html">Components</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/alive/themes.html">Themes</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/technical-corner/technical-corner.html">Technical corner</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/technical-corner/fuse-protocol.html">Fuse plugin API</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/preview-and-export/preview-details.html">How preview works</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/technical-corner/uxl-handbook.html">UXL handbook</a>
+			</li>
+		</ul>
+		</li>
+	</ul>
+	</li>
+</ul>
+
+          </div>
+        </div>
+        <div role="main" class="col-12 col-lg-10 ml-sm-auto order-1 order-lg-2 px-4 main-content">
+          <header class="page-header">
+<h2 id="section-introduction">
+JavaScript
+<span class="sub-title">JavaScript Class</span>
+</h2>
+<form class="advanced-toggle">
+<div class="form-check">
+<input class="form-check-input" type="checkbox" id="showAdvancedCheckbox">
+<label class="form-check-label" for="showAdvancedCheckbox">
+Show advanced things
+</label>
+</div>
+</form>
+</header>
+<section class="section-jump">
+<ul class="nav nav-pills">
+<li class="nav-item"><a class="nav-link disabled" href="#">Jump to:</a></li>
+<li class="nav-item"><a class="nav-link" href="#section-table-of-contents">Table of Contents</a></li>
+</ul>
+</section>
+<p>The <code>JavaScript</code> tag is used to run JavaScript and assigns its <code>module.exports</code> as data context for the parent visual.</p>
+<p><strong>Note:</strong> ECMAScript 5.1 is the only JavaScript version that is supported across all platforms.
+While newer JavaScript features might work on some devices, this can't be guaranteed (particularly for earlier iOS versions).</p>
+<h4 id="getting-started">Getting started</h4>
+<p>JavaScript can be used in UX markup through the <code>JavaScript</code> class, either by pointing to external JavaScript files, like this:</p>
+<pre><code>&lt;JavaScript File=&quot;SomeCode.js&quot; /&gt;
+</code></pre>
+<p>Or by inlining the JavaScript code in the tag, like this:</p>
+<pre><code>&lt;JavaScript&gt;
+	console.log(&quot;Hello, FuseJS!&quot;);
+&lt;/JavaScript&gt;
+</code></pre>
+<h4 id="about-fusejs">About FuseJS</h4>
+<p>FuseJS is a JavaScript framework for writing cross-platform mobile app business logic. It consists of a bunch of classes that covers
+the basic functionality required for creating native mobile apps, as well as the <a href="../../fusejs/observable.html">Observable</a> class which lets you expose data to the UI in a functional reactive way.</p>
+<h4 id="modules">Modules</h4>
+<p>FuseJS implements the <a href="http://www.commonjs.org/">CommonJS</a> module system. Each code file or inline snippet is a <em>module</em>.</p>
+<p>In order to expose data and functions to other modules, one can add them to the <code>module.exports</code> object:</p>
+<pre><code>&lt;JavaScript&gt;
+	module.exports = {
+		exportedSymbol: &quot;Hello, rest of the world!&quot;
+	};
+&lt;/JavaScript&gt;
+</code></pre>
+<p>Failing to export from modules will make it impossible to reach defined data inside the module:</p>
+<pre><code>&lt;JavaScript&gt;
+	var data = [1, 2, 3];
+	var invisible = &quot;I'm invisible&quot;;
+
+	module.exports = {
+		data: data
+	};
+&lt;/JavaScript&gt;
+</code></pre>
+<p>This is good for hiding implementation details from other calling JavaScript modules and UX code.</p>
+<h4 id="importing-modules">Importing modules</h4>
+<p>Each code file (or inline snippet) defines a module.</p>
+<p>You can import JavaScript modules by their file name. To do this, make sure your JavaScript files are included in your .unoproj file as &quot;Bundle&quot; files:</p>
+<pre><code>&quot;Includes&quot;: [
+	&quot;yourJavaScriptFile.js:Bundle&quot;
+	..other files ..
+]
+</code></pre>
+<p>or if you want to make all JavaScript files be includes as bundled files:</p>
+<pre><code>&quot;Includes&quot;: [
+	&quot;**.js:Bundle&quot;
+]
+</code></pre>
+<p>Then, you can require using the JavaScript file name:</p>
+<pre><code>var myModule = require('/someJavaScriptFile.js');
+</code></pre>
+<p>Note that prefixing the file name with a &quot;/&quot; means that we are looking for the file relative to the project root directory. To name a file relative to the current file, prefix with &quot;./&quot;. By omitting the prefixes, the file name is relative to the project root, or the global module it's in.</p>
+<pre><code>var relativeToProjectRoot = require('/SomeComponent');
+var relativeFile = require('./MainView');
+var relativeToRootOrGlobalModule = require('SomeOtherComponent.js');
+</code></pre>
+<blockquote>
+<p>Note that you may omit the .js file extension in the file name if you wish</p>
+</blockquote>
+<h4 id="module-instancing">Module instancing</h4>
+<p>Fuse's treatment of the <code>&lt;JavaScript&gt;</code> tag has some important differences from how modules work in the <a href="http://www.commonjs.org/">CommonJS</a> module system.</p>
+<p>A module inside a <code>&lt;JavaScript&gt;</code> tag (or pointed to in an external file) will be instantiated once <em>for each time</em> the surrounding UX scope is instantiated. This means that if the <code>&lt;JavaScript&gt;</code> tag is part of a component, each instance of that component will initialise the code and have a separate set of the local variables and exports.</p>
+<h5 id="cleaning-up-after-modules">Cleaning up after modules</h5>
+<p>In Fuse, a JavaScript module can correspond to multiple module instances that get created and destroyed on the fly. If your module allocates resources that need manual cleanup, such as creating explicit <code>Observable</code> subscriptions, you can assign a handler to <code>module.disposed</code> and clean up after yourself there.</p>
+<p>Example:</p>
+<pre><code>var foo = getSomeGlobalObservable();
+
+function fooChanged() { ... }
+
+foo.addSubscriber(fooChanged);
+
+...
+
+module.disposed = function () {
+	foo.removeSubscriber(fooChanged)
+}
+</code></pre>
+<h4 id="design-and-motivation">Design and motivation</h4>
+<p>The key design goal of FuseJS is to keep your JavaScript code small, clean and only concerned with the practical functions of your application. Meanwhile
+all things related to UX, such as layout, data presentation, animation and gesture response, is left to declarative UX markup and native UI components.</p>
+<p>The way Fuse separates JavaScript business logic from UX markup presentation has some clear benefits:</p>
+<ul>
+<li>Performance - all the performance critical bits are handled in native code and based on native UI components.</li>
+<li>Easy - declarative code is easy to read, write and understand even with limited programming knowledge</li>
+<li>Less error prone - fewer states means fewer things can go wrong
+<ul>
+<li>Visual tooling - UX markup can be edited by Fuse tools such as inspectors, timelines and generally cool drag &amp; droppy stuff.</li>
+</ul>
+</li>
+</ul>
+<p>Note that Fuse has tons of declarative APIs (designed for UX markup) that replace the need for controlling animation from JavaScript (i.e. imperatively).</p>
+<p>Many other JavaScript frameworks mix imperative UI code, animation and performance critical tasks into JavaScript, hence many people new to FuseJS tend to try
+doing things this way in the beginning. While most of these things are technically possible in FuseJS, it is discouraged. We recommend taking some
+time to study the Fuse examples to get a feel for the new way of doing things.</p>
+<p>Purifying your code by separating view and logic into UX markup and JavaScript can shrink your code base significantly, make it more maintainable, and allow
+more effective collaboration between UX designers and developers.</p>
+<p>If you need to write performance-critical business logic, we recommend doing that in native code or alternatively in Uno code instead of in JavaScript.</p>
+
+<section class="type-location">
+<h3 id="section-location">Location</h3>
+<dl>
+<dt>Namespace</dt>
+<dd>
+<a href="../../fuse/reactive.html">
+Fuse.Reactive
+</a>
+</dd>
+<dt>Package</dt>
+<dd>Fuse.Scripting.JavaScript 1.8.0-rc2</dd>
+</dl>
+</section>
+<section class="table-of-contents">
+<h3 id="section-table-of-contents">
+Interface of JavaScript
+</h3>
+<section class="table-of-contents-section has-advanced-items">
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-field fa fa-circle-o" title="Field"></span>
+<h5 id="_preservemoduleinstance-bool-uno">
+<a href="../../fuse/reactive/javascript/_preservemoduleinstance.html">
+_preserveModuleInstance
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../../uno/bool.html">
+bool
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxproperty fa fa-cube" title="UxProperty"></span>
+<h5 id="code-string-ux">
+<a href="../../fuse/reactive/javascript/code.html">
+Code
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../../uno/string.html">
+string
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>The inline JavaScript code.</p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxproperty fa fa-wrench" title="UxProperty"></span>
+<h5 id="dependencies-ilist-of-dependency-ux">
+<a href="../../fuse/reactive/javascript/dependencies.html">
+Dependencies
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../../uno/collections/ilist_1.html">
+IList of Dependency
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>A list of named expressions that will be evaluated and injected as variables into the script. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../../fuse/reactive/javascript/dependencies.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-method fa fa-square-o" title="Method"></span>
+<h5 id="disposemoduleinstance-uno">
+<a href="../../fuse/reactive/javascript/disposemoduleinstance.html">
+DisposeModuleInstance
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxproperty fa fa-wrench" title="UxProperty"></span>
+<h5 id="file-filesource-ux">
+<a href="../../fuse/reactive/javascript/file.html">
+File
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../../uno/ux/filesource.html">
+FileSource
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>The JavaScript file to read the code from.</p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-constructor fa fa-check" title="Constructor"></span>
+<h5 id="javascript-nametable-constructor-uno">
+<a href="../../fuse/reactive/javascript/_ctor_1c95c116.html">
+JavaScript(NameTable) Constructor
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxproperty fa fa-wrench" title="UxProperty"></span>
+<h5 id="names-scriptmodulenames-ux">
+<a href="../../fuse/reactive/javascript/names.html">
+Names
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../../fuse/scripting/javascript/scriptmodulenames.html">
+ScriptModuleNames
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Limits the names injected directly into the JavaScript code namespace. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../../fuse/reactive/javascript/names.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-method fa fa-square-o" title="Method"></span>
+<h5 id="onbeforesubscribetodependenciesanddispatchevaluate-uno">
+<a href="../../fuse/reactive/javascript/onbeforesubscribetodependenciesanddispatchevaluate.html">
+OnBeforeSubscribeToDependenciesAndDispatchEvaluate
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+</section>
+<section class="table-of-contents-section has-advanced-items inherited">
+<h4 id="section-table-of-contents-inherited-from-fuse-node">
+Inherited from
+<a href="../../fuse/node.html">
+Node
+</a>
+</h4>
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-method fa fa-square-o" title="Method"></span>
+<h5 id="add-binding-uno">
+<a href="../../fuse/node/add_cd0f711d.html">
+Add(Binding)
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxproperty fa fa-cubes" title="UxProperty"></span>
+<h5 id="bindings-ilist-of-binding-ux">
+<a href="../../fuse/node/bindings.html">
+Bindings
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../../uno/collections/ilist_1.html">
+IList of Binding
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>The list of bindings belonging to this node.</p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-property fa fa-wrench" title="Property"></span>
+<h5 id="contextparent-node-uno">
+<a href="../../fuse/node/contextparent.html">
+ContextParent
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../../fuse/node.html">
+Node
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>The context parent is the semantic parent of this node. It is where non-UI structure should
+be resolved, like looking for the DataContext, a Navigation, or other semantic item.</p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-method fa fa-square-o" title="Method"></span>
+<h5 id="findbytype-lt-t-gt-t-uno">
+<a href="../../fuse/node/findbytype_1.html">
+FindByType&lt;T&gt;
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+T
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-method fa fa-square-o" title="Method"></span>
+<h5 id="findnodebyname-selector-predicate-lt-node-gt-node-node-uno">
+<a href="../../fuse/node/findnodebyname_66268add.html">
+FindNodeByName(Selector, Predicate&lt;Node&gt; (Node))
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../../fuse/node.html">
+Node
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Finds the first node with a given name that satisfies the given acceptor.
+The serach algorithm works as follows: Nodes in the subtree are matched first, then
+it matches the nodes in the subtrees ofthe ancestor nodes by turn all the way to the
+root. If no matching node is found, the function returns null.</p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-method fa fa-square-o" title="Method"></span>
+<h5 id="getnearestancestoroftype-lt-t-gt-t-uno">
+<a href="../../fuse/node/getnearestancestoroftype_1.html">
+GetNearestAncestorOfType&lt;T&gt;
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+T
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-method fa fa-square-o" title="Method"></span>
+<h5 id="insert-int-binding-uno">
+<a href="../../fuse/node/insert_4036b6cf.html">
+Insert(int, Binding)
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-property fa fa-wrench" title="Property"></span>
+<h5 id="isrootingcompleted-bool-uno">
+<a href="../../fuse/node/isrootingcompleted.html">
+IsRootingCompleted
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../../uno/bool.html">
+bool
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Whether rooting for this node is completed.
+Returns false if unrooting has started.</p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-property fa fa-wrench" title="Property"></span>
+<h5 id="isrootingstarted-bool-uno">
+<a href="../../fuse/node/isrootingstarted.html">
+IsRootingStarted
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../../uno/bool.html">
+bool
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Whether rooting of this node has started.
+Note that even if this property returns true, rooting may not yet be
+completed for the node. See also IsRootingCompleted.</p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxproperty fa fa-wrench" title="UxProperty"></span>
+<h5 id="name-selector-ux">
+<a href="../../fuse/node/name.html">
+Name
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../../uno/ux/selector.html">
+Selector
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Run-time name of the node.
+This property is automatically set using the ux:Name attribute.</p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-method fa fa-square-o" title="Method"></span>
+<h5 id="nextsibling-lt-t-gt-t-uno">
+<a href="../../fuse/node/nextsibling_1.html">
+NextSibling&lt;T&gt;
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+T
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Returns the next sibling node of the given type.</p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-method fa fa-square-o" title="Method"></span>
+<h5 id="ondatachanged-string-object-uno">
+<a href="../../fuse/node/ondatachanged_d062e5a9.html">
+OnDataChanged(string, object)
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-method fa fa-square-o" title="Method"></span>
+<h5 id="onrooted-uno">
+<a href="../../fuse/node/onrooted.html">
+OnRooted
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>If you override <code>OnRooted</code> you must call <code>base.OnRooted()</code> first in your derived class. No other processing should happen first, otherwise you might end up in an undefined state.</p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-method fa fa-square-o" title="Method"></span>
+<h5 id="onunrooted-uno">
+<a href="../../fuse/node/onunrooted.html">
+OnUnrooted
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-property fa fa-wrench" title="Property"></span>
+<h5 id="parent-visual-uno">
+<a href="../../fuse/node/parent.html">
+Parent
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../../fuse/visual.html">
+Visual
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>The parent <a href="../../fuse/controls/graphics/visual.html">Visual</a> of this node. Will return null if the node is not rooted.</p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-method fa fa-square-o" title="Method"></span>
+<h5 id="previoussibling-lt-t-gt-t-uno">
+<a href="../../fuse/node/previoussibling_1.html">
+PreviousSibling&lt;T&gt;
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+T
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Returns the next sibling node of the given type.</p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-property fa fa-wrench" title="Property"></span>
+<h5 id="properties-properties-uno">
+<a href="../../fuse/node/properties.html">
+Properties
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../../fuse/properties.html">
+Properties
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>A linked list holding data for extrinsic properties.</p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-method fa fa-square-o" title="Method"></span>
+<h5 id="remove-binding-bool-uno">
+<a href="../../fuse/node/remove_cd0f711d.html">
+Remove(Binding)
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../../uno/bool.html">
+bool
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-method fa fa-square-o" title="Method"></span>
+<h5 id="softdispose-uno">
+<a href="../../fuse/node/softdispose.html">
+SoftDispose
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-method fa fa-square-o" title="Method"></span>
+<h5 id="subtreetostring-string-uno">
+<a href="../../fuse/node/subtreetostring.html">
+SubtreeToString
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../../uno/string.html">
+string
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-method fa fa-square-o" title="Method"></span>
+<h5 id="subtreetostring-stringbuilder-int-uno">
+<a href="../../fuse/node/subtreetostring_efe5f5b8.html">
+SubtreeToString(StringBuilder, int)
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-method fa fa-square-o" title="Method"></span>
+<h5 id="trygetresource-string-predicate-lt-object-gt-object-object-bool-uno">
+<a href="../../fuse/node/trygetresource_5317754b.html">
+TryGetResource(string, Predicate&lt;object&gt; (object), object)
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../../uno/bool.html">
+bool
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-method fa fa-square-o" title="Method"></span>
+<h5 id="visitsubtree-action-lt-node-gt-node-uno">
+<a href="../../fuse/node/visitsubtree_7a20b182.html">
+VisitSubtree(Action&lt;Node&gt; (Node))
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+</section>
+<section class="table-of-contents-section has-advanced-items only-advanced-items inherited">
+<h4 id="section-table-of-contents-inherited-from-uno-ux-propertyobject">
+Inherited from
+<a href="../../uno/ux/propertyobject.html">
+PropertyObject
+</a>
+</h4>
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-method fa fa-square-o" title="Method"></span>
+<h5 id="addpropertylistener-ipropertylistener-uno">
+<a href="../../uno/ux/propertyobject/addpropertylistener_496a874a.html">
+AddPropertyListener(IPropertyListener)
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-method fa fa-square-o" title="Method"></span>
+<h5 id="onpropertychanged-selector-ipropertylistener-uno">
+<a href="../../uno/ux/propertyobject/onpropertychanged_6422fe92.html">
+OnPropertyChanged(Selector, IPropertyListener)
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-method fa fa-square-o" title="Method"></span>
+<h5 id="onpropertychanged-selector-uno">
+<a href="../../uno/ux/propertyobject/onpropertychanged_16d735f3.html">
+OnPropertyChanged(Selector)
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-method fa fa-square-o" title="Method"></span>
+<h5 id="removepropertylistener-ipropertylistener-uno">
+<a href="../../uno/ux/propertyobject/removepropertylistener_496a874a.html">
+RemovePropertyListener(IPropertyListener)
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+</section>
+<section class="table-of-contents-section has-advanced-items only-advanced-items inherited">
+<h4 id="section-table-of-contents-inherited-from-uno-object">
+Inherited from
+<a href="../../uno/object.html">
+object
+</a>
+</h4>
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-method fa fa-square-o" title="Method"></span>
+<h5 id="equals-object-bool-uno">
+<a href="../../uno/object/equals_a09c80e3.html">
+Equals(object)
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../../uno/bool.html">
+bool
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-method fa fa-square-o" title="Method"></span>
+<h5 id="gethashcode-int-uno">
+<a href="../../uno/object/gethashcode.html">
+GetHashCode
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../../uno/int.html">
+int
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-method fa fa-square-o" title="Method"></span>
+<h5 id="gettype-type-uno">
+<a href="../../uno/object/gettype.html">
+GetType
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../../uno/type.html">
+Type
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-method fa fa-square-o" title="Method"></span>
+<h5 id="tostring-string-uno">
+<a href="../../uno/object/tostring.html">
+ToString
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../../uno/string.html">
+string
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+</section>
+<section class="table-of-contents-section attached">
+<h4 id="section-table-of-contents-attached-ux-attributes">Attached UX Attributes</h4>
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-attacheduxproperty fa fa-wrench" title="AttachedUxProperty"></span>
+<h5 id="globalkey-attached-by-resource-string-ux">
+<a href="../../uno/ux/resource/setglobalkey_4c3ac72d.html">
+GlobalKey
+</a>
+<span class="table-of-contents-item-inline-attached-by">
+(attached by <a href="../../uno/ux/resource.html">Resource</a>)
+</span>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../../uno/string.html">
+string
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>The <code>ux:Global</code> attribute creates a global resource that is accessible everywhere in UX markup. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../../uno/ux/resource/setglobalkey_4c3ac72d.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
+</article>
+
+</section>
+</section>
+<section class="interfaces">
+<section class="table-of-contents">
+<section class="table-of-contents-section has-advanced-items only-advanced-items">
+<h4 id="section-table-of-contents-implemented-interfaces">Implemented Interfaces</h4>
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-interface fa fa-file-o" title="Interface"></span>
+<h5 id="imoduleprovider-uno">
+<a href="../../fuse/scripting/imoduleprovider.html">
+IModuleProvider
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-interface fa fa-file-o" title="Interface"></span>
+<h5 id="isiblingdataprovider-uno">
+<a href="../../fuse/node/isiblingdataprovider.html">
+ISiblingDataProvider
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>When implemented by a <code>Node</code>, it indicates that the node provides data for its siblings.
+hide</p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-interface fa fa-file-o" title="Interface"></span>
+<h5 id="icontext-uno">
+<a href="../../fuse/reactive/icontext.html">
+IContext
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-interface fa fa-file-o" title="Interface"></span>
+<h5 id="ilist-lt-binding-gt-uno">
+<a href="../../uno/collections/ilist_1.html">
+IList&lt;Binding&gt;
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-interface fa fa-file-o" title="Interface"></span>
+<h5 id="iscriptobject-uno">
+<a href="../../fuse/scripting/iscriptobject.html">
+IScriptObject
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Interface for objects that can have a script engine representation</p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-interface fa fa-file-o" title="Interface"></span>
+<h5 id="iproperties-uno">
+<a href="../../fuse/iproperties.html">
+IProperties
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-interface fa fa-file-o" title="Interface"></span>
+<h5 id="icollection-lt-binding-gt-uno">
+<a href="../../uno/collections/icollection_1.html">
+ICollection&lt;Binding&gt;
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-interface fa fa-file-o" title="Interface"></span>
+<h5 id="ienumerable-lt-binding-gt-uno">
+<a href="../../uno/collections/ienumerable_1.html">
+IEnumerable&lt;Binding&gt;
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+</section>
+</section>
+</section>
+
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="https://fuse-open.github.io/docs/jquery.js?_v=20180504135303"></script>
+    <script type="text/javascript" src="https://fuse-open.github.io/docs/popper.js?_v=20180504135303"></script>
+    <script type="text/javascript" src="https://fuse-open.github.io/docs/bootstrap.js?_v=20180504135303"></script>
+    <script type="text/javascript" src="https://fuse-open.github.io/docs/prism.js?_v=20180504135303"></script>
+    <script type="text/javascript" src="https://fuse-open.github.io/docs/site.js?_v=20180504135303"></script>
+  </body>
+</html>

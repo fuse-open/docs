@@ -1,0 +1,846 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Xcode and Android Studio Integration - Fuse Documentation</title>
+    <link rel="stylesheet" href="https://fuse-open.github.io/docs/font-awesome.css?_v=20180504135303">
+    <link rel="stylesheet" href="https://fuse-open.github.io/docs/bootstrap.css?_v=20180504135303">
+    <link rel="stylesheet" href="https://fuse-open.github.io/docs/prism.css?_v=20180504135303">
+    <link rel="stylesheet" href="https://fuse-open.github.io/docs/site.css?_v=20180504135303">
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="https://fuse-open.github.io/docs/">Fuse: Documentation</a>
+      <div class="search d-none d-lg-block">
+        <script>
+          (function() {
+            var cx = '003990228577991558032:1dgsgv066lc';
+            var gcse = document.createElement('script');
+            gcse.type = 'text/javascript';
+            gcse.async = true;
+            gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(gcse, s);
+          })();
+          window.onload = function() {
+            document.getElementById('gsc-i-id1').placeholder = 'Search';
+          }
+        </script>
+        <gcse:search></gcse:search>
+      </div>
+    </nav>
+
+    <div class="container-fluid main-content-wrapper">
+      <div class="row">
+        <div class="col-12 col-lg-2 order-2 order-lg-1 bg-light sidebar">
+          <div class="sidebar-sticky">
+            <ul class="list-unstyled outline-nav outline-nav-level-0">
+	<li>
+		<a href="https://fuse-open.github.io/docs/index.html">Fuse</a>
+	<ul class="list-unstyled outline-nav outline-nav-level-1">
+		<li>
+			<a href="https://fuse-open.github.io/docs/basics/basics.html">Fuse Basics</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/basics/supported-platforms.html">Supported platforms</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/basics/installation-and-quickstart.html">Installation and quickstart</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/basics/introduction-to-fuse.html">Introduction to Fuse</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/basics/preview-and-export.html">Preview and export</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/componentization.html">Componentization</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/layout/responsive-layout.html">Responsive layout</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/declarative-animation.html">Declarative animation</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse-for-designers.html">Fuse for designers</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/structuring-app-resources.html">Structuring app resources</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/basics/feature-overview.html">Feature overview</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/basics/faq.html">FAQ</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/packages.html">Community Packages</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/fuse-studio/fuse-studio.html">Fuse Studio (Pro)</a>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/tutorial/tutorial.html">Tutorial</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/tutorial/edit-hike-view.html">1. Edit Hike view</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/tutorial/multiple-hikes.html">2. Multiple hikes</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/tutorial/splitting-up-components.html">3. Splitting up components</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/tutorial/navigation-and-routing.html">4. Navigation and routing</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/tutorial/mock-backend.html">5. Mocking our Backend</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/tutorial/look-and-feel.html">6. Tweaking the look/feel</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/tutorial/splash-screen.html">7. Splash screen</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/tutorial/final-thoughts.html">8. Final thoughts</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/reference.html">Full Reference</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/full-ux-class-reference.html">UX Class Reference</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/basics/uno-projects.html">Uno projects (.unoproj) Reference</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/ux-markup/ux-markup.html">UX Markup</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/literals.html">Literals</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/expressions.html">Expressions</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/names.html">Names (ux:Name)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/classes.html">Classes (ux:Class)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/dependencies.html">Dependencies (ux:Dependency)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/properties.html">Properties (ux:Property)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/resources.html">Resources (ux:Key)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/globals.html">Globals (ux:Global)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/templates.html">Templates (ux:Template)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/binding-and-auto-bind.html">Binding (ux:Binding &amp; ux:AutoBind)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/testing/testing.html">Testing (ux:Test)</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/xcode-and-android-studio-integration/tutorial.html">XCode &amp; Android Studio Integration (Pro)</a>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/primitives/primitives.html">Primitives</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/text.html">Text</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/rectangle.html">Rectangle</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/circle.html">Circle</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/curve.html">Curve</a>
+			<ul class="list-unstyled outline-nav outline-nav-level-3">
+				<li>
+					<a href="https://fuse-open.github.io/docs/fuse/controls/curvepoint.html">CurvePoint</a>
+				</li>
+			</ul>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/path.html">Path</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/image.html">Image</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/video.html">Video</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/charting/charting.html">Charting (Pro)</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/charting/plot.html">Plot</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/charting/dataseries.html">DataSeries</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/charting/plotaxis.html">PlotAxis</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/charting/plotdata.html">PlotData</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/charting/plotpoint.html">PlotPoint</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/charting/plotbar.html">PlotBar</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/charting/plotcurvepoint.html">PlotCurvePoint</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/layout/layout.html">Layout</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/elements/element.html">Element</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/panel.html">Panel</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/stackpanel.html">StackPanel</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/dockpanel.html">DockPanel</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/grid.html">Grid</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/wrappanel.html">WrapPanel</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/layouts/columnlayout.html">ColumnLayout</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/layouts/circlelayout.html">CircleLayout</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/scrollview.html">ScrollView</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/fuse/controls/control.html">Controls</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/button.html">Button</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/textinput.html">TextInput</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/textview.html">TextView</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/slider.html">Slider</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/switch.html">Switch</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/cameraviewbase.html">CameraView (Pro)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/mapview.html">MapView</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/webview.html">WebView</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/nativeviewhost.html">NativeViewHost</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/graphicsview.html">GraphicsView</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/scripting/scripting.html">Scripting &amp; Data</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/reactive/javascript.html">JavaScript</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/scripting/debugging.html">Debugging</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/reactive/databinding.html">DataBinding</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/reactive/each.html">Each</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/reactive/with.html">With</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/reactive/match.html">Match</a>
+			<ul class="list-unstyled outline-nav outline-nav-level-3">
+				<li>
+					<a href="https://fuse-open.github.io/docs/fuse/reactive/case.html">Case</a>
+				</li>
+			</ul>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/fusejs/observable.html">Observables</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/observable-api.html">API reference</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/observable-patterns.html">Patterns</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/navigation/navigation.html">Navigation</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/page.html">Page</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/pagecontrol.html">PageControl</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/navigation/router.html">Router</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/navigator.html">Navigator</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/triggers/transition.html">Transitions</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/fusejs/fusejs.html">JavaScript APIs</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/polyfills.html">Polyfills</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/eventemitter.html">EventEmitter</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/filesystem/filesystemmodule.html">FileSystem</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/storage/storagemodule.html">Storage</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/bundle.html">Bundle</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/lifecycle.html">Lifecycle</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/reactive/fusejs/interapp.html">InterApp</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/share/sharemodule.html">Share</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/http.html">HTTP</a>
+			<ul class="list-unstyled outline-nav outline-nav-level-3">
+				<li>
+					<a href="https://fuse-open.github.io/docs/backend/rest-apis.html">Working with REST APIs</a>
+				</li>
+			</ul>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/environment.html">Environment</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/reactive/fusejs/phone.html">Phone</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/camera/camera.html">Camera</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/cameraroll/cameraroll.html">CameraRoll</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/vibration/vibrationmodule.html">Vibration</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/geolocation/geolocation.html">GeoLocation</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/pushnotifications/push.html">Push notifications</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/localnotifications/localnotify.html">Local notifications</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/base64.html">Base64</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/reactive/fusejs/timermodule.html">Timer</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/imagetools/imagetools.html">ImageTools</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/third-party-modules.html">Third-party modules</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/uno/ux/resource.html">Resources</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/font.html">Fonts</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/resources/imagesource.html">Image sources</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/assets/bundle.html">Bundled files</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/assets/sketch-import.html">Import from Sketch</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/assets/sketch-symbol-import.html">Sketch symbols (Beta)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/assets/iconfont-import.html">Import icon fonts</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/fuse/triggers/trigger.html">Triggers &amp; Animation</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/transform.html">Transforms</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/gestures/transformgesture.html">Gestures</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/animations/animator.html">Animators</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/triggers/timeline.html">Timeline</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/triggers/actions/triggeraction.html">Actions</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/selection/selection.html">Selection</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/triggers/stategroup.html">StateGroups</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/multilayoutpanel.html">MultiLayoutPanel</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/triggers/busy.html">Busy</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/effects/effects.html">Effects</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/effects/dropshadow.html">DropShadow</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/effects/blur.html">Blur</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/effects/halftone.html">Halftone</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/native-interop/native-interop.html">Native interop (Uno)</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/root-ns.html">Full Uno Class Reference</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/native-ux-components.html">Native UX components</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/native-js-modules.html">Native JS modules</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/foreign-code.html">Foreign code</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/using-third-party-sdks.html">Using 3rd party SDKs</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/unolibs/activity-utils.html">Activity utils</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/facebook-login.html">Facebook login using foreign code</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/gradle-support.html">Gradle Support</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/build-settings.html">Build settings</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/android-permissions.html">Android permissions</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/android-start-activity.html">Starting an Android Activity</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/ios-capabilities.html">iOS Capabilities</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/alive/alive.html">Alive UX Kit (Pro)</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/alive.html">Components</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/alive/themes.html">Themes</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/technical-corner/technical-corner.html">Technical corner</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/technical-corner/fuse-protocol.html">Fuse plugin API</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/preview-and-export/preview-details.html">How preview works</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/technical-corner/uxl-handbook.html">UXL handbook</a>
+			</li>
+		</ul>
+		</li>
+	</ul>
+	</li>
+</ul>
+
+          </div>
+        </div>
+        <div role="main" class="col-12 col-lg-10 ml-sm-auto order-1 order-lg-2 px-4 main-content">
+          <h1 id="xcode-and-android-studio-integration">Xcode and Android Studio Integration</h1>
+<p>The <code>Fuse.Views</code> package allows you to take any UX UI component and export them as a native Library for iOS and Android. In this tutorial we will step by step look at how this is done.</p>
+<blockquote>
+<p><strong>Note:</strong> This is a premium feature, included with Fuse's <a href="https://www.fusetools.com/plans">Professional and Custom plans</a>.</p>
+</blockquote>
+<h2 id="step-0-installing-dependencies">Step 0: Installing dependencies</h2>
+<p>To integrate with Xcode and Android Studio make sure you have a Professional license, and that you have installed the Fuse.Views package using the following command in either terminal (on macOS) or cmd (on Windows):</p>
+<pre><code>uno install Fuse.Views
+</code></pre>
+<p>In your <code>.unoproj</code>, add a package reference to <code>Fuse.Views</code>.
+It should look something like the following.</p>
+<pre><code>{
+	&quot;Packages&quot;: [
+		&quot;Fuse&quot;,
+		&quot;FuseJS&quot;,
+		&quot;Fuse.Views&quot;
+	],
+	&quot;Includes&quot;: [
+		&quot;*&quot;
+	]
+}
+</code></pre>
+<h2 id="step-1-exporting-views">Step 1: Exporting Views</h2>
+<p>In Fuse Views you must explicitly specify which views you want to be able to instantiate from Swift, Objective-C and Java. You can export any UX component, except for non-UI elements (like Triggers and Animations) and <a href="../ux-markup/classes.html">UX Classes</a> that have <a href="../ux-markup/dependencies.html">dependencies</a>.</p>
+<p>Let's say that, for example, you have defined the following components somewhere in your Fuse project:</p>
+<pre><code>&lt;Panel ux:Class=&quot;VideoView&quot;&gt;
+    &lt;!-- ... --&gt;
+&lt;/Panel&gt;
+
+&lt;Panel ux:Class=&quot;StatsView&quot;&gt;
+    &lt;!-- ... --&gt;
+&lt;/Panel&gt;
+</code></pre>
+<p>We can then export these components by providing them as <a href="../ux-markup/templates.html">UX Templates</a> to a special <code>ExportedViews</code> tag.</p>
+<pre><code>&lt;App&gt;
+    &lt;ExportedViews&gt;
+        &lt;VideoView ux:Template=&quot;VideoView&quot; /&gt;
+        &lt;StatsView ux:Template=&quot;StatsView&quot; /&gt;
+    &lt;/ExportedViews&gt;
+&lt;/App&gt;
+</code></pre>
+<p>Export an <a href="https://developer.apple.com/library/content/documentation/MacOSX/Conceptual/BPFrameworks/Concepts/WhatAreFrameworks.html">Xcode Framework</a> or an <a href="https://developer.android.com/studio/projects/android-library.html">Android aar</a> by compiling with <code>-DLIBRARY</code> set.</p>
+<pre><code>uno build -t=ios -DLIBRARY
+uno build -t=android -DLIBRARY
+</code></pre>
+<p>Now you will find the Xcode framework and the Android aar under the following paths:</p>
+<ul>
+<li>Xcode framework – <code>build/iOS/Debug/build/Release-iphoneos/ProjectName.framework</code></li>
+<li>Android aar – <code>build/Android/Debug/app/build/outputs/aar/app-debug.aar</code></li>
+</ul>
+<h2 id="step-2-setting-up-the-native-library">Step 2: Setting up the native Library</h2>
+<p>Now that we have built our library, we need to add it to our Xcode or Gradle project.</p>
+<h4 id="ios">iOS</h4>
+<p>Add the framework you just built as an embedded binary in Xcode</p>
+<p><img src="../media/fuse-views/embedded_binaries.png" alt="Embedded Binaries"></p>
+<p><img src="../media/fuse-views/add_framework.png" alt="Add Framework"></p>
+<p>And finally, disable Bitcode.</p>
+<p><img src="../media/fuse-views/disable_bitcode.png" alt="Disable Bitcode"></p>
+<h4 id="android">Android</h4>
+<p>In <code>YourAndroidApp/app/build.gradle</code>, just under this line:</p>
+<pre><code>apply plugin: 'com.android.application'
+</code></pre>
+<p>Add the following:</p>
+<pre><code>allprojects {
+    repositories {
+        jcenter()
+        flatDir {
+            dirs 'libs'
+        }
+    }
+}
+</code></pre>
+<p>and in the dependency section, add:</p>
+<pre><code>compile(name:'app-debug', ext:'aar')
+</code></pre>
+<p>In <code>AndroidManifest.xml</code> add the following attributes to the main <code>activity</code> declaration:</p>
+<pre><code>android:launchMode=&quot;singleTask&quot;
+android:taskAffinity=&quot;&quot;
+android:configChanges=&quot;orientation|keyboardHidden|screenSize|smallestScreenSize&quot;
+</code></pre>
+<p>And finally, copy <code>build/Android/Debug/app/build/outputs/aar/app-debug.aar</code> to <code>YourAndroidApp/app/libs/app-debug.aar</code></p>
+<h4 id="updating-the-framework-or-aar-after-fuse-rebuild">Updating the framework or aar after fuse rebuild</h4>
+<p>After a rebuild you need to manually update the framework or aar in your native project. Do this by overwriting the old library with the one you just produced. This is easily automated by scripting the copy-overwrite procedure.</p>
+<p>Notes when updating the framework/aar:</p>
+<ul>
+<li>By default Xcode imports frameworks to the project root directory. This is where you want to overwrite.</li>
+<li>If you are using Android Studio you must do a rebuild after updating the aar for code completion and code errors to work properly.</li>
+</ul>
+<h2 id="step-3-bootstrapping-fuse-views">Step 3: Bootstrapping Fuse Views</h2>
+<p>Before you can instantiate your exported views, fuse needs to be initialized.</p>
+<h4 id="objective-c">Objective-C</h4>
+<p>Add the following in your <code>AppDelegate</code></p>
+<pre><code>#import &lt;FuseProjectName/Context.h&gt;
+</code></pre>
+<pre><code>- (BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+    [uContext initSharedContextWithWindow:^UIWindow* () { return [self window]; }];
+    [[uContext sharedContext] application:application willFinishLaunchingWithOptions:launchOptions];
+    return YES;
+}
+</code></pre>
+<h4 id="swift">Swift</h4>
+<p>Add a Swift-Objective-C bridging header and add this import:</p>
+<pre><code>#import &lt;FuseProjectName/Context.h&gt;
+</code></pre>
+<p>Then add the following to your <code>AppDelegate</code>.</p>
+<pre><code>func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -&gt; Bool {
+    uContext.initSharedContext(window: { return self.window })
+    uContext.shared().application(application, willFinishLaunchingWithOptions: launchOptions)
+    return true
+}
+</code></pre>
+<h4 id="java">Java</h4>
+<p>In your main <code>Activity</code>, inherit from <code>com.fuse.views.FuseViewsActivity</code>.</p>
+<pre><code>public class MainActivity extends com.fuse.views.FuseViewsActivity {
+</code></pre>
+<h2 id="step-4-instantiating-a-view">Step 4: Instantiating a View</h2>
+<p>You are now ready to instantiate your exported views.
+To interop with your views you will get a handle object with some methods that act as the interface for interop.
+Through the handle you can get a native View that will display your exported view.</p>
+<h4 id="objective-c">Objective-C</h4>
+<p>Make sure to have these headers imported:</p>
+<pre><code>#import &lt;ProjectName/ExportedViews.h&gt;
+#import &lt;ProjectName/ViewHandle.h&gt;
+</code></pre>
+<p>Instantiating the view handle and getting the native view:</p>
+<pre><code>ViewHandle* videoView = [ExportedViews instantiate:@&quot;VideoView&quot;];
+UIView* nativeView = [videoView view];
+</code></pre>
+<h4 id="swift">Swift</h4>
+<p>Make sure to have these headers imported in your Swift-Objective-C bridging header:</p>
+<pre><code>#import &lt;ProjectName/ExportedViews.h&gt;
+#import &lt;ProjectName/ViewHandle.h&gt;
+</code></pre>
+<p>Instantiating the view handle and getting the native view:</p>
+<pre><code>let videoView: ViewHandle? = ExportedViews.instantiate(&quot;VideoView&quot;);
+let view: UIView = videoView?.view
+</code></pre>
+<h4 id="java">Java</h4>
+<p>Make sure you have these imports in your java file:</p>
+<pre><code>import com.fuse.views.ExportedViews;
+import com.fuse.views.ViewHandle;
+</code></pre>
+<p>Instantiating the view handle and getting the native view:</p>
+<pre><code>ViewHandle videoView = ExportedViews.instantiate(&quot;VideoView&quot;);
+android.view.View nativeView = videoView.getView();
+</code></pre>
+<h2 id="step-5-use-the-fuse-view-in-a-native-layout">Step 5: Use the fuse view in a native layout</h2>
+<p>A Fuse View will interop with the native layout, for size it relies on the native layout doing a measure pass on its views. On iOS this might not be the case depending on what kind of layout you have used. So you might have to manage the size by yourself. Using the super view's <code>bounds</code> should be sufficient in most cases.</p>
+<h4 id="objective-c">Objective-C</h4>
+<pre><code>UIView* parent = ...;
+
+ViewHandle* videoView = [ExportedViews instantiate:@&quot;VideoView&quot;];
+UIView* nativeView = [videoView view];
+
+[parent addSubview:nativeView];
+
+// Make the Fuse View fill its parent
+[nativeView setFrame:parent.bounds];
+</code></pre>
+<h4 id="swift">Swift</h4>
+<pre><code>let parent: UIView = ...;
+
+let videoView: ViewHandle? = ExportedViews.instantiate(&quot;VideoView&quot;);
+let view: UIView = videoView?.view
+
+parent.addSubview(view!)
+
+let width = parent.frame.width
+let height = parent.frame.height
+
+view?.frame = CGRect(x: 0, y: 0, width: width, height: height)
+</code></pre>
+<h4 id="java">Java</h4>
+<pre><code>android.widget.RelativeLayout parent = ...;
+
+ViewHandle videoView = ExportedViews.instantiate(&quot;VideoView&quot;);
+android.view.View nativeView = videoView.getView();
+
+nativeView.setLayoutParam(new android.widget.RelativeLayout.LayoutParams(MATCH_PARENT, MATCH_PARENT));
+parent.addView(nativeView);
+</code></pre>
+<h2 id="step-6-interop-between-native-and-fuse">Step 6: Interop between native and fuse</h2>
+<p>As mentioned the <code>ViewHandle</code> object acts as your interface with fuse. You can set a data context for your view in the form of JSON, a key-value pair and add callbacks.</p>
+<p>Lets take a look at the API:</p>
+<h4 id="objective-c">Objective-C</h4>
+<pre><code>@interface ViewHandle : NSObject
+
+@property (readonly) UIView* view;
+
+-(void) setDataJson:(NSString*)json;
+-(void) setDataString:(NSString*)value forKey:(NSString*)key;
+-(void) setCallback:(Callback)callback forKey:(NSString*)key;
+
+@end
+</code></pre>
+<p>The signature of <code>Callback</code> is as follows:</p>
+<pre><code>typedef void(^Callback)(Arguments*);
+</code></pre>
+<h4 id="java">Java</h4>
+<pre><code>public class ViewHandle {
+    public android.view.View getView();
+    public void setDataJson(String json);
+    public void setDataString(String key, String value);
+    public void setCallback(String key, com.fuse.views.ICallback callback);
+}
+</code></pre>
+<p>The interface of <code>ICallback</code> is as follows:</p>
+<pre><code>public interface ICallback {
+    void invoke(IArguments args);
+}
+</code></pre>
+<p>If you are familiar with <a href="https://www.fusetools.com/docs/fuse/reactive/javascript"><code>JavaScript</code></a> and <a href="https://www.fusetools.com/docs/fuse/reactive/databinding"><code>DataBinding</code></a> in fuse this will be quite easy to understand. <code>setDataJson</code> is the equivalent of having a <code>module.exports</code> in JavaScript and <code>setCallback</code> is the equivalent of adding a function to the <code>exports</code>. The function arguments passed to the native callback in Fuse views will contain the same data you would get in <code>JavaScript</code>, but you get the through the methods available on the <code>Arguments</code>. Since the function arguments needs to be serialized to strings and JSON, accessing the <code>Arguments</code> will lazily serialize what you request. In the common case you are more interested in getting the callback than accessing the whole data context. Please have a look at <a href="https://www.fusetools.com/docs/scripting/scripting#binding-functions"><code>Binding functions</code></a> for an overview of what arguments will be passed.</p>
+<pre><code>@interface Arguments : NSObject
+
+@property (readonly) NSDictionary&lt;NSString*,NSString*&gt;* args;
+@property (readonly) NSString* dataJson;
+
+@end
+</code></pre>
+<pre><code>public interface IArguments {
+    HashMap&lt;String,String&gt; getArgs();
+    String getDataJson();
+}
+</code></pre>
+<p>Let's look at an example with UX and see how that component can be populated with data from JavaScript and from a native language with fuse views:</p>
+<pre><code>&lt;DockPanel&gt;
+    &lt;Text Value=&quot;{title}&quot; Dock=&quot;Top&quot; Margin=&quot;8&quot; TextAlignment=&quot;Center&quot; /&gt;
+    &lt;StackPanel ux:Class=&quot;UsersListView&quot; Dock=&quot;Fill&quot;&gt;
+        &lt;Each Items=&quot;{users}&quot;&gt;
+            &lt;Panel Clicked=&quot;{user_clicked}&quot;&gt;
+                ...
+            &lt;/Panel&gt;
+        &lt;/Each&gt;
+    &lt;/StackPanel&gt;
+&lt;/DockPanel&gt;
+</code></pre>
+<p>For the above UX code we can populate it with JavaScript:</p>
+<pre><code>module.exports = {
+    title: &quot;Meetup attendees&quot;,
+    users: [...],
+    user_clicked: function(args) { ... }
+}
+</code></pre>
+<p>The equivalent in fuse views will look like this:</p>
+<h4 id="objective-c">Objective-C</h4>
+<pre><code>ViewHandle* usersListView = [ExportedViews instantiate:@&quot;UsersListView&quot;];
+[usersListView setDataString:@&quot;Meetup attendees&quot; forKey:@&quot;title&quot;];
+[usersListView setDataJson:@&quot;{ \&quot;users\&quot; : [...] }&quot;];
+[usersListView setCallback:^void(NSDictionary&lt;NSString*,NSString*&gt;* args) { ... } forKey:@&quot;user_clicked&quot;];
+</code></pre>
+<h4 id="swift">Swift</h4>
+<pre><code>let usersListView: ViewHandle? = ExportedViews.instantiate(&quot;UsersListView&quot;)
+usersListView?.setDataString(&quot;Meetup attendees&quot; as String!, &quot;title&quot; as String!)
+usersListView?.setDataJson(&quot;{ \&quot;users\&quot; : [...] }&quot; as String!)
+usersListView?.setCallback({ (args) -&gt; Void in { ... } }, forKey: &quot;user_clicked&quot;)
+</code></pre>
+<h4 id="java">Java</h4>
+<pre><code>ViewHandle usersListView = ExportedViews.instantiate(&quot;UsersListView&quot;);
+usersListView.setDataString(&quot;title&quot;, &quot;Meetup attendees&quot;);
+usersListView.setDataJson(&quot;{ \&quot;users\&quot; : [...] }&quot;);
+usersListView.setCallback(&quot;user_clicked&quot;, new ICallback() {
+    @Override
+    public void invoke(HashMap&lt;String, String&gt; args) { ... }
+});
+</code></pre>
+
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="https://fuse-open.github.io/docs/jquery.js?_v=20180504135303"></script>
+    <script type="text/javascript" src="https://fuse-open.github.io/docs/popper.js?_v=20180504135303"></script>
+    <script type="text/javascript" src="https://fuse-open.github.io/docs/bootstrap.js?_v=20180504135303"></script>
+    <script type="text/javascript" src="https://fuse-open.github.io/docs/prism.js?_v=20180504135303"></script>
+    <script type="text/javascript" src="https://fuse-open.github.io/docs/site.js?_v=20180504135303"></script>
+  </body>
+</html>

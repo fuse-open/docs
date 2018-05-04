@@ -1,0 +1,940 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Componentization - Fuse Documentation</title>
+    <link rel="stylesheet" href="https://fuse-open.github.io/docs/font-awesome.css?_v=20180504135303">
+    <link rel="stylesheet" href="https://fuse-open.github.io/docs/bootstrap.css?_v=20180504135303">
+    <link rel="stylesheet" href="https://fuse-open.github.io/docs/prism.css?_v=20180504135303">
+    <link rel="stylesheet" href="https://fuse-open.github.io/docs/site.css?_v=20180504135303">
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="https://fuse-open.github.io/docs/">Fuse: Documentation</a>
+      <div class="search d-none d-lg-block">
+        <script>
+          (function() {
+            var cx = '003990228577991558032:1dgsgv066lc';
+            var gcse = document.createElement('script');
+            gcse.type = 'text/javascript';
+            gcse.async = true;
+            gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(gcse, s);
+          })();
+          window.onload = function() {
+            document.getElementById('gsc-i-id1').placeholder = 'Search';
+          }
+        </script>
+        <gcse:search></gcse:search>
+      </div>
+    </nav>
+
+    <div class="container-fluid main-content-wrapper">
+      <div class="row">
+        <div class="col-12 col-lg-2 order-2 order-lg-1 bg-light sidebar">
+          <div class="sidebar-sticky">
+            <ul class="list-unstyled outline-nav outline-nav-level-0">
+	<li>
+		<a href="https://fuse-open.github.io/docs/index.html">Fuse</a>
+	<ul class="list-unstyled outline-nav outline-nav-level-1">
+		<li>
+			<a href="https://fuse-open.github.io/docs/basics/basics.html">Fuse Basics</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/basics/supported-platforms.html">Supported platforms</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/basics/installation-and-quickstart.html">Installation and quickstart</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/basics/introduction-to-fuse.html">Introduction to Fuse</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/basics/preview-and-export.html">Preview and export</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/componentization.html">Componentization</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/layout/responsive-layout.html">Responsive layout</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/declarative-animation.html">Declarative animation</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse-for-designers.html">Fuse for designers</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/structuring-app-resources.html">Structuring app resources</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/basics/feature-overview.html">Feature overview</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/basics/faq.html">FAQ</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/packages.html">Community Packages</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/fuse-studio/fuse-studio.html">Fuse Studio (Pro)</a>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/tutorial/tutorial.html">Tutorial</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/tutorial/edit-hike-view.html">1. Edit Hike view</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/tutorial/multiple-hikes.html">2. Multiple hikes</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/tutorial/splitting-up-components.html">3. Splitting up components</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/tutorial/navigation-and-routing.html">4. Navigation and routing</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/tutorial/mock-backend.html">5. Mocking our Backend</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/tutorial/look-and-feel.html">6. Tweaking the look/feel</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/tutorial/splash-screen.html">7. Splash screen</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/tutorial/final-thoughts.html">8. Final thoughts</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/reference.html">Full Reference</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/full-ux-class-reference.html">UX Class Reference</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/basics/uno-projects.html">Uno projects (.unoproj) Reference</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/ux-markup/ux-markup.html">UX Markup</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/literals.html">Literals</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/expressions.html">Expressions</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/names.html">Names (ux:Name)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/classes.html">Classes (ux:Class)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/dependencies.html">Dependencies (ux:Dependency)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/properties.html">Properties (ux:Property)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/resources.html">Resources (ux:Key)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/globals.html">Globals (ux:Global)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/templates.html">Templates (ux:Template)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/binding-and-auto-bind.html">Binding (ux:Binding &amp; ux:AutoBind)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/testing/testing.html">Testing (ux:Test)</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/xcode-and-android-studio-integration/tutorial.html">XCode &amp; Android Studio Integration (Pro)</a>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/primitives/primitives.html">Primitives</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/text.html">Text</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/rectangle.html">Rectangle</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/circle.html">Circle</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/curve.html">Curve</a>
+			<ul class="list-unstyled outline-nav outline-nav-level-3">
+				<li>
+					<a href="https://fuse-open.github.io/docs/fuse/controls/curvepoint.html">CurvePoint</a>
+				</li>
+			</ul>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/path.html">Path</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/image.html">Image</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/video.html">Video</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/charting/charting.html">Charting (Pro)</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/charting/plot.html">Plot</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/charting/dataseries.html">DataSeries</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/charting/plotaxis.html">PlotAxis</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/charting/plotdata.html">PlotData</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/charting/plotpoint.html">PlotPoint</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/charting/plotbar.html">PlotBar</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/charting/plotcurvepoint.html">PlotCurvePoint</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/layout/layout.html">Layout</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/elements/element.html">Element</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/panel.html">Panel</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/stackpanel.html">StackPanel</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/dockpanel.html">DockPanel</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/grid.html">Grid</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/wrappanel.html">WrapPanel</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/layouts/columnlayout.html">ColumnLayout</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/layouts/circlelayout.html">CircleLayout</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/scrollview.html">ScrollView</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/fuse/controls/control.html">Controls</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/button.html">Button</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/textinput.html">TextInput</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/textview.html">TextView</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/slider.html">Slider</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/switch.html">Switch</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/cameraviewbase.html">CameraView (Pro)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/mapview.html">MapView</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/webview.html">WebView</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/nativeviewhost.html">NativeViewHost</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/graphicsview.html">GraphicsView</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/scripting/scripting.html">Scripting &amp; Data</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/reactive/javascript.html">JavaScript</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/scripting/debugging.html">Debugging</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/reactive/databinding.html">DataBinding</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/reactive/each.html">Each</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/reactive/with.html">With</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/reactive/match.html">Match</a>
+			<ul class="list-unstyled outline-nav outline-nav-level-3">
+				<li>
+					<a href="https://fuse-open.github.io/docs/fuse/reactive/case.html">Case</a>
+				</li>
+			</ul>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/fusejs/observable.html">Observables</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/observable-api.html">API reference</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/observable-patterns.html">Patterns</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/navigation/navigation.html">Navigation</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/page.html">Page</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/pagecontrol.html">PageControl</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/navigation/router.html">Router</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/navigator.html">Navigator</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/triggers/transition.html">Transitions</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/fusejs/fusejs.html">JavaScript APIs</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/polyfills.html">Polyfills</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/eventemitter.html">EventEmitter</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/filesystem/filesystemmodule.html">FileSystem</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/storage/storagemodule.html">Storage</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/bundle.html">Bundle</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/lifecycle.html">Lifecycle</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/reactive/fusejs/interapp.html">InterApp</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/share/sharemodule.html">Share</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/http.html">HTTP</a>
+			<ul class="list-unstyled outline-nav outline-nav-level-3">
+				<li>
+					<a href="https://fuse-open.github.io/docs/backend/rest-apis.html">Working with REST APIs</a>
+				</li>
+			</ul>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/environment.html">Environment</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/reactive/fusejs/phone.html">Phone</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/camera/camera.html">Camera</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/cameraroll/cameraroll.html">CameraRoll</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/vibration/vibrationmodule.html">Vibration</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/geolocation/geolocation.html">GeoLocation</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/pushnotifications/push.html">Push notifications</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/localnotifications/localnotify.html">Local notifications</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/base64.html">Base64</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/reactive/fusejs/timermodule.html">Timer</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/imagetools/imagetools.html">ImageTools</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/third-party-modules.html">Third-party modules</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/uno/ux/resource.html">Resources</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/font.html">Fonts</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/resources/imagesource.html">Image sources</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/assets/bundle.html">Bundled files</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/assets/sketch-import.html">Import from Sketch</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/assets/sketch-symbol-import.html">Sketch symbols (Beta)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/assets/iconfont-import.html">Import icon fonts</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/fuse/triggers/trigger.html">Triggers &amp; Animation</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/transform.html">Transforms</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/gestures/transformgesture.html">Gestures</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/animations/animator.html">Animators</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/triggers/timeline.html">Timeline</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/triggers/actions/triggeraction.html">Actions</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/selection/selection.html">Selection</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/triggers/stategroup.html">StateGroups</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/multilayoutpanel.html">MultiLayoutPanel</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/triggers/busy.html">Busy</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/effects/effects.html">Effects</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/effects/dropshadow.html">DropShadow</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/effects/blur.html">Blur</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/effects/halftone.html">Halftone</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/native-interop/native-interop.html">Native interop (Uno)</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/root-ns.html">Full Uno Class Reference</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/native-ux-components.html">Native UX components</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/native-js-modules.html">Native JS modules</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/foreign-code.html">Foreign code</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/using-third-party-sdks.html">Using 3rd party SDKs</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/unolibs/activity-utils.html">Activity utils</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/facebook-login.html">Facebook login using foreign code</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/gradle-support.html">Gradle Support</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/build-settings.html">Build settings</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/android-permissions.html">Android permissions</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/android-start-activity.html">Starting an Android Activity</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/ios-capabilities.html">iOS Capabilities</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/alive/alive.html">Alive UX Kit (Pro)</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/alive.html">Components</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/alive/themes.html">Themes</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/technical-corner/technical-corner.html">Technical corner</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/technical-corner/fuse-protocol.html">Fuse plugin API</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/preview-and-export/preview-details.html">How preview works</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/technical-corner/uxl-handbook.html">UXL handbook</a>
+			</li>
+		</ul>
+		</li>
+	</ul>
+	</li>
+</ul>
+
+          </div>
+        </div>
+        <div role="main" class="col-12 col-lg-10 ml-sm-auto order-1 order-lg-2 px-4 main-content">
+          <h1 id="componentization">Componentization</h1>
+<p>This article covers best practices and workflow around creating components in Fuse.</p>
+<h2 id="components-and-reusability">Components and reusability</h2>
+<p>UX Markup is a composable declarative language where existing components can easily be combined into new, more complex components. Componentization is an important part of Fuse, and central to achieving good code structure.</p>
+<h2 id="how-to-create-components">How to create components</h2>
+<p>A component is defined using the <code>ux:Class</code> attribute. This turns the object it is on into a <em>class definition</em>, meaning we can reuse that piece of UX in as many places as we want. A class definition also <em>inherits</em> all the properties of the class it is created from (sometimes called its <em>parent class</em> or <em>super class</em>). When we create an object from a class definition, we say that we are <em>creating an instance</em> of that class. The following example defines a class called <code>MyButton</code> which inherits from <code>Panel</code> and contains a <code>Text</code> object.</p>
+<pre><code>     ------------------- parent class
+    /              ----- class name
+   v              v
+&lt;Panel ux:Class=&quot;MyButton&quot; Color=&quot;#09d&quot; Margin=&quot;4&quot;&gt;
+	&lt;Text Value=&quot;Button text&quot; Alignment=&quot;Center&quot; Margin=&quot;20,10&quot; Color=&quot;#fff&quot;/&gt;
+&lt;/Panel&gt;
+</code></pre>
+<p>It can then be used anywhere, like so:</p>
+<pre><code>&lt;StackPanel&gt;
+	&lt;MyButton /&gt;
+	&lt;MyButton /&gt;
+	&lt;MyButton /&gt;
+&lt;/StackPanel&gt;
+</code></pre>
+<p>Take a look at the <a href="https://www.fusetools.com/docs/ux-markup/classes">ux:Class documentation</a> for more details about <code>ux:Class</code>.</p>
+<h3 id="what-do-we-mean-by-inheritance">What do we mean by inheritance</h3>
+<p>When we say that <code>MyButton</code> <em>inherits</em> from <code>Panel</code>, what we really mean is that <code>MyButton</code> will get all the same properties as <code>Panel</code>, as well as any new properties we define ourselves. That means that a class without any extra children or properties (custom properties are covered in the next section) added acts as exactly the same as its parent class:</p>
+<pre><code>&lt;Panel ux:Class=&quot;NotSoSpecialPanel&quot;/&gt;
+
+&lt;Panel /&gt;
+&lt;NotSoSpecialPanel /&gt;
+</code></pre>
+<p>In this case, <code>Panel</code> and <code>NotSoSpecialPanel</code> behave exactly the same.</p>
+<h3 id="defining-properties">Defining properties</h3>
+<p>In many cases, like with our custom button, we want to create an interface to our component that allows us to specify various properties on a per instance basis. For our custom button for example, we want to be able to specify a different text for each instance:</p>
+<pre><code>&lt;MyButton Text=&quot;Custom button text&quot;/&gt;
+</code></pre>
+<p>The <code>ux:Property</code> attribute allows us to send data to our component, give default values and even animate it:</p>
+<pre><code>&lt;Panel ux:Class=&quot;MyButton&quot; Color=&quot;#09d&quot; ButtonText=&quot;Default text&quot; Margin=&quot;4&quot;&gt;
+	&lt;string ux:Property=&quot;ButtonText&quot; /&gt;
+	&lt;Text Value=&quot;{ReadProperty ButtonText}&quot; Alignment=&quot;Center&quot; Margin=&quot;20,10&quot; Color=&quot;#fff&quot;/&gt;
+&lt;/Panel&gt;
+</code></pre>
+<pre><code>&lt;StackPanel&gt;
+	&lt;MyButton ButtonText=&quot;First&quot; /&gt;
+	&lt;MyButton ButtonText=&quot;Second&quot; /&gt;
+	&lt;MyButton ButtonText=&quot;Last&quot; /&gt; 
+&lt;/StackPanel&gt;
+</code></pre>
+<p>Take a look at the <a href="https://www.fusetools.com/docs/ux-markup/properties">ux:Property documentation</a> for more details about creating properties.</p>
+<h3 id="specifying-dependencies">Specifying dependencies</h3>
+<p>In some cases, our components cannot work alone and need a way to express that they depend on some other part of our UX defined outside of our component. This could be to animate it or trigger an event. A very common use case is needing to share a common <code>Router</code> instance among several pages. The way this use case is different from our use of ux:Property is that we <strong>require</strong> our component to get a <code>Router</code> when it is instantiated. This way, from our components perspective, it <em>always</em> has a <code>Router</code> available. For this we use the <code>ux:Dependency</code> attribute:</p>
+<pre><code>&lt;Router ux:Dependency=&quot;router&quot; /&gt;
+</code></pre>
+<p>If we try to instantiate our component without specifying the <code>router</code> dependency we will get a UX compilation error, since this component cannot function without a <code>Router</code>. Unlike properties, dependencies cannot have default values.</p>
+<p>From within the class definition, dependencies can be used exactly in the same way as if they were defined with the <code>ux:Name</code> attribute:</p>
+<pre><code>&lt;WhileTrue ux:Dependency=&quot;myTrigger&quot; /&gt;
+&lt;WhileTrue ux:Name=&quot;myTrigger&quot; /&gt; 
+</code></pre>
+<p>Both the <code>WhileTrue</code> declared as a dependency and the one declared with <code>ux:Name</code> can be referenced directly using the name <code>myTrigger</code>. Therefore, we cannot use the same identifier for a <code>ux:Dependency</code> and a <code>ux:Name</code>.</p>
+<p>The following example shows how we can use <code>ux:Dependency</code> to toggle the state of a <code>WhileTrue</code> defined outside the class definition.</p>
+<pre><code>&lt;Panel ux:Class=&quot;DependentPanel&quot; Color=&quot;Blue&quot;&gt;
+	&lt;WhileTrue ux:Dependency=&quot;aTrigger&quot; /&gt;
+	&lt;Clicked&gt;
+		&lt;Toggle Target=&quot;aTrigger&quot; /&gt;
+	&lt;/Clicked&gt;
+&lt;/Panel&gt;
+		
+&lt;WhileTrue ux:Name=&quot;showSomething&quot;&gt;
+	&lt;Text Value=&quot;The panel was clicked&quot; Color=&quot;White&quot; Alignment=&quot;Center&quot; /&gt;
+&lt;/WhileTrue&gt;
+&lt;DependentPanel aTrigger=&quot;showSomething&quot; /&gt; 
+</code></pre>
+<p>Take a look at the <a href="https://www.fusetools.com/docs/ux-markup/dependencies">ux:Dependency documentation</a> for more details.</p>
+<h4 id="inheriting-dependencies">Inheriting dependencies</h4>
+<p>Dependencies are not forwarded when you subclass. Therefore, you have to manually forward them to the baseclass you are sublcassing:</p>
+<pre><code>&lt;Page ux:Class=&quot;A&quot;&gt;
+	&lt;Router ux:Dependency=&quot;router&quot; /&gt;
+&lt;/Page&gt;
+&lt;A ux:Class=&quot;B&quot;&gt;
+	&lt;Router ux:Dependency=&quot;router&quot; ux:Binding=&quot;router&quot; /&gt;
+&lt;/A&gt;
+</code></pre>
+<p>You can find more details about the <code>ux:Binding</code> attribute <a href="https://www.fusetools.com/docs/ux-markup/binding-and-auto-bind#ux-binding">here</a>.</p>
+<h3 id="inner-logic-using-javascript">Inner logic using JavaScript</h3>
+<p>Components can contain custom business logic using the <code>JavaScript</code> tag. Here we can define local state as well as functions that act upon dependencies or other components. The following component takes a <code>Router</code> as a dependency, and uses it through JavaScript.</p>
+<pre><code>&lt;Panel ux:Class=&quot;MyClass&quot;&gt;
+	&lt;Router ux:Dependency=&quot;router&quot; /&gt;
+	&lt;JavaScript&gt;
+		function goBack() { 
+			router.goBack(); 
+		}
+		
+		module.exports = { 
+			doSomething: doSomething 
+		};
+	&lt;/JavaScript&gt;
+	&lt;Button Text=&quot;Go Back&quot; Clicked=&quot;{goBack}&quot; /&gt;
+&lt;/Panel&gt;
+</code></pre>
+<h2 id="custom-events-userevent">Custom Events (UserEvent)</h2>
+<p>There are many cases where we want our component to pass messages to the outside world.
+We can use <code>UserEvent</code> for exactly this, which allows us to raise and handle events in both UX and JavaScript.</p>
+<p>We put a <code>UserEvent</code> at the root of our component class to indicate that it can raise a particular event.
+Where we place our <code>UserEvent</code> is important, since only the node it is attached to and its children can raise or handle it.</p>
+<pre><code>&lt;Panel ux:Class=&quot;MyComponent&quot;&gt;
+	&lt;UserEvent ux:Name=&quot;myEvent&quot; /&gt;
+&lt;/Panel&gt;
+</code></pre>
+<p>This creates an event named <code>myEvent</code>.</p>
+<p>We can now use <code>RaiseUserEvent</code> to raise the event from UX.</p>
+<pre><code>&lt;Clicked&gt;
+	&lt;RaiseUserEvent EventName=&quot;myEvent&quot; /&gt;
+&lt;/Clicked&gt;
+</code></pre>
+<p>When we instantiate our component, we can respond to its events using the <code>OnUserEvent</code> trigger.</p>
+<pre><code>&lt;MyComponent&gt;
+	&lt;OnUserEvent EventName=&quot;myEvent&quot;&gt;
+		... animations &amp; actions ...
+	&lt;/OnUserEvent&gt;
+&lt;/MyComponent&gt;
+</code></pre>
+<p>We recommend subclassing <code>OnUserEvent</code> instead of using it directly and setting its <code>EventName</code> each time:</p>
+<pre><code>&lt;Panel ux:Class=&quot;MyComponent&quot;&gt;
+	&lt;UserEvent ux:Name=&quot;myEvent&quot; /&gt;
+	&lt;OnUserEvent ux:Class=&quot;OnMyEvent&quot; EventName=&quot;myEvent&quot;/&gt;
+&lt;/Panel&gt;
+
+&lt;MyComponent&gt;
+	&lt;OnMyEvent&gt;
+		... animations &amp; actions ...
+	&lt;/OnMyEvent&gt;
+&lt;/MyComponent&gt;
+</code></pre>
+<p>Note that <code>OnMyEvent</code> will only be usable inside <code>MyComponent</code>.</p>
+<p>Check out the full <a href="https://www.fusetools.com/docs/ux-markup/user-events">documentation on the user event API</a> for more details.</p>
+<h2 id="when-to-create-components">When to create components</h2>
+<p>Since turning a piece of UX markup into a reusable component is often as simple as just adding the <code>ux:Class</code> attribute, we tend to componentize often. The challenge is not so much to understand when there is an opportunity for componentization, but to understand which components to make. When splitting up a complex piece of UX into reusable parts, we need to decide which parts should depend on each other, and at what abstraction level we want them to be defined. We will take a closer look at that question in the following sections.</p>
+<h3 id="ux-class-workflow">ux:Class workflow</h3>
+<p>Since componentization in Fuse is so quick, a common workflow when writing UX is to first write everything &quot;in-line&quot; without caring about components at all. We only componentize after we have found a structure we want to move forward with. The reason for why this approach is so valuable is that it avoids the potential pitfalls of prematurely abstracting code. This way, we can let all the reusable components naturally appear before we decide to abstract and assign class names.</p>
+<h3 id="recognizing-component-boundaries">Recognizing component boundaries</h3>
+<p>Making Fuse components is sometimes the art of determining effective component boundaries. The following example illustrates a case where there are several ways we might componentize:</p>
+<pre><code>&lt;StackPanel Margin=&quot;10&quot; Padding=&quot;10&quot; Color=&quot;#eee&quot; ItemSpacing=&quot;8&quot;&gt;
+	&lt;Circle ux:Name=&quot;status&quot; Width=&quot;40&quot; Height=&quot;40&quot; Color=&quot;Gray&quot; /&gt;
+	&lt;Grid ColumnCount=&quot;2&quot; CellSpacing=&quot;8&quot;&gt;
+		&lt;Panel&gt;
+			&lt;Text Value=&quot;On&quot; Alignment=&quot;Center&quot; Margin=&quot;8&quot; Color=&quot;White&quot;/&gt;
+			&lt;Clicked&gt;
+				&lt;Set status.Color=&quot;Green&quot; /&gt;
+			&lt;/Clicked&gt;
+			&lt;Rectangle CornerRadius=&quot;3&quot; Color=&quot;#0af&quot; /&gt;
+		&lt;/Panel&gt;
+		&lt;Panel&gt;
+			&lt;Text Value=&quot;Off&quot; Alignment=&quot;Center&quot; Margin=&quot;8&quot; Color=&quot;White&quot;/&gt;
+			&lt;Clicked&gt;
+				&lt;Set status.Color=&quot;Red&quot; /&gt;
+			&lt;/Clicked&gt;
+			&lt;Rectangle CornerRadius=&quot;3&quot; Color=&quot;#0af&quot; /&gt;
+		&lt;/Panel&gt;
+	&lt;/Grid&gt;
+&lt;/StackPanel&gt;
+</code></pre>
+<p><img src="media/componentization/onoff_all_3.png" alt="component_boundary_example"></p>
+<p>This is a <code>Panel</code> with a colored <code>Circle</code>, and two custom buttons that change its color. We already have several options for how to split this up:</p>
+<p><strong>Everything as one component:</strong></p>
+<pre><code>&lt;StackPanel ux:Class=&quot;StatusPanel&quot; ...&gt;
+	...
+&lt;/StackPanel&gt;
+</code></pre>
+<p><strong>Or we can componentize the two buttons:</strong></p>
+<pre><code>&lt;StackPanel Margin=&quot;10&quot; Padding=&quot;10&quot; Color=&quot;#eee&quot; ItemSpacing=&quot;8&quot;&gt;
+	&lt;Circle ux:Name=&quot;status&quot; Width=&quot;40&quot; Height=&quot;40&quot; Color=&quot;Gray&quot; /&gt;
+	&lt;OnOffButtons /&gt;
+&lt;/StackPanel&gt;
+</code></pre>
+<pre><code>
+&lt;Grid ux:Class=&quot;OnOffButtons&quot; ColumnCount=&quot;2&quot; CellSpacing=&quot;8&quot;&gt;
+	&lt;Circle ux:Dependency=&quot;status&quot; /&gt;
+	
+	&lt;Panel&gt;
+		&lt;Text Value=&quot;On&quot; Alignment=&quot;Center&quot; Margin=&quot;8&quot; Color=&quot;White&quot;/&gt;
+		&lt;Clicked&gt;
+			&lt;Set status.Color=&quot;Green&quot; /&gt;
+		&lt;/Clicked&gt;
+		&lt;Rectangle CornerRadius=&quot;3&quot; Color=&quot;#0af&quot; /&gt;
+	&lt;/Panel&gt;
+	&lt;Panel&gt;
+		&lt;Text Value=&quot;Off&quot; Alignment=&quot;Center&quot; Margin=&quot;8&quot; Color=&quot;White&quot;/&gt;
+		&lt;Clicked&gt;
+			&lt;Set status.Color=&quot;Red&quot; /&gt;
+		&lt;/Clicked&gt;
+		&lt;Rectangle CornerRadius=&quot;3&quot; Color=&quot;#0af&quot; /&gt;
+	&lt;/Panel&gt;
+&lt;/Grid&gt;
+</code></pre>
+<p>At this point we can see that there is a dependency between the inner workings of the <code>OnOffButtons</code> class and the &quot;status&quot; circle. We might be tempted to call this a dependency from <code>OnOffButtons</code> to a <code>Circle</code>, and declare that using <code>ux:Dependency</code> as we have done in the example above.</p>
+<p>This is however a good time to consider whether we have discovered an actual component dependency, or whether this is just a shared view state.</p>
+<p>In most cases, it is preferable to have components be as independent as possible. In the example above, we would like to split our components up in a way such that the <code>OnOffButtons</code> component can be used in other situations as well; not only to toggle the color of a <code>Circle</code>.</p>
+<p>Let's let these two components share state using <code>JavaScript</code> instead:</p>
+<pre><code>&lt;Grid ux:Class=&quot;OnOffButtons&quot; ColumnCount=&quot;2&quot;&gt;
+	&lt;Panel Clicked=&quot;{turnOn}&quot;&gt;
+		&lt;Text Value=&quot;On&quot; Alignment=&quot;Center&quot; Margin=&quot;8&quot; Color=&quot;White&quot;/&gt;
+		&lt;Rectangle CornerRadius=&quot;3&quot; Color=&quot;#0af&quot; /&gt;
+	&lt;/Panel&gt;
+	&lt;Panel Clicked=&quot;{turnOff}&quot;&gt;
+		&lt;Text Value=&quot;Off&quot; Alignment=&quot;Center&quot; Margin=&quot;8&quot; Color=&quot;White&quot;/&gt;
+		&lt;Rectangle CornerRadius=&quot;3&quot; Color=&quot;#0af&quot; /&gt;
+	&lt;/Panel&gt;
+&lt;/Grid&gt;
+&lt;JavaScript&gt;
+	var Observable = require(&quot;FuseJS/Observable&quot;);
+	var isOn = Observable(false);
+	function turnOn() { isOn.value = true; }
+	function turnOff() { isOn.value = false; }
+	module.exports = {
+		isOn: isOn,
+		turnOn: turnOn,
+		turnOff: turnOff
+	};
+&lt;/JavaScript&gt;
+&lt;StackPanel Margin=&quot;10&quot; Padding=&quot;10&quot; Color=&quot;#eee&quot; ItemSpacing=&quot;8&quot;&gt;
+	&lt;Circle ux:Name=&quot;status&quot;  Width=&quot;40&quot; Height=&quot;40&quot; Color=&quot;Gray&quot; /&gt;
+		&lt;WhileTrue Value=&quot;{isOn}&quot;&gt;
+			&lt;Change status.Color=&quot;Green&quot; /&gt;
+		&lt;/WhileTrue&gt;
+		&lt;WhileFalse Value=&quot;{isOn}&quot;&gt;
+			&lt;Change status.Color=&quot;Red&quot; /&gt;
+		&lt;/WhileFalse&gt;
+	&lt;/StatusCircle&gt;
+	&lt;OnOffButtons /&gt;
+&lt;/StackPanel&gt;
+</code></pre>
+<p>This time, our two components are independent of each other. They are, however, not independent of the view model (the <code>JavaScript</code> tag). Notice that the <code>OnOffButtons</code> component now has data-bindings that reach outside the component itself. While this works fine, and can be very useful, it can reduce code clarity and creates an unnecessary dependency on the view-model.</p>
+<p>Let's instead add a <code>ux:Property</code> to the component which we can then data-bind at the point of instantiation:</p>
+<pre><code>&lt;Grid ux:Class=&quot;OnOffButtons&quot; ColumnCount=&quot;2&quot;&gt;
+	&lt;bool ux:Property=&quot;Value&quot; /&gt;
+
+	&lt;Panel HitTestMode=&quot;LocalBounds&quot;&gt;
+		&lt;Text Value=&quot;On&quot; /&gt;
+		&lt;Clicked&gt;
+			&lt;Set this.Value=&quot;true&quot; /&gt;
+		&lt;/Clicked&gt;
+	&lt;/Panel&gt;
+	&lt;Panel&gt;
+		&lt;Text Value=&quot;Off&quot; /&gt;
+		&lt;Clicked&gt;
+			&lt;Set this.Value=&quot;false&quot; /&gt;
+		&lt;/Clicked&gt;
+	&lt;/Panel&gt;
+&lt;/Grid&gt;
+
+&lt;JavaScript&gt;
+	var Observable = require(&quot;FuseJS/Observable&quot;);
+
+	var status = Observable(false);
+
+	module.exports = {
+		status: status
+	};
+&lt;/JavaScript&gt;
+&lt;StackPanel Margin=&quot;10&quot; Padding=&quot;10&quot; Color=&quot;#eee&quot; ItemSpacing=&quot;8&quot;&gt;&gt;
+	&lt;Circle ux:Name=&quot;status&quot;  Width=&quot;40&quot; Height=&quot;40&quot; Color=&quot;Gray&quot; /&gt;
+		&lt;WhileTrue Value=&quot;{status}&quot;&gt;
+			&lt;Change status.Color=&quot;Green&quot; /&gt;
+		&lt;/WhileTrue&gt;
+		&lt;WhileFalse Value=&quot;{status}&quot;&gt;
+			&lt;Change status.Color=&quot;Red&quot; /&gt;
+		&lt;/WhileFalse&gt;
+	&lt;/Circle&gt;
+	
+	&lt;OnOffButtons Value=&quot;{status}&quot;/&gt;
+&lt;/StackPanel&gt;
+</code></pre>
+<p>The &quot;status&quot; circle is at this point a good candidate for componentization as well, just to increase the readability and maintainability of our UX:</p>
+<pre><code>&lt;Grid ux:Class=&quot;OnOffButtons&quot; ColumnCount=&quot;2&quot;&gt;
+	&lt;bool ux:Property=&quot;Value&quot; /&gt;
+
+	&lt;Panel HitTestMode=&quot;LocalBounds&quot;&gt;
+		&lt;Text Value=&quot;On&quot; /&gt;
+		&lt;Clicked&gt;
+			&lt;Set this.Value=&quot;true&quot; /&gt;
+		&lt;/Clicked&gt;
+	&lt;/Panel&gt;
+	&lt;Panel&gt;
+		&lt;Text Value=&quot;Off&quot; /&gt;
+		&lt;Clicked&gt;
+			&lt;Set this.Value=&quot;false&quot; /&gt;
+		&lt;/Clicked&gt;
+	&lt;/Panel&gt;
+&lt;/Grid&gt;
+
+&lt;Circle ux:Class=&quot;StatusCircle&quot; Width=&quot;40&quot; Height=&quot;40&quot; Color=&quot;Gray&quot; /&gt;
+	&lt;bool ux:Property=&quot;Status&quot; /&gt;
+	
+	&lt;WhileTrue Value=&quot;{ReadProperty Status}&quot;&gt;
+		&lt;Change status.Color=&quot;Green&quot; /&gt;
+	&lt;/WhileTrue&gt;
+	&lt;WhileFalse Value=&quot;{ReadProperty Status}&quot;&gt;
+		&lt;Change status.Color=&quot;Red&quot; /&gt;
+	&lt;/WhileFalse&gt;
+&lt;/Circle&gt;
+
+&lt;JavaScript&gt;
+	var Observable = require(&quot;FuseJS/Observable&quot;);
+
+	var status = Observable(false);
+
+	module.exports = {
+		status: status
+	};
+&lt;/JavaScript&gt;
+&lt;StackPanel Margin=&quot;10&quot; Padding=&quot;10&quot; Color=&quot;#eee&quot; ItemSpacing=&quot;8&quot;&gt;&gt;
+	&lt;StatusCircle Status=&quot;{status}&quot; /&gt;
+	&lt;OnOffButtons Value=&quot;{status}&quot; /&gt;
+&lt;/StackPanel&gt;
+</code></pre>
+<p>Now we have two independent components, with clearly defined interfaces.</p>
+<h2 id="referencing-files-through-properties">Referencing files through properties</h2>
+<p>There are cases where we would like to pass references to files to our components. Examples include embedding images or videos. We can do this by creating properties of the type <code>FileSource</code> and then property-bind the <code>File</code> property of the <code>Image</code> or <code>Video</code> object to it. Then we can reference local files by their path when we instantiate our class:</p>
+<pre><code>&lt;App&gt;
+	&lt;Panel ux:Class=&quot;TestComponent&quot;&gt;
+
+		&lt;FileSource ux:Property=&quot;ImageFile&quot; /&gt;
+		&lt;FileSource ux:Property=&quot;VideoFile&quot; /&gt;
+
+		&lt;Grid Rows=&quot;1*,1*&quot;&gt;
+			&lt;Image File=&quot;{ReadProperty ImageFile}&quot; Margin=&quot;10&quot;/&gt;
+			&lt;Video File=&quot;{ReadProperty VideoFile}&quot; AutoPlay=&quot;true&quot; IsLooping=&quot;true&quot;/&gt;
+		&lt;/Grid&gt;
+	&lt;/Panel&gt;
+
+	&lt;TestComponent ImageFile=&quot;test.png&quot; VideoFile=&quot;testvideo.mp4&quot;/&gt;
+&lt;/App&gt;
+</code></pre>
+<h2 id="container">Container</h2>
+<p>The <code>Container</code> class can be used as a base class when creating components that should position its children deeper into its own subtree. Here is a quick example:</p>
+<pre><code>&lt;Container ux:Class=&quot;MyContainer&quot; Subtree=&quot;innerPanel&quot;&gt;
+    &lt;Rectangle ux:Binding=&quot;Children&quot; CornerRadius=&quot;10&quot; Margin=&quot;10&quot;&gt;
+        &lt;Stroke Color=&quot;Red&quot; Width=&quot;2&quot; /&gt;
+        &lt;Panel Margin=&quot;10&quot; ux:Name=&quot;innerPanel&quot; /&gt;
+    &lt;/Rectangle&gt;
+&lt;/Container&gt;
+&lt;MyContainer&gt;
+	&lt;Text Value=&quot;Some content for my container&quot;
+		Alignment=&quot;Center&quot;/&gt;
+&lt;/MyContainer&gt;
+</code></pre>
+<p><img src="media/componentization/container.png" alt="container_ex"></p>
+<p>Check out the <a href="https://www.fusetools.com/docs/fuse/controls/container">reference documentation</a> for container for a more details.</p>
+<h2 id="templates-ux-template">Templates (ux:Template)</h2>
+<p>Templates can be used to increase the customizability of a component by allowing it to take custom objects to be used as its appearance. An example of this in action is the <code>PageIndicator</code>, which spawns an object from a template for each page in a <code>PageControl</code>. An element is made into a template by setting the <code>ux:Template</code> attribute to a name you want to identify that template by. This name is used by elements which accepts templates as children. Check out the <a href="https://www.fusetools.com/docs/ux-markup/templates">ux:Template docs</a> for more details.</p>
+<p>Templates can be instantiated using an <code>Each</code>. <code>Each</code> has a property called <code>TemplateSource</code>, which specifies the node in which <code>Each</code> looks for templates. As mentioned before, templates identify themselves by a name. The <code>TemplateKey</code> property specifies which template <code>Each</code> should use, if it is available.</p>
+<p>Here we set <code>TemplateSource=&quot;this&quot;</code> because <code>Each</code> should look for the key in its parent class (<code>CoolRepeater</code>):</p>
+<pre><code>&lt;StackPanel ux:Class=&quot;CoolRepeater&quot; Background=&quot;#FAD&quot;&gt;
+	&lt;Each TemplateSource=&quot;this&quot; TemplateKey=&quot;Item&quot; Count=&quot;20&quot;&gt;
+		&lt;Text&gt;Default template&lt;/Text&gt;
+	&lt;/Each&gt;
+&lt;/StackPanel&gt;
+</code></pre>
+<p>This is a custom component which accepts a template, which it repeats 20 times. If no template is given, the <code>Each</code> will fallback to its default template: whatever is inside the <code>Each</code>. The custom component can then be used like this:</p>
+<pre><code>&lt;CoolRepeater&gt;
+	&lt;Text ux:Template=&quot;Item&quot;&gt;Hello, world!&lt;/Text&gt;
+&lt;/CoolRepeater&gt;
+</code></pre>
+
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="https://fuse-open.github.io/docs/jquery.js?_v=20180504135303"></script>
+    <script type="text/javascript" src="https://fuse-open.github.io/docs/popper.js?_v=20180504135303"></script>
+    <script type="text/javascript" src="https://fuse-open.github.io/docs/bootstrap.js?_v=20180504135303"></script>
+    <script type="text/javascript" src="https://fuse-open.github.io/docs/prism.js?_v=20180504135303"></script>
+    <script type="text/javascript" src="https://fuse-open.github.io/docs/site.js?_v=20180504135303"></script>
+  </body>
+</html>

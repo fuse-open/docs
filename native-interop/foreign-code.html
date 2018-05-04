@@ -1,0 +1,1075 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Working with foreign code - Fuse Documentation</title>
+    <link rel="stylesheet" href="https://fuse-open.github.io/docs/font-awesome.css?_v=20180504135303">
+    <link rel="stylesheet" href="https://fuse-open.github.io/docs/bootstrap.css?_v=20180504135303">
+    <link rel="stylesheet" href="https://fuse-open.github.io/docs/prism.css?_v=20180504135303">
+    <link rel="stylesheet" href="https://fuse-open.github.io/docs/site.css?_v=20180504135303">
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="https://fuse-open.github.io/docs/">Fuse: Documentation</a>
+      <div class="search d-none d-lg-block">
+        <script>
+          (function() {
+            var cx = '003990228577991558032:1dgsgv066lc';
+            var gcse = document.createElement('script');
+            gcse.type = 'text/javascript';
+            gcse.async = true;
+            gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(gcse, s);
+          })();
+          window.onload = function() {
+            document.getElementById('gsc-i-id1').placeholder = 'Search';
+          }
+        </script>
+        <gcse:search></gcse:search>
+      </div>
+    </nav>
+
+    <div class="container-fluid main-content-wrapper">
+      <div class="row">
+        <div class="col-12 col-lg-2 order-2 order-lg-1 bg-light sidebar">
+          <div class="sidebar-sticky">
+            <ul class="list-unstyled outline-nav outline-nav-level-0">
+	<li>
+		<a href="https://fuse-open.github.io/docs/index.html">Fuse</a>
+	<ul class="list-unstyled outline-nav outline-nav-level-1">
+		<li>
+			<a href="https://fuse-open.github.io/docs/basics/basics.html">Fuse Basics</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/basics/supported-platforms.html">Supported platforms</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/basics/installation-and-quickstart.html">Installation and quickstart</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/basics/introduction-to-fuse.html">Introduction to Fuse</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/basics/preview-and-export.html">Preview and export</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/componentization.html">Componentization</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/layout/responsive-layout.html">Responsive layout</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/declarative-animation.html">Declarative animation</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse-for-designers.html">Fuse for designers</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/structuring-app-resources.html">Structuring app resources</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/basics/feature-overview.html">Feature overview</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/basics/faq.html">FAQ</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/packages.html">Community Packages</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/fuse-studio/fuse-studio.html">Fuse Studio (Pro)</a>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/tutorial/tutorial.html">Tutorial</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/tutorial/edit-hike-view.html">1. Edit Hike view</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/tutorial/multiple-hikes.html">2. Multiple hikes</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/tutorial/splitting-up-components.html">3. Splitting up components</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/tutorial/navigation-and-routing.html">4. Navigation and routing</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/tutorial/mock-backend.html">5. Mocking our Backend</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/tutorial/look-and-feel.html">6. Tweaking the look/feel</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/tutorial/splash-screen.html">7. Splash screen</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/tutorial/final-thoughts.html">8. Final thoughts</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/reference.html">Full Reference</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/full-ux-class-reference.html">UX Class Reference</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/basics/uno-projects.html">Uno projects (.unoproj) Reference</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/ux-markup/ux-markup.html">UX Markup</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/literals.html">Literals</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/expressions.html">Expressions</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/names.html">Names (ux:Name)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/classes.html">Classes (ux:Class)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/dependencies.html">Dependencies (ux:Dependency)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/properties.html">Properties (ux:Property)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/resources.html">Resources (ux:Key)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/globals.html">Globals (ux:Global)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/templates.html">Templates (ux:Template)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/binding-and-auto-bind.html">Binding (ux:Binding &amp; ux:AutoBind)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/testing/testing.html">Testing (ux:Test)</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/xcode-and-android-studio-integration/tutorial.html">XCode &amp; Android Studio Integration (Pro)</a>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/primitives/primitives.html">Primitives</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/text.html">Text</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/rectangle.html">Rectangle</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/circle.html">Circle</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/curve.html">Curve</a>
+			<ul class="list-unstyled outline-nav outline-nav-level-3">
+				<li>
+					<a href="https://fuse-open.github.io/docs/fuse/controls/curvepoint.html">CurvePoint</a>
+				</li>
+			</ul>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/path.html">Path</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/image.html">Image</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/video.html">Video</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/charting/charting.html">Charting (Pro)</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/charting/plot.html">Plot</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/charting/dataseries.html">DataSeries</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/charting/plotaxis.html">PlotAxis</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/charting/plotdata.html">PlotData</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/charting/plotpoint.html">PlotPoint</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/charting/plotbar.html">PlotBar</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/charting/plotcurvepoint.html">PlotCurvePoint</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/layout/layout.html">Layout</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/elements/element.html">Element</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/panel.html">Panel</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/stackpanel.html">StackPanel</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/dockpanel.html">DockPanel</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/grid.html">Grid</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/wrappanel.html">WrapPanel</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/layouts/columnlayout.html">ColumnLayout</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/layouts/circlelayout.html">CircleLayout</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/scrollview.html">ScrollView</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/fuse/controls/control.html">Controls</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/button.html">Button</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/textinput.html">TextInput</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/textview.html">TextView</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/slider.html">Slider</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/switch.html">Switch</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/cameraviewbase.html">CameraView (Pro)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/mapview.html">MapView</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/webview.html">WebView</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/nativeviewhost.html">NativeViewHost</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/graphicsview.html">GraphicsView</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/scripting/scripting.html">Scripting &amp; Data</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/reactive/javascript.html">JavaScript</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/scripting/debugging.html">Debugging</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/reactive/databinding.html">DataBinding</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/reactive/each.html">Each</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/reactive/with.html">With</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/reactive/match.html">Match</a>
+			<ul class="list-unstyled outline-nav outline-nav-level-3">
+				<li>
+					<a href="https://fuse-open.github.io/docs/fuse/reactive/case.html">Case</a>
+				</li>
+			</ul>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/fusejs/observable.html">Observables</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/observable-api.html">API reference</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/observable-patterns.html">Patterns</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/navigation/navigation.html">Navigation</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/page.html">Page</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/pagecontrol.html">PageControl</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/navigation/router.html">Router</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/navigator.html">Navigator</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/triggers/transition.html">Transitions</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/fusejs/fusejs.html">JavaScript APIs</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/polyfills.html">Polyfills</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/eventemitter.html">EventEmitter</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/filesystem/filesystemmodule.html">FileSystem</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/storage/storagemodule.html">Storage</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/bundle.html">Bundle</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/lifecycle.html">Lifecycle</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/reactive/fusejs/interapp.html">InterApp</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/share/sharemodule.html">Share</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/http.html">HTTP</a>
+			<ul class="list-unstyled outline-nav outline-nav-level-3">
+				<li>
+					<a href="https://fuse-open.github.io/docs/backend/rest-apis.html">Working with REST APIs</a>
+				</li>
+			</ul>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/environment.html">Environment</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/reactive/fusejs/phone.html">Phone</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/camera/camera.html">Camera</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/cameraroll/cameraroll.html">CameraRoll</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/vibration/vibrationmodule.html">Vibration</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/geolocation/geolocation.html">GeoLocation</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/pushnotifications/push.html">Push notifications</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/localnotifications/localnotify.html">Local notifications</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/base64.html">Base64</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/reactive/fusejs/timermodule.html">Timer</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/imagetools/imagetools.html">ImageTools</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/third-party-modules.html">Third-party modules</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/uno/ux/resource.html">Resources</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/font.html">Fonts</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/resources/imagesource.html">Image sources</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/assets/bundle.html">Bundled files</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/assets/sketch-import.html">Import from Sketch</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/assets/sketch-symbol-import.html">Sketch symbols (Beta)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/assets/iconfont-import.html">Import icon fonts</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/fuse/triggers/trigger.html">Triggers &amp; Animation</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/transform.html">Transforms</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/gestures/transformgesture.html">Gestures</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/animations/animator.html">Animators</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/triggers/timeline.html">Timeline</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/triggers/actions/triggeraction.html">Actions</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/selection/selection.html">Selection</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/triggers/stategroup.html">StateGroups</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/multilayoutpanel.html">MultiLayoutPanel</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/triggers/busy.html">Busy</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/effects/effects.html">Effects</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/effects/dropshadow.html">DropShadow</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/effects/blur.html">Blur</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/effects/halftone.html">Halftone</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/native-interop/native-interop.html">Native interop (Uno)</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/root-ns.html">Full Uno Class Reference</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/native-ux-components.html">Native UX components</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/native-js-modules.html">Native JS modules</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/foreign-code.html">Foreign code</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/using-third-party-sdks.html">Using 3rd party SDKs</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/unolibs/activity-utils.html">Activity utils</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/facebook-login.html">Facebook login using foreign code</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/gradle-support.html">Gradle Support</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/build-settings.html">Build settings</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/android-permissions.html">Android permissions</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/android-start-activity.html">Starting an Android Activity</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/ios-capabilities.html">iOS Capabilities</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/alive/alive.html">Alive UX Kit (Pro)</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/alive.html">Components</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/alive/themes.html">Themes</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/technical-corner/technical-corner.html">Technical corner</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/technical-corner/fuse-protocol.html">Fuse plugin API</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/preview-and-export/preview-details.html">How preview works</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/technical-corner/uxl-handbook.html">UXL handbook</a>
+			</li>
+		</ul>
+		</li>
+	</ul>
+	</li>
+</ul>
+
+          </div>
+        </div>
+        <div role="main" class="col-12 col-lg-10 ml-sm-auto order-1 order-lg-2 px-4 main-content">
+          <h1 id="working-with-foreign-code">Working with foreign code</h1>
+<p>While we're trying to wrap as much native cross-platform functionality as we can into Fuse, there are naturally going to be features that haven't been implemented yet.
+This guide explains how we can use the foreign code feature in Uno to reach into the native functionality of our target platforms.</p>
+<p><em>Note:</em> This feature replaces the old way of doing interop through language bindings. For more information about our reasons for doing so, we have written a <a href="https://medium.com/fusetools/a-sane-way-of-mixing-languages-in-fuse-660b351c2f96">standalone post</a> on the subject.</p>
+<h2 id="what-is-foreign-code">What is foreign code?</h2>
+<p>Foreign code allows us to write an Uno method body in a different language. Consider the following example:</p>
+<pre><code>using Uno.Compiler.ExportTargetInterop;
+
+class Example
+{
+	[Foreign(Language.Java)]
+	public static extern(Android) void Log(string message)
+	@{
+		android.util.Log.d(&quot;ForeignCodeExample&quot;, message);
+	@}
+
+	[Foreign(Language.ObjC)]
+	public static extern(iOS) void Log(string message)
+	@{
+		NSLog(@&quot;%@&quot;, message);
+	@}
+}
+</code></pre>
+<p>Here we're exposing Java and Objective-C's logging functionality so that it's usable in Uno. By tagging the Uno methods with the <code>Foreign</code> attribute we can simply write the code we want between the <code>@{</code> &amp; <code>@}</code> braces in the language that we choose in the attribute.</p>
+<p>We use special braces for foreign method bodies so the Uno compiler does not try to read the code as Uno.</p>
+<p>We currently support foreign code written in <code>Objective-C</code> (on iOS) and <code>Java</code> (on Android) using the attribute <code>[Foreign(Language.ObjC)]</code> and <code>[Foreign(Language.Java)]</code>.</p>
+<p>The <code>Foreign</code> attribute lives in the <code>Uno.Compiler.ExportTargetInterop</code> namespace which can be imported with a <code>using</code> at the top of the Uno file.</p>
+<p>Note that we have two methods with the same name and signature in the same class. This is allowed since <code>extern(...)</code> strips out code that does not match the target platform at an early stage of compilation.</p>
+<h2 id="type-conversion">Type conversion</h2>
+<p>In foreign code arguments and return values are automatically converted between their Uno representation and their corresponding Java/Objective-C representation.</p>
+<h4 id="primitive-types">Primitive types</h4>
+<p>Primitive types (<code>int</code>, <code>float</code>, <code>char</code>, etc) are converted directly to their foreign equivalents with the one exception that Java does not have primitive unsigned bytes, so a <code>byte</code> in Java is an <code>sbyte</code> in Uno.</p>
+<p>So we can write this:</p>
+<pre><code>[Foreign(Language.Java)]
+public static extern(Android) void Foo(double x, long y)
+@{
+	android.util.Log.d(&quot;ForeignCodeExample&quot;, &quot;Well look at this: &quot; + x + &quot; and &quot; + y);
+@}
+</code></pre>
+<p>And call it in Uno like this:</p>
+<pre><code>Foo(1.2, 12345678);
+</code></pre>
+<h4 id="strings">Strings</h4>
+<p>Strings are also handled automatically. Uno strings map to:</p>
+<ul>
+<li><code>java.lang.String</code> in Java</li>
+<li><code>NSString*</code> in Objective-C</li>
+</ul>
+<p>Taking the introductory example again, we can write the following:</p>
+<pre><code>[Foreign(Language.ObjC)]
+public static extern(iOS) void Log(string message)
+@{
+	NSLog(@&quot;%@&quot;, message);
+@}
+</code></pre>
+<p>And call it in Uno like this:</p>
+<pre><code>Log(&quot;Type magic everywhere!&quot;);
+</code></pre>
+<h4 id="foreign-objects-passed-to-uno">Foreign objects passed to Uno</h4>
+<p>So what happens when we want to return a Java or Objective-C object from a foreign method? The answer is that we get an opaque object representing the foreign object.</p>
+<p>An Objective-C object (<code>id</code>) is an <code>ObjC.Object</code> and a Java object (<code>Object</code>) is a <code>Java.Object</code> in Uno.</p>
+<p>Here's how to get an object from Java:</p>
+<pre><code>[Foreign(Language.Java)]
+public static extern(Android) Java.Object Test(int texName)
+@{
+    return new android.graphics.SurfaceTexture(texName);
+@}
+</code></pre>
+<p>And calling it:</p>
+<pre><code>var stex = Test(1);
+</code></pre>
+<p>You may wonder why we don't have special-case support for more types; it's not hard to think of a few more types that would be convenient to get automatic conversions for. The full answer to this can be found in the <a href="https://medium.com/fusetools/a-sane-way-of-mixing-languages-in-fuse-660b351c2f96">Medium article</a> mentioned earlier. To summarize:</p>
+<blockquote>
+<p>Mapping object models in the general case does not work, even in languages as syntactically similar as Java and Uno. The differences necessary in a translation are a mental overhead for the programmer using foreign code. We choose instead to provide a predicable interface and require that working with the internals of a foreign object is done in foreign code.</p>
+</blockquote>
+<h4 id="and-the-other-way-uno-objects-passed-into-foreign-code">And the other way? (Uno objects passed into foreign code)</h4>
+<p>We take the same approach. An Uno passed to Java or Objective-C is boxed inside an opaque object.</p>
+<p>In Objective-C the type of that box is <code>id&lt;UnoObject&gt;</code> and in Java it is <code>com.uno.UnoObject</code></p>
+<p>Here is an example of an Uno object being passed in:</p>
+<pre><code>[Foreign(Language.Java)]
+public static extern(Android) void Test(SomeFancyType soFancy)
+@{
+	// Inside here the type of soFancy is `UnoObject`
+	android.util.Log.d(&quot;ForeignCodeExample&quot;, &quot;Here it is: &quot; + soFancy);
+@}
+</code></pre>
+<p>Calling this method is straightforward:</p>
+<pre><code>var v = Test(new SomeFancyType(1, 2, 3));
+</code></pre>
+<h4 id="passing-java-objects-back-to-java-and-objc-object-back-to-objective-c">Passing <code>Java.Objects</code> back to Java and <code>ObjC.Object</code> back to Objective-C</h4>
+<p>We unbox the foreign objects again, so there is no need to worry about boxes-of-boxes-of-boxes.</p>
+<p>Just to clarify:</p>
+<ul>
+<li>An <code>ObjC.Object</code> passed back to a foreign Objective-C method becomes an <code>id</code>.</li>
+<li>A <code>Java.Object</code> passed back to a foreign Java method becomes an <code>Object</code>.</li>
+</ul>
+<p>When that has been done we can cast the object back to its original type.</p>
+<h2 id="arrays">Arrays</h2>
+<p>There is special support for passing Uno arrays to foreign code. For performance reasons we don't make a copy of the data straight away. Instead, we pass a handle to the Uno array that we can use in our foreign code. If we need a full copy of the data we call <code>arr.copyArray()</code> (in Java) or <code>[arr copyArray]</code> (in Objective-C) to get the native version of that type. The full details are below.</p>
+<p><strong>Objective-C:</strong></p>
+<p>Arrays are converted to an object of type <code>id&lt;UnoArray&gt;</code> which is a wrapper around the Uno array. It can be indexed and updated with the familiar <code>arr[i]</code> syntax and has a <code>count</code> method (called with <code>[arr count]</code>) that returns an <code>NSUInteger</code>. Updates to the array it are reflected in the original Uno array --- it's a wrapper, not a copy.  As mentioned, it's also possible to copy the <code>id&lt;UnoArray&gt;</code> to an <code>NSArray*</code> by calling <code>[xs copyArray]</code>.</p>
+<p>Since Objective-C lacks generics, indexing into the <code>id&lt;UnoArray&gt;</code> object to get an element returns <code>id</code> regardless of the element type of the array on the Uno side. This <code>id</code> is a <em>boxed</em> representation of the element type according to the following table:</p>
+<p><a id="foreign-objc-type-table"></a></p>
+<p>| Uno                         | Objective-C           | Boxed array element |
+|-----------------------------|-----------------------|---------------------|
+| <code>int</code>, <code>bool</code>, <code>char</code>, etc. | <code>int</code>, <code>bool</code>, <code>char</code> | <code>NSNumber*</code>         |
+| <code>string</code>                    | <code>NSString*</code>           | <code>NSString*</code>         |
+| <code>ObjC.Object</code>               | <code>id</code>                  | <code>id</code>                |
+| <code>object</code>                    | <code>id&lt;UnoObject&gt;</code>       | <code>id&lt;UnoObject&gt;</code>     |
+| <code>Func&lt;string, int&gt;</code> etc.    | <code>^ int(NSString*)</code>    | <code>^ int(NSString*)</code>  |
+| <code>SomeType[]</code>                | <code>id&lt;UnoArray&gt;</code>        | <code>id&lt;UnoArray&gt;</code>      |</p>
+<p>Most types are already boxed, but note that primitive types like <code>int</code>, <code>bool</code>, and <code>char</code> are boxed as <code>NSNumber*</code> when accessed in a wrapped array. This means that to update an Uno array argument <code>int[] x</code> on the Objective-C side, we have to write e.g. <code>x[index] = @42;</code>. When copying an array, the resulting <code>NSArray*</code>'s elements are also boxed following the same rules.</p>
+<p>It's possible to circumvent the boxing behaviour by using UXL macros. The following examples contrast the two ways to use arrays in foreign Objective-C code:</p>
+<pre><code>[Foreign(Language.ObjC)]
+public static extern(iOS) void ForeignIntArray(int[] xs)
+@{
+	@{int[]:Of(xs).Set(3, 123)};
+	for (int i = 0; i &lt; @{int[]:Of(xs).Length:Get()}; ++i)
+	{
+		NSLog(@&quot;array[%d]=%d&quot;, i, @{int[]:Of(xs).Get(i)});
+	}
+@}
+</code></pre>
+<pre><code>[Foreign(Language.ObjC)]
+public static extern(iOS) void ForeignIntArray(int[] xs)
+@{
+	xs[3] = @123;
+	for (int i = 0; i &lt; [xs count]; ++i)
+	{
+		NSLog(@&quot;array[%d]=%@&quot;, i, xs[i]);
+	}
+@}
+</code></pre>
+<p><strong>Java:</strong></p>
+<p>Just like in Objective-C, Uno arrays are boxed when passed to Java. You can access a value from the Uno array by calling <code>get(index)</code> on it. E.g.</p>
+<pre><code>[Foreign(Language.Java)]
+public void Test0(string[] strArr)
+@{
+	debug_log(strArr.get(0));
+@}
+</code></pre>
+<p>You can set an element of the array using <code>set(index, newValue)</code></p>
+<pre><code>[Foreign(Language.Java)]
+public void Test1(int[] intArr)
+@{
+	intArr.set(0, 10);
+@}
+</code></pre>
+<p>Updates to the array it are reflected in the original Uno array --- it's a wrapper, not a copy. As mentioned, it's also possible to copy the uno array to an java array by calling <code>copyArray</code>.</p>
+<pre><code>[Foreign(Language.Java)]
+public void Test1(int[] intArr)
+@{
+	int[] intCopy = intArr.copyArray();
+	for (int i=0; i &lt; intCopy.length; i++)
+		debug_log(intCopy[i])
+@}
+</code></pre>
+<p>Just like how foreign code knows how to convert basic types to/from java, it also knows how to do the same with arrays. Here are the relationships between the types:</p>
+<p>| Uno Type       | Boxed Java Type     | Unboxed Java Type   |
+|----------------|---------------------|---------------------|
+| bool[]         | com.uno.BoolArray   | bool[]              |
+| sbyte[]        | com.uno.ByteArray   | byte[]              |
+| char[]         | com.uno.CharArray   | char[]              |
+| short[]        | com.uno.ShortArray  | short[]             |
+| int[]          | com.uno.IntArray    | int[]               |
+| long[]         | com.uno.LongArray   | long[]              |
+| float[]        | com.uno.FloatArray  | float[]             |
+| double[]       | com.uno.DoubleArray | double[]            |
+| string[]       | com.uno.StringArray | String[]            |
+| anyOtherType[] | com.uno.ObjectArray | com.uno.UnoObject[] |</p>
+<p>Next we may want to pass java arrays to Uno</p>
+<p>If we have a boxed Uno array in Java it is easy to return it as an uno array again:</p>
+<pre><code>[Foreign(Language.Java)]
+public string[] Test2(string[] wee)
+@{
+	return wee;
+@}
+</code></pre>
+<p>But what if we return a Java array? In that case it will be a <code>Java.Object</code> just like all other Java objects passed to Uno</p>
+<pre><code>[Foreign(Language.Java)]
+public Java.Object Test3()
+@{
+    int[] myIntArray = {1,2,3};
+	return myIntArray;
+@}
+</code></pre>
+<p>And passing it back to Java is the same too:</p>
+<pre><code>[Foreign(Language.Java)]
+public void Test4(Java.Object arr)
+@{
+    int[] myIntArray = (int[])arr;
+	debug_log(myIntArray);
+@}
+</code></pre>
+<p>There also may be occasions where you want to make an Uno array from Java.</p>
+<pre><code>[Foreign(Language.Java)]
+public string[] Test5()
+@{
+	StringArray freshStringArr = new StringArray(100);
+	freshStringArr.set(34, &quot;hi there&quot;);
+	return freshStringArr;
+@}
+</code></pre>
+<p>Notice that, because we are returning an Uno array we use the regular <code>string[]</code> type.</p>
+<h2 id="delegates">Delegates</h2>
+<p>Foreign code also allows us to pass delegates to foreign methods. The details vary a little between Java &amp; Objective-C:</p>
+<p><strong>Objective-C:</strong></p>
+<p>Delegates get converted to an Objective-C block of the corresponding type. As an example, an argument of the type <code>Action&lt;string, int&gt;</code> becomes a block of type <code>^ void(NSString*, int)</code>. The argument and return types of the block use the same type conversions as arguments to foreign functions normally do.</p>
+<p>Here is a simple example of this in action:</p>
+<pre><code>[Foreign(Language.ObjC)]
+public static extern(iOS) double DelegateArgument(Func&lt;int, double&gt; f)
+@{
+	 // f is of type `^ double(int)` here, so can be called like any function
+	 return f(12);
+@}
+</code></pre>
+<p>It's worth noting that Uno boxes ObjC booleans as <code>bool</code> as opposed to Apple's <code>BOOL</code>. This has certain implications when managing Uno-created blocks with <code>bool</code> values. For instance the block <code>void(^)(BOOL)</code> is not the same as the <code>void(^)(bool)</code> created by passing in an <code>Action&lt;bool&gt;</code>, and cannot be stored in the same properties.</p>
+<p><strong>Java:</strong></p>
+<p>If we define a delegate like this:</p>
+<pre><code>namespace Foo
+{
+	public delegate void Bar(float x, float y, float z);
+}
+</code></pre>
+<p>Then it can be used in foreign Java as follows.</p>
+<pre><code>[Foreign(Language.Java)]
+public static extern(Android) void ForeignDelegate(Bar x)
+@{
+	x.run(1.0f, 2.0f, 3.0f);
+@}
+</code></pre>
+<p>Until version 8 Java didn't have lambdas, and <code>Runnable</code> and <code>Callable</code>s don't take arguments, so behind the scenes the Uno compiler creates a Java class called <code>com.foreign.Foo.Bar</code> with a <code>public void run(float x, float y, float z) { ... }</code> method.</p>
+<p>The foreign Java type conversions for primitives, strings, objects, and arrays apply to arguments of delegates.</p>
+<p>We can also pass Uno <code>Action</code>s to Java. Since Java delegates don't support primitives we generate a class for this as well.</p>
+<p>The type conversions follow this pattern:</p>
+<pre><code>Action -&gt; com.foreign.Uno.Action
+Action&lt;int&gt; -&gt; com.foreign.Uno.Action_int
+Action&lt;int[],int&gt; -&gt; com.foreign.Uno.Action_IntArray_int
+</code></pre>
+<h2 id="out-ref-parameters">Out/ref parameters</h2>
+<p>Out and ref parameters are supported in foreign Objective-C methods.
+The Objective-C type for such a parameter is a pointer to the Objective-C type of the parameter according the <a href="#foreign-objc-type-table">rules for Objective-C/Uno type conversion</a>.</p>
+<p>The following two examples show how it works:</p>
+<pre><code>[Foreign(Language.ObjC)]
+extern(iOS) void PrimitiveOutParam(ref int m, out int n)
+@{
+    // m and n are of type `int*` here.
+    *m = 222;
+    *n = 123;
+@}
+
+[Foreign(Language.ObjC)]
+extern(iOS) void StringOutParam(ref string m, out string n)
+@{
+    // m and n are of type `NSString**` here.
+    *m = @&quot;Out1&quot;;
+    *n = @&quot;Out2&quot;;
+@}
+</code></pre>
+<p>We don't support this in foreign Java since Java doesn't have out/ref parameters.</p>
+<h2 id="c-pointers">C pointers</h2>
+<p>In foreign Objective-C we can use the Uno <code>IntPtr</code> type for arguments and
+return values that are C or C++ pointers (as opposed to Objective-C objects).
+Uno's <code>IntPtr</code> corresponds to the <code>void*</code> type in foreign code.  Note that
+memory-management is <em>manual</em> for such pointers, just like when programming in
+C and C++.</p>
+<h2 id="talking-back-to-uno">Talking back to Uno</h2>
+<p>It is not always enough to be able to return values from foreign code to Uno. Sometimes it makes more sense to interact with Uno from inside foreign code. To do this we use <em>UXL</em> (Uno Extension Layer) macros.</p>
+<p>Using UXL we can do two main things from foreign code:</p>
+<ul>
+<li>Access Uno fields</li>
+<li>Call Uno methods</li>
+</ul>
+<p>To get the full details on UXL, check out our <a href="../technical-corner/uxl-handbook.html">UXL Handbook</a>. For this guide we will show some small examples:</p>
+<h3 id="get-and-set-static-uno-fields"><code>Get</code> and <code>Set</code> static Uno fields</h3>
+<p>We can get or set the value of a property using the <code>Get</code> and <code>Set</code> macros.</p>
+<p>The anatomy of a UXL <code>Get</code> expression is as follows:</p>
+<pre><code>v¯¯¯¯¯¯¯¯¯¯v¯ The `@{` `}` syntax means its a UXL macro
+@{Foo:Get()}
+   ^
+ field name
+</code></pre>
+<p>And for <code>Set</code> expressions it looks like this:</p>
+<pre><code>          v¯¯¯¯¯¯ this is a foreign value
+@{Foo:Set(20)}
+   ^
+ field name
+</code></pre>
+<p>Let's see this in some example code:</p>
+<pre><code>using Uno.Compiler.ExportTargetInterop;
+
+public class Example
+{
+	public static int SomeValue = 7;
+
+	[Foreign(Language.Java)]
+	public extern(Android) void Doubler()
+	@{
+		int originalVal = @{SomeValue:Get()};
+		@{SomeValue:Set(originalVal * 2)};
+	@}
+
+	[Foreign(Language.ObjC)]
+	public extern(iOS) void Doubler()
+	@{
+		int originalVal = @{SomeValue:Get()};
+		@{SomeValue:Set(originalVal * 2)};
+	@}
+}
+</code></pre>
+<h3 id="get-and-set-uno-instance-fields"><code>Get</code> and <code>Set</code> Uno instance fields</h3>
+<p>To call instance methods we need to have a <code>this</code> pointer.
+To not clash with the target languages' native meaning of <code>this</code>, foreign instance methods have access to <code>_this</code>, which refers to the object they are called on, wrapped as <code>UnoObject</code> or <code>id&lt;UnoObject&gt;</code>.</p>
+<p>The type of an expression in foreign code can't be automatically inferred by the Uno compiler in general, so we use the <code>:Of</code> macro to interact with <code>_this</code>:</p>
+<pre><code>@{MyClass:Of(_this)}
+</code></pre>
+<p>The above code says <em>&quot;the Uno type of <code>_this</code> is <code>MyClass</code>&quot;</em></p>
+<p>The following code shows how it works:</p>
+<pre><code>using Uno.Compiler.ExportTargetInterop;
+
+public class Example
+{
+	public string MyString = &quot;This is all native&quot;;
+
+	[Foreign(Language.Java)]
+	public extern(Android) void AddExcitement()
+	@{
+		String originalString = @{Example:Of(_this).MyString:Get()};
+		String newString = originalString + &quot;!!!&quot;;
+		@{Example:Of(_this).MyString:Set(newString)};
+	@}
+
+	[Foreign(Language.ObjC)]
+	public extern(iOS) void AddExcitement()
+	@{
+		NSString* originalString = @{Example:Of(_this).MyString:Get()};
+		NSString* newString = [originalString stringByAppendingString: @&quot;!!!&quot;];
+		@{Example:Of(_this).MyString:Set(newString)};
+	@}
+}
+</code></pre>
+<h3 id="calling-static-uno-methods">Calling static Uno methods</h3>
+<p>UXL's <code>Call</code> macro lets us call Uno methods (and other foreign methods) from inside a foreign method.</p>
+<p>Let's start with a little anatomy:</p>
+<pre><code> the Uno method name          The foreign values to be passed as arguments
+      v                         v  v
+@{Foobernator(int,string):Call(1, &quot;jam&quot;)}
+               ^    ^
+     The Uno types of the arguments
+        of the method 'Foobernator'
+
+</code></pre>
+<p>Let's see an example of this:</p>
+<pre><code>using Uno.Compiler.ExportTargetInterop;
+
+public class Example
+{
+	public static void Angrify(string str)
+	{
+		debug_log &quot;ARGHHH! &quot; + str + &quot;ARGGHHH!&quot;;
+	}
+
+	[Foreign(Language.Java)]
+	public extern(Android) void Rage()
+	@{
+		@{Angrify(string):Call(&quot;JAVA!&quot;)};
+	@}
+
+	[Foreign(Language.ObjC)]
+	public extern(iOS) void Rage()
+	@{
+		@{Angrify(string):Call(@&quot;OBJECTIVE-C!&quot;)}; // :p
+	@}
+}
+</code></pre>
+<h3 id="calling-uno-instance-method">Calling Uno instance method</h3>
+<p>To call Uno instance methods, we use the <code>Of</code> macro with <code>_this</code> again:</p>
+<pre><code>using Uno.Compiler.ExportTargetInterop;
+
+class Example
+{
+	string deviceModel;
+
+	static void Log(string message)
+	{
+		debug_log(message);
+	}
+
+	void SetDeviceModel(string model)
+	{
+		deviceModel = model;
+	}
+
+	[Foreign(Language.Java)]
+	extern(Android) void LogDeviceModel()
+	{
+		String deviceModel = android.os.Build.MODEL;
+
+		// Call instance method
+		@{Example:Of(_this).SetDeviceModel(string):Call(deviceModel)};
+
+		// Call static method
+		@{Example.Log(string):Call(deviceModel)};
+	}
+
+	[Foreign(Language.ObjC)]
+	extern(iOS) void LogDeviceModel()
+	{
+		NSString* deviceModel = [[UIDevice currentDevice] model];
+
+		// Call instance method
+		@{Example:Of(_this).SetDeviceModel(string):Call(deviceModel)};
+
+		// Call static method
+		@{Example.Log(string):Call(deviceModel)};
+	}
+}
+</code></pre>
+<h2 id="external-source-files">External source files</h2>
+<p>A lot of Fuse's philosophy revolves around the idea of 'using the right tool for the right job'. Foreign code makes it easy to call into Java to get something done fast. We also believe that, if you need to write a lot of Java, it's best to do it in Java. To achieve this we have support for adding <code>.java</code>, <code>.mm</code> &amp; <code>.hh</code> files to <code>.unoproj</code>s to get them included in the build.</p>
+<p>We add Java and Objective-C files like this:</p>
+<pre><code>{
+	...
+
+	&quot;Includes&quot;: [
+		&quot;*&quot;,
+		&quot;Example.hh:ObjCHeader:iOS&quot;,
+		&quot;Example.mm:ObjCSource:iOS&quot;,
+		&quot;Example.java:Java:Android&quot;
+	]
+}
+</code></pre>
+<p>This also allows Objective-C code to use UXL macros to talk back to Uno just like in foreign code blocks. For us to use macros in such a file, it has to be an Objective-C++ file (<code>.mm</code>) since the macro expansion uses features from both Objective-C and C++ to interoperate with Uno code, and the file has to include <code>uObjC.Foreign.h</code>. To include any Uno classes used in the macros, we can use the UXL macro <code>@{The.Uno.Class:IncludeDirective}</code>. If we're not using UXL macros it's enough to use <code>CSource</code> and <code>CHeader</code> file types instead. Processing of Java files is not yet possible, but will be coming soon.</p>
+<p>Note that wildcard (<code>*</code>) patterns in a project don't automatically set the file type for files that are not Fuse files. With wildcards files in foreign languages will be included in the project, but with the anonymous <code>File</code> type. This means that we have to explicitly add foreign files to the project and set the correct file type to ensure that they are processed and added to the project.</p>
+<h3 id="java">Java</h3>
+<p>Fuse will parse the <code>package</code> statement in included Java files and ensure the folder hierarchy is correct in the project emitted by our compiler, so there is no need to worry about the folder structure when using Java.</p>
+<p>We can use the <code>ForeignInclude</code> attribute to add imports in Java. It can only be used on classes. The includes affect all foreign methods in the Uno class.</p>
+<pre><code>[ForeignInclude(Language.Java, &quot;java.lang.Runnable&quot;, &quot;java.lang.Boolean&quot;, &quot;android.app.Activity&quot;)]
+public class SomeUnoClass : Uno.Application
+{
+    ...
+}
+</code></pre>
+<h3 id="objective-c">Objective-C</h3>
+<p>To use external Objective-C headers, we include them in the class, like so:</p>
+<pre><code>[ForeignInclude(Language.ObjC, &quot;Example.hh&quot;)]
+class Example
+{
+	...
+}
+</code></pre>
+<p><em>Note:</em> Beware of naming collisions! An Objective-C class can't have the same name as an Uno class in the global namespace.</p>
+<h3 id="swift">Swift</h3>
+<p>It's possible to add Swift files to our <code>unoproj</code>s. While we do not yet have support for directly using Swift code blocks in Uno, we can call Swift code from foreign Objective-C.</p>
+<p>The following example shows how to use this feature:</p>
+<p><code>Hello.swift:</code></p>
+<pre><code>import Foundation
+
+public class HelloSwiftWorld: NSObject {
+    public func hello() {
+        print(&quot;Hello world!&quot;);
+    }
+}
+</code></pre>
+<p><code>unoproj</code>:</p>
+<pre><code>{
+    &quot;Includes&quot;: [
+        &quot;Hello.swift:Swift:iOS&quot;,
+        ...
+    ]
+
+}
+</code></pre>
+<p>Since Swift can be used from Objective-C, we call into the Swift code by using Foreign Objective-C, for instance as follows:</p>
+<pre><code>[ForeignInclude(Language.ObjC, &quot;@(Project.Name)-Swift.h&quot;)]
+public class Example
+{
+    [Foreign(Language.ObjC)]
+    public static void DoIt()
+    @{
+        HelloSwiftWorld* x = [[HelloSwiftWorld alloc] init];
+        [x hello];
+    @}
+}
+</code></pre>
+<p>The version of Swift that is used can be configured with the <code>iOS.SwiftVersion</code> project property:</p>
+<pre><code>&quot;iOS&quot;: {
+&quot;SwiftVersion&quot;: 3.0,
+},
+</code></pre>
+<p>Swift files currently do not get the foreign macro expansion that <code>ObjCSource</code> files get.</p>
+<h2 id="getting-the-root-activity">Getting the root Activity</h2>
+<p>Most Android-related tasks involve the app's root Activity in some way or another. We can get the root activity by calling the following method:</p>
+<pre><code>com.fuse.Activity.getRootActivity()
+</code></pre>
+
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="https://fuse-open.github.io/docs/jquery.js?_v=20180504135303"></script>
+    <script type="text/javascript" src="https://fuse-open.github.io/docs/popper.js?_v=20180504135303"></script>
+    <script type="text/javascript" src="https://fuse-open.github.io/docs/bootstrap.js?_v=20180504135303"></script>
+    <script type="text/javascript" src="https://fuse-open.github.io/docs/prism.js?_v=20180504135303"></script>
+    <script type="text/javascript" src="https://fuse-open.github.io/docs/site.js?_v=20180504135303"></script>
+  </body>
+</html>

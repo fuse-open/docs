@@ -1,0 +1,950 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Fuse Plugin API - Fuse Documentation</title>
+    <link rel="stylesheet" href="https://fuse-open.github.io/docs/font-awesome.css?_v=20180504135303">
+    <link rel="stylesheet" href="https://fuse-open.github.io/docs/bootstrap.css?_v=20180504135303">
+    <link rel="stylesheet" href="https://fuse-open.github.io/docs/prism.css?_v=20180504135303">
+    <link rel="stylesheet" href="https://fuse-open.github.io/docs/site.css?_v=20180504135303">
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="https://fuse-open.github.io/docs/">Fuse: Documentation</a>
+      <div class="search d-none d-lg-block">
+        <script>
+          (function() {
+            var cx = '003990228577991558032:1dgsgv066lc';
+            var gcse = document.createElement('script');
+            gcse.type = 'text/javascript';
+            gcse.async = true;
+            gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(gcse, s);
+          })();
+          window.onload = function() {
+            document.getElementById('gsc-i-id1').placeholder = 'Search';
+          }
+        </script>
+        <gcse:search></gcse:search>
+      </div>
+    </nav>
+
+    <div class="container-fluid main-content-wrapper">
+      <div class="row">
+        <div class="col-12 col-lg-2 order-2 order-lg-1 bg-light sidebar">
+          <div class="sidebar-sticky">
+            <ul class="list-unstyled outline-nav outline-nav-level-0">
+	<li>
+		<a href="https://fuse-open.github.io/docs/index.html">Fuse</a>
+	<ul class="list-unstyled outline-nav outline-nav-level-1">
+		<li>
+			<a href="https://fuse-open.github.io/docs/basics/basics.html">Fuse Basics</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/basics/supported-platforms.html">Supported platforms</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/basics/installation-and-quickstart.html">Installation and quickstart</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/basics/introduction-to-fuse.html">Introduction to Fuse</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/basics/preview-and-export.html">Preview and export</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/componentization.html">Componentization</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/layout/responsive-layout.html">Responsive layout</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/declarative-animation.html">Declarative animation</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse-for-designers.html">Fuse for designers</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/structuring-app-resources.html">Structuring app resources</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/basics/feature-overview.html">Feature overview</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/basics/faq.html">FAQ</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/packages.html">Community Packages</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/fuse-studio/fuse-studio.html">Fuse Studio (Pro)</a>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/tutorial/tutorial.html">Tutorial</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/tutorial/edit-hike-view.html">1. Edit Hike view</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/tutorial/multiple-hikes.html">2. Multiple hikes</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/tutorial/splitting-up-components.html">3. Splitting up components</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/tutorial/navigation-and-routing.html">4. Navigation and routing</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/tutorial/mock-backend.html">5. Mocking our Backend</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/tutorial/look-and-feel.html">6. Tweaking the look/feel</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/tutorial/splash-screen.html">7. Splash screen</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/tutorial/final-thoughts.html">8. Final thoughts</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/reference.html">Full Reference</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/full-ux-class-reference.html">UX Class Reference</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/basics/uno-projects.html">Uno projects (.unoproj) Reference</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/ux-markup/ux-markup.html">UX Markup</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/literals.html">Literals</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/expressions.html">Expressions</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/names.html">Names (ux:Name)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/classes.html">Classes (ux:Class)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/dependencies.html">Dependencies (ux:Dependency)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/properties.html">Properties (ux:Property)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/resources.html">Resources (ux:Key)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/globals.html">Globals (ux:Global)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/templates.html">Templates (ux:Template)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/binding-and-auto-bind.html">Binding (ux:Binding &amp; ux:AutoBind)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/testing/testing.html">Testing (ux:Test)</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/xcode-and-android-studio-integration/tutorial.html">XCode &amp; Android Studio Integration (Pro)</a>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/primitives/primitives.html">Primitives</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/text.html">Text</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/rectangle.html">Rectangle</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/circle.html">Circle</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/curve.html">Curve</a>
+			<ul class="list-unstyled outline-nav outline-nav-level-3">
+				<li>
+					<a href="https://fuse-open.github.io/docs/fuse/controls/curvepoint.html">CurvePoint</a>
+				</li>
+			</ul>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/path.html">Path</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/image.html">Image</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/video.html">Video</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/charting/charting.html">Charting (Pro)</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/charting/plot.html">Plot</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/charting/dataseries.html">DataSeries</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/charting/plotaxis.html">PlotAxis</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/charting/plotdata.html">PlotData</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/charting/plotpoint.html">PlotPoint</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/charting/plotbar.html">PlotBar</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/charting/plotcurvepoint.html">PlotCurvePoint</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/layout/layout.html">Layout</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/elements/element.html">Element</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/panel.html">Panel</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/stackpanel.html">StackPanel</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/dockpanel.html">DockPanel</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/grid.html">Grid</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/wrappanel.html">WrapPanel</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/layouts/columnlayout.html">ColumnLayout</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/layouts/circlelayout.html">CircleLayout</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/scrollview.html">ScrollView</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/fuse/controls/control.html">Controls</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/button.html">Button</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/textinput.html">TextInput</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/textview.html">TextView</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/slider.html">Slider</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/switch.html">Switch</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/cameraviewbase.html">CameraView (Pro)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/mapview.html">MapView</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/webview.html">WebView</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/nativeviewhost.html">NativeViewHost</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/graphicsview.html">GraphicsView</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/scripting/scripting.html">Scripting &amp; Data</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/reactive/javascript.html">JavaScript</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/scripting/debugging.html">Debugging</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/reactive/databinding.html">DataBinding</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/reactive/each.html">Each</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/reactive/with.html">With</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/reactive/match.html">Match</a>
+			<ul class="list-unstyled outline-nav outline-nav-level-3">
+				<li>
+					<a href="https://fuse-open.github.io/docs/fuse/reactive/case.html">Case</a>
+				</li>
+			</ul>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/fusejs/observable.html">Observables</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/observable-api.html">API reference</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/observable-patterns.html">Patterns</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/navigation/navigation.html">Navigation</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/page.html">Page</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/pagecontrol.html">PageControl</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/navigation/router.html">Router</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/navigator.html">Navigator</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/triggers/transition.html">Transitions</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/fusejs/fusejs.html">JavaScript APIs</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/polyfills.html">Polyfills</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/eventemitter.html">EventEmitter</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/filesystem/filesystemmodule.html">FileSystem</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/storage/storagemodule.html">Storage</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/bundle.html">Bundle</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/lifecycle.html">Lifecycle</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/reactive/fusejs/interapp.html">InterApp</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/share/sharemodule.html">Share</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/http.html">HTTP</a>
+			<ul class="list-unstyled outline-nav outline-nav-level-3">
+				<li>
+					<a href="https://fuse-open.github.io/docs/backend/rest-apis.html">Working with REST APIs</a>
+				</li>
+			</ul>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/environment.html">Environment</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/reactive/fusejs/phone.html">Phone</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/camera/camera.html">Camera</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/cameraroll/cameraroll.html">CameraRoll</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/vibration/vibrationmodule.html">Vibration</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/geolocation/geolocation.html">GeoLocation</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/pushnotifications/push.html">Push notifications</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/localnotifications/localnotify.html">Local notifications</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/base64.html">Base64</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/reactive/fusejs/timermodule.html">Timer</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/imagetools/imagetools.html">ImageTools</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/third-party-modules.html">Third-party modules</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/uno/ux/resource.html">Resources</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/font.html">Fonts</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/resources/imagesource.html">Image sources</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/assets/bundle.html">Bundled files</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/assets/sketch-import.html">Import from Sketch</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/assets/sketch-symbol-import.html">Sketch symbols (Beta)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/assets/iconfont-import.html">Import icon fonts</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/fuse/triggers/trigger.html">Triggers &amp; Animation</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/transform.html">Transforms</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/gestures/transformgesture.html">Gestures</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/animations/animator.html">Animators</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/triggers/timeline.html">Timeline</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/triggers/actions/triggeraction.html">Actions</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/selection/selection.html">Selection</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/triggers/stategroup.html">StateGroups</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/multilayoutpanel.html">MultiLayoutPanel</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/triggers/busy.html">Busy</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/effects/effects.html">Effects</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/effects/dropshadow.html">DropShadow</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/effects/blur.html">Blur</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/effects/halftone.html">Halftone</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/native-interop/native-interop.html">Native interop (Uno)</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/root-ns.html">Full Uno Class Reference</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/native-ux-components.html">Native UX components</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/native-js-modules.html">Native JS modules</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/foreign-code.html">Foreign code</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/using-third-party-sdks.html">Using 3rd party SDKs</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/unolibs/activity-utils.html">Activity utils</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/facebook-login.html">Facebook login using foreign code</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/gradle-support.html">Gradle Support</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/build-settings.html">Build settings</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/android-permissions.html">Android permissions</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/android-start-activity.html">Starting an Android Activity</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/ios-capabilities.html">iOS Capabilities</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/alive/alive.html">Alive UX Kit (Pro)</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/alive.html">Components</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/alive/themes.html">Themes</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/technical-corner/technical-corner.html">Technical corner</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/technical-corner/fuse-protocol.html">Fuse plugin API</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/preview-and-export/preview-details.html">How preview works</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/technical-corner/uxl-handbook.html">UXL handbook</a>
+			</li>
+		</ul>
+		</li>
+	</ul>
+	</li>
+</ul>
+
+          </div>
+        </div>
+        <div role="main" class="col-12 col-lg-10 ml-sm-auto order-1 order-lg-2 px-4 main-content">
+          <h1 id="fuse-plugin-api">Fuse Plugin API</h1>
+<p>Do you want to make a Fuse plugin for your favorite editor, write a custom tool for Fuse, or integrate with it in some other way? By using <code>fuse daemon-client</code>, this can be achieved from virtually any language. Read ahead for a description of the communication protocol, as well as an example plugin written in JavaScript.</p>
+<p>This guide starts with a technical introduction to our plugin API. However you may jump down to <a href="#usage">usage</a> if you don't want a technical explanation. Still, we recommend you to read it, to have an understanding of what's going on behind the scenes.</p>
+<h2 id="fuse-protocol">Fuse Protocol<a name="fuseprotocol"></a></h2>
+<p>The Fuse plugin API is built on top of two abstraction layers.
+The core layer is <em>Fuse Protocol</em>. <em>Fuse Protocol</em> is a general purpose protocol, which can send various types of data with a minimal data overhead, and with simplicity in mind.</p>
+<p>Data sent through the <em>Fuse Protocol</em> consists of two parts, a <em>header</em> and a <em>payload</em>. Together they represent what we call a <em>message</em>. The header consists of two UTF-8 encoded strings, terminated by line breaks. The first string represents the type of the message, the second string represents the length of the payload.</p>
+<p>Here is an example of how a message is structured:</p>
+<pre><code>MyMessageType\n
+7\n
+foo bar
+</code></pre>
+<h2 id="daemon-protocol">Daemon Protocol</h2>
+<p>On top of the <em>Fuse Protocol</em> is the <em>Daemon protocol</em>. The daemon protocol defines three types of <em>Fuse Protocol</em> messages, called <strong>Event</strong>, <strong>Request</strong> and <strong>Response</strong>. The payload for each of these types is UTF-8 encoded JSON, and looks as follows:</p>
+<h3 id="event">Event</h3>
+<pre><code class="language-javascript">{
+	&quot;Name&quot;: &quot;ExampleEvent&quot;,
+	&quot;SubscriptionId&quot;: 32, // The id of the event subscription (set automatically by the daemon),
+	&quot;Data&quot;: { ... }, // An event-specific JSON-object with the event data
+}
+</code></pre>
+<h3 id="request">Request</h3>
+<pre><code class="language-javascript">{
+	&quot;Name&quot;: &quot;MyRequest&quot;,
+	&quot;Id&quot;: 242, // Make this a unique number for each request, so we can recognize the matching response message
+	&quot;Arguments&quot;: { ... }, // A request-specific JSON-object with the request
+}
+</code></pre>
+<h3 id="response">Response</h3>
+<pre><code class="language-javascript">{
+    &quot;Id&quot;: 242, // The id of the request to which this is a response
+    &quot;Status&quot;: &quot;Success&quot;, // Can be &quot;Success&quot;, &quot;Error&quot; or &quot;Unhandled&quot;
+    &quot;Result&quot;: { ... }, // If status is &quot;Succsess&quot;, a request-specific JSON-object with the response
+    &quot;Errors&quot;: [ ... ], // If status is &quot;Error&quot;, an array of objects containing more error information 
+}
+</code></pre>
+<h3 id="request-and-response">Request and Response</h3>
+<p><a name="indepth-request"></a>The request and response system is based on RPC (remote procedure call). The Fuse daemon acts as a switch between requesters and responders. A request sent from a client to the daemon will be forwarded to the <strong>last</strong> client which provides a handler for a specific request type. A client can publish that it provides a service (handles a request type) by sending a <a href="#publishservice">PublishService</a> request to the daemon. A service provider is supposed to handle one or more request types, by transforming the request to a response. The concept is similar to method invocation, where request message store the method name and arguments for the method to be invoked, and the return value of the method is either something valid or an error (similar to exceptions in exception based languages), which in turn is sent back as a response to the requester (response is sent to the daemon, which forwards it to the requester).</p>
+<p><strong>A PublishService request</strong><a name="publishservice"></a></p>
+<pre><code class="language-javascript">{
+	&quot;Name&quot;: &quot;PublishService&quot;,
+	&quot;Arguments&quot;: {
+		&quot;RequestNames&quot;: [&quot;MyRequest&quot;, ...], // An array of names of requests that we respond to
+	}
+}
+</code></pre>
+<h3 id="events">Events</h3>
+<p>Events are broadcasted on a message bus in a typical pub/sub fashion, where clients can subscribe to certain event types. Subscribing is done by sending a <a href="#subscriberequest">subscribe</a> request to the daemon. A client can send events that are forwarded to the bus, by sending an event to the daemon.</p>
+<p>One thing to note about our protocol is that there is never a direct connection between two clients, and they don't know about each other. All communication goes through the daemon, which works as a switch and a broadcaster.</p>
+<p><strong>A Subscribe request</strong><a name="subscriberequest"></a></p>
+<pre><code class="language-javascript">{
+	&quot;Name&quot;: &quot;Subscribe&quot;,
+	&quot;Arguments&quot;: {
+		&quot;Filter&quot;: &quot;&lt;regex&gt;&quot;, // .Net style regex filtering incoming events based on type
+		&quot;Replay&quot;: false, // Use replay if you want to receive messages that were sent before you connected
+		&quot;SubscriptionId&quot;: 32, // A locally unique number representing this subscription, so we can recognize the incoming events (and unsubscribe)
+	}
+}
+</code></pre>
+<p>The <em>Daemon Protocol</em> itself does not define a set of message types; any user of the <em>Daemon Protocol</em> is free to define types. Here's an example of a custom event message:</p>
+<p><strong>A user-defined event</strong></p>
+<pre><code class="language-javascript">{
+	&quot;Name&quot;: &quot;MyMouseEvent&quot;,
+	&quot;Data&quot;: {
+		&quot;MouseX&quot;: 200,
+		&quot;MouseY&quot;: 100
+	}
+}
+</code></pre>
+<h2 id="usage">Usage<a name="usage"></a></h2>
+<p>The command <code>fuse daemon-client &lt;name-of-client&gt;</code> will create a connection to the daemon and forward all data written to and read from stdin/stdout. Since this only requires you to have access to an API for starting processes, it should be usable from all major languages. In other words to send data to the daemon write to stdin and to receive data read from stdout. Also, protocol errors can be read from stderr. In addition to that <code>fuse daemon-client</code> quits with exit code 1 when the connection is considered lost. Any other error codes are considered fatal failures, which should not occur (please report to us if it happens).</p>
+<h2 id="requests-and-events">Requests and Events</h2>
+<p>One of the first thing you probably want to do after you have established a connection to the daemon, is to send a request. The two most important request types are <a href="#publishservice">PublishService</a> and <a href="#subscriberequest">Subscribe</a>, more are listed in our <a href="#fuse-api-reference">api reference</a>. One example is to subscribe to all build logged events, which can be done by sending the following data (full test example <a href="#example">here</a>):</p>
+<pre><code class="language-javascript">Request // Message type ended with a newline as described in the `Fuse Protocol` paragraph at the top
+106 // Size of payload in bytes ended with a newline as described in the `Fuse Protocol` paragraph at the top
+{&quot;Name&quot;:&quot;Subscribe&quot;,&quot;Id&quot;:101,&quot;Arguments&quot;:{&quot;Filter&quot;:&quot;Fuse.BuildLogged&quot;,&quot;Replay&quot;:false,&quot;SubscriptionId&quot;:42}}
+</code></pre>
+<p>After sending the <code>Subscribe</code> request above, you should receive all events named <code>Fuse.BuildLogged</code>. (Run <code>fuse preview</code> of a project to trigger this event). The events received should look similar to:</p>
+<pre><code class="language-javascript">Event
+144
+{&quot;Name&quot;:&quot;Fuse.BuildLogged&quot;,&quot;Data&quot;:{&quot;BuildId&quot;:&quot;6c7e6f55-74de-45d1-bdb5-9f9cf2bafbf7&quot;,&quot;Message&quot;:&quot;Generating code and data\n&quot;},&quot;SubscriptionId&quot;:42}
+</code></pre>
+<p>You may also broadcast an event, which is done by sending it to the daemon. The daemon will handle the broadcasting of the event to all registered listeners. For example you may send a <code>Fuse.BuildLogged</code> event yourself (altough it's <strong>not</strong> recommended to broadcast custom events named the same as existing events). This is how your <code>Fuse.BuildLogged</code> event might look like:</p>
+<pre><code class="language-javascript">{
+	&quot;Name&quot;:&quot;Fuse.BuildLogged&quot;,
+    &quot;Data&quot;: {
+    	&quot;BuildId&quot;: &quot;1c7e6f55-74de-45d1-bdb5-9f9cf2bafbf7&quot;,
+    	&quot;Message&quot;: &quot;My own build log event!\n&quot;
+    }
+}
+</code></pre>
+<p>Note that we have omitted the <em>Fuse Protocol</em> header and we will continue doing it for the rest of the article for clarity. However keep in mind that a message also have a header as explained <a href="#fuseprotocol">here</a>.</p>
+<p><em>PublishService</em> is a request you may consider sending when you want to respond to custom request types. This means you provide functionality which other clients may request. For instance say that you provide a feature called <code>GetAgeOfStudent</code>, which means that something like the following should be sent to the daemon:</p>
+<pre><code class="language-javascript">{
+	&quot;Name&quot;: &quot;PublishService&quot;,
+	&quot;Arguments&quot;: {
+		&quot;RequestNames&quot;: [&quot;GetAgeOfStudent&quot;]
+	}
+}
+</code></pre>
+<p>All <code>GetAgeOfStudent</code> requests will be routed to you from this point. If for instance a client connected to the daemon sends a <code>GetAgeOfStudent</code> request, you will receive it and it will also be your responsibility to send a response back.</p>
+<pre><code class="language-javascript">{
+	&quot;Name&quot;: &quot;GetAgeOfStudent&quot;,
+    &quot;Id&quot;: 2,
+	&quot;Arguments&quot;: {
+		&quot;StudentName&quot;: &quot;Bob&quot;
+	}
+}
+</code></pre>
+<p>You may receive a request as above. However how you respond to it is up to you, for example:</p>
+<pre><code class="language-javascript">{
+    &quot;Id&quot;: 2,
+    &quot;Status&quot;: &quot;Success&quot;,
+	&quot;Result&quot;: {
+		&quot;Age&quot;: &quot;24&quot;
+	},
+    &quot;Errors&quot;: null
+}
+</code></pre>
+<p>The client who requested <code>GetAgeOfStudent</code> will receive the response, and also be the only one receiving it.</p>
+<h2 id="example">Example<a name="example"></a></h2>
+<p>This article is not really heading anywhere with just words so here is a Javascript/Node.js example showing how to create a simple communication with the daemon, which spits out the build log. Copy and paste the code to a file and run <code>node file</code>, also make sure you have <a href="https://nodejs.org/en/">nodejs</a>.</p>
+<pre><code class="language-javascript">var spawn = require('child_process');
+
+// Spawn daemon client
+var fuseClient = spawn.spawn(&quot;fuse&quot;, ['daemon-client', 'Simple Client']);
+
+var buffer = new Buffer(0);
+fuseClient.stdout.on('data', function (data) {
+  // Data is a stream and must be parsed as that
+  var latestBuf = Buffer.concat([buffer, data]);
+  buffer = parseMsgFromBuffer(latestBuf, function (message) {
+    console.log(&quot;Message received: &quot; + message);
+  });
+});
+
+fuseClient.stderr.on('data', function (data) {
+  console.log(data.toString('utf-8'));
+});
+
+fuseClient.on('close', function (code) {
+  console.log('fuse: daemon client closed with code ' + code);
+});
+
+// This is how you may subscribe to all &quot;Fuse.BuildLogged&quot; events
+// In other words you will receive build output, by sending this request
+var subRequest = JSON.stringify({
+  Name: &quot;Subscribe&quot;,
+  Id: 101, // Arbitrary identifier to map responses back to requests
+  Arguments: {
+    Filter: &quot;Fuse.BuildLogged&quot;,
+    Replay: false, // Use replay to receive messages sent before you connected
+    SubscriptionId: 42 // Arbitrary ID to map events to a particular subscription
+  }
+});
+
+console.log(&quot;Sending: &quot; + subRequest);
+send(fuseClient, &quot;Request&quot;, subRequest);
+
+function parseMsgFromBuffer(buffer, msgCallback) {
+  var start = 0;
+
+  while (start &lt; buffer.length) {
+    var endOfMsgType = buffer.indexOf('\n', start);
+    if (endOfMsgType &lt; 0)
+      break; // Incomplete or corrupt data
+
+    var startOfLength = endOfMsgType + 1;
+    var endOfLength = buffer.indexOf('\n', startOfLength);
+    if (endOfLength &lt; 0)
+      break; // Incomplete or corrupt data
+
+    var msgType = buffer.toString('utf-8', start, endOfMsgType);
+    var length = parseInt(buffer.toString('utf-8', startOfLength, endOfLength));
+    if (isNaN(length)) {
+      console.log('fuse: Corrupt length in data received from Fuse.');
+      // Try to recover by starting from the beginning
+      start = endOfLength + 1;
+      continue;
+    }
+
+    var startOfData = endOfLength + 1;
+    var endOfData = startOfData + length;
+    if (buffer.length &lt; endOfData)
+      break; // Incomplete data
+
+    var jsonData = buffer.toString('utf-8', startOfData, endOfData);
+    msgCallback(jsonData);
+    start = endOfData;
+  }
+
+  return buffer.slice(start, buffer.length);
+}
+
+function send(fuseClient, msgType, serializedMsg) {
+  // Pack the message to be compatible with Fuse Protocol.
+  // As:
+  // '''
+  // MessageType (msgType)
+  // Length (length)
+  // JSON(serializedMsg)
+  // '''
+  // For example:
+  // '''
+  // Event
+  // 50
+  // {
+  //   &quot;Name&quot;: &quot;Test&quot;,
+  //   &quot;Data&quot;:
+  //   {
+  //     &quot;Foo&quot;: &quot;Bar&quot;
+  //   }
+  // }
+  // '''
+  var length = Buffer.byteLength(serializedMsg, 'utf-8');
+  var packedMsg = msgType + '\n' + length + '\n' + serializedMsg;
+  try {
+    fuseClient.stdin.write(packedMsg);
+  }
+  catch (e) {
+    console.log(e);
+  }
+}
+</code></pre>
+<p>For a full real-world example, please refer to the official open source <a href="https://github.com/fusetools/Fuse.AtomPlugin">Atom Plugin</a>.</p>
+<h2 id="fuse-api-reference">Fuse API Reference<a name="fuse-api-reference"></a></h2>
+<p>This is a list consisting of examples of messages that we have in Fuse. However be aware that some of these messages are subject to change (but they will be deprecated before removed). You should also have a look at <a href="#publishservice">PublishService</a> and <a href="#subscriberequest">Subscribe</a>.</p>
+<h3 id="build">Build</h3>
+<p>There are a few build events that you may want to subscribe to, when you for example are making an error list.</p>
+<p><strong>Fuse.BuildStarted - Event</strong></p>
+<p>Sent after a build was started, and contains information related to the build.</p>
+<pre><code class="language-javascript">{
+	&quot;Name&quot;: &quot;Fuse.BuildStarted&quot;,
+	&quot;SubscriptionId&quot;: 32, // The id provided in the subscribe response
+	&quot;Data&quot;:
+	{
+		&quot;BuildType&quot;: &quot;FullCompile&quot;, // This means the whole project is built. Can also be &quot;LoadMarkup&quot;, which means that we're live-reloading an already built app
+		&quot;BuildId&quot;: &quot;a19de798-6d22-45f8-b453-0a44ea606025&quot;, // A GUID that identifies this build, keep it around if you're intereseted in which build events are related to this build
+		&quot;BuildTag&quot;: &quot;DaveWasHere&quot;, // Build-tag is a way to recognize build events from a build you started yourself. We can set it using `fuse preview --name=&lt;YourTag&gt;`. The default value is emtpy or null.
+		&quot;PreviewId&quot;: &quot;cceb4dbc-e515-4dda-bff2-46cda79a9696&quot;, // If build type is &quot;LoadMarkup&quot;, the BuildId of the initial full compile used by preview
+		&quot;ProjectPath&quot;: &quot;C:\\FuseProjects\\MyProject.unoproj&quot;, // The native path to the project file being built
+		&quot;Target&quot;: &quot;DotNetDll&quot;, // The target of the build. The supported targets are &quot;DotNetDll&quot; (local preview), &quot;iOS&quot; and &quot;Android&quot;. Other targets include &quot;DotNetExe&quot;, &quot;CMake&quot;, &quot;MSVC12&quot;, &quot;WebGL&quot; and &quot;Unknown&quot;.
+    }
+}
+</code></pre>
+<p><strong>Fuse.BuildLogged - Event</strong></p>
+<p>Sent after build has logged something.</p>
+<pre><code class="language-javascript">{
+	&quot;Name&quot;: &quot;Fuse.BuildLogged&quot;,
+	&quot;SubscriptionId&quot;: 32, 
+	&quot;Data&quot;:
+	{
+		&quot;BuildId&quot;:  &quot;a19de798-6d22-45f8-b453-0a44ea606025&quot;,
+		&quot;Message&quot;: &quot;...&quot;, // A human readable message logged during build
+	}
+}
+</code></pre>
+<p><strong>Fuse.BuildIssueDetected - Event</strong></p>
+<p>Sent when a build issue was detected.</p>
+<pre><code class="language-javascript">{
+	&quot;Name&quot;: &quot;Fuse.BuildIssueDetected&quot;,
+	&quot;SubscriptionId&quot;: 32, 
+	&quot;Data&quot;:
+	{
+		&quot;BuildId&quot;:  &quot;a19de798-6d22-45f8-b453-0a44ea606025&quot;,
+		&quot;IssueType&quot;: &quot;Error&quot;, // Can be &quot;Unknown&quot;, &quot;FatalError&quot;, &quot;Error&quot;, &quot;Warning&quot; or &quot;Message&quot;
+		&quot;Path&quot;: &quot;C:\\FuseProjects\\MyClass.uno&quot;, // Path to the file where the error supposedly occurred. Can be empty in other words optional.
+		&quot;StartPosition&quot;: {&quot;Line&quot;: 1, &quot;Character&quot;: 1}, // 1-indexed start position in the file where the error is occurred (Optional)
+		&quot;EndPosition&quot;: {&quot;Line&quot;: 1, &quot;Character&quot;: 1}, // 1-indexed end position in the file where the error occurred (Optional)
+		&quot;ErrorCode&quot;: &quot;E0001&quot;, // Error code generated by the Uno compiler
+		&quot;Message&quot;: &quot;...&quot; // A human readable description of the issue
+	}
+}
+</code></pre>
+<p><strong>Fuse.BuildEnded - Event</strong></p>
+<p>Sent after build completed (successfully or not).</p>
+<pre><code class="language-javascript">{
+	&quot;Name&quot;: &quot;Fuse.BuildEnded&quot;,
+	&quot;SubscriptionId&quot;: 32, 
+	&quot;Data&quot;:
+	{
+		&quot;BuildId&quot;:  &quot;a19de798-6d22-45f8-b453-0a44ea606025&quot;,
+		&quot;Status&quot;: &quot;Success&quot;, // Status of build. Valid statues are &quot;InternalError&quot;, &quot;Error&quot; and &quot;Success&quot;.
+	}
+}
+</code></pre>
+<h3 id="code-completion">Code Completion</h3>
+<p><strong>Fuse.GetCodeSuggestions - Method</strong></p>
+<p><strong>Request example</strong></p>
+<pre><code class="language-javascript">{
+	&quot;Id&quot;: 42, // Unique request id
+	&quot;Name&quot;: &quot;Fuse.GetCodeSuggestions&quot;,
+	&quot;Arguments&quot;: 
+	{
+		&quot;SyntaxType&quot;: &quot;UX&quot;, // Typically &quot;UX&quot; or &quot;Uno&quot;
+		&quot;Path&quot;: &quot;C:\\FuseProjects\\MainView.ux&quot;, // Path to document where suggestion is requested
+		&quot;Text&quot;: &quot;&lt;App&gt;\n\t&lt;Button /&gt;\n&lt;/App&gt;&quot;, // Full source of document where suggestion is requested 
+		&quot;CaretPosition&quot;: { &quot;Line&quot;: 2, &quot;Character&quot;: 9 } // 1-indexed text position within Text where suggestion is requested 
+	}
+}
+</code></pre>
+<p><strong>Response example</strong></p>
+<pre><code class="language-javascript">{
+	&quot;Id&quot;: 42, // Id of request
+	&quot;Status&quot;: &quot;Success&quot;,
+	&quot;Result&quot;: 
+	{
+		&quot;IsUpdatingCache&quot;: false, // If true you should consider trying again later
+		&quot;CodeSuggestions&quot;: 
+		[
+			{
+				&quot;Suggestion&quot;: &quot;&lt;suggestion&gt;&quot;,
+				&quot;PreText&quot;: &quot;&lt;pretext&gt;&quot;,
+				&quot;PostText&quot;: &quot;&lt;posttext&gt;&quot;,
+				&quot;Type&quot;: &quot;&lt;datatype&gt;&quot;,
+				&quot;ReturnType&quot;: &quot;&lt;datatype&gt;&quot;,
+				&quot;AccessModifiers&quot;: [ &quot;&lt;accessmodifier&gt;&quot;, ... ],
+				&quot;FieldModifiers&quot;: [ &quot;&lt;fieldmodifier&gt;&quot;, ... ],
+				&quot;MethodArguments&quot;: 
+				[
+					{ &quot;Name&quot;: &quot;&lt;name&gt;&quot;, &quot;ArgType&quot;: &quot;&lt;datatype&gt;&quot;, &quot;IsOut&quot;: &quot;&lt;false|true&gt;&quot; },
+					...
+				],
+			},
+			...
+	    	],
+	}
+}
+</code></pre>
+<h2 id="monitor">Monitor</h2>
+<p><strong>Fuse.LogEvent - Event</strong></p>
+<p>Sent from a preview instance as a result of calling <em>debug_log</em>, <em>console.log</em> or using <em>DebugAction</em>.</p>
+<pre><code class="language-javascript">{
+	&quot;Name&quot;: &quot;Fuse.LogEvent&quot;,
+	&quot;Data&quot;: 
+	{
+		&quot;ClientId&quot;: &quot;b564e85a-fd37-46aa-a8d8-e601e08fe4f5&quot;, // Unique id of client, generated during build
+		&quot;ClientName&quot;: &quot;MyPhone 5&quot;, // Friendly client name
+		&quot;Message&quot;: &quot;...&quot;, // Message that was logged (using debug_log)
+		&quot;ConsoleType&quot;: &quot;DebugLog&quot;, // Reserved
+	},
+}
+</code></pre>
+<p><strong>Fuse.ExceptionEvent - Event</strong></p>
+<p>Sent after an exception occured in a preview instance.</p>
+<pre><code class="language-javascript">{
+	&quot;Name&quot;: &quot;Fuse.ExceptionEvent&quot;,
+	&quot;Data&quot;: 
+	{
+		&quot;ClientId&quot;: &quot;b564e85a-fd37-46aa-a8d8-e601e08fe4f5&quot;, // Unique id of client, generated during build
+		&quot;ClientName&quot;: &quot;MyPhone 5&quot;, // Friendly client name
+		&quot;Type&quot;: &quot;Uno.NullReferenceException&quot;, // Name of exception Uno-type
+		&quot;Message&quot;: &quot;Object reference not set to an instance of an object.&quot;, // A human readable description of the issue
+		&quot;StackTrace&quot;: &quot;...&quot;, // String containing the stacktrace for where the exception was thrown. Run `fuse preview --enable-cppstacktrace` if you want stacktrace on iOS and Android
+	}
+}
+</code></pre>
+<h2 id="preview">Preview</h2>
+<p><strong>Fuse.SelectionChanged - Event</strong></p>
+<p>Send this event if you want to set selection in preview.</p>
+<pre><code class="language-javascript">{
+	&quot;Name&quot;: &quot;Fuse.Preview.SelectionChanged&quot;,
+    &quot;Data&quot;:
+    {
+    	&quot;Path&quot;: &quot;C:\\FuseProjects\\MainView.ux&quot;, // Path to the file where selection was changed
+        &quot;Text&quot;: &quot;&lt;App&gt;\n\t&lt;Button /&gt;\n&lt;/App&gt;&quot;, // Full source of document
+        &quot;CaretPosition&quot;: { &quot;Line&quot;: 2, &quot;Character&quot;: 9 } // 1-indexed text position within Text where selection was changed
+    }
+}
+</code></pre>
+
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="https://fuse-open.github.io/docs/jquery.js?_v=20180504135303"></script>
+    <script type="text/javascript" src="https://fuse-open.github.io/docs/popper.js?_v=20180504135303"></script>
+    <script type="text/javascript" src="https://fuse-open.github.io/docs/bootstrap.js?_v=20180504135303"></script>
+    <script type="text/javascript" src="https://fuse-open.github.io/docs/prism.js?_v=20180504135303"></script>
+    <script type="text/javascript" src="https://fuse-open.github.io/docs/site.js?_v=20180504135303"></script>
+  </body>
+</html>

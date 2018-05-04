@@ -1,0 +1,1843 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Fuse.Triggers Namespace - Fuse Documentation</title>
+    <link rel="stylesheet" href="https://fuse-open.github.io/docs/font-awesome.css?_v=20180504135303">
+    <link rel="stylesheet" href="https://fuse-open.github.io/docs/bootstrap.css?_v=20180504135303">
+    <link rel="stylesheet" href="https://fuse-open.github.io/docs/prism.css?_v=20180504135303">
+    <link rel="stylesheet" href="https://fuse-open.github.io/docs/site.css?_v=20180504135303">
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="https://fuse-open.github.io/docs/">Fuse: Documentation</a>
+      <div class="search d-none d-lg-block">
+        <script>
+          (function() {
+            var cx = '003990228577991558032:1dgsgv066lc';
+            var gcse = document.createElement('script');
+            gcse.type = 'text/javascript';
+            gcse.async = true;
+            gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(gcse, s);
+          })();
+          window.onload = function() {
+            document.getElementById('gsc-i-id1').placeholder = 'Search';
+          }
+        </script>
+        <gcse:search></gcse:search>
+      </div>
+    </nav>
+
+    <div class="container-fluid main-content-wrapper">
+      <div class="row">
+        <div class="col-12 col-lg-2 order-2 order-lg-1 bg-light sidebar">
+          <div class="sidebar-sticky">
+            <ul class="list-unstyled outline-nav outline-nav-level-0">
+	<li>
+		<a href="https://fuse-open.github.io/docs/index.html">Fuse</a>
+	<ul class="list-unstyled outline-nav outline-nav-level-1">
+		<li>
+			<a href="https://fuse-open.github.io/docs/basics/basics.html">Fuse Basics</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/basics/supported-platforms.html">Supported platforms</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/basics/installation-and-quickstart.html">Installation and quickstart</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/basics/introduction-to-fuse.html">Introduction to Fuse</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/basics/preview-and-export.html">Preview and export</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/componentization.html">Componentization</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/layout/responsive-layout.html">Responsive layout</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/declarative-animation.html">Declarative animation</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse-for-designers.html">Fuse for designers</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/structuring-app-resources.html">Structuring app resources</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/basics/feature-overview.html">Feature overview</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/basics/faq.html">FAQ</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/packages.html">Community Packages</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/fuse-studio/fuse-studio.html">Fuse Studio (Pro)</a>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/tutorial/tutorial.html">Tutorial</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/tutorial/edit-hike-view.html">1. Edit Hike view</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/tutorial/multiple-hikes.html">2. Multiple hikes</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/tutorial/splitting-up-components.html">3. Splitting up components</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/tutorial/navigation-and-routing.html">4. Navigation and routing</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/tutorial/mock-backend.html">5. Mocking our Backend</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/tutorial/look-and-feel.html">6. Tweaking the look/feel</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/tutorial/splash-screen.html">7. Splash screen</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/tutorial/final-thoughts.html">8. Final thoughts</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/reference.html">Full Reference</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/full-ux-class-reference.html">UX Class Reference</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/basics/uno-projects.html">Uno projects (.unoproj) Reference</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/ux-markup/ux-markup.html">UX Markup</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/literals.html">Literals</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/expressions.html">Expressions</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/names.html">Names (ux:Name)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/classes.html">Classes (ux:Class)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/dependencies.html">Dependencies (ux:Dependency)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/properties.html">Properties (ux:Property)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/resources.html">Resources (ux:Key)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/globals.html">Globals (ux:Global)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/templates.html">Templates (ux:Template)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/ux-markup/binding-and-auto-bind.html">Binding (ux:Binding &amp; ux:AutoBind)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/testing/testing.html">Testing (ux:Test)</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/xcode-and-android-studio-integration/tutorial.html">XCode &amp; Android Studio Integration (Pro)</a>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/primitives/primitives.html">Primitives</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/text.html">Text</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/rectangle.html">Rectangle</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/circle.html">Circle</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/curve.html">Curve</a>
+			<ul class="list-unstyled outline-nav outline-nav-level-3">
+				<li>
+					<a href="https://fuse-open.github.io/docs/fuse/controls/curvepoint.html">CurvePoint</a>
+				</li>
+			</ul>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/path.html">Path</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/image.html">Image</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/video.html">Video</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/charting/charting.html">Charting (Pro)</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/charting/plot.html">Plot</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/charting/dataseries.html">DataSeries</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/charting/plotaxis.html">PlotAxis</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/charting/plotdata.html">PlotData</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/charting/plotpoint.html">PlotPoint</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/charting/plotbar.html">PlotBar</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/charting/plotcurvepoint.html">PlotCurvePoint</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/layout/layout.html">Layout</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/elements/element.html">Element</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/panel.html">Panel</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/stackpanel.html">StackPanel</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/dockpanel.html">DockPanel</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/grid.html">Grid</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/wrappanel.html">WrapPanel</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/layouts/columnlayout.html">ColumnLayout</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/layouts/circlelayout.html">CircleLayout</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/scrollview.html">ScrollView</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/fuse/controls/control.html">Controls</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/button.html">Button</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/textinput.html">TextInput</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/textview.html">TextView</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/slider.html">Slider</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/switch.html">Switch</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/cameraviewbase.html">CameraView (Pro)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/mapview.html">MapView</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/webview.html">WebView</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/nativeviewhost.html">NativeViewHost</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/graphicsview.html">GraphicsView</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/scripting/scripting.html">Scripting &amp; Data</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/reactive/javascript.html">JavaScript</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/scripting/debugging.html">Debugging</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/reactive/databinding.html">DataBinding</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/reactive/each.html">Each</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/reactive/with.html">With</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/reactive/match.html">Match</a>
+			<ul class="list-unstyled outline-nav outline-nav-level-3">
+				<li>
+					<a href="https://fuse-open.github.io/docs/fuse/reactive/case.html">Case</a>
+				</li>
+			</ul>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/fusejs/observable.html">Observables</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/observable-api.html">API reference</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/observable-patterns.html">Patterns</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/navigation/navigation.html">Navigation</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/page.html">Page</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/pagecontrol.html">PageControl</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/navigation/router.html">Router</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/navigator.html">Navigator</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/triggers/transition.html">Transitions</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/fusejs/fusejs.html">JavaScript APIs</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/polyfills.html">Polyfills</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/eventemitter.html">EventEmitter</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/filesystem/filesystemmodule.html">FileSystem</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/storage/storagemodule.html">Storage</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/bundle.html">Bundle</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/lifecycle.html">Lifecycle</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/reactive/fusejs/interapp.html">InterApp</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/share/sharemodule.html">Share</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/http.html">HTTP</a>
+			<ul class="list-unstyled outline-nav outline-nav-level-3">
+				<li>
+					<a href="https://fuse-open.github.io/docs/backend/rest-apis.html">Working with REST APIs</a>
+				</li>
+			</ul>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/environment.html">Environment</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/reactive/fusejs/phone.html">Phone</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/camera/camera.html">Camera</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/cameraroll/cameraroll.html">CameraRoll</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/vibration/vibrationmodule.html">Vibration</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/geolocation/geolocation.html">GeoLocation</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/pushnotifications/push.html">Push notifications</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/localnotifications/localnotify.html">Local notifications</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/base64.html">Base64</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/reactive/fusejs/timermodule.html">Timer</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/imagetools/imagetools.html">ImageTools</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fusejs/third-party-modules.html">Third-party modules</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/uno/ux/resource.html">Resources</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/font.html">Fonts</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/resources/imagesource.html">Image sources</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/assets/bundle.html">Bundled files</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/assets/sketch-import.html">Import from Sketch</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/assets/sketch-symbol-import.html">Sketch symbols (Beta)</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/assets/iconfont-import.html">Import icon fonts</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/fuse/triggers/trigger.html">Triggers &amp; Animation</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/transform.html">Transforms</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/gestures/transformgesture.html">Gestures</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/animations/animator.html">Animators</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/triggers/timeline.html">Timeline</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/triggers/actions/triggeraction.html">Actions</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/selection/selection.html">Selection</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/triggers/stategroup.html">StateGroups</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/multilayoutpanel.html">MultiLayoutPanel</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/triggers/busy.html">Busy</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/effects/effects.html">Effects</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/effects/dropshadow.html">DropShadow</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/effects/blur.html">Blur</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/fuse/effects/halftone.html">Halftone</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/native-interop/native-interop.html">Native interop (Uno)</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/root-ns.html">Full Uno Class Reference</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/native-ux-components.html">Native UX components</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/native-js-modules.html">Native JS modules</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/foreign-code.html">Foreign code</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/using-third-party-sdks.html">Using 3rd party SDKs</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/unolibs/activity-utils.html">Activity utils</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/facebook-login.html">Facebook login using foreign code</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/gradle-support.html">Gradle Support</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/build-settings.html">Build settings</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/android-permissions.html">Android permissions</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/android-start-activity.html">Starting an Android Activity</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/native-interop/ios-capabilities.html">iOS Capabilities</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/alive/alive.html">Alive UX Kit (Pro)</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/alive.html">Components</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/alive/themes.html">Themes</a>
+			</li>
+		</ul>
+		</li>
+		<li>
+			<a href="https://fuse-open.github.io/docs/technical-corner/technical-corner.html">Technical corner</a>
+		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<li>
+				<a href="https://fuse-open.github.io/docs/technical-corner/fuse-protocol.html">Fuse plugin API</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/preview-and-export/preview-details.html">How preview works</a>
+			</li>
+			<li>
+				<a href="https://fuse-open.github.io/docs/technical-corner/uxl-handbook.html">UXL handbook</a>
+			</li>
+		</ul>
+		</li>
+	</ul>
+	</li>
+</ul>
+
+          </div>
+        </div>
+        <div role="main" class="col-12 col-lg-10 ml-sm-auto order-1 order-lg-2 px-4 main-content">
+          <header class="page-header">
+<h2 id="section-introduction">
+Fuse.Triggers Namespace
+</h2>
+<form class="advanced-toggle">
+<div class="form-check">
+<input class="form-check-input" type="checkbox" id="showAdvancedCheckbox">
+<label class="form-check-label" for="showAdvancedCheckbox">
+Show advanced things
+</label>
+</div>
+</form>
+</header>
+<section class="section-jump">
+<ul class="nav nav-pills">
+<li class="nav-item"><a class="nav-link disabled" href="#">Jump to:</a></li>
+<li class="nav-item"><a class="nav-link" href="#section-table-of-contents">Table of Contents</a></li>
+</ul>
+</section>
+<section class="table-of-contents">
+<h3 id="section-table-of-contents">Namespaces</h3>
+<section class="table-of-contents-section">
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-namespace fa fa-gears" title="Namespace"></span>
+<h5 id="fuse-triggers-actions-uno">
+<a href="../fuse/triggers/actions.html">
+Fuse.Triggers.Actions
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+</section>
+<h3 id="section-table-of-contents">UX Classes</h3>
+<section class="table-of-contents-section">
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="addinganimation-ux">
+<a href="../fuse/triggers/addinganimation.html">
+AddingAnimation
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Triggers when the element is added to the visual tree. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fuse/triggers/addinganimation.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="android-ux">
+<a href="../fuse/triggers/android.html">
+Android
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Triggers if run on an Android device <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fuse/triggers/android.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="busy-ux">
+<a href="../fuse/triggers/busy.html">
+Busy
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Marks a UX node as busy. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fuse/triggers/busy.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="busytaskmodule-ux">
+<a href="../fuse/triggers/busytaskmodule.html">
+BusyTaskModule
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="completed-ux">
+<a href="../fuse/triggers/completed.html">
+Completed
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Pulses when the busy status of a node is cleared. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fuse/triggers/completed.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="completedeventargs-ux">
+<a href="../fuse/triggers/completedeventargs.html">
+CompletedEventArgs
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="containingtext-ux">
+<a href="../fuse/triggers/containingtext.html">
+ContainingText
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>DEPRECATED: Use WhileContainsText instead</p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="interactioncompleted-ux">
+<a href="../fuse/triggers/interactioncompleted.html">
+InteractionCompleted
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Triggers when an interaction completes. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fuse/triggers/interactioncompleted.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="ios-ux">
+<a href="../fuse/triggers/ios.html">
+iOS
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Triggers if run on an iOS device <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fuse/triggers/ios.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="layoutanimation-ux">
+<a href="../fuse/triggers/layoutanimation.html">
+LayoutAnimation
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Triggers when the layout of an element changes <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fuse/triggers/layoutanimation.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="onbackbutton-ux">
+<a href="../fuse/triggers/onbackbutton.html">
+OnBackButton
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Triggers when the back-button is pressed <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fuse/triggers/onbackbutton.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="onkeypress-ux">
+<a href="../fuse/triggers/onkeypress.html">
+OnKeyPress
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Triggers when a specific key is pressed <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fuse/triggers/onkeypress.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="onuserevent-ux">
+<a href="../fuse/triggers/onuserevent.html">
+OnUserEvent
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Triggers when a <a href="../fuse/userevent.html">UserEvent</a> is raised. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fuse/triggers/onuserevent.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="pagebeginloading-ux">
+<a href="../fuse/triggers/pagebeginloading.html">
+PageBeginLoading
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Triggers when a <a href="../fuse/controls/webview.html">WebView</a> begins loading a page <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fuse/triggers/pagebeginloading.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="pageloaded-ux">
+<a href="../fuse/triggers/pageloaded.html">
+PageLoaded
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Triggers when a <a href="../fuse/controls/webview.html">WebView</a> finishes loading a page <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fuse/triggers/pageloaded.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="progressanimation-ux">
+<a href="../fuse/triggers/progressanimation.html">
+ProgressAnimation
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Triggers when a <a href="../fuse/controls/slider.html">Slider</a> or other compatible control changes its value. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fuse/triggers/progressanimation.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="pulltoreload-ux">
+<a href="../fuse/triggers/pulltoreload.html">
+PullToReload
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Helps you create a &quot;pull to reload&quot; interaction with a <code>ScrollView</code>. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fuse/triggers/pulltoreload.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="rangeanimation-ux">
+<a href="../fuse/triggers/rangeanimation.html">
+RangeAnimation
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Animates using a value clamped between a minimum and a maximum as progress. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fuse/triggers/rangeanimation.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="removinganimation-ux">
+<a href="../fuse/triggers/removinganimation.html">
+RemovingAnimation
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Animates when the parent element is removed <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fuse/triggers/removinganimation.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="scrolled-ux">
+<a href="../fuse/triggers/scrolled.html">
+Scrolled
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Triggers when the ScrollView is scrolled to within a specified region. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fuse/triggers/scrolled.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="scrolledargs-ux">
+<a href="../fuse/triggers/scrolledargs.html">
+ScrolledArgs
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="scrollinganimation-ux">
+<a href="../fuse/triggers/scrollinganimation.html">
+ScrollingAnimation
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Animates over a given scroll range. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fuse/triggers/scrollinganimation.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="state-ux">
+<a href="../fuse/triggers/state.html">
+State
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>A <a href="../fuse/triggers/trigger.html">Trigger</a> that is managed by a <a href="../fuse/triggers/stategroup.html">StateGroup</a>. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fuse/triggers/state.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="stategroup-ux">
+<a href="../fuse/triggers/stategroup.html">
+StateGroup
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>StateGroup manages a set of <a href="../fuse/triggers/state.html">State</a> triggers, making sure only a single <a href="../fuse/triggers/state.html">State</a> is active at once.
+A <a href="../fuse/triggers/state.html">State</a> is a regular <a href="../fuse/triggers/trigger.html">Trigger</a> that is controlled by a <a href="../fuse/triggers/stategroup.html">StateGroup</a>.
+Animators inside a <a href="../fuse/triggers/state.html">State</a> define what should change while that state is active.</p>
+<p>The basic structure of a StateGroup looks like this:</p>
+<pre><code class="language-xml">&lt;StateGroup&gt;
+	&lt;State ux:Name=&quot;firstState&quot; /&gt;
+	&lt;State ux:Name=&quot;secondState&quot; /&gt;
+&lt;/StateGroup&gt;
+</code></pre>
+<p>Now, this setup does nothing at all. We need to add some animators to our <a href="../fuse/triggers/state.html">State</a>s, so that they actually do something.
+We'll add a <a href="../fuse/controls/panel.html">Panel</a> as well, so we have something to animate.</p>
+<pre><code class="language-xml">&lt;Panel ux:Name=&quot;thePanel&quot; Width=&quot;100&quot; Height=&quot;100&quot; /&gt;
+	&lt;StateGroup&gt;
+		&lt;State ux:Name=&quot;firstState&quot;&gt;
+			&lt;Change thePanel.Color=&quot;#f00&quot; /&gt;
+		&lt;/State&gt;
+		&lt;State ux:Name=&quot;secondState&quot;&gt;
+			&lt;Change thePanel.Color=&quot;#00f&quot; /&gt;
+		&lt;/State&gt;	
+	&lt;/StateGroup&gt;
+&lt;/Panel&gt;
+</code></pre>
+<p>Since the first <a href="../fuse/triggers/state.html">State</a> in a StateGroup will be activated by default, the above example will display a red <a href="../fuse/controls/panel.html">Panel</a>.</p>
+<p>At this point, we'd like to switch to a different state somehow. This can be achieved in several ways, as seen below.</p>
+<h2 id="the-active-property">The <code>Active</code> property</h2>
+<p>The <code>Active</code> property can be used to activate a particular <a href="../fuse/triggers/state.html">State</a>.
+The below example displays a colored <a href="../fuse/controls/panel.html">Panel</a>, along with three buttons that change its color.</p>
+<pre><code class="language-xml">&lt;StackPanel&gt;
+	&lt;Panel ux:Name=&quot;thePanel&quot; Width=&quot;100&quot; Height=&quot;100&quot; /&gt;
+
+	&lt;StateGroup ux:Name=&quot;stateGroup&quot;&gt;
+		&lt;State ux:Name=&quot;redState&quot;&gt;
+			&lt;Change thePanel.Color=&quot;#f00&quot; Duration=&quot;0.2&quot;/&gt;
+		&lt;/State&gt;
+		&lt;State ux:Name=&quot;greenState&quot;&gt;
+			&lt;Change thePanel.Color=&quot;#0f0&quot; Duration=&quot;0.2&quot;/&gt;
+		&lt;/State&gt;
+		&lt;State ux:Name=&quot;blueState&quot;&gt;
+			&lt;Change thePanel.Color=&quot;#00f&quot; Duration=&quot;0.2&quot;/&gt;
+		&lt;/State&gt;
+	&lt;/StateGroup&gt;
+
+	&lt;Grid ColumnCount=&quot;3&quot;&gt;
+		&lt;Button Text=&quot;Red&quot;&gt;
+			&lt;Clicked&gt;
+				&lt;Set stateGroup.Active=&quot;redState&quot;/&gt;
+			&lt;/Clicked&gt;
+		&lt;/Button&gt;
+		&lt;Button Text=&quot;Green&quot;&gt;
+			&lt;Clicked&gt;
+				&lt;Set stateGroup.Active=&quot;greenState&quot;/&gt;
+			&lt;/Clicked&gt;
+		&lt;/Button&gt;
+		&lt;Button Text=&quot;Blue&quot;&gt;
+			&lt;Clicked&gt;
+				&lt;Set stateGroup.Active=&quot;blueState&quot;/&gt;
+			&lt;/Clicked&gt;
+		&lt;/Button&gt;
+	&lt;/Grid&gt;
+&lt;/StackPanel&gt;
+</code></pre>
+<h2 id="transitionstate">TransitionState</h2>
+<p>Instead of directly jumping to a particular state, the TransitionState action can be used to advance to the next <a href="../fuse/triggers/state.html">State</a> in a StateGroup, following the order in which they are declared.
+If a TransitionState is triggered while the last <a href="../fuse/triggers/state.html">State</a> is active, it wraps around to activate the first <a href="../fuse/triggers/state.html">State</a>.</p>
+<p>The following example displays a panel that will cycle its color between red, green and blue when clicked.</p>
+<pre><code class="language-xml">&lt;Panel ux:Name=&quot;thePanel&quot; Width=&quot;100&quot; Height=&quot;100&quot;&gt;
+	&lt;StateGroup ux:Name=&quot;stateGroup&quot;&gt;
+		&lt;State ux:Name=&quot;redState&quot;&gt;
+			&lt;Change thePanel.Color=&quot;#f00&quot; Duration=&quot;0.2&quot;/&gt;
+		&lt;/State&gt;
+		&lt;State ux:Name=&quot;greenState&quot;&gt;
+			&lt;Change thePanel.Color=&quot;#0f0&quot; Duration=&quot;0.2&quot;/&gt;
+		&lt;/State&gt;
+		&lt;State ux:Name=&quot;blueState&quot;&gt;
+			&lt;Change thePanel.Color=&quot;#00f&quot; Duration=&quot;0.2&quot;/&gt;
+		&lt;/State&gt;
+	&lt;/StateGroup&gt;
+
+	&lt;Clicked&gt;
+		&lt;TransitionState Type=&quot;Next&quot; Target=&quot;stateGroup&quot; /&gt;
+	&lt;/Clicked&gt;
+&lt;/Panel&gt;
+</code></pre>
+<h2 id="controlling-stategroup-using-javascript">Controlling StateGroup using JavaScript</h2>
+<p>A <code>StateGroup</code> may be controlled via its JavaScript interface.
+This is done either by calling the <code>goto(state)</code> or <code>gotoNext()</code> methods on the <a href="../fuse/triggers/stategroup.html">StateGroup</a> itself, or by calling the <code>goto()</code> method on a particular <a href="../fuse/triggers/state.html">State</a>.</p>
+<pre><code class="language-xml">&lt;JavaScript&gt;
+	exports.gotoNextState = function()
+	{
+		stateGroup.gotoNext();
+	}
+
+	exports.gotoSecondState = function()
+	{
+		stateGroup.goto(secondState);
+	}
+
+	exports.gotoThirdState = function()
+	{
+		thirdState.goto();
+	}
+&lt;/JavaScript&gt;
+
+&lt;StateGroup ux:Name=&quot;stateGroup&quot;&gt;
+	&lt;State ux:Name=&quot;firstState&quot;&gt;
+		&lt;!-- ... --&gt;	
+	&lt;/State&gt;
+	&lt;State ux:Name=&quot;secondState&quot;&gt;
+		&lt;!-- ... --&gt;
+	&lt;/State&gt;
+	&lt;State ux:Name=&quot;thirdState&quot;&gt;
+		&lt;!-- ... --&gt;
+	&lt;/State&gt;
+&lt;/StateGroup&gt;
+
+&lt;StackPanel&gt;
+	&lt;Button Clicked=&quot;{gotoNextState}&quot; Text=&quot;Next state&quot; /&gt;
+	&lt;Button Clicked=&quot;{gotoSecondState}&quot; Text=&quot;Second state&quot; /&gt;
+	&lt;Button Clicked=&quot;{gotoThirdState}&quot; Text=&quot;Third state&quot; /&gt;
+&lt;/StackPanel&gt;
+</code></pre>
+<h2 id="transition">Transition</h2>
+<p>We can also specify the <code>Transition</code> property, which can be either <code>Exclusive</code> or <code>Parallel</code>.
+<code>Exclusive</code> means that each state will have to be fully deactivated before the next state becomes active.
+<code>Parallel</code> means that as one state deactivates, the next one will become active and whatever properties they animate will be interpolated between them.</p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="textinputactiontriggered-ux">
+<a href="../fuse/triggers/textinputactiontriggered.html">
+TextInputActionTriggered
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Trigger for input action <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fuse/triggers/textinputactiontriggered.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="timeline-ux">
+<a href="../fuse/triggers/timeline.html">
+Timeline
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Groups several animations together <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fuse/triggers/timeline.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="transition-ux">
+<a href="../fuse/triggers/transition.html">
+Transition
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Controls the animations for page-to-page transitions in a <code>Navigator</code>. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fuse/triggers/transition.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="whilebusy-ux">
+<a href="../fuse/triggers/whilebusy.html">
+WhileBusy
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>A trigger that is active whenever a sibling or parent is marked as busy. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fuse/triggers/whilebusy.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="whilecompleted-ux">
+<a href="../fuse/triggers/whilecompleted.html">
+WhileCompleted
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Active while the <a href="../fuse/controls/video.html">Video</a> is completed. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fuse/triggers/whilecompleted.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="whilecontainstext-ux">
+<a href="../fuse/triggers/whilecontainstext.html">
+WhileContainsText
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Active while the surrounding context contains text. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fuse/triggers/whilecontainstext.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="whiledisabled-ux">
+<a href="../fuse/triggers/whiledisabled.html">
+WhileDisabled
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Active while the <code>IsEnabled</code> property of its containing element is <code>False</code>.</p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="whileenabled-ux">
+<a href="../fuse/triggers/whileenabled.html">
+WhileEnabled
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Active while the <code>IsEnabled</code> property of its containing element is <code>True</code>. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fuse/triggers/whileenabled.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="whilefailed-ux">
+<a href="../fuse/triggers/whilefailed.html">
+WhileFailed
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Active while the context has failed. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fuse/triggers/whilefailed.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="whilefalse-ux">
+<a href="../fuse/triggers/whilefalse.html">
+WhileFalse
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>A trigger that is active while its <code>Value</code> property is <code>false</code>. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fuse/triggers/whilefalse.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="whilefloat-ux">
+<a href="../fuse/triggers/whilefloat.html">
+WhileFloat
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Active when the <code>float</code> <code>Value</code> fulfills some criteria.</p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="whilefocused-ux">
+<a href="../fuse/triggers/whilefocused.html">
+WhileFocused
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Active whenever its containing element is in focus.</p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="whilefocuswithin-ux">
+<a href="../fuse/triggers/whilefocuswithin.html">
+WhileFocusWithin
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Active whenever a child of its containing element is in focus.</p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="whileinteracting-ux">
+<a href="../fuse/triggers/whileinteracting.html">
+WhileInteracting
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Active while the user is interacting with the surrounding element. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fuse/triggers/whileinteracting.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="whilekeyboardvisible-ux">
+<a href="../fuse/triggers/whilekeyboardvisible.html">
+WhileKeyboardVisible
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Active when on-screen controls are visible, such as the keyboard. This excludes the fixed controls, such as navigation and home button, on some devices.</p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="whileloading-ux">
+<a href="../fuse/triggers/whileloading.html">
+WhileLoading
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Active while a resource in the surrounding context is loading. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fuse/triggers/whileloading.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="whilenotfocused-ux">
+<a href="../fuse/triggers/whilenotfocused.html">
+WhileNotFocused
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Active whenever its containing element is not in focus. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fuse/triggers/whilenotfocused.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="whilepageloading-ux">
+<a href="../fuse/triggers/whilepageloading.html">
+WhilePageLoading
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>A trigger that is active while its parent <a href="../fuse/controls/webview.html">WebView</a> is loading. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fuse/triggers/whilepageloading.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="whilepaused-ux">
+<a href="../fuse/triggers/whilepaused.html">
+WhilePaused
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Active while the <a href="../fuse/controls/video.html">Video</a> is paused. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fuse/triggers/whilepaused.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="whileplaying-ux">
+<a href="../fuse/triggers/whileplaying.html">
+WhilePlaying
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Active while the <a href="../fuse/controls/video.html">Video</a> is playing. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fuse/triggers/whileplaying.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="whilescrollable-ux">
+<a href="../fuse/triggers/whilescrollable.html">
+WhileScrollable
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Active when a <a href="../fuse/controls/scrollview.html">ScrollView</a> can be scrolled. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fuse/triggers/whilescrollable.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="whilescrolled-ux">
+<a href="../fuse/triggers/whilescrolled.html">
+WhileScrolled
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Is active while the <a href="../fuse/controls/scrollview.html">ScrollView</a> is scrolled within a given region. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fuse/triggers/whilescrolled.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="whilestring-ux">
+<a href="../fuse/triggers/whilestring.html">
+WhileString
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Activate when the condition on the string value is true</p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="whiletrue-ux">
+<a href="../fuse/triggers/whiletrue.html">
+WhileTrue
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>A trigger that is active while its <code>Value</code> property is <code>true</code>. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fuse/triggers/whiletrue.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="whilevisible-ux">
+<a href="../fuse/triggers/whilevisible.html">
+WhileVisible
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Active when the parent element is visible.</p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="whilevisibleinscrollview-ux">
+<a href="../fuse/triggers/whilevisibleinscrollview.html">
+WhileVisibleInScrollView
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Active while an element is positioned within the visible area of the <a href="../fuse/controls/scrollview.html">ScrollView</a>. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fuse/triggers/whilevisibleinscrollview.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="whilewindowlandscape-ux">
+<a href="../fuse/triggers/whilewindowlandscape.html">
+WhileWindowLandscape
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Active when the app's viewport width is larger than its height. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fuse/triggers/whilewindowlandscape.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="whilewindowportrait-ux">
+<a href="../fuse/triggers/whilewindowportrait.html">
+WhileWindowPortrait
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Active when the app's viewport height is larger than or equal to its width. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fuse/triggers/whilewindowportrait.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxclass fa fa-cog" title="UxClass"></span>
+<h5 id="whilewindowsize-ux">
+<a href="../fuse/triggers/whilewindowsize.html">
+WhileWindowSize
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Active while the size of the app's viewport fulfills some given constraints. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fuse/triggers/whilewindowsize.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
+</article>
+
+</section>
+<h3 id="section-table-of-contents">Classes</h3>
+<section class="table-of-contents-section">
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-class fa fa-cog" title="Class"></span>
+<h5 id="busytask-uno">
+<a href="../fuse/triggers/busytask.html">
+BusyTask
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-class fa fa-cog" title="Class"></span>
+<h5 id="iscrolledlengths-uno">
+<a href="../fuse/triggers/iscrolledlengths.html">
+IScrolledLengths
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-class fa fa-cog" title="Class"></span>
+<h5 id="layouttransition-uno">
+<a href="../fuse/triggers/layouttransition.html">
+LayoutTransition
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-class fa fa-cog" title="Class"></span>
+<h5 id="pulsetrigger-lt-argst-gt-uno">
+<a href="../fuse/triggers/pulsetrigger_1.html">
+PulseTrigger&lt;ArgsT&gt;
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>A common base for pulse-like triggers (thus that pulse when an event is triggered). <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fuse/triggers/pulsetrigger_1.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-class fa fa-cog" title="Class"></span>
+<h5 id="trigger-uno">
+<a href="../fuse/triggers/trigger.html">
+Trigger
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Triggers are the main tools for interaction response, transitions and animation in Fuse. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fuse/triggers/trigger.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-class fa fa-cog" title="Class"></span>
+<h5 id="whilebool-uno">
+<a href="../fuse/triggers/whilebool.html">
+WhileBool
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-class fa fa-cog" title="Class"></span>
+<h5 id="whileenableddisabledtrigger-uno">
+<a href="../fuse/triggers/whileenableddisabledtrigger.html">
+WhileEnabledDisabledTrigger
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-class fa fa-cog" title="Class"></span>
+<h5 id="whiletrigger-uno">
+<a href="../fuse/triggers/whiletrigger.html">
+WhileTrigger
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-class fa fa-cog" title="Class"></span>
+<h5 id="whilevalue-lt-t-gt-uno">
+<a href="../fuse/triggers/whilevalue_1.html">
+WhileValue&lt;T&gt;
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-class fa fa-cog" title="Class"></span>
+<h5 id="whilewindowaspect-uno">
+<a href="../fuse/triggers/whilewindowaspect.html">
+WhileWindowAspect
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-class fa fa-cog" title="Class"></span>
+<h5 id="windowsizetrigger-uno">
+<a href="../fuse/triggers/windowsizetrigger.html">
+WindowSizeTrigger
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+</section>
+<h3 id="section-table-of-contents">Delegates</h3>
+<section class="table-of-contents-section">
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-delegate fa fa-arrow-circle-o-right" title="Delegate"></span>
+<h5 id="keypresshandler-object-keyeventargs-uno">
+<a href="../fuse/triggers/keypresshandler.html">
+KeyPressHandler (object, KeyEventArgs)
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+</section>
+<h3 id="section-table-of-contents">Enums</h3>
+<section class="table-of-contents-section">
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-enum fa fa-tags" title="Enum"></span>
+<h5 id="busyon-uno">
+<a href="../fuse/triggers/busyon.html">
+BusyOn
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-enum fa fa-tags" title="Enum"></span>
+<h5 id="busytaskactivity-uno">
+<a href="../fuse/triggers/busytaskactivity.html">
+BusyTaskActivity
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-enum fa fa-tags" title="Enum"></span>
+<h5 id="busytaskmatch-uno">
+<a href="../fuse/triggers/busytaskmatch.html">
+BusyTaskMatch
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-enum fa fa-tags" title="Enum"></span>
+<h5 id="completedactivation-uno">
+<a href="../fuse/triggers/completedactivation.html">
+CompletedActivation
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-enum fa fa-tags" title="Enum"></span>
+<h5 id="layoutanimationtype-uno">
+<a href="../fuse/triggers/layoutanimationtype.html">
+LayoutAnimationType
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-enum fa fa-tags" title="Enum"></span>
+<h5 id="onusereventfilter-uno">
+<a href="../fuse/triggers/onusereventfilter.html">
+OnUserEventFilter
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-enum fa fa-tags" title="Enum"></span>
+<h5 id="scrolledwhere-uno">
+<a href="../fuse/triggers/scrolledwhere.html">
+ScrolledWhere
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>A relative location in a ScrollView</p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-enum fa fa-tags" title="Enum"></span>
+<h5 id="scrollinganimationrange-uno">
+<a href="../fuse/triggers/scrollinganimationrange.html">
+ScrollingAnimationRange
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-enum fa fa-tags" title="Enum"></span>
+<h5 id="statetransition-uno">
+<a href="../fuse/triggers/statetransition.html">
+StateTransition
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-enum fa fa-tags" title="Enum"></span>
+<h5 id="transitiondirection-uno">
+<a href="../fuse/triggers/transitiondirection.html">
+TransitionDirection
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Limits the <code>Transition</code> to match in a particular direction, relative to the page, of navigation.</p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-enum fa fa-tags" title="Enum"></span>
+<h5 id="transitionmode-uno">
+<a href="../fuse/triggers/transitionmode.html">
+TransitionMode
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-enum fa fa-tags" title="Enum"></span>
+<h5 id="triggerbypassmode-uno">
+<a href="../fuse/triggers/triggerbypassmode.html">
+TriggerBypassMode
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-enum fa fa-tags" title="Enum"></span>
+<h5 id="triggerplaystate-uno">
+<a href="../fuse/triggers/triggerplaystate.html">
+TriggerPlayState
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-enum fa fa-tags" title="Enum"></span>
+<h5 id="whilestringtest-uno">
+<a href="../fuse/triggers/whilestringtest.html">
+WhileStringTest
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-enum fa fa-tags" title="Enum"></span>
+<h5 id="whilevisibleinscrollviewmode-uno">
+<a href="../fuse/triggers/whilevisibleinscrollviewmode.html">
+WhileVisibleInScrollViewMode
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>How the bounds of an element are treated.</p>
+
+</div>
+</article>
+
+</section>
+<h3 id="section-table-of-contents">Interfaces</h3>
+<section class="table-of-contents-section">
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-interface fa fa-file-o" title="Interface"></span>
+<h5 id="ibusyhandler-uno">
+<a href="../fuse/triggers/ibusyhandler.html">
+IBusyHandler
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-interface fa fa-file-o" title="Interface"></span>
+<h5 id="imediaplayback-uno">
+<a href="../fuse/triggers/imediaplayback.html">
+IMediaPlayback
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-interface fa fa-file-o" title="Interface"></span>
+<h5 id="iplayback-uno">
+<a href="../fuse/triggers/iplayback.html">
+IPlayback
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-interface fa fa-file-o" title="Interface"></span>
+<h5 id="iprogress-uno">
+<a href="../fuse/triggers/iprogress.html">
+IProgress
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-interface fa fa-file-o" title="Interface"></span>
+<h5 id="ipulsetrigger-uno">
+<a href="../fuse/triggers/ipulsetrigger.html">
+IPulseTrigger
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-interface fa fa-file-o" title="Interface"></span>
+<h5 id="iscrolledlength-uno">
+<a href="../fuse/triggers/iscrolledlength.html">
+IScrolledLength
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-interface fa fa-file-o" title="Interface"></span>
+<h5 id="ivalue-lt-t-gt-uno">
+<a href="../fuse/triggers/ivalue_1.html">
+IValue&lt;T&gt;
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+</section>
+</section>
+
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="https://fuse-open.github.io/docs/jquery.js?_v=20180504135303"></script>
+    <script type="text/javascript" src="https://fuse-open.github.io/docs/popper.js?_v=20180504135303"></script>
+    <script type="text/javascript" src="https://fuse-open.github.io/docs/bootstrap.js?_v=20180504135303"></script>
+    <script type="text/javascript" src="https://fuse-open.github.io/docs/prism.js?_v=20180504135303"></script>
+    <script type="text/javascript" src="https://fuse-open.github.io/docs/site.js?_v=20180504135303"></script>
+  </body>
+</html>
