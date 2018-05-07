@@ -4,9 +4,9 @@ This is a step-by-step tutorial that takes you through installation, creating, p
 
 ## Setup
 
-Simply [download the latest version of Fuse](/downloads), install it and you're ready to go.
+Simply [download the latest version of Fuse](https://www.fusetools.com/downloads), install it and you're ready to go.
 
-Installation should be a breeze, but if something iffy happens, please [let us know!](/contact). There are also setup instructions for [macOS](installation/setup-install-osx.md) and [Windows](installation/setup-install-win.md), plus [uninstall instructions for macOS](https://gist.github.com/Tapped/daa78c08882f33b0c7c3) if you need them.
+Installation should be a breeze, but if something iffy happens, please [let us know!](https://www.fusetools.com/contact). There are also setup instructions for [macOS](installation/setup-install-osx.md) and [Windows](installation/setup-install-win.md), plus [uninstall instructions for macOS](https://gist.github.com/Tapped/daa78c08882f33b0c7c3) if you need them.
 
 ## Creating a new Project
 
@@ -155,6 +155,6 @@ From the command line you do this by typing
 
 ### Okay, that was easy! What's next?
 
-Once you are comfortable with the basics above, we suggest you take a look at our [end-to-end tutorial](../tutorial/tutorial.md), where we'll build a hike-tracking app called hikr from scratch. You should also check out the [Example section](/examples)!
+Once you are comfortable with the basics above, we suggest you take a look at our [end-to-end tutorial](../tutorial/tutorial.md), where we'll build a hike-tracking app called hikr from scratch. You should also check out the [Example section](https://examples.fusetools.com/)!
 
-We are also happy to answer all your questions in the [Forums](/community/forums)
+We are also happy to answer all your questions in the [Forums](https://forums.fusetools.com/)

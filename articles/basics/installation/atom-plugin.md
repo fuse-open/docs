@@ -12,7 +12,7 @@ Open [Atom's settings view](http://flight-manual.atom.io/getting-started/section
 
 From there, search for the `fuse` package and click Install, as shown below.
 
-<img class="img-responsive img-rounded" src="../../../media/atom-install-fuse-package.png" />
+<img class="img-responsive img-rounded" src="../../media/atom-install-fuse-package.png" />
 
 ## From the command line
 
