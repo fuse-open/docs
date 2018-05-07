@@ -9,11 +9,11 @@ In this guide, we will look at how you [install Fuse](installation.md) on both [
  * [Uno projects](uno-projects.md)
 
 Also, be sure to check out our end-to-end tutorial, where we'll learn many of Fuse's core concepts by building a hike tracking app called hikr:
- * [hikr tutorial](/tutorial/tutorial.md)
+ * [hikr tutorial](../tutorial/tutorial.md)
 
 There are also some general overviews:
 
  * [UX Markup reference](../ux-markup/ux-markup.md)
  * [Feature overview](feature-overview.md)
 
-Stuck? Head over to the [forums](/community) and ask away!
+Stuck? Head over to the [forums](https://forums.fusetools.com/) and ask away!
