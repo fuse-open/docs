@@ -1,0 +1,809 @@
+{
+  "entity": {
+    "base": {
+      "id": {
+        "id": "fuse/reactive/capsobject",
+        "parentId": "fuse/reactive",
+        "type": "Class",
+        "modifiers": [
+          "public"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/reactive/capsobject",
+        "href": "fuse/reactive/capsobject"
+      },
+      "titles": {
+        "indexTitle": "CapsObject",
+        "fullyQualifiedIndexTitle": "Fuse.Reactive.CapsObject"
+      }
+    },
+    "location": {
+      "namespaceTitle": "Fuse.Reactive",
+      "namespaceUri": "fuse/reactive",
+      "packageName": "Fuse.Reactive.Expressions",
+      "packageVersion": "1.8.0-rc2"
+    },
+    "inheritance": {
+      "root": {
+        "uri": "uno/object",
+        "title": "object",
+        "children": [
+          {
+            "uri": "uno/ux/propertyobject",
+            "title": "Uno.UX.PropertyObject",
+            "children": [
+              {
+                "uri": "fuse/reactive/capsobject",
+                "title": "Fuse.Reactive.CapsObject",
+                "children": [
+                  {
+                    "uri": "fuse/reactive/devicecaps",
+                    "title": "Fuse.Reactive.DeviceCaps",
+                    "children": [],
+                    "isCurrent": true
+                  }
+                ],
+                "isAncestor": true
+              }
+            ],
+            "isAncestor": true
+          }
+        ],
+        "isAncestor": true
+      },
+      "hasInheritance": true
+    },
+    "implementedInterfaces": [
+      {
+        "id": {
+          "id": "uno/ux/ipropertylistener",
+          "parentId": "uno/ux",
+          "type": "Interface",
+          "modifiers": [
+            "public",
+            "abstract"
+          ]
+        },
+        "uri": {
+          "idUri": "uno/ux/ipropertylistener",
+          "href": "uno/ux/ipropertylistener"
+        },
+        "titles": {
+          "indexTitle": "IPropertyListener",
+          "fullyQualifiedIndexTitle": "Uno.UX.IPropertyListener"
+        }
+      },
+      {
+        "comment": {
+          "brief": "Represents a key-value object, where the keys can be enumerated and looked up by string name.",
+          "full": "Represents a key-value object, where the keys can be enumerated and looked up by string name.\n\nThe enumerable keys do not neccessarily correspond to Uno properties on the object.\n\nAllthough read-only through this interface, the object is not neccessarily immutable.\nChanges to the object can only happen on the UI thread. This means the UI thread can safely\nread properties from this object.\n\nIf the object also supports `Fuse.Reactive.IObservableObject`, consumers can subscribe\nto receive change notifications.",
+          "attributes": {
+            "deprecated": true
+          }
+        },
+        "id": {
+          "id": "fuse/iobject",
+          "parentId": "fuse",
+          "type": "Interface",
+          "modifiers": [
+            "public",
+            "abstract"
+          ]
+        },
+        "uri": {
+          "idUri": "fuse/iobject",
+          "href": "fuse/iobject"
+        },
+        "titles": {
+          "indexTitle": "IObject",
+          "fullyQualifiedIndexTitle": "Fuse.IObject"
+        }
+      }
+    ],
+    "id": {
+      "id": "fuse/reactive/devicecaps",
+      "parentId": "fuse/reactive",
+      "type": "Class",
+      "modifiers": [
+        "public"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/reactive/devicecaps",
+      "href": "fuse/reactive/devicecaps"
+    },
+    "titles": {
+      "pageTitle": "DeviceCaps Class",
+      "navigationTitle": "DeviceCaps Class",
+      "fullTitle": "Fuse.Reactive.DeviceCaps",
+      "indexTitle": "DeviceCaps",
+      "fullyQualifiedIndexTitle": "Fuse.Reactive.DeviceCaps"
+    },
+    "syntax": {
+      "uno": "public class DeviceCaps : Fuse.Reactive.CapsObject {}"
+    },
+    "comment": {
+      "brief": "Provides information about the device.",
+      "full": "Provides information about the device.\n\nUse the global `Device` variable to access these reactive variables. For example, to include something only on Android:\n\n    <Instance IsEnabled=\"Device.isAndroid\">\n        <CameraView/>\n    </Instance>\n\nThe properties are:\n    - `isAndroid` (bool): True if running on Android OS, false otherwise\n    - `isIOS` (bool): True if running on iOS OS, false otherwise\n    - `isMac` (bool): True if running on Mac OS, false otherwise\n    - `isWindows` (bool): True if running on Windows OS, false otherwise\n    - `isPreview` (bool): True if running inside Preview\n\nOn iOS and Android the following are also available:\n    - `osVersion` (int3): (major, minor, revision) Version of the operating system. (Android: This is for information, stats, and/or debug purposes only. As it doesn't reliably reflect any system features it should not be used for any conditionals.)\n\nOn Android:\n    - `apiLevel` (int): API Level supported by the device"
+    }
+  },
+  "tableOfContents": {
+    "properties": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/reactive/capsobject",
+            "parentId": "fuse/reactive",
+            "type": "Class",
+            "modifiers": [
+              "public"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/reactive/capsobject",
+            "href": "fuse/reactive/capsobject"
+          },
+          "titles": {
+            "indexTitle": "CapsObject",
+            "fullyQualifiedIndexTitle": "Fuse.Reactive.CapsObject"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/object",
+              "title": "object",
+              "fullyQualifiedTitle": "object"
+            },
+            "parameters": [
+              {
+                "name": "key",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              }
+            ],
+            "id": {
+              "id": "fuse/reactive/devicecaps/item_968f99a6",
+              "parentId": "fuse/reactive/devicecaps",
+              "type": "Property",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/devicecaps/item_968f99a6",
+              "href": "fuse/reactive/capsobject/item_968f99a6",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "[string]",
+              "fullyQualifiedIndexTitle": "Fuse.Reactive.CapsObject.[string]"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/string",
+              "title": "string[]",
+              "fullyQualifiedTitle": "string[]"
+            },
+            "id": {
+              "id": "fuse/reactive/devicecaps/keys",
+              "parentId": "fuse/reactive/devicecaps",
+              "type": "Property",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/devicecaps/keys",
+              "href": "fuse/reactive/capsobject/keys",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Keys",
+              "fullyQualifiedIndexTitle": "Fuse.Reactive.CapsObject.Keys"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/collections/dictionary_2",
+              "title": "Dictionary<string, object>",
+              "fullyQualifiedTitle": "Uno.Collections.Dictionary<string, object>"
+            },
+            "id": {
+              "id": "fuse/reactive/devicecaps/props",
+              "parentId": "fuse/reactive/devicecaps",
+              "type": "Property",
+              "modifiers": [
+                "protected"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/devicecaps/props",
+              "href": "fuse/reactive/capsobject/props",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Props",
+              "fullyQualifiedIndexTitle": "Fuse.Reactive.CapsObject.Props"
+            }
+          }
+        ]
+      }
+    ],
+    "methods": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/reactive/capsobject",
+            "parentId": "fuse/reactive",
+            "type": "Class",
+            "modifiers": [
+              "public"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/reactive/capsobject",
+            "href": "fuse/reactive/capsobject"
+          },
+          "titles": {
+            "indexTitle": "CapsObject",
+            "fullyQualifiedIndexTitle": "Fuse.Reactive.CapsObject"
+          }
+        },
+        "items": [
+          {
+            "parameters": [
+              {
+                "name": "name",
+                "href": "uno/ux/selector",
+                "title": "Selector",
+                "fullyQualifiedTitle": "Uno.UX.Selector"
+              },
+              {
+                "name": "value",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              }
+            ],
+            "id": {
+              "id": "fuse/reactive/devicecaps/changeproperty_f05e1824",
+              "parentId": "fuse/reactive/devicecaps",
+              "type": "Method",
+              "modifiers": [
+                "protected"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/devicecaps/changeproperty_f05e1824",
+              "href": "fuse/reactive/capsobject/changeproperty_f05e1824",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "ChangeProperty(Selector, object)",
+              "fullyQualifiedIndexTitle": "Fuse.Reactive.CapsObject.ChangeProperty(Uno.UX.Selector, object)"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "parameters": [
+              {
+                "name": "key",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              }
+            ],
+            "id": {
+              "id": "fuse/reactive/devicecaps/containskey_968f99a6",
+              "parentId": "fuse/reactive/devicecaps",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/devicecaps/containskey_968f99a6",
+              "href": "fuse/reactive/capsobject/containskey_968f99a6",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "ContainsKey(string)",
+              "fullyQualifiedIndexTitle": "Fuse.Reactive.CapsObject.ContainsKey(string)"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "uno/ux/propertyobject",
+            "parentId": "uno/ux",
+            "type": "Class",
+            "modifiers": [
+              "public"
+            ]
+          },
+          "uri": {
+            "idUri": "uno/ux/propertyobject",
+            "href": "uno/ux/propertyobject"
+          },
+          "titles": {
+            "indexTitle": "PropertyObject",
+            "fullyQualifiedIndexTitle": "Uno.UX.PropertyObject"
+          }
+        },
+        "items": [
+          {
+            "parameters": [
+              {
+                "name": "listener",
+                "href": "uno/ux/ipropertylistener",
+                "title": "IPropertyListener",
+                "fullyQualifiedTitle": "Uno.UX.IPropertyListener"
+              }
+            ],
+            "id": {
+              "id": "fuse/reactive/devicecaps/addpropertylistener_496a874a",
+              "parentId": "fuse/reactive/devicecaps",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/devicecaps/addpropertylistener_496a874a",
+              "href": "uno/ux/propertyobject/addpropertylistener_496a874a",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "AddPropertyListener(IPropertyListener)",
+              "fullyQualifiedIndexTitle": "Uno.UX.PropertyObject.AddPropertyListener(Uno.UX.IPropertyListener)"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "property",
+                "href": "uno/ux/selector",
+                "title": "Selector",
+                "fullyQualifiedTitle": "Uno.UX.Selector"
+              }
+            ],
+            "id": {
+              "id": "fuse/reactive/devicecaps/onpropertychanged_16d735f3",
+              "parentId": "fuse/reactive/devicecaps",
+              "type": "Method",
+              "modifiers": [
+                "protected"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/devicecaps/onpropertychanged_16d735f3",
+              "href": "uno/ux/propertyobject/onpropertychanged_16d735f3",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "OnPropertyChanged(Selector)",
+              "fullyQualifiedIndexTitle": "Uno.UX.PropertyObject.OnPropertyChanged(Uno.UX.Selector)"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "property",
+                "href": "uno/ux/selector",
+                "title": "Selector",
+                "fullyQualifiedTitle": "Uno.UX.Selector"
+              },
+              {
+                "name": "origin",
+                "href": "uno/ux/ipropertylistener",
+                "title": "IPropertyListener",
+                "fullyQualifiedTitle": "Uno.UX.IPropertyListener"
+              }
+            ],
+            "id": {
+              "id": "fuse/reactive/devicecaps/onpropertychanged_6422fe92",
+              "parentId": "fuse/reactive/devicecaps",
+              "type": "Method",
+              "modifiers": [
+                "protected",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/devicecaps/onpropertychanged_6422fe92",
+              "href": "uno/ux/propertyobject/onpropertychanged_6422fe92",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "OnPropertyChanged(Selector, IPropertyListener)",
+              "fullyQualifiedIndexTitle": "Uno.UX.PropertyObject.OnPropertyChanged(Uno.UX.Selector, Uno.UX.IPropertyListener)"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "listener",
+                "href": "uno/ux/ipropertylistener",
+                "title": "IPropertyListener",
+                "fullyQualifiedTitle": "Uno.UX.IPropertyListener"
+              }
+            ],
+            "id": {
+              "id": "fuse/reactive/devicecaps/removepropertylistener_496a874a",
+              "parentId": "fuse/reactive/devicecaps",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/devicecaps/removepropertylistener_496a874a",
+              "href": "uno/ux/propertyobject/removepropertylistener_496a874a",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "RemovePropertyListener(IPropertyListener)",
+              "fullyQualifiedIndexTitle": "Uno.UX.PropertyObject.RemovePropertyListener(Uno.UX.IPropertyListener)"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "uno/object",
+            "parentId": "uno",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "intrinsic"
+            ]
+          },
+          "uri": {
+            "idUri": "uno/object",
+            "href": "uno/object"
+          },
+          "titles": {
+            "indexTitle": "object",
+            "fullyQualifiedIndexTitle": "object"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "parameters": [
+              {
+                "name": "o",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              }
+            ],
+            "id": {
+              "id": "fuse/reactive/devicecaps/equals_a09c80e3",
+              "parentId": "fuse/reactive/devicecaps",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/devicecaps/equals_a09c80e3",
+              "href": "uno/object/equals_a09c80e3",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Equals(object)",
+              "fullyQualifiedIndexTitle": "Uno.Object.Equals(object)"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/int",
+              "title": "int",
+              "fullyQualifiedTitle": "int"
+            },
+            "id": {
+              "id": "fuse/reactive/devicecaps/gethashcode",
+              "parentId": "fuse/reactive/devicecaps",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/devicecaps/gethashcode",
+              "href": "uno/object/gethashcode",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetHashCode",
+              "fullyQualifiedIndexTitle": "Uno.Object.GetHashCode"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/type",
+              "title": "Type",
+              "fullyQualifiedTitle": "Uno.Type"
+            },
+            "id": {
+              "id": "fuse/reactive/devicecaps/gettype",
+              "parentId": "fuse/reactive/devicecaps",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/devicecaps/gettype",
+              "href": "uno/object/gettype",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetType",
+              "fullyQualifiedIndexTitle": "Uno.Object.GetType"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "id": {
+              "id": "fuse/reactive/devicecaps/tostring",
+              "parentId": "fuse/reactive/devicecaps",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/devicecaps/tostring",
+              "href": "uno/object/tostring",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "ToString",
+              "fullyQualifiedIndexTitle": "Uno.Object.ToString"
+            }
+          }
+        ]
+      }
+    ],
+    "fields": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/reactive/devicecaps",
+            "parentId": "fuse/reactive",
+            "type": "Class",
+            "modifiers": [
+              "public"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/reactive/devicecaps",
+            "href": "fuse/reactive/devicecaps"
+          },
+          "titles": {
+            "indexTitle": "DeviceCaps",
+            "fullyQualifiedIndexTitle": "Fuse.Reactive.DeviceCaps"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "fuse/reactive/devicecaps",
+              "title": "DeviceCaps",
+              "fullyQualifiedTitle": "Fuse.Reactive.DeviceCaps"
+            },
+            "id": {
+              "id": "fuse/reactive/devicecaps/device",
+              "parentId": "fuse/reactive/devicecaps",
+              "type": "Field",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/devicecaps/device",
+              "href": "fuse/reactive/devicecaps/device"
+            },
+            "titles": {
+              "indexTitle": "Device",
+              "fullyQualifiedIndexTitle": "Fuse.Reactive.DeviceCaps.Device"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/ux/selector",
+              "title": "Selector",
+              "fullyQualifiedTitle": "Uno.UX.Selector"
+            },
+            "id": {
+              "id": "fuse/reactive/devicecaps/nameapilevel",
+              "parentId": "fuse/reactive/devicecaps",
+              "type": "Field",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/devicecaps/nameapilevel",
+              "href": "fuse/reactive/devicecaps/nameapilevel"
+            },
+            "titles": {
+              "indexTitle": "NameAPILevel",
+              "fullyQualifiedIndexTitle": "Fuse.Reactive.DeviceCaps.NameAPILevel"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/ux/selector",
+              "title": "Selector",
+              "fullyQualifiedTitle": "Uno.UX.Selector"
+            },
+            "id": {
+              "id": "fuse/reactive/devicecaps/nameisandroid",
+              "parentId": "fuse/reactive/devicecaps",
+              "type": "Field",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/devicecaps/nameisandroid",
+              "href": "fuse/reactive/devicecaps/nameisandroid"
+            },
+            "titles": {
+              "indexTitle": "NameIsAndroid",
+              "fullyQualifiedIndexTitle": "Fuse.Reactive.DeviceCaps.NameIsAndroid"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/ux/selector",
+              "title": "Selector",
+              "fullyQualifiedTitle": "Uno.UX.Selector"
+            },
+            "id": {
+              "id": "fuse/reactive/devicecaps/nameisios",
+              "parentId": "fuse/reactive/devicecaps",
+              "type": "Field",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/devicecaps/nameisios",
+              "href": "fuse/reactive/devicecaps/nameisios"
+            },
+            "titles": {
+              "indexTitle": "NameIsIOS",
+              "fullyQualifiedIndexTitle": "Fuse.Reactive.DeviceCaps.NameIsIOS"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/ux/selector",
+              "title": "Selector",
+              "fullyQualifiedTitle": "Uno.UX.Selector"
+            },
+            "id": {
+              "id": "fuse/reactive/devicecaps/nameismac",
+              "parentId": "fuse/reactive/devicecaps",
+              "type": "Field",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/devicecaps/nameismac",
+              "href": "fuse/reactive/devicecaps/nameismac"
+            },
+            "titles": {
+              "indexTitle": "NameIsMac",
+              "fullyQualifiedIndexTitle": "Fuse.Reactive.DeviceCaps.NameIsMac"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/ux/selector",
+              "title": "Selector",
+              "fullyQualifiedTitle": "Uno.UX.Selector"
+            },
+            "id": {
+              "id": "fuse/reactive/devicecaps/nameispreview",
+              "parentId": "fuse/reactive/devicecaps",
+              "type": "Field",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/devicecaps/nameispreview",
+              "href": "fuse/reactive/devicecaps/nameispreview"
+            },
+            "titles": {
+              "indexTitle": "NameIsPreview",
+              "fullyQualifiedIndexTitle": "Fuse.Reactive.DeviceCaps.NameIsPreview"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/ux/selector",
+              "title": "Selector",
+              "fullyQualifiedTitle": "Uno.UX.Selector"
+            },
+            "id": {
+              "id": "fuse/reactive/devicecaps/nameiswindows",
+              "parentId": "fuse/reactive/devicecaps",
+              "type": "Field",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/devicecaps/nameiswindows",
+              "href": "fuse/reactive/devicecaps/nameiswindows"
+            },
+            "titles": {
+              "indexTitle": "NameIsWindows",
+              "fullyQualifiedIndexTitle": "Fuse.Reactive.DeviceCaps.NameIsWindows"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/ux/selector",
+              "title": "Selector",
+              "fullyQualifiedTitle": "Uno.UX.Selector"
+            },
+            "id": {
+              "id": "fuse/reactive/devicecaps/nameosversion",
+              "parentId": "fuse/reactive/devicecaps",
+              "type": "Field",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/devicecaps/nameosversion",
+              "href": "fuse/reactive/devicecaps/nameosversion"
+            },
+            "titles": {
+              "indexTitle": "NameOSVersion",
+              "fullyQualifiedIndexTitle": "Fuse.Reactive.DeviceCaps.NameOSVersion"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,764 @@
+{
+  "entity": {
+    "id": {
+      "id": "fuse/drawing",
+      "parentId": "fuse",
+      "type": "Namespace",
+      "modifiers": []
+    },
+    "uri": {
+      "idUri": "fuse/drawing",
+      "href": "fuse/drawing"
+    },
+    "titles": {
+      "pageTitle": "Fuse.Drawing Namespace",
+      "navigationTitle": "Fuse.Drawing Namespace",
+      "fullTitle": "Fuse.Drawing",
+      "indexTitle": "Fuse.Drawing",
+      "fullyQualifiedIndexTitle": "Fuse.Drawing"
+    },
+    "syntax": {
+      "uno": "namespace Drawing {}"
+    }
+  },
+  "tableOfContents": {
+    "namespaces": [
+      {
+        "items": [
+          {
+            "id": {
+              "id": "fuse/drawing/internal",
+              "parentId": "fuse/drawing",
+              "type": "Namespace",
+              "modifiers": []
+            },
+            "uri": {
+              "idUri": "fuse/drawing/internal",
+              "href": "fuse/drawing/internal"
+            },
+            "titles": {
+              "indexTitle": "Fuse.Drawing.Internal",
+              "fullyQualifiedIndexTitle": "Fuse.Drawing.Internal"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/drawing/primitives",
+              "parentId": "fuse/drawing",
+              "type": "Namespace",
+              "modifiers": []
+            },
+            "uri": {
+              "idUri": "fuse/drawing/primitives",
+              "href": "fuse/drawing/primitives"
+            },
+            "titles": {
+              "indexTitle": "Fuse.Drawing.Primitives",
+              "fullyQualifiedIndexTitle": "Fuse.Drawing.Primitives"
+            }
+          }
+        ]
+      }
+    ],
+    "uxClasses": [
+      {
+        "items": [
+          {
+            "comment": {
+              "brief": "@hide",
+              "full": "@hide"
+            },
+            "id": {
+              "id": "fuse/drawing/brushconverter",
+              "parentId": "fuse/drawing",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/brushconverter",
+              "href": "fuse/drawing/brushconverter"
+            },
+            "titles": {
+              "indexTitle": "BrushConverter",
+              "fullyQualifiedIndexTitle": "Fuse.Drawing.BrushConverter"
+            }
+          },
+          {
+            "comment": {
+              "brief": "See @LinearGradient",
+              "full": "See @LinearGradient"
+            },
+            "id": {
+              "id": "fuse/drawing/gradientstop",
+              "parentId": "fuse/drawing",
+              "type": "UxClass",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/gradientstop",
+              "href": "fuse/drawing/gradientstop"
+            },
+            "titles": {
+              "indexTitle": "GradientStop",
+              "fullyQualifiedIndexTitle": "Fuse.Drawing.GradientStop"
+            }
+          },
+          {
+            "comment": {
+              "brief": "A @Brush that fills a @Shape with an image.",
+              "full": "A @Brush that fills a @Shape with an image.\n\nIt works almost identically to @Image, but is a @Brush and can therefore not be used as a standalone element.\n\n## Example\n\nThe following example will fill a `Circle` with an image loaded from the file `Portrait.png`:\n\n```\n<Circle Width=\"160\" Height=\"160\">\n    <ImageFill File=\"Portrait.png\" />\n</Circle>\n```"
+            },
+            "id": {
+              "id": "fuse/drawing/imagefill",
+              "parentId": "fuse/drawing",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/imagefill",
+              "href": "fuse/drawing/imagefill"
+            },
+            "titles": {
+              "indexTitle": "ImageFill",
+              "fullyQualifiedIndexTitle": "Fuse.Drawing.ImageFill"
+            }
+          },
+          {
+            "comment": {
+              "brief": "A linear gradient @Brush.",
+              "full": "A linear gradient @Brush.\n\n@LinearGradient lets you describe a linear gradient using a collection of @GradientStops.\nThe following example displays a @Rectangle with a @LinearGradient that fades from white at the top, to black at the bottom.\n\n```\n<Rectangle>\n    <LinearGradient StartPoint=\"0,0\" EndPoint=\"0,1\">\n        <GradientStop Offset=\"0\" Color=\"#fff\" />\n        <GradientStop Offset=\"1\" Color=\"#000\" />\n    </LinearGradient>\n</Rectangle>\n```\n\nYou may also specify any number of @GradientStops.\n\n```\n<Circle>\n    <LinearGradient AngleDegrees=\"90\">\n        <GradientStop Offset=\"0\" Color=\"#f00\" />\n        <GradientStop Offset=\"0.3\" Color=\"#f0f\" />\n        <GradientStop Offset=\"0.6\" Color=\"#00f\" />\n        <GradientStop Offset=\"1\" Color=\"#0ff\" />\n    </LinearGradient>\n</Circle>\n```\n\nThe `StartPoint` and `EndPoint` properties are both specified as a proportion of the total size of the @Shape the brush is applied to.\nFor instance, you can specify a diagonal brush by using `StartPoint=\"0,0\" EndPoint=\"1,1\"`.\n\nInstead of `StartPoint` and `EndPoint`, you can also specify an angle. This can either be in radians using the `Angle` property, or in degrees using the `AngleDegrees` property.\n\n```\n<LinearGradient Angle=\"2.4\" />\n              or\n<LinearGradient AngleDegrees=\"45\" />\n```"
+            },
+            "id": {
+              "id": "fuse/drawing/lineargradient",
+              "parentId": "fuse/drawing",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/lineargradient",
+              "href": "fuse/drawing/lineargradient"
+            },
+            "titles": {
+              "indexTitle": "LinearGradient",
+              "fullyQualifiedIndexTitle": "Fuse.Drawing.LinearGradient"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/drawing/lineparser",
+              "parentId": "fuse/drawing",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/lineparser",
+              "href": "fuse/drawing/lineparser"
+            },
+            "titles": {
+              "indexTitle": "LineParser",
+              "fullyQualifiedIndexTitle": "Fuse.Drawing.LineParser"
+            }
+          },
+          {
+            "comment": {
+              "brief": "A helper class that simplifies the creation of lists of line segments.",
+              "full": "A helper class that simplifies the creation of lists of line segments."
+            },
+            "id": {
+              "id": "fuse/drawing/linesegments",
+              "parentId": "fuse/drawing",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/linesegments",
+              "href": "fuse/drawing/linesegments"
+            },
+            "titles": {
+              "indexTitle": "LineSegments",
+              "fullyQualifiedIndexTitle": "Fuse.Drawing.LineSegments"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/drawing/solidcolor",
+              "parentId": "fuse/drawing",
+              "type": "UxClass",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/solidcolor",
+              "href": "fuse/drawing/solidcolor"
+            },
+            "titles": {
+              "indexTitle": "SolidColor",
+              "fullyQualifiedIndexTitle": "Fuse.Drawing.SolidColor"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/drawing/staticsolidcolor",
+              "parentId": "fuse/drawing",
+              "type": "UxClass",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/staticsolidcolor",
+              "href": "fuse/drawing/staticsolidcolor"
+            },
+            "titles": {
+              "indexTitle": "StaticSolidColor",
+              "fullyQualifiedIndexTitle": "Fuse.Drawing.StaticSolidColor"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/drawing/stroke",
+              "parentId": "fuse/drawing",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/stroke",
+              "href": "fuse/drawing/stroke"
+            },
+            "titles": {
+              "indexTitle": "Stroke",
+              "fullyQualifiedIndexTitle": "Fuse.Drawing.Stroke"
+            }
+          }
+        ]
+      }
+    ],
+    "classes": [
+      {
+        "items": [
+          {
+            "id": {
+              "id": "fuse/drawing/brush",
+              "parentId": "fuse/drawing",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/brush",
+              "href": "fuse/drawing/brush"
+            },
+            "titles": {
+              "indexTitle": "Brush",
+              "fullyQualifiedIndexTitle": "Fuse.Drawing.Brush"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/drawing/brushes",
+              "parentId": "fuse/drawing",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/brushes",
+              "href": "fuse/drawing/brushes"
+            },
+            "titles": {
+              "indexTitle": "Brushes",
+              "fullyQualifiedIndexTitle": "Fuse.Drawing.Brushes"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/drawing/colors",
+              "parentId": "fuse/drawing",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/colors",
+              "href": "fuse/drawing/colors"
+            },
+            "titles": {
+              "indexTitle": "Colors",
+              "fullyQualifiedIndexTitle": "Fuse.Drawing.Colors"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/drawing/dynamicbrush",
+              "parentId": "fuse/drawing",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/dynamicbrush",
+              "href": "fuse/drawing/dynamicbrush"
+            },
+            "titles": {
+              "indexTitle": "DynamicBrush",
+              "fullyQualifiedIndexTitle": "Fuse.Drawing.DynamicBrush"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/drawing/linemetrics",
+              "parentId": "fuse/drawing",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/linemetrics",
+              "href": "fuse/drawing/linemetrics"
+            },
+            "titles": {
+              "indexTitle": "LineMetrics",
+              "fullyQualifiedIndexTitle": "Fuse.Drawing.LineMetrics"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/drawing/staticbrush",
+              "parentId": "fuse/drawing",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/staticbrush",
+              "href": "fuse/drawing/staticbrush"
+            },
+            "titles": {
+              "indexTitle": "StaticBrush",
+              "fullyQualifiedIndexTitle": "Fuse.Drawing.StaticBrush"
+            }
+          },
+          {
+            "comment": {
+              "brief": "The Surface is a path-based drawing API. A call to `CreatePath` is used to create a path, then one of `StrokePath` or `FillPath` is used to draw it.",
+              "full": "The Surface is a path-based drawing API. A call to `CreatePath` is used to create a path, then one of `StrokePath` or `FillPath` is used to draw it.\n\nThis allows the users of `Canvas` to optimize for animation of either the path or the stroke/fill objects independently.\n\nThis also keeps the API minimal. There are no convenience functions in this class. Those are provided via higher-level classes, such as `LineSegments` or `SurfaceUtil`.",
+              "attributes": {
+                "advanced": true,
+                "experimental": true
+              }
+            },
+            "id": {
+              "id": "fuse/drawing/surface",
+              "parentId": "fuse/drawing",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/surface",
+              "href": "fuse/drawing/surface"
+            },
+            "titles": {
+              "indexTitle": "Surface",
+              "fullyQualifiedIndexTitle": "Fuse.Drawing.Surface"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/drawing/surfacemanager",
+              "parentId": "fuse/drawing",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/surfacemanager",
+              "href": "fuse/drawing/surfacemanager"
+            },
+            "titles": {
+              "indexTitle": "SurfaceManager",
+              "fullyQualifiedIndexTitle": "Fuse.Drawing.SurfaceManager"
+            }
+          },
+          {
+            "comment": {
+              "brief": "An object used to refer to a created path.",
+              "full": "An object used to refer to a created path.\n\nEach backend should derive from this type. The paths will not be used cross-implementation."
+            },
+            "id": {
+              "id": "fuse/drawing/surfacepath",
+              "parentId": "fuse/drawing",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/surfacepath",
+              "href": "fuse/drawing/surfacepath"
+            },
+            "titles": {
+              "indexTitle": "SurfacePath",
+              "fullyQualifiedIndexTitle": "Fuse.Drawing.SurfacePath"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Utilities used to help draw curves and shapes.\n@hide",
+              "full": "Utilities used to help draw curves and shapes.\n@hide"
+            },
+            "id": {
+              "id": "fuse/drawing/surfaceutil",
+              "parentId": "fuse/drawing",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/surfaceutil",
+              "href": "fuse/drawing/surfaceutil"
+            },
+            "titles": {
+              "indexTitle": "SurfaceUtil",
+              "fullyQualifiedIndexTitle": "Fuse.Drawing.SurfaceUtil"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/drawing/windingrules",
+              "parentId": "fuse/drawing",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/windingrules",
+              "href": "fuse/drawing/windingrules"
+            },
+            "titles": {
+              "indexTitle": "WindingRules",
+              "fullyQualifiedIndexTitle": "Fuse.Drawing.WindingRules"
+            }
+          }
+        ]
+      }
+    ],
+    "enums": [
+      {
+        "items": [
+          {
+            "id": {
+              "id": "fuse/drawing/antialiasing",
+              "parentId": "fuse/drawing",
+              "type": "Enum",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/antialiasing",
+              "href": "fuse/drawing/antialiasing"
+            },
+            "titles": {
+              "indexTitle": "Antialiasing",
+              "fullyQualifiedIndexTitle": "Fuse.Drawing.Antialiasing"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/drawing/fillrule",
+              "parentId": "fuse/drawing",
+              "type": "Enum",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/fillrule",
+              "href": "fuse/drawing/fillrule"
+            },
+            "titles": {
+              "indexTitle": "FillRule",
+              "fullyQualifiedIndexTitle": "Fuse.Drawing.FillRule"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/drawing/lineargradientinterpolation",
+              "parentId": "fuse/drawing",
+              "type": "Enum",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/lineargradientinterpolation",
+              "href": "fuse/drawing/lineargradientinterpolation"
+            },
+            "titles": {
+              "indexTitle": "LinearGradientInterpolation",
+              "fullyQualifiedIndexTitle": "Fuse.Drawing.LinearGradientInterpolation"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/drawing/linecap",
+              "parentId": "fuse/drawing",
+              "type": "Enum",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/linecap",
+              "href": "fuse/drawing/linecap"
+            },
+            "titles": {
+              "indexTitle": "LineCap",
+              "fullyQualifiedIndexTitle": "Fuse.Drawing.LineCap"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/drawing/linejoin",
+              "parentId": "fuse/drawing",
+              "type": "Enum",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/linejoin",
+              "href": "fuse/drawing/linejoin"
+            },
+            "titles": {
+              "indexTitle": "LineJoin",
+              "fullyQualifiedIndexTitle": "Fuse.Drawing.LineJoin"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/drawing/linesegmentflags",
+              "parentId": "fuse/drawing",
+              "type": "Enum",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/linesegmentflags",
+              "href": "fuse/drawing/linesegmentflags"
+            },
+            "titles": {
+              "indexTitle": "LineSegmentFlags",
+              "fullyQualifiedIndexTitle": "Fuse.Drawing.LineSegmentFlags"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/drawing/linesegmenttype",
+              "parentId": "fuse/drawing",
+              "type": "Enum",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/linesegmenttype",
+              "href": "fuse/drawing/linesegmenttype"
+            },
+            "titles": {
+              "indexTitle": "LineSegmentType",
+              "fullyQualifiedIndexTitle": "Fuse.Drawing.LineSegmentType"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/drawing/resamplemode",
+              "parentId": "fuse/drawing",
+              "type": "Enum",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/resamplemode",
+              "href": "fuse/drawing/resamplemode"
+            },
+            "titles": {
+              "indexTitle": "ResampleMode",
+              "fullyQualifiedIndexTitle": "Fuse.Drawing.ResampleMode"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/drawing/strokeadjustment",
+              "parentId": "fuse/drawing",
+              "type": "Enum",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/strokeadjustment",
+              "href": "fuse/drawing/strokeadjustment"
+            },
+            "titles": {
+              "indexTitle": "StrokeAdjustment",
+              "fullyQualifiedIndexTitle": "Fuse.Drawing.StrokeAdjustment"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/drawing/strokealignment",
+              "parentId": "fuse/drawing",
+              "type": "Enum",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/strokealignment",
+              "href": "fuse/drawing/strokealignment"
+            },
+            "titles": {
+              "indexTitle": "StrokeAlignment",
+              "fullyQualifiedIndexTitle": "Fuse.Drawing.StrokeAlignment"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/drawing/wrapmode",
+              "parentId": "fuse/drawing",
+              "type": "Enum",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/wrapmode",
+              "href": "fuse/drawing/wrapmode"
+            },
+            "titles": {
+              "indexTitle": "WrapMode",
+              "fullyQualifiedIndexTitle": "Fuse.Drawing.WrapMode"
+            }
+          }
+        ]
+      }
+    ],
+    "interfaces": [
+      {
+        "items": [
+          {
+            "id": {
+              "id": "fuse/drawing/isolidcolor",
+              "parentId": "fuse/drawing",
+              "type": "Interface",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/isolidcolor",
+              "href": "fuse/drawing/isolidcolor"
+            },
+            "titles": {
+              "indexTitle": "ISolidColor",
+              "fullyQualifiedIndexTitle": "Fuse.Drawing.ISolidColor"
+            }
+          },
+          {
+            "comment": {
+              "attributes": {
+                "advanced": true,
+                "experimental": true
+              }
+            },
+            "id": {
+              "id": "fuse/drawing/isurfacedrawable",
+              "parentId": "fuse/drawing",
+              "type": "Interface",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/isurfacedrawable",
+              "href": "fuse/drawing/isurfacedrawable"
+            },
+            "titles": {
+              "indexTitle": "ISurfaceDrawable",
+              "fullyQualifiedIndexTitle": "Fuse.Drawing.ISurfaceDrawable"
+            }
+          }
+        ]
+      }
+    ],
+    "structs": [
+      {
+        "items": [
+          {
+            "id": {
+              "id": "fuse/drawing/linesegment",
+              "parentId": "fuse/drawing",
+              "type": "Struct",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/linesegment",
+              "href": "fuse/drawing/linesegment"
+            },
+            "titles": {
+              "indexTitle": "LineSegment",
+              "fullyQualifiedIndexTitle": "Fuse.Drawing.LineSegment"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

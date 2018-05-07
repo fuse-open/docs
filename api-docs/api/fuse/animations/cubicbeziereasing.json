@@ -1,0 +1,510 @@
+{
+  "entity": {
+    "base": {
+      "id": {
+        "id": "fuse/animations/easing",
+        "parentId": "fuse/animations",
+        "type": "Class",
+        "modifiers": [
+          "public",
+          "abstract"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/animations/easing",
+        "href": "fuse/animations/easing"
+      },
+      "titles": {
+        "indexTitle": "Easing",
+        "fullyQualifiedIndexTitle": "Fuse.Animations.Easing"
+      }
+    },
+    "location": {
+      "namespaceTitle": "Fuse.Animations",
+      "namespaceUri": "fuse/animations",
+      "packageName": "Fuse.Common",
+      "packageVersion": "1.8.0-rc2"
+    },
+    "inheritance": {
+      "root": {
+        "uri": "uno/object",
+        "title": "object",
+        "children": [
+          {
+            "uri": "fuse/animations/easing",
+            "title": "Fuse.Animations.Easing",
+            "children": [
+              {
+                "uri": "fuse/animations/cubicbeziereasing",
+                "title": "Fuse.Animations.CubicBezierEasing",
+                "children": [],
+                "isCurrent": true
+              }
+            ],
+            "isAncestor": true
+          }
+        ],
+        "isAncestor": true
+      },
+      "hasInheritance": true
+    },
+    "uxProperties": {
+      "uxNamespaceTitle": "Fuse.Animations",
+      "uxNamespaceUri": "fuse/animations",
+      "uxName": "CubicBezierEasing"
+    },
+    "id": {
+      "id": "fuse/animations/cubicbeziereasing",
+      "parentId": "fuse/animations",
+      "type": "UxClass",
+      "modifiers": [
+        "public"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/animations/cubicbeziereasing",
+      "href": "fuse/animations/cubicbeziereasing"
+    },
+    "titles": {
+      "pageTitle": "CubicBezierEasing Class",
+      "navigationTitle": "CubicBezierEasing Class",
+      "fullTitle": "Fuse.Animations.CubicBezierEasing",
+      "indexTitle": "CubicBezierEasing",
+      "fullyQualifiedIndexTitle": "Fuse.Animations.CubicBezierEasing"
+    },
+    "syntax": {
+      "uno": "public class CubicBezierEasing : Fuse.Animations.Easing {}",
+      "ux": "<CubicBezierEasing />"
+    },
+    "comment": {
+      "brief": "Represents a cubic bezier easing curve.",
+      "full": "Represents a cubic bezier easing curve.\n\nA cubic bezier curve is defined by four control points. In an Easing curve, the first control point is fixed at (0,0),\nwhile the last control point is fixed at (1,1) the two remaining control points are configurable.\n\n## Example\n\n    <Rectangle Width=\"100\" Height=\"100\" Color=\"#18f\" CornerRadius=\"10\">\n        <WhilePressed>\n            <Move X=\"100\" Duration=\"0.3\">\n                <CubicBezierEasing ControlPoints=\"0.4, 0.0, 1.0, 1.0\" />\n            </Move>\n        </WhilePressed>\n    </Rectangle>\n\nThe above `CubicBezierEasing` is equivalent to:\n\n    // In iOS\n    [CAMediaTimingFunction alloc] initWithControlPoints:0.4f:0.0f:1.0f:1.0f]\n\n    // In Android\n    FastOutLinearInInterpolator\n\n    // In CSS\n    cubic-bezier(0.4, 0.0, 1, 1);\n\n    // In After Effects\n    Outgoing Velocity: 40%\n    Incoming Velocity: 0%\n\n## Different `Easing` and `EasingBack`\n\nYou can use `ux:Binding` to specify two different easing curves for `Easing` and `EasingBack`:\n\n    <Move X=\"100\" Duration=\"0.3\">\n        <CubicBezierEasing ux:Binding=\"Easing\" ControlPoints=\"0.4, 0.0, 1.0, 1.0\" />\n        <CubicBezierEasing ux:Binding=\"EasingBack\" ControlPoints=\"0.3, 0.0, 0.3, 1.0\" />\n    </Move>\n\n## Creating new global easing functions\n\nYou can use `ux:Global to define a new global easing curve:\n\n    <CubicBezierEasing ux:Global=\"MyStandardEasing\" ControlPoints=\"0.4, 0.0, 1.0, 1.0\" />\n\nAnd then:\n\n    <Move X=\"100\" Duration=\"0.3\" Easing=\"MyStandardEasing\" />"
+    }
+  },
+  "tableOfContents": {
+    "uxProperties": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/animations/cubicbeziereasing",
+            "parentId": "fuse/animations",
+            "type": "UxClass",
+            "modifiers": [
+              "public"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/animations/cubicbeziereasing",
+            "href": "fuse/animations/cubicbeziereasing"
+          },
+          "titles": {
+            "indexTitle": "CubicBezierEasing",
+            "fullyQualifiedIndexTitle": "Fuse.Animations.CubicBezierEasing"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/double",
+              "title": "double",
+              "fullyQualifiedTitle": "double"
+            },
+            "id": {
+              "id": "fuse/animations/cubicbeziereasing/c1x",
+              "parentId": "fuse/animations/cubicbeziereasing",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/cubicbeziereasing/c1x",
+              "href": "fuse/animations/cubicbeziereasing/c1x"
+            },
+            "titles": {
+              "indexTitle": "C1X",
+              "fullyQualifiedIndexTitle": "Fuse.Animations.CubicBezierEasing.C1X"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/double",
+              "title": "double",
+              "fullyQualifiedTitle": "double"
+            },
+            "id": {
+              "id": "fuse/animations/cubicbeziereasing/c1y",
+              "parentId": "fuse/animations/cubicbeziereasing",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/cubicbeziereasing/c1y",
+              "href": "fuse/animations/cubicbeziereasing/c1y"
+            },
+            "titles": {
+              "indexTitle": "C1Y",
+              "fullyQualifiedIndexTitle": "Fuse.Animations.CubicBezierEasing.C1Y"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/double",
+              "title": "double",
+              "fullyQualifiedTitle": "double"
+            },
+            "id": {
+              "id": "fuse/animations/cubicbeziereasing/c2x",
+              "parentId": "fuse/animations/cubicbeziereasing",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/cubicbeziereasing/c2x",
+              "href": "fuse/animations/cubicbeziereasing/c2x"
+            },
+            "titles": {
+              "indexTitle": "C2X",
+              "fullyQualifiedIndexTitle": "Fuse.Animations.CubicBezierEasing.C2X"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/double",
+              "title": "double",
+              "fullyQualifiedTitle": "double"
+            },
+            "id": {
+              "id": "fuse/animations/cubicbeziereasing/c2y",
+              "parentId": "fuse/animations/cubicbeziereasing",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/cubicbeziereasing/c2y",
+              "href": "fuse/animations/cubicbeziereasing/c2y"
+            },
+            "titles": {
+              "indexTitle": "C2Y",
+              "fullyQualifiedIndexTitle": "Fuse.Animations.CubicBezierEasing.C2Y"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/float4",
+              "title": "float4",
+              "fullyQualifiedTitle": "float4"
+            },
+            "id": {
+              "id": "fuse/animations/cubicbeziereasing/controlpoints",
+              "parentId": "fuse/animations/cubicbeziereasing",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/cubicbeziereasing/controlpoints",
+              "href": "fuse/animations/cubicbeziereasing/controlpoints"
+            },
+            "titles": {
+              "indexTitle": "ControlPoints",
+              "fullyQualifiedIndexTitle": "Fuse.Animations.CubicBezierEasing.ControlPoints"
+            }
+          }
+        ]
+      }
+    ],
+    "attachedUxProperties": [
+      {
+        "items": [
+          {
+            "comment": {
+              "brief": "The `ux:Global` attribute creates a global resource that is accessible everywhere in UX markup.",
+              "full": "The `ux:Global` attribute creates a global resource that is accessible everywhere in UX markup.\n\nSee @Resources for more information.\n\nThe `ux:Global` attribute on an UX element creates a single object (singleton) that is globally available.\nUsing this attribute will prevent the object from being inserted by default the object at its defined location\nin the UX tree."
+            },
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "parameters": [
+              {
+                "name": "obj",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              },
+              {
+                "name": "key",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              }
+            ],
+            "id": {
+              "id": "fuse/animations/cubicbeziereasing/resource_globalkey_setglobalkey_4c3ac72d",
+              "parentId": "fuse/animations/cubicbeziereasing",
+              "type": "AttachedUxProperty",
+              "modifiers": []
+            },
+            "uri": {
+              "idUri": "fuse/animations/cubicbeziereasing/resource_globalkey_setglobalkey_4c3ac72d",
+              "href": "uno/ux/resource/setglobalkey_4c3ac72d",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Resource.GlobalKey",
+              "fullyQualifiedIndexTitle": "Resource.GlobalKey"
+            }
+          }
+        ]
+      }
+    ],
+    "constructors": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/animations/cubicbeziereasing",
+            "parentId": "fuse/animations",
+            "type": "UxClass",
+            "modifiers": [
+              "public"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/animations/cubicbeziereasing",
+            "href": "fuse/animations/cubicbeziereasing"
+          },
+          "titles": {
+            "indexTitle": "CubicBezierEasing",
+            "fullyQualifiedIndexTitle": "Fuse.Animations.CubicBezierEasing"
+          }
+        },
+        "items": [
+          {
+            "comment": {
+              "brief": "Creates a new CubicBezierEasing",
+              "full": "Creates a new CubicBezierEasing"
+            },
+            "id": {
+              "id": "fuse/animations/cubicbeziereasing/_ctor",
+              "parentId": "fuse/animations/cubicbeziereasing",
+              "type": "Constructor",
+              "modifiers": [
+                "public",
+                "generated"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/cubicbeziereasing/_ctor",
+              "href": "fuse/animations/cubicbeziereasing/_ctor"
+            },
+            "titles": {
+              "indexTitle": "CubicBezierEasing",
+              "fullyQualifiedIndexTitle": "Fuse.Animations.CubicBezierEasing.CubicBezierEasing"
+            }
+          }
+        ]
+      }
+    ],
+    "methods": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/animations/easing",
+            "parentId": "fuse/animations",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/animations/easing",
+            "href": "fuse/animations/easing"
+          },
+          "titles": {
+            "indexTitle": "Easing",
+            "fullyQualifiedIndexTitle": "Fuse.Animations.Easing"
+          }
+        },
+        "items": [
+          {
+            "comment": {
+              "brief": "Computes the mapped easing value.",
+              "full": "Computes the mapped easing value."
+            },
+            "returns": {
+              "href": "uno/double",
+              "title": "double",
+              "fullyQualifiedTitle": "double"
+            },
+            "parameters": [
+              {
+                "name": "p",
+                "href": "uno/double",
+                "title": "double",
+                "fullyQualifiedTitle": "double"
+              }
+            ],
+            "id": {
+              "id": "fuse/animations/cubicbeziereasing/map_d2d6d9e0",
+              "parentId": "fuse/animations/cubicbeziereasing",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/cubicbeziereasing/map_d2d6d9e0",
+              "href": "fuse/animations/easing/map_d2d6d9e0",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Map(double)",
+              "fullyQualifiedIndexTitle": "Fuse.Animations.Easing.Map(double)"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "uno/object",
+            "parentId": "uno",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "intrinsic"
+            ]
+          },
+          "uri": {
+            "idUri": "uno/object",
+            "href": "uno/object"
+          },
+          "titles": {
+            "indexTitle": "object",
+            "fullyQualifiedIndexTitle": "object"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "parameters": [
+              {
+                "name": "o",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              }
+            ],
+            "id": {
+              "id": "fuse/animations/cubicbeziereasing/equals_a09c80e3",
+              "parentId": "fuse/animations/cubicbeziereasing",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/cubicbeziereasing/equals_a09c80e3",
+              "href": "uno/object/equals_a09c80e3",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Equals(object)",
+              "fullyQualifiedIndexTitle": "Uno.Object.Equals(object)"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/int",
+              "title": "int",
+              "fullyQualifiedTitle": "int"
+            },
+            "id": {
+              "id": "fuse/animations/cubicbeziereasing/gethashcode",
+              "parentId": "fuse/animations/cubicbeziereasing",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/cubicbeziereasing/gethashcode",
+              "href": "uno/object/gethashcode",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetHashCode",
+              "fullyQualifiedIndexTitle": "Uno.Object.GetHashCode"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/type",
+              "title": "Type",
+              "fullyQualifiedTitle": "Uno.Type"
+            },
+            "id": {
+              "id": "fuse/animations/cubicbeziereasing/gettype",
+              "parentId": "fuse/animations/cubicbeziereasing",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/cubicbeziereasing/gettype",
+              "href": "uno/object/gettype",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetType",
+              "fullyQualifiedIndexTitle": "Uno.Object.GetType"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "id": {
+              "id": "fuse/animations/cubicbeziereasing/tostring",
+              "parentId": "fuse/animations/cubicbeziereasing",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/cubicbeziereasing/tostring",
+              "href": "uno/object/tostring",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "ToString",
+              "fullyQualifiedIndexTitle": "Uno.Object.ToString"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

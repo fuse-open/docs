@@ -1,0 +1,211 @@
+{
+  "entity": {
+    "id": {
+      "id": "fuse/reactive/fusejs",
+      "parentId": "fuse/reactive",
+      "type": "Namespace",
+      "modifiers": []
+    },
+    "uri": {
+      "idUri": "fuse/reactive/fusejs",
+      "href": "fuse/reactive/fusejs"
+    },
+    "titles": {
+      "pageTitle": "Fuse.Reactive.FuseJS Namespace",
+      "navigationTitle": "Fuse.Reactive.FuseJS Namespace",
+      "fullTitle": "Fuse.Reactive.FuseJS",
+      "indexTitle": "Fuse.Reactive.FuseJS",
+      "fullyQualifiedIndexTitle": "Fuse.Reactive.FuseJS"
+    },
+    "syntax": {
+      "uno": "namespace FuseJS {}"
+    }
+  },
+  "tableOfContents": {
+    "jsModules": [
+      {
+        "items": [
+          {
+            "comment": {
+              "brief": "Launches the default email app, and starts composing a message.",
+              "full": "Launches the default email app, and starts composing a message.\n\nYou need to add a reference to `\"Fuse.Launcher\"` in your project file to use this feature.\n\n    var email = require('FuseJS/Email');\n    email.compose(\"to@example.com\", \"cc@example.com\", \"bcc@example.com\", \"subject\", \"message\");",
+              "attributes": {
+                "scriptModule": "FuseJS/Email"
+              }
+            },
+            "id": {
+              "id": "fuse/reactive/fusejs/email",
+              "parentId": "fuse/reactive/fusejs",
+              "type": "JsModule",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/fusejs/email",
+              "href": "fuse/reactive/fusejs/email"
+            },
+            "titles": {
+              "indexTitle": "Email",
+              "fullyQualifiedIndexTitle": "Fuse.Reactive.FuseJS.Email"
+            }
+          },
+          {
+            "comment": {
+              "brief": "The InterApp API allows you to launch other apps, as well as respond to being launched via URI schemes.",
+              "full": "The InterApp API allows you to launch other apps, as well as respond to being launched via URI schemes.\n\nThis module is an @EventEmitter, so the methods from @EventEmitter can be used to listen to events.\n\nYou need to add a reference to `\"Fuse.Launcher\"` in your project file to use this feature.\n\n## Example\n\n    var InterApp = require(\"FuseJS/InterApp\");\n\n    InterApp.on(\"receivedUri\", function(uri) {\n        console.log(\"Launched with URI\", uri);\n    });\n\n    InterApp.launchUri(\"https://www.fusetools.com/\");\n\nIn the above example we're using the @EventEmitter `on` method to listen to the `\"receivedUri\"` event.\n\nFor the [receivedUri](api:fuse/reactive/fusejs/interapp/onreceiveduri_968f99a6.json) event to be triggered, you need register a custom URI scheme for your app, as shown [here](articles:basics/uno-projects#mobile-urischeme).",
+              "attributes": {
+                "scriptModule": "FuseJS/InterApp"
+              }
+            },
+            "id": {
+              "id": "fuse/reactive/fusejs/interapp",
+              "parentId": "fuse/reactive/fusejs",
+              "type": "JsModule",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/fusejs/interapp",
+              "href": "fuse/reactive/fusejs/interapp"
+            },
+            "titles": {
+              "indexTitle": "InterApp",
+              "fullyQualifiedIndexTitle": "Fuse.Reactive.FuseJS.InterApp"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Lanches the map application using the provided `latitude`/`longitude` pair and/or `query`.",
+              "full": "Lanches the map application using the provided `latitude`/`longitude` pair and/or `query`.\n\nYou need to add a reference to `Fuse.Launcher` in your project file to use this feature.\n\n## Example\n\nThis code will launch a map centered at the nearest pizza restaurant.\n\n    var Maps = require(\"FuseJS/Maps\");\n    Maps.searchNear(59.9117715, 10.7400957, \"pizza restaurant\");",
+              "attributes": {
+                "scriptModule": "FuseJS/Maps"
+              }
+            },
+            "id": {
+              "id": "fuse/reactive/fusejs/maps",
+              "parentId": "fuse/reactive/fusejs",
+              "type": "JsModule",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/fusejs/maps",
+              "href": "fuse/reactive/fusejs/maps"
+            },
+            "titles": {
+              "indexTitle": "Maps",
+              "fullyQualifiedIndexTitle": "Fuse.Reactive.FuseJS.Maps"
+            }
+          },
+          {
+            "comment": {
+              "brief": "The Phone API allows you to launch your device's built-in\nphone app and make calls.",
+              "full": "The Phone API allows you to launch your device's built-in\nphone app and make calls.\n\nYou need to add a reference to `\"Fuse.Launcher\"` in your project file to use this feature.\n\n## Example\n\n    var phone = require(\"FuseJS/Phone\");\n    phone.call(\"+47 123 45 678\");",
+              "attributes": {
+                "scriptModule": "FuseJS/Phone"
+              }
+            },
+            "id": {
+              "id": "fuse/reactive/fusejs/phone",
+              "parentId": "fuse/reactive/fusejs",
+              "type": "JsModule",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/fusejs/phone",
+              "href": "fuse/reactive/fusejs/phone"
+            },
+            "titles": {
+              "indexTitle": "Phone",
+              "fullyQualifiedIndexTitle": "Fuse.Reactive.FuseJS.Phone"
+            }
+          },
+          {
+            "comment": {
+              "brief": "The Timer API lets you schedule functions to be executed after a given time.",
+              "full": "The Timer API lets you schedule functions to be executed after a given time.\n\n    var Timer = require(\"FuseJS/Timer\");\n\n    Timer.create(function() {\n        console.log(\"This will run once, after 3 seconds\");\n    }, 3000, false);\n\n    Timer.create(function() {\n        console.log(\"This will run every 10 seconds until forever\");\n    }, 10000, true);",
+              "attributes": {
+                "scriptModule": "FuseJS/Timer"
+              }
+            },
+            "id": {
+              "id": "fuse/reactive/fusejs/timermodule",
+              "parentId": "fuse/reactive/fusejs",
+              "type": "JsModule",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/fusejs/timermodule",
+              "href": "fuse/reactive/fusejs/timermodule"
+            },
+            "titles": {
+              "indexTitle": "TimerModule",
+              "fullyQualifiedIndexTitle": "Fuse.Reactive.FuseJS.TimerModule"
+            }
+          }
+        ]
+      }
+    ],
+    "uxClasses": [
+      {
+        "items": [
+          {
+            "comment": {
+              "brief": "An internal module providing the Uno callback for the `Diagnostics.js` module.",
+              "full": "An internal module providing the Uno callback for the `Diagnostics.js` module."
+            },
+            "id": {
+              "id": "fuse/reactive/fusejs/diagnosticsimplmodule",
+              "parentId": "fuse/reactive/fusejs",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/fusejs/diagnosticsimplmodule",
+              "href": "fuse/reactive/fusejs/diagnosticsimplmodule"
+            },
+            "titles": {
+              "indexTitle": "DiagnosticsImplModule",
+              "fullyQualifiedIndexTitle": "Fuse.Reactive.FuseJS.DiagnosticsImplModule"
+            }
+          },
+          {
+            "comment": {
+              "brief": "@hide",
+              "full": "@hide"
+            },
+            "id": {
+              "id": "fuse/reactive/fusejs/http",
+              "parentId": "fuse/reactive/fusejs",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/fusejs/http",
+              "href": "fuse/reactive/fusejs/http"
+            },
+            "titles": {
+              "indexTitle": "Http",
+              "fullyQualifiedIndexTitle": "Fuse.Reactive.FuseJS.Http"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

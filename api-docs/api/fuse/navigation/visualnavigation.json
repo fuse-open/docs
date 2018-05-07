@@ -1,0 +1,2390 @@
+{
+  "entity": {
+    "base": {
+      "id": {
+        "id": "fuse/behavior",
+        "parentId": "fuse",
+        "type": "Class",
+        "modifiers": [
+          "public",
+          "abstract"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/behavior",
+        "href": "fuse/behavior"
+      },
+      "titles": {
+        "indexTitle": "Behavior",
+        "fullyQualifiedIndexTitle": "Fuse.Behavior"
+      }
+    },
+    "location": {
+      "namespaceTitle": "Fuse.Navigation",
+      "namespaceUri": "fuse/navigation",
+      "packageName": "Fuse.Navigation",
+      "packageVersion": "1.8.0-rc2"
+    },
+    "inheritance": {
+      "root": {
+        "uri": "uno/object",
+        "title": "object",
+        "children": [
+          {
+            "uri": "uno/ux/propertyobject",
+            "title": "Uno.UX.PropertyObject",
+            "children": [
+              {
+                "uri": "fuse/node",
+                "title": "Fuse.Node",
+                "children": [
+                  {
+                    "uri": "fuse/behavior",
+                    "title": "Fuse.Behavior",
+                    "children": [
+                      {
+                        "uri": "fuse/navigation/visualnavigation",
+                        "title": "Fuse.Navigation.VisualNavigation",
+                        "children": [],
+                        "isCurrent": true
+                      }
+                    ],
+                    "isAncestor": true
+                  }
+                ],
+                "isAncestor": true
+              }
+            ],
+            "isAncestor": true
+          }
+        ],
+        "isAncestor": true
+      },
+      "hasInheritance": true
+    },
+    "implementedInterfaces": [
+      {
+        "comment": {
+          "brief": "An extended navigation interface implemented by full navigation behaviors.",
+          "full": "An extended navigation interface implemented by full navigation behaviors.\n\nThis API is subject to significant changes in coming versions. Though previously not marked as experimental, there is a need to consolidate and group some of the events and states to remain maintainable, fix some defects, and add some required features.",
+          "attributes": {
+            "experimental": true
+          }
+        },
+        "id": {
+          "id": "fuse/navigation/inavigation",
+          "parentId": "fuse/navigation",
+          "type": "Interface",
+          "modifiers": [
+            "public",
+            "abstract"
+          ]
+        },
+        "uri": {
+          "idUri": "fuse/navigation/inavigation",
+          "href": "fuse/navigation/inavigation"
+        },
+        "titles": {
+          "indexTitle": "INavigation",
+          "fullyQualifiedIndexTitle": "Fuse.Navigation.INavigation"
+        }
+      },
+      {
+        "id": {
+          "id": "fuse/iparentobserver",
+          "parentId": "fuse",
+          "type": "Interface",
+          "modifiers": [
+            "public",
+            "abstract"
+          ]
+        },
+        "uri": {
+          "idUri": "fuse/iparentobserver",
+          "href": "fuse/iparentobserver"
+        },
+        "titles": {
+          "indexTitle": "IParentObserver",
+          "fullyQualifiedIndexTitle": "Fuse.IParentObserver"
+        }
+      },
+      {
+        "comment": {
+          "brief": "A minimal interface implemented by simple navigation behaviors and controls.",
+          "full": "A minimal interface implemented by simple navigation behaviors and controls."
+        },
+        "id": {
+          "id": "fuse/navigation/ibasenavigation",
+          "parentId": "fuse/navigation",
+          "type": "Interface",
+          "modifiers": [
+            "public",
+            "abstract"
+          ]
+        },
+        "uri": {
+          "idUri": "fuse/navigation/ibasenavigation",
+          "href": "fuse/navigation/ibasenavigation"
+        },
+        "titles": {
+          "indexTitle": "IBaseNavigation",
+          "fullyQualifiedIndexTitle": "Fuse.Navigation.IBaseNavigation"
+        }
+      },
+      {
+        "id": {
+          "id": "uno/collections/ilist_1",
+          "parentId": "uno/collections",
+          "type": "Interface",
+          "modifiers": [
+            "public",
+            "abstract"
+          ]
+        },
+        "uri": {
+          "idUri": "uno/collections/ilist_1",
+          "href": "uno/collections/ilist_1"
+        },
+        "titles": {
+          "indexTitle": "IList<Binding>",
+          "fullyQualifiedIndexTitle": "Uno.Collections.IList<Fuse.Binding>"
+        }
+      },
+      {
+        "comment": {
+          "brief": "Interface for objects that can have a script engine representation",
+          "full": "Interface for objects that can have a script engine representation"
+        },
+        "id": {
+          "id": "fuse/scripting/iscriptobject",
+          "parentId": "fuse/scripting",
+          "type": "Interface",
+          "modifiers": [
+            "public",
+            "abstract"
+          ]
+        },
+        "uri": {
+          "idUri": "fuse/scripting/iscriptobject",
+          "href": "fuse/scripting/iscriptobject"
+        },
+        "titles": {
+          "indexTitle": "IScriptObject",
+          "fullyQualifiedIndexTitle": "Fuse.Scripting.IScriptObject"
+        }
+      },
+      {
+        "id": {
+          "id": "fuse/iproperties",
+          "parentId": "fuse",
+          "type": "Interface",
+          "modifiers": [
+            "public",
+            "abstract"
+          ]
+        },
+        "uri": {
+          "idUri": "fuse/iproperties",
+          "href": "fuse/iproperties"
+        },
+        "titles": {
+          "indexTitle": "IProperties",
+          "fullyQualifiedIndexTitle": "Fuse.IProperties"
+        }
+      },
+      {
+        "id": {
+          "id": "uno/collections/icollection_1",
+          "parentId": "uno/collections",
+          "type": "Interface",
+          "modifiers": [
+            "public",
+            "abstract"
+          ]
+        },
+        "uri": {
+          "idUri": "uno/collections/icollection_1",
+          "href": "uno/collections/icollection_1"
+        },
+        "titles": {
+          "indexTitle": "ICollection<Binding>",
+          "fullyQualifiedIndexTitle": "Uno.Collections.ICollection<Fuse.Binding>"
+        }
+      },
+      {
+        "id": {
+          "id": "uno/collections/ienumerable_1",
+          "parentId": "uno/collections",
+          "type": "Interface",
+          "modifiers": [
+            "public",
+            "abstract"
+          ]
+        },
+        "uri": {
+          "idUri": "uno/collections/ienumerable_1",
+          "href": "uno/collections/ienumerable_1"
+        },
+        "titles": {
+          "indexTitle": "IEnumerable<Binding>",
+          "fullyQualifiedIndexTitle": "Uno.Collections.IEnumerable<Fuse.Binding>"
+        }
+      }
+    ],
+    "id": {
+      "id": "fuse/navigation/visualnavigation",
+      "parentId": "fuse/navigation",
+      "type": "Class",
+      "modifiers": [
+        "public",
+        "abstract",
+        "partial"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/navigation/visualnavigation",
+      "href": "fuse/navigation/visualnavigation"
+    },
+    "titles": {
+      "pageTitle": "VisualNavigation Class",
+      "navigationTitle": "VisualNavigation Class",
+      "fullTitle": "Fuse.Navigation.VisualNavigation",
+      "indexTitle": "VisualNavigation",
+      "fullyQualifiedIndexTitle": "Fuse.Navigation.VisualNavigation"
+    },
+    "syntax": {
+      "uno": "public abstract partial class VisualNavigation : Fuse.Behavior, Fuse.Navigation.INavigation, Fuse.IParentObserver, Fuse.Navigation.IBaseNavigation {}"
+    }
+  },
+  "tableOfContents": {
+    "uxProperties": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/navigation/visualnavigation",
+            "parentId": "fuse/navigation",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract",
+              "partial"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/navigation/visualnavigation",
+            "href": "fuse/navigation/visualnavigation"
+          },
+          "titles": {
+            "indexTitle": "VisualNavigation",
+            "fullyQualifiedIndexTitle": "Fuse.Navigation.VisualNavigation"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "fuse/visual",
+              "title": "Visual",
+              "fullyQualifiedTitle": "Fuse.Visual"
+            },
+            "id": {
+              "id": "fuse/navigation/visualnavigation/active",
+              "parentId": "fuse/navigation/visualnavigation",
+              "type": "UxProperty",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/visualnavigation/active",
+              "href": "fuse/navigation/visualnavigation/active"
+            },
+            "titles": {
+              "indexTitle": "Active",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.VisualNavigation.Active"
+            }
+          },
+          {
+            "comment": {
+              "brief": "The child index of the currently active page.",
+              "full": "The child index of the currently active page.\n\nThe value is `-1` if there is currently no active page.\n\nSetting this value causes the navigation to transition to the desired page. Due to animations there may be a delay between setting and the new value actually becoming the \"active\" page. If you need to respond at a precise time in the transition you can use a `ActivatingAnimation` or a `WhileActive` trigger with appropriate threshold."
+            },
+            "returns": {
+              "href": "uno/int",
+              "title": "int",
+              "fullyQualifiedTitle": "int"
+            },
+            "id": {
+              "id": "fuse/navigation/visualnavigation/activeindex",
+              "parentId": "fuse/navigation/visualnavigation",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/visualnavigation/activeindex",
+              "href": "fuse/navigation/visualnavigation/activeindex"
+            },
+            "titles": {
+              "indexTitle": "ActiveIndex",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.VisualNavigation.ActiveIndex"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/node",
+            "parentId": "fuse",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract",
+              "partial"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/node",
+            "href": "fuse/node"
+          },
+          "titles": {
+            "indexTitle": "Node",
+            "fullyQualifiedIndexTitle": "Fuse.Node"
+          }
+        },
+        "items": [
+          {
+            "comment": {
+              "brief": "The list of bindings belonging to this node.",
+              "full": "The list of bindings belonging to this node."
+            },
+            "returns": {
+              "href": "uno/collections/ilist_1",
+              "title": "IList<Binding>",
+              "fullyQualifiedTitle": "Uno.Collections.IList<Fuse.Binding>"
+            },
+            "flags": {
+              "uxContent": true
+            },
+            "id": {
+              "id": "fuse/navigation/visualnavigation/bindings",
+              "parentId": "fuse/navigation/visualnavigation",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/visualnavigation/bindings",
+              "href": "fuse/node/bindings",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Bindings",
+              "fullyQualifiedIndexTitle": "Fuse.Node.Bindings"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Run-time name of the node.\nThis property is automatically set using the ux:Name attribute.",
+              "full": "Run-time name of the node.\nThis property is automatically set using the ux:Name attribute."
+            },
+            "returns": {
+              "href": "uno/ux/selector",
+              "title": "Selector",
+              "fullyQualifiedTitle": "Uno.UX.Selector"
+            },
+            "id": {
+              "id": "fuse/navigation/visualnavigation/name",
+              "parentId": "fuse/navigation/visualnavigation",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/visualnavigation/name",
+              "href": "fuse/node/name",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Name",
+              "fullyQualifiedIndexTitle": "Fuse.Node.Name"
+            }
+          }
+        ]
+      }
+    ],
+    "uxEvents": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/navigation/visualnavigation",
+            "parentId": "fuse/navigation",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract",
+              "partial"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/navigation/visualnavigation",
+            "href": "fuse/navigation/visualnavigation"
+          },
+          "titles": {
+            "indexTitle": "VisualNavigation",
+            "fullyQualifiedIndexTitle": "Fuse.Navigation.VisualNavigation"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "fuse/navigation/activepagechangedhandler",
+              "title": "ActivePageChangedHandler (object, Visual)",
+              "fullyQualifiedTitle": "Fuse.Navigation.ActivePageChangedHandler (object, Fuse.Visual)"
+            },
+            "id": {
+              "id": "fuse/navigation/visualnavigation/activepagechanged",
+              "parentId": "fuse/navigation/visualnavigation",
+              "type": "UxEvent",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/visualnavigation/activepagechanged",
+              "href": "fuse/navigation/visualnavigation/activepagechanged"
+            },
+            "titles": {
+              "indexTitle": "ActivePageChanged",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.VisualNavigation.ActivePageChanged"
+            }
+          },
+          {
+            "returns": {
+              "href": "fuse/navigation/historychangedhandler",
+              "title": "HistoryChangedHandler (object)",
+              "fullyQualifiedTitle": "Fuse.Navigation.HistoryChangedHandler (object)"
+            },
+            "id": {
+              "id": "fuse/navigation/visualnavigation/historychanged",
+              "parentId": "fuse/navigation/visualnavigation",
+              "type": "UxEvent",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/visualnavigation/historychanged",
+              "href": "fuse/navigation/visualnavigation/historychanged"
+            },
+            "titles": {
+              "indexTitle": "HistoryChanged",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.VisualNavigation.HistoryChanged"
+            }
+          },
+          {
+            "returns": {
+              "href": "fuse/navigation/navigatedhandler",
+              "title": "NavigatedHandler (object, NavigatedArgs)",
+              "fullyQualifiedTitle": "Fuse.Navigation.NavigatedHandler (object, Fuse.Navigation.NavigatedArgs)"
+            },
+            "id": {
+              "id": "fuse/navigation/visualnavigation/navigated",
+              "parentId": "fuse/navigation/visualnavigation",
+              "type": "UxEvent",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/visualnavigation/navigated",
+              "href": "fuse/navigation/visualnavigation/navigated"
+            },
+            "titles": {
+              "indexTitle": "Navigated",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.VisualNavigation.Navigated"
+            }
+          },
+          {
+            "returns": {
+              "href": "fuse/navigation/navigationpagecounthandler",
+              "title": "NavigationPageCountHandler (object)",
+              "fullyQualifiedTitle": "Fuse.Navigation.NavigationPageCountHandler (object)"
+            },
+            "id": {
+              "id": "fuse/navigation/visualnavigation/pagecountchanged",
+              "parentId": "fuse/navigation/visualnavigation",
+              "type": "UxEvent",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/visualnavigation/pagecountchanged",
+              "href": "fuse/navigation/visualnavigation/pagecountchanged"
+            },
+            "titles": {
+              "indexTitle": "PageCountChanged",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.VisualNavigation.PageCountChanged"
+            }
+          },
+          {
+            "returns": {
+              "href": "fuse/navigation/navigationhandler",
+              "title": "NavigationHandler (object, NavigationArgs)",
+              "fullyQualifiedTitle": "Fuse.Navigation.NavigationHandler (object, Fuse.Navigation.NavigationArgs)"
+            },
+            "id": {
+              "id": "fuse/navigation/visualnavigation/pageprogresschanged",
+              "parentId": "fuse/navigation/visualnavigation",
+              "type": "UxEvent",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/visualnavigation/pageprogresschanged",
+              "href": "fuse/navigation/visualnavigation/pageprogresschanged"
+            },
+            "titles": {
+              "indexTitle": "PageProgressChanged",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.VisualNavigation.PageProgressChanged"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/ux/valuechangedhandler_1",
+              "title": "ValueChangedHandler<NavigationState> (object, ValueChangedArgs<NavigationState>)",
+              "fullyQualifiedTitle": "Uno.UX.ValueChangedHandler<Fuse.Navigation.NavigationState> (object, Uno.UX.ValueChangedArgs<Fuse.Navigation.NavigationState>)"
+            },
+            "id": {
+              "id": "fuse/navigation/visualnavigation/statechanged",
+              "parentId": "fuse/navigation/visualnavigation",
+              "type": "UxEvent",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/visualnavigation/statechanged",
+              "href": "fuse/navigation/visualnavigation/statechanged"
+            },
+            "titles": {
+              "indexTitle": "StateChanged",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.VisualNavigation.StateChanged"
+            }
+          }
+        ]
+      }
+    ],
+    "jsMethods": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/navigation/visualnavigation",
+            "parentId": "fuse/navigation",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract",
+              "partial"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/navigation/visualnavigation",
+            "href": "fuse/navigation/visualnavigation"
+          },
+          "titles": {
+            "indexTitle": "VisualNavigation",
+            "fullyQualifiedIndexTitle": "Fuse.Navigation.VisualNavigation"
+          }
+        },
+        "items": [
+          {
+            "comment": {
+              "brief": "Transition to the target node.",
+              "full": "Transition to the target node.",
+              "attributes": {
+                "scriptMethod": {
+                  "name": "goto",
+                  "parameters": [
+                    "node"
+                  ]
+                },
+                "parameters": [
+                  {
+                    "name": "node",
+                    "description": "The `Visual` target for the transition. For most navigation types this must already bea child of the navigation panel."
+                  }
+                ]
+              }
+            },
+            "parameters": [
+              {
+                "name": "nav",
+                "href": "fuse/navigation/visualnavigation",
+                "title": "VisualNavigation",
+                "fullyQualifiedTitle": "Fuse.Navigation.VisualNavigation"
+              },
+              {
+                "name": "args",
+                "href": "uno/object",
+                "title": "object[]",
+                "fullyQualifiedTitle": "object[]"
+              }
+            ],
+            "id": {
+              "id": "fuse/navigation/visualnavigation/gotonode_9b6bd30c",
+              "parentId": "fuse/navigation/visualnavigation",
+              "type": "JsMethod",
+              "modifiers": [
+                "private",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/visualnavigation/gotonode_9b6bd30c",
+              "href": "fuse/navigation/visualnavigation/gotonode_9b6bd30c"
+            },
+            "titles": {
+              "indexTitle": "gotoNode(VisualNavigation, object[])",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.VisualNavigation.gotoNode(Fuse.Navigation.VisualNavigation, object[])"
+            }
+          }
+        ]
+      }
+    ],
+    "properties": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/navigation/visualnavigation",
+            "parentId": "fuse/navigation",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract",
+              "partial"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/navigation/visualnavigation",
+            "href": "fuse/navigation/visualnavigation"
+          },
+          "titles": {
+            "indexTitle": "VisualNavigation",
+            "fullyQualifiedIndexTitle": "Fuse.Navigation.VisualNavigation"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "fuse/visual",
+              "title": "Visual",
+              "fullyQualifiedTitle": "Fuse.Visual"
+            },
+            "id": {
+              "id": "fuse/navigation/visualnavigation/activepage",
+              "parentId": "fuse/navigation/visualnavigation",
+              "type": "Property",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/visualnavigation/activepage",
+              "href": "fuse/navigation/visualnavigation/activepage"
+            },
+            "titles": {
+              "indexTitle": "ActivePage",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.VisualNavigation.ActivePage"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "id": {
+              "id": "fuse/navigation/visualnavigation/cangoback",
+              "parentId": "fuse/navigation/visualnavigation",
+              "type": "Property",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/visualnavigation/cangoback",
+              "href": "fuse/navigation/visualnavigation/cangoback"
+            },
+            "titles": {
+              "indexTitle": "CanGoBack",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.VisualNavigation.CanGoBack"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "id": {
+              "id": "fuse/navigation/visualnavigation/cangoforward",
+              "parentId": "fuse/navigation/visualnavigation",
+              "type": "Property",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/visualnavigation/cangoforward",
+              "href": "fuse/navigation/visualnavigation/cangoforward"
+            },
+            "titles": {
+              "indexTitle": "CanGoForward",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.VisualNavigation.CanGoForward"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "id": {
+              "id": "fuse/navigation/visualnavigation/haspages",
+              "parentId": "fuse/navigation/visualnavigation",
+              "type": "Property",
+              "modifiers": [
+                "protected"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/visualnavigation/haspages",
+              "href": "fuse/navigation/visualnavigation/haspages"
+            },
+            "titles": {
+              "indexTitle": "HasPages",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.VisualNavigation.HasPages"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/int",
+              "title": "int",
+              "fullyQualifiedTitle": "int"
+            },
+            "id": {
+              "id": "fuse/navigation/visualnavigation/pagecount",
+              "parentId": "fuse/navigation/visualnavigation",
+              "type": "Property",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/visualnavigation/pagecount",
+              "href": "fuse/navigation/visualnavigation/pagecount"
+            },
+            "titles": {
+              "indexTitle": "PageCount",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.VisualNavigation.PageCount"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/double",
+              "title": "double",
+              "fullyQualifiedTitle": "double"
+            },
+            "id": {
+              "id": "fuse/navigation/visualnavigation/pageprogress",
+              "parentId": "fuse/navigation/visualnavigation",
+              "type": "Property",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/visualnavigation/pageprogress",
+              "href": "fuse/navigation/visualnavigation/pageprogress"
+            },
+            "titles": {
+              "indexTitle": "PageProgress",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.VisualNavigation.PageProgress"
+            }
+          },
+          {
+            "returns": {
+              "href": "fuse/navigation/navigationstate",
+              "title": "NavigationState",
+              "fullyQualifiedTitle": "Fuse.Navigation.NavigationState"
+            },
+            "id": {
+              "id": "fuse/navigation/visualnavigation/state",
+              "parentId": "fuse/navigation/visualnavigation",
+              "type": "Property",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/visualnavigation/state",
+              "href": "fuse/navigation/visualnavigation/state"
+            },
+            "titles": {
+              "indexTitle": "State",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.VisualNavigation.State"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/node",
+            "parentId": "fuse",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract",
+              "partial"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/node",
+            "href": "fuse/node"
+          },
+          "titles": {
+            "indexTitle": "Node",
+            "fullyQualifiedIndexTitle": "Fuse.Node"
+          }
+        },
+        "items": [
+          {
+            "comment": {
+              "brief": "The context parent is the semantic parent of this node. It is where non-UI structure should\nbe resolved, like looking for the DataContext, a Navigation, or other semantic item.",
+              "full": "The context parent is the semantic parent of this node. It is where non-UI structure should\nbe resolved, like looking for the DataContext, a Navigation, or other semantic item."
+            },
+            "returns": {
+              "href": "fuse/node",
+              "title": "Node",
+              "fullyQualifiedTitle": "Fuse.Node"
+            },
+            "id": {
+              "id": "fuse/navigation/visualnavigation/contextparent",
+              "parentId": "fuse/navigation/visualnavigation",
+              "type": "Property",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/visualnavigation/contextparent",
+              "href": "fuse/node/contextparent",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "ContextParent",
+              "fullyQualifiedIndexTitle": "Fuse.Node.ContextParent"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Whether rooting for this node is completed.\nReturns false if unrooting has started.",
+              "full": "Whether rooting for this node is completed.\nReturns false if unrooting has started."
+            },
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "id": {
+              "id": "fuse/navigation/visualnavigation/isrootingcompleted",
+              "parentId": "fuse/navigation/visualnavigation",
+              "type": "Property",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/visualnavigation/isrootingcompleted",
+              "href": "fuse/node/isrootingcompleted",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "IsRootingCompleted",
+              "fullyQualifiedIndexTitle": "Fuse.Node.IsRootingCompleted"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Whether rooting of this node has started.\nNote that even if this property returns true, rooting may not yet be\ncompleted for the node. See also @IsRootingCompleted.",
+              "full": "Whether rooting of this node has started.\nNote that even if this property returns true, rooting may not yet be\ncompleted for the node. See also @IsRootingCompleted."
+            },
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "id": {
+              "id": "fuse/navigation/visualnavigation/isrootingstarted",
+              "parentId": "fuse/navigation/visualnavigation",
+              "type": "Property",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/visualnavigation/isrootingstarted",
+              "href": "fuse/node/isrootingstarted",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "IsRootingStarted",
+              "fullyQualifiedIndexTitle": "Fuse.Node.IsRootingStarted"
+            }
+          },
+          {
+            "comment": {
+              "brief": "The parent @Visual of this node. Will return null if the node is not rooted.",
+              "full": "The parent @Visual of this node. Will return null if the node is not rooted."
+            },
+            "returns": {
+              "href": "fuse/visual",
+              "title": "Visual",
+              "fullyQualifiedTitle": "Fuse.Visual"
+            },
+            "id": {
+              "id": "fuse/navigation/visualnavigation/parent",
+              "parentId": "fuse/navigation/visualnavigation",
+              "type": "Property",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/visualnavigation/parent",
+              "href": "fuse/node/parent",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Parent",
+              "fullyQualifiedIndexTitle": "Fuse.Node.Parent"
+            }
+          },
+          {
+            "comment": {
+              "brief": "A linked list holding data for extrinsic properties.",
+              "full": "A linked list holding data for extrinsic properties."
+            },
+            "returns": {
+              "href": "fuse/properties",
+              "title": "Properties",
+              "fullyQualifiedTitle": "Fuse.Properties"
+            },
+            "id": {
+              "id": "fuse/navigation/visualnavigation/properties",
+              "parentId": "fuse/navigation/visualnavigation",
+              "type": "Property",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/visualnavigation/properties",
+              "href": "fuse/node/properties",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Properties",
+              "fullyQualifiedIndexTitle": "Fuse.Node.Properties"
+            }
+          }
+        ]
+      }
+    ],
+    "methods": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/navigation/visualnavigation",
+            "parentId": "fuse/navigation",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract",
+              "partial"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/navigation/visualnavigation",
+            "href": "fuse/navigation/visualnavigation"
+          },
+          "titles": {
+            "indexTitle": "VisualNavigation",
+            "fullyQualifiedIndexTitle": "Fuse.Navigation.VisualNavigation"
+          }
+        },
+        "items": [
+          {
+            "id": {
+              "id": "fuse/navigation/visualnavigation/clearhistory",
+              "parentId": "fuse/navigation/visualnavigation",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/visualnavigation/clearhistory",
+              "href": "fuse/navigation/visualnavigation/clearhistory"
+            },
+            "titles": {
+              "indexTitle": "ClearHistory",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.VisualNavigation.ClearHistory"
+            }
+          },
+          {
+            "returns": {
+              "href": "fuse/visual",
+              "title": "Visual",
+              "fullyQualifiedTitle": "Fuse.Visual"
+            },
+            "parameters": [
+              {
+                "name": "index",
+                "href": "uno/int",
+                "title": "int",
+                "fullyQualifiedTitle": "int"
+              }
+            ],
+            "id": {
+              "id": "fuse/navigation/visualnavigation/getpage_56ad0a96",
+              "parentId": "fuse/navigation/visualnavigation",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/visualnavigation/getpage_56ad0a96",
+              "href": "fuse/navigation/visualnavigation/getpage_56ad0a96"
+            },
+            "titles": {
+              "indexTitle": "GetPage(int)",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.VisualNavigation.GetPage(int)"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/int",
+              "title": "int",
+              "fullyQualifiedTitle": "int"
+            },
+            "parameters": [
+              {
+                "name": "child",
+                "href": "fuse/visual",
+                "title": "Visual",
+                "fullyQualifiedTitle": "Fuse.Visual"
+              }
+            ],
+            "id": {
+              "id": "fuse/navigation/visualnavigation/getpageindex_d61a1318",
+              "parentId": "fuse/navigation/visualnavigation",
+              "type": "Method",
+              "modifiers": [
+                "protected"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/visualnavigation/getpageindex_d61a1318",
+              "href": "fuse/navigation/visualnavigation/getpageindex_d61a1318"
+            },
+            "titles": {
+              "indexTitle": "GetPageIndex(Visual)",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.VisualNavigation.GetPageIndex(Fuse.Visual)"
+            }
+          },
+          {
+            "returns": {
+              "href": "fuse/navigation/navigationpagestate",
+              "title": "NavigationPageState",
+              "fullyQualifiedTitle": "Fuse.Navigation.NavigationPageState"
+            },
+            "parameters": [
+              {
+                "name": "page",
+                "href": "fuse/visual",
+                "title": "Visual",
+                "fullyQualifiedTitle": "Fuse.Visual"
+              }
+            ],
+            "id": {
+              "id": "fuse/navigation/visualnavigation/getpagestate_d61a1318",
+              "parentId": "fuse/navigation/visualnavigation",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/visualnavigation/getpagestate_d61a1318",
+              "href": "fuse/navigation/visualnavigation/getpagestate_d61a1318"
+            },
+            "titles": {
+              "indexTitle": "GetPageState(Visual)",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.VisualNavigation.GetPageState(Fuse.Visual)"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/navigation/visualnavigation/goback",
+              "parentId": "fuse/navigation/visualnavigation",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/visualnavigation/goback",
+              "href": "fuse/navigation/visualnavigation/goback"
+            },
+            "titles": {
+              "indexTitle": "GoBack",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.VisualNavigation.GoBack"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/navigation/visualnavigation/goforward",
+              "parentId": "fuse/navigation/visualnavigation",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/visualnavigation/goforward",
+              "href": "fuse/navigation/visualnavigation/goforward"
+            },
+            "titles": {
+              "indexTitle": "GoForward",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.VisualNavigation.GoForward"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "element",
+                "href": "fuse/visual",
+                "title": "Visual",
+                "fullyQualifiedTitle": "Fuse.Visual"
+              },
+              {
+                "name": "mode",
+                "href": "fuse/navigation/navigationgotomode",
+                "title": "NavigationGotoMode",
+                "fullyQualifiedTitle": "Fuse.Navigation.NavigationGotoMode"
+              }
+            ],
+            "id": {
+              "id": "fuse/navigation/visualnavigation/goto_5914dc73",
+              "parentId": "fuse/navigation/visualnavigation",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/visualnavigation/goto_5914dc73",
+              "href": "fuse/navigation/visualnavigation/goto_5914dc73"
+            },
+            "titles": {
+              "indexTitle": "Goto(Visual, NavigationGotoMode)",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.VisualNavigation.Goto(Fuse.Visual, Fuse.Navigation.NavigationGotoMode)"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "parameters": [
+              {
+                "name": "x",
+                "href": "fuse/node",
+                "title": "Node",
+                "fullyQualifiedTitle": "Fuse.Node"
+              }
+            ],
+            "id": {
+              "id": "fuse/navigation/visualnavigation/ispage_5070ac8a",
+              "parentId": "fuse/navigation/visualnavigation",
+              "type": "Method",
+              "modifiers": [
+                "protected"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/visualnavigation/ispage_5070ac8a",
+              "href": "fuse/navigation/visualnavigation/ispage_5070ac8a"
+            },
+            "titles": {
+              "indexTitle": "IsPage(Node)",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.VisualNavigation.IsPage(Fuse.Node)"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Call immedaitely when the active page changes (when it is set). This happens prior to animation,\nso strictly prior to `OnNavigated` (though within the same frame, the next calls, is fine).",
+              "full": "Call immedaitely when the active page changes (when it is set). This happens prior to animation,\nso strictly prior to `OnNavigated` (though within the same frame, the next calls, is fine)."
+            },
+            "parameters": [
+              {
+                "name": "newElement",
+                "href": "fuse/visual",
+                "title": "Visual",
+                "fullyQualifiedTitle": "Fuse.Visual"
+              }
+            ],
+            "id": {
+              "id": "fuse/navigation/visualnavigation/onactivechanged_d61a1318",
+              "parentId": "fuse/navigation/visualnavigation",
+              "type": "Method",
+              "modifiers": [
+                "protected"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/visualnavigation/onactivechanged_d61a1318",
+              "href": "fuse/navigation/visualnavigation/onactivechanged_d61a1318"
+            },
+            "titles": {
+              "indexTitle": "OnActiveChanged(Visual)",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.VisualNavigation.OnActiveChanged(Fuse.Visual)"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "child",
+                "href": "fuse/node",
+                "title": "Node",
+                "fullyQualifiedTitle": "Fuse.Node"
+              }
+            ],
+            "id": {
+              "id": "fuse/navigation/visualnavigation/onchildaddedwhilerooted_5070ac8a",
+              "parentId": "fuse/navigation/visualnavigation",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/visualnavigation/onchildaddedwhilerooted_5070ac8a",
+              "href": "fuse/navigation/visualnavigation/onchildaddedwhilerooted_5070ac8a"
+            },
+            "titles": {
+              "indexTitle": "OnChildAddedWhileRooted(Node)",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.VisualNavigation.OnChildAddedWhileRooted(Fuse.Node)"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "child",
+                "href": "fuse/node",
+                "title": "Node",
+                "fullyQualifiedTitle": "Fuse.Node"
+              }
+            ],
+            "id": {
+              "id": "fuse/navigation/visualnavigation/onchildmovedwhilerooted_5070ac8a",
+              "parentId": "fuse/navigation/visualnavigation",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/visualnavigation/onchildmovedwhilerooted_5070ac8a",
+              "href": "fuse/navigation/visualnavigation/onchildmovedwhilerooted_5070ac8a"
+            },
+            "titles": {
+              "indexTitle": "OnChildMovedWhileRooted(Node)",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.VisualNavigation.OnChildMovedWhileRooted(Fuse.Node)"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "child",
+                "href": "fuse/node",
+                "title": "Node",
+                "fullyQualifiedTitle": "Fuse.Node"
+              }
+            ],
+            "id": {
+              "id": "fuse/navigation/visualnavigation/onchildremovedwhilerooted_5070ac8a",
+              "parentId": "fuse/navigation/visualnavigation",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/visualnavigation/onchildremovedwhilerooted_5070ac8a",
+              "href": "fuse/navigation/visualnavigation/onchildremovedwhilerooted_5070ac8a"
+            },
+            "titles": {
+              "indexTitle": "OnChildRemovedWhileRooted(Node)",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.VisualNavigation.OnChildRemovedWhileRooted(Fuse.Node)"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/navigation/visualnavigation/onhistorychanged",
+              "parentId": "fuse/navigation/visualnavigation",
+              "type": "Method",
+              "modifiers": [
+                "protected"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/visualnavigation/onhistorychanged",
+              "href": "fuse/navigation/visualnavigation/onhistorychanged"
+            },
+            "titles": {
+              "indexTitle": "OnHistoryChanged",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.VisualNavigation.OnHistoryChanged"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Call when the navigation to the target page is completed.",
+              "full": "Call when the navigation to the target page is completed."
+            },
+            "parameters": [
+              {
+                "name": "newElement",
+                "href": "fuse/visual",
+                "title": "Visual",
+                "fullyQualifiedTitle": "Fuse.Visual"
+              }
+            ],
+            "id": {
+              "id": "fuse/navigation/visualnavigation/onnavigated_d61a1318",
+              "parentId": "fuse/navigation/visualnavigation",
+              "type": "Method",
+              "modifiers": [
+                "protected"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/visualnavigation/onnavigated_d61a1318",
+              "href": "fuse/navigation/visualnavigation/onnavigated_d61a1318"
+            },
+            "titles": {
+              "indexTitle": "OnNavigated(Visual)",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.VisualNavigation.OnNavigated(Fuse.Visual)"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/navigation/visualnavigation/onpagecountchanged",
+              "parentId": "fuse/navigation/visualnavigation",
+              "type": "Method",
+              "modifiers": [
+                "protected"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/visualnavigation/onpagecountchanged",
+              "href": "fuse/navigation/visualnavigation/onpagecountchanged"
+            },
+            "titles": {
+              "indexTitle": "OnPageCountChanged",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.VisualNavigation.OnPageCountChanged"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "current",
+                "href": "uno/double",
+                "title": "double",
+                "fullyQualifiedTitle": "double"
+              },
+              {
+                "name": "prev",
+                "href": "uno/double",
+                "title": "double",
+                "fullyQualifiedTitle": "double"
+              },
+              {
+                "name": "mode",
+                "href": "fuse/navigation/navigationmode",
+                "title": "NavigationMode",
+                "fullyQualifiedTitle": "Fuse.Navigation.NavigationMode"
+              }
+            ],
+            "id": {
+              "id": "fuse/navigation/visualnavigation/onpageprogresschanged_e61c1bf1",
+              "parentId": "fuse/navigation/visualnavigation",
+              "type": "Method",
+              "modifiers": [
+                "protected"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/visualnavigation/onpageprogresschanged_e61c1bf1",
+              "href": "fuse/navigation/visualnavigation/onpageprogresschanged_e61c1bf1"
+            },
+            "titles": {
+              "indexTitle": "OnPageProgressChanged(double, double, NavigationMode)",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.VisualNavigation.OnPageProgressChanged(double, double, Fuse.Navigation.NavigationMode)"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "mode",
+                "href": "fuse/navigation/navigationmode",
+                "title": "NavigationMode",
+                "fullyQualifiedTitle": "Fuse.Navigation.NavigationMode"
+              }
+            ],
+            "id": {
+              "id": "fuse/navigation/visualnavigation/onpageprogresschanged_ae1f6c2e",
+              "parentId": "fuse/navigation/visualnavigation",
+              "type": "Method",
+              "modifiers": [
+                "protected"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/visualnavigation/onpageprogresschanged_ae1f6c2e",
+              "href": "fuse/navigation/visualnavigation/onpageprogresschanged_ae1f6c2e"
+            },
+            "titles": {
+              "indexTitle": "OnPageProgressChanged(NavigationMode)",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.VisualNavigation.OnPageProgressChanged(Fuse.Navigation.NavigationMode)"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "newState",
+                "href": "fuse/navigation/navigationstate",
+                "title": "NavigationState",
+                "fullyQualifiedTitle": "Fuse.Navigation.NavigationState"
+              }
+            ],
+            "id": {
+              "id": "fuse/navigation/visualnavigation/onstatechanged_3e78707f",
+              "parentId": "fuse/navigation/visualnavigation",
+              "type": "Method",
+              "modifiers": [
+                "protected"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/visualnavigation/onstatechanged_3e78707f",
+              "href": "fuse/navigation/visualnavigation/onstatechanged_3e78707f"
+            },
+            "titles": {
+              "indexTitle": "OnStateChanged(NavigationState)",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.VisualNavigation.OnStateChanged(Fuse.Navigation.NavigationState)"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "value",
+                "href": "uno/int",
+                "title": "int",
+                "fullyQualifiedTitle": "int"
+              },
+              {
+                "name": "origin",
+                "href": "uno/ux/ipropertylistener",
+                "title": "IPropertyListener",
+                "fullyQualifiedTitle": "Uno.UX.IPropertyListener"
+              }
+            ],
+            "id": {
+              "id": "fuse/navigation/visualnavigation/setactiveindex_72835b20",
+              "parentId": "fuse/navigation/visualnavigation",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/visualnavigation/setactiveindex_72835b20",
+              "href": "fuse/navigation/visualnavigation/setactiveindex_72835b20"
+            },
+            "titles": {
+              "indexTitle": "SetActiveIndex(int, IPropertyListener)",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.VisualNavigation.SetActiveIndex(int, Uno.UX.IPropertyListener)"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "page",
+                "href": "fuse/visual",
+                "title": "Visual",
+                "fullyQualifiedTitle": "Fuse.Visual"
+              }
+            ],
+            "id": {
+              "id": "fuse/navigation/visualnavigation/toggle_d61a1318",
+              "parentId": "fuse/navigation/visualnavigation",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/visualnavigation/toggle_d61a1318",
+              "href": "fuse/navigation/visualnavigation/toggle_d61a1318"
+            },
+            "titles": {
+              "indexTitle": "Toggle(Visual)",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.VisualNavigation.Toggle(Fuse.Visual)"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/node",
+            "parentId": "fuse",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract",
+              "partial"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/node",
+            "href": "fuse/node"
+          },
+          "titles": {
+            "indexTitle": "Node",
+            "fullyQualifiedIndexTitle": "Fuse.Node"
+          }
+        },
+        "items": [
+          {
+            "parameters": [
+              {
+                "name": "item",
+                "href": "fuse/binding",
+                "title": "Binding",
+                "fullyQualifiedTitle": "Fuse.Binding"
+              }
+            ],
+            "id": {
+              "id": "fuse/navigation/visualnavigation/add_cd0f711d",
+              "parentId": "fuse/navigation/visualnavigation",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/visualnavigation/add_cd0f711d",
+              "href": "fuse/node/add_cd0f711d",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Add(Binding)",
+              "fullyQualifiedIndexTitle": "Fuse.Node.Add(Fuse.Binding)"
+            }
+          },
+          {
+            "returns": {
+              "isVirtual": true,
+              "title": "T",
+              "fullyQualifiedTitle": "Fuse.T"
+            },
+            "id": {
+              "id": "fuse/navigation/visualnavigation/findbytype_1",
+              "parentId": "fuse/navigation/visualnavigation",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/visualnavigation/findbytype_1",
+              "href": "fuse/node/findbytype_1",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "FindByType<T>",
+              "fullyQualifiedIndexTitle": "Fuse.Node.FindByType<T>"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Finds the first node with a given name that satisfies the given acceptor.\nThe serach algorithm works as follows: Nodes in the subtree are matched first, then\nit matches the nodes in the subtrees ofthe ancestor nodes by turn all the way to the\nroot. If no matching node is found, the function returns null.",
+              "full": "Finds the first node with a given name that satisfies the given acceptor.\nThe serach algorithm works as follows: Nodes in the subtree are matched first, then\nit matches the nodes in the subtrees ofthe ancestor nodes by turn all the way to the\nroot. If no matching node is found, the function returns null."
+            },
+            "returns": {
+              "href": "fuse/node",
+              "title": "Node",
+              "fullyQualifiedTitle": "Fuse.Node"
+            },
+            "parameters": [
+              {
+                "name": "name",
+                "href": "uno/ux/selector",
+                "title": "Selector",
+                "fullyQualifiedTitle": "Uno.UX.Selector"
+              },
+              {
+                "name": "acceptor",
+                "href": "uno/predicate_1",
+                "title": "Predicate<Node> (Node)",
+                "fullyQualifiedTitle": "Uno.Predicate<Fuse.Node> (Fuse.Node)"
+              }
+            ],
+            "id": {
+              "id": "fuse/navigation/visualnavigation/findnodebyname_66268add",
+              "parentId": "fuse/navigation/visualnavigation",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/visualnavigation/findnodebyname_66268add",
+              "href": "fuse/node/findnodebyname_66268add",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "FindNodeByName(Selector, Predicate<Node> (Node))",
+              "fullyQualifiedIndexTitle": "Fuse.Node.FindNodeByName(Uno.UX.Selector, Uno.Predicate<Fuse.Node> (Fuse.Node))"
+            }
+          },
+          {
+            "returns": {
+              "isVirtual": true,
+              "title": "T",
+              "fullyQualifiedTitle": "Fuse.T"
+            },
+            "id": {
+              "id": "fuse/navigation/visualnavigation/getnearestancestoroftype_1",
+              "parentId": "fuse/navigation/visualnavigation",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/visualnavigation/getnearestancestoroftype_1",
+              "href": "fuse/node/getnearestancestoroftype_1",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetNearestAncestorOfType<T>",
+              "fullyQualifiedIndexTitle": "Fuse.Node.GetNearestAncestorOfType<T>"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "index",
+                "href": "uno/int",
+                "title": "int",
+                "fullyQualifiedTitle": "int"
+              },
+              {
+                "name": "item",
+                "href": "fuse/binding",
+                "title": "Binding",
+                "fullyQualifiedTitle": "Fuse.Binding"
+              }
+            ],
+            "id": {
+              "id": "fuse/navigation/visualnavigation/insert_4036b6cf",
+              "parentId": "fuse/navigation/visualnavigation",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/visualnavigation/insert_4036b6cf",
+              "href": "fuse/node/insert_4036b6cf",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Insert(int, Binding)",
+              "fullyQualifiedIndexTitle": "Fuse.Node.Insert(int, Fuse.Binding)"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Returns the next sibling node of the given type.",
+              "full": "Returns the next sibling node of the given type."
+            },
+            "returns": {
+              "isVirtual": true,
+              "title": "T",
+              "fullyQualifiedTitle": "Fuse.T"
+            },
+            "id": {
+              "id": "fuse/navigation/visualnavigation/nextsibling_1",
+              "parentId": "fuse/navigation/visualnavigation",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/visualnavigation/nextsibling_1",
+              "href": "fuse/node/nextsibling_1",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "NextSibling<T>",
+              "fullyQualifiedIndexTitle": "Fuse.Node.NextSibling<T>"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "key",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              },
+              {
+                "name": "newValue",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              }
+            ],
+            "id": {
+              "id": "fuse/navigation/visualnavigation/ondatachanged_d062e5a9",
+              "parentId": "fuse/navigation/visualnavigation",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/visualnavigation/ondatachanged_d062e5a9",
+              "href": "fuse/node/ondatachanged_d062e5a9",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "OnDataChanged(string, object)",
+              "fullyQualifiedIndexTitle": "Fuse.Node.OnDataChanged(string, object)"
+            }
+          },
+          {
+            "comment": {
+              "brief": "If you override `OnRooted` you must call `base.OnRooted()` first in your derived class. No other processing should happen first, otherwise you might end up in an undefined state.",
+              "full": "If you override `OnRooted` you must call `base.OnRooted()` first in your derived class. No other processing should happen first, otherwise you might end up in an undefined state."
+            },
+            "id": {
+              "id": "fuse/navigation/visualnavigation/onrooted",
+              "parentId": "fuse/navigation/visualnavigation",
+              "type": "Method",
+              "modifiers": [
+                "protected",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/visualnavigation/onrooted",
+              "href": "fuse/node/onrooted",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "OnRooted",
+              "fullyQualifiedIndexTitle": "Fuse.Node.OnRooted"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/navigation/visualnavigation/onunrooted",
+              "parentId": "fuse/navigation/visualnavigation",
+              "type": "Method",
+              "modifiers": [
+                "protected",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/visualnavigation/onunrooted",
+              "href": "fuse/node/onunrooted",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "OnUnrooted",
+              "fullyQualifiedIndexTitle": "Fuse.Node.OnUnrooted"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Returns the next sibling node of the given type.",
+              "full": "Returns the next sibling node of the given type."
+            },
+            "returns": {
+              "isVirtual": true,
+              "title": "T",
+              "fullyQualifiedTitle": "Fuse.T"
+            },
+            "id": {
+              "id": "fuse/navigation/visualnavigation/previoussibling_1",
+              "parentId": "fuse/navigation/visualnavigation",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/visualnavigation/previoussibling_1",
+              "href": "fuse/node/previoussibling_1",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "PreviousSibling<T>",
+              "fullyQualifiedIndexTitle": "Fuse.Node.PreviousSibling<T>"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "parameters": [
+              {
+                "name": "item",
+                "href": "fuse/binding",
+                "title": "Binding",
+                "fullyQualifiedTitle": "Fuse.Binding"
+              }
+            ],
+            "id": {
+              "id": "fuse/navigation/visualnavigation/remove_cd0f711d",
+              "parentId": "fuse/navigation/visualnavigation",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/visualnavigation/remove_cd0f711d",
+              "href": "fuse/node/remove_cd0f711d",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Remove(Binding)",
+              "fullyQualifiedIndexTitle": "Fuse.Node.Remove(Fuse.Binding)"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/navigation/visualnavigation/softdispose",
+              "parentId": "fuse/navigation/visualnavigation",
+              "type": "Method",
+              "modifiers": [
+                "protected",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/visualnavigation/softdispose",
+              "href": "fuse/node/softdispose",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "SoftDispose",
+              "fullyQualifiedIndexTitle": "Fuse.Node.SoftDispose"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "id": {
+              "id": "fuse/navigation/visualnavigation/subtreetostring",
+              "parentId": "fuse/navigation/visualnavigation",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/visualnavigation/subtreetostring",
+              "href": "fuse/node/subtreetostring",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "SubtreeToString",
+              "fullyQualifiedIndexTitle": "Fuse.Node.SubtreeToString"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "sb",
+                "href": "uno/text/stringbuilder",
+                "title": "StringBuilder",
+                "fullyQualifiedTitle": "Uno.Text.StringBuilder"
+              },
+              {
+                "name": "indent",
+                "href": "uno/int",
+                "title": "int",
+                "fullyQualifiedTitle": "int"
+              }
+            ],
+            "id": {
+              "id": "fuse/navigation/visualnavigation/subtreetostring_efe5f5b8",
+              "parentId": "fuse/navigation/visualnavigation",
+              "type": "Method",
+              "modifiers": [
+                "protected",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/visualnavigation/subtreetostring_efe5f5b8",
+              "href": "fuse/node/subtreetostring_efe5f5b8",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "SubtreeToString(StringBuilder, int)",
+              "fullyQualifiedIndexTitle": "Fuse.Node.SubtreeToString(Uno.Text.StringBuilder, int)"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "parameters": [
+              {
+                "name": "key",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              },
+              {
+                "name": "acceptor",
+                "href": "uno/predicate_1",
+                "title": "Predicate<object> (object)",
+                "fullyQualifiedTitle": "Uno.Predicate<object> (object)"
+              },
+              {
+                "name": "resource",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              }
+            ],
+            "id": {
+              "id": "fuse/navigation/visualnavigation/trygetresource_5317754b",
+              "parentId": "fuse/navigation/visualnavigation",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/visualnavigation/trygetresource_5317754b",
+              "href": "fuse/node/trygetresource_5317754b",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "TryGetResource(string, Predicate<object> (object), object)",
+              "fullyQualifiedIndexTitle": "Fuse.Node.TryGetResource(string, Uno.Predicate<object> (object), object)"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "action",
+                "href": "uno/action_1",
+                "title": "Action<Node> (Node)",
+                "fullyQualifiedTitle": "Uno.Action<Fuse.Node> (Fuse.Node)"
+              }
+            ],
+            "id": {
+              "id": "fuse/navigation/visualnavigation/visitsubtree_7a20b182",
+              "parentId": "fuse/navigation/visualnavigation",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/visualnavigation/visitsubtree_7a20b182",
+              "href": "fuse/node/visitsubtree_7a20b182",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "VisitSubtree(Action<Node> (Node))",
+              "fullyQualifiedIndexTitle": "Fuse.Node.VisitSubtree(Uno.Action<Fuse.Node> (Fuse.Node))"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "uno/ux/propertyobject",
+            "parentId": "uno/ux",
+            "type": "Class",
+            "modifiers": [
+              "public"
+            ]
+          },
+          "uri": {
+            "idUri": "uno/ux/propertyobject",
+            "href": "uno/ux/propertyobject"
+          },
+          "titles": {
+            "indexTitle": "PropertyObject",
+            "fullyQualifiedIndexTitle": "Uno.UX.PropertyObject"
+          }
+        },
+        "items": [
+          {
+            "parameters": [
+              {
+                "name": "listener",
+                "href": "uno/ux/ipropertylistener",
+                "title": "IPropertyListener",
+                "fullyQualifiedTitle": "Uno.UX.IPropertyListener"
+              }
+            ],
+            "id": {
+              "id": "fuse/navigation/visualnavigation/addpropertylistener_496a874a",
+              "parentId": "fuse/navigation/visualnavigation",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/visualnavigation/addpropertylistener_496a874a",
+              "href": "uno/ux/propertyobject/addpropertylistener_496a874a",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "AddPropertyListener(IPropertyListener)",
+              "fullyQualifiedIndexTitle": "Uno.UX.PropertyObject.AddPropertyListener(Uno.UX.IPropertyListener)"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "property",
+                "href": "uno/ux/selector",
+                "title": "Selector",
+                "fullyQualifiedTitle": "Uno.UX.Selector"
+              }
+            ],
+            "id": {
+              "id": "fuse/navigation/visualnavigation/onpropertychanged_16d735f3",
+              "parentId": "fuse/navigation/visualnavigation",
+              "type": "Method",
+              "modifiers": [
+                "protected"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/visualnavigation/onpropertychanged_16d735f3",
+              "href": "uno/ux/propertyobject/onpropertychanged_16d735f3",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "OnPropertyChanged(Selector)",
+              "fullyQualifiedIndexTitle": "Uno.UX.PropertyObject.OnPropertyChanged(Uno.UX.Selector)"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "property",
+                "href": "uno/ux/selector",
+                "title": "Selector",
+                "fullyQualifiedTitle": "Uno.UX.Selector"
+              },
+              {
+                "name": "origin",
+                "href": "uno/ux/ipropertylistener",
+                "title": "IPropertyListener",
+                "fullyQualifiedTitle": "Uno.UX.IPropertyListener"
+              }
+            ],
+            "id": {
+              "id": "fuse/navigation/visualnavigation/onpropertychanged_6422fe92",
+              "parentId": "fuse/navigation/visualnavigation",
+              "type": "Method",
+              "modifiers": [
+                "protected",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/visualnavigation/onpropertychanged_6422fe92",
+              "href": "uno/ux/propertyobject/onpropertychanged_6422fe92",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "OnPropertyChanged(Selector, IPropertyListener)",
+              "fullyQualifiedIndexTitle": "Uno.UX.PropertyObject.OnPropertyChanged(Uno.UX.Selector, Uno.UX.IPropertyListener)"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "listener",
+                "href": "uno/ux/ipropertylistener",
+                "title": "IPropertyListener",
+                "fullyQualifiedTitle": "Uno.UX.IPropertyListener"
+              }
+            ],
+            "id": {
+              "id": "fuse/navigation/visualnavigation/removepropertylistener_496a874a",
+              "parentId": "fuse/navigation/visualnavigation",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/visualnavigation/removepropertylistener_496a874a",
+              "href": "uno/ux/propertyobject/removepropertylistener_496a874a",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "RemovePropertyListener(IPropertyListener)",
+              "fullyQualifiedIndexTitle": "Uno.UX.PropertyObject.RemovePropertyListener(Uno.UX.IPropertyListener)"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "uno/object",
+            "parentId": "uno",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "intrinsic"
+            ]
+          },
+          "uri": {
+            "idUri": "uno/object",
+            "href": "uno/object"
+          },
+          "titles": {
+            "indexTitle": "object",
+            "fullyQualifiedIndexTitle": "object"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "parameters": [
+              {
+                "name": "o",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              }
+            ],
+            "id": {
+              "id": "fuse/navigation/visualnavigation/equals_a09c80e3",
+              "parentId": "fuse/navigation/visualnavigation",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/visualnavigation/equals_a09c80e3",
+              "href": "uno/object/equals_a09c80e3",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Equals(object)",
+              "fullyQualifiedIndexTitle": "Uno.Object.Equals(object)"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/int",
+              "title": "int",
+              "fullyQualifiedTitle": "int"
+            },
+            "id": {
+              "id": "fuse/navigation/visualnavigation/gethashcode",
+              "parentId": "fuse/navigation/visualnavigation",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/visualnavigation/gethashcode",
+              "href": "uno/object/gethashcode",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetHashCode",
+              "fullyQualifiedIndexTitle": "Uno.Object.GetHashCode"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/type",
+              "title": "Type",
+              "fullyQualifiedTitle": "Uno.Type"
+            },
+            "id": {
+              "id": "fuse/navigation/visualnavigation/gettype",
+              "parentId": "fuse/navigation/visualnavigation",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/visualnavigation/gettype",
+              "href": "uno/object/gettype",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetType",
+              "fullyQualifiedIndexTitle": "Uno.Object.GetType"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "id": {
+              "id": "fuse/navigation/visualnavigation/tostring",
+              "parentId": "fuse/navigation/visualnavigation",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/visualnavigation/tostring",
+              "href": "uno/object/tostring",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "ToString",
+              "fullyQualifiedIndexTitle": "Uno.Object.ToString"
+            }
+          }
+        ]
+      }
+    ],
+    "fields": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/navigation/visualnavigation",
+            "parentId": "fuse/navigation",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract",
+              "partial"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/navigation/visualnavigation",
+            "href": "fuse/navigation/visualnavigation"
+          },
+          "titles": {
+            "indexTitle": "VisualNavigation",
+            "fullyQualifiedIndexTitle": "Fuse.Navigation.VisualNavigation"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/ux/selector",
+              "title": "Selector",
+              "fullyQualifiedTitle": "Uno.UX.Selector"
+            },
+            "id": {
+              "id": "fuse/navigation/visualnavigation/activeindexname",
+              "parentId": "fuse/navigation/visualnavigation",
+              "type": "Field",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/visualnavigation/activeindexname",
+              "href": "fuse/navigation/visualnavigation/activeindexname"
+            },
+            "titles": {
+              "indexTitle": "ActiveIndexName",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.VisualNavigation.ActiveIndexName"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

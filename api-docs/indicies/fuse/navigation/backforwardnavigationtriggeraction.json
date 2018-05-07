@@ -1,0 +1,67 @@
+{
+  "root": {
+    "id": {
+      "id": "fuse/navigation/backforwardnavigationtriggeraction",
+      "parentId": "fuse/navigation",
+      "type": "Class",
+      "modifiers": [
+        "public",
+        "abstract"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/navigation/backforwardnavigationtriggeraction",
+      "href": "fuse/navigation/backforwardnavigationtriggeraction"
+    },
+    "titles": {
+      "indexTitle": "BackForwardNavigationTriggerAction",
+      "fullyQualifiedIndexTitle": "Fuse.Navigation.BackForwardNavigationTriggerAction"
+    }
+  },
+  "descendants": [
+    {
+      "comment": {
+        "brief": "Navigates backward in the navigation stack/z-order of a @Navigation, @PageControl, or @WebView.",
+        "full": "Navigates backward in the navigation stack/z-order of a @Navigation, @PageControl, or @WebView.\n\n# Example\nIn this example, `GoBack` will be used to navigate away from the first page of a `PageControl`.\n\n    <PageControl>\n        <Panel Background=\"#0F0\" ux:Name=\"firstPage\">\n            <Button Text=\"GoBack\" Alignment=\"Center\" Margin=\"10\">\n                <Clicked>\n                    <GoBack />\n                </Clicked>\n            </Button>\n        </Panel>\n        <Panel Background=\"#F00\" ux:Name=\"secondPage\">\n            <Button Alignment=\"Center\" Text=\"Go to page 1\">\n                <Clicked>\n                    <NavigateTo Target=\"firstPage\" />\n                </Clicked>\n            </Button>\n        </Panel>\n    </PageControl>\n\nBackward refers to pages that are behind the active one in navigation order. This trigger is not suitable for navigation that does not have a history or sequence of pages.\n\nSee [Navigation Order](articles:navigation/navigationorder.md)"
+      },
+      "id": {
+        "id": "fuse/navigation/goback",
+        "parentId": "fuse/navigation",
+        "type": "UxClass",
+        "modifiers": [
+          "public"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/navigation/goback",
+        "href": "fuse/navigation/goback"
+      },
+      "titles": {
+        "indexTitle": "GoBack",
+        "fullyQualifiedIndexTitle": "Fuse.Navigation.GoBack"
+      }
+    },
+    {
+      "comment": {
+        "brief": "Navigates forward in a @Navigation, @PageControl, or @WebView.",
+        "full": "Navigates forward in a @Navigation, @PageControl, or @WebView.\n\n# Example\nIn this example, `GoForward` will be used to navigate back to the first page of a `PageControl`. This is because \"Forward\" means \"towards the first page\" when used in linear navigation.\n\n    <PageControl>\n        <Panel Background=\"#F00\" ux:Name=\"page1\">\n            <Button Alignment=\"Center\" Text=\"Go to page 2\">\n                <Clicked>\n                    <NavigateTo Target=\"page2\" />\n                </Clicked>\n            </Button>\n        </Panel>\n        <Panel Background=\"#0F0\" ux:Name=\"page2\">\n            <Button Text=\"Go back\" Alignment=\"Center\" Margin=\"10\">\n                <Clicked>\n                    <GoForward />\n                </Clicked>\n            </Button>\n        </Panel>\n    </PageControl>\n\nForward refers to pages that are in front of the active one in navigation order.  This trigger is not suitable for navigation that does not have a history or sequence of pages.\n\nSee [Navigation Order](articles:navigation/navigationorder.md)"
+      },
+      "id": {
+        "id": "fuse/navigation/goforward",
+        "parentId": "fuse/navigation",
+        "type": "UxClass",
+        "modifiers": [
+          "public"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/navigation/goforward",
+        "href": "fuse/navigation/goforward"
+      },
+      "titles": {
+        "indexTitle": "GoForward",
+        "fullyQualifiedIndexTitle": "Fuse.Navigation.GoForward"
+      }
+    }
+  ]
+}

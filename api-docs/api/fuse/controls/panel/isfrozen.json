@@ -1,0 +1,44 @@
+{
+  "entity": {
+    "location": {
+      "namespaceTitle": "Fuse.Controls",
+      "namespaceUri": "fuse/controls",
+      "packageName": "Fuse.Controls.Panels",
+      "packageVersion": "1.8.0-rc2"
+    },
+    "parameters": [],
+    "returns": {
+      "href": "uno/bool",
+      "title": "bool",
+      "fullyQualifiedTitle": "bool"
+    },
+    "uxProperties": {},
+    "id": {
+      "id": "fuse/controls/panel/isfrozen",
+      "parentId": "fuse/controls/panel",
+      "type": "UxProperty",
+      "modifiers": [
+        "public"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/controls/panel/isfrozen",
+      "href": "fuse/controls/panel/isfrozen"
+    },
+    "titles": {
+      "pageTitle": "Panel.IsFrozen Property",
+      "navigationTitle": "IsFrozen Property",
+      "fullTitle": "Fuse.Controls.Panel.IsFrozen",
+      "indexTitle": "IsFrozen",
+      "fullyQualifiedIndexTitle": "Fuse.Controls.Panel.IsFrozen"
+    },
+    "syntax": {
+      "uno": "public bool IsFrozen { get; get; }"
+    },
+    "comment": {
+      "brief": "When `true` the panel is in a frozen state. This means:\n    - layout of the children is blocked\n    - child invalidation does not invalidate this panel\n    - the visual drawing is captured once and used for all future drawing",
+      "full": "When `true` the panel is in a frozen state. This means:\n    - layout of the children is blocked\n    - child invalidation does not invalidate this panel\n    - the visual drawing is captured once and used for all future drawing\n\n`IsFrozen` allows improving performance in some use-cases, such as Navigation, where the children may not be completely stable. This can result from such things as data bindings resolving, deferred items resolving, and images loading. Note that it will also block all intentional animation as well until unfrozen.\n\nWarning: Trigger timing is not blocked at the moment, and animations will jump over the lost time when unfrozen again."
+    }
+  },
+  "tableOfContents": {}
+}

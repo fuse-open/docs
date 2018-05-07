@@ -1,0 +1,71 @@
+{
+  "entity": {
+    "location": {
+      "namespaceTitle": "Fuse.Controls",
+      "namespaceUri": "fuse/controls",
+      "packageName": "Fuse.Controls.CameraView",
+      "packageVersion": "0.9.0-rc2"
+    },
+    "parameters": [
+      {
+        "name": "context",
+        "href": "fuse/scripting/context",
+        "title": "Context",
+        "fullyQualifiedTitle": "Fuse.Scripting.Context"
+      },
+      {
+        "name": "self",
+        "href": "fuse/controls/cameraviewbase",
+        "title": "CameraViewBase",
+        "fullyQualifiedTitle": "Fuse.Controls.CameraViewBase"
+      },
+      {
+        "name": "args",
+        "href": "uno/object",
+        "title": "object[]",
+        "fullyQualifiedTitle": "object[]"
+      }
+    ],
+    "returns": {
+      "href": "uno/threading/future_1",
+      "title": "Future<Photo>",
+      "fullyQualifiedTitle": "Uno.Threading.Future<Fuse.Controls.Photo>"
+    },
+    "id": {
+      "id": "fuse/controls/cameraviewbase/capturephoto_62888d26",
+      "parentId": "fuse/controls/cameraviewbase",
+      "type": "JsMethod",
+      "modifiers": [
+        "private",
+        "static"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/controls/cameraviewbase/capturephoto_62888d26",
+      "href": "fuse/controls/cameraviewbase/capturephoto_62888d26"
+    },
+    "titles": {
+      "pageTitle": "CameraViewBase.capturePhoto Method (Context, CameraViewBase, object[])",
+      "navigationTitle": "capturePhoto Method (Context, CameraViewBase, object[])",
+      "fullTitle": "Fuse.Controls.CameraViewBase.capturePhoto",
+      "indexTitle": "capturePhoto(Context, CameraViewBase, object[])",
+      "fullyQualifiedIndexTitle": "Fuse.Controls.CameraViewBase.capturePhoto(Fuse.Scripting.Context, Fuse.Controls.CameraViewBase, object[])"
+    },
+    "syntax": {
+      "uno": "private static Uno.Threading.Future<Fuse.Controls.Photo> capturePhoto(Fuse.Scripting.Context context, Fuse.Controls.CameraViewBase self, object[] args) {}"
+    },
+    "comment": {
+      "brief": "Capture photo",
+      "full": "Capture photo\n\nReturns a Promise that resolves to a @Fuse.Controls.Photo. The `CaptureMode` must be set to `CAPTURE_MODE_PHOTO`.\n`photo` holds onto the resrouces representing the captured photo, when you are done using it you must\ncall `release()`. This will free up the resources. Its considered bad practice to keep more than one\nphoto around, this might cause memory usage problems on weaker devices.\n\n    <CameraView ux:Name=\"Camera\" />\n    <JavaScript>\n        Camera.capturePhoto()\n            .then(function(photo) {\n                photo.release();\n            })\n            .catch(function(error) { });\n    </JavaScript>",
+      "attributes": {
+        "scriptMethod": {
+          "name": "capturePhoto",
+          "parameters": [
+            ""
+          ]
+        }
+      }
+    }
+  },
+  "tableOfContents": {}
+}

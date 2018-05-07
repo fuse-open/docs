@@ -1,0 +1,83 @@
+{
+  "entity": {
+    "id": {
+      "id": "fuse/pushnotifications",
+      "parentId": "fuse",
+      "type": "Namespace",
+      "modifiers": []
+    },
+    "uri": {
+      "idUri": "fuse/pushnotifications",
+      "href": "fuse/pushnotifications"
+    },
+    "titles": {
+      "pageTitle": "Fuse.PushNotifications Namespace",
+      "navigationTitle": "Fuse.PushNotifications Namespace",
+      "fullTitle": "Fuse.PushNotifications",
+      "indexTitle": "Fuse.PushNotifications",
+      "fullyQualifiedIndexTitle": "Fuse.PushNotifications"
+    },
+    "syntax": {
+      "uno": "namespace PushNotifications {}"
+    }
+  },
+  "tableOfContents": {
+    "jsModules": [
+      {
+        "items": [
+          {
+            "comment": {
+              "brief": "Handles push notification from messaging services.",
+              "full": "Handles push notification from messaging services.\n\nThis module currently supports APNS (Apple Push Notification Service) and GCM (Google Cloud Messaging).\n\nFuse provides support for push-notifications from Firebase Cloud Messaging (FCM) and Apple' Push Notification Service (APNS).\r\n\r\nWe have opted for a lightweight consistent interface across iOS and Android which we can easily expand as needed.\r\n\r\n> We are very interested in comments & requests you have on what we have so far so do drop by the forums and let us know.\r\n\r\n## Setting up the client side\r\n\r\n### Step 1.\r\n\r\nInclude the Fuse push notification library by adding the following to your `.unoproj` file\r\n\r\n    \"Packages\": [\r\n        ...\r\n        \"Fuse.PushNotifications\",\r\n        ...\r\n    ],\r\n\r\n### Step 2. (Only for Android)\r\n\r\nGoogle notifications require a little extra info.\r\n\r\nAdd the following to you `.unoproj`\r\n\r\n    \"Android\": {\r\n        ...\r\n        \"GooglePlay\": {\r\n            \"SenderID\": \"111781901112\"\r\n        }\r\n        ...\r\n    },\r\n\r\nThe `SenderID` is the sender ID from the [Firebase Console](https://console.firebase.google.com).\r\nIf you don't yet have a project set up please see the [Android setup](#android-setup) section later in this document.\r\n\r\n## How this behaves in your app\r\n\r\nReferencing `Fuse.PushNotifications` will do the the following:\r\n\r\n### Both Platforms\r\n\r\n- You get a callback telling you if the registration succeeded or failed.\r\n- The succeeded callback will contain your unique registration id (also called a token in iOS docs)\r\n- All future received push notifications will fire a callback containing the JSON of the notification.\r\n\r\nAll three callbacks mentioned are available in JavaScript and Uno.\r\n\r\n### Android specific\r\n\r\n- Your SenderID is added to the project's `Manifest.xml` file along with some other plumbing\r\n- When your app starts the app registers with the `GCM` service.\r\n\r\n### iOS specific\r\n\r\n- When your app starts it registers with APNS. As all access is controlled through Apple's certificate system there is no extra info to provide (we will mention server side a bit later)\r\n\r\nIf you wish to disable auto-registration you can place the following in your unoproj file:\r\n\r\n    \"iOS\": {\r\n        \"PushNotifications\": {\r\n            \"RegisterOnLaunch\": false\r\n        }\r\n    },\r\n\r\nYou must then register for push notifications by calling `register()` from JS. This option is useful as when the notifications are registered the OS may ask the user for permission to use push notifications and this may be undesirable on launch.\r\n\r\n## Using the API from JavaScript\r\n\r\nIntegrating with notifications from JavaScript is simple. Here is an example that just logs when the callbacks fire:\r\n\r\n    <JavaScript>\r\n        var push = require(\"FuseJS/Push\");\r\n\r\n        push.on(\"registrationSucceeded\", function(regID) {\r\n            console.log(\"Reg Succeeded: \" + regID);\r\n        });\r\n\r\n        push.on(\"error\", function(reason) {\r\n            console.log(\"Reg Failed: \" + reason);\r\n        });\r\n\r\n        push.on(\"receivedMessage\", function(payload) {\r\n            console.log(\"Recieved Push Notification: \" + payload);\r\n        });\r\n    </JavaScript>\r\n\r\nHere we're using the @EventEmitter `on` method to register our functions with the different events.\r\nIn a real app we should send our `registration ID` to our server when `registrationSucceeded` is triggered.\r\n\r\n## Server Side\r\n\r\nWhen we have our client all set up and ready to go we move on to the backend. For this we are required to jump through the hoops provided by Apple and Google.\r\n\r\nSee below for the following guides on how to do this for specific platforms:\r\n\r\n- [iOS Setup](#ios-setup)\r\n- [Android Setup](#android-setup)\r\n\r\n## The Notification\r\n\r\nWe support push notifications in JSON format. When a notification arrives one of two things will happen:\r\n\r\n- If our app has focus, the callback is called right away with the full JSON payload\r\n- If our app doesn't have focus, (and our JSON contains the correct data) we will add a system notification to the notification bar (called the Notification Center in iOS). When the user clicks the notification in the drop down then our app is launched and the notification is delivered.\r\n\r\nApple and Google's APIs define how the data in the payload is used to populate the system notification, however we have normalized it a little.\r\n\r\nFor iOS we'll just include an `aps` entry in the notification's JSON, like so:\r\n\r\n    'aps': {\r\n        alert: {\r\n            'title': 'Well would ya look at that!',\r\n            'body': 'Hello from the server'\r\n        }\r\n    },\r\n\r\nAnd 'title' and 'body' will be used as the title and body of the system notification.\r\n\r\nFor Android we can use exactly the same `'aps'` entry or the alternatively the following:\r\n\r\n    'notification': {\r\n        alert: {\r\n            'title': 'Well would ya look at that!',\r\n            'body': 'Hello from the server'\r\n        }\r\n    },\r\n\r\nThe `notification` entry is the standard Google way of doing this but we felt that it wouldn't hurt to support the Apple way too.\r\n\r\n> The current implementation only guarantees the `title` and `body` entries will work. We also always use your app's icon as the notification icon. This is an area we will extend as Fuse matures. If you have specific requests, be sure to let us know!\r\n\r\n## Message size limits\r\n\r\nGoogle and Apple has different limits on the size of push notifications.\r\n\r\n- Google limits to 4096 bytes\r\n- Apple limits to 2048 bytes on iOS 8 and up but only 256 bytes on all earlier versions\r\n\r\n\r\n\n## Remarks\n\nThis module is an @EventEmitter, so the methods from @EventEmitter can be used to listen to events.\n\nYou need to add a reference to `Fuse.PushNotifications` in your project file to use this feature.\n\n## Android setup\nThis section covers how to set up Firebase Push Notifications to the point that you can send test messages to a Fuse App from the Firebase console.\r\n\r\n### Registering the Sender ID\r\n\r\n- Open the [Firebase Console](https://console.firebase.google.com)\r\n- Select your project or create one if you haven't already\r\n- Click the little cogwheel button at the top of the sidebar, and press \"Project settings\"\r\n- Navigate to the \"Cloud Messaging\" tab\r\n- Copy the \"Sender ID\" into your `.unoproj` like this:\r\n\r\n\t\t\"Android\": {\r\n\t\t\t\"GooglePlay\": {\r\n\t\t\t\t\"SenderID\": \"<Sender ID goes here>\"\r\n\t\t\t}\r\n\t\t}\r\n\r\n### Registering the Android app\r\n\r\nTo enable Firebase Cloud Messaging, you need to register an Android app with your Firebase project.\r\nIf you haven't already registered an Android app, follow these steps:\r\n\r\n- From the settings page, click the button to add a new Android app to the project\r\n- A dialog will pop up, prompting you for a package name (the other fields are optional).\r\n\tBy default, this will be `com.apps.<yourappnameinlowercase>`.\r\n\tHowever, it is recommended to set your own:\r\n\r\n\t\t\"Android\": {\r\n\t\t\t\"Package\": \"com.mycompany.myapp\",\r\n\t\t}\r\n\r\n- After adding the Android app, you will be prompted to download a `google-services.json` file.\r\n\tThis can be ignored, as it's not needed for push notifications and can always be downloaded later if needed.\r\n\r\n### Sending notifications\r\n\r\nAfter rebuilding your project with the new settings, you should be ready to send and receive push notifications.\r\n\r\n> **Note:** Fuse currently only supports `data` type messages. See [here for details on messages types](https://firebase.google.com/docs/cloud-messaging/concept-options#data_messages) & [this forum post](https://www.fusetools.com/community/forums/howto_discussions/push_notificacions_with_google_firebase_notificati?page=1&highlight=22e21e83-bbf1-44c9-acc7-0cc9eb00edc9#post-22e21e83-bbf1-44c9-acc7-0cc9eb00edc9) for more information on how we will fix this in future.\r\n> Sadly this means you currently can't use the Firebase Console to send test notifications (they will appear in the notification bar but will fail to reach JS).\r\n> See the example below for an example of how to send messages to a Fuse app.\r\n\r\nWhen your app starts, the `registrationSucceeded` event will be triggered and you will be given the `regID`\r\nThis, along with your FCM Server key, are the details that is needed to send that app a notification.\r\n\r\nYour server key can be found under the \"Cloud Messaging\" tab of the Project Settings page (where you obtained your Sender ID).\r\n\r\nHere some example Fuse code for sending your app a notification.\r\n\r\n    <JavaScript>\r\n        var API_ACCESS_KEY = '----HARDCODED API KEY----';\r\n        var regID = '----HARDCODED REG ID FROM THE APP YOU ARE SENDING TO----';\r\n\r\n        module.exports.send = function() {\r\n            fetch('https://android.googleapis.com/gcm/send', {\r\n                method: 'post',\r\n                headers: {\r\n                    'Authorization': 'key=' + API_ACCESS_KEY,\r\n                    'Content-Type': 'application/json'\r\n                },\r\n                body: JSON.stringify({\r\n                    registration_ids: [regID],\r\n                    data: {\r\n                        notification: {\r\n                            alert: {\r\n                                title: 'Well would ya look at that!',\r\n                                body: 'Hello from some other app'\r\n                            }\r\n                        },\r\n                        payload: 'anything you like'\r\n                    }\r\n                })\r\n            }).then(function(response) {\r\n                console.log(JSON.stringify(response));\r\n            }, function(error) {\r\n                console.log(error);\r\n            });\r\n        }\r\n    </JavaScript>\r\n\r\nWhilst hardcoding the RegID is clearly not a good idea, it serves the purpose for this simple test.\r\n\r\n\n## iOS setup\nThis section covers how to set up a iOS Push Notifications to the point that you can send messages to a Fuse App.\r\n\r\n### Certifying your app for ACS\r\n\r\nTo do this you need an SSL certificate for your app.\r\n\r\n- Go to the [Apple Dev Center](https://developer.apple.com/account/overview.action)\r\n- Go to the Certificates Section for iOS apps\r\n- In the link bar on the left, under the `Identifiers` section click `App IDs`\r\n- Click the `+` icon in the top right to create a new App ID\r\n- Fill in the details, you cant use push notification with a `Wildcard App ID` so pick `Explicit App ID` and check in XCode for the app's `Bundle ID`\r\n- Under `App Services` enable Push notifications (and anything else you need)\r\n- Click `Continue` and confirm the certificate choice you made.\r\n\r\n### Syncing XCode\r\n\r\nYour app is now authenticated for Push notifications. Be sure to resync your profiles in XCode before re-building your app.\r\nTo do this:\r\n- Open XCode\r\n- In the menu-bar choose `XCode`->`Preferences`\r\n- In the Preferences window view the `Accounts` tab\r\n- In the `Accounts` tab click `View Details` for the relevant Apple ID\r\n- Click the small refresh button in the bottom left of the `View Details` window\r\n\r\n### Sending Push Notifications to iOS from OSX\r\n\r\nFor simple testing you may find that setting up a server is a bit of an overkill. To this end we recommend [NWPusher](https://github.com/noodlewerk/NWPusher). Download the binary [here](https://github.com/noodlewerk/NWPusher/releases/tag/0.6.3) and then follow the following sections from the README\r\n\r\n- `Getting started`\r\n- `Certificate`\r\n- Instead of reading the `Device Token` section simply add the example from above to your UX file\r\n- Finally, follow the `Push from OS X` Section\r\n\r\nDone, you should now be pushing notifications from OSX to iOS.",
+              "attributes": {
+                "scriptModule": "FuseJS/Push"
+              }
+            },
+            "id": {
+              "id": "fuse/pushnotifications/push",
+              "parentId": "fuse/pushnotifications",
+              "type": "JsModule",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/pushnotifications/push",
+              "href": "fuse/pushnotifications/push"
+            },
+            "titles": {
+              "indexTitle": "Push",
+              "fullyQualifiedIndexTitle": "Fuse.PushNotifications.Push"
+            }
+          }
+        ]
+      }
+    ],
+    "classes": [
+      {
+        "items": [
+          {
+            "id": {
+              "id": "fuse/pushnotifications/pushnotify",
+              "parentId": "fuse/pushnotifications",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/pushnotifications/pushnotify",
+              "href": "fuse/pushnotifications/pushnotify"
+            },
+            "titles": {
+              "indexTitle": "PushNotify",
+              "fullyQualifiedIndexTitle": "Fuse.PushNotifications.PushNotify"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

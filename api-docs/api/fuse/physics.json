@@ -1,0 +1,354 @@
+{
+  "entity": {
+    "id": {
+      "id": "fuse/physics",
+      "parentId": "fuse",
+      "type": "Namespace",
+      "modifiers": []
+    },
+    "uri": {
+      "idUri": "fuse/physics",
+      "href": "fuse/physics"
+    },
+    "titles": {
+      "pageTitle": "Fuse.Physics Namespace",
+      "navigationTitle": "Fuse.Physics Namespace",
+      "fullTitle": "Fuse.Physics",
+      "indexTitle": "Fuse.Physics",
+      "fullyQualifiedIndexTitle": "Fuse.Physics"
+    },
+    "syntax": {
+      "uno": "namespace Physics {}"
+    }
+  },
+  "tableOfContents": {
+    "uxClasses": [
+      {
+        "items": [
+          {
+            "id": {
+              "id": "fuse/physics/draggable",
+              "parentId": "fuse/physics",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/physics/draggable",
+              "href": "fuse/physics/draggable"
+            },
+            "titles": {
+              "indexTitle": "Draggable",
+              "fullyQualifiedIndexTitle": "Fuse.Physics.Draggable"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Triggers as a draggable element enters the force field.",
+              "full": "Triggers as a draggable element enters the force field.\n\nAs it is a pulse trigger, the forward animation will play in one continous run when the trigger is activated, and play the backwards animation continously when deactivated.\n\n## Example\nIn the following example, a circle in the middle of the screen flashes green if a smaller, blue circle, is moved into its force field:\n\n    <Panel>\n        <Panel Width=\"60\" Height=\"60\" Alignment=\"BottomLeft\">\n            <Circle Color=\"#42A5F5\" />\n            <Draggable />\n            <EnteredForceField ForceField=\"centerAttract\">\n                <Change centerCircle.Color=\"#66BB6A\" Duration=\".5\"/>\n            </EnteredForceField>\n        </Panel>\n        <Panel Width=\"200\" Height=\"200\" Alignment=\"Center\" >\n            <Circle ux:Name=\"centerCircle\" Color=\"#EF5350\" />\n            <PointAttractor ux:Name=\"centerAttract\" Radius=\"150\" Strength=\"250\" />\n        </Panel>\n    </Panel>\n    <Panel Alignment=\"BottomLeft\" Width=\"100\" Height=\"100\">\n        <PointAttractor Radius=\"500\" Strength=\"100\" Offset=\"0,0,0\"/>\n    </Panel>"
+            },
+            "id": {
+              "id": "fuse/physics/enteredforcefield",
+              "parentId": "fuse/physics",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/physics/enteredforcefield",
+              "href": "fuse/physics/enteredforcefield"
+            },
+            "titles": {
+              "indexTitle": "EnteredForceField",
+              "fullyQualifiedIndexTitle": "Fuse.Physics.EnteredForceField"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Triggers as a draggable element leaves the force field.",
+              "full": "Triggers as a draggable element leaves the force field.\n\nAs it is a pulse trigger, the forward animation will play in one continous run when the trigger is activated, and play the backwards animation continously when deactivated.\n\n## Example\nIn the following example, a circle with a `PointAttractor` in the middle of the screen flashes green if a smaller, blue circle, is removed from the forcefield.\n\n    <Panel>\n        <Panel Width=\"60\" Height=\"60\" Alignment=\"Center\">\n            <Circle Color=\"#42A5F5\" />\n            <Draggable />\n            <ExitedForceField ForceField=\"centerAttract\">\n                <Change centerCircle.Color=\"#66BB6A\" Duration=\".5\"/>\n            </ExitedForceField>\n        </Panel>\n        <Panel Width=\"200\" Height=\"200\" Alignment=\"Center\" >\n            <Circle ux:Name=\"centerCircle\" Color=\"#EF5350\" />\n            <PointAttractor ux:Name=\"centerAttract\" Radius=\"150\" Strength=\"250\" />\n        </Panel>\n    </Panel>"
+            },
+            "id": {
+              "id": "fuse/physics/exitedforcefield",
+              "parentId": "fuse/physics",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/physics/exitedforcefield",
+              "href": "fuse/physics/exitedforcefield"
+            },
+            "titles": {
+              "indexTitle": "ExitedForceField",
+              "fullyQualifiedIndexTitle": "Fuse.Physics.ExitedForceField"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Animates a draggable element depending on how close it is to a point attractor",
+              "full": "Animates a draggable element depending on how close it is to a point attractor\n\nThe animation will animate from 0(outside the forcefield radius), to 1(at the center of the forcefield), unless `From` and `To` are used to specify a custom range. This is the same as using a `RangeAdapter`.\n\n# Example\nIn the following example, a red circle will get smaller as a blue, filled circle nears the center `PointAttract`, `centerAttract`. Because `To` is set to `1.3` on the `InForceFieldAnimation`, the animation will never animate further than `0.77`.\n\n    <Panel>\n        <Panel Width=\"60\" Height=\"60\" Alignment=\"BottomLeft\">\n            <Circle Color=\"#42A5F5\" />\n            <Draggable />\n            <InForceFieldAnimation  ForceField=\"centerAttract\" From=\"0\" To=\"1.3\">\n                <Scale Target=\"centerCircle\" Factor=\".0\" />\n            </InForceFieldAnimation>\n        </Panel>\n        <Panel Width=\"300\" Height=\"300\" Alignment=\"Center\" >\n            <Circle ux:Name=\"centerCircle\" >\n                <Stroke Color=\"#F00\" Width=\"4\"/>\n            </Circle>\n            <PointAttractor ux:Name=\"centerAttract\" Radius=\"150\" Strength=\"250\" />\n        </Panel>\n    </Panel>\n    <Panel Alignment=\"BottomLeft\" Width=\"100\" Height=\"100\">\n        <PointAttractor Radius=\"300\" Strength=\"150\" Offset=\"0,0,0\"/>\n    </Panel>"
+            },
+            "id": {
+              "id": "fuse/physics/inforcefieldanimation",
+              "parentId": "fuse/physics",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/physics/inforcefieldanimation",
+              "href": "fuse/physics/inforcefieldanimation"
+            },
+            "titles": {
+              "indexTitle": "InForceFieldAnimation",
+              "fullyQualifiedIndexTitle": "Fuse.Physics.InForceFieldAnimation"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/physics/pointattractor",
+              "parentId": "fuse/physics",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/physics/pointattractor",
+              "href": "fuse/physics/pointattractor"
+            },
+            "titles": {
+              "indexTitle": "PointAttractor",
+              "fullyQualifiedIndexTitle": "Fuse.Physics.PointAttractor"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/physics/spring",
+              "parentId": "fuse/physics",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/physics/spring",
+              "href": "fuse/physics/spring"
+            },
+            "titles": {
+              "indexTitle": "Spring",
+              "fullyQualifiedIndexTitle": "Fuse.Physics.Spring"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Active while the element is being dragged.",
+              "full": "Active while the element is being dragged."
+            },
+            "id": {
+              "id": "fuse/physics/whiledragging",
+              "parentId": "fuse/physics",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/physics/whiledragging",
+              "href": "fuse/physics/whiledragging"
+            },
+            "titles": {
+              "indexTitle": "WhileDragging",
+              "fullyQualifiedIndexTitle": "Fuse.Physics.WhileDragging"
+            }
+          }
+        ]
+      }
+    ],
+    "classes": [
+      {
+        "items": [
+          {
+            "id": {
+              "id": "fuse/physics/bodyattr",
+              "parentId": "fuse/physics",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/physics/bodyattr",
+              "href": "fuse/physics/bodyattr"
+            },
+            "titles": {
+              "indexTitle": "BodyAttr",
+              "fullyQualifiedIndexTitle": "Fuse.Physics.BodyAttr"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/physics/forcefield",
+              "parentId": "fuse/physics",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/physics/forcefield",
+              "href": "fuse/physics/forcefield"
+            },
+            "titles": {
+              "indexTitle": "ForceField",
+              "fullyQualifiedIndexTitle": "Fuse.Physics.ForceField"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/physics/forcefieldeventargs",
+              "parentId": "fuse/physics",
+              "type": "Class",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/physics/forcefieldeventargs",
+              "href": "fuse/physics/forcefieldeventargs"
+            },
+            "titles": {
+              "indexTitle": "ForceFieldEventArgs",
+              "fullyQualifiedIndexTitle": "Fuse.Physics.ForceFieldEventArgs"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/physics/forcefieldeventtrigger",
+              "parentId": "fuse/physics",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/physics/forcefieldeventtrigger",
+              "href": "fuse/physics/forcefieldeventtrigger"
+            },
+            "titles": {
+              "indexTitle": "ForceFieldEventTrigger",
+              "fullyQualifiedIndexTitle": "Fuse.Physics.ForceFieldEventTrigger"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/physics/forcefieldtrigger",
+              "parentId": "fuse/physics",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/physics/forcefieldtrigger",
+              "href": "fuse/physics/forcefieldtrigger"
+            },
+            "titles": {
+              "indexTitle": "ForceFieldTrigger",
+              "fullyQualifiedIndexTitle": "Fuse.Physics.ForceFieldTrigger"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/physics/world",
+              "parentId": "fuse/physics",
+              "type": "Class",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/physics/world",
+              "href": "fuse/physics/world"
+            },
+            "titles": {
+              "indexTitle": "World",
+              "fullyQualifiedIndexTitle": "Fuse.Physics.World"
+            }
+          }
+        ]
+      }
+    ],
+    "delegates": [
+      {
+        "items": [
+          {
+            "parameters": [
+              {
+                "name": "sender",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              },
+              {
+                "name": "args",
+                "href": "fuse/physics/forcefieldeventargs",
+                "title": "ForceFieldEventArgs",
+                "fullyQualifiedTitle": "Fuse.Physics.ForceFieldEventArgs"
+              }
+            ],
+            "id": {
+              "id": "fuse/physics/forcefieldeventhandler",
+              "parentId": "fuse/physics",
+              "type": "Delegate",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/physics/forcefieldeventhandler",
+              "href": "fuse/physics/forcefieldeventhandler"
+            },
+            "titles": {
+              "indexTitle": "ForceFieldEventHandler (object, ForceFieldEventArgs)",
+              "fullyQualifiedIndexTitle": "Fuse.Physics.ForceFieldEventHandler (object, Fuse.Physics.ForceFieldEventArgs)"
+            }
+          }
+        ]
+      }
+    ],
+    "enums": [
+      {
+        "items": [
+          {
+            "id": {
+              "id": "fuse/physics/axis2d",
+              "parentId": "fuse/physics",
+              "type": "Enum",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/physics/axis2d",
+              "href": "fuse/physics/axis2d"
+            },
+            "titles": {
+              "indexTitle": "Axis2D",
+              "fullyQualifiedIndexTitle": "Fuse.Physics.Axis2D"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

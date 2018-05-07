@@ -1,0 +1,424 @@
+{
+  "entity": {
+    "base": {
+      "id": {
+        "id": "fuse/reactive/expression",
+        "parentId": "fuse/reactive",
+        "type": "Class",
+        "modifiers": [
+          "public",
+          "abstract"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/reactive/expression",
+        "href": "fuse/reactive/expression"
+      },
+      "titles": {
+        "indexTitle": "Expression",
+        "fullyQualifiedIndexTitle": "Fuse.Reactive.Expression"
+      }
+    },
+    "location": {
+      "namespaceTitle": "Fuse.Reactive",
+      "namespaceUri": "fuse/reactive",
+      "packageName": "Fuse.Reactive.Expressions",
+      "packageVersion": "1.8.0-rc2"
+    },
+    "inheritance": {
+      "root": {
+        "uri": "uno/object",
+        "title": "object",
+        "children": [
+          {
+            "uri": "fuse/reactive/expression",
+            "title": "Fuse.Reactive.Expression",
+            "children": [
+              {
+                "uri": "fuse/reactive/datatoresource",
+                "title": "Fuse.Reactive.DataToResource",
+                "children": [],
+                "isCurrent": true
+              }
+            ],
+            "isAncestor": true
+          }
+        ],
+        "isAncestor": true
+      },
+      "hasInheritance": true
+    },
+    "uxProperties": {
+      "uxNamespaceTitle": "Fuse.Reactive",
+      "uxNamespaceUri": "fuse/reactive",
+      "uxName": "DataToResource"
+    },
+    "implementedInterfaces": [
+      {
+        "id": {
+          "id": "fuse/reactive/iexpression",
+          "parentId": "fuse/reactive",
+          "type": "Interface",
+          "modifiers": [
+            "public",
+            "abstract"
+          ]
+        },
+        "uri": {
+          "idUri": "fuse/reactive/iexpression",
+          "href": "fuse/reactive/iexpression"
+        },
+        "titles": {
+          "indexTitle": "IExpression",
+          "fullyQualifiedIndexTitle": "Fuse.Reactive.IExpression"
+        }
+      }
+    ],
+    "attributes": [
+      {
+        "parameters": [
+          "DataToResource"
+        ],
+        "id": {
+          "id": "uno/ux/uxunaryoperatorattribute",
+          "parentId": "uno/ux",
+          "type": "Class",
+          "modifiers": [
+            "public"
+          ]
+        },
+        "uri": {
+          "idUri": "uno/ux/uxunaryoperatorattribute",
+          "href": "uno/ux/uxunaryoperatorattribute"
+        },
+        "titles": {
+          "indexTitle": "UXUnaryOperatorAttribute",
+          "fullyQualifiedIndexTitle": "Uno.UX.UXUnaryOperatorAttribute"
+        }
+      }
+    ],
+    "id": {
+      "id": "fuse/reactive/datatoresource",
+      "parentId": "fuse/reactive",
+      "type": "UxClass",
+      "modifiers": [
+        "public"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/reactive/datatoresource",
+      "href": "fuse/reactive/datatoresource"
+    },
+    "titles": {
+      "pageTitle": "DataToResource Class",
+      "navigationTitle": "DataToResource Class",
+      "fullTitle": "Fuse.Reactive.DataToResource",
+      "indexTitle": "DataToResource",
+      "fullyQualifiedIndexTitle": "Fuse.Reactive.DataToResource"
+    },
+    "syntax": {
+      "uno": "[Uno.UX.UXUnaryOperator(symbol = \"DataToResource\")]\r\npublic class DataToResource : Fuse.Reactive.Expression {}",
+      "ux": "<DataToResource />"
+    },
+    "comment": {
+      "brief": "Binds to a resource with the key provided in a context variable. This allows selecting resources from @JavaScript by key name.",
+      "full": "Binds to a resource with the key provided in a context variable. This allows selecting resources from @JavaScript by key name.\n\nIn this example three different fonts are created as resources. The font is selected by name in the exported JavaScript items.\n\n    <Font File=\"../../Assets/fonts/Roboto-Bold.ttf\" ux:Key=\"Bold\"/>\n    <Font File=\"../../Assets/fonts/Roboto-Regular.ttf\" ux:Key=\"Regular\"/>\n    <Font File=\"../../Assets/fonts/Roboto-Italic.ttf\" ux:Key=\"Italic\"/>\n\n    <JavaScript>\n        exports.items = [\n            { font: \"Bold\" },\n            { font: \"Regular\" },\n            { font: \"Italic\" },\n        ]\n    </JavaScript>\n    <StackPanel>\n        <Each Items=\"{items}\">\n            <Text Value=\"Sample Text\" Font=\"{DataToResource font}\"/>\n        </Each>\n    </StackPanel>\n\n`{DataToResource variableKey}` is similar to `{Resource key}`, except it allows a variable key name instead of a static one."
+    }
+  },
+  "tableOfContents": {
+    "attachedUxProperties": [
+      {
+        "items": [
+          {
+            "comment": {
+              "brief": "The `ux:Global` attribute creates a global resource that is accessible everywhere in UX markup.",
+              "full": "The `ux:Global` attribute creates a global resource that is accessible everywhere in UX markup.\n\nSee @Resources for more information.\n\nThe `ux:Global` attribute on an UX element creates a single object (singleton) that is globally available.\nUsing this attribute will prevent the object from being inserted by default the object at its defined location\nin the UX tree."
+            },
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "parameters": [
+              {
+                "name": "obj",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              },
+              {
+                "name": "key",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              }
+            ],
+            "id": {
+              "id": "fuse/reactive/datatoresource/resource_globalkey_setglobalkey_4c3ac72d",
+              "parentId": "fuse/reactive/datatoresource",
+              "type": "AttachedUxProperty",
+              "modifiers": []
+            },
+            "uri": {
+              "idUri": "fuse/reactive/datatoresource/resource_globalkey_setglobalkey_4c3ac72d",
+              "href": "uno/ux/resource/setglobalkey_4c3ac72d",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Resource.GlobalKey",
+              "fullyQualifiedIndexTitle": "Resource.GlobalKey"
+            }
+          }
+        ]
+      }
+    ],
+    "constructors": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/reactive/datatoresource",
+            "parentId": "fuse/reactive",
+            "type": "UxClass",
+            "modifiers": [
+              "public"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/reactive/datatoresource",
+            "href": "fuse/reactive/datatoresource"
+          },
+          "titles": {
+            "indexTitle": "DataToResource",
+            "fullyQualifiedIndexTitle": "Fuse.Reactive.DataToResource"
+          }
+        },
+        "items": [
+          {
+            "parameters": [
+              {
+                "name": "data",
+                "href": "fuse/reactive/expression",
+                "title": "Expression",
+                "fullyQualifiedTitle": "Fuse.Reactive.Expression"
+              }
+            ],
+            "id": {
+              "id": "fuse/reactive/datatoresource/_ctor_fe412bce",
+              "parentId": "fuse/reactive/datatoresource",
+              "type": "Constructor",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/datatoresource/_ctor_fe412bce",
+              "href": "fuse/reactive/datatoresource/_ctor_fe412bce"
+            },
+            "titles": {
+              "indexTitle": "DataToResource(Expression)",
+              "fullyQualifiedIndexTitle": "Fuse.Reactive.DataToResource.DataToResource(Fuse.Reactive.Expression)"
+            }
+          }
+        ]
+      }
+    ],
+    "methods": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/reactive/expression",
+            "parentId": "fuse/reactive",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/reactive/expression",
+            "href": "fuse/reactive/expression"
+          },
+          "titles": {
+            "indexTitle": "Expression",
+            "fullyQualifiedIndexTitle": "Fuse.Reactive.Expression"
+          }
+        },
+        "items": [
+          {
+            "comment": {
+              "brief": "See `IExpression.Subscribe` for docs.",
+              "full": "See `IExpression.Subscribe` for docs."
+            },
+            "returns": {
+              "href": "uno/idisposable",
+              "title": "IDisposable",
+              "fullyQualifiedTitle": "Uno.IDisposable"
+            },
+            "parameters": [
+              {
+                "name": "context",
+                "href": "fuse/reactive/icontext",
+                "title": "IContext",
+                "fullyQualifiedTitle": "Fuse.Reactive.IContext"
+              },
+              {
+                "name": "listener",
+                "href": "fuse/reactive/ilistener",
+                "title": "IListener",
+                "fullyQualifiedTitle": "Fuse.Reactive.IListener"
+              }
+            ],
+            "id": {
+              "id": "fuse/reactive/datatoresource/subscribe_b0797a5a",
+              "parentId": "fuse/reactive/datatoresource",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/datatoresource/subscribe_b0797a5a",
+              "href": "fuse/reactive/expression/subscribe_b0797a5a",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Subscribe(IContext, IListener)",
+              "fullyQualifiedIndexTitle": "Fuse.Reactive.Expression.Subscribe(Fuse.Reactive.IContext, Fuse.Reactive.IListener)"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "uno/object",
+            "parentId": "uno",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "intrinsic"
+            ]
+          },
+          "uri": {
+            "idUri": "uno/object",
+            "href": "uno/object"
+          },
+          "titles": {
+            "indexTitle": "object",
+            "fullyQualifiedIndexTitle": "object"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "parameters": [
+              {
+                "name": "o",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              }
+            ],
+            "id": {
+              "id": "fuse/reactive/datatoresource/equals_a09c80e3",
+              "parentId": "fuse/reactive/datatoresource",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/datatoresource/equals_a09c80e3",
+              "href": "uno/object/equals_a09c80e3",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Equals(object)",
+              "fullyQualifiedIndexTitle": "Uno.Object.Equals(object)"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/int",
+              "title": "int",
+              "fullyQualifiedTitle": "int"
+            },
+            "id": {
+              "id": "fuse/reactive/datatoresource/gethashcode",
+              "parentId": "fuse/reactive/datatoresource",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/datatoresource/gethashcode",
+              "href": "uno/object/gethashcode",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetHashCode",
+              "fullyQualifiedIndexTitle": "Uno.Object.GetHashCode"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/type",
+              "title": "Type",
+              "fullyQualifiedTitle": "Uno.Type"
+            },
+            "id": {
+              "id": "fuse/reactive/datatoresource/gettype",
+              "parentId": "fuse/reactive/datatoresource",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/datatoresource/gettype",
+              "href": "uno/object/gettype",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetType",
+              "fullyQualifiedIndexTitle": "Uno.Object.GetType"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "id": {
+              "id": "fuse/reactive/datatoresource/tostring",
+              "parentId": "fuse/reactive/datatoresource",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/datatoresource/tostring",
+              "href": "uno/object/tostring",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "ToString",
+              "fullyQualifiedIndexTitle": "Uno.Object.ToString"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

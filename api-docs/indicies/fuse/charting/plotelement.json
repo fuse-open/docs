@@ -1,0 +1,73 @@
+{
+  "root": {
+    "id": {
+      "id": "fuse/charting/plotelement",
+      "parentId": "fuse/charting",
+      "type": "Class",
+      "modifiers": [
+        "public",
+        "abstract"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/charting/plotelement",
+      "href": "fuse/charting/plotelement"
+    },
+    "titles": {
+      "indexTitle": "PlotElement",
+      "fullyQualifiedIndexTitle": "Fuse.Charting.PlotElement"
+    }
+  },
+  "descendants": [
+    {
+      "comment": {
+        "brief": "Positions a plot bar.",
+        "full": "Positions a plot bar.\n\nThis automatically sets the `X`,`Y`,`Width`,`Heigth` and `Anchor` properties on the element. The result is undefined if you override one of these values. Use a child element if you wish to make an element relative to the PlotBar placement.\n\n# Example\n\nThe following example draws a red bar chart using the `PlotBar` element and @Rectangle\n\n    <Panel xmlns:c=\"Fuse.Charting\" >\n        <JavaScript>\n            var Observable = require(\"FuseJS/Observable\");\n\n            function Item(val) {\n                this.value = val;\n            }\n            var data = Observable(new Item(3), new Item(4), new Item(6), new Item(3), new Item(4));\n\n            module.exports = {\n                data: data\n            }\n        </JavaScript>\n        <Panel BoxSizing=\"FillAspect\" Aspect=\"1\">\n            <c:Plot Margin=\"40\">\n                <c:DataSeries Data=\"{data}\" />\n                <c:PlotData>\n                    <c:PlotBar>\n                        <Rectangle Color=\"#F00\" Height=\"100%\" Margin=\"2\" Alignment=\"Bottom\"/>\n                    </c:PlotBar>\n                </c:PlotData>\n            </c:Plot>\n        </Panel>\n    </Panel>",
+        "attributes": {
+          "experimental": true
+        }
+      },
+      "id": {
+        "id": "fuse/charting/plotbar",
+        "parentId": "fuse/charting",
+        "type": "UxClass",
+        "modifiers": [
+          "public"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/charting/plotbar",
+        "href": "fuse/charting/plotbar"
+      },
+      "titles": {
+        "indexTitle": "PlotBar",
+        "fullyQualifiedIndexTitle": "Fuse.Charting.PlotBar"
+      }
+    },
+    {
+      "comment": {
+        "brief": "A `Panel` positioned on the data point for a chart. This is an easy way to position an object at the correct position for the current plot data.",
+        "full": "A `Panel` positioned on the data point for a chart. This is an easy way to position an object at the correct position for the current plot data.\n\nThis panel has a default of `Anchor=\"50%,50%\"`.  This can be changed with `PointAnchor`\n\nThis panel does not have any default size.",
+        "attributes": {
+          "experimental": true
+        }
+      },
+      "id": {
+        "id": "fuse/charting/plotpoint",
+        "parentId": "fuse/charting",
+        "type": "UxClass",
+        "modifiers": [
+          "public"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/charting/plotpoint",
+        "href": "fuse/charting/plotpoint"
+      },
+      "titles": {
+        "indexTitle": "PlotPoint",
+        "fullyQualifiedIndexTitle": "Fuse.Charting.PlotPoint"
+      }
+    }
+  ]
+}

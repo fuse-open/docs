@@ -1,0 +1,677 @@
+{
+  "entity": {
+    "base": {
+      "id": {
+        "id": "fuse/animations/animator",
+        "parentId": "fuse/animations",
+        "type": "Class",
+        "modifiers": [
+          "public",
+          "abstract"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/animations/animator",
+        "href": "fuse/animations/animator"
+      },
+      "titles": {
+        "indexTitle": "Animator",
+        "fullyQualifiedIndexTitle": "Fuse.Animations.Animator"
+      }
+    },
+    "location": {
+      "namespaceTitle": "Fuse.Animations",
+      "namespaceUri": "fuse/animations",
+      "packageName": "Fuse.Animations",
+      "packageVersion": "1.8.0-rc2"
+    },
+    "inheritance": {
+      "root": {
+        "uri": "uno/object",
+        "title": "object",
+        "children": [
+          {
+            "uri": "uno/ux/propertyobject",
+            "title": "Uno.UX.PropertyObject",
+            "children": [
+              {
+                "uri": "fuse/animations/animator",
+                "title": "Fuse.Animations.Animator",
+                "children": [
+                  {
+                    "uri": "fuse/animations/openanimator",
+                    "title": "Fuse.Animations.OpenAnimator",
+                    "children": [],
+                    "isCurrent": true
+                  }
+                ],
+                "isAncestor": true
+              }
+            ],
+            "isAncestor": true
+          }
+        ],
+        "isAncestor": true
+      },
+      "hasInheritance": true
+    },
+    "id": {
+      "id": "fuse/animations/openanimator",
+      "parentId": "fuse/animations",
+      "type": "Class",
+      "modifiers": [
+        "public",
+        "abstract"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/animations/openanimator",
+      "href": "fuse/animations/openanimator"
+    },
+    "titles": {
+      "pageTitle": "OpenAnimator Class",
+      "navigationTitle": "OpenAnimator Class",
+      "fullTitle": "Fuse.Animations.OpenAnimator",
+      "indexTitle": "OpenAnimator",
+      "fullyQualifiedIndexTitle": "Fuse.Animations.OpenAnimator"
+    },
+    "syntax": {
+      "uno": "public abstract class OpenAnimator : Fuse.Animations.Animator {}"
+    },
+    "comment": {
+      "brief": "Open animators animate repeatedly for as long as the trigger is active.",
+      "full": "Open animators animate repeatedly for as long as the trigger is active.\n\nThe `Duration` and `Delay` specify when this animator is \"on\". This is the time when the animator will be actively applying its effect. Outside of this period the animator is \"off\".  When off the animator will continue playing until it reaches a suitable resting value. This prevents the animation from jerking between values.\n\n## Available open animators\n[subclass Fuse.Animation.OpenAnimator]",
+      "attributes": {
+        "topic": "Open animators"
+      }
+    }
+  },
+  "tableOfContents": {
+    "uxProperties": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/animations/openanimator",
+            "parentId": "fuse/animations",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/animations/openanimator",
+            "href": "fuse/animations/openanimator"
+          },
+          "titles": {
+            "indexTitle": "OpenAnimator",
+            "fullyQualifiedIndexTitle": "Fuse.Animations.OpenAnimator"
+          }
+        },
+        "items": [
+          {
+            "comment": {
+              "brief": "Specifies how long the animator is \"on\".",
+              "full": "Specifies how long the animator is \"on\".\n\nIf the OpenAnimator does not have a duration (the default) it will be \"on\" after the `Delay` is reached, and continue to be \"on\" when the end of the timeline is reached."
+            },
+            "returns": {
+              "href": "uno/double",
+              "title": "double",
+              "fullyQualifiedTitle": "double"
+            },
+            "id": {
+              "id": "fuse/animations/openanimator/duration",
+              "parentId": "fuse/animations/openanimator",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/openanimator/duration",
+              "href": "fuse/animations/openanimator/duration"
+            },
+            "titles": {
+              "indexTitle": "Duration",
+              "fullyQualifiedIndexTitle": "Fuse.Animations.OpenAnimator.Duration"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/animations/animator",
+            "parentId": "fuse/animations",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/animations/animator",
+            "href": "fuse/animations/animator"
+          },
+          "titles": {
+            "indexTitle": "Animator",
+            "fullyQualifiedIndexTitle": "Fuse.Animations.Animator"
+          }
+        },
+        "items": [
+          {
+            "comment": {
+              "brief": "Seconds from the start of the trigger until this animator should play.",
+              "full": "Seconds from the start of the trigger until this animator should play.\n\nNote that some triggers are often played backwards in some scenarios. Delay will then be measured\nfrom the end of the animation, to when this animator should be completed."
+            },
+            "returns": {
+              "href": "uno/double",
+              "title": "double",
+              "fullyQualifiedTitle": "double"
+            },
+            "id": {
+              "id": "fuse/animations/openanimator/delay",
+              "parentId": "fuse/animations/openanimator",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/openanimator/delay",
+              "href": "fuse/animations/animator/delay",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Delay",
+              "fullyQualifiedIndexTitle": "Fuse.Animations.Animator.Delay"
+            }
+          },
+          {
+            "comment": {
+              "brief": "How to mix this animator when there are multiple conflicting animators affecting the target.",
+              "full": "How to mix this animator when there are multiple conflicting animators affecting the target."
+            },
+            "returns": {
+              "href": "fuse/animations/mixop",
+              "title": "MixOp",
+              "fullyQualifiedTitle": "Fuse.Animations.MixOp"
+            },
+            "id": {
+              "id": "fuse/animations/openanimator/mixop",
+              "parentId": "fuse/animations/openanimator",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/openanimator/mixop",
+              "href": "fuse/animations/animator/mixop",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "MixOp",
+              "fullyQualifiedIndexTitle": "Fuse.Animations.Animator.MixOp"
+            }
+          }
+        ]
+      }
+    ],
+    "constructors": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/animations/openanimator",
+            "parentId": "fuse/animations",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/animations/openanimator",
+            "href": "fuse/animations/openanimator"
+          },
+          "titles": {
+            "indexTitle": "OpenAnimator",
+            "fullyQualifiedIndexTitle": "Fuse.Animations.OpenAnimator"
+          }
+        },
+        "items": [
+          {
+            "comment": {
+              "brief": "Creates a new OpenAnimator",
+              "full": "Creates a new OpenAnimator"
+            },
+            "id": {
+              "id": "fuse/animations/openanimator/_ctor",
+              "parentId": "fuse/animations/openanimator",
+              "type": "Constructor",
+              "modifiers": [
+                "protected",
+                "generated"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/openanimator/_ctor",
+              "href": "fuse/animations/openanimator/_ctor"
+            },
+            "titles": {
+              "indexTitle": "OpenAnimator",
+              "fullyQualifiedIndexTitle": "Fuse.Animations.OpenAnimator.OpenAnimator"
+            }
+          }
+        ]
+      }
+    ],
+    "properties": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/animations/openanimator",
+            "parentId": "fuse/animations",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/animations/openanimator",
+            "href": "fuse/animations/openanimator"
+          },
+          "titles": {
+            "indexTitle": "OpenAnimator",
+            "fullyQualifiedIndexTitle": "Fuse.Animations.OpenAnimator"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "id": {
+              "id": "fuse/animations/openanimator/hasduration",
+              "parentId": "fuse/animations/openanimator",
+              "type": "Property",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/openanimator/hasduration",
+              "href": "fuse/animations/openanimator/hasduration"
+            },
+            "titles": {
+              "indexTitle": "HasDuration",
+              "fullyQualifiedIndexTitle": "Fuse.Animations.OpenAnimator.HasDuration"
+            }
+          }
+        ]
+      }
+    ],
+    "methods": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/animations/openanimator",
+            "parentId": "fuse/animations",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/animations/openanimator",
+            "href": "fuse/animations/openanimator"
+          },
+          "titles": {
+            "indexTitle": "OpenAnimator",
+            "fullyQualifiedIndexTitle": "Fuse.Animations.OpenAnimator"
+          }
+        },
+        "items": [
+          {
+            "id": {
+              "id": "fuse/animations/openanimator/resetduration",
+              "parentId": "fuse/animations/openanimator",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/openanimator/resetduration",
+              "href": "fuse/animations/openanimator/resetduration"
+            },
+            "titles": {
+              "indexTitle": "ResetDuration",
+              "fullyQualifiedIndexTitle": "Fuse.Animations.OpenAnimator.ResetDuration"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "uno/ux/propertyobject",
+            "parentId": "uno/ux",
+            "type": "Class",
+            "modifiers": [
+              "public"
+            ]
+          },
+          "uri": {
+            "idUri": "uno/ux/propertyobject",
+            "href": "uno/ux/propertyobject"
+          },
+          "titles": {
+            "indexTitle": "PropertyObject",
+            "fullyQualifiedIndexTitle": "Uno.UX.PropertyObject"
+          }
+        },
+        "items": [
+          {
+            "parameters": [
+              {
+                "name": "listener",
+                "href": "uno/ux/ipropertylistener",
+                "title": "IPropertyListener",
+                "fullyQualifiedTitle": "Uno.UX.IPropertyListener"
+              }
+            ],
+            "id": {
+              "id": "fuse/animations/openanimator/addpropertylistener_496a874a",
+              "parentId": "fuse/animations/openanimator",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/openanimator/addpropertylistener_496a874a",
+              "href": "uno/ux/propertyobject/addpropertylistener_496a874a",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "AddPropertyListener(IPropertyListener)",
+              "fullyQualifiedIndexTitle": "Uno.UX.PropertyObject.AddPropertyListener(Uno.UX.IPropertyListener)"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "property",
+                "href": "uno/ux/selector",
+                "title": "Selector",
+                "fullyQualifiedTitle": "Uno.UX.Selector"
+              }
+            ],
+            "id": {
+              "id": "fuse/animations/openanimator/onpropertychanged_16d735f3",
+              "parentId": "fuse/animations/openanimator",
+              "type": "Method",
+              "modifiers": [
+                "protected"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/openanimator/onpropertychanged_16d735f3",
+              "href": "uno/ux/propertyobject/onpropertychanged_16d735f3",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "OnPropertyChanged(Selector)",
+              "fullyQualifiedIndexTitle": "Uno.UX.PropertyObject.OnPropertyChanged(Uno.UX.Selector)"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "property",
+                "href": "uno/ux/selector",
+                "title": "Selector",
+                "fullyQualifiedTitle": "Uno.UX.Selector"
+              },
+              {
+                "name": "origin",
+                "href": "uno/ux/ipropertylistener",
+                "title": "IPropertyListener",
+                "fullyQualifiedTitle": "Uno.UX.IPropertyListener"
+              }
+            ],
+            "id": {
+              "id": "fuse/animations/openanimator/onpropertychanged_6422fe92",
+              "parentId": "fuse/animations/openanimator",
+              "type": "Method",
+              "modifiers": [
+                "protected",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/openanimator/onpropertychanged_6422fe92",
+              "href": "uno/ux/propertyobject/onpropertychanged_6422fe92",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "OnPropertyChanged(Selector, IPropertyListener)",
+              "fullyQualifiedIndexTitle": "Uno.UX.PropertyObject.OnPropertyChanged(Uno.UX.Selector, Uno.UX.IPropertyListener)"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "listener",
+                "href": "uno/ux/ipropertylistener",
+                "title": "IPropertyListener",
+                "fullyQualifiedTitle": "Uno.UX.IPropertyListener"
+              }
+            ],
+            "id": {
+              "id": "fuse/animations/openanimator/removepropertylistener_496a874a",
+              "parentId": "fuse/animations/openanimator",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/openanimator/removepropertylistener_496a874a",
+              "href": "uno/ux/propertyobject/removepropertylistener_496a874a",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "RemovePropertyListener(IPropertyListener)",
+              "fullyQualifiedIndexTitle": "Uno.UX.PropertyObject.RemovePropertyListener(Uno.UX.IPropertyListener)"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "uno/object",
+            "parentId": "uno",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "intrinsic"
+            ]
+          },
+          "uri": {
+            "idUri": "uno/object",
+            "href": "uno/object"
+          },
+          "titles": {
+            "indexTitle": "object",
+            "fullyQualifiedIndexTitle": "object"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "parameters": [
+              {
+                "name": "o",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              }
+            ],
+            "id": {
+              "id": "fuse/animations/openanimator/equals_a09c80e3",
+              "parentId": "fuse/animations/openanimator",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/openanimator/equals_a09c80e3",
+              "href": "uno/object/equals_a09c80e3",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Equals(object)",
+              "fullyQualifiedIndexTitle": "Uno.Object.Equals(object)"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/int",
+              "title": "int",
+              "fullyQualifiedTitle": "int"
+            },
+            "id": {
+              "id": "fuse/animations/openanimator/gethashcode",
+              "parentId": "fuse/animations/openanimator",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/openanimator/gethashcode",
+              "href": "uno/object/gethashcode",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetHashCode",
+              "fullyQualifiedIndexTitle": "Uno.Object.GetHashCode"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/type",
+              "title": "Type",
+              "fullyQualifiedTitle": "Uno.Type"
+            },
+            "id": {
+              "id": "fuse/animations/openanimator/gettype",
+              "parentId": "fuse/animations/openanimator",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/openanimator/gettype",
+              "href": "uno/object/gettype",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetType",
+              "fullyQualifiedIndexTitle": "Uno.Object.GetType"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "id": {
+              "id": "fuse/animations/openanimator/tostring",
+              "parentId": "fuse/animations/openanimator",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/openanimator/tostring",
+              "href": "uno/object/tostring",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "ToString",
+              "fullyQualifiedIndexTitle": "Uno.Object.ToString"
+            }
+          }
+        ]
+      }
+    ],
+    "fields": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/animations/animator",
+            "parentId": "fuse/animations",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/animations/animator",
+            "href": "fuse/animations/animator"
+          },
+          "titles": {
+            "indexTitle": "Animator",
+            "fullyQualifiedIndexTitle": "Fuse.Animations.Animator"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "fuse/animations/imixer",
+              "title": "IMixer",
+              "fullyQualifiedTitle": "Fuse.Animations.IMixer"
+            },
+            "id": {
+              "id": "fuse/animations/openanimator/mixer",
+              "parentId": "fuse/animations/openanimator",
+              "type": "Field",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/openanimator/mixer",
+              "href": "fuse/animations/animator/mixer",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Mixer",
+              "fullyQualifiedIndexTitle": "Fuse.Animations.Animator.Mixer"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

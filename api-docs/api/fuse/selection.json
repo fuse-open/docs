@@ -1,0 +1,273 @@
+{
+  "entity": {
+    "id": {
+      "id": "fuse/selection",
+      "parentId": "fuse",
+      "type": "Namespace",
+      "modifiers": []
+    },
+    "uri": {
+      "idUri": "fuse/selection",
+      "href": "fuse/selection"
+    },
+    "titles": {
+      "pageTitle": "Fuse.Selection Namespace",
+      "navigationTitle": "Fuse.Selection Namespace",
+      "fullTitle": "Fuse.Selection",
+      "indexTitle": "Fuse.Selection",
+      "fullyQualifiedIndexTitle": "Fuse.Selection"
+    },
+    "syntax": {
+      "uno": "namespace Selection {}"
+    }
+  },
+  "tableOfContents": {
+    "uxClasses": [
+      {
+        "items": [
+          {
+            "comment": {
+              "brief": "Fired when the @Selectable is removed from the @Selection.",
+              "full": "Fired when the @Selectable is removed from the @Selection."
+            },
+            "id": {
+              "id": "fuse/selection/deselected",
+              "parentId": "fuse/selection",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/selection/deselected",
+              "href": "fuse/selection/deselected"
+            },
+            "titles": {
+              "indexTitle": "Deselected",
+              "fullyQualifiedIndexTitle": "Fuse.Selection.Deselected"
+            }
+          },
+          {
+            "comment": {
+              "brief": "`true` while the @Selectable is currently selected.",
+              "full": "`true` while the @Selectable is currently selected.\n\nThis expression attaches to the first @Selectable node that is an ancestory of the expression node. Optionally,  you may specify an argument to get a different selectable `isSelected( myPanel )`."
+            },
+            "id": {
+              "id": "fuse/selection/isselectedfunction",
+              "parentId": "fuse/selection",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/selection/isselectedfunction",
+              "href": "fuse/selection/isselectedfunction"
+            },
+            "titles": {
+              "indexTitle": "IsSelectedFunction",
+              "fullyQualifiedIndexTitle": "Fuse.Selection.IsSelectedFunction"
+            }
+          },
+          {
+            "comment": {
+              "brief": "`Selectable` makes a Visual selectable. Selectable visuals are what can be selected in  a @Selection control.",
+              "full": "`Selectable` makes a Visual selectable. Selectable visuals are what can be selected in  a @Selection control.\n\nThe `Value` property is used by the @Selection to track what is selected. It is a string value to make it easy to work with from JavaScript.\n\n## Changing the selected state\n\nThere is no default behavior that changes a visuals selected state. In order to select a @(Selectable:selectable), you need to use @(ToggleSelection). A normal use of this would be inside a @(Clicked) trigger, like this:\n\n    <Panel>\n        <Selection />\n        <Panel>\n            <Selectable />\n            <Clicked>\n                <ToggleSelection />\n            </Clicked>\n        </Panel>\n    </Panel>\n\n## Reacting to a change in selected state\n\nYou can react to changes in the state of a @(Selectable) element using @(Selected), which pulses when the element is selected, or @(WhileSelected), which is true as long as the element is selected."
+            },
+            "id": {
+              "id": "fuse/selection/selectable",
+              "parentId": "fuse/selection",
+              "type": "UxClass",
+              "modifiers": [
+                "public",
+                "partial"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/selection/selectable",
+              "href": "fuse/selection/selectable"
+            },
+            "titles": {
+              "indexTitle": "Selectable",
+              "fullyQualifiedIndexTitle": "Fuse.Selection.Selectable"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Fired when the @Selectable is assed to the @Selection.",
+              "full": "Fired when the @Selectable is assed to the @Selection."
+            },
+            "id": {
+              "id": "fuse/selection/selected",
+              "parentId": "fuse/selection",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/selection/selected",
+              "href": "fuse/selection/selected"
+            },
+            "titles": {
+              "indexTitle": "Selected",
+              "fullyQualifiedIndexTitle": "Fuse.Selection.Selected"
+            }
+          },
+          {
+            "comment": {
+              "brief": "@Selection is used to create a selection control, such as an item list, radio buttons, or picker. The @Selection itself defines the selection, managing the high-level behaviour and tracking the current value. A variety of @Selectable objects define which items can be selected.",
+              "full": "@Selection is used to create a selection control, such as an item list, radio buttons, or picker. The @Selection itself defines the selection, managing the high-level behaviour and tracking the current value. A variety of @Selectable objects define which items can be selected.\n\n## Introduction to the Selection API\n\n<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/Ngil94H-Mk4\" frameborder=\"0\" allowfullscreen></iframe>\n\nThe selection is associated with the node in which it appears. For example:\n\n    <Panel>\n        <Selection/>\n    </Panel>\n\nThe @Panel is now considered to be a selection control. Behaviours and triggers, such as @Selectable and @Selected, that are descendents of this panel will find this `Selection` behavior.\n\nThe @(Selectable) node is used to make a child of a selection control selectable. When assigned to a nodes, it will iterate through the controls parents until it finds a selection control.\n\nThe Selection API's functions are split between user-interaction and programming APIs. The user interaction functions are constrained to the requirements of the Selection, such as `MaxCount` and `MinCount`. The programmatic functions can set whatever state they want; they are not constrained. This makes it easy to create value bindings and JavaScript driven behaviour without worrying about initialization order.\n\n## Example"
+            },
+            "id": {
+              "id": "fuse/selection/selection",
+              "parentId": "fuse/selection",
+              "type": "UxClass",
+              "modifiers": [
+                "public",
+                "partial"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/selection/selection",
+              "href": "fuse/selection/selection"
+            },
+            "titles": {
+              "indexTitle": "Selection",
+              "fullyQualifiedIndexTitle": "Fuse.Selection.Selection"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Modifies the selection state of a selectable in a selection.",
+              "full": "Modifies the selection state of a selectable in a selection.\n\nThis looks for an ancestor node that is @Selectable.\n\nThis obeys the user-interaction constraints of the @Selection. For example, it will not exceed `MaxCount`, nor go under `MinCount`. It is meant to create the high-level user interaction in a selection control."
+            },
+            "id": {
+              "id": "fuse/selection/toggleselection",
+              "parentId": "fuse/selection",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/selection/toggleselection",
+              "href": "fuse/selection/toggleselection"
+            },
+            "titles": {
+              "indexTitle": "ToggleSelection",
+              "fullyQualifiedIndexTitle": "Fuse.Selection.ToggleSelection"
+            }
+          },
+          {
+            "comment": {
+              "brief": "This trigger is active while the @Selectable is currently selected in the @Selection",
+              "full": "This trigger is active while the @Selectable is currently selected in the @Selection\n\nThis attaches to the first @Selectable node that is an ancestor of this one.\n\nConsider also the `isSelected()` function for use in expressions."
+            },
+            "id": {
+              "id": "fuse/selection/whileselected",
+              "parentId": "fuse/selection",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/selection/whileselected",
+              "href": "fuse/selection/whileselected"
+            },
+            "titles": {
+              "indexTitle": "WhileSelected",
+              "fullyQualifiedIndexTitle": "Fuse.Selection.WhileSelected"
+            }
+          }
+        ]
+      }
+    ],
+    "classes": [
+      {
+        "items": [
+          {
+            "id": {
+              "id": "fuse/selection/selectionevent",
+              "parentId": "fuse/selection",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/selection/selectionevent",
+              "href": "fuse/selection/selectionevent"
+            },
+            "titles": {
+              "indexTitle": "SelectionEvent",
+              "fullyQualifiedIndexTitle": "Fuse.Selection.SelectionEvent"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/selection/selectioneventargs",
+              "parentId": "fuse/selection",
+              "type": "Class",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/selection/selectioneventargs",
+              "href": "fuse/selection/selectioneventargs"
+            },
+            "titles": {
+              "indexTitle": "SelectionEventArgs",
+              "fullyQualifiedIndexTitle": "Fuse.Selection.SelectionEventArgs"
+            }
+          }
+        ]
+      }
+    ],
+    "enums": [
+      {
+        "items": [
+          {
+            "id": {
+              "id": "fuse/selection/selectionreplace",
+              "parentId": "fuse/selection",
+              "type": "Enum",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/selection/selectionreplace",
+              "href": "fuse/selection/selectionreplace"
+            },
+            "titles": {
+              "indexTitle": "SelectionReplace",
+              "fullyQualifiedIndexTitle": "Fuse.Selection.SelectionReplace"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/selection/selectmode",
+              "parentId": "fuse/selection",
+              "type": "Enum",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/selection/selectmode",
+              "href": "fuse/selection/selectmode"
+            },
+            "titles": {
+              "indexTitle": "SelectMode",
+              "fullyQualifiedIndexTitle": "Fuse.Selection.SelectMode"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

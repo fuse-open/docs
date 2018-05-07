@@ -1,0 +1,1708 @@
+{
+  "entity": {
+    "id": {
+      "id": "fuse/navigation",
+      "parentId": "fuse",
+      "type": "Namespace",
+      "modifiers": []
+    },
+    "uri": {
+      "idUri": "fuse/navigation",
+      "href": "fuse/navigation"
+    },
+    "titles": {
+      "pageTitle": "Fuse.Navigation Namespace",
+      "navigationTitle": "Fuse.Navigation Namespace",
+      "fullTitle": "Fuse.Navigation",
+      "indexTitle": "Fuse.Navigation",
+      "fullyQualifiedIndexTitle": "Fuse.Navigation"
+    },
+    "syntax": {
+      "uno": "namespace Navigation {}"
+    }
+  },
+  "tableOfContents": {
+    "uxClasses": [
+      {
+        "items": [
+          {
+            "comment": {
+              "brief": "Active whenever a page becomes active.",
+              "full": "Active whenever a page becomes active.\n\nThis trigger will also be pulsed at rooting time if the page is currently the active one.\n\n## Example\n\nThis example will print to the console whenever the each of the two pages is activated:\n\n    <PageControl>\n        <Page Background=\"Red\">\n            <Activated>\n                <DebugAction Message=\"Red page activated\" />\n            </Activated>\n        </Page>\n        <Page Background=\"Blue\">\n            <Activated>\n                <DebugAction Message=\"Blue page activated\" />\n            </Activated>\n        </Page>\n    </PageControl>\n\nNote that this trigger may also be used as an attached event directly on a `Page`, like so:\n\n    <Page Activated=\"{jsActivated}\">\n    </Page>"
+            },
+            "id": {
+              "id": "fuse/navigation/activated",
+              "parentId": "fuse/navigation",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/activated",
+              "href": "fuse/navigation/activated"
+            },
+            "titles": {
+              "indexTitle": "Activated",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.Activated"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Specifies an animation for an element that's becoming active.",
+              "full": "Specifies an animation for an element that's becoming active.\n\nIf @(SwipeNavigate) is used, one can observe that `ActivatingAnimation` progressed from 0 as soon as the `Page` is entering, stays at 1 as long as the `Page` is active,\nand then progresses towards 0 again as the `Page` is exiting. This is the inverse of `DeactivatingAnimation`'s behavior.\n\n## Example\n\nThe following example shows an `ActivatingAnimation` animating the `Height` of a `Rectangle`, causing it to reduce in size vertically as a page is being navigated to:\n\n    <PageControl>\n        <Panel Background=\"Red\" />\n        <Panel Background=\"Blue\">\n            <Rectangle Color=\"Black\" Width=\"100%\" Height=\"0%\" Alignment=\"Top\" ux:Name=\"rect\"/>\n            <ActivatingAnimation>\n                <Change rect.Height=\"100%\" />\n            </ActivatingAnimation>\n        </Panel>\n    </PageControl>\n\nSee [Navigation Order](articles:navigation/navigationorder.md)"
+            },
+            "id": {
+              "id": "fuse/navigation/activatinganimation",
+              "parentId": "fuse/navigation",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/activatinganimation",
+              "href": "fuse/navigation/activatinganimation"
+            },
+            "titles": {
+              "indexTitle": "ActivatingAnimation",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.ActivatingAnimation"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Active whenever a page becomes inactive.",
+              "full": "Active whenever a page becomes inactive.\n\nThis trigger may not pulse when the trigger, navigation, or the page is unrooted.\n\n## Example\n\nThis example will print to the console whenever the each of the two pages is deactivated:\n\n    <PageControl>\n        <Page Background=\"Red\">\n            <Deactivated>\n                <DebugAction Message=\"Red page deactivated\" />\n            </Deactivated>\n        </Page>\n        <Page Background=\"Blue\">\n            <Deactivated>\n                <DebugAction Message=\"Blue page deactivated\" />\n            </Deactivated>\n        </Page>\n    </PageControl>\n\nNote that this trigger may also be used as an attached event directly on a `Page`, like so:\n\n    <Page Deactivated=\"{jsDeactivated}\">\n    </Page>"
+            },
+            "id": {
+              "id": "fuse/navigation/deactivated",
+              "parentId": "fuse/navigation",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/deactivated",
+              "href": "fuse/navigation/deactivated"
+            },
+            "titles": {
+              "indexTitle": "Deactivated",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.Deactivated"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Specifies an animation for an element that's becoming inactive.",
+              "full": "Specifies an animation for an element that's becoming inactive.\n\nIf @(SwipeNavigate) is used, one can observe that `DeactivatingAnimation` progressed from 1 to 0 as soon as the `Page` is entering, stays at 0 as long as the `Page` is active,\nand then progresses towards 1 again as the `Page` is exiting. This is the inverse of `ActivatingAnimation`'s behavior.\n\n## Example\n\nThe following example shows a `DeactivatingAnimation` animating the `Height` of a `Rectangle`, causing it to fill the page being navigated to:\n\n    <PageControl>\n        <Panel Background=\"Red\" />\n        <Panel Background=\"Blue\">\n            <Rectangle Color=\"Black\" Width=\"100%\" Height=\"0%\" Alignment=\"Top\" ux:Name=\"rect\"/>\n            <DeactivatingAnimation>\n                <Change rect.Height=\"100%\" />\n            </DeactivatingAnimation>\n        </Panel>\n    </PageControl>\n\nSee [Navigation Order](articles:navigation/navigationorder.md)"
+            },
+            "id": {
+              "id": "fuse/navigation/deactivatinganimation",
+              "parentId": "fuse/navigation",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/deactivatinganimation",
+              "href": "fuse/navigation/deactivatinganimation"
+            },
+            "titles": {
+              "indexTitle": "DeactivatingAnimation",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.DeactivatingAnimation"
+            }
+          },
+          {
+            "comment": {
+              "brief": "## Navigation Order",
+              "full": "## Navigation Order\n\nPages in a `DirectNavigation` have a discrete page progress. The active page is `0`, and all others are `-1`. All inactives pages are behind the active one, and no pages are ever in front of the active one.\n\nSee [Navigation Order](articles:navigation/navigationorder.md)"
+            },
+            "id": {
+              "id": "fuse/navigation/directnavigation",
+              "parentId": "fuse/navigation",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/directnavigation",
+              "href": "fuse/navigation/directnavigation"
+            },
+            "titles": {
+              "indexTitle": "DirectNavigation",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.DirectNavigation"
+            }
+          },
+          {
+            "comment": {
+              "brief": "A linear navigation that retains the active state during changes of the pages",
+              "full": "A linear navigation that retains the active state during changes of the pages"
+            },
+            "id": {
+              "id": "fuse/navigation/dynamiclinearnavigation",
+              "parentId": "fuse/navigation",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/dynamiclinearnavigation",
+              "href": "fuse/navigation/dynamiclinearnavigation"
+            },
+            "titles": {
+              "indexTitle": "DynamicLinearNavigation",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.DynamicLinearNavigation"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/navigation/edgenavigation",
+              "parentId": "fuse/navigation",
+              "type": "UxClass",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/edgenavigation",
+              "href": "fuse/navigation/edgenavigation"
+            },
+            "titles": {
+              "indexTitle": "EdgeNavigation",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.EdgeNavigation"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Specifies an animation for a page that is in front of the active one.",
+              "full": "Specifies an animation for a page that is in front of the active one.\n\nAnimates from 0 to 1 as the page progress goes from 0 to 1. For discrete navigation changes the duration of the animators will be used.\n\nFor clarity, if the page is coming from the front, such as navigating forward in a `PageControl`, the trigger animates from 1 to 0. This is just a natural result of the page's progress changing from 1 to 0.\n\n## Example\n\nThis example shows the use of both `EnteringAnimation` and `ExitingAnimation` in a custom transition for three panels in a @(PageControl):\n\n    <Panel ux:Class=\"CustomPanel\" TransformOrigin=\"TopLeft\">\n        <EnteringAnimation>\n            <Rotate Degrees=\"90\"/>\n        </EnteringAnimation>\n        <ExitingAnimation>\n            <Rotate Degrees=\"-90\" />\n        </ExitingAnimation>\n    </Panel>\n    <PageControl Transition=\"None\">\n        <CustomPanel Background=\"#F00\" />\n        <CustomPanel Background=\"#0F0\" />\n        <CustomPanel Background=\"#00F\" />\n    </PageControl>\n\nSee [Navigation Order](articles:navigation/navigationorder.md)"
+            },
+            "id": {
+              "id": "fuse/navigation/enteringanimation",
+              "parentId": "fuse/navigation",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/enteringanimation",
+              "href": "fuse/navigation/enteringanimation"
+            },
+            "titles": {
+              "indexTitle": "EnteringAnimation",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.EnteringAnimation"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Specifies an animation for a page that is behind the active page.",
+              "full": "Specifies an animation for a page that is behind the active page.\n\nAnimates from 0 to 1 as the page progress goes from 0 to -1. For discrete navigation changes the duration of the animators will be used.\n\n## Example\n\nThis example shows the use of both `ExitingAnimation` and `EnteringAnimation` in a custom transition for three panels in a @(PageControl):\n\n    <Panel ux:Class=\"CustomPanel\" TransformOrigin=\"TopLeft\">\n        <EnteringAnimation>\n            <Rotate Degrees=\"90\"/>\n        </EnteringAnimation>\n        <ExitingAnimation>\n            <Rotate Degrees=\"-90\" />\n        </ExitingAnimation>\n    </Panel>\n    <PageControl Transition=\"None\">\n        <CustomPanel Background=\"#F00\" />\n        <CustomPanel Background=\"#0F0\" />\n        <CustomPanel Background=\"#00F\" />\n    </PageControl>\n\nSee [Navigation Order](articles:navigation/navigationorder.md)"
+            },
+            "id": {
+              "id": "fuse/navigation/exitinganimation",
+              "parentId": "fuse/navigation",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/exitinganimation",
+              "href": "fuse/navigation/exitinganimation"
+            },
+            "titles": {
+              "indexTitle": "ExitingAnimation",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.ExitingAnimation"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Finds a router from the current location.",
+              "full": "Finds a router from the current location.\n\nThis can be used to get access to a router in JavaScript. This assume that a @Router has been\ndeclared somewhere higher in the UX tree (it need not be in the same file).\n\n    <Page>\n        <JavaScript dep:router=\"findRouter()\">\n            exports.go = function() {\n                router.goto( \"anotherPageName\" )\n            }\n        </JavaScript>\n\n        <Button Alignment=\"Center\" Clicked=\"{go}\"/>\n    </Page>"
+            },
+            "id": {
+              "id": "fuse/navigation/findrouter",
+              "parentId": "fuse/navigation",
+              "type": "UxClass",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/findrouter",
+              "href": "fuse/navigation/findrouter"
+            },
+            "titles": {
+              "indexTitle": "FindRouter",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.FindRouter"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Navigates backward in the navigation stack/z-order of a @Navigation, @PageControl, or @WebView.",
+              "full": "Navigates backward in the navigation stack/z-order of a @Navigation, @PageControl, or @WebView.\n\n# Example\nIn this example, `GoBack` will be used to navigate away from the first page of a `PageControl`.\n\n    <PageControl>\n        <Panel Background=\"#0F0\" ux:Name=\"firstPage\">\n            <Button Text=\"GoBack\" Alignment=\"Center\" Margin=\"10\">\n                <Clicked>\n                    <GoBack />\n                </Clicked>\n            </Button>\n        </Panel>\n        <Panel Background=\"#F00\" ux:Name=\"secondPage\">\n            <Button Alignment=\"Center\" Text=\"Go to page 1\">\n                <Clicked>\n                    <NavigateTo Target=\"firstPage\" />\n                </Clicked>\n            </Button>\n        </Panel>\n    </PageControl>\n\nBackward refers to pages that are behind the active one in navigation order. This trigger is not suitable for navigation that does not have a history or sequence of pages.\n\nSee [Navigation Order](articles:navigation/navigationorder.md)"
+            },
+            "id": {
+              "id": "fuse/navigation/goback",
+              "parentId": "fuse/navigation",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/goback",
+              "href": "fuse/navigation/goback"
+            },
+            "titles": {
+              "indexTitle": "GoBack",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.GoBack"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Navigates forward in a @Navigation, @PageControl, or @WebView.",
+              "full": "Navigates forward in a @Navigation, @PageControl, or @WebView.\n\n# Example\nIn this example, `GoForward` will be used to navigate back to the first page of a `PageControl`. This is because \"Forward\" means \"towards the first page\" when used in linear navigation.\n\n    <PageControl>\n        <Panel Background=\"#F00\" ux:Name=\"page1\">\n            <Button Alignment=\"Center\" Text=\"Go to page 2\">\n                <Clicked>\n                    <NavigateTo Target=\"page2\" />\n                </Clicked>\n            </Button>\n        </Panel>\n        <Panel Background=\"#0F0\" ux:Name=\"page2\">\n            <Button Text=\"Go back\" Alignment=\"Center\" Margin=\"10\">\n                <Clicked>\n                    <GoForward />\n                </Clicked>\n            </Button>\n        </Panel>\n    </PageControl>\n\nForward refers to pages that are in front of the active one in navigation order.  This trigger is not suitable for navigation that does not have a history or sequence of pages.\n\nSee [Navigation Order](articles:navigation/navigationorder.md)"
+            },
+            "id": {
+              "id": "fuse/navigation/goforward",
+              "parentId": "fuse/navigation",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/goforward",
+              "href": "fuse/navigation/goforward"
+            },
+            "titles": {
+              "indexTitle": "GoForward",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.GoForward"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Goto a new route in the router.",
+              "full": "Goto a new route in the router.\n\nThis is the same as @RouterModify with `How=\"Goto\"`"
+            },
+            "id": {
+              "id": "fuse/navigation/gotoroute",
+              "parentId": "fuse/navigation",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/gotoroute",
+              "href": "fuse/navigation/gotoroute"
+            },
+            "titles": {
+              "indexTitle": "GotoRoute",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.GotoRoute"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Goto a full path in the router.",
+              "full": "Goto a full path in the router.\n\nThe arguments are name-value pairs that specify the path components and their parameter."
+            },
+            "id": {
+              "id": "fuse/navigation/gotoroutecommand",
+              "parentId": "fuse/navigation",
+              "type": "UxClass",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/gotoroutecommand",
+              "href": "fuse/navigation/gotoroutecommand"
+            },
+            "titles": {
+              "indexTitle": "GotoRouteCommand",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.GotoRouteCommand"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/navigation/hierarchicalnavigation",
+              "parentId": "fuse/navigation",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/hierarchicalnavigation",
+              "href": "fuse/navigation/hierarchicalnavigation"
+            },
+            "titles": {
+              "indexTitle": "HierarchicalNavigation",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.HierarchicalNavigation"
+            }
+          },
+          {
+            "comment": {
+              "brief": "## Navigation Order",
+              "full": "## Navigation Order\n\nThe navigation order of a `LinearNavigation` is the same as the child order. Earlier children are in front of later children. The navigation progress is continuous, and pages can be more than 1 away from the active one.\n\nSee [Navigation Order](articles:navigation/navigationorder.md)"
+            },
+            "id": {
+              "id": "fuse/navigation/linearnavigation",
+              "parentId": "fuse/navigation",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/linearnavigation",
+              "href": "fuse/navigation/linearnavigation"
+            },
+            "titles": {
+              "indexTitle": "LinearNavigation",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.LinearNavigation"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/navigation/modifyroute",
+              "parentId": "fuse/navigation",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/modifyroute",
+              "href": "fuse/navigation/modifyroute"
+            },
+            "titles": {
+              "indexTitle": "ModifyRoute",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.ModifyRoute"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Navigates on the router.",
+              "full": "Navigates on the router.\n\nThe arguments must be name-value pairs.  It shares the same arguments as the JAvaScript `router.modify` function and the `RouterModify` action. In short the options are:\n\n    - how : @ModifyRouteHow\n    - path : An array of name-value pairs that specify the path components and their parameter. This syntax differs from the JavaScript interface.\n    - relative : Routing relative to the provided node. By default the path will be treated as global.\n    - transition : @NavigationGotoMode\n    - bookmark : Use a bookmark instead of `path`.\n    - style : Transition style for animation\n\nThe expression provided to `modifyRoute` is evaluated only when needed. It is expected the bindings will resolve quickly (not bound to a remote lookup for example), otherwise the routing operation will be delayed."
+            },
+            "id": {
+              "id": "fuse/navigation/modifyroutecommand",
+              "parentId": "fuse/navigation",
+              "type": "UxClass",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/modifyroutecommand",
+              "href": "fuse/navigation/modifyroutecommand"
+            },
+            "titles": {
+              "indexTitle": "ModifyRouteCommand",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.ModifyRouteCommand"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Navigate to a page.",
+              "full": "Navigate to a page.\n\nThis action is for navigating a @PageControl directly. Consider using @Router instead to perform\nmore structured navigation.\n\n## Example\n\n    <PageControl>\n        <Page>\n            <Grid Background=\"#282a37\" Rows=\"auto,1*\" Padding=\"20\">\n                <Image Alignment=\"Center\" Url=\"https://fusetools-web.azureedge.net/fusetools-web/v1464939897151/images/logo_white.png\" Width=\"100\" Height=\"100\" />\n                <Button Text=\"Settings\">\n                    <Clicked>\n                        <NavigateTo Target=\"settings\" />\n                    </Clicked>\n                </Button>\n            </Grid>\n        </Page>\n        <Page ux:Name=\"settings\">\n            <Grid Padding=\"20\" Rows=\"auto, 30\" Background=\"#282a37\">\n                <Text Value=\"Settings\" Color=\"#fff\" Alignment=\"TopCenter\" FontSize=\"20\"/>\n                <Slider />\n            </Grid>\n        </Page>\n    </PageControl>"
+            },
+            "id": {
+              "id": "fuse/navigation/navigateto",
+              "parentId": "fuse/navigation",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/navigateto",
+              "href": "fuse/navigation/navigateto"
+            },
+            "titles": {
+              "indexTitle": "NavigateTo",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.NavigateTo"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Toggles a `Navigation`.",
+              "full": "Toggles a `Navigation`.\n\nThis is currently only supported in @(EdgeNavigation), and will do nothing if used on another type of navigation.\n\nUsed on an `EdgeNavigation`, it will navigate to and from a @(Panel) with `EdgeNavigation.Edge` set, specified by using the `Target` property.\n\n# Example\n\nThis example shows the use of `NavigateToggle` by toggling the visibility of an `EdgePanel`.\n\n    <DockPanel>\n        <EdgeNavigation/>\n        <Panel Width=\"150\" Edge=\"Left\" Background=\"#f63\" Alignment=\"Left\" ux:Name=\"nav\">\n            <EnteringAnimation>\n        <Move X=\"-1\" RelativeTo=\"Size\" />\n            </EnteringAnimation>\n        </Panel>\n        <Panel Background=\"#90CAF9\">\n            <Tapped>\n                <NavigateToggle Target=\"nav\" />\n            </Tapped>\n        </Panel>\n    </DockPanel>"
+            },
+            "id": {
+              "id": "fuse/navigation/navigatetoggle",
+              "parentId": "fuse/navigation",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/navigatetoggle",
+              "href": "fuse/navigation/navigatetoggle"
+            },
+            "titles": {
+              "indexTitle": "NavigateToggle",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.NavigateToggle"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/navigation/pageexpression",
+              "parentId": "fuse/navigation",
+              "type": "UxClass",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/pageexpression",
+              "href": "fuse/navigation/pageexpression"
+            },
+            "titles": {
+              "indexTitle": "PageExpression",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.PageExpression"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/navigation/pageresourcebinding_1",
+              "parentId": "fuse/navigation",
+              "type": "UxClass",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/pageresourcebinding_1",
+              "href": "fuse/navigation/pageresourcebinding_1"
+            },
+            "titles": {
+              "indexTitle": "PageResourceBinding<T>",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.PageResourceBinding<T>"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Push a new route onto the router.",
+              "full": "Push a new route onto the router.\n\nThis is the same as @RouterModify with `How=\"Push\"`"
+            },
+            "id": {
+              "id": "fuse/navigation/pushroute",
+              "parentId": "fuse/navigation",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/pushroute",
+              "href": "fuse/navigation/pushroute"
+            },
+            "titles": {
+              "indexTitle": "PushRoute",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.PushRoute"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Push a full path on the router.",
+              "full": "Push a full path on the router."
+            },
+            "id": {
+              "id": "fuse/navigation/pushroutecommand",
+              "parentId": "fuse/navigation",
+              "type": "UxClass",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/pushroutecommand",
+              "href": "fuse/navigation/pushroutecommand"
+            },
+            "titles": {
+              "indexTitle": "PushRouteCommand",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.PushRouteCommand"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Manages routing and navigation history for part or all of a Fuse app.",
+              "full": "Manages routing and navigation history for part or all of a Fuse app.\n\n> Note: It is recommended that you first read the [Navigation guide](/docs/navigation/navigation) for a full overview of Fuse's navigation system.\n\nThe `Router` class, along with _router outlets_ such as @Navigator and @PageControl, forms the basis of navigation in Fuse.\nTo navigate in a Fuse app, a _route_ is sent to a `Router` instance. This route consists of one or many parts, which each consist of a string path that\nidentifies a target to navigate to, and optionally, some data to send to this target when navigating to it.\n\nWhen a `Router` receives a route, it will recursively perform navigation for the different parts of the route.\nFor each part, it will search its immediate UX tree to locate a router outlet that will use this part's string path to navigate to part of the app.\nThis could represent, for example, the template key of a template in a @Navigator, or the name of a @Page in a @PageControl.\n\nA router can go directly between routes with `goto`, or navigate heirarchically using `push` and `goBack`.\n\nTypically, an app will use a single, global `Router` instance which will work from the @App root, and represents a single _navigation context_ for the entire app.\nIt's possible, however, to create separate routers for different localized parts of the UX tree, which can be useful if, for example, a different history needs to be\nkept for part of the app.\n\n## Example\n\nThe following example illustrates a basic navigation setup using a @Router and @Navigator.\nFor a complete introduction and proper examples of Fuse's navigation system, see the [Navigation guide](/docs/navigation/navigation).\n\n    <JavaScript>\n        module.exports = {\n            gotoFirst: function() { router.goto(\"firstPage\"); },\n            gotoSecond: function() { router.goto(\"secondPage\"); }\n        };\n    </JavaScript>\n\n    <Router ux:Name=\"router\" />\n\n    <DockPanel>\n        <Navigator DefaultTemplate=\"firstPage\">\n            <Page ux:Template=\"firstPage\">\n                <Text Alignment=\"Center\">This is the first page.</Text>\n            </Page>\n            <Page ux:Template=\"secondPage\">\n                <Text Alignment=\"Center\">This is the second page.</Text>\n            </Page>\n        </Navigator>\n\n        <Grid Dock=\"Bottom\" Columns=\"1*,1*\">\n            <Button Text=\"First page\" Padding=\"20\" Clicked=\"{gotoFirst}\" />\n            <Button Text=\"Second page\" Padding=\"20\" Clicked=\"{gotoSecond}\" />\n        </Grid>\n    </DockPanel>\n\n## Page Navigation Order\n\nThe history of the router follows the standard history ordering, newest routes are at the front of the history, older routes at the back.\n\nThe router however does not decide on the navigation order of the pages in the individual controls, as described in [Navigation Order](articles:navigation/navigationorder.md). This is controlled by each outlet being used."
+            },
+            "id": {
+              "id": "fuse/navigation/router",
+              "parentId": "fuse/navigation",
+              "type": "UxClass",
+              "modifiers": [
+                "public",
+                "partial"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/router",
+              "href": "fuse/navigation/router"
+            },
+            "titles": {
+              "indexTitle": "Router",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.Router"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Cancels a partial navigation on the Router.",
+              "full": "Cancels a partial navigation on the Router."
+            },
+            "id": {
+              "id": "fuse/navigation/routercancelnavigation",
+              "parentId": "fuse/navigation",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/routercancelnavigation",
+              "href": "fuse/navigation/routercancelnavigation"
+            },
+            "titles": {
+              "indexTitle": "RouterCancelNavigation",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.RouterCancelNavigation"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Performs a transition on the router with extended options.",
+              "full": "Performs a transition on the router with extended options.\n\n> Note: there is also a JavaScript interface for [Router.modify](api:fuse/navigation/router/modify_0f0d575d).\n\nBasic use requires setting the property `Bookmark` to specify the route to navigate to,\nand the `How` property to specify what navigation action will be used, most frequently `Push` or `Goto`.\n\n    <Router ux:Name=\"router\" />\n    ...\n    <JavaScript>\n        router.bookmark({\n            name: \"myBookmark\",\n            path: [\"myPage\", {}, \"mySubpage\", {}]\n        });\n    </JavaScript>\n    ...\n    <Panel>\n        <Clicked>\n            <RouterModify How=\"Push\" Bookmark=\"myBookmark\" />\n        </Clicked>\n        <Text Value=\"Open subpage\" />\n    </Panel>\n\nIf we only need to go back in navigation history, the `Bookmark` property can be omitted:\n\n    <RouterModify How=\"GoBack\" />\n\nWhen using `Navigator` or `PageControl`, the default transitions can be overriden by setting `Transition`\nand `Style` properties on `RouterModify`. This pushes another page without a transition:\n\n    <RouterModify How=\"Push\" Transition=\"Bypass\" Bookmark=\"myBookmark\" />\n\nWe can use the `Style` property to refer to specific `Transition` triggers on target pages, allowing us\nto trigger different transitions for separate use cases:\n\n    <Router ux:Name=\"router\" />\n    ...\n    <JavaScript>\n        router.bookmark({\n            name: \"myBookmark\",\n            path: [\"secondPage\", {}]\n        });\n    </JavaScript>\n    ...\n    <Navigator DefaultPath=\"firstPage\">\n        <StackPanel ux:Template=\"firstPage\">\n            <Panel>\n                <Clicked>\n                    <RouterModify How=\"Push\" Bookmark=\"myBookmark\" Style=\"fromTop\" />\n                </Clicked>\n                <Text Value=\"Transition from top\" />\n            </Panel>\n            <Panel>\n                <Clicked>\n                    <RouterModify How=\"Push\" Bookmark=\"myBookmark\" Style=\"fromBottom\" />\n                </Clicked>\n                <Text Value=\"Transition from bottom\" />\n            </Panel>\n        </StackPanel>\n\n        <Panel ux:Template=\"secondPage\">\n            <Transition Style=\"fromTop\">\n                <Move Y=\"-1\" RelativeTo=\"ParentSize\" Duration=\"0.4\" Easing=\"SinusoidalInOut\" />\n            </Transition>\n            <Transition Style=\"fromBottom\">\n                <Move Y=\"1\" RelativeTo=\"ParentSize\" Duration=\"0.4\" Easing=\"SinusoidalInOut\" />\n            </Transition>\n            <Clicked>\n                <RouterModify How=\"GoBack\" />\n            </Clicked>\n            <Text Value=\"Go back\" />\n        </Panel>\n    </Navigator>"
+            },
+            "id": {
+              "id": "fuse/navigation/routermodify",
+              "parentId": "fuse/navigation",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/routermodify",
+              "href": "fuse/navigation/routermodify"
+            },
+            "titles": {
+              "indexTitle": "RouterModify",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.RouterModify"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/navigation/swipenavigate",
+              "parentId": "fuse/navigation",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/swipenavigate",
+              "href": "fuse/navigation/swipenavigate"
+            },
+            "titles": {
+              "indexTitle": "SwipeNavigate",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.SwipeNavigate"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Animates while the page is active.",
+              "full": "Animates while the page is active.\n\n## Example\n\nThe following example changes the value of a @Text element to `Active` when the\nfirst page of a @PageControl is active. We set the `Threshold` high to make the\nchange happen later when transitioning to the page.\n\n    <PageControl>\n        <Page>\n            <Panel Alignment=\"Center\">\n                <Text ux:Name=\"text\">Inactive</Text>\n                <WhileActive Threshold=\"0.9\">\n                    <Change text.Value=\"Active\" />\n                </WhileActive>\n            </Panel>\n        </Page>\n        <Page Background=\"Blue\" />\n    </PageControl>\n\nThe progress of this trigger for a page is calculated as `1 - distance_to_active`. So a page progress of 0 will map to `1` for this trigger, and anything more than `1` away from the active page will be `0`. For example, the `Threshold=\"0.9\"` in the above example means the trigger will become active when the page has been swiped 90% of the way to active, instead of waiting to 100%."
+            },
+            "id": {
+              "id": "fuse/navigation/whileactive",
+              "parentId": "fuse/navigation",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/whileactive",
+              "href": "fuse/navigation/whileactive"
+            },
+            "titles": {
+              "indexTitle": "WhileActive",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.WhileActive"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Active whenever navigating backward is possible.",
+              "full": "Active whenever navigating backward is possible.\n\nThis trigger depends on the navigation context."
+            },
+            "id": {
+              "id": "fuse/navigation/whilecangoback",
+              "parentId": "fuse/navigation",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/whilecangoback",
+              "href": "fuse/navigation/whilecangoback"
+            },
+            "titles": {
+              "indexTitle": "WhileCanGoBack",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.WhileCanGoBack"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Active whenever navigating forward is possible.",
+              "full": "Active whenever navigating forward is possible.\n\nThis trigger depends on the navigation context."
+            },
+            "id": {
+              "id": "fuse/navigation/whilecangoforward",
+              "parentId": "fuse/navigation",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/whilecangoforward",
+              "href": "fuse/navigation/whilecangoforward"
+            },
+            "titles": {
+              "indexTitle": "WhileCanGoForward",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.WhileCanGoForward"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Animates while the page is inactive.",
+              "full": "Animates while the page is inactive.\n\n## Example\n\nThe following example changes the value of a @Text element to `Inactive` when the\nfirst page of a @PageControl is inactive. We set the `Threshold` low to make the\nchange happen earlier when transitioning from the page.\n\n    <PageControl>\n        <Page>\n            <Panel Alignment=\"Center\">\n                <Text ux:Name=\"text\">Active</Text>\n                <WhileInactive Threshold=\"0.1\">\n                    <Change text.Value=\"Inactive\" />\n                </WhileInactive>\n            </Panel>\n        </Page>\n        <Page Background=\"Blue\" />\n    </PageControl>\n\nThe progress of this trigger is calculated as the page's distance from the active page (or the navigation position for continuous navigation). For example, the active page has a distance of 0, meaning this trigger will not be activated, and a page 1 away from the active has a distance of 1, meaning this trigger will be activated. The `Threshold=0.1` in this example means the trigger activates after the page has been swiped only 10% of the distance away from the active position."
+            },
+            "id": {
+              "id": "fuse/navigation/whileinactive",
+              "parentId": "fuse/navigation",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/whileinactive",
+              "href": "fuse/navigation/whileinactive"
+            },
+            "titles": {
+              "indexTitle": "WhileInactive",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.WhileInactive"
+            }
+          },
+          {
+            "comment": {
+              "brief": "A directional version of @WhileInactive.",
+              "full": "A directional version of @WhileInactive.\n\nThis works like @WhileInactive except remains completely inactive if the page goes behind the current page. It can only be activated while the page is in front of the active one (in the front)."
+            },
+            "id": {
+              "id": "fuse/navigation/whileinenterstate",
+              "parentId": "fuse/navigation",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/whileinenterstate",
+              "href": "fuse/navigation/whileinenterstate"
+            },
+            "titles": {
+              "indexTitle": "WhileInEnterState",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.WhileInEnterState"
+            }
+          },
+          {
+            "comment": {
+              "brief": "A directional version of @WhileInactive.",
+              "full": "A directional version of @WhileInactive.\n\nThis works like @WhileInactive except remains completely inactive if the page goes in front of the current page. It can only be activated while the page is behind the active one (in the back)."
+            },
+            "id": {
+              "id": "fuse/navigation/whileinexitstate",
+              "parentId": "fuse/navigation",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/whileinexitstate",
+              "href": "fuse/navigation/whileinexitstate"
+            },
+            "titles": {
+              "indexTitle": "WhileInExitState",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.WhileInExitState"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Active while the user is currently navigating between two pages.",
+              "full": "Active while the user is currently navigating between two pages.\n\nDoes not provide progress.\n\n# Example\n\nIn this example, the pages become slightly smaller when you are navigating them:\n\n    <App>\n        <Page ux:Class=\"ScalingPanel\">\n            <Scaling ux:Name=\"scale\" Factor=\"1\" />\n            <WhileNavigating>\n                <Change scale.Factor=\".7\" Duration=\".1\" />\n            </WhileNavigating>\n        </Page>\n        <PageControl>\n            <ScalingPanel Color=\"Red\" />\n            <ScalingPanel Color=\"Blue\" />\n        </PageControl>\n    </App>"
+            },
+            "id": {
+              "id": "fuse/navigation/whilenavigating",
+              "parentId": "fuse/navigation",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/whilenavigating",
+              "href": "fuse/navigation/whilenavigating"
+            },
+            "titles": {
+              "indexTitle": "WhileNavigating",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.WhileNavigating"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Is active while a page, optionally matching given criteria, is active in the navigation.",
+              "full": "Is active while a page, optionally matching given criteria, is active in the navigation.\n\nThis trigger checks the `Navigation.Active` page only. During a transition it will consider partial progress, but only for the `Active` page itself."
+            },
+            "id": {
+              "id": "fuse/navigation/whilepageactive",
+              "parentId": "fuse/navigation",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/whilepageactive",
+              "href": "fuse/navigation/whilepageactive"
+            },
+            "titles": {
+              "indexTitle": "WhilePageActive",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.WhilePageActive"
+            }
+          }
+        ]
+      }
+    ],
+    "classes": [
+      {
+        "items": [
+          {
+            "id": {
+              "id": "fuse/navigation/backforwardnavigationtriggeraction",
+              "parentId": "fuse/navigation",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/backforwardnavigationtriggeraction",
+              "href": "fuse/navigation/backforwardnavigationtriggeraction"
+            },
+            "titles": {
+              "indexTitle": "BackForwardNavigationTriggerAction",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.BackForwardNavigationTriggerAction"
+            }
+          },
+          {
+            "comment": {
+              "brief": "[subclass Fuse.Navigation.EnterExitAnimation]",
+              "full": "[subclass Fuse.Navigation.EnterExitAnimation]"
+            },
+            "id": {
+              "id": "fuse/navigation/enterexitanimation",
+              "parentId": "fuse/navigation",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/enterexitanimation",
+              "href": "fuse/navigation/enterexitanimation"
+            },
+            "titles": {
+              "indexTitle": "EnterExitAnimation",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.EnterExitAnimation"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/navigation/navigatedargs",
+              "parentId": "fuse/navigation",
+              "type": "Class",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/navigatedargs",
+              "href": "fuse/navigation/navigatedargs"
+            },
+            "titles": {
+              "indexTitle": "NavigatedArgs",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.NavigatedArgs"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/navigation/navigation",
+              "parentId": "fuse/navigation",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "abstract",
+                "partial"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/navigation",
+              "href": "fuse/navigation/navigation"
+            },
+            "titles": {
+              "indexTitle": "Navigation",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.Navigation"
+            }
+          },
+          {
+            "comment": {
+              "brief": "These triggers are used to animate pages as they move to and away from the active page.",
+              "full": "These triggers are used to animate pages as they move to and away from the active page.\n\nThe basic behavior of this trigger depends on whether the navigation is continuous, such as a `PageControl` or `LinearNavigation`, or is discrete, such as `Navigator` or `DirectNavigation`.\n\nWhen used with continuous navigation a `Duration` property is not needed on the animators. The progress is mapped from the progress of the page itself in the navigation.\n\nWhen used with a discrete navigation a `Duration` is required. There is no smooth page progress change, it will simply flip between multiple states. Here the duration of the trigger will be used to do the animation.\n\n[subclass Fuse.Navigation.NavigationAnimation]\n\nSee [Navigation Order](articles:navigation/navigationorder.md)"
+            },
+            "id": {
+              "id": "fuse/navigation/navigationanimation",
+              "parentId": "fuse/navigation",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/navigationanimation",
+              "href": "fuse/navigation/navigationanimation"
+            },
+            "titles": {
+              "indexTitle": "NavigationAnimation",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.NavigationAnimation"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/navigation/navigationargs",
+              "parentId": "fuse/navigation",
+              "type": "Class",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/navigationargs",
+              "href": "fuse/navigation/navigationargs"
+            },
+            "titles": {
+              "indexTitle": "NavigationArgs",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.NavigationArgs"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/navigation/navigationpageproperty",
+              "parentId": "fuse/navigation",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/navigationpageproperty",
+              "href": "fuse/navigation/navigationpageproperty"
+            },
+            "titles": {
+              "indexTitle": "NavigationPageProperty",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.NavigationPageProperty"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Use this class to listen for changes on a page in a navigation. This takes cares of the various\noverrides on Page/Navigation and rooting order considerations.",
+              "full": "Use this class to listen for changes on a page in a navigation. This takes cares of the various\noverrides on Page/Navigation and rooting order considerations.\n\nCreate this object at rooting time and dispose of it while unrooting.\n\n@hide",
+              "attributes": {
+                "deprecated": true
+              }
+            },
+            "id": {
+              "id": "fuse/navigation/navigationpageproxy",
+              "parentId": "fuse/navigation",
+              "type": "Class",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/navigationpageproxy",
+              "href": "fuse/navigation/navigationpageproxy"
+            },
+            "titles": {
+              "indexTitle": "NavigationPageProxy",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.NavigationPageProxy"
+            }
+          },
+          {
+            "comment": {
+              "brief": "@hide",
+              "full": "@hide"
+            },
+            "id": {
+              "id": "fuse/navigation/navigationtrigger",
+              "parentId": "fuse/navigation",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/navigationtrigger",
+              "href": "fuse/navigation/navigationtrigger"
+            },
+            "titles": {
+              "indexTitle": "NavigationTrigger",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.NavigationTrigger"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/navigation/navigationtriggeraction",
+              "parentId": "fuse/navigation",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/navigationtriggeraction",
+              "href": "fuse/navigation/navigationtriggeraction"
+            },
+            "titles": {
+              "indexTitle": "NavigationTriggerAction",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.NavigationTriggerAction"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Reporesents a route to be used with @Router.",
+              "full": "Reporesents a route to be used with @Router.\n\nThis class represents one element in a linked list, that forms a multi-level route path\nwith optional parameters for each part of the path.\n\nThe instances are immutable."
+            },
+            "id": {
+              "id": "fuse/navigation/route",
+              "parentId": "fuse/navigation",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/route",
+              "href": "fuse/navigation/route"
+            },
+            "titles": {
+              "indexTitle": "Route",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.Route"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/navigation/routemodificationcommand",
+              "parentId": "fuse/navigation",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/routemodificationcommand",
+              "href": "fuse/navigation/routemodificationcommand"
+            },
+            "titles": {
+              "indexTitle": "RouteModificationCommand",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.RouteModificationCommand"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/navigation/structurednavigation",
+              "parentId": "fuse/navigation",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "abstract",
+                "partial"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/structurednavigation",
+              "href": "fuse/navigation/structurednavigation"
+            },
+            "titles": {
+              "indexTitle": "StructuredNavigation",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.StructuredNavigation"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/navigation/visualnavigation",
+              "parentId": "fuse/navigation",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "abstract",
+                "partial"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/visualnavigation",
+              "href": "fuse/navigation/visualnavigation"
+            },
+            "titles": {
+              "indexTitle": "VisualNavigation",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.VisualNavigation"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/navigation/whilehistorytrigger",
+              "parentId": "fuse/navigation",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/whilehistorytrigger",
+              "href": "fuse/navigation/whilehistorytrigger"
+            },
+            "titles": {
+              "indexTitle": "WhileHistoryTrigger",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.WhileHistoryTrigger"
+            }
+          },
+          {
+            "comment": {
+              "brief": "These triggers respond to the current \"activation\" state of a page.",
+              "full": "These triggers respond to the current \"activation\" state of a page.\n\n[subclass Fuse.Navigation.NavigationAnimation]\n\nThe states of these triggers depends on the page progress of a page, where 0 is active and +/-1 (or higher) is inactive. These values are logically mapped into a range from 0...1 for each trigger, where 0 is the definitive \"off\" state of the trigger and 1 is the \"on\" state.\n\nValues in between are considered to be in transition. The `Threshold` and `Limit` properties can be used to adjust when these triggers flip between active/inactive on continuous navigation.\n\nIf the navigation is discrete, such as with `Navigator` or `DirectNavigation` the `Threshold` will have no effect as pages are either `0` or `1` in progress. The `Limit` property should also not be used since it will also be ineffectual.\n\nSee [Navigation Order](articles:navigation/navigationorder.md)"
+            },
+            "id": {
+              "id": "fuse/navigation/whilenavigationtrigger",
+              "parentId": "fuse/navigation",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/whilenavigationtrigger",
+              "href": "fuse/navigation/whilenavigationtrigger"
+            },
+            "titles": {
+              "indexTitle": "WhileNavigationTrigger",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.WhileNavigationTrigger"
+            }
+          }
+        ]
+      }
+    ],
+    "delegates": [
+      {
+        "items": [
+          {
+            "parameters": [
+              {
+                "name": "sender",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              },
+              {
+                "name": "args",
+                "href": "uno/eventargs",
+                "title": "EventArgs",
+                "fullyQualifiedTitle": "Uno.EventArgs"
+              }
+            ],
+            "id": {
+              "id": "fuse/navigation/activatedhandler",
+              "parentId": "fuse/navigation",
+              "type": "Delegate",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/activatedhandler",
+              "href": "fuse/navigation/activatedhandler"
+            },
+            "titles": {
+              "indexTitle": "ActivatedHandler (object, EventArgs)",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.ActivatedHandler (object, Uno.EventArgs)"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "sender",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              },
+              {
+                "name": "active",
+                "href": "fuse/visual",
+                "title": "Visual",
+                "fullyQualifiedTitle": "Fuse.Visual"
+              }
+            ],
+            "id": {
+              "id": "fuse/navigation/activepagechangedhandler",
+              "parentId": "fuse/navigation",
+              "type": "Delegate",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/activepagechangedhandler",
+              "href": "fuse/navigation/activepagechangedhandler"
+            },
+            "titles": {
+              "indexTitle": "ActivePageChangedHandler (object, Visual)",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.ActivePageChangedHandler (object, Fuse.Visual)"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "sender",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              }
+            ],
+            "id": {
+              "id": "fuse/navigation/historychangedhandler",
+              "parentId": "fuse/navigation",
+              "type": "Delegate",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/historychangedhandler",
+              "href": "fuse/navigation/historychangedhandler"
+            },
+            "titles": {
+              "indexTitle": "HistoryChangedHandler (object)",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.HistoryChangedHandler (object)"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "sender",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              },
+              {
+                "name": "args",
+                "href": "fuse/navigation/navigatedargs",
+                "title": "NavigatedArgs",
+                "fullyQualifiedTitle": "Fuse.Navigation.NavigatedArgs"
+              }
+            ],
+            "id": {
+              "id": "fuse/navigation/navigatedhandler",
+              "parentId": "fuse/navigation",
+              "type": "Delegate",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/navigatedhandler",
+              "href": "fuse/navigation/navigatedhandler"
+            },
+            "titles": {
+              "indexTitle": "NavigatedHandler (object, NavigatedArgs)",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.NavigatedHandler (object, Fuse.Navigation.NavigatedArgs)"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "sender",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              },
+              {
+                "name": "state",
+                "href": "fuse/navigation/navigationargs",
+                "title": "NavigationArgs",
+                "fullyQualifiedTitle": "Fuse.Navigation.NavigationArgs"
+              }
+            ],
+            "id": {
+              "id": "fuse/navigation/navigationhandler",
+              "parentId": "fuse/navigation",
+              "type": "Delegate",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/navigationhandler",
+              "href": "fuse/navigation/navigationhandler"
+            },
+            "titles": {
+              "indexTitle": "NavigationHandler (object, NavigationArgs)",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.NavigationHandler (object, Fuse.Navigation.NavigationArgs)"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "sender",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              }
+            ],
+            "id": {
+              "id": "fuse/navigation/navigationpagecounthandler",
+              "parentId": "fuse/navigation",
+              "type": "Delegate",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/navigationpagecounthandler",
+              "href": "fuse/navigation/navigationpagecounthandler"
+            },
+            "titles": {
+              "indexTitle": "NavigationPageCountHandler (object)",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.NavigationPageCountHandler (object)"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "sender",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              },
+              {
+                "name": "Current",
+                "href": "uno/double",
+                "title": "double",
+                "fullyQualifiedTitle": "double"
+              },
+              {
+                "name": "Previous",
+                "href": "uno/double",
+                "title": "double",
+                "fullyQualifiedTitle": "double"
+              }
+            ],
+            "id": {
+              "id": "fuse/navigation/navigationpageprogresshandler",
+              "parentId": "fuse/navigation",
+              "type": "Delegate",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/navigationpageprogresshandler",
+              "href": "fuse/navigation/navigationpageprogresshandler"
+            },
+            "titles": {
+              "indexTitle": "NavigationPageProgressHandler (object, double, double)",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.NavigationPageProgressHandler (object, double, double)"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "sender",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              },
+              {
+                "name": "args",
+                "href": "uno/ux/valuechangedargs_1",
+                "title": "ValueChangedArgs<NavigationState>",
+                "fullyQualifiedTitle": "Uno.UX.ValueChangedArgs<Fuse.Navigation.NavigationState>"
+              }
+            ],
+            "id": {
+              "id": "fuse/navigation/navigationstatechangedhandler",
+              "parentId": "fuse/navigation",
+              "type": "Delegate",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/navigationstatechangedhandler",
+              "href": "fuse/navigation/navigationstatechangedhandler"
+            },
+            "titles": {
+              "indexTitle": "NavigationStateChangedHandler (object, ValueChangedArgs<NavigationState>)",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.NavigationStateChangedHandler (object, Uno.UX.ValueChangedArgs<Fuse.Navigation.NavigationState>)"
+            }
+          }
+        ]
+      }
+    ],
+    "enums": [
+      {
+        "items": [
+          {
+            "comment": {
+              "brief": "Which direction of navigation is allowed.",
+              "full": "Which direction of navigation is allowed."
+            },
+            "id": {
+              "id": "fuse/navigation/allowednavigationdirections",
+              "parentId": "fuse/navigation",
+              "type": "Enum",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/allowednavigationdirections",
+              "href": "fuse/navigation/allowednavigationdirections"
+            },
+            "titles": {
+              "indexTitle": "AllowedNavigationDirections",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.AllowedNavigationDirections"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Describes what happens when the back button is pressed.",
+              "full": "Describes what happens when the back button is pressed."
+            },
+            "id": {
+              "id": "fuse/navigation/backbuttonaction",
+              "parentId": "fuse/navigation",
+              "type": "Enum",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/backbuttonaction",
+              "href": "fuse/navigation/backbuttonaction"
+            },
+            "titles": {
+              "indexTitle": "BackButtonAction",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.BackButtonAction"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/navigation/modifyroutehow",
+              "parentId": "fuse/navigation",
+              "type": "Enum",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/modifyroutehow",
+              "href": "fuse/navigation/modifyroutehow"
+            },
+            "titles": {
+              "indexTitle": "ModifyRouteHow",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.ModifyRouteHow"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/navigation/navigationdirection",
+              "parentId": "fuse/navigation",
+              "type": "Enum",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/navigationdirection",
+              "href": "fuse/navigation/navigationdirection"
+            },
+            "titles": {
+              "indexTitle": "NavigationDirection",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.NavigationDirection"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/navigation/navigationedge",
+              "parentId": "fuse/navigation",
+              "type": "Enum",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/navigationedge",
+              "href": "fuse/navigation/navigationedge"
+            },
+            "titles": {
+              "indexTitle": "NavigationEdge",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.NavigationEdge"
+            }
+          },
+          {
+            "comment": {
+              "brief": "What type of navigation page transition is being performed.",
+              "full": "What type of navigation page transition is being performed.\n\nEach mode should be explicitly handled to allow for future additions."
+            },
+            "id": {
+              "id": "fuse/navigation/navigationgotomode",
+              "parentId": "fuse/navigation",
+              "type": "Enum",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/navigationgotomode",
+              "href": "fuse/navigation/navigationgotomode"
+            },
+            "titles": {
+              "indexTitle": "NavigationGotoMode",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.NavigationGotoMode"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/navigation/navigationmode",
+              "parentId": "fuse/navigation",
+              "type": "Enum",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/navigationmode",
+              "href": "fuse/navigation/navigationmode"
+            },
+            "titles": {
+              "indexTitle": "NavigationMode",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.NavigationMode"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/navigation/navigationstate",
+              "parentId": "fuse/navigation",
+              "type": "Enum",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/navigationstate",
+              "href": "fuse/navigation/navigationstate"
+            },
+            "titles": {
+              "indexTitle": "NavigationState",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.NavigationState"
+            }
+          },
+          {
+            "comment": {
+              "brief": "The level of navigation that determines whether a page is active or inactive.",
+              "full": "The level of navigation that determines whether a page is active or inactive."
+            },
+            "id": {
+              "id": "fuse/navigation/routepagepath",
+              "parentId": "fuse/navigation",
+              "type": "Enum",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/routepagepath",
+              "href": "fuse/navigation/routepagepath"
+            },
+            "titles": {
+              "indexTitle": "RoutePagePath",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.RoutePagePath"
+            }
+          },
+          {
+            "comment": {
+              "brief": "When an Activated/Deactivated trigger fires on navigation change.",
+              "full": "When an Activated/Deactivated trigger fires on navigation change."
+            },
+            "id": {
+              "id": "fuse/navigation/routepagetriggerwhen",
+              "parentId": "fuse/navigation",
+              "type": "Enum",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/routepagetriggerwhen",
+              "href": "fuse/navigation/routepagetriggerwhen"
+            },
+            "titles": {
+              "indexTitle": "RoutePageTriggerWhen",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.RoutePageTriggerWhen"
+            }
+          },
+          {
+            "comment": {
+              "brief": "The direction of a swipe gesture. `Left` means swiping to the left, etc.",
+              "full": "The direction of a swipe gesture. `Left` means swiping to the left, etc."
+            },
+            "id": {
+              "id": "fuse/navigation/swipedirection",
+              "parentId": "fuse/navigation",
+              "type": "Enum",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/swipedirection",
+              "href": "fuse/navigation/swipedirection"
+            },
+            "titles": {
+              "indexTitle": "SwipeDirection",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.SwipeDirection"
+            }
+          }
+        ]
+      }
+    ],
+    "interfaces": [
+      {
+        "items": [
+          {
+            "comment": {
+              "brief": "A minimal interface implemented by simple navigation behaviors and controls.",
+              "full": "A minimal interface implemented by simple navigation behaviors and controls."
+            },
+            "id": {
+              "id": "fuse/navigation/ibasenavigation",
+              "parentId": "fuse/navigation",
+              "type": "Interface",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/ibasenavigation",
+              "href": "fuse/navigation/ibasenavigation"
+            },
+            "titles": {
+              "indexTitle": "IBaseNavigation",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.IBaseNavigation"
+            }
+          },
+          {
+            "comment": {
+              "brief": "An extended navigation interface implemented by full navigation behaviors.",
+              "full": "An extended navigation interface implemented by full navigation behaviors.\n\nThis API is subject to significant changes in coming versions. Though previously not marked as experimental, there is a need to consolidate and group some of the events and states to remain maintainable, fix some defects, and add some required features.",
+              "attributes": {
+                "experimental": true
+              }
+            },
+            "id": {
+              "id": "fuse/navigation/inavigation",
+              "parentId": "fuse/navigation",
+              "type": "Interface",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/inavigation",
+              "href": "fuse/navigation/inavigation"
+            },
+            "titles": {
+              "indexTitle": "INavigation",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.INavigation"
+            }
+          }
+        ]
+      }
+    ],
+    "structs": [
+      {
+        "items": [
+          {
+            "id": {
+              "id": "fuse/navigation/navigationpagestate",
+              "parentId": "fuse/navigation",
+              "type": "Struct",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/navigationpagestate",
+              "href": "fuse/navigation/navigationpagestate"
+            },
+            "titles": {
+              "indexTitle": "NavigationPageState",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.NavigationPageState"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

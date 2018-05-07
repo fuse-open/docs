@@ -1,0 +1,71 @@
+{
+  "entity": {
+    "location": {
+      "namespaceTitle": "Fuse.Controls",
+      "namespaceUri": "fuse/controls",
+      "packageName": "Fuse.Controls.CameraView",
+      "packageVersion": "0.9.0-rc2"
+    },
+    "parameters": [
+      {
+        "name": "context",
+        "href": "fuse/scripting/context",
+        "title": "Context",
+        "fullyQualifiedTitle": "Fuse.Scripting.Context"
+      },
+      {
+        "name": "self",
+        "href": "fuse/controls/cameraviewbase",
+        "title": "CameraViewBase",
+        "fullyQualifiedTitle": "Fuse.Controls.CameraViewBase"
+      },
+      {
+        "name": "args",
+        "href": "uno/object",
+        "title": "object[]",
+        "fullyQualifiedTitle": "object[]"
+      }
+    ],
+    "returns": {
+      "href": "uno/threading/future_1",
+      "title": "Future<PhotoOption[]>",
+      "fullyQualifiedTitle": "Uno.Threading.Future<Fuse.Controls.PhotoOption[]>"
+    },
+    "id": {
+      "id": "fuse/controls/cameraviewbase/setphotooptions_62888d26",
+      "parentId": "fuse/controls/cameraviewbase",
+      "type": "JsMethod",
+      "modifiers": [
+        "private",
+        "static"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/controls/cameraviewbase/setphotooptions_62888d26",
+      "href": "fuse/controls/cameraviewbase/setphotooptions_62888d26"
+    },
+    "titles": {
+      "pageTitle": "CameraViewBase.setPhotoOptions Method (Context, CameraViewBase, object[])",
+      "navigationTitle": "setPhotoOptions Method (Context, CameraViewBase, object[])",
+      "fullTitle": "Fuse.Controls.CameraViewBase.setPhotoOptions",
+      "indexTitle": "setPhotoOptions(Context, CameraViewBase, object[])",
+      "fullyQualifiedIndexTitle": "Fuse.Controls.CameraViewBase.setPhotoOptions(Fuse.Scripting.Context, Fuse.Controls.CameraViewBase, object[])"
+    },
+    "syntax": {
+      "uno": "private static Uno.Threading.Future<Fuse.Controls.PhotoOption[]> setPhotoOptions(Fuse.Scripting.Context context, Fuse.Controls.CameraViewBase self, object[] args) {}"
+    },
+    "comment": {
+      "brief": "Set PhotoOptions",
+      "full": "Set PhotoOptions\n\nReturns a promise that resolves when the options are successfully set. Due to platform differences some\noptions might not be valid on all platforms.\n\n    <CameraView ux:Name=\"Camera\" />\n    <JavaScript>\n        Camera.getCameraInfo()\n            .then(function(info) {\n                if (\"photoResolutions\" in info) {\n                    // photoResolutions is an array of supported resolutions, for example: { width: 1920, height: 1080 }\n                    var resolution = pick_appropriate_resolution(info[\"photoResolutions\"]);\n                    var options = {};\n                    options[Camera.OPTION_PHOTO_RESOLUTION] = resolution;\n\n                    Camera.setPhotoOptions(options)\n                        .then(function() { })\n                        .catch(function(error) { });\n                }\n            })\n    </JavaScript>\n\nAs of now photo resolution is the only available option",
+      "attributes": {
+        "scriptMethod": {
+          "name": "setPhotoOptions",
+          "parameters": [
+            "photoOptions"
+          ]
+        }
+      }
+    }
+  },
+  "tableOfContents": {}
+}

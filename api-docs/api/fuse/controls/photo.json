@@ -1,0 +1,536 @@
+{
+  "entity": {
+    "base": {
+      "id": {
+        "id": "uno/object",
+        "parentId": "uno",
+        "type": "Class",
+        "modifiers": [
+          "public",
+          "intrinsic"
+        ]
+      },
+      "uri": {
+        "idUri": "uno/object",
+        "href": "uno/object"
+      },
+      "titles": {
+        "indexTitle": "object",
+        "fullyQualifiedIndexTitle": "object"
+      }
+    },
+    "location": {
+      "namespaceTitle": "Fuse.Controls",
+      "namespaceUri": "fuse/controls",
+      "packageName": "Fuse.Controls.CameraView",
+      "packageVersion": "0.9.0-rc2"
+    },
+    "inheritance": {
+      "root": {
+        "uri": "uno/object",
+        "title": "object",
+        "children": [
+          {
+            "uri": "fuse/controls/photo",
+            "title": "Fuse.Controls.Photo",
+            "children": [],
+            "isCurrent": true
+          }
+        ],
+        "isAncestor": true
+      },
+      "hasInheritance": true
+    },
+    "id": {
+      "id": "fuse/controls/photo",
+      "parentId": "fuse/controls",
+      "type": "Class",
+      "modifiers": [
+        "public",
+        "abstract"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/controls/photo",
+      "href": "fuse/controls/photo"
+    },
+    "titles": {
+      "pageTitle": "Photo Class",
+      "navigationTitle": "Photo Class",
+      "fullTitle": "Fuse.Controls.Photo",
+      "indexTitle": "Photo",
+      "fullyQualifiedIndexTitle": "Fuse.Controls.Photo"
+    },
+    "syntax": {
+      "uno": "public abstract class Photo {}"
+    }
+  },
+  "tableOfContents": {
+    "jsMethods": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/controls/photo",
+            "parentId": "fuse/controls",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/controls/photo",
+            "href": "fuse/controls/photo"
+          },
+          "titles": {
+            "indexTitle": "Photo",
+            "fullyQualifiedIndexTitle": "Fuse.Controls.Photo"
+          }
+        },
+        "items": [
+          {
+            "comment": {
+              "brief": "Release the photo and the resources it holds",
+              "full": "Release the photo and the resources it holds\n\nA photo can hold onto large amounts of memory. Make sure to release your photo objects when you are done using them.\nIts considered bad practice to hold onto more than one photo at a time, older devices can run out of memory fast.",
+              "attributes": {
+                "scriptMethod": {
+                  "name": "release",
+                  "parameters": [
+                    ""
+                  ]
+                }
+              }
+            },
+            "parameters": [
+              {
+                "name": "context",
+                "href": "fuse/scripting/context",
+                "title": "Context",
+                "fullyQualifiedTitle": "Fuse.Scripting.Context"
+              },
+              {
+                "name": "photo",
+                "href": "fuse/controls/photo",
+                "title": "Photo",
+                "fullyQualifiedTitle": "Fuse.Controls.Photo"
+              },
+              {
+                "name": "args",
+                "href": "uno/object",
+                "title": "object[]",
+                "fullyQualifiedTitle": "object[]"
+              }
+            ],
+            "id": {
+              "id": "fuse/controls/photo/release_118bc3d6",
+              "parentId": "fuse/controls/photo",
+              "type": "JsMethod",
+              "modifiers": [
+                "private",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/controls/photo/release_118bc3d6",
+              "href": "fuse/controls/photo/release_118bc3d6"
+            },
+            "titles": {
+              "indexTitle": "release(Context, Photo, object[])",
+              "fullyQualifiedIndexTitle": "Fuse.Controls.Photo.release(Fuse.Scripting.Context, Fuse.Controls.Photo, object[])"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Save the photo to disk",
+              "full": "Save the photo to disk\n\nReturns a Promise that resolves to a string containing the filepath to the photo.\n\n    <CameraView ux:Name=\"Camera\" />\n    <JavaScript>\n        Camera.capturePhoto()\n            .then(function(photo) {\n                photo.save()\n                    .then(function(filePath) {\n                        photo.release();\n                    })\n                    .catch(function(err) {\n                        photo.release();\n                    })\n            })\n            .catch(function(err) { });\n    </JavaScript>",
+              "attributes": {
+                "scriptMethod": {
+                  "name": "save",
+                  "parameters": [
+                    ""
+                  ]
+                }
+              }
+            },
+            "returns": {
+              "href": "uno/threading/future_1",
+              "title": "Future<string>",
+              "fullyQualifiedTitle": "Uno.Threading.Future<string>"
+            },
+            "parameters": [
+              {
+                "name": "context",
+                "href": "fuse/scripting/context",
+                "title": "Context",
+                "fullyQualifiedTitle": "Fuse.Scripting.Context"
+              },
+              {
+                "name": "photo",
+                "href": "fuse/controls/photo",
+                "title": "Photo",
+                "fullyQualifiedTitle": "Fuse.Controls.Photo"
+              },
+              {
+                "name": "args",
+                "href": "uno/object",
+                "title": "object[]",
+                "fullyQualifiedTitle": "object[]"
+              }
+            ],
+            "id": {
+              "id": "fuse/controls/photo/save_118bc3d6",
+              "parentId": "fuse/controls/photo",
+              "type": "JsMethod",
+              "modifiers": [
+                "private",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/controls/photo/save_118bc3d6",
+              "href": "fuse/controls/photo/save_118bc3d6"
+            },
+            "titles": {
+              "indexTitle": "save(Context, Photo, object[])",
+              "fullyQualifiedIndexTitle": "Fuse.Controls.Photo.save(Fuse.Scripting.Context, Fuse.Controls.Photo, object[])"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Save a downscaled version of the photo",
+              "full": "Save a downscaled version of the photo\n\nUse this method if you need a downscaled versions of the photo. An optional argument can\nbe passed with a size hint. The thumbnail will try to fit the provided size hint and maintain\nits aspect ratio.\n\nIts good practice to provide a sizehint if you know what size the thumbnail should be.\nThe sizehint will be interpreted as points.\n\n    <CameraView ux:Name=\"Camera\" />\n    <JavaScript>\n        Camera.capturePhoto()\n            .then(function(photo) {\n                var sizehint = {\n                    width: 128,\n                    height: 128\n                };\n                photo.saveThumbnail(sizehint)\n                    .then(function(outputFilePath) {\n                        console.log(\"Thumbnail saved to: \" + outputFilePath);\n                        photo.release();\n                    })\n                    .catch(function(err) {\n                        photo.release();\n                    })\n            })\n            .catch(function(err) { });\n    </JavaScript>",
+              "attributes": {
+                "scriptMethod": {
+                  "name": "saveThumbnail",
+                  "parameters": [
+                    "sizeHint"
+                  ]
+                }
+              }
+            },
+            "returns": {
+              "href": "uno/threading/future_1",
+              "title": "Future<string>",
+              "fullyQualifiedTitle": "Uno.Threading.Future<string>"
+            },
+            "parameters": [
+              {
+                "name": "context",
+                "href": "fuse/scripting/context",
+                "title": "Context",
+                "fullyQualifiedTitle": "Fuse.Scripting.Context"
+              },
+              {
+                "name": "photo",
+                "href": "fuse/controls/photo",
+                "title": "Photo",
+                "fullyQualifiedTitle": "Fuse.Controls.Photo"
+              },
+              {
+                "name": "args",
+                "href": "uno/object",
+                "title": "object[]",
+                "fullyQualifiedTitle": "object[]"
+              }
+            ],
+            "id": {
+              "id": "fuse/controls/photo/savethumbnail_118bc3d6",
+              "parentId": "fuse/controls/photo",
+              "type": "JsMethod",
+              "modifiers": [
+                "private",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/controls/photo/savethumbnail_118bc3d6",
+              "href": "fuse/controls/photo/savethumbnail_118bc3d6"
+            },
+            "titles": {
+              "indexTitle": "saveThumbnail(Context, Photo, object[])",
+              "fullyQualifiedIndexTitle": "Fuse.Controls.Photo.saveThumbnail(Fuse.Scripting.Context, Fuse.Controls.Photo, object[])"
+            }
+          }
+        ]
+      }
+    ],
+    "constructors": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/controls/photo",
+            "parentId": "fuse/controls",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/controls/photo",
+            "href": "fuse/controls/photo"
+          },
+          "titles": {
+            "indexTitle": "Photo",
+            "fullyQualifiedIndexTitle": "Fuse.Controls.Photo"
+          }
+        },
+        "items": [
+          {
+            "comment": {
+              "brief": "Creates a new Photo",
+              "full": "Creates a new Photo"
+            },
+            "id": {
+              "id": "fuse/controls/photo/_ctor",
+              "parentId": "fuse/controls/photo",
+              "type": "Constructor",
+              "modifiers": [
+                "protected",
+                "generated"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/controls/photo/_ctor",
+              "href": "fuse/controls/photo/_ctor"
+            },
+            "titles": {
+              "indexTitle": "Photo",
+              "fullyQualifiedIndexTitle": "Fuse.Controls.Photo.Photo"
+            }
+          }
+        ]
+      }
+    ],
+    "methods": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/controls/photo",
+            "parentId": "fuse/controls",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/controls/photo",
+            "href": "fuse/controls/photo"
+          },
+          "titles": {
+            "indexTitle": "Photo",
+            "fullyQualifiedIndexTitle": "Fuse.Controls.Photo"
+          }
+        },
+        "items": [
+          {
+            "id": {
+              "id": "fuse/controls/photo/release",
+              "parentId": "fuse/controls/photo",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/controls/photo/release",
+              "href": "fuse/controls/photo/release"
+            },
+            "titles": {
+              "indexTitle": "Release",
+              "fullyQualifiedIndexTitle": "Fuse.Controls.Photo.Release"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/threading/future_1",
+              "title": "Future<string>",
+              "fullyQualifiedTitle": "Uno.Threading.Future<string>"
+            },
+            "id": {
+              "id": "fuse/controls/photo/save",
+              "parentId": "fuse/controls/photo",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/controls/photo/save",
+              "href": "fuse/controls/photo/save"
+            },
+            "titles": {
+              "indexTitle": "Save",
+              "fullyQualifiedIndexTitle": "Fuse.Controls.Photo.Save"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/threading/future_1",
+              "title": "Future<string>",
+              "fullyQualifiedTitle": "Uno.Threading.Future<string>"
+            },
+            "parameters": [
+              {
+                "name": "thumbnailSizeHint",
+                "href": "fuse/controls/thumbnailsizehint",
+                "title": "ThumbnailSizeHint",
+                "fullyQualifiedTitle": "Fuse.Controls.ThumbnailSizeHint"
+              }
+            ],
+            "id": {
+              "id": "fuse/controls/photo/savethumbnail_acedfc1f",
+              "parentId": "fuse/controls/photo",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/controls/photo/savethumbnail_acedfc1f",
+              "href": "fuse/controls/photo/savethumbnail_acedfc1f"
+            },
+            "titles": {
+              "indexTitle": "SaveThumbnail(ThumbnailSizeHint)",
+              "fullyQualifiedIndexTitle": "Fuse.Controls.Photo.SaveThumbnail(Fuse.Controls.ThumbnailSizeHint)"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "uno/object",
+            "parentId": "uno",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "intrinsic"
+            ]
+          },
+          "uri": {
+            "idUri": "uno/object",
+            "href": "uno/object"
+          },
+          "titles": {
+            "indexTitle": "object",
+            "fullyQualifiedIndexTitle": "object"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "parameters": [
+              {
+                "name": "o",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              }
+            ],
+            "id": {
+              "id": "fuse/controls/photo/equals_a09c80e3",
+              "parentId": "fuse/controls/photo",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/controls/photo/equals_a09c80e3",
+              "href": "uno/object/equals_a09c80e3",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Equals(object)",
+              "fullyQualifiedIndexTitle": "Uno.Object.Equals(object)"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/int",
+              "title": "int",
+              "fullyQualifiedTitle": "int"
+            },
+            "id": {
+              "id": "fuse/controls/photo/gethashcode",
+              "parentId": "fuse/controls/photo",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/controls/photo/gethashcode",
+              "href": "uno/object/gethashcode",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetHashCode",
+              "fullyQualifiedIndexTitle": "Uno.Object.GetHashCode"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/type",
+              "title": "Type",
+              "fullyQualifiedTitle": "Uno.Type"
+            },
+            "id": {
+              "id": "fuse/controls/photo/gettype",
+              "parentId": "fuse/controls/photo",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/controls/photo/gettype",
+              "href": "uno/object/gettype",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetType",
+              "fullyQualifiedIndexTitle": "Uno.Object.GetType"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "id": {
+              "id": "fuse/controls/photo/tostring",
+              "parentId": "fuse/controls/photo",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/controls/photo/tostring",
+              "href": "uno/object/tostring",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "ToString",
+              "fullyQualifiedIndexTitle": "Uno.Object.ToString"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

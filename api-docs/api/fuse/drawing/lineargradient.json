@@ -1,0 +1,1169 @@
+{
+  "entity": {
+    "base": {
+      "id": {
+        "id": "fuse/drawing/dynamicbrush",
+        "parentId": "fuse/drawing",
+        "type": "Class",
+        "modifiers": [
+          "public",
+          "abstract"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/drawing/dynamicbrush",
+        "href": "fuse/drawing/dynamicbrush"
+      },
+      "titles": {
+        "indexTitle": "DynamicBrush",
+        "fullyQualifiedIndexTitle": "Fuse.Drawing.DynamicBrush"
+      }
+    },
+    "location": {
+      "namespaceTitle": "Fuse.Drawing",
+      "namespaceUri": "fuse/drawing",
+      "packageName": "Fuse.Drawing",
+      "packageVersion": "1.8.0-rc2"
+    },
+    "inheritance": {
+      "root": {
+        "uri": "uno/object",
+        "title": "object",
+        "children": [
+          {
+            "uri": "uno/ux/propertyobject",
+            "title": "Uno.UX.PropertyObject",
+            "children": [
+              {
+                "uri": "fuse/drawing/brush",
+                "title": "Fuse.Drawing.Brush",
+                "children": [
+                  {
+                    "uri": "fuse/drawing/dynamicbrush",
+                    "title": "Fuse.Drawing.DynamicBrush",
+                    "children": [
+                      {
+                        "uri": "fuse/drawing/lineargradient",
+                        "title": "Fuse.Drawing.LinearGradient",
+                        "children": [],
+                        "isCurrent": true
+                      }
+                    ],
+                    "isAncestor": true
+                  }
+                ],
+                "isAncestor": true
+              }
+            ],
+            "isAncestor": true
+          }
+        ],
+        "isAncestor": true
+      },
+      "hasInheritance": true
+    },
+    "uxProperties": {
+      "uxNamespaceTitle": "Fuse.Drawing",
+      "uxNamespaceUri": "fuse/drawing",
+      "uxName": "LinearGradient"
+    },
+    "implementedInterfaces": [
+      {
+        "id": {
+          "id": "uno/ux/ipropertylistener",
+          "parentId": "uno/ux",
+          "type": "Interface",
+          "modifiers": [
+            "public",
+            "abstract"
+          ]
+        },
+        "uri": {
+          "idUri": "uno/ux/ipropertylistener",
+          "href": "uno/ux/ipropertylistener"
+        },
+        "titles": {
+          "indexTitle": "IPropertyListener",
+          "fullyQualifiedIndexTitle": "Uno.UX.IPropertyListener"
+        }
+      }
+    ],
+    "id": {
+      "id": "fuse/drawing/lineargradient",
+      "parentId": "fuse/drawing",
+      "type": "UxClass",
+      "modifiers": [
+        "public"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/drawing/lineargradient",
+      "href": "fuse/drawing/lineargradient"
+    },
+    "titles": {
+      "pageTitle": "LinearGradient Class",
+      "navigationTitle": "LinearGradient Class",
+      "fullTitle": "Fuse.Drawing.LinearGradient",
+      "indexTitle": "LinearGradient",
+      "fullyQualifiedIndexTitle": "Fuse.Drawing.LinearGradient"
+    },
+    "syntax": {
+      "uno": "public class LinearGradient : Fuse.Drawing.DynamicBrush, Uno.UX.IPropertyListener {}",
+      "ux": "<LinearGradient />"
+    },
+    "comment": {
+      "brief": "A linear gradient @Brush.",
+      "full": "A linear gradient @Brush.\n\n@LinearGradient lets you describe a linear gradient using a collection of @GradientStops.\nThe following example displays a @Rectangle with a @LinearGradient that fades from white at the top, to black at the bottom.\n\n```\n<Rectangle>\n    <LinearGradient StartPoint=\"0,0\" EndPoint=\"0,1\">\n        <GradientStop Offset=\"0\" Color=\"#fff\" />\n        <GradientStop Offset=\"1\" Color=\"#000\" />\n    </LinearGradient>\n</Rectangle>\n```\n\nYou may also specify any number of @GradientStops.\n\n```\n<Circle>\n    <LinearGradient AngleDegrees=\"90\">\n        <GradientStop Offset=\"0\" Color=\"#f00\" />\n        <GradientStop Offset=\"0.3\" Color=\"#f0f\" />\n        <GradientStop Offset=\"0.6\" Color=\"#00f\" />\n        <GradientStop Offset=\"1\" Color=\"#0ff\" />\n    </LinearGradient>\n</Circle>\n```\n\nThe `StartPoint` and `EndPoint` properties are both specified as a proportion of the total size of the @Shape the brush is applied to.\nFor instance, you can specify a diagonal brush by using `StartPoint=\"0,0\" EndPoint=\"1,1\"`.\n\nInstead of `StartPoint` and `EndPoint`, you can also specify an angle. This can either be in radians using the `Angle` property, or in degrees using the `AngleDegrees` property.\n\n```\n<LinearGradient Angle=\"2.4\" />\n              or\n<LinearGradient AngleDegrees=\"45\" />\n```"
+    }
+  },
+  "tableOfContents": {
+    "uxProperties": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/drawing/lineargradient",
+            "parentId": "fuse/drawing",
+            "type": "UxClass",
+            "modifiers": [
+              "public"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/drawing/lineargradient",
+            "href": "fuse/drawing/lineargradient"
+          },
+          "titles": {
+            "indexTitle": "LinearGradient",
+            "fullyQualifiedIndexTitle": "Fuse.Drawing.LinearGradient"
+          }
+        },
+        "items": [
+          {
+            "comment": {
+              "brief": "The angle of the gradient in radians. Can be used instead of `StartPoint` and `EndPoint`.",
+              "full": "The angle of the gradient in radians. Can be used instead of `StartPoint` and `EndPoint`."
+            },
+            "returns": {
+              "href": "uno/float",
+              "title": "float",
+              "fullyQualifiedTitle": "float"
+            },
+            "id": {
+              "id": "fuse/drawing/lineargradient/angle",
+              "parentId": "fuse/drawing/lineargradient",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/lineargradient/angle",
+              "href": "fuse/drawing/lineargradient/angle"
+            },
+            "titles": {
+              "indexTitle": "Angle",
+              "fullyQualifiedIndexTitle": "Fuse.Drawing.LinearGradient.Angle"
+            }
+          },
+          {
+            "comment": {
+              "brief": "The angle of the gradient in degrees. Can be used instead of `StartPoint` and `EndPoint`.",
+              "full": "The angle of the gradient in degrees. Can be used instead of `StartPoint` and `EndPoint`."
+            },
+            "returns": {
+              "href": "uno/float",
+              "title": "float",
+              "fullyQualifiedTitle": "float"
+            },
+            "id": {
+              "id": "fuse/drawing/lineargradient/angledegrees",
+              "parentId": "fuse/drawing/lineargradient",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/lineargradient/angledegrees",
+              "href": "fuse/drawing/lineargradient/angledegrees"
+            },
+            "titles": {
+              "indexTitle": "AngleDegrees",
+              "fullyQualifiedIndexTitle": "Fuse.Drawing.LinearGradient.AngleDegrees"
+            }
+          },
+          {
+            "comment": {
+              "brief": "The ending point of the gradient. Can be used together with `StartPoint` instead of specifying an `Angle`.\nSpecified as a proportion of the total size of the @Shape the brush is applied to.\nThis means that, for instance, a value of `1, 1` results in the gradient ending at the bottom-right corner.",
+              "full": "The ending point of the gradient. Can be used together with `StartPoint` instead of specifying an `Angle`.\nSpecified as a proportion of the total size of the @Shape the brush is applied to.\nThis means that, for instance, a value of `1, 1` results in the gradient ending at the bottom-right corner."
+            },
+            "returns": {
+              "href": "uno/float2",
+              "title": "float2",
+              "fullyQualifiedTitle": "float2"
+            },
+            "id": {
+              "id": "fuse/drawing/lineargradient/endpoint",
+              "parentId": "fuse/drawing/lineargradient",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/lineargradient/endpoint",
+              "href": "fuse/drawing/lineargradient/endpoint"
+            },
+            "titles": {
+              "indexTitle": "EndPoint",
+              "fullyQualifiedIndexTitle": "Fuse.Drawing.LinearGradient.EndPoint"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Defines how the colors are interpolatied between the points.",
+              "full": "Defines how the colors are interpolatied between the points.\n\nThe default is `Linear`."
+            },
+            "returns": {
+              "href": "fuse/drawing/lineargradientinterpolation",
+              "title": "LinearGradientInterpolation",
+              "fullyQualifiedTitle": "Fuse.Drawing.LinearGradientInterpolation"
+            },
+            "id": {
+              "id": "fuse/drawing/lineargradient/interpolation",
+              "parentId": "fuse/drawing/lineargradient",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/lineargradient/interpolation",
+              "href": "fuse/drawing/lineargradient/interpolation"
+            },
+            "titles": {
+              "indexTitle": "Interpolation",
+              "fullyQualifiedIndexTitle": "Fuse.Drawing.LinearGradient.Interpolation"
+            }
+          },
+          {
+            "comment": {
+              "brief": "The starting point of the gradient. Can be used together with `EndPoint` instead of specifying an `Angle`.\nSpecified as a proportion of the total size of the @Shape the brush is applied to.\nThis means that, for instance, a value of `0, 1` results in the gradient starting at the bottom-left corner.",
+              "full": "The starting point of the gradient. Can be used together with `EndPoint` instead of specifying an `Angle`.\nSpecified as a proportion of the total size of the @Shape the brush is applied to.\nThis means that, for instance, a value of `0, 1` results in the gradient starting at the bottom-left corner."
+            },
+            "returns": {
+              "href": "uno/float2",
+              "title": "float2",
+              "fullyQualifiedTitle": "float2"
+            },
+            "id": {
+              "id": "fuse/drawing/lineargradient/startpoint",
+              "parentId": "fuse/drawing/lineargradient",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/lineargradient/startpoint",
+              "href": "fuse/drawing/lineargradient/startpoint"
+            },
+            "titles": {
+              "indexTitle": "StartPoint",
+              "fullyQualifiedIndexTitle": "Fuse.Drawing.LinearGradient.StartPoint"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/collections/ilist_1",
+              "title": "IList<GradientStop>",
+              "fullyQualifiedTitle": "Uno.Collections.IList<Fuse.Drawing.GradientStop>"
+            },
+            "flags": {
+              "uxContent": true
+            },
+            "id": {
+              "id": "fuse/drawing/lineargradient/stops",
+              "parentId": "fuse/drawing/lineargradient",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/lineargradient/stops",
+              "href": "fuse/drawing/lineargradient/stops"
+            },
+            "titles": {
+              "indexTitle": "Stops",
+              "fullyQualifiedIndexTitle": "Fuse.Drawing.LinearGradient.Stops"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/drawing/dynamicbrush",
+            "parentId": "fuse/drawing",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/drawing/dynamicbrush",
+            "href": "fuse/drawing/dynamicbrush"
+          },
+          "titles": {
+            "indexTitle": "DynamicBrush",
+            "fullyQualifiedIndexTitle": "Fuse.Drawing.DynamicBrush"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/float",
+              "title": "float",
+              "fullyQualifiedTitle": "float"
+            },
+            "id": {
+              "id": "fuse/drawing/lineargradient/opacity",
+              "parentId": "fuse/drawing/lineargradient",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/lineargradient/opacity",
+              "href": "fuse/drawing/dynamicbrush/opacity",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Opacity",
+              "fullyQualifiedIndexTitle": "Fuse.Drawing.DynamicBrush.Opacity"
+            }
+          }
+        ]
+      }
+    ],
+    "attachedUxProperties": [
+      {
+        "items": [
+          {
+            "comment": {
+              "brief": "The `ux:Global` attribute creates a global resource that is accessible everywhere in UX markup.",
+              "full": "The `ux:Global` attribute creates a global resource that is accessible everywhere in UX markup.\n\nSee @Resources for more information.\n\nThe `ux:Global` attribute on an UX element creates a single object (singleton) that is globally available.\nUsing this attribute will prevent the object from being inserted by default the object at its defined location\nin the UX tree."
+            },
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "parameters": [
+              {
+                "name": "obj",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              },
+              {
+                "name": "key",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              }
+            ],
+            "id": {
+              "id": "fuse/drawing/lineargradient/resource_globalkey_setglobalkey_4c3ac72d",
+              "parentId": "fuse/drawing/lineargradient",
+              "type": "AttachedUxProperty",
+              "modifiers": []
+            },
+            "uri": {
+              "idUri": "fuse/drawing/lineargradient/resource_globalkey_setglobalkey_4c3ac72d",
+              "href": "uno/ux/resource/setglobalkey_4c3ac72d",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Resource.GlobalKey",
+              "fullyQualifiedIndexTitle": "Resource.GlobalKey"
+            }
+          }
+        ]
+      }
+    ],
+    "constructors": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/drawing/lineargradient",
+            "parentId": "fuse/drawing",
+            "type": "UxClass",
+            "modifiers": [
+              "public"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/drawing/lineargradient",
+            "href": "fuse/drawing/lineargradient"
+          },
+          "titles": {
+            "indexTitle": "LinearGradient",
+            "fullyQualifiedIndexTitle": "Fuse.Drawing.LinearGradient"
+          }
+        },
+        "items": [
+          {
+            "id": {
+              "id": "fuse/drawing/lineargradient/_ctor",
+              "parentId": "fuse/drawing/lineargradient",
+              "type": "Constructor",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/lineargradient/_ctor",
+              "href": "fuse/drawing/lineargradient/_ctor"
+            },
+            "titles": {
+              "indexTitle": "LinearGradient",
+              "fullyQualifiedIndexTitle": "Fuse.Drawing.LinearGradient.LinearGradient"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "stops",
+                "href": "fuse/drawing/gradientstop",
+                "title": "GradientStop[]",
+                "fullyQualifiedTitle": "Fuse.Drawing.GradientStop[]"
+              }
+            ],
+            "id": {
+              "id": "fuse/drawing/lineargradient/_ctor_896f7e8a",
+              "parentId": "fuse/drawing/lineargradient",
+              "type": "Constructor",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/lineargradient/_ctor_896f7e8a",
+              "href": "fuse/drawing/lineargradient/_ctor_896f7e8a"
+            },
+            "titles": {
+              "indexTitle": "LinearGradient(GradientStop[])",
+              "fullyQualifiedIndexTitle": "Fuse.Drawing.LinearGradient.LinearGradient(Fuse.Drawing.GradientStop[])"
+            }
+          }
+        ]
+      }
+    ],
+    "properties": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/drawing/lineargradient",
+            "parentId": "fuse/drawing",
+            "type": "UxClass",
+            "modifiers": [
+              "public"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/drawing/lineargradient",
+            "href": "fuse/drawing/lineargradient"
+          },
+          "titles": {
+            "indexTitle": "LinearGradient",
+            "fullyQualifiedIndexTitle": "Fuse.Drawing.LinearGradient"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "id": {
+              "id": "fuse/drawing/lineargradient/hasangle",
+              "parentId": "fuse/drawing/lineargradient",
+              "type": "Property",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/lineargradient/hasangle",
+              "href": "fuse/drawing/lineargradient/hasangle"
+            },
+            "titles": {
+              "indexTitle": "HasAngle",
+              "fullyQualifiedIndexTitle": "Fuse.Drawing.LinearGradient.HasAngle"
+            }
+          },
+          {
+            "returns": {
+              "href": "fuse/drawing/gradientstop",
+              "title": "GradientStop[]",
+              "fullyQualifiedTitle": "Fuse.Drawing.GradientStop[]"
+            },
+            "id": {
+              "id": "fuse/drawing/lineargradient/sortedstops",
+              "parentId": "fuse/drawing/lineargradient",
+              "type": "Property",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/lineargradient/sortedstops",
+              "href": "fuse/drawing/lineargradient/sortedstops"
+            },
+            "titles": {
+              "indexTitle": "SortedStops",
+              "fullyQualifiedIndexTitle": "Fuse.Drawing.LinearGradient.SortedStops"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/drawing/brush",
+            "parentId": "fuse/drawing",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/drawing/brush",
+            "href": "fuse/drawing/brush"
+          },
+          "titles": {
+            "indexTitle": "Brush",
+            "fullyQualifiedIndexTitle": "Fuse.Drawing.Brush"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "id": {
+              "id": "fuse/drawing/lineargradient/iscompletelytransparent",
+              "parentId": "fuse/drawing/lineargradient",
+              "type": "Property",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/lineargradient/iscompletelytransparent",
+              "href": "fuse/drawing/brush/iscompletelytransparent",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "IsCompletelyTransparent",
+              "fullyQualifiedIndexTitle": "Fuse.Drawing.Brush.IsCompletelyTransparent"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "id": {
+              "id": "fuse/drawing/lineargradient/ispinned",
+              "parentId": "fuse/drawing/lineargradient",
+              "type": "Property",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/lineargradient/ispinned",
+              "href": "fuse/drawing/brush/ispinned",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "IsPinned",
+              "fullyQualifiedIndexTitle": "Fuse.Drawing.Brush.IsPinned"
+            }
+          }
+        ]
+      }
+    ],
+    "methods": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/drawing/lineargradient",
+            "parentId": "fuse/drawing",
+            "type": "UxClass",
+            "modifiers": [
+              "public"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/drawing/lineargradient",
+            "href": "fuse/drawing/lineargradient"
+          },
+          "titles": {
+            "indexTitle": "LinearGradient",
+            "fullyQualifiedIndexTitle": "Fuse.Drawing.LinearGradient"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/float4",
+              "title": "float4",
+              "fullyQualifiedTitle": "float4"
+            },
+            "parameters": [
+              {
+                "name": "size",
+                "href": "uno/float2",
+                "title": "float2",
+                "fullyQualifiedTitle": "float2"
+              }
+            ],
+            "id": {
+              "id": "fuse/drawing/lineargradient/geteffectiveendpoints_92485797",
+              "parentId": "fuse/drawing/lineargradient",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/lineargradient/geteffectiveendpoints_92485797",
+              "href": "fuse/drawing/lineargradient/geteffectiveendpoints_92485797"
+            },
+            "titles": {
+              "indexTitle": "GetEffectiveEndPoints(float2)",
+              "fullyQualifiedIndexTitle": "Fuse.Drawing.LinearGradient.GetEffectiveEndPoints(float2)"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/drawing/brush",
+            "parentId": "fuse/drawing",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/drawing/brush",
+            "href": "fuse/drawing/brush"
+          },
+          "titles": {
+            "indexTitle": "Brush",
+            "fullyQualifiedIndexTitle": "Fuse.Drawing.Brush"
+          }
+        },
+        "items": [
+          {
+            "id": {
+              "id": "fuse/drawing/lineargradient/onpinned",
+              "parentId": "fuse/drawing/lineargradient",
+              "type": "Method",
+              "modifiers": [
+                "protected",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/lineargradient/onpinned",
+              "href": "fuse/drawing/brush/onpinned",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "OnPinned",
+              "fullyQualifiedIndexTitle": "Fuse.Drawing.Brush.OnPinned"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "dc",
+                "href": "fuse/drawcontext",
+                "title": "DrawContext",
+                "fullyQualifiedTitle": "Fuse.DrawContext"
+              },
+              {
+                "name": "canvasSize",
+                "href": "uno/float2",
+                "title": "float2",
+                "fullyQualifiedTitle": "float2"
+              }
+            ],
+            "id": {
+              "id": "fuse/drawing/lineargradient/onprepare_f1696f1d",
+              "parentId": "fuse/drawing/lineargradient",
+              "type": "Method",
+              "modifiers": [
+                "protected",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/lineargradient/onprepare_f1696f1d",
+              "href": "fuse/drawing/brush/onprepare_f1696f1d",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "OnPrepare(DrawContext, float2)",
+              "fullyQualifiedIndexTitle": "Fuse.Drawing.Brush.OnPrepare(Fuse.DrawContext, float2)"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/drawing/lineargradient/onunpinned",
+              "parentId": "fuse/drawing/lineargradient",
+              "type": "Method",
+              "modifiers": [
+                "protected",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/lineargradient/onunpinned",
+              "href": "fuse/drawing/brush/onunpinned",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "OnUnpinned",
+              "fullyQualifiedIndexTitle": "Fuse.Drawing.Brush.OnUnpinned"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/drawing/lineargradient/pin",
+              "parentId": "fuse/drawing/lineargradient",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/lineargradient/pin",
+              "href": "fuse/drawing/brush/pin",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Pin",
+              "fullyQualifiedIndexTitle": "Fuse.Drawing.Brush.Pin"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "dc",
+                "href": "fuse/drawcontext",
+                "title": "DrawContext",
+                "fullyQualifiedTitle": "Fuse.DrawContext"
+              },
+              {
+                "name": "canvasSize",
+                "href": "uno/float2",
+                "title": "float2",
+                "fullyQualifiedTitle": "float2"
+              }
+            ],
+            "id": {
+              "id": "fuse/drawing/lineargradient/prepare_f1696f1d",
+              "parentId": "fuse/drawing/lineargradient",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/lineargradient/prepare_f1696f1d",
+              "href": "fuse/drawing/brush/prepare_f1696f1d",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Prepare(DrawContext, float2)",
+              "fullyQualifiedIndexTitle": "Fuse.Drawing.Brush.Prepare(Fuse.DrawContext, float2)"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/drawing/lineargradient/unpin",
+              "parentId": "fuse/drawing/lineargradient",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/lineargradient/unpin",
+              "href": "fuse/drawing/brush/unpin",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Unpin",
+              "fullyQualifiedIndexTitle": "Fuse.Drawing.Brush.Unpin"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "uno/ux/propertyobject",
+            "parentId": "uno/ux",
+            "type": "Class",
+            "modifiers": [
+              "public"
+            ]
+          },
+          "uri": {
+            "idUri": "uno/ux/propertyobject",
+            "href": "uno/ux/propertyobject"
+          },
+          "titles": {
+            "indexTitle": "PropertyObject",
+            "fullyQualifiedIndexTitle": "Uno.UX.PropertyObject"
+          }
+        },
+        "items": [
+          {
+            "parameters": [
+              {
+                "name": "listener",
+                "href": "uno/ux/ipropertylistener",
+                "title": "IPropertyListener",
+                "fullyQualifiedTitle": "Uno.UX.IPropertyListener"
+              }
+            ],
+            "id": {
+              "id": "fuse/drawing/lineargradient/addpropertylistener_496a874a",
+              "parentId": "fuse/drawing/lineargradient",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/lineargradient/addpropertylistener_496a874a",
+              "href": "uno/ux/propertyobject/addpropertylistener_496a874a",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "AddPropertyListener(IPropertyListener)",
+              "fullyQualifiedIndexTitle": "Uno.UX.PropertyObject.AddPropertyListener(Uno.UX.IPropertyListener)"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "property",
+                "href": "uno/ux/selector",
+                "title": "Selector",
+                "fullyQualifiedTitle": "Uno.UX.Selector"
+              }
+            ],
+            "id": {
+              "id": "fuse/drawing/lineargradient/onpropertychanged_16d735f3",
+              "parentId": "fuse/drawing/lineargradient",
+              "type": "Method",
+              "modifiers": [
+                "protected"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/lineargradient/onpropertychanged_16d735f3",
+              "href": "uno/ux/propertyobject/onpropertychanged_16d735f3",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "OnPropertyChanged(Selector)",
+              "fullyQualifiedIndexTitle": "Uno.UX.PropertyObject.OnPropertyChanged(Uno.UX.Selector)"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "property",
+                "href": "uno/ux/selector",
+                "title": "Selector",
+                "fullyQualifiedTitle": "Uno.UX.Selector"
+              },
+              {
+                "name": "origin",
+                "href": "uno/ux/ipropertylistener",
+                "title": "IPropertyListener",
+                "fullyQualifiedTitle": "Uno.UX.IPropertyListener"
+              }
+            ],
+            "id": {
+              "id": "fuse/drawing/lineargradient/onpropertychanged_6422fe92",
+              "parentId": "fuse/drawing/lineargradient",
+              "type": "Method",
+              "modifiers": [
+                "protected",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/lineargradient/onpropertychanged_6422fe92",
+              "href": "uno/ux/propertyobject/onpropertychanged_6422fe92",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "OnPropertyChanged(Selector, IPropertyListener)",
+              "fullyQualifiedIndexTitle": "Uno.UX.PropertyObject.OnPropertyChanged(Uno.UX.Selector, Uno.UX.IPropertyListener)"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "listener",
+                "href": "uno/ux/ipropertylistener",
+                "title": "IPropertyListener",
+                "fullyQualifiedTitle": "Uno.UX.IPropertyListener"
+              }
+            ],
+            "id": {
+              "id": "fuse/drawing/lineargradient/removepropertylistener_496a874a",
+              "parentId": "fuse/drawing/lineargradient",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/lineargradient/removepropertylistener_496a874a",
+              "href": "uno/ux/propertyobject/removepropertylistener_496a874a",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "RemovePropertyListener(IPropertyListener)",
+              "fullyQualifiedIndexTitle": "Uno.UX.PropertyObject.RemovePropertyListener(Uno.UX.IPropertyListener)"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "uno/object",
+            "parentId": "uno",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "intrinsic"
+            ]
+          },
+          "uri": {
+            "idUri": "uno/object",
+            "href": "uno/object"
+          },
+          "titles": {
+            "indexTitle": "object",
+            "fullyQualifiedIndexTitle": "object"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "parameters": [
+              {
+                "name": "o",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              }
+            ],
+            "id": {
+              "id": "fuse/drawing/lineargradient/equals_a09c80e3",
+              "parentId": "fuse/drawing/lineargradient",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/lineargradient/equals_a09c80e3",
+              "href": "uno/object/equals_a09c80e3",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Equals(object)",
+              "fullyQualifiedIndexTitle": "Uno.Object.Equals(object)"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/int",
+              "title": "int",
+              "fullyQualifiedTitle": "int"
+            },
+            "id": {
+              "id": "fuse/drawing/lineargradient/gethashcode",
+              "parentId": "fuse/drawing/lineargradient",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/lineargradient/gethashcode",
+              "href": "uno/object/gethashcode",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetHashCode",
+              "fullyQualifiedIndexTitle": "Uno.Object.GetHashCode"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/type",
+              "title": "Type",
+              "fullyQualifiedTitle": "Uno.Type"
+            },
+            "id": {
+              "id": "fuse/drawing/lineargradient/gettype",
+              "parentId": "fuse/drawing/lineargradient",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/lineargradient/gettype",
+              "href": "uno/object/gettype",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetType",
+              "fullyQualifiedIndexTitle": "Uno.Object.GetType"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "id": {
+              "id": "fuse/drawing/lineargradient/tostring",
+              "parentId": "fuse/drawing/lineargradient",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/lineargradient/tostring",
+              "href": "uno/object/tostring",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "ToString",
+              "fullyQualifiedIndexTitle": "Uno.Object.ToString"
+            }
+          }
+        ]
+      }
+    ],
+    "fields": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/drawing/lineargradient",
+            "parentId": "fuse/drawing",
+            "type": "UxClass",
+            "modifiers": [
+              "public"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/drawing/lineargradient",
+            "href": "fuse/drawing/lineargradient"
+          },
+          "titles": {
+            "indexTitle": "LinearGradient",
+            "fullyQualifiedIndexTitle": "Fuse.Drawing.LinearGradient"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/graphics/framebuffer",
+              "title": "framebuffer",
+              "fullyQualifiedTitle": "framebuffer"
+            },
+            "id": {
+              "id": "fuse/drawing/lineargradient/_gradientbuffer",
+              "parentId": "fuse/drawing/lineargradient",
+              "type": "Field",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/lineargradient/_gradientbuffer",
+              "href": "fuse/drawing/lineargradient/_gradientbuffer"
+            },
+            "titles": {
+              "indexTitle": "_gradientBuffer",
+              "fullyQualifiedIndexTitle": "Fuse.Drawing.LinearGradient._gradientBuffer"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/float2",
+              "title": "float2",
+              "fullyQualifiedTitle": "float2"
+            },
+            "id": {
+              "id": "fuse/drawing/lineargradient/_gradientstart",
+              "parentId": "fuse/drawing/lineargradient",
+              "type": "Field",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/lineargradient/_gradientstart",
+              "href": "fuse/drawing/lineargradient/_gradientstart"
+            },
+            "titles": {
+              "indexTitle": "_gradientStart",
+              "fullyQualifiedIndexTitle": "Fuse.Drawing.LinearGradient._gradientStart"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

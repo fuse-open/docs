@@ -1,0 +1,374 @@
+{
+  "entity": {
+    "base": {
+      "id": {
+        "id": "uno/object",
+        "parentId": "uno",
+        "type": "Class",
+        "modifiers": [
+          "public",
+          "intrinsic"
+        ]
+      },
+      "uri": {
+        "idUri": "uno/object",
+        "href": "uno/object"
+      },
+      "titles": {
+        "indexTitle": "object",
+        "fullyQualifiedIndexTitle": "object"
+      }
+    },
+    "location": {
+      "namespaceTitle": "Fuse.Reactive",
+      "namespaceUri": "fuse/reactive",
+      "packageName": "Fuse.Reactive",
+      "packageVersion": "1.8.0-rc2"
+    },
+    "inheritance": {
+      "root": {
+        "uri": "uno/object",
+        "title": "object",
+        "children": [
+          {
+            "uri": "fuse/reactive/icontext",
+            "title": "Fuse.Reactive.IContext",
+            "children": [],
+            "isCurrent": true
+          }
+        ],
+        "isAncestor": true
+      },
+      "hasInheritance": true
+    },
+    "id": {
+      "id": "fuse/reactive/icontext",
+      "parentId": "fuse/reactive",
+      "type": "Interface",
+      "modifiers": [
+        "public",
+        "abstract"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/reactive/icontext",
+      "href": "fuse/reactive/icontext"
+    },
+    "titles": {
+      "pageTitle": "IContext Interface",
+      "navigationTitle": "IContext Interface",
+      "fullTitle": "Fuse.Reactive.IContext",
+      "indexTitle": "IContext",
+      "fullyQualifiedIndexTitle": "Fuse.Reactive.IContext"
+    },
+    "syntax": {
+      "uno": "public abstract interface IContext {}"
+    }
+  },
+  "tableOfContents": {
+    "properties": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/reactive/icontext",
+            "parentId": "fuse/reactive",
+            "type": "Interface",
+            "modifiers": [
+              "public",
+              "abstract"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/reactive/icontext",
+            "href": "fuse/reactive/icontext"
+          },
+          "titles": {
+            "indexTitle": "IContext",
+            "fullyQualifiedIndexTitle": "Fuse.Reactive.IContext"
+          }
+        },
+        "items": [
+          {
+            "comment": {
+              "brief": "The closest enclosing node of this context",
+              "full": "The closest enclosing node of this context"
+            },
+            "returns": {
+              "href": "fuse/node",
+              "title": "Node",
+              "fullyQualifiedTitle": "Fuse.Node"
+            },
+            "id": {
+              "id": "fuse/reactive/icontext/node",
+              "parentId": "fuse/reactive/icontext",
+              "type": "Property",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/icontext/node",
+              "href": "fuse/reactive/icontext/node"
+            },
+            "titles": {
+              "indexTitle": "Node",
+              "fullyQualifiedIndexTitle": "Fuse.Reactive.IContext.Node"
+            }
+          }
+        ]
+      }
+    ],
+    "methods": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/reactive/icontext",
+            "parentId": "fuse/reactive",
+            "type": "Interface",
+            "modifiers": [
+              "public",
+              "abstract"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/reactive/icontext",
+            "href": "fuse/reactive/icontext"
+          },
+          "titles": {
+            "indexTitle": "IContext",
+            "fullyQualifiedIndexTitle": "Fuse.Reactive.IContext"
+          }
+        },
+        "items": [
+          {
+            "comment": {
+              "brief": "Creates a subscription to given key in this context.",
+              "full": "Creates a subscription to given key in this context.\n\nMay return `null` after calling `listener.OnNewData` if the data was synchronously available\nand will never change."
+            },
+            "returns": {
+              "href": "uno/idisposable",
+              "title": "IDisposable",
+              "fullyQualifiedTitle": "Uno.IDisposable"
+            },
+            "parameters": [
+              {
+                "name": "source",
+                "href": "fuse/reactive/iexpression",
+                "title": "IExpression",
+                "fullyQualifiedTitle": "Fuse.Reactive.IExpression"
+              },
+              {
+                "name": "key",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              },
+              {
+                "name": "listener",
+                "href": "fuse/reactive/ilistener",
+                "title": "IListener",
+                "fullyQualifiedTitle": "Fuse.Reactive.IListener"
+              }
+            ],
+            "id": {
+              "id": "fuse/reactive/icontext/subscribe_dc8ab51c",
+              "parentId": "fuse/reactive/icontext",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/icontext/subscribe_dc8ab51c",
+              "href": "fuse/reactive/icontext/subscribe_dc8ab51c"
+            },
+            "titles": {
+              "indexTitle": "Subscribe(IExpression, string, IListener)",
+              "fullyQualifiedIndexTitle": "Fuse.Reactive.IContext.Subscribe(Fuse.Reactive.IExpression, string, Fuse.Reactive.IListener)"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Creates a subscription to a given resource key in this context.",
+              "full": "Creates a subscription to a given resource key in this context."
+            },
+            "returns": {
+              "href": "uno/idisposable",
+              "title": "IDisposable",
+              "fullyQualifiedTitle": "Uno.IDisposable"
+            },
+            "parameters": [
+              {
+                "name": "source",
+                "href": "fuse/reactive/iexpression",
+                "title": "IExpression",
+                "fullyQualifiedTitle": "Fuse.Reactive.IExpression"
+              },
+              {
+                "name": "key",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              },
+              {
+                "name": "listener",
+                "href": "fuse/reactive/ilistener",
+                "title": "IListener",
+                "fullyQualifiedTitle": "Fuse.Reactive.IListener"
+              }
+            ],
+            "id": {
+              "id": "fuse/reactive/icontext/subscriberesource_dc8ab51c",
+              "parentId": "fuse/reactive/icontext",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/icontext/subscriberesource_dc8ab51c",
+              "href": "fuse/reactive/icontext/subscriberesource_dc8ab51c"
+            },
+            "titles": {
+              "indexTitle": "SubscribeResource(IExpression, string, IListener)",
+              "fullyQualifiedIndexTitle": "Fuse.Reactive.IContext.SubscribeResource(Fuse.Reactive.IExpression, string, Fuse.Reactive.IListener)"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "uno/object",
+            "parentId": "uno",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "intrinsic"
+            ]
+          },
+          "uri": {
+            "idUri": "uno/object",
+            "href": "uno/object"
+          },
+          "titles": {
+            "indexTitle": "object",
+            "fullyQualifiedIndexTitle": "object"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "parameters": [
+              {
+                "name": "o",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              }
+            ],
+            "id": {
+              "id": "fuse/reactive/icontext/equals_a09c80e3",
+              "parentId": "fuse/reactive/icontext",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/icontext/equals_a09c80e3",
+              "href": "uno/object/equals_a09c80e3",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Equals(object)",
+              "fullyQualifiedIndexTitle": "Uno.Object.Equals(object)"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/int",
+              "title": "int",
+              "fullyQualifiedTitle": "int"
+            },
+            "id": {
+              "id": "fuse/reactive/icontext/gethashcode",
+              "parentId": "fuse/reactive/icontext",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/icontext/gethashcode",
+              "href": "uno/object/gethashcode",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetHashCode",
+              "fullyQualifiedIndexTitle": "Uno.Object.GetHashCode"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/type",
+              "title": "Type",
+              "fullyQualifiedTitle": "Uno.Type"
+            },
+            "id": {
+              "id": "fuse/reactive/icontext/gettype",
+              "parentId": "fuse/reactive/icontext",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/icontext/gettype",
+              "href": "uno/object/gettype",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetType",
+              "fullyQualifiedIndexTitle": "Uno.Object.GetType"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "id": {
+              "id": "fuse/reactive/icontext/tostring",
+              "parentId": "fuse/reactive/icontext",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/icontext/tostring",
+              "href": "uno/object/tostring",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "ToString",
+              "fullyQualifiedIndexTitle": "Uno.Object.ToString"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

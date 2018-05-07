@@ -1,0 +1,44 @@
+{
+  "entity": {
+    "location": {
+      "namespaceTitle": "Fuse.Reactive",
+      "namespaceUri": "fuse/reactive",
+      "packageName": "Fuse.Reactive.Bindings",
+      "packageVersion": "1.8.0-rc2"
+    },
+    "parameters": [],
+    "returns": {
+      "href": "uno/object",
+      "title": "object",
+      "fullyQualifiedTitle": "object"
+    },
+    "uxProperties": {},
+    "id": {
+      "id": "fuse/reactive/each/items",
+      "parentId": "fuse/reactive/each",
+      "type": "UxProperty",
+      "modifiers": [
+        "public"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/reactive/each/items",
+      "href": "fuse/reactive/each/items"
+    },
+    "titles": {
+      "pageTitle": "Each.Items Property",
+      "navigationTitle": "Items Property",
+      "fullTitle": "Fuse.Reactive.Each.Items",
+      "indexTitle": "Items",
+      "fullyQualifiedIndexTitle": "Fuse.Reactive.Each.Items"
+    },
+    "syntax": {
+      "uno": "public object Items { get; get; }"
+    },
+    "comment": {
+      "brief": "A collection containing the data items used to populate the parent.",
+      "full": "A collection containing the data items used to populate the parent.\n\nThis property can not be used together with `Count`.\n\nThe provided object must implement `IArray`. To support dynamic changes to the collection, it can also implement `IObservableArray`.\nFor example, if a `FuseJS/Observable` is provided, this implements `IObservableArray`.\n\nEach item in the collection can in turn be an `IObservable`. If so, the Each will subscribe to these items and use the dynamic value. However,\nthis will not work in combination with the `MatchKey`, `IdentityKey` and `MatchObject` features which require an immediate value.\n\nFor legacy reasons, this property will also accept an `object[]` as the collection. This feature is deprecated."
+    }
+  },
+  "tableOfContents": {}
+}

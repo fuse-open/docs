@@ -1,0 +1,67 @@
+{
+  "entity": {
+    "location": {
+      "namespaceTitle": "Fuse",
+      "namespaceUri": "fuse",
+      "packageName": "Fuse.UserEvents",
+      "packageVersion": "1.8.0-rc2"
+    },
+    "parameters": [
+      {
+        "name": "n",
+        "href": "fuse/userevent",
+        "title": "UserEvent",
+        "fullyQualifiedTitle": "Fuse.UserEvent"
+      },
+      {
+        "name": "args",
+        "href": "uno/object",
+        "title": "object[]",
+        "fullyQualifiedTitle": "object[]"
+      }
+    ],
+    "id": {
+      "id": "fuse/userevent/raise_a7d22a72",
+      "parentId": "fuse/userevent",
+      "type": "JsMethod",
+      "modifiers": [
+        "private",
+        "static"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/userevent/raise_a7d22a72",
+      "href": "fuse/userevent/raise_a7d22a72"
+    },
+    "titles": {
+      "pageTitle": "UserEvent.raise Method (UserEvent, object[])",
+      "navigationTitle": "raise Method (UserEvent, object[])",
+      "fullTitle": "Fuse.UserEvent.raise",
+      "indexTitle": "raise(UserEvent, object[])",
+      "fullyQualifiedIndexTitle": "Fuse.UserEvent.raise(Fuse.UserEvent, object[])"
+    },
+    "syntax": {
+      "uno": "private static voidraise(Fuse.UserEvent n, object[] args) {}"
+    },
+    "comment": {
+      "brief": "Raises a UserEvent with an optional set of arguments.",
+      "full": "Raises a UserEvent with an optional set of arguments.\n\n## Example\n\nHere is a very basic example showing how you can raise a UserEvent\nfrom JavaScript.\n\n    <UserEvent ux:Name=\"myEvent\" />\n\n    <JavaScript>\n        myEvent.raise();\n    </JavaScript>\n\nThe following example raises an event with some arguments 5 seconds\nafter JavaScript has started executing, and logs its arguments in\nthe event handler.\n\n    <UserEvent ux:Name=\"myEvent\" />\n    <OnUserEvent EventName=\"myEvent\" Handler=\"{eventHandler}\" />\n\n    <JavaScript>\n        setTimeout(function() {\n\n            myEvent.raise({\n                userName: \"james\",\n                isAdmin: false\n            });\n\n        }, 5000);\n\n        function eventHandler(args) {\n            console.log(\"User name: \" + args.userName);\n            console.log(\"Is admin: \" + args.isAdmin);\n        }\n\n        module.exports = { eventHandler: eventHandler };\n    </JavaScript>\n\n*",
+      "attributes": {
+        "scriptMethod": {
+          "name": "raise",
+          "parameters": [
+            "args"
+          ]
+        },
+        "parameters": [
+          {
+            "name": "args",
+            "typeHint": "Object",
+            "description": "_(optional)_ A plain JavaScript objectrepresenting name-value pairs of arguments to be passed with the\r\nevent. When using a JavaScript function to handle the event\r\n(via @Fuse.Triggers.OnUserEvent.Handler), this object will be\r\npassed as the first argument to the handler function."
+          }
+        ]
+      }
+    }
+  },
+  "tableOfContents": {}
+}

@@ -1,0 +1,75 @@
+{
+  "entity": {
+    "location": {
+      "namespaceTitle": "Fuse.FileSystem",
+      "namespaceUri": "fuse/filesystem",
+      "packageName": "Fuse.FileSystem",
+      "packageVersion": "1.8.0-rc2"
+    },
+    "parameters": [
+      {
+        "name": "context",
+        "href": "fuse/scripting/context",
+        "title": "Context",
+        "fullyQualifiedTitle": "Fuse.Scripting.Context"
+      },
+      {
+        "name": "args",
+        "href": "uno/object",
+        "title": "object[]",
+        "fullyQualifiedTitle": "object[]"
+      }
+    ],
+    "returns": {
+      "href": "uno/object",
+      "title": "object",
+      "fullyQualifiedTitle": "object"
+    },
+    "id": {
+      "id": "fuse/filesystem/filesystemmodule/getdirectoryinfosync_bbef95e2",
+      "parentId": "fuse/filesystem/filesystemmodule",
+      "type": "JsMethod",
+      "modifiers": [
+        "private"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/filesystem/filesystemmodule/getdirectoryinfosync_bbef95e2",
+      "href": "fuse/filesystem/filesystemmodule/getdirectoryinfosync_bbef95e2"
+    },
+    "titles": {
+      "pageTitle": "FileSystemModule.GetDirectoryInfoSync Method (Context, object[])",
+      "navigationTitle": "GetDirectoryInfoSync Method (Context, object[])",
+      "fullTitle": "Fuse.FileSystem.FileSystemModule.GetDirectoryInfoSync",
+      "indexTitle": "GetDirectoryInfoSync(Context, object[])",
+      "fullyQualifiedIndexTitle": "Fuse.FileSystem.FileSystemModule.GetDirectoryInfoSync(Fuse.Scripting.Context, object[])"
+    },
+    "syntax": {
+      "uno": "private object GetDirectoryInfoSync(Fuse.Scripting.Context context, object[] args) {}"
+    },
+    "comment": {
+      "brief": "Synchronously gets info about a directory.",
+      "full": "Synchronously gets info about a directory.\n\nThe returned object has the following properties:\n\n* `exists` -  A boolean value stating whether the directory exists\n* `lastWriteTime` -  A `Date` stating when directory was last changed\n* `lastAccessTime` -  A `Date` stating when directory was accessed\n\n## Example\n\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    FileSystem.createDirectorySync(\"some-dir\");\n    var dirInfo = FileSystem.getDirectoryInfoSync(\"some-dir\");\n    console.log(\"file was modified on \" + dirInfo.lastWriteTime);",
+      "attributes": {
+        "scriptMethod": {
+          "name": "getDirectoryInfoSync",
+          "parameters": [
+            "path"
+          ]
+        },
+        "returns": {
+          "typeHint": "Object",
+          "text": "An object containing info about the directory."
+        },
+        "parameters": [
+          {
+            "name": "path",
+            "typeHint": "String",
+            "description": "Path to a directory"
+          }
+        ]
+      }
+    }
+  },
+  "tableOfContents": {}
+}

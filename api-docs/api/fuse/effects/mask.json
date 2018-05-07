@@ -1,0 +1,1713 @@
+{
+  "entity": {
+    "base": {
+      "id": {
+        "id": "fuse/effects/basiceffect",
+        "parentId": "fuse/effects",
+        "type": "Class",
+        "modifiers": [
+          "public",
+          "abstract"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/effects/basiceffect",
+        "href": "fuse/effects/basiceffect"
+      },
+      "titles": {
+        "indexTitle": "BasicEffect",
+        "fullyQualifiedIndexTitle": "Fuse.Effects.BasicEffect"
+      }
+    },
+    "location": {
+      "namespaceTitle": "Fuse.Effects",
+      "namespaceUri": "fuse/effects",
+      "packageName": "Fuse.Effects",
+      "packageVersion": "1.8.0-rc2"
+    },
+    "inheritance": {
+      "root": {
+        "uri": "uno/object",
+        "title": "object",
+        "children": [
+          {
+            "uri": "uno/ux/propertyobject",
+            "title": "Uno.UX.PropertyObject",
+            "children": [
+              {
+                "uri": "fuse/node",
+                "title": "Fuse.Node",
+                "children": [
+                  {
+                    "uri": "fuse/effects/effect",
+                    "title": "Fuse.Effects.Effect",
+                    "children": [
+                      {
+                        "uri": "fuse/effects/basiceffect",
+                        "title": "Fuse.Effects.BasicEffect",
+                        "children": [
+                          {
+                            "uri": "fuse/effects/mask",
+                            "title": "Fuse.Effects.Mask",
+                            "children": [],
+                            "isCurrent": true
+                          }
+                        ],
+                        "isAncestor": true
+                      }
+                    ],
+                    "isAncestor": true
+                  }
+                ],
+                "isAncestor": true
+              }
+            ],
+            "isAncestor": true
+          }
+        ],
+        "isAncestor": true
+      },
+      "hasInheritance": true
+    },
+    "uxProperties": {
+      "uxNamespaceTitle": "Fuse.Effects",
+      "uxNamespaceUri": "fuse/effects",
+      "uxName": "Mask"
+    },
+    "implementedInterfaces": [
+      {
+        "id": {
+          "id": "uno/collections/ilist_1",
+          "parentId": "uno/collections",
+          "type": "Interface",
+          "modifiers": [
+            "public",
+            "abstract"
+          ]
+        },
+        "uri": {
+          "idUri": "uno/collections/ilist_1",
+          "href": "uno/collections/ilist_1"
+        },
+        "titles": {
+          "indexTitle": "IList<Binding>",
+          "fullyQualifiedIndexTitle": "Uno.Collections.IList<Fuse.Binding>"
+        }
+      },
+      {
+        "comment": {
+          "brief": "Interface for objects that can have a script engine representation",
+          "full": "Interface for objects that can have a script engine representation"
+        },
+        "id": {
+          "id": "fuse/scripting/iscriptobject",
+          "parentId": "fuse/scripting",
+          "type": "Interface",
+          "modifiers": [
+            "public",
+            "abstract"
+          ]
+        },
+        "uri": {
+          "idUri": "fuse/scripting/iscriptobject",
+          "href": "fuse/scripting/iscriptobject"
+        },
+        "titles": {
+          "indexTitle": "IScriptObject",
+          "fullyQualifiedIndexTitle": "Fuse.Scripting.IScriptObject"
+        }
+      },
+      {
+        "id": {
+          "id": "fuse/iproperties",
+          "parentId": "fuse",
+          "type": "Interface",
+          "modifiers": [
+            "public",
+            "abstract"
+          ]
+        },
+        "uri": {
+          "idUri": "fuse/iproperties",
+          "href": "fuse/iproperties"
+        },
+        "titles": {
+          "indexTitle": "IProperties",
+          "fullyQualifiedIndexTitle": "Fuse.IProperties"
+        }
+      },
+      {
+        "id": {
+          "id": "uno/collections/icollection_1",
+          "parentId": "uno/collections",
+          "type": "Interface",
+          "modifiers": [
+            "public",
+            "abstract"
+          ]
+        },
+        "uri": {
+          "idUri": "uno/collections/icollection_1",
+          "href": "uno/collections/icollection_1"
+        },
+        "titles": {
+          "indexTitle": "ICollection<Binding>",
+          "fullyQualifiedIndexTitle": "Uno.Collections.ICollection<Fuse.Binding>"
+        }
+      },
+      {
+        "id": {
+          "id": "uno/collections/ienumerable_1",
+          "parentId": "uno/collections",
+          "type": "Interface",
+          "modifiers": [
+            "public",
+            "abstract"
+          ]
+        },
+        "uri": {
+          "idUri": "uno/collections/ienumerable_1",
+          "href": "uno/collections/ienumerable_1"
+        },
+        "titles": {
+          "indexTitle": "IEnumerable<Binding>",
+          "fullyQualifiedIndexTitle": "Uno.Collections.IEnumerable<Fuse.Binding>"
+        }
+      }
+    ],
+    "id": {
+      "id": "fuse/effects/mask",
+      "parentId": "fuse/effects",
+      "type": "UxClass",
+      "modifiers": [
+        "public",
+        "sealed"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/effects/mask",
+      "href": "fuse/effects/mask"
+    },
+    "titles": {
+      "pageTitle": "Mask Class",
+      "navigationTitle": "Mask Class",
+      "fullTitle": "Fuse.Effects.Mask",
+      "indexTitle": "Mask",
+      "fullyQualifiedIndexTitle": "Fuse.Effects.Mask"
+    },
+    "syntax": {
+      "uno": "public sealed class Mask : Fuse.Effects.BasicEffect {}",
+      "ux": "<Mask />"
+    },
+    "comment": {
+      "brief": "Masks an @Element to an image.",
+      "full": "Masks an @Element to an image.",
+      "examples": "The following example will display a @Rectangle masked with an image from a file.\r\n\r\n\t<Rectangle Width=\"200\" Height=\"88\" Color=\"#EA5455\">\r\n\t    <Mask Mode=\"Alpha\" File=\"fuse.png\" />\r\n\t</Rectangle>\r\n\r\nThe following example illustrates how you can supply your own @ImageSource.\r\n\r\n\t<Rectangle Width=\"200\" Height=\"88\">\r\n\t    <Mask Mode=\"Alpha\">\r\n\t        <MultiDensityImageSource>\r\n\t            <FileImageSource Density=\"1\" File=\"fuse@1x.png\" />\r\n\t            <FileImageSource Density=\"2\" File=\"fuse@2x.png\" />\r\n\t            <FileImageSource Density=\"3\" File=\"fuse@3x.png\" />\r\n\t        </MultiDensityImageSource>\r\n\t    </Mask>\r\n\r\n\t    <LinearGradient AngleDegrees=\"60\">\r\n\t        <GradientStop Color=\"#900C3F\" Offset=\"0\" />\r\n\t        <GradientStop Color=\"#2794EB\" Offset=\"1\" />\r\n\t    </LinearGradient>\r\n\t</Rectangle>"
+    }
+  },
+  "tableOfContents": {
+    "uxProperties": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/effects/mask",
+            "parentId": "fuse/effects",
+            "type": "UxClass",
+            "modifiers": [
+              "public",
+              "sealed"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/effects/mask",
+            "href": "fuse/effects/mask"
+          },
+          "titles": {
+            "indexTitle": "Mask",
+            "fullyQualifiedIndexTitle": "Fuse.Effects.Mask"
+          }
+        },
+        "items": [
+          {
+            "comment": {
+              "brief": "Loads the masking image from a file.",
+              "full": "Loads the masking image from a file."
+            },
+            "returns": {
+              "href": "uno/ux/filesource",
+              "title": "FileSource",
+              "fullyQualifiedTitle": "Uno.UX.FileSource"
+            },
+            "flags": {
+              "uxContent": true
+            },
+            "id": {
+              "id": "fuse/effects/mask/file",
+              "parentId": "fuse/effects/mask",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/effects/mask/file",
+              "href": "fuse/effects/mask/file"
+            },
+            "titles": {
+              "indexTitle": "File",
+              "fullyQualifiedIndexTitle": "Fuse.Effects.Mask.File"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Specifies which channels should be used to determine the opacity of each pixel.",
+              "full": "Specifies which channels should be used to determine the opacity of each pixel."
+            },
+            "returns": {
+              "href": "fuse/effects/mask/maskmode",
+              "title": "MaskMode",
+              "fullyQualifiedTitle": "Fuse.Effects.MaskMode"
+            },
+            "id": {
+              "id": "fuse/effects/mask/mode",
+              "parentId": "fuse/effects/mask",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/effects/mask/mode",
+              "href": "fuse/effects/mask/mode"
+            },
+            "titles": {
+              "indexTitle": "Mode",
+              "fullyQualifiedIndexTitle": "Fuse.Effects.Mask.Mode"
+            }
+          },
+          {
+            "comment": {
+              "brief": "The source of the masking image.",
+              "full": "The source of the masking image."
+            },
+            "returns": {
+              "href": "fuse/resources/imagesource",
+              "title": "ImageSource",
+              "fullyQualifiedTitle": "Fuse.Resources.ImageSource"
+            },
+            "flags": {
+              "uxContent": true
+            },
+            "id": {
+              "id": "fuse/effects/mask/source",
+              "parentId": "fuse/effects/mask",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/effects/mask/source",
+              "href": "fuse/effects/mask/source"
+            },
+            "titles": {
+              "indexTitle": "Source",
+              "fullyQualifiedIndexTitle": "Fuse.Effects.Mask.Source"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/node",
+            "parentId": "fuse",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract",
+              "partial"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/node",
+            "href": "fuse/node"
+          },
+          "titles": {
+            "indexTitle": "Node",
+            "fullyQualifiedIndexTitle": "Fuse.Node"
+          }
+        },
+        "items": [
+          {
+            "comment": {
+              "brief": "The list of bindings belonging to this node.",
+              "full": "The list of bindings belonging to this node."
+            },
+            "returns": {
+              "href": "uno/collections/ilist_1",
+              "title": "IList<Binding>",
+              "fullyQualifiedTitle": "Uno.Collections.IList<Fuse.Binding>"
+            },
+            "flags": {
+              "uxContent": true
+            },
+            "id": {
+              "id": "fuse/effects/mask/bindings",
+              "parentId": "fuse/effects/mask",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/effects/mask/bindings",
+              "href": "fuse/node/bindings",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Bindings",
+              "fullyQualifiedIndexTitle": "Fuse.Node.Bindings"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Run-time name of the node.\nThis property is automatically set using the ux:Name attribute.",
+              "full": "Run-time name of the node.\nThis property is automatically set using the ux:Name attribute."
+            },
+            "returns": {
+              "href": "uno/ux/selector",
+              "title": "Selector",
+              "fullyQualifiedTitle": "Uno.UX.Selector"
+            },
+            "id": {
+              "id": "fuse/effects/mask/name",
+              "parentId": "fuse/effects/mask",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/effects/mask/name",
+              "href": "fuse/node/name",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Name",
+              "fullyQualifiedIndexTitle": "Fuse.Node.Name"
+            }
+          }
+        ]
+      }
+    ],
+    "attachedUxProperties": [
+      {
+        "items": [
+          {
+            "comment": {
+              "brief": "The `ux:Global` attribute creates a global resource that is accessible everywhere in UX markup.",
+              "full": "The `ux:Global` attribute creates a global resource that is accessible everywhere in UX markup.\n\nSee @Resources for more information.\n\nThe `ux:Global` attribute on an UX element creates a single object (singleton) that is globally available.\nUsing this attribute will prevent the object from being inserted by default the object at its defined location\nin the UX tree."
+            },
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "parameters": [
+              {
+                "name": "obj",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              },
+              {
+                "name": "key",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              }
+            ],
+            "id": {
+              "id": "fuse/effects/mask/resource_globalkey_setglobalkey_4c3ac72d",
+              "parentId": "fuse/effects/mask",
+              "type": "AttachedUxProperty",
+              "modifiers": []
+            },
+            "uri": {
+              "idUri": "fuse/effects/mask/resource_globalkey_setglobalkey_4c3ac72d",
+              "href": "uno/ux/resource/setglobalkey_4c3ac72d",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Resource.GlobalKey",
+              "fullyQualifiedIndexTitle": "Resource.GlobalKey"
+            }
+          }
+        ]
+      }
+    ],
+    "uxEvents": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/effects/effect",
+            "parentId": "fuse/effects",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/effects/effect",
+            "href": "fuse/effects/effect"
+          },
+          "titles": {
+            "indexTitle": "Effect",
+            "fullyQualifiedIndexTitle": "Fuse.Effects.Effect"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/action_1",
+              "title": "Action<Effect> (Effect)",
+              "fullyQualifiedTitle": "Uno.Action<Fuse.Effects.Effect> (Fuse.Effects.Effect)"
+            },
+            "id": {
+              "id": "fuse/effects/mask/renderboundschanged",
+              "parentId": "fuse/effects/mask",
+              "type": "UxEvent",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/effects/mask/renderboundschanged",
+              "href": "fuse/effects/effect/renderboundschanged",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "RenderBoundsChanged",
+              "fullyQualifiedIndexTitle": "Fuse.Effects.Effect.RenderBoundsChanged"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/action_1",
+              "title": "Action<Effect> (Effect)",
+              "fullyQualifiedTitle": "Uno.Action<Fuse.Effects.Effect> (Fuse.Effects.Effect)"
+            },
+            "id": {
+              "id": "fuse/effects/mask/renderingchanged",
+              "parentId": "fuse/effects/mask",
+              "type": "UxEvent",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/effects/mask/renderingchanged",
+              "href": "fuse/effects/effect/renderingchanged",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "RenderingChanged",
+              "fullyQualifiedIndexTitle": "Fuse.Effects.Effect.RenderingChanged"
+            }
+          }
+        ]
+      }
+    ],
+    "constructors": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/effects/mask",
+            "parentId": "fuse/effects",
+            "type": "UxClass",
+            "modifiers": [
+              "public",
+              "sealed"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/effects/mask",
+            "href": "fuse/effects/mask"
+          },
+          "titles": {
+            "indexTitle": "Mask",
+            "fullyQualifiedIndexTitle": "Fuse.Effects.Mask"
+          }
+        },
+        "items": [
+          {
+            "id": {
+              "id": "fuse/effects/mask/_ctor",
+              "parentId": "fuse/effects/mask",
+              "type": "Constructor",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/effects/mask/_ctor",
+              "href": "fuse/effects/mask/_ctor"
+            },
+            "titles": {
+              "indexTitle": "Mask",
+              "fullyQualifiedIndexTitle": "Fuse.Effects.Mask.Mask"
+            }
+          }
+        ]
+      }
+    ],
+    "properties": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/effects/effect",
+            "parentId": "fuse/effects",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/effects/effect",
+            "href": "fuse/effects/effect"
+          },
+          "titles": {
+            "indexTitle": "Effect",
+            "fullyQualifiedIndexTitle": "Fuse.Effects.Effect"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "id": {
+              "id": "fuse/effects/mask/active",
+              "parentId": "fuse/effects/mask",
+              "type": "Property",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/effects/mask/active",
+              "href": "fuse/effects/effect/active",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Active",
+              "fullyQualifiedIndexTitle": "Fuse.Effects.Effect.Active"
+            }
+          },
+          {
+            "returns": {
+              "href": "fuse/elements/element",
+              "title": "Element",
+              "fullyQualifiedTitle": "Fuse.Elements.Element"
+            },
+            "id": {
+              "id": "fuse/effects/mask/element",
+              "parentId": "fuse/effects/mask",
+              "type": "Property",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/effects/mask/element",
+              "href": "fuse/effects/effect/element",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Element",
+              "fullyQualifiedIndexTitle": "Fuse.Effects.Effect.Element"
+            }
+          },
+          {
+            "returns": {
+              "href": "fuse/effects/effecttype",
+              "title": "EffectType",
+              "fullyQualifiedTitle": "Fuse.Effects.EffectType"
+            },
+            "id": {
+              "id": "fuse/effects/mask/type",
+              "parentId": "fuse/effects/mask",
+              "type": "Property",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/effects/mask/type",
+              "href": "fuse/effects/effect/type",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Type",
+              "fullyQualifiedIndexTitle": "Fuse.Effects.Effect.Type"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/node",
+            "parentId": "fuse",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract",
+              "partial"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/node",
+            "href": "fuse/node"
+          },
+          "titles": {
+            "indexTitle": "Node",
+            "fullyQualifiedIndexTitle": "Fuse.Node"
+          }
+        },
+        "items": [
+          {
+            "comment": {
+              "brief": "The context parent is the semantic parent of this node. It is where non-UI structure should\nbe resolved, like looking for the DataContext, a Navigation, or other semantic item.",
+              "full": "The context parent is the semantic parent of this node. It is where non-UI structure should\nbe resolved, like looking for the DataContext, a Navigation, or other semantic item."
+            },
+            "returns": {
+              "href": "fuse/node",
+              "title": "Node",
+              "fullyQualifiedTitle": "Fuse.Node"
+            },
+            "id": {
+              "id": "fuse/effects/mask/contextparent",
+              "parentId": "fuse/effects/mask",
+              "type": "Property",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/effects/mask/contextparent",
+              "href": "fuse/node/contextparent",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "ContextParent",
+              "fullyQualifiedIndexTitle": "Fuse.Node.ContextParent"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Whether rooting for this node is completed.\nReturns false if unrooting has started.",
+              "full": "Whether rooting for this node is completed.\nReturns false if unrooting has started."
+            },
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "id": {
+              "id": "fuse/effects/mask/isrootingcompleted",
+              "parentId": "fuse/effects/mask",
+              "type": "Property",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/effects/mask/isrootingcompleted",
+              "href": "fuse/node/isrootingcompleted",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "IsRootingCompleted",
+              "fullyQualifiedIndexTitle": "Fuse.Node.IsRootingCompleted"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Whether rooting of this node has started.\nNote that even if this property returns true, rooting may not yet be\ncompleted for the node. See also @IsRootingCompleted.",
+              "full": "Whether rooting of this node has started.\nNote that even if this property returns true, rooting may not yet be\ncompleted for the node. See also @IsRootingCompleted."
+            },
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "id": {
+              "id": "fuse/effects/mask/isrootingstarted",
+              "parentId": "fuse/effects/mask",
+              "type": "Property",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/effects/mask/isrootingstarted",
+              "href": "fuse/node/isrootingstarted",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "IsRootingStarted",
+              "fullyQualifiedIndexTitle": "Fuse.Node.IsRootingStarted"
+            }
+          },
+          {
+            "comment": {
+              "brief": "The parent @Visual of this node. Will return null if the node is not rooted.",
+              "full": "The parent @Visual of this node. Will return null if the node is not rooted."
+            },
+            "returns": {
+              "href": "fuse/visual",
+              "title": "Visual",
+              "fullyQualifiedTitle": "Fuse.Visual"
+            },
+            "id": {
+              "id": "fuse/effects/mask/parent",
+              "parentId": "fuse/effects/mask",
+              "type": "Property",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/effects/mask/parent",
+              "href": "fuse/node/parent",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Parent",
+              "fullyQualifiedIndexTitle": "Fuse.Node.Parent"
+            }
+          },
+          {
+            "comment": {
+              "brief": "A linked list holding data for extrinsic properties.",
+              "full": "A linked list holding data for extrinsic properties."
+            },
+            "returns": {
+              "href": "fuse/properties",
+              "title": "Properties",
+              "fullyQualifiedTitle": "Fuse.Properties"
+            },
+            "id": {
+              "id": "fuse/effects/mask/properties",
+              "parentId": "fuse/effects/mask",
+              "type": "Property",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/effects/mask/properties",
+              "href": "fuse/node/properties",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Properties",
+              "fullyQualifiedIndexTitle": "Fuse.Node.Properties"
+            }
+          }
+        ]
+      }
+    ],
+    "methods": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/effects/basiceffect",
+            "parentId": "fuse/effects",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/effects/basiceffect",
+            "href": "fuse/effects/basiceffect"
+          },
+          "titles": {
+            "indexTitle": "BasicEffect",
+            "fullyQualifiedIndexTitle": "Fuse.Effects.BasicEffect"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/rect",
+              "title": "Rect",
+              "fullyQualifiedTitle": "Uno.Rect"
+            },
+            "id": {
+              "id": "fuse/effects/mask/getlocalelementrect",
+              "parentId": "fuse/effects/mask",
+              "type": "Method",
+              "modifiers": [
+                "protected"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/effects/mask/getlocalelementrect",
+              "href": "fuse/effects/basiceffect/getlocalelementrect",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetLocalElementRect",
+              "fullyQualifiedIndexTitle": "Fuse.Effects.BasicEffect.GetLocalElementRect"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/effects/effect",
+            "parentId": "fuse/effects",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/effects/effect",
+            "href": "fuse/effects/effect"
+          },
+          "titles": {
+            "indexTitle": "Effect",
+            "fullyQualifiedIndexTitle": "Fuse.Effects.Effect"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "fuse/visualbounds",
+              "title": "VisualBounds",
+              "fullyQualifiedTitle": "Fuse.VisualBounds"
+            },
+            "parameters": [
+              {
+                "name": "inBounds",
+                "href": "fuse/visualbounds",
+                "title": "VisualBounds",
+                "fullyQualifiedTitle": "Fuse.VisualBounds"
+              }
+            ],
+            "id": {
+              "id": "fuse/effects/mask/modifyrenderbounds_40604124",
+              "parentId": "fuse/effects/mask",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/effects/mask/modifyrenderbounds_40604124",
+              "href": "fuse/effects/effect/modifyrenderbounds_40604124",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "ModifyRenderBounds(VisualBounds)",
+              "fullyQualifiedIndexTitle": "Fuse.Effects.Effect.ModifyRenderBounds(Fuse.VisualBounds)"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/effects/mask/onrenderboundschanged",
+              "parentId": "fuse/effects/mask",
+              "type": "Method",
+              "modifiers": [
+                "protected"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/effects/mask/onrenderboundschanged",
+              "href": "fuse/effects/effect/onrenderboundschanged",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "OnRenderBoundsChanged",
+              "fullyQualifiedIndexTitle": "Fuse.Effects.Effect.OnRenderBoundsChanged"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/effects/mask/onrenderingchanged",
+              "parentId": "fuse/effects/mask",
+              "type": "Method",
+              "modifiers": [
+                "protected"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/effects/mask/onrenderingchanged",
+              "href": "fuse/effects/effect/onrenderingchanged",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "OnRenderingChanged",
+              "fullyQualifiedIndexTitle": "Fuse.Effects.Effect.OnRenderingChanged"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "dc",
+                "href": "fuse/drawcontext",
+                "title": "DrawContext",
+                "fullyQualifiedTitle": "Fuse.DrawContext"
+              }
+            ],
+            "id": {
+              "id": "fuse/effects/mask/render_19711663",
+              "parentId": "fuse/effects/mask",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/effects/mask/render_19711663",
+              "href": "fuse/effects/effect/render_19711663",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Render(DrawContext)",
+              "fullyQualifiedIndexTitle": "Fuse.Effects.Effect.Render(Fuse.DrawContext)"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/node",
+            "parentId": "fuse",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract",
+              "partial"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/node",
+            "href": "fuse/node"
+          },
+          "titles": {
+            "indexTitle": "Node",
+            "fullyQualifiedIndexTitle": "Fuse.Node"
+          }
+        },
+        "items": [
+          {
+            "parameters": [
+              {
+                "name": "item",
+                "href": "fuse/binding",
+                "title": "Binding",
+                "fullyQualifiedTitle": "Fuse.Binding"
+              }
+            ],
+            "id": {
+              "id": "fuse/effects/mask/add_cd0f711d",
+              "parentId": "fuse/effects/mask",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/effects/mask/add_cd0f711d",
+              "href": "fuse/node/add_cd0f711d",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Add(Binding)",
+              "fullyQualifiedIndexTitle": "Fuse.Node.Add(Fuse.Binding)"
+            }
+          },
+          {
+            "returns": {
+              "isVirtual": true,
+              "title": "T",
+              "fullyQualifiedTitle": "Fuse.T"
+            },
+            "id": {
+              "id": "fuse/effects/mask/findbytype_1",
+              "parentId": "fuse/effects/mask",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/effects/mask/findbytype_1",
+              "href": "fuse/node/findbytype_1",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "FindByType<T>",
+              "fullyQualifiedIndexTitle": "Fuse.Node.FindByType<T>"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Finds the first node with a given name that satisfies the given acceptor.\nThe serach algorithm works as follows: Nodes in the subtree are matched first, then\nit matches the nodes in the subtrees ofthe ancestor nodes by turn all the way to the\nroot. If no matching node is found, the function returns null.",
+              "full": "Finds the first node with a given name that satisfies the given acceptor.\nThe serach algorithm works as follows: Nodes in the subtree are matched first, then\nit matches the nodes in the subtrees ofthe ancestor nodes by turn all the way to the\nroot. If no matching node is found, the function returns null."
+            },
+            "returns": {
+              "href": "fuse/node",
+              "title": "Node",
+              "fullyQualifiedTitle": "Fuse.Node"
+            },
+            "parameters": [
+              {
+                "name": "name",
+                "href": "uno/ux/selector",
+                "title": "Selector",
+                "fullyQualifiedTitle": "Uno.UX.Selector"
+              },
+              {
+                "name": "acceptor",
+                "href": "uno/predicate_1",
+                "title": "Predicate<Node> (Node)",
+                "fullyQualifiedTitle": "Uno.Predicate<Fuse.Node> (Fuse.Node)"
+              }
+            ],
+            "id": {
+              "id": "fuse/effects/mask/findnodebyname_66268add",
+              "parentId": "fuse/effects/mask",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/effects/mask/findnodebyname_66268add",
+              "href": "fuse/node/findnodebyname_66268add",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "FindNodeByName(Selector, Predicate<Node> (Node))",
+              "fullyQualifiedIndexTitle": "Fuse.Node.FindNodeByName(Uno.UX.Selector, Uno.Predicate<Fuse.Node> (Fuse.Node))"
+            }
+          },
+          {
+            "returns": {
+              "isVirtual": true,
+              "title": "T",
+              "fullyQualifiedTitle": "Fuse.T"
+            },
+            "id": {
+              "id": "fuse/effects/mask/getnearestancestoroftype_1",
+              "parentId": "fuse/effects/mask",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/effects/mask/getnearestancestoroftype_1",
+              "href": "fuse/node/getnearestancestoroftype_1",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetNearestAncestorOfType<T>",
+              "fullyQualifiedIndexTitle": "Fuse.Node.GetNearestAncestorOfType<T>"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "index",
+                "href": "uno/int",
+                "title": "int",
+                "fullyQualifiedTitle": "int"
+              },
+              {
+                "name": "item",
+                "href": "fuse/binding",
+                "title": "Binding",
+                "fullyQualifiedTitle": "Fuse.Binding"
+              }
+            ],
+            "id": {
+              "id": "fuse/effects/mask/insert_4036b6cf",
+              "parentId": "fuse/effects/mask",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/effects/mask/insert_4036b6cf",
+              "href": "fuse/node/insert_4036b6cf",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Insert(int, Binding)",
+              "fullyQualifiedIndexTitle": "Fuse.Node.Insert(int, Fuse.Binding)"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Returns the next sibling node of the given type.",
+              "full": "Returns the next sibling node of the given type."
+            },
+            "returns": {
+              "isVirtual": true,
+              "title": "T",
+              "fullyQualifiedTitle": "Fuse.T"
+            },
+            "id": {
+              "id": "fuse/effects/mask/nextsibling_1",
+              "parentId": "fuse/effects/mask",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/effects/mask/nextsibling_1",
+              "href": "fuse/node/nextsibling_1",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "NextSibling<T>",
+              "fullyQualifiedIndexTitle": "Fuse.Node.NextSibling<T>"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "key",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              },
+              {
+                "name": "newValue",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              }
+            ],
+            "id": {
+              "id": "fuse/effects/mask/ondatachanged_d062e5a9",
+              "parentId": "fuse/effects/mask",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/effects/mask/ondatachanged_d062e5a9",
+              "href": "fuse/node/ondatachanged_d062e5a9",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "OnDataChanged(string, object)",
+              "fullyQualifiedIndexTitle": "Fuse.Node.OnDataChanged(string, object)"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Returns the next sibling node of the given type.",
+              "full": "Returns the next sibling node of the given type."
+            },
+            "returns": {
+              "isVirtual": true,
+              "title": "T",
+              "fullyQualifiedTitle": "Fuse.T"
+            },
+            "id": {
+              "id": "fuse/effects/mask/previoussibling_1",
+              "parentId": "fuse/effects/mask",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/effects/mask/previoussibling_1",
+              "href": "fuse/node/previoussibling_1",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "PreviousSibling<T>",
+              "fullyQualifiedIndexTitle": "Fuse.Node.PreviousSibling<T>"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "parameters": [
+              {
+                "name": "item",
+                "href": "fuse/binding",
+                "title": "Binding",
+                "fullyQualifiedTitle": "Fuse.Binding"
+              }
+            ],
+            "id": {
+              "id": "fuse/effects/mask/remove_cd0f711d",
+              "parentId": "fuse/effects/mask",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/effects/mask/remove_cd0f711d",
+              "href": "fuse/node/remove_cd0f711d",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Remove(Binding)",
+              "fullyQualifiedIndexTitle": "Fuse.Node.Remove(Fuse.Binding)"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/effects/mask/softdispose",
+              "parentId": "fuse/effects/mask",
+              "type": "Method",
+              "modifiers": [
+                "protected",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/effects/mask/softdispose",
+              "href": "fuse/node/softdispose",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "SoftDispose",
+              "fullyQualifiedIndexTitle": "Fuse.Node.SoftDispose"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "id": {
+              "id": "fuse/effects/mask/subtreetostring",
+              "parentId": "fuse/effects/mask",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/effects/mask/subtreetostring",
+              "href": "fuse/node/subtreetostring",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "SubtreeToString",
+              "fullyQualifiedIndexTitle": "Fuse.Node.SubtreeToString"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "sb",
+                "href": "uno/text/stringbuilder",
+                "title": "StringBuilder",
+                "fullyQualifiedTitle": "Uno.Text.StringBuilder"
+              },
+              {
+                "name": "indent",
+                "href": "uno/int",
+                "title": "int",
+                "fullyQualifiedTitle": "int"
+              }
+            ],
+            "id": {
+              "id": "fuse/effects/mask/subtreetostring_efe5f5b8",
+              "parentId": "fuse/effects/mask",
+              "type": "Method",
+              "modifiers": [
+                "protected",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/effects/mask/subtreetostring_efe5f5b8",
+              "href": "fuse/node/subtreetostring_efe5f5b8",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "SubtreeToString(StringBuilder, int)",
+              "fullyQualifiedIndexTitle": "Fuse.Node.SubtreeToString(Uno.Text.StringBuilder, int)"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "parameters": [
+              {
+                "name": "key",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              },
+              {
+                "name": "acceptor",
+                "href": "uno/predicate_1",
+                "title": "Predicate<object> (object)",
+                "fullyQualifiedTitle": "Uno.Predicate<object> (object)"
+              },
+              {
+                "name": "resource",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              }
+            ],
+            "id": {
+              "id": "fuse/effects/mask/trygetresource_5317754b",
+              "parentId": "fuse/effects/mask",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/effects/mask/trygetresource_5317754b",
+              "href": "fuse/node/trygetresource_5317754b",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "TryGetResource(string, Predicate<object> (object), object)",
+              "fullyQualifiedIndexTitle": "Fuse.Node.TryGetResource(string, Uno.Predicate<object> (object), object)"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "action",
+                "href": "uno/action_1",
+                "title": "Action<Node> (Node)",
+                "fullyQualifiedTitle": "Uno.Action<Fuse.Node> (Fuse.Node)"
+              }
+            ],
+            "id": {
+              "id": "fuse/effects/mask/visitsubtree_7a20b182",
+              "parentId": "fuse/effects/mask",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/effects/mask/visitsubtree_7a20b182",
+              "href": "fuse/node/visitsubtree_7a20b182",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "VisitSubtree(Action<Node> (Node))",
+              "fullyQualifiedIndexTitle": "Fuse.Node.VisitSubtree(Uno.Action<Fuse.Node> (Fuse.Node))"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "uno/ux/propertyobject",
+            "parentId": "uno/ux",
+            "type": "Class",
+            "modifiers": [
+              "public"
+            ]
+          },
+          "uri": {
+            "idUri": "uno/ux/propertyobject",
+            "href": "uno/ux/propertyobject"
+          },
+          "titles": {
+            "indexTitle": "PropertyObject",
+            "fullyQualifiedIndexTitle": "Uno.UX.PropertyObject"
+          }
+        },
+        "items": [
+          {
+            "parameters": [
+              {
+                "name": "listener",
+                "href": "uno/ux/ipropertylistener",
+                "title": "IPropertyListener",
+                "fullyQualifiedTitle": "Uno.UX.IPropertyListener"
+              }
+            ],
+            "id": {
+              "id": "fuse/effects/mask/addpropertylistener_496a874a",
+              "parentId": "fuse/effects/mask",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/effects/mask/addpropertylistener_496a874a",
+              "href": "uno/ux/propertyobject/addpropertylistener_496a874a",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "AddPropertyListener(IPropertyListener)",
+              "fullyQualifiedIndexTitle": "Uno.UX.PropertyObject.AddPropertyListener(Uno.UX.IPropertyListener)"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "property",
+                "href": "uno/ux/selector",
+                "title": "Selector",
+                "fullyQualifiedTitle": "Uno.UX.Selector"
+              }
+            ],
+            "id": {
+              "id": "fuse/effects/mask/onpropertychanged_16d735f3",
+              "parentId": "fuse/effects/mask",
+              "type": "Method",
+              "modifiers": [
+                "protected"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/effects/mask/onpropertychanged_16d735f3",
+              "href": "uno/ux/propertyobject/onpropertychanged_16d735f3",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "OnPropertyChanged(Selector)",
+              "fullyQualifiedIndexTitle": "Uno.UX.PropertyObject.OnPropertyChanged(Uno.UX.Selector)"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "property",
+                "href": "uno/ux/selector",
+                "title": "Selector",
+                "fullyQualifiedTitle": "Uno.UX.Selector"
+              },
+              {
+                "name": "origin",
+                "href": "uno/ux/ipropertylistener",
+                "title": "IPropertyListener",
+                "fullyQualifiedTitle": "Uno.UX.IPropertyListener"
+              }
+            ],
+            "id": {
+              "id": "fuse/effects/mask/onpropertychanged_6422fe92",
+              "parentId": "fuse/effects/mask",
+              "type": "Method",
+              "modifiers": [
+                "protected",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/effects/mask/onpropertychanged_6422fe92",
+              "href": "uno/ux/propertyobject/onpropertychanged_6422fe92",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "OnPropertyChanged(Selector, IPropertyListener)",
+              "fullyQualifiedIndexTitle": "Uno.UX.PropertyObject.OnPropertyChanged(Uno.UX.Selector, Uno.UX.IPropertyListener)"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "listener",
+                "href": "uno/ux/ipropertylistener",
+                "title": "IPropertyListener",
+                "fullyQualifiedTitle": "Uno.UX.IPropertyListener"
+              }
+            ],
+            "id": {
+              "id": "fuse/effects/mask/removepropertylistener_496a874a",
+              "parentId": "fuse/effects/mask",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/effects/mask/removepropertylistener_496a874a",
+              "href": "uno/ux/propertyobject/removepropertylistener_496a874a",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "RemovePropertyListener(IPropertyListener)",
+              "fullyQualifiedIndexTitle": "Uno.UX.PropertyObject.RemovePropertyListener(Uno.UX.IPropertyListener)"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "uno/object",
+            "parentId": "uno",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "intrinsic"
+            ]
+          },
+          "uri": {
+            "idUri": "uno/object",
+            "href": "uno/object"
+          },
+          "titles": {
+            "indexTitle": "object",
+            "fullyQualifiedIndexTitle": "object"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "parameters": [
+              {
+                "name": "o",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              }
+            ],
+            "id": {
+              "id": "fuse/effects/mask/equals_a09c80e3",
+              "parentId": "fuse/effects/mask",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/effects/mask/equals_a09c80e3",
+              "href": "uno/object/equals_a09c80e3",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Equals(object)",
+              "fullyQualifiedIndexTitle": "Uno.Object.Equals(object)"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/int",
+              "title": "int",
+              "fullyQualifiedTitle": "int"
+            },
+            "id": {
+              "id": "fuse/effects/mask/gethashcode",
+              "parentId": "fuse/effects/mask",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/effects/mask/gethashcode",
+              "href": "uno/object/gethashcode",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetHashCode",
+              "fullyQualifiedIndexTitle": "Uno.Object.GetHashCode"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/type",
+              "title": "Type",
+              "fullyQualifiedTitle": "Uno.Type"
+            },
+            "id": {
+              "id": "fuse/effects/mask/gettype",
+              "parentId": "fuse/effects/mask",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/effects/mask/gettype",
+              "href": "uno/object/gettype",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetType",
+              "fullyQualifiedIndexTitle": "Uno.Object.GetType"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "id": {
+              "id": "fuse/effects/mask/tostring",
+              "parentId": "fuse/effects/mask",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/effects/mask/tostring",
+              "href": "uno/object/tostring",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "ToString",
+              "fullyQualifiedIndexTitle": "Uno.Object.ToString"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

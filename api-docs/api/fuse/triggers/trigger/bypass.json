@@ -1,0 +1,78 @@
+{
+  "entity": {
+    "location": {
+      "namespaceTitle": "Fuse.Triggers",
+      "namespaceUri": "fuse/triggers",
+      "packageName": "Fuse.Triggers",
+      "packageVersion": "1.8.0-rc2"
+    },
+    "parameters": [],
+    "returns": {
+      "href": "fuse/triggers/triggerbypassmode",
+      "title": "TriggerBypassMode",
+      "fullyQualifiedTitle": "Fuse.Triggers.TriggerBypassMode"
+    },
+    "uxProperties": {},
+    "values": [
+      {
+        "uri": "fuse/triggers/triggerbypassmode/standard",
+        "title": "Standard",
+        "comment": {
+          "brief": "Changes in state during the root frame are handled as bypass, with special exceptions.",
+          "full": "Changes in state during the root frame are handled as bypass, with special exceptions."
+        }
+      },
+      {
+        "uri": "fuse/triggers/triggerbypassmode/never",
+        "title": "Never",
+        "comment": {
+          "brief": "All changes are treated as normal and nothing is bypassed.",
+          "full": "All changes are treated as normal and nothing is bypassed."
+        }
+      },
+      {
+        "uri": "fuse/triggers/triggerbypassmode/rooting",
+        "title": "Rooting",
+        "comment": {
+          "brief": "Only changes during the rooting frame are handled as bypass, without special exceptions.",
+          "full": "Only changes during the rooting frame are handled as bypass, without special exceptions."
+        }
+      },
+      {
+        "uri": "fuse/triggers/triggerbypassmode/exceptlayout",
+        "title": "ExceptLayout",
+        "comment": {
+          "brief": "Deprecated: 2017-07-21\nFor possible backwards compatibilty, like Standard but excludes the check for layout bypass.\nThis mode should not be used.",
+          "full": "Deprecated: 2017-07-21\nFor possible backwards compatibilty, like Standard but excludes the check for layout bypass.\nThis mode should not be used."
+        }
+      }
+    ],
+    "id": {
+      "id": "fuse/triggers/trigger/bypass",
+      "parentId": "fuse/triggers/trigger",
+      "type": "UxProperty",
+      "modifiers": [
+        "public"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/triggers/trigger/bypass",
+      "href": "fuse/triggers/trigger/bypass"
+    },
+    "titles": {
+      "pageTitle": "Trigger.Bypass Property",
+      "navigationTitle": "Bypass Property",
+      "fullTitle": "Fuse.Triggers.Trigger.Bypass",
+      "indexTitle": "Bypass",
+      "fullyQualifiedIndexTitle": "Fuse.Triggers.Trigger.Bypass"
+    },
+    "syntax": {
+      "uno": "public Fuse.Triggers.TriggerBypassMode Bypass { get; get; }"
+    },
+    "comment": {
+      "brief": "Specifies how changes in state are handled while initializing and rooting the trigger.",
+      "full": "Specifies how changes in state are handled while initializing and rooting the trigger.\n\nIn some cases, a trigger is rooted to the visual tree while in its active state. In these cases,\none could expect one of two things to happen;\n  1. the animation plays from the start as soon as the trigger is rooted.\n  2. the trigger jumps instantly to the end of the animation.\n\nOne can use the `Bypass` property to differentiate between these. The default is `Bypass=\"Standard\"`,\nwhich corresponds to case 2. If one wants the effect of case 2, one can use `Bypass=\"Never\"` instead."
+    }
+  },
+  "tableOfContents": {}
+}

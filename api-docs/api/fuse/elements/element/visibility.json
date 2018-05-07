@@ -1,0 +1,94 @@
+{
+  "entity": {
+    "location": {
+      "namespaceTitle": "Fuse.Elements",
+      "namespaceUri": "fuse/elements",
+      "packageName": "Fuse.Elements",
+      "packageVersion": "1.8.0-rc2"
+    },
+    "parameters": [],
+    "returns": {
+      "href": "fuse/elements/visibility",
+      "title": "Visibility",
+      "fullyQualifiedTitle": "Fuse.Elements.Visibility"
+    },
+    "uxProperties": {},
+    "values": [
+      {
+        "uri": "fuse/elements/visibility/visible",
+        "title": "Visible",
+        "comment": {
+          "brief": "The element is visible and part of the layout",
+          "full": "The element is visible and part of the layout"
+        }
+      },
+      {
+        "uri": "fuse/elements/visibility/collapsed",
+        "title": "Collapsed",
+        "comment": {
+          "brief": "The element is invisible and takes up no space in layout",
+          "full": "The element is invisible and takes up no space in layout"
+        }
+      },
+      {
+        "uri": "fuse/elements/visibility/hidden",
+        "title": "Hidden",
+        "comment": {
+          "brief": "The element is invisible but nonetheless occupies space in the layout (the layout of it and its children are calculated normally). Hidden elemenets nonetheless do not participate in hit testing.",
+          "full": "The element is invisible but nonetheless occupies space in the layout (the layout of it and its children are calculated normally). Hidden elemenets nonetheless do not participate in hit testing."
+        }
+      }
+    ],
+    "attributes": [
+      {
+        "parameters": [
+          "SetVisibility"
+        ],
+        "id": {
+          "id": "uno/ux/uxoriginsetterattribute",
+          "parentId": "uno/ux",
+          "type": "Class",
+          "modifiers": [
+            "public",
+            "sealed"
+          ]
+        },
+        "uri": {
+          "idUri": "uno/ux/uxoriginsetterattribute",
+          "href": "uno/ux/uxoriginsetterattribute"
+        },
+        "titles": {
+          "indexTitle": "UXOriginSetterAttribute",
+          "fullyQualifiedIndexTitle": "Uno.UX.UXOriginSetterAttribute"
+        }
+      }
+    ],
+    "id": {
+      "id": "fuse/elements/element/visibility",
+      "parentId": "fuse/elements/element",
+      "type": "UxProperty",
+      "modifiers": [
+        "public"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/elements/element/visibility",
+      "href": "fuse/elements/element/visibility"
+    },
+    "titles": {
+      "pageTitle": "Element.Visibility Property",
+      "navigationTitle": "Visibility Property",
+      "fullTitle": "Fuse.Elements.Element.Visibility",
+      "indexTitle": "Visibility",
+      "fullyQualifiedIndexTitle": "Fuse.Elements.Element.Visibility"
+    },
+    "syntax": {
+      "uno": "[Uno.UX.UXOriginSetter(originSetterName = \"SetVisibility\")]\r\npublic Fuse.Elements.Visibility Visibility { get; get; }"
+    },
+    "comment": {
+      "brief": "The @Visibility of the `Element`.",
+      "full": "The @Visibility of the `Element`.\n\nUsed to determine if the `Element` is displayed on screen, and can also affect its layout.\n\nPossible values:\n- `Visible` - The element is displayed on-screen as usual.\n- `Hidden` - The element will not be displayed on-screen, but will still participate in and affect layout normally.\n- `Collapsed` - The element will not be displayed on-screen or participate in layout.\n\n## Example\n\nIn the following example, only two of the rectangles are visible. The second Rectangle is collapsed,\nso it's not taking up any space at all. The third Rectangle is hidden, so it takes up space, but is not\nvisible. The last Rectangle has no Visibility set, so it defaults to being visible as usual.\n\n    <StackPanel>\n        <Rectangle Visibility=\"Visible\" Color=\"Red\" Height=\"50\"/>\n        <Rectangle Visibility=\"Collapsed\" Color=\"Green\" Height=\"50\"/>\n        <Rectangle Visibility=\"Hidden\" Color=\"Blue\" Height=\"50\"/>\n        <Rectangle Color=\"Yellow\" Height=\"50\"/>\n    </StackPanel>"
+    }
+  },
+  "tableOfContents": {}
+}

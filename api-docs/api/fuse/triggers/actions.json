@@ -1,0 +1,1163 @@
+{
+  "entity": {
+    "id": {
+      "id": "fuse/triggers/actions",
+      "parentId": "fuse/triggers",
+      "type": "Namespace",
+      "modifiers": []
+    },
+    "uri": {
+      "idUri": "fuse/triggers/actions",
+      "href": "fuse/triggers/actions"
+    },
+    "titles": {
+      "pageTitle": "Fuse.Triggers.Actions Namespace",
+      "navigationTitle": "Fuse.Triggers.Actions Namespace",
+      "fullTitle": "Fuse.Triggers.Actions",
+      "indexTitle": "Fuse.Triggers.Actions",
+      "fullyQualifiedIndexTitle": "Fuse.Triggers.Actions"
+    },
+    "syntax": {
+      "uno": "namespace Actions {}"
+    }
+  },
+  "tableOfContents": {
+    "uxClasses": [
+      {
+        "items": [
+          {
+            "comment": {
+              "brief": "Scrolls a @fuse/controls/scrollview so that the target element becomes visible",
+              "full": "Scrolls a @fuse/controls/scrollview so that the target element becomes visible\n\n## Example\n\n        <ScrollView>\n            <Grid Rows=\"auto, 400, 400, 400, auto\" Margin=\"10\">\n                <Button Text=\"Go to Bottom\" Alignment=\"Bottom\">\n                    <Clicked>\n                        <BringIntoView TargetNode=\"bottomRect\" />\n                    </Clicked>\n                </Button>\n                <Rectangle Margin=\"10\" CornerRadius=\"4\" ux:Name=\"topRect\">\n                    <SolidColor Color=\"#a542db\" />\n                </Rectangle>\n                <Rectangle Margin=\"10\" CornerRadius=\"4\">\n                    <LinearGradient>\n                        <GradientStop Offset=\"0\" Color=\"#a542db\" />\n                        <GradientStop Offset=\"1\" Color=\"#3579e6\" />\n                    </LinearGradient>\n                </Rectangle>\n                <Rectangle Margin=\"10\" CornerRadius=\"4\" ux:Name=\"bottomRect\">\n                    <Stroke Offset=\"4\" Width=\"1\" Color=\"#3579e6\" />\n                    <SolidColor Color=\"#3579e6\" />\n                </Rectangle>\n                <Button Text=\"Go to Top\" Alignment=\"Bottom\">\n                    <Clicked>\n                        <BringIntoView TargetNode=\"topRect\" />\n                    </Clicked>\n                </Button>\n            </Grid>\n        </ScrollView>"
+            },
+            "id": {
+              "id": "fuse/triggers/actions/bringintoview",
+              "parentId": "fuse/triggers/actions",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/actions/bringintoview",
+              "href": "fuse/triggers/actions/bringintoview"
+            },
+            "titles": {
+              "indexTitle": "BringIntoView",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.Actions.BringIntoView"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Reorders the siblings of a @Visual so that the @Visual will be rendered on top.",
+              "full": "Reorders the siblings of a @Visual so that the @Visual will be rendered on top.\n\n> Note that it doesn't affect the @Visual's `ZOffset`. Instead, it reorders the @Visual amongst its siblings so that it will be drawn on top.\n> This means that using `ZOffset` can still cause this @Visual to be rendered underneath its siblings.\n\n## Example\n\n    <ScrollView>\n        <Grid Rows=\"400, 1*\" Margin=\"10\">\n            <Panel>\n                <Rectangle Margin=\"10\" CornerRadius=\"4\" ux:Name=\"topRect\">\n                    <LinearGradient>\n                        <GradientStop Offset=\"0\" Color=\"#a542db\" />\n                        <GradientStop Offset=\"1\" Color=\"#3579e6\" />\n                    </LinearGradient>\n                </Rectangle>\n                <TextBlock ux:Name=\"textBehind\" Alignment=\"Center\" FontSize=\"20\" Color=\"#fff\">I was brought to the front!</TextBlock>\n            </Panel>\n            <Rectangle Margin=\"10\">\n                <Stroke Offset=\"4\" Width=\"1\" Color=\"#3579e6\" />\n                <Button Text=\"Bring element to front\" Alignment=\"Bottom\">\n                    <Clicked>\n                        <BringToFront Target=\"textBehind\" />\n                    </Clicked>\n                </Button>\n            </Rectangle>\n        </Grid>\n    </ScrollView>"
+            },
+            "id": {
+              "id": "fuse/triggers/actions/bringtofront",
+              "parentId": "fuse/triggers/actions",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/actions/bringtofront",
+              "href": "fuse/triggers/actions/bringtofront"
+            },
+            "titles": {
+              "indexTitle": "BringToFront",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.Actions.BringToFront"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Calls a phone number",
+              "full": "Calls a phone number\n\nYou'll find this trigger action in the Fuse.Launcher package, which have to be referenced from your uno project.\nFor example:\n\n    {\n        \"Packages\": [\n            \"Fuse\",\n            \"FuseJS\",\n            \"Fuse.Launcher\"\n        ]\n    }\n\n## Example\n\n    <StackPanel Margin=\"20\">\n        <TextInput PlaceholderText=\"Enter the number here\" ux:Name=\"numberInput\" />\n        <Button Margin=\"10\" Text=\"Call\" Alignment=\"Bottom\">\n            <Clicked>\n                <Call Number=\"{ReadProperty numberInput.Value}\" />\n            </Clicked>\n        </Button>\n    </StackPanel>"
+            },
+            "id": {
+              "id": "fuse/triggers/actions/call",
+              "parentId": "fuse/triggers/actions",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/actions/call",
+              "href": "fuse/triggers/actions/call"
+            },
+            "titles": {
+              "indexTitle": "Call",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.Actions.Call"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Calls a JavaScript function when a trigger is activated.",
+              "full": "Calls a JavaScript function when a trigger is activated.\n\n## Example\n\nThis example calls the JavaScript function `someJSFunction` when a @Button is @Clicked.\n\n    <JavaScript>\n        var someJSFunction = function () {\n            console.log(\"some function called\");\n        }\n        module.exports = { someJSFunction: someJSFunction };\n    </JavaScript>\n\n    <Button Text=\"Do something\">\n        <Clicked>\n            <Callback Handler=\"{someJSFunction}\"/>\n        </Clicked>\n    </Button>"
+            },
+            "id": {
+              "id": "fuse/triggers/actions/callback",
+              "parentId": "fuse/triggers/actions",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/actions/callback",
+              "href": "fuse/triggers/actions/callback"
+            },
+            "titles": {
+              "indexTitle": "Callback",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.Actions.Callback"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/triggers/actions/cancelinteractions",
+              "parentId": "fuse/triggers/actions",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/actions/cancelinteractions",
+              "href": "fuse/triggers/actions/cancelinteractions"
+            },
+            "titles": {
+              "indexTitle": "CancelInteractions",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.Actions.CancelInteractions"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Collapses an @Element by setting `Visibilty` to `Collapsed`.",
+              "full": "Collapses an @Element by setting `Visibilty` to `Collapsed`.\n\nWhen an element is collapsed, it won't take up any space in the layout.\nUse @Hide if you want the element to be invisible, but still take up space.\n\n## Basic syntax\n\n    <Collapse TargetNode=\"myElement\" />\n\n## Example\n\n    <Button Text=\"Collapse the element\">\n        <Clicked>\n            <Collapse TargetNode=\"visibleElement\" />\n        </Clicked>\n    </Button>\n\n    <Panel ux:Name=\"visibleElement\" Visibility=\"Visible\" Background=\"Blue\" />"
+            },
+            "id": {
+              "id": "fuse/triggers/actions/collapse",
+              "parentId": "fuse/triggers/actions",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/actions/collapse",
+              "href": "fuse/triggers/actions/collapse"
+            },
+            "titles": {
+              "indexTitle": "Collapse",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.Actions.Collapse"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Log a message, which is useful for debugging",
+              "full": "Log a message, which is useful for debugging\n\n## Example\n\n    <StackPanel Margin=\"20\">\n        <Button Margin=\"10\" Text=\"Log 'Hello World!'\">\n            <Clicked>\n                <DebugAction Message=\"Hello World!\" />\n            </Clicked>\n        </Button>\n    </StackPanel>"
+            },
+            "id": {
+              "id": "fuse/triggers/actions/debugaction",
+              "parentId": "fuse/triggers/actions",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/actions/debugaction",
+              "href": "fuse/triggers/actions/debugaction"
+            },
+            "titles": {
+              "indexTitle": "DebugAction",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.Actions.DebugAction"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/triggers/actions/debugframe",
+              "parentId": "fuse/triggers/actions",
+              "type": "UxClass",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/actions/debugframe",
+              "href": "fuse/triggers/actions/debugframe"
+            },
+            "titles": {
+              "indexTitle": "DebugFrame",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.Actions.DebugFrame"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/triggers/actions/debugproperty_1",
+              "parentId": "fuse/triggers/actions",
+              "type": "UxClass",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/actions/debugproperty_1",
+              "href": "fuse/triggers/actions/debugproperty_1"
+            },
+            "titles": {
+              "indexTitle": "DebugProperty<T>",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.Actions.DebugProperty<T>"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/triggers/actions/debugtime",
+              "parentId": "fuse/triggers/actions",
+              "type": "UxClass",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/actions/debugtime",
+              "href": "fuse/triggers/actions/debugtime"
+            },
+            "titles": {
+              "indexTitle": "DebugTime",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.Actions.DebugTime"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Evaluate a JavaScript snippet on a WebView and optionally get the result",
+              "full": "Evaluate a JavaScript snippet on a WebView and optionally get the result\n\nThe WebView offers limited execution of arbitrary JavaScript in the currently loaded web environment. This is done with the `<EvaluateJS/>` action. Let's look at a simplified example.\n\n```XML\n<EvaluateJS Handler=\"{onPageLoaded}\">\n    var result = {\n        url : document.location.href\n    };\n    return result;\n</EvaluateJS>\n```\n\nNote the use of a `return` statement in the script body. Implementations of JavaScript evaluation APIs generally act like a JavaScript [REPL](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop), and when evaluating multiple lines of JS the result of the last statement of the script becomes the returned value. For instance, \"1+5\" is completely valid JS when evaluated and returns the expected value of \"6\".\n\nThis can result in odd-feeling JS, where referencing an object becomes an implicit return statement, whereas an explicit return is not allowed.\n\n```JavaScript\nvar result = {};\nresult.foo = \"bar\";\nresult; // using return here is invalid JS\n```\n\nTo make this feel better and allow return, we currently inject the user's JS in the form of a function:\n\n```JavaScript\n(function() { USER_JS })();\n```\n\n#### Reading the result value\n\nWhen we evaluate the JavaScript we are currently bound by platform restrictions in a key way: String is the only allowed return value type on Android, our lowest common denominator.\nWhat this means is that any return value passed from the evaluated script must by necessity be returned as JSON and parsed back from it on the Fuse end. Even if all you want is the result of some arithmetic, you'd still receive it as a string and require a cast. Instead of forcing you to routinely `return JSON.stringify(foo)` from your own JS we handle this by *always* wrapping your JS in JSON.stringify before evaluation:\n\n```JavaScript\nJSON.stringify( (function() { USER_JS })() );\n```\n\nThe returned JSON string here is then put into a result object with the `json` key. This is for clarity, so you never forget that the data you are receiving is a JSON string that you will need to parse.\n\n```XML\n<JavaScript>\n    module.exports = {\n        onPageLoaded : function(result)\n        {\n            var url = JSON.parse(result.json).url;\n        }\n    };\n</JavaScript>\n```\n\nNote that of course return is optional. If you don't return anything from your evaluated JS the return value of the expression will simply be \"null\".\n\n## Example\n\n    <Grid Rows=\"0.15*, 1*\">\n        <JavaScript>\n            var Observable = require('FuseJS/Observable');\n            var webViewTitle = Observable(\"<Unknown>\");\n\n            function updateTitle(args) {\n                webViewTitle.value = JSON.parse(args.json);\n            };\n\n            module.exports = {\n                webViewTitle: webViewTitle.map(function(title) { return \"HTML Title: \" + title; }),\n                updateTitle: updateTitle\n            }\n        </JavaScript>\n        <Text Value=\"{webViewTitle}\" Alignment=\"Center\" />\n        <NativeViewHost>\n            <WebView Url=\"https://www.fusetools.com\">\n                <PageLoaded>\n                    <EvaluateJS JavaScript=\"return window.document.title;\" Handler=\"{updateTitle}\" />\n                </PageLoaded>\n            </WebView>\n        </NativeViewHost>\n    </Grid>"
+            },
+            "id": {
+              "id": "fuse/triggers/actions/evaluatejs",
+              "parentId": "fuse/triggers/actions",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/actions/evaluatejs",
+              "href": "fuse/triggers/actions/evaluatejs"
+            },
+            "titles": {
+              "indexTitle": "EvaluateJS",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.Actions.EvaluateJS"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Gives focus to its containing @Element when activated.",
+              "full": "Gives focus to its containing @Element when activated.\n\nIt also accepts a `Target` property, which specifies which element to give focus to.\n\n# Example\nIn the following example, focus is given to a `TextInput` when a button is clicked.\n\n    <StackPanel>\n        <TextInput ux:Name=\"input\" Height=\"50\" Value=\"Filler text\"/>\n        <Button Text=\"Button\">\n            <Clicked>\n                <GiveFocus Target=\"input\" />\n            </Clicked>\n        </Button>\n    </StackPanel>"
+            },
+            "id": {
+              "id": "fuse/triggers/actions/givefocus",
+              "parentId": "fuse/triggers/actions",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/actions/givefocus",
+              "href": "fuse/triggers/actions/givefocus"
+            },
+            "titles": {
+              "indexTitle": "GiveFocus",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.Actions.GiveFocus"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Hides an @Element by setting `Visibility` to `Hidden`.",
+              "full": "Hides an @Element by setting `Visibility` to `Hidden`.\n\nWhen an element is hidden, it will not be drawn, but still take up space in the layout.\nUse @Collapse if you don't want the element to take up any space.\n\n## Basic syntax\n\n    <Hide TargetNode=\"myElement\" />\n\n## Example\n\n    <Button Text=\"Hide the element\">\n        <Clicked>\n            <Hide TargetNode=\"visibleElement\" />\n        </Clicked>\n    </Button>\n\n    <Panel ux:Name=\"visibleElement\" Visibility=\"Visible\" Background=\"Blue\" />"
+            },
+            "id": {
+              "id": "fuse/triggers/actions/hide",
+              "parentId": "fuse/triggers/actions",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/actions/hide",
+              "href": "fuse/triggers/actions/hide"
+            },
+            "titles": {
+              "indexTitle": "Hide",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.Actions.Hide"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Launch the default email application with an optional template",
+              "full": "Launch the default email application with an optional template\n\nYou'll find this trigger action in the Fuse.Launcher package, which have to be referenced from your uno project.\nFor example:\n\n    {\n        \"Packages\": [\n            \"Fuse\",\n            \"FuseJS\",\n            \"Fuse.Launcher\"\n        ]\n    }\n\n> Note it's expected that the 'To' parameter is set\n\n## Example\n\n    <StackPanel Margin=\"20\">\n        <Button Margin=\"10\" Text=\"Send email\">\n            <Clicked>\n                <LaunchEmail To=\"email@example.com\" Subject=\"Test\" CarbonCopy=\"\" BlindCarbonCopy=\"\" Message=\"Hello world!\" />\n            </Clicked>\n        </Button>\n    </StackPanel>"
+            },
+            "id": {
+              "id": "fuse/triggers/actions/launchemail",
+              "parentId": "fuse/triggers/actions",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/actions/launchemail",
+              "href": "fuse/triggers/actions/launchemail"
+            },
+            "titles": {
+              "indexTitle": "LaunchEmail",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.Actions.LaunchEmail"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Launch the default map app",
+              "full": "Launch the default map app\n\nYou'll find this trigger action in the Fuse.Launcher package, which have to be referenced from your uno project.\nFor example:\n\n    {\n        \"Packages\": [\n            \"Fuse\",\n            \"FuseJS\",\n            \"Fuse.Launcher\"\n        ]\n    }\n\n## Example\n\n    <StackPanel Margin=\"20\">\n        <Button Margin=\"10\" Text=\"Launch Maps\">\n            <Clicked>\n                <LaunchMaps Latitude=\"59.9139\" Longitude=\"10.7522\" />\n            </Clicked>\n        </Button>\n    </StackPanel>"
+            },
+            "id": {
+              "id": "fuse/triggers/actions/launchmaps",
+              "parentId": "fuse/triggers/actions",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/actions/launchmaps",
+              "href": "fuse/triggers/actions/launchmaps"
+            },
+            "titles": {
+              "indexTitle": "LaunchMaps",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.Actions.LaunchMaps"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Launch the default browser for an URL or open files with its corresponding default application",
+              "full": "Launch the default browser for an URL or open files with its corresponding default application\n\nYou'll find this trigger action in the Fuse.Launcher package, which have to be referenced from your uno project.\nFor example:\n\n    {\n        \"Packages\": [\n            \"Fuse\",\n            \"FuseJS\",\n            \"Fuse.Launcher\"\n        ]\n    }\n\n## Example\n\n    <StackPanel Margin=\"20\">\n        <Button Margin=\"10\" Text=\"Go to Fusetools\">\n            <Clicked>\n                <LaunchUri Uri=\"https://www.fusetools.com/\" />\n            </Clicked>\n        </Button>\n    </StackPanel>\n\nNote: you can pass any URI string to `LaunchUri`, but how it is handled will depend on the target platform and particular device settings.\n\nThere are several common URI schemes that you can use on both Android and iOS:\n    http://<website address>\n    https://<website address>\n    tel:<phone number>\n    sms:<phone number>\n\nOther platform-specific URI schemes are known to be working fine, for example `geo:<parameters>` launches Maps application on Android\nand `facetime:<parameters>` launches a Facetime video call on iOS.\nMore information on supported URI schemes: [on Android](https://developer.android.com/guide/components/intents-common.html) and [on iOS](https://developer.apple.com/library/content/featuredarticles/iPhoneURLScheme_Reference/Introduction/Introduction.html)."
+            },
+            "id": {
+              "id": "fuse/triggers/actions/launchuri",
+              "parentId": "fuse/triggers/actions",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/actions/launchuri",
+              "href": "fuse/triggers/actions/launchuri"
+            },
+            "titles": {
+              "indexTitle": "LaunchUri",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.Actions.LaunchUri"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Load arbitrary HTML into the webview.",
+              "full": "Load arbitrary HTML into the webview.\n\n```HTML\n<WebView ux:Name=\"webview\"/>\n<Button>\n    <Clicked>\n        <LoadHtml TargetNode=\"webview\">\n            <HTML>\n                <![CDATA[\n                    <h1>Hello world!</h1>\n                ]]>\n            </HTML>\n        </LoadHtml>\n    </Clicked\n</Button>\n```\n\nYou may optionally specify a base URL to use when resolving relative links and enforcing JavaScript's\n[same origin policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy).\n\n    <LoadHtml BaseUrl=\"https://example.com/\">\n        <HTML>\n            ...\n        </HTML>\n    </LoadHtml>"
+            },
+            "id": {
+              "id": "fuse/triggers/actions/loadhtml",
+              "parentId": "fuse/triggers/actions",
+              "type": "UxClass",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/actions/loadhtml",
+              "href": "fuse/triggers/actions/loadhtml"
+            },
+            "titles": {
+              "indexTitle": "LoadHtml",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.Actions.LoadHtml"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Loads a new URL into the WebView",
+              "full": "Loads a new URL into the WebView"
+            },
+            "id": {
+              "id": "fuse/triggers/actions/loadurl",
+              "parentId": "fuse/triggers/actions",
+              "type": "UxClass",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/actions/loadurl",
+              "href": "fuse/triggers/actions/loadurl"
+            },
+            "titles": {
+              "indexTitle": "LoadUrl",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.Actions.LoadUrl"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Pause a video or timeline",
+              "full": "Pause a video or timeline\n\nThis stops playback but does not change the current position.\n\n## Example\n\n    <Grid Rows=\"3*,1*\" >\n        <Video ux:Name=\"video\" Url=\"http://download.blender.org/peach/bigbuckbunny_movies/BigBuckBunny_320x180.mp4\" AutoPlay=\"true\" StretchMode=\"Uniform\" />\n        <Grid Columns=\"1*,1*\">\n            <Button Text=\"Resume\">\n                <Clicked>\n                    <Resume Target=\"video\" />\n                </Clicked>\n            </Button>\n            <Button Text=\"Pause\">\n                <Clicked>\n                    <Pause Target=\"video\" />\n                </Clicked>\n            </Button>\n        </Grid>\n    </Grid>"
+            },
+            "id": {
+              "id": "fuse/triggers/actions/pause",
+              "parentId": "fuse/triggers/actions",
+              "type": "UxClass",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/actions/pause",
+              "href": "fuse/triggers/actions/pause"
+            },
+            "titles": {
+              "indexTitle": "Pause",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.Actions.Pause"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Resume or start a video or timeline",
+              "full": "Resume or start a video or timeline\n\nThis continues playing from where the video or timeline was paused (or from the start if `Stop` was called).\n\nA timeline will play either forward or backward, depending on the last play direction.\n\n## Video Example\n\n    <Grid Rows=\"3*,1*\" >\n        <Video ux:Name=\"video\" Url=\"http://download.blender.org/peach/bigbuckbunny_movies/BigBuckBunny_320x180.mp4\" StretchMode=\"Uniform\" />\n        <Button Text=\"Play\">\n            <Clicked>\n                <Play Target=\"video\" />\n            </Clicked>\n        </Button>\n    </Grid>\n\n## Timeline Example\n\n    <StackPanel>\n        <Rectangle Width=\"150\" Height=\"150\" Margin=\"60\" ux:Name=\"rect\" CornerRadius=\"10\" >\n            <Stroke ux:Name=\"rectStroke\" Offset=\"10\" Width=\"3\" Color=\"#3579e6\" />\n\n            <Timeline  ux:Name=\"timeline\" TimeMultiplier=\"0.4\">\n                <Rotate>\n                    <Keyframe DegreesZ=\"360\" Time=\"1\" />\n                </Rotate>\n                <Change Target=\"rect.Color\">\n                    <Keyframe Value=\"#3579e6\" Time=\"1\" />\n                </Change>\n            </Timeline>\n        </Rectangle>\n\n        <Slider Width=\"250\" ux:Name=\"targetProgress\" Value=\"0.5\" Minimum=\"0\" Maximum=\"1\" />\n        <Button Text=\"Animate to\" Alignment=\"Bottom\">\n            <Clicked>\n                <PlayTo Target=\"timeline\" Progress=\"{Property targetProgress.Value}\" />\n            </Clicked>\n        </Button>\n\n        <Button ux:Name=\"play\" Text=\"Play\" Alignment=\"Bottom\">\n            <Clicked>\n                <Play Target=\"timeline\" />\n            </Clicked>\n        </Button>\n\n        <Button Text=\"Pause\" Alignment=\"Bottom\">\n            <Clicked>\n                <Pause Target=\"timeline\" />\n            </Clicked>\n        </Button>\n\n        <Button Text=\"Stop\" Alignment=\"Bottom\">\n            <Clicked>\n                <Stop Target=\"timeline\" />\n            </Clicked>\n        </Button>\n    </StackPanel>"
+            },
+            "id": {
+              "id": "fuse/triggers/actions/play",
+              "parentId": "fuse/triggers/actions",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/actions/play",
+              "href": "fuse/triggers/actions/play"
+            },
+            "titles": {
+              "indexTitle": "Play",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.Actions.Play"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Play to a specific point in a timeline",
+              "full": "Play to a specific point in a timeline\n\n## Example\n\n    <StackPanel>\n        <Rectangle Width=\"150\" Height=\"150\" Margin=\"60\" ux:Name=\"rect\" CornerRadius=\"10\" >\n            <Stroke ux:Name=\"rectStroke\" Offset=\"10\" Width=\"3\" Color=\"#3579e6\" />\n\n            <Timeline  ux:Name=\"timeline\" TimeMultiplier=\"0.4\">\n                <Rotate>\n                    <Keyframe DegreesZ=\"360\" Time=\"1\" />\n                </Rotate>\n                <Change Target=\"rect.Color\">\n                    <Keyframe Value=\"#3579e6\" Time=\"1\" />\n                </Change>\n            </Timeline>\n        </Rectangle>\n\n        <Slider Width=\"250\" ux:Name=\"targetProgress\" Value=\"0.5\" Minimum=\"0\" Maximum=\"1\" />\n        <Button Text=\"Animate to\" Alignment=\"Bottom\">\n            <Clicked>\n                <PlayTo Target=\"timeline\" Progress=\"{ReadProperty targetProgress.Value}\" />\n            </Clicked>\n        </Button>\n\n        <Button ux:Name=\"resume\" Text=\"Resume\" Alignment=\"Bottom\">\n            <Clicked>\n                <Resume Target=\"timeline\" />\n            </Clicked>\n        </Button>\n\n        <Button Text=\"Pause\" Alignment=\"Bottom\">\n            <Clicked>\n                <Pause Target=\"timeline\" />\n            </Clicked>\n        </Button>\n\n        <Button Text=\"Stop\" Alignment=\"Bottom\">\n            <Clicked>\n                <Stop Target=\"timeline\" />\n            </Clicked>\n        </Button>\n    </StackPanel>"
+            },
+            "id": {
+              "id": "fuse/triggers/actions/playto",
+              "parentId": "fuse/triggers/actions",
+              "type": "UxClass",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/actions/playto",
+              "href": "fuse/triggers/actions/playto"
+            },
+            "titles": {
+              "indexTitle": "PlayTo",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.Actions.PlayTo"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Momentarily triggers a @WhileTrue, @WhileFalse or @Timeline.",
+              "full": "Momentarily triggers a @WhileTrue, @WhileFalse or @Timeline.\n\n# Example\nIn this example, a pulse activated by pressing a `Button` scales the button by 1.5 over 0.2 seconds, then scales it back to 1 over the same duration.\n\n    <Button Text=\"Pulse\">\n        <WhileTrue ux:Name=\"pulseMe\" Value=\"false\">\n            <Scale Factor=\"1.5\" Duration=\"0.2\" />\n        </WhileTrue>\n\n        <Clicked>\n            <Pulse Target=\"pulseMe\" />\n        </Clicked>\n    </Button>"
+            },
+            "id": {
+              "id": "fuse/triggers/actions/pulse",
+              "parentId": "fuse/triggers/actions",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/actions/pulse",
+              "href": "fuse/triggers/actions/pulse"
+            },
+            "titles": {
+              "indexTitle": "Pulse",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.Actions.Pulse"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/triggers/actions/pulsebackward",
+              "parentId": "fuse/triggers/actions",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/actions/pulsebackward",
+              "href": "fuse/triggers/actions/pulsebackward"
+            },
+            "titles": {
+              "indexTitle": "PulseBackward",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.Actions.PulseBackward"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/triggers/actions/pulseforward",
+              "parentId": "fuse/triggers/actions",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/actions/pulseforward",
+              "href": "fuse/triggers/actions/pulseforward"
+            },
+            "titles": {
+              "indexTitle": "PulseForward",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.Actions.PulseForward"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Raises a UserEvent specified by name.",
+              "full": "Raises a UserEvent specified by name.\n\nThe @UserEvent must exist higher up in the tree than this action.\n\n> *Note:* See [this article](/docs/basics/creating-components#events-userevent)\n> for a more complete explanation of user events.\n\n# Examples\n\nThe following example shows a button which raises a @UserEvent when\nclicked.\n\n    <UserEvent ux:Name=\"myEvent\" />\n    <Button>\n        <Clicked>\n            <RaiseUserEvent EventName=\"myEvent\" />\n        </Clicked>\n    </Button>\n\nYou can also pass arguments using @UserEventArg.\nWhen using a JavaScript function to handle the event, the arguments will\nbe passed to that function.\n\n    <UserEvent ux:Name=\"myEvent\" />\n    <Button>\n        <Clicked>\n            <RaiseUserEvent EventName=\"myEvent\">\n                <UserEventArg Name=\"name\" StringValue=\"james\" />\n                <UserEventArg Name=\"isAdmin\" BoolValue=\"false\" />\n            </RaiseUserEvent>\n        </Clicked>\n    </Button>"
+            },
+            "id": {
+              "id": "fuse/triggers/actions/raiseuserevent",
+              "parentId": "fuse/triggers/actions",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/actions/raiseuserevent",
+              "href": "fuse/triggers/actions/raiseuserevent"
+            },
+            "titles": {
+              "indexTitle": "RaiseUserEvent",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.Actions.RaiseUserEvent"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Releases focus from the currently focused Element when activated.",
+              "full": "Releases focus from the currently focused Element when activated.\n\n# Example\nIn this example, a `TextInput` will release its focus when the Enter key on the keyboard is pressed.\n\n    <TextInput ux:Name=\"input\" Height=\"50\" Value=\"Filler text\">\n        <TextInputActionTriggered>\n            <ReleaseFocus />\n        </TextInputActionTriggered>\n    </TextInput>"
+            },
+            "id": {
+              "id": "fuse/triggers/actions/releasefocus",
+              "parentId": "fuse/triggers/actions",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/actions/releasefocus",
+              "href": "fuse/triggers/actions/releasefocus"
+            },
+            "titles": {
+              "indexTitle": "ReleaseFocus",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.Actions.ReleaseFocus"
+            }
+          },
+          {
+            "comment": {
+              "brief": "For navigation this indicates the page (Visual) is no longer required and can be reused, or discarded,\nby the container.",
+              "full": "For navigation this indicates the page (Visual) is no longer required and can be reused, or discarded,\nby the container.\n\n    <ExitingAnimation>\n        <Move X=\"1\" RelativeTo=\"Size\" Duration=\"0.3\"/>\n        <ReleasePage AtProgress=\"1\"/>\n    </ExitingAnimation>\n\nThis is currently only necessary in a `Navigator` and `PageView`. You can safely call it on transitions used potentially also in a `PageControl`."
+            },
+            "id": {
+              "id": "fuse/triggers/actions/releasepage",
+              "parentId": "fuse/triggers/actions",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/actions/releasepage",
+              "href": "fuse/triggers/actions/releasepage"
+            },
+            "titles": {
+              "indexTitle": "ReleasePage",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.Actions.ReleasePage"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Reloads the currently loaded URL",
+              "full": "Reloads the currently loaded URL"
+            },
+            "id": {
+              "id": "fuse/triggers/actions/reload",
+              "parentId": "fuse/triggers/actions",
+              "type": "UxClass",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/actions/reload",
+              "href": "fuse/triggers/actions/reload"
+            },
+            "titles": {
+              "indexTitle": "Reload",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.Actions.Reload"
+            }
+          },
+          {
+            "comment": {
+              "attributes": {
+                "deprecated": true
+              }
+            },
+            "id": {
+              "id": "fuse/triggers/actions/resume",
+              "parentId": "fuse/triggers/actions",
+              "type": "UxClass",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/actions/resume",
+              "href": "fuse/triggers/actions/resume"
+            },
+            "titles": {
+              "indexTitle": "Resume",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.Actions.Resume"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Reorders the siblings of a @Visual so that the @Visual will be rendered underneath.",
+              "full": "Reorders the siblings of a @Visual so that the @Visual will be rendered underneath.\n\n> Note that it doesn't affect the @Visual's `ZOffset`. Instead, it reorders the @Visual amongst its siblings so that it will be drawn underneath.\n> This means that using `ZOffset` can still cause this @Visual to be rendered on top of its siblings.\n\n## Example\n\n    <ScrollView>\n        <Grid Rows=\"400, 1*\" Margin=\"10\">\n            <Panel>\n                <TextBlock ux:Name=\"textInFront\" Alignment=\"Center\" FontSize=\"20\" Color=\"#fff\">I'll be sent to the back!</TextBlock>\n                <Rectangle Margin=\"10\" CornerRadius=\"4\" ux:Name=\"topRect\">\n                    <LinearGradient>\n                        <GradientStop Offset=\"0\" Color=\"#a542db\" />\n                        <GradientStop Offset=\"1\" Color=\"#3579e6\" />\n                    </LinearGradient>\n                </Rectangle>\n            </Panel>\n            <Rectangle Margin=\"10\">\n                <Stroke Offset=\"4\" Width=\"1\" Color=\"#3579e6\" />\n                <Button Text=\"Send element to back\" Alignment=\"Bottom\">\n                    <Clicked>\n                        <SendToBack Target=\"textInFront\" />\n                    </Clicked>\n                </Button>\n            </Rectangle>\n        </Grid>\n    </ScrollView>"
+            },
+            "id": {
+              "id": "fuse/triggers/actions/sendtoback",
+              "parentId": "fuse/triggers/actions",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/actions/sendtoback",
+              "href": "fuse/triggers/actions/sendtoback"
+            },
+            "titles": {
+              "indexTitle": "SendToBack",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.Actions.SendToBack"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Permanently changes the value of a property.",
+              "full": "Permanently changes the value of a property.\n\n> **Note:** If you wish to temporarily change the value of a property, use @Change instead.\n\nThe basic syntax of `Set` is as follows:\n\n    <Set myNode.MyProperty=\"MyValue\" />\n\nHowever, this is just syntactic sugar. The following is equivalent:\n\n    <Set Target=\"myNode.MyProperty\" Value=\"MyValue\" />\n\n## Example\n\nThe following example consists of a red @Rectangle that, once clicked, changes its color to blue.\n\n    <Rectangle ux:Name=\"myRectangle\" Color=\"Red\">\n        <Clicked>\n            <Set myRectangle.Color=\"Blue\" />\n        </Clicked>\n    </Rectangle>"
+            },
+            "id": {
+              "id": "fuse/triggers/actions/set_1",
+              "parentId": "fuse/triggers/actions",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/actions/set_1",
+              "href": "fuse/triggers/actions/set_1"
+            },
+            "titles": {
+              "indexTitle": "Set<T>",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.Actions.Set<T>"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Makes an @Element visible by setting `Visibility` to `Visible`.",
+              "full": "Makes an @Element visible by setting `Visibility` to `Visible`.\n\n## Basic syntax\n\n    <Show TargetNode=\"myElement\" />\n\n## Example\n\n    <Grid RowCount=\"3\" ColumnCount=\"1\">\n        <Button Text=\"Show the elements\">\n            <Clicked>\n                <Show TargetNode=\"hiddenElement\" />\n                <Show TargetNode=\"collapsedElement\" />\n            </Clicked>\n        </Button>\n\n        <Panel ux:Name=\"hiddenElement\" Visibility=\"Hidden\" Background=\"Blue\" />\n        <Panel ux:Name=\"collapsedElement\" Visibility=\"Collapsed\" Background=\"Red\" />\n    </Grid>"
+            },
+            "id": {
+              "id": "fuse/triggers/actions/show",
+              "parentId": "fuse/triggers/actions",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/actions/show",
+              "href": "fuse/triggers/actions/show"
+            },
+            "titles": {
+              "indexTitle": "Show",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.Actions.Show"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Stop a video or timeline.",
+              "full": "Stop a video or timeline.\n\nThe position is set to the beginning, and the playback is stopped.\n\n## Video Example\n\n    <Grid Rows=\"3*,1*\" >\n        <Video ux:Name=\"video\" Url=\"http://download.blender.org/peach/bigbuckbunny_movies/BigBuckBunny_320x180.mp4\" StretchMode=\"Uniform\" />\n        <Grid Columns=\"1*,1*\">\n            <Button Text=\"Start\">\n                <Clicked>\n                    <Resume Target=\"video\" />\n                </Clicked>\n            </Button>\n            <Button Text=\"Stop\">\n                <Clicked>\n                    <Stop Target=\"video\" />\n                </Clicked>\n            </Button>\n        </Grid>\n    </Grid>\n\n## Timeline Example\n\n    <StackPanel>\n        <Rectangle Width=\"150\" Height=\"150\" Margin=\"60\" ux:Name=\"rect\" CornerRadius=\"10\" >\n            <Stroke ux:Name=\"rectStroke\" Offset=\"10\" Width=\"3\" Color=\"#3579e6\" />\n\n            <Timeline  ux:Name=\"timeline\" TimeMultiplier=\"0.4\">\n                <Rotate>\n                    <Keyframe DegreesZ=\"360\" Time=\"1\" />\n                </Rotate>\n                <Change Target=\"rect.Color\">\n                    <Keyframe Value=\"#3579e6\" Time=\"1\" />\n                </Change>\n            </Timeline>\n        </Rectangle>\n\n        <Slider Width=\"250\" ux:Name=\"targetProgress\" Value=\"0.5\" Minimum=\"0\" Maximum=\"1\" />\n        <Button Text=\"Animate to\" Alignment=\"Bottom\">\n            <Clicked>\n                <PlayTo Target=\"timeline\" Progress=\"{ReadProperty targetProgress.Value}\" />\n            </Clicked>\n        </Button>\n\n        <Button ux:Name=\"resume\" Text=\"Resume\" Alignment=\"Bottom\">\n            <Clicked>\n                <Resume Target=\"timeline\" />\n            </Clicked>\n        </Button>\n\n        <Button Text=\"Pause\" Alignment=\"Bottom\">\n            <Clicked>\n                <Pause Target=\"timeline\" />\n            </Clicked>\n        </Button>\n\n        <Button Text=\"Stop\" Alignment=\"Bottom\">\n            <Clicked>\n                <Stop Target=\"timeline\" />\n            </Clicked>\n        </Button>\n    </StackPanel>"
+            },
+            "id": {
+              "id": "fuse/triggers/actions/stop",
+              "parentId": "fuse/triggers/actions",
+              "type": "UxClass",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/actions/stop",
+              "href": "fuse/triggers/actions/stop"
+            },
+            "titles": {
+              "indexTitle": "Stop",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.Actions.Stop"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Stops loading the currently loading URL",
+              "full": "Stops loading the currently loading URL"
+            },
+            "id": {
+              "id": "fuse/triggers/actions/stoploading",
+              "parentId": "fuse/triggers/actions",
+              "type": "UxClass",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/actions/stoploading",
+              "href": "fuse/triggers/actions/stoploading"
+            },
+            "titles": {
+              "indexTitle": "StopLoading",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.Actions.StopLoading"
+            }
+          },
+          {
+            "comment": {
+              "brief": "A unified action that controls a @Timeline.",
+              "full": "A unified action that controls a @Timeline.\n\nThese actions differ from the `IPlayback` interface, which only supports a plain media view of the Timeline. `TimelineAction` exposes the advanced functionality of @Timeline, and matches the JavaScript interface."
+            },
+            "id": {
+              "id": "fuse/triggers/actions/timelineaction",
+              "parentId": "fuse/triggers/actions",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/actions/timelineaction",
+              "href": "fuse/triggers/actions/timelineaction"
+            },
+            "titles": {
+              "indexTitle": "TimelineAction",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.Actions.TimelineAction"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Toggles the state of a toggleable component.",
+              "full": "Toggles the state of a toggleable component.\n\nIt is not reccommended to use this trigger action to toggle a logical state in your app. For that, use\nan Observable boolean in JavaScript and manipulate its value in a callback.\n\n## Example\n\n    <StackPanel>\n        <Switch ux:Name=\"switch1\" />\n\n        <Button Text=\"Toggle!\">\n            <Clicked>\n                <Toggle Target=\"switch1\" />\n            </Clicked>\n        </Button>\n    </StackPanel>"
+            },
+            "id": {
+              "id": "fuse/triggers/actions/toggle",
+              "parentId": "fuse/triggers/actions",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/actions/toggle",
+              "href": "fuse/triggers/actions/toggle"
+            },
+            "titles": {
+              "indexTitle": "Toggle",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.Actions.Toggle"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Lets you create a temporary layout change.\nThis can be used to do visual layout transitions without needing actual layout changes.",
+              "full": "Lets you create a temporary layout change.\nThis can be used to do visual layout transitions without needing actual layout changes.\n\nIt has no noticeable effect on its own, and needs to be combined with a @(LayoutAnimation).\nThe @(LayoutAnimation) will in turn be triggered by this action.\n\n# Example\nThis example demonstrates `TransitionLayout` in action when a button is clicked.\n\n    <DockPanel>\n        <Panel Dock=\"Top\" Height=\"20\" ux:Name=\"originElement\" />\n        <Button Height=\"100\" Dock=\"Bottom\" Text=\"Transition!\">\n            <LayoutAnimation>\n                <Move X=\"1\" Y=\"1\" RelativeTo=\"WorldPositionChange\" Duration=\"1\" />\n                <Resize X=\"1\" Y=\"1\" RelativeTo=\"SizeChange\" Duration=\"1\" />\n            </LayoutAnimation>\n            <Clicked>\n                <TransitionLayout From=\"originElement\" />\n            </Clicked>\n        </Button>\n    </DockPanel>\n\nWhen clicked, the @(Button) in this example will perform a transition over 1 second from the position and size of `originElement` (top edge of the @(DockPanel)) to its actual position and size (bottom edge of the @(DockPanel))."
+            },
+            "id": {
+              "id": "fuse/triggers/actions/transitionlayout",
+              "parentId": "fuse/triggers/actions",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/actions/transitionlayout",
+              "href": "fuse/triggers/actions/transitionlayout"
+            },
+            "titles": {
+              "indexTitle": "TransitionLayout",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.Actions.TransitionLayout"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/triggers/actions/transitionstate",
+              "parentId": "fuse/triggers/actions",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/actions/transitionstate",
+              "href": "fuse/triggers/actions/transitionstate"
+            },
+            "titles": {
+              "indexTitle": "TransitionState",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.Actions.TransitionState"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Represents an argument to be passed with @RaiseUserEvent",
+              "full": "Represents an argument to be passed with @RaiseUserEvent\n\nA user event may also include a number of arguments that can be\nread from JavaScript.\n\nUserEventArg accepts `IntValue`, `FloatValue`, `StringValue` or\n`BoolValue`.\n\n> *Note:* See [this article](/docs/basics/creating-components#events-userevent)\nfor a more complete explanation of user events.\n\n## Example\n\nThe following example shows a @Button that, when clicked, raises a\nuser event with the argument `message`, which has the value\n`Hello from UX!`.\n\n    <UserEvent ux:Name=\"myEvent\" />\n    <Button Text=\"Raise event with message\">\n        <Clicked>\n            <RaiseUserEvent EventName=\"myEvent\">\n                <UserEventArg Name=\"message\" StringValue=\"Hello from UX!\" />\n            </RaiseUserEvent>\n        </Clicked>\n    </Button>"
+            },
+            "id": {
+              "id": "fuse/triggers/actions/usereventarg",
+              "parentId": "fuse/triggers/actions",
+              "type": "UxClass",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/actions/usereventarg",
+              "href": "fuse/triggers/actions/usereventarg"
+            },
+            "titles": {
+              "indexTitle": "UserEventArg",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.Actions.UserEventArg"
+            }
+          }
+        ]
+      }
+    ],
+    "classes": [
+      {
+        "items": [
+          {
+            "id": {
+              "id": "fuse/triggers/actions/jseventargs",
+              "parentId": "fuse/triggers/actions",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/actions/jseventargs",
+              "href": "fuse/triggers/actions/jseventargs"
+            },
+            "titles": {
+              "indexTitle": "JSEventArgs",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.Actions.JSEventArgs"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/triggers/actions/playbackaction",
+              "parentId": "fuse/triggers/actions",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/actions/playbackaction",
+              "href": "fuse/triggers/actions/playbackaction"
+            },
+            "titles": {
+              "indexTitle": "PlaybackAction",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.Actions.PlaybackAction"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Trigger actions performs an action at a given delay after a trigger is activated.",
+              "full": "Trigger actions performs an action at a given delay after a trigger is activated.\n\nActions are similar to @Animators, but are one-off events that fire at a particular point in time. Like animators they are activated by\ntriggers, but their effects are not reversed when their containing trigger is deactivated. Commonly examples of actions include @Set,\n@Callback, @Hide and @Show.\n\n## Available trigger actions\n\n[subclass Fuse.Triggers.Actions.TriggerAction]",
+              "attributes": {
+                "topic": "Trigger actions"
+              }
+            },
+            "id": {
+              "id": "fuse/triggers/actions/triggeraction",
+              "parentId": "fuse/triggers/actions",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/actions/triggeraction",
+              "href": "fuse/triggers/actions/triggeraction"
+            },
+            "titles": {
+              "indexTitle": "TriggerAction",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.Actions.TriggerAction"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/triggers/actions/webviewnavaction",
+              "parentId": "fuse/triggers/actions",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/actions/webviewnavaction",
+              "href": "fuse/triggers/actions/webviewnavaction"
+            },
+            "titles": {
+              "indexTitle": "WebViewNavAction",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.Actions.WebViewNavAction"
+            }
+          }
+        ]
+      }
+    ],
+    "delegates": [
+      {
+        "items": [
+          {
+            "parameters": [
+              {
+                "name": "sender",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              },
+              {
+                "name": "args",
+                "href": "fuse/triggers/actions/jseventargs",
+                "title": "JSEventArgs",
+                "fullyQualifiedTitle": "Fuse.Triggers.Actions.JSEventArgs"
+              }
+            ],
+            "id": {
+              "id": "fuse/triggers/actions/jseventhandler",
+              "parentId": "fuse/triggers/actions",
+              "type": "Delegate",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/actions/jseventhandler",
+              "href": "fuse/triggers/actions/jseventhandler"
+            },
+            "titles": {
+              "indexTitle": "JSEventHandler (object, JSEventArgs)",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.Actions.JSEventHandler (object, Fuse.Triggers.Actions.JSEventArgs)"
+            }
+          }
+        ]
+      }
+    ],
+    "enums": [
+      {
+        "items": [
+          {
+            "id": {
+              "id": "fuse/triggers/actions/timelineactionhow",
+              "parentId": "fuse/triggers/actions",
+              "type": "Enum",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/actions/timelineactionhow",
+              "href": "fuse/triggers/actions/timelineactionhow"
+            },
+            "titles": {
+              "indexTitle": "TimelineActionHow",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.Actions.TimelineActionHow"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/triggers/actions/transitionstatetype",
+              "parentId": "fuse/triggers/actions",
+              "type": "Enum",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/actions/transitionstatetype",
+              "href": "fuse/triggers/actions/transitionstatetype"
+            },
+            "titles": {
+              "indexTitle": "TransitionStateType",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.Actions.TransitionStateType"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/triggers/actions/triggerwhen",
+              "parentId": "fuse/triggers/actions",
+              "type": "Enum",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/actions/triggerwhen",
+              "href": "fuse/triggers/actions/triggerwhen"
+            },
+            "titles": {
+              "indexTitle": "TriggerWhen",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.Actions.TriggerWhen"
+            }
+          }
+        ]
+      }
+    ],
+    "interfaces": [
+      {
+        "items": [
+          {
+            "id": {
+              "id": "fuse/triggers/actions/icollapse",
+              "parentId": "fuse/triggers/actions",
+              "type": "Interface",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/actions/icollapse",
+              "href": "fuse/triggers/actions/icollapse"
+            },
+            "titles": {
+              "indexTitle": "ICollapse",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.Actions.ICollapse"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/triggers/actions/ihide",
+              "parentId": "fuse/triggers/actions",
+              "type": "Interface",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/actions/ihide",
+              "href": "fuse/triggers/actions/ihide"
+            },
+            "titles": {
+              "indexTitle": "IHide",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.Actions.IHide"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/triggers/actions/ishow",
+              "parentId": "fuse/triggers/actions",
+              "type": "Interface",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/actions/ishow",
+              "href": "fuse/triggers/actions/ishow"
+            },
+            "titles": {
+              "indexTitle": "IShow",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.Actions.IShow"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/triggers/actions/itaggeddebugproperty",
+              "parentId": "fuse/triggers/actions",
+              "type": "Interface",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/actions/itaggeddebugproperty",
+              "href": "fuse/triggers/actions/itaggeddebugproperty"
+            },
+            "titles": {
+              "indexTitle": "ITaggedDebugProperty",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.Actions.ITaggedDebugProperty"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/triggers/actions/itoggleable",
+              "parentId": "fuse/triggers/actions",
+              "type": "Interface",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/actions/itoggleable",
+              "href": "fuse/triggers/actions/itoggleable"
+            },
+            "titles": {
+              "indexTitle": "IToggleable",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.Actions.IToggleable"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

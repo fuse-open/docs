@@ -1,0 +1,787 @@
+{
+  "entity": {
+    "base": {
+      "id": {
+        "id": "uno/int",
+        "parentId": "uno",
+        "type": "Struct",
+        "modifiers": [
+          "public",
+          "intrinsic"
+        ]
+      },
+      "uri": {
+        "idUri": "uno/int",
+        "href": "uno/int"
+      },
+      "titles": {
+        "indexTitle": "int",
+        "fullyQualifiedIndexTitle": "int"
+      }
+    },
+    "location": {
+      "namespaceTitle": "Fuse.Input",
+      "namespaceUri": "fuse/input",
+      "packageName": "Fuse.Nodes",
+      "packageVersion": "1.8.0-rc2"
+    },
+    "inheritance": {
+      "root": {
+        "uri": "uno/object",
+        "title": "object",
+        "children": [
+          {
+            "uri": "uno/int",
+            "title": "int",
+            "children": [
+              {
+                "uri": "fuse/input/capturetype",
+                "title": "Fuse.Input.CaptureType",
+                "children": [],
+                "isCurrent": true
+              }
+            ],
+            "isAncestor": true
+          }
+        ],
+        "isAncestor": true
+      },
+      "hasInheritance": true
+    },
+    "values": [
+      {
+        "uri": "fuse/input/capturetype/none",
+        "title": "None",
+        "comment": {
+          "brief": "Multiple captures can be performed on a single point index. The type indicates the type of interest the capture has on the pointer events.",
+          "full": "Multiple captures can be performed on a single point index. The type indicates the type of interest the capture has on the pointer events."
+        }
+      },
+      {
+        "uri": "fuse/input/capturetype/soft",
+        "title": "Soft",
+        "comment": {
+          "brief": "A soft capture is a non-exclusive capture which allows any other soft captures to also exist. These are used when a gesture has not yet been fully identified (selection of gestures), or the capturer never needs to make visual feedback, or if the capturer doesn't care about losing the capture.",
+          "full": "A soft capture is a non-exclusive capture which allows any other soft captures to also exist. These are used when a gesture has not yet been fully identified (selection of gestures), or the capturer never needs to make visual feedback, or if the capturer doesn't care about losing the capture.\n\nOnly one of Soft or Hard can be specified."
+        }
+      },
+      {
+        "uri": "fuse/input/capturetype/hard",
+        "title": "Hard",
+        "comment": {
+          "brief": "A hard capture indicates a strong desire to be the exclusive recipient of pointer events. It likely means visual feedback is being tied to this capture, and tries to intentionally exclude other behaviors from also acting on the same feedback.",
+          "full": "A hard capture indicates a strong desire to be the exclusive recipient of pointer events. It likely means visual feedback is being tied to this capture, and tries to intentionally exclude other behaviors from also acting on the same feedback."
+        }
+      },
+      {
+        "uri": "fuse/input/capturetype/children",
+        "title": "Children",
+        "comment": {
+          "brief": "Targetting still looks at children. Normally the pointer input is directed strictly to the bottom most capture element. This allows capturing within part of the UI tree.",
+          "full": "Targetting still looks at children. Normally the pointer input is directed strictly to the bottom most capture element. This allows capturing within part of the UI tree."
+        }
+      },
+      {
+        "uri": "fuse/input/capturetype/nodeshare",
+        "title": "NodeShare",
+        "comment": {
+          "brief": "Multiple Soft/Hard-NodeShared captures can exist on the same node. Usually a hard capture will release all other captures. NodeShare allows captures on the same node to persist even in the presence of a hard capture.",
+          "full": "Multiple Soft/Hard-NodeShared captures can exist on the same node. Usually a hard capture will release all other captures. NodeShare allows captures on the same node to persist even in the presence of a hard capture.\n\nThis is use for specific situations such as a SwipeGesture in a ScrollView where it makes sense that both gestures can handle the same input at the same time."
+        }
+      }
+    ],
+    "attributes": [
+      {
+        "id": {
+          "id": "uno/flagsattribute",
+          "parentId": "uno",
+          "type": "Class",
+          "modifiers": [
+            "public",
+            "sealed"
+          ]
+        },
+        "uri": {
+          "idUri": "uno/flagsattribute",
+          "href": "uno/flagsattribute"
+        },
+        "titles": {
+          "indexTitle": "FlagsAttribute",
+          "fullyQualifiedIndexTitle": "Uno.FlagsAttribute"
+        }
+      }
+    ],
+    "id": {
+      "id": "fuse/input/capturetype",
+      "parentId": "fuse/input",
+      "type": "Enum",
+      "modifiers": [
+        "public"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/input/capturetype",
+      "href": "fuse/input/capturetype"
+    },
+    "titles": {
+      "pageTitle": "CaptureType Enum",
+      "navigationTitle": "CaptureType Enum",
+      "fullTitle": "Fuse.Input.CaptureType",
+      "indexTitle": "CaptureType",
+      "fullyQualifiedIndexTitle": "Fuse.Input.CaptureType"
+    },
+    "syntax": {
+      "uno": "[Uno.Flags]\r\npublic enum CaptureType : int {}"
+    },
+    "comment": {
+      "brief": "Multiple captures can be performed on a single point index. The type indicates the type of interest the capture has on the pointer events.",
+      "full": "Multiple captures can be performed on a single point index. The type indicates the type of interest the capture has on the pointer events."
+    }
+  },
+  "tableOfContents": {
+    "methods": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/input/capturetype",
+            "parentId": "fuse/input",
+            "type": "Enum",
+            "modifiers": [
+              "public"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/input/capturetype",
+            "href": "fuse/input/capturetype"
+          },
+          "titles": {
+            "indexTitle": "CaptureType",
+            "fullyQualifiedIndexTitle": "Fuse.Input.CaptureType"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "parameters": [
+              {
+                "name": "flag",
+                "href": "fuse/input/capturetype",
+                "title": "CaptureType",
+                "fullyQualifiedTitle": "Fuse.Input.CaptureType"
+              }
+            ],
+            "id": {
+              "id": "fuse/input/capturetype/hasflag_0f66dd90",
+              "parentId": "fuse/input/capturetype",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "intrinsic",
+                "generated"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/input/capturetype/hasflag_0f66dd90",
+              "href": "fuse/input/capturetype/hasflag_0f66dd90"
+            },
+            "titles": {
+              "indexTitle": "HasFlag(CaptureType)",
+              "fullyQualifiedIndexTitle": "Fuse.Input.CaptureType.HasFlag(Fuse.Input.CaptureType)"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "uno/object",
+            "parentId": "uno",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "intrinsic"
+            ]
+          },
+          "uri": {
+            "idUri": "uno/object",
+            "href": "uno/object"
+          },
+          "titles": {
+            "indexTitle": "object",
+            "fullyQualifiedIndexTitle": "object"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "parameters": [
+              {
+                "name": "o",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              }
+            ],
+            "id": {
+              "id": "fuse/input/capturetype/equals_a09c80e3",
+              "parentId": "fuse/input/capturetype",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/input/capturetype/equals_a09c80e3",
+              "href": "uno/object/equals_a09c80e3",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Equals(object)",
+              "fullyQualifiedIndexTitle": "Uno.Object.Equals(object)"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/int",
+              "title": "int",
+              "fullyQualifiedTitle": "int"
+            },
+            "id": {
+              "id": "fuse/input/capturetype/gethashcode",
+              "parentId": "fuse/input/capturetype",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/input/capturetype/gethashcode",
+              "href": "uno/object/gethashcode",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetHashCode",
+              "fullyQualifiedIndexTitle": "Uno.Object.GetHashCode"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/type",
+              "title": "Type",
+              "fullyQualifiedTitle": "Uno.Type"
+            },
+            "id": {
+              "id": "fuse/input/capturetype/gettype",
+              "parentId": "fuse/input/capturetype",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/input/capturetype/gettype",
+              "href": "uno/object/gettype",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetType",
+              "fullyQualifiedIndexTitle": "Uno.Object.GetType"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "id": {
+              "id": "fuse/input/capturetype/tostring",
+              "parentId": "fuse/input/capturetype",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/input/capturetype/tostring",
+              "href": "uno/object/tostring",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "ToString",
+              "fullyQualifiedIndexTitle": "Uno.Object.ToString"
+            }
+          }
+        ]
+      }
+    ],
+    "operators": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/input/capturetype",
+            "parentId": "fuse/input",
+            "type": "Enum",
+            "modifiers": [
+              "public"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/input/capturetype",
+            "href": "fuse/input/capturetype"
+          },
+          "titles": {
+            "indexTitle": "CaptureType",
+            "fullyQualifiedIndexTitle": "Fuse.Input.CaptureType"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "fuse/input/capturetype",
+              "title": "CaptureType",
+              "fullyQualifiedTitle": "Fuse.Input.CaptureType"
+            },
+            "parameters": [
+              {
+                "name": "operand",
+                "href": "fuse/input/capturetype",
+                "title": "CaptureType",
+                "fullyQualifiedTitle": "Fuse.Input.CaptureType"
+              }
+            ],
+            "id": {
+              "id": "fuse/input/capturetype/op_onescomplement_0f66dd90",
+              "parentId": "fuse/input/capturetype",
+              "type": "Operator",
+              "modifiers": [
+                "public",
+                "intrinsic",
+                "static",
+                "generated"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/input/capturetype/op_onescomplement_0f66dd90",
+              "href": "fuse/input/capturetype/op_onescomplement_0f66dd90"
+            },
+            "titles": {
+              "indexTitle": "~ CaptureType",
+              "fullyQualifiedIndexTitle": "Fuse.Input.CaptureType.~ CaptureType"
+            }
+          },
+          {
+            "returns": {
+              "href": "fuse/input/capturetype",
+              "title": "CaptureType",
+              "fullyQualifiedTitle": "Fuse.Input.CaptureType"
+            },
+            "parameters": [
+              {
+                "name": "left",
+                "href": "fuse/input/capturetype",
+                "title": "CaptureType",
+                "fullyQualifiedTitle": "Fuse.Input.CaptureType"
+              },
+              {
+                "name": "right",
+                "href": "fuse/input/capturetype",
+                "title": "CaptureType",
+                "fullyQualifiedTitle": "Fuse.Input.CaptureType"
+              }
+            ],
+            "id": {
+              "id": "fuse/input/capturetype/op_subtraction_ea1cf672",
+              "parentId": "fuse/input/capturetype",
+              "type": "Operator",
+              "modifiers": [
+                "public",
+                "intrinsic",
+                "static",
+                "generated"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/input/capturetype/op_subtraction_ea1cf672",
+              "href": "fuse/input/capturetype/op_subtraction_ea1cf672"
+            },
+            "titles": {
+              "indexTitle": "CaptureType - CaptureType",
+              "fullyQualifiedIndexTitle": "Fuse.Input.CaptureType.CaptureType - CaptureType"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "parameters": [
+              {
+                "name": "left",
+                "href": "fuse/input/capturetype",
+                "title": "CaptureType",
+                "fullyQualifiedTitle": "Fuse.Input.CaptureType"
+              },
+              {
+                "name": "right",
+                "href": "fuse/input/capturetype",
+                "title": "CaptureType",
+                "fullyQualifiedTitle": "Fuse.Input.CaptureType"
+              }
+            ],
+            "id": {
+              "id": "fuse/input/capturetype/op_inequality_ea1cf672",
+              "parentId": "fuse/input/capturetype",
+              "type": "Operator",
+              "modifiers": [
+                "public",
+                "intrinsic",
+                "static",
+                "generated"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/input/capturetype/op_inequality_ea1cf672",
+              "href": "fuse/input/capturetype/op_inequality_ea1cf672"
+            },
+            "titles": {
+              "indexTitle": "CaptureType != CaptureType",
+              "fullyQualifiedIndexTitle": "Fuse.Input.CaptureType.CaptureType != CaptureType"
+            }
+          },
+          {
+            "returns": {
+              "href": "fuse/input/capturetype",
+              "title": "CaptureType",
+              "fullyQualifiedTitle": "Fuse.Input.CaptureType"
+            },
+            "parameters": [
+              {
+                "name": "left",
+                "href": "fuse/input/capturetype",
+                "title": "CaptureType",
+                "fullyQualifiedTitle": "Fuse.Input.CaptureType"
+              },
+              {
+                "name": "right",
+                "href": "fuse/input/capturetype",
+                "title": "CaptureType",
+                "fullyQualifiedTitle": "Fuse.Input.CaptureType"
+              }
+            ],
+            "id": {
+              "id": "fuse/input/capturetype/op_bitwiseand_ea1cf672",
+              "parentId": "fuse/input/capturetype",
+              "type": "Operator",
+              "modifiers": [
+                "public",
+                "intrinsic",
+                "static",
+                "generated"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/input/capturetype/op_bitwiseand_ea1cf672",
+              "href": "fuse/input/capturetype/op_bitwiseand_ea1cf672"
+            },
+            "titles": {
+              "indexTitle": "CaptureType & CaptureType",
+              "fullyQualifiedIndexTitle": "Fuse.Input.CaptureType.CaptureType & CaptureType"
+            }
+          },
+          {
+            "returns": {
+              "href": "fuse/input/capturetype",
+              "title": "CaptureType",
+              "fullyQualifiedTitle": "Fuse.Input.CaptureType"
+            },
+            "parameters": [
+              {
+                "name": "left",
+                "href": "fuse/input/capturetype",
+                "title": "CaptureType",
+                "fullyQualifiedTitle": "Fuse.Input.CaptureType"
+              },
+              {
+                "name": "right",
+                "href": "fuse/input/capturetype",
+                "title": "CaptureType",
+                "fullyQualifiedTitle": "Fuse.Input.CaptureType"
+              }
+            ],
+            "id": {
+              "id": "fuse/input/capturetype/op_exclusiveor_ea1cf672",
+              "parentId": "fuse/input/capturetype",
+              "type": "Operator",
+              "modifiers": [
+                "public",
+                "intrinsic",
+                "static",
+                "generated"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/input/capturetype/op_exclusiveor_ea1cf672",
+              "href": "fuse/input/capturetype/op_exclusiveor_ea1cf672"
+            },
+            "titles": {
+              "indexTitle": "CaptureType ^ CaptureType",
+              "fullyQualifiedIndexTitle": "Fuse.Input.CaptureType.CaptureType ^ CaptureType"
+            }
+          },
+          {
+            "returns": {
+              "href": "fuse/input/capturetype",
+              "title": "CaptureType",
+              "fullyQualifiedTitle": "Fuse.Input.CaptureType"
+            },
+            "parameters": [
+              {
+                "name": "left",
+                "href": "fuse/input/capturetype",
+                "title": "CaptureType",
+                "fullyQualifiedTitle": "Fuse.Input.CaptureType"
+              },
+              {
+                "name": "right",
+                "href": "fuse/input/capturetype",
+                "title": "CaptureType",
+                "fullyQualifiedTitle": "Fuse.Input.CaptureType"
+              }
+            ],
+            "id": {
+              "id": "fuse/input/capturetype/op_bitwiseor_ea1cf672",
+              "parentId": "fuse/input/capturetype",
+              "type": "Operator",
+              "modifiers": [
+                "public",
+                "intrinsic",
+                "static",
+                "generated"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/input/capturetype/op_bitwiseor_ea1cf672",
+              "href": "fuse/input/capturetype/op_bitwiseor_ea1cf672"
+            },
+            "titles": {
+              "indexTitle": "CaptureType | CaptureType",
+              "fullyQualifiedIndexTitle": "Fuse.Input.CaptureType.CaptureType | CaptureType"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "parameters": [
+              {
+                "name": "left",
+                "href": "fuse/input/capturetype",
+                "title": "CaptureType",
+                "fullyQualifiedTitle": "Fuse.Input.CaptureType"
+              },
+              {
+                "name": "right",
+                "href": "fuse/input/capturetype",
+                "title": "CaptureType",
+                "fullyQualifiedTitle": "Fuse.Input.CaptureType"
+              }
+            ],
+            "id": {
+              "id": "fuse/input/capturetype/op_equality_ea1cf672",
+              "parentId": "fuse/input/capturetype",
+              "type": "Operator",
+              "modifiers": [
+                "public",
+                "intrinsic",
+                "static",
+                "generated"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/input/capturetype/op_equality_ea1cf672",
+              "href": "fuse/input/capturetype/op_equality_ea1cf672"
+            },
+            "titles": {
+              "indexTitle": "CaptureType == CaptureType",
+              "fullyQualifiedIndexTitle": "Fuse.Input.CaptureType.CaptureType == CaptureType"
+            }
+          }
+        ]
+      }
+    ],
+    "literals": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/input/capturetype",
+            "parentId": "fuse/input",
+            "type": "Enum",
+            "modifiers": [
+              "public"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/input/capturetype",
+            "href": "fuse/input/capturetype"
+          },
+          "titles": {
+            "indexTitle": "CaptureType",
+            "fullyQualifiedIndexTitle": "Fuse.Input.CaptureType"
+          }
+        },
+        "items": [
+          {
+            "comment": {
+              "brief": "Targetting still looks at children. Normally the pointer input is directed strictly to the bottom most capture element. This allows capturing within part of the UI tree.",
+              "full": "Targetting still looks at children. Normally the pointer input is directed strictly to the bottom most capture element. This allows capturing within part of the UI tree."
+            },
+            "returns": {
+              "href": "fuse/input/capturetype",
+              "title": "CaptureType",
+              "fullyQualifiedTitle": "Fuse.Input.CaptureType"
+            },
+            "id": {
+              "id": "fuse/input/capturetype/children",
+              "parentId": "fuse/input/capturetype",
+              "type": "Literal",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/input/capturetype/children",
+              "href": "fuse/input/capturetype/children"
+            },
+            "titles": {
+              "indexTitle": "Children",
+              "fullyQualifiedIndexTitle": "Fuse.Input.CaptureType.Children"
+            }
+          },
+          {
+            "comment": {
+              "brief": "A hard capture indicates a strong desire to be the exclusive recipient of pointer events. It likely means visual feedback is being tied to this capture, and tries to intentionally exclude other behaviors from also acting on the same feedback.",
+              "full": "A hard capture indicates a strong desire to be the exclusive recipient of pointer events. It likely means visual feedback is being tied to this capture, and tries to intentionally exclude other behaviors from also acting on the same feedback."
+            },
+            "returns": {
+              "href": "fuse/input/capturetype",
+              "title": "CaptureType",
+              "fullyQualifiedTitle": "Fuse.Input.CaptureType"
+            },
+            "id": {
+              "id": "fuse/input/capturetype/hard",
+              "parentId": "fuse/input/capturetype",
+              "type": "Literal",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/input/capturetype/hard",
+              "href": "fuse/input/capturetype/hard"
+            },
+            "titles": {
+              "indexTitle": "Hard",
+              "fullyQualifiedIndexTitle": "Fuse.Input.CaptureType.Hard"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Multiple Soft/Hard-NodeShared captures can exist on the same node. Usually a hard capture will release all other captures. NodeShare allows captures on the same node to persist even in the presence of a hard capture.",
+              "full": "Multiple Soft/Hard-NodeShared captures can exist on the same node. Usually a hard capture will release all other captures. NodeShare allows captures on the same node to persist even in the presence of a hard capture.\n\nThis is use for specific situations such as a SwipeGesture in a ScrollView where it makes sense that both gestures can handle the same input at the same time."
+            },
+            "returns": {
+              "href": "fuse/input/capturetype",
+              "title": "CaptureType",
+              "fullyQualifiedTitle": "Fuse.Input.CaptureType"
+            },
+            "id": {
+              "id": "fuse/input/capturetype/nodeshare",
+              "parentId": "fuse/input/capturetype",
+              "type": "Literal",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/input/capturetype/nodeshare",
+              "href": "fuse/input/capturetype/nodeshare"
+            },
+            "titles": {
+              "indexTitle": "NodeShare",
+              "fullyQualifiedIndexTitle": "Fuse.Input.CaptureType.NodeShare"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Multiple captures can be performed on a single point index. The type indicates the type of interest the capture has on the pointer events.",
+              "full": "Multiple captures can be performed on a single point index. The type indicates the type of interest the capture has on the pointer events."
+            },
+            "returns": {
+              "href": "fuse/input/capturetype",
+              "title": "CaptureType",
+              "fullyQualifiedTitle": "Fuse.Input.CaptureType"
+            },
+            "id": {
+              "id": "fuse/input/capturetype/none",
+              "parentId": "fuse/input/capturetype",
+              "type": "Literal",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/input/capturetype/none",
+              "href": "fuse/input/capturetype/none"
+            },
+            "titles": {
+              "indexTitle": "None",
+              "fullyQualifiedIndexTitle": "Fuse.Input.CaptureType.None"
+            }
+          },
+          {
+            "comment": {
+              "brief": "A soft capture is a non-exclusive capture which allows any other soft captures to also exist. These are used when a gesture has not yet been fully identified (selection of gestures), or the capturer never needs to make visual feedback, or if the capturer doesn't care about losing the capture.",
+              "full": "A soft capture is a non-exclusive capture which allows any other soft captures to also exist. These are used when a gesture has not yet been fully identified (selection of gestures), or the capturer never needs to make visual feedback, or if the capturer doesn't care about losing the capture.\n\nOnly one of Soft or Hard can be specified."
+            },
+            "returns": {
+              "href": "fuse/input/capturetype",
+              "title": "CaptureType",
+              "fullyQualifiedTitle": "Fuse.Input.CaptureType"
+            },
+            "id": {
+              "id": "fuse/input/capturetype/soft",
+              "parentId": "fuse/input/capturetype",
+              "type": "Literal",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/input/capturetype/soft",
+              "href": "fuse/input/capturetype/soft"
+            },
+            "titles": {
+              "indexTitle": "Soft",
+              "fullyQualifiedIndexTitle": "Fuse.Input.CaptureType.Soft"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

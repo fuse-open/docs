@@ -1,0 +1,1495 @@
+{
+  "entity": {
+    "base": {
+      "id": {
+        "id": "fuse/behavior",
+        "parentId": "fuse",
+        "type": "Class",
+        "modifiers": [
+          "public",
+          "abstract"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/behavior",
+        "href": "fuse/behavior"
+      },
+      "titles": {
+        "indexTitle": "Behavior",
+        "fullyQualifiedIndexTitle": "Fuse.Behavior"
+      }
+    },
+    "location": {
+      "namespaceTitle": "Fuse.Selection",
+      "namespaceUri": "fuse/selection",
+      "packageName": "Fuse.Selection",
+      "packageVersion": "1.8.0-rc2"
+    },
+    "inheritance": {
+      "root": {
+        "uri": "uno/object",
+        "title": "object",
+        "children": [
+          {
+            "uri": "uno/ux/propertyobject",
+            "title": "Uno.UX.PropertyObject",
+            "children": [
+              {
+                "uri": "fuse/node",
+                "title": "Fuse.Node",
+                "children": [
+                  {
+                    "uri": "fuse/behavior",
+                    "title": "Fuse.Behavior",
+                    "children": [
+                      {
+                        "uri": "fuse/selection/selectable",
+                        "title": "Fuse.Selection.Selectable",
+                        "children": [],
+                        "isCurrent": true
+                      }
+                    ],
+                    "isAncestor": true
+                  }
+                ],
+                "isAncestor": true
+              }
+            ],
+            "isAncestor": true
+          }
+        ],
+        "isAncestor": true
+      },
+      "hasInheritance": true
+    },
+    "uxProperties": {
+      "uxNamespaceTitle": "Fuse",
+      "uxNamespaceUri": "fuse",
+      "uxName": "Selection.Selectable"
+    },
+    "implementedInterfaces": [
+      {
+        "id": {
+          "id": "uno/collections/ilist_1",
+          "parentId": "uno/collections",
+          "type": "Interface",
+          "modifiers": [
+            "public",
+            "abstract"
+          ]
+        },
+        "uri": {
+          "idUri": "uno/collections/ilist_1",
+          "href": "uno/collections/ilist_1"
+        },
+        "titles": {
+          "indexTitle": "IList<Binding>",
+          "fullyQualifiedIndexTitle": "Uno.Collections.IList<Fuse.Binding>"
+        }
+      },
+      {
+        "comment": {
+          "brief": "Interface for objects that can have a script engine representation",
+          "full": "Interface for objects that can have a script engine representation"
+        },
+        "id": {
+          "id": "fuse/scripting/iscriptobject",
+          "parentId": "fuse/scripting",
+          "type": "Interface",
+          "modifiers": [
+            "public",
+            "abstract"
+          ]
+        },
+        "uri": {
+          "idUri": "fuse/scripting/iscriptobject",
+          "href": "fuse/scripting/iscriptobject"
+        },
+        "titles": {
+          "indexTitle": "IScriptObject",
+          "fullyQualifiedIndexTitle": "Fuse.Scripting.IScriptObject"
+        }
+      },
+      {
+        "id": {
+          "id": "fuse/iproperties",
+          "parentId": "fuse",
+          "type": "Interface",
+          "modifiers": [
+            "public",
+            "abstract"
+          ]
+        },
+        "uri": {
+          "idUri": "fuse/iproperties",
+          "href": "fuse/iproperties"
+        },
+        "titles": {
+          "indexTitle": "IProperties",
+          "fullyQualifiedIndexTitle": "Fuse.IProperties"
+        }
+      },
+      {
+        "id": {
+          "id": "uno/collections/icollection_1",
+          "parentId": "uno/collections",
+          "type": "Interface",
+          "modifiers": [
+            "public",
+            "abstract"
+          ]
+        },
+        "uri": {
+          "idUri": "uno/collections/icollection_1",
+          "href": "uno/collections/icollection_1"
+        },
+        "titles": {
+          "indexTitle": "ICollection<Binding>",
+          "fullyQualifiedIndexTitle": "Uno.Collections.ICollection<Fuse.Binding>"
+        }
+      },
+      {
+        "id": {
+          "id": "uno/collections/ienumerable_1",
+          "parentId": "uno/collections",
+          "type": "Interface",
+          "modifiers": [
+            "public",
+            "abstract"
+          ]
+        },
+        "uri": {
+          "idUri": "uno/collections/ienumerable_1",
+          "href": "uno/collections/ienumerable_1"
+        },
+        "titles": {
+          "indexTitle": "IEnumerable<Binding>",
+          "fullyQualifiedIndexTitle": "Uno.Collections.IEnumerable<Fuse.Binding>"
+        }
+      }
+    ],
+    "id": {
+      "id": "fuse/selection/selectable",
+      "parentId": "fuse/selection",
+      "type": "UxClass",
+      "modifiers": [
+        "public",
+        "partial"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/selection/selectable",
+      "href": "fuse/selection/selectable"
+    },
+    "titles": {
+      "pageTitle": "Selectable Class",
+      "navigationTitle": "Selectable Class",
+      "fullTitle": "Fuse.Selection.Selectable",
+      "indexTitle": "Selectable",
+      "fullyQualifiedIndexTitle": "Fuse.Selection.Selectable"
+    },
+    "syntax": {
+      "uno": "public partial class Selectable : Fuse.Behavior {}",
+      "ux": "<Selection.Selectable />"
+    },
+    "comment": {
+      "brief": "`Selectable` makes a Visual selectable. Selectable visuals are what can be selected in  a @Selection control.",
+      "full": "`Selectable` makes a Visual selectable. Selectable visuals are what can be selected in  a @Selection control.\n\nThe `Value` property is used by the @Selection to track what is selected. It is a string value to make it easy to work with from JavaScript.\n\n## Changing the selected state\n\nThere is no default behavior that changes a visuals selected state. In order to select a @(Selectable:selectable), you need to use @(ToggleSelection). A normal use of this would be inside a @(Clicked) trigger, like this:\n\n    <Panel>\n        <Selection />\n        <Panel>\n            <Selectable />\n            <Clicked>\n                <ToggleSelection />\n            </Clicked>\n        </Panel>\n    </Panel>\n\n## Reacting to a change in selected state\n\nYou can react to changes in the state of a @(Selectable) element using @(Selected), which pulses when the element is selected, or @(WhileSelected), which is true as long as the element is selected.",
+      "examples": "The following example uses @Selection to create a simple list of options. Tap the items to toggle their selection. `Values` is bound to a JavaScript `Observable` in order to track the currently selected items.\r\n\r\n\t<Panel ux:Class=\"MyItem\" Color=\"#aaa\">\r\n\t\t<string ux:Property=\"Label\" />\r\n\t\t<string ux:Property=\"Value\" />\r\n\t\t\r\n\t\t<Selectable Value=\"{ReadProperty this.Value}\" />\r\n\t\t<Text Value=\"{ReadProperty this.Label}\" />\r\n\t\t\r\n\t\t<WhileSelected>\r\n\t\t\t<Change this.Color=\"#ffc\" />\r\n\t\t</WhileSelected>\r\n\t\t<Tapped>\r\n\t\t\t<ToggleSelection />\r\n\t\t</Tapped>\r\n\t</Panel>\r\n\r\n\t<JavaScript>\r\n\t\tvar Observable = require(\"FuseJS/Observable\");\r\n\r\n\t\tvar values = Observable();\r\n\t\tvar list = Observable(function() {\r\n\t\t\treturn values.toArray().join(\",\");\r\n\t\t});\r\n\r\n\t\tmodule.exports = {\r\n\t\t\tvalues: values,\r\n\t\t\tlist: list\r\n\t\t};\r\n\t</JavaScript>\r\n\r\n\t<StackPanel>\r\n\t\t<Selection Values=\"{values}\" />\r\n\t\r\n\t\t<MyItem Label=\"Big Red One\" Value=\"sku-01\" />\r\n\t\t<MyItem Label=\"Small Green Two\" Value=\"sku-02\" />\r\n\t\t<MyItem Label=\"Third Last One\" Value=\"sku-03\" />\r\n\t\t<MyItem Label=\"Four Fore For\" Value=\"sku-04\" />\r\n\t\t<MyItem Label=\"Point Oh-Five\" Value=\"sku-05\" />\r\n\r\n\t\t<Text Value=\"Selected:\" Margin=\"0,10,0,0\" />\r\n\t\t<Text Value=\"{list}\" />\r\n\t</StackPanel>"
+    }
+  },
+  "tableOfContents": {
+    "uxProperties": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/selection/selectable",
+            "parentId": "fuse/selection",
+            "type": "UxClass",
+            "modifiers": [
+              "public",
+              "partial"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/selection/selectable",
+            "href": "fuse/selection/selectable"
+          },
+          "titles": {
+            "indexTitle": "Selectable",
+            "fullyQualifiedIndexTitle": "Fuse.Selection.Selectable"
+          }
+        },
+        "items": [
+          {
+            "comment": {
+              "brief": "The value which identifies this `Selectable` in the `Selection`. It will be this value that is used in `Selection.Value` and `Selection.Values`.",
+              "full": "The value which identifies this `Selectable` in the `Selection`. It will be this value that is used in `Selection.Value` and `Selection.Values`.\n\nA `Value` of a `Selectable` that is currently selected can be modified, in which case the selected value will also be modified."
+            },
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "id": {
+              "id": "fuse/selection/selectable/value",
+              "parentId": "fuse/selection/selectable",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/selection/selectable/value",
+              "href": "fuse/selection/selectable/value"
+            },
+            "titles": {
+              "indexTitle": "Value",
+              "fullyQualifiedIndexTitle": "Fuse.Selection.Selectable.Value"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/node",
+            "parentId": "fuse",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract",
+              "partial"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/node",
+            "href": "fuse/node"
+          },
+          "titles": {
+            "indexTitle": "Node",
+            "fullyQualifiedIndexTitle": "Fuse.Node"
+          }
+        },
+        "items": [
+          {
+            "comment": {
+              "brief": "The list of bindings belonging to this node.",
+              "full": "The list of bindings belonging to this node."
+            },
+            "returns": {
+              "href": "uno/collections/ilist_1",
+              "title": "IList<Binding>",
+              "fullyQualifiedTitle": "Uno.Collections.IList<Fuse.Binding>"
+            },
+            "flags": {
+              "uxContent": true
+            },
+            "id": {
+              "id": "fuse/selection/selectable/bindings",
+              "parentId": "fuse/selection/selectable",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/selection/selectable/bindings",
+              "href": "fuse/node/bindings",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Bindings",
+              "fullyQualifiedIndexTitle": "Fuse.Node.Bindings"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Run-time name of the node.\nThis property is automatically set using the ux:Name attribute.",
+              "full": "Run-time name of the node.\nThis property is automatically set using the ux:Name attribute."
+            },
+            "returns": {
+              "href": "uno/ux/selector",
+              "title": "Selector",
+              "fullyQualifiedTitle": "Uno.UX.Selector"
+            },
+            "id": {
+              "id": "fuse/selection/selectable/name",
+              "parentId": "fuse/selection/selectable",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/selection/selectable/name",
+              "href": "fuse/node/name",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Name",
+              "fullyQualifiedIndexTitle": "Fuse.Node.Name"
+            }
+          }
+        ]
+      }
+    ],
+    "attachedUxProperties": [
+      {
+        "items": [
+          {
+            "comment": {
+              "brief": "The `ux:Global` attribute creates a global resource that is accessible everywhere in UX markup.",
+              "full": "The `ux:Global` attribute creates a global resource that is accessible everywhere in UX markup.\n\nSee @Resources for more information.\n\nThe `ux:Global` attribute on an UX element creates a single object (singleton) that is globally available.\nUsing this attribute will prevent the object from being inserted by default the object at its defined location\nin the UX tree."
+            },
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "parameters": [
+              {
+                "name": "obj",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              },
+              {
+                "name": "key",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              }
+            ],
+            "id": {
+              "id": "fuse/selection/selectable/resource_globalkey_setglobalkey_4c3ac72d",
+              "parentId": "fuse/selection/selectable",
+              "type": "AttachedUxProperty",
+              "modifiers": []
+            },
+            "uri": {
+              "idUri": "fuse/selection/selectable/resource_globalkey_setglobalkey_4c3ac72d",
+              "href": "uno/ux/resource/setglobalkey_4c3ac72d",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Resource.GlobalKey",
+              "fullyQualifiedIndexTitle": "Resource.GlobalKey"
+            }
+          }
+        ]
+      }
+    ],
+    "constructors": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/selection/selectable",
+            "parentId": "fuse/selection",
+            "type": "UxClass",
+            "modifiers": [
+              "public",
+              "partial"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/selection/selectable",
+            "href": "fuse/selection/selectable"
+          },
+          "titles": {
+            "indexTitle": "Selectable",
+            "fullyQualifiedIndexTitle": "Fuse.Selection.Selectable"
+          }
+        },
+        "items": [
+          {
+            "comment": {
+              "brief": "Creates a new Selectable",
+              "full": "Creates a new Selectable"
+            },
+            "id": {
+              "id": "fuse/selection/selectable/_ctor",
+              "parentId": "fuse/selection/selectable",
+              "type": "Constructor",
+              "modifiers": [
+                "public",
+                "generated"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/selection/selectable/_ctor",
+              "href": "fuse/selection/selectable/_ctor"
+            },
+            "titles": {
+              "indexTitle": "Selectable",
+              "fullyQualifiedIndexTitle": "Fuse.Selection.Selectable.Selectable"
+            }
+          }
+        ]
+      }
+    ],
+    "properties": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/node",
+            "parentId": "fuse",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract",
+              "partial"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/node",
+            "href": "fuse/node"
+          },
+          "titles": {
+            "indexTitle": "Node",
+            "fullyQualifiedIndexTitle": "Fuse.Node"
+          }
+        },
+        "items": [
+          {
+            "comment": {
+              "brief": "The context parent is the semantic parent of this node. It is where non-UI structure should\nbe resolved, like looking for the DataContext, a Navigation, or other semantic item.",
+              "full": "The context parent is the semantic parent of this node. It is where non-UI structure should\nbe resolved, like looking for the DataContext, a Navigation, or other semantic item."
+            },
+            "returns": {
+              "href": "fuse/node",
+              "title": "Node",
+              "fullyQualifiedTitle": "Fuse.Node"
+            },
+            "id": {
+              "id": "fuse/selection/selectable/contextparent",
+              "parentId": "fuse/selection/selectable",
+              "type": "Property",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/selection/selectable/contextparent",
+              "href": "fuse/node/contextparent",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "ContextParent",
+              "fullyQualifiedIndexTitle": "Fuse.Node.ContextParent"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Whether rooting for this node is completed.\nReturns false if unrooting has started.",
+              "full": "Whether rooting for this node is completed.\nReturns false if unrooting has started."
+            },
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "id": {
+              "id": "fuse/selection/selectable/isrootingcompleted",
+              "parentId": "fuse/selection/selectable",
+              "type": "Property",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/selection/selectable/isrootingcompleted",
+              "href": "fuse/node/isrootingcompleted",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "IsRootingCompleted",
+              "fullyQualifiedIndexTitle": "Fuse.Node.IsRootingCompleted"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Whether rooting of this node has started.\nNote that even if this property returns true, rooting may not yet be\ncompleted for the node. See also @IsRootingCompleted.",
+              "full": "Whether rooting of this node has started.\nNote that even if this property returns true, rooting may not yet be\ncompleted for the node. See also @IsRootingCompleted."
+            },
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "id": {
+              "id": "fuse/selection/selectable/isrootingstarted",
+              "parentId": "fuse/selection/selectable",
+              "type": "Property",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/selection/selectable/isrootingstarted",
+              "href": "fuse/node/isrootingstarted",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "IsRootingStarted",
+              "fullyQualifiedIndexTitle": "Fuse.Node.IsRootingStarted"
+            }
+          },
+          {
+            "comment": {
+              "brief": "The parent @Visual of this node. Will return null if the node is not rooted.",
+              "full": "The parent @Visual of this node. Will return null if the node is not rooted."
+            },
+            "returns": {
+              "href": "fuse/visual",
+              "title": "Visual",
+              "fullyQualifiedTitle": "Fuse.Visual"
+            },
+            "id": {
+              "id": "fuse/selection/selectable/parent",
+              "parentId": "fuse/selection/selectable",
+              "type": "Property",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/selection/selectable/parent",
+              "href": "fuse/node/parent",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Parent",
+              "fullyQualifiedIndexTitle": "Fuse.Node.Parent"
+            }
+          },
+          {
+            "comment": {
+              "brief": "A linked list holding data for extrinsic properties.",
+              "full": "A linked list holding data for extrinsic properties."
+            },
+            "returns": {
+              "href": "fuse/properties",
+              "title": "Properties",
+              "fullyQualifiedTitle": "Fuse.Properties"
+            },
+            "id": {
+              "id": "fuse/selection/selectable/properties",
+              "parentId": "fuse/selection/selectable",
+              "type": "Property",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/selection/selectable/properties",
+              "href": "fuse/node/properties",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Properties",
+              "fullyQualifiedIndexTitle": "Fuse.Node.Properties"
+            }
+          }
+        ]
+      }
+    ],
+    "methods": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/selection/selectable",
+            "parentId": "fuse/selection",
+            "type": "UxClass",
+            "modifiers": [
+              "public",
+              "partial"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/selection/selectable",
+            "href": "fuse/selection/selectable"
+          },
+          "titles": {
+            "indexTitle": "Selectable",
+            "fullyQualifiedIndexTitle": "Fuse.Selection.Selectable"
+          }
+        },
+        "items": [
+          {
+            "comment": {
+              "brief": "Calls `Selection.Add` with this `Selectable`.",
+              "full": "Calls `Selection.Add` with this `Selectable`."
+            },
+            "id": {
+              "id": "fuse/selection/selectable/add",
+              "parentId": "fuse/selection/selectable",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/selection/selectable/add",
+              "href": "fuse/selection/selectable/add"
+            },
+            "titles": {
+              "indexTitle": "Add",
+              "fullyQualifiedIndexTitle": "Fuse.Selection.Selectable.Add"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Calls `Selection.Remove` with this `Selectable`.",
+              "full": "Calls `Selection.Remove` with this `Selectable`."
+            },
+            "id": {
+              "id": "fuse/selection/selectable/remove",
+              "parentId": "fuse/selection/selectable",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/selection/selectable/remove",
+              "href": "fuse/selection/selectable/remove"
+            },
+            "titles": {
+              "indexTitle": "Remove",
+              "fullyQualifiedIndexTitle": "Fuse.Selection.Selectable.Remove"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Calls `Selection.Toggle` with this `Selectable`.",
+              "full": "Calls `Selection.Toggle` with this `Selectable`."
+            },
+            "id": {
+              "id": "fuse/selection/selectable/toggle",
+              "parentId": "fuse/selection/selectable",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/selection/selectable/toggle",
+              "href": "fuse/selection/selectable/toggle"
+            },
+            "titles": {
+              "indexTitle": "Toggle",
+              "fullyQualifiedIndexTitle": "Fuse.Selection.Selectable.Toggle"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/node",
+            "parentId": "fuse",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract",
+              "partial"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/node",
+            "href": "fuse/node"
+          },
+          "titles": {
+            "indexTitle": "Node",
+            "fullyQualifiedIndexTitle": "Fuse.Node"
+          }
+        },
+        "items": [
+          {
+            "parameters": [
+              {
+                "name": "item",
+                "href": "fuse/binding",
+                "title": "Binding",
+                "fullyQualifiedTitle": "Fuse.Binding"
+              }
+            ],
+            "id": {
+              "id": "fuse/selection/selectable/add_cd0f711d",
+              "parentId": "fuse/selection/selectable",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/selection/selectable/add_cd0f711d",
+              "href": "fuse/node/add_cd0f711d",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Add(Binding)",
+              "fullyQualifiedIndexTitle": "Fuse.Node.Add(Fuse.Binding)"
+            }
+          },
+          {
+            "returns": {
+              "isVirtual": true,
+              "title": "T",
+              "fullyQualifiedTitle": "Fuse.T"
+            },
+            "id": {
+              "id": "fuse/selection/selectable/findbytype_1",
+              "parentId": "fuse/selection/selectable",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/selection/selectable/findbytype_1",
+              "href": "fuse/node/findbytype_1",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "FindByType<T>",
+              "fullyQualifiedIndexTitle": "Fuse.Node.FindByType<T>"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Finds the first node with a given name that satisfies the given acceptor.\nThe serach algorithm works as follows: Nodes in the subtree are matched first, then\nit matches the nodes in the subtrees ofthe ancestor nodes by turn all the way to the\nroot. If no matching node is found, the function returns null.",
+              "full": "Finds the first node with a given name that satisfies the given acceptor.\nThe serach algorithm works as follows: Nodes in the subtree are matched first, then\nit matches the nodes in the subtrees ofthe ancestor nodes by turn all the way to the\nroot. If no matching node is found, the function returns null."
+            },
+            "returns": {
+              "href": "fuse/node",
+              "title": "Node",
+              "fullyQualifiedTitle": "Fuse.Node"
+            },
+            "parameters": [
+              {
+                "name": "name",
+                "href": "uno/ux/selector",
+                "title": "Selector",
+                "fullyQualifiedTitle": "Uno.UX.Selector"
+              },
+              {
+                "name": "acceptor",
+                "href": "uno/predicate_1",
+                "title": "Predicate<Node> (Node)",
+                "fullyQualifiedTitle": "Uno.Predicate<Fuse.Node> (Fuse.Node)"
+              }
+            ],
+            "id": {
+              "id": "fuse/selection/selectable/findnodebyname_66268add",
+              "parentId": "fuse/selection/selectable",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/selection/selectable/findnodebyname_66268add",
+              "href": "fuse/node/findnodebyname_66268add",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "FindNodeByName(Selector, Predicate<Node> (Node))",
+              "fullyQualifiedIndexTitle": "Fuse.Node.FindNodeByName(Uno.UX.Selector, Uno.Predicate<Fuse.Node> (Fuse.Node))"
+            }
+          },
+          {
+            "returns": {
+              "isVirtual": true,
+              "title": "T",
+              "fullyQualifiedTitle": "Fuse.T"
+            },
+            "id": {
+              "id": "fuse/selection/selectable/getnearestancestoroftype_1",
+              "parentId": "fuse/selection/selectable",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/selection/selectable/getnearestancestoroftype_1",
+              "href": "fuse/node/getnearestancestoroftype_1",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetNearestAncestorOfType<T>",
+              "fullyQualifiedIndexTitle": "Fuse.Node.GetNearestAncestorOfType<T>"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "index",
+                "href": "uno/int",
+                "title": "int",
+                "fullyQualifiedTitle": "int"
+              },
+              {
+                "name": "item",
+                "href": "fuse/binding",
+                "title": "Binding",
+                "fullyQualifiedTitle": "Fuse.Binding"
+              }
+            ],
+            "id": {
+              "id": "fuse/selection/selectable/insert_4036b6cf",
+              "parentId": "fuse/selection/selectable",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/selection/selectable/insert_4036b6cf",
+              "href": "fuse/node/insert_4036b6cf",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Insert(int, Binding)",
+              "fullyQualifiedIndexTitle": "Fuse.Node.Insert(int, Fuse.Binding)"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Returns the next sibling node of the given type.",
+              "full": "Returns the next sibling node of the given type."
+            },
+            "returns": {
+              "isVirtual": true,
+              "title": "T",
+              "fullyQualifiedTitle": "Fuse.T"
+            },
+            "id": {
+              "id": "fuse/selection/selectable/nextsibling_1",
+              "parentId": "fuse/selection/selectable",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/selection/selectable/nextsibling_1",
+              "href": "fuse/node/nextsibling_1",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "NextSibling<T>",
+              "fullyQualifiedIndexTitle": "Fuse.Node.NextSibling<T>"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "key",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              },
+              {
+                "name": "newValue",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              }
+            ],
+            "id": {
+              "id": "fuse/selection/selectable/ondatachanged_d062e5a9",
+              "parentId": "fuse/selection/selectable",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/selection/selectable/ondatachanged_d062e5a9",
+              "href": "fuse/node/ondatachanged_d062e5a9",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "OnDataChanged(string, object)",
+              "fullyQualifiedIndexTitle": "Fuse.Node.OnDataChanged(string, object)"
+            }
+          },
+          {
+            "comment": {
+              "brief": "If you override `OnRooted` you must call `base.OnRooted()` first in your derived class. No other processing should happen first, otherwise you might end up in an undefined state.",
+              "full": "If you override `OnRooted` you must call `base.OnRooted()` first in your derived class. No other processing should happen first, otherwise you might end up in an undefined state."
+            },
+            "id": {
+              "id": "fuse/selection/selectable/onrooted",
+              "parentId": "fuse/selection/selectable",
+              "type": "Method",
+              "modifiers": [
+                "protected",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/selection/selectable/onrooted",
+              "href": "fuse/node/onrooted",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "OnRooted",
+              "fullyQualifiedIndexTitle": "Fuse.Node.OnRooted"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/selection/selectable/onunrooted",
+              "parentId": "fuse/selection/selectable",
+              "type": "Method",
+              "modifiers": [
+                "protected",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/selection/selectable/onunrooted",
+              "href": "fuse/node/onunrooted",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "OnUnrooted",
+              "fullyQualifiedIndexTitle": "Fuse.Node.OnUnrooted"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Returns the next sibling node of the given type.",
+              "full": "Returns the next sibling node of the given type."
+            },
+            "returns": {
+              "isVirtual": true,
+              "title": "T",
+              "fullyQualifiedTitle": "Fuse.T"
+            },
+            "id": {
+              "id": "fuse/selection/selectable/previoussibling_1",
+              "parentId": "fuse/selection/selectable",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/selection/selectable/previoussibling_1",
+              "href": "fuse/node/previoussibling_1",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "PreviousSibling<T>",
+              "fullyQualifiedIndexTitle": "Fuse.Node.PreviousSibling<T>"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "parameters": [
+              {
+                "name": "item",
+                "href": "fuse/binding",
+                "title": "Binding",
+                "fullyQualifiedTitle": "Fuse.Binding"
+              }
+            ],
+            "id": {
+              "id": "fuse/selection/selectable/remove_cd0f711d",
+              "parentId": "fuse/selection/selectable",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/selection/selectable/remove_cd0f711d",
+              "href": "fuse/node/remove_cd0f711d",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Remove(Binding)",
+              "fullyQualifiedIndexTitle": "Fuse.Node.Remove(Fuse.Binding)"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/selection/selectable/softdispose",
+              "parentId": "fuse/selection/selectable",
+              "type": "Method",
+              "modifiers": [
+                "protected",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/selection/selectable/softdispose",
+              "href": "fuse/node/softdispose",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "SoftDispose",
+              "fullyQualifiedIndexTitle": "Fuse.Node.SoftDispose"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "id": {
+              "id": "fuse/selection/selectable/subtreetostring",
+              "parentId": "fuse/selection/selectable",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/selection/selectable/subtreetostring",
+              "href": "fuse/node/subtreetostring",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "SubtreeToString",
+              "fullyQualifiedIndexTitle": "Fuse.Node.SubtreeToString"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "sb",
+                "href": "uno/text/stringbuilder",
+                "title": "StringBuilder",
+                "fullyQualifiedTitle": "Uno.Text.StringBuilder"
+              },
+              {
+                "name": "indent",
+                "href": "uno/int",
+                "title": "int",
+                "fullyQualifiedTitle": "int"
+              }
+            ],
+            "id": {
+              "id": "fuse/selection/selectable/subtreetostring_efe5f5b8",
+              "parentId": "fuse/selection/selectable",
+              "type": "Method",
+              "modifiers": [
+                "protected",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/selection/selectable/subtreetostring_efe5f5b8",
+              "href": "fuse/node/subtreetostring_efe5f5b8",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "SubtreeToString(StringBuilder, int)",
+              "fullyQualifiedIndexTitle": "Fuse.Node.SubtreeToString(Uno.Text.StringBuilder, int)"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "parameters": [
+              {
+                "name": "key",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              },
+              {
+                "name": "acceptor",
+                "href": "uno/predicate_1",
+                "title": "Predicate<object> (object)",
+                "fullyQualifiedTitle": "Uno.Predicate<object> (object)"
+              },
+              {
+                "name": "resource",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              }
+            ],
+            "id": {
+              "id": "fuse/selection/selectable/trygetresource_5317754b",
+              "parentId": "fuse/selection/selectable",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/selection/selectable/trygetresource_5317754b",
+              "href": "fuse/node/trygetresource_5317754b",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "TryGetResource(string, Predicate<object> (object), object)",
+              "fullyQualifiedIndexTitle": "Fuse.Node.TryGetResource(string, Uno.Predicate<object> (object), object)"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "action",
+                "href": "uno/action_1",
+                "title": "Action<Node> (Node)",
+                "fullyQualifiedTitle": "Uno.Action<Fuse.Node> (Fuse.Node)"
+              }
+            ],
+            "id": {
+              "id": "fuse/selection/selectable/visitsubtree_7a20b182",
+              "parentId": "fuse/selection/selectable",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/selection/selectable/visitsubtree_7a20b182",
+              "href": "fuse/node/visitsubtree_7a20b182",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "VisitSubtree(Action<Node> (Node))",
+              "fullyQualifiedIndexTitle": "Fuse.Node.VisitSubtree(Uno.Action<Fuse.Node> (Fuse.Node))"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "uno/ux/propertyobject",
+            "parentId": "uno/ux",
+            "type": "Class",
+            "modifiers": [
+              "public"
+            ]
+          },
+          "uri": {
+            "idUri": "uno/ux/propertyobject",
+            "href": "uno/ux/propertyobject"
+          },
+          "titles": {
+            "indexTitle": "PropertyObject",
+            "fullyQualifiedIndexTitle": "Uno.UX.PropertyObject"
+          }
+        },
+        "items": [
+          {
+            "parameters": [
+              {
+                "name": "listener",
+                "href": "uno/ux/ipropertylistener",
+                "title": "IPropertyListener",
+                "fullyQualifiedTitle": "Uno.UX.IPropertyListener"
+              }
+            ],
+            "id": {
+              "id": "fuse/selection/selectable/addpropertylistener_496a874a",
+              "parentId": "fuse/selection/selectable",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/selection/selectable/addpropertylistener_496a874a",
+              "href": "uno/ux/propertyobject/addpropertylistener_496a874a",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "AddPropertyListener(IPropertyListener)",
+              "fullyQualifiedIndexTitle": "Uno.UX.PropertyObject.AddPropertyListener(Uno.UX.IPropertyListener)"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "property",
+                "href": "uno/ux/selector",
+                "title": "Selector",
+                "fullyQualifiedTitle": "Uno.UX.Selector"
+              }
+            ],
+            "id": {
+              "id": "fuse/selection/selectable/onpropertychanged_16d735f3",
+              "parentId": "fuse/selection/selectable",
+              "type": "Method",
+              "modifiers": [
+                "protected"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/selection/selectable/onpropertychanged_16d735f3",
+              "href": "uno/ux/propertyobject/onpropertychanged_16d735f3",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "OnPropertyChanged(Selector)",
+              "fullyQualifiedIndexTitle": "Uno.UX.PropertyObject.OnPropertyChanged(Uno.UX.Selector)"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "property",
+                "href": "uno/ux/selector",
+                "title": "Selector",
+                "fullyQualifiedTitle": "Uno.UX.Selector"
+              },
+              {
+                "name": "origin",
+                "href": "uno/ux/ipropertylistener",
+                "title": "IPropertyListener",
+                "fullyQualifiedTitle": "Uno.UX.IPropertyListener"
+              }
+            ],
+            "id": {
+              "id": "fuse/selection/selectable/onpropertychanged_6422fe92",
+              "parentId": "fuse/selection/selectable",
+              "type": "Method",
+              "modifiers": [
+                "protected",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/selection/selectable/onpropertychanged_6422fe92",
+              "href": "uno/ux/propertyobject/onpropertychanged_6422fe92",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "OnPropertyChanged(Selector, IPropertyListener)",
+              "fullyQualifiedIndexTitle": "Uno.UX.PropertyObject.OnPropertyChanged(Uno.UX.Selector, Uno.UX.IPropertyListener)"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "listener",
+                "href": "uno/ux/ipropertylistener",
+                "title": "IPropertyListener",
+                "fullyQualifiedTitle": "Uno.UX.IPropertyListener"
+              }
+            ],
+            "id": {
+              "id": "fuse/selection/selectable/removepropertylistener_496a874a",
+              "parentId": "fuse/selection/selectable",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/selection/selectable/removepropertylistener_496a874a",
+              "href": "uno/ux/propertyobject/removepropertylistener_496a874a",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "RemovePropertyListener(IPropertyListener)",
+              "fullyQualifiedIndexTitle": "Uno.UX.PropertyObject.RemovePropertyListener(Uno.UX.IPropertyListener)"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "uno/object",
+            "parentId": "uno",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "intrinsic"
+            ]
+          },
+          "uri": {
+            "idUri": "uno/object",
+            "href": "uno/object"
+          },
+          "titles": {
+            "indexTitle": "object",
+            "fullyQualifiedIndexTitle": "object"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "parameters": [
+              {
+                "name": "o",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              }
+            ],
+            "id": {
+              "id": "fuse/selection/selectable/equals_a09c80e3",
+              "parentId": "fuse/selection/selectable",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/selection/selectable/equals_a09c80e3",
+              "href": "uno/object/equals_a09c80e3",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Equals(object)",
+              "fullyQualifiedIndexTitle": "Uno.Object.Equals(object)"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/int",
+              "title": "int",
+              "fullyQualifiedTitle": "int"
+            },
+            "id": {
+              "id": "fuse/selection/selectable/gethashcode",
+              "parentId": "fuse/selection/selectable",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/selection/selectable/gethashcode",
+              "href": "uno/object/gethashcode",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetHashCode",
+              "fullyQualifiedIndexTitle": "Uno.Object.GetHashCode"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/type",
+              "title": "Type",
+              "fullyQualifiedTitle": "Uno.Type"
+            },
+            "id": {
+              "id": "fuse/selection/selectable/gettype",
+              "parentId": "fuse/selection/selectable",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/selection/selectable/gettype",
+              "href": "uno/object/gettype",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetType",
+              "fullyQualifiedIndexTitle": "Uno.Object.GetType"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "id": {
+              "id": "fuse/selection/selectable/tostring",
+              "parentId": "fuse/selection/selectable",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/selection/selectable/tostring",
+              "href": "uno/object/tostring",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "ToString",
+              "fullyQualifiedIndexTitle": "Uno.Object.ToString"
+            }
+          }
+        ]
+      }
+    ],
+    "fields": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/selection/selectable",
+            "parentId": "fuse/selection",
+            "type": "UxClass",
+            "modifiers": [
+              "public",
+              "partial"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/selection/selectable",
+            "href": "fuse/selection/selectable"
+          },
+          "titles": {
+            "indexTitle": "Selectable",
+            "fullyQualifiedIndexTitle": "Fuse.Selection.Selectable"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/ux/selector",
+              "title": "Selector",
+              "fullyQualifiedTitle": "Uno.UX.Selector"
+            },
+            "id": {
+              "id": "fuse/selection/selectable/valuename",
+              "parentId": "fuse/selection/selectable",
+              "type": "Field",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/selection/selectable/valuename",
+              "href": "fuse/selection/selectable/valuename"
+            },
+            "titles": {
+              "indexTitle": "ValueName",
+              "fullyQualifiedIndexTitle": "Fuse.Selection.Selectable.ValueName"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

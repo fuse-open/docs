@@ -1,0 +1,1166 @@
+{
+  "entity": {
+    "id": {
+      "id": "uno/ux",
+      "parentId": "uno",
+      "type": "Namespace",
+      "modifiers": []
+    },
+    "uri": {
+      "idUri": "uno/ux",
+      "href": "uno/ux"
+    },
+    "titles": {
+      "pageTitle": "Uno.UX Namespace",
+      "navigationTitle": "Uno.UX Namespace",
+      "fullTitle": "Uno.UX",
+      "indexTitle": "Uno.UX",
+      "fullyQualifiedIndexTitle": "Uno.UX"
+    },
+    "syntax": {
+      "uno": "namespace UX {}"
+    }
+  },
+  "tableOfContents": {
+    "classes": [
+      {
+        "items": [
+          {
+            "id": {
+              "id": "uno/ux/bundlefilesource",
+              "parentId": "uno/ux",
+              "type": "Class",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "uno/ux/bundlefilesource",
+              "href": "uno/ux/bundlefilesource"
+            },
+            "titles": {
+              "indexTitle": "BundleFileSource",
+              "fullyQualifiedIndexTitle": "Uno.UX.BundleFileSource"
+            }
+          },
+          {
+            "id": {
+              "id": "uno/ux/filesource",
+              "parentId": "uno/ux",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "uno/ux/filesource",
+              "href": "uno/ux/filesource"
+            },
+            "titles": {
+              "indexTitle": "FileSource",
+              "fullyQualifiedIndexTitle": "Uno.UX.FileSource"
+            }
+          },
+          {
+            "id": {
+              "id": "uno/ux/nametable",
+              "parentId": "uno/ux",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "uno/ux/nametable",
+              "href": "uno/ux/nametable"
+            },
+            "titles": {
+              "indexTitle": "NameTable",
+              "fullyQualifiedIndexTitle": "Uno.UX.NameTable"
+            }
+          },
+          {
+            "id": {
+              "id": "uno/ux/property",
+              "parentId": "uno/ux",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "uno/ux/property",
+              "href": "uno/ux/property"
+            },
+            "titles": {
+              "indexTitle": "Property",
+              "fullyQualifiedIndexTitle": "Uno.UX.Property"
+            }
+          },
+          {
+            "id": {
+              "id": "uno/ux/property_1",
+              "parentId": "uno/ux",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "uno/ux/property_1",
+              "href": "uno/ux/property_1"
+            },
+            "titles": {
+              "indexTitle": "Property<T>",
+              "fullyQualifiedIndexTitle": "Uno.UX.Property<T>"
+            }
+          },
+          {
+            "id": {
+              "id": "uno/ux/propertyaccessor",
+              "parentId": "uno/ux",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "uno/ux/propertyaccessor",
+              "href": "uno/ux/propertyaccessor"
+            },
+            "titles": {
+              "indexTitle": "PropertyAccessor",
+              "fullyQualifiedIndexTitle": "Uno.UX.PropertyAccessor"
+            }
+          },
+          {
+            "id": {
+              "id": "uno/ux/propertyobject",
+              "parentId": "uno/ux",
+              "type": "Class",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "uno/ux/propertyobject",
+              "href": "uno/ux/propertyobject"
+            },
+            "titles": {
+              "indexTitle": "PropertyObject",
+              "fullyQualifiedIndexTitle": "Uno.UX.PropertyObject"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Resources are objects that are identified by a string key, either globally for your app or\nfor certain pages/subtrees.",
+              "full": "Resources are objects that are identified by a string key, either globally for your app or\nfor certain pages/subtrees.\n\n## Types of resources\n\nResources can be of any type, but it is most commonly used for fonts, colors, constant values,\nstrings etc.\n\nClasses that inherit from @Node can only be rooted with one parent at a time, and is therefore\nrarely useful as global resources. Consider creating a @ux:Class instead and instantiate multiple\nobjects whenever needed.\n\n## Global resources (`ux:Global`)\n\nThe @ux:Global attribute can be used on an UX node to convert it to a global resource.\n\nFor example, a global Font resource can be defined like this:\n\n    <Font File=\"arial.ttf\" ux:Global=\"MyDefaultFont\" />\n\nAnd then used like this:\n\n    <Text Font=\"MyDefaultFont\" />\n\nWhen the global key is used directly (with no binding syntax), the resource is resolved statically\nat build time, and you get an error message if no appropriate resource is found.\n\n## Dynamic resource bindings\n\nWhen you want resources to resolve at runtime and respect tree-local resources, you can also use the\ndynamic resource binding syntax:\n\n    <Text Font=\"{Resource MyDefaultFont}\" />\n\n## Local resources (`ux:Key`)\n\nThe `ux:Key` attribute is used to convert a node to a tree-local resource.\n\nThis allows you to do local overrides in the tree, using the `ux:Key` attribute:\n\n    <Panel>\n        <Font File=\"verdana.ttf\" ux:Key=\"MyDefaultFont\" />\n        <Panel>\n            <Text Font=\"{Resource MyDefaultFont}\" />\n        </Panel>\n    </Panel>\n\nYou can think of `ux:Global` as a way to set global defaults for dynamic resource keys (`ux:Key`)\n\n## Resource key uniqueness\n\nGlobal resource keys must be unique for the given *type* of the resource. Multiple resources can have\nthe same name as long as they are unrelated types.\n\nFor example, Fuse defines multiple resources with the key `Blue`, and the right resource is determined\nbased on the expected type where it used. It can either be a `float4` color value or a `SolidColor` brush.\n\n    <float4 ux:Global=\"Red\" ux:Value=\"#f00\" />\n    <SolidColor ux:Global=\"Red\" Color=\"Red\" />",
+              "attributes": {
+                "topic": "Resources"
+              }
+            },
+            "id": {
+              "id": "uno/ux/resource",
+              "parentId": "uno/ux",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "uno/ux/resource",
+              "href": "uno/ux/resource"
+            },
+            "titles": {
+              "indexTitle": "Resource",
+              "fullyQualifiedIndexTitle": "Uno.UX.Resource"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Base class for objects that can create new objects of a certain kind.",
+              "full": "Base class for objects that can create new objects of a certain kind.\n\nThis class is abstract and must be subclassed before it can be instantiated.\n\nSubclasses are typically generated by the UX compiler as factory objects\nthat capture scopes within an UX document, for example within an iterator, or\nby explicitly using the `ux:Template` attribute."
+            },
+            "id": {
+              "id": "uno/ux/template",
+              "parentId": "uno/ux",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "uno/ux/template",
+              "href": "uno/ux/template"
+            },
+            "titles": {
+              "indexTitle": "Template",
+              "fullyQualifiedIndexTitle": "Uno.UX.Template"
+            }
+          },
+          {
+            "id": {
+              "id": "uno/ux/uxargattribute",
+              "parentId": "uno/ux",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "uno/ux/uxargattribute",
+              "href": "uno/ux/uxargattribute"
+            },
+            "titles": {
+              "indexTitle": "UXArgAttribute",
+              "fullyQualifiedIndexTitle": "Uno.UX.UXArgAttribute"
+            }
+          },
+          {
+            "id": {
+              "id": "uno/ux/uxattachedeventadderattribute",
+              "parentId": "uno/ux",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "uno/ux/uxattachedeventadderattribute",
+              "href": "uno/ux/uxattachedeventadderattribute"
+            },
+            "titles": {
+              "indexTitle": "UXAttachedEventAdderAttribute",
+              "fullyQualifiedIndexTitle": "Uno.UX.UXAttachedEventAdderAttribute"
+            }
+          },
+          {
+            "id": {
+              "id": "uno/ux/uxattachedeventremoverattribute",
+              "parentId": "uno/ux",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "uno/ux/uxattachedeventremoverattribute",
+              "href": "uno/ux/uxattachedeventremoverattribute"
+            },
+            "titles": {
+              "indexTitle": "UXAttachedEventRemoverAttribute",
+              "fullyQualifiedIndexTitle": "Uno.UX.UXAttachedEventRemoverAttribute"
+            }
+          },
+          {
+            "id": {
+              "id": "uno/ux/uxattachedpropertygetterattribute",
+              "parentId": "uno/ux",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "uno/ux/uxattachedpropertygetterattribute",
+              "href": "uno/ux/uxattachedpropertygetterattribute"
+            },
+            "titles": {
+              "indexTitle": "UXAttachedPropertyGetterAttribute",
+              "fullyQualifiedIndexTitle": "Uno.UX.UXAttachedPropertyGetterAttribute"
+            }
+          },
+          {
+            "id": {
+              "id": "uno/ux/uxattachedpropertyresetterattribute",
+              "parentId": "uno/ux",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "uno/ux/uxattachedpropertyresetterattribute",
+              "href": "uno/ux/uxattachedpropertyresetterattribute"
+            },
+            "titles": {
+              "indexTitle": "UXAttachedPropertyResetterAttribute",
+              "fullyQualifiedIndexTitle": "Uno.UX.UXAttachedPropertyResetterAttribute"
+            }
+          },
+          {
+            "id": {
+              "id": "uno/ux/uxattachedpropertysetterattribute",
+              "parentId": "uno/ux",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "uno/ux/uxattachedpropertysetterattribute",
+              "href": "uno/ux/uxattachedpropertysetterattribute"
+            },
+            "titles": {
+              "indexTitle": "UXAttachedPropertySetterAttribute",
+              "fullyQualifiedIndexTitle": "Uno.UX.UXAttachedPropertySetterAttribute"
+            }
+          },
+          {
+            "id": {
+              "id": "uno/ux/uxattachedpropertystylesetterattribute",
+              "parentId": "uno/ux",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "uno/ux/uxattachedpropertystylesetterattribute",
+              "href": "uno/ux/uxattachedpropertystylesetterattribute"
+            },
+            "titles": {
+              "indexTitle": "UXAttachedPropertyStyleSetterAttribute",
+              "fullyQualifiedIndexTitle": "Uno.UX.UXAttachedPropertyStyleSetterAttribute"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Makes the UX compiler automatically assign the full qualified name of the current `ux:Class` to the decorated property.",
+              "full": "Makes the UX compiler automatically assign the full qualified name of the current `ux:Class` to the decorated property."
+            },
+            "id": {
+              "id": "uno/ux/uxautoclassnameattribute",
+              "parentId": "uno/ux",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "uno/ux/uxautoclassnameattribute",
+              "href": "uno/ux/uxautoclassnameattribute"
+            },
+            "titles": {
+              "indexTitle": "UXAutoClassNameAttribute",
+              "fullyQualifiedIndexTitle": "Uno.UX.UXAutoClassNameAttribute"
+            }
+          },
+          {
+            "id": {
+              "id": "uno/ux/uxautogenericattribute",
+              "parentId": "uno/ux",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "uno/ux/uxautogenericattribute",
+              "href": "uno/ux/uxautogenericattribute"
+            },
+            "titles": {
+              "indexTitle": "UXAutoGenericAttribute",
+              "fullyQualifiedIndexTitle": "Uno.UX.UXAutoGenericAttribute"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Makes the UX compiler automatically assign a valid `NameTable` instance to the decorated property.",
+              "full": "Makes the UX compiler automatically assign a valid `NameTable` instance to the decorated property."
+            },
+            "id": {
+              "id": "uno/ux/uxautonametableattribute",
+              "parentId": "uno/ux",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "uno/ux/uxautonametableattribute",
+              "href": "uno/ux/uxautonametableattribute"
+            },
+            "titles": {
+              "indexTitle": "UXAutoNameTableAttribute",
+              "fullyQualifiedIndexTitle": "Uno.UX.UXAutoNameTableAttribute"
+            }
+          },
+          {
+            "comment": {
+              "brief": "When used on an attached property X, this makes the UX compiler automatically assign a valid NameTable instance\nto the `targetProp` if the property X is assigned a value in UX markup.",
+              "full": "When used on an attached property X, this makes the UX compiler automatically assign a valid NameTable instance\nto the `targetProp` if the property X is assigned a value in UX markup."
+            },
+            "id": {
+              "id": "uno/ux/uxauxnametableattribute",
+              "parentId": "uno/ux",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "uno/ux/uxauxnametableattribute",
+              "href": "uno/ux/uxauxnametableattribute"
+            },
+            "titles": {
+              "indexTitle": "UXAuxNameTableAttribute",
+              "fullyQualifiedIndexTitle": "Uno.UX.UXAuxNameTableAttribute"
+            }
+          },
+          {
+            "id": {
+              "id": "uno/ux/uxbinaryoperatorattribute",
+              "parentId": "uno/ux",
+              "type": "Class",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "uno/ux/uxbinaryoperatorattribute",
+              "href": "uno/ux/uxbinaryoperatorattribute"
+            },
+            "titles": {
+              "indexTitle": "UXBinaryOperatorAttribute",
+              "fullyQualifiedIndexTitle": "Uno.UX.UXBinaryOperatorAttribute"
+            }
+          },
+          {
+            "id": {
+              "id": "uno/ux/uxcomponentsattribute",
+              "parentId": "uno/ux",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "uno/ux/uxcomponentsattribute",
+              "href": "uno/ux/uxcomponentsattribute"
+            },
+            "titles": {
+              "indexTitle": "UXComponentsAttribute",
+              "fullyQualifiedIndexTitle": "Uno.UX.UXComponentsAttribute"
+            }
+          },
+          {
+            "id": {
+              "id": "uno/ux/uxconstructorattribute",
+              "parentId": "uno/ux",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "uno/ux/uxconstructorattribute",
+              "href": "uno/ux/uxconstructorattribute"
+            },
+            "titles": {
+              "indexTitle": "UXConstructorAttribute",
+              "fullyQualifiedIndexTitle": "Uno.UX.UXConstructorAttribute"
+            }
+          },
+          {
+            "id": {
+              "id": "uno/ux/uxcontentattribute",
+              "parentId": "uno/ux",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "uno/ux/uxcontentattribute",
+              "href": "uno/ux/uxcontentattribute"
+            },
+            "titles": {
+              "indexTitle": "UXContentAttribute",
+              "fullyQualifiedIndexTitle": "Uno.UX.UXContentAttribute"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Specifies how the UX compiler interprets child nodes of the decorated type.",
+              "full": "Specifies how the UX compiler interprets child nodes of the decorated type.\n\nPossible values are:\n* `[UXContentMode(\"Default\")]` - Child nodes are interppreted as instances. This is the default.\n* `[UXContentMode(\"Template\")]` - Child nodes are interpreted as `ux:Template`\n* `[UXContentMode(\"TemplateIfClass\")]` - Child nodes are interpreted as `ux:Template`, if the class is marked with `ux:Class` in the current scope, instances otherwise.\n\n`Template` is useful if creating a class for which the content nodes should not be directly instantiated, but instead be provided\nas `Uno.UX.Template`s so the class can instantiate them later at its own discretion.\n\n`TemplateIfClass` is useful if creating a class where you want the content to be templates while defining the class, but if users\nof the class add additional children, these should be interpreted as actual children."
+            },
+            "id": {
+              "id": "uno/ux/uxcontentmodeattribute",
+              "parentId": "uno/ux",
+              "type": "Class",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "uno/ux/uxcontentmodeattribute",
+              "href": "uno/ux/uxcontentmodeattribute"
+            },
+            "titles": {
+              "indexTitle": "UXContentModeAttribute",
+              "fullyQualifiedIndexTitle": "Uno.UX.UXContentModeAttribute"
+            }
+          },
+          {
+            "comment": {
+              "brief": "When used to decorate a property of UX expression type, the expression is in data scope.",
+              "full": "When used to decorate a property of UX expression type, the expression is in data scope.\n\nThis is intended for parsing of `Key`-paths, of the form <DataBinding Key=\"userName\" Target=\"...\"`"
+            },
+            "id": {
+              "id": "uno/ux/uxdatascopeattribute",
+              "parentId": "uno/ux",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "uno/ux/uxdatascopeattribute",
+              "href": "uno/ux/uxdatascopeattribute"
+            },
+            "titles": {
+              "indexTitle": "UXDataScopeAttribute",
+              "fullyQualifiedIndexTitle": "Uno.UX.UXDataScopeAttribute"
+            }
+          },
+          {
+            "id": {
+              "id": "uno/ux/uxdefaultvalueattribute",
+              "parentId": "uno/ux",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "uno/ux/uxdefaultvalueattribute",
+              "href": "uno/ux/uxdefaultvalueattribute"
+            },
+            "titles": {
+              "indexTitle": "UXDefaultValueAttribute",
+              "fullyQualifiedIndexTitle": "Uno.UX.UXDefaultValueAttribute"
+            }
+          },
+          {
+            "id": {
+              "id": "uno/ux/uxexpressionattribute",
+              "parentId": "uno/ux",
+              "type": "Class",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "uno/ux/uxexpressionattribute",
+              "href": "uno/ux/uxexpressionattribute"
+            },
+            "titles": {
+              "indexTitle": "UXExpressionAttribute",
+              "fullyQualifiedIndexTitle": "Uno.UX.UXExpressionAttribute"
+            }
+          },
+          {
+            "id": {
+              "id": "uno/ux/uxfilenameattribute",
+              "parentId": "uno/ux",
+              "type": "Class",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "uno/ux/uxfilenameattribute",
+              "href": "uno/ux/uxfilenameattribute"
+            },
+            "titles": {
+              "indexTitle": "UXFileNameAttribute",
+              "fullyQualifiedIndexTitle": "Uno.UX.UXFileNameAttribute"
+            }
+          },
+          {
+            "id": {
+              "id": "uno/ux/uxfreestandingattribute",
+              "parentId": "uno/ux",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "uno/ux/uxfreestandingattribute",
+              "href": "uno/ux/uxfreestandingattribute"
+            },
+            "titles": {
+              "indexTitle": "UXFreestandingAttribute",
+              "fullyQualifiedIndexTitle": "Uno.UX.UXFreestandingAttribute"
+            }
+          },
+          {
+            "id": {
+              "id": "uno/ux/uxfunctionattribute",
+              "parentId": "uno/ux",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "uno/ux/uxfunctionattribute",
+              "href": "uno/ux/uxfunctionattribute"
+            },
+            "titles": {
+              "indexTitle": "UXFunctionAttribute",
+              "fullyQualifiedIndexTitle": "Uno.UX.UXFunctionAttribute"
+            }
+          },
+          {
+            "id": {
+              "id": "uno/ux/uxglobalmoduleattribute",
+              "parentId": "uno/ux",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "uno/ux/uxglobalmoduleattribute",
+              "href": "uno/ux/uxglobalmoduleattribute"
+            },
+            "titles": {
+              "indexTitle": "UXGlobalModuleAttribute",
+              "fullyQualifiedIndexTitle": "Uno.UX.UXGlobalModuleAttribute"
+            }
+          },
+          {
+            "id": {
+              "id": "uno/ux/uxglobalresourceattribute",
+              "parentId": "uno/ux",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "uno/ux/uxglobalresourceattribute",
+              "href": "uno/ux/uxglobalresourceattribute"
+            },
+            "titles": {
+              "indexTitle": "UXGlobalResourceAttribute",
+              "fullyQualifiedIndexTitle": "Uno.UX.UXGlobalResourceAttribute"
+            }
+          },
+          {
+            "id": {
+              "id": "uno/ux/uximplicitpropertysetterattribute",
+              "parentId": "uno/ux",
+              "type": "Class",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "uno/ux/uximplicitpropertysetterattribute",
+              "href": "uno/ux/uximplicitpropertysetterattribute"
+            },
+            "titles": {
+              "indexTitle": "UXImplicitPropertySetterAttribute",
+              "fullyQualifiedIndexTitle": "Uno.UX.UXImplicitPropertySetterAttribute"
+            }
+          },
+          {
+            "id": {
+              "id": "uno/ux/uxlinenumberattribute",
+              "parentId": "uno/ux",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "uno/ux/uxlinenumberattribute",
+              "href": "uno/ux/uxlinenumberattribute"
+            },
+            "titles": {
+              "indexTitle": "UXLineNumberAttribute",
+              "fullyQualifiedIndexTitle": "Uno.UX.UXLineNumberAttribute"
+            }
+          },
+          {
+            "id": {
+              "id": "uno/ux/uxmissingpropertyhintattribute",
+              "parentId": "uno/ux",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "uno/ux/uxmissingpropertyhintattribute",
+              "href": "uno/ux/uxmissingpropertyhintattribute"
+            },
+            "titles": {
+              "indexTitle": "UXMissingPropertyHintAttribute",
+              "fullyQualifiedIndexTitle": "Uno.UX.UXMissingPropertyHintAttribute"
+            }
+          },
+          {
+            "id": {
+              "id": "uno/ux/uxnameattribute",
+              "parentId": "uno/ux",
+              "type": "Class",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "uno/ux/uxnameattribute",
+              "href": "uno/ux/uxnameattribute"
+            },
+            "titles": {
+              "indexTitle": "UXNameAttribute",
+              "fullyQualifiedIndexTitle": "Uno.UX.UXNameAttribute"
+            }
+          },
+          {
+            "comment": {
+              "brief": "When used to decorate a property of a UX expression type, identifiers are interpreted\nin data scope, while function calls are mapped to NamedFunctionCall. Arguments to the\nNamedFunctionCall are parsed in the global scope.",
+              "full": "When used to decorate a property of a UX expression type, identifiers are interpreted\nin data scope, while function calls are mapped to NamedFunctionCall. Arguments to the\nNamedFunctionCall are parsed in the global scope.\n\nThis is intended for parsing of `Model`-paths, of the form `Model=\"Folder/File(arg0, arg1, ...)\"`"
+            },
+            "id": {
+              "id": "uno/ux/uxnamescopeattribute",
+              "parentId": "uno/ux",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "uno/ux/uxnamescopeattribute",
+              "href": "uno/ux/uxnamescopeattribute"
+            },
+            "titles": {
+              "indexTitle": "UXNameScopeAttribute",
+              "fullyQualifiedIndexTitle": "Uno.UX.UXNameScopeAttribute"
+            }
+          },
+          {
+            "id": {
+              "id": "uno/ux/uxoriginsetterattribute",
+              "parentId": "uno/ux",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "uno/ux/uxoriginsetterattribute",
+              "href": "uno/ux/uxoriginsetterattribute"
+            },
+            "titles": {
+              "indexTitle": "UXOriginSetterAttribute",
+              "fullyQualifiedIndexTitle": "Uno.UX.UXOriginSetterAttribute"
+            }
+          },
+          {
+            "id": {
+              "id": "uno/ux/uxparameterattribute",
+              "parentId": "uno/ux",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "uno/ux/uxparameterattribute",
+              "href": "uno/ux/uxparameterattribute"
+            },
+            "titles": {
+              "indexTitle": "UXParameterAttribute",
+              "fullyQualifiedIndexTitle": "Uno.UX.UXParameterAttribute"
+            }
+          },
+          {
+            "id": {
+              "id": "uno/ux/uxprimaryattribute",
+              "parentId": "uno/ux",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "uno/ux/uxprimaryattribute",
+              "href": "uno/ux/uxprimaryattribute"
+            },
+            "titles": {
+              "indexTitle": "UXPrimaryAttribute",
+              "fullyQualifiedIndexTitle": "Uno.UX.UXPrimaryAttribute"
+            }
+          },
+          {
+            "id": {
+              "id": "uno/ux/uxsourcefilenameattribute",
+              "parentId": "uno/ux",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "uno/ux/uxsourcefilenameattribute",
+              "href": "uno/ux/uxsourcefilenameattribute"
+            },
+            "titles": {
+              "indexTitle": "UXSourceFileNameAttribute",
+              "fullyQualifiedIndexTitle": "Uno.UX.UXSourceFileNameAttribute"
+            }
+          },
+          {
+            "id": {
+              "id": "uno/ux/uxtestbootstrapperforattribute",
+              "parentId": "uno/ux",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "uno/ux/uxtestbootstrapperforattribute",
+              "href": "uno/ux/uxtestbootstrapperforattribute"
+            },
+            "titles": {
+              "indexTitle": "UXTestBootstrapperForAttribute",
+              "fullyQualifiedIndexTitle": "Uno.UX.UXTestBootstrapperForAttribute"
+            }
+          },
+          {
+            "id": {
+              "id": "uno/ux/uxunaryoperatorattribute",
+              "parentId": "uno/ux",
+              "type": "Class",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "uno/ux/uxunaryoperatorattribute",
+              "href": "uno/ux/uxunaryoperatorattribute"
+            },
+            "titles": {
+              "indexTitle": "UXUnaryOperatorAttribute",
+              "fullyQualifiedIndexTitle": "Uno.UX.UXUnaryOperatorAttribute"
+            }
+          },
+          {
+            "id": {
+              "id": "uno/ux/uxvaluebindingaliasattribute",
+              "parentId": "uno/ux",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "uno/ux/uxvaluebindingaliasattribute",
+              "href": "uno/ux/uxvaluebindingaliasattribute"
+            },
+            "titles": {
+              "indexTitle": "UXValueBindingAliasAttribute",
+              "fullyQualifiedIndexTitle": "Uno.UX.UXValueBindingAliasAttribute"
+            }
+          },
+          {
+            "id": {
+              "id": "uno/ux/uxvaluebindingargumentattribute",
+              "parentId": "uno/ux",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "uno/ux/uxvaluebindingargumentattribute",
+              "href": "uno/ux/uxvaluebindingargumentattribute"
+            },
+            "titles": {
+              "indexTitle": "UXValueBindingArgumentAttribute",
+              "fullyQualifiedIndexTitle": "Uno.UX.UXValueBindingArgumentAttribute"
+            }
+          },
+          {
+            "id": {
+              "id": "uno/ux/uxvaluebindingtargetattribute",
+              "parentId": "uno/ux",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "uno/ux/uxvaluebindingtargetattribute",
+              "href": "uno/ux/uxvaluebindingtargetattribute"
+            },
+            "titles": {
+              "indexTitle": "UXValueBindingTargetAttribute",
+              "fullyQualifiedIndexTitle": "Uno.UX.UXValueBindingTargetAttribute"
+            }
+          },
+          {
+            "id": {
+              "id": "uno/ux/uxverbatimattribute",
+              "parentId": "uno/ux",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "uno/ux/uxverbatimattribute",
+              "href": "uno/ux/uxverbatimattribute"
+            },
+            "titles": {
+              "indexTitle": "UXVerbatimAttribute",
+              "fullyQualifiedIndexTitle": "Uno.UX.UXVerbatimAttribute"
+            }
+          },
+          {
+            "id": {
+              "id": "uno/ux/valuechangedargs_1",
+              "parentId": "uno/ux",
+              "type": "Class",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "uno/ux/valuechangedargs_1",
+              "href": "uno/ux/valuechangedargs_1"
+            },
+            "titles": {
+              "indexTitle": "ValueChangedArgs<T>",
+              "fullyQualifiedIndexTitle": "Uno.UX.ValueChangedArgs<T>"
+            }
+          }
+        ]
+      }
+    ],
+    "delegates": [
+      {
+        "items": [
+          {
+            "returns": {
+              "href": "uno/ux/expression_1",
+              "title": "T",
+              "fullyQualifiedTitle": "Uno.UX.T"
+            },
+            "id": {
+              "id": "uno/ux/expression_1",
+              "parentId": "uno/ux",
+              "type": "Delegate",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "uno/ux/expression_1",
+              "href": "uno/ux/expression_1"
+            },
+            "titles": {
+              "indexTitle": "Expression<T>",
+              "fullyQualifiedIndexTitle": "Uno.UX.Expression<T>"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "sender",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              },
+              {
+                "name": "args",
+                "href": "uno/ux/valuechangedargs_1",
+                "title": "ValueChangedArgs<T>",
+                "fullyQualifiedTitle": "Uno.UX.ValueChangedArgs<T>"
+              }
+            ],
+            "id": {
+              "id": "uno/ux/valuechangedhandler_1",
+              "parentId": "uno/ux",
+              "type": "Delegate",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "uno/ux/valuechangedhandler_1",
+              "href": "uno/ux/valuechangedhandler_1"
+            },
+            "titles": {
+              "indexTitle": "ValueChangedHandler<T> (object, ValueChangedArgs<T>)",
+              "fullyQualifiedIndexTitle": "Uno.UX.ValueChangedHandler<T> (object, Uno.UX.ValueChangedArgs<T>)"
+            }
+          }
+        ]
+      }
+    ],
+    "enums": [
+      {
+        "items": [
+          {
+            "id": {
+              "id": "uno/ux/unit",
+              "parentId": "uno/ux",
+              "type": "Enum",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "uno/ux/unit",
+              "href": "uno/ux/unit"
+            },
+            "titles": {
+              "indexTitle": "Unit",
+              "fullyQualifiedIndexTitle": "Uno.UX.Unit"
+            }
+          }
+        ]
+      }
+    ],
+    "interfaces": [
+      {
+        "items": [
+          {
+            "id": {
+              "id": "uno/ux/ipropertylistener",
+              "parentId": "uno/ux",
+              "type": "Interface",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "uno/ux/ipropertylistener",
+              "href": "uno/ux/ipropertylistener"
+            },
+            "titles": {
+              "indexTitle": "IPropertyListener",
+              "fullyQualifiedIndexTitle": "Uno.UX.IPropertyListener"
+            }
+          }
+        ]
+      }
+    ],
+    "structs": [
+      {
+        "items": [
+          {
+            "id": {
+              "id": "uno/ux/selector",
+              "parentId": "uno/ux",
+              "type": "Struct",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "uno/ux/selector",
+              "href": "uno/ux/selector"
+            },
+            "titles": {
+              "indexTitle": "Selector",
+              "fullyQualifiedIndexTitle": "Uno.UX.Selector"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Denotes a size in points, pixels or percent of available space.",
+              "full": "Denotes a size in points, pixels or percent of available space.\n\nIn UX Markup, values of this type can be written as follows:\n\n* `100pt` means 100 points.\n* `50%` means 50 percent of available space\n* `120px` means 120 physical pixels.\n* `100` means 100 unspecified units. Will default to points, unless a unit is implicit. For example, if set on a @Change animator\n  to animate a property already in percent, the value will be interprted as percent.\n\nIf not specifying a value, many properties will default to `Size.Auto`, where the size will\nbe computed automatically based on context. See the property documentation."
+            },
+            "id": {
+              "id": "uno/ux/size",
+              "parentId": "uno/ux",
+              "type": "Struct",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "uno/ux/size",
+              "href": "uno/ux/size"
+            },
+            "titles": {
+              "indexTitle": "Size",
+              "fullyQualifiedIndexTitle": "Uno.UX.Size"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Denotes a two-dimensional size in points, pixels or percent of available space.",
+              "full": "Denotes a two-dimensional size in points, pixels or percent of available space.\n\nIn UX Markup, values of this type can be written as two comma-separated @Size values.\n\nExamples:\n\n* `100pt, 50%` means 100 points on the horizontal axis, and 50% on the vertical axis\n* `100, 100` means 100 unspecified units in both directions. Will default to points, unless another unit is implict."
+            },
+            "id": {
+              "id": "uno/ux/size2",
+              "parentId": "uno/ux",
+              "type": "Struct",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "uno/ux/size2",
+              "href": "uno/ux/size2"
+            },
+            "titles": {
+              "indexTitle": "Size2",
+              "fullyQualifiedIndexTitle": "Uno.UX.Size2"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

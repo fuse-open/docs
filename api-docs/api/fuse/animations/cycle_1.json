@@ -1,0 +1,1106 @@
+{
+  "entity": {
+    "base": {
+      "id": {
+        "id": "fuse/animations/openanimator",
+        "parentId": "fuse/animations",
+        "type": "Class",
+        "modifiers": [
+          "public",
+          "abstract"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/animations/openanimator",
+        "href": "fuse/animations/openanimator"
+      },
+      "titles": {
+        "indexTitle": "OpenAnimator",
+        "fullyQualifiedIndexTitle": "Fuse.Animations.OpenAnimator"
+      }
+    },
+    "location": {
+      "namespaceTitle": "Fuse.Animations",
+      "namespaceUri": "fuse/animations",
+      "packageName": "Fuse.Animations",
+      "packageVersion": "1.8.0-rc2"
+    },
+    "inheritance": {
+      "root": {
+        "uri": "uno/object",
+        "title": "object",
+        "children": [
+          {
+            "uri": "uno/ux/propertyobject",
+            "title": "Uno.UX.PropertyObject",
+            "children": [
+              {
+                "uri": "fuse/animations/animator",
+                "title": "Fuse.Animations.Animator",
+                "children": [
+                  {
+                    "uri": "fuse/animations/openanimator",
+                    "title": "Fuse.Animations.OpenAnimator",
+                    "children": [
+                      {
+                        "uri": "fuse/animations/cycle_1",
+                        "title": "Fuse.Animations.Cycle<T>",
+                        "children": [],
+                        "isCurrent": true
+                      }
+                    ],
+                    "isAncestor": true
+                  }
+                ],
+                "isAncestor": true
+              }
+            ],
+            "isAncestor": true
+          }
+        ],
+        "isAncestor": true
+      },
+      "hasInheritance": true
+    },
+    "uxProperties": {
+      "uxNamespaceTitle": "Fuse.Animations",
+      "uxNamespaceUri": "fuse/animations",
+      "uxName": "Cycle"
+    },
+    "attributes": [
+      {
+        "parameters": [
+          "Cycle",
+          "Target"
+        ],
+        "id": {
+          "id": "uno/ux/uxautogenericattribute",
+          "parentId": "uno/ux",
+          "type": "Class",
+          "modifiers": [
+            "public",
+            "sealed"
+          ]
+        },
+        "uri": {
+          "idUri": "uno/ux/uxautogenericattribute",
+          "href": "uno/ux/uxautogenericattribute"
+        },
+        "titles": {
+          "indexTitle": "UXAutoGenericAttribute",
+          "fullyQualifiedIndexTitle": "Uno.UX.UXAutoGenericAttribute"
+        }
+      }
+    ],
+    "id": {
+      "id": "fuse/animations/cycle_1",
+      "parentId": "fuse/animations",
+      "type": "UxClass",
+      "modifiers": [
+        "public"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/animations/cycle_1",
+      "href": "fuse/animations/cycle_1"
+    },
+    "titles": {
+      "pageTitle": "Cycle<T> Class",
+      "navigationTitle": "Cycle<T> Class",
+      "fullTitle": "Fuse.Animations.Cycle",
+      "indexTitle": "Cycle<T>",
+      "fullyQualifiedIndexTitle": "Fuse.Animations.Cycle<T>"
+    },
+    "syntax": {
+      "uno": "[Uno.UX.UXAutoGeneric(alias = \"Cycle\", property = \"Target\")]\r\npublic class Cycle<T> : Fuse.Animations.OpenAnimator {}",
+      "ux": "<Cycle />"
+    },
+    "comment": {
+      "brief": "Animates a repeating cycle between a high and low value using a given waveform.",
+      "full": "Animates a repeating cycle between a high and low value using a given waveform.\n\nThe cycling of the animation continues even when the `Trigger.Progress` reaches 1. When a trigger is deactivated the cycling will play backwards, possibly beyond reaching Progress=1, until it finds a suitable rest state. This ensure that `Cycle` does not produce any jarring switches when the triggers are activated and deactivated.\n\n## Example\n\nThe below example creates a simple pulsing effect on the panel while it is pressed.\n\n    <Panel Color=\"Blue\" ux:Name=\"panel1\" Width=\"100\" Height=\"100\">\n        <WhilePressed>\n            <Cycle Target=\"panel1.Width\" Low=\"80\" High=\"120\" Frequency=\"0.5\"/>\n        </WhilePressed>\n    </Panel>\n\nBy adjusting the `Waveform` you can creates animations that wrap-around instead of bouncing back and forth.\n\n    <Cycle Target=\"panel.X\" Low=\"-100\" High=\"100\" Waveform=\"Triangle\"/>\n\nThe \"wrap-around\" here is simply the nature of the triangular waveform -- the default waveform is sinusoidal.\n\n## Formula\n\nThe properties are defined to be a simple interface, but it may be easier to understand see how they all relate in an expression. Given a current time offset the value of the `Target` is defined roughly as:\n\n    Target.Value = Lerp( Low, High, Easing( Waveform(Time) ) ) * Base + Offset\n\n`Low` and `High` can only be scalar values. `Cycle` checks whether these values cross zero, or one. If they do, it will start at that value, and return to that value when done (this is the default value for `ProgressOffset`). This allows a smooth return to rest state in animation.\n\nModifying `Base` and `Offset` allows you to use `Cycle` with non-scalar values. Though be aware not all combinations of value can provide for a smooth return to the rest state."
+    }
+  },
+  "tableOfContents": {
+    "uxProperties": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/animations/cycle_1",
+            "parentId": "fuse/animations",
+            "type": "UxClass",
+            "modifiers": [
+              "public"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/animations/cycle_1",
+            "href": "fuse/animations/cycle_1"
+          },
+          "titles": {
+            "indexTitle": "Cycle<T>",
+            "fullyQualifiedIndexTitle": "Fuse.Animations.Cycle<T>"
+          }
+        },
+        "items": [
+          {
+            "comment": {
+              "brief": "Applied as a multiplier to the progress value. This allows using `Cycle` on properties that are not scalars, such as `float2`.",
+              "full": "Applied as a multiplier to the progress value. This allows using `Cycle` on properties that are not scalars, such as `float2`.\n\nRefer to the formula in the description of @Cycle\n\nThe default is the identity value: `1` for a scalar, `1,1` for a float2, etc."
+            },
+            "returns": {
+              "isVirtual": true,
+              "title": "T",
+              "fullyQualifiedTitle": "Fuse.Animations.T"
+            },
+            "id": {
+              "id": "fuse/animations/cycle_1/base",
+              "parentId": "fuse/animations/cycle_1",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/cycle_1/base",
+              "href": "fuse/animations/cycle_1/base"
+            },
+            "titles": {
+              "indexTitle": "Base",
+              "fullyQualifiedIndexTitle": "Fuse.Animations.Cycle.Base"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Specifies an easing applied to the waveform value. The default is `Linear`, meaning the waveform range of 0...1 is used directly (mapped to the `Low` ... `High` range). An `Easing` provides a different mapping for the values.",
+              "full": "Specifies an easing applied to the waveform value. The default is `Linear`, meaning the waveform range of 0...1 is used directly (mapped to the `Low` ... `High` range). An `Easing` provides a different mapping for the values.\n\nNote this value is applied on top of the `Waveform`, thus typically `Triangle` or `Sawtooth` are used if an `Easing` is desired."
+            },
+            "returns": {
+              "href": "fuse/animations/easing",
+              "title": "Easing",
+              "fullyQualifiedTitle": "Fuse.Animations.Easing"
+            },
+            "flags": {
+              "uxContent": true
+            },
+            "id": {
+              "id": "fuse/animations/cycle_1/easing",
+              "parentId": "fuse/animations/cycle_1",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/cycle_1/easing",
+              "href": "fuse/animations/cycle_1/easing"
+            },
+            "titles": {
+              "indexTitle": "Easing",
+              "fullyQualifiedIndexTitle": "Fuse.Animations.Cycle.Easing"
+            }
+          },
+          {
+            "comment": {
+              "brief": "The frequency, in hertz, of the wave: how many times per second the cycle repeats.",
+              "full": "The frequency, in hertz, of the wave: how many times per second the cycle repeats."
+            },
+            "returns": {
+              "href": "uno/double",
+              "title": "double",
+              "fullyQualifiedTitle": "double"
+            },
+            "id": {
+              "id": "fuse/animations/cycle_1/frequency",
+              "parentId": "fuse/animations/cycle_1",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/cycle_1/frequency",
+              "href": "fuse/animations/cycle_1/frequency"
+            },
+            "titles": {
+              "indexTitle": "Frequency",
+              "fullyQualifiedIndexTitle": "Fuse.Animations.Cycle.Frequency"
+            }
+          },
+          {
+            "comment": {
+              "brief": "The frequency, in hertz, to use when animating back towards the rest position.",
+              "full": "The frequency, in hertz, to use when animating back towards the rest position."
+            },
+            "returns": {
+              "href": "uno/double",
+              "title": "double",
+              "fullyQualifiedTitle": "double"
+            },
+            "id": {
+              "id": "fuse/animations/cycle_1/frequencyback",
+              "parentId": "fuse/animations/cycle_1",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/cycle_1/frequencyback",
+              "href": "fuse/animations/cycle_1/frequencyback"
+            },
+            "titles": {
+              "indexTitle": "FrequencyBack",
+              "fullyQualifiedIndexTitle": "Fuse.Animations.Cycle.FrequencyBack"
+            }
+          },
+          {
+            "comment": {
+              "brief": "The highest scalar value in the cycle.",
+              "full": "The highest scalar value in the cycle."
+            },
+            "returns": {
+              "href": "uno/float",
+              "title": "float",
+              "fullyQualifiedTitle": "float"
+            },
+            "id": {
+              "id": "fuse/animations/cycle_1/high",
+              "parentId": "fuse/animations/cycle_1",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/cycle_1/high",
+              "href": "fuse/animations/cycle_1/high"
+            },
+            "titles": {
+              "indexTitle": "High",
+              "fullyQualifiedIndexTitle": "Fuse.Animations.Cycle.High"
+            }
+          },
+          {
+            "comment": {
+              "brief": "The lowest scalar value in the cycle.",
+              "full": "The lowest scalar value in the cycle."
+            },
+            "returns": {
+              "href": "uno/float",
+              "title": "float",
+              "fullyQualifiedTitle": "float"
+            },
+            "id": {
+              "id": "fuse/animations/cycle_1/low",
+              "parentId": "fuse/animations/cycle_1",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/cycle_1/low",
+              "href": "fuse/animations/cycle_1/low"
+            },
+            "titles": {
+              "indexTitle": "Low",
+              "fullyQualifiedIndexTitle": "Fuse.Animations.Cycle.Low"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Specifies the offset value applied to the Value formula.",
+              "full": "Specifies the offset value applied to the Value formula.\n\nRefer to the formula in the description of @Cycle\n\nThe default is zero."
+            },
+            "returns": {
+              "isVirtual": true,
+              "title": "T",
+              "fullyQualifiedTitle": "Fuse.Animations.T"
+            },
+            "id": {
+              "id": "fuse/animations/cycle_1/offset",
+              "parentId": "fuse/animations/cycle_1",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/cycle_1/offset",
+              "href": "fuse/animations/cycle_1/offset"
+            },
+            "titles": {
+              "indexTitle": "Offset",
+              "fullyQualifiedIndexTitle": "Fuse.Animations.Cycle.Offset"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Specifies the progress when Cycle should start, and defines the rest state. By default this is calculated to be a suitable rest position to avoid animation jerk when it turns on/off.",
+              "full": "Specifies the progress when Cycle should start, and defines the rest state. By default this is calculated to be a suitable rest position to avoid animation jerk when it turns on/off."
+            },
+            "returns": {
+              "href": "uno/float",
+              "title": "float",
+              "fullyQualifiedTitle": "float"
+            },
+            "id": {
+              "id": "fuse/animations/cycle_1/progressoffset",
+              "parentId": "fuse/animations/cycle_1",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/cycle_1/progressoffset",
+              "href": "fuse/animations/cycle_1/progressoffset"
+            },
+            "titles": {
+              "indexTitle": "ProgressOffset",
+              "fullyQualifiedIndexTitle": "Fuse.Animations.Cycle.ProgressOffset"
+            }
+          },
+          {
+            "comment": {
+              "brief": "How to return the value to the original/rest state when being played backwards/deactivated.",
+              "full": "How to return the value to the original/rest state when being played backwards/deactivated."
+            },
+            "returns": {
+              "href": "fuse/animations/cyclerestore",
+              "title": "CycleRestore",
+              "fullyQualifiedTitle": "Fuse.Animations.CycleRestore"
+            },
+            "id": {
+              "id": "fuse/animations/cycle_1/restore",
+              "parentId": "fuse/animations/cycle_1",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/cycle_1/restore",
+              "href": "fuse/animations/cycle_1/restore"
+            },
+            "titles": {
+              "indexTitle": "Restore",
+              "fullyQualifiedIndexTitle": "Fuse.Animations.Cycle.Restore"
+            }
+          },
+          {
+            "comment": {
+              "brief": "The shape of the waveform used in the cycle.",
+              "full": "The shape of the waveform used in the cycle."
+            },
+            "returns": {
+              "href": "fuse/animations/cyclewaveform",
+              "title": "CycleWaveform",
+              "fullyQualifiedTitle": "Fuse.Animations.CycleWaveform"
+            },
+            "id": {
+              "id": "fuse/animations/cycle_1/waveform",
+              "parentId": "fuse/animations/cycle_1",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/cycle_1/waveform",
+              "href": "fuse/animations/cycle_1/waveform"
+            },
+            "titles": {
+              "indexTitle": "Waveform",
+              "fullyQualifiedIndexTitle": "Fuse.Animations.Cycle.Waveform"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/animations/openanimator",
+            "parentId": "fuse/animations",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/animations/openanimator",
+            "href": "fuse/animations/openanimator"
+          },
+          "titles": {
+            "indexTitle": "OpenAnimator",
+            "fullyQualifiedIndexTitle": "Fuse.Animations.OpenAnimator"
+          }
+        },
+        "items": [
+          {
+            "comment": {
+              "brief": "Specifies how long the animator is \"on\".",
+              "full": "Specifies how long the animator is \"on\".\n\nIf the OpenAnimator does not have a duration (the default) it will be \"on\" after the `Delay` is reached, and continue to be \"on\" when the end of the timeline is reached."
+            },
+            "returns": {
+              "href": "uno/double",
+              "title": "double",
+              "fullyQualifiedTitle": "double"
+            },
+            "id": {
+              "id": "fuse/animations/cycle_1/duration",
+              "parentId": "fuse/animations/cycle_1",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/cycle_1/duration",
+              "href": "fuse/animations/openanimator/duration",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Duration",
+              "fullyQualifiedIndexTitle": "Fuse.Animations.OpenAnimator.Duration"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/animations/animator",
+            "parentId": "fuse/animations",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/animations/animator",
+            "href": "fuse/animations/animator"
+          },
+          "titles": {
+            "indexTitle": "Animator",
+            "fullyQualifiedIndexTitle": "Fuse.Animations.Animator"
+          }
+        },
+        "items": [
+          {
+            "comment": {
+              "brief": "Seconds from the start of the trigger until this animator should play.",
+              "full": "Seconds from the start of the trigger until this animator should play.\n\nNote that some triggers are often played backwards in some scenarios. Delay will then be measured\nfrom the end of the animation, to when this animator should be completed."
+            },
+            "returns": {
+              "href": "uno/double",
+              "title": "double",
+              "fullyQualifiedTitle": "double"
+            },
+            "id": {
+              "id": "fuse/animations/cycle_1/delay",
+              "parentId": "fuse/animations/cycle_1",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/cycle_1/delay",
+              "href": "fuse/animations/animator/delay",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Delay",
+              "fullyQualifiedIndexTitle": "Fuse.Animations.Animator.Delay"
+            }
+          },
+          {
+            "comment": {
+              "brief": "How to mix this animator when there are multiple conflicting animators affecting the target.",
+              "full": "How to mix this animator when there are multiple conflicting animators affecting the target."
+            },
+            "returns": {
+              "href": "fuse/animations/mixop",
+              "title": "MixOp",
+              "fullyQualifiedTitle": "Fuse.Animations.MixOp"
+            },
+            "id": {
+              "id": "fuse/animations/cycle_1/mixop",
+              "parentId": "fuse/animations/cycle_1",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/cycle_1/mixop",
+              "href": "fuse/animations/animator/mixop",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "MixOp",
+              "fullyQualifiedIndexTitle": "Fuse.Animations.Animator.MixOp"
+            }
+          }
+        ]
+      }
+    ],
+    "attachedUxProperties": [
+      {
+        "items": [
+          {
+            "comment": {
+              "brief": "The `ux:Global` attribute creates a global resource that is accessible everywhere in UX markup.",
+              "full": "The `ux:Global` attribute creates a global resource that is accessible everywhere in UX markup.\n\nSee @Resources for more information.\n\nThe `ux:Global` attribute on an UX element creates a single object (singleton) that is globally available.\nUsing this attribute will prevent the object from being inserted by default the object at its defined location\nin the UX tree."
+            },
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "parameters": [
+              {
+                "name": "obj",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              },
+              {
+                "name": "key",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              }
+            ],
+            "id": {
+              "id": "fuse/animations/cycle_1/resource_globalkey_setglobalkey_4c3ac72d",
+              "parentId": "fuse/animations/cycle_1",
+              "type": "AttachedUxProperty",
+              "modifiers": []
+            },
+            "uri": {
+              "idUri": "fuse/animations/cycle_1/resource_globalkey_setglobalkey_4c3ac72d",
+              "href": "uno/ux/resource/setglobalkey_4c3ac72d",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Resource.GlobalKey",
+              "fullyQualifiedIndexTitle": "Resource.GlobalKey"
+            }
+          }
+        ]
+      }
+    ],
+    "constructors": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/animations/cycle_1",
+            "parentId": "fuse/animations",
+            "type": "UxClass",
+            "modifiers": [
+              "public"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/animations/cycle_1",
+            "href": "fuse/animations/cycle_1"
+          },
+          "titles": {
+            "indexTitle": "Cycle<T>",
+            "fullyQualifiedIndexTitle": "Fuse.Animations.Cycle<T>"
+          }
+        },
+        "items": [
+          {
+            "parameters": [
+              {
+                "name": "Target",
+                "href": "uno/ux/property_1",
+                "title": "Property<T>",
+                "fullyQualifiedTitle": "Uno.UX.Property<T>"
+              }
+            ],
+            "id": {
+              "id": "fuse/animations/cycle_1/_ctor_fc0b640d",
+              "parentId": "fuse/animations/cycle_1",
+              "type": "Constructor",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/cycle_1/_ctor_fc0b640d",
+              "href": "fuse/animations/cycle_1/_ctor_fc0b640d"
+            },
+            "titles": {
+              "indexTitle": "Cycle(Property<T>)",
+              "fullyQualifiedIndexTitle": "Fuse.Animations.Cycle.Cycle(Uno.UX.Property<T>)"
+            }
+          }
+        ]
+      }
+    ],
+    "properties": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/animations/cycle_1",
+            "parentId": "fuse/animations",
+            "type": "UxClass",
+            "modifiers": [
+              "public"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/animations/cycle_1",
+            "href": "fuse/animations/cycle_1"
+          },
+          "titles": {
+            "indexTitle": "Cycle<T>",
+            "fullyQualifiedIndexTitle": "Fuse.Animations.Cycle<T>"
+          }
+        },
+        "items": [
+          {
+            "comment": {
+              "brief": "The property that is animated.",
+              "full": "The property that is animated."
+            },
+            "returns": {
+              "href": "uno/ux/property_1",
+              "title": "Property<T>",
+              "fullyQualifiedTitle": "Uno.UX.Property<T>"
+            },
+            "id": {
+              "id": "fuse/animations/cycle_1/target",
+              "parentId": "fuse/animations/cycle_1",
+              "type": "Property",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/cycle_1/target",
+              "href": "fuse/animations/cycle_1/target"
+            },
+            "titles": {
+              "indexTitle": "Target",
+              "fullyQualifiedIndexTitle": "Fuse.Animations.Cycle.Target"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/animations/openanimator",
+            "parentId": "fuse/animations",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/animations/openanimator",
+            "href": "fuse/animations/openanimator"
+          },
+          "titles": {
+            "indexTitle": "OpenAnimator",
+            "fullyQualifiedIndexTitle": "Fuse.Animations.OpenAnimator"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "id": {
+              "id": "fuse/animations/cycle_1/hasduration",
+              "parentId": "fuse/animations/cycle_1",
+              "type": "Property",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/cycle_1/hasduration",
+              "href": "fuse/animations/openanimator/hasduration",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "HasDuration",
+              "fullyQualifiedIndexTitle": "Fuse.Animations.OpenAnimator.HasDuration"
+            }
+          }
+        ]
+      }
+    ],
+    "methods": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/animations/openanimator",
+            "parentId": "fuse/animations",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/animations/openanimator",
+            "href": "fuse/animations/openanimator"
+          },
+          "titles": {
+            "indexTitle": "OpenAnimator",
+            "fullyQualifiedIndexTitle": "Fuse.Animations.OpenAnimator"
+          }
+        },
+        "items": [
+          {
+            "id": {
+              "id": "fuse/animations/cycle_1/resetduration",
+              "parentId": "fuse/animations/cycle_1",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/cycle_1/resetduration",
+              "href": "fuse/animations/openanimator/resetduration",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "ResetDuration",
+              "fullyQualifiedIndexTitle": "Fuse.Animations.OpenAnimator.ResetDuration"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "uno/ux/propertyobject",
+            "parentId": "uno/ux",
+            "type": "Class",
+            "modifiers": [
+              "public"
+            ]
+          },
+          "uri": {
+            "idUri": "uno/ux/propertyobject",
+            "href": "uno/ux/propertyobject"
+          },
+          "titles": {
+            "indexTitle": "PropertyObject",
+            "fullyQualifiedIndexTitle": "Uno.UX.PropertyObject"
+          }
+        },
+        "items": [
+          {
+            "parameters": [
+              {
+                "name": "listener",
+                "href": "uno/ux/ipropertylistener",
+                "title": "IPropertyListener",
+                "fullyQualifiedTitle": "Uno.UX.IPropertyListener"
+              }
+            ],
+            "id": {
+              "id": "fuse/animations/cycle_1/addpropertylistener_496a874a",
+              "parentId": "fuse/animations/cycle_1",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/cycle_1/addpropertylistener_496a874a",
+              "href": "uno/ux/propertyobject/addpropertylistener_496a874a",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "AddPropertyListener(IPropertyListener)",
+              "fullyQualifiedIndexTitle": "Uno.UX.PropertyObject.AddPropertyListener(Uno.UX.IPropertyListener)"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "property",
+                "href": "uno/ux/selector",
+                "title": "Selector",
+                "fullyQualifiedTitle": "Uno.UX.Selector"
+              }
+            ],
+            "id": {
+              "id": "fuse/animations/cycle_1/onpropertychanged_16d735f3",
+              "parentId": "fuse/animations/cycle_1",
+              "type": "Method",
+              "modifiers": [
+                "protected"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/cycle_1/onpropertychanged_16d735f3",
+              "href": "uno/ux/propertyobject/onpropertychanged_16d735f3",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "OnPropertyChanged(Selector)",
+              "fullyQualifiedIndexTitle": "Uno.UX.PropertyObject.OnPropertyChanged(Uno.UX.Selector)"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "property",
+                "href": "uno/ux/selector",
+                "title": "Selector",
+                "fullyQualifiedTitle": "Uno.UX.Selector"
+              },
+              {
+                "name": "origin",
+                "href": "uno/ux/ipropertylistener",
+                "title": "IPropertyListener",
+                "fullyQualifiedTitle": "Uno.UX.IPropertyListener"
+              }
+            ],
+            "id": {
+              "id": "fuse/animations/cycle_1/onpropertychanged_6422fe92",
+              "parentId": "fuse/animations/cycle_1",
+              "type": "Method",
+              "modifiers": [
+                "protected",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/cycle_1/onpropertychanged_6422fe92",
+              "href": "uno/ux/propertyobject/onpropertychanged_6422fe92",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "OnPropertyChanged(Selector, IPropertyListener)",
+              "fullyQualifiedIndexTitle": "Uno.UX.PropertyObject.OnPropertyChanged(Uno.UX.Selector, Uno.UX.IPropertyListener)"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "listener",
+                "href": "uno/ux/ipropertylistener",
+                "title": "IPropertyListener",
+                "fullyQualifiedTitle": "Uno.UX.IPropertyListener"
+              }
+            ],
+            "id": {
+              "id": "fuse/animations/cycle_1/removepropertylistener_496a874a",
+              "parentId": "fuse/animations/cycle_1",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/cycle_1/removepropertylistener_496a874a",
+              "href": "uno/ux/propertyobject/removepropertylistener_496a874a",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "RemovePropertyListener(IPropertyListener)",
+              "fullyQualifiedIndexTitle": "Uno.UX.PropertyObject.RemovePropertyListener(Uno.UX.IPropertyListener)"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "uno/object",
+            "parentId": "uno",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "intrinsic"
+            ]
+          },
+          "uri": {
+            "idUri": "uno/object",
+            "href": "uno/object"
+          },
+          "titles": {
+            "indexTitle": "object",
+            "fullyQualifiedIndexTitle": "object"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "parameters": [
+              {
+                "name": "o",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              }
+            ],
+            "id": {
+              "id": "fuse/animations/cycle_1/equals_a09c80e3",
+              "parentId": "fuse/animations/cycle_1",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/cycle_1/equals_a09c80e3",
+              "href": "uno/object/equals_a09c80e3",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Equals(object)",
+              "fullyQualifiedIndexTitle": "Uno.Object.Equals(object)"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/int",
+              "title": "int",
+              "fullyQualifiedTitle": "int"
+            },
+            "id": {
+              "id": "fuse/animations/cycle_1/gethashcode",
+              "parentId": "fuse/animations/cycle_1",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/cycle_1/gethashcode",
+              "href": "uno/object/gethashcode",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetHashCode",
+              "fullyQualifiedIndexTitle": "Uno.Object.GetHashCode"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/type",
+              "title": "Type",
+              "fullyQualifiedTitle": "Uno.Type"
+            },
+            "id": {
+              "id": "fuse/animations/cycle_1/gettype",
+              "parentId": "fuse/animations/cycle_1",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/cycle_1/gettype",
+              "href": "uno/object/gettype",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetType",
+              "fullyQualifiedIndexTitle": "Uno.Object.GetType"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "id": {
+              "id": "fuse/animations/cycle_1/tostring",
+              "parentId": "fuse/animations/cycle_1",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/cycle_1/tostring",
+              "href": "uno/object/tostring",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "ToString",
+              "fullyQualifiedIndexTitle": "Uno.Object.ToString"
+            }
+          }
+        ]
+      }
+    ],
+    "fields": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/animations/animator",
+            "parentId": "fuse/animations",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/animations/animator",
+            "href": "fuse/animations/animator"
+          },
+          "titles": {
+            "indexTitle": "Animator",
+            "fullyQualifiedIndexTitle": "Fuse.Animations.Animator"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "fuse/animations/imixer",
+              "title": "IMixer",
+              "fullyQualifiedTitle": "Fuse.Animations.IMixer"
+            },
+            "id": {
+              "id": "fuse/animations/cycle_1/mixer",
+              "parentId": "fuse/animations/cycle_1",
+              "type": "Field",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/cycle_1/mixer",
+              "href": "fuse/animations/animator/mixer",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Mixer",
+              "fullyQualifiedIndexTitle": "Fuse.Animations.Animator.Mixer"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,501 @@
+{
+  "entity": {
+    "base": {
+      "id": {
+        "id": "fuse/motion/destinationmotionconfig",
+        "parentId": "fuse/motion",
+        "type": "UxClass",
+        "modifiers": [
+          "public"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/motion/destinationmotionconfig",
+        "href": "fuse/motion/destinationmotionconfig"
+      },
+      "titles": {
+        "indexTitle": "DestinationMotionConfig",
+        "fullyQualifiedIndexTitle": "Fuse.Motion.DestinationMotionConfig"
+      }
+    },
+    "location": {
+      "namespaceTitle": "Fuse.Motion",
+      "namespaceUri": "fuse/motion",
+      "packageName": "Fuse.Motion",
+      "packageVersion": "1.8.0-rc2"
+    },
+    "inheritance": {
+      "root": {
+        "uri": "uno/object",
+        "title": "object",
+        "children": [
+          {
+            "uri": "fuse/motion/destinationmotionconfig",
+            "title": "Fuse.Motion.DestinationMotionConfig",
+            "children": [
+              {
+                "uri": "fuse/motion/destinationmotion_1",
+                "title": "Fuse.Motion.DestinationMotion<T>",
+                "children": [],
+                "isCurrent": true
+              }
+            ],
+            "isAncestor": true
+          }
+        ],
+        "isAncestor": true
+      },
+      "hasInheritance": true
+    },
+    "uxProperties": {
+      "uxNamespaceTitle": "Fuse",
+      "uxNamespaceUri": "fuse",
+      "uxName": "Motion.DestinationMotion"
+    },
+    "id": {
+      "id": "fuse/motion/destinationmotion_1",
+      "parentId": "fuse/motion",
+      "type": "UxClass",
+      "modifiers": [
+        "public"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/motion/destinationmotion_1",
+      "href": "fuse/motion/destinationmotion_1"
+    },
+    "titles": {
+      "pageTitle": "DestinationMotion<T> Class",
+      "navigationTitle": "DestinationMotion<T> Class",
+      "fullTitle": "Fuse.Motion.DestinationMotion",
+      "indexTitle": "DestinationMotion<T>",
+      "fullyQualifiedIndexTitle": "Fuse.Motion.DestinationMotion<T>"
+    },
+    "syntax": {
+      "uno": "public class DestinationMotion<T> : Fuse.Motion.DestinationMotionConfig {}",
+      "ux": "<Motion.DestinationMotion />"
+    }
+  },
+  "tableOfContents": {
+    "uxProperties": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/motion/destinationmotionconfig",
+            "parentId": "fuse/motion",
+            "type": "UxClass",
+            "modifiers": [
+              "public"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/motion/destinationmotionconfig",
+            "href": "fuse/motion/destinationmotionconfig"
+          },
+          "titles": {
+            "indexTitle": "DestinationMotionConfig",
+            "fullyQualifiedIndexTitle": "Fuse.Motion.DestinationMotionConfig"
+          }
+        },
+        "items": [
+          {
+            "comment": {
+              "brief": "Specifies a reference distance for the motion. This would roughly be considered how much\ndistance to cover over `Duration`. Not all simulations interpret the values the same way, so\nit may not be honoured exactly.",
+              "full": "Specifies a reference distance for the motion. This would roughly be considered how much\ndistance to cover over `Duration`. Not all simulations interpret the values the same way, so\nit may not be honoured exactly.\n\nDistance is measured as the vector length between the animated property's current value\nand its target value."
+            },
+            "returns": {
+              "href": "uno/float",
+              "title": "float",
+              "fullyQualifiedTitle": "float"
+            },
+            "id": {
+              "id": "fuse/motion/destinationmotion_1/distance",
+              "parentId": "fuse/motion/destinationmotion_1",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/motion/destinationmotion_1/distance",
+              "href": "fuse/motion/destinationmotionconfig/distance",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Distance",
+              "fullyQualifiedIndexTitle": "Fuse.Motion.DestinationMotionConfig.Distance"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Specifies the nominal length of time for a transition. A change in @Distance amount will typically\ntake around this amount of time.",
+              "full": "Specifies the nominal length of time for a transition. A change in @Distance amount will typically\ntake around this amount of time.\n\nFor example, a navigation with `Duration=0.3` and `Distance=\"1\"` would take 0.3s to do a single\npage transition."
+            },
+            "returns": {
+              "href": "uno/float",
+              "title": "float",
+              "fullyQualifiedTitle": "float"
+            },
+            "id": {
+              "id": "fuse/motion/destinationmotion_1/duration",
+              "parentId": "fuse/motion/destinationmotion_1",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/motion/destinationmotion_1/duration",
+              "href": "fuse/motion/destinationmotionconfig/duration",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Duration",
+              "fullyQualifiedIndexTitle": "Fuse.Motion.DestinationMotionConfig.Duration"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Specifies how much the duration extends depending on the covered distance. This is\nan exponent of that distance `distance ^ DurationExp`: a value of `0` is\na constant `Duration`, unaffected by distance; a value of `1` is a multple of\nthe duration.",
+              "full": "Specifies how much the duration extends depending on the covered distance. This is\nan exponent of that distance `distance ^ DurationExp`: a value of `0` is\na constant `Duration`, unaffected by distance; a value of `1` is a multple of\nthe duration."
+            },
+            "returns": {
+              "href": "uno/float",
+              "title": "float",
+              "fullyQualifiedTitle": "float"
+            },
+            "id": {
+              "id": "fuse/motion/destinationmotion_1/durationexp",
+              "parentId": "fuse/motion/destinationmotion_1",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/motion/destinationmotion_1/durationexp",
+              "href": "fuse/motion/destinationmotionconfig/durationexp",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "DurationExp",
+              "fullyQualifiedIndexTitle": "Fuse.Motion.DestinationMotionConfig.DurationExp"
+            }
+          },
+          {
+            "comment": {
+              "brief": "For a `Type=\"Easing\"`, this specifies which easing should be used.",
+              "full": "For a `Type=\"Easing\"`, this specifies which easing should be used."
+            },
+            "returns": {
+              "href": "fuse/animations/easing",
+              "title": "Easing",
+              "fullyQualifiedTitle": "Fuse.Animations.Easing"
+            },
+            "flags": {
+              "uxContent": true
+            },
+            "id": {
+              "id": "fuse/motion/destinationmotion_1/easing",
+              "parentId": "fuse/motion/destinationmotion_1",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/motion/destinationmotion_1/easing",
+              "href": "fuse/motion/destinationmotionconfig/easing",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Easing",
+              "fullyQualifiedIndexTitle": "Fuse.Motion.DestinationMotionConfig.Easing"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Specifies the basic type of animation for the transition. The meaing of the other properties\nvaries depending on this type.",
+              "full": "Specifies the basic type of animation for the transition. The meaing of the other properties\nvaries depending on this type."
+            },
+            "returns": {
+              "href": "fuse/motion/motiondestinationtype",
+              "title": "MotionDestinationType",
+              "fullyQualifiedTitle": "Fuse.Motion.MotionDestinationType"
+            },
+            "id": {
+              "id": "fuse/motion/destinationmotion_1/type",
+              "parentId": "fuse/motion/destinationmotion_1",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/motion/destinationmotion_1/type",
+              "href": "fuse/motion/destinationmotionconfig/type",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Type",
+              "fullyQualifiedIndexTitle": "Fuse.Motion.DestinationMotionConfig.Type"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Defines the unit of the animated variable. This is used to establish reasonable defaults and\napply appropriate multipliers.",
+              "full": "Defines the unit of the animated variable. This is used to establish reasonable defaults and\napply appropriate multipliers.\n\nAngular types, `Radians` and `Degrees`, use a wrapping mode, such that 370degrees is\nthe same as 10degrees. In this mode there is no guarantee as to what the output value\nwill actually be (calling code must also treat equivalent angles the same, or mod them as\nrequired)."
+            },
+            "returns": {
+              "href": "fuse/motion/motionunit",
+              "title": "MotionUnit",
+              "fullyQualifiedTitle": "Fuse.Motion.MotionUnit"
+            },
+            "id": {
+              "id": "fuse/motion/destinationmotion_1/unit",
+              "parentId": "fuse/motion/destinationmotion_1",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/motion/destinationmotion_1/unit",
+              "href": "fuse/motion/destinationmotionconfig/unit",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Unit",
+              "fullyQualifiedIndexTitle": "Fuse.Motion.DestinationMotionConfig.Unit"
+            }
+          }
+        ]
+      }
+    ],
+    "attachedUxProperties": [
+      {
+        "items": [
+          {
+            "comment": {
+              "brief": "The `ux:Global` attribute creates a global resource that is accessible everywhere in UX markup.",
+              "full": "The `ux:Global` attribute creates a global resource that is accessible everywhere in UX markup.\n\nSee @Resources for more information.\n\nThe `ux:Global` attribute on an UX element creates a single object (singleton) that is globally available.\nUsing this attribute will prevent the object from being inserted by default the object at its defined location\nin the UX tree."
+            },
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "parameters": [
+              {
+                "name": "obj",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              },
+              {
+                "name": "key",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              }
+            ],
+            "id": {
+              "id": "fuse/motion/destinationmotion_1/resource_globalkey_setglobalkey_4c3ac72d",
+              "parentId": "fuse/motion/destinationmotion_1",
+              "type": "AttachedUxProperty",
+              "modifiers": []
+            },
+            "uri": {
+              "idUri": "fuse/motion/destinationmotion_1/resource_globalkey_setglobalkey_4c3ac72d",
+              "href": "uno/ux/resource/setglobalkey_4c3ac72d",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Resource.GlobalKey",
+              "fullyQualifiedIndexTitle": "Resource.GlobalKey"
+            }
+          }
+        ]
+      }
+    ],
+    "constructors": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/motion/destinationmotion_1",
+            "parentId": "fuse/motion",
+            "type": "UxClass",
+            "modifiers": [
+              "public"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/motion/destinationmotion_1",
+            "href": "fuse/motion/destinationmotion_1"
+          },
+          "titles": {
+            "indexTitle": "DestinationMotion<T>",
+            "fullyQualifiedIndexTitle": "Fuse.Motion.DestinationMotion<T>"
+          }
+        },
+        "items": [
+          {
+            "comment": {
+              "brief": "Creates a new DestinationMotion<T>",
+              "full": "Creates a new DestinationMotion<T>"
+            },
+            "id": {
+              "id": "fuse/motion/destinationmotion_1/_ctor",
+              "parentId": "fuse/motion/destinationmotion_1",
+              "type": "Constructor",
+              "modifiers": [
+                "public",
+                "generated"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/motion/destinationmotion_1/_ctor",
+              "href": "fuse/motion/destinationmotion_1/_ctor"
+            },
+            "titles": {
+              "indexTitle": "DestinationMotion",
+              "fullyQualifiedIndexTitle": "Fuse.Motion.DestinationMotion.DestinationMotion"
+            }
+          }
+        ]
+      }
+    ],
+    "methods": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "uno/object",
+            "parentId": "uno",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "intrinsic"
+            ]
+          },
+          "uri": {
+            "idUri": "uno/object",
+            "href": "uno/object"
+          },
+          "titles": {
+            "indexTitle": "object",
+            "fullyQualifiedIndexTitle": "object"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "parameters": [
+              {
+                "name": "o",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              }
+            ],
+            "id": {
+              "id": "fuse/motion/destinationmotion_1/equals_a09c80e3",
+              "parentId": "fuse/motion/destinationmotion_1",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/motion/destinationmotion_1/equals_a09c80e3",
+              "href": "uno/object/equals_a09c80e3",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Equals(object)",
+              "fullyQualifiedIndexTitle": "Uno.Object.Equals(object)"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/int",
+              "title": "int",
+              "fullyQualifiedTitle": "int"
+            },
+            "id": {
+              "id": "fuse/motion/destinationmotion_1/gethashcode",
+              "parentId": "fuse/motion/destinationmotion_1",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/motion/destinationmotion_1/gethashcode",
+              "href": "uno/object/gethashcode",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetHashCode",
+              "fullyQualifiedIndexTitle": "Uno.Object.GetHashCode"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/type",
+              "title": "Type",
+              "fullyQualifiedTitle": "Uno.Type"
+            },
+            "id": {
+              "id": "fuse/motion/destinationmotion_1/gettype",
+              "parentId": "fuse/motion/destinationmotion_1",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/motion/destinationmotion_1/gettype",
+              "href": "uno/object/gettype",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetType",
+              "fullyQualifiedIndexTitle": "Uno.Object.GetType"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "id": {
+              "id": "fuse/motion/destinationmotion_1/tostring",
+              "parentId": "fuse/motion/destinationmotion_1",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/motion/destinationmotion_1/tostring",
+              "href": "uno/object/tostring",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "ToString",
+              "fullyQualifiedIndexTitle": "Uno.Object.ToString"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

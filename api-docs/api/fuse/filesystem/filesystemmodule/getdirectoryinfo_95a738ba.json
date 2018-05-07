@@ -1,0 +1,69 @@
+{
+  "entity": {
+    "location": {
+      "namespaceTitle": "Fuse.FileSystem",
+      "namespaceUri": "fuse/filesystem",
+      "packageName": "Fuse.FileSystem",
+      "packageVersion": "1.8.0-rc2"
+    },
+    "parameters": [
+      {
+        "name": "args",
+        "href": "uno/object",
+        "title": "object[]",
+        "fullyQualifiedTitle": "object[]"
+      }
+    ],
+    "returns": {
+      "href": "uno/threading/future_1",
+      "title": "Future<FileSystemInfo>",
+      "fullyQualifiedTitle": "Uno.Threading.Future<Uno.IO.FileSystemInfo>"
+    },
+    "id": {
+      "id": "fuse/filesystem/filesystemmodule/getdirectoryinfo_95a738ba",
+      "parentId": "fuse/filesystem/filesystemmodule",
+      "type": "JsMethod",
+      "modifiers": [
+        "private"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/filesystem/filesystemmodule/getdirectoryinfo_95a738ba",
+      "href": "fuse/filesystem/filesystemmodule/getdirectoryinfo_95a738ba"
+    },
+    "titles": {
+      "pageTitle": "FileSystemModule.GetDirectoryInfo Method (object[])",
+      "navigationTitle": "GetDirectoryInfo Method (object[])",
+      "fullTitle": "Fuse.FileSystem.FileSystemModule.GetDirectoryInfo",
+      "indexTitle": "GetDirectoryInfo(object[])",
+      "fullyQualifiedIndexTitle": "Fuse.FileSystem.FileSystemModule.GetDirectoryInfo(object[])"
+    },
+    "syntax": {
+      "uno": "private Uno.Threading.Future<Uno.IO.FileSystemInfo> GetDirectoryInfo(object[] args) {}"
+    },
+    "comment": {
+      "brief": "Asynchronously gets info about a directory.",
+      "full": "Asynchronously gets info about a directory.\n\nThe returned object has the following properties:\n\n* `exists` –  a boolean value stating whether the directory exists or not.\n* `lastWriteTime` –  A `Date` stating when directory was last changed\n* `lastAccessTime` –  A `Date` stating when directory was accessed\n\n## Example\n\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    FileSystem.createDirectorySync(\"some-dir\");\n    FileSystem.getDirectoryInfo(\"some-dir\")\n        .then(function(dirInfo) {\n            console.log(\"Directory was modified on \" + dirInfo.lastWriteTime);\n        })\n        .catch(function(error) {\n            console.log(\"Failed to get directory info \" + error);\n        });",
+      "attributes": {
+        "scriptMethod": {
+          "name": "getDirectoryInfo",
+          "parameters": [
+            "path"
+          ]
+        },
+        "returns": {
+          "typeHint": "Promise",
+          "text": "A Promise of an object containing info about the directory."
+        },
+        "parameters": [
+          {
+            "name": "path",
+            "typeHint": "String",
+            "description": "Path to a directory"
+          }
+        ]
+      }
+    }
+  },
+  "tableOfContents": {}
+}

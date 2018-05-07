@@ -1,0 +1,110 @@
+{
+  "root": {
+    "id": {
+      "id": "fuse/triggers/windowsizetrigger",
+      "parentId": "fuse/triggers",
+      "type": "Class",
+      "modifiers": [
+        "public",
+        "abstract"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/triggers/windowsizetrigger",
+      "href": "fuse/triggers/windowsizetrigger"
+    },
+    "titles": {
+      "indexTitle": "WindowSizeTrigger",
+      "fullyQualifiedIndexTitle": "Fuse.Triggers.WindowSizeTrigger"
+    }
+  },
+  "descendants": [
+    {
+      "id": {
+        "id": "fuse/triggers/whilewindowaspect",
+        "parentId": "fuse/triggers",
+        "type": "Class",
+        "modifiers": [
+          "public",
+          "abstract"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/triggers/whilewindowaspect",
+        "href": "fuse/triggers/whilewindowaspect"
+      },
+      "titles": {
+        "indexTitle": "WhileWindowAspect",
+        "fullyQualifiedIndexTitle": "Fuse.Triggers.WhileWindowAspect"
+      }
+    },
+    {
+      "comment": {
+        "brief": "Active when the app's viewport width is larger than its height.",
+        "full": "Active when the app's viewport width is larger than its height.\n\n## Example\n\nThe following example changes the color of `myRect` from black to white\nwhile the device is in landscape.\n\n    <Rectangle ux:Name=\"myRect\" Color=\"#000\" />\n    <WhileWindowLandscape>\n        <Change myRect.Color=\"#fff\" Duration=\"0.5\" />\n    </WhileWindowLandscape>"
+      },
+      "id": {
+        "id": "fuse/triggers/whilewindowlandscape",
+        "parentId": "fuse/triggers",
+        "type": "UxClass",
+        "modifiers": [
+          "public",
+          "sealed"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/triggers/whilewindowlandscape",
+        "href": "fuse/triggers/whilewindowlandscape"
+      },
+      "titles": {
+        "indexTitle": "WhileWindowLandscape",
+        "fullyQualifiedIndexTitle": "Fuse.Triggers.WhileWindowLandscape"
+      }
+    },
+    {
+      "comment": {
+        "brief": "Active when the app's viewport height is larger than or equal to its width.",
+        "full": "Active when the app's viewport height is larger than or equal to its width.\n\nThe following example changes the color of `myRect` from black to white\nwhile the device is in portrait.\n\n    <Rectangle ux:Name=\"myRect\" Color=\"#000\" />\n    <WhileWindowPortrait>\n        <Change myRect.Color=\"#fff\" Duration=\"0.5\" />\n    </WhileWindowPortrait>"
+      },
+      "id": {
+        "id": "fuse/triggers/whilewindowportrait",
+        "parentId": "fuse/triggers",
+        "type": "UxClass",
+        "modifiers": [
+          "public",
+          "sealed"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/triggers/whilewindowportrait",
+        "href": "fuse/triggers/whilewindowportrait"
+      },
+      "titles": {
+        "indexTitle": "WhileWindowPortrait",
+        "fullyQualifiedIndexTitle": "Fuse.Triggers.WhileWindowPortrait"
+      }
+    },
+    {
+      "comment": {
+        "brief": "Active while the size of the app's viewport fulfills some given constraints.",
+        "full": "Active while the size of the app's viewport fulfills some given constraints.\n\nConstraints are specified via the @GreaterThan, @LessThan and @EqualTo\nproperties. Each constraint must be provided as a pair of numbers,\nrepresenting the target width and height (in points) to match against.\n\nNote that both the X and Y axis must satisfy the constraints you provide.\n\n## Examples\n\nThe following example changes the color of `myRect` if the size of the\napp's viewport exceeds 400x400 points.\n\n    <Rectangle ux:Name=\"myRect\" Color=\"#f00\" />\n    <WhileWindowSize GreaterThan=\"400,400\">\n        <Change myRect.Color=\"#00f\" Duration=\".5\"/>\n    </WhileWindowSize>\n\nIf you want to match on a single axis only, you can provide a value for\nthe other axis that is greater than zero, and that you can safely assume\nwill always match.\n\nFor instance, if you want to check if only the width of the viewport is\ngreater than 400 points, you could do the following:\n\n    <WhileWindowSize GreaterThan=\"400,1\">\n\nThis also works for @LessThan by providing a big value.\n\n    <WhileWindowSize LessThan=\"400,99999\">\n\nYou can also specify multiple constraints on the same `WhileWindowSize`\ntrigger. Note that all constraints that you specify must be satisfied in\norder for the trigger to activate.\n\n    <WhileWindowSize GreaterThan=\"200,300\" LessThan=\"700,1000\">"
+      },
+      "id": {
+        "id": "fuse/triggers/whilewindowsize",
+        "parentId": "fuse/triggers",
+        "type": "UxClass",
+        "modifiers": [
+          "public"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/triggers/whilewindowsize",
+        "href": "fuse/triggers/whilewindowsize"
+      },
+      "titles": {
+        "indexTitle": "WhileWindowSize",
+        "fullyQualifiedIndexTitle": "Fuse.Triggers.WhileWindowSize"
+      }
+    }
+  ]
+}

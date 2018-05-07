@@ -1,0 +1,71 @@
+{
+  "entity": {
+    "location": {
+      "namespaceTitle": "Fuse.Controls",
+      "namespaceUri": "fuse/controls",
+      "packageName": "Fuse.Controls.CameraView",
+      "packageVersion": "0.9.0-rc2"
+    },
+    "parameters": [
+      {
+        "name": "context",
+        "href": "fuse/scripting/context",
+        "title": "Context",
+        "fullyQualifiedTitle": "Fuse.Scripting.Context"
+      },
+      {
+        "name": "photo",
+        "href": "fuse/controls/photo",
+        "title": "Photo",
+        "fullyQualifiedTitle": "Fuse.Controls.Photo"
+      },
+      {
+        "name": "args",
+        "href": "uno/object",
+        "title": "object[]",
+        "fullyQualifiedTitle": "object[]"
+      }
+    ],
+    "returns": {
+      "href": "uno/threading/future_1",
+      "title": "Future<string>",
+      "fullyQualifiedTitle": "Uno.Threading.Future<string>"
+    },
+    "id": {
+      "id": "fuse/controls/photo/save_118bc3d6",
+      "parentId": "fuse/controls/photo",
+      "type": "JsMethod",
+      "modifiers": [
+        "private",
+        "static"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/controls/photo/save_118bc3d6",
+      "href": "fuse/controls/photo/save_118bc3d6"
+    },
+    "titles": {
+      "pageTitle": "Photo.save Method (Context, Photo, object[])",
+      "navigationTitle": "save Method (Context, Photo, object[])",
+      "fullTitle": "Fuse.Controls.Photo.save",
+      "indexTitle": "save(Context, Photo, object[])",
+      "fullyQualifiedIndexTitle": "Fuse.Controls.Photo.save(Fuse.Scripting.Context, Fuse.Controls.Photo, object[])"
+    },
+    "syntax": {
+      "uno": "private static Uno.Threading.Future<string> save(Fuse.Scripting.Context context, Fuse.Controls.Photo photo, object[] args) {}"
+    },
+    "comment": {
+      "brief": "Save the photo to disk",
+      "full": "Save the photo to disk\n\nReturns a Promise that resolves to a string containing the filepath to the photo.\n\n    <CameraView ux:Name=\"Camera\" />\n    <JavaScript>\n        Camera.capturePhoto()\n            .then(function(photo) {\n                photo.save()\n                    .then(function(filePath) {\n                        photo.release();\n                    })\n                    .catch(function(err) {\n                        photo.release();\n                    })\n            })\n            .catch(function(err) { });\n    </JavaScript>",
+      "attributes": {
+        "scriptMethod": {
+          "name": "save",
+          "parameters": [
+            ""
+          ]
+        }
+      }
+    }
+  },
+  "tableOfContents": {}
+}

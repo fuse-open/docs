@@ -1,0 +1,106 @@
+{
+  "entity": {
+    "id": {
+      "id": "fuse/imagetools",
+      "parentId": "fuse",
+      "type": "Namespace",
+      "modifiers": []
+    },
+    "uri": {
+      "idUri": "fuse/imagetools",
+      "href": "fuse/imagetools"
+    },
+    "titles": {
+      "pageTitle": "Fuse.ImageTools Namespace",
+      "navigationTitle": "Fuse.ImageTools Namespace",
+      "fullTitle": "Fuse.ImageTools",
+      "indexTitle": "Fuse.ImageTools",
+      "fullyQualifiedIndexTitle": "Fuse.ImageTools"
+    },
+    "syntax": {
+      "uno": "namespace ImageTools {}"
+    }
+  },
+  "tableOfContents": {
+    "jsModules": [
+      {
+        "items": [
+          {
+            "comment": {
+              "brief": "Utility methods for common Image manipulation.",
+              "full": "Utility methods for common Image manipulation.\n\n> To use this module, add `Fuse.ImageTools` to your package references in your `.unoproj`.\n\nFuse represents images as frozen JavaScript Image objects, consisting of a path, a filename, a width and a height.\nOnce created or acquired, Images can be passed around to other APIs to use, fetch or alter their underlying data.\nAll images are temporary \"scratch images\" until storage has been specified either through publishing to the CameraRoll or other.\n\nOn Android using this API will request the WRITE_EXTERNAL_STORAGE and READ_EXTERNAL_STORAGE permissions.\n\n## Example\n\n    <JavaScript>\n        var ImageTools = require(\"FuseJS/ImageTools\");\n        var Observable = require(\"FuseJS/Observable\");\n\n        var imagePath = Observable();\n        var base64Image =    \"iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPAQMAAAABGAcJAAAABlBMVEX9//wAAQATpOzaAAAAH0l\" +\n                            \"EQVQI12MAAoMHIFLAAYSEwIiJgYGZASrI38AAAwBamgM5VF7xgwAAAABJRU5ErkJggg==\";\n        ImageTools.getImageFromBase64(base64Image)\n        .then(function(image) {\n            imagePath.value = image.path;\n        });\n\n        module.exports = { test: new Date().toString(), image: imagePath };\n    </JavaScript>\n    <Image File=\"{image}\" />",
+              "attributes": {
+                "scriptModule": "FuseJS/ImageTools"
+              }
+            },
+            "id": {
+              "id": "fuse/imagetools/imagetools",
+              "parentId": "fuse/imagetools",
+              "type": "JsModule",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/imagetools/imagetools",
+              "href": "fuse/imagetools/imagetools"
+            },
+            "titles": {
+              "indexTitle": "ImageTools",
+              "fullyQualifiedIndexTitle": "Fuse.ImageTools.ImageTools"
+            }
+          }
+        ]
+      }
+    ],
+    "uxClasses": [
+      {
+        "items": [
+          {
+            "id": {
+              "id": "fuse/imagetools/image",
+              "parentId": "fuse/imagetools",
+              "type": "UxClass",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/imagetools/image",
+              "href": "fuse/imagetools/image"
+            },
+            "titles": {
+              "indexTitle": "Image",
+              "fullyQualifiedIndexTitle": "Fuse.ImageTools.Image"
+            }
+          }
+        ]
+      }
+    ],
+    "enums": [
+      {
+        "items": [
+          {
+            "id": {
+              "id": "fuse/imagetools/resizemode",
+              "parentId": "fuse/imagetools",
+              "type": "Enum",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/imagetools/resizemode",
+              "href": "fuse/imagetools/resizemode"
+            },
+            "titles": {
+              "indexTitle": "ResizeMode",
+              "fullyQualifiedIndexTitle": "Fuse.ImageTools.ResizeMode"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

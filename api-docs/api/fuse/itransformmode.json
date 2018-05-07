@@ -1,0 +1,307 @@
+{
+  "entity": {
+    "base": {
+      "id": {
+        "id": "uno/object",
+        "parentId": "uno",
+        "type": "Class",
+        "modifiers": [
+          "public",
+          "intrinsic"
+        ]
+      },
+      "uri": {
+        "idUri": "uno/object",
+        "href": "uno/object"
+      },
+      "titles": {
+        "indexTitle": "object",
+        "fullyQualifiedIndexTitle": "object"
+      }
+    },
+    "location": {
+      "namespaceTitle": "Fuse",
+      "namespaceUri": "fuse",
+      "packageName": "Fuse.Nodes",
+      "packageVersion": "1.8.0-rc2"
+    },
+    "inheritance": {
+      "root": {
+        "uri": "uno/object",
+        "title": "object",
+        "children": [
+          {
+            "uri": "fuse/itransformmode",
+            "title": "Fuse.ITransformMode",
+            "children": [],
+            "isCurrent": true
+          }
+        ],
+        "isAncestor": true
+      },
+      "hasInheritance": true
+    },
+    "id": {
+      "id": "fuse/itransformmode",
+      "parentId": "fuse",
+      "type": "Interface",
+      "modifiers": [
+        "public",
+        "abstract"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/itransformmode",
+      "href": "fuse/itransformmode"
+    },
+    "titles": {
+      "pageTitle": "ITransformMode Interface",
+      "navigationTitle": "ITransformMode Interface",
+      "fullTitle": "Fuse.ITransformMode",
+      "indexTitle": "ITransformMode",
+      "fullyQualifiedIndexTitle": "Fuse.ITransformMode"
+    },
+    "syntax": {
+      "uno": "public abstract interface ITransformMode {}"
+    },
+    "comment": {
+      "brief": "A singleton interface that calculates the transform.",
+      "full": "A singleton interface that calculates the transform."
+    }
+  },
+  "tableOfContents": {
+    "methods": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/itransformmode",
+            "parentId": "fuse",
+            "type": "Interface",
+            "modifiers": [
+              "public",
+              "abstract"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/itransformmode",
+            "href": "fuse/itransformmode"
+          },
+          "titles": {
+            "indexTitle": "ITransformMode",
+            "fullyQualifiedIndexTitle": "Fuse.ITransformMode"
+          }
+        },
+        "items": [
+          {
+            "comment": {
+              "brief": "Perform the event subscriptions necessary to support this transform. Changes should invoke\nTransform.OnMatrixChanged.",
+              "full": "Perform the event subscriptions necessary to support this transform. Changes should invoke\nTransform.OnMatrixChanged.\n\nThe transform will be rooted when this is called.\n\nYou don't need to subscribe to changes on the `Transform` properties, those are all implicitly handled.\n\n    The use of an opaque return value is an optimization for the most common situations\n    in fuselibs: either no subscription, or a subscription to a single existing object.",
+              "attributes": {
+                "returns": {
+                  "text": "An object that contains subscription information that can be used by `Unsubscribe`to remove the subscriptions. `null` can be returned in which case `Unsubscribe` *may* not\r\nbe called.\r\n"
+                }
+              }
+            },
+            "returns": {
+              "href": "uno/object",
+              "title": "object",
+              "fullyQualifiedTitle": "object"
+            },
+            "parameters": [
+              {
+                "name": "transform",
+                "href": "fuse/itransformrelative",
+                "title": "ITransformRelative",
+                "fullyQualifiedTitle": "Fuse.ITransformRelative"
+              }
+            ],
+            "id": {
+              "id": "fuse/itransformmode/subscribe_ee9d98d2",
+              "parentId": "fuse/itransformmode",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/itransformmode/subscribe_ee9d98d2",
+              "href": "fuse/itransformmode/subscribe_ee9d98d2"
+            },
+            "titles": {
+              "indexTitle": "Subscribe(ITransformRelative)",
+              "fullyQualifiedIndexTitle": "Fuse.ITransformMode.Subscribe(Fuse.ITransformRelative)"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Unsubscribe from the events subscribed via `Subscribe`. Do not rely on properties of\nthe `Transform` being the same as when `Subscribe` was called, make use of the returned\nobject.",
+              "full": "Unsubscribe from the events subscribed via `Subscribe`. Do not rely on properties of\nthe `Transform` being the same as when `Subscribe` was called, make use of the returned\nobject."
+            },
+            "parameters": [
+              {
+                "name": "transform",
+                "href": "fuse/itransformrelative",
+                "title": "ITransformRelative",
+                "fullyQualifiedTitle": "Fuse.ITransformRelative"
+              },
+              {
+                "name": "sub",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              }
+            ],
+            "id": {
+              "id": "fuse/itransformmode/unsubscribe_8cd84f34",
+              "parentId": "fuse/itransformmode",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/itransformmode/unsubscribe_8cd84f34",
+              "href": "fuse/itransformmode/unsubscribe_8cd84f34"
+            },
+            "titles": {
+              "indexTitle": "Unsubscribe(ITransformRelative, object)",
+              "fullyQualifiedIndexTitle": "Fuse.ITransformMode.Unsubscribe(Fuse.ITransformRelative, object)"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "uno/object",
+            "parentId": "uno",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "intrinsic"
+            ]
+          },
+          "uri": {
+            "idUri": "uno/object",
+            "href": "uno/object"
+          },
+          "titles": {
+            "indexTitle": "object",
+            "fullyQualifiedIndexTitle": "object"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "parameters": [
+              {
+                "name": "o",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              }
+            ],
+            "id": {
+              "id": "fuse/itransformmode/equals_a09c80e3",
+              "parentId": "fuse/itransformmode",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/itransformmode/equals_a09c80e3",
+              "href": "uno/object/equals_a09c80e3",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Equals(object)",
+              "fullyQualifiedIndexTitle": "Uno.Object.Equals(object)"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/int",
+              "title": "int",
+              "fullyQualifiedTitle": "int"
+            },
+            "id": {
+              "id": "fuse/itransformmode/gethashcode",
+              "parentId": "fuse/itransformmode",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/itransformmode/gethashcode",
+              "href": "uno/object/gethashcode",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetHashCode",
+              "fullyQualifiedIndexTitle": "Uno.Object.GetHashCode"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/type",
+              "title": "Type",
+              "fullyQualifiedTitle": "Uno.Type"
+            },
+            "id": {
+              "id": "fuse/itransformmode/gettype",
+              "parentId": "fuse/itransformmode",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/itransformmode/gettype",
+              "href": "uno/object/gettype",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetType",
+              "fullyQualifiedIndexTitle": "Uno.Object.GetType"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "id": {
+              "id": "fuse/itransformmode/tostring",
+              "parentId": "fuse/itransformmode",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/itransformmode/tostring",
+              "href": "uno/object/tostring",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "ToString",
+              "fullyQualifiedIndexTitle": "Uno.Object.ToString"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

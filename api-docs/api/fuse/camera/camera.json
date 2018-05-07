@@ -1,0 +1,839 @@
+{
+  "entity": {
+    "base": {
+      "id": {
+        "id": "fuse/scripting/nativemodule",
+        "parentId": "fuse/scripting",
+        "type": "Class",
+        "modifiers": [
+          "public"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/scripting/nativemodule",
+        "href": "fuse/scripting/nativemodule"
+      },
+      "titles": {
+        "indexTitle": "NativeModule",
+        "fullyQualifiedIndexTitle": "Fuse.Scripting.NativeModule"
+      }
+    },
+    "location": {
+      "namespaceTitle": "Fuse.Camera",
+      "namespaceUri": "fuse/camera",
+      "packageName": "Fuse.Camera",
+      "packageVersion": "1.8.0-rc2"
+    },
+    "inheritance": {
+      "root": {
+        "uri": "uno/object",
+        "title": "object",
+        "children": [
+          {
+            "uri": "fuse/scripting/module",
+            "title": "Fuse.Scripting.Module",
+            "children": [
+              {
+                "uri": "fuse/scripting/nativemodule",
+                "title": "Fuse.Scripting.NativeModule",
+                "children": [
+                  {
+                    "uri": "fuse/camera/camera",
+                    "title": "Fuse.Camera.Camera",
+                    "children": [],
+                    "isCurrent": true
+                  }
+                ],
+                "isAncestor": true
+              }
+            ],
+            "isAncestor": true
+          }
+        ],
+        "isAncestor": true
+      },
+      "hasInheritance": true
+    },
+    "uxProperties": {
+      "uxNamespaceTitle": "Fuse",
+      "uxNamespaceUri": "fuse",
+      "uxName": "Camera.Camera"
+    },
+    "implementedInterfaces": [
+      {
+        "id": {
+          "id": "fuse/scripting/imoduleprovider",
+          "parentId": "fuse/scripting",
+          "type": "Interface",
+          "modifiers": [
+            "public",
+            "abstract"
+          ]
+        },
+        "uri": {
+          "idUri": "fuse/scripting/imoduleprovider",
+          "href": "fuse/scripting/imoduleprovider"
+        },
+        "titles": {
+          "indexTitle": "IModuleProvider",
+          "fullyQualifiedIndexTitle": "Fuse.Scripting.IModuleProvider"
+        }
+      },
+      {
+        "id": {
+          "id": "uno/idisposable",
+          "parentId": "uno",
+          "type": "Interface",
+          "modifiers": [
+            "public",
+            "abstract"
+          ]
+        },
+        "uri": {
+          "idUri": "uno/idisposable",
+          "href": "uno/idisposable"
+        },
+        "titles": {
+          "indexTitle": "IDisposable",
+          "fullyQualifiedIndexTitle": "Uno.IDisposable"
+        }
+      }
+    ],
+    "attributes": [
+      {
+        "id": {
+          "id": "uno/ux/uxglobalmoduleattribute",
+          "parentId": "uno/ux",
+          "type": "Class",
+          "modifiers": [
+            "public",
+            "sealed"
+          ]
+        },
+        "uri": {
+          "idUri": "uno/ux/uxglobalmoduleattribute",
+          "href": "uno/ux/uxglobalmoduleattribute"
+        },
+        "titles": {
+          "indexTitle": "UXGlobalModuleAttribute",
+          "fullyQualifiedIndexTitle": "Uno.UX.UXGlobalModuleAttribute"
+        }
+      }
+    ],
+    "id": {
+      "id": "fuse/camera/camera",
+      "parentId": "fuse/camera",
+      "type": "JsModule",
+      "modifiers": [
+        "public",
+        "sealed"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/camera/camera",
+      "href": "fuse/camera/camera"
+    },
+    "titles": {
+      "pageTitle": "Camera Class",
+      "navigationTitle": "Camera Class",
+      "fullTitle": "Fuse.Camera.Camera",
+      "indexTitle": "Camera",
+      "fullyQualifiedIndexTitle": "Fuse.Camera.Camera"
+    },
+    "syntax": {
+      "uno": "[Uno.UX.UXGlobalModule]\r\npublic sealed class Camera : Fuse.Scripting.NativeModule {}",
+      "ux": "<Camera.Camera />"
+    },
+    "comment": {
+      "brief": "Allows the capture of still images from the system camera.",
+      "full": "Allows the capture of still images from the system camera.\n\nImages are returned as frozen JavaScript Image objects, consisting of a path, a filename, a width and a height.\nOnce created or acquired, Images can be passed around to other APIs to use, fetch or alter their underlying data.\nAll images are temporary \"scratch images\" until storage has been specified either through publishing to the CameraRoll or other.\n\nYou need to add a reference to `\"Fuse.Camera\"` in your project file to use this feature.\n\nOn Android using this API will request the CAMERA and WRITE_EXTERNAL_STORAGE permissions.\n\n## Example\n\n    var camera = require('FuseJS/Camera');\n    camera.takePicture(640,480).then(function(image)\n    {\n        //Do things with image here\n    }).catch(function(error) {\n        //Something went wrong, see error for details\n    });",
+      "attributes": {
+        "scriptModule": "FuseJS/Camera"
+      }
+    }
+  },
+  "tableOfContents": {
+    "attachedUxProperties": [
+      {
+        "items": [
+          {
+            "comment": {
+              "brief": "The `ux:Global` attribute creates a global resource that is accessible everywhere in UX markup.",
+              "full": "The `ux:Global` attribute creates a global resource that is accessible everywhere in UX markup.\n\nSee @Resources for more information.\n\nThe `ux:Global` attribute on an UX element creates a single object (singleton) that is globally available.\nUsing this attribute will prevent the object from being inserted by default the object at its defined location\nin the UX tree."
+            },
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "parameters": [
+              {
+                "name": "obj",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              },
+              {
+                "name": "key",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              }
+            ],
+            "id": {
+              "id": "fuse/camera/camera/resource_globalkey_setglobalkey_4c3ac72d",
+              "parentId": "fuse/camera/camera",
+              "type": "AttachedUxProperty",
+              "modifiers": []
+            },
+            "uri": {
+              "idUri": "fuse/camera/camera/resource_globalkey_setglobalkey_4c3ac72d",
+              "href": "uno/ux/resource/setglobalkey_4c3ac72d",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Resource.GlobalKey",
+              "fullyQualifiedIndexTitle": "Resource.GlobalKey"
+            }
+          }
+        ]
+      }
+    ],
+    "uxEvents": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/scripting/nativemodule",
+            "parentId": "fuse/scripting",
+            "type": "Class",
+            "modifiers": [
+              "public"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/scripting/nativemodule",
+            "href": "fuse/scripting/nativemodule"
+          },
+          "titles": {
+            "indexTitle": "NativeModule",
+            "fullyQualifiedIndexTitle": "Fuse.Scripting.NativeModule"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/eventhandler",
+              "title": "EventHandler (object, EventArgs)",
+              "fullyQualifiedTitle": "Uno.EventHandler (object, Uno.EventArgs)"
+            },
+            "id": {
+              "id": "fuse/camera/camera/reset",
+              "parentId": "fuse/camera/camera",
+              "type": "UxEvent",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/camera/camera/reset",
+              "href": "fuse/scripting/nativemodule/reset",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Reset",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.NativeModule.Reset"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/scripting/module",
+            "parentId": "fuse/scripting",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/scripting/module",
+            "href": "fuse/scripting/module"
+          },
+          "titles": {
+            "indexTitle": "Module",
+            "fullyQualifiedIndexTitle": "Fuse.Scripting.Module"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/eventhandler",
+              "title": "EventHandler (object, EventArgs)",
+              "fullyQualifiedTitle": "Uno.EventHandler (object, Uno.EventArgs)"
+            },
+            "id": {
+              "id": "fuse/camera/camera/evaluated",
+              "parentId": "fuse/camera/camera",
+              "type": "UxEvent",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/camera/camera/evaluated",
+              "href": "fuse/scripting/module/evaluated",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Evaluated",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.Module.Evaluated"
+            }
+          }
+        ]
+      }
+    ],
+    "jsMethods": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/camera/camera",
+            "parentId": "fuse/camera",
+            "type": "JsModule",
+            "modifiers": [
+              "public",
+              "sealed"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/camera/camera",
+            "href": "fuse/camera/camera"
+          },
+          "titles": {
+            "indexTitle": "Camera",
+            "fullyQualifiedIndexTitle": "Fuse.Camera.Camera"
+          }
+        },
+        "items": [
+          {
+            "comment": {
+              "brief": "Starts an OS-specific image capture view and returns a Promise of the resulting Image.",
+              "full": "Starts an OS-specific image capture view and returns a Promise of the resulting Image.\n\nIf the desiredWidth and height parameters are set, returns an Image scaled as close to the specified\nwidth/height as possible while maintaining aspect ratio.\n\nIf no size parameters are given, the taken image will be full-sized as determined by the device camera.\n\nThe image capture view is user-configurable on Android.",
+              "attributes": {
+                "scriptMethod": {
+                  "name": "takePicture",
+                  "parameters": [
+                    "[desiredWidth",
+                    "desiredHeight]"
+                  ]
+                },
+                "returns": {
+                  "typeHint": "Promise",
+                  "text": "a Promise of a device-orientation-corrected read/writable Image."
+                },
+                "parameters": [
+                  {
+                    "name": "desiredWidth",
+                    "typeHint": "int",
+                    "description": "the desired image width in pixels."
+                  },
+                  {
+                    "name": "desiredHeight",
+                    "typeHint": "int",
+                    "description": "the desired image height in pixels. Defaults to the value of desiredWidth if that value is set."
+                  }
+                ]
+              }
+            },
+            "returns": {
+              "href": "uno/threading/future_1",
+              "title": "Future<Image>",
+              "fullyQualifiedTitle": "Uno.Threading.Future<Fuse.ImageTools.Image>"
+            },
+            "parameters": [
+              {
+                "name": "args",
+                "href": "uno/object",
+                "title": "object[]",
+                "fullyQualifiedTitle": "object[]"
+              }
+            ],
+            "id": {
+              "id": "fuse/camera/camera/takepictureinterface_95a738ba",
+              "parentId": "fuse/camera/camera",
+              "type": "JsMethod",
+              "modifiers": [
+                "private",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/camera/camera/takepictureinterface_95a738ba",
+              "href": "fuse/camera/camera/takepictureinterface_95a738ba"
+            },
+            "titles": {
+              "indexTitle": "TakePictureInterface(object[])",
+              "fullyQualifiedIndexTitle": "Fuse.Camera.Camera.TakePictureInterface(object[])"
+            }
+          }
+        ]
+      }
+    ],
+    "constructors": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/camera/camera",
+            "parentId": "fuse/camera",
+            "type": "JsModule",
+            "modifiers": [
+              "public",
+              "sealed"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/camera/camera",
+            "href": "fuse/camera/camera"
+          },
+          "titles": {
+            "indexTitle": "Camera",
+            "fullyQualifiedIndexTitle": "Fuse.Camera.Camera"
+          }
+        },
+        "items": [
+          {
+            "id": {
+              "id": "fuse/camera/camera/_ctor",
+              "parentId": "fuse/camera/camera",
+              "type": "Constructor",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/camera/camera/_ctor",
+              "href": "fuse/camera/camera/_ctor"
+            },
+            "titles": {
+              "indexTitle": "Camera",
+              "fullyQualifiedIndexTitle": "Fuse.Camera.Camera.Camera"
+            }
+          }
+        ]
+      }
+    ],
+    "properties": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/scripting/module",
+            "parentId": "fuse/scripting",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/scripting/module",
+            "href": "fuse/scripting/module"
+          },
+          "titles": {
+            "indexTitle": "Module",
+            "fullyQualifiedIndexTitle": "Fuse.Scripting.Module"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "id": {
+              "id": "fuse/camera/camera/isevaluated",
+              "parentId": "fuse/camera/camera",
+              "type": "Property",
+              "modifiers": [
+                "protected"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/camera/camera/isevaluated",
+              "href": "fuse/scripting/module/isevaluated",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "IsEvaluated",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.Module.IsEvaluated"
+            }
+          }
+        ]
+      }
+    ],
+    "methods": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/scripting/nativemodule",
+            "parentId": "fuse/scripting",
+            "type": "Class",
+            "modifiers": [
+              "public"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/scripting/nativemodule",
+            "href": "fuse/scripting/nativemodule"
+          },
+          "titles": {
+            "indexTitle": "NativeModule",
+            "fullyQualifiedIndexTitle": "Fuse.Scripting.NativeModule"
+          }
+        },
+        "items": [
+          {
+            "parameters": [
+              {
+                "name": "member",
+                "href": "fuse/scripting/nativemember",
+                "title": "NativeMember",
+                "fullyQualifiedTitle": "Fuse.Scripting.NativeMember"
+              }
+            ],
+            "id": {
+              "id": "fuse/camera/camera/addmember_645dc1d4",
+              "parentId": "fuse/camera/camera",
+              "type": "Method",
+              "modifiers": [
+                "protected"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/camera/camera/addmember_645dc1d4",
+              "href": "fuse/scripting/nativemodule/addmember_645dc1d4",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "AddMember(NativeMember)",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.NativeModule.AddMember(Fuse.Scripting.NativeMember)"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/scripting/module",
+            "parentId": "fuse/scripting",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/scripting/module",
+            "href": "fuse/scripting/module"
+          },
+          "titles": {
+            "indexTitle": "Module",
+            "fullyQualifiedIndexTitle": "Fuse.Scripting.Module"
+          }
+        },
+        "items": [
+          {
+            "id": {
+              "id": "fuse/camera/camera/dispose",
+              "parentId": "fuse/camera/camera",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/camera/camera/dispose",
+              "href": "fuse/scripting/module/dispose",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Dispose",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.Module.Dispose"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "c",
+                "href": "fuse/scripting/context",
+                "title": "Context",
+                "fullyQualifiedTitle": "Fuse.Scripting.Context"
+              },
+              {
+                "name": "result",
+                "href": "fuse/scripting/moduleresult",
+                "title": "ModuleResult",
+                "fullyQualifiedTitle": "Fuse.Scripting.ModuleResult"
+              }
+            ],
+            "id": {
+              "id": "fuse/camera/camera/evaluate_0c699bd3",
+              "parentId": "fuse/camera/camera",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/camera/camera/evaluate_0c699bd3",
+              "href": "fuse/scripting/module/evaluate_0c699bd3",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Evaluate(Context, ModuleResult)",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.Module.Evaluate(Fuse.Scripting.Context, Fuse.Scripting.ModuleResult)"
+            }
+          },
+          {
+            "returns": {
+              "href": "fuse/scripting/moduleresult",
+              "title": "ModuleResult",
+              "fullyQualifiedTitle": "Fuse.Scripting.ModuleResult"
+            },
+            "parameters": [
+              {
+                "name": "c",
+                "href": "fuse/scripting/context",
+                "title": "Context",
+                "fullyQualifiedTitle": "Fuse.Scripting.Context"
+              },
+              {
+                "name": "id",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              }
+            ],
+            "id": {
+              "id": "fuse/camera/camera/evaluate_8fde98fd",
+              "parentId": "fuse/camera/camera",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/camera/camera/evaluate_8fde98fd",
+              "href": "fuse/scripting/module/evaluate_8fde98fd",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Evaluate(Context, string)",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.Module.Evaluate(Fuse.Scripting.Context, string)"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/object",
+              "title": "object",
+              "fullyQualifiedTitle": "object"
+            },
+            "parameters": [
+              {
+                "name": "c",
+                "href": "fuse/scripting/context",
+                "title": "Context",
+                "fullyQualifiedTitle": "Fuse.Scripting.Context"
+              },
+              {
+                "name": "id",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              }
+            ],
+            "id": {
+              "id": "fuse/camera/camera/evaluateexports_8fde98fd",
+              "parentId": "fuse/camera/camera",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/camera/camera/evaluateexports_8fde98fd",
+              "href": "fuse/scripting/module/evaluateexports_8fde98fd",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "EvaluateExports(Context, string)",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.Module.EvaluateExports(Fuse.Scripting.Context, string)"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Returns the file source that will be watched by the Context for changes in Fuse preview.\nOverride in subclasses and return correct file source to support live updates\nin Fuse preview.",
+              "full": "Returns the file source that will be watched by the Context for changes in Fuse preview.\nOverride in subclasses and return correct file source to support live updates\nin Fuse preview."
+            },
+            "returns": {
+              "href": "uno/ux/filesource",
+              "title": "FileSource",
+              "fullyQualifiedTitle": "Uno.UX.FileSource"
+            },
+            "id": {
+              "id": "fuse/camera/camera/getfile",
+              "parentId": "fuse/camera/camera",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/camera/camera/getfile",
+              "href": "fuse/scripting/module/getfile",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetFile",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.Module.GetFile"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "uno/object",
+            "parentId": "uno",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "intrinsic"
+            ]
+          },
+          "uri": {
+            "idUri": "uno/object",
+            "href": "uno/object"
+          },
+          "titles": {
+            "indexTitle": "object",
+            "fullyQualifiedIndexTitle": "object"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "parameters": [
+              {
+                "name": "o",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              }
+            ],
+            "id": {
+              "id": "fuse/camera/camera/equals_a09c80e3",
+              "parentId": "fuse/camera/camera",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/camera/camera/equals_a09c80e3",
+              "href": "uno/object/equals_a09c80e3",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Equals(object)",
+              "fullyQualifiedIndexTitle": "Uno.Object.Equals(object)"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/int",
+              "title": "int",
+              "fullyQualifiedTitle": "int"
+            },
+            "id": {
+              "id": "fuse/camera/camera/gethashcode",
+              "parentId": "fuse/camera/camera",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/camera/camera/gethashcode",
+              "href": "uno/object/gethashcode",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetHashCode",
+              "fullyQualifiedIndexTitle": "Uno.Object.GetHashCode"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/type",
+              "title": "Type",
+              "fullyQualifiedTitle": "Uno.Type"
+            },
+            "id": {
+              "id": "fuse/camera/camera/gettype",
+              "parentId": "fuse/camera/camera",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/camera/camera/gettype",
+              "href": "uno/object/gettype",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetType",
+              "fullyQualifiedIndexTitle": "Uno.Object.GetType"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "id": {
+              "id": "fuse/camera/camera/tostring",
+              "parentId": "fuse/camera/camera",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/camera/camera/tostring",
+              "href": "uno/object/tostring",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "ToString",
+              "fullyQualifiedIndexTitle": "Uno.Object.ToString"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

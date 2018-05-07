@@ -1,0 +1,1003 @@
+{
+  "entity": {
+    "base": {
+      "id": {
+        "id": "fuse/layouts/layout",
+        "parentId": "fuse/layouts",
+        "type": "Class",
+        "modifiers": [
+          "public",
+          "abstract"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/layouts/layout",
+        "href": "fuse/layouts/layout"
+      },
+      "titles": {
+        "indexTitle": "Layout",
+        "fullyQualifiedIndexTitle": "Fuse.Layouts.Layout"
+      }
+    },
+    "location": {
+      "namespaceTitle": "Fuse.Layouts",
+      "namespaceUri": "fuse/layouts",
+      "packageName": "Fuse.Controls.Panels",
+      "packageVersion": "1.8.0-rc2"
+    },
+    "inheritance": {
+      "root": {
+        "uri": "uno/object",
+        "title": "object",
+        "children": [
+          {
+            "uri": "uno/ux/propertyobject",
+            "title": "Uno.UX.PropertyObject",
+            "children": [
+              {
+                "uri": "fuse/layouts/layout",
+                "title": "Fuse.Layouts.Layout",
+                "children": [
+                  {
+                    "uri": "fuse/layouts/circlelayout",
+                    "title": "Fuse.Layouts.CircleLayout",
+                    "children": [],
+                    "isCurrent": true
+                  }
+                ],
+                "isAncestor": true
+              }
+            ],
+            "isAncestor": true
+          }
+        ],
+        "isAncestor": true
+      },
+      "hasInheritance": true
+    },
+    "uxProperties": {
+      "uxNamespaceTitle": "Fuse.Layouts",
+      "uxNamespaceUri": "fuse/layouts",
+      "uxName": "CircleLayout"
+    },
+    "id": {
+      "id": "fuse/layouts/circlelayout",
+      "parentId": "fuse/layouts",
+      "type": "UxClass",
+      "modifiers": [
+        "public"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/layouts/circlelayout",
+      "href": "fuse/layouts/circlelayout"
+    },
+    "titles": {
+      "pageTitle": "CircleLayout Class",
+      "navigationTitle": "CircleLayout Class",
+      "fullTitle": "Fuse.Layouts.CircleLayout",
+      "indexTitle": "CircleLayout",
+      "fullyQualifiedIndexTitle": "Fuse.Layouts.CircleLayout"
+    },
+    "syntax": {
+      "uno": "public class CircleLayout : Fuse.Layouts.Layout {}",
+      "ux": "<CircleLayout />"
+    },
+    "comment": {
+      "brief": "Lays out elements in an a circular way.",
+      "full": "Lays out elements in an a circular way.\n\n@CircleLayout must be placed inside a @Panel, and will apply to the elements inside it.\n\nWe can use `StartAngleDegrees` and `EndAngleDegrees` to define how much of the circle will\nbe covered. Here zero degrees equals 3 o'clock.\n\n> Note that `EndAngleDegrees` should be greater than `StartAngleDegrees` to avoid\n> layout calculation issues.\n\n## Example\n\n    <Panel Color=\"#000000\">\n        <CircleLayout />\n        <Circle Fill=\"#ff00ff\" />\n        <Circle Fill=\"#7f7fff\" />\n        <Circle Fill=\"#00ffff\" />\n        <Circle Fill=\"#7fff7f\" />\n        <Circle Fill=\"#ffff00\" />\n        <Circle Fill=\"#ff7f7f\" />\n    </Panel>\n\nThe layout calculation is done by fitting circles into a large circle. The elements inside are all\ntreated as circles, such that arranging them they all just touch the `Radius` edge and each other\n(with a zero arc-spacing)."
+    }
+  },
+  "tableOfContents": {
+    "uxProperties": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/layouts/circlelayout",
+            "parentId": "fuse/layouts",
+            "type": "UxClass",
+            "modifiers": [
+              "public"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/layouts/circlelayout",
+            "href": "fuse/layouts/circlelayout"
+          },
+          "titles": {
+            "indexTitle": "CircleLayout",
+            "fullyQualifiedIndexTitle": "Fuse.Layouts.CircleLayout"
+          }
+        },
+        "items": [
+          {
+            "comment": {
+              "brief": "The angle where the circle segment ends.",
+              "full": "The angle where the circle segment ends.\n\n> Note that `EndAngleDegrees` should be greater than `StartAngleDegrees` to avoid\n> layout calculation issues."
+            },
+            "returns": {
+              "href": "uno/float",
+              "title": "float",
+              "fullyQualifiedTitle": "float"
+            },
+            "id": {
+              "id": "fuse/layouts/circlelayout/endangledegrees",
+              "parentId": "fuse/layouts/circlelayout",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/layouts/circlelayout/endangledegrees",
+              "href": "fuse/layouts/circlelayout/endangledegrees"
+            },
+            "titles": {
+              "indexTitle": "EndAngleDegrees",
+              "fullyQualifiedIndexTitle": "Fuse.Layouts.CircleLayout.EndAngleDegrees"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Spacing between each element on the circle in degrees.",
+              "full": "Spacing between each element on the circle in degrees.\n\nThis value should be set to less than the arc length in degrees divided by\nthe number of elements"
+            },
+            "returns": {
+              "href": "uno/float",
+              "title": "float",
+              "fullyQualifiedTitle": "float"
+            },
+            "id": {
+              "id": "fuse/layouts/circlelayout/itemspacingdegrees",
+              "parentId": "fuse/layouts/circlelayout",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/layouts/circlelayout/itemspacingdegrees",
+              "href": "fuse/layouts/circlelayout/itemspacingdegrees"
+            },
+            "titles": {
+              "indexTitle": "ItemSpacingDegrees",
+              "fullyQualifiedIndexTitle": "Fuse.Layouts.CircleLayout.ItemSpacingDegrees"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Radius of bounding circle.",
+              "full": "Radius of bounding circle."
+            },
+            "returns": {
+              "href": "uno/float",
+              "title": "float",
+              "fullyQualifiedTitle": "float"
+            },
+            "id": {
+              "id": "fuse/layouts/circlelayout/radius",
+              "parentId": "fuse/layouts/circlelayout",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/layouts/circlelayout/radius",
+              "href": "fuse/layouts/circlelayout/radius"
+            },
+            "titles": {
+              "indexTitle": "Radius",
+              "fullyQualifiedIndexTitle": "Fuse.Layouts.CircleLayout.Radius"
+            }
+          },
+          {
+            "comment": {
+              "brief": "The angle where the circle segment starts.",
+              "full": "The angle where the circle segment starts.\n\nThis is the point on the circle where the first element will be centered.\n\n> Note: Zero degrees translates to 3'o clock, and rotation will be clockwise."
+            },
+            "returns": {
+              "href": "uno/float",
+              "title": "float",
+              "fullyQualifiedTitle": "float"
+            },
+            "id": {
+              "id": "fuse/layouts/circlelayout/startangledegrees",
+              "parentId": "fuse/layouts/circlelayout",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/layouts/circlelayout/startangledegrees",
+              "href": "fuse/layouts/circlelayout/startangledegrees"
+            },
+            "titles": {
+              "indexTitle": "StartAngleDegrees",
+              "fullyQualifiedIndexTitle": "Fuse.Layouts.CircleLayout.StartAngleDegrees"
+            }
+          }
+        ]
+      }
+    ],
+    "attachedUxProperties": [
+      {
+        "items": [
+          {
+            "comment": {
+              "brief": "The `ux:Global` attribute creates a global resource that is accessible everywhere in UX markup.",
+              "full": "The `ux:Global` attribute creates a global resource that is accessible everywhere in UX markup.\n\nSee @Resources for more information.\n\nThe `ux:Global` attribute on an UX element creates a single object (singleton) that is globally available.\nUsing this attribute will prevent the object from being inserted by default the object at its defined location\nin the UX tree."
+            },
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "parameters": [
+              {
+                "name": "obj",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              },
+              {
+                "name": "key",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              }
+            ],
+            "id": {
+              "id": "fuse/layouts/circlelayout/resource_globalkey_setglobalkey_4c3ac72d",
+              "parentId": "fuse/layouts/circlelayout",
+              "type": "AttachedUxProperty",
+              "modifiers": []
+            },
+            "uri": {
+              "idUri": "fuse/layouts/circlelayout/resource_globalkey_setglobalkey_4c3ac72d",
+              "href": "uno/ux/resource/setglobalkey_4c3ac72d",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Resource.GlobalKey",
+              "fullyQualifiedIndexTitle": "Resource.GlobalKey"
+            }
+          }
+        ]
+      }
+    ],
+    "constructors": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/layouts/circlelayout",
+            "parentId": "fuse/layouts",
+            "type": "UxClass",
+            "modifiers": [
+              "public"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/layouts/circlelayout",
+            "href": "fuse/layouts/circlelayout"
+          },
+          "titles": {
+            "indexTitle": "CircleLayout",
+            "fullyQualifiedIndexTitle": "Fuse.Layouts.CircleLayout"
+          }
+        },
+        "items": [
+          {
+            "comment": {
+              "brief": "Creates a new CircleLayout",
+              "full": "Creates a new CircleLayout"
+            },
+            "id": {
+              "id": "fuse/layouts/circlelayout/_ctor",
+              "parentId": "fuse/layouts/circlelayout",
+              "type": "Constructor",
+              "modifiers": [
+                "public",
+                "generated"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/layouts/circlelayout/_ctor",
+              "href": "fuse/layouts/circlelayout/_ctor"
+            },
+            "titles": {
+              "indexTitle": "CircleLayout",
+              "fullyQualifiedIndexTitle": "Fuse.Layouts.CircleLayout.CircleLayout"
+            }
+          }
+        ]
+      }
+    ],
+    "properties": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/layouts/layout",
+            "parentId": "fuse/layouts",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/layouts/layout",
+            "href": "fuse/layouts/layout"
+          },
+          "titles": {
+            "indexTitle": "Layout",
+            "fullyQualifiedIndexTitle": "Fuse.Layouts.Layout"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "id": {
+              "id": "fuse/layouts/circlelayout/snaptopixels",
+              "parentId": "fuse/layouts/circlelayout",
+              "type": "Property",
+              "modifiers": [
+                "protected"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/layouts/circlelayout/snaptopixels",
+              "href": "fuse/layouts/layout/snaptopixels",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "SnapToPixels",
+              "fullyQualifiedIndexTitle": "Fuse.Layouts.Layout.SnapToPixels"
+            }
+          }
+        ]
+      }
+    ],
+    "methods": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/layouts/layout",
+            "parentId": "fuse/layouts",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/layouts/layout",
+            "href": "fuse/layouts/layout"
+          },
+          "titles": {
+            "indexTitle": "Layout",
+            "fullyQualifiedIndexTitle": "Fuse.Layouts.Layout"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "parameters": [
+              {
+                "name": "n",
+                "href": "fuse/node",
+                "title": "Node",
+                "fullyQualifiedTitle": "Fuse.Node"
+              }
+            ],
+            "id": {
+              "id": "fuse/layouts/circlelayout/affectslayout_5070ac8a",
+              "parentId": "fuse/layouts/circlelayout",
+              "type": "Method",
+              "modifiers": [
+                "protected"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/layouts/circlelayout/affectslayout_5070ac8a",
+              "href": "fuse/layouts/layout/affectslayout_5070ac8a",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "AffectsLayout(Node)",
+              "fullyQualifiedIndexTitle": "Fuse.Layouts.Layout.AffectsLayout(Fuse.Node)"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "parameters": [
+              {
+                "name": "n",
+                "href": "fuse/node",
+                "title": "Node",
+                "fullyQualifiedTitle": "Fuse.Node"
+              },
+              {
+                "name": "padding",
+                "href": "uno/float4",
+                "title": "float4",
+                "fullyQualifiedTitle": "float4"
+              },
+              {
+                "name": "lp",
+                "href": "fuse/layoutparams",
+                "title": "LayoutParams",
+                "fullyQualifiedTitle": "Fuse.LayoutParams"
+              }
+            ],
+            "id": {
+              "id": "fuse/layouts/circlelayout/arrangemarginboxspecial_4655e216",
+              "parentId": "fuse/layouts/circlelayout",
+              "type": "Method",
+              "modifiers": [
+                "protected"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/layouts/circlelayout/arrangemarginboxspecial_4655e216",
+              "href": "fuse/layouts/layout/arrangemarginboxspecial_4655e216",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "ArrangeMarginBoxSpecial(Node, float4, LayoutParams)",
+              "fullyQualifiedIndexTitle": "Fuse.Layouts.Layout.ArrangeMarginBoxSpecial(Fuse.Node, float4, Fuse.LayoutParams)"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/layouts/circlelayout/invalidatelayout",
+              "parentId": "fuse/layouts/circlelayout",
+              "type": "Method",
+              "modifiers": [
+                "protected"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/layouts/circlelayout/invalidatelayout",
+              "href": "fuse/layouts/layout/invalidatelayout",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "InvalidateLayout",
+              "fullyQualifiedIndexTitle": "Fuse.Layouts.Layout.InvalidateLayout"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/layouts/circlelayout/onrooted",
+              "parentId": "fuse/layouts/circlelayout",
+              "type": "Method",
+              "modifiers": [
+                "protected",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/layouts/circlelayout/onrooted",
+              "href": "fuse/layouts/layout/onrooted",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "OnRooted",
+              "fullyQualifiedIndexTitle": "Fuse.Layouts.Layout.OnRooted"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/layouts/circlelayout/onunrooted",
+              "parentId": "fuse/layouts/circlelayout",
+              "type": "Method",
+              "modifiers": [
+                "protected",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/layouts/circlelayout/onunrooted",
+              "href": "fuse/layouts/layout/onunrooted",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "OnUnrooted",
+              "fullyQualifiedIndexTitle": "Fuse.Layouts.Layout.OnUnrooted"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "parameters": [
+              {
+                "name": "n",
+                "href": "fuse/node",
+                "title": "Node",
+                "fullyQualifiedTitle": "Fuse.Node"
+              }
+            ],
+            "id": {
+              "id": "fuse/layouts/circlelayout/shouldarrange_5070ac8a",
+              "parentId": "fuse/layouts/circlelayout",
+              "type": "Method",
+              "modifiers": [
+                "protected"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/layouts/circlelayout/shouldarrange_5070ac8a",
+              "href": "fuse/layouts/layout/shouldarrange_5070ac8a",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "ShouldArrange(Node)",
+              "fullyQualifiedIndexTitle": "Fuse.Layouts.Layout.ShouldArrange(Fuse.Node)"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/float",
+              "title": "float",
+              "fullyQualifiedTitle": "float"
+            },
+            "parameters": [
+              {
+                "name": "p",
+                "href": "uno/float",
+                "title": "float",
+                "fullyQualifiedTitle": "float"
+              }
+            ],
+            "id": {
+              "id": "fuse/layouts/circlelayout/snap_95b37cd8",
+              "parentId": "fuse/layouts/circlelayout",
+              "type": "Method",
+              "modifiers": [
+                "protected"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/layouts/circlelayout/snap_95b37cd8",
+              "href": "fuse/layouts/layout/snap_95b37cd8",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Snap(float)",
+              "fullyQualifiedIndexTitle": "Fuse.Layouts.Layout.Snap(float)"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/float2",
+              "title": "float2",
+              "fullyQualifiedTitle": "float2"
+            },
+            "parameters": [
+              {
+                "name": "p",
+                "href": "uno/float2",
+                "title": "float2",
+                "fullyQualifiedTitle": "float2"
+              }
+            ],
+            "id": {
+              "id": "fuse/layouts/circlelayout/snap_92485797",
+              "parentId": "fuse/layouts/circlelayout",
+              "type": "Method",
+              "modifiers": [
+                "protected"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/layouts/circlelayout/snap_92485797",
+              "href": "fuse/layouts/layout/snap_92485797",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Snap(float2)",
+              "fullyQualifiedIndexTitle": "Fuse.Layouts.Layout.Snap(float2)"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/float",
+              "title": "float",
+              "fullyQualifiedTitle": "float"
+            },
+            "parameters": [
+              {
+                "name": "p",
+                "href": "uno/float",
+                "title": "float",
+                "fullyQualifiedTitle": "float"
+              }
+            ],
+            "id": {
+              "id": "fuse/layouts/circlelayout/snapup_95b37cd8",
+              "parentId": "fuse/layouts/circlelayout",
+              "type": "Method",
+              "modifiers": [
+                "protected"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/layouts/circlelayout/snapup_95b37cd8",
+              "href": "fuse/layouts/layout/snapup_95b37cd8",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "SnapUp(float)",
+              "fullyQualifiedIndexTitle": "Fuse.Layouts.Layout.SnapUp(float)"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/float2",
+              "title": "float2",
+              "fullyQualifiedTitle": "float2"
+            },
+            "parameters": [
+              {
+                "name": "p",
+                "href": "uno/float2",
+                "title": "float2",
+                "fullyQualifiedTitle": "float2"
+              }
+            ],
+            "id": {
+              "id": "fuse/layouts/circlelayout/snapup_92485797",
+              "parentId": "fuse/layouts/circlelayout",
+              "type": "Method",
+              "modifiers": [
+                "protected"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/layouts/circlelayout/snapup_92485797",
+              "href": "fuse/layouts/layout/snapup_92485797",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "SnapUp(float2)",
+              "fullyQualifiedIndexTitle": "Fuse.Layouts.Layout.SnapUp(float2)"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "uno/ux/propertyobject",
+            "parentId": "uno/ux",
+            "type": "Class",
+            "modifiers": [
+              "public"
+            ]
+          },
+          "uri": {
+            "idUri": "uno/ux/propertyobject",
+            "href": "uno/ux/propertyobject"
+          },
+          "titles": {
+            "indexTitle": "PropertyObject",
+            "fullyQualifiedIndexTitle": "Uno.UX.PropertyObject"
+          }
+        },
+        "items": [
+          {
+            "parameters": [
+              {
+                "name": "listener",
+                "href": "uno/ux/ipropertylistener",
+                "title": "IPropertyListener",
+                "fullyQualifiedTitle": "Uno.UX.IPropertyListener"
+              }
+            ],
+            "id": {
+              "id": "fuse/layouts/circlelayout/addpropertylistener_496a874a",
+              "parentId": "fuse/layouts/circlelayout",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/layouts/circlelayout/addpropertylistener_496a874a",
+              "href": "uno/ux/propertyobject/addpropertylistener_496a874a",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "AddPropertyListener(IPropertyListener)",
+              "fullyQualifiedIndexTitle": "Uno.UX.PropertyObject.AddPropertyListener(Uno.UX.IPropertyListener)"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "property",
+                "href": "uno/ux/selector",
+                "title": "Selector",
+                "fullyQualifiedTitle": "Uno.UX.Selector"
+              }
+            ],
+            "id": {
+              "id": "fuse/layouts/circlelayout/onpropertychanged_16d735f3",
+              "parentId": "fuse/layouts/circlelayout",
+              "type": "Method",
+              "modifiers": [
+                "protected"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/layouts/circlelayout/onpropertychanged_16d735f3",
+              "href": "uno/ux/propertyobject/onpropertychanged_16d735f3",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "OnPropertyChanged(Selector)",
+              "fullyQualifiedIndexTitle": "Uno.UX.PropertyObject.OnPropertyChanged(Uno.UX.Selector)"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "property",
+                "href": "uno/ux/selector",
+                "title": "Selector",
+                "fullyQualifiedTitle": "Uno.UX.Selector"
+              },
+              {
+                "name": "origin",
+                "href": "uno/ux/ipropertylistener",
+                "title": "IPropertyListener",
+                "fullyQualifiedTitle": "Uno.UX.IPropertyListener"
+              }
+            ],
+            "id": {
+              "id": "fuse/layouts/circlelayout/onpropertychanged_6422fe92",
+              "parentId": "fuse/layouts/circlelayout",
+              "type": "Method",
+              "modifiers": [
+                "protected",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/layouts/circlelayout/onpropertychanged_6422fe92",
+              "href": "uno/ux/propertyobject/onpropertychanged_6422fe92",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "OnPropertyChanged(Selector, IPropertyListener)",
+              "fullyQualifiedIndexTitle": "Uno.UX.PropertyObject.OnPropertyChanged(Uno.UX.Selector, Uno.UX.IPropertyListener)"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "listener",
+                "href": "uno/ux/ipropertylistener",
+                "title": "IPropertyListener",
+                "fullyQualifiedTitle": "Uno.UX.IPropertyListener"
+              }
+            ],
+            "id": {
+              "id": "fuse/layouts/circlelayout/removepropertylistener_496a874a",
+              "parentId": "fuse/layouts/circlelayout",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/layouts/circlelayout/removepropertylistener_496a874a",
+              "href": "uno/ux/propertyobject/removepropertylistener_496a874a",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "RemovePropertyListener(IPropertyListener)",
+              "fullyQualifiedIndexTitle": "Uno.UX.PropertyObject.RemovePropertyListener(Uno.UX.IPropertyListener)"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "uno/object",
+            "parentId": "uno",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "intrinsic"
+            ]
+          },
+          "uri": {
+            "idUri": "uno/object",
+            "href": "uno/object"
+          },
+          "titles": {
+            "indexTitle": "object",
+            "fullyQualifiedIndexTitle": "object"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "parameters": [
+              {
+                "name": "o",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              }
+            ],
+            "id": {
+              "id": "fuse/layouts/circlelayout/equals_a09c80e3",
+              "parentId": "fuse/layouts/circlelayout",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/layouts/circlelayout/equals_a09c80e3",
+              "href": "uno/object/equals_a09c80e3",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Equals(object)",
+              "fullyQualifiedIndexTitle": "Uno.Object.Equals(object)"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/int",
+              "title": "int",
+              "fullyQualifiedTitle": "int"
+            },
+            "id": {
+              "id": "fuse/layouts/circlelayout/gethashcode",
+              "parentId": "fuse/layouts/circlelayout",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/layouts/circlelayout/gethashcode",
+              "href": "uno/object/gethashcode",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetHashCode",
+              "fullyQualifiedIndexTitle": "Uno.Object.GetHashCode"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/type",
+              "title": "Type",
+              "fullyQualifiedTitle": "Uno.Type"
+            },
+            "id": {
+              "id": "fuse/layouts/circlelayout/gettype",
+              "parentId": "fuse/layouts/circlelayout",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/layouts/circlelayout/gettype",
+              "href": "uno/object/gettype",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetType",
+              "fullyQualifiedIndexTitle": "Uno.Object.GetType"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "id": {
+              "id": "fuse/layouts/circlelayout/tostring",
+              "parentId": "fuse/layouts/circlelayout",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/layouts/circlelayout/tostring",
+              "href": "uno/object/tostring",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "ToString",
+              "fullyQualifiedIndexTitle": "Uno.Object.ToString"
+            }
+          }
+        ]
+      }
+    ],
+    "fields": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/layouts/layout",
+            "parentId": "fuse/layouts",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/layouts/layout",
+            "href": "fuse/layouts/layout"
+          },
+          "titles": {
+            "indexTitle": "Layout",
+            "fullyQualifiedIndexTitle": "Fuse.Layouts.Layout"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "fuse/controls/layoutcontrol",
+              "title": "LayoutControl",
+              "fullyQualifiedTitle": "Fuse.Controls.LayoutControl"
+            },
+            "id": {
+              "id": "fuse/layouts/circlelayout/container",
+              "parentId": "fuse/layouts/circlelayout",
+              "type": "Field",
+              "modifiers": [
+                "protected"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/layouts/circlelayout/container",
+              "href": "fuse/layouts/layout/container",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Container",
+              "fullyQualifiedIndexTitle": "Fuse.Layouts.Layout.Container"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

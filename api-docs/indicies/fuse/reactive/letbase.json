@@ -1,0 +1,250 @@
+{
+  "root": {
+    "id": {
+      "id": "fuse/reactive/letbase",
+      "parentId": "fuse/reactive",
+      "type": "Class",
+      "modifiers": [
+        "public",
+        "abstract"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/reactive/letbase",
+      "href": "fuse/reactive/letbase"
+    },
+    "titles": {
+      "indexTitle": "LetBase",
+      "fullyQualifiedIndexTitle": "Fuse.Reactive.LetBase"
+    }
+  },
+  "descendants": [
+    {
+      "comment": {
+        "brief": "Binds an expression or value to a name in the data context. This simplifies repeated calculations and allows introduction of new variables.",
+        "full": "Binds an expression or value to a name in the data context. This simplifies repeated calculations and allows introduction of new variables.\n\nTo introduce a new value:\n\n    <Let ux:Name=\"a\" Value=\"5\"/>\n\nThe value is now part of the data context:\n\n    <Slider Value=\"{a}\"/>\n\nIt can also be accessed directly outside of the context:\n\n    <Slider Value=\"{Property a.Value}\"/>\n\nIf you are using an expression it's recommended now to use `Expression` instead of `Value`:\n\n    <Let ux:Name=\"p\" Expression=\"{pos} + 5\"/>\n\nThis ensures proper propagation of undefined values.  (This is part of the reason this is an experimental API, since we don't really want to distinguish between Expression and Value, but have no choice at the moment).\n\n## LetType\n\nIf you are creating a value of a specific type, and/or need to use `Change` or other animators, consider using one of the @LetType classes instead, such as @LetFloat or @LetString. They have a cleaner conversion mechanism, leading to fewer surprises.\n\nExperimental since there are some fine details about handling observables, nulls, and expressions that aren't quite defined and might subtlely alter the behaviour. For typical use-cases it should be okay though.",
+        "attributes": {
+          "experimental": true
+        }
+      },
+      "id": {
+        "id": "fuse/reactive/let",
+        "parentId": "fuse/reactive",
+        "type": "UxClass",
+        "modifiers": [
+          "public"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/reactive/let",
+        "href": "fuse/reactive/let"
+      },
+      "titles": {
+        "indexTitle": "Let",
+        "fullyQualifiedIndexTitle": "Fuse.Reactive.Let"
+      }
+    },
+    {
+      "comment": {
+        "brief": "A @LetType that specifies a `bool` value.",
+        "full": "A @LetType that specifies a `bool` value."
+      },
+      "id": {
+        "id": "fuse/reactive/letbool",
+        "parentId": "fuse/reactive",
+        "type": "UxClass",
+        "modifiers": [
+          "public"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/reactive/letbool",
+        "href": "fuse/reactive/letbool"
+      },
+      "titles": {
+        "indexTitle": "LetBool",
+        "fullyQualifiedIndexTitle": "Fuse.Reactive.LetBool"
+      }
+    },
+    {
+      "comment": {
+        "brief": "A @LetType that specifies a `float` value.",
+        "full": "A @LetType that specifies a `float` value."
+      },
+      "id": {
+        "id": "fuse/reactive/letfloat",
+        "parentId": "fuse/reactive",
+        "type": "UxClass",
+        "modifiers": [
+          "public"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/reactive/letfloat",
+        "href": "fuse/reactive/letfloat"
+      },
+      "titles": {
+        "indexTitle": "LetFloat",
+        "fullyQualifiedIndexTitle": "Fuse.Reactive.LetFloat"
+      }
+    },
+    {
+      "comment": {
+        "brief": "A @LetType that specifies a `float2` value.",
+        "full": "A @LetType that specifies a `float2` value."
+      },
+      "id": {
+        "id": "fuse/reactive/letfloat2",
+        "parentId": "fuse/reactive",
+        "type": "UxClass",
+        "modifiers": [
+          "public"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/reactive/letfloat2",
+        "href": "fuse/reactive/letfloat2"
+      },
+      "titles": {
+        "indexTitle": "LetFloat2",
+        "fullyQualifiedIndexTitle": "Fuse.Reactive.LetFloat2"
+      }
+    },
+    {
+      "comment": {
+        "brief": "A @LetType that specifies a `float3` value.",
+        "full": "A @LetType that specifies a `float3` value."
+      },
+      "id": {
+        "id": "fuse/reactive/letfloat3",
+        "parentId": "fuse/reactive",
+        "type": "UxClass",
+        "modifiers": [
+          "public"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/reactive/letfloat3",
+        "href": "fuse/reactive/letfloat3"
+      },
+      "titles": {
+        "indexTitle": "LetFloat3",
+        "fullyQualifiedIndexTitle": "Fuse.Reactive.LetFloat3"
+      }
+    },
+    {
+      "comment": {
+        "brief": "A @LetType that specifies a `float4` value.",
+        "full": "A @LetType that specifies a `float4` value."
+      },
+      "id": {
+        "id": "fuse/reactive/letfloat4",
+        "parentId": "fuse/reactive",
+        "type": "UxClass",
+        "modifiers": [
+          "public"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/reactive/letfloat4",
+        "href": "fuse/reactive/letfloat4"
+      },
+      "titles": {
+        "indexTitle": "LetFloat4",
+        "fullyQualifiedIndexTitle": "Fuse.Reactive.LetFloat4"
+      }
+    },
+    {
+      "comment": {
+        "brief": "A @LetType that specifies a `Size` value.",
+        "full": "A @LetType that specifies a `Size` value."
+      },
+      "id": {
+        "id": "fuse/reactive/letsize",
+        "parentId": "fuse/reactive",
+        "type": "UxClass",
+        "modifiers": [
+          "public"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/reactive/letsize",
+        "href": "fuse/reactive/letsize"
+      },
+      "titles": {
+        "indexTitle": "LetSize",
+        "fullyQualifiedIndexTitle": "Fuse.Reactive.LetSize"
+      }
+    },
+    {
+      "comment": {
+        "brief": "A @LetType that specifies a `Size2` value.",
+        "full": "A @LetType that specifies a `Size2` value."
+      },
+      "id": {
+        "id": "fuse/reactive/letsize2",
+        "parentId": "fuse/reactive",
+        "type": "UxClass",
+        "modifiers": [
+          "public"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/reactive/letsize2",
+        "href": "fuse/reactive/letsize2"
+      },
+      "titles": {
+        "indexTitle": "LetSize2",
+        "fullyQualifiedIndexTitle": "Fuse.Reactive.LetSize2"
+      }
+    },
+    {
+      "comment": {
+        "brief": "A @LetType that specifies a `string` value.",
+        "full": "A @LetType that specifies a `string` value."
+      },
+      "id": {
+        "id": "fuse/reactive/letstring",
+        "parentId": "fuse/reactive",
+        "type": "UxClass",
+        "modifiers": [
+          "public"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/reactive/letstring",
+        "href": "fuse/reactive/letstring"
+      },
+      "titles": {
+        "indexTitle": "LetString",
+        "fullyQualifiedIndexTitle": "Fuse.Reactive.LetString"
+      }
+    },
+    {
+      "comment": {
+        "brief": "Provides a bindable value for use in UX. This assists in combining animations and transitions in the UX without needing to use JavaScript intermediates. It is not meant to store application state, being intended only for UI level changes and effects.",
+        "full": "Provides a bindable value for use in UX. This assists in combining animations and transitions in the UX without needing to use JavaScript intermediates. It is not meant to store application state, being intended only for UI level changes and effects.\n\nUnlike @Let this enforces a specific value type and is suitable for use with `Change`, `Set`, and other property bindings.\n\nThese values are two-way bindable (like Observables), for example:\n\n    <LetString Value=\"hello\" ux:Name=\"a\"/>\n    <TextInput Value=\"{a}\"/>\n    <Text Value=\"{a}\"/>\n\nTyping in the `TextInput` will modify the value of `a` and update the `Text` value.\n\n## Available types\n\n[subclass Fuse.Reactive.LetType]",
+        "attributes": {
+          "experimental": true
+        }
+      },
+      "id": {
+        "id": "fuse/reactive/lettype_1",
+        "parentId": "fuse/reactive",
+        "type": "Class",
+        "modifiers": [
+          "public",
+          "abstract"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/reactive/lettype_1",
+        "href": "fuse/reactive/lettype_1"
+      },
+      "titles": {
+        "indexTitle": "LetType<T>",
+        "fullyQualifiedIndexTitle": "Fuse.Reactive.LetType<T>"
+      }
+    }
+  ]
+}

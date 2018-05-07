@@ -1,0 +1,44 @@
+{
+  "entity": {
+    "location": {
+      "namespaceTitle": "Fuse.Gestures",
+      "namespaceUri": "fuse/gestures",
+      "packageName": "Fuse.Gestures",
+      "packageVersion": "1.8.0-rc2"
+    },
+    "parameters": [],
+    "returns": {
+      "href": "fuse/gestures/isizeconstraint",
+      "title": "ISizeConstraint",
+      "fullyQualifiedTitle": "Fuse.Gestures.ISizeConstraint"
+    },
+    "uxProperties": {},
+    "id": {
+      "id": "fuse/gestures/pangesture/constraint",
+      "parentId": "fuse/gestures/pangesture",
+      "type": "UxProperty",
+      "modifiers": [
+        "public"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/gestures/pangesture/constraint",
+      "href": "fuse/gestures/pangesture/constraint"
+    },
+    "titles": {
+      "pageTitle": "PanGesture.Constraint Property",
+      "navigationTitle": "Constraint Property",
+      "fullTitle": "Fuse.Gestures.PanGesture.Constraint",
+      "indexTitle": "Constraint",
+      "fullyQualifiedIndexTitle": "Fuse.Gestures.PanGesture.Constraint"
+    },
+    "syntax": {
+      "uno": "public Fuse.Gestures.ISizeConstraint Constraint { get; get; }"
+    },
+    "comment": {
+      "brief": "Constrains the gesture so the resulting scaled and translated item will remain visible. Unlike @ConstrainElement this works only with items exposing an @ISizeConstraint, such as @Image, but provides stricter bounds calculations (based on the actual visual content, not just the element bounds).",
+      "full": "Constrains the gesture so the resulting scaled and translated item will remain visible. Unlike @ConstrainElement this works only with items exposing an @ISizeConstraint, such as @Image, but provides stricter bounds calculations (based on the actual visual content, not just the element bounds).\n\n## Example\n\nThe zoomed image cannot be panned outside the extents of the control.\n\n    <Panel HitTestMode=\"LocalBounds\" Width=\"400\" Height=\"400\" Color=\"#aaa\" ClipToBounds=\"true\">\n        <Image File=\"../../Assets/large_troll.jpg\" ux:Name=\"TheImage\">\n            <InteractiveTransform ux:Name=\"ImageTrans\"/>\n        </Image>\n        <ZoomGesture Target=\"ImageTrans\"/>\n        <PanGesture Target=\"ImageTrans\" Constraint=\"TheImage\"/>\n    </Panel>"
+    }
+  },
+  "tableOfContents": {}
+}

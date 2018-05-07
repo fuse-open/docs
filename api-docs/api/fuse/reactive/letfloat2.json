@@ -1,0 +1,1565 @@
+{
+  "entity": {
+    "base": {
+      "id": {
+        "id": "fuse/reactive/lettype_1",
+        "parentId": "fuse/reactive",
+        "type": "Class",
+        "modifiers": [
+          "public",
+          "abstract"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/reactive/lettype_1",
+        "href": "fuse/reactive/lettype_1"
+      },
+      "titles": {
+        "indexTitle": "LetType<float2>",
+        "fullyQualifiedIndexTitle": "Fuse.Reactive.LetType<float2>"
+      }
+    },
+    "location": {
+      "namespaceTitle": "Fuse.Reactive",
+      "namespaceUri": "fuse/reactive",
+      "packageName": "Fuse.Reactive.Bindings",
+      "packageVersion": "1.8.0-rc2"
+    },
+    "inheritance": {
+      "root": {
+        "uri": "uno/object",
+        "title": "object",
+        "children": [
+          {
+            "uri": "uno/ux/propertyobject",
+            "title": "Uno.UX.PropertyObject",
+            "children": [
+              {
+                "uri": "fuse/node",
+                "title": "Fuse.Node",
+                "children": [
+                  {
+                    "uri": "fuse/behavior",
+                    "title": "Fuse.Behavior",
+                    "children": [
+                      {
+                        "uri": "fuse/reactive/letbase",
+                        "title": "Fuse.Reactive.LetBase",
+                        "children": [
+                          {
+                            "uri": "fuse/reactive/lettype_1",
+                            "title": "Fuse.Reactive.LetType<float2>",
+                            "children": [
+                              {
+                                "uri": "fuse/reactive/letfloat2",
+                                "title": "Fuse.Reactive.LetFloat2",
+                                "children": [],
+                                "isCurrent": true
+                              }
+                            ],
+                            "isAncestor": true
+                          }
+                        ],
+                        "isAncestor": true
+                      }
+                    ],
+                    "isAncestor": true
+                  }
+                ],
+                "isAncestor": true
+              }
+            ],
+            "isAncestor": true
+          }
+        ],
+        "isAncestor": true
+      },
+      "hasInheritance": true
+    },
+    "uxProperties": {
+      "uxNamespaceTitle": "Fuse.Reactive",
+      "uxNamespaceUri": "fuse/reactive",
+      "uxName": "LetFloat2"
+    },
+    "implementedInterfaces": [
+      {
+        "comment": {
+          "brief": "When implemented by a `Node`, it indicates that the node provides data for its siblings.\n@hide",
+          "full": "When implemented by a `Node`, it indicates that the node provides data for its siblings.\n@hide"
+        },
+        "id": {
+          "id": "fuse/node/isiblingdataprovider",
+          "parentId": "fuse/node",
+          "type": "Interface",
+          "modifiers": [
+            "public",
+            "abstract"
+          ]
+        },
+        "uri": {
+          "idUri": "fuse/node/isiblingdataprovider",
+          "href": "fuse/node/isiblingdataprovider"
+        },
+        "titles": {
+          "indexTitle": "ISiblingDataProvider",
+          "fullyQualifiedIndexTitle": "Fuse.ISiblingDataProvider"
+        }
+      },
+      {
+        "comment": {
+          "brief": "Represents a key-value object, where the keys can be enumerated and looked up by string name.",
+          "full": "Represents a key-value object, where the keys can be enumerated and looked up by string name.\n\nThe enumerable keys do not neccessarily correspond to Uno properties on the object.\n\nAllthough read-only through this interface, the object is not neccessarily immutable.\nChanges to the object can only happen on the UI thread. This means the UI thread can safely\nread properties from this object.\n\nIf the object also supports `Fuse.Reactive.IObservableObject`, consumers can subscribe\nto receive change notifications.",
+          "attributes": {
+            "deprecated": true
+          }
+        },
+        "id": {
+          "id": "fuse/iobject",
+          "parentId": "fuse",
+          "type": "Interface",
+          "modifiers": [
+            "public",
+            "abstract"
+          ]
+        },
+        "uri": {
+          "idUri": "fuse/iobject",
+          "href": "fuse/iobject"
+        },
+        "titles": {
+          "indexTitle": "IObject",
+          "fullyQualifiedIndexTitle": "Fuse.IObject"
+        }
+      },
+      {
+        "id": {
+          "id": "uno/ux/ipropertylistener",
+          "parentId": "uno/ux",
+          "type": "Interface",
+          "modifiers": [
+            "public",
+            "abstract"
+          ]
+        },
+        "uri": {
+          "idUri": "uno/ux/ipropertylistener",
+          "href": "uno/ux/ipropertylistener"
+        },
+        "titles": {
+          "indexTitle": "IPropertyListener",
+          "fullyQualifiedIndexTitle": "Uno.UX.IPropertyListener"
+        }
+      },
+      {
+        "id": {
+          "id": "uno/collections/ilist_1",
+          "parentId": "uno/collections",
+          "type": "Interface",
+          "modifiers": [
+            "public",
+            "abstract"
+          ]
+        },
+        "uri": {
+          "idUri": "uno/collections/ilist_1",
+          "href": "uno/collections/ilist_1"
+        },
+        "titles": {
+          "indexTitle": "IList<Binding>",
+          "fullyQualifiedIndexTitle": "Uno.Collections.IList<Fuse.Binding>"
+        }
+      },
+      {
+        "comment": {
+          "brief": "Interface for objects that can have a script engine representation",
+          "full": "Interface for objects that can have a script engine representation"
+        },
+        "id": {
+          "id": "fuse/scripting/iscriptobject",
+          "parentId": "fuse/scripting",
+          "type": "Interface",
+          "modifiers": [
+            "public",
+            "abstract"
+          ]
+        },
+        "uri": {
+          "idUri": "fuse/scripting/iscriptobject",
+          "href": "fuse/scripting/iscriptobject"
+        },
+        "titles": {
+          "indexTitle": "IScriptObject",
+          "fullyQualifiedIndexTitle": "Fuse.Scripting.IScriptObject"
+        }
+      },
+      {
+        "id": {
+          "id": "fuse/iproperties",
+          "parentId": "fuse",
+          "type": "Interface",
+          "modifiers": [
+            "public",
+            "abstract"
+          ]
+        },
+        "uri": {
+          "idUri": "fuse/iproperties",
+          "href": "fuse/iproperties"
+        },
+        "titles": {
+          "indexTitle": "IProperties",
+          "fullyQualifiedIndexTitle": "Fuse.IProperties"
+        }
+      },
+      {
+        "id": {
+          "id": "uno/collections/icollection_1",
+          "parentId": "uno/collections",
+          "type": "Interface",
+          "modifiers": [
+            "public",
+            "abstract"
+          ]
+        },
+        "uri": {
+          "idUri": "uno/collections/icollection_1",
+          "href": "uno/collections/icollection_1"
+        },
+        "titles": {
+          "indexTitle": "ICollection<Binding>",
+          "fullyQualifiedIndexTitle": "Uno.Collections.ICollection<Fuse.Binding>"
+        }
+      },
+      {
+        "id": {
+          "id": "uno/collections/ienumerable_1",
+          "parentId": "uno/collections",
+          "type": "Interface",
+          "modifiers": [
+            "public",
+            "abstract"
+          ]
+        },
+        "uri": {
+          "idUri": "uno/collections/ienumerable_1",
+          "href": "uno/collections/ienumerable_1"
+        },
+        "titles": {
+          "indexTitle": "IEnumerable<Binding>",
+          "fullyQualifiedIndexTitle": "Uno.Collections.IEnumerable<Fuse.Binding>"
+        }
+      }
+    ],
+    "id": {
+      "id": "fuse/reactive/letfloat2",
+      "parentId": "fuse/reactive",
+      "type": "UxClass",
+      "modifiers": [
+        "public"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/reactive/letfloat2",
+      "href": "fuse/reactive/letfloat2"
+    },
+    "titles": {
+      "pageTitle": "LetFloat2 Class",
+      "navigationTitle": "LetFloat2 Class",
+      "fullTitle": "Fuse.Reactive.LetFloat2",
+      "indexTitle": "LetFloat2",
+      "fullyQualifiedIndexTitle": "Fuse.Reactive.LetFloat2"
+    },
+    "syntax": {
+      "uno": "public class LetFloat2 : Fuse.Reactive.LetType<float2> {}",
+      "ux": "<LetFloat2 />"
+    },
+    "comment": {
+      "brief": "A @LetType that specifies a `float2` value.",
+      "full": "A @LetType that specifies a `float2` value."
+    }
+  },
+  "tableOfContents": {
+    "uxProperties": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/reactive/lettype_1",
+            "parentId": "fuse/reactive",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/reactive/lettype_1",
+            "href": "fuse/reactive/lettype_1"
+          },
+          "titles": {
+            "indexTitle": "LetType<float2>",
+            "fullyQualifiedIndexTitle": "Fuse.Reactive.LetType<float2>"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/float2",
+              "title": "float2",
+              "fullyQualifiedTitle": "float2"
+            },
+            "id": {
+              "id": "fuse/reactive/letfloat2/value",
+              "parentId": "fuse/reactive/letfloat2",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/letfloat2/value",
+              "href": "fuse/reactive/lettype_1/value",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Value",
+              "fullyQualifiedIndexTitle": "Fuse.Reactive.LetType.Value"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/node",
+            "parentId": "fuse",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract",
+              "partial"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/node",
+            "href": "fuse/node"
+          },
+          "titles": {
+            "indexTitle": "Node",
+            "fullyQualifiedIndexTitle": "Fuse.Node"
+          }
+        },
+        "items": [
+          {
+            "comment": {
+              "brief": "The list of bindings belonging to this node.",
+              "full": "The list of bindings belonging to this node."
+            },
+            "returns": {
+              "href": "uno/collections/ilist_1",
+              "title": "IList<Binding>",
+              "fullyQualifiedTitle": "Uno.Collections.IList<Fuse.Binding>"
+            },
+            "flags": {
+              "uxContent": true
+            },
+            "id": {
+              "id": "fuse/reactive/letfloat2/bindings",
+              "parentId": "fuse/reactive/letfloat2",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/letfloat2/bindings",
+              "href": "fuse/node/bindings",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Bindings",
+              "fullyQualifiedIndexTitle": "Fuse.Node.Bindings"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Run-time name of the node.\nThis property is automatically set using the ux:Name attribute.",
+              "full": "Run-time name of the node.\nThis property is automatically set using the ux:Name attribute."
+            },
+            "returns": {
+              "href": "uno/ux/selector",
+              "title": "Selector",
+              "fullyQualifiedTitle": "Uno.UX.Selector"
+            },
+            "id": {
+              "id": "fuse/reactive/letfloat2/name",
+              "parentId": "fuse/reactive/letfloat2",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/letfloat2/name",
+              "href": "fuse/node/name",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Name",
+              "fullyQualifiedIndexTitle": "Fuse.Node.Name"
+            }
+          }
+        ]
+      }
+    ],
+    "attachedUxProperties": [
+      {
+        "items": [
+          {
+            "comment": {
+              "brief": "The `ux:Global` attribute creates a global resource that is accessible everywhere in UX markup.",
+              "full": "The `ux:Global` attribute creates a global resource that is accessible everywhere in UX markup.\n\nSee @Resources for more information.\n\nThe `ux:Global` attribute on an UX element creates a single object (singleton) that is globally available.\nUsing this attribute will prevent the object from being inserted by default the object at its defined location\nin the UX tree."
+            },
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "parameters": [
+              {
+                "name": "obj",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              },
+              {
+                "name": "key",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              }
+            ],
+            "id": {
+              "id": "fuse/reactive/letfloat2/resource_globalkey_setglobalkey_4c3ac72d",
+              "parentId": "fuse/reactive/letfloat2",
+              "type": "AttachedUxProperty",
+              "modifiers": []
+            },
+            "uri": {
+              "idUri": "fuse/reactive/letfloat2/resource_globalkey_setglobalkey_4c3ac72d",
+              "href": "uno/ux/resource/setglobalkey_4c3ac72d",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Resource.GlobalKey",
+              "fullyQualifiedIndexTitle": "Resource.GlobalKey"
+            }
+          }
+        ]
+      }
+    ],
+    "constructors": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/reactive/letfloat2",
+            "parentId": "fuse/reactive",
+            "type": "UxClass",
+            "modifiers": [
+              "public"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/reactive/letfloat2",
+            "href": "fuse/reactive/letfloat2"
+          },
+          "titles": {
+            "indexTitle": "LetFloat2",
+            "fullyQualifiedIndexTitle": "Fuse.Reactive.LetFloat2"
+          }
+        },
+        "items": [
+          {
+            "comment": {
+              "brief": "Creates a new LetFloat2",
+              "full": "Creates a new LetFloat2"
+            },
+            "id": {
+              "id": "fuse/reactive/letfloat2/_ctor",
+              "parentId": "fuse/reactive/letfloat2",
+              "type": "Constructor",
+              "modifiers": [
+                "public",
+                "generated"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/letfloat2/_ctor",
+              "href": "fuse/reactive/letfloat2/_ctor"
+            },
+            "titles": {
+              "indexTitle": "LetFloat2",
+              "fullyQualifiedIndexTitle": "Fuse.Reactive.LetFloat2.LetFloat2"
+            }
+          }
+        ]
+      }
+    ],
+    "properties": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/node",
+            "parentId": "fuse",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract",
+              "partial"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/node",
+            "href": "fuse/node"
+          },
+          "titles": {
+            "indexTitle": "Node",
+            "fullyQualifiedIndexTitle": "Fuse.Node"
+          }
+        },
+        "items": [
+          {
+            "comment": {
+              "brief": "The context parent is the semantic parent of this node. It is where non-UI structure should\nbe resolved, like looking for the DataContext, a Navigation, or other semantic item.",
+              "full": "The context parent is the semantic parent of this node. It is where non-UI structure should\nbe resolved, like looking for the DataContext, a Navigation, or other semantic item."
+            },
+            "returns": {
+              "href": "fuse/node",
+              "title": "Node",
+              "fullyQualifiedTitle": "Fuse.Node"
+            },
+            "id": {
+              "id": "fuse/reactive/letfloat2/contextparent",
+              "parentId": "fuse/reactive/letfloat2",
+              "type": "Property",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/letfloat2/contextparent",
+              "href": "fuse/node/contextparent",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "ContextParent",
+              "fullyQualifiedIndexTitle": "Fuse.Node.ContextParent"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Whether rooting for this node is completed.\nReturns false if unrooting has started.",
+              "full": "Whether rooting for this node is completed.\nReturns false if unrooting has started."
+            },
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "id": {
+              "id": "fuse/reactive/letfloat2/isrootingcompleted",
+              "parentId": "fuse/reactive/letfloat2",
+              "type": "Property",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/letfloat2/isrootingcompleted",
+              "href": "fuse/node/isrootingcompleted",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "IsRootingCompleted",
+              "fullyQualifiedIndexTitle": "Fuse.Node.IsRootingCompleted"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Whether rooting of this node has started.\nNote that even if this property returns true, rooting may not yet be\ncompleted for the node. See also @IsRootingCompleted.",
+              "full": "Whether rooting of this node has started.\nNote that even if this property returns true, rooting may not yet be\ncompleted for the node. See also @IsRootingCompleted."
+            },
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "id": {
+              "id": "fuse/reactive/letfloat2/isrootingstarted",
+              "parentId": "fuse/reactive/letfloat2",
+              "type": "Property",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/letfloat2/isrootingstarted",
+              "href": "fuse/node/isrootingstarted",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "IsRootingStarted",
+              "fullyQualifiedIndexTitle": "Fuse.Node.IsRootingStarted"
+            }
+          },
+          {
+            "comment": {
+              "brief": "The parent @Visual of this node. Will return null if the node is not rooted.",
+              "full": "The parent @Visual of this node. Will return null if the node is not rooted."
+            },
+            "returns": {
+              "href": "fuse/visual",
+              "title": "Visual",
+              "fullyQualifiedTitle": "Fuse.Visual"
+            },
+            "id": {
+              "id": "fuse/reactive/letfloat2/parent",
+              "parentId": "fuse/reactive/letfloat2",
+              "type": "Property",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/letfloat2/parent",
+              "href": "fuse/node/parent",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Parent",
+              "fullyQualifiedIndexTitle": "Fuse.Node.Parent"
+            }
+          },
+          {
+            "comment": {
+              "brief": "A linked list holding data for extrinsic properties.",
+              "full": "A linked list holding data for extrinsic properties."
+            },
+            "returns": {
+              "href": "fuse/properties",
+              "title": "Properties",
+              "fullyQualifiedTitle": "Fuse.Properties"
+            },
+            "id": {
+              "id": "fuse/reactive/letfloat2/properties",
+              "parentId": "fuse/reactive/letfloat2",
+              "type": "Property",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/letfloat2/properties",
+              "href": "fuse/node/properties",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Properties",
+              "fullyQualifiedIndexTitle": "Fuse.Node.Properties"
+            }
+          }
+        ]
+      }
+    ],
+    "methods": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/reactive/lettype_1",
+            "parentId": "fuse/reactive",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/reactive/lettype_1",
+            "href": "fuse/reactive/lettype_1"
+          },
+          "titles": {
+            "indexTitle": "LetType<float2>",
+            "fullyQualifiedIndexTitle": "Fuse.Reactive.LetType<float2>"
+          }
+        },
+        "items": [
+          {
+            "parameters": [
+              {
+                "name": "value",
+                "href": "uno/float2",
+                "title": "float2",
+                "fullyQualifiedTitle": "float2"
+              },
+              {
+                "name": "origin",
+                "href": "uno/ux/ipropertylistener",
+                "title": "IPropertyListener",
+                "fullyQualifiedTitle": "Uno.UX.IPropertyListener"
+              }
+            ],
+            "id": {
+              "id": "fuse/reactive/letfloat2/setvalue_66c3ce4d",
+              "parentId": "fuse/reactive/letfloat2",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/letfloat2/setvalue_66c3ce4d",
+              "href": "fuse/reactive/lettype_1/setvalue_66c3ce4d",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "SetValue(float2, IPropertyListener)",
+              "fullyQualifiedIndexTitle": "Fuse.Reactive.LetType.SetValue(float2, Uno.UX.IPropertyListener)"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/reactive/letbase",
+            "parentId": "fuse/reactive",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/reactive/letbase",
+            "href": "fuse/reactive/letbase"
+          },
+          "titles": {
+            "indexTitle": "LetBase",
+            "fullyQualifiedIndexTitle": "Fuse.Reactive.LetBase"
+          }
+        },
+        "items": [
+          {
+            "id": {
+              "id": "fuse/reactive/letfloat2/onrootedvalue",
+              "parentId": "fuse/reactive/letfloat2",
+              "type": "Method",
+              "modifiers": [
+                "protected",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/letfloat2/onrootedvalue",
+              "href": "fuse/reactive/letbase/onrootedvalue",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "OnRootedValue",
+              "fullyQualifiedIndexTitle": "Fuse.Reactive.LetBase.OnRootedValue"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "value",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              },
+              {
+                "name": "origin",
+                "href": "uno/ux/ipropertylistener",
+                "title": "IPropertyListener",
+                "fullyQualifiedTitle": "Uno.UX.IPropertyListener"
+              }
+            ],
+            "id": {
+              "id": "fuse/reactive/letfloat2/setobjectvalue_77f0f64f",
+              "parentId": "fuse/reactive/letfloat2",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/letfloat2/setobjectvalue_77f0f64f",
+              "href": "fuse/reactive/letbase/setobjectvalue_77f0f64f",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "SetObjectValue(object, IPropertyListener)",
+              "fullyQualifiedIndexTitle": "Fuse.Reactive.LetBase.SetObjectValue(object, Uno.UX.IPropertyListener)"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/node",
+            "parentId": "fuse",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract",
+              "partial"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/node",
+            "href": "fuse/node"
+          },
+          "titles": {
+            "indexTitle": "Node",
+            "fullyQualifiedIndexTitle": "Fuse.Node"
+          }
+        },
+        "items": [
+          {
+            "parameters": [
+              {
+                "name": "item",
+                "href": "fuse/binding",
+                "title": "Binding",
+                "fullyQualifiedTitle": "Fuse.Binding"
+              }
+            ],
+            "id": {
+              "id": "fuse/reactive/letfloat2/add_cd0f711d",
+              "parentId": "fuse/reactive/letfloat2",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/letfloat2/add_cd0f711d",
+              "href": "fuse/node/add_cd0f711d",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Add(Binding)",
+              "fullyQualifiedIndexTitle": "Fuse.Node.Add(Fuse.Binding)"
+            }
+          },
+          {
+            "returns": {
+              "isVirtual": true,
+              "title": "T",
+              "fullyQualifiedTitle": "Fuse.T"
+            },
+            "id": {
+              "id": "fuse/reactive/letfloat2/findbytype_1",
+              "parentId": "fuse/reactive/letfloat2",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/letfloat2/findbytype_1",
+              "href": "fuse/node/findbytype_1",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "FindByType<T>",
+              "fullyQualifiedIndexTitle": "Fuse.Node.FindByType<T>"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Finds the first node with a given name that satisfies the given acceptor.\nThe serach algorithm works as follows: Nodes in the subtree are matched first, then\nit matches the nodes in the subtrees ofthe ancestor nodes by turn all the way to the\nroot. If no matching node is found, the function returns null.",
+              "full": "Finds the first node with a given name that satisfies the given acceptor.\nThe serach algorithm works as follows: Nodes in the subtree are matched first, then\nit matches the nodes in the subtrees ofthe ancestor nodes by turn all the way to the\nroot. If no matching node is found, the function returns null."
+            },
+            "returns": {
+              "href": "fuse/node",
+              "title": "Node",
+              "fullyQualifiedTitle": "Fuse.Node"
+            },
+            "parameters": [
+              {
+                "name": "name",
+                "href": "uno/ux/selector",
+                "title": "Selector",
+                "fullyQualifiedTitle": "Uno.UX.Selector"
+              },
+              {
+                "name": "acceptor",
+                "href": "uno/predicate_1",
+                "title": "Predicate<Node> (Node)",
+                "fullyQualifiedTitle": "Uno.Predicate<Fuse.Node> (Fuse.Node)"
+              }
+            ],
+            "id": {
+              "id": "fuse/reactive/letfloat2/findnodebyname_66268add",
+              "parentId": "fuse/reactive/letfloat2",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/letfloat2/findnodebyname_66268add",
+              "href": "fuse/node/findnodebyname_66268add",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "FindNodeByName(Selector, Predicate<Node> (Node))",
+              "fullyQualifiedIndexTitle": "Fuse.Node.FindNodeByName(Uno.UX.Selector, Uno.Predicate<Fuse.Node> (Fuse.Node))"
+            }
+          },
+          {
+            "returns": {
+              "isVirtual": true,
+              "title": "T",
+              "fullyQualifiedTitle": "Fuse.T"
+            },
+            "id": {
+              "id": "fuse/reactive/letfloat2/getnearestancestoroftype_1",
+              "parentId": "fuse/reactive/letfloat2",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/letfloat2/getnearestancestoroftype_1",
+              "href": "fuse/node/getnearestancestoroftype_1",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetNearestAncestorOfType<T>",
+              "fullyQualifiedIndexTitle": "Fuse.Node.GetNearestAncestorOfType<T>"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "index",
+                "href": "uno/int",
+                "title": "int",
+                "fullyQualifiedTitle": "int"
+              },
+              {
+                "name": "item",
+                "href": "fuse/binding",
+                "title": "Binding",
+                "fullyQualifiedTitle": "Fuse.Binding"
+              }
+            ],
+            "id": {
+              "id": "fuse/reactive/letfloat2/insert_4036b6cf",
+              "parentId": "fuse/reactive/letfloat2",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/letfloat2/insert_4036b6cf",
+              "href": "fuse/node/insert_4036b6cf",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Insert(int, Binding)",
+              "fullyQualifiedIndexTitle": "Fuse.Node.Insert(int, Fuse.Binding)"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Returns the next sibling node of the given type.",
+              "full": "Returns the next sibling node of the given type."
+            },
+            "returns": {
+              "isVirtual": true,
+              "title": "T",
+              "fullyQualifiedTitle": "Fuse.T"
+            },
+            "id": {
+              "id": "fuse/reactive/letfloat2/nextsibling_1",
+              "parentId": "fuse/reactive/letfloat2",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/letfloat2/nextsibling_1",
+              "href": "fuse/node/nextsibling_1",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "NextSibling<T>",
+              "fullyQualifiedIndexTitle": "Fuse.Node.NextSibling<T>"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "key",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              },
+              {
+                "name": "newValue",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              }
+            ],
+            "id": {
+              "id": "fuse/reactive/letfloat2/ondatachanged_d062e5a9",
+              "parentId": "fuse/reactive/letfloat2",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/letfloat2/ondatachanged_d062e5a9",
+              "href": "fuse/node/ondatachanged_d062e5a9",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "OnDataChanged(string, object)",
+              "fullyQualifiedIndexTitle": "Fuse.Node.OnDataChanged(string, object)"
+            }
+          },
+          {
+            "comment": {
+              "brief": "If you override `OnRooted` you must call `base.OnRooted()` first in your derived class. No other processing should happen first, otherwise you might end up in an undefined state.",
+              "full": "If you override `OnRooted` you must call `base.OnRooted()` first in your derived class. No other processing should happen first, otherwise you might end up in an undefined state."
+            },
+            "id": {
+              "id": "fuse/reactive/letfloat2/onrooted",
+              "parentId": "fuse/reactive/letfloat2",
+              "type": "Method",
+              "modifiers": [
+                "protected",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/letfloat2/onrooted",
+              "href": "fuse/node/onrooted",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "OnRooted",
+              "fullyQualifiedIndexTitle": "Fuse.Node.OnRooted"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/reactive/letfloat2/onunrooted",
+              "parentId": "fuse/reactive/letfloat2",
+              "type": "Method",
+              "modifiers": [
+                "protected",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/letfloat2/onunrooted",
+              "href": "fuse/node/onunrooted",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "OnUnrooted",
+              "fullyQualifiedIndexTitle": "Fuse.Node.OnUnrooted"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Returns the next sibling node of the given type.",
+              "full": "Returns the next sibling node of the given type."
+            },
+            "returns": {
+              "isVirtual": true,
+              "title": "T",
+              "fullyQualifiedTitle": "Fuse.T"
+            },
+            "id": {
+              "id": "fuse/reactive/letfloat2/previoussibling_1",
+              "parentId": "fuse/reactive/letfloat2",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/letfloat2/previoussibling_1",
+              "href": "fuse/node/previoussibling_1",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "PreviousSibling<T>",
+              "fullyQualifiedIndexTitle": "Fuse.Node.PreviousSibling<T>"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "parameters": [
+              {
+                "name": "item",
+                "href": "fuse/binding",
+                "title": "Binding",
+                "fullyQualifiedTitle": "Fuse.Binding"
+              }
+            ],
+            "id": {
+              "id": "fuse/reactive/letfloat2/remove_cd0f711d",
+              "parentId": "fuse/reactive/letfloat2",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/letfloat2/remove_cd0f711d",
+              "href": "fuse/node/remove_cd0f711d",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Remove(Binding)",
+              "fullyQualifiedIndexTitle": "Fuse.Node.Remove(Fuse.Binding)"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/reactive/letfloat2/softdispose",
+              "parentId": "fuse/reactive/letfloat2",
+              "type": "Method",
+              "modifiers": [
+                "protected",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/letfloat2/softdispose",
+              "href": "fuse/node/softdispose",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "SoftDispose",
+              "fullyQualifiedIndexTitle": "Fuse.Node.SoftDispose"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "id": {
+              "id": "fuse/reactive/letfloat2/subtreetostring",
+              "parentId": "fuse/reactive/letfloat2",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/letfloat2/subtreetostring",
+              "href": "fuse/node/subtreetostring",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "SubtreeToString",
+              "fullyQualifiedIndexTitle": "Fuse.Node.SubtreeToString"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "sb",
+                "href": "uno/text/stringbuilder",
+                "title": "StringBuilder",
+                "fullyQualifiedTitle": "Uno.Text.StringBuilder"
+              },
+              {
+                "name": "indent",
+                "href": "uno/int",
+                "title": "int",
+                "fullyQualifiedTitle": "int"
+              }
+            ],
+            "id": {
+              "id": "fuse/reactive/letfloat2/subtreetostring_efe5f5b8",
+              "parentId": "fuse/reactive/letfloat2",
+              "type": "Method",
+              "modifiers": [
+                "protected",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/letfloat2/subtreetostring_efe5f5b8",
+              "href": "fuse/node/subtreetostring_efe5f5b8",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "SubtreeToString(StringBuilder, int)",
+              "fullyQualifiedIndexTitle": "Fuse.Node.SubtreeToString(Uno.Text.StringBuilder, int)"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "parameters": [
+              {
+                "name": "key",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              },
+              {
+                "name": "acceptor",
+                "href": "uno/predicate_1",
+                "title": "Predicate<object> (object)",
+                "fullyQualifiedTitle": "Uno.Predicate<object> (object)"
+              },
+              {
+                "name": "resource",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              }
+            ],
+            "id": {
+              "id": "fuse/reactive/letfloat2/trygetresource_5317754b",
+              "parentId": "fuse/reactive/letfloat2",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/letfloat2/trygetresource_5317754b",
+              "href": "fuse/node/trygetresource_5317754b",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "TryGetResource(string, Predicate<object> (object), object)",
+              "fullyQualifiedIndexTitle": "Fuse.Node.TryGetResource(string, Uno.Predicate<object> (object), object)"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "action",
+                "href": "uno/action_1",
+                "title": "Action<Node> (Node)",
+                "fullyQualifiedTitle": "Uno.Action<Fuse.Node> (Fuse.Node)"
+              }
+            ],
+            "id": {
+              "id": "fuse/reactive/letfloat2/visitsubtree_7a20b182",
+              "parentId": "fuse/reactive/letfloat2",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/letfloat2/visitsubtree_7a20b182",
+              "href": "fuse/node/visitsubtree_7a20b182",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "VisitSubtree(Action<Node> (Node))",
+              "fullyQualifiedIndexTitle": "Fuse.Node.VisitSubtree(Uno.Action<Fuse.Node> (Fuse.Node))"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "uno/ux/propertyobject",
+            "parentId": "uno/ux",
+            "type": "Class",
+            "modifiers": [
+              "public"
+            ]
+          },
+          "uri": {
+            "idUri": "uno/ux/propertyobject",
+            "href": "uno/ux/propertyobject"
+          },
+          "titles": {
+            "indexTitle": "PropertyObject",
+            "fullyQualifiedIndexTitle": "Uno.UX.PropertyObject"
+          }
+        },
+        "items": [
+          {
+            "parameters": [
+              {
+                "name": "listener",
+                "href": "uno/ux/ipropertylistener",
+                "title": "IPropertyListener",
+                "fullyQualifiedTitle": "Uno.UX.IPropertyListener"
+              }
+            ],
+            "id": {
+              "id": "fuse/reactive/letfloat2/addpropertylistener_496a874a",
+              "parentId": "fuse/reactive/letfloat2",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/letfloat2/addpropertylistener_496a874a",
+              "href": "uno/ux/propertyobject/addpropertylistener_496a874a",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "AddPropertyListener(IPropertyListener)",
+              "fullyQualifiedIndexTitle": "Uno.UX.PropertyObject.AddPropertyListener(Uno.UX.IPropertyListener)"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "property",
+                "href": "uno/ux/selector",
+                "title": "Selector",
+                "fullyQualifiedTitle": "Uno.UX.Selector"
+              }
+            ],
+            "id": {
+              "id": "fuse/reactive/letfloat2/onpropertychanged_16d735f3",
+              "parentId": "fuse/reactive/letfloat2",
+              "type": "Method",
+              "modifiers": [
+                "protected"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/letfloat2/onpropertychanged_16d735f3",
+              "href": "uno/ux/propertyobject/onpropertychanged_16d735f3",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "OnPropertyChanged(Selector)",
+              "fullyQualifiedIndexTitle": "Uno.UX.PropertyObject.OnPropertyChanged(Uno.UX.Selector)"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "property",
+                "href": "uno/ux/selector",
+                "title": "Selector",
+                "fullyQualifiedTitle": "Uno.UX.Selector"
+              },
+              {
+                "name": "origin",
+                "href": "uno/ux/ipropertylistener",
+                "title": "IPropertyListener",
+                "fullyQualifiedTitle": "Uno.UX.IPropertyListener"
+              }
+            ],
+            "id": {
+              "id": "fuse/reactive/letfloat2/onpropertychanged_6422fe92",
+              "parentId": "fuse/reactive/letfloat2",
+              "type": "Method",
+              "modifiers": [
+                "protected",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/letfloat2/onpropertychanged_6422fe92",
+              "href": "uno/ux/propertyobject/onpropertychanged_6422fe92",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "OnPropertyChanged(Selector, IPropertyListener)",
+              "fullyQualifiedIndexTitle": "Uno.UX.PropertyObject.OnPropertyChanged(Uno.UX.Selector, Uno.UX.IPropertyListener)"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "listener",
+                "href": "uno/ux/ipropertylistener",
+                "title": "IPropertyListener",
+                "fullyQualifiedTitle": "Uno.UX.IPropertyListener"
+              }
+            ],
+            "id": {
+              "id": "fuse/reactive/letfloat2/removepropertylistener_496a874a",
+              "parentId": "fuse/reactive/letfloat2",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/letfloat2/removepropertylistener_496a874a",
+              "href": "uno/ux/propertyobject/removepropertylistener_496a874a",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "RemovePropertyListener(IPropertyListener)",
+              "fullyQualifiedIndexTitle": "Uno.UX.PropertyObject.RemovePropertyListener(Uno.UX.IPropertyListener)"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "uno/object",
+            "parentId": "uno",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "intrinsic"
+            ]
+          },
+          "uri": {
+            "idUri": "uno/object",
+            "href": "uno/object"
+          },
+          "titles": {
+            "indexTitle": "object",
+            "fullyQualifiedIndexTitle": "object"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "parameters": [
+              {
+                "name": "o",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              }
+            ],
+            "id": {
+              "id": "fuse/reactive/letfloat2/equals_a09c80e3",
+              "parentId": "fuse/reactive/letfloat2",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/letfloat2/equals_a09c80e3",
+              "href": "uno/object/equals_a09c80e3",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Equals(object)",
+              "fullyQualifiedIndexTitle": "Uno.Object.Equals(object)"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/int",
+              "title": "int",
+              "fullyQualifiedTitle": "int"
+            },
+            "id": {
+              "id": "fuse/reactive/letfloat2/gethashcode",
+              "parentId": "fuse/reactive/letfloat2",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/letfloat2/gethashcode",
+              "href": "uno/object/gethashcode",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetHashCode",
+              "fullyQualifiedIndexTitle": "Uno.Object.GetHashCode"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/type",
+              "title": "Type",
+              "fullyQualifiedTitle": "Uno.Type"
+            },
+            "id": {
+              "id": "fuse/reactive/letfloat2/gettype",
+              "parentId": "fuse/reactive/letfloat2",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/letfloat2/gettype",
+              "href": "uno/object/gettype",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetType",
+              "fullyQualifiedIndexTitle": "Uno.Object.GetType"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "id": {
+              "id": "fuse/reactive/letfloat2/tostring",
+              "parentId": "fuse/reactive/letfloat2",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/letfloat2/tostring",
+              "href": "uno/object/tostring",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "ToString",
+              "fullyQualifiedIndexTitle": "Uno.Object.ToString"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

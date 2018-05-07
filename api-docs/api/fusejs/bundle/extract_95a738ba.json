@@ -1,0 +1,76 @@
+{
+  "entity": {
+    "location": {
+      "namespaceTitle": "FuseJS",
+      "namespaceUri": "fusejs",
+      "packageName": "FuseJS",
+      "packageVersion": "1.8.0-rc2"
+    },
+    "parameters": [
+      {
+        "name": "args",
+        "href": "uno/object",
+        "title": "object[]",
+        "fullyQualifiedTitle": "object[]"
+      }
+    ],
+    "returns": {
+      "href": "uno/threading/future_1",
+      "title": "Future<string>",
+      "fullyQualifiedTitle": "Uno.Threading.Future<string>"
+    },
+    "id": {
+      "id": "fusejs/bundle/extract_95a738ba",
+      "parentId": "fusejs/bundle",
+      "type": "JsMethod",
+      "modifiers": [
+        "public",
+        "static"
+      ]
+    },
+    "uri": {
+      "idUri": "fusejs/bundle/extract_95a738ba",
+      "href": "fusejs/bundle/extract_95a738ba"
+    },
+    "titles": {
+      "pageTitle": "Bundle.Extract Method (object[])",
+      "navigationTitle": "Extract Method (object[])",
+      "fullTitle": "FuseJS.Bundle.Extract",
+      "indexTitle": "Extract(object[])",
+      "fullyQualifiedIndexTitle": "FuseJS.Bundle.Extract(object[])"
+    },
+    "syntax": {
+      "uno": "public static Uno.Threading.Future<string> Extract(object[] args) {}"
+    },
+    "comment": {
+      "brief": "Asynchronously reads a file from the application bundle and writes it to a destination on the device.\nUse with `FuseJS/FileSystem` to determine destination paths. This is useful for extracting html and associated content for local use with WebView via `file://` protocol.",
+      "full": "Asynchronously reads a file from the application bundle and writes it to a destination on the device.\nUse with `FuseJS/FileSystem` to determine destination paths. This is useful for extracting html and associated content for local use with WebView via `file://` protocol.\n\n```\nvar Bundle = require(\"FuseJS/Bundle\");\nvar FileSystem = require(\"FuseJS/FileSystem\");\nvar Observable = require(\"FuseJS/Observable\");\nvar urlForWebView = Observable();\n\nBundle.extract(\"assets/site/page.html\", FileSystem.dataDirectory + \"site/page.html\").then(function(resultPath) {\n    urlForWebView.value = \"file://\" + resultPath;\n});\n```",
+      "attributes": {
+        "scriptMethod": {
+          "name": "extract",
+          "parameters": [
+            "bundleFilePath",
+            "destinationPath"
+          ]
+        },
+        "returns": {
+          "typeHint": "Promise",
+          "text": "A promise of the path the file was written to (echo)"
+        },
+        "parameters": [
+          {
+            "name": "bundleFilePath",
+            "typeHint": "String",
+            "description": "The path of the bundled file to read (ie 'assets/image.jpg')"
+          },
+          {
+            "name": "destinationPath",
+            "typeHint": "String",
+            "description": "The absolute path to write the file to (ie 'c:/someDirectory/image.jpg')"
+          }
+        ]
+      }
+    }
+  },
+  "tableOfContents": {}
+}

@@ -1,0 +1,559 @@
+{
+  "entity": {
+    "base": {
+      "id": {
+        "id": "uno/object",
+        "parentId": "uno",
+        "type": "Class",
+        "modifiers": [
+          "public",
+          "intrinsic"
+        ]
+      },
+      "uri": {
+        "idUri": "uno/object",
+        "href": "uno/object"
+      },
+      "titles": {
+        "indexTitle": "object",
+        "fullyQualifiedIndexTitle": "object"
+      }
+    },
+    "location": {
+      "namespaceTitle": "Uno.UX",
+      "namespaceUri": "uno/ux",
+      "packageName": "UnoCore",
+      "packageVersion": "1.8.0-rc1"
+    },
+    "inheritance": {
+      "root": {
+        "uri": "uno/object",
+        "title": "object",
+        "children": [
+          {
+            "uri": "uno/ux/resource",
+            "title": "Uno.UX.Resource",
+            "children": [],
+            "isCurrent": true
+          }
+        ],
+        "isAncestor": true
+      },
+      "hasInheritance": true
+    },
+    "id": {
+      "id": "uno/ux/resource",
+      "parentId": "uno/ux",
+      "type": "Class",
+      "modifiers": [
+        "public",
+        "sealed"
+      ]
+    },
+    "uri": {
+      "idUri": "uno/ux/resource",
+      "href": "uno/ux/resource"
+    },
+    "titles": {
+      "pageTitle": "Resource Class",
+      "navigationTitle": "Resource Class",
+      "fullTitle": "Uno.UX.Resource",
+      "indexTitle": "Resource",
+      "fullyQualifiedIndexTitle": "Uno.UX.Resource"
+    },
+    "syntax": {
+      "uno": "public sealed class Resource {}"
+    },
+    "comment": {
+      "brief": "Resources are objects that are identified by a string key, either globally for your app or\nfor certain pages/subtrees.",
+      "full": "Resources are objects that are identified by a string key, either globally for your app or\nfor certain pages/subtrees.\n\n## Types of resources\n\nResources can be of any type, but it is most commonly used for fonts, colors, constant values,\nstrings etc.\n\nClasses that inherit from @Node can only be rooted with one parent at a time, and is therefore\nrarely useful as global resources. Consider creating a @ux:Class instead and instantiate multiple\nobjects whenever needed.\n\n## Global resources (`ux:Global`)\n\nThe @ux:Global attribute can be used on an UX node to convert it to a global resource.\n\nFor example, a global Font resource can be defined like this:\n\n    <Font File=\"arial.ttf\" ux:Global=\"MyDefaultFont\" />\n\nAnd then used like this:\n\n    <Text Font=\"MyDefaultFont\" />\n\nWhen the global key is used directly (with no binding syntax), the resource is resolved statically\nat build time, and you get an error message if no appropriate resource is found.\n\n## Dynamic resource bindings\n\nWhen you want resources to resolve at runtime and respect tree-local resources, you can also use the\ndynamic resource binding syntax:\n\n    <Text Font=\"{Resource MyDefaultFont}\" />\n\n## Local resources (`ux:Key`)\n\nThe `ux:Key` attribute is used to convert a node to a tree-local resource.\n\nThis allows you to do local overrides in the tree, using the `ux:Key` attribute:\n\n    <Panel>\n        <Font File=\"verdana.ttf\" ux:Key=\"MyDefaultFont\" />\n        <Panel>\n            <Text Font=\"{Resource MyDefaultFont}\" />\n        </Panel>\n    </Panel>\n\nYou can think of `ux:Global` as a way to set global defaults for dynamic resource keys (`ux:Key`)\n\n## Resource key uniqueness\n\nGlobal resource keys must be unique for the given *type* of the resource. Multiple resources can have\nthe same name as long as they are unrelated types.\n\nFor example, Fuse defines multiple resources with the key `Blue`, and the right resource is determined\nbased on the expected type where it used. It can either be a `float4` color value or a `SolidColor` brush.\n\n    <float4 ux:Global=\"Red\" ux:Value=\"#f00\" />\n    <SolidColor ux:Global=\"Red\" Color=\"Red\" />",
+      "attributes": {
+        "topic": "Resources"
+      }
+    }
+  },
+  "tableOfContents": {
+    "constructors": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "uno/ux/resource",
+            "parentId": "uno/ux",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "sealed"
+            ]
+          },
+          "uri": {
+            "idUri": "uno/ux/resource",
+            "href": "uno/ux/resource"
+          },
+          "titles": {
+            "indexTitle": "Resource",
+            "fullyQualifiedIndexTitle": "Uno.UX.Resource"
+          }
+        },
+        "items": [
+          {
+            "parameters": [
+              {
+                "name": "key",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              },
+              {
+                "name": "value",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              }
+            ],
+            "id": {
+              "id": "uno/ux/resource/_ctor_d062e5a9",
+              "parentId": "uno/ux/resource",
+              "type": "Constructor",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "uno/ux/resource/_ctor_d062e5a9",
+              "href": "uno/ux/resource/_ctor_d062e5a9"
+            },
+            "titles": {
+              "indexTitle": "Resource(string, object)",
+              "fullyQualifiedIndexTitle": "Uno.UX.Resource.Resource(string, object)"
+            }
+          }
+        ]
+      }
+    ],
+    "properties": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "uno/ux/resource",
+            "parentId": "uno/ux",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "sealed"
+            ]
+          },
+          "uri": {
+            "idUri": "uno/ux/resource",
+            "href": "uno/ux/resource"
+          },
+          "titles": {
+            "indexTitle": "Resource",
+            "fullyQualifiedIndexTitle": "Uno.UX.Resource"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "id": {
+              "id": "uno/ux/resource/key",
+              "parentId": "uno/ux/resource",
+              "type": "Property",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "uno/ux/resource/key",
+              "href": "uno/ux/resource/key"
+            },
+            "titles": {
+              "indexTitle": "Key",
+              "fullyQualifiedIndexTitle": "Uno.UX.Resource.Key"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/object",
+              "title": "object",
+              "fullyQualifiedTitle": "object"
+            },
+            "id": {
+              "id": "uno/ux/resource/value",
+              "parentId": "uno/ux/resource",
+              "type": "Property",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "uno/ux/resource/value",
+              "href": "uno/ux/resource/value"
+            },
+            "titles": {
+              "indexTitle": "Value",
+              "fullyQualifiedIndexTitle": "Uno.UX.Resource.Value"
+            }
+          }
+        ]
+      }
+    ],
+    "methods": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "uno/ux/resource",
+            "parentId": "uno/ux",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "sealed"
+            ]
+          },
+          "uri": {
+            "idUri": "uno/ux/resource",
+            "href": "uno/ux/resource"
+          },
+          "titles": {
+            "indexTitle": "Resource",
+            "fullyQualifiedIndexTitle": "Uno.UX.Resource"
+          }
+        },
+        "items": [
+          {
+            "comment": {
+              "brief": "Registers a static listener for a particular resource key.",
+              "full": "Registers a static listener for a particular resource key.\n\nThe listener will get a callback whenever a global resource with the given key is registered\nor removed."
+            },
+            "parameters": [
+              {
+                "name": "listener",
+                "href": "uno/action_1",
+                "title": "Action<string> (string)",
+                "fullyQualifiedTitle": "Uno.Action<string> (string)"
+              }
+            ],
+            "id": {
+              "id": "uno/ux/resource/addglobalkeylistener_e39e90a2",
+              "parentId": "uno/ux/resource",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "uno/ux/resource/addglobalkeylistener_e39e90a2",
+              "href": "uno/ux/resource/addglobalkeylistener_e39e90a2"
+            },
+            "titles": {
+              "indexTitle": "AddGlobalKeyListener(Action<string> (string))",
+              "fullyQualifiedIndexTitle": "Uno.UX.Resource.AddGlobalKeyListener(Uno.Action<string> (string))"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "parameters": [
+              {
+                "name": "obj",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              }
+            ],
+            "id": {
+              "id": "uno/ux/resource/getglobalkey_a09c80e3",
+              "parentId": "uno/ux/resource",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "uno/ux/resource/getglobalkey_a09c80e3",
+              "href": "uno/ux/resource/getglobalkey_a09c80e3"
+            },
+            "titles": {
+              "indexTitle": "GetGlobalKey(object)",
+              "fullyQualifiedIndexTitle": "Uno.UX.Resource.GetGlobalKey(object)"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/collections/ienumerable_1",
+              "title": "IEnumerable<T>",
+              "fullyQualifiedTitle": "Uno.Collections.IEnumerable<T>"
+            },
+            "id": {
+              "id": "uno/ux/resource/getglobalsoftype_1",
+              "parentId": "uno/ux/resource",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "uno/ux/resource/getglobalsoftype_1",
+              "href": "uno/ux/resource/getglobalsoftype_1"
+            },
+            "titles": {
+              "indexTitle": "GetGlobalsOfType<T>",
+              "fullyQualifiedIndexTitle": "Uno.UX.Resource.GetGlobalsOfType<T>"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Removes a listener that has been added with `AddGlobalKeyListener`.",
+              "full": "Removes a listener that has been added with `AddGlobalKeyListener`."
+            },
+            "parameters": [
+              {
+                "name": "listener",
+                "href": "uno/action_1",
+                "title": "Action<string> (string)",
+                "fullyQualifiedTitle": "Uno.Action<string> (string)"
+              }
+            ],
+            "id": {
+              "id": "uno/ux/resource/removeglobalkeylistener_e39e90a2",
+              "parentId": "uno/ux/resource",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "uno/ux/resource/removeglobalkeylistener_e39e90a2",
+              "href": "uno/ux/resource/removeglobalkeylistener_e39e90a2"
+            },
+            "titles": {
+              "indexTitle": "RemoveGlobalKeyListener(Action<string> (string))",
+              "fullyQualifiedIndexTitle": "Uno.UX.Resource.RemoveGlobalKeyListener(Uno.Action<string> (string))"
+            }
+          },
+          {
+            "comment": {
+              "brief": "The `ux:Global` attribute creates a global resource that is accessible everywhere in UX markup.",
+              "full": "The `ux:Global` attribute creates a global resource that is accessible everywhere in UX markup.\n\nSee @Resources for more information.\n\nThe `ux:Global` attribute on an UX element creates a single object (singleton) that is globally available.\nUsing this attribute will prevent the object from being inserted by default the object at its defined location\nin the UX tree."
+            },
+            "parameters": [
+              {
+                "name": "obj",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              },
+              {
+                "name": "key",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              }
+            ],
+            "id": {
+              "id": "uno/ux/resource/setglobalkey_4c3ac72d",
+              "parentId": "uno/ux/resource",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "uno/ux/resource/setglobalkey_4c3ac72d",
+              "href": "uno/ux/resource/setglobalkey_4c3ac72d"
+            },
+            "titles": {
+              "indexTitle": "SetGlobalKey(object, string)",
+              "fullyQualifiedIndexTitle": "Uno.UX.Resource.SetGlobalKey(object, string)"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "parameters": [
+              {
+                "name": "key",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              },
+              {
+                "name": "acceptor",
+                "href": "uno/predicate_1",
+                "title": "Predicate<object> (object)",
+                "fullyQualifiedTitle": "Uno.Predicate<object> (object)"
+              },
+              {
+                "name": "res",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              }
+            ],
+            "id": {
+              "id": "uno/ux/resource/tryfindglobal_5317754b",
+              "parentId": "uno/ux/resource",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "uno/ux/resource/tryfindglobal_5317754b",
+              "href": "uno/ux/resource/tryfindglobal_5317754b"
+            },
+            "titles": {
+              "indexTitle": "TryFindGlobal(string, Predicate<object> (object), object)",
+              "fullyQualifiedIndexTitle": "Uno.UX.Resource.TryFindGlobal(string, Uno.Predicate<object> (object), object)"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "uno/object",
+            "parentId": "uno",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "intrinsic"
+            ]
+          },
+          "uri": {
+            "idUri": "uno/object",
+            "href": "uno/object"
+          },
+          "titles": {
+            "indexTitle": "object",
+            "fullyQualifiedIndexTitle": "object"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "parameters": [
+              {
+                "name": "o",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              }
+            ],
+            "id": {
+              "id": "uno/ux/resource/equals_a09c80e3",
+              "parentId": "uno/ux/resource",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "uno/ux/resource/equals_a09c80e3",
+              "href": "uno/object/equals_a09c80e3",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Equals(object)",
+              "fullyQualifiedIndexTitle": "Uno.Object.Equals(object)"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/int",
+              "title": "int",
+              "fullyQualifiedTitle": "int"
+            },
+            "id": {
+              "id": "uno/ux/resource/gethashcode",
+              "parentId": "uno/ux/resource",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "uno/ux/resource/gethashcode",
+              "href": "uno/object/gethashcode",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetHashCode",
+              "fullyQualifiedIndexTitle": "Uno.Object.GetHashCode"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/type",
+              "title": "Type",
+              "fullyQualifiedTitle": "Uno.Type"
+            },
+            "id": {
+              "id": "uno/ux/resource/gettype",
+              "parentId": "uno/ux/resource",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "uno/ux/resource/gettype",
+              "href": "uno/object/gettype",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetType",
+              "fullyQualifiedIndexTitle": "Uno.Object.GetType"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "id": {
+              "id": "uno/ux/resource/tostring",
+              "parentId": "uno/ux/resource",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "uno/ux/resource/tostring",
+              "href": "uno/object/tostring",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "ToString",
+              "fullyQualifiedIndexTitle": "Uno.Object.ToString"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

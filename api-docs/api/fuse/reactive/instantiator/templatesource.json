@@ -1,0 +1,44 @@
+{
+  "entity": {
+    "location": {
+      "namespaceTitle": "Fuse.Reactive",
+      "namespaceUri": "fuse/reactive",
+      "packageName": "Fuse.Reactive.Bindings",
+      "packageVersion": "1.8.0-rc2"
+    },
+    "parameters": [],
+    "returns": {
+      "href": "fuse/itemplatesource",
+      "title": "ITemplateSource",
+      "fullyQualifiedTitle": "Fuse.ITemplateSource"
+    },
+    "uxProperties": {},
+    "id": {
+      "id": "fuse/reactive/instantiator/templatesource",
+      "parentId": "fuse/reactive/instantiator",
+      "type": "UxProperty",
+      "modifiers": [
+        "public"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/reactive/instantiator/templatesource",
+      "href": "fuse/reactive/instantiator/templatesource"
+    },
+    "titles": {
+      "pageTitle": "Instantiator.TemplateSource Property",
+      "navigationTitle": "TemplateSource Property",
+      "fullTitle": "Fuse.Reactive.Instantiator.TemplateSource",
+      "indexTitle": "TemplateSource",
+      "fullyQualifiedIndexTitle": "Fuse.Reactive.Instantiator.TemplateSource"
+    },
+    "syntax": {
+      "uno": "public Fuse.ITemplateSource TemplateSource { get; get; }"
+    },
+    "comment": {
+      "brief": "Specifies a visual that contains templates that can override the default `Templates` provided in this object.",
+      "full": "Specifies a visual that contains templates that can override the default `Templates` provided in this object.\n\nIf specified together with `TemplateKey`, this instantiator will prefer to pick template from the\nspecified `TemplateSource` that matches the `TemplateKey` property. If no match is found, it falls back\nto using the regular list of `Templates`.  Refer to `Defaults`.\n\nThis property is useful if you are creating a component and want to allow certain templates inside the\ncomponent to be overridden by the user.\n\n## Example\n\nThis example uses `Each`, but it applies equally to `Instance` and other subclasses of `Instantiator`.\n\n    <Panel ux:Class=\"MyListControl\">\n        <StackPanel>\n            <Each Count=\"10\" TemplateSource=\"this\" TemplateKey=\"ListItem\">\n                <Text Value=\"This is an item\" />\n            </Each>\n        </StackPanel>\n    </Panel>\n\nIf we instantiate `<MyListControl>` now, it will display the text \"This is an item\" 10 times.\n\nHowever, we can override the template like this:\n\n    <MyListControl>\n        <Rectangle ux:Template=\"ListItem\" Color=\"Red\">\n            <Text>This is a red item</Text>\n        </Rectangle>\n    </MyListControl>\n\nThis will display a red rectangle with the text \"This is a red item\" 10 times, instead of the default\ntemplate defined in the component itself.\n\nThe `TemplateSource` property, along with the templates in the source, as well as the `TemplateKey`, must be set prior to\nrooting to take effect."
+    }
+  },
+  "tableOfContents": {}
+}

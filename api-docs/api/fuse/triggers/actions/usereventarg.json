@@ -1,0 +1,664 @@
+{
+  "entity": {
+    "base": {
+      "id": {
+        "id": "uno/ux/propertyobject",
+        "parentId": "uno/ux",
+        "type": "Class",
+        "modifiers": [
+          "public"
+        ]
+      },
+      "uri": {
+        "idUri": "uno/ux/propertyobject",
+        "href": "uno/ux/propertyobject"
+      },
+      "titles": {
+        "indexTitle": "PropertyObject",
+        "fullyQualifiedIndexTitle": "Uno.UX.PropertyObject"
+      }
+    },
+    "location": {
+      "namespaceTitle": "Fuse.Triggers.Actions",
+      "namespaceUri": "fuse/triggers/actions",
+      "packageName": "Fuse.UserEvents",
+      "packageVersion": "1.8.0-rc2"
+    },
+    "inheritance": {
+      "root": {
+        "uri": "uno/object",
+        "title": "object",
+        "children": [
+          {
+            "uri": "uno/ux/propertyobject",
+            "title": "Uno.UX.PropertyObject",
+            "children": [
+              {
+                "uri": "fuse/triggers/actions/usereventarg",
+                "title": "Fuse.Triggers.Actions.UserEventArg",
+                "children": [],
+                "isCurrent": true
+              }
+            ],
+            "isAncestor": true
+          }
+        ],
+        "isAncestor": true
+      },
+      "hasInheritance": true
+    },
+    "uxProperties": {
+      "uxNamespaceTitle": "Fuse.Triggers.Actions",
+      "uxNamespaceUri": "fuse/triggers/actions",
+      "uxName": "UserEventArg"
+    },
+    "id": {
+      "id": "fuse/triggers/actions/usereventarg",
+      "parentId": "fuse/triggers/actions",
+      "type": "UxClass",
+      "modifiers": [
+        "public",
+        "sealed"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/triggers/actions/usereventarg",
+      "href": "fuse/triggers/actions/usereventarg"
+    },
+    "titles": {
+      "pageTitle": "UserEventArg Class",
+      "navigationTitle": "UserEventArg Class",
+      "fullTitle": "Fuse.Triggers.Actions.UserEventArg",
+      "indexTitle": "UserEventArg",
+      "fullyQualifiedIndexTitle": "Fuse.Triggers.Actions.UserEventArg"
+    },
+    "syntax": {
+      "uno": "public sealed class UserEventArg : Uno.UX.PropertyObject {}",
+      "ux": "<UserEventArg />"
+    },
+    "comment": {
+      "brief": "Represents an argument to be passed with @RaiseUserEvent",
+      "full": "Represents an argument to be passed with @RaiseUserEvent\n\nA user event may also include a number of arguments that can be\nread from JavaScript.\n\nUserEventArg accepts `IntValue`, `FloatValue`, `StringValue` or\n`BoolValue`.\n\n> *Note:* See [this article](/docs/basics/creating-components#events-userevent)\nfor a more complete explanation of user events.\n\n## Example\n\nThe following example shows a @Button that, when clicked, raises a\nuser event with the argument `message`, which has the value\n`Hello from UX!`.\n\n    <UserEvent ux:Name=\"myEvent\" />\n    <Button Text=\"Raise event with message\">\n        <Clicked>\n            <RaiseUserEvent EventName=\"myEvent\">\n                <UserEventArg Name=\"message\" StringValue=\"Hello from UX!\" />\n            </RaiseUserEvent>\n        </Clicked>\n    </Button>"
+    }
+  },
+  "tableOfContents": {
+    "uxProperties": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/triggers/actions/usereventarg",
+            "parentId": "fuse/triggers/actions",
+            "type": "UxClass",
+            "modifiers": [
+              "public",
+              "sealed"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/triggers/actions/usereventarg",
+            "href": "fuse/triggers/actions/usereventarg"
+          },
+          "titles": {
+            "indexTitle": "UserEventArg",
+            "fullyQualifiedIndexTitle": "Fuse.Triggers.Actions.UserEventArg"
+          }
+        },
+        "items": [
+          {
+            "comment": {
+              "brief": "The @Value as a `bool`",
+              "full": "The @Value as a `bool`"
+            },
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "id": {
+              "id": "fuse/triggers/actions/usereventarg/boolvalue",
+              "parentId": "fuse/triggers/actions/usereventarg",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/actions/usereventarg/boolvalue",
+              "href": "fuse/triggers/actions/usereventarg/boolvalue"
+            },
+            "titles": {
+              "indexTitle": "BoolValue",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.Actions.UserEventArg.BoolValue"
+            }
+          },
+          {
+            "comment": {
+              "brief": "The @Value as a `float`",
+              "full": "The @Value as a `float`"
+            },
+            "returns": {
+              "href": "uno/float",
+              "title": "float",
+              "fullyQualifiedTitle": "float"
+            },
+            "id": {
+              "id": "fuse/triggers/actions/usereventarg/floatvalue",
+              "parentId": "fuse/triggers/actions/usereventarg",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/actions/usereventarg/floatvalue",
+              "href": "fuse/triggers/actions/usereventarg/floatvalue"
+            },
+            "titles": {
+              "indexTitle": "FloatValue",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.Actions.UserEventArg.FloatValue"
+            }
+          },
+          {
+            "comment": {
+              "brief": "The @Value as an `int`",
+              "full": "The @Value as an `int`"
+            },
+            "returns": {
+              "href": "uno/int",
+              "title": "int",
+              "fullyQualifiedTitle": "int"
+            },
+            "id": {
+              "id": "fuse/triggers/actions/usereventarg/intvalue",
+              "parentId": "fuse/triggers/actions/usereventarg",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/actions/usereventarg/intvalue",
+              "href": "fuse/triggers/actions/usereventarg/intvalue"
+            },
+            "titles": {
+              "indexTitle": "IntValue",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.Actions.UserEventArg.IntValue"
+            }
+          },
+          {
+            "comment": {
+              "brief": "The @Value as a `string`",
+              "full": "The @Value as a `string`"
+            },
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "id": {
+              "id": "fuse/triggers/actions/usereventarg/stringvalue",
+              "parentId": "fuse/triggers/actions/usereventarg",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/actions/usereventarg/stringvalue",
+              "href": "fuse/triggers/actions/usereventarg/stringvalue"
+            },
+            "titles": {
+              "indexTitle": "StringValue",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.Actions.UserEventArg.StringValue"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Specifies the generic `object` value of the argument.",
+              "full": "Specifies the generic `object` value of the argument."
+            },
+            "returns": {
+              "href": "uno/object",
+              "title": "object",
+              "fullyQualifiedTitle": "object"
+            },
+            "id": {
+              "id": "fuse/triggers/actions/usereventarg/value",
+              "parentId": "fuse/triggers/actions/usereventarg",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/actions/usereventarg/value",
+              "href": "fuse/triggers/actions/usereventarg/value"
+            },
+            "titles": {
+              "indexTitle": "Value",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.Actions.UserEventArg.Value"
+            }
+          }
+        ]
+      }
+    ],
+    "attachedUxProperties": [
+      {
+        "items": [
+          {
+            "comment": {
+              "brief": "The `ux:Global` attribute creates a global resource that is accessible everywhere in UX markup.",
+              "full": "The `ux:Global` attribute creates a global resource that is accessible everywhere in UX markup.\n\nSee @Resources for more information.\n\nThe `ux:Global` attribute on an UX element creates a single object (singleton) that is globally available.\nUsing this attribute will prevent the object from being inserted by default the object at its defined location\nin the UX tree."
+            },
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "parameters": [
+              {
+                "name": "obj",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              },
+              {
+                "name": "key",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              }
+            ],
+            "id": {
+              "id": "fuse/triggers/actions/usereventarg/resource_globalkey_setglobalkey_4c3ac72d",
+              "parentId": "fuse/triggers/actions/usereventarg",
+              "type": "AttachedUxProperty",
+              "modifiers": []
+            },
+            "uri": {
+              "idUri": "fuse/triggers/actions/usereventarg/resource_globalkey_setglobalkey_4c3ac72d",
+              "href": "uno/ux/resource/setglobalkey_4c3ac72d",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Resource.GlobalKey",
+              "fullyQualifiedIndexTitle": "Resource.GlobalKey"
+            }
+          }
+        ]
+      }
+    ],
+    "constructors": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/triggers/actions/usereventarg",
+            "parentId": "fuse/triggers/actions",
+            "type": "UxClass",
+            "modifiers": [
+              "public",
+              "sealed"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/triggers/actions/usereventarg",
+            "href": "fuse/triggers/actions/usereventarg"
+          },
+          "titles": {
+            "indexTitle": "UserEventArg",
+            "fullyQualifiedIndexTitle": "Fuse.Triggers.Actions.UserEventArg"
+          }
+        },
+        "items": [
+          {
+            "parameters": [
+              {
+                "name": "name",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              }
+            ],
+            "id": {
+              "id": "fuse/triggers/actions/usereventarg/_ctor_968f99a6",
+              "parentId": "fuse/triggers/actions/usereventarg",
+              "type": "Constructor",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/actions/usereventarg/_ctor_968f99a6",
+              "href": "fuse/triggers/actions/usereventarg/_ctor_968f99a6"
+            },
+            "titles": {
+              "indexTitle": "UserEventArg(string)",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.Actions.UserEventArg.UserEventArg(string)"
+            }
+          }
+        ]
+      }
+    ],
+    "properties": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/triggers/actions/usereventarg",
+            "parentId": "fuse/triggers/actions",
+            "type": "UxClass",
+            "modifiers": [
+              "public",
+              "sealed"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/triggers/actions/usereventarg",
+            "href": "fuse/triggers/actions/usereventarg"
+          },
+          "titles": {
+            "indexTitle": "UserEventArg",
+            "fullyQualifiedIndexTitle": "Fuse.Triggers.Actions.UserEventArg"
+          }
+        },
+        "items": [
+          {
+            "comment": {
+              "brief": "The Name of the argument.",
+              "full": "The Name of the argument."
+            },
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "id": {
+              "id": "fuse/triggers/actions/usereventarg/name",
+              "parentId": "fuse/triggers/actions/usereventarg",
+              "type": "Property",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/actions/usereventarg/name",
+              "href": "fuse/triggers/actions/usereventarg/name"
+            },
+            "titles": {
+              "indexTitle": "Name",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.Actions.UserEventArg.Name"
+            }
+          }
+        ]
+      }
+    ],
+    "methods": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "uno/ux/propertyobject",
+            "parentId": "uno/ux",
+            "type": "Class",
+            "modifiers": [
+              "public"
+            ]
+          },
+          "uri": {
+            "idUri": "uno/ux/propertyobject",
+            "href": "uno/ux/propertyobject"
+          },
+          "titles": {
+            "indexTitle": "PropertyObject",
+            "fullyQualifiedIndexTitle": "Uno.UX.PropertyObject"
+          }
+        },
+        "items": [
+          {
+            "parameters": [
+              {
+                "name": "listener",
+                "href": "uno/ux/ipropertylistener",
+                "title": "IPropertyListener",
+                "fullyQualifiedTitle": "Uno.UX.IPropertyListener"
+              }
+            ],
+            "id": {
+              "id": "fuse/triggers/actions/usereventarg/addpropertylistener_496a874a",
+              "parentId": "fuse/triggers/actions/usereventarg",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/actions/usereventarg/addpropertylistener_496a874a",
+              "href": "uno/ux/propertyobject/addpropertylistener_496a874a",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "AddPropertyListener(IPropertyListener)",
+              "fullyQualifiedIndexTitle": "Uno.UX.PropertyObject.AddPropertyListener(Uno.UX.IPropertyListener)"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "property",
+                "href": "uno/ux/selector",
+                "title": "Selector",
+                "fullyQualifiedTitle": "Uno.UX.Selector"
+              }
+            ],
+            "id": {
+              "id": "fuse/triggers/actions/usereventarg/onpropertychanged_16d735f3",
+              "parentId": "fuse/triggers/actions/usereventarg",
+              "type": "Method",
+              "modifiers": [
+                "protected"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/actions/usereventarg/onpropertychanged_16d735f3",
+              "href": "uno/ux/propertyobject/onpropertychanged_16d735f3",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "OnPropertyChanged(Selector)",
+              "fullyQualifiedIndexTitle": "Uno.UX.PropertyObject.OnPropertyChanged(Uno.UX.Selector)"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "property",
+                "href": "uno/ux/selector",
+                "title": "Selector",
+                "fullyQualifiedTitle": "Uno.UX.Selector"
+              },
+              {
+                "name": "origin",
+                "href": "uno/ux/ipropertylistener",
+                "title": "IPropertyListener",
+                "fullyQualifiedTitle": "Uno.UX.IPropertyListener"
+              }
+            ],
+            "id": {
+              "id": "fuse/triggers/actions/usereventarg/onpropertychanged_6422fe92",
+              "parentId": "fuse/triggers/actions/usereventarg",
+              "type": "Method",
+              "modifiers": [
+                "protected",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/actions/usereventarg/onpropertychanged_6422fe92",
+              "href": "uno/ux/propertyobject/onpropertychanged_6422fe92",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "OnPropertyChanged(Selector, IPropertyListener)",
+              "fullyQualifiedIndexTitle": "Uno.UX.PropertyObject.OnPropertyChanged(Uno.UX.Selector, Uno.UX.IPropertyListener)"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "listener",
+                "href": "uno/ux/ipropertylistener",
+                "title": "IPropertyListener",
+                "fullyQualifiedTitle": "Uno.UX.IPropertyListener"
+              }
+            ],
+            "id": {
+              "id": "fuse/triggers/actions/usereventarg/removepropertylistener_496a874a",
+              "parentId": "fuse/triggers/actions/usereventarg",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/actions/usereventarg/removepropertylistener_496a874a",
+              "href": "uno/ux/propertyobject/removepropertylistener_496a874a",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "RemovePropertyListener(IPropertyListener)",
+              "fullyQualifiedIndexTitle": "Uno.UX.PropertyObject.RemovePropertyListener(Uno.UX.IPropertyListener)"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "uno/object",
+            "parentId": "uno",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "intrinsic"
+            ]
+          },
+          "uri": {
+            "idUri": "uno/object",
+            "href": "uno/object"
+          },
+          "titles": {
+            "indexTitle": "object",
+            "fullyQualifiedIndexTitle": "object"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "parameters": [
+              {
+                "name": "o",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              }
+            ],
+            "id": {
+              "id": "fuse/triggers/actions/usereventarg/equals_a09c80e3",
+              "parentId": "fuse/triggers/actions/usereventarg",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/actions/usereventarg/equals_a09c80e3",
+              "href": "uno/object/equals_a09c80e3",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Equals(object)",
+              "fullyQualifiedIndexTitle": "Uno.Object.Equals(object)"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/int",
+              "title": "int",
+              "fullyQualifiedTitle": "int"
+            },
+            "id": {
+              "id": "fuse/triggers/actions/usereventarg/gethashcode",
+              "parentId": "fuse/triggers/actions/usereventarg",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/actions/usereventarg/gethashcode",
+              "href": "uno/object/gethashcode",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetHashCode",
+              "fullyQualifiedIndexTitle": "Uno.Object.GetHashCode"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/type",
+              "title": "Type",
+              "fullyQualifiedTitle": "Uno.Type"
+            },
+            "id": {
+              "id": "fuse/triggers/actions/usereventarg/gettype",
+              "parentId": "fuse/triggers/actions/usereventarg",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/actions/usereventarg/gettype",
+              "href": "uno/object/gettype",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetType",
+              "fullyQualifiedIndexTitle": "Uno.Object.GetType"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "id": {
+              "id": "fuse/triggers/actions/usereventarg/tostring",
+              "parentId": "fuse/triggers/actions/usereventarg",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/actions/usereventarg/tostring",
+              "href": "uno/object/tostring",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "ToString",
+              "fullyQualifiedIndexTitle": "Uno.Object.ToString"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

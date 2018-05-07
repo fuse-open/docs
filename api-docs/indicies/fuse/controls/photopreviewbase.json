@@ -1,0 +1,46 @@
+{
+  "root": {
+    "id": {
+      "id": "fuse/controls/photopreviewbase",
+      "parentId": "fuse/controls",
+      "type": "Class",
+      "modifiers": [
+        "public",
+        "abstract"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/controls/photopreviewbase",
+      "href": "fuse/controls/photopreviewbase"
+    },
+    "titles": {
+      "indexTitle": "PhotoPreviewBase",
+      "fullyQualifiedIndexTitle": "Fuse.Controls.PhotoPreviewBase"
+    }
+  },
+  "descendants": [
+    {
+      "comment": {
+        "brief": "PhotoPreview",
+        "full": "PhotoPreview\n\nThis element provides a fast path for previewing photos\ncaptured with `CameraView` inside a `NativeViewHost`.\n\nA `PhotoPreview` has to be connected to `CameraView`. Whenever\na photo is captured it will be loaded by the connected `PhotoPreview`\nimmediately. The `PhotoPreview` can also be connected to a\n`CameraView.PhotoLoaded` trigger which can be used to respond\nwhen the photo is ready.\n\nExample:\n\n    <NativeViewHost>\n        <Panel ux:Name=\"previewPanel\" Visibility=\"Hidden\">\n            <Button Text=\"DISMISS\" Alignment=\"Bottom\" Margin=\"10\">\n                <Clicked>\n                    <Set previewPanel.Visibility=\"Hidden\" />\n                    <Set cameraPanel.Visibility=\"Visible\" />\n                </Clicked>\n            </Button>\n            <PhotoPreview ux:Name=\"photoPreview\" CameraView=\"cameraView\" PreviewStretchMode=\"UniformToFill\" />\n        </Panel>\n        <Panel ux:Name=\"cameraPanel\">\n            <CameraView ux:Name=\"cameraView\" PreviewStretchMode=\"UniformToFill\" ClipToBounds=\"true\" />\n        </Panel>\n        <CameraView.PhotoLoaded PhotoPreview=\"photoPreview\">\n            <Set previewPanel.Visibility=\"Visible\" />\n            <Set cameraPanel.Visibility=\"Hidden\" />\n        </CameraView.PhotoLoaded>\n    </NativeViewHost>"
+      },
+      "id": {
+        "id": "fuse/controls/photopreview",
+        "parentId": "fuse/controls",
+        "type": "Class",
+        "modifiers": [
+          "public",
+          "partial"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/controls/photopreview",
+        "href": "fuse/controls/photopreview"
+      },
+      "titles": {
+        "indexTitle": "PhotoPreview",
+        "fullyQualifiedIndexTitle": "Fuse.Controls.PhotoPreview"
+      }
+    }
+  ]
+}

@@ -1,0 +1,1347 @@
+{
+  "entity": {
+    "base": {
+      "id": {
+        "id": "fuse/scripting/nativemodule",
+        "parentId": "fuse/scripting",
+        "type": "Class",
+        "modifiers": [
+          "public"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/scripting/nativemodule",
+        "href": "fuse/scripting/nativemodule"
+      },
+      "titles": {
+        "indexTitle": "NativeModule",
+        "fullyQualifiedIndexTitle": "Fuse.Scripting.NativeModule"
+      }
+    },
+    "location": {
+      "namespaceTitle": "Fuse.ImageTools",
+      "namespaceUri": "fuse/imagetools",
+      "packageName": "Fuse.ImageTools",
+      "packageVersion": "1.8.0-rc2"
+    },
+    "inheritance": {
+      "root": {
+        "uri": "uno/object",
+        "title": "object",
+        "children": [
+          {
+            "uri": "fuse/scripting/module",
+            "title": "Fuse.Scripting.Module",
+            "children": [
+              {
+                "uri": "fuse/scripting/nativemodule",
+                "title": "Fuse.Scripting.NativeModule",
+                "children": [
+                  {
+                    "uri": "fuse/imagetools/imagetools",
+                    "title": "Fuse.ImageTools.ImageTools",
+                    "children": [],
+                    "isCurrent": true
+                  }
+                ],
+                "isAncestor": true
+              }
+            ],
+            "isAncestor": true
+          }
+        ],
+        "isAncestor": true
+      },
+      "hasInheritance": true
+    },
+    "uxProperties": {
+      "uxNamespaceTitle": "Fuse",
+      "uxNamespaceUri": "fuse",
+      "uxName": "ImageTools.ImageTools"
+    },
+    "implementedInterfaces": [
+      {
+        "id": {
+          "id": "fuse/scripting/imoduleprovider",
+          "parentId": "fuse/scripting",
+          "type": "Interface",
+          "modifiers": [
+            "public",
+            "abstract"
+          ]
+        },
+        "uri": {
+          "idUri": "fuse/scripting/imoduleprovider",
+          "href": "fuse/scripting/imoduleprovider"
+        },
+        "titles": {
+          "indexTitle": "IModuleProvider",
+          "fullyQualifiedIndexTitle": "Fuse.Scripting.IModuleProvider"
+        }
+      },
+      {
+        "id": {
+          "id": "uno/idisposable",
+          "parentId": "uno",
+          "type": "Interface",
+          "modifiers": [
+            "public",
+            "abstract"
+          ]
+        },
+        "uri": {
+          "idUri": "uno/idisposable",
+          "href": "uno/idisposable"
+        },
+        "titles": {
+          "indexTitle": "IDisposable",
+          "fullyQualifiedIndexTitle": "Uno.IDisposable"
+        }
+      }
+    ],
+    "attributes": [
+      {
+        "id": {
+          "id": "uno/ux/uxglobalmoduleattribute",
+          "parentId": "uno/ux",
+          "type": "Class",
+          "modifiers": [
+            "public",
+            "sealed"
+          ]
+        },
+        "uri": {
+          "idUri": "uno/ux/uxglobalmoduleattribute",
+          "href": "uno/ux/uxglobalmoduleattribute"
+        },
+        "titles": {
+          "indexTitle": "UXGlobalModuleAttribute",
+          "fullyQualifiedIndexTitle": "Uno.UX.UXGlobalModuleAttribute"
+        }
+      }
+    ],
+    "id": {
+      "id": "fuse/imagetools/imagetools",
+      "parentId": "fuse/imagetools",
+      "type": "JsModule",
+      "modifiers": [
+        "public"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/imagetools/imagetools",
+      "href": "fuse/imagetools/imagetools"
+    },
+    "titles": {
+      "pageTitle": "ImageTools Class",
+      "navigationTitle": "ImageTools Class",
+      "fullTitle": "Fuse.ImageTools.ImageTools",
+      "indexTitle": "ImageTools",
+      "fullyQualifiedIndexTitle": "Fuse.ImageTools.ImageTools"
+    },
+    "syntax": {
+      "uno": "[Uno.UX.UXGlobalModule]\r\npublic class ImageTools : Fuse.Scripting.NativeModule {}",
+      "ux": "<ImageTools.ImageTools />"
+    },
+    "comment": {
+      "brief": "Utility methods for common Image manipulation.",
+      "full": "Utility methods for common Image manipulation.\n\n> To use this module, add `Fuse.ImageTools` to your package references in your `.unoproj`.\n\nFuse represents images as frozen JavaScript Image objects, consisting of a path, a filename, a width and a height.\nOnce created or acquired, Images can be passed around to other APIs to use, fetch or alter their underlying data.\nAll images are temporary \"scratch images\" until storage has been specified either through publishing to the CameraRoll or other.\n\nOn Android using this API will request the WRITE_EXTERNAL_STORAGE and READ_EXTERNAL_STORAGE permissions.\n\n## Example\n\n    <JavaScript>\n        var ImageTools = require(\"FuseJS/ImageTools\");\n        var Observable = require(\"FuseJS/Observable\");\n\n        var imagePath = Observable();\n        var base64Image =    \"iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPAQMAAAABGAcJAAAABlBMVEX9//wAAQATpOzaAAAAH0l\" +\n                            \"EQVQI12MAAoMHIFLAAYSEwIiJgYGZASrI38AAAwBamgM5VF7xgwAAAABJRU5ErkJggg==\";\n        ImageTools.getImageFromBase64(base64Image)\n        .then(function(image) {\n            imagePath.value = image.path;\n        });\n\n        module.exports = { test: new Date().toString(), image: imagePath };\n    </JavaScript>\n    <Image File=\"{image}\" />",
+      "attributes": {
+        "scriptModule": "FuseJS/ImageTools"
+      }
+    }
+  },
+  "tableOfContents": {
+    "attachedUxProperties": [
+      {
+        "items": [
+          {
+            "comment": {
+              "brief": "The `ux:Global` attribute creates a global resource that is accessible everywhere in UX markup.",
+              "full": "The `ux:Global` attribute creates a global resource that is accessible everywhere in UX markup.\n\nSee @Resources for more information.\n\nThe `ux:Global` attribute on an UX element creates a single object (singleton) that is globally available.\nUsing this attribute will prevent the object from being inserted by default the object at its defined location\nin the UX tree."
+            },
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "parameters": [
+              {
+                "name": "obj",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              },
+              {
+                "name": "key",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              }
+            ],
+            "id": {
+              "id": "fuse/imagetools/imagetools/resource_globalkey_setglobalkey_4c3ac72d",
+              "parentId": "fuse/imagetools/imagetools",
+              "type": "AttachedUxProperty",
+              "modifiers": []
+            },
+            "uri": {
+              "idUri": "fuse/imagetools/imagetools/resource_globalkey_setglobalkey_4c3ac72d",
+              "href": "uno/ux/resource/setglobalkey_4c3ac72d",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Resource.GlobalKey",
+              "fullyQualifiedIndexTitle": "Resource.GlobalKey"
+            }
+          }
+        ]
+      }
+    ],
+    "uxEvents": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/scripting/nativemodule",
+            "parentId": "fuse/scripting",
+            "type": "Class",
+            "modifiers": [
+              "public"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/scripting/nativemodule",
+            "href": "fuse/scripting/nativemodule"
+          },
+          "titles": {
+            "indexTitle": "NativeModule",
+            "fullyQualifiedIndexTitle": "Fuse.Scripting.NativeModule"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/eventhandler",
+              "title": "EventHandler (object, EventArgs)",
+              "fullyQualifiedTitle": "Uno.EventHandler (object, Uno.EventArgs)"
+            },
+            "id": {
+              "id": "fuse/imagetools/imagetools/reset",
+              "parentId": "fuse/imagetools/imagetools",
+              "type": "UxEvent",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/imagetools/imagetools/reset",
+              "href": "fuse/scripting/nativemodule/reset",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Reset",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.NativeModule.Reset"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/scripting/module",
+            "parentId": "fuse/scripting",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/scripting/module",
+            "href": "fuse/scripting/module"
+          },
+          "titles": {
+            "indexTitle": "Module",
+            "fullyQualifiedIndexTitle": "Fuse.Scripting.Module"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/eventhandler",
+              "title": "EventHandler (object, EventArgs)",
+              "fullyQualifiedTitle": "Uno.EventHandler (object, Uno.EventArgs)"
+            },
+            "id": {
+              "id": "fuse/imagetools/imagetools/evaluated",
+              "parentId": "fuse/imagetools/imagetools",
+              "type": "UxEvent",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/imagetools/imagetools/evaluated",
+              "href": "fuse/scripting/module/evaluated",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Evaluated",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.Module.Evaluated"
+            }
+          }
+        ]
+      }
+    ],
+    "jsMethods": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/imagetools/imagetools",
+            "parentId": "fuse/imagetools",
+            "type": "JsModule",
+            "modifiers": [
+              "public"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/imagetools/imagetools",
+            "href": "fuse/imagetools/imagetools"
+          },
+          "titles": {
+            "indexTitle": "ImageTools",
+            "fullyQualifiedIndexTitle": "Fuse.ImageTools.ImageTools"
+          }
+        },
+        "items": [
+          {
+            "comment": {
+              "brief": "Encodes the given image as a base64 string.",
+              "full": "Encodes the given image as a base64 string.\n\n## Example\n\n    // Here we assume that we have an existing `image` object\n    var ImageTools = require(\"FuseJS/ImageTools\");\n    ImageTools.getBase64FromImage(image)\n        .then(function(base64Image) { console.log(\"The base64 encoded image is \\\"\" + base64Image + \"\\\"\"); });",
+              "attributes": {
+                "scriptMethod": {
+                  "name": "getBase64FromImage",
+                  "parameters": [
+                    "image"
+                  ]
+                },
+                "returns": {
+                  "typeHint": "Promise",
+                  "text": "a Promise of a string of base64 data"
+                },
+                "parameters": [
+                  {
+                    "name": "image",
+                    "typeHint": "Object",
+                    "description": "The Image to encode"
+                  }
+                ]
+              }
+            },
+            "returns": {
+              "href": "uno/threading/future_1",
+              "title": "Future<string>",
+              "fullyQualifiedTitle": "Uno.Threading.Future<string>"
+            },
+            "parameters": [
+              {
+                "name": "args",
+                "href": "uno/object",
+                "title": "object[]",
+                "fullyQualifiedTitle": "object[]"
+              }
+            ],
+            "id": {
+              "id": "fuse/imagetools/imagetools/base64fromimageinterface_95a738ba",
+              "parentId": "fuse/imagetools/imagetools",
+              "type": "JsMethod",
+              "modifiers": [
+                "private"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/imagetools/imagetools/base64fromimageinterface_95a738ba",
+              "href": "fuse/imagetools/imagetools/base64fromimageinterface_95a738ba"
+            },
+            "titles": {
+              "indexTitle": "Base64FromImageInterface(object[])",
+              "fullyQualifiedIndexTitle": "Fuse.ImageTools.ImageTools.Base64FromImageInterface(object[])"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Retrieves the underlying image data for an image as an ArrayBuffer.",
+              "full": "Retrieves the underlying image data for an image as an ArrayBuffer.\n\n## Example\n\n    // Here image is expected to be an `Image` object\n    var ImageTools = require(\"FuseJS/ImageTools\");\n    ImageTools.getBufferFromImage(image)\n        .then(function(buf) { console.log(\"Image contains \" + buf.byteLength + \" bytes\"); });",
+              "attributes": {
+                "scriptMethod": {
+                  "name": "getBufferFromImage",
+                  "parameters": [
+                    "image"
+                  ]
+                },
+                "returns": {
+                  "typeHint": "Promise",
+                  "text": "a Promise of an ArrayBuffer of image data"
+                },
+                "parameters": [
+                  {
+                    "name": "image",
+                    "typeHint": "Object",
+                    "description": "The image to fetch data for"
+                  }
+                ]
+              }
+            },
+            "returns": {
+              "href": "uno/threading/future_1",
+              "title": "Future<byte[]>",
+              "fullyQualifiedTitle": "Uno.Threading.Future<byte[]>"
+            },
+            "parameters": [
+              {
+                "name": "args",
+                "href": "uno/object",
+                "title": "object[]",
+                "fullyQualifiedTitle": "object[]"
+              }
+            ],
+            "id": {
+              "id": "fuse/imagetools/imagetools/bufferfromimageinterface_95a738ba",
+              "parentId": "fuse/imagetools/imagetools",
+              "type": "JsMethod",
+              "modifiers": [
+                "private"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/imagetools/imagetools/bufferfromimageinterface_95a738ba",
+              "href": "fuse/imagetools/imagetools/bufferfromimageinterface_95a738ba"
+            },
+            "titles": {
+              "indexTitle": "BufferFromImageInterface(object[])",
+              "fullyQualifiedIndexTitle": "Fuse.ImageTools.ImageTools.BufferFromImageInterface(object[])"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Crops the supplied `image`, and returns a Promise of the transformed Image.",
+              "full": "Crops the supplied `image`, and returns a Promise of the transformed Image.\n\nThe `options` parameter must be an object with one or more of the following properties defined:\n\n* `x` - X offset for cropped image, from left\n* `y` - Y offset for cropped image, from top\n* `width` - Width of cropped image\n* `height` - Height of cropped image\n* `performInPlace` - Boolean value determining whether the existing image will replaced\n\n## Example\n\n    // Here we assume that we have an existing image variable `originalImage`\n    var ImageTools = require(\"FuseJS/ImageTools\");\n\n    var options = {\n        width: 10, // Width of cropped image\n        height: 10 // Height of cropped image\n    };\n\n    ImageTools.crop(originalImage, options)\n        .then(function(newImage) { console.log(\"Path of cropped image is \" + newImage.path); });",
+              "attributes": {
+                "scriptMethod": {
+                  "name": "crop",
+                  "parameters": [
+                    "image",
+                    "options"
+                  ]
+                },
+                "returns": {
+                  "typeHint": "Promise",
+                  "text": "a Promise of an Image"
+                },
+                "parameters": [
+                  {
+                    "name": "image",
+                    "typeHint": "Object",
+                    "description": "The image to crop"
+                  },
+                  {
+                    "name": "options",
+                    "typeHint": "Object",
+                    "description": "The crop options"
+                  }
+                ]
+              }
+            },
+            "returns": {
+              "href": "uno/threading/future_1",
+              "title": "Future<Image>",
+              "fullyQualifiedTitle": "Uno.Threading.Future<Fuse.ImageTools.Image>"
+            },
+            "parameters": [
+              {
+                "name": "args",
+                "href": "uno/object",
+                "title": "object[]",
+                "fullyQualifiedTitle": "object[]"
+              }
+            ],
+            "id": {
+              "id": "fuse/imagetools/imagetools/cropimageinterface_95a738ba",
+              "parentId": "fuse/imagetools/imagetools",
+              "type": "JsMethod",
+              "modifiers": [
+                "private"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/imagetools/imagetools/cropimageinterface_95a738ba",
+              "href": "fuse/imagetools/imagetools/cropimageinterface_95a738ba"
+            },
+            "titles": {
+              "indexTitle": "CropImageInterface(object[])",
+              "fullyQualifiedIndexTitle": "Fuse.ImageTools.ImageTools.CropImageInterface(object[])"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Takes base64 string encoded image data and returns a Promise of an Image.",
+              "full": "Takes base64 string encoded image data and returns a Promise of an Image.\n\n## Example\n\n    // Here we assume that someBase64ImageString contains a base-64 encoded image\n    var ImageTools = require(\"FuseJS/ImageTools\");\n    ImageTools.getImageFromBase64(someBase64ImageString);\n        .then(function(image) {\n            console.log(\"Scratch path of image is \" + image.path);\n        });",
+              "attributes": {
+                "scriptMethod": {
+                  "name": "getImageFromBase64",
+                  "parameters": [
+                    "base64"
+                  ]
+                },
+                "returns": {
+                  "typeHint": "Promise",
+                  "text": "a Promise of an Image"
+                },
+                "parameters": [
+                  {
+                    "name": "base64",
+                    "typeHint": "string",
+                    "description": "The data to decode"
+                  }
+                ]
+              }
+            },
+            "returns": {
+              "href": "uno/threading/future_1",
+              "title": "Future<Image>",
+              "fullyQualifiedTitle": "Uno.Threading.Future<Fuse.ImageTools.Image>"
+            },
+            "parameters": [
+              {
+                "name": "args",
+                "href": "uno/object",
+                "title": "object[]",
+                "fullyQualifiedTitle": "object[]"
+              }
+            ],
+            "id": {
+              "id": "fuse/imagetools/imagetools/imagefrombase64interface_95a738ba",
+              "parentId": "fuse/imagetools/imagetools",
+              "type": "JsMethod",
+              "modifiers": [
+                "private"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/imagetools/imagetools/imagefrombase64interface_95a738ba",
+              "href": "fuse/imagetools/imagetools/imagefrombase64interface_95a738ba"
+            },
+            "titles": {
+              "indexTitle": "ImageFromBase64Interface(object[])",
+              "fullyQualifiedIndexTitle": "Fuse.ImageTools.ImageTools.ImageFromBase64Interface(object[])"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Creates a new temporary image file from an ArrayBuffer of image data.",
+              "full": "Creates a new temporary image file from an ArrayBuffer of image data.\n\n## Example\n\n    var ImageTools = require(\"FuseJS/ImageTools\");\n    ImageTools.getImageFromBuffer(imageData).\n        then(function (image) { console.log(\"Scratch image path is: \" + image.path); });",
+              "attributes": {
+                "scriptMethod": {
+                  "name": "getImageFromBuffer",
+                  "parameters": [
+                    "imageData"
+                  ]
+                },
+                "returns": {
+                  "typeHint": "Promise",
+                  "text": "a Promise of an Image"
+                },
+                "parameters": [
+                  {
+                    "name": "imageData",
+                    "typeHint": "ArrayBuffer",
+                    "description": "The image data"
+                  }
+                ]
+              }
+            },
+            "returns": {
+              "href": "uno/threading/future_1",
+              "title": "Future<Image>",
+              "fullyQualifiedTitle": "Uno.Threading.Future<Fuse.ImageTools.Image>"
+            },
+            "parameters": [
+              {
+                "name": "args",
+                "href": "uno/object",
+                "title": "object[]",
+                "fullyQualifiedTitle": "object[]"
+              }
+            ],
+            "id": {
+              "id": "fuse/imagetools/imagetools/imagefrombufferinterface_95a738ba",
+              "parentId": "fuse/imagetools/imagetools",
+              "type": "JsMethod",
+              "modifiers": [
+                "private"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/imagetools/imagetools/imagefrombufferinterface_95a738ba",
+              "href": "fuse/imagetools/imagetools/imagefrombufferinterface_95a738ba"
+            },
+            "titles": {
+              "indexTitle": "ImageFromBufferInterface(object[])",
+              "fullyQualifiedIndexTitle": "Fuse.ImageTools.ImageTools.ImageFromBufferInterface(object[])"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Resizes an image using the options provided, and returns a Promise of the transformed Image.",
+              "full": "Resizes an image using the options provided, and returns a Promise of the transformed Image.\n\nThe `options` parameter must be an object with one or more of the following properties defined:\n\n* `desiredWidth` - The new width in pixels\n* `desiredHeight` - The new height in pixels\n* `mode` - The resizing mode, which can be:\n  - `ImageTools.IGNORE_ASPECT` - The image is resized exactly to the desired width and height. This is the default.\n  - `ImageTools.KEEP_ASPECT`- The image is resized to within the closest size possible to the desired size while still maintaining the original aspect ratio.\n  - `ImageTools.SCALE_AND_CROP` - The image is first scaled and centered while maintaining aspect to the closest edge of the desired bounds, then cropped according to the Crop rule. This allows you to make an aspect correct square portrait out of a landscape shot, for instance.\n* `performInPlace` - Boolean value determining whether the existing image will replaced\n\n## Example\n\n    // Here we assume that we have an existing image variable `originalImage`\n    var ImageTools = require(\"FuseJS/ImageTools\");\n\n    var options = {\n        mode: ImageTools.IGNORE_ASPECT,\n        desiredWidth: 320, //The desired width in pixels\n        desiredHeight: 240 //The desired height in pixels\n    };\n\n    ImageTools.resize(originalImage, options)\n        .then(function(newImage) { console.log(\"Path of resized image is \" + newImage.path); });",
+              "attributes": {
+                "scriptMethod": {
+                  "name": "resize",
+                  "parameters": [
+                    "image",
+                    "options"
+                  ]
+                },
+                "returns": {
+                  "typeHint": "Promise",
+                  "text": "a Promise of an Image"
+                },
+                "parameters": [
+                  {
+                    "name": "image",
+                    "typeHint": "Object",
+                    "description": "The image to resize"
+                  },
+                  {
+                    "name": "options",
+                    "typeHint": "Object",
+                    "description": "The resize options"
+                  }
+                ]
+              }
+            },
+            "returns": {
+              "href": "uno/threading/future_1",
+              "title": "Future<Image>",
+              "fullyQualifiedTitle": "Uno.Threading.Future<Fuse.ImageTools.Image>"
+            },
+            "parameters": [
+              {
+                "name": "args",
+                "href": "uno/object",
+                "title": "object[]",
+                "fullyQualifiedTitle": "object[]"
+              }
+            ],
+            "id": {
+              "id": "fuse/imagetools/imagetools/resizeimageinterface_95a738ba",
+              "parentId": "fuse/imagetools/imagetools",
+              "type": "JsMethod",
+              "modifiers": [
+                "private"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/imagetools/imagetools/resizeimageinterface_95a738ba",
+              "href": "fuse/imagetools/imagetools/resizeimageinterface_95a738ba"
+            },
+            "titles": {
+              "indexTitle": "ResizeImageInterface(object[])",
+              "fullyQualifiedIndexTitle": "Fuse.ImageTools.ImageTools.ResizeImageInterface(object[])"
+            }
+          }
+        ]
+      }
+    ],
+    "constructors": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/imagetools/imagetools",
+            "parentId": "fuse/imagetools",
+            "type": "JsModule",
+            "modifiers": [
+              "public"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/imagetools/imagetools",
+            "href": "fuse/imagetools/imagetools"
+          },
+          "titles": {
+            "indexTitle": "ImageTools",
+            "fullyQualifiedIndexTitle": "Fuse.ImageTools.ImageTools"
+          }
+        },
+        "items": [
+          {
+            "id": {
+              "id": "fuse/imagetools/imagetools/_ctor",
+              "parentId": "fuse/imagetools/imagetools",
+              "type": "Constructor",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/imagetools/imagetools/_ctor",
+              "href": "fuse/imagetools/imagetools/_ctor"
+            },
+            "titles": {
+              "indexTitle": "ImageTools",
+              "fullyQualifiedIndexTitle": "Fuse.ImageTools.ImageTools.ImageTools"
+            }
+          }
+        ]
+      }
+    ],
+    "properties": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/scripting/module",
+            "parentId": "fuse/scripting",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/scripting/module",
+            "href": "fuse/scripting/module"
+          },
+          "titles": {
+            "indexTitle": "Module",
+            "fullyQualifiedIndexTitle": "Fuse.Scripting.Module"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "id": {
+              "id": "fuse/imagetools/imagetools/isevaluated",
+              "parentId": "fuse/imagetools/imagetools",
+              "type": "Property",
+              "modifiers": [
+                "protected"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/imagetools/imagetools/isevaluated",
+              "href": "fuse/scripting/module/isevaluated",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "IsEvaluated",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.Module.IsEvaluated"
+            }
+          }
+        ]
+      }
+    ],
+    "methods": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/imagetools/imagetools",
+            "parentId": "fuse/imagetools",
+            "type": "JsModule",
+            "modifiers": [
+              "public"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/imagetools/imagetools",
+            "href": "fuse/imagetools/imagetools"
+          },
+          "titles": {
+            "indexTitle": "ImageTools",
+            "fullyQualifiedIndexTitle": "Fuse.ImageTools.ImageTools"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/threading/future_1",
+              "title": "Future<Image>",
+              "fullyQualifiedTitle": "Uno.Threading.Future<Fuse.ImageTools.Image>"
+            },
+            "parameters": [
+              {
+                "name": "img",
+                "href": "fuse/imagetools/image",
+                "title": "Image",
+                "fullyQualifiedTitle": "Fuse.ImageTools.Image"
+              },
+              {
+                "name": "width",
+                "href": "uno/int",
+                "title": "int",
+                "fullyQualifiedTitle": "int"
+              },
+              {
+                "name": "height",
+                "href": "uno/int",
+                "title": "int",
+                "fullyQualifiedTitle": "int"
+              },
+              {
+                "name": "x",
+                "href": "uno/int",
+                "title": "int",
+                "fullyQualifiedTitle": "int"
+              },
+              {
+                "name": "y",
+                "href": "uno/int",
+                "title": "int",
+                "fullyQualifiedTitle": "int"
+              },
+              {
+                "name": "inPlace",
+                "href": "uno/bool",
+                "title": "bool",
+                "fullyQualifiedTitle": "bool"
+              }
+            ],
+            "id": {
+              "id": "fuse/imagetools/imagetools/crop_beaab014",
+              "parentId": "fuse/imagetools/imagetools",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/imagetools/imagetools/crop_beaab014",
+              "href": "fuse/imagetools/imagetools/crop_beaab014"
+            },
+            "titles": {
+              "indexTitle": "Crop(Image, int, int, int, int, bool)",
+              "fullyQualifiedIndexTitle": "Fuse.ImageTools.ImageTools.Crop(Fuse.ImageTools.Image, int, int, int, int, bool)"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/threading/future_1",
+              "title": "Future<Image>",
+              "fullyQualifiedTitle": "Uno.Threading.Future<Fuse.ImageTools.Image>"
+            },
+            "parameters": [
+              {
+                "name": "b64",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              }
+            ],
+            "id": {
+              "id": "fuse/imagetools/imagetools/imagefrombase64_968f99a6",
+              "parentId": "fuse/imagetools/imagetools",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/imagetools/imagetools/imagefrombase64_968f99a6",
+              "href": "fuse/imagetools/imagetools/imagefrombase64_968f99a6"
+            },
+            "titles": {
+              "indexTitle": "ImageFromBase64(string)",
+              "fullyQualifiedIndexTitle": "Fuse.ImageTools.ImageTools.ImageFromBase64(string)"
+            }
+          },
+          {
+            "returns": {
+              "href": "fuse/imagetools/image",
+              "title": "Image",
+              "fullyQualifiedTitle": "Fuse.ImageTools.Image"
+            },
+            "parameters": [
+              {
+                "name": "bytes",
+                "href": "uno/byte",
+                "title": "byte[]",
+                "fullyQualifiedTitle": "byte[]"
+              }
+            ],
+            "id": {
+              "id": "fuse/imagetools/imagetools/imagefrombytearray_eed93195",
+              "parentId": "fuse/imagetools/imagetools",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/imagetools/imagetools/imagefrombytearray_eed93195",
+              "href": "fuse/imagetools/imagetools/imagefrombytearray_eed93195"
+            },
+            "titles": {
+              "indexTitle": "ImageFromByteArray(byte[])",
+              "fullyQualifiedIndexTitle": "Fuse.ImageTools.ImageTools.ImageFromByteArray(byte[])"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/threading/future_1",
+              "title": "Future<string>",
+              "fullyQualifiedTitle": "Uno.Threading.Future<string>"
+            },
+            "parameters": [
+              {
+                "name": "img",
+                "href": "fuse/imagetools/image",
+                "title": "Image",
+                "fullyQualifiedTitle": "Fuse.ImageTools.Image"
+              }
+            ],
+            "id": {
+              "id": "fuse/imagetools/imagetools/imagetobase64_41c55c39",
+              "parentId": "fuse/imagetools/imagetools",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/imagetools/imagetools/imagetobase64_41c55c39",
+              "href": "fuse/imagetools/imagetools/imagetobase64_41c55c39"
+            },
+            "titles": {
+              "indexTitle": "ImageToBase64(Image)",
+              "fullyQualifiedIndexTitle": "Fuse.ImageTools.ImageTools.ImageToBase64(Fuse.ImageTools.Image)"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/threading/future_1",
+              "title": "Future<Image>",
+              "fullyQualifiedTitle": "Uno.Threading.Future<Fuse.ImageTools.Image>"
+            },
+            "parameters": [
+              {
+                "name": "img",
+                "href": "fuse/imagetools/image",
+                "title": "Image",
+                "fullyQualifiedTitle": "Fuse.ImageTools.Image"
+              },
+              {
+                "name": "desiredWidth",
+                "href": "uno/int",
+                "title": "int",
+                "fullyQualifiedTitle": "int"
+              },
+              {
+                "name": "desiredHeight",
+                "href": "uno/int",
+                "title": "int",
+                "fullyQualifiedTitle": "int"
+              },
+              {
+                "name": "mode",
+                "href": "fuse/imagetools/resizemode",
+                "title": "ResizeMode",
+                "fullyQualifiedTitle": "Fuse.ImageTools.ResizeMode"
+              },
+              {
+                "name": "inPlace",
+                "href": "uno/bool",
+                "title": "bool",
+                "fullyQualifiedTitle": "bool"
+              }
+            ],
+            "id": {
+              "id": "fuse/imagetools/imagetools/resize_4ac4b814",
+              "parentId": "fuse/imagetools/imagetools",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/imagetools/imagetools/resize_4ac4b814",
+              "href": "fuse/imagetools/imagetools/resize_4ac4b814"
+            },
+            "titles": {
+              "indexTitle": "Resize(Image, int, int, ResizeMode, bool)",
+              "fullyQualifiedIndexTitle": "Fuse.ImageTools.ImageTools.Resize(Fuse.ImageTools.Image, int, int, Fuse.ImageTools.ResizeMode, bool)"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/scripting/nativemodule",
+            "parentId": "fuse/scripting",
+            "type": "Class",
+            "modifiers": [
+              "public"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/scripting/nativemodule",
+            "href": "fuse/scripting/nativemodule"
+          },
+          "titles": {
+            "indexTitle": "NativeModule",
+            "fullyQualifiedIndexTitle": "Fuse.Scripting.NativeModule"
+          }
+        },
+        "items": [
+          {
+            "parameters": [
+              {
+                "name": "member",
+                "href": "fuse/scripting/nativemember",
+                "title": "NativeMember",
+                "fullyQualifiedTitle": "Fuse.Scripting.NativeMember"
+              }
+            ],
+            "id": {
+              "id": "fuse/imagetools/imagetools/addmember_645dc1d4",
+              "parentId": "fuse/imagetools/imagetools",
+              "type": "Method",
+              "modifiers": [
+                "protected"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/imagetools/imagetools/addmember_645dc1d4",
+              "href": "fuse/scripting/nativemodule/addmember_645dc1d4",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "AddMember(NativeMember)",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.NativeModule.AddMember(Fuse.Scripting.NativeMember)"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/scripting/module",
+            "parentId": "fuse/scripting",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/scripting/module",
+            "href": "fuse/scripting/module"
+          },
+          "titles": {
+            "indexTitle": "Module",
+            "fullyQualifiedIndexTitle": "Fuse.Scripting.Module"
+          }
+        },
+        "items": [
+          {
+            "id": {
+              "id": "fuse/imagetools/imagetools/dispose",
+              "parentId": "fuse/imagetools/imagetools",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/imagetools/imagetools/dispose",
+              "href": "fuse/scripting/module/dispose",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Dispose",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.Module.Dispose"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "c",
+                "href": "fuse/scripting/context",
+                "title": "Context",
+                "fullyQualifiedTitle": "Fuse.Scripting.Context"
+              },
+              {
+                "name": "result",
+                "href": "fuse/scripting/moduleresult",
+                "title": "ModuleResult",
+                "fullyQualifiedTitle": "Fuse.Scripting.ModuleResult"
+              }
+            ],
+            "id": {
+              "id": "fuse/imagetools/imagetools/evaluate_0c699bd3",
+              "parentId": "fuse/imagetools/imagetools",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/imagetools/imagetools/evaluate_0c699bd3",
+              "href": "fuse/scripting/module/evaluate_0c699bd3",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Evaluate(Context, ModuleResult)",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.Module.Evaluate(Fuse.Scripting.Context, Fuse.Scripting.ModuleResult)"
+            }
+          },
+          {
+            "returns": {
+              "href": "fuse/scripting/moduleresult",
+              "title": "ModuleResult",
+              "fullyQualifiedTitle": "Fuse.Scripting.ModuleResult"
+            },
+            "parameters": [
+              {
+                "name": "c",
+                "href": "fuse/scripting/context",
+                "title": "Context",
+                "fullyQualifiedTitle": "Fuse.Scripting.Context"
+              },
+              {
+                "name": "id",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              }
+            ],
+            "id": {
+              "id": "fuse/imagetools/imagetools/evaluate_8fde98fd",
+              "parentId": "fuse/imagetools/imagetools",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/imagetools/imagetools/evaluate_8fde98fd",
+              "href": "fuse/scripting/module/evaluate_8fde98fd",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Evaluate(Context, string)",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.Module.Evaluate(Fuse.Scripting.Context, string)"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/object",
+              "title": "object",
+              "fullyQualifiedTitle": "object"
+            },
+            "parameters": [
+              {
+                "name": "c",
+                "href": "fuse/scripting/context",
+                "title": "Context",
+                "fullyQualifiedTitle": "Fuse.Scripting.Context"
+              },
+              {
+                "name": "id",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              }
+            ],
+            "id": {
+              "id": "fuse/imagetools/imagetools/evaluateexports_8fde98fd",
+              "parentId": "fuse/imagetools/imagetools",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/imagetools/imagetools/evaluateexports_8fde98fd",
+              "href": "fuse/scripting/module/evaluateexports_8fde98fd",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "EvaluateExports(Context, string)",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.Module.EvaluateExports(Fuse.Scripting.Context, string)"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Returns the file source that will be watched by the Context for changes in Fuse preview.\nOverride in subclasses and return correct file source to support live updates\nin Fuse preview.",
+              "full": "Returns the file source that will be watched by the Context for changes in Fuse preview.\nOverride in subclasses and return correct file source to support live updates\nin Fuse preview."
+            },
+            "returns": {
+              "href": "uno/ux/filesource",
+              "title": "FileSource",
+              "fullyQualifiedTitle": "Uno.UX.FileSource"
+            },
+            "id": {
+              "id": "fuse/imagetools/imagetools/getfile",
+              "parentId": "fuse/imagetools/imagetools",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/imagetools/imagetools/getfile",
+              "href": "fuse/scripting/module/getfile",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetFile",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.Module.GetFile"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "uno/object",
+            "parentId": "uno",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "intrinsic"
+            ]
+          },
+          "uri": {
+            "idUri": "uno/object",
+            "href": "uno/object"
+          },
+          "titles": {
+            "indexTitle": "object",
+            "fullyQualifiedIndexTitle": "object"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "parameters": [
+              {
+                "name": "o",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              }
+            ],
+            "id": {
+              "id": "fuse/imagetools/imagetools/equals_a09c80e3",
+              "parentId": "fuse/imagetools/imagetools",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/imagetools/imagetools/equals_a09c80e3",
+              "href": "uno/object/equals_a09c80e3",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Equals(object)",
+              "fullyQualifiedIndexTitle": "Uno.Object.Equals(object)"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/int",
+              "title": "int",
+              "fullyQualifiedTitle": "int"
+            },
+            "id": {
+              "id": "fuse/imagetools/imagetools/gethashcode",
+              "parentId": "fuse/imagetools/imagetools",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/imagetools/imagetools/gethashcode",
+              "href": "uno/object/gethashcode",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetHashCode",
+              "fullyQualifiedIndexTitle": "Uno.Object.GetHashCode"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/type",
+              "title": "Type",
+              "fullyQualifiedTitle": "Uno.Type"
+            },
+            "id": {
+              "id": "fuse/imagetools/imagetools/gettype",
+              "parentId": "fuse/imagetools/imagetools",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/imagetools/imagetools/gettype",
+              "href": "uno/object/gettype",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetType",
+              "fullyQualifiedIndexTitle": "Uno.Object.GetType"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "id": {
+              "id": "fuse/imagetools/imagetools/tostring",
+              "parentId": "fuse/imagetools/imagetools",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/imagetools/imagetools/tostring",
+              "href": "uno/object/tostring",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "ToString",
+              "fullyQualifiedIndexTitle": "Uno.Object.ToString"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

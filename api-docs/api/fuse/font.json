@@ -1,0 +1,719 @@
+{
+  "entity": {
+    "base": {
+      "id": {
+        "id": "uno/object",
+        "parentId": "uno",
+        "type": "Class",
+        "modifiers": [
+          "public",
+          "intrinsic"
+        ]
+      },
+      "uri": {
+        "idUri": "uno/object",
+        "href": "uno/object"
+      },
+      "titles": {
+        "indexTitle": "object",
+        "fullyQualifiedIndexTitle": "object"
+      }
+    },
+    "location": {
+      "namespaceTitle": "Fuse",
+      "namespaceUri": "fuse",
+      "packageName": "Fuse.Common",
+      "packageVersion": "1.8.0-rc2"
+    },
+    "inheritance": {
+      "root": {
+        "uri": "uno/object",
+        "title": "object",
+        "children": [
+          {
+            "uri": "fuse/font",
+            "title": "Fuse.Font",
+            "children": [],
+            "isCurrent": true
+          }
+        ],
+        "isAncestor": true
+      },
+      "hasInheritance": true
+    },
+    "uxProperties": {
+      "uxNamespaceTitle": "Fuse",
+      "uxNamespaceUri": "fuse",
+      "uxName": "Font"
+    },
+    "id": {
+      "id": "fuse/font",
+      "parentId": "fuse",
+      "type": "UxClass",
+      "modifiers": [
+        "public"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/font",
+      "href": "fuse/font"
+    },
+    "titles": {
+      "pageTitle": "Font Class",
+      "navigationTitle": "Font Class",
+      "fullTitle": "Fuse.Font",
+      "indexTitle": "Font",
+      "fullyQualifiedIndexTitle": "Fuse.Font"
+    },
+    "syntax": {
+      "uno": "public class Font {}",
+      "ux": "<Font />"
+    },
+    "comment": {
+      "brief": "Represents a specific typeface.",
+      "full": "Represents a specific typeface.\n\nGlobal resource fonts can be specified directly on @Text and @TextInput objects:\n\n    <Text Font=\"PlatformDefault\" />\n\nOr inline based on an `.otf` or `.ttf` file:\n\n    <Text Value=\"Hello!\">\n        <Font File=\"arial.ttf\" />\n    </Text>\n\nTo create a global resource font from a file, use the `ux:Global` attribute:\n\n    <Font File=\"arial.ttf\" ux:Global=\"MyDefaultFont\" />\n    <Text Font=\"MyDefaultFont\" />"
+    }
+  },
+  "tableOfContents": {
+    "attachedUxProperties": [
+      {
+        "items": [
+          {
+            "comment": {
+              "brief": "The `ux:Global` attribute creates a global resource that is accessible everywhere in UX markup.",
+              "full": "The `ux:Global` attribute creates a global resource that is accessible everywhere in UX markup.\n\nSee @Resources for more information.\n\nThe `ux:Global` attribute on an UX element creates a single object (singleton) that is globally available.\nUsing this attribute will prevent the object from being inserted by default the object at its defined location\nin the UX tree."
+            },
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "parameters": [
+              {
+                "name": "obj",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              },
+              {
+                "name": "key",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              }
+            ],
+            "id": {
+              "id": "fuse/font/resource_globalkey_setglobalkey_4c3ac72d",
+              "parentId": "fuse/font",
+              "type": "AttachedUxProperty",
+              "modifiers": []
+            },
+            "uri": {
+              "idUri": "fuse/font/resource_globalkey_setglobalkey_4c3ac72d",
+              "href": "uno/ux/resource/setglobalkey_4c3ac72d",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Resource.GlobalKey",
+              "fullyQualifiedIndexTitle": "Resource.GlobalKey"
+            }
+          }
+        ]
+      }
+    ],
+    "constructors": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/font",
+            "parentId": "fuse",
+            "type": "UxClass",
+            "modifiers": [
+              "public"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/font",
+            "href": "fuse/font"
+          },
+          "titles": {
+            "indexTitle": "Font",
+            "fullyQualifiedIndexTitle": "Fuse.Font"
+          }
+        },
+        "items": [
+          {
+            "parameters": [
+              {
+                "name": "file",
+                "href": "uno/ux/filesource",
+                "title": "FileSource",
+                "fullyQualifiedTitle": "Uno.UX.FileSource"
+              }
+            ],
+            "id": {
+              "id": "fuse/font/_ctor_50ae70bb",
+              "parentId": "fuse/font",
+              "type": "Constructor",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/font/_ctor_50ae70bb",
+              "href": "fuse/font/_ctor_50ae70bb"
+            },
+            "titles": {
+              "indexTitle": "Font(FileSource)",
+              "fullyQualifiedIndexTitle": "Fuse.Font.Font(Uno.UX.FileSource)"
+            }
+          }
+        ]
+      }
+    ],
+    "properties": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/font",
+            "parentId": "fuse",
+            "type": "UxClass",
+            "modifiers": [
+              "public"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/font",
+            "href": "fuse/font"
+          },
+          "titles": {
+            "indexTitle": "Font",
+            "fullyQualifiedIndexTitle": "Fuse.Font"
+          }
+        },
+        "items": [
+          {
+            "comment": {
+              "brief": "The default font for regular text in the current platform.",
+              "full": "The default font for regular text in the current platform."
+            },
+            "returns": {
+              "href": "fuse/font",
+              "title": "Font",
+              "fullyQualifiedTitle": "Fuse.Font"
+            },
+            "id": {
+              "id": "fuse/font/platformdefault",
+              "parentId": "fuse/font",
+              "type": "Property",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/font/platformdefault",
+              "href": "fuse/font/platformdefault"
+            },
+            "titles": {
+              "indexTitle": "PlatformDefault",
+              "fullyQualifiedIndexTitle": "Fuse.Font.PlatformDefault"
+            }
+          },
+          {
+            "comment": {
+              "brief": "The default font size for regular text in the current platform.",
+              "full": "The default font size for regular text in the current platform."
+            },
+            "returns": {
+              "href": "uno/float",
+              "title": "float",
+              "fullyQualifiedTitle": "float"
+            },
+            "id": {
+              "id": "fuse/font/platformdefaultsize",
+              "parentId": "fuse/font",
+              "type": "Property",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/font/platformdefaultsize",
+              "href": "fuse/font/platformdefaultsize"
+            },
+            "titles": {
+              "indexTitle": "PlatformDefaultSize",
+              "fullyQualifiedIndexTitle": "Fuse.Font.PlatformDefaultSize"
+            }
+          },
+          {
+            "comment": {
+              "brief": "The default text color for regular text in the current platform.",
+              "full": "The default text color for regular text in the current platform."
+            },
+            "returns": {
+              "href": "uno/float4",
+              "title": "float4",
+              "fullyQualifiedTitle": "float4"
+            },
+            "id": {
+              "id": "fuse/font/platformdefaulttextcolor",
+              "parentId": "fuse/font",
+              "type": "Property",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/font/platformdefaulttextcolor",
+              "href": "fuse/font/platformdefaulttextcolor"
+            },
+            "titles": {
+              "indexTitle": "PlatformDefaultTextColor",
+              "fullyQualifiedIndexTitle": "Fuse.Font.PlatformDefaultTextColor"
+            }
+          }
+        ]
+      }
+    ],
+    "methods": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "uno/object",
+            "parentId": "uno",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "intrinsic"
+            ]
+          },
+          "uri": {
+            "idUri": "uno/object",
+            "href": "uno/object"
+          },
+          "titles": {
+            "indexTitle": "object",
+            "fullyQualifiedIndexTitle": "object"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "parameters": [
+              {
+                "name": "o",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              }
+            ],
+            "id": {
+              "id": "fuse/font/equals_a09c80e3",
+              "parentId": "fuse/font",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/font/equals_a09c80e3",
+              "href": "uno/object/equals_a09c80e3",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Equals(object)",
+              "fullyQualifiedIndexTitle": "Uno.Object.Equals(object)"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/int",
+              "title": "int",
+              "fullyQualifiedTitle": "int"
+            },
+            "id": {
+              "id": "fuse/font/gethashcode",
+              "parentId": "fuse/font",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/font/gethashcode",
+              "href": "uno/object/gethashcode",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetHashCode",
+              "fullyQualifiedIndexTitle": "Uno.Object.GetHashCode"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/type",
+              "title": "Type",
+              "fullyQualifiedTitle": "Uno.Type"
+            },
+            "id": {
+              "id": "fuse/font/gettype",
+              "parentId": "fuse/font",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/font/gettype",
+              "href": "uno/object/gettype",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetType",
+              "fullyQualifiedIndexTitle": "Uno.Object.GetType"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "id": {
+              "id": "fuse/font/tostring",
+              "parentId": "fuse/font",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/font/tostring",
+              "href": "uno/object/tostring",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "ToString",
+              "fullyQualifiedIndexTitle": "Uno.Object.ToString"
+            }
+          }
+        ]
+      }
+    ],
+    "fields": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/font",
+            "parentId": "fuse",
+            "type": "UxClass",
+            "modifiers": [
+              "public"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/font",
+            "href": "fuse/font"
+          },
+          "titles": {
+            "indexTitle": "Font",
+            "fullyQualifiedIndexTitle": "Fuse.Font"
+          }
+        },
+        "items": [
+          {
+            "comment": {
+              "brief": "The default font of the system, in it's bold typeface.",
+              "full": "The default font of the system, in it's bold typeface."
+            },
+            "returns": {
+              "href": "fuse/font",
+              "title": "Font",
+              "fullyQualifiedTitle": "Fuse.Font"
+            },
+            "id": {
+              "id": "fuse/font/bold",
+              "parentId": "fuse/font",
+              "type": "Field",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/font/bold",
+              "href": "fuse/font/bold"
+            },
+            "titles": {
+              "indexTitle": "Bold",
+              "fullyQualifiedIndexTitle": "Fuse.Font.Bold"
+            }
+          },
+          {
+            "comment": {
+              "brief": "The default font of the system, in it's bold and italic typeface.",
+              "full": "The default font of the system, in it's bold and italic typeface."
+            },
+            "returns": {
+              "href": "fuse/font",
+              "title": "Font",
+              "fullyQualifiedTitle": "Fuse.Font"
+            },
+            "id": {
+              "id": "fuse/font/bolditalic",
+              "parentId": "fuse/font",
+              "type": "Field",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/font/bolditalic",
+              "href": "fuse/font/bolditalic"
+            },
+            "titles": {
+              "indexTitle": "BoldItalic",
+              "fullyQualifiedIndexTitle": "Fuse.Font.BoldItalic"
+            }
+          },
+          {
+            "comment": {
+              "brief": "The default font of the system, in it's regular weight, italic typeface.",
+              "full": "The default font of the system, in it's regular weight, italic typeface."
+            },
+            "returns": {
+              "href": "fuse/font",
+              "title": "Font",
+              "fullyQualifiedTitle": "Fuse.Font"
+            },
+            "id": {
+              "id": "fuse/font/italic",
+              "parentId": "fuse/font",
+              "type": "Field",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/font/italic",
+              "href": "fuse/font/italic"
+            },
+            "titles": {
+              "indexTitle": "Italic",
+              "fullyQualifiedIndexTitle": "Fuse.Font.Italic"
+            }
+          },
+          {
+            "comment": {
+              "brief": "The default font of the system, in it's light weight typeface.",
+              "full": "The default font of the system, in it's light weight typeface."
+            },
+            "returns": {
+              "href": "fuse/font",
+              "title": "Font",
+              "fullyQualifiedTitle": "Fuse.Font"
+            },
+            "id": {
+              "id": "fuse/font/light",
+              "parentId": "fuse/font",
+              "type": "Field",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/font/light",
+              "href": "fuse/font/light"
+            },
+            "titles": {
+              "indexTitle": "Light",
+              "fullyQualifiedIndexTitle": "Fuse.Font.Light"
+            }
+          },
+          {
+            "comment": {
+              "brief": "The default font of the system, in it's light weight italic typeface.",
+              "full": "The default font of the system, in it's light weight italic typeface."
+            },
+            "returns": {
+              "href": "fuse/font",
+              "title": "Font",
+              "fullyQualifiedTitle": "Fuse.Font"
+            },
+            "id": {
+              "id": "fuse/font/lightitalic",
+              "parentId": "fuse/font",
+              "type": "Field",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/font/lightitalic",
+              "href": "fuse/font/lightitalic"
+            },
+            "titles": {
+              "indexTitle": "LightItalic",
+              "fullyQualifiedIndexTitle": "Fuse.Font.LightItalic"
+            }
+          },
+          {
+            "comment": {
+              "brief": "The default font of the system, in it's medium typeface.",
+              "full": "The default font of the system, in it's medium typeface."
+            },
+            "returns": {
+              "href": "fuse/font",
+              "title": "Font",
+              "fullyQualifiedTitle": "Fuse.Font"
+            },
+            "id": {
+              "id": "fuse/font/medium",
+              "parentId": "fuse/font",
+              "type": "Field",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/font/medium",
+              "href": "fuse/font/medium"
+            },
+            "titles": {
+              "indexTitle": "Medium",
+              "fullyQualifiedIndexTitle": "Fuse.Font.Medium"
+            }
+          },
+          {
+            "comment": {
+              "brief": "The default font of the system, in it's medium and italic typeface.",
+              "full": "The default font of the system, in it's medium and italic typeface."
+            },
+            "returns": {
+              "href": "fuse/font",
+              "title": "Font",
+              "fullyQualifiedTitle": "Fuse.Font"
+            },
+            "id": {
+              "id": "fuse/font/mediumitalic",
+              "parentId": "fuse/font",
+              "type": "Field",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/font/mediumitalic",
+              "href": "fuse/font/mediumitalic"
+            },
+            "titles": {
+              "indexTitle": "MediumItalic",
+              "fullyQualifiedIndexTitle": "Fuse.Font.MediumItalic"
+            }
+          },
+          {
+            "comment": {
+              "brief": "The default font of the system, in it's regular weight typeface.",
+              "full": "The default font of the system, in it's regular weight typeface."
+            },
+            "returns": {
+              "href": "fuse/font",
+              "title": "Font",
+              "fullyQualifiedTitle": "Fuse.Font"
+            },
+            "id": {
+              "id": "fuse/font/regular",
+              "parentId": "fuse/font",
+              "type": "Field",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/font/regular",
+              "href": "fuse/font/regular"
+            },
+            "titles": {
+              "indexTitle": "Regular",
+              "fullyQualifiedIndexTitle": "Fuse.Font.Regular"
+            }
+          },
+          {
+            "comment": {
+              "brief": "The default font of the system, in it's thin weight typeface.",
+              "full": "The default font of the system, in it's thin weight typeface."
+            },
+            "returns": {
+              "href": "fuse/font",
+              "title": "Font",
+              "fullyQualifiedTitle": "Fuse.Font"
+            },
+            "id": {
+              "id": "fuse/font/thin",
+              "parentId": "fuse/font",
+              "type": "Field",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/font/thin",
+              "href": "fuse/font/thin"
+            },
+            "titles": {
+              "indexTitle": "Thin",
+              "fullyQualifiedIndexTitle": "Fuse.Font.Thin"
+            }
+          },
+          {
+            "comment": {
+              "brief": "The default font of the system, in it's thin weight typeface.",
+              "full": "The default font of the system, in it's thin weight typeface."
+            },
+            "returns": {
+              "href": "fuse/font",
+              "title": "Font",
+              "fullyQualifiedTitle": "Fuse.Font"
+            },
+            "id": {
+              "id": "fuse/font/thinitalic",
+              "parentId": "fuse/font",
+              "type": "Field",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/font/thinitalic",
+              "href": "fuse/font/thinitalic"
+            },
+            "titles": {
+              "indexTitle": "ThinItalic",
+              "fullyQualifiedIndexTitle": "Fuse.Font.ThinItalic"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

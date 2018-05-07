@@ -1,0 +1,508 @@
+{
+  "entity": {
+    "base": {
+      "id": {
+        "id": "fuse/motion/destinationmotionconfig",
+        "parentId": "fuse/motion",
+        "type": "UxClass",
+        "modifiers": [
+          "public"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/motion/destinationmotionconfig",
+        "href": "fuse/motion/destinationmotionconfig"
+      },
+      "titles": {
+        "indexTitle": "DestinationMotionConfig",
+        "fullyQualifiedIndexTitle": "Fuse.Motion.DestinationMotionConfig"
+      }
+    },
+    "location": {
+      "namespaceTitle": "Fuse.Animations",
+      "namespaceUri": "fuse/animations",
+      "packageName": "Fuse.Animations",
+      "packageVersion": "1.8.0-rc2"
+    },
+    "inheritance": {
+      "root": {
+        "uri": "uno/object",
+        "title": "object",
+        "children": [
+          {
+            "uri": "fuse/motion/destinationmotionconfig",
+            "title": "Fuse.Motion.DestinationMotionConfig",
+            "children": [
+              {
+                "uri": "fuse/animations/attractorconfig",
+                "title": "Fuse.Animations.AttractorConfig",
+                "children": [],
+                "isCurrent": true
+              }
+            ],
+            "isAncestor": true
+          }
+        ],
+        "isAncestor": true
+      },
+      "hasInheritance": true
+    },
+    "uxProperties": {
+      "uxNamespaceTitle": "Fuse.Animations",
+      "uxNamespaceUri": "fuse/animations",
+      "uxName": "AttractorConfig"
+    },
+    "id": {
+      "id": "fuse/animations/attractorconfig",
+      "parentId": "fuse/animations",
+      "type": "UxClass",
+      "modifiers": [
+        "public"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/animations/attractorconfig",
+      "href": "fuse/animations/attractorconfig"
+    },
+    "titles": {
+      "pageTitle": "AttractorConfig Class",
+      "navigationTitle": "AttractorConfig Class",
+      "fullTitle": "Fuse.Animations.AttractorConfig",
+      "indexTitle": "AttractorConfig",
+      "fullyQualifiedIndexTitle": "Fuse.Animations.AttractorConfig"
+    },
+    "syntax": {
+      "uno": "public class AttractorConfig : Fuse.Motion.DestinationMotionConfig {}",
+      "ux": "<AttractorConfig />"
+    },
+    "comment": {
+      "brief": "A configuration for use with the `attract` expression or to an `Attractor` property.",
+      "full": "A configuration for use with the `attract` expression or to an `Attractor` property.\n\nA single `AttractorConfig` can be used for multiple `attract` expressions.",
+      "attributes": {
+        "experimental": true
+      }
+    }
+  },
+  "tableOfContents": {
+    "uxProperties": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/motion/destinationmotionconfig",
+            "parentId": "fuse/motion",
+            "type": "UxClass",
+            "modifiers": [
+              "public"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/motion/destinationmotionconfig",
+            "href": "fuse/motion/destinationmotionconfig"
+          },
+          "titles": {
+            "indexTitle": "DestinationMotionConfig",
+            "fullyQualifiedIndexTitle": "Fuse.Motion.DestinationMotionConfig"
+          }
+        },
+        "items": [
+          {
+            "comment": {
+              "brief": "Specifies a reference distance for the motion. This would roughly be considered how much\ndistance to cover over `Duration`. Not all simulations interpret the values the same way, so\nit may not be honoured exactly.",
+              "full": "Specifies a reference distance for the motion. This would roughly be considered how much\ndistance to cover over `Duration`. Not all simulations interpret the values the same way, so\nit may not be honoured exactly.\n\nDistance is measured as the vector length between the animated property's current value\nand its target value."
+            },
+            "returns": {
+              "href": "uno/float",
+              "title": "float",
+              "fullyQualifiedTitle": "float"
+            },
+            "id": {
+              "id": "fuse/animations/attractorconfig/distance",
+              "parentId": "fuse/animations/attractorconfig",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/attractorconfig/distance",
+              "href": "fuse/motion/destinationmotionconfig/distance",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Distance",
+              "fullyQualifiedIndexTitle": "Fuse.Motion.DestinationMotionConfig.Distance"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Specifies the nominal length of time for a transition. A change in @Distance amount will typically\ntake around this amount of time.",
+              "full": "Specifies the nominal length of time for a transition. A change in @Distance amount will typically\ntake around this amount of time.\n\nFor example, a navigation with `Duration=0.3` and `Distance=\"1\"` would take 0.3s to do a single\npage transition."
+            },
+            "returns": {
+              "href": "uno/float",
+              "title": "float",
+              "fullyQualifiedTitle": "float"
+            },
+            "id": {
+              "id": "fuse/animations/attractorconfig/duration",
+              "parentId": "fuse/animations/attractorconfig",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/attractorconfig/duration",
+              "href": "fuse/motion/destinationmotionconfig/duration",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Duration",
+              "fullyQualifiedIndexTitle": "Fuse.Motion.DestinationMotionConfig.Duration"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Specifies how much the duration extends depending on the covered distance. This is\nan exponent of that distance `distance ^ DurationExp`: a value of `0` is\na constant `Duration`, unaffected by distance; a value of `1` is a multple of\nthe duration.",
+              "full": "Specifies how much the duration extends depending on the covered distance. This is\nan exponent of that distance `distance ^ DurationExp`: a value of `0` is\na constant `Duration`, unaffected by distance; a value of `1` is a multple of\nthe duration."
+            },
+            "returns": {
+              "href": "uno/float",
+              "title": "float",
+              "fullyQualifiedTitle": "float"
+            },
+            "id": {
+              "id": "fuse/animations/attractorconfig/durationexp",
+              "parentId": "fuse/animations/attractorconfig",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/attractorconfig/durationexp",
+              "href": "fuse/motion/destinationmotionconfig/durationexp",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "DurationExp",
+              "fullyQualifiedIndexTitle": "Fuse.Motion.DestinationMotionConfig.DurationExp"
+            }
+          },
+          {
+            "comment": {
+              "brief": "For a `Type=\"Easing\"`, this specifies which easing should be used.",
+              "full": "For a `Type=\"Easing\"`, this specifies which easing should be used."
+            },
+            "returns": {
+              "href": "fuse/animations/easing",
+              "title": "Easing",
+              "fullyQualifiedTitle": "Fuse.Animations.Easing"
+            },
+            "flags": {
+              "uxContent": true
+            },
+            "id": {
+              "id": "fuse/animations/attractorconfig/easing",
+              "parentId": "fuse/animations/attractorconfig",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/attractorconfig/easing",
+              "href": "fuse/motion/destinationmotionconfig/easing",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Easing",
+              "fullyQualifiedIndexTitle": "Fuse.Motion.DestinationMotionConfig.Easing"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Specifies the basic type of animation for the transition. The meaing of the other properties\nvaries depending on this type.",
+              "full": "Specifies the basic type of animation for the transition. The meaing of the other properties\nvaries depending on this type."
+            },
+            "returns": {
+              "href": "fuse/motion/motiondestinationtype",
+              "title": "MotionDestinationType",
+              "fullyQualifiedTitle": "Fuse.Motion.MotionDestinationType"
+            },
+            "id": {
+              "id": "fuse/animations/attractorconfig/type",
+              "parentId": "fuse/animations/attractorconfig",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/attractorconfig/type",
+              "href": "fuse/motion/destinationmotionconfig/type",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Type",
+              "fullyQualifiedIndexTitle": "Fuse.Motion.DestinationMotionConfig.Type"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Defines the unit of the animated variable. This is used to establish reasonable defaults and\napply appropriate multipliers.",
+              "full": "Defines the unit of the animated variable. This is used to establish reasonable defaults and\napply appropriate multipliers.\n\nAngular types, `Radians` and `Degrees`, use a wrapping mode, such that 370degrees is\nthe same as 10degrees. In this mode there is no guarantee as to what the output value\nwill actually be (calling code must also treat equivalent angles the same, or mod them as\nrequired)."
+            },
+            "returns": {
+              "href": "fuse/motion/motionunit",
+              "title": "MotionUnit",
+              "fullyQualifiedTitle": "Fuse.Motion.MotionUnit"
+            },
+            "id": {
+              "id": "fuse/animations/attractorconfig/unit",
+              "parentId": "fuse/animations/attractorconfig",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/attractorconfig/unit",
+              "href": "fuse/motion/destinationmotionconfig/unit",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Unit",
+              "fullyQualifiedIndexTitle": "Fuse.Motion.DestinationMotionConfig.Unit"
+            }
+          }
+        ]
+      }
+    ],
+    "attachedUxProperties": [
+      {
+        "items": [
+          {
+            "comment": {
+              "brief": "The `ux:Global` attribute creates a global resource that is accessible everywhere in UX markup.",
+              "full": "The `ux:Global` attribute creates a global resource that is accessible everywhere in UX markup.\n\nSee @Resources for more information.\n\nThe `ux:Global` attribute on an UX element creates a single object (singleton) that is globally available.\nUsing this attribute will prevent the object from being inserted by default the object at its defined location\nin the UX tree."
+            },
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "parameters": [
+              {
+                "name": "obj",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              },
+              {
+                "name": "key",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              }
+            ],
+            "id": {
+              "id": "fuse/animations/attractorconfig/resource_globalkey_setglobalkey_4c3ac72d",
+              "parentId": "fuse/animations/attractorconfig",
+              "type": "AttachedUxProperty",
+              "modifiers": []
+            },
+            "uri": {
+              "idUri": "fuse/animations/attractorconfig/resource_globalkey_setglobalkey_4c3ac72d",
+              "href": "uno/ux/resource/setglobalkey_4c3ac72d",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Resource.GlobalKey",
+              "fullyQualifiedIndexTitle": "Resource.GlobalKey"
+            }
+          }
+        ]
+      }
+    ],
+    "constructors": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/animations/attractorconfig",
+            "parentId": "fuse/animations",
+            "type": "UxClass",
+            "modifiers": [
+              "public"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/animations/attractorconfig",
+            "href": "fuse/animations/attractorconfig"
+          },
+          "titles": {
+            "indexTitle": "AttractorConfig",
+            "fullyQualifiedIndexTitle": "Fuse.Animations.AttractorConfig"
+          }
+        },
+        "items": [
+          {
+            "comment": {
+              "brief": "Creates a new AttractorConfig",
+              "full": "Creates a new AttractorConfig"
+            },
+            "id": {
+              "id": "fuse/animations/attractorconfig/_ctor",
+              "parentId": "fuse/animations/attractorconfig",
+              "type": "Constructor",
+              "modifiers": [
+                "public",
+                "generated"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/attractorconfig/_ctor",
+              "href": "fuse/animations/attractorconfig/_ctor"
+            },
+            "titles": {
+              "indexTitle": "AttractorConfig",
+              "fullyQualifiedIndexTitle": "Fuse.Animations.AttractorConfig.AttractorConfig"
+            }
+          }
+        ]
+      }
+    ],
+    "methods": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "uno/object",
+            "parentId": "uno",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "intrinsic"
+            ]
+          },
+          "uri": {
+            "idUri": "uno/object",
+            "href": "uno/object"
+          },
+          "titles": {
+            "indexTitle": "object",
+            "fullyQualifiedIndexTitle": "object"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "parameters": [
+              {
+                "name": "o",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              }
+            ],
+            "id": {
+              "id": "fuse/animations/attractorconfig/equals_a09c80e3",
+              "parentId": "fuse/animations/attractorconfig",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/attractorconfig/equals_a09c80e3",
+              "href": "uno/object/equals_a09c80e3",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Equals(object)",
+              "fullyQualifiedIndexTitle": "Uno.Object.Equals(object)"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/int",
+              "title": "int",
+              "fullyQualifiedTitle": "int"
+            },
+            "id": {
+              "id": "fuse/animations/attractorconfig/gethashcode",
+              "parentId": "fuse/animations/attractorconfig",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/attractorconfig/gethashcode",
+              "href": "uno/object/gethashcode",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetHashCode",
+              "fullyQualifiedIndexTitle": "Uno.Object.GetHashCode"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/type",
+              "title": "Type",
+              "fullyQualifiedTitle": "Uno.Type"
+            },
+            "id": {
+              "id": "fuse/animations/attractorconfig/gettype",
+              "parentId": "fuse/animations/attractorconfig",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/attractorconfig/gettype",
+              "href": "uno/object/gettype",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetType",
+              "fullyQualifiedIndexTitle": "Uno.Object.GetType"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "id": {
+              "id": "fuse/animations/attractorconfig/tostring",
+              "parentId": "fuse/animations/attractorconfig",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/attractorconfig/tostring",
+              "href": "uno/object/tostring",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "ToString",
+              "fullyQualifiedIndexTitle": "Uno.Object.ToString"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

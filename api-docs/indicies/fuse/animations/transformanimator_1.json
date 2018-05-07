@@ -1,0 +1,115 @@
+{
+  "root": {
+    "id": {
+      "id": "fuse/animations/transformanimator_1",
+      "parentId": "fuse/animations",
+      "type": "Class",
+      "modifiers": [
+        "public",
+        "abstract"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/animations/transformanimator_1",
+      "href": "fuse/animations/transformanimator_1"
+    },
+    "titles": {
+      "indexTitle": "TransformAnimator<Translation>",
+      "fullyQualifiedIndexTitle": "Fuse.Animations.TransformAnimator<Fuse.Translation>"
+    }
+  },
+  "descendants": [
+    {
+      "comment": {
+        "brief": "Animates the translation a visual element.",
+        "full": "Animates the translation a visual element.\n\n`Move` does not affect layout, so the element will just get an offset from its actual location.\n\nExample:\n\n    <WhilePressed>\n        <Move X=\"50\" Duration=\"1\" Easing=\"BackOut\" />\n    </WhilePressed>\n\nWhen pressed, this will move the element by 50 points in the X direction over 1 second, with\na back-out easing curve.\n\n## Relative motion\n\nYou may want for an element to move relative to its own size or some other elements size.\nTo achieve this we can use the @RelativeTo property, for instance:\n\n    <Move X=\"0.5\" RelativeTo=\"Size\" />\n\nThe above line moves the element by 50% of its own size to the right."
+      },
+      "id": {
+        "id": "fuse/animations/move",
+        "parentId": "fuse/animations",
+        "type": "UxClass",
+        "modifiers": [
+          "public",
+          "sealed"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/animations/move",
+        "href": "fuse/animations/move"
+      },
+      "titles": {
+        "indexTitle": "Move",
+        "fullyQualifiedIndexTitle": "Fuse.Animations.Move"
+      }
+    },
+    {
+      "comment": {
+        "brief": "Rotates the Visual. This does the same transform as @Rotation.",
+        "full": "Rotates the Visual. This does the same transform as @Rotation.\n\nThe standard units for angle are radians. Use the `Degrees...` properties to specify in degrees.\n\n# Example\nThis example rotates a panel while the mouse pointer hovers over it\n\n    <Panel>\n        <WhileHovering>\n            <Rotate Degrees=\"90\" Duration=\"0.5\"/>\n        </WhileHovering>\n    </Panel>"
+      },
+      "id": {
+        "id": "fuse/animations/rotate",
+        "parentId": "fuse/animations",
+        "type": "UxClass",
+        "modifiers": [
+          "public",
+          "sealed"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/animations/rotate",
+        "href": "fuse/animations/rotate"
+      },
+      "titles": {
+        "indexTitle": "Rotate",
+        "fullyQualifiedIndexTitle": "Fuse.Animations.Rotate"
+      }
+    },
+    {
+      "comment": {
+        "brief": "Scales the element. Note that scale doesn't actually change the elements size. This means that the rest of the UI layout wont be affected and the animation is guaranteed to be fast.",
+        "full": "Scales the element. Note that scale doesn't actually change the elements size. This means that the rest of the UI layout wont be affected and the animation is guaranteed to be fast.\n\nYou can scale an element uniformly along all axes by using the `Factor` property. Alternatively, you can also scale on a per-axis basis using `Vector` or `X`, `Y`, and `Z`.\n\n**Tip**: You can use `Scale` relative to something using the `RelativeTo` property. The two choices are:\n\n* `SizeChange` - scales relative to the change in size of the element specified by the `RelativeNode` property.\n* `SizeFactor` - scales with a factor relative to another element, specified by `RelativeNode`. A factor of `1` would make it the same size as the `RelativeNode`, while a factor of `0.5` would make it half the size, and so on.\n\n# Example\nThe following example scales a rectangle when it is being pressed\n\n    <Rectangle>\n        <WhilePressed>\n            <Scale Factor=\"2\" Duration=\"0.4\"/>\n        </WhilePressed>\n    </Rectangle>"
+      },
+      "id": {
+        "id": "fuse/animations/scale",
+        "parentId": "fuse/animations",
+        "type": "UxClass",
+        "modifiers": [
+          "public",
+          "sealed"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/animations/scale",
+        "href": "fuse/animations/scale"
+      },
+      "titles": {
+        "indexTitle": "Scale",
+        "fullyQualifiedIndexTitle": "Fuse.Animations.Scale"
+      }
+    },
+    {
+      "comment": {
+        "brief": "Allows you to animate a skew transform on an element.",
+        "full": "Allows you to animate a skew transform on an element.\n\n# Example\nThis example animates a skew on a panel as it is being pressed\n\n    <Panel Background=\"#F00\">\n        <WhilePressed>\n            <Skew DegreesX=\"30\" Duration=\"0.4\"/>\n        </WhilePressed>\n    </Panel>"
+      },
+      "id": {
+        "id": "fuse/animations/skew",
+        "parentId": "fuse/animations",
+        "type": "UxClass",
+        "modifiers": [
+          "public",
+          "sealed"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/animations/skew",
+        "href": "fuse/animations/skew"
+      },
+      "titles": {
+        "indexTitle": "Skew",
+        "fullyQualifiedIndexTitle": "Fuse.Animations.Skew"
+      }
+    }
+  ]
+}

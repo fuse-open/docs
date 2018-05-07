@@ -1,0 +1,1096 @@
+{
+  "entity": {
+    "id": {
+      "id": "fuse/gestures",
+      "parentId": "fuse",
+      "type": "Namespace",
+      "modifiers": []
+    },
+    "uri": {
+      "idUri": "fuse/gestures",
+      "href": "fuse/gestures"
+    },
+    "titles": {
+      "pageTitle": "Fuse.Gestures Namespace",
+      "navigationTitle": "Fuse.Gestures Namespace",
+      "fullTitle": "Fuse.Gestures",
+      "indexTitle": "Fuse.Gestures",
+      "fullyQualifiedIndexTitle": "Fuse.Gestures"
+    },
+    "syntax": {
+      "uno": "namespace Gestures {}"
+    }
+  },
+  "tableOfContents": {
+    "uxClasses": [
+      {
+        "items": [
+          {
+            "comment": {
+              "brief": "Helper class for implementing circular @(RangeControl:RangeControls)",
+              "full": "Helper class for implementing circular @(RangeControl:RangeControls)\n\nUsed to enable circual touch input on @RangeControl.\nTypically used when implementing circular range pickers,\nlike a clock timepicker or dials.\n\n## Example\n\n### Andgle-based circular range control\nThe following example shows a simple circular @(RangeControl) implemented using `CircularRangeBehavior`, where a visual is rotated as the @(RangeControl) is changed. The range is calculated from the angle between the mouse and the X-axis\n\n    <RangeControl Width=\"180\" Height=\"180\" Margin=\"2\">\n        <CircularRangeBehavior />\n        <Panel ux:Name=\"thumb\" Margin=\"4\">\n            <Rectangle Color=\"#fff\" Alignment=\"Right\" Height=\"18\" Width=\"48\" CornerRadius=\"4\" />\n        </Panel>\n        <ProgressAnimation>\n            <Rotate Target=\"thumb\" Degrees=\"360\" />\n        </ProgressAnimation>\n        <Circle Color=\"#aaa\" />\n    </RangeControl>\n\n### Angle and radius based circular range control\nWhen used with a @(RangeControl2D), you can get both the angle progress, and the radius progress. This effectively means that your range control allows the user to control two ranges at once.\n\n    <RangeControl2D Width=\"180\" Height=\"180\" Margin=\"2\" ux:Name=\"rangeControl\">\n        <CircularRangeBehavior/>\n        <Panel ux:Name=\"thumb\" Margin=\"4\">\n            <Rectangle Color=\"#fff\" Alignment=\"Right\" Height=\"18\" Width=\"48\" CornerRadius=\"4\" />\n        </Panel>\n        <RangeAnimation Minimum=\"0\" Maximum=\"100\" Value=\"{ReadProperty rangeControl.ValueX}\">\n            <Rotate Target=\"thumb\" Degrees=\"360\" />\n        </RangeAnimation>\n        <RangeAnimation Minimum=\"0\" Maximum=\"100\" Value=\"{ReadProperty rangeControl.ValueY}\">\n            <Change radiusCircle.Factor=\"1\" />\n        </RangeAnimation>\n        <Circle Color=\"#0FF\" Alignment=\"Center\" Width=\"180\" Height=\"180\">\n            <Scaling ux:Name=\"radiusCircle\" Factor=\"0\" />\n        </Circle>\n        <Circle Color=\"#aaa\" />\n    </RangeControl2D>"
+            },
+            "id": {
+              "id": "fuse/gestures/circularrangebehavior",
+              "parentId": "fuse/gestures",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/gestures/circularrangebehavior",
+              "href": "fuse/gestures/circularrangebehavior"
+            },
+            "titles": {
+              "indexTitle": "CircularRangeBehavior",
+              "fullyQualifiedIndexTitle": "Fuse.Gestures.CircularRangeBehavior"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Triggers when a pointer is clicked on a @Visual.",
+              "full": "Triggers when a pointer is clicked on a @Visual.\n\nThe `Clicked` trigger is quite similar to the @(Tapped) trigger, but these two triggers differ slightly in the interactions they handle.\nWhile a click represents a pointer being pressed and then released on an element, a tap represents a pointer being both pressed and released within a certain period of time.\n\n# Example\nIn this example, a panel will rotate for 0.4 seconds, then rotate back, when clicked:\n\n    <Panel Background=\"#F00\">\n        <Clicked>\n            <Rotate Degrees=\"90\" Duration=\".4\" DurationBack=\".2\" />\n        </Clicked>\n    </Panel>"
+            },
+            "id": {
+              "id": "fuse/gestures/clicked",
+              "parentId": "fuse/gestures",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/gestures/clicked",
+              "href": "fuse/gestures/clicked"
+            },
+            "titles": {
+              "indexTitle": "Clicked",
+              "fullyQualifiedIndexTitle": "Fuse.Gestures.Clicked"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Triggers when a pointer is double-clicked on a @Visual.",
+              "full": "Triggers when a pointer is double-clicked on a @Visual.\n\nThis `DoubleClicked` trigger is very similar to the `DoubleTapped` trigger, but these two triggers differ slightly in the interactions they handle.\nWhile a click represents a pointer being pressed and then released on an element, a tap represents a pointer being both pressed and released within a certain period of time.\n\n## Example\nThe following example rotates a rectangle if it is double clicked.\n\n    <Panel Width=\"100\" Height=\"100\" Color=\"#F00\" >\n        <DoubleClicked>\n            <Rotate Degrees=\"270\" Easing=\"ExponentialOut\" Duration=\".3\"/>\n        </DoubleClicked>\n    </Panel>"
+            },
+            "id": {
+              "id": "fuse/gestures/doubleclicked",
+              "parentId": "fuse/gestures",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/gestures/doubleclicked",
+              "href": "fuse/gestures/doubleclicked"
+            },
+            "titles": {
+              "indexTitle": "DoubleClicked",
+              "fullyQualifiedIndexTitle": "Fuse.Gestures.DoubleClicked"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Triggers when a pointer is double-tapped on a @Visual.",
+              "full": "Triggers when a pointer is double-tapped on a @Visual.\n\nThis `DoubleTapped` trigger is very similar to the `DoubleClicked` trigger, but these two triggers differ slightly in the interactions they handle.\nWhile a click represents a pointer being pressed and then released on an element, a tap represents a pointer being both pressed and released within a certain period of time.\n\n## Example\nThe following example rotates a rectangle if it is double tapped.\n\n    <Panel Width=\"100\" Height=\"100\" Color=\"#F00\" >\n        <DoubleTapped>\n            <Rotate Degrees=\"270\" Easing=\"ExponentialOut\" Duration=\".3\"/>\n        </DoubleTapped>\n    </Panel>"
+            },
+            "id": {
+              "id": "fuse/gestures/doubletapped",
+              "parentId": "fuse/gestures",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/gestures/doubletapped",
+              "href": "fuse/gestures/doubletapped"
+            },
+            "titles": {
+              "indexTitle": "DoubleTapped",
+              "fullyQualifiedIndexTitle": "Fuse.Gestures.DoubleTapped"
+            }
+          },
+          {
+            "comment": {
+              "brief": "DEPRECATED: Use `SwipeGesture` with `EdgeNavigator` instead",
+              "full": "DEPRECATED: Use `SwipeGesture` with `EdgeNavigator` instead"
+            },
+            "id": {
+              "id": "fuse/gestures/edgeswipeanimation",
+              "parentId": "fuse/gestures",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/gestures/edgeswipeanimation",
+              "href": "fuse/gestures/edgeswipeanimation"
+            },
+            "titles": {
+              "indexTitle": "EdgeSwipeAnimation",
+              "fullyQualifiedIndexTitle": "Fuse.Gestures.EdgeSwipeAnimation"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/gestures/keepfocusinview",
+              "parentId": "fuse/gestures",
+              "type": "UxClass",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/gestures/keepfocusinview",
+              "href": "fuse/gestures/keepfocusinview"
+            },
+            "titles": {
+              "indexTitle": "KeepFocusInView",
+              "fullyQualifiedIndexTitle": "Fuse.Gestures.KeepFocusInView"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/gestures/keepinview",
+              "parentId": "fuse/gestures",
+              "type": "UxClass",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/gestures/keepinview",
+              "href": "fuse/gestures/keepinview"
+            },
+            "titles": {
+              "indexTitle": "KeepInView",
+              "fullyQualifiedIndexTitle": "Fuse.Gestures.KeepInView"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Common linear sliding behaviour used for implementing a @RangeControl.",
+              "full": "Common linear sliding behaviour used for implementing a @RangeControl.\n\nUsed to enable sliding touch input on @RangeControl.\n\nThe range of motion of the control is the size of the `LinearRangeBehavior` parent. By nesting deeper than the immediate child of the @RangeControl you can have a range of motion distinct from the size of the overall control.\n\n## Example\n\n    <StackPanel>\n\n        <RangeControl ux:Class=\"CustomSlider\" Padding=\"16,2,16,2\" Margin=\"2\" >\n            <Panel>\n                <LinearRangeBehavior />\n                <Circle Anchor=\"50%,50%\" ux:Name=\"thumb\" Alignment=\"Left\" Color=\"#ffffffee\" Width=\"28\" Height=\"28\" />\n            </Panel>\n            <Rectangle Layer=\"Background\" Color=\"#aaaaaacc\" CornerRadius=\"45\" />\n            <ProgressAnimation>\n                <Move Target=\"thumb\" X=\"1\" RelativeTo=\"ParentSize\" />\n            </ProgressAnimation>\n        </RangeControl>\n\n        <CustomSlider />\n\n    </StackPanel>"
+            },
+            "id": {
+              "id": "fuse/gestures/linearrangebehavior",
+              "parentId": "fuse/gestures",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/gestures/linearrangebehavior",
+              "href": "fuse/gestures/linearrangebehavior"
+            },
+            "titles": {
+              "indexTitle": "LinearRangeBehavior",
+              "fullyQualifiedIndexTitle": "Fuse.Gestures.LinearRangeBehavior"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Triggers when a pointer is held down for a period of time.",
+              "full": "Triggers when a pointer is held down for a period of time.\n\nBeing @LongPressed does not prevent other gestures, like @Clicked, from also triggering on the visual."
+            },
+            "id": {
+              "id": "fuse/gestures/longpressed",
+              "parentId": "fuse/gestures",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/gestures/longpressed",
+              "href": "fuse/gestures/longpressed"
+            },
+            "titles": {
+              "indexTitle": "LongPressed",
+              "fullyQualifiedIndexTitle": "Fuse.Gestures.LongPressed"
+            }
+          },
+          {
+            "comment": {
+              "brief": "A @TransformGesture that provides panning (2D translation).",
+              "full": "A @TransformGesture that provides panning (2D translation).\n\nThis is triggered by two pointers (fingers) on the device moving together.\n\nFor testing on desktop this can be triggered by holding down Shift, pressing the mouse button and moving. (This desktop feature is intended only for testing, so the specifics of how this works should not be relied upon.)"
+            },
+            "id": {
+              "id": "fuse/gestures/pangesture",
+              "parentId": "fuse/gestures",
+              "type": "UxClass",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/gestures/pangesture",
+              "href": "fuse/gestures/pangesture"
+            },
+            "titles": {
+              "indexTitle": "PanGesture",
+              "fullyQualifiedIndexTitle": "Fuse.Gestures.PanGesture"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Locks pointer input to a sub-tress in the UX for a limited time.",
+              "full": "Locks pointer input to a sub-tress in the UX for a limited time.",
+              "attributes": {
+                "experimental": true
+              }
+            },
+            "id": {
+              "id": "fuse/gestures/pointercapture",
+              "parentId": "fuse/gestures",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/gestures/pointercapture",
+              "href": "fuse/gestures/pointercapture"
+            },
+            "titles": {
+              "indexTitle": "PointerCapture",
+              "fullyQualifiedIndexTitle": "Fuse.Gestures.PointerCapture"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Triggers when a pointer is pressed on a visual.\nAs opposed to @Clicked or @Tapped, this trigger triggers immediately when a\npointer is pressed on the visual. It does not wait for a pointer release or minimum\namount of press time.",
+              "full": "Triggers when a pointer is pressed on a visual.\nAs opposed to @Clicked or @Tapped, this trigger triggers immediately when a\npointer is pressed on the visual. It does not wait for a pointer release or minimum\namount of press time."
+            },
+            "id": {
+              "id": "fuse/gestures/pressed",
+              "parentId": "fuse/gestures",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/gestures/pressed",
+              "href": "fuse/gestures/pressed"
+            },
+            "titles": {
+              "indexTitle": "Pressed",
+              "fullyQualifiedIndexTitle": "Fuse.Gestures.Pressed"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Triggers when a pointer is released on a @Visual.",
+              "full": "Triggers when a pointer is released on a @Visual.\n\nAs opposed to @Clicked or @Tapped, this trigger triggers without concern for how long the pointer was pressed for.\n\n# Example\nIn this example, a panel will rotate for 0.4 seconds, then rotate back, when released:\n\n    <Panel Background=\"#F00\">\n        <Released>\n            <Rotate Degrees=\"90\" Duration=\".4\" DurationBack=\".2\" />\n        </Released>\n    </Panel>"
+            },
+            "id": {
+              "id": "fuse/gestures/released",
+              "parentId": "fuse/gestures",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/gestures/released",
+              "href": "fuse/gestures/released"
+            },
+            "titles": {
+              "indexTitle": "Released",
+              "fullyQualifiedIndexTitle": "Fuse.Gestures.Released"
+            }
+          },
+          {
+            "comment": {
+              "brief": "A @TransformGesture that provides rotation.",
+              "full": "A @TransformGesture that provides rotation.\n\nThis is triggered by a rotating gesture of two points (fingers) on the device.\n\nFor testing on desktop this can be triggered by holding down Ctrl, pressing the mouse button, moving up/down, then left/right. Careful, it interferes with the @ZoomGesture, and is only suitable for desktop testing. (This desktop feature is intended only for testing, so the specifics of how this works should not be relied upon.)"
+            },
+            "id": {
+              "id": "fuse/gestures/rotategesture",
+              "parentId": "fuse/gestures",
+              "type": "UxClass",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/gestures/rotategesture",
+              "href": "fuse/gestures/rotategesture"
+            },
+            "titles": {
+              "indexTitle": "RotateGesture",
+              "fullyQualifiedIndexTitle": "Fuse.Gestures.RotateGesture"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Scrolls a @ScrollView to a given position when triggered.",
+              "full": "Scrolls a @ScrollView to a given position when triggered.\n\nNote that this action is deprecated, you should now use @ScrollTo instead."
+            },
+            "id": {
+              "id": "fuse/gestures/scrollablegoto",
+              "parentId": "fuse/gestures",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/gestures/scrollablegoto",
+              "href": "fuse/gestures/scrollablegoto"
+            },
+            "titles": {
+              "indexTitle": "ScrollableGoto",
+              "fullyQualifiedIndexTitle": "Fuse.Gestures.ScrollableGoto"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Scrolls a @ScrollView to a given position when triggered.",
+              "full": "Scrolls a @ScrollView to a given position when triggered.\n\n### Absolute position\n\nTo scroll to an absolute position, provide a value to the `Position` property.\nThis property accepts a pair of numbers, representing X and Y coordinates.\n\n    <ScrollTo Target=\"myScrollView\" Position=\"0, 50\" />\n\n### Relative position\n\nAlternatively, you can scroll to a relative position using the `RelativePosition` property.\n\n`RelativePosition` also accepts a pair of numbers, representing X and Y coordinates.\nEach coordinate should be in the range `0..1`, where `1` represents the largest distance\nthe user can scroll in that direction.\nFor instance, a `RelativePosition` of `1, 1` will scroll to the bottom-right corner.\n\n    <ScrollTo Target=\"myScrollView\" RelativePosition=\"0, 0.5\" />\n\nWhen triggered, the above will scroll `myScrollView` to the vertical center of its scrollable area.\n\n## Example\n\n    <DockPanel>\n        <Button Dock=\"Top\" Text=\"Scroll to top\" Margin=\"20\">\n            <Clicked>\n                <ScrollTo Target=\"myScrollView\" Position=\"0,0\" />\n            </Clicked>\n        </Button>\n\n        <ScrollView ux:Name=\"myScrollView\">\n            <Rectangle Height=\"2000\">\n                <LinearGradient>\n                    <GradientStop Offset=\"0\" Color=\"Red\" />\n                    <GradientStop Offset=\"1\" Color=\"Blue\" />\n                </LinearGradient>\n            </Rectangle>\n        </ScrollView>\n    </DockPanel>"
+            },
+            "id": {
+              "id": "fuse/gestures/scrollto",
+              "parentId": "fuse/gestures",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/gestures/scrollto",
+              "href": "fuse/gestures/scrollto"
+            },
+            "titles": {
+              "indexTitle": "ScrollTo",
+              "fullyQualifiedIndexTitle": "Fuse.Gestures.ScrollTo"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Sets the state of an [Active](api:fuse/gestures/swipegesture#swipetype-active-overview)-type @SwipeGesture.",
+              "full": "Sets the state of an [Active](api:fuse/gestures/swipegesture#swipetype-active-overview)-type @SwipeGesture.\n\n# Example\n\n    <SwipeGesture ux:Name=\"swipe\" Direction=\"Right\" Length=\"100\" Type=\"Active\" />\n\n    <Button Text=\"Close\">\n        <Clicked>\n            <SetSwipeActive Target=\"swipe\" Value=\"false\" />\n        </Clicked>\n    </Button>"
+            },
+            "id": {
+              "id": "fuse/gestures/setswipeactive",
+              "parentId": "fuse/gestures",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/gestures/setswipeactive",
+              "href": "fuse/gestures/setswipeactive"
+            },
+            "titles": {
+              "indexTitle": "SetSwipeActive",
+              "fullyQualifiedIndexTitle": "Fuse.Gestures.SetSwipeActive"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Pulse trigger that activates when a swipe has occurred.",
+              "full": "Pulse trigger that activates when a swipe has occurred.\n\nBy default, `Swiped` will only trigger when swiping to the primary swipe direction (when it enters the active state).\nFor instance, if the @SwipeGesture has `Direction=\"Left\"` it only triggers on a `Left` swipe and ignores the matching closing swipe.\nWe can control this behavior by setting the `How` property to either `ToActive` (default), `ToInactive` or `ToEither`.\n\n> **Note:** For a `Type=\"Active\"` @SwipeGesture, this only fires when the state actually changes.\n> If the user starts swiping but release the pointer without completing the gesture, it will not activate.\n\n# Example\n\nThis example shows a quick animation after a panel has been swiped.\n\n    <Panel Width=\"100\" Height=\"100\">\n        <SwipeGesture ux:Name=\"swipe\" Direction=\"Up\" Length=\"50\" Type=\"Simple\" />\n        <Swiped Source=\"swipe\">\n            <Scale Factor=\"1.5\" Duration=\"0.4\" DurationBack=\"0.2\" />\n        </Swiped>\n    </Panel>"
+            },
+            "id": {
+              "id": "fuse/gestures/swiped",
+              "parentId": "fuse/gestures",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/gestures/swiped",
+              "href": "fuse/gestures/swiped"
+            },
+            "titles": {
+              "indexTitle": "Swiped",
+              "fullyQualifiedIndexTitle": "Fuse.Gestures.Swiped"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Recognizes a swipe (the movement of a pointer in a given direction).",
+              "full": "Recognizes a swipe (the movement of a pointer in a given direction).\n\n# Basic usage\r\n\r\nA SwipeGesture must be attached to an @Element, and will begin detecting swipes when the pointer is pressed\r\ndown on that element. Attaching a @SwipeGesture to an @Element is simply adding it as a child:\r\n\r\n\t<Panel>\r\n\t\t<SwipeGesture ux:Name=\"swipe\" Direction=\"Right\" Length=\"200\" />\r\n\t</Panel>\r\n\r\nThe snippet above will recognize swipe gestures moving from left to right,\r\nover a distance of 200 points.\r\n\r\nHowever, this isn't doing anything useful yet. Let's add a trigger!\r\n\r\n\t<Panel Width=\"100\" Height=\"100\" Background=\"Black\">\r\n\t\t<SwipeGesture ux:Name=\"swipe\" Direction=\"Right\" Length=\"200\" />\r\n\t\t<SwipingAnimation Source=\"swipe\">\r\n\t\t\t<Move X=\"200\" />\r\n\t\t</SwipingAnimation>\r\n\t</Panel>\r\n\t\r\nWe've now added a @SwipingAnimation, which will map the progress of our swipe gesture onto a series of\r\nanimations. In this case, we are moving the panel over the same distance as the `Length` of our\r\nSwipeGesture, resulting in the panel moving along with the pointer.\r\n\r\n> Note that we've referenced our SwipeGesture via the `Source` property of @SwipingAnimation.\r\n> This is because it is possible to have [multiple swipe gestures](#multiple-swipegestures) on a single element,\r\n> so it must be referenced explicitly. All swipe-related triggers share this property.\r\n\r\nWe also want to respond when the swipe has completed, which is achieved using the\r\n[Swiped](api:fuse/gestures/swiped) trigger. Let's extend our previous example a bit.\r\n\r\n\t<Panel Width=\"100\" Height=\"100\" Background=\"Black\">\r\n\t\t<SwipeGesture ux:Name=\"swipe\" Direction=\"Right\" Length=\"200\" />\r\n\t\t<SwipingAnimation Source=\"swipe\">\r\n\t\t\t<Move X=\"200\" />\r\n\t\t</SwipingAnimation>\r\n\t\t\r\n\t\t<Swiped>\r\n\t\t\t<DebugAction Message=\"Swiped!\" />\r\n\t\t</Swiped>\r\n\t</Panel>\r\n\r\nFor illustrative purposes, we are using @DebugAction to log a message\r\nto the console when the swipe has completed.\r\n\r\n# Swipe types\r\n\r\nSwipeGesture is designed to handle multiple scenarios,\r\nand can have one of three [types](api:fuse/gestures/swipetype), specified via the `Type` property.\r\n\r\nThe [type](api:fuse/gestures/swipetype) of a SwipeGesture determines its behavior, and below we'll explain each one.\r\n\r\n## [Simple](api:fuse/gestures/swipetype/simple)\r\n\r\n`Simple` is the default @SwipeType, and thus the one we have been using so far in this article.\r\n\r\nWhen using this type, swipes are treated as one-off events, and swipes will complete once the pointer is released.\r\n\r\n## [Auto](api:fuse/gestures/swipetype/auto)\r\n\r\n`Auto` is *almost* identical to `Simple`, however swipes complete once the user has swiped over the entire\r\ndistance of the SwipeGesture, without the user needing to release the pointer.\r\nThis allows multiple SwipeGestures to be triggered in sequence without releasing the pointer.\r\n\r\n<a id=\"swipetype-active-overview\"></a>\r\n\r\n## [Active](api:fuse/gestures/swipetype/active)\r\n\r\n`Type=\"Active\"` makes swipes toggle between an active/inactive state.\r\nSwiping in the @Direction of the SwipeGesture will transition to the *active* state,\r\nwhile swiping in the opposite direction will transition to the *inactive* state.\r\n\r\nWe can alter the state of an Active-type SwipeGesture using\r\n[SetSwipeActive](api:fuse/gestures/setswipeactive) and/or\r\n[ToggleSwipeActive](api:fuse/gestures/toggleswipeactive).\r\n\r\n### Reacting to state transitions\r\n\r\nWhen using the `Active` type, we can optionally configure the [Swiped](api:fuse/gestures/swiped) trigger\r\nto respond to only activation or only deactivation.\r\n\r\n\t<Swiped How=\"ToActive\">\r\n\t<Swiped How=\"ToInactive\">\r\n\r\nIn addition, the @WhileSwipeActive trigger will be active while its source @SwipeGesture is an Active-type\r\nSwipeGesture, and has been swiped to its active state.\r\n\r\n# Edge\r\n\r\nInstead of specifying a `Direction`, we may provide an `Edge`. This will make the SwipeGesture detect swipes\r\noriginating at a given edge of its parent element.\r\n\r\nWe can also customize the size of the edge area using the `HitSize` property.\r\nIt accepts a single number, which represents the maximum distance from the edge (in points) that swipes can\r\nbegin at.\r\n\r\n# Length based on element size\r\n\r\nInstead of specifying a fixed `Length` for the gesture,\r\nwe can supply an @Element to be measured via the `LengthNode` property.\r\n\r\nThis is a powerful feature, as it allows us to create swipe-based controls that work regardless of their size.\r\n\r\nBelow is an example of a size-independent switch control implemented using SwipeGesture.\r\n\r\n\t<Panel Height=\"50\">\r\n\t\t<Circle Width=\"50\" Height=\"50\" Color=\"#000\" Alignment=\"Left\">\r\n\t\t\t<SwipeGesture ux:Name=\"swipe\" LengthNode=\"track\" Direction=\"Right\" Type=\"Active\" />\r\n\t\t\t<SwipingAnimation Source=\"swipe\">\r\n\t\t\t\t<Move X=\"1\" RelativeTo=\"Size\" RelativeNode=\"track\" />\r\n\t\t\t</SwipingAnimation>\r\n\t\t</Circle>\r\n\t\t\r\n\t\t<Rectangle ux:Name=\"track\" Height=\"15\" Color=\"#0003\" Margin=\"25,0\" CornerRadius=\"15\" />\r\n\t</Panel>",
+              "attributes": {
+                "topic": "Swipe Gestures"
+              }
+            },
+            "id": {
+              "id": "fuse/gestures/swipegesture",
+              "parentId": "fuse/gestures",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/gestures/swipegesture",
+              "href": "fuse/gestures/swipegesture"
+            },
+            "titles": {
+              "indexTitle": "SwipeGesture",
+              "fullyQualifiedIndexTitle": "Fuse.Gestures.SwipeGesture"
+            }
+          },
+          {
+            "comment": {
+              "brief": "A trigger that maps the progress of a SwipeGesture to a series of animations.",
+              "full": "A trigger that maps the progress of a SwipeGesture to a series of animations.\n\nWhen the pointer is first pressed down on the @Element, progess will be `0`,\nand will move towards `1` as the pointer is dragged towards the `Length` of the @SwipeGesture.\n\n# Examples\n\nIn this example, a panel moves 200 points to the right when swiped over a distance of 200 points.\n\n    <Panel Width=\"100\" Height=\"100\" Background=\"#000\">\n        <SwipeGesture ux:Name=\"swipe\" Direction=\"Right\" Length=\"200\" />\n        <SwipingAnimation Source=\"swipe\">\n            <Move X=\"200\" />\n        </SwipingAnimation>\n    </Panel>\n\nIn this example, we demonstrate using the `LengthNode` property of @(SwipeGesture),\nand the `RelativeNode` property of @(Move), to determine the swipe length based on the width of the panel.\n\n    <Panel ux:Name=\"parentContainer\" Margin=\"40\">\n        <Panel Width=\"60\" Height=\"60\" Background=\"#000\" Alignment=\"Left\">\n            <SwipeGesture ux:Name=\"swipe\" Direction=\"Right\" Type=\"Active\" LengthNode=\"parentContainer\" />\n            <SwipingAnimation Source=\"swipe\">\n                <Move X=\"1\" RelativeTo=\"Size\" RelativeNode=\"parentContainer\" />\n            </SwipingAnimation>\n        </Panel>\n    </Panel>"
+            },
+            "id": {
+              "id": "fuse/gestures/swipinganimation",
+              "parentId": "fuse/gestures",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/gestures/swipinganimation",
+              "href": "fuse/gestures/swipinganimation"
+            },
+            "titles": {
+              "indexTitle": "SwipingAnimation",
+              "fullyQualifiedIndexTitle": "Fuse.Gestures.SwipingAnimation"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Triggers when a pointer is tapped on a @Visual.",
+              "full": "Triggers when a pointer is tapped on a @Visual.\n\nThe `Tapped` trigger is quite similar to the @(Clicked) trigger, but these two triggers differ slightly in the interactions they handle.\nWhile a click represents a pointer being pressed and then released on an element, a tap represents a pointer being both pressed and released within a certain period of time.\n\n# Example\nIn this example, a panel will rotate for 0.4 seconds, then rotate back, when tapped:\n\n    <Panel Background=\"#F00\">\n        <Tapped>\n            <Rotate Degrees=\"90\" Duration=\".4\" DurationBack=\".2\" />\n        </Tapped>\n    </Panel>"
+            },
+            "id": {
+              "id": "fuse/gestures/tapped",
+              "parentId": "fuse/gestures",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/gestures/tapped",
+              "href": "fuse/gestures/tapped"
+            },
+            "titles": {
+              "indexTitle": "Tapped",
+              "fullyQualifiedIndexTitle": "Fuse.Gestures.Tapped"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Toggles an [Active](api:fuse/gestures/swipegesture#swipetype-active-overview)-type @SwipeGesture on or off.",
+              "full": "Toggles an [Active](api:fuse/gestures/swipegesture#swipetype-active-overview)-type @SwipeGesture on or off.\n\n# Example\n\nIn this example, a `SwipeGesture` is toggled when a button is pressed.\n\n    <SwipeGesture ux:Name=\"swipe\" Direction=\"Right\" Length=\"100\" Type=\"Active\" />\n\n    <Button Text=\"Toggle\">\n        <Clicked>\n            <ToggleSwipeActive Target=\"swipe\" />\n        </Clicked>\n    </Button>"
+            },
+            "id": {
+              "id": "fuse/gestures/toggleswipeactive",
+              "parentId": "fuse/gestures",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/gestures/toggleswipeactive",
+              "href": "fuse/gestures/toggleswipeactive"
+            },
+            "titles": {
+              "indexTitle": "ToggleSwipeActive",
+              "fullyQualifiedIndexTitle": "Fuse.Gestures.ToggleSwipeActive"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Active while a pointer is within the bounds of its containing element.",
+              "full": "Active while a pointer is within the bounds of its containing element.\n\nNote that this trigger only has a value when the device\nsupports a hovering pointer such as the mouse pointer on\ndesktop machines. This trigger is thus not useful on most\nsmart phones.\n\n## Example\n\nThis example demonstrates how to scale `Panel` by a factor of 2 when a pointer hovers over it:\n\n    <Panel Width=\"50\" Height=\"50\">\n        <WhileHovering>\n            <Scale Factor=\"2\" Duration=\"0.2\" />\n        </WhileHovering>\n    </Panel>"
+            },
+            "id": {
+              "id": "fuse/gestures/whilehovering",
+              "parentId": "fuse/gestures",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/gestures/whilehovering",
+              "href": "fuse/gestures/whilehovering"
+            },
+            "titles": {
+              "indexTitle": "WhileHovering",
+              "fullyQualifiedIndexTitle": "Fuse.Gestures.WhileHovering"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Active while at least one pointer is pressed on a visual.",
+              "full": "Active while at least one pointer is pressed on a visual.\n\nIf `Capture` is `true` then this behaves more like a normal gesture and captures the pointer.\nMoving the pointer away from the element will cause the trigger to deactivate, but another visual will be prevented from capturing it.\nThis should be used when you wish to track the same pressing status as a @Clicked gesture.\n\n# Example\nIn this example, a panel will double in size when it is pressed:\n\n    <Panel Width=\"50\" Height=\"50\">\n        <WhilePressed>\n            <Scale Factor=\"2\" Duration=\"0.2\"/>\n        </WhilePressed>\n    </Panel>"
+            },
+            "id": {
+              "id": "fuse/gestures/whilepressed",
+              "parentId": "fuse/gestures",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/gestures/whilepressed",
+              "href": "fuse/gestures/whilepressed"
+            },
+            "titles": {
+              "indexTitle": "WhilePressed",
+              "fullyQualifiedIndexTitle": "Fuse.Gestures.WhilePressed"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Active whenever an [Active](api:fuse/gestures/swipegesture#swipetype-active-overview)-type\n@SwipeGesture has been swiped to the active state.",
+              "full": "Active whenever an [Active](api:fuse/gestures/swipegesture#swipetype-active-overview)-type\n@SwipeGesture has been swiped to the active state.\n\n# Example\n\nThis example shows a `Panel` that is scaled by a factor of 1.5 while the `SwipeGesture` is active:\n\n    <Panel Width=\"100\" Height=\"100\" Background=\"#000\">\n        <SwipeGesture ux:Name=\"swipe\" Direction=\"Up\" Length=\"50\" Type=\"Simple\" />\n        <WhileSwipeActive Source=\"swipe\">\n            <Scale Factor=\"1.5\" Duration=\"0.4\" />\n        </WhileSwipeActive>\n    </Panel>"
+            },
+            "id": {
+              "id": "fuse/gestures/whileswipeactive",
+              "parentId": "fuse/gestures",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/gestures/whileswipeactive",
+              "href": "fuse/gestures/whileswipeactive"
+            },
+            "titles": {
+              "indexTitle": "WhileSwipeActive",
+              "fullyQualifiedIndexTitle": "Fuse.Gestures.WhileSwipeActive"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Is active while a swiping gesture is in progress.",
+              "full": "Is active while a swiping gesture is in progress.\n\nA swiping gesture is in progress while the user is swiping, as well as the time it takes the animation to complete the full length of the gesture. Invsersely, this trigger is inactive when the gesture is completely stable."
+            },
+            "id": {
+              "id": "fuse/gestures/whileswiping",
+              "parentId": "fuse/gestures",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/gestures/whileswiping",
+              "href": "fuse/gestures/whileswiping"
+            },
+            "titles": {
+              "indexTitle": "WhileSwiping",
+              "fullyQualifiedIndexTitle": "Fuse.Gestures.WhileSwiping"
+            }
+          },
+          {
+            "comment": {
+              "brief": "A @TransformGesture that provides zooming.",
+              "full": "A @TransformGesture that provides zooming.\n\nThis is triggered by dragging two pointers (fingers) over the device. Either moving towards each other (pinching) to reduce the zoom, or moving away from each other to increase the zoom.\n\nFor testing on desktop this can be simulated by holding down Ctrl, pressing the mouse button, and moving cursor up or down.\nNote that this desktop feature is for testing, so the specifics of how this works should not be relied upon.\n\n## Example\n\nShows a red circle we can use two fingers to zoom in or out.\n\n    <Panel>\n        <InteractiveTransform ux:Name=\"transform\" />\n        <ZoomGesture Target=\"transform\" />\n        <Panel>\n            <Text Value=\"Resize me\" Color=\"White\" FontSize=\"25\" Alignment=\"Center\" />\n            <Circle Width=\"350\" Height=\"350\" Color=\"Red\" />\n        </Panel>\n    </Panel>"
+            },
+            "id": {
+              "id": "fuse/gestures/zoomgesture",
+              "parentId": "fuse/gestures",
+              "type": "UxClass",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/gestures/zoomgesture",
+              "href": "fuse/gestures/zoomgesture"
+            },
+            "titles": {
+              "indexTitle": "ZoomGesture",
+              "fullyQualifiedIndexTitle": "Fuse.Gestures.ZoomGesture"
+            }
+          }
+        ]
+      }
+    ],
+    "classes": [
+      {
+        "items": [
+          {
+            "id": {
+              "id": "fuse/gestures/clickedargs",
+              "parentId": "fuse/gestures",
+              "type": "Class",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/gestures/clickedargs",
+              "href": "fuse/gestures/clickedargs"
+            },
+            "titles": {
+              "indexTitle": "ClickedArgs",
+              "fullyQualifiedIndexTitle": "Fuse.Gestures.ClickedArgs"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/gestures/clickertrigger",
+              "parentId": "fuse/gestures",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/gestures/clickertrigger",
+              "href": "fuse/gestures/clickertrigger"
+            },
+            "titles": {
+              "indexTitle": "ClickerTrigger",
+              "fullyQualifiedIndexTitle": "Fuse.Gestures.ClickerTrigger"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Triggers when a pointer is double tapped (quickly) on a @Visual.",
+              "full": "Triggers when a pointer is double tapped (quickly) on a @Visual."
+            },
+            "id": {
+              "id": "fuse/gestures/doubletappedargs",
+              "parentId": "fuse/gestures",
+              "type": "Class",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/gestures/doubletappedargs",
+              "href": "fuse/gestures/doubletappedargs"
+            },
+            "titles": {
+              "indexTitle": "DoubleTappedArgs",
+              "fullyQualifiedIndexTitle": "Fuse.Gestures.DoubleTappedArgs"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/gestures/keepinviewcommon",
+              "parentId": "fuse/gestures",
+              "type": "Class",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/gestures/keepinviewcommon",
+              "href": "fuse/gestures/keepinviewcommon"
+            },
+            "titles": {
+              "indexTitle": "KeepInViewCommon",
+              "fullyQualifiedIndexTitle": "Fuse.Gestures.KeepInViewCommon"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/gestures/longpressedargs",
+              "parentId": "fuse/gestures",
+              "type": "Class",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/gestures/longpressedargs",
+              "href": "fuse/gestures/longpressedargs"
+            },
+            "titles": {
+              "indexTitle": "LongPressedArgs",
+              "fullyQualifiedIndexTitle": "Fuse.Gestures.LongPressedArgs"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/gestures/tappedargs",
+              "parentId": "fuse/gestures",
+              "type": "Class",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/gestures/tappedargs",
+              "href": "fuse/gestures/tappedargs"
+            },
+            "titles": {
+              "indexTitle": "TappedArgs",
+              "fullyQualifiedIndexTitle": "Fuse.Gestures.TappedArgs"
+            }
+          },
+          {
+            "comment": {
+              "brief": "A `TransformGesture` interprets pointer gestures and modifies an `InteractiveTransform` in response.",
+              "full": "A `TransformGesture` interprets pointer gestures and modifies an `InteractiveTransform` in response.\n\nNote that the `TransformGesture` on its own has no visual impact, it only modifies the `InteractiveTransform`, which provides the actual visual transformation.  For example here is a simple image viewing setup:\n\n    <Panel HitTestMode=\"LocalBounds\">\n        <Image File=\"my_image.jpg\">\n            <InteractiveTransform ux:Name=\"ImageTrans\"/>\n        </Image>\n        <ZoomGesture Target=\"ImageTrans\"/>\n        <PanGesture Target=\"ImageTrans\"/>\n        <RotateGesture Target=\"ImageTrans\"/>\n    </Panel>\n\nOne `InteractiveTransform` can be the target of multiple gestures. They will coorindate correctly with each other to provide a unified experience. The `InteractiveTransform` will contain values that represent the total transformation.\n\nFor a complete list of single-finger gestures such as @Tapped, @LongPress etc., see @Triggers.\n\n## Available gestures\n\n[subclass Fuse.Gestures.TransformGesture]",
+              "attributes": {
+                "topic": "Gestures"
+              }
+            },
+            "id": {
+              "id": "fuse/gestures/transformgesture",
+              "parentId": "fuse/gestures",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/gestures/transformgesture",
+              "href": "fuse/gestures/transformgesture"
+            },
+            "titles": {
+              "indexTitle": "TransformGesture",
+              "fullyQualifiedIndexTitle": "Fuse.Gestures.TransformGesture"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/gestures/whileclickertrigger",
+              "parentId": "fuse/gestures",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/gestures/whileclickertrigger",
+              "href": "fuse/gestures/whileclickertrigger"
+            },
+            "titles": {
+              "indexTitle": "WhileClickerTrigger",
+              "fullyQualifiedIndexTitle": "Fuse.Gestures.WhileClickerTrigger"
+            }
+          }
+        ]
+      }
+    ],
+    "delegates": [
+      {
+        "items": [
+          {
+            "parameters": [
+              {
+                "name": "sender",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              },
+              {
+                "name": "args",
+                "href": "fuse/gestures/clickedargs",
+                "title": "ClickedArgs",
+                "fullyQualifiedTitle": "Fuse.Gestures.ClickedArgs"
+              }
+            ],
+            "id": {
+              "id": "fuse/gestures/clickedhandler",
+              "parentId": "fuse/gestures",
+              "type": "Delegate",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/gestures/clickedhandler",
+              "href": "fuse/gestures/clickedhandler"
+            },
+            "titles": {
+              "indexTitle": "ClickedHandler (object, ClickedArgs)",
+              "fullyQualifiedIndexTitle": "Fuse.Gestures.ClickedHandler (object, Fuse.Gestures.ClickedArgs)"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "sender",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              },
+              {
+                "name": "args",
+                "href": "fuse/gestures/doubletappedargs",
+                "title": "DoubleTappedArgs",
+                "fullyQualifiedTitle": "Fuse.Gestures.DoubleTappedArgs"
+              }
+            ],
+            "id": {
+              "id": "fuse/gestures/doubletappedhandler",
+              "parentId": "fuse/gestures",
+              "type": "Delegate",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/gestures/doubletappedhandler",
+              "href": "fuse/gestures/doubletappedhandler"
+            },
+            "titles": {
+              "indexTitle": "DoubleTappedHandler (object, DoubleTappedArgs)",
+              "fullyQualifiedIndexTitle": "Fuse.Gestures.DoubleTappedHandler (object, Fuse.Gestures.DoubleTappedArgs)"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "sender",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              },
+              {
+                "name": "args",
+                "href": "fuse/gestures/longpressedargs",
+                "title": "LongPressedArgs",
+                "fullyQualifiedTitle": "Fuse.Gestures.LongPressedArgs"
+              }
+            ],
+            "id": {
+              "id": "fuse/gestures/longpressedhandler",
+              "parentId": "fuse/gestures",
+              "type": "Delegate",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/gestures/longpressedhandler",
+              "href": "fuse/gestures/longpressedhandler"
+            },
+            "titles": {
+              "indexTitle": "LongPressedHandler (object, LongPressedArgs)",
+              "fullyQualifiedIndexTitle": "Fuse.Gestures.LongPressedHandler (object, Fuse.Gestures.LongPressedArgs)"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "sender",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              },
+              {
+                "name": "args",
+                "href": "fuse/gestures/tappedargs",
+                "title": "TappedArgs",
+                "fullyQualifiedTitle": "Fuse.Gestures.TappedArgs"
+              }
+            ],
+            "id": {
+              "id": "fuse/gestures/tappedhandler",
+              "parentId": "fuse/gestures",
+              "type": "Delegate",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/gestures/tappedhandler",
+              "href": "fuse/gestures/tappedhandler"
+            },
+            "titles": {
+              "indexTitle": "TappedHandler (object, TappedArgs)",
+              "fullyQualifiedIndexTitle": "Fuse.Gestures.TappedHandler (object, Fuse.Gestures.TappedArgs)"
+            }
+          }
+        ]
+      }
+    ],
+    "enums": [
+      {
+        "items": [
+          {
+            "id": {
+              "id": "fuse/gestures/clickerpointerindex",
+              "parentId": "fuse/gestures",
+              "type": "Enum",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/gestures/clickerpointerindex",
+              "href": "fuse/gestures/clickerpointerindex"
+            },
+            "titles": {
+              "indexTitle": "ClickerPointerIndex",
+              "fullyQualifiedIndexTitle": "Fuse.Gestures.ClickerPointerIndex"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/gestures/edge",
+              "parentId": "fuse/gestures",
+              "type": "Enum",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/gestures/edge",
+              "href": "fuse/gestures/edge"
+            },
+            "titles": {
+              "indexTitle": "Edge",
+              "fullyQualifiedIndexTitle": "Fuse.Gestures.Edge"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/gestures/pointercaptureon",
+              "parentId": "fuse/gestures",
+              "type": "Enum",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/gestures/pointercaptureon",
+              "href": "fuse/gestures/pointercaptureon"
+            },
+            "titles": {
+              "indexTitle": "PointerCaptureOn",
+              "fullyQualifiedIndexTitle": "Fuse.Gestures.PointerCaptureOn"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/gestures/scrolltohow",
+              "parentId": "fuse/gestures",
+              "type": "Enum",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/gestures/scrolltohow",
+              "href": "fuse/gestures/scrolltohow"
+            },
+            "titles": {
+              "indexTitle": "ScrollToHow",
+              "fullyQualifiedIndexTitle": "Fuse.Gestures.ScrollToHow"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Used by [Swiped](api:fuse/gestures/swiped) to only trigger on certain state transitions.",
+              "full": "Used by [Swiped](api:fuse/gestures/swiped) to only trigger on certain state transitions."
+            },
+            "id": {
+              "id": "fuse/gestures/swipedhow",
+              "parentId": "fuse/gestures",
+              "type": "Enum",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/gestures/swipedhow",
+              "href": "fuse/gestures/swipedhow"
+            },
+            "titles": {
+              "indexTitle": "SwipedHow",
+              "fullyQualifiedIndexTitle": "Fuse.Gestures.SwipedHow"
+            }
+          },
+          {
+            "comment": {
+              "brief": "The direction that the pointer was swiped.",
+              "full": "The direction that the pointer was swiped."
+            },
+            "id": {
+              "id": "fuse/gestures/swipedirection",
+              "parentId": "fuse/gestures",
+              "type": "Enum",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/gestures/swipedirection",
+              "href": "fuse/gestures/swipedirection"
+            },
+            "titles": {
+              "indexTitle": "SwipeDirection",
+              "fullyQualifiedIndexTitle": "Fuse.Gestures.SwipeDirection"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Determines the behavior of a @SwipeGesture.",
+              "full": "Determines the behavior of a @SwipeGesture."
+            },
+            "id": {
+              "id": "fuse/gestures/swipetype",
+              "parentId": "fuse/gestures",
+              "type": "Enum",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/gestures/swipetype",
+              "href": "fuse/gestures/swipetype"
+            },
+            "titles": {
+              "indexTitle": "SwipeType",
+              "fullyQualifiedIndexTitle": "Fuse.Gestures.SwipeType"
+            }
+          }
+        ]
+      }
+    ],
+    "interfaces": [
+      {
+        "items": [
+          {
+            "id": {
+              "id": "fuse/gestures/isizeconstraint",
+              "parentId": "fuse/gestures",
+              "type": "Interface",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/gestures/isizeconstraint",
+              "href": "fuse/gestures/isizeconstraint"
+            },
+            "titles": {
+              "indexTitle": "ISizeConstraint",
+              "fullyQualifiedIndexTitle": "Fuse.Gestures.ISizeConstraint"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

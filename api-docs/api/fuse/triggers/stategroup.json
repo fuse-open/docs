@@ -1,0 +1,1621 @@
+{
+  "entity": {
+    "base": {
+      "id": {
+        "id": "fuse/behavior",
+        "parentId": "fuse",
+        "type": "Class",
+        "modifiers": [
+          "public",
+          "abstract"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/behavior",
+        "href": "fuse/behavior"
+      },
+      "titles": {
+        "indexTitle": "Behavior",
+        "fullyQualifiedIndexTitle": "Fuse.Behavior"
+      }
+    },
+    "location": {
+      "namespaceTitle": "Fuse.Triggers",
+      "namespaceUri": "fuse/triggers",
+      "packageName": "Fuse.Triggers",
+      "packageVersion": "1.8.0-rc2"
+    },
+    "inheritance": {
+      "root": {
+        "uri": "uno/object",
+        "title": "object",
+        "children": [
+          {
+            "uri": "uno/ux/propertyobject",
+            "title": "Uno.UX.PropertyObject",
+            "children": [
+              {
+                "uri": "fuse/node",
+                "title": "Fuse.Node",
+                "children": [
+                  {
+                    "uri": "fuse/behavior",
+                    "title": "Fuse.Behavior",
+                    "children": [
+                      {
+                        "uri": "fuse/triggers/stategroup",
+                        "title": "Fuse.Triggers.StateGroup",
+                        "children": [],
+                        "isCurrent": true
+                      }
+                    ],
+                    "isAncestor": true
+                  }
+                ],
+                "isAncestor": true
+              }
+            ],
+            "isAncestor": true
+          }
+        ],
+        "isAncestor": true
+      },
+      "hasInheritance": true
+    },
+    "uxProperties": {
+      "uxNamespaceTitle": "Fuse.Triggers",
+      "uxNamespaceUri": "fuse/triggers",
+      "uxName": "StateGroup"
+    },
+    "implementedInterfaces": [
+      {
+        "id": {
+          "id": "uno/collections/ilist_1",
+          "parentId": "uno/collections",
+          "type": "Interface",
+          "modifiers": [
+            "public",
+            "abstract"
+          ]
+        },
+        "uri": {
+          "idUri": "uno/collections/ilist_1",
+          "href": "uno/collections/ilist_1"
+        },
+        "titles": {
+          "indexTitle": "IList<Binding>",
+          "fullyQualifiedIndexTitle": "Uno.Collections.IList<Fuse.Binding>"
+        }
+      },
+      {
+        "comment": {
+          "brief": "Interface for objects that can have a script engine representation",
+          "full": "Interface for objects that can have a script engine representation"
+        },
+        "id": {
+          "id": "fuse/scripting/iscriptobject",
+          "parentId": "fuse/scripting",
+          "type": "Interface",
+          "modifiers": [
+            "public",
+            "abstract"
+          ]
+        },
+        "uri": {
+          "idUri": "fuse/scripting/iscriptobject",
+          "href": "fuse/scripting/iscriptobject"
+        },
+        "titles": {
+          "indexTitle": "IScriptObject",
+          "fullyQualifiedIndexTitle": "Fuse.Scripting.IScriptObject"
+        }
+      },
+      {
+        "id": {
+          "id": "fuse/iproperties",
+          "parentId": "fuse",
+          "type": "Interface",
+          "modifiers": [
+            "public",
+            "abstract"
+          ]
+        },
+        "uri": {
+          "idUri": "fuse/iproperties",
+          "href": "fuse/iproperties"
+        },
+        "titles": {
+          "indexTitle": "IProperties",
+          "fullyQualifiedIndexTitle": "Fuse.IProperties"
+        }
+      },
+      {
+        "id": {
+          "id": "uno/collections/icollection_1",
+          "parentId": "uno/collections",
+          "type": "Interface",
+          "modifiers": [
+            "public",
+            "abstract"
+          ]
+        },
+        "uri": {
+          "idUri": "uno/collections/icollection_1",
+          "href": "uno/collections/icollection_1"
+        },
+        "titles": {
+          "indexTitle": "ICollection<Binding>",
+          "fullyQualifiedIndexTitle": "Uno.Collections.ICollection<Fuse.Binding>"
+        }
+      },
+      {
+        "id": {
+          "id": "uno/collections/ienumerable_1",
+          "parentId": "uno/collections",
+          "type": "Interface",
+          "modifiers": [
+            "public",
+            "abstract"
+          ]
+        },
+        "uri": {
+          "idUri": "uno/collections/ienumerable_1",
+          "href": "uno/collections/ienumerable_1"
+        },
+        "titles": {
+          "indexTitle": "IEnumerable<Binding>",
+          "fullyQualifiedIndexTitle": "Uno.Collections.IEnumerable<Fuse.Binding>"
+        }
+      }
+    ],
+    "id": {
+      "id": "fuse/triggers/stategroup",
+      "parentId": "fuse/triggers",
+      "type": "UxClass",
+      "modifiers": [
+        "public",
+        "partial"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/triggers/stategroup",
+      "href": "fuse/triggers/stategroup"
+    },
+    "titles": {
+      "pageTitle": "StateGroup Class",
+      "navigationTitle": "StateGroup Class",
+      "fullTitle": "Fuse.Triggers.StateGroup",
+      "indexTitle": "StateGroup",
+      "fullyQualifiedIndexTitle": "Fuse.Triggers.StateGroup"
+    },
+    "syntax": {
+      "uno": "public partial class StateGroup : Fuse.Behavior {}",
+      "ux": "<StateGroup />"
+    },
+    "comment": {
+      "brief": "StateGroup manages a set of @State triggers, making sure only a single @State is active at once.\r\nA @State is a regular @Trigger that is controlled by a @StateGroup.\r\nAnimators inside a @State define what should change while that state is active.\r\n\r\nThe basic structure of a StateGroup looks like this:\r\n\r\n```xml\r\n<StateGroup>\r\n\t<State ux:Name=\"firstState\" />\r\n\t<State ux:Name=\"secondState\" />\r\n</StateGroup>\r\n```\r\n\r\nNow, this setup does nothing at all. We need to add some animators to our @States, so that they actually do something.\r\nWe'll add a @Panel as well, so we have something to animate.\r\n\r\n```xml\r\n<Panel ux:Name=\"thePanel\" Width=\"100\" Height=\"100\" />\r\n\t<StateGroup>\r\n\t\t<State ux:Name=\"firstState\">\r\n\t\t\t<Change thePanel.Color=\"#f00\" />\r\n\t\t</State>\r\n\t\t<State ux:Name=\"secondState\">\r\n\t\t\t<Change thePanel.Color=\"#00f\" />\r\n\t\t</State>\t\r\n\t</StateGroup>\r\n</Panel>\r\n```\r\n\r\nSince the first @State in a StateGroup will be activated by default, the above example will display a red @Panel.\r\n\r\nAt this point, we'd like to switch to a different state somehow. This can be achieved in several ways, as seen below.\r\n\r\n## The `Active` property\r\n\r\nThe `Active` property can be used to activate a particular @State.\r\nThe below example displays a colored @Panel, along with three buttons that change its color.\r\n\r\n```xml\r\n<StackPanel>\r\n\t<Panel ux:Name=\"thePanel\" Width=\"100\" Height=\"100\" />\r\n\r\n\t<StateGroup ux:Name=\"stateGroup\">\r\n\t\t<State ux:Name=\"redState\">\r\n\t\t\t<Change thePanel.Color=\"#f00\" Duration=\"0.2\"/>\r\n\t\t</State>\r\n\t\t<State ux:Name=\"greenState\">\r\n\t\t\t<Change thePanel.Color=\"#0f0\" Duration=\"0.2\"/>\r\n\t\t</State>\r\n\t\t<State ux:Name=\"blueState\">\r\n\t\t\t<Change thePanel.Color=\"#00f\" Duration=\"0.2\"/>\r\n\t\t</State>\r\n\t</StateGroup>\r\n\r\n\t<Grid ColumnCount=\"3\">\r\n\t\t<Button Text=\"Red\">\r\n\t\t\t<Clicked>\r\n\t\t\t\t<Set stateGroup.Active=\"redState\"/>\r\n\t\t\t</Clicked>\r\n\t\t</Button>\r\n\t\t<Button Text=\"Green\">\r\n\t\t\t<Clicked>\r\n\t\t\t\t<Set stateGroup.Active=\"greenState\"/>\r\n\t\t\t</Clicked>\r\n\t\t</Button>\r\n\t\t<Button Text=\"Blue\">\r\n\t\t\t<Clicked>\r\n\t\t\t\t<Set stateGroup.Active=\"blueState\"/>\r\n\t\t\t</Clicked>\r\n\t\t</Button>\r\n\t</Grid>\r\n</StackPanel>\r\n```\r\n\r\n## TransitionState\r\n\r\nInstead of directly jumping to a particular state, the @TransitionState action can be used to advance to the next @State in a StateGroup, following the order in which they are declared.\r\nIf a @TransitionState is triggered while the last @State is active, it wraps around to activate the first @State.\r\n\r\nThe following example displays a panel that will cycle its color between red, green and blue when clicked.\r\n\r\n```xml\r\n<Panel ux:Name=\"thePanel\" Width=\"100\" Height=\"100\">\r\n\t<StateGroup ux:Name=\"stateGroup\">\r\n\t\t<State ux:Name=\"redState\">\r\n\t\t\t<Change thePanel.Color=\"#f00\" Duration=\"0.2\"/>\r\n\t\t</State>\r\n\t\t<State ux:Name=\"greenState\">\r\n\t\t\t<Change thePanel.Color=\"#0f0\" Duration=\"0.2\"/>\r\n\t\t</State>\r\n\t\t<State ux:Name=\"blueState\">\r\n\t\t\t<Change thePanel.Color=\"#00f\" Duration=\"0.2\"/>\r\n\t\t</State>\r\n\t</StateGroup>\r\n\r\n\t<Clicked>\r\n\t\t<TransitionState Type=\"Next\" Target=\"stateGroup\" />\r\n\t</Clicked>\r\n</Panel>\r\n```\r\n\r\n## Controlling StateGroup using JavaScript\r\n\r\nA `StateGroup` may be controlled via its JavaScript interface.\r\nThis is done either by calling the `goto(state)` or `gotoNext()` methods on the @StateGroup itself, or by calling the `goto()` method on a particular @State.\r\n\r\n```xml\r\n<JavaScript>\r\n\texports.gotoNextState = function()\r\n\t{\r\n\t\tstateGroup.gotoNext();\r\n\t}\r\n\r\n\texports.gotoSecondState = function()\r\n\t{\r\n\t\tstateGroup.goto(secondState);\r\n\t}\r\n\r\n\texports.gotoThirdState = function()\r\n\t{\r\n\t\tthirdState.goto();\r\n\t}\r\n</JavaScript>\r\n\r\n<StateGroup ux:Name=\"stateGroup\">\r\n\t<State ux:Name=\"firstState\">\r\n\t\t<!-- ... -->\t\r\n\t</State>\r\n\t<State ux:Name=\"secondState\">\r\n\t\t<!-- ... -->\r\n\t</State>\r\n\t<State ux:Name=\"thirdState\">\r\n\t\t<!-- ... -->\r\n\t</State>\r\n</StateGroup>\r\n\r\n<StackPanel>\r\n\t<Button Clicked=\"{gotoNextState}\" Text=\"Next state\" />\r\n\t<Button Clicked=\"{gotoSecondState}\" Text=\"Second state\" />\r\n\t<Button Clicked=\"{gotoThirdState}\" Text=\"Third state\" />\r\n</StackPanel>\r\n```\r\n\r\n## Transition\r\n\r\nWe can also specify the `Transition` property, which can be either `Exclusive` or `Parallel`.\r\n`Exclusive` means that each state will have to be fully deactivated before the next state becomes active.\r\n`Parallel` means that as one state deactivates, the next one will become active and whatever properties they animate will be interpolated between them.",
+      "full": "StateGroup manages a set of @State triggers, making sure only a single @State is active at once.\r\nA @State is a regular @Trigger that is controlled by a @StateGroup.\r\nAnimators inside a @State define what should change while that state is active.\r\n\r\nThe basic structure of a StateGroup looks like this:\r\n\r\n```xml\r\n<StateGroup>\r\n\t<State ux:Name=\"firstState\" />\r\n\t<State ux:Name=\"secondState\" />\r\n</StateGroup>\r\n```\r\n\r\nNow, this setup does nothing at all. We need to add some animators to our @States, so that they actually do something.\r\nWe'll add a @Panel as well, so we have something to animate.\r\n\r\n```xml\r\n<Panel ux:Name=\"thePanel\" Width=\"100\" Height=\"100\" />\r\n\t<StateGroup>\r\n\t\t<State ux:Name=\"firstState\">\r\n\t\t\t<Change thePanel.Color=\"#f00\" />\r\n\t\t</State>\r\n\t\t<State ux:Name=\"secondState\">\r\n\t\t\t<Change thePanel.Color=\"#00f\" />\r\n\t\t</State>\t\r\n\t</StateGroup>\r\n</Panel>\r\n```\r\n\r\nSince the first @State in a StateGroup will be activated by default, the above example will display a red @Panel.\r\n\r\nAt this point, we'd like to switch to a different state somehow. This can be achieved in several ways, as seen below.\r\n\r\n## The `Active` property\r\n\r\nThe `Active` property can be used to activate a particular @State.\r\nThe below example displays a colored @Panel, along with three buttons that change its color.\r\n\r\n```xml\r\n<StackPanel>\r\n\t<Panel ux:Name=\"thePanel\" Width=\"100\" Height=\"100\" />\r\n\r\n\t<StateGroup ux:Name=\"stateGroup\">\r\n\t\t<State ux:Name=\"redState\">\r\n\t\t\t<Change thePanel.Color=\"#f00\" Duration=\"0.2\"/>\r\n\t\t</State>\r\n\t\t<State ux:Name=\"greenState\">\r\n\t\t\t<Change thePanel.Color=\"#0f0\" Duration=\"0.2\"/>\r\n\t\t</State>\r\n\t\t<State ux:Name=\"blueState\">\r\n\t\t\t<Change thePanel.Color=\"#00f\" Duration=\"0.2\"/>\r\n\t\t</State>\r\n\t</StateGroup>\r\n\r\n\t<Grid ColumnCount=\"3\">\r\n\t\t<Button Text=\"Red\">\r\n\t\t\t<Clicked>\r\n\t\t\t\t<Set stateGroup.Active=\"redState\"/>\r\n\t\t\t</Clicked>\r\n\t\t</Button>\r\n\t\t<Button Text=\"Green\">\r\n\t\t\t<Clicked>\r\n\t\t\t\t<Set stateGroup.Active=\"greenState\"/>\r\n\t\t\t</Clicked>\r\n\t\t</Button>\r\n\t\t<Button Text=\"Blue\">\r\n\t\t\t<Clicked>\r\n\t\t\t\t<Set stateGroup.Active=\"blueState\"/>\r\n\t\t\t</Clicked>\r\n\t\t</Button>\r\n\t</Grid>\r\n</StackPanel>\r\n```\r\n\r\n## TransitionState\r\n\r\nInstead of directly jumping to a particular state, the @TransitionState action can be used to advance to the next @State in a StateGroup, following the order in which they are declared.\r\nIf a @TransitionState is triggered while the last @State is active, it wraps around to activate the first @State.\r\n\r\nThe following example displays a panel that will cycle its color between red, green and blue when clicked.\r\n\r\n```xml\r\n<Panel ux:Name=\"thePanel\" Width=\"100\" Height=\"100\">\r\n\t<StateGroup ux:Name=\"stateGroup\">\r\n\t\t<State ux:Name=\"redState\">\r\n\t\t\t<Change thePanel.Color=\"#f00\" Duration=\"0.2\"/>\r\n\t\t</State>\r\n\t\t<State ux:Name=\"greenState\">\r\n\t\t\t<Change thePanel.Color=\"#0f0\" Duration=\"0.2\"/>\r\n\t\t</State>\r\n\t\t<State ux:Name=\"blueState\">\r\n\t\t\t<Change thePanel.Color=\"#00f\" Duration=\"0.2\"/>\r\n\t\t</State>\r\n\t</StateGroup>\r\n\r\n\t<Clicked>\r\n\t\t<TransitionState Type=\"Next\" Target=\"stateGroup\" />\r\n\t</Clicked>\r\n</Panel>\r\n```\r\n\r\n## Controlling StateGroup using JavaScript\r\n\r\nA `StateGroup` may be controlled via its JavaScript interface.\r\nThis is done either by calling the `goto(state)` or `gotoNext()` methods on the @StateGroup itself, or by calling the `goto()` method on a particular @State.\r\n\r\n```xml\r\n<JavaScript>\r\n\texports.gotoNextState = function()\r\n\t{\r\n\t\tstateGroup.gotoNext();\r\n\t}\r\n\r\n\texports.gotoSecondState = function()\r\n\t{\r\n\t\tstateGroup.goto(secondState);\r\n\t}\r\n\r\n\texports.gotoThirdState = function()\r\n\t{\r\n\t\tthirdState.goto();\r\n\t}\r\n</JavaScript>\r\n\r\n<StateGroup ux:Name=\"stateGroup\">\r\n\t<State ux:Name=\"firstState\">\r\n\t\t<!-- ... -->\t\r\n\t</State>\r\n\t<State ux:Name=\"secondState\">\r\n\t\t<!-- ... -->\r\n\t</State>\r\n\t<State ux:Name=\"thirdState\">\r\n\t\t<!-- ... -->\r\n\t</State>\r\n</StateGroup>\r\n\r\n<StackPanel>\r\n\t<Button Clicked=\"{gotoNextState}\" Text=\"Next state\" />\r\n\t<Button Clicked=\"{gotoSecondState}\" Text=\"Second state\" />\r\n\t<Button Clicked=\"{gotoThirdState}\" Text=\"Third state\" />\r\n</StackPanel>\r\n```\r\n\r\n## Transition\r\n\r\nWe can also specify the `Transition` property, which can be either `Exclusive` or `Parallel`.\r\n`Exclusive` means that each state will have to be fully deactivated before the next state becomes active.\r\n`Parallel` means that as one state deactivates, the next one will become active and whatever properties they animate will be interpolated between them."
+    }
+  },
+  "tableOfContents": {
+    "uxProperties": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/triggers/stategroup",
+            "parentId": "fuse/triggers",
+            "type": "UxClass",
+            "modifiers": [
+              "public",
+              "partial"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/triggers/stategroup",
+            "href": "fuse/triggers/stategroup"
+          },
+          "titles": {
+            "indexTitle": "StateGroup",
+            "fullyQualifiedIndexTitle": "Fuse.Triggers.StateGroup"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "fuse/triggers/state",
+              "title": "State",
+              "fullyQualifiedTitle": "Fuse.Triggers.State"
+            },
+            "id": {
+              "id": "fuse/triggers/stategroup/active",
+              "parentId": "fuse/triggers/stategroup",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/stategroup/active",
+              "href": "fuse/triggers/stategroup/active"
+            },
+            "titles": {
+              "indexTitle": "Active",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.StateGroup.Active"
+            }
+          },
+          {
+            "returns": {
+              "href": "fuse/triggers/state",
+              "title": "State",
+              "fullyQualifiedTitle": "Fuse.Triggers.State"
+            },
+            "id": {
+              "id": "fuse/triggers/stategroup/rest",
+              "parentId": "fuse/triggers/stategroup",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/stategroup/rest",
+              "href": "fuse/triggers/stategroup/rest"
+            },
+            "titles": {
+              "indexTitle": "Rest",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.StateGroup.Rest"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/collections/ilist_1",
+              "title": "IList<State>",
+              "fullyQualifiedTitle": "Uno.Collections.IList<Fuse.Triggers.State>"
+            },
+            "flags": {
+              "uxContent": true
+            },
+            "id": {
+              "id": "fuse/triggers/stategroup/states",
+              "parentId": "fuse/triggers/stategroup",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/stategroup/states",
+              "href": "fuse/triggers/stategroup/states"
+            },
+            "titles": {
+              "indexTitle": "States",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.StateGroup.States"
+            }
+          },
+          {
+            "returns": {
+              "href": "fuse/triggers/statetransition",
+              "title": "StateTransition",
+              "fullyQualifiedTitle": "Fuse.Triggers.StateTransition"
+            },
+            "id": {
+              "id": "fuse/triggers/stategroup/transition",
+              "parentId": "fuse/triggers/stategroup",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/stategroup/transition",
+              "href": "fuse/triggers/stategroup/transition"
+            },
+            "titles": {
+              "indexTitle": "Transition",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.StateGroup.Transition"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/node",
+            "parentId": "fuse",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract",
+              "partial"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/node",
+            "href": "fuse/node"
+          },
+          "titles": {
+            "indexTitle": "Node",
+            "fullyQualifiedIndexTitle": "Fuse.Node"
+          }
+        },
+        "items": [
+          {
+            "comment": {
+              "brief": "The list of bindings belonging to this node.",
+              "full": "The list of bindings belonging to this node."
+            },
+            "returns": {
+              "href": "uno/collections/ilist_1",
+              "title": "IList<Binding>",
+              "fullyQualifiedTitle": "Uno.Collections.IList<Fuse.Binding>"
+            },
+            "flags": {
+              "uxContent": true
+            },
+            "id": {
+              "id": "fuse/triggers/stategroup/bindings",
+              "parentId": "fuse/triggers/stategroup",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/stategroup/bindings",
+              "href": "fuse/node/bindings",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Bindings",
+              "fullyQualifiedIndexTitle": "Fuse.Node.Bindings"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Run-time name of the node.\nThis property is automatically set using the ux:Name attribute.",
+              "full": "Run-time name of the node.\nThis property is automatically set using the ux:Name attribute."
+            },
+            "returns": {
+              "href": "uno/ux/selector",
+              "title": "Selector",
+              "fullyQualifiedTitle": "Uno.UX.Selector"
+            },
+            "id": {
+              "id": "fuse/triggers/stategroup/name",
+              "parentId": "fuse/triggers/stategroup",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/stategroup/name",
+              "href": "fuse/node/name",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Name",
+              "fullyQualifiedIndexTitle": "Fuse.Node.Name"
+            }
+          }
+        ]
+      }
+    ],
+    "attachedUxProperties": [
+      {
+        "items": [
+          {
+            "comment": {
+              "brief": "The `ux:Global` attribute creates a global resource that is accessible everywhere in UX markup.",
+              "full": "The `ux:Global` attribute creates a global resource that is accessible everywhere in UX markup.\n\nSee @Resources for more information.\n\nThe `ux:Global` attribute on an UX element creates a single object (singleton) that is globally available.\nUsing this attribute will prevent the object from being inserted by default the object at its defined location\nin the UX tree."
+            },
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "parameters": [
+              {
+                "name": "obj",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              },
+              {
+                "name": "key",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              }
+            ],
+            "id": {
+              "id": "fuse/triggers/stategroup/resource_globalkey_setglobalkey_4c3ac72d",
+              "parentId": "fuse/triggers/stategroup",
+              "type": "AttachedUxProperty",
+              "modifiers": []
+            },
+            "uri": {
+              "idUri": "fuse/triggers/stategroup/resource_globalkey_setglobalkey_4c3ac72d",
+              "href": "uno/ux/resource/setglobalkey_4c3ac72d",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Resource.GlobalKey",
+              "fullyQualifiedIndexTitle": "Resource.GlobalKey"
+            }
+          }
+        ]
+      }
+    ],
+    "jsMethods": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/triggers/stategroup",
+            "parentId": "fuse/triggers",
+            "type": "UxClass",
+            "modifiers": [
+              "public",
+              "partial"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/triggers/stategroup",
+            "href": "fuse/triggers/stategroup"
+          },
+          "titles": {
+            "indexTitle": "StateGroup",
+            "fullyQualifiedIndexTitle": "Fuse.Triggers.StateGroup"
+          }
+        },
+        "items": [
+          {
+            "comment": {
+              "brief": "Transition to a target state.",
+              "full": "Transition to a target state.",
+              "attributes": {
+                "scriptMethod": {
+                  "name": "goto",
+                  "parameters": [
+                    "state"
+                  ]
+                },
+                "parameters": [
+                  {
+                    "name": "name",
+                    "description": "The name of the target state."
+                  },
+                  {
+                    "name": "state",
+                    "description": "The state object for the target state. This must be a @State that alreadyexists in this @StateGroup."
+                  }
+                ]
+              }
+            },
+            "parameters": [
+              {
+                "name": "n",
+                "href": "fuse/triggers/stategroup",
+                "title": "StateGroup",
+                "fullyQualifiedTitle": "Fuse.Triggers.StateGroup"
+              },
+              {
+                "name": "args",
+                "href": "uno/object",
+                "title": "object[]",
+                "fullyQualifiedTitle": "object[]"
+              }
+            ],
+            "id": {
+              "id": "fuse/triggers/stategroup/goto__67de6aed",
+              "parentId": "fuse/triggers/stategroup",
+              "type": "JsMethod",
+              "modifiers": [
+                "private",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/stategroup/goto__67de6aed",
+              "href": "fuse/triggers/stategroup/goto__67de6aed"
+            },
+            "titles": {
+              "indexTitle": "goto_(StateGroup, object[])",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.StateGroup.goto_(Fuse.Triggers.StateGroup, object[])"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Transition to the next state (the one after the current one). This wraps around to the first state\nif at the last one.",
+              "full": "Transition to the next state (the one after the current one). This wraps around to the first state\nif at the last one.",
+              "attributes": {
+                "scriptMethod": {
+                  "name": "gotoNext",
+                  "parameters": [
+                    ""
+                  ]
+                }
+              }
+            },
+            "parameters": [
+              {
+                "name": "n",
+                "href": "fuse/triggers/stategroup",
+                "title": "StateGroup",
+                "fullyQualifiedTitle": "Fuse.Triggers.StateGroup"
+              }
+            ],
+            "id": {
+              "id": "fuse/triggers/stategroup/gotonext_7fb0f734",
+              "parentId": "fuse/triggers/stategroup",
+              "type": "JsMethod",
+              "modifiers": [
+                "private",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/stategroup/gotonext_7fb0f734",
+              "href": "fuse/triggers/stategroup/gotonext_7fb0f734"
+            },
+            "titles": {
+              "indexTitle": "gotoNext(StateGroup)",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.StateGroup.gotoNext(Fuse.Triggers.StateGroup)"
+            }
+          }
+        ]
+      }
+    ],
+    "constructors": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/triggers/stategroup",
+            "parentId": "fuse/triggers",
+            "type": "UxClass",
+            "modifiers": [
+              "public",
+              "partial"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/triggers/stategroup",
+            "href": "fuse/triggers/stategroup"
+          },
+          "titles": {
+            "indexTitle": "StateGroup",
+            "fullyQualifiedIndexTitle": "Fuse.Triggers.StateGroup"
+          }
+        },
+        "items": [
+          {
+            "comment": {
+              "brief": "Creates a new StateGroup",
+              "full": "Creates a new StateGroup"
+            },
+            "id": {
+              "id": "fuse/triggers/stategroup/_ctor",
+              "parentId": "fuse/triggers/stategroup",
+              "type": "Constructor",
+              "modifiers": [
+                "public",
+                "generated"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/stategroup/_ctor",
+              "href": "fuse/triggers/stategroup/_ctor"
+            },
+            "titles": {
+              "indexTitle": "StateGroup",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.StateGroup.StateGroup"
+            }
+          }
+        ]
+      }
+    ],
+    "properties": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/node",
+            "parentId": "fuse",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract",
+              "partial"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/node",
+            "href": "fuse/node"
+          },
+          "titles": {
+            "indexTitle": "Node",
+            "fullyQualifiedIndexTitle": "Fuse.Node"
+          }
+        },
+        "items": [
+          {
+            "comment": {
+              "brief": "The context parent is the semantic parent of this node. It is where non-UI structure should\nbe resolved, like looking for the DataContext, a Navigation, or other semantic item.",
+              "full": "The context parent is the semantic parent of this node. It is where non-UI structure should\nbe resolved, like looking for the DataContext, a Navigation, or other semantic item."
+            },
+            "returns": {
+              "href": "fuse/node",
+              "title": "Node",
+              "fullyQualifiedTitle": "Fuse.Node"
+            },
+            "id": {
+              "id": "fuse/triggers/stategroup/contextparent",
+              "parentId": "fuse/triggers/stategroup",
+              "type": "Property",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/stategroup/contextparent",
+              "href": "fuse/node/contextparent",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "ContextParent",
+              "fullyQualifiedIndexTitle": "Fuse.Node.ContextParent"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Whether rooting for this node is completed.\nReturns false if unrooting has started.",
+              "full": "Whether rooting for this node is completed.\nReturns false if unrooting has started."
+            },
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "id": {
+              "id": "fuse/triggers/stategroup/isrootingcompleted",
+              "parentId": "fuse/triggers/stategroup",
+              "type": "Property",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/stategroup/isrootingcompleted",
+              "href": "fuse/node/isrootingcompleted",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "IsRootingCompleted",
+              "fullyQualifiedIndexTitle": "Fuse.Node.IsRootingCompleted"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Whether rooting of this node has started.\nNote that even if this property returns true, rooting may not yet be\ncompleted for the node. See also @IsRootingCompleted.",
+              "full": "Whether rooting of this node has started.\nNote that even if this property returns true, rooting may not yet be\ncompleted for the node. See also @IsRootingCompleted."
+            },
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "id": {
+              "id": "fuse/triggers/stategroup/isrootingstarted",
+              "parentId": "fuse/triggers/stategroup",
+              "type": "Property",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/stategroup/isrootingstarted",
+              "href": "fuse/node/isrootingstarted",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "IsRootingStarted",
+              "fullyQualifiedIndexTitle": "Fuse.Node.IsRootingStarted"
+            }
+          },
+          {
+            "comment": {
+              "brief": "The parent @Visual of this node. Will return null if the node is not rooted.",
+              "full": "The parent @Visual of this node. Will return null if the node is not rooted."
+            },
+            "returns": {
+              "href": "fuse/visual",
+              "title": "Visual",
+              "fullyQualifiedTitle": "Fuse.Visual"
+            },
+            "id": {
+              "id": "fuse/triggers/stategroup/parent",
+              "parentId": "fuse/triggers/stategroup",
+              "type": "Property",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/stategroup/parent",
+              "href": "fuse/node/parent",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Parent",
+              "fullyQualifiedIndexTitle": "Fuse.Node.Parent"
+            }
+          },
+          {
+            "comment": {
+              "brief": "A linked list holding data for extrinsic properties.",
+              "full": "A linked list holding data for extrinsic properties."
+            },
+            "returns": {
+              "href": "fuse/properties",
+              "title": "Properties",
+              "fullyQualifiedTitle": "Fuse.Properties"
+            },
+            "id": {
+              "id": "fuse/triggers/stategroup/properties",
+              "parentId": "fuse/triggers/stategroup",
+              "type": "Property",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/stategroup/properties",
+              "href": "fuse/node/properties",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Properties",
+              "fullyQualifiedIndexTitle": "Fuse.Node.Properties"
+            }
+          }
+        ]
+      }
+    ],
+    "methods": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/triggers/stategroup",
+            "parentId": "fuse/triggers",
+            "type": "UxClass",
+            "modifiers": [
+              "public",
+              "partial"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/triggers/stategroup",
+            "href": "fuse/triggers/stategroup"
+          },
+          "titles": {
+            "indexTitle": "StateGroup",
+            "fullyQualifiedIndexTitle": "Fuse.Triggers.StateGroup"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/object",
+              "title": "object",
+              "fullyQualifiedTitle": "object"
+            },
+            "parameters": [
+              {
+                "name": "name",
+                "href": "uno/ux/selector",
+                "title": "Selector",
+                "fullyQualifiedTitle": "Uno.UX.Selector"
+              },
+              {
+                "name": "acceptor",
+                "href": "uno/predicate_1",
+                "title": "Predicate<object> (object)",
+                "fullyQualifiedTitle": "Uno.Predicate<object> (object)"
+              }
+            ],
+            "id": {
+              "id": "fuse/triggers/stategroup/findobjectbyname_1ed67cfa",
+              "parentId": "fuse/triggers/stategroup",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/stategroup/findobjectbyname_1ed67cfa",
+              "href": "fuse/triggers/stategroup/findobjectbyname_1ed67cfa"
+            },
+            "titles": {
+              "indexTitle": "FindObjectByName(Selector, Predicate<object> (object))",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.StateGroup.FindObjectByName(Uno.UX.Selector, Uno.Predicate<object> (object))"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/triggers/stategroup/gotonextstate",
+              "parentId": "fuse/triggers/stategroup",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/stategroup/gotonextstate",
+              "href": "fuse/triggers/stategroup/gotonextstate"
+            },
+            "titles": {
+              "indexTitle": "GotoNextState",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.StateGroup.GotoNextState"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/node",
+            "parentId": "fuse",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract",
+              "partial"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/node",
+            "href": "fuse/node"
+          },
+          "titles": {
+            "indexTitle": "Node",
+            "fullyQualifiedIndexTitle": "Fuse.Node"
+          }
+        },
+        "items": [
+          {
+            "parameters": [
+              {
+                "name": "item",
+                "href": "fuse/binding",
+                "title": "Binding",
+                "fullyQualifiedTitle": "Fuse.Binding"
+              }
+            ],
+            "id": {
+              "id": "fuse/triggers/stategroup/add_cd0f711d",
+              "parentId": "fuse/triggers/stategroup",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/stategroup/add_cd0f711d",
+              "href": "fuse/node/add_cd0f711d",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Add(Binding)",
+              "fullyQualifiedIndexTitle": "Fuse.Node.Add(Fuse.Binding)"
+            }
+          },
+          {
+            "returns": {
+              "isVirtual": true,
+              "title": "T",
+              "fullyQualifiedTitle": "Fuse.T"
+            },
+            "id": {
+              "id": "fuse/triggers/stategroup/findbytype_1",
+              "parentId": "fuse/triggers/stategroup",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/stategroup/findbytype_1",
+              "href": "fuse/node/findbytype_1",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "FindByType<T>",
+              "fullyQualifiedIndexTitle": "Fuse.Node.FindByType<T>"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Finds the first node with a given name that satisfies the given acceptor.\nThe serach algorithm works as follows: Nodes in the subtree are matched first, then\nit matches the nodes in the subtrees ofthe ancestor nodes by turn all the way to the\nroot. If no matching node is found, the function returns null.",
+              "full": "Finds the first node with a given name that satisfies the given acceptor.\nThe serach algorithm works as follows: Nodes in the subtree are matched first, then\nit matches the nodes in the subtrees ofthe ancestor nodes by turn all the way to the\nroot. If no matching node is found, the function returns null."
+            },
+            "returns": {
+              "href": "fuse/node",
+              "title": "Node",
+              "fullyQualifiedTitle": "Fuse.Node"
+            },
+            "parameters": [
+              {
+                "name": "name",
+                "href": "uno/ux/selector",
+                "title": "Selector",
+                "fullyQualifiedTitle": "Uno.UX.Selector"
+              },
+              {
+                "name": "acceptor",
+                "href": "uno/predicate_1",
+                "title": "Predicate<Node> (Node)",
+                "fullyQualifiedTitle": "Uno.Predicate<Fuse.Node> (Fuse.Node)"
+              }
+            ],
+            "id": {
+              "id": "fuse/triggers/stategroup/findnodebyname_66268add",
+              "parentId": "fuse/triggers/stategroup",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/stategroup/findnodebyname_66268add",
+              "href": "fuse/node/findnodebyname_66268add",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "FindNodeByName(Selector, Predicate<Node> (Node))",
+              "fullyQualifiedIndexTitle": "Fuse.Node.FindNodeByName(Uno.UX.Selector, Uno.Predicate<Fuse.Node> (Fuse.Node))"
+            }
+          },
+          {
+            "returns": {
+              "isVirtual": true,
+              "title": "T",
+              "fullyQualifiedTitle": "Fuse.T"
+            },
+            "id": {
+              "id": "fuse/triggers/stategroup/getnearestancestoroftype_1",
+              "parentId": "fuse/triggers/stategroup",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/stategroup/getnearestancestoroftype_1",
+              "href": "fuse/node/getnearestancestoroftype_1",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetNearestAncestorOfType<T>",
+              "fullyQualifiedIndexTitle": "Fuse.Node.GetNearestAncestorOfType<T>"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "index",
+                "href": "uno/int",
+                "title": "int",
+                "fullyQualifiedTitle": "int"
+              },
+              {
+                "name": "item",
+                "href": "fuse/binding",
+                "title": "Binding",
+                "fullyQualifiedTitle": "Fuse.Binding"
+              }
+            ],
+            "id": {
+              "id": "fuse/triggers/stategroup/insert_4036b6cf",
+              "parentId": "fuse/triggers/stategroup",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/stategroup/insert_4036b6cf",
+              "href": "fuse/node/insert_4036b6cf",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Insert(int, Binding)",
+              "fullyQualifiedIndexTitle": "Fuse.Node.Insert(int, Fuse.Binding)"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Returns the next sibling node of the given type.",
+              "full": "Returns the next sibling node of the given type."
+            },
+            "returns": {
+              "isVirtual": true,
+              "title": "T",
+              "fullyQualifiedTitle": "Fuse.T"
+            },
+            "id": {
+              "id": "fuse/triggers/stategroup/nextsibling_1",
+              "parentId": "fuse/triggers/stategroup",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/stategroup/nextsibling_1",
+              "href": "fuse/node/nextsibling_1",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "NextSibling<T>",
+              "fullyQualifiedIndexTitle": "Fuse.Node.NextSibling<T>"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "key",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              },
+              {
+                "name": "newValue",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              }
+            ],
+            "id": {
+              "id": "fuse/triggers/stategroup/ondatachanged_d062e5a9",
+              "parentId": "fuse/triggers/stategroup",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/stategroup/ondatachanged_d062e5a9",
+              "href": "fuse/node/ondatachanged_d062e5a9",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "OnDataChanged(string, object)",
+              "fullyQualifiedIndexTitle": "Fuse.Node.OnDataChanged(string, object)"
+            }
+          },
+          {
+            "comment": {
+              "brief": "If you override `OnRooted` you must call `base.OnRooted()` first in your derived class. No other processing should happen first, otherwise you might end up in an undefined state.",
+              "full": "If you override `OnRooted` you must call `base.OnRooted()` first in your derived class. No other processing should happen first, otherwise you might end up in an undefined state."
+            },
+            "id": {
+              "id": "fuse/triggers/stategroup/onrooted",
+              "parentId": "fuse/triggers/stategroup",
+              "type": "Method",
+              "modifiers": [
+                "protected",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/stategroup/onrooted",
+              "href": "fuse/node/onrooted",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "OnRooted",
+              "fullyQualifiedIndexTitle": "Fuse.Node.OnRooted"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/triggers/stategroup/onunrooted",
+              "parentId": "fuse/triggers/stategroup",
+              "type": "Method",
+              "modifiers": [
+                "protected",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/stategroup/onunrooted",
+              "href": "fuse/node/onunrooted",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "OnUnrooted",
+              "fullyQualifiedIndexTitle": "Fuse.Node.OnUnrooted"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Returns the next sibling node of the given type.",
+              "full": "Returns the next sibling node of the given type."
+            },
+            "returns": {
+              "isVirtual": true,
+              "title": "T",
+              "fullyQualifiedTitle": "Fuse.T"
+            },
+            "id": {
+              "id": "fuse/triggers/stategroup/previoussibling_1",
+              "parentId": "fuse/triggers/stategroup",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/stategroup/previoussibling_1",
+              "href": "fuse/node/previoussibling_1",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "PreviousSibling<T>",
+              "fullyQualifiedIndexTitle": "Fuse.Node.PreviousSibling<T>"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "parameters": [
+              {
+                "name": "item",
+                "href": "fuse/binding",
+                "title": "Binding",
+                "fullyQualifiedTitle": "Fuse.Binding"
+              }
+            ],
+            "id": {
+              "id": "fuse/triggers/stategroup/remove_cd0f711d",
+              "parentId": "fuse/triggers/stategroup",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/stategroup/remove_cd0f711d",
+              "href": "fuse/node/remove_cd0f711d",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Remove(Binding)",
+              "fullyQualifiedIndexTitle": "Fuse.Node.Remove(Fuse.Binding)"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/triggers/stategroup/softdispose",
+              "parentId": "fuse/triggers/stategroup",
+              "type": "Method",
+              "modifiers": [
+                "protected",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/stategroup/softdispose",
+              "href": "fuse/node/softdispose",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "SoftDispose",
+              "fullyQualifiedIndexTitle": "Fuse.Node.SoftDispose"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "id": {
+              "id": "fuse/triggers/stategroup/subtreetostring",
+              "parentId": "fuse/triggers/stategroup",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/stategroup/subtreetostring",
+              "href": "fuse/node/subtreetostring",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "SubtreeToString",
+              "fullyQualifiedIndexTitle": "Fuse.Node.SubtreeToString"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "sb",
+                "href": "uno/text/stringbuilder",
+                "title": "StringBuilder",
+                "fullyQualifiedTitle": "Uno.Text.StringBuilder"
+              },
+              {
+                "name": "indent",
+                "href": "uno/int",
+                "title": "int",
+                "fullyQualifiedTitle": "int"
+              }
+            ],
+            "id": {
+              "id": "fuse/triggers/stategroup/subtreetostring_efe5f5b8",
+              "parentId": "fuse/triggers/stategroup",
+              "type": "Method",
+              "modifiers": [
+                "protected",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/stategroup/subtreetostring_efe5f5b8",
+              "href": "fuse/node/subtreetostring_efe5f5b8",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "SubtreeToString(StringBuilder, int)",
+              "fullyQualifiedIndexTitle": "Fuse.Node.SubtreeToString(Uno.Text.StringBuilder, int)"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "parameters": [
+              {
+                "name": "key",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              },
+              {
+                "name": "acceptor",
+                "href": "uno/predicate_1",
+                "title": "Predicate<object> (object)",
+                "fullyQualifiedTitle": "Uno.Predicate<object> (object)"
+              },
+              {
+                "name": "resource",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              }
+            ],
+            "id": {
+              "id": "fuse/triggers/stategroup/trygetresource_5317754b",
+              "parentId": "fuse/triggers/stategroup",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/stategroup/trygetresource_5317754b",
+              "href": "fuse/node/trygetresource_5317754b",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "TryGetResource(string, Predicate<object> (object), object)",
+              "fullyQualifiedIndexTitle": "Fuse.Node.TryGetResource(string, Uno.Predicate<object> (object), object)"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "action",
+                "href": "uno/action_1",
+                "title": "Action<Node> (Node)",
+                "fullyQualifiedTitle": "Uno.Action<Fuse.Node> (Fuse.Node)"
+              }
+            ],
+            "id": {
+              "id": "fuse/triggers/stategroup/visitsubtree_7a20b182",
+              "parentId": "fuse/triggers/stategroup",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/stategroup/visitsubtree_7a20b182",
+              "href": "fuse/node/visitsubtree_7a20b182",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "VisitSubtree(Action<Node> (Node))",
+              "fullyQualifiedIndexTitle": "Fuse.Node.VisitSubtree(Uno.Action<Fuse.Node> (Fuse.Node))"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "uno/ux/propertyobject",
+            "parentId": "uno/ux",
+            "type": "Class",
+            "modifiers": [
+              "public"
+            ]
+          },
+          "uri": {
+            "idUri": "uno/ux/propertyobject",
+            "href": "uno/ux/propertyobject"
+          },
+          "titles": {
+            "indexTitle": "PropertyObject",
+            "fullyQualifiedIndexTitle": "Uno.UX.PropertyObject"
+          }
+        },
+        "items": [
+          {
+            "parameters": [
+              {
+                "name": "listener",
+                "href": "uno/ux/ipropertylistener",
+                "title": "IPropertyListener",
+                "fullyQualifiedTitle": "Uno.UX.IPropertyListener"
+              }
+            ],
+            "id": {
+              "id": "fuse/triggers/stategroup/addpropertylistener_496a874a",
+              "parentId": "fuse/triggers/stategroup",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/stategroup/addpropertylistener_496a874a",
+              "href": "uno/ux/propertyobject/addpropertylistener_496a874a",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "AddPropertyListener(IPropertyListener)",
+              "fullyQualifiedIndexTitle": "Uno.UX.PropertyObject.AddPropertyListener(Uno.UX.IPropertyListener)"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "property",
+                "href": "uno/ux/selector",
+                "title": "Selector",
+                "fullyQualifiedTitle": "Uno.UX.Selector"
+              }
+            ],
+            "id": {
+              "id": "fuse/triggers/stategroup/onpropertychanged_16d735f3",
+              "parentId": "fuse/triggers/stategroup",
+              "type": "Method",
+              "modifiers": [
+                "protected"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/stategroup/onpropertychanged_16d735f3",
+              "href": "uno/ux/propertyobject/onpropertychanged_16d735f3",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "OnPropertyChanged(Selector)",
+              "fullyQualifiedIndexTitle": "Uno.UX.PropertyObject.OnPropertyChanged(Uno.UX.Selector)"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "property",
+                "href": "uno/ux/selector",
+                "title": "Selector",
+                "fullyQualifiedTitle": "Uno.UX.Selector"
+              },
+              {
+                "name": "origin",
+                "href": "uno/ux/ipropertylistener",
+                "title": "IPropertyListener",
+                "fullyQualifiedTitle": "Uno.UX.IPropertyListener"
+              }
+            ],
+            "id": {
+              "id": "fuse/triggers/stategroup/onpropertychanged_6422fe92",
+              "parentId": "fuse/triggers/stategroup",
+              "type": "Method",
+              "modifiers": [
+                "protected",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/stategroup/onpropertychanged_6422fe92",
+              "href": "uno/ux/propertyobject/onpropertychanged_6422fe92",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "OnPropertyChanged(Selector, IPropertyListener)",
+              "fullyQualifiedIndexTitle": "Uno.UX.PropertyObject.OnPropertyChanged(Uno.UX.Selector, Uno.UX.IPropertyListener)"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "listener",
+                "href": "uno/ux/ipropertylistener",
+                "title": "IPropertyListener",
+                "fullyQualifiedTitle": "Uno.UX.IPropertyListener"
+              }
+            ],
+            "id": {
+              "id": "fuse/triggers/stategroup/removepropertylistener_496a874a",
+              "parentId": "fuse/triggers/stategroup",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/stategroup/removepropertylistener_496a874a",
+              "href": "uno/ux/propertyobject/removepropertylistener_496a874a",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "RemovePropertyListener(IPropertyListener)",
+              "fullyQualifiedIndexTitle": "Uno.UX.PropertyObject.RemovePropertyListener(Uno.UX.IPropertyListener)"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "uno/object",
+            "parentId": "uno",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "intrinsic"
+            ]
+          },
+          "uri": {
+            "idUri": "uno/object",
+            "href": "uno/object"
+          },
+          "titles": {
+            "indexTitle": "object",
+            "fullyQualifiedIndexTitle": "object"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "parameters": [
+              {
+                "name": "o",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              }
+            ],
+            "id": {
+              "id": "fuse/triggers/stategroup/equals_a09c80e3",
+              "parentId": "fuse/triggers/stategroup",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/stategroup/equals_a09c80e3",
+              "href": "uno/object/equals_a09c80e3",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Equals(object)",
+              "fullyQualifiedIndexTitle": "Uno.Object.Equals(object)"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/int",
+              "title": "int",
+              "fullyQualifiedTitle": "int"
+            },
+            "id": {
+              "id": "fuse/triggers/stategroup/gethashcode",
+              "parentId": "fuse/triggers/stategroup",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/stategroup/gethashcode",
+              "href": "uno/object/gethashcode",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetHashCode",
+              "fullyQualifiedIndexTitle": "Uno.Object.GetHashCode"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/type",
+              "title": "Type",
+              "fullyQualifiedTitle": "Uno.Type"
+            },
+            "id": {
+              "id": "fuse/triggers/stategroup/gettype",
+              "parentId": "fuse/triggers/stategroup",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/stategroup/gettype",
+              "href": "uno/object/gettype",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetType",
+              "fullyQualifiedIndexTitle": "Uno.Object.GetType"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "id": {
+              "id": "fuse/triggers/stategroup/tostring",
+              "parentId": "fuse/triggers/stategroup",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/stategroup/tostring",
+              "href": "uno/object/tostring",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "ToString",
+              "fullyQualifiedIndexTitle": "Uno.Object.ToString"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
