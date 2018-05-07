@@ -1,6 +1,6 @@
 # Polyfills
 
-FuseJS executes in a (minimal) EcmaScript 5.1 environment on all supported platforms. Because there is no web browser involved, FuseJS provides polyfills for some browser functionality required in order to make third party libraries work. These implementations are not necessarily complete at this point, so please report any bugs and feature requests in the [forum](/community/forums). If you don't want these polyfills injected by default, contact us and we will help you change your project file.
+FuseJS executes in a (minimal) EcmaScript 5.1 environment on all supported platforms. Because there is no web browser involved, FuseJS provides polyfills for some browser functionality required in order to make third party libraries work. These implementations are not necessarily complete at this point, so please report any bugs and feature requests in the [forum](https://forums.fusetools.com/). If you don't want these polyfills injected by default, contact us and we will help you change your project file.
 
 ## Currently supported polyfills
 

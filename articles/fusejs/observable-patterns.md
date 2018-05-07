@@ -3,7 +3,7 @@
 There are cases where you need to asynchronously fetch data in response to the value of an `Observable` changing without exiting the `Observable` domain.
 We can achieve this in an elegant way using a combination of `map()` and `inner()`.
 
-In the below example, we [map](/observable-api#map-func-item) over each item (just one in this case) of our input Observable, returning an Observable which will be updated to contain our fetched data when it becomes available.
+In the below example, we [map](articles:fusejs/observable-api.md#map-func-item) over each item (just one in this case) of our input Observable, returning an Observable which will be updated to contain our fetched data when it becomes available.
 This will result in an Observable of an Observable of our future data – *almost* what we want.
 We therefore use [inner()](#inner) to "unwrap" the inner Observable in place of the outer one, and voila!
 We end up with an Observable that will be updated with our asynchronously fetched data whenever the input changes.
