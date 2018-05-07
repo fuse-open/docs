@@ -6,10 +6,10 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Using Observables to define view-models - Fuse Documentation</title>
-    <link rel="stylesheet" href="https://fuse-open.github.io/docs/font-awesome.css?_v=20180507110152">
-    <link rel="stylesheet" href="https://fuse-open.github.io/docs/bootstrap.css?_v=20180507110152">
-    <link rel="stylesheet" href="https://fuse-open.github.io/docs/prism.css?_v=20180507110152">
-    <link rel="stylesheet" href="https://fuse-open.github.io/docs/site.css?_v=20180507110152">
+    <link rel="stylesheet" href="https://fuse-open.github.io/docs/font-awesome.css?_v=20180507153931">
+    <link rel="stylesheet" href="https://fuse-open.github.io/docs/bootstrap.css?_v=20180507153931">
+    <link rel="stylesheet" href="https://fuse-open.github.io/docs/prism.css?_v=20180507153931">
+    <link rel="stylesheet" href="https://fuse-open.github.io/docs/site.css?_v=20180507153931">
   </head>
 
   <body>
@@ -569,7 +569,7 @@
           <h3 id="asynchronous-map">Asynchronous Map</h3>
 <p>There are cases where you need to asynchronously fetch data in response to the value of an <code>Observable</code> changing without exiting the <code>Observable</code> domain.
 We can achieve this in an elegant way using a combination of <code>map()</code> and <code>inner()</code>.</p>
-<p>In the below example, we <a href="/observable-api#map-func-item">map</a> over each item (just one in this case) of our input Observable, returning an Observable which will be updated to contain our fetched data when it becomes available.
+<p>In the below example, we <a href="../fusejs/observable-api.html#map-func-item">map</a> over each item (just one in this case) of our input Observable, returning an Observable which will be updated to contain our fetched data when it becomes available.
 This will result in an Observable of an Observable of our future data – <em>almost</em> what we want.
 We therefore use <a href="#inner">inner()</a> to &quot;unwrap&quot; the inner Observable in place of the outer one, and voila!
 We end up with an Observable that will be updated with our asynchronously fetched data whenever the input changes.</p>
@@ -600,10 +600,10 @@ var output = inputUrl.map(function(url) {
       </div>
     </div>
 
-    <script type="text/javascript" src="https://fuse-open.github.io/docs/jquery.js?_v=20180507110152"></script>
-    <script type="text/javascript" src="https://fuse-open.github.io/docs/popper.js?_v=20180507110152"></script>
-    <script type="text/javascript" src="https://fuse-open.github.io/docs/bootstrap.js?_v=20180507110152"></script>
-    <script type="text/javascript" src="https://fuse-open.github.io/docs/prism.js?_v=20180507110152"></script>
-    <script type="text/javascript" src="https://fuse-open.github.io/docs/site.js?_v=20180507110152"></script>
+    <script type="text/javascript" src="https://fuse-open.github.io/docs/jquery.js?_v=20180507153931"></script>
+    <script type="text/javascript" src="https://fuse-open.github.io/docs/popper.js?_v=20180507153931"></script>
+    <script type="text/javascript" src="https://fuse-open.github.io/docs/bootstrap.js?_v=20180507153931"></script>
+    <script type="text/javascript" src="https://fuse-open.github.io/docs/prism.js?_v=20180507153931"></script>
+    <script type="text/javascript" src="https://fuse-open.github.io/docs/site.js?_v=20180507153931"></script>
   </body>
 </html>
