@@ -257,12 +257,7 @@ namespace Builder.Services
                 anchor.Attributes.Remove("href");
 
                 var url = href.Value;
-                if (url.StartsWith("/docs/"))
-                {
-                    // If the URL starts with /docs/, it's a hard-link to the old documentation - just remove the /docs/ prefix.
-                    url = url.Substring("/docs".Length);
-                }
-                else if (url.StartsWith("/examples/"))
+                if (url.StartsWith("/examples/"))
                 {
                     // If the URL is a hard-link to the old examples, redirect it to examples.fusetools.com
                     url = "https://examples.fusetools.com/" + url.Substring("/examples/".Length);
