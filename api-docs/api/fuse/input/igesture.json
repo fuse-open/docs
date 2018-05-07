@@ -1,0 +1,464 @@
+{
+  "entity": {
+    "base": {
+      "id": {
+        "id": "uno/object",
+        "parentId": "uno",
+        "type": "Class",
+        "modifiers": [
+          "public",
+          "intrinsic"
+        ]
+      },
+      "uri": {
+        "idUri": "uno/object",
+        "href": "uno/object"
+      },
+      "titles": {
+        "indexTitle": "object",
+        "fullyQualifiedIndexTitle": "object"
+      }
+    },
+    "location": {
+      "namespaceTitle": "Fuse.Input",
+      "namespaceUri": "fuse/input",
+      "packageName": "Fuse.Nodes",
+      "packageVersion": "1.8.0-rc2"
+    },
+    "inheritance": {
+      "root": {
+        "uri": "uno/object",
+        "title": "object",
+        "children": [
+          {
+            "uri": "fuse/input/igesture",
+            "title": "Fuse.Input.IGesture",
+            "children": [],
+            "isCurrent": true
+          }
+        ],
+        "isAncestor": true
+      },
+      "hasInheritance": true
+    },
+    "id": {
+      "id": "fuse/input/igesture",
+      "parentId": "fuse/input",
+      "type": "Interface",
+      "modifiers": [
+        "public",
+        "abstract"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/input/igesture",
+      "href": "fuse/input/igesture"
+    },
+    "titles": {
+      "pageTitle": "IGesture Interface",
+      "navigationTitle": "IGesture Interface",
+      "fullTitle": "Fuse.Input.IGesture",
+      "indexTitle": "IGesture",
+      "fullyQualifiedIndexTitle": "Fuse.Input.IGesture"
+    },
+    "syntax": {
+      "uno": "public abstract interface IGesture {}"
+    },
+    "comment": {
+      "brief": "Feedback to the gesture about pointer events as well as priority feedback to the gesture handler.",
+      "full": "Feedback to the gesture about pointer events as well as priority feedback to the gesture handler.",
+      "attributes": {
+        "advanced": true,
+        "experimental": true
+      }
+    }
+  },
+  "tableOfContents": {
+    "properties": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/input/igesture",
+            "parentId": "fuse/input",
+            "type": "Interface",
+            "modifiers": [
+              "public",
+              "abstract"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/input/igesture",
+            "href": "fuse/input/igesture"
+          },
+          "titles": {
+            "indexTitle": "IGesture",
+            "fullyQualifiedIndexTitle": "Fuse.Input.IGesture"
+          }
+        },
+        "items": [
+          {
+            "comment": {
+              "brief": "Obtains the priority settings of the gesture.",
+              "full": "Obtains the priority settings of the gesture.\n\nThese values may change during the handling of a gesture. If a handler recognizes multiple gestures or compound gestures, it may decide to change the priority during handling.\n\n## priority\n\nThe primary priority of the gesture.\n\n## significance\n\nThe intended visual significance of the gesture, if applied, based on the current pointer feedback. This is a value measured in points.\n\nFor example, if the point has moved 5 points to the left, a Swiper may report 5 to indicate how much it would move (this is a logical movement, since the true animation depends on the animators and triggers being used).\n\n## adjustment\n\nAn adjustment can be used to adjust the ordering between two gestures that have the same priority. This adjust the order in which captures may be elevated, giving the one with a higher adjustment first chance to escalated to a hard capture.\n\nIt's used, for example, to resolve that edge swipes resolve prior to directional swipes even if the SwipeGesture's are in different nodes.\n\nThis should generally return `0`. A typical control will not modify this value."
+            },
+            "returns": {
+              "href": "fuse/input/gesturepriorityconfig",
+              "title": "GesturePriorityConfig",
+              "fullyQualifiedTitle": "Fuse.Input.GesturePriorityConfig"
+            },
+            "id": {
+              "id": "fuse/input/igesture/priority",
+              "parentId": "fuse/input/igesture",
+              "type": "Property",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/input/igesture/priority",
+              "href": "fuse/input/igesture/priority"
+            },
+            "titles": {
+              "indexTitle": "Priority",
+              "fullyQualifiedIndexTitle": "Fuse.Input.IGesture.Priority"
+            }
+          }
+        ]
+      }
+    ],
+    "methods": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/input/igesture",
+            "parentId": "fuse/input",
+            "type": "Interface",
+            "modifiers": [
+              "public",
+              "abstract"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/input/igesture",
+            "href": "fuse/input/igesture"
+          },
+          "titles": {
+            "indexTitle": "IGesture",
+            "fullyQualifiedIndexTitle": "Fuse.Input.IGesture"
+          }
+        },
+        "items": [
+          {
+            "comment": {
+              "brief": "Called anytime CaptureType changes, except to None (in which case OnLostCapture would be called).",
+              "full": "Called anytime CaptureType changes, except to None (in which case OnLostCapture would be called).\n\nAn IGesture implementation should avoid making any visual changes until it obtains a Hard capture. Prior to this point it is uncertain if the gesture will actually be the selected one.  Gestures that only ever need a soft capture can however proceed, but they shouldn't be making any direction visual changes anway."
+            },
+            "parameters": [
+              {
+                "name": "args",
+                "href": "fuse/input/pointereventargs",
+                "title": "PointerEventArgs",
+                "fullyQualifiedTitle": "Fuse.Input.PointerEventArgs"
+              },
+              {
+                "name": "howNew",
+                "href": "fuse/input/capturetype",
+                "title": "CaptureType",
+                "fullyQualifiedTitle": "Fuse.Input.CaptureType"
+              },
+              {
+                "name": "howPrev",
+                "href": "fuse/input/capturetype",
+                "title": "CaptureType",
+                "fullyQualifiedTitle": "Fuse.Input.CaptureType"
+              }
+            ],
+            "id": {
+              "id": "fuse/input/igesture/oncapturechanged_3bb58074",
+              "parentId": "fuse/input/igesture",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/input/igesture/oncapturechanged_3bb58074",
+              "href": "fuse/input/igesture/oncapturechanged_3bb58074"
+            },
+            "titles": {
+              "indexTitle": "OnCaptureChanged(PointerEventArgs, CaptureType, CaptureType)",
+              "fullyQualifiedIndexTitle": "Fuse.Input.IGesture.OnCaptureChanged(Fuse.Input.PointerEventArgs, Fuse.Input.CaptureType, Fuse.Input.CaptureType)"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Called whenever a previous capture is lost, soft or hard.",
+              "full": "Called whenever a previous capture is lost, soft or hard.\n\nIt must be expected that this can be called at anytime. An IGesture implementation must be able to deal with lost captures at the start, middle, or end of a gesture, even if it's started making visual changes.",
+              "attributes": {
+                "parameters": [
+                  {
+                    "name": "forced",
+                    "description": "False if the capture is lost due to a cancel request by the gesture. True otherwise, in cases such as it losing priority or the app losing focus."
+                  }
+                ]
+              }
+            },
+            "parameters": [
+              {
+                "name": "forced",
+                "href": "uno/bool",
+                "title": "bool",
+                "fullyQualifiedTitle": "bool"
+              }
+            ],
+            "id": {
+              "id": "fuse/input/igesture/onlostcapture_f0c97f29",
+              "parentId": "fuse/input/igesture",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/input/igesture/onlostcapture_f0c97f29",
+              "href": "fuse/input/igesture/onlostcapture_f0c97f29"
+            },
+            "titles": {
+              "indexTitle": "OnLostCapture(bool)",
+              "fullyQualifiedIndexTitle": "Fuse.Input.IGesture.OnLostCapture(bool)"
+            }
+          },
+          {
+            "returns": {
+              "href": "fuse/input/gesturerequest",
+              "title": "GestureRequest",
+              "fullyQualifiedTitle": "Fuse.Input.GestureRequest"
+            },
+            "parameters": [
+              {
+                "name": "args",
+                "href": "fuse/input/pointermovedargs",
+                "title": "PointerMovedArgs",
+                "fullyQualifiedTitle": "Fuse.Input.PointerMovedArgs"
+              }
+            ],
+            "id": {
+              "id": "fuse/input/igesture/onpointermoved_975afada",
+              "parentId": "fuse/input/igesture",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/input/igesture/onpointermoved_975afada",
+              "href": "fuse/input/igesture/onpointermoved_975afada"
+            },
+            "titles": {
+              "indexTitle": "OnPointerMoved(PointerMovedArgs)",
+              "fullyQualifiedIndexTitle": "Fuse.Input.IGesture.OnPointerMoved(Fuse.Input.PointerMovedArgs)"
+            }
+          },
+          {
+            "returns": {
+              "href": "fuse/input/gesturerequest",
+              "title": "GestureRequest",
+              "fullyQualifiedTitle": "Fuse.Input.GestureRequest"
+            },
+            "parameters": [
+              {
+                "name": "args",
+                "href": "fuse/input/pointerpressedargs",
+                "title": "PointerPressedArgs",
+                "fullyQualifiedTitle": "Fuse.Input.PointerPressedArgs"
+              }
+            ],
+            "id": {
+              "id": "fuse/input/igesture/onpointerpressed_4902b6cf",
+              "parentId": "fuse/input/igesture",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/input/igesture/onpointerpressed_4902b6cf",
+              "href": "fuse/input/igesture/onpointerpressed_4902b6cf"
+            },
+            "titles": {
+              "indexTitle": "OnPointerPressed(PointerPressedArgs)",
+              "fullyQualifiedIndexTitle": "Fuse.Input.IGesture.OnPointerPressed(Fuse.Input.PointerPressedArgs)"
+            }
+          },
+          {
+            "returns": {
+              "href": "fuse/input/gesturerequest",
+              "title": "GestureRequest",
+              "fullyQualifiedTitle": "Fuse.Input.GestureRequest"
+            },
+            "parameters": [
+              {
+                "name": "args",
+                "href": "fuse/input/pointerreleasedargs",
+                "title": "PointerReleasedArgs",
+                "fullyQualifiedTitle": "Fuse.Input.PointerReleasedArgs"
+              }
+            ],
+            "id": {
+              "id": "fuse/input/igesture/onpointerreleased_76954088",
+              "parentId": "fuse/input/igesture",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/input/igesture/onpointerreleased_76954088",
+              "href": "fuse/input/igesture/onpointerreleased_76954088"
+            },
+            "titles": {
+              "indexTitle": "OnPointerReleased(PointerReleasedArgs)",
+              "fullyQualifiedIndexTitle": "Fuse.Input.IGesture.OnPointerReleased(Fuse.Input.PointerReleasedArgs)"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "uno/object",
+            "parentId": "uno",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "intrinsic"
+            ]
+          },
+          "uri": {
+            "idUri": "uno/object",
+            "href": "uno/object"
+          },
+          "titles": {
+            "indexTitle": "object",
+            "fullyQualifiedIndexTitle": "object"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "parameters": [
+              {
+                "name": "o",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              }
+            ],
+            "id": {
+              "id": "fuse/input/igesture/equals_a09c80e3",
+              "parentId": "fuse/input/igesture",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/input/igesture/equals_a09c80e3",
+              "href": "uno/object/equals_a09c80e3",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Equals(object)",
+              "fullyQualifiedIndexTitle": "Uno.Object.Equals(object)"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/int",
+              "title": "int",
+              "fullyQualifiedTitle": "int"
+            },
+            "id": {
+              "id": "fuse/input/igesture/gethashcode",
+              "parentId": "fuse/input/igesture",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/input/igesture/gethashcode",
+              "href": "uno/object/gethashcode",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetHashCode",
+              "fullyQualifiedIndexTitle": "Uno.Object.GetHashCode"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/type",
+              "title": "Type",
+              "fullyQualifiedTitle": "Uno.Type"
+            },
+            "id": {
+              "id": "fuse/input/igesture/gettype",
+              "parentId": "fuse/input/igesture",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/input/igesture/gettype",
+              "href": "uno/object/gettype",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetType",
+              "fullyQualifiedIndexTitle": "Uno.Object.GetType"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "id": {
+              "id": "fuse/input/igesture/tostring",
+              "parentId": "fuse/input/igesture",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/input/igesture/tostring",
+              "href": "uno/object/tostring",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "ToString",
+              "fullyQualifiedIndexTitle": "Uno.Object.ToString"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

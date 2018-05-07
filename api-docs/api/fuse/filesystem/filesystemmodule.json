@@ -1,0 +1,2663 @@
+{
+  "entity": {
+    "base": {
+      "id": {
+        "id": "fuse/scripting/nativemodule",
+        "parentId": "fuse/scripting",
+        "type": "Class",
+        "modifiers": [
+          "public"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/scripting/nativemodule",
+        "href": "fuse/scripting/nativemodule"
+      },
+      "titles": {
+        "indexTitle": "NativeModule",
+        "fullyQualifiedIndexTitle": "Fuse.Scripting.NativeModule"
+      }
+    },
+    "location": {
+      "namespaceTitle": "Fuse.FileSystem",
+      "namespaceUri": "fuse/filesystem",
+      "packageName": "Fuse.FileSystem",
+      "packageVersion": "1.8.0-rc2"
+    },
+    "inheritance": {
+      "root": {
+        "uri": "uno/object",
+        "title": "object",
+        "children": [
+          {
+            "uri": "fuse/scripting/module",
+            "title": "Fuse.Scripting.Module",
+            "children": [
+              {
+                "uri": "fuse/scripting/nativemodule",
+                "title": "Fuse.Scripting.NativeModule",
+                "children": [
+                  {
+                    "uri": "fuse/filesystem/filesystemmodule",
+                    "title": "Fuse.FileSystem.FileSystemModule",
+                    "children": [],
+                    "isCurrent": true
+                  }
+                ],
+                "isAncestor": true
+              }
+            ],
+            "isAncestor": true
+          }
+        ],
+        "isAncestor": true
+      },
+      "hasInheritance": true
+    },
+    "uxProperties": {
+      "uxNamespaceTitle": "Fuse",
+      "uxNamespaceUri": "fuse",
+      "uxName": "FileSystem.FileSystemModule"
+    },
+    "implementedInterfaces": [
+      {
+        "id": {
+          "id": "fuse/scripting/imoduleprovider",
+          "parentId": "fuse/scripting",
+          "type": "Interface",
+          "modifiers": [
+            "public",
+            "abstract"
+          ]
+        },
+        "uri": {
+          "idUri": "fuse/scripting/imoduleprovider",
+          "href": "fuse/scripting/imoduleprovider"
+        },
+        "titles": {
+          "indexTitle": "IModuleProvider",
+          "fullyQualifiedIndexTitle": "Fuse.Scripting.IModuleProvider"
+        }
+      },
+      {
+        "id": {
+          "id": "uno/idisposable",
+          "parentId": "uno",
+          "type": "Interface",
+          "modifiers": [
+            "public",
+            "abstract"
+          ]
+        },
+        "uri": {
+          "idUri": "uno/idisposable",
+          "href": "uno/idisposable"
+        },
+        "titles": {
+          "indexTitle": "IDisposable",
+          "fullyQualifiedIndexTitle": "Uno.IDisposable"
+        }
+      }
+    ],
+    "attributes": [
+      {
+        "id": {
+          "id": "uno/ux/uxglobalmoduleattribute",
+          "parentId": "uno/ux",
+          "type": "Class",
+          "modifiers": [
+            "public",
+            "sealed"
+          ]
+        },
+        "uri": {
+          "idUri": "uno/ux/uxglobalmoduleattribute",
+          "href": "uno/ux/uxglobalmoduleattribute"
+        },
+        "titles": {
+          "indexTitle": "UXGlobalModuleAttribute",
+          "fullyQualifiedIndexTitle": "Uno.UX.UXGlobalModuleAttribute"
+        }
+      }
+    ],
+    "id": {
+      "id": "fuse/filesystem/filesystemmodule",
+      "parentId": "fuse/filesystem",
+      "type": "JsModule",
+      "modifiers": [
+        "public"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/filesystem/filesystemmodule",
+      "href": "fuse/filesystem/filesystemmodule"
+    },
+    "titles": {
+      "pageTitle": "FileSystemModule Class",
+      "navigationTitle": "FileSystemModule Class",
+      "fullTitle": "Fuse.FileSystem.FileSystemModule",
+      "indexTitle": "FileSystemModule",
+      "fullyQualifiedIndexTitle": "Fuse.FileSystem.FileSystemModule"
+    },
+    "syntax": {
+      "uno": "[Uno.UX.UXGlobalModule]\r\npublic class FileSystemModule : Fuse.Scripting.NativeModule {}",
+      "ux": "<FileSystem.FileSystemModule />"
+    },
+    "comment": {
+      "brief": "Provides an interface to the file system.",
+      "full": "Provides an interface to the file system.\n\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\nUsing the asynchronous Promise based functions is recommended to keep your UI responsive,\nalthough synchronous variants are also available if preferred.\n\nWhen saving files private to the application you can use the `dataDirectory` property\nas a base path.\n\n## Example\n\nThis example writes a text to a file, and then reads it back:\n\n    var FileSystem = require(\"FuseJS/FileSystem\");\n    var path = FileSystem.dataDirectory + \"/\" + \"testfile.tmp\";\n\n    FileSystem.writeTextToFile(path, \"hello world\")\n        .then(function() {\n            return FileSystem.readTextFromFile(path);\n        })\n        .then(function(text) {\n            console.log(\"The read file content was: \" + text);\n        })\n        .catch(function(error) {\n            console.log(\"Unable to read file due to error:\" + error);\n        });",
+      "attributes": {
+        "scriptModule": "FuseJS/FileSystem"
+      }
+    }
+  },
+  "tableOfContents": {
+    "attachedUxProperties": [
+      {
+        "items": [
+          {
+            "comment": {
+              "brief": "The `ux:Global` attribute creates a global resource that is accessible everywhere in UX markup.",
+              "full": "The `ux:Global` attribute creates a global resource that is accessible everywhere in UX markup.\n\nSee @Resources for more information.\n\nThe `ux:Global` attribute on an UX element creates a single object (singleton) that is globally available.\nUsing this attribute will prevent the object from being inserted by default the object at its defined location\nin the UX tree."
+            },
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "parameters": [
+              {
+                "name": "obj",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              },
+              {
+                "name": "key",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              }
+            ],
+            "id": {
+              "id": "fuse/filesystem/filesystemmodule/resource_globalkey_setglobalkey_4c3ac72d",
+              "parentId": "fuse/filesystem/filesystemmodule",
+              "type": "AttachedUxProperty",
+              "modifiers": []
+            },
+            "uri": {
+              "idUri": "fuse/filesystem/filesystemmodule/resource_globalkey_setglobalkey_4c3ac72d",
+              "href": "uno/ux/resource/setglobalkey_4c3ac72d",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Resource.GlobalKey",
+              "fullyQualifiedIndexTitle": "Resource.GlobalKey"
+            }
+          }
+        ]
+      }
+    ],
+    "uxEvents": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/scripting/nativemodule",
+            "parentId": "fuse/scripting",
+            "type": "Class",
+            "modifiers": [
+              "public"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/scripting/nativemodule",
+            "href": "fuse/scripting/nativemodule"
+          },
+          "titles": {
+            "indexTitle": "NativeModule",
+            "fullyQualifiedIndexTitle": "Fuse.Scripting.NativeModule"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/eventhandler",
+              "title": "EventHandler (object, EventArgs)",
+              "fullyQualifiedTitle": "Uno.EventHandler (object, Uno.EventArgs)"
+            },
+            "id": {
+              "id": "fuse/filesystem/filesystemmodule/reset",
+              "parentId": "fuse/filesystem/filesystemmodule",
+              "type": "UxEvent",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/filesystem/filesystemmodule/reset",
+              "href": "fuse/scripting/nativemodule/reset",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Reset",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.NativeModule.Reset"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/scripting/module",
+            "parentId": "fuse/scripting",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/scripting/module",
+            "href": "fuse/scripting/module"
+          },
+          "titles": {
+            "indexTitle": "Module",
+            "fullyQualifiedIndexTitle": "Fuse.Scripting.Module"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/eventhandler",
+              "title": "EventHandler (object, EventArgs)",
+              "fullyQualifiedTitle": "Uno.EventHandler (object, Uno.EventArgs)"
+            },
+            "id": {
+              "id": "fuse/filesystem/filesystemmodule/evaluated",
+              "parentId": "fuse/filesystem/filesystemmodule",
+              "type": "UxEvent",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/filesystem/filesystemmodule/evaluated",
+              "href": "fuse/scripting/module/evaluated",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Evaluated",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.Module.Evaluated"
+            }
+          }
+        ]
+      }
+    ],
+    "jsProperties": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/filesystem/filesystemmodule",
+            "parentId": "fuse/filesystem",
+            "type": "JsModule",
+            "modifiers": [
+              "public"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/filesystem/filesystemmodule",
+            "href": "fuse/filesystem/filesystemmodule"
+          },
+          "titles": {
+            "indexTitle": "FileSystemModule",
+            "fullyQualifiedIndexTitle": "Fuse.FileSystem.FileSystemModule"
+          }
+        },
+        "items": [
+          {
+            "comment": {
+              "brief": "An object containing paths only exposed on Android devices:",
+              "full": "An object containing paths only exposed on Android devices:\n\n* `externalCache` –  The directory acquired by calling `Context.getExternalCacheDir()`\n* `externalFiles` –  The directory acquired by calling `Context.getExternalFilesDir(null)`\n* `cache` –  The directory acquired by calling `Context.getCacheDir()`\n* `files` –  The directory acquired by calling `Context.getFilesDir()`",
+              "attributes": {
+                "scriptProperty": "androidPaths"
+              }
+            },
+            "returns": {
+              "href": "uno/collections/dictionary_2",
+              "title": "Dictionary<string, string>",
+              "fullyQualifiedTitle": "Uno.Collections.Dictionary<string, string>"
+            },
+            "id": {
+              "id": "fuse/filesystem/filesystemmodule/getandroidpaths",
+              "parentId": "fuse/filesystem/filesystemmodule",
+              "type": "JsProperty",
+              "modifiers": [
+                "private"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/filesystem/filesystemmodule/getandroidpaths",
+              "href": "fuse/filesystem/filesystemmodule/getandroidpaths"
+            },
+            "titles": {
+              "indexTitle": "GetAndroidPaths",
+              "fullyQualifiedIndexTitle": "Fuse.FileSystem.FileSystemModule.GetAndroidPaths"
+            }
+          },
+          {
+            "comment": {
+              "brief": "A directory to put cached files.",
+              "full": "A directory to put cached files.\n\nNote that files in this directory might be automatically removed when space is low, depending on platform.",
+              "attributes": {
+                "scriptProperty": "cacheDirectory"
+              }
+            },
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "id": {
+              "id": "fuse/filesystem/filesystemmodule/getcachedirectory",
+              "parentId": "fuse/filesystem/filesystemmodule",
+              "type": "JsProperty",
+              "modifiers": [
+                "private"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/filesystem/filesystemmodule/getcachedirectory",
+              "href": "fuse/filesystem/filesystemmodule/getcachedirectory"
+            },
+            "titles": {
+              "indexTitle": "GetCacheDirectory",
+              "fullyQualifiedIndexTitle": "Fuse.FileSystem.FileSystemModule.GetCacheDirectory"
+            }
+          },
+          {
+            "comment": {
+              "brief": "A directory to put data files that are private to the application.",
+              "full": "A directory to put data files that are private to the application.\n\n* iOS - The Library directory for the application.\n* Android - The directory acquired by calling `Context.getFilesDir()`\n* Local preview - `<project dir>/build/Local/Preview/fs_data`\n\nNote that cleaning or rebuilding your project will delete this directory.",
+              "attributes": {
+                "scriptProperty": "dataDirectory"
+              }
+            },
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "id": {
+              "id": "fuse/filesystem/filesystemmodule/getdatadirectory",
+              "parentId": "fuse/filesystem/filesystemmodule",
+              "type": "JsProperty",
+              "modifiers": [
+                "private"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/filesystem/filesystemmodule/getdatadirectory",
+              "href": "fuse/filesystem/filesystemmodule/getdatadirectory"
+            },
+            "titles": {
+              "indexTitle": "GetDataDirectory",
+              "fullyQualifiedIndexTitle": "Fuse.FileSystem.FileSystemModule.GetDataDirectory"
+            }
+          },
+          {
+            "comment": {
+              "brief": "An object containing paths only exposed on iOS devices:",
+              "full": "An object containing paths only exposed on iOS devices:\n\n* `documents` –  Mapped to `NSDocumentDirectory`\n* `library` –  Mapped to `NSLibraryDirectory`\n* `caches` –  Mapped to `NSCachesDirectory`\n* `temp` –  Mapped to `NSTemporaryDirectory`",
+              "attributes": {
+                "scriptProperty": "iosPaths"
+              }
+            },
+            "returns": {
+              "href": "uno/collections/dictionary_2",
+              "title": "Dictionary<string, string>",
+              "fullyQualifiedTitle": "Uno.Collections.Dictionary<string, string>"
+            },
+            "id": {
+              "id": "fuse/filesystem/filesystemmodule/getiospaths",
+              "parentId": "fuse/filesystem/filesystemmodule",
+              "type": "JsProperty",
+              "modifiers": [
+                "private"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/filesystem/filesystemmodule/getiospaths",
+              "href": "fuse/filesystem/filesystemmodule/getiospaths"
+            },
+            "titles": {
+              "indexTitle": "GetIosPaths",
+              "fullyQualifiedIndexTitle": "Fuse.FileSystem.FileSystemModule.GetIosPaths"
+            }
+          }
+        ]
+      }
+    ],
+    "jsMethods": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/filesystem/filesystemmodule",
+            "parentId": "fuse/filesystem",
+            "type": "JsModule",
+            "modifiers": [
+              "public"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/filesystem/filesystemmodule",
+            "href": "fuse/filesystem/filesystemmodule"
+          },
+          "titles": {
+            "indexTitle": "FileSystemModule",
+            "fullyQualifiedIndexTitle": "Fuse.FileSystem.FileSystemModule"
+          }
+        },
+        "items": [
+          {
+            "comment": {
+              "brief": "Asynchronously appends a string to a UTF-8 encoded file.",
+              "full": "Asynchronously appends a string to a UTF-8 encoded file.\n\n## Example\n\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    FileSystem.appendTextToFile(FileSystem.dataDirectory + \"/\" + \"myfile.txt\", \"Hello buddy\")\n        .then(function() {\n            console.log(\"Successful append\");\n        }, function(error) {\n            console.log(error);\n        });",
+              "attributes": {
+                "scriptMethod": {
+                  "name": "appendTextToFile",
+                  "parameters": [
+                    "filename"
+                  ]
+                },
+                "returns": {
+                  "typeHint": "Promise",
+                  "text": "A Promise of nothing."
+                },
+                "parameters": [
+                  {
+                    "name": "filename",
+                    "typeHint": "String",
+                    "description": "Path to a file"
+                  },
+                  {
+                    "name": "text",
+                    "typeHint": "String",
+                    "description": "Text to append to file"
+                  }
+                ]
+              }
+            },
+            "returns": {
+              "href": "uno/threading/future_1",
+              "title": "Future<Nothing>",
+              "fullyQualifiedTitle": "Uno.Threading.Future<Fuse.FileSystem.Nothing>"
+            },
+            "parameters": [
+              {
+                "name": "args",
+                "href": "uno/object",
+                "title": "object[]",
+                "fullyQualifiedTitle": "object[]"
+              }
+            ],
+            "id": {
+              "id": "fuse/filesystem/filesystemmodule/appendtexttofile_95a738ba",
+              "parentId": "fuse/filesystem/filesystemmodule",
+              "type": "JsMethod",
+              "modifiers": [
+                "private"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/filesystem/filesystemmodule/appendtexttofile_95a738ba",
+              "href": "fuse/filesystem/filesystemmodule/appendtexttofile_95a738ba"
+            },
+            "titles": {
+              "indexTitle": "AppendTextToFile(object[])",
+              "fullyQualifiedIndexTitle": "Fuse.FileSystem.FileSystemModule.AppendTextToFile(object[])"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Synchronously appends a string to a UTF-8 encoded file.",
+              "full": "Synchronously appends a string to a UTF-8 encoded file.\n\n## Example\n\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    FileSystem.appendTextToFileSync(\"myfile.txt\", \"Hello buddy\");",
+              "attributes": {
+                "scriptMethod": {
+                  "name": "appendTextToFileSync",
+                  "parameters": [
+                    "filename"
+                  ]
+                },
+                "parameters": [
+                  {
+                    "name": "filename",
+                    "typeHint": "String",
+                    "description": "Path to a file"
+                  },
+                  {
+                    "name": "text",
+                    "typeHint": "String",
+                    "description": "Text to append to the file"
+                  }
+                ]
+              }
+            },
+            "returns": {
+              "href": "uno/object",
+              "title": "object",
+              "fullyQualifiedTitle": "object"
+            },
+            "parameters": [
+              {
+                "name": "context",
+                "href": "fuse/scripting/context",
+                "title": "Context",
+                "fullyQualifiedTitle": "Fuse.Scripting.Context"
+              },
+              {
+                "name": "args",
+                "href": "uno/object",
+                "title": "object[]",
+                "fullyQualifiedTitle": "object[]"
+              }
+            ],
+            "id": {
+              "id": "fuse/filesystem/filesystemmodule/appendtexttofilesync_bbef95e2",
+              "parentId": "fuse/filesystem/filesystemmodule",
+              "type": "JsMethod",
+              "modifiers": [
+                "private"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/filesystem/filesystemmodule/appendtexttofilesync_bbef95e2",
+              "href": "fuse/filesystem/filesystemmodule/appendtexttofilesync_bbef95e2"
+            },
+            "titles": {
+              "indexTitle": "AppendTextToFileSync(Context, object[])",
+              "fullyQualifiedIndexTitle": "Fuse.FileSystem.FileSystemModule.AppendTextToFileSync(Fuse.Scripting.Context, object[])"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Asynchronously copies a file or directory recursively from source to destination path",
+              "full": "Asynchronously copies a file or directory recursively from source to destination path\n\n## Example\n\n    FileSystem = require(\"FuseJS/FileSystem\");\n\n    FileSystem.writeTextToFile(\"to-be-copied.txt\", \"hello world\")\n        .then(function() {\n            return FileSystem.copy(\"to-be-copied.txt\", \"destination-reached.txt\");\n        })\n        .catch(function(err) {\n            console.log(\"Unable to copy file\");\n        });",
+              "attributes": {
+                "scriptMethod": {
+                  "name": "copy",
+                  "parameters": [
+                    "source",
+                    "destination"
+                  ]
+                },
+                "returns": {
+                  "text": "Promise of nothing"
+                },
+                "parameters": [
+                  {
+                    "name": "source",
+                    "typeHint": "String",
+                    "description": "Source path"
+                  },
+                  {
+                    "name": "destination",
+                    "typeHint": "String",
+                    "description": "Destination path"
+                  }
+                ]
+              }
+            },
+            "returns": {
+              "href": "uno/threading/future_1",
+              "title": "Future<Nothing>",
+              "fullyQualifiedTitle": "Uno.Threading.Future<Fuse.FileSystem.Nothing>"
+            },
+            "parameters": [
+              {
+                "name": "args",
+                "href": "uno/object",
+                "title": "object[]",
+                "fullyQualifiedTitle": "object[]"
+              }
+            ],
+            "id": {
+              "id": "fuse/filesystem/filesystemmodule/copy_95a738ba",
+              "parentId": "fuse/filesystem/filesystemmodule",
+              "type": "JsMethod",
+              "modifiers": [
+                "private"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/filesystem/filesystemmodule/copy_95a738ba",
+              "href": "fuse/filesystem/filesystemmodule/copy_95a738ba"
+            },
+            "titles": {
+              "indexTitle": "Copy(object[])",
+              "fullyQualifiedIndexTitle": "Fuse.FileSystem.FileSystemModule.Copy(object[])"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Synchronously copies a file or directory recursively from source to destination path",
+              "full": "Synchronously copies a file or directory recursively from source to destination path\n\n## Example\n\n    FileSystem = require(\"FuseJS/FileSystem\");\n\n    FileSystem.writeTextToFileSync(\"to-be-copied.txt\", \"hello world\");\n    FileSystem.copySync(\"to-be-copied.txt\", \"destination-reached.txt\");",
+              "attributes": {
+                "scriptMethod": {
+                  "name": "copySync",
+                  "parameters": [
+                    "source",
+                    "destination"
+                  ]
+                },
+                "parameters": [
+                  {
+                    "name": "source",
+                    "typeHint": "String",
+                    "description": "Source path"
+                  },
+                  {
+                    "name": "destination",
+                    "typeHint": "String",
+                    "description": "Destination path"
+                  }
+                ]
+              }
+            },
+            "returns": {
+              "href": "uno/object",
+              "title": "object",
+              "fullyQualifiedTitle": "object"
+            },
+            "parameters": [
+              {
+                "name": "context",
+                "href": "fuse/scripting/context",
+                "title": "Context",
+                "fullyQualifiedTitle": "Fuse.Scripting.Context"
+              },
+              {
+                "name": "args",
+                "href": "uno/object",
+                "title": "object[]",
+                "fullyQualifiedTitle": "object[]"
+              }
+            ],
+            "id": {
+              "id": "fuse/filesystem/filesystemmodule/copysync_bbef95e2",
+              "parentId": "fuse/filesystem/filesystemmodule",
+              "type": "JsMethod",
+              "modifiers": [
+                "private"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/filesystem/filesystemmodule/copysync_bbef95e2",
+              "href": "fuse/filesystem/filesystemmodule/copysync_bbef95e2"
+            },
+            "titles": {
+              "indexTitle": "CopySync(Context, object[])",
+              "fullyQualifiedIndexTitle": "Fuse.FileSystem.FileSystemModule.CopySync(Fuse.Scripting.Context, object[])"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Asynchronously creates a directory.",
+              "full": "Asynchronously creates a directory.\n\n## Example\n\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    FileSystem.createDirectory(FileSystem.dataDirectory + \"/\" + \"new-directory\")\n        .then(function() {\n            console.log(\"Directory created!\");\n        }, function(error) {\n            console.log(\"Error trying to create directory.\");\n        });",
+              "attributes": {
+                "scriptMethod": {
+                  "name": "createDirectory",
+                  "parameters": [
+                    "path"
+                  ]
+                },
+                "returns": {
+                  "typeHint": "Promise",
+                  "text": "A Promise of nothing"
+                },
+                "parameters": [
+                  {
+                    "name": "path",
+                    "typeHint": "String",
+                    "description": "Path of directory to be created."
+                  }
+                ]
+              }
+            },
+            "returns": {
+              "href": "uno/threading/future_1",
+              "title": "Future<Nothing>",
+              "fullyQualifiedTitle": "Uno.Threading.Future<Fuse.FileSystem.Nothing>"
+            },
+            "parameters": [
+              {
+                "name": "args",
+                "href": "uno/object",
+                "title": "object[]",
+                "fullyQualifiedTitle": "object[]"
+              }
+            ],
+            "id": {
+              "id": "fuse/filesystem/filesystemmodule/createdirectory_95a738ba",
+              "parentId": "fuse/filesystem/filesystemmodule",
+              "type": "JsMethod",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/filesystem/filesystemmodule/createdirectory_95a738ba",
+              "href": "fuse/filesystem/filesystemmodule/createdirectory_95a738ba"
+            },
+            "titles": {
+              "indexTitle": "CreateDirectory(object[])",
+              "fullyQualifiedIndexTitle": "Fuse.FileSystem.FileSystemModule.CreateDirectory(object[])"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Synchronously creates a directory.",
+              "full": "Synchronously creates a directory.\n\n## Example\n\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    FileSystem.createDirectory(FileSystem.dataDirectory + \"/\" + \"new-directory\");",
+              "attributes": {
+                "scriptMethod": {
+                  "name": "createDirectorySync",
+                  "parameters": [
+                    "path"
+                  ]
+                },
+                "parameters": [
+                  {
+                    "name": "path",
+                    "typeHint": "String",
+                    "description": "Path of the directory to be created."
+                  }
+                ]
+              }
+            },
+            "returns": {
+              "href": "uno/object",
+              "title": "object",
+              "fullyQualifiedTitle": "object"
+            },
+            "parameters": [
+              {
+                "name": "context",
+                "href": "fuse/scripting/context",
+                "title": "Context",
+                "fullyQualifiedTitle": "Fuse.Scripting.Context"
+              },
+              {
+                "name": "args",
+                "href": "uno/object",
+                "title": "object[]",
+                "fullyQualifiedTitle": "object[]"
+              }
+            ],
+            "id": {
+              "id": "fuse/filesystem/filesystemmodule/createdirectorysync_bbef95e2",
+              "parentId": "fuse/filesystem/filesystemmodule",
+              "type": "JsMethod",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/filesystem/filesystemmodule/createdirectorysync_bbef95e2",
+              "href": "fuse/filesystem/filesystemmodule/createdirectorysync_bbef95e2"
+            },
+            "titles": {
+              "indexTitle": "CreateDirectorySync(Context, object[])",
+              "fullyQualifiedIndexTitle": "Fuse.FileSystem.FileSystemModule.CreateDirectorySync(Fuse.Scripting.Context, object[])"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Asynchronously delete a file.",
+              "full": "Asynchronously delete a file.\n\n## Example\n\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    FileSystem.delete(\"myfile.txt\")\n        .then(function() {\n            console.log(\"Delete succeeded\");\n        }, function(error) {\n            console.log(\"Unable to delete file\");\n        });",
+              "attributes": {
+                "scriptMethod": {
+                  "name": "delete",
+                  "parameters": [
+                    "path"
+                  ]
+                },
+                "returns": {
+                  "typeHint": "Promise",
+                  "text": "A Promise of nothing"
+                },
+                "parameters": [
+                  {
+                    "name": "path",
+                    "typeHint": "String",
+                    "description": "Path to a file or directory"
+                  },
+                  {
+                    "name": "recursive",
+                    "typeHint": "Boolean",
+                    "description": "Delete directory recursively (ignored for files)"
+                  }
+                ]
+              }
+            },
+            "returns": {
+              "href": "uno/threading/future_1",
+              "title": "Future<Nothing>",
+              "fullyQualifiedTitle": "Uno.Threading.Future<Fuse.FileSystem.Nothing>"
+            },
+            "parameters": [
+              {
+                "name": "args",
+                "href": "uno/object",
+                "title": "object[]",
+                "fullyQualifiedTitle": "object[]"
+              }
+            ],
+            "id": {
+              "id": "fuse/filesystem/filesystemmodule/delete_95a738ba",
+              "parentId": "fuse/filesystem/filesystemmodule",
+              "type": "JsMethod",
+              "modifiers": [
+                "private"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/filesystem/filesystemmodule/delete_95a738ba",
+              "href": "fuse/filesystem/filesystemmodule/delete_95a738ba"
+            },
+            "titles": {
+              "indexTitle": "Delete(object[])",
+              "fullyQualifiedIndexTitle": "Fuse.FileSystem.FileSystemModule.Delete(object[])"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Synchronously delete a file.",
+              "full": "Synchronously delete a file.\n\n## Example\n\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    FileSystem.deleteSync(\"myfile.txt\");",
+              "attributes": {
+                "scriptMethod": {
+                  "name": "deleteSync",
+                  "parameters": [
+                    "path"
+                  ]
+                },
+                "parameters": [
+                  {
+                    "name": "path",
+                    "typeHint": "String",
+                    "description": "Path to a file or directory"
+                  },
+                  {
+                    "name": "recursive",
+                    "typeHint": "Boolean",
+                    "description": "Delete directory recursively (ignored for files)"
+                  }
+                ]
+              }
+            },
+            "returns": {
+              "href": "uno/object",
+              "title": "object",
+              "fullyQualifiedTitle": "object"
+            },
+            "parameters": [
+              {
+                "name": "context",
+                "href": "fuse/scripting/context",
+                "title": "Context",
+                "fullyQualifiedTitle": "Fuse.Scripting.Context"
+              },
+              {
+                "name": "args",
+                "href": "uno/object",
+                "title": "object[]",
+                "fullyQualifiedTitle": "object[]"
+              }
+            ],
+            "id": {
+              "id": "fuse/filesystem/filesystemmodule/deletesync_bbef95e2",
+              "parentId": "fuse/filesystem/filesystemmodule",
+              "type": "JsMethod",
+              "modifiers": [
+                "private"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/filesystem/filesystemmodule/deletesync_bbef95e2",
+              "href": "fuse/filesystem/filesystemmodule/deletesync_bbef95e2"
+            },
+            "titles": {
+              "indexTitle": "DeleteSync(Context, object[])",
+              "fullyQualifiedIndexTitle": "Fuse.FileSystem.FileSystemModule.DeleteSync(Fuse.Scripting.Context, object[])"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Asynchronously check if a file exists.",
+              "full": "Asynchronously check if a file exists.\n\n## Example\n\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    FileSystem.exists(\"myfile.txt\")\n        .then(function(x) {\n            console.log(x ? \"it's there! =)\" : \"it's missing :/\");\n        }, function(error) {\n            console.log(\"Unable to check if file exists\");\n        });",
+              "attributes": {
+                "scriptMethod": {
+                  "name": "exists",
+                  "parameters": [
+                    "path"
+                  ]
+                },
+                "returns": {
+                  "typeHint": "Promise",
+                  "text": "A Promise that resolves to true if the file exists, false if not, and rejects if the file's existence could not be determined."
+                },
+                "parameters": [
+                  {
+                    "name": "path",
+                    "typeHint": "String",
+                    "description": "Path to a file or directory"
+                  }
+                ]
+              }
+            },
+            "returns": {
+              "href": "uno/threading/future_1",
+              "title": "Future<bool>",
+              "fullyQualifiedTitle": "Uno.Threading.Future<bool>"
+            },
+            "parameters": [
+              {
+                "name": "args",
+                "href": "uno/object",
+                "title": "object[]",
+                "fullyQualifiedTitle": "object[]"
+              }
+            ],
+            "id": {
+              "id": "fuse/filesystem/filesystemmodule/exists_95a738ba",
+              "parentId": "fuse/filesystem/filesystemmodule",
+              "type": "JsMethod",
+              "modifiers": [
+                "private"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/filesystem/filesystemmodule/exists_95a738ba",
+              "href": "fuse/filesystem/filesystemmodule/exists_95a738ba"
+            },
+            "titles": {
+              "indexTitle": "Exists(object[])",
+              "fullyQualifiedIndexTitle": "Fuse.FileSystem.FileSystemModule.Exists(object[])"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Synchronously check if a file exists.",
+              "full": "Synchronously check if a file exists.\n\n## Example\n\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    console.log(FileSystem.exists(\"myfile.txt\") ? \"It's there!\" : \"It's missing :/\");",
+              "attributes": {
+                "scriptMethod": {
+                  "name": "existsSync",
+                  "parameters": [
+                    "path"
+                  ]
+                },
+                "returns": {
+                  "typeHint": "Boolean",
+                  "text": "true if file exists, false if not"
+                },
+                "parameters": [
+                  {
+                    "name": "path",
+                    "typeHint": "String",
+                    "description": "Path to a file or directory"
+                  }
+                ]
+              }
+            },
+            "returns": {
+              "href": "uno/object",
+              "title": "object",
+              "fullyQualifiedTitle": "object"
+            },
+            "parameters": [
+              {
+                "name": "context",
+                "href": "fuse/scripting/context",
+                "title": "Context",
+                "fullyQualifiedTitle": "Fuse.Scripting.Context"
+              },
+              {
+                "name": "args",
+                "href": "uno/object",
+                "title": "object[]",
+                "fullyQualifiedTitle": "object[]"
+              }
+            ],
+            "id": {
+              "id": "fuse/filesystem/filesystemmodule/existssync_bbef95e2",
+              "parentId": "fuse/filesystem/filesystemmodule",
+              "type": "JsMethod",
+              "modifiers": [
+                "private"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/filesystem/filesystemmodule/existssync_bbef95e2",
+              "href": "fuse/filesystem/filesystemmodule/existssync_bbef95e2"
+            },
+            "titles": {
+              "indexTitle": "ExistsSync(Context, object[])",
+              "fullyQualifiedIndexTitle": "Fuse.FileSystem.FileSystemModule.ExistsSync(Fuse.Scripting.Context, object[])"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Asynchronously gets info about a directory.",
+              "full": "Asynchronously gets info about a directory.\n\nThe returned object has the following properties:\n\n* `exists` –  a boolean value stating whether the directory exists or not.\n* `lastWriteTime` –  A `Date` stating when directory was last changed\n* `lastAccessTime` –  A `Date` stating when directory was accessed\n\n## Example\n\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    FileSystem.createDirectorySync(\"some-dir\");\n    FileSystem.getDirectoryInfo(\"some-dir\")\n        .then(function(dirInfo) {\n            console.log(\"Directory was modified on \" + dirInfo.lastWriteTime);\n        })\n        .catch(function(error) {\n            console.log(\"Failed to get directory info \" + error);\n        });",
+              "attributes": {
+                "scriptMethod": {
+                  "name": "getDirectoryInfo",
+                  "parameters": [
+                    "path"
+                  ]
+                },
+                "returns": {
+                  "typeHint": "Promise",
+                  "text": "A Promise of an object containing info about the directory."
+                },
+                "parameters": [
+                  {
+                    "name": "path",
+                    "typeHint": "String",
+                    "description": "Path to a directory"
+                  }
+                ]
+              }
+            },
+            "returns": {
+              "href": "uno/threading/future_1",
+              "title": "Future<FileSystemInfo>",
+              "fullyQualifiedTitle": "Uno.Threading.Future<Uno.IO.FileSystemInfo>"
+            },
+            "parameters": [
+              {
+                "name": "args",
+                "href": "uno/object",
+                "title": "object[]",
+                "fullyQualifiedTitle": "object[]"
+              }
+            ],
+            "id": {
+              "id": "fuse/filesystem/filesystemmodule/getdirectoryinfo_95a738ba",
+              "parentId": "fuse/filesystem/filesystemmodule",
+              "type": "JsMethod",
+              "modifiers": [
+                "private"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/filesystem/filesystemmodule/getdirectoryinfo_95a738ba",
+              "href": "fuse/filesystem/filesystemmodule/getdirectoryinfo_95a738ba"
+            },
+            "titles": {
+              "indexTitle": "GetDirectoryInfo(object[])",
+              "fullyQualifiedIndexTitle": "Fuse.FileSystem.FileSystemModule.GetDirectoryInfo(object[])"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Synchronously gets info about a directory.",
+              "full": "Synchronously gets info about a directory.\n\nThe returned object has the following properties:\n\n* `exists` -  A boolean value stating whether the directory exists\n* `lastWriteTime` -  A `Date` stating when directory was last changed\n* `lastAccessTime` -  A `Date` stating when directory was accessed\n\n## Example\n\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    FileSystem.createDirectorySync(\"some-dir\");\n    var dirInfo = FileSystem.getDirectoryInfoSync(\"some-dir\");\n    console.log(\"file was modified on \" + dirInfo.lastWriteTime);",
+              "attributes": {
+                "scriptMethod": {
+                  "name": "getDirectoryInfoSync",
+                  "parameters": [
+                    "path"
+                  ]
+                },
+                "returns": {
+                  "typeHint": "Object",
+                  "text": "An object containing info about the directory."
+                },
+                "parameters": [
+                  {
+                    "name": "path",
+                    "typeHint": "String",
+                    "description": "Path to a directory"
+                  }
+                ]
+              }
+            },
+            "returns": {
+              "href": "uno/object",
+              "title": "object",
+              "fullyQualifiedTitle": "object"
+            },
+            "parameters": [
+              {
+                "name": "context",
+                "href": "fuse/scripting/context",
+                "title": "Context",
+                "fullyQualifiedTitle": "Fuse.Scripting.Context"
+              },
+              {
+                "name": "args",
+                "href": "uno/object",
+                "title": "object[]",
+                "fullyQualifiedTitle": "object[]"
+              }
+            ],
+            "id": {
+              "id": "fuse/filesystem/filesystemmodule/getdirectoryinfosync_bbef95e2",
+              "parentId": "fuse/filesystem/filesystemmodule",
+              "type": "JsMethod",
+              "modifiers": [
+                "private"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/filesystem/filesystemmodule/getdirectoryinfosync_bbef95e2",
+              "href": "fuse/filesystem/filesystemmodule/getdirectoryinfosync_bbef95e2"
+            },
+            "titles": {
+              "indexTitle": "GetDirectoryInfoSync(Context, object[])",
+              "fullyQualifiedIndexTitle": "Fuse.FileSystem.FileSystemModule.GetDirectoryInfoSync(Fuse.Scripting.Context, object[])"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Asynchronously gets info about a file.",
+              "full": "Asynchronously gets info about a file.\n\nThe returned object has the following properties:\n\n* `size` –  size of file\n* `exists` –  a boolean value stating whether file exists\n* `lastWriteTime` –  A `Date` stating when file was last changed\n* `lastAccessTime` –  A `Date` stating when file was accessed\n\n## Example\n\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    FileSystem.writeTextToFileSync(\"some-file.txt\", \"hello there\");\n    FileSystem.getFileInfo(\"some-file.txt\")\n        .then(function(fileInfo) {\n            console.log(\"file was modified on \" + fileInfo.lastWriteTime);\n        })\n        .catch(function(error) {\n            \"failed stat \" + error\n        });",
+              "attributes": {
+                "scriptMethod": {
+                  "name": "getFileInfo",
+                  "parameters": [
+                    "path"
+                  ]
+                },
+                "returns": {
+                  "typeHint": "Promise",
+                  "text": "A Promise of an object containing info about the file."
+                },
+                "parameters": [
+                  {
+                    "name": "path",
+                    "typeHint": "String",
+                    "description": "Path to a file"
+                  }
+                ]
+              }
+            },
+            "returns": {
+              "href": "uno/threading/future_1",
+              "title": "Future<FileSystemInfo>",
+              "fullyQualifiedTitle": "Uno.Threading.Future<Uno.IO.FileSystemInfo>"
+            },
+            "parameters": [
+              {
+                "name": "args",
+                "href": "uno/object",
+                "title": "object[]",
+                "fullyQualifiedTitle": "object[]"
+              }
+            ],
+            "id": {
+              "id": "fuse/filesystem/filesystemmodule/getfileinfo_95a738ba",
+              "parentId": "fuse/filesystem/filesystemmodule",
+              "type": "JsMethod",
+              "modifiers": [
+                "private"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/filesystem/filesystemmodule/getfileinfo_95a738ba",
+              "href": "fuse/filesystem/filesystemmodule/getfileinfo_95a738ba"
+            },
+            "titles": {
+              "indexTitle": "GetFileInfo(object[])",
+              "fullyQualifiedIndexTitle": "Fuse.FileSystem.FileSystemModule.GetFileInfo(object[])"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Synchronously gets info about a file.",
+              "full": "Synchronously gets info about a file.\n\nThe returned object has the following properties:\n\n* `exists` –  a boolean value stating whether file exists\n* `lastWriteTime` –  A `Date` stating when file was last changed\n* `lastAccessTime` –  A `Date` stating when file was accessed\n\n## Example\n\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    FileSystem.writeTextToFileSync(\"some-file.txt\", \"hello there\");\n    var fileInfo = FileSystem.getFileInfoSync(\"some-file.txt\");\n    console.log(\"file was modified on \" + fileInfo.lastWriteTime);",
+              "attributes": {
+                "scriptMethod": {
+                  "name": "getFileInfoSync",
+                  "parameters": [
+                    "path"
+                  ]
+                },
+                "returns": {
+                  "typeHint": "Object",
+                  "text": "An object containing info about the file."
+                },
+                "parameters": [
+                  {
+                    "name": "path",
+                    "typeHint": "String",
+                    "description": "Path to a file"
+                  }
+                ]
+              }
+            },
+            "returns": {
+              "href": "uno/object",
+              "title": "object",
+              "fullyQualifiedTitle": "object"
+            },
+            "parameters": [
+              {
+                "name": "context",
+                "href": "fuse/scripting/context",
+                "title": "Context",
+                "fullyQualifiedTitle": "Fuse.Scripting.Context"
+              },
+              {
+                "name": "args",
+                "href": "uno/object",
+                "title": "object[]",
+                "fullyQualifiedTitle": "object[]"
+              }
+            ],
+            "id": {
+              "id": "fuse/filesystem/filesystemmodule/getfileinfosync_bbef95e2",
+              "parentId": "fuse/filesystem/filesystemmodule",
+              "type": "JsMethod",
+              "modifiers": [
+                "private"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/filesystem/filesystemmodule/getfileinfosync_bbef95e2",
+              "href": "fuse/filesystem/filesystemmodule/getfileinfosync_bbef95e2"
+            },
+            "titles": {
+              "indexTitle": "GetFileInfoSync(Context, object[])",
+              "fullyQualifiedIndexTitle": "Fuse.FileSystem.FileSystemModule.GetFileInfoSync(Fuse.Scripting.Context, object[])"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Asynchronously list subdirectories in a directory.",
+              "full": "Asynchronously list subdirectories in a directory.\n\n## Example\n\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    FileSystem.listDirectories(FileSystem.dataDirectory)\n        .then(function(directories) {\n            console.log(\"There are \" + directories.length + \" subdirectories in directory\")\n        }, function(error) {\n            console.log(\"Unable to list subdirectories of directory: \" + error);\n        });",
+              "attributes": {
+                "scriptMethod": {
+                  "name": "listDirectories",
+                  "parameters": [
+                    "path"
+                  ]
+                },
+                "returns": {
+                  "typeHint": "Promise",
+                  "text": "Array of directory paths."
+                },
+                "parameters": [
+                  {
+                    "name": "path",
+                    "typeHint": "String",
+                    "description": "Path to a directory"
+                  }
+                ]
+              }
+            },
+            "returns": {
+              "href": "uno/threading/future_1",
+              "title": "Future<string[]>",
+              "fullyQualifiedTitle": "Uno.Threading.Future<string[]>"
+            },
+            "parameters": [
+              {
+                "name": "args",
+                "href": "uno/object",
+                "title": "object[]",
+                "fullyQualifiedTitle": "object[]"
+              }
+            ],
+            "id": {
+              "id": "fuse/filesystem/filesystemmodule/listdirectories_95a738ba",
+              "parentId": "fuse/filesystem/filesystemmodule",
+              "type": "JsMethod",
+              "modifiers": [
+                "private"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/filesystem/filesystemmodule/listdirectories_95a738ba",
+              "href": "fuse/filesystem/filesystemmodule/listdirectories_95a738ba"
+            },
+            "titles": {
+              "indexTitle": "ListDirectories(object[])",
+              "fullyQualifiedIndexTitle": "Fuse.FileSystem.FileSystemModule.ListDirectories(object[])"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Synchronously list subdirectories in a directory.",
+              "full": "Synchronously list subdirectories in a directory.\n\n## Example\n\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    var directories = FileSystem.listDirectoriesSync(FileSystem.dataDirectory);\n    console.log(\"There are \" + directories.length + \" subdirectories in directory\");",
+              "attributes": {
+                "scriptMethod": {
+                  "name": "listDirectoriesSync",
+                  "parameters": [
+                    "path"
+                  ]
+                },
+                "returns": {
+                  "typeHint": "Array",
+                  "text": "Array of directory paths"
+                },
+                "parameters": [
+                  {
+                    "name": "path",
+                    "typeHint": "String",
+                    "description": "Path to a directory"
+                  }
+                ]
+              }
+            },
+            "returns": {
+              "href": "uno/object",
+              "title": "object",
+              "fullyQualifiedTitle": "object"
+            },
+            "parameters": [
+              {
+                "name": "context",
+                "href": "fuse/scripting/context",
+                "title": "Context",
+                "fullyQualifiedTitle": "Fuse.Scripting.Context"
+              },
+              {
+                "name": "args",
+                "href": "uno/object",
+                "title": "object[]",
+                "fullyQualifiedTitle": "object[]"
+              }
+            ],
+            "id": {
+              "id": "fuse/filesystem/filesystemmodule/listdirectoriessync_bbef95e2",
+              "parentId": "fuse/filesystem/filesystemmodule",
+              "type": "JsMethod",
+              "modifiers": [
+                "private"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/filesystem/filesystemmodule/listdirectoriessync_bbef95e2",
+              "href": "fuse/filesystem/filesystemmodule/listdirectoriessync_bbef95e2"
+            },
+            "titles": {
+              "indexTitle": "ListDirectoriesSync(Context, object[])",
+              "fullyQualifiedIndexTitle": "Fuse.FileSystem.FileSystemModule.ListDirectoriesSync(Fuse.Scripting.Context, object[])"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Asynchronously lists both files and subdirectories in a directory.",
+              "full": "Asynchronously lists both files and subdirectories in a directory.\n\n## Example\n\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    FileSystem.listEntries(FileSystem.dataDirectory)\n        .then(function(entries) {\n            console.log(\"There are \" + entries.length + \" entries in directory\")\n        }, function(error) {\n            console.log(\"Unable to list entries in directory due to error \" + error);\n        });",
+              "attributes": {
+                "scriptMethod": {
+                  "name": "listEntries",
+                  "parameters": [
+                    "path"
+                  ]
+                },
+                "returns": {
+                  "typeHint": "Promise",
+                  "text": "Array of subdirectories and files of directory"
+                },
+                "parameters": [
+                  {
+                    "name": "path",
+                    "typeHint": "String",
+                    "description": "Path to a directory"
+                  }
+                ]
+              }
+            },
+            "returns": {
+              "href": "uno/threading/future_1",
+              "title": "Future<string[]>",
+              "fullyQualifiedTitle": "Uno.Threading.Future<string[]>"
+            },
+            "parameters": [
+              {
+                "name": "args",
+                "href": "uno/object",
+                "title": "object[]",
+                "fullyQualifiedTitle": "object[]"
+              }
+            ],
+            "id": {
+              "id": "fuse/filesystem/filesystemmodule/listentries_95a738ba",
+              "parentId": "fuse/filesystem/filesystemmodule",
+              "type": "JsMethod",
+              "modifiers": [
+                "private"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/filesystem/filesystemmodule/listentries_95a738ba",
+              "href": "fuse/filesystem/filesystemmodule/listentries_95a738ba"
+            },
+            "titles": {
+              "indexTitle": "ListEntries(object[])",
+              "fullyQualifiedIndexTitle": "Fuse.FileSystem.FileSystemModule.ListEntries(object[])"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Synchronously lists both files and subdirectories in a directory.",
+              "full": "Synchronously lists both files and subdirectories in a directory.\n\n## Example\n\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    var entries = FileSystem.listEntriesSync(FileSystem.dataDirectory);\n    console.log(\"There are \" + entries.length + \" entries in directory\");",
+              "attributes": {
+                "scriptMethod": {
+                  "name": "listEntriesSync",
+                  "parameters": [
+                    "path"
+                  ]
+                },
+                "returns": {
+                  "typeHint": "Array",
+                  "text": "Array of subdirectories and files in the directory"
+                },
+                "parameters": [
+                  {
+                    "name": "path",
+                    "typeHint": "String",
+                    "description": "Path to a directory"
+                  }
+                ]
+              }
+            },
+            "returns": {
+              "href": "uno/object",
+              "title": "object",
+              "fullyQualifiedTitle": "object"
+            },
+            "parameters": [
+              {
+                "name": "context",
+                "href": "fuse/scripting/context",
+                "title": "Context",
+                "fullyQualifiedTitle": "Fuse.Scripting.Context"
+              },
+              {
+                "name": "args",
+                "href": "uno/object",
+                "title": "object[]",
+                "fullyQualifiedTitle": "object[]"
+              }
+            ],
+            "id": {
+              "id": "fuse/filesystem/filesystemmodule/listentriessync_bbef95e2",
+              "parentId": "fuse/filesystem/filesystemmodule",
+              "type": "JsMethod",
+              "modifiers": [
+                "private"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/filesystem/filesystemmodule/listentriessync_bbef95e2",
+              "href": "fuse/filesystem/filesystemmodule/listentriessync_bbef95e2"
+            },
+            "titles": {
+              "indexTitle": "ListEntriesSync(Context, object[])",
+              "fullyQualifiedIndexTitle": "Fuse.FileSystem.FileSystemModule.ListEntriesSync(Fuse.Scripting.Context, object[])"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Asynchronously list files in directory.",
+              "full": "Asynchronously list files in directory.\n\n## Example\n\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    FileSystem.listFiles(FileSystem.dataDirectory)\n        .then(function(files) {\n            console.log(\"There are \" + files.length + \" files in directory\")\n        }, function(error) {\n            console.log(\"Unable to list files in directory due to error \" + error);\n        });",
+              "attributes": {
+                "scriptMethod": {
+                  "name": "listFiles",
+                  "parameters": [
+                    "path"
+                  ]
+                },
+                "returns": {
+                  "typeHint": "Promise",
+                  "text": "Array of filenames in the directory"
+                },
+                "parameters": [
+                  {
+                    "name": "path",
+                    "typeHint": "String",
+                    "description": "Path to a directory"
+                  }
+                ]
+              }
+            },
+            "returns": {
+              "href": "uno/threading/future_1",
+              "title": "Future<string[]>",
+              "fullyQualifiedTitle": "Uno.Threading.Future<string[]>"
+            },
+            "parameters": [
+              {
+                "name": "args",
+                "href": "uno/object",
+                "title": "object[]",
+                "fullyQualifiedTitle": "object[]"
+              }
+            ],
+            "id": {
+              "id": "fuse/filesystem/filesystemmodule/listfiles_95a738ba",
+              "parentId": "fuse/filesystem/filesystemmodule",
+              "type": "JsMethod",
+              "modifiers": [
+                "private"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/filesystem/filesystemmodule/listfiles_95a738ba",
+              "href": "fuse/filesystem/filesystemmodule/listfiles_95a738ba"
+            },
+            "titles": {
+              "indexTitle": "ListFiles(object[])",
+              "fullyQualifiedIndexTitle": "Fuse.FileSystem.FileSystemModule.ListFiles(object[])"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Synchronously list files in directory.",
+              "full": "Synchronously list files in directory.\n\n## Example\n\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    var files = FileSystem.listFilesSync(FileSystem.dataDirectory);\n    console.log(\"There are \" + files.length + \" files in directory\");",
+              "attributes": {
+                "scriptMethod": {
+                  "name": "listFilesSync",
+                  "parameters": [
+                    "path"
+                  ]
+                },
+                "returns": {
+                  "typeHint": "Array",
+                  "text": "Array of filenames in the directory"
+                },
+                "parameters": [
+                  {
+                    "name": "path",
+                    "typeHint": "String",
+                    "description": "Path to a directory"
+                  }
+                ]
+              }
+            },
+            "returns": {
+              "href": "uno/object",
+              "title": "object",
+              "fullyQualifiedTitle": "object"
+            },
+            "parameters": [
+              {
+                "name": "context",
+                "href": "fuse/scripting/context",
+                "title": "Context",
+                "fullyQualifiedTitle": "Fuse.Scripting.Context"
+              },
+              {
+                "name": "args",
+                "href": "uno/object",
+                "title": "object[]",
+                "fullyQualifiedTitle": "object[]"
+              }
+            ],
+            "id": {
+              "id": "fuse/filesystem/filesystemmodule/listfilessync_bbef95e2",
+              "parentId": "fuse/filesystem/filesystemmodule",
+              "type": "JsMethod",
+              "modifiers": [
+                "private"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/filesystem/filesystemmodule/listfilessync_bbef95e2",
+              "href": "fuse/filesystem/filesystemmodule/listfilessync_bbef95e2"
+            },
+            "titles": {
+              "indexTitle": "ListFilesSync(Context, object[])",
+              "fullyQualifiedIndexTitle": "Fuse.FileSystem.FileSystemModule.ListFilesSync(Fuse.Scripting.Context, object[])"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Asynchronously moves a file or directory from source to destination path",
+              "full": "Asynchronously moves a file or directory from source to destination path\n\n## Example\n\n    FileSystem = require(\"FuseJS/FileSystem\");\n\n    FileSystem.writeTextToFile(\"to-be-moved.txt\", \"hello world\")\n        .then(function() {\n            return FileSystem.move(\"to-be-moved.txt\", \"destination-reached.txt\");\n        })\n        .catch(function(err) {\n            console.log(\"Unable to move file\");\n        });",
+              "attributes": {
+                "scriptMethod": {
+                  "name": "move",
+                  "parameters": [
+                    "source",
+                    "destination"
+                  ]
+                },
+                "returns": {
+                  "text": "Promise of nothing"
+                },
+                "parameters": [
+                  {
+                    "name": "source",
+                    "typeHint": "String",
+                    "description": "Source path"
+                  },
+                  {
+                    "name": "destination",
+                    "typeHint": "String",
+                    "description": "Destination path"
+                  }
+                ]
+              }
+            },
+            "returns": {
+              "href": "uno/threading/future_1",
+              "title": "Future<Nothing>",
+              "fullyQualifiedTitle": "Uno.Threading.Future<Fuse.FileSystem.Nothing>"
+            },
+            "parameters": [
+              {
+                "name": "args",
+                "href": "uno/object",
+                "title": "object[]",
+                "fullyQualifiedTitle": "object[]"
+              }
+            ],
+            "id": {
+              "id": "fuse/filesystem/filesystemmodule/move_95a738ba",
+              "parentId": "fuse/filesystem/filesystemmodule",
+              "type": "JsMethod",
+              "modifiers": [
+                "private"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/filesystem/filesystemmodule/move_95a738ba",
+              "href": "fuse/filesystem/filesystemmodule/move_95a738ba"
+            },
+            "titles": {
+              "indexTitle": "Move(object[])",
+              "fullyQualifiedIndexTitle": "Fuse.FileSystem.FileSystemModule.Move(object[])"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Synchronously moves a file or directory from source to destination path",
+              "full": "Synchronously moves a file or directory from source to destination path\n\n## Example\n\n    FileSystem = require(\"FuseJS/FileSystem\");\n\n    FileSystem.writeTextToFileSync(\"to-be-moved.txt\", \"hello world\");\n    FileSystem.moveSync(\"to-be-moved.txt\", \"destination-reached.txt\");",
+              "attributes": {
+                "scriptMethod": {
+                  "name": "moveSync",
+                  "parameters": [
+                    "source",
+                    "destination"
+                  ]
+                },
+                "parameters": [
+                  {
+                    "name": "source",
+                    "typeHint": "String",
+                    "description": "Source path"
+                  },
+                  {
+                    "name": "destination",
+                    "typeHint": "String",
+                    "description": "Destination path"
+                  }
+                ]
+              }
+            },
+            "returns": {
+              "href": "uno/object",
+              "title": "object",
+              "fullyQualifiedTitle": "object"
+            },
+            "parameters": [
+              {
+                "name": "context",
+                "href": "fuse/scripting/context",
+                "title": "Context",
+                "fullyQualifiedTitle": "Fuse.Scripting.Context"
+              },
+              {
+                "name": "args",
+                "href": "uno/object",
+                "title": "object[]",
+                "fullyQualifiedTitle": "object[]"
+              }
+            ],
+            "id": {
+              "id": "fuse/filesystem/filesystemmodule/movesync_bbef95e2",
+              "parentId": "fuse/filesystem/filesystemmodule",
+              "type": "JsMethod",
+              "modifiers": [
+                "private"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/filesystem/filesystemmodule/movesync_bbef95e2",
+              "href": "fuse/filesystem/filesystemmodule/movesync_bbef95e2"
+            },
+            "titles": {
+              "indexTitle": "MoveSync(Context, object[])",
+              "fullyQualifiedIndexTitle": "Fuse.FileSystem.FileSystemModule.MoveSync(Fuse.Scripting.Context, object[])"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Asynchronously reads a file and returns a Promise of an ArrayBuffer with its contents.",
+              "full": "Asynchronously reads a file and returns a Promise of an ArrayBuffer with its contents.\n\n## Example\n\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    FileSystem.readBufferFromFile(\"myfile.txt\")\n        .then(function(contents) {\n            console.log(contents);\n        }, function(error) {\n            console.log(error);\n        });",
+              "attributes": {
+                "scriptMethod": {
+                  "name": "readBufferFromFile",
+                  "parameters": [
+                    "filename"
+                  ]
+                },
+                "returns": {
+                  "typeHint": "Promise",
+                  "text": "A Promise of the file's contents as an ArrayBuffer."
+                },
+                "parameters": [
+                  {
+                    "name": "filename",
+                    "typeHint": "String",
+                    "description": "Path to file"
+                  }
+                ]
+              }
+            },
+            "returns": {
+              "href": "uno/threading/future_1",
+              "title": "Future<byte[]>",
+              "fullyQualifiedTitle": "Uno.Threading.Future<byte[]>"
+            },
+            "parameters": [
+              {
+                "name": "args",
+                "href": "uno/object",
+                "title": "object[]",
+                "fullyQualifiedTitle": "object[]"
+              }
+            ],
+            "id": {
+              "id": "fuse/filesystem/filesystemmodule/readbufferfromfile_95a738ba",
+              "parentId": "fuse/filesystem/filesystemmodule",
+              "type": "JsMethod",
+              "modifiers": [
+                "private"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/filesystem/filesystemmodule/readbufferfromfile_95a738ba",
+              "href": "fuse/filesystem/filesystemmodule/readbufferfromfile_95a738ba"
+            },
+            "titles": {
+              "indexTitle": "ReadBufferFromFile(object[])",
+              "fullyQualifiedIndexTitle": "Fuse.FileSystem.FileSystemModule.ReadBufferFromFile(object[])"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Synchronously reads a file and returns an ArrayBuffer with its contents.",
+              "full": "Synchronously reads a file and returns an ArrayBuffer with its contents.\n\n## Example\n\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    var data = FileSystem.readBufferFromFileSync(\"myfile.txt\");",
+              "attributes": {
+                "scriptMethod": {
+                  "name": "readBufferFromFileSync",
+                  "parameters": [
+                    "filename"
+                  ]
+                },
+                "returns": {
+                  "typeHint": "ArrayBuffer",
+                  "text": "The file's contents as an ArrayBuffer."
+                },
+                "parameters": [
+                  {
+                    "name": "filename",
+                    "typeHint": "String",
+                    "description": "Path to file"
+                  }
+                ]
+              }
+            },
+            "returns": {
+              "href": "uno/object",
+              "title": "object",
+              "fullyQualifiedTitle": "object"
+            },
+            "parameters": [
+              {
+                "name": "context",
+                "href": "fuse/scripting/context",
+                "title": "Context",
+                "fullyQualifiedTitle": "Fuse.Scripting.Context"
+              },
+              {
+                "name": "args",
+                "href": "uno/object",
+                "title": "object[]",
+                "fullyQualifiedTitle": "object[]"
+              }
+            ],
+            "id": {
+              "id": "fuse/filesystem/filesystemmodule/readbufferfromfilesync_bbef95e2",
+              "parentId": "fuse/filesystem/filesystemmodule",
+              "type": "JsMethod",
+              "modifiers": [
+                "private"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/filesystem/filesystemmodule/readbufferfromfilesync_bbef95e2",
+              "href": "fuse/filesystem/filesystemmodule/readbufferfromfilesync_bbef95e2"
+            },
+            "titles": {
+              "indexTitle": "ReadBufferFromFileSync(Context, object[])",
+              "fullyQualifiedIndexTitle": "Fuse.FileSystem.FileSystemModule.ReadBufferFromFileSync(Fuse.Scripting.Context, object[])"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Asynchronously reads a file and returns a Promise of its contents.",
+              "full": "Asynchronously reads a file and returns a Promise of its contents.\n\n## Example\n\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    FileSystem.readTextFromFile(\"myfile.txt\")\n        .then(function(contents) {\n            console.log(contents);\n        }, function(error) {\n            console.log(error);\n        });",
+              "attributes": {
+                "scriptMethod": {
+                  "name": "readTextFromFile",
+                  "parameters": [
+                    "filename"
+                  ]
+                },
+                "returns": {
+                  "typeHint": "Promise",
+                  "text": "A Promise of the file's contents as a String."
+                },
+                "parameters": [
+                  {
+                    "name": "filename",
+                    "typeHint": "String",
+                    "description": "Path to file"
+                  }
+                ]
+              }
+            },
+            "returns": {
+              "href": "uno/threading/future_1",
+              "title": "Future<string>",
+              "fullyQualifiedTitle": "Uno.Threading.Future<string>"
+            },
+            "parameters": [
+              {
+                "name": "args",
+                "href": "uno/object",
+                "title": "object[]",
+                "fullyQualifiedTitle": "object[]"
+              }
+            ],
+            "id": {
+              "id": "fuse/filesystem/filesystemmodule/readtextfromfile_95a738ba",
+              "parentId": "fuse/filesystem/filesystemmodule",
+              "type": "JsMethod",
+              "modifiers": [
+                "private"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/filesystem/filesystemmodule/readtextfromfile_95a738ba",
+              "href": "fuse/filesystem/filesystemmodule/readtextfromfile_95a738ba"
+            },
+            "titles": {
+              "indexTitle": "ReadTextFromFile(object[])",
+              "fullyQualifiedIndexTitle": "Fuse.FileSystem.FileSystemModule.ReadTextFromFile(object[])"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Synchronously reads a file and returns its contents as a string.",
+              "full": "Synchronously reads a file and returns its contents as a string.\n\n## Example\n\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    var content =  FileSystem.readTextFromFileSync(FileSystem.dataDirectory + \"/\" + \"myfile.txt\");\n    console.log(\"The file contains \" + content));",
+              "attributes": {
+                "scriptMethod": {
+                  "name": "readTextFromFileSync",
+                  "parameters": [
+                    "filename"
+                  ]
+                },
+                "returns": {
+                  "typeHint": "String",
+                  "text": "The contents of the file as a String."
+                },
+                "parameters": [
+                  {
+                    "name": "filename",
+                    "typeHint": "String",
+                    "description": "Path to file"
+                  }
+                ]
+              }
+            },
+            "returns": {
+              "href": "uno/object",
+              "title": "object",
+              "fullyQualifiedTitle": "object"
+            },
+            "parameters": [
+              {
+                "name": "context",
+                "href": "fuse/scripting/context",
+                "title": "Context",
+                "fullyQualifiedTitle": "Fuse.Scripting.Context"
+              },
+              {
+                "name": "args",
+                "href": "uno/object",
+                "title": "object[]",
+                "fullyQualifiedTitle": "object[]"
+              }
+            ],
+            "id": {
+              "id": "fuse/filesystem/filesystemmodule/readtextfromfilesync_bbef95e2",
+              "parentId": "fuse/filesystem/filesystemmodule",
+              "type": "JsMethod",
+              "modifiers": [
+                "private"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/filesystem/filesystemmodule/readtextfromfilesync_bbef95e2",
+              "href": "fuse/filesystem/filesystemmodule/readtextfromfilesync_bbef95e2"
+            },
+            "titles": {
+              "indexTitle": "ReadTextFromFileSync(Context, object[])",
+              "fullyQualifiedIndexTitle": "Fuse.FileSystem.FileSystemModule.ReadTextFromFileSync(Fuse.Scripting.Context, object[])"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Asynchronously writes an `ArrayBuffer` to a file.",
+              "full": "Asynchronously writes an `ArrayBuffer` to a file.\n\n## Example\n\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    var data = new ArrayBuffer(4);\n    var view = new Int32Array(data);\n    view[0] = 0x1337;\n\n    FileSystem.writeBufferToFile(FileSystem.dataDirectory + \"/\" + \"myfile.txt\", data)\n        .then(function() {\n            console.log(\"Successful write\");\n        }, function(error) {\n            console.log(error);\n        });",
+              "attributes": {
+                "scriptMethod": {
+                  "name": "writeBufferToFile",
+                  "parameters": [
+                    "filename"
+                  ]
+                },
+                "returns": {
+                  "typeHint": "Promise",
+                  "text": "A Promise of nothing."
+                },
+                "parameters": [
+                  {
+                    "name": "filename",
+                    "typeHint": "String",
+                    "description": "Path to file"
+                  },
+                  {
+                    "name": "data",
+                    "typeHint": "ArrayBuffer",
+                    "description": "Data to write to the file"
+                  }
+                ]
+              }
+            },
+            "returns": {
+              "href": "uno/threading/future_1",
+              "title": "Future<Nothing>",
+              "fullyQualifiedTitle": "Uno.Threading.Future<Fuse.FileSystem.Nothing>"
+            },
+            "parameters": [
+              {
+                "name": "args",
+                "href": "uno/object",
+                "title": "object[]",
+                "fullyQualifiedTitle": "object[]"
+              }
+            ],
+            "id": {
+              "id": "fuse/filesystem/filesystemmodule/writebuffertofile_95a738ba",
+              "parentId": "fuse/filesystem/filesystemmodule",
+              "type": "JsMethod",
+              "modifiers": [
+                "private"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/filesystem/filesystemmodule/writebuffertofile_95a738ba",
+              "href": "fuse/filesystem/filesystemmodule/writebuffertofile_95a738ba"
+            },
+            "titles": {
+              "indexTitle": "WriteBufferToFile(object[])",
+              "fullyQualifiedIndexTitle": "Fuse.FileSystem.FileSystemModule.WriteBufferToFile(object[])"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Synchronously writes an `ArrayBuffer` to a file.",
+              "full": "Synchronously writes an `ArrayBuffer` to a file.\n\n## Example\n\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    var data = new ArrayBuffer(4);\n    var view = new Int32Array(data);\n    view[0] = 0x1337;\n\n    FileSystem.writeBufferToFileSync(FileSystem.dataDirectory + \"/\" + \"myfile.txt\", data);",
+              "attributes": {
+                "scriptMethod": {
+                  "name": "writeBufferToFileSync",
+                  "parameters": [
+                    "filename"
+                  ]
+                },
+                "parameters": [
+                  {
+                    "name": "filename",
+                    "typeHint": "String",
+                    "description": "Path to file"
+                  },
+                  {
+                    "name": "data",
+                    "typeHint": "ArrayBuffer",
+                    "description": "Data to write to the file"
+                  }
+                ]
+              }
+            },
+            "returns": {
+              "href": "uno/object",
+              "title": "object",
+              "fullyQualifiedTitle": "object"
+            },
+            "parameters": [
+              {
+                "name": "context",
+                "href": "fuse/scripting/context",
+                "title": "Context",
+                "fullyQualifiedTitle": "Fuse.Scripting.Context"
+              },
+              {
+                "name": "args",
+                "href": "uno/object",
+                "title": "object[]",
+                "fullyQualifiedTitle": "object[]"
+              }
+            ],
+            "id": {
+              "id": "fuse/filesystem/filesystemmodule/writebuffertofilesync_bbef95e2",
+              "parentId": "fuse/filesystem/filesystemmodule",
+              "type": "JsMethod",
+              "modifiers": [
+                "private"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/filesystem/filesystemmodule/writebuffertofilesync_bbef95e2",
+              "href": "fuse/filesystem/filesystemmodule/writebuffertofilesync_bbef95e2"
+            },
+            "titles": {
+              "indexTitle": "WriteBufferToFileSync(Context, object[])",
+              "fullyQualifiedIndexTitle": "Fuse.FileSystem.FileSystemModule.WriteBufferToFileSync(Fuse.Scripting.Context, object[])"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Asynchronously writes a string to a UTF-8 encoded file.",
+              "full": "Asynchronously writes a string to a UTF-8 encoded file.\n\n## Example\n\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    FileSystem.writeTextToFile(FileSystem.dataDirectory + \"/\" + \"myfile.txt\", \"Hello buddy\")\n        .then(function() {\n            console.log(\"Successful write\");\n        }, function(error) {\n            console.log(error);\n        });",
+              "attributes": {
+                "scriptMethod": {
+                  "name": "writeTextToFile",
+                  "parameters": [
+                    "filename"
+                  ]
+                },
+                "returns": {
+                  "typeHint": "Promise",
+                  "text": "A Promise of nothing."
+                },
+                "parameters": [
+                  {
+                    "name": "filename",
+                    "typeHint": "String",
+                    "description": "Path to file"
+                  },
+                  {
+                    "name": "text",
+                    "typeHint": "String",
+                    "description": "Text to write to the file"
+                  }
+                ]
+              }
+            },
+            "returns": {
+              "href": "uno/threading/future_1",
+              "title": "Future<Nothing>",
+              "fullyQualifiedTitle": "Uno.Threading.Future<Fuse.FileSystem.Nothing>"
+            },
+            "parameters": [
+              {
+                "name": "args",
+                "href": "uno/object",
+                "title": "object[]",
+                "fullyQualifiedTitle": "object[]"
+              }
+            ],
+            "id": {
+              "id": "fuse/filesystem/filesystemmodule/writetexttofile_95a738ba",
+              "parentId": "fuse/filesystem/filesystemmodule",
+              "type": "JsMethod",
+              "modifiers": [
+                "private"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/filesystem/filesystemmodule/writetexttofile_95a738ba",
+              "href": "fuse/filesystem/filesystemmodule/writetexttofile_95a738ba"
+            },
+            "titles": {
+              "indexTitle": "WriteTextToFile(object[])",
+              "fullyQualifiedIndexTitle": "Fuse.FileSystem.FileSystemModule.WriteTextToFile(object[])"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Synchronously writes a string to a UTF-8 encoded file.",
+              "full": "Synchronously writes a string to a UTF-8 encoded file.\n\n## Example\n\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    FileSystem.writeTextToFileSync(\"myfile.txt\", \"Hello buddy\");",
+              "attributes": {
+                "scriptMethod": {
+                  "name": "writeTextToFileSync",
+                  "parameters": [
+                    "filename"
+                  ]
+                },
+                "parameters": [
+                  {
+                    "name": "filename",
+                    "typeHint": "String",
+                    "description": "Path to file"
+                  },
+                  {
+                    "name": "text",
+                    "typeHint": "String",
+                    "description": "Text to write to the file"
+                  }
+                ]
+              }
+            },
+            "returns": {
+              "href": "uno/object",
+              "title": "object",
+              "fullyQualifiedTitle": "object"
+            },
+            "parameters": [
+              {
+                "name": "context",
+                "href": "fuse/scripting/context",
+                "title": "Context",
+                "fullyQualifiedTitle": "Fuse.Scripting.Context"
+              },
+              {
+                "name": "args",
+                "href": "uno/object",
+                "title": "object[]",
+                "fullyQualifiedTitle": "object[]"
+              }
+            ],
+            "id": {
+              "id": "fuse/filesystem/filesystemmodule/writetexttofilesync_bbef95e2",
+              "parentId": "fuse/filesystem/filesystemmodule",
+              "type": "JsMethod",
+              "modifiers": [
+                "private"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/filesystem/filesystemmodule/writetexttofilesync_bbef95e2",
+              "href": "fuse/filesystem/filesystemmodule/writetexttofilesync_bbef95e2"
+            },
+            "titles": {
+              "indexTitle": "WriteTextToFileSync(Context, object[])",
+              "fullyQualifiedIndexTitle": "Fuse.FileSystem.FileSystemModule.WriteTextToFileSync(Fuse.Scripting.Context, object[])"
+            }
+          }
+        ]
+      }
+    ],
+    "constructors": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/filesystem/filesystemmodule",
+            "parentId": "fuse/filesystem",
+            "type": "JsModule",
+            "modifiers": [
+              "public"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/filesystem/filesystemmodule",
+            "href": "fuse/filesystem/filesystemmodule"
+          },
+          "titles": {
+            "indexTitle": "FileSystemModule",
+            "fullyQualifiedIndexTitle": "Fuse.FileSystem.FileSystemModule"
+          }
+        },
+        "items": [
+          {
+            "id": {
+              "id": "fuse/filesystem/filesystemmodule/_ctor",
+              "parentId": "fuse/filesystem/filesystemmodule",
+              "type": "Constructor",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/filesystem/filesystemmodule/_ctor",
+              "href": "fuse/filesystem/filesystemmodule/_ctor"
+            },
+            "titles": {
+              "indexTitle": "FileSystemModule",
+              "fullyQualifiedIndexTitle": "Fuse.FileSystem.FileSystemModule.FileSystemModule"
+            }
+          }
+        ]
+      }
+    ],
+    "properties": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/scripting/module",
+            "parentId": "fuse/scripting",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/scripting/module",
+            "href": "fuse/scripting/module"
+          },
+          "titles": {
+            "indexTitle": "Module",
+            "fullyQualifiedIndexTitle": "Fuse.Scripting.Module"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "id": {
+              "id": "fuse/filesystem/filesystemmodule/isevaluated",
+              "parentId": "fuse/filesystem/filesystemmodule",
+              "type": "Property",
+              "modifiers": [
+                "protected"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/filesystem/filesystemmodule/isevaluated",
+              "href": "fuse/scripting/module/isevaluated",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "IsEvaluated",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.Module.IsEvaluated"
+            }
+          }
+        ]
+      }
+    ],
+    "methods": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/scripting/nativemodule",
+            "parentId": "fuse/scripting",
+            "type": "Class",
+            "modifiers": [
+              "public"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/scripting/nativemodule",
+            "href": "fuse/scripting/nativemodule"
+          },
+          "titles": {
+            "indexTitle": "NativeModule",
+            "fullyQualifiedIndexTitle": "Fuse.Scripting.NativeModule"
+          }
+        },
+        "items": [
+          {
+            "parameters": [
+              {
+                "name": "member",
+                "href": "fuse/scripting/nativemember",
+                "title": "NativeMember",
+                "fullyQualifiedTitle": "Fuse.Scripting.NativeMember"
+              }
+            ],
+            "id": {
+              "id": "fuse/filesystem/filesystemmodule/addmember_645dc1d4",
+              "parentId": "fuse/filesystem/filesystemmodule",
+              "type": "Method",
+              "modifiers": [
+                "protected"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/filesystem/filesystemmodule/addmember_645dc1d4",
+              "href": "fuse/scripting/nativemodule/addmember_645dc1d4",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "AddMember(NativeMember)",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.NativeModule.AddMember(Fuse.Scripting.NativeMember)"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/scripting/module",
+            "parentId": "fuse/scripting",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/scripting/module",
+            "href": "fuse/scripting/module"
+          },
+          "titles": {
+            "indexTitle": "Module",
+            "fullyQualifiedIndexTitle": "Fuse.Scripting.Module"
+          }
+        },
+        "items": [
+          {
+            "id": {
+              "id": "fuse/filesystem/filesystemmodule/dispose",
+              "parentId": "fuse/filesystem/filesystemmodule",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/filesystem/filesystemmodule/dispose",
+              "href": "fuse/scripting/module/dispose",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Dispose",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.Module.Dispose"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "c",
+                "href": "fuse/scripting/context",
+                "title": "Context",
+                "fullyQualifiedTitle": "Fuse.Scripting.Context"
+              },
+              {
+                "name": "result",
+                "href": "fuse/scripting/moduleresult",
+                "title": "ModuleResult",
+                "fullyQualifiedTitle": "Fuse.Scripting.ModuleResult"
+              }
+            ],
+            "id": {
+              "id": "fuse/filesystem/filesystemmodule/evaluate_0c699bd3",
+              "parentId": "fuse/filesystem/filesystemmodule",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/filesystem/filesystemmodule/evaluate_0c699bd3",
+              "href": "fuse/scripting/module/evaluate_0c699bd3",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Evaluate(Context, ModuleResult)",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.Module.Evaluate(Fuse.Scripting.Context, Fuse.Scripting.ModuleResult)"
+            }
+          },
+          {
+            "returns": {
+              "href": "fuse/scripting/moduleresult",
+              "title": "ModuleResult",
+              "fullyQualifiedTitle": "Fuse.Scripting.ModuleResult"
+            },
+            "parameters": [
+              {
+                "name": "c",
+                "href": "fuse/scripting/context",
+                "title": "Context",
+                "fullyQualifiedTitle": "Fuse.Scripting.Context"
+              },
+              {
+                "name": "id",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              }
+            ],
+            "id": {
+              "id": "fuse/filesystem/filesystemmodule/evaluate_8fde98fd",
+              "parentId": "fuse/filesystem/filesystemmodule",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/filesystem/filesystemmodule/evaluate_8fde98fd",
+              "href": "fuse/scripting/module/evaluate_8fde98fd",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Evaluate(Context, string)",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.Module.Evaluate(Fuse.Scripting.Context, string)"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/object",
+              "title": "object",
+              "fullyQualifiedTitle": "object"
+            },
+            "parameters": [
+              {
+                "name": "c",
+                "href": "fuse/scripting/context",
+                "title": "Context",
+                "fullyQualifiedTitle": "Fuse.Scripting.Context"
+              },
+              {
+                "name": "id",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              }
+            ],
+            "id": {
+              "id": "fuse/filesystem/filesystemmodule/evaluateexports_8fde98fd",
+              "parentId": "fuse/filesystem/filesystemmodule",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/filesystem/filesystemmodule/evaluateexports_8fde98fd",
+              "href": "fuse/scripting/module/evaluateexports_8fde98fd",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "EvaluateExports(Context, string)",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.Module.EvaluateExports(Fuse.Scripting.Context, string)"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Returns the file source that will be watched by the Context for changes in Fuse preview.\nOverride in subclasses and return correct file source to support live updates\nin Fuse preview.",
+              "full": "Returns the file source that will be watched by the Context for changes in Fuse preview.\nOverride in subclasses and return correct file source to support live updates\nin Fuse preview."
+            },
+            "returns": {
+              "href": "uno/ux/filesource",
+              "title": "FileSource",
+              "fullyQualifiedTitle": "Uno.UX.FileSource"
+            },
+            "id": {
+              "id": "fuse/filesystem/filesystemmodule/getfile",
+              "parentId": "fuse/filesystem/filesystemmodule",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/filesystem/filesystemmodule/getfile",
+              "href": "fuse/scripting/module/getfile",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetFile",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.Module.GetFile"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "uno/object",
+            "parentId": "uno",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "intrinsic"
+            ]
+          },
+          "uri": {
+            "idUri": "uno/object",
+            "href": "uno/object"
+          },
+          "titles": {
+            "indexTitle": "object",
+            "fullyQualifiedIndexTitle": "object"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "parameters": [
+              {
+                "name": "o",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              }
+            ],
+            "id": {
+              "id": "fuse/filesystem/filesystemmodule/equals_a09c80e3",
+              "parentId": "fuse/filesystem/filesystemmodule",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/filesystem/filesystemmodule/equals_a09c80e3",
+              "href": "uno/object/equals_a09c80e3",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Equals(object)",
+              "fullyQualifiedIndexTitle": "Uno.Object.Equals(object)"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/int",
+              "title": "int",
+              "fullyQualifiedTitle": "int"
+            },
+            "id": {
+              "id": "fuse/filesystem/filesystemmodule/gethashcode",
+              "parentId": "fuse/filesystem/filesystemmodule",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/filesystem/filesystemmodule/gethashcode",
+              "href": "uno/object/gethashcode",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetHashCode",
+              "fullyQualifiedIndexTitle": "Uno.Object.GetHashCode"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/type",
+              "title": "Type",
+              "fullyQualifiedTitle": "Uno.Type"
+            },
+            "id": {
+              "id": "fuse/filesystem/filesystemmodule/gettype",
+              "parentId": "fuse/filesystem/filesystemmodule",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/filesystem/filesystemmodule/gettype",
+              "href": "uno/object/gettype",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetType",
+              "fullyQualifiedIndexTitle": "Uno.Object.GetType"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "id": {
+              "id": "fuse/filesystem/filesystemmodule/tostring",
+              "parentId": "fuse/filesystem/filesystemmodule",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/filesystem/filesystemmodule/tostring",
+              "href": "uno/object/tostring",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "ToString",
+              "fullyQualifiedIndexTitle": "Uno.Object.ToString"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

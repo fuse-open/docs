@@ -1,0 +1,45 @@
+{
+  "entity": {
+    "location": {
+      "namespaceTitle": "Fuse.Selection",
+      "namespaceUri": "fuse/selection",
+      "packageName": "Fuse.Selection",
+      "packageVersion": "1.8.0-rc2"
+    },
+    "parameters": [],
+    "returns": {
+      "href": "uno/object",
+      "title": "object",
+      "fullyQualifiedTitle": "object"
+    },
+    "uxProperties": {},
+    "id": {
+      "id": "fuse/selection/selection/values",
+      "parentId": "fuse/selection/selection",
+      "type": "UxProperty",
+      "modifiers": [
+        "public"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/selection/selection/values",
+      "href": "fuse/selection/selection/values"
+    },
+    "titles": {
+      "pageTitle": "Selection.Values Property",
+      "navigationTitle": "Values Property",
+      "fullTitle": "Fuse.Selection.Selection.Values",
+      "indexTitle": "Values",
+      "fullyQualifiedIndexTitle": "Fuse.Selection.Selection.Values"
+    },
+    "syntax": {
+      "uno": "public object Values { get; get; }"
+    },
+    "comment": {
+      "brief": "The current list of selected values. This should be bound to an `IObservableArray` (e.g `FuseJS/Observable`) order to create a 2-way interface for the selected items.",
+      "full": "The current list of selected values. This should be bound to an `IObservableArray` (e.g `FuseJS/Observable`) order to create a 2-way interface for the selected items.",
+      "examples": "The following example uses @Selection to create a simple list of options. Tap the items to toggle their selection. `Values` is bound to a JavaScript `Observable` in order to track the currently selected items.\r\n\r\n\t<Panel ux:Class=\"MyItem\" Color=\"#aaa\">\r\n\t\t<string ux:Property=\"Label\" />\r\n\t\t<string ux:Property=\"Value\" />\r\n\t\t\r\n\t\t<Selectable Value=\"{ReadProperty this.Value}\" />\r\n\t\t<Text Value=\"{ReadProperty this.Label}\" />\r\n\t\t\r\n\t\t<WhileSelected>\r\n\t\t\t<Change this.Color=\"#ffc\" />\r\n\t\t</WhileSelected>\r\n\t\t<Tapped>\r\n\t\t\t<ToggleSelection />\r\n\t\t</Tapped>\r\n\t</Panel>\r\n\r\n\t<JavaScript>\r\n\t\tvar Observable = require(\"FuseJS/Observable\");\r\n\r\n\t\tvar values = Observable();\r\n\t\tvar list = Observable(function() {\r\n\t\t\treturn values.toArray().join(\",\");\r\n\t\t});\r\n\r\n\t\tmodule.exports = {\r\n\t\t\tvalues: values,\r\n\t\t\tlist: list\r\n\t\t};\r\n\t</JavaScript>\r\n\r\n\t<StackPanel>\r\n\t\t<Selection Values=\"{values}\" />\r\n\t\r\n\t\t<MyItem Label=\"Big Red One\" Value=\"sku-01\" />\r\n\t\t<MyItem Label=\"Small Green Two\" Value=\"sku-02\" />\r\n\t\t<MyItem Label=\"Third Last One\" Value=\"sku-03\" />\r\n\t\t<MyItem Label=\"Four Fore For\" Value=\"sku-04\" />\r\n\t\t<MyItem Label=\"Point Oh-Five\" Value=\"sku-05\" />\r\n\r\n\t\t<Text Value=\"Selected:\" Margin=\"0,10,0,0\" />\r\n\t\t<Text Value=\"{list}\" />\r\n\t</StackPanel>"
+    }
+  },
+  "tableOfContents": {}
+}

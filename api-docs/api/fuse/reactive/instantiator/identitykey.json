@@ -1,0 +1,44 @@
+{
+  "entity": {
+    "location": {
+      "namespaceTitle": "Fuse.Reactive",
+      "namespaceUri": "fuse/reactive",
+      "packageName": "Fuse.Reactive.Bindings",
+      "packageVersion": "1.8.0-rc2"
+    },
+    "parameters": [],
+    "returns": {
+      "href": "uno/string",
+      "title": "string",
+      "fullyQualifiedTitle": "string"
+    },
+    "uxProperties": {},
+    "id": {
+      "id": "fuse/reactive/instantiator/identitykey",
+      "parentId": "fuse/reactive/instantiator",
+      "type": "UxProperty",
+      "modifiers": [
+        "public"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/reactive/instantiator/identitykey",
+      "href": "fuse/reactive/instantiator/identitykey"
+    },
+    "titles": {
+      "pageTitle": "Instantiator.IdentityKey Property",
+      "navigationTitle": "IdentityKey Property",
+      "fullTitle": "Fuse.Reactive.Instantiator.IdentityKey",
+      "indexTitle": "IdentityKey",
+      "fullyQualifiedIndexTitle": "Fuse.Reactive.Instantiator.IdentityKey"
+    },
+    "syntax": {
+      "uno": "public string IdentityKey { get; get; }"
+    },
+    "comment": {
+      "brief": "If specified will reuse existing items if a new item is created that has the same id.",
+      "full": "If specified will reuse existing items if a new item is created that has the same id.\n\nThe `IdentityKey` is a key into the provided objects. If the key is not found the item will not have an id, and will not be matched.\n\nMatched items keep the same Node instances that they had before. This makes it suitable for using in combination with `LayoutAnimation`. It also makes it possible to use `AddingAnimation` and `RemovingAnimation` with `Each`, as the Node lifetime will now follow the logical lifetime.\n\nThis feature works in conjunction with `replaceAt` and `replaceAll` on Observable's.\n\nNOTE: This feature, if using animations, does not yet operate well in combination with `Reuse`. It may result in reuse of unintended items and/or unexpected animations.\nhttps://github.com/fusetools/fuselibs-public/issues/175"
+    }
+  },
+  "tableOfContents": {}
+}

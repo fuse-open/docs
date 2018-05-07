@@ -1,0 +1,446 @@
+{
+  "entity": {
+    "base": {
+      "id": {
+        "id": "uno/object",
+        "parentId": "uno",
+        "type": "Class",
+        "modifiers": [
+          "public",
+          "intrinsic"
+        ]
+      },
+      "uri": {
+        "idUri": "uno/object",
+        "href": "uno/object"
+      },
+      "titles": {
+        "indexTitle": "object",
+        "fullyQualifiedIndexTitle": "object"
+      }
+    },
+    "location": {
+      "namespaceTitle": "Fuse.Reactive",
+      "namespaceUri": "fuse/reactive",
+      "packageName": "Fuse.Reactive.Expressions",
+      "packageVersion": "1.8.0-rc2"
+    },
+    "inheritance": {
+      "root": {
+        "uri": "uno/object",
+        "title": "object",
+        "children": [
+          {
+            "uri": "fuse/reactive/innerlistener",
+            "title": "Fuse.Reactive.InnerListener",
+            "children": [],
+            "isCurrent": true
+          }
+        ],
+        "isAncestor": true
+      },
+      "hasInheritance": true
+    },
+    "implementedInterfaces": [
+      {
+        "id": {
+          "id": "uno/idisposable",
+          "parentId": "uno",
+          "type": "Interface",
+          "modifiers": [
+            "public",
+            "abstract"
+          ]
+        },
+        "uri": {
+          "idUri": "uno/idisposable",
+          "href": "uno/idisposable"
+        },
+        "titles": {
+          "indexTitle": "IDisposable",
+          "fullyQualifiedIndexTitle": "Uno.IDisposable"
+        }
+      },
+      {
+        "id": {
+          "id": "fuse/reactive/ilistener",
+          "parentId": "fuse/reactive",
+          "type": "Interface",
+          "modifiers": [
+            "public",
+            "abstract"
+          ]
+        },
+        "uri": {
+          "idUri": "fuse/reactive/ilistener",
+          "href": "fuse/reactive/ilistener"
+        },
+        "titles": {
+          "indexTitle": "IListener",
+          "fullyQualifiedIndexTitle": "Fuse.Reactive.IListener"
+        }
+      }
+    ],
+    "id": {
+      "id": "fuse/reactive/innerlistener",
+      "parentId": "fuse/reactive",
+      "type": "Class",
+      "modifiers": [
+        "public",
+        "abstract"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/reactive/innerlistener",
+      "href": "fuse/reactive/innerlistener"
+    },
+    "titles": {
+      "pageTitle": "InnerListener Class",
+      "navigationTitle": "InnerListener Class",
+      "fullTitle": "Fuse.Reactive.InnerListener",
+      "indexTitle": "InnerListener",
+      "fullyQualifiedIndexTitle": "Fuse.Reactive.InnerListener"
+    },
+    "syntax": {
+      "uno": "public abstract class InnerListener : Uno.IDisposable, Fuse.Reactive.IListener {}"
+    },
+    "comment": {
+      "brief": "Using this class directly is unusual. `ComputeExpression` is the preferred option for functions, and `ExpressionListener` for when that doesn't apply.",
+      "full": "Using this class directly is unusual. `ComputeExpression` is the preferred option for functions, and `ExpressionListener` for when that doesn't apply.\n\nRelying on this behaviour is bad. The Observable support was only intended for bindings. All other\nvalues should use IExpression's facilities. The unintended support may be removed in the future.\n\nImplements `IListener`, and forward incoming values to the protected `OnNewData` method.\nIf the incoming value is an observable, a subscription is created and the value of that observable\nis forwarded to the `OnNewData` method instead.\n\nExtenders should override `OnNewData()`, `OnLostData` and `Dispose()`.\n\n@hide"
+    }
+  },
+  "tableOfContents": {
+    "constructors": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/reactive/innerlistener",
+            "parentId": "fuse/reactive",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/reactive/innerlistener",
+            "href": "fuse/reactive/innerlistener"
+          },
+          "titles": {
+            "indexTitle": "InnerListener",
+            "fullyQualifiedIndexTitle": "Fuse.Reactive.InnerListener"
+          }
+        },
+        "items": [
+          {
+            "comment": {
+              "brief": "Creates a new InnerListener",
+              "full": "Creates a new InnerListener"
+            },
+            "id": {
+              "id": "fuse/reactive/innerlistener/_ctor",
+              "parentId": "fuse/reactive/innerlistener",
+              "type": "Constructor",
+              "modifiers": [
+                "protected",
+                "generated"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/innerlistener/_ctor",
+              "href": "fuse/reactive/innerlistener/_ctor"
+            },
+            "titles": {
+              "indexTitle": "InnerListener",
+              "fullyQualifiedIndexTitle": "Fuse.Reactive.InnerListener.InnerListener"
+            }
+          }
+        ]
+      }
+    ],
+    "methods": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/reactive/innerlistener",
+            "parentId": "fuse/reactive",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/reactive/innerlistener",
+            "href": "fuse/reactive/innerlistener"
+          },
+          "titles": {
+            "indexTitle": "InnerListener",
+            "fullyQualifiedIndexTitle": "Fuse.Reactive.InnerListener"
+          }
+        },
+        "items": [
+          {
+            "id": {
+              "id": "fuse/reactive/innerlistener/cleardiagnostic",
+              "parentId": "fuse/reactive/innerlistener",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/innerlistener/cleardiagnostic",
+              "href": "fuse/reactive/innerlistener/cleardiagnostic"
+            },
+            "titles": {
+              "indexTitle": "ClearDiagnostic",
+              "fullyQualifiedIndexTitle": "Fuse.Reactive.InnerListener.ClearDiagnostic"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/reactive/innerlistener/dispose",
+              "parentId": "fuse/reactive/innerlistener",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/innerlistener/dispose",
+              "href": "fuse/reactive/innerlistener/dispose"
+            },
+            "titles": {
+              "indexTitle": "Dispose",
+              "fullyQualifiedIndexTitle": "Fuse.Reactive.InnerListener.Dispose"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "source",
+                "href": "fuse/reactive/iexpression",
+                "title": "IExpression",
+                "fullyQualifiedTitle": "Fuse.Reactive.IExpression"
+              }
+            ],
+            "id": {
+              "id": "fuse/reactive/innerlistener/onlostdata_3f048aaa",
+              "parentId": "fuse/reactive/innerlistener",
+              "type": "Method",
+              "modifiers": [
+                "protected",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/innerlistener/onlostdata_3f048aaa",
+              "href": "fuse/reactive/innerlistener/onlostdata_3f048aaa"
+            },
+            "titles": {
+              "indexTitle": "OnLostData(IExpression)",
+              "fullyQualifiedIndexTitle": "Fuse.Reactive.InnerListener.OnLostData(Fuse.Reactive.IExpression)"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "source",
+                "href": "fuse/reactive/iexpression",
+                "title": "IExpression",
+                "fullyQualifiedTitle": "Fuse.Reactive.IExpression"
+              },
+              {
+                "name": "value",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              }
+            ],
+            "id": {
+              "id": "fuse/reactive/innerlistener/onnewdata_47e32fb0",
+              "parentId": "fuse/reactive/innerlistener",
+              "type": "Method",
+              "modifiers": [
+                "protected",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/innerlistener/onnewdata_47e32fb0",
+              "href": "fuse/reactive/innerlistener/onnewdata_47e32fb0"
+            },
+            "titles": {
+              "indexTitle": "OnNewData(IExpression, object)",
+              "fullyQualifiedIndexTitle": "Fuse.Reactive.InnerListener.OnNewData(Fuse.Reactive.IExpression, object)"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "message",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              },
+              {
+                "name": "source",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              }
+            ],
+            "id": {
+              "id": "fuse/reactive/innerlistener/setdiagnostic_d062e5a9",
+              "parentId": "fuse/reactive/innerlistener",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/innerlistener/setdiagnostic_d062e5a9",
+              "href": "fuse/reactive/innerlistener/setdiagnostic_d062e5a9"
+            },
+            "titles": {
+              "indexTitle": "SetDiagnostic(string, object)",
+              "fullyQualifiedIndexTitle": "Fuse.Reactive.InnerListener.SetDiagnostic(string, object)"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "uno/object",
+            "parentId": "uno",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "intrinsic"
+            ]
+          },
+          "uri": {
+            "idUri": "uno/object",
+            "href": "uno/object"
+          },
+          "titles": {
+            "indexTitle": "object",
+            "fullyQualifiedIndexTitle": "object"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "parameters": [
+              {
+                "name": "o",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              }
+            ],
+            "id": {
+              "id": "fuse/reactive/innerlistener/equals_a09c80e3",
+              "parentId": "fuse/reactive/innerlistener",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/innerlistener/equals_a09c80e3",
+              "href": "uno/object/equals_a09c80e3",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Equals(object)",
+              "fullyQualifiedIndexTitle": "Uno.Object.Equals(object)"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/int",
+              "title": "int",
+              "fullyQualifiedTitle": "int"
+            },
+            "id": {
+              "id": "fuse/reactive/innerlistener/gethashcode",
+              "parentId": "fuse/reactive/innerlistener",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/innerlistener/gethashcode",
+              "href": "uno/object/gethashcode",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetHashCode",
+              "fullyQualifiedIndexTitle": "Uno.Object.GetHashCode"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/type",
+              "title": "Type",
+              "fullyQualifiedTitle": "Uno.Type"
+            },
+            "id": {
+              "id": "fuse/reactive/innerlistener/gettype",
+              "parentId": "fuse/reactive/innerlistener",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/innerlistener/gettype",
+              "href": "uno/object/gettype",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetType",
+              "fullyQualifiedIndexTitle": "Uno.Object.GetType"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "id": {
+              "id": "fuse/reactive/innerlistener/tostring",
+              "parentId": "fuse/reactive/innerlistener",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/innerlistener/tostring",
+              "href": "uno/object/tostring",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "ToString",
+              "fullyQualifiedIndexTitle": "Uno.Object.ToString"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

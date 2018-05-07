@@ -1,0 +1,1916 @@
+{
+  "entity": {
+    "id": {
+      "id": "fuse/triggers",
+      "parentId": "fuse",
+      "type": "Namespace",
+      "modifiers": []
+    },
+    "uri": {
+      "idUri": "fuse/triggers",
+      "href": "fuse/triggers"
+    },
+    "titles": {
+      "pageTitle": "Fuse.Triggers Namespace",
+      "navigationTitle": "Fuse.Triggers Namespace",
+      "fullTitle": "Fuse.Triggers",
+      "indexTitle": "Fuse.Triggers",
+      "fullyQualifiedIndexTitle": "Fuse.Triggers"
+    },
+    "syntax": {
+      "uno": "namespace Triggers {}"
+    }
+  },
+  "tableOfContents": {
+    "namespaces": [
+      {
+        "items": [
+          {
+            "id": {
+              "id": "fuse/triggers/actions",
+              "parentId": "fuse/triggers",
+              "type": "Namespace",
+              "modifiers": []
+            },
+            "uri": {
+              "idUri": "fuse/triggers/actions",
+              "href": "fuse/triggers/actions"
+            },
+            "titles": {
+              "indexTitle": "Fuse.Triggers.Actions",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.Actions"
+            }
+          }
+        ]
+      }
+    ],
+    "uxClasses": [
+      {
+        "items": [
+          {
+            "comment": {
+              "brief": "Triggers when the element is added to the visual tree.",
+              "full": "Triggers when the element is added to the visual tree.\n\n`AddingAnimation` is by default a backward animation, meaning it will\nanimate from progress 1 back to 0.\n\n## Example\n\nThe following example showcases a list that you can add elements to by\npressing a button. Elements added are animated in using an\n`AddingAnimation`:\n\n    <StackPanel Width=\"100%\">\n        <JavaScript>\n            var Observable = require('FuseJS/Observable');\n            var elements = Observable({value: \"Element\"});\n            function addElement() {\n                elements.add({value: \"Element\"});\n            }\n            module.exports = {elements, addElement};\n        </JavaScript>\n        <Each Items=\"{elements}\">\n            <Panel Width=\"100%\" >\n                <Text Value=\"{value}\" Alignment=\"CenterLeft\"/>\n                <AddingAnimation>\n                    <Move RelativeTo=\"Size\" Duration=\".2\" X=\"2\" />\n                </AddingAnimation>\n            </Panel>\n        </Each>\n        <Button Text=\"Add more\" Clicked=\"{addElement}\"/>\n    </StackPanel>"
+            },
+            "id": {
+              "id": "fuse/triggers/addinganimation",
+              "parentId": "fuse/triggers",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/addinganimation",
+              "href": "fuse/triggers/addinganimation"
+            },
+            "titles": {
+              "indexTitle": "AddingAnimation",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.AddingAnimation"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Triggers if run on an Android device",
+              "full": "Triggers if run on an Android device\n\n## Example\n\nThis example sets a panel's background color to green if the app is\nrunning on Android. If the app is ran on another platform, it will be\nred:\n\n    <Panel ux:Name=\"panel\" Background=\"#F00\" >\n        <Android>\n            <Change panel.Background=\"#0F0\" />\n        </Android>\n    </Panel>"
+            },
+            "id": {
+              "id": "fuse/triggers/android",
+              "parentId": "fuse/triggers",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/android",
+              "href": "fuse/triggers/android"
+            },
+            "titles": {
+              "indexTitle": "Android",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.Android"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Marks a UX node as busy.",
+              "full": "Marks a UX node as busy.\n\nThere are several cases where we need to perform some background task, for instance fetching data over the network or performing some expensive computation. `Busy` can be used to coorindate this busy activity between JavaScript and UX.\n\nWe often want to be able to signal to our view (UX) that our data is not yet ready for display. Marking a node as busy will activate any `WhileBusy` triggers on it. This is the same mechanism used to indicate that an image is loading.\n\n## Examples\n\n### Loading data\n\nWe might wish to display a loading indicator while making an HTTP request.\n\n    <Panel>\n        <WhileBusy>\n            <Text Value=\"Loading...\"/>\n        </WhileBusy>\n        <Busy IsActive=\"false\" ux:Name=\"busy\"/>\n        <JavaScript>\n            exports.startLoad = function() {\n                busy.activate()\n                fetch( \"http://example.com/some/data\" ).then( function(response) {\n                    //use the response\n                    busy.deactivate()\n                }).catch(function(err) {\n                    //make sure to disable the busy status here as well\n                    busy.deactivate()\n                })\n            }\n        </JavaScript>\n        <Activated Handler=\"{startLoad}\"/>\n    </Panel>\n\nThis example starts loading data when the page is activated. The `Loading...` text will be shown while it is loading, and removed once it is completed.\n\n### Preparing for navigation\n\nThe @Navigator waits for a busy page to finish preparing before navigating to it. We can use `Busy` to ensure our bindings our done before this happens.\n\n    <Page>\n        <Busy Activity=\"Preparing\" On=\"ParameterChanged\" ux:Name=\"busy\"/>\n        <JavaScript>\n            exports.name = Observable()\n            this.Parameter.onValueChanged( module, function(v) {\n                exports.name.value = v.name\n                busy.deactivate()\n            })\n        </JavaScript>\n        <Text Value=\"{name}\"/>\n    </Page>"
+            },
+            "id": {
+              "id": "fuse/triggers/busy",
+              "parentId": "fuse/triggers",
+              "type": "UxClass",
+              "modifiers": [
+                "public",
+                "partial"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/busy",
+              "href": "fuse/triggers/busy"
+            },
+            "titles": {
+              "indexTitle": "Busy",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.Busy"
+            }
+          },
+          {
+            "comment": {
+              "attributes": {
+                "deprecated": true
+              }
+            },
+            "id": {
+              "id": "fuse/triggers/busytaskmodule",
+              "parentId": "fuse/triggers",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/busytaskmodule",
+              "href": "fuse/triggers/busytaskmodule"
+            },
+            "titles": {
+              "indexTitle": "BusyTaskModule",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.BusyTaskModule"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Pulses when the busy status of a node is cleared.",
+              "full": "Pulses when the busy status of a node is cleared.\n\n`Completed` is used to respond to the completion of a preparation, loading, or other busy task.\n\nThis example draws attention to an `Image` when it has completed loading:\n\n    <Image Url=\"some_big_image\">\n        <Completed>\n            <Scale Factor=\"0.8\" Duration=\"0.4\"/>\n        </Completed>\n    </Image>\n\n`Completed` always fires, even if the node wasn't busy before. This makes it suitable for things that should always run. It also makes it useful in combination with other triggers. For example, the below scales the image when the navigation page is both active and completed.\n\n    <Page>\n        <Image Alignment=\"Center\" Url=\"some_image\" ux:Name=\"theImage\"/>\n        <WhileActive>\n            <Completed>\n                <Scale Target=\"theImage\" Factor=\"1.5\" Duration=\"0.3\"/>\n            </Completed>\n        </WhileActive>\n    </Page>"
+            },
+            "id": {
+              "id": "fuse/triggers/completed",
+              "parentId": "fuse/triggers",
+              "type": "UxClass",
+              "modifiers": [
+                "public",
+                "partial"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/completed",
+              "href": "fuse/triggers/completed"
+            },
+            "titles": {
+              "indexTitle": "Completed",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.Completed"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/triggers/completedeventargs",
+              "parentId": "fuse/triggers",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/completedeventargs",
+              "href": "fuse/triggers/completedeventargs"
+            },
+            "titles": {
+              "indexTitle": "CompletedEventArgs",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.CompletedEventArgs"
+            }
+          },
+          {
+            "comment": {
+              "brief": "DEPRECATED: Use @WhileContainsText instead",
+              "full": "DEPRECATED: Use @WhileContainsText instead"
+            },
+            "id": {
+              "id": "fuse/triggers/containingtext",
+              "parentId": "fuse/triggers",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/containingtext",
+              "href": "fuse/triggers/containingtext"
+            },
+            "titles": {
+              "indexTitle": "ContainingText",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.ContainingText"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Triggers when an interaction completes.",
+              "full": "Triggers when an interaction completes.\n\n`InteractionCompleted` indicates the user is done interacting with an\nelement, and is a counterpart to @WhileInteracting.\n\n## Example\n\nThe following example shows a blue panel with a slider on it. When\nfinishing a slide of the slider, the panel blinks red.\n\n    <Panel ux:Name=\"panel\" Color=\"Blue\">\n        <Slider >\n            <InteractionCompleted>\n                <Change DurationBack=\"0.5\" panel.Color=\"Red\"/>\n            </InteractionCompleted>\n        </Slider>\n    </Panel>"
+            },
+            "id": {
+              "id": "fuse/triggers/interactioncompleted",
+              "parentId": "fuse/triggers",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/interactioncompleted",
+              "href": "fuse/triggers/interactioncompleted"
+            },
+            "titles": {
+              "indexTitle": "InteractionCompleted",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.InteractionCompleted"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Triggers if run on an iOS device",
+              "full": "Triggers if run on an iOS device\n\n## Example\n\nThis example sets a panel's background color to green if the app is\nrunning on iOS. If the app is ran on another platform, it will be red:\n\n    <Panel ux:Name=\"panel\" Background=\"#F00\" >\n        <iOS>\n            <Change panel.Background=\"#0F0\" />\n        </iOS>\n    </Panel>"
+            },
+            "id": {
+              "id": "fuse/triggers/ios",
+              "parentId": "fuse/triggers",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/ios",
+              "href": "fuse/triggers/ios"
+            },
+            "titles": {
+              "indexTitle": "iOS",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.iOS"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Triggers when the layout of an element changes",
+              "full": "Triggers when the layout of an element changes\n\nWhen an Element has certain properties like Width, Height or Margin\n(collectively reffered to as \"layout properties\") changed or when its\nlocation in the visual tree changes, we can trigger a `LayoutAnimation`.\n\nCalculating layout for a large UX-document can be quite costly. When\nanimating layout properties with Change animators, we run the risk of\nforcing a new layout to be calculated each frame. This can very easily\nlead to frame drops.\n\nThe `LayoutAnimation` trigger can be used to make this more pleasant.\nFor example, instead of animating the Width of an Element using Change,\nwe can use Set and react to this change using a LayoutAnimation. Inside\nLayoutAnimation we specify how our element should move/resize from its\nprevious position to its new position.\n\n## Example\n\nThis example shows three rectangles, a teal, a red and a blue one. If\nthe red or blue rectangle is clucked, the Width and Alignment\nproperties of the teal rectangle gets smoothly animated.\n\n    <StackPanel>\n        <Rectangle ux:Name=\"panel\" Width=\"100\" Height=\"100\" CornerRadius=\"5\" Color=\"Teal\" Alignment=\"Center\">\n            <LayoutAnimation>\n                <Resize X=\"1\" Y=\"1\" RelativeTo=\"SizeChange\" Duration=\"0.25\"/>\n                <Move X=\"1\" Y=\"1\" RelativeTo=\"PositionChange\" Duration=\"0.25\"/>\n            </LayoutAnimation>\n        </Rectangle>\n        <Rectangle Color=\"Red\" CornerRadius=\"5\" Width=\"100\" Height=\"50\">\n            <Clicked>\n                <Set panel.Alignment=\"Left\"/>\n                <Set panel.Width=\"200\"/>\n            </Clicked>\n        </Rectangle>\n        <Rectangle Color=\"Blue\" CornerRadius=\"5\" Width=\"100\" Height=\"50\">\n            <Clicked>\n                <Set panel.Alignment=\"Right\"/>\n                <Set panel.Width=\"50\"/>\n            </Clicked>\n        </Rectangle>\n    </StackPanel>"
+            },
+            "id": {
+              "id": "fuse/triggers/layoutanimation",
+              "parentId": "fuse/triggers",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/layoutanimation",
+              "href": "fuse/triggers/layoutanimation"
+            },
+            "titles": {
+              "indexTitle": "LayoutAnimation",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.LayoutAnimation"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Triggers when the back-button is pressed",
+              "full": "Triggers when the back-button is pressed\n\nThis trigger fires when the user presses either a physical or emulated\nback button on their device.\n\n> Be aware that @Router also interacts with the back-button. Using both\n> OnBackButton and Router in the same application might lead to\n> undesired behavior.\n\n## Example\n\nThe following code will flash the screen blue when the back button is\npressed:\n\n    <Panel>\n        <Rectangle ux:Name=\"rect\" Layer=\"Background\" Color=\"#F00\" />\n        <OnBackButton>\n            <Change rect.Color=\"#00F\" Duration=\"0.2\" />\n        </OnBackButton>\n    </Panel>"
+            },
+            "id": {
+              "id": "fuse/triggers/onbackbutton",
+              "parentId": "fuse/triggers",
+              "type": "UxClass",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/onbackbutton",
+              "href": "fuse/triggers/onbackbutton"
+            },
+            "titles": {
+              "indexTitle": "OnBackButton",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.OnBackButton"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Triggers when a specific key is pressed",
+              "full": "Triggers when a specific key is pressed\n\nFor a complete list of supported keys, check out the @Key enum list.\n\n> Please note that not all platforms support all settings for Key.\n\n## Example\n\nThe following example will flash the screen blue when the \"menu\" button\n(which is present on some older Android devices) is pressed:\n\n    <Panel>\n        <Rectangle ux:Name=\"rect\" Layer=\"Background\" Color=\"#F00\" />\n        <OnKeyPress Key=\"MenuButton\">\n            <Change rect.Color=\"#00F\" Duration=\"0.2\" />\n        </OnKeyPress>\n    </Panel>"
+            },
+            "id": {
+              "id": "fuse/triggers/onkeypress",
+              "parentId": "fuse/triggers",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/onkeypress",
+              "href": "fuse/triggers/onkeypress"
+            },
+            "titles": {
+              "indexTitle": "OnKeyPress",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.OnKeyPress"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Triggers when a @UserEvent is raised.",
+              "full": "Triggers when a @UserEvent is raised.\n\n> *Note:* See [this article](/docs/basics/creating-components#events-userevent)\n> for a more complete explanation of user events.\n\nBy default, `OnUserEvent` will only listen for events that are\ndeclared in one of its ancestor nodes. If you want to listen for\nevents coming from anywhere, set the `Filter` property to `Global`.\n\n`OnUserEvent` also lets you attach a JavaScript handler to the event.\n\n    <OnUserEvent EventName=\"myEvent\" Handler=\"{myHandler}\" />\n\nThe handler function is called with the arguments that were passed\nwith the event as a plain JavaScript object.\n\n## Example\n\nThis example defines a @UserEvent and triggers it when the panel\nis clicked:\n\n    <Panel ux:Name=\"panel\" Color=\"Blue\">\n        <UserEvent Name=\"myEvent\"/>\n        <OnUserEvent EventName=\"myEvent\">\n            <Change panel.Color=\"Red\" DurationBack=\"0.5\" />\n        </OnUserEvent>\n        <Clicked>\n            <RaiseUserEvent EventName=\"myEvent\" />\n        </Clicked>\n    </Panel>\n\nThis example illustrates how you can read the arguments that were\npassed with the event from a JavaScript handler.\n\n    <UserEvent ux:Name=\"myEvent\" />\n\n    <Panel Color=\"#123\">\n        <Clicked>\n            <RaiseUserEvent EventName=\"myEvent\">\n                <UserEventArg Name=\"myArgument\" StringValue=\"Some value\" />\n            </RaiseUserEvent>\n        </Clicked>\n    </Panel>\n\n    <OnUserEvent EventName=\"myEvent\" Handler=\"{eventHandler}\" />\n\n    <JavaScript>\n        function eventHandler(args) {\n            console.log(\"myEvent raised with argument 'myArgument': \" + args.myArgument);\n        }\n\n        module.exports = { eventHandler: eventHandler };\n    </JavaScript>"
+            },
+            "id": {
+              "id": "fuse/triggers/onuserevent",
+              "parentId": "fuse/triggers",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/onuserevent",
+              "href": "fuse/triggers/onuserevent"
+            },
+            "titles": {
+              "indexTitle": "OnUserEvent",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.OnUserEvent"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Triggers when a @WebView begins loading a page",
+              "full": "Triggers when a @WebView begins loading a page\n\n## Example\n\nThis example will blink the blue background red when the page begins\nloading:\n\n    <Panel ux:Name=\"panel\" Color=\"Blue\">\n        <NativeViewHost Height=\"50%\">\n            <WebView Url=\"http://interwebs.com\">\n                <PageBeginLoading>\n                    <Change DurationBack=\"0.5\" panel.Color=\"Red\" />\n                </PageBeginLoading>\n            </WebView>\n        </NativeViewHost>\n    </Panel>"
+            },
+            "id": {
+              "id": "fuse/triggers/pagebeginloading",
+              "parentId": "fuse/triggers",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/pagebeginloading",
+              "href": "fuse/triggers/pagebeginloading"
+            },
+            "titles": {
+              "indexTitle": "PageBeginLoading",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.PageBeginLoading"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Triggers when a @WebView finishes loading a page",
+              "full": "Triggers when a @WebView finishes loading a page\n\n## Example\n\nThis example will blink the blue background green when the page finishes\nloading:\n\n    <Panel ux:Name=\"panel\" Color=\"Blue\">\n        <NativeViewHost Height=\"50%\">\n            <WebView Url=\"http://interwebs.com\">\n                <PageLoaded>\n                    <Change DurationBack=\"0.5\" panel.Color=\"Green\" />\n                </PageLoaded>\n            </WebView>\n        </NativeViewHost>\n    </Panel>"
+            },
+            "id": {
+              "id": "fuse/triggers/pageloaded",
+              "parentId": "fuse/triggers",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/pageloaded",
+              "href": "fuse/triggers/pageloaded"
+            },
+            "titles": {
+              "indexTitle": "PageLoaded",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.PageLoaded"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Triggers when a @Slider or other compatible control changes its value.",
+              "full": "Triggers when a @Slider or other compatible control changes its value.\n\nProgressAnimation can be used together with a slider to animate\nelements as one slides its thumb. ProgressAnimation always goes from\n0 to 1 as one slides the slider from its minimum value to its maximum\nvalue.\n\n## Example\n\nThis example shows a slider, and blurs the slider itself with the\nblur-radius taken from the slider-value:\n\n    <Panel Color=\"Black\">\n        <Slider>\n            <Blur ux:Name=\"blur\" Radius=\"0\"/>\n            <ProgressAnimation>\n                <Change blur.Radius=\"10\"/>\n            </ProgressAnimation>\n        </Slider>\n    </Panel>\n\n## Compatible controls\n\nProgressAnimation works with classes that implement `Fuse.Triggers.IProgress`.\n\n[subclass Fuse.Triggers.IProgress]"
+            },
+            "id": {
+              "id": "fuse/triggers/progressanimation",
+              "parentId": "fuse/triggers",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/progressanimation",
+              "href": "fuse/triggers/progressanimation"
+            },
+            "titles": {
+              "indexTitle": "ProgressAnimation",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.ProgressAnimation"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Helps you create a \"pull to reload\" interaction with a `ScrollView`.",
+              "full": "Helps you create a \"pull to reload\" interaction with a `ScrollView`.\n\nIt is implemented as a `ScrollingAnimation`, with a set of properties that let you bind different states that should be triggered during different stages of interaction:\n\n* Pulling - Active when the user is actively pulling down beond the top of the content\n* PulledPastThreshold - Active when the user has pulled down enough to activate loading\n* Loading - Active when the \"loading\" has started. Loading starts when the user has pulled past the threshold, and then leaves the threshold area.\n* Rest - Active when the user has pulled down the content, but their last movement was upwards.\nIn addition, you have a callback, `ReloadHandler`, which is called when the `Loading` state activates.\n\n* Note that `PullToReload` inherits from @ScrollingAnimation and therefore can be tweaked further using its properties. Here is an example of how we can tweak it to be pulled from the bottom instead using the `Range` property from `ScrollingAnimation`:\n\n```\n<PullToReload Range=\"SnapMax\">\n    ...\n</PullToReload>\n```\n\nSee the [Pull to reload](/examples/pull-to-reload), for a complete example on how to use it.\n\n# Example\n\nThe following example flashes the app background in different colors as the different states of the `PullToReload` happen:\n\n    <ScrollView>\n        <PullToReload>\n            <Timeline ux:Name=\"redFlash\">\n                <Change color.Color=\"#F00\" Duration=\"1\"/>\n            </Timeline>\n            <Timeline ux:Name=\"pinkFlash\">\n                <Change color.Color=\"#FFC0DB\" Duration=\"1\"/>\n            </Timeline>\n            <Timeline ux:Name=\"greenFlash\">\n                <Change color.Color=\"#0F0\" Duration=\"1\"/>\n            </Timeline>\n            <Timeline ux:Name=\"blueFlash\">\n                <Change color.Color=\"#00F\" Duration=\"1\"/>\n            </Timeline>\n            <State ux:Binding=\"Pulling\">\n                <Cycle Target=\"redFlash.Progress\" Low=\"0\" High=\"1\" Frequency=\"1\" />\n            </State>\n            <State ux:Binding=\"PulledPastThreshold\">\n                <Cycle Target=\"pinkFlash.Progress\" Low=\"0\" High=\"1\" Frequency=\"1\" />\n            </State>\n            <State ux:Binding=\"Loading\">\n                <Cycle Target=\"greenFlash.Progress\" Low=\"0\" High=\"1\" Frequency=\"1\" />\n            </State>\n            <State ux:Binding=\"Rest\">\n                <Cycle Target=\"blueFlash.Progress\" Low=\"0\" High=\"1\" Frequency=\"1\" />\n            </State>\n        </PullToReload>\n        <StackPanel>\n            <Text Margin=\"20\">The quick brown fox</Text>\n            <Text Margin=\"20\">Jumps over the lazy dog</Text>\n        </StackPanel>\n        <SolidColor ux:Name=\"color\" Color=\"#FFF\"/>\n    </ScrollView>"
+            },
+            "id": {
+              "id": "fuse/triggers/pulltoreload",
+              "parentId": "fuse/triggers",
+              "type": "UxClass",
+              "modifiers": [
+                "public",
+                "partial"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/pulltoreload",
+              "href": "fuse/triggers/pulltoreload"
+            },
+            "titles": {
+              "indexTitle": "PullToReload",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.PullToReload"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Animates using a value clamped between a minimum and a maximum as progress.",
+              "full": "Animates using a value clamped between a minimum and a maximum as progress.\n\nThis is useful when you want to animate something between two arbitrary values.\n\n## Example\nIn this example, an @(RangeAnimation) is used to animate a panel 360 degrees as a @(RangeControl2D) goes from 0 to 100.\n\n    <RangeControl2D Width=\"180\" Height=\"180\" Margin=\"2\" ux:Name=\"rangeControl\">\n        <CircularRangeBehavior/>\n        <Panel ux:Name=\"thumb\" Margin=\"4\">\n            <Rectangle Color=\"#fff\" Alignment=\"Right\" Height=\"18\" Width=\"48\" CornerRadius=\"4\" />\n        </Panel>\n        <RangeAnimation Minimum=\"0\" Maximum=\"100\" Value=\"{ReadProperty rangeControl.ValueX}\">\n            <Rotate Target=\"thumb\" Degrees=\"360\" />\n        </RangeAnimation>\n        <Circle Color=\"#aaa\" />\n    </RangeControl2D>"
+            },
+            "id": {
+              "id": "fuse/triggers/rangeanimation",
+              "parentId": "fuse/triggers",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/rangeanimation",
+              "href": "fuse/triggers/rangeanimation"
+            },
+            "titles": {
+              "indexTitle": "RangeAnimation",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.RangeAnimation"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Animates when the parent element is removed",
+              "full": "Animates when the parent element is removed\n\nThis is very commonly used together with lists of items.\n\n#Example\nThe following example contains a list, where every item plays a `RemovingAnimation` as they are removed:\n\n    <JavaScript>\n        var Observable = require('FuseJS/Observable');\n        var list = Observable(\"Dog\", \"Cat\", \"Horse\");\n        function rm(data) {\n            list.remove(data.data);\n        }\n        module.exports = {\n            data: list,\n            rm: rm\n        };\n    </JavaScript>\n    <StackPanel>\n        <Each Items=\"{data}\" >\n            <Panel>\n                <Button Margin=\"10\" Alignment=\"CenterRight\" Text=\"Delete\" Clicked=\"{rm}\"/>\n                <Rectangle Height=\"1\" Alignment=\"Bottom\">\n                    <Stroke Color=\"#DDD\" />\n                </Rectangle>\n                <Text Margin=\"10\" Value=\"data()\" />\n                <RemovingAnimation>\n                    <Move RelativeTo=\"Size\" X=\"-1\" Duration=\"0.4\" Easing=\"CircularOut\" />\n                </RemovingAnimation>\n            </Panel>\n        </Each>\n    </StackPanel>"
+            },
+            "id": {
+              "id": "fuse/triggers/removinganimation",
+              "parentId": "fuse/triggers",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/removinganimation",
+              "href": "fuse/triggers/removinganimation"
+            },
+            "titles": {
+              "indexTitle": "RemovingAnimation",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.RemovingAnimation"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Triggers when the ScrollView is scrolled to within a specified region.",
+              "full": "Triggers when the ScrollView is scrolled to within a specified region.\n\n`Scrolled` triggers only once when the ScrollView enters the region. It will not trigger again until the scrolling leaves and comes back. See the `check` function if you need to force a recheck."
+            },
+            "id": {
+              "id": "fuse/triggers/scrolled",
+              "parentId": "fuse/triggers",
+              "type": "UxClass",
+              "modifiers": [
+                "public",
+                "partial"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/scrolled",
+              "href": "fuse/triggers/scrolled"
+            },
+            "titles": {
+              "indexTitle": "Scrolled",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.Scrolled"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/triggers/scrolledargs",
+              "parentId": "fuse/triggers",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/scrolledargs",
+              "href": "fuse/triggers/scrolledargs"
+            },
+            "titles": {
+              "indexTitle": "ScrolledArgs",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.ScrolledArgs"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Animates over a given scroll range.",
+              "full": "Animates over a given scroll range.\n\nThis trigger allows you to animate properties based on the absolute position of a @ScrollView.\n\nIn this example, we remove a top ledge as a ScrollView scrolls down:\n\n    <Panel>\n        <Panel Alignment=\"Top\" Height=\"50\" ux:Name=\"ledge\">\n            <Text Alignment=\"Center\" TextAlignment=\"Center\" Color=\"#fff\" Value=\"TopLedge\" />\n            <Rectangle  Fill=\"#000\" />\n        </Panel>\n        <ScrollView>\n            <ScrollingAnimation From=\"0\" To=\"50\">\n                <Change ledge.Opacity=\"0\" />\n            </ScrollingAnimation>\n            <StackPanel>\n                <!-- Block out the top ledge in the scrollview -->\n                <Panel Height=\"50\" />\n                <!-- ... Content ... -->\n            </StackPanel>\n        </ScrollView>\n    </Panel>"
+            },
+            "id": {
+              "id": "fuse/triggers/scrollinganimation",
+              "parentId": "fuse/triggers",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/scrollinganimation",
+              "href": "fuse/triggers/scrollinganimation"
+            },
+            "titles": {
+              "indexTitle": "ScrollingAnimation",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.ScrollingAnimation"
+            }
+          },
+          {
+            "comment": {
+              "brief": "A @Trigger that is managed by a @StateGroup.",
+              "full": "A @Trigger that is managed by a @StateGroup.\n\nSee @StateGroup for more information."
+            },
+            "id": {
+              "id": "fuse/triggers/state",
+              "parentId": "fuse/triggers",
+              "type": "UxClass",
+              "modifiers": [
+                "public",
+                "partial"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/state",
+              "href": "fuse/triggers/state"
+            },
+            "titles": {
+              "indexTitle": "State",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.State"
+            }
+          },
+          {
+            "comment": {
+              "brief": "StateGroup manages a set of @State triggers, making sure only a single @State is active at once.\r\nA @State is a regular @Trigger that is controlled by a @StateGroup.\r\nAnimators inside a @State define what should change while that state is active.\r\n\r\nThe basic structure of a StateGroup looks like this:\r\n\r\n```xml\r\n<StateGroup>\r\n\t<State ux:Name=\"firstState\" />\r\n\t<State ux:Name=\"secondState\" />\r\n</StateGroup>\r\n```\r\n\r\nNow, this setup does nothing at all. We need to add some animators to our @States, so that they actually do something.\r\nWe'll add a @Panel as well, so we have something to animate.\r\n\r\n```xml\r\n<Panel ux:Name=\"thePanel\" Width=\"100\" Height=\"100\" />\r\n\t<StateGroup>\r\n\t\t<State ux:Name=\"firstState\">\r\n\t\t\t<Change thePanel.Color=\"#f00\" />\r\n\t\t</State>\r\n\t\t<State ux:Name=\"secondState\">\r\n\t\t\t<Change thePanel.Color=\"#00f\" />\r\n\t\t</State>\t\r\n\t</StateGroup>\r\n</Panel>\r\n```\r\n\r\nSince the first @State in a StateGroup will be activated by default, the above example will display a red @Panel.\r\n\r\nAt this point, we'd like to switch to a different state somehow. This can be achieved in several ways, as seen below.\r\n\r\n## The `Active` property\r\n\r\nThe `Active` property can be used to activate a particular @State.\r\nThe below example displays a colored @Panel, along with three buttons that change its color.\r\n\r\n```xml\r\n<StackPanel>\r\n\t<Panel ux:Name=\"thePanel\" Width=\"100\" Height=\"100\" />\r\n\r\n\t<StateGroup ux:Name=\"stateGroup\">\r\n\t\t<State ux:Name=\"redState\">\r\n\t\t\t<Change thePanel.Color=\"#f00\" Duration=\"0.2\"/>\r\n\t\t</State>\r\n\t\t<State ux:Name=\"greenState\">\r\n\t\t\t<Change thePanel.Color=\"#0f0\" Duration=\"0.2\"/>\r\n\t\t</State>\r\n\t\t<State ux:Name=\"blueState\">\r\n\t\t\t<Change thePanel.Color=\"#00f\" Duration=\"0.2\"/>\r\n\t\t</State>\r\n\t</StateGroup>\r\n\r\n\t<Grid ColumnCount=\"3\">\r\n\t\t<Button Text=\"Red\">\r\n\t\t\t<Clicked>\r\n\t\t\t\t<Set stateGroup.Active=\"redState\"/>\r\n\t\t\t</Clicked>\r\n\t\t</Button>\r\n\t\t<Button Text=\"Green\">\r\n\t\t\t<Clicked>\r\n\t\t\t\t<Set stateGroup.Active=\"greenState\"/>\r\n\t\t\t</Clicked>\r\n\t\t</Button>\r\n\t\t<Button Text=\"Blue\">\r\n\t\t\t<Clicked>\r\n\t\t\t\t<Set stateGroup.Active=\"blueState\"/>\r\n\t\t\t</Clicked>\r\n\t\t</Button>\r\n\t</Grid>\r\n</StackPanel>\r\n```\r\n\r\n## TransitionState\r\n\r\nInstead of directly jumping to a particular state, the @TransitionState action can be used to advance to the next @State in a StateGroup, following the order in which they are declared.\r\nIf a @TransitionState is triggered while the last @State is active, it wraps around to activate the first @State.\r\n\r\nThe following example displays a panel that will cycle its color between red, green and blue when clicked.\r\n\r\n```xml\r\n<Panel ux:Name=\"thePanel\" Width=\"100\" Height=\"100\">\r\n\t<StateGroup ux:Name=\"stateGroup\">\r\n\t\t<State ux:Name=\"redState\">\r\n\t\t\t<Change thePanel.Color=\"#f00\" Duration=\"0.2\"/>\r\n\t\t</State>\r\n\t\t<State ux:Name=\"greenState\">\r\n\t\t\t<Change thePanel.Color=\"#0f0\" Duration=\"0.2\"/>\r\n\t\t</State>\r\n\t\t<State ux:Name=\"blueState\">\r\n\t\t\t<Change thePanel.Color=\"#00f\" Duration=\"0.2\"/>\r\n\t\t</State>\r\n\t</StateGroup>\r\n\r\n\t<Clicked>\r\n\t\t<TransitionState Type=\"Next\" Target=\"stateGroup\" />\r\n\t</Clicked>\r\n</Panel>\r\n```\r\n\r\n## Controlling StateGroup using JavaScript\r\n\r\nA `StateGroup` may be controlled via its JavaScript interface.\r\nThis is done either by calling the `goto(state)` or `gotoNext()` methods on the @StateGroup itself, or by calling the `goto()` method on a particular @State.\r\n\r\n```xml\r\n<JavaScript>\r\n\texports.gotoNextState = function()\r\n\t{\r\n\t\tstateGroup.gotoNext();\r\n\t}\r\n\r\n\texports.gotoSecondState = function()\r\n\t{\r\n\t\tstateGroup.goto(secondState);\r\n\t}\r\n\r\n\texports.gotoThirdState = function()\r\n\t{\r\n\t\tthirdState.goto();\r\n\t}\r\n</JavaScript>\r\n\r\n<StateGroup ux:Name=\"stateGroup\">\r\n\t<State ux:Name=\"firstState\">\r\n\t\t<!-- ... -->\t\r\n\t</State>\r\n\t<State ux:Name=\"secondState\">\r\n\t\t<!-- ... -->\r\n\t</State>\r\n\t<State ux:Name=\"thirdState\">\r\n\t\t<!-- ... -->\r\n\t</State>\r\n</StateGroup>\r\n\r\n<StackPanel>\r\n\t<Button Clicked=\"{gotoNextState}\" Text=\"Next state\" />\r\n\t<Button Clicked=\"{gotoSecondState}\" Text=\"Second state\" />\r\n\t<Button Clicked=\"{gotoThirdState}\" Text=\"Third state\" />\r\n</StackPanel>\r\n```\r\n\r\n## Transition\r\n\r\nWe can also specify the `Transition` property, which can be either `Exclusive` or `Parallel`.\r\n`Exclusive` means that each state will have to be fully deactivated before the next state becomes active.\r\n`Parallel` means that as one state deactivates, the next one will become active and whatever properties they animate will be interpolated between them.",
+              "full": "StateGroup manages a set of @State triggers, making sure only a single @State is active at once.\r\nA @State is a regular @Trigger that is controlled by a @StateGroup.\r\nAnimators inside a @State define what should change while that state is active.\r\n\r\nThe basic structure of a StateGroup looks like this:\r\n\r\n```xml\r\n<StateGroup>\r\n\t<State ux:Name=\"firstState\" />\r\n\t<State ux:Name=\"secondState\" />\r\n</StateGroup>\r\n```\r\n\r\nNow, this setup does nothing at all. We need to add some animators to our @States, so that they actually do something.\r\nWe'll add a @Panel as well, so we have something to animate.\r\n\r\n```xml\r\n<Panel ux:Name=\"thePanel\" Width=\"100\" Height=\"100\" />\r\n\t<StateGroup>\r\n\t\t<State ux:Name=\"firstState\">\r\n\t\t\t<Change thePanel.Color=\"#f00\" />\r\n\t\t</State>\r\n\t\t<State ux:Name=\"secondState\">\r\n\t\t\t<Change thePanel.Color=\"#00f\" />\r\n\t\t</State>\t\r\n\t</StateGroup>\r\n</Panel>\r\n```\r\n\r\nSince the first @State in a StateGroup will be activated by default, the above example will display a red @Panel.\r\n\r\nAt this point, we'd like to switch to a different state somehow. This can be achieved in several ways, as seen below.\r\n\r\n## The `Active` property\r\n\r\nThe `Active` property can be used to activate a particular @State.\r\nThe below example displays a colored @Panel, along with three buttons that change its color.\r\n\r\n```xml\r\n<StackPanel>\r\n\t<Panel ux:Name=\"thePanel\" Width=\"100\" Height=\"100\" />\r\n\r\n\t<StateGroup ux:Name=\"stateGroup\">\r\n\t\t<State ux:Name=\"redState\">\r\n\t\t\t<Change thePanel.Color=\"#f00\" Duration=\"0.2\"/>\r\n\t\t</State>\r\n\t\t<State ux:Name=\"greenState\">\r\n\t\t\t<Change thePanel.Color=\"#0f0\" Duration=\"0.2\"/>\r\n\t\t</State>\r\n\t\t<State ux:Name=\"blueState\">\r\n\t\t\t<Change thePanel.Color=\"#00f\" Duration=\"0.2\"/>\r\n\t\t</State>\r\n\t</StateGroup>\r\n\r\n\t<Grid ColumnCount=\"3\">\r\n\t\t<Button Text=\"Red\">\r\n\t\t\t<Clicked>\r\n\t\t\t\t<Set stateGroup.Active=\"redState\"/>\r\n\t\t\t</Clicked>\r\n\t\t</Button>\r\n\t\t<Button Text=\"Green\">\r\n\t\t\t<Clicked>\r\n\t\t\t\t<Set stateGroup.Active=\"greenState\"/>\r\n\t\t\t</Clicked>\r\n\t\t</Button>\r\n\t\t<Button Text=\"Blue\">\r\n\t\t\t<Clicked>\r\n\t\t\t\t<Set stateGroup.Active=\"blueState\"/>\r\n\t\t\t</Clicked>\r\n\t\t</Button>\r\n\t</Grid>\r\n</StackPanel>\r\n```\r\n\r\n## TransitionState\r\n\r\nInstead of directly jumping to a particular state, the @TransitionState action can be used to advance to the next @State in a StateGroup, following the order in which they are declared.\r\nIf a @TransitionState is triggered while the last @State is active, it wraps around to activate the first @State.\r\n\r\nThe following example displays a panel that will cycle its color between red, green and blue when clicked.\r\n\r\n```xml\r\n<Panel ux:Name=\"thePanel\" Width=\"100\" Height=\"100\">\r\n\t<StateGroup ux:Name=\"stateGroup\">\r\n\t\t<State ux:Name=\"redState\">\r\n\t\t\t<Change thePanel.Color=\"#f00\" Duration=\"0.2\"/>\r\n\t\t</State>\r\n\t\t<State ux:Name=\"greenState\">\r\n\t\t\t<Change thePanel.Color=\"#0f0\" Duration=\"0.2\"/>\r\n\t\t</State>\r\n\t\t<State ux:Name=\"blueState\">\r\n\t\t\t<Change thePanel.Color=\"#00f\" Duration=\"0.2\"/>\r\n\t\t</State>\r\n\t</StateGroup>\r\n\r\n\t<Clicked>\r\n\t\t<TransitionState Type=\"Next\" Target=\"stateGroup\" />\r\n\t</Clicked>\r\n</Panel>\r\n```\r\n\r\n## Controlling StateGroup using JavaScript\r\n\r\nA `StateGroup` may be controlled via its JavaScript interface.\r\nThis is done either by calling the `goto(state)` or `gotoNext()` methods on the @StateGroup itself, or by calling the `goto()` method on a particular @State.\r\n\r\n```xml\r\n<JavaScript>\r\n\texports.gotoNextState = function()\r\n\t{\r\n\t\tstateGroup.gotoNext();\r\n\t}\r\n\r\n\texports.gotoSecondState = function()\r\n\t{\r\n\t\tstateGroup.goto(secondState);\r\n\t}\r\n\r\n\texports.gotoThirdState = function()\r\n\t{\r\n\t\tthirdState.goto();\r\n\t}\r\n</JavaScript>\r\n\r\n<StateGroup ux:Name=\"stateGroup\">\r\n\t<State ux:Name=\"firstState\">\r\n\t\t<!-- ... -->\t\r\n\t</State>\r\n\t<State ux:Name=\"secondState\">\r\n\t\t<!-- ... -->\r\n\t</State>\r\n\t<State ux:Name=\"thirdState\">\r\n\t\t<!-- ... -->\r\n\t</State>\r\n</StateGroup>\r\n\r\n<StackPanel>\r\n\t<Button Clicked=\"{gotoNextState}\" Text=\"Next state\" />\r\n\t<Button Clicked=\"{gotoSecondState}\" Text=\"Second state\" />\r\n\t<Button Clicked=\"{gotoThirdState}\" Text=\"Third state\" />\r\n</StackPanel>\r\n```\r\n\r\n## Transition\r\n\r\nWe can also specify the `Transition` property, which can be either `Exclusive` or `Parallel`.\r\n`Exclusive` means that each state will have to be fully deactivated before the next state becomes active.\r\n`Parallel` means that as one state deactivates, the next one will become active and whatever properties they animate will be interpolated between them."
+            },
+            "id": {
+              "id": "fuse/triggers/stategroup",
+              "parentId": "fuse/triggers",
+              "type": "UxClass",
+              "modifiers": [
+                "public",
+                "partial"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/stategroup",
+              "href": "fuse/triggers/stategroup"
+            },
+            "titles": {
+              "indexTitle": "StateGroup",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.StateGroup"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Trigger for input action",
+              "full": "Trigger for input action\n\nTriggers when the returnkey on the keyboard is clicked.\n\n## Example\n\n    <TextInput PlaceholderText=\"Example\">\n        <TextInputActionTriggered>\n            <DebugAction Message=\"TextInputActionTriggered\" />\n        </TextInputActionTriggered>\n    </TextInput>"
+            },
+            "id": {
+              "id": "fuse/triggers/textinputactiontriggered",
+              "parentId": "fuse/triggers",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/textinputactiontriggered",
+              "href": "fuse/triggers/textinputactiontriggered"
+            },
+            "titles": {
+              "indexTitle": "TextInputActionTriggered",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.TextInputActionTriggered"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Groups several animations together",
+              "full": "Groups several animations together\n\nThis allows for a nice way of grouping several animations together and separating them from the interaction logic.\n\nA `Timeline` can be played by animating its `TargetProgress` property between 0 and 1.\n\n> **Note:** `Timeline` itself is *not* intended for grouping multiple animators to create keyframe animations.\n> To achieve this, you can add @Keyframes to the animators themselves.\n>\n> *Incorrect:*\n>\n> ```\n> <Timeline>\n>     <Change rect.Opacity=\"1\" Delay=\"0.0\" Duration=\"0.5\" />\n>     <Change rect.Opacity=\"0\" Delay=\"0.5\" Duration=\"0.5\" />\n> </Timeline>\n> ```\n>\n> *Correct:*\n>\n> ```\n> <Timeline>\n>     <Change Target=\"rect.Opacity\">\n>         <Keyframe Value=\"1\" Time=\"0.5\" />\n>         <Keyframe Value=\"0\" Time=\"1.0\" />\n>     </Change>\n> </Timeline>\n> ```\n\n## Example\n\nHere is an example of how we can use a timeline to animate several properties on a rectangle (its width and color), and then play between the start and end of this `Timeline` by clicking two buttons.\n\n    <StackPanel>\n        <Rectangle ux:Name=\"rect\" Height=\"40\" Width=\"100%\">\n            <SolidColor ux:Name=\"color\" Color=\"#f00\" />\n        </Rectangle>\n        <Grid ColumnCount=\"2\">\n            <Button Text=\"Red\">\n                <Clicked>\n                    <Set timeline.TargetProgress=\"0\" />\n                </Clicked>\n            </Button>\n            <Button Text=\"Green\">\n                <Clicked>\n                    <Set timeline.TargetProgress=\"1\" />\n                </Clicked>\n            </Button>\n        </Grid>\n\n        <Timeline ux:Name=\"timeline\">\n            <Change Target=\"rect.Width\">\n                <Keyframe Value=\"10\" Time=\"0.3\"/>\n                <Keyframe Value=\"100\" Time=\"0.6\"/>\n            </Change>\n            <Change color.Color=\"#0f0\" Duration=\"0.3\" Delay=\"0.3\"/>\n        </Timeline>\n    </StackPanel>"
+            },
+            "id": {
+              "id": "fuse/triggers/timeline",
+              "parentId": "fuse/triggers",
+              "type": "UxClass",
+              "modifiers": [
+                "public",
+                "sealed",
+                "partial"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/timeline",
+              "href": "fuse/triggers/timeline"
+            },
+            "titles": {
+              "indexTitle": "Timeline",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.Timeline"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Controls the animations for page-to-page transitions in a `Navigator`.",
+              "full": "Controls the animations for page-to-page transitions in a `Navigator`.\n\nUnlike the `EnteringAnimation` and `ExitingAnimation` triggers, `Transition` allows you to make different animations depending on which page is being navigating to, or away from.\r\n\r\n# Example\r\n\r\n\t<Page ux:Template=\"Main\">\r\n\t\t<Transition To=\"Contacts\">\r\n\t\t\t<Move X=\"-1\" RelativeTo=\"ParentSize\" Duration=\"1\"/>\r\n\t\t</Transition>\r\n\t\t<Transition>\r\n\t\t\t<Move Y=\"1\" RelativeTo=\"ParentSize\" Duration=\"1\"/>\r\n\t\t</Transition>\r\n\t</Page>\r\n\t\r\nThis page has a special transition if navigating to the `Contacts` page. In this case it will slide the page to the left. All other transitions away from this page will slide down.\r\n\r\n# To / From\r\n\r\nEvery navigation change defines a \"To\" and \"From\" page. In `Transition` these are always defined as the the forward ordering of the pages in the navigation. This ensures that when navigating backward (such as using `goBack`) the same transitions will be used, but done in reverse.\r\n\r\nFor example, a `<Transition To=\"Contacts\">` matches a forward transition to the `Contacts` page, as well as a backwards transition from the `Contacts` page to this one.\r\n\r\nSimilarly, a `<Transtion From=\"Main\">` matches a forward transition from the `Main` page, as well as a backwards transition from this page to the `Main` page.\r\n\r\n# Priority\r\n\r\nOnly one `Transition`, the one with the highest priority, will be selected for each page change. The priority ordering is:\r\n\r\n- A `Style` match on the operational style\r\n- `Interaction` match other than `Any`\r\n- `To` page name match\r\n- `From` page name match\r\n- `Direction` of `ToBack`, `FromBack`, `ToFront`, `FromFront`\r\n- `Direction` of `ToActive`, `ToInactive`\r\n- `Direction` of `InFront`, `Behind`\r\n- `Direction` `Any`\r\n\r\nIf no matching `Transition` is found then a default one will be created according to the [Navigator.Transition](api:fuse/controls/navigationcontrol/transition) property. If you don't want a default then specify a final fallback transition without properties `<Transition>`.\r\n\r\n# Play direction\r\n\r\nIf the page is becoming inactive the transition will be played forward. If the page is becoming active the transition will be played backward. This means the transition is always defining the animation towards the inactive state.\r\n\r\nWith certain combinations of properties this may at first seem odd, for example:\r\n\r\n\t<Transition Direction=\"ToActive\">\r\n\t\t<Move X=\"100\" Duration=\"1\"/>\r\n\t</Transition>\r\n\t\r\nThis `Transition` is only selected when the page is becoming the active one. The animation will start at `X=100` and move towards `X=0` over a duration of `1`.\r\n\r\nThe final state of any active page is always with all transitions deactivated.\r\n\r\n\r\n\n## Extended Example\n\nThe [Transition Example](https://github.com/fusetools/fuse-samples/tree/master/Samples/UIStructure/Transition) shows a variety of page transitions using `Transition`."
+            },
+            "id": {
+              "id": "fuse/triggers/transition",
+              "parentId": "fuse/triggers",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/transition",
+              "href": "fuse/triggers/transition"
+            },
+            "titles": {
+              "indexTitle": "Transition",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.Transition"
+            }
+          },
+          {
+            "comment": {
+              "brief": "A trigger that is active whenever a sibling or parent is marked as busy.",
+              "full": "A trigger that is active whenever a sibling or parent is marked as busy.\n\nUX nodes can mark themselves as busy, meaning that they are currently waiting on some background task and are not ready for rendering.\nThis can be anything from making a HTTP request to performing an expensive computation.\nWe can use WhileBusy to react to this, as it will be activated while a sibling or parent node is marked as busy.\n\n> *Note:* You can use the [FuseJS/BusyTask API](/docs/fuse/triggers/busytaskmodule) to mark nodes as busy via JavaScript.\n\n## Example\n\nThe following example displays an @Image from a URL, and a text while it's loading.\n\n    <Image Url=\"SOME_IMAGE_URL\">\n        <WhileBusy>\n            <Text Value=\"Loading...\" />\n        </WhileBusy>\n    </Image>\n\nWhen a node is marked as busy, its ancestors are also considered busy.\nThis lets us react to multiple busy nodes in the same trigger.\nIn the following example we have two @Images loaded via HTTP, and a \"Loading...\" indicator that fades to transparency after both images have downloaded.\n\n    <Panel>\n        <Panel ux:Name=\"loadingPanel\" Opacity=\"0\" Alignment=\"Top\">\n            <Text>Loading...</Text>\n        </Panel>\n        <WhileBusy>\n            <Change loadingPanel.Opacity=\"1\" Duration=\"0.5\" />\n        </WhileBusy>\n        <StackPanel>\n            <Image Url=\"SOME_IMAGE_URL\" />\n            <Image Url=\"SOME_OTHER_IMAGE_URL\" />\n        </StackPanel>\n    </Panel>"
+            },
+            "id": {
+              "id": "fuse/triggers/whilebusy",
+              "parentId": "fuse/triggers",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/whilebusy",
+              "href": "fuse/triggers/whilebusy"
+            },
+            "titles": {
+              "indexTitle": "WhileBusy",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.WhileBusy"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Active while the @Video is completed.",
+              "full": "Active while the @Video is completed.\n\nThis trigger is for use inside the `Video` element."
+            },
+            "id": {
+              "id": "fuse/triggers/whilecompleted",
+              "parentId": "fuse/triggers",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/whilecompleted",
+              "href": "fuse/triggers/whilecompleted"
+            },
+            "titles": {
+              "indexTitle": "WhileCompleted",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.WhileCompleted"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Active while the surrounding context contains text.",
+              "full": "Active while the surrounding context contains text.\n\nCan be used, for instance, inside @TextInputs.\n\n## Example\n\nThis example displays a warning text unless the user has entered some text into\na password field:\n\n    <StackPanel>\n        <TextInput IsPassword=\"True\">\n            <WhileContainsText>\n                <Change warningText.Visibility=\"Hidden\" />\n            </WhileContainsText>\n        </TextInput>\n        <Text Color=\"Red\" ux:Name=\"warningText\">You must enter a password!</Text>\n    </StackPanel>"
+            },
+            "id": {
+              "id": "fuse/triggers/whilecontainstext",
+              "parentId": "fuse/triggers",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/whilecontainstext",
+              "href": "fuse/triggers/whilecontainstext"
+            },
+            "titles": {
+              "indexTitle": "WhileContainsText",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.WhileContainsText"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Active while the `IsEnabled` property of its containing element is `False`.",
+              "full": "Active while the `IsEnabled` property of its containing element is `False`."
+            },
+            "id": {
+              "id": "fuse/triggers/whiledisabled",
+              "parentId": "fuse/triggers",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/whiledisabled",
+              "href": "fuse/triggers/whiledisabled"
+            },
+            "titles": {
+              "indexTitle": "WhileDisabled",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.WhileDisabled"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Active while the `IsEnabled` property of its containing element is `True`.",
+              "full": "Active while the `IsEnabled` property of its containing element is `True`.\n\n# Example\nThis example shows a panel that is rotated 45 degrees. It will always be rotated 45 degrees, as `IsEnabled` is `true` by default.\n\n    <Panel  Width=\"50\" Height=\"50\" Background=\"Red\" >\n        <WhileEnabled>\n            <Rotate Degrees=\"45\" Duration=\"0.5\"/>\n        </WhileEnabled>\n    </Panel>"
+            },
+            "id": {
+              "id": "fuse/triggers/whileenabled",
+              "parentId": "fuse/triggers",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/whileenabled",
+              "href": "fuse/triggers/whileenabled"
+            },
+            "titles": {
+              "indexTitle": "WhileEnabled",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.WhileEnabled"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Active while the context has failed.",
+              "full": "Active while the context has failed.\n\nThis trigger can be used inside a @Video, an @Image, or an @Each element.\n\n`<WhileFailed>` is equivalent to `<WhileBusy Activity=\"Failed\" IsHandled=\"true\"/>`"
+            },
+            "id": {
+              "id": "fuse/triggers/whilefailed",
+              "parentId": "fuse/triggers",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/whilefailed",
+              "href": "fuse/triggers/whilefailed"
+            },
+            "titles": {
+              "indexTitle": "WhileFailed",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.WhileFailed"
+            }
+          },
+          {
+            "comment": {
+              "brief": "A trigger that is active while its `Value` property is `false`.",
+              "full": "A trigger that is active while its `Value` property is `false`.\n\n> *Note*\n>\n> This is the exact opposite from @WhileTrue.\n> Head over there for documentation and examples."
+            },
+            "id": {
+              "id": "fuse/triggers/whilefalse",
+              "parentId": "fuse/triggers",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/whilefalse",
+              "href": "fuse/triggers/whilefalse"
+            },
+            "titles": {
+              "indexTitle": "WhileFalse",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.WhileFalse"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Active when the `float` `Value` fulfills some criteria.",
+              "full": "Active when the `float` `Value` fulfills some criteria."
+            },
+            "id": {
+              "id": "fuse/triggers/whilefloat",
+              "parentId": "fuse/triggers",
+              "type": "UxClass",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/whilefloat",
+              "href": "fuse/triggers/whilefloat"
+            },
+            "titles": {
+              "indexTitle": "WhileFloat",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.WhileFloat"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Active whenever its containing element is in focus.",
+              "full": "Active whenever its containing element is in focus."
+            },
+            "id": {
+              "id": "fuse/triggers/whilefocused",
+              "parentId": "fuse/triggers",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/whilefocused",
+              "href": "fuse/triggers/whilefocused"
+            },
+            "titles": {
+              "indexTitle": "WhileFocused",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.WhileFocused"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Active whenever a child of its containing element is in focus.",
+              "full": "Active whenever a child of its containing element is in focus."
+            },
+            "id": {
+              "id": "fuse/triggers/whilefocuswithin",
+              "parentId": "fuse/triggers",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/whilefocuswithin",
+              "href": "fuse/triggers/whilefocuswithin"
+            },
+            "titles": {
+              "indexTitle": "WhileFocusWithin",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.WhileFocusWithin"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Active while the user is interacting with the surrounding element.",
+              "full": "Active while the user is interacting with the surrounding element.\n\n`WhileInteracting` is active in a @SwipeGesture while the user is swiping, and in a @ScrollView when the user is scrolling.\n\n## Example\n\nThe following example shows a @Panel whose background color changes when the user is interacting with the @ScrollView surrounding it:\n\n    <ScrollView Alignment=\"VerticalCenter\" ClipToBounds=\"False\">\n        <Panel ux:Name=\"coloredPanel\" Background=\"#f00\" HitTestMode=\"LocalBoundsAndChildren\" MinHeight=\"200\">\n            <Text Alignment=\"Center\" TextColor=\"#fff\">Scroll me!</Text>\n        </Panel>\n\n        <WhileInteracting>\n            <Change coloredPanel.Background=\"#00f\" />\n        </WhileInteracting>\n    </ScrollView>"
+            },
+            "id": {
+              "id": "fuse/triggers/whileinteracting",
+              "parentId": "fuse/triggers",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/whileinteracting",
+              "href": "fuse/triggers/whileinteracting"
+            },
+            "titles": {
+              "indexTitle": "WhileInteracting",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.WhileInteracting"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Active when on-screen controls are visible, such as the keyboard. This excludes the fixed controls, such as navigation and home button, on some devices.",
+              "full": "Active when on-screen controls are visible, such as the keyboard. This excludes the fixed controls, such as navigation and home button, on some devices."
+            },
+            "id": {
+              "id": "fuse/triggers/whilekeyboardvisible",
+              "parentId": "fuse/triggers",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/whilekeyboardvisible",
+              "href": "fuse/triggers/whilekeyboardvisible"
+            },
+            "titles": {
+              "indexTitle": "WhileKeyboardVisible",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.WhileKeyboardVisible"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Active while a resource in the surrounding context is loading.",
+              "full": "Active while a resource in the surrounding context is loading.\n\nThis trigger can be used inside a @Video, @Image, or @Text element.\n\n## Example\n\nThe following example will display some text while an image resource is loading via URL:\n\n    <StackPanel>\n        <Image Url=\"https://upload.wikimedia.org/wikipedia/commons/f/f1/Kitten_and_partial_reflection_in_mirror.jpg\">\n            <WhileLoading>\n                <Change showLoadingText.Value=\"True\" />\n            </WhileLoading>\n        </Image>\n\n        <WhileTrue ux:Name=\"showLoadingText\">\n            <Text>Image is loading...</Text>\n        </WhileTrue>\n    </StackPanel>\n\n`<WhileLoading>` is equivalent to `<WhileBusy Activity=\"Loading\">`."
+            },
+            "id": {
+              "id": "fuse/triggers/whileloading",
+              "parentId": "fuse/triggers",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/whileloading",
+              "href": "fuse/triggers/whileloading"
+            },
+            "titles": {
+              "indexTitle": "WhileLoading",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.WhileLoading"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Active whenever its containing element is not in focus.",
+              "full": "Active whenever its containing element is not in focus.\n\nThe inverse of @WhileFocused."
+            },
+            "id": {
+              "id": "fuse/triggers/whilenotfocused",
+              "parentId": "fuse/triggers",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/whilenotfocused",
+              "href": "fuse/triggers/whilenotfocused"
+            },
+            "titles": {
+              "indexTitle": "WhileNotFocused",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.WhileNotFocused"
+            }
+          },
+          {
+            "comment": {
+              "brief": "A trigger that is active while its parent @WebView is loading.",
+              "full": "A trigger that is active while its parent @WebView is loading.\n\n## Example\n\nThe following example displays a loading indicator while the @WebView is loading a page.\n\n    <NativeViewHost>\n        <Panel ux:Name=\"loadingIndicator\" Opacity=\"0\" Alignment=\"Bottom\" Color=\"#0006\">\n            <Text Alignment=\"Center\" Margin=\"10\" Color=\"#fff\">Loading...</Text>\n        </Panel>\n\n        <WebView Url=\"https://example.com/\">\n            <WhilePageLoading>\n                <Change loadingIndicator.Opacity=\"1\" Duration=\"0.2\" />\n            </WhilePageLoading>\n        </WebView>\n    </NativeViewHost>"
+            },
+            "id": {
+              "id": "fuse/triggers/whilepageloading",
+              "parentId": "fuse/triggers",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/whilepageloading",
+              "href": "fuse/triggers/whilepageloading"
+            },
+            "titles": {
+              "indexTitle": "WhilePageLoading",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.WhilePageLoading"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Active while the @Video is paused.",
+              "full": "Active while the @Video is paused.\n\nThis trigger is for use inside the `Video` element."
+            },
+            "id": {
+              "id": "fuse/triggers/whilepaused",
+              "parentId": "fuse/triggers",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/whilepaused",
+              "href": "fuse/triggers/whilepaused"
+            },
+            "titles": {
+              "indexTitle": "WhilePaused",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.WhilePaused"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Active while the @Video is playing.",
+              "full": "Active while the @Video is playing.\n\nThis trigger is for use inside the `Video` element."
+            },
+            "id": {
+              "id": "fuse/triggers/whileplaying",
+              "parentId": "fuse/triggers",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/whileplaying",
+              "href": "fuse/triggers/whileplaying"
+            },
+            "titles": {
+              "indexTitle": "WhilePlaying",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.WhilePlaying"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Active when a @ScrollView can be scrolled.",
+              "full": "Active when a @ScrollView can be scrolled.\n\nUse the `ScrollDirections` property to filter the activation\nbased on which direction you're interested in.\n\n# Example\n\nIn the following example, our background changes color when we reach the bottom of our @(ScrollView):\n\n    <ScrollViewer>\n        <SolidColor ux:Name=\"color\" Color=\"#000\"/>\n        <StackPanel Margin=\"10\">\n            <Each Count=\"10\">\n                <Panel Height=\"200\" Background=\"Red\" Margin=\"2\"/>\n            </Each>\n        </StackPanel>\n        <WhileScrollable ScrollDirections=\"Down\">\n            <Change color.Color=\"#ddd\" Duration=\"0.4\"/>\n        </WhileScrollable>\n    </ScrollViewer>\n\n@example Docs/WhileScrollable.md"
+            },
+            "id": {
+              "id": "fuse/triggers/whilescrollable",
+              "parentId": "fuse/triggers",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/whilescrollable",
+              "href": "fuse/triggers/whilescrollable"
+            },
+            "titles": {
+              "indexTitle": "WhileScrollable",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.WhileScrollable"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Is active while the @ScrollView is scrolled within a given region.",
+              "full": "Is active while the @ScrollView is scrolled within a given region.\n\nThis defines the region the same way as @Scrolled"
+            },
+            "id": {
+              "id": "fuse/triggers/whilescrolled",
+              "parentId": "fuse/triggers",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/whilescrolled",
+              "href": "fuse/triggers/whilescrolled"
+            },
+            "titles": {
+              "indexTitle": "WhileScrolled",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.WhileScrolled"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Activate when the condition on the string value is true",
+              "full": "Activate when the condition on the string value is true"
+            },
+            "id": {
+              "id": "fuse/triggers/whilestring",
+              "parentId": "fuse/triggers",
+              "type": "UxClass",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/whilestring",
+              "href": "fuse/triggers/whilestring"
+            },
+            "titles": {
+              "indexTitle": "WhileString",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.WhileString"
+            }
+          },
+          {
+            "comment": {
+              "brief": "A trigger that is active while its `Value` property is `true`.",
+              "full": "A trigger that is active while its `Value` property is `true`.\n\n## Examples\n\nBy default, the value of a `WhileTrue` is `false`.\n\n    <WhileTrue>\n        <!-- Any actions/animators placed here will never be triggered -->\n    </WhileTrue>\n\nYou can, however, use @Set to change its value.\n\n    <Panel Width=\"200\" Height=\"200\" Background=\"#000\">\n        <Clicked>\n            <Set moveToTheRight.Value=\"true\" />\n        </Clicked>\n\n        <WhileTrue ux:Name=\"moveToTheRight\">\n            <Move X=\"200\" Duration=\"0.4\" />\n        </WhileTrue>\n    </Panel>\n\nIts value can also be toggled on and off using @Toggle.\n\n    <Panel Width=\"200\" Height=\"200\" Background=\"#000\">\n        <WhileTrue ux:Name=\"moveToTheRight\">\n            <Move X=\"200\" Duration=\"0.4\" />\n        </WhileTrue>\n\n        <Clicked>\n            <Toggle Target=\"moveToTheRight\" />\n        </Clicked>\n    </Panel>\n\nIt is also particularly useful to data-bind `Value` to an @Observable.\n\nThe following example consists of a @TextBox, as well as a @Button that fades to full transparency while\nthe user has entered less than 6 characters into the @TextBox.\n\n    <JavaScript>\n        var Observable = require(\"FuseJS/Observable\");\n\n        var password = Observable(\"\");\n        var isPasswordInvalid = password.map(function(value) {\n            return value.length < 6;\n        });\n\n        module.exports = {\n            password: password,\n            isPasswordInvalid: isPasswordInvalid\n        };\n    </JavaScript>\n\n    <StackPanel Alignment=\"VerticalCenter\" ItemSpacing=\"50\" Margin=\"50\">\n        <TextBox Value=\"{password}\" IsPassword=\"true\" />\n        <Button Text=\"Log in\" ux:Name=\"loginButton\" />\n\n        <WhileTrue Value=\"{isPasswordInvalid}\">\n            <Change loginButton.Opacity=\"0\" Duration=\"0.3\" />\n        </WhileTrue>\n    </StackPanel>\n\n## Instance\n\nThe children of `WhileTrue` are created whether the `Value` is true or false; this is the standard behavior of all triggers. If you need to prevent item creation when the value is false, consider using an `Instance` instead and bind to the `IsEnabled` property."
+            },
+            "id": {
+              "id": "fuse/triggers/whiletrue",
+              "parentId": "fuse/triggers",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/whiletrue",
+              "href": "fuse/triggers/whiletrue"
+            },
+            "titles": {
+              "indexTitle": "WhileTrue",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.WhileTrue"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Active when the parent element is visible.",
+              "full": "Active when the parent element is visible."
+            },
+            "id": {
+              "id": "fuse/triggers/whilevisible",
+              "parentId": "fuse/triggers",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/whilevisible",
+              "href": "fuse/triggers/whilevisible"
+            },
+            "titles": {
+              "indexTitle": "WhileVisible",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.WhileVisible"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Active while an element is positioned within the visible area of the @ScrollView.",
+              "full": "Active while an element is positioned within the visible area of the @ScrollView.\n\n    <ScrollView>\n        <StackPanel>\n            <Each Items=\"{images}\">\n                <DockPanel Height=\"100\">\n                    <Image Url=\"{source}\" MemoryPolicy=\"UnloadUnused\" Dock=\"Left\"\n                        Visibility=\"Hidden\" ux:Name=\"theImage\"/>\n                    <Text Value=\"{description}\" TextWrapping=\"Wrap\"/>\n\n                    <WhileVisibleInScrollView>\n                        <Change theImage.Visibility=\"Visible\"/>\n                    </WhileVisibleInScrollView>\n                </DockPanel>\n            </Each>\n        </StackPanel>\n    </ScrollView>\n\nThis example will show the images only when they are actually in the visible area. Combined with the `UnloadUnused` memory policy this will allow the memory to be freed when they aren't visible to the user.\n\nIf the panel has a fixed height, as in this example, you could also collapse the text to save the calculation and rendering time.\n\nYou would also use this trigger if you wish to animate something within a ScrollView. There's no point in animating something the user can't actually see; using the trigger can save resources by not animating things that aren't visible.\n\nNote that the element itself need not necessarily be visible, but just have a layout that positions it in the visible area. `Visibility=\"Hidden\"` on a @Visual does not prevent the activiation of this trigger.\n\nThis trigger responds to changes in scroll position. Layout changes on the element will also update the status but layout changes further up the tree may not update the status (we do not have an efficient way to monitor for global positioning changes)."
+            },
+            "id": {
+              "id": "fuse/triggers/whilevisibleinscrollview",
+              "parentId": "fuse/triggers",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/whilevisibleinscrollview",
+              "href": "fuse/triggers/whilevisibleinscrollview"
+            },
+            "titles": {
+              "indexTitle": "WhileVisibleInScrollView",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.WhileVisibleInScrollView"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Active when the app's viewport width is larger than its height.",
+              "full": "Active when the app's viewport width is larger than its height.\n\n## Example\n\nThe following example changes the color of `myRect` from black to white\nwhile the device is in landscape.\n\n    <Rectangle ux:Name=\"myRect\" Color=\"#000\" />\n    <WhileWindowLandscape>\n        <Change myRect.Color=\"#fff\" Duration=\"0.5\" />\n    </WhileWindowLandscape>"
+            },
+            "id": {
+              "id": "fuse/triggers/whilewindowlandscape",
+              "parentId": "fuse/triggers",
+              "type": "UxClass",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/whilewindowlandscape",
+              "href": "fuse/triggers/whilewindowlandscape"
+            },
+            "titles": {
+              "indexTitle": "WhileWindowLandscape",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.WhileWindowLandscape"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Active when the app's viewport height is larger than or equal to its width.",
+              "full": "Active when the app's viewport height is larger than or equal to its width.\n\nThe following example changes the color of `myRect` from black to white\nwhile the device is in portrait.\n\n    <Rectangle ux:Name=\"myRect\" Color=\"#000\" />\n    <WhileWindowPortrait>\n        <Change myRect.Color=\"#fff\" Duration=\"0.5\" />\n    </WhileWindowPortrait>"
+            },
+            "id": {
+              "id": "fuse/triggers/whilewindowportrait",
+              "parentId": "fuse/triggers",
+              "type": "UxClass",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/whilewindowportrait",
+              "href": "fuse/triggers/whilewindowportrait"
+            },
+            "titles": {
+              "indexTitle": "WhileWindowPortrait",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.WhileWindowPortrait"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Active while the size of the app's viewport fulfills some given constraints.",
+              "full": "Active while the size of the app's viewport fulfills some given constraints.\n\nConstraints are specified via the @GreaterThan, @LessThan and @EqualTo\nproperties. Each constraint must be provided as a pair of numbers,\nrepresenting the target width and height (in points) to match against.\n\nNote that both the X and Y axis must satisfy the constraints you provide.\n\n## Examples\n\nThe following example changes the color of `myRect` if the size of the\napp's viewport exceeds 400x400 points.\n\n    <Rectangle ux:Name=\"myRect\" Color=\"#f00\" />\n    <WhileWindowSize GreaterThan=\"400,400\">\n        <Change myRect.Color=\"#00f\" Duration=\".5\"/>\n    </WhileWindowSize>\n\nIf you want to match on a single axis only, you can provide a value for\nthe other axis that is greater than zero, and that you can safely assume\nwill always match.\n\nFor instance, if you want to check if only the width of the viewport is\ngreater than 400 points, you could do the following:\n\n    <WhileWindowSize GreaterThan=\"400,1\">\n\nThis also works for @LessThan by providing a big value.\n\n    <WhileWindowSize LessThan=\"400,99999\">\n\nYou can also specify multiple constraints on the same `WhileWindowSize`\ntrigger. Note that all constraints that you specify must be satisfied in\norder for the trigger to activate.\n\n    <WhileWindowSize GreaterThan=\"200,300\" LessThan=\"700,1000\">"
+            },
+            "id": {
+              "id": "fuse/triggers/whilewindowsize",
+              "parentId": "fuse/triggers",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/whilewindowsize",
+              "href": "fuse/triggers/whilewindowsize"
+            },
+            "titles": {
+              "indexTitle": "WhileWindowSize",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.WhileWindowSize"
+            }
+          }
+        ]
+      }
+    ],
+    "classes": [
+      {
+        "items": [
+          {
+            "id": {
+              "id": "fuse/triggers/busytask",
+              "parentId": "fuse/triggers",
+              "type": "Class",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/busytask",
+              "href": "fuse/triggers/busytask"
+            },
+            "titles": {
+              "indexTitle": "BusyTask",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.BusyTask"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/triggers/iscrolledlengths",
+              "parentId": "fuse/triggers",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/iscrolledlengths",
+              "href": "fuse/triggers/iscrolledlengths"
+            },
+            "titles": {
+              "indexTitle": "IScrolledLengths",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.IScrolledLengths"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/triggers/layouttransition",
+              "parentId": "fuse/triggers",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/layouttransition",
+              "href": "fuse/triggers/layouttransition"
+            },
+            "titles": {
+              "indexTitle": "LayoutTransition",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.LayoutTransition"
+            }
+          },
+          {
+            "comment": {
+              "brief": "A common base for pulse-like triggers (thus that pulse when an event is triggered).",
+              "full": "A common base for pulse-like triggers (thus that pulse when an event is triggered).\n\nNOTE: Not all the pulse-like triggers have been migrated to this base class yet."
+            },
+            "id": {
+              "id": "fuse/triggers/pulsetrigger_1",
+              "parentId": "fuse/triggers",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/pulsetrigger_1",
+              "href": "fuse/triggers/pulsetrigger_1"
+            },
+            "titles": {
+              "indexTitle": "PulseTrigger<ArgsT>",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.PulseTrigger<ArgsT>"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Triggers are the main tools for interaction response, transitions and animation in Fuse.",
+              "full": "Triggers are the main tools for interaction response, transitions and animation in Fuse.\n\nTriggers are objects that can be used in UX markup that detect events, gestures, other user input or\nchanges of state in your app, and performs animations and actions in response.\n\nWhen a trigger is *activated*, it performs a *timeline of actions* based on what objects you put inside\nthe trigger tag.\n\nTriggers can contain the following types of child-nodes in UX Markup:\n\n* @Animators that animate properties, transforms or effects when the trigger is active\n* @Actions that perform actions with permanent effects, or call back to JavaScript when the trigger activates.\n* @Nodes (visuals, behaviors, other triggers) that are added to the parent visual while the trigger is active.\n* @Resources (nodes marked with `ux:Key=\"your_key\"`), which overrides `{Resource your_key}` for the parent scope while the trigger is active.\n\n> See the [remarks section](#section-remarks) at the bottom of this page for more information\n\n## Available triggers in Fuse\n\n[subclass Fuse.Triggers.Trigger]",
+              "attributes": {
+                "topic": "Triggers and animation"
+              }
+            },
+            "id": {
+              "id": "fuse/triggers/trigger",
+              "parentId": "fuse/triggers",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/trigger",
+              "href": "fuse/triggers/trigger"
+            },
+            "titles": {
+              "indexTitle": "Trigger",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.Trigger"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/triggers/whilebool",
+              "parentId": "fuse/triggers",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/whilebool",
+              "href": "fuse/triggers/whilebool"
+            },
+            "titles": {
+              "indexTitle": "WhileBool",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.WhileBool"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/triggers/whileenableddisabledtrigger",
+              "parentId": "fuse/triggers",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/whileenableddisabledtrigger",
+              "href": "fuse/triggers/whileenableddisabledtrigger"
+            },
+            "titles": {
+              "indexTitle": "WhileEnabledDisabledTrigger",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.WhileEnabledDisabledTrigger"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/triggers/whiletrigger",
+              "parentId": "fuse/triggers",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/whiletrigger",
+              "href": "fuse/triggers/whiletrigger"
+            },
+            "titles": {
+              "indexTitle": "WhileTrigger",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.WhileTrigger"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/triggers/whilevalue_1",
+              "parentId": "fuse/triggers",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/whilevalue_1",
+              "href": "fuse/triggers/whilevalue_1"
+            },
+            "titles": {
+              "indexTitle": "WhileValue<T>",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.WhileValue<T>"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/triggers/whilewindowaspect",
+              "parentId": "fuse/triggers",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/whilewindowaspect",
+              "href": "fuse/triggers/whilewindowaspect"
+            },
+            "titles": {
+              "indexTitle": "WhileWindowAspect",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.WhileWindowAspect"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/triggers/windowsizetrigger",
+              "parentId": "fuse/triggers",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/windowsizetrigger",
+              "href": "fuse/triggers/windowsizetrigger"
+            },
+            "titles": {
+              "indexTitle": "WindowSizeTrigger",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.WindowSizeTrigger"
+            }
+          }
+        ]
+      }
+    ],
+    "delegates": [
+      {
+        "items": [
+          {
+            "parameters": [
+              {
+                "name": "sender",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              },
+              {
+                "name": "args",
+                "href": "fuse/input/keyeventargs",
+                "title": "KeyEventArgs",
+                "fullyQualifiedTitle": "Fuse.Input.KeyEventArgs"
+              }
+            ],
+            "id": {
+              "id": "fuse/triggers/keypresshandler",
+              "parentId": "fuse/triggers",
+              "type": "Delegate",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/keypresshandler",
+              "href": "fuse/triggers/keypresshandler"
+            },
+            "titles": {
+              "indexTitle": "KeyPressHandler (object, KeyEventArgs)",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.KeyPressHandler (object, Fuse.Input.KeyEventArgs)"
+            }
+          }
+        ]
+      }
+    ],
+    "enums": [
+      {
+        "items": [
+          {
+            "id": {
+              "id": "fuse/triggers/busyon",
+              "parentId": "fuse/triggers",
+              "type": "Enum",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/busyon",
+              "href": "fuse/triggers/busyon"
+            },
+            "titles": {
+              "indexTitle": "BusyOn",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.BusyOn"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/triggers/busytaskactivity",
+              "parentId": "fuse/triggers",
+              "type": "Enum",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/busytaskactivity",
+              "href": "fuse/triggers/busytaskactivity"
+            },
+            "titles": {
+              "indexTitle": "BusyTaskActivity",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.BusyTaskActivity"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/triggers/busytaskmatch",
+              "parentId": "fuse/triggers",
+              "type": "Enum",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/busytaskmatch",
+              "href": "fuse/triggers/busytaskmatch"
+            },
+            "titles": {
+              "indexTitle": "BusyTaskMatch",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.BusyTaskMatch"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/triggers/completedactivation",
+              "parentId": "fuse/triggers",
+              "type": "Enum",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/completedactivation",
+              "href": "fuse/triggers/completedactivation"
+            },
+            "titles": {
+              "indexTitle": "CompletedActivation",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.CompletedActivation"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/triggers/layoutanimationtype",
+              "parentId": "fuse/triggers",
+              "type": "Enum",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/layoutanimationtype",
+              "href": "fuse/triggers/layoutanimationtype"
+            },
+            "titles": {
+              "indexTitle": "LayoutAnimationType",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.LayoutAnimationType"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/triggers/onusereventfilter",
+              "parentId": "fuse/triggers",
+              "type": "Enum",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/onusereventfilter",
+              "href": "fuse/triggers/onusereventfilter"
+            },
+            "titles": {
+              "indexTitle": "OnUserEventFilter",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.OnUserEventFilter"
+            }
+          },
+          {
+            "comment": {
+              "brief": "A relative location in a ScrollView",
+              "full": "A relative location in a ScrollView"
+            },
+            "id": {
+              "id": "fuse/triggers/scrolledwhere",
+              "parentId": "fuse/triggers",
+              "type": "Enum",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/scrolledwhere",
+              "href": "fuse/triggers/scrolledwhere"
+            },
+            "titles": {
+              "indexTitle": "ScrolledWhere",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.ScrolledWhere"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/triggers/scrollinganimationrange",
+              "parentId": "fuse/triggers",
+              "type": "Enum",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/scrollinganimationrange",
+              "href": "fuse/triggers/scrollinganimationrange"
+            },
+            "titles": {
+              "indexTitle": "ScrollingAnimationRange",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.ScrollingAnimationRange"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/triggers/statetransition",
+              "parentId": "fuse/triggers",
+              "type": "Enum",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/statetransition",
+              "href": "fuse/triggers/statetransition"
+            },
+            "titles": {
+              "indexTitle": "StateTransition",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.StateTransition"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Limits the `Transition` to match in a particular direction, relative to the page, of navigation.",
+              "full": "Limits the `Transition` to match in a particular direction, relative to the page, of navigation."
+            },
+            "id": {
+              "id": "fuse/triggers/transitiondirection",
+              "parentId": "fuse/triggers",
+              "type": "Enum",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/transitiondirection",
+              "href": "fuse/triggers/transitiondirection"
+            },
+            "titles": {
+              "indexTitle": "TransitionDirection",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.TransitionDirection"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/triggers/transitionmode",
+              "parentId": "fuse/triggers",
+              "type": "Enum",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/transitionmode",
+              "href": "fuse/triggers/transitionmode"
+            },
+            "titles": {
+              "indexTitle": "TransitionMode",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.TransitionMode"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/triggers/triggerbypassmode",
+              "parentId": "fuse/triggers",
+              "type": "Enum",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/triggerbypassmode",
+              "href": "fuse/triggers/triggerbypassmode"
+            },
+            "titles": {
+              "indexTitle": "TriggerBypassMode",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.TriggerBypassMode"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/triggers/triggerplaystate",
+              "parentId": "fuse/triggers",
+              "type": "Enum",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/triggerplaystate",
+              "href": "fuse/triggers/triggerplaystate"
+            },
+            "titles": {
+              "indexTitle": "TriggerPlayState",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.TriggerPlayState"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/triggers/whilestringtest",
+              "parentId": "fuse/triggers",
+              "type": "Enum",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/whilestringtest",
+              "href": "fuse/triggers/whilestringtest"
+            },
+            "titles": {
+              "indexTitle": "WhileStringTest",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.WhileStringTest"
+            }
+          },
+          {
+            "comment": {
+              "brief": "How the bounds of an element are treated.",
+              "full": "How the bounds of an element are treated."
+            },
+            "id": {
+              "id": "fuse/triggers/whilevisibleinscrollviewmode",
+              "parentId": "fuse/triggers",
+              "type": "Enum",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/whilevisibleinscrollviewmode",
+              "href": "fuse/triggers/whilevisibleinscrollviewmode"
+            },
+            "titles": {
+              "indexTitle": "WhileVisibleInScrollViewMode",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.WhileVisibleInScrollViewMode"
+            }
+          }
+        ]
+      }
+    ],
+    "interfaces": [
+      {
+        "items": [
+          {
+            "id": {
+              "id": "fuse/triggers/ibusyhandler",
+              "parentId": "fuse/triggers",
+              "type": "Interface",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/ibusyhandler",
+              "href": "fuse/triggers/ibusyhandler"
+            },
+            "titles": {
+              "indexTitle": "IBusyHandler",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.IBusyHandler"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/triggers/imediaplayback",
+              "parentId": "fuse/triggers",
+              "type": "Interface",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/imediaplayback",
+              "href": "fuse/triggers/imediaplayback"
+            },
+            "titles": {
+              "indexTitle": "IMediaPlayback",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.IMediaPlayback"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/triggers/iplayback",
+              "parentId": "fuse/triggers",
+              "type": "Interface",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/iplayback",
+              "href": "fuse/triggers/iplayback"
+            },
+            "titles": {
+              "indexTitle": "IPlayback",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.IPlayback"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/triggers/iprogress",
+              "parentId": "fuse/triggers",
+              "type": "Interface",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/iprogress",
+              "href": "fuse/triggers/iprogress"
+            },
+            "titles": {
+              "indexTitle": "IProgress",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.IProgress"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/triggers/ipulsetrigger",
+              "parentId": "fuse/triggers",
+              "type": "Interface",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/ipulsetrigger",
+              "href": "fuse/triggers/ipulsetrigger"
+            },
+            "titles": {
+              "indexTitle": "IPulseTrigger",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.IPulseTrigger"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/triggers/iscrolledlength",
+              "parentId": "fuse/triggers",
+              "type": "Interface",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/iscrolledlength",
+              "href": "fuse/triggers/iscrolledlength"
+            },
+            "titles": {
+              "indexTitle": "IScrolledLength",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.IScrolledLength"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/triggers/ivalue_1",
+              "parentId": "fuse/triggers",
+              "type": "Interface",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/ivalue_1",
+              "href": "fuse/triggers/ivalue_1"
+            },
+            "titles": {
+              "indexTitle": "IValue<T>",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.IValue<T>"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

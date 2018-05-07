@@ -1,0 +1,555 @@
+{
+  "entity": {
+    "id": {
+      "id": "fuse/charting",
+      "parentId": "fuse",
+      "type": "Namespace",
+      "modifiers": []
+    },
+    "uri": {
+      "idUri": "fuse/charting",
+      "href": "fuse/charting"
+    },
+    "titles": {
+      "pageTitle": "Fuse.Charting Namespace",
+      "navigationTitle": "Fuse.Charting Namespace",
+      "fullTitle": "Fuse.Charting",
+      "indexTitle": "Fuse.Charting",
+      "fullyQualifiedIndexTitle": "Fuse.Charting"
+    },
+    "syntax": {
+      "uno": "namespace Charting {}"
+    }
+  },
+  "tableOfContents": {
+    "uxClasses": [
+      {
+        "items": [
+          {
+            "comment": {
+              "brief": "Provides a source of data for plotting.",
+              "full": "Provides a source of data for plotting.",
+              "attributes": {
+                "experimental": true
+              }
+            },
+            "id": {
+              "id": "fuse/charting/dataseries",
+              "parentId": "fuse/charting",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/charting/dataseries",
+              "href": "fuse/charting/dataseries"
+            },
+            "titles": {
+              "indexTitle": "DataSeries",
+              "fullyQualifiedIndexTitle": "Fuse.Charting.DataSeries"
+            }
+          },
+          {
+            "comment": {
+              "brief": "A panel that contains a chart.",
+              "full": "A panel that contains a chart.",
+              "attributes": {
+                "experimental": true
+              }
+            },
+            "id": {
+              "id": "fuse/charting/plot",
+              "parentId": "fuse/charting",
+              "type": "UxClass",
+              "modifiers": [
+                "public",
+                "partial"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/charting/plot",
+              "href": "fuse/charting/plot"
+            },
+            "titles": {
+              "indexTitle": "Plot",
+              "fullyQualifiedIndexTitle": "Fuse.Charting.Plot"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Controls the size-related aspects of the Plot to create a responsive layout.",
+              "full": "Controls the size-related aspects of the Plot to create a responsive layout.\n\nThis is placed within the element where the primary plot data will actually be drawn. It adjusts the properties of the plot based on the available size."
+            },
+            "id": {
+              "id": "fuse/charting/plotarea",
+              "parentId": "fuse/charting",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/charting/plotarea",
+              "href": "fuse/charting/plotarea"
+            },
+            "titles": {
+              "indexTitle": "PlotArea",
+              "fullyQualifiedIndexTitle": "Fuse.Charting.PlotArea"
+            }
+          },
+          {
+            "comment": {
+              "brief": "A layout and enumeration for the axis steps of a @Plot, which is used to place labels on axes. Often used together with a @(GridLayout) for positioning.",
+              "full": "A layout and enumeration for the axis steps of a @Plot, which is used to place labels on axes. Often used together with a @(GridLayout) for positioning.\n\n# Example\n\nThe following example places labels on the y-axis of a bar chart.\n\n    <Panel xmlns:c=\"Fuse.Charting\" >\n        <JavaScript>\n            var Observable = require(\"FuseJS/Observable\");\n\n            function Item(val) {\n                this.value = val;\n            }\n            var data = Observable(new Item(3), new Item(4), new Item(6), new Item(3), new Item(4));\n\n            module.exports = {\n                data: data\n            }\n        </JavaScript>\n        <Panel BoxSizing=\"FillAspect\" Aspect=\"1\">\n            <c:Plot Margin=\"40\">\n                <GridLayout Rows=\"1*,40\" Columns=\"40,1*\"/>\n                <c:DataSeries Data=\"{data}\" />\n                <c:PlotAxis Row=\"0\" Column=\"0\" Axis=\"Y\">\n                    <Text ux:Template=\"Label\" Alignment=\"Center\" FontSize=\"14\" Color=\"#666\"\n                        Value=\"{Plot axis.value}\"/>\n                </c:PlotAxis>\n                <c:PlotData>\n                    <c:PlotBar Row=\"0\" Column=\"1\">\n                        <Rectangle Color=\"#F00\" Height=\"100%\" Margin=\"2\" Alignment=\"Bottom\"/>\n                    </c:PlotBar>\n                </c:PlotData>\n            </c:Plot>\n        </Panel>\n    </Panel>",
+              "attributes": {
+                "experimental": true
+              }
+            },
+            "id": {
+              "id": "fuse/charting/plotaxis",
+              "parentId": "fuse/charting",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/charting/plotaxis",
+              "href": "fuse/charting/plotaxis"
+            },
+            "titles": {
+              "indexTitle": "PlotAxis",
+              "fullyQualifiedIndexTitle": "Fuse.Charting.PlotAxis"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Iterates over the axis steps/data.",
+              "full": "Iterates over the axis steps/data.\n\nThis example places rotated labels at each tick. Though note this simple layout can be achieved easier just using `PlotAxis` instead.\n\n    <c:PlotAxisData Axis=\"X\">\n        <Text X=\"{Plot axis.position} * 100%\" Y=\"0\" FontSize=\"18\" Color=\"#000\"\n            Value=\"{Plot axis.label}\" Anchor=\"105%,45%\" TransformOrigin=\"Anchor\" ux:Name=\"t\">\n            <Rotation Degrees=\"-60\"/>\n        </Text>\n    </c:PlotAxisData>"
+            },
+            "id": {
+              "id": "fuse/charting/plotaxisdata",
+              "parentId": "fuse/charting",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/charting/plotaxisdata",
+              "href": "fuse/charting/plotaxisdata"
+            },
+            "titles": {
+              "indexTitle": "PlotAxisData",
+              "fullyQualifiedIndexTitle": "Fuse.Charting.PlotAxisData"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Positions a plot bar.",
+              "full": "Positions a plot bar.\n\nThis automatically sets the `X`,`Y`,`Width`,`Heigth` and `Anchor` properties on the element. The result is undefined if you override one of these values. Use a child element if you wish to make an element relative to the PlotBar placement.\n\n# Example\n\nThe following example draws a red bar chart using the `PlotBar` element and @Rectangle\n\n    <Panel xmlns:c=\"Fuse.Charting\" >\n        <JavaScript>\n            var Observable = require(\"FuseJS/Observable\");\n\n            function Item(val) {\n                this.value = val;\n            }\n            var data = Observable(new Item(3), new Item(4), new Item(6), new Item(3), new Item(4));\n\n            module.exports = {\n                data: data\n            }\n        </JavaScript>\n        <Panel BoxSizing=\"FillAspect\" Aspect=\"1\">\n            <c:Plot Margin=\"40\">\n                <c:DataSeries Data=\"{data}\" />\n                <c:PlotData>\n                    <c:PlotBar>\n                        <Rectangle Color=\"#F00\" Height=\"100%\" Margin=\"2\" Alignment=\"Bottom\"/>\n                    </c:PlotBar>\n                </c:PlotData>\n            </c:Plot>\n        </Panel>\n    </Panel>",
+              "attributes": {
+                "experimental": true
+              }
+            },
+            "id": {
+              "id": "fuse/charting/plotbar",
+              "parentId": "fuse/charting",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/charting/plotbar",
+              "href": "fuse/charting/plotbar"
+            },
+            "titles": {
+              "indexTitle": "PlotBar",
+              "fullyQualifiedIndexTitle": "Fuse.Charting.PlotBar"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Convenience wrapper for platting CurvePoint's in a plot.",
+              "full": "Convenience wrapper for platting CurvePoint's in a plot.\n\nThis shares most of the functionality of `PlotPoint` except creates a `CurvePoint` suitable for a `Curve.\n\n# Example\n\nThis example demonstrates a simple line graph built using `PlotCurvePoint`\n\n    <Panel xmlns:c=\"Fuse.Charting\" >\n        <JavaScript>\n            var Observable = require(\"FuseJS/Observable\");\n\n            function Item(val) {\n                this.value = val;\n            }\n            var data = Observable(new Item(3), new Item(4), new Item(6), new Item(0), new Item(4));\n\n            module.exports = {\n                data: data\n            }\n        </JavaScript>\n        <Panel BoxSizing=\"FillAspect\" Aspect=\"1\" >\n            <c:Plot >\n                <c:DataSeries Data=\"{data}\" />\n                <Curve StrokeWidth=\"5\" StrokeColor=\"#008\" >\n                    <c:PlotData>\n                        <c:PlotCurvePoint/>\n                    </c:PlotData>\n                </Curve>\n            </c:Plot>\n        </Panel>\n    </Panel>",
+              "attributes": {
+                "experimental": true
+              }
+            },
+            "id": {
+              "id": "fuse/charting/plotcurvepoint",
+              "parentId": "fuse/charting",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/charting/plotcurvepoint",
+              "href": "fuse/charting/plotcurvepoint"
+            },
+            "titles": {
+              "indexTitle": "PlotCurvePoint",
+              "fullyQualifiedIndexTitle": "Fuse.Charting.PlotCurvePoint"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Iterator for visual plot data.",
+              "full": "Iterator for visual plot data.\n\nThis works like an @Each for the visible data points. Use a @PlotBar or  @PlotCurvePoint to add elements matching this data. Or use a `{Plot data.*}` to get at the variables for the data point.\n\n    <Panel>\n        <c:PlotData>\n            <c:PlotBar/>\n        </c:PlotData>\n    </Panel>\n\n    <Curve>\n        <c:PlotData>\n            <c:PlotCurvePoint/>\n        </c:PlotData>\n    </Curve>",
+              "attributes": {
+                "experimental": true
+              }
+            },
+            "id": {
+              "id": "fuse/charting/plotdata",
+              "parentId": "fuse/charting",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/charting/plotdata",
+              "href": "fuse/charting/plotdata"
+            },
+            "titles": {
+              "indexTitle": "PlotData",
+              "fullyQualifiedIndexTitle": "Fuse.Charting.PlotData"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Used to access information about the plot.",
+              "full": "Used to access information about the plot.\n\nThe prefix `data.` is used within a @PlotData to access the values of the individual points on the plot.\n\nThe prefix `axis.` is used within a @PlotAxis to access the values of axis.\n\nUnprefixed values access values in the @Plot",
+              "attributes": {
+                "experimental": true
+              }
+            },
+            "id": {
+              "id": "fuse/charting/plotexpression",
+              "parentId": "fuse/charting",
+              "type": "UxClass",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/charting/plotexpression",
+              "href": "fuse/charting/plotexpression"
+            },
+            "titles": {
+              "indexTitle": "PlotExpression",
+              "fullyQualifiedIndexTitle": "Fuse.Charting.PlotExpression"
+            }
+          },
+          {
+            "comment": {
+              "brief": "A `Panel` positioned on the data point for a chart. This is an easy way to position an object at the correct position for the current plot data.",
+              "full": "A `Panel` positioned on the data point for a chart. This is an easy way to position an object at the correct position for the current plot data.\n\nThis panel has a default of `Anchor=\"50%,50%\"`.  This can be changed with `PointAnchor`\n\nThis panel does not have any default size.",
+              "attributes": {
+                "experimental": true
+              }
+            },
+            "id": {
+              "id": "fuse/charting/plotpoint",
+              "parentId": "fuse/charting",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/charting/plotpoint",
+              "href": "fuse/charting/plotpoint"
+            },
+            "titles": {
+              "indexTitle": "PlotPoint",
+              "fullyQualifiedIndexTitle": "Fuse.Charting.PlotPoint"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Creates tick marks, usually for an axis. This is a @Shape, allowing `Stroke...` properties to be used for drawing the ticks.  The ticks that are drawn will line up with the labels of @PlotAxis provided they are the same element size (either `Width` or `Height` depending on the axis).",
+              "full": "Creates tick marks, usually for an axis. This is a @Shape, allowing `Stroke...` properties to be used for drawing the ticks.  The ticks that are drawn will line up with the labels of @PlotAxis provided they are the same element size (either `Width` or `Height` depending on the axis).\n\n# Example\n\nThe following example shows `PlotTicks` being used to draw lines on the x-axis of a bar chart.\n\n    <Panel xmlns:c=\"Fuse.Charting\" >\n        <JavaScript>\n            var Observable = require(\"FuseJS/Observable\");\n\n            function Item(val) {\n                this.value = val;\n            }\n            var data = Observable(new Item(3), new Item(4), new Item(6), new Item(3), new Item(4));\n\n            module.exports = {\n                data: data\n            }\n        </JavaScript>\n        <Panel BoxSizing=\"FillAspect\" Aspect=\"1\">\n            <c:Plot Margin=\"40\">\n                <GridLayout Rows=\"1*,40\" Columns=\"40,1*\"/>\n                <c:DataSeries Data=\"{data}\" />\n                <c:PlotData>\n                    <c:PlotBar Row=\"0\" Column=\"1\">\n                        <Rectangle Color=\"#F00\" Height=\"100%\" Margin=\"2\" Alignment=\"Bottom\"/>\n                    </c:PlotBar>\n                </c:PlotData>\n                <c:PlotTicks Axis=\"Y\" StrokeWidth=\"1\" StrokeColor=\"#555\" Row=\"0\" Column=\"1\" />\n            </c:Plot>\n        </Panel>\n    </Panel>\n\n`AxisLine` indicates a line across the entire access should be drawn at this offset. In this example it's the top of the ticks, making this suitable for the bottom of a chart.",
+              "attributes": {
+                "experimental": true
+              }
+            },
+            "id": {
+              "id": "fuse/charting/plotticks",
+              "parentId": "fuse/charting",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/charting/plotticks",
+              "href": "fuse/charting/plotticks"
+            },
+            "titles": {
+              "indexTitle": "PlotTicks",
+              "fullyQualifiedIndexTitle": "Fuse.Charting.PlotTicks"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Creates a wedge shape for a pie chart.",
+              "full": "Creates a wedge shape for a pie chart.\n\nThis sets the `StartAngle` and `EndAngle` of the base `Ellipse` class. You should not override this properties, though other `Ellipse` and `Shape` properties are okay.\n\n    <Panel BoxSizing=\"FillAspect\" Aspect=\"1\">\n        <c:PlotData>\n            <c:PlotWedge StrokeColor=\"#000\" StrokeWidth=\"2\">\n        </c:PlotData>\n    </Panel>"
+            },
+            "id": {
+              "id": "fuse/charting/plotwedge",
+              "parentId": "fuse/charting",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/charting/plotwedge",
+              "href": "fuse/charting/plotwedge"
+            },
+            "titles": {
+              "indexTitle": "PlotWedge",
+              "fullyQualifiedIndexTitle": "Fuse.Charting.PlotWedge"
+            }
+          }
+        ]
+      }
+    ],
+    "classes": [
+      {
+        "items": [
+          {
+            "comment": {
+              "brief": "Common base for plot positioned elements.",
+              "full": "Common base for plot positioned elements.",
+              "attributes": {
+                "experimental": true
+              }
+            },
+            "id": {
+              "id": "fuse/charting/plotelement",
+              "parentId": "fuse/charting",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/charting/plotelement",
+              "href": "fuse/charting/plotelement"
+            },
+            "titles": {
+              "indexTitle": "PlotElement",
+              "fullyQualifiedIndexTitle": "Fuse.Charting.PlotElement"
+            }
+          }
+        ]
+      }
+    ],
+    "enums": [
+      {
+        "items": [
+          {
+            "id": {
+              "id": "fuse/charting/dataseriesmetric",
+              "parentId": "fuse/charting",
+              "type": "Enum",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/charting/dataseriesmetric",
+              "href": "fuse/charting/dataseriesmetric"
+            },
+            "titles": {
+              "indexTitle": "DataSeriesMetric",
+              "fullyQualifiedIndexTitle": "Fuse.Charting.DataSeriesMetric"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/charting/plotaxislayoutaxis",
+              "parentId": "fuse/charting",
+              "type": "Enum",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/charting/plotaxislayoutaxis",
+              "href": "fuse/charting/plotaxislayoutaxis"
+            },
+            "titles": {
+              "indexTitle": "PlotAxisLayoutAxis",
+              "fullyQualifiedIndexTitle": "Fuse.Charting.PlotAxisLayoutAxis"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/charting/plotaxislayoutposition",
+              "parentId": "fuse/charting",
+              "type": "Enum",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/charting/plotaxislayoutposition",
+              "href": "fuse/charting/plotaxislayoutposition"
+            },
+            "titles": {
+              "indexTitle": "PlotAxisLayoutPosition",
+              "fullyQualifiedIndexTitle": "Fuse.Charting.PlotAxisLayoutPosition"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/charting/plotaxismetric",
+              "parentId": "fuse/charting",
+              "type": "Enum",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/charting/plotaxismetric",
+              "href": "fuse/charting/plotaxismetric"
+            },
+            "titles": {
+              "indexTitle": "PlotAxisMetric",
+              "fullyQualifiedIndexTitle": "Fuse.Charting.PlotAxisMetric"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/charting/plotbarstyle",
+              "parentId": "fuse/charting",
+              "type": "Enum",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/charting/plotbarstyle",
+              "href": "fuse/charting/plotbarstyle"
+            },
+            "titles": {
+              "indexTitle": "PlotBarStyle",
+              "fullyQualifiedIndexTitle": "Fuse.Charting.PlotBarStyle"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/charting/plotorientation",
+              "parentId": "fuse/charting",
+              "type": "Enum",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/charting/plotorientation",
+              "href": "fuse/charting/plotorientation"
+            },
+            "titles": {
+              "indexTitle": "PlotOrientation",
+              "fullyQualifiedIndexTitle": "Fuse.Charting.PlotOrientation"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/charting/plotpointanchor",
+              "parentId": "fuse/charting",
+              "type": "Enum",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/charting/plotpointanchor",
+              "href": "fuse/charting/plotpointanchor"
+            },
+            "titles": {
+              "indexTitle": "PlotPointAnchor",
+              "fullyQualifiedIndexTitle": "Fuse.Charting.PlotPointAnchor"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Where the point is being positioned",
+              "full": "Where the point is being positioned"
+            },
+            "id": {
+              "id": "fuse/charting/plotpointstyle",
+              "parentId": "fuse/charting",
+              "type": "Enum",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/charting/plotpointstyle",
+              "href": "fuse/charting/plotpointstyle"
+            },
+            "titles": {
+              "indexTitle": "PlotPointStyle",
+              "fullyQualifiedIndexTitle": "Fuse.Charting.PlotPointStyle"
+            }
+          },
+          {
+            "comment": {
+              "brief": "The Axis being drawn by PlotTicks",
+              "full": "The Axis being drawn by PlotTicks"
+            },
+            "id": {
+              "id": "fuse/charting/plottickaxis",
+              "parentId": "fuse/charting",
+              "type": "Enum",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/charting/plottickaxis",
+              "href": "fuse/charting/plottickaxis"
+            },
+            "titles": {
+              "indexTitle": "PlotTickAxis",
+              "fullyQualifiedIndexTitle": "Fuse.Charting.PlotTickAxis"
+            }
+          },
+          {
+            "comment": {
+              "brief": "The style of ticks being drawn",
+              "full": "The style of ticks being drawn"
+            },
+            "id": {
+              "id": "fuse/charting/plottickstyle",
+              "parentId": "fuse/charting",
+              "type": "Enum",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/charting/plottickstyle",
+              "href": "fuse/charting/plottickstyle"
+            },
+            "titles": {
+              "indexTitle": "PlotTickStyle",
+              "fullyQualifiedIndexTitle": "Fuse.Charting.PlotTickStyle"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

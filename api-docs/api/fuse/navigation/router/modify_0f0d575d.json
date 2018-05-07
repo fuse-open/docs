@@ -1,0 +1,60 @@
+{
+  "entity": {
+    "location": {
+      "namespaceTitle": "Fuse.Navigation",
+      "namespaceUri": "fuse/navigation",
+      "packageName": "Fuse.Navigation",
+      "packageVersion": "1.8.0-rc2"
+    },
+    "parameters": [
+      {
+        "name": "r",
+        "href": "fuse/navigation/router",
+        "title": "Router",
+        "fullyQualifiedTitle": "Fuse.Navigation.Router"
+      },
+      {
+        "name": "args",
+        "href": "uno/object",
+        "title": "object[]",
+        "fullyQualifiedTitle": "object[]"
+      }
+    ],
+    "id": {
+      "id": "fuse/navigation/router/modify_0f0d575d",
+      "parentId": "fuse/navigation/router",
+      "type": "JsMethod",
+      "modifiers": [
+        "private",
+        "static"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/navigation/router/modify_0f0d575d",
+      "href": "fuse/navigation/router/modify_0f0d575d"
+    },
+    "titles": {
+      "pageTitle": "Router.Modify Method (Router, object[])",
+      "navigationTitle": "Modify Method (Router, object[])",
+      "fullTitle": "Fuse.Navigation.Router.Modify",
+      "indexTitle": "Modify(Router, object[])",
+      "fullyQualifiedIndexTitle": "Fuse.Navigation.Router.Modify(Fuse.Navigation.Router, object[])"
+    },
+    "syntax": {
+      "uno": "private static voidModify(Fuse.Navigation.Router r, object[] args) {}"
+    },
+    "comment": {
+      "brief": "Performs a Push, Goto, or Replace operation on the router with extended options.",
+      "full": "Performs a Push, Goto, or Replace operation on the router with extended options.\n\n> Note: there is also a UX interface @ModifyRoute, @PushRoute, @GotoRoute\n\nThe navigationSpec is a JavaScript object that specifies all the properties for the router operation,\nfor example:\n\n    router.modify({\n        how: \"Goto\",\n        path: [ \"one\", {}, \"two\", {} ],\n        transition: \"Bypass\",\n    })\n\nThis gotos to the \"one/two\" page without a transition.\n\nThe options are:\n\n    - `how`: One of:\n        - `Goto`: Clears the current route stack, like `goto()`\n        - `Push`: Pushes a new path onto the route stack, like `push()`\n        - `Replace`: Replaces the current item on the route stack wtih a new path\n    - `path`: An array specifying the path and parameter parts in pairs.\n    - `transition`: An optional argument:\n        - `Transition`: A normal animated transition. This is the default.\n        - `Bypass`: A bypass transtiion that skips animation.\n    - `relative`: An optional node that indicates the path is relative to this router outlet. The path is specified like in `gotoRelative`\n    - `style`: The style of the operation, which can be used as a matching criteria in transitions.",
+      "attributes": {
+        "scriptMethod": {
+          "name": "modify",
+          "parameters": [
+            "navigationSpec"
+          ]
+        }
+      }
+    }
+  },
+  "tableOfContents": {}
+}

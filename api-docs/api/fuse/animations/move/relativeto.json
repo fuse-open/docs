@@ -1,0 +1,44 @@
+{
+  "entity": {
+    "location": {
+      "namespaceTitle": "Fuse.Animations",
+      "namespaceUri": "fuse/animations",
+      "packageName": "Fuse.Animations",
+      "packageVersion": "1.8.0-rc2"
+    },
+    "parameters": [],
+    "returns": {
+      "href": "fuse/itranslationmode",
+      "title": "ITranslationMode",
+      "fullyQualifiedTitle": "Fuse.ITranslationMode"
+    },
+    "uxProperties": {},
+    "id": {
+      "id": "fuse/animations/move/relativeto",
+      "parentId": "fuse/animations/move",
+      "type": "UxProperty",
+      "modifiers": [
+        "public"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/animations/move/relativeto",
+      "href": "fuse/animations/move/relativeto"
+    },
+    "titles": {
+      "pageTitle": "Move.RelativeTo Property",
+      "navigationTitle": "RelativeTo Property",
+      "fullTitle": "Fuse.Animations.Move.RelativeTo",
+      "indexTitle": "RelativeTo",
+      "fullyQualifiedIndexTitle": "Fuse.Animations.Move.RelativeTo"
+    },
+    "syntax": {
+      "uno": "public Fuse.ITranslationMode RelativeTo { get; get; }"
+    },
+    "comment": {
+      "brief": "Specifies what the movement should be relative to.",
+      "full": "Specifies what the movement should be relative to.\n\nBy default, when we specify `X` and `Y` offsets the @Move animator for example, the values are\nunderstood to be points in the local coordinate system. However, sometimes we need to\nspecify a distance that are not known at design time, but is relative to the size of something else.\nThis is where this property comes in handy.\n\nThere are multiple options for this property:\n\n * `Local` Moves the given amount of points in the X and/or Y direction.\n * `Size` Moves the given amount times the size of the element. So X=\"1\" moves the element by its entire width in the X direction.\n * `ParentSize` Same as `Size` but uses the elements parents size instead.\n * `PositionChange` Used in response to a @(LayoutAnimation) to move the element by the amount of change in position within it's parent.\n * `WorldPositionChange` Used in response to a @(LayoutAnimation) to move the element by the amount of change in position relative to the entire display.\n * `Keyboard` Moves the element relative to the size of the keyboard.\n * `LayoutChange` Deprecated. Use `PositionChange` instead.\n\nFor advanced use cases, you can also implement your own @ITranslationMode and assign to this property."
+    }
+  },
+  "tableOfContents": {}
+}

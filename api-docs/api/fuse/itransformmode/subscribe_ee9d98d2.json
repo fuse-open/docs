@@ -1,0 +1,56 @@
+{
+  "entity": {
+    "location": {
+      "namespaceTitle": "Fuse",
+      "namespaceUri": "fuse",
+      "packageName": "Fuse.Nodes",
+      "packageVersion": "1.8.0-rc2"
+    },
+    "parameters": [
+      {
+        "name": "transform",
+        "href": "fuse/itransformrelative",
+        "title": "ITransformRelative",
+        "fullyQualifiedTitle": "Fuse.ITransformRelative"
+      }
+    ],
+    "returns": {
+      "href": "uno/object",
+      "title": "object",
+      "fullyQualifiedTitle": "object"
+    },
+    "id": {
+      "id": "fuse/itransformmode/subscribe_ee9d98d2",
+      "parentId": "fuse/itransformmode",
+      "type": "Method",
+      "modifiers": [
+        "public",
+        "abstract"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/itransformmode/subscribe_ee9d98d2",
+      "href": "fuse/itransformmode/subscribe_ee9d98d2"
+    },
+    "titles": {
+      "pageTitle": "ITransformMode.Subscribe Method (ITransformRelative)",
+      "navigationTitle": "Subscribe Method (ITransformRelative)",
+      "fullTitle": "Fuse.ITransformMode.Subscribe",
+      "indexTitle": "Subscribe(ITransformRelative)",
+      "fullyQualifiedIndexTitle": "Fuse.ITransformMode.Subscribe(Fuse.ITransformRelative)"
+    },
+    "syntax": {
+      "uno": "public abstract object Subscribe(Fuse.ITransformRelative transform) {}"
+    },
+    "comment": {
+      "brief": "Perform the event subscriptions necessary to support this transform. Changes should invoke\nTransform.OnMatrixChanged.",
+      "full": "Perform the event subscriptions necessary to support this transform. Changes should invoke\nTransform.OnMatrixChanged.\n\nThe transform will be rooted when this is called.\n\nYou don't need to subscribe to changes on the `Transform` properties, those are all implicitly handled.\n\n    The use of an opaque return value is an optimization for the most common situations\n    in fuselibs: either no subscription, or a subscription to a single existing object.",
+      "attributes": {
+        "returns": {
+          "text": "An object that contains subscription information that can be used by `Unsubscribe`to remove the subscriptions. `null` can be returned in which case `Unsubscribe` *may* not\r\nbe called.\r\n"
+        }
+      }
+    }
+  },
+  "tableOfContents": {}
+}

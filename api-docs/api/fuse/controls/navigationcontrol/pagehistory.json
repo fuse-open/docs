@@ -1,0 +1,44 @@
+{
+  "entity": {
+    "location": {
+      "namespaceTitle": "Fuse.Controls",
+      "namespaceUri": "fuse/controls",
+      "packageName": "Fuse.Controls.Navigation",
+      "packageVersion": "1.8.0-rc2"
+    },
+    "parameters": [],
+    "returns": {
+      "href": "fuse/iarray",
+      "title": "IArray",
+      "fullyQualifiedTitle": "Fuse.IArray"
+    },
+    "uxProperties": {},
+    "id": {
+      "id": "fuse/controls/navigationcontrol/pagehistory",
+      "parentId": "fuse/controls/navigationcontrol",
+      "type": "UxProperty",
+      "modifiers": [
+        "public"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/controls/navigationcontrol/pagehistory",
+      "href": "fuse/controls/navigationcontrol/pagehistory"
+    },
+    "titles": {
+      "pageTitle": "NavigationControl.PageHistory Property",
+      "navigationTitle": "PageHistory Property",
+      "fullTitle": "Fuse.Controls.NavigationControl.PageHistory",
+      "indexTitle": "PageHistory",
+      "fullyQualifiedIndexTitle": "Fuse.Controls.NavigationControl.PageHistory"
+    },
+    "syntax": {
+      "uno": "public Fuse.IArray PageHistory { get; get; }"
+    },
+    "comment": {
+      "brief": "Pages is a stack of pages that controls the local history for a NavigationControl.",
+      "full": "Pages is a stack of pages that controls the local history for a NavigationControl.\n\nIt should be bound to a JavaScript observable array. The highest index page will always be the active page for the control. As pages are added/removed from this array the navigation state will change.\n\nThe items in the array are objects, either explicitly created or via the Model feature. They should contain the the `$path` property which specifies the path to use. The object itself will be added to the data context for the page, allowing lookups from within the object.\n\nThe `$navigationRequest` property may be used to fine-tune how transitions to the pages performed. Without this property the control will infer the type of transition based on how the array has been modified. The properties are a subset of those offered by `modifyPath`:\n\n    - `transition`: Either `Bypass` or `Transition`\n    - `style`: The style of the operation, which can be used as a matching criteria in transitions.\n    - `operation`: `Pop`, `Replace`, `Push` or `Goto`"
+    }
+  },
+  "tableOfContents": {}
+}

@@ -1,0 +1,67 @@
+{
+  "root": {
+    "id": {
+      "id": "fuse/navigation/navigationtriggeraction",
+      "parentId": "fuse/navigation",
+      "type": "Class",
+      "modifiers": [
+        "public",
+        "abstract"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/navigation/navigationtriggeraction",
+      "href": "fuse/navigation/navigationtriggeraction"
+    },
+    "titles": {
+      "indexTitle": "NavigationTriggerAction",
+      "fullyQualifiedIndexTitle": "Fuse.Navigation.NavigationTriggerAction"
+    }
+  },
+  "descendants": [
+    {
+      "comment": {
+        "brief": "Navigate to a page.",
+        "full": "Navigate to a page.\n\nThis action is for navigating a @PageControl directly. Consider using @Router instead to perform\nmore structured navigation.\n\n## Example\n\n    <PageControl>\n        <Page>\n            <Grid Background=\"#282a37\" Rows=\"auto,1*\" Padding=\"20\">\n                <Image Alignment=\"Center\" Url=\"https://fusetools-web.azureedge.net/fusetools-web/v1464939897151/images/logo_white.png\" Width=\"100\" Height=\"100\" />\n                <Button Text=\"Settings\">\n                    <Clicked>\n                        <NavigateTo Target=\"settings\" />\n                    </Clicked>\n                </Button>\n            </Grid>\n        </Page>\n        <Page ux:Name=\"settings\">\n            <Grid Padding=\"20\" Rows=\"auto, 30\" Background=\"#282a37\">\n                <Text Value=\"Settings\" Color=\"#fff\" Alignment=\"TopCenter\" FontSize=\"20\"/>\n                <Slider />\n            </Grid>\n        </Page>\n    </PageControl>"
+      },
+      "id": {
+        "id": "fuse/navigation/navigateto",
+        "parentId": "fuse/navigation",
+        "type": "UxClass",
+        "modifiers": [
+          "public"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/navigation/navigateto",
+        "href": "fuse/navigation/navigateto"
+      },
+      "titles": {
+        "indexTitle": "NavigateTo",
+        "fullyQualifiedIndexTitle": "Fuse.Navigation.NavigateTo"
+      }
+    },
+    {
+      "comment": {
+        "brief": "Toggles a `Navigation`.",
+        "full": "Toggles a `Navigation`.\n\nThis is currently only supported in @(EdgeNavigation), and will do nothing if used on another type of navigation.\n\nUsed on an `EdgeNavigation`, it will navigate to and from a @(Panel) with `EdgeNavigation.Edge` set, specified by using the `Target` property.\n\n# Example\n\nThis example shows the use of `NavigateToggle` by toggling the visibility of an `EdgePanel`.\n\n    <DockPanel>\n        <EdgeNavigation/>\n        <Panel Width=\"150\" Edge=\"Left\" Background=\"#f63\" Alignment=\"Left\" ux:Name=\"nav\">\n            <EnteringAnimation>\n        <Move X=\"-1\" RelativeTo=\"Size\" />\n            </EnteringAnimation>\n        </Panel>\n        <Panel Background=\"#90CAF9\">\n            <Tapped>\n                <NavigateToggle Target=\"nav\" />\n            </Tapped>\n        </Panel>\n    </DockPanel>"
+      },
+      "id": {
+        "id": "fuse/navigation/navigatetoggle",
+        "parentId": "fuse/navigation",
+        "type": "UxClass",
+        "modifiers": [
+          "public"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/navigation/navigatetoggle",
+        "href": "fuse/navigation/navigatetoggle"
+      },
+      "titles": {
+        "indexTitle": "NavigateToggle",
+        "fullyQualifiedIndexTitle": "Fuse.Navigation.NavigateToggle"
+      }
+    }
+  ]
+}

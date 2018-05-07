@@ -1,0 +1,183 @@
+{
+  "root": {
+    "id": {
+      "id": "fuse/controls/container",
+      "parentId": "fuse/controls",
+      "type": "UxClass",
+      "modifiers": [
+        "public"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/controls/container",
+      "href": "fuse/controls/container"
+    },
+    "titles": {
+      "indexTitle": "Container",
+      "fullyQualifiedIndexTitle": "Fuse.Controls.Container"
+    }
+  },
+  "descendants": [
+    {
+      "comment": {
+        "brief": "A Carousel component with a depth-like effect.",
+        "full": "A Carousel component with a depth-like effect.\n\n    <Alive.Carousel>\n        <Alive.CarouselPage>\n            <Alive.Card>\n                <Alive.ImageFill File=\"image11.jpg\" />\n            </Alive.Card>\n        </Alive.CarouselPage>\n        <Alive.CarouselPage>\n            <Alive.Card>\n                <Alive.ImageFill File=\"image2.jpg\" />\n            </Alive.Card>\n        </Alive.CarouselPage>\n        <Alive.CarouselPage>\n            <Alive.Card>\n                <Alive.ImageFill File=\"image3.jpg\" />\n            </Alive.Card>\n        </Alive.CarouselPage>\n    </Alive.Carousel>\n\nSee also [FlatCarousel](api:alive/flatcarousel)."
+      },
+      "id": {
+        "id": "alive/carousel",
+        "parentId": "alive",
+        "type": "Class",
+        "modifiers": [
+          "public",
+          "partial"
+        ]
+      },
+      "uri": {
+        "idUri": "alive/carousel",
+        "href": "alive/carousel"
+      },
+      "titles": {
+        "indexTitle": "Carousel",
+        "fullyQualifiedIndexTitle": "Alive.Carousel"
+      }
+    },
+    {
+      "comment": {
+        "brief": "Provides sidebar navigation toggleable by a floating button.",
+        "full": "Provides sidebar navigation toggleable by a floating button.\n\nA menu element must be provided using the `Menu` dependency.\n\nIn most cases, the Drawer sits at the root of the app, enclosing the root Navigator.\n\n    <App>\n        <JavaScript>\n            exports.goToPage1 = function() {\n                router.goto(\"page1\");\n                drawer.close();\n            }\n\n            exports.goToPage2 = function() {\n                router.goto(\"page2\");\n                drawer.close();\n            }\n        </JavaScript>\n\n        <Router ux:Name=\"router\" />\n        <Alive.Drawer>\n            <StackPanel ux:Binding=\"Menu\" ItemSpacing=\"10\">\n                <Alive.Body Value=\"Page 1\" Clicked=\"{goToPage1}\" />\n                <Alive.Body Value=\"Page 2\" Clicked=\"{goToPage2}\" />\n            </StackPanel>\n            <Navigator DefaultPath=\"page1\">\n                <Page ux:Name=\"page1\" />\n                <Page ux:Name=\"page2\" />\n            </Navigator>\n        </Alive.Drawer>\n    </App>\n\nDrawer can be opened and closed from JavaScript using the `open()` and `close()` methods.\n\n    <JavaScript>\n        exports.openDrawer = function() {\n            drawer.open();\n        }\n\n        exports.closeDrawer = function() {\n            drawer.close();\n        }\n    </JavaScript>\n\n    <Alive.Drawer ux:Name=\"drawer\">\n        <Panel ux:Binding=\"Menu\" />\n    </Alive.Drawer>\n\nDrawer displays a floating button above its content that opens the Drawer.\nThis can be disabled using the `HideButton` property.\n\n    <Alive.Drawer HideButton=\"true\">\n        <Panel ux:Binding=\"Menu\" />\n    </Alive.Drawer />\n\nYou can combine this property with `WhileActive` to hide the button for certain pages.\nIn the example below, the button is hidden while inside `SecondPage`.\n\n    <App>\n        <Router ux:Name=\"router\" />\n        <Alive.Drawer ux:Name=\"drawer\">\n            <StackPanel ux:Binding=\"Menu\" ItemSpacing=\"10\">\n                <!-- menu content -->\n            </StackPanel>\n            <Navigator>\n                <FirstPage ux:Template=\"page1\" />\n                <SecondPage ux:Template=\"page2\" drawer=\"drawer\" />\n            </Navigator>\n        </Alive.Drawer>\n\n        <Page ux:Class=\"FirstPage\" />\n\n        <Page ux:Class=\"SecondPage\">\n            <Alive.Drawer ux:Dependency=\"drawer\" />\n\n            <WhileActive>\n                <Change drawer.HideButton=\"true\" />\n            </WhileActive>\n        </Page>\n    </App>"
+      },
+      "id": {
+        "id": "alive/drawer",
+        "parentId": "alive",
+        "type": "Class",
+        "modifiers": [
+          "public",
+          "partial"
+        ]
+      },
+      "uri": {
+        "idUri": "alive/drawer",
+        "href": "alive/drawer"
+      },
+      "titles": {
+        "indexTitle": "Drawer",
+        "fullyQualifiedIndexTitle": "Alive.Drawer"
+      }
+    },
+    {
+      "comment": {
+        "brief": "A flat carousel component.",
+        "full": "A flat carousel component.\n\nSee [FlatCarouselPage](api:alive/flatcarouselpage) for more on individual page layout.\n\n    <Alive.FlatCarousel>\n        <Alive.FlatCarouselPage Title=\"Page 1\">\n            <Image File=\"image.jpg\" StretchMode=\"UniformToFill\" />\n        </Alive.FlatCarouselPage>\n        <Alive.FlatCarouselPage Title=\"Page 2\" Subtitle=\"Yeah!\">\n            <Image File=\"image.jpg\" StretchMode=\"UniformToFill\" />\n        </Alive.FlatCarouselPage>\n    </Alive.FlatCarousel>\n\nSee also [Carousel](api:alive/carousel)."
+      },
+      "id": {
+        "id": "alive/flatcarousel",
+        "parentId": "alive",
+        "type": "Class",
+        "modifiers": [
+          "public",
+          "partial"
+        ]
+      },
+      "uri": {
+        "idUri": "alive/flatcarousel",
+        "href": "alive/flatcarousel"
+      },
+      "titles": {
+        "indexTitle": "FlatCarousel",
+        "fullyQualifiedIndexTitle": "Alive.FlatCarousel"
+      }
+    },
+    {
+      "comment": {
+        "brief": "A scrolling container with a header image.",
+        "full": "A scrolling container with a header image.\n\nMediaScroller requires you to provide a `Media` element.\nThis is the main image that will be displayed above the rest of the content.\nNote that we use `ux:Binding` here instead of `ux:Template`.\nThis is because `Media` is a [dependency](articles:ux-markup/dependencies), and must always be provided.\n\n    <Alive.MediaScroller>\n        <Image ux:Binding=\"Media\" File=\"image.jpg\" Height=\"250\" />\n\n        <!-- content goes here -->\n    </Alive.MediaScroller>\n\nAny element that is not a `ux:Template` or `ux:Dependency` is placed in a @StackPanel that serves\nas the main content of the inner @ScrollView.\n\n    <Alive.MediaScroller>\n        <Image ux:Binding=\"Media\" File=\"image.jpg\" Height=\"250\" />\n\n        <Alive.Body Value=\"children\" />\n        <Alive.Body Value=\"will\" />\n        <Alive.Body Value=\"be\" />\n        <Alive.Body Value=\"stacked\" />\n        <Alive.Body Value=\"vertically\" />\n    </Alive.MediaScroller>\n\nWhen the user scrolls downwards, the `Media` element shrinks with the scrolling motion,\nuntil it has the same height as `TopBar`.\n\n    <Alive.MediaScroller>\n        <Panel ux:Template=\"TopBar\">\n            <Alive.Body Alignment=\"Center\" Margin=\"0,20\">\n                This is the title!\n            </Alive.Body>\n        </Panel>\n        <Image ux:Binding=\"Media\" File=\"image.jpg\" Height=\"250\" />\n    </Alive.MediaScroller>\n\nYou may specify a color to fade in while `Media` morphs into `TopBar` using the `TopBarColor` property.\n\n    <Alive.MediaScroller TopBarColor=\"{Resource Alive.AccentColor}\">\n        <Panel ux:Template=\"TopBar\" Height=\"56\" />\n        <Image ux:Binding=\"Media\" File=\"image.jpg\" Height=\"250\" />\n    </Alive.MediaScroller>\n\nWhen the user scrolls above the scrollable area, the `Media` element will be pixel-stretched in accordance.\nTo avoid this, you may also specfy a `MediaOverlay` template.\nThis is useful for content with sharp edges (such as text).\n\n    <Alive.MediaScroller TopBarColor=\"{Resource Alive.AccentColor}\">\n        <Panel ux:Template=\"MediaOverlay\">\n            <Alive.Card Margin=\"20\">\n                <Alive.ImageFill File=\"image.jpg\" />\n            </Alive.Card>\n        </Panel>\n        <Panel ux:Binding=\"Media\" Color=\"{Resource Alive.PrimaryBackgroundColor}\" />\n    </Alive.MediaScroller>\n\n`MediaOverlay` is displayed below the fading colored overlay.\nYou may provide the `BottomBar` template to display an element on top of this overlay,\naligned to bottom of `Media`.\n\n    <Alive.MediaScroller TopBarColor=\"{Resource Alive.AccentColor}\">\n        <Panel ux:Template=\"MediaOverlay\">\n            <Alive.Card Margin=\"20\">\n                <Alive.ImageFill File=\"image.jpg\" />\n            </Alive.Card>\n        </Panel>\n        <Panel ux:Binding=\"Media\" Color=\"{Resource Alive.PrimaryBackgroundColor}\" />\n    </Alive.MediaScroller>"
+      },
+      "id": {
+        "id": "alive/mediascroller",
+        "parentId": "alive",
+        "type": "Class",
+        "modifiers": [
+          "public",
+          "partial"
+        ]
+      },
+      "uri": {
+        "idUri": "alive/mediascroller",
+        "href": "alive/mediascroller"
+      },
+      "titles": {
+        "indexTitle": "MediaScroller",
+        "fullyQualifiedIndexTitle": "Alive.MediaScroller"
+      }
+    },
+    {
+      "comment": {
+        "brief": "A navigation bar including @StatusBarBackground.\nChildren are placed inside a DockPanel.",
+        "full": "A navigation bar including @StatusBarBackground.\nChildren are placed inside a DockPanel.\n\nUse [NavBarTitle](api:alive/navbartitle) for title text in a `NavBar`.\n\n    <DockPanel>\n        <Alive.NavBar>\n            <Alive.BackButton Dock=\"Left\" />\n            <Alive.NavBarTitle>Page</Alive.NavBarTitle>\n        </Alive.NavBar>\n    </DockPanel>"
+      },
+      "id": {
+        "id": "alive/navbar",
+        "parentId": "alive",
+        "type": "Class",
+        "modifiers": [
+          "public",
+          "partial"
+        ]
+      },
+      "uri": {
+        "idUri": "alive/navbar",
+        "href": "alive/navbar"
+      },
+      "titles": {
+        "indexTitle": "NavBar",
+        "fullyQualifiedIndexTitle": "Alive.NavBar"
+      }
+    },
+    {
+      "comment": {
+        "brief": "Reveals a button when the user swipes left on its contents.\nA confirmation message is shown when the button is tapped.",
+        "full": "Reveals a button when the user swipes left on its contents.\nA confirmation message is shown when the button is tapped.\n\n```\n<Alive.SwipeActionPanel ButtonText=\"Do nothing\" ConfirmationText=\"And thus, nothing was done\">\n    <Panel Color=\"#fff\" Height=\"80\" />\n</Alive.SwipeActionPanel>\n```\n\nWhen the button is tapped, this component will raise a UserEvent named Alive.SwipeActionConfirmed.\nYou can handle this event using the Alive.SwipeActionConfirmed trigger.\n\n    <JavaScript>\n        exports.onConfirmed = function() {\n            doSomething();\n        }\n    </JavaScript>\n\n    <Alive.SwipeActionPanel>\n        <Alive.SwipeActionConfirmed Handler=\"{onConfirmed}\" />\n\n    </Alive.SwipeActionPanel>\n\nThe button has a red color by default, and fades into yellow following the confirmation animation.\nYou can customize this gradient using the GradientStartColor and GradientEndColor properties.\n\nTip: Alive provides a set of default gradients, as seen in the example below.\n\n    <Alive.SwipeActionPanel GradientStartColor=\"Alive.Gradient1.StartColor\" GradientEndColor=\"Alive.Gradient1.EndColor\">\n\nBy default, the confirmation message is hidden after a short duration.\nThis behavior can be disabled using the StayOpen property.\nIt is useful for preventing the confirmation animation from playing at the same time as a RemovingAnimation,\nfor cases where the button causes its containing element to be removed from a list.\n\n    <Panel>\n        <Alive.SwipeActionPanel StayOpen=\"true\">\n            <!-- Content -->\n        </Alive.SwipeActionPanel>\n\n        <RemovingAnimation>\n            <Scale Factor=\"0\" Duration=\".4\" />\n        </RemovingAnimation>\n    </Panel>"
+      },
+      "id": {
+        "id": "alive/swipeactionpanel",
+        "parentId": "alive",
+        "type": "Class",
+        "modifiers": [
+          "public",
+          "partial"
+        ]
+      },
+      "uri": {
+        "idUri": "alive/swipeactionpanel",
+        "href": "alive/swipeactionpanel"
+      },
+      "titles": {
+        "indexTitle": "SwipeActionPanel",
+        "fullyQualifiedIndexTitle": "Alive.SwipeActionPanel"
+      }
+    },
+    {
+      "comment": {
+        "brief": "Combines a [TabBar](api:alive/tabbar) and a @PageControl.",
+        "full": "Combines a [TabBar](api:alive/tabbar) and a @PageControl.\n\n    <TabPageControl>\n        <Alive.TabPage Label=\"Page 1\">\n            <!-- page content -->\n        </Alive.TabPage>\n        <Alive.TabPage Label=\"Page 2\">\n            <!-- page content -->\n        </Alive.TabPage>\n        <Alive.TabPage Label=\"Page 3\">\n            <!-- page content -->\n        </Alive.TabPage>\n    </TabPageControl>"
+      },
+      "id": {
+        "id": "alive/tabpagecontrol",
+        "parentId": "alive",
+        "type": "Class",
+        "modifiers": [
+          "public",
+          "partial"
+        ]
+      },
+      "uri": {
+        "idUri": "alive/tabpagecontrol",
+        "href": "alive/tabpagecontrol"
+      },
+      "titles": {
+        "indexTitle": "TabPageControl",
+        "fullyQualifiedIndexTitle": "Alive.TabPageControl"
+      }
+    }
+  ]
+}

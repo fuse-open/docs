@@ -1,0 +1,370 @@
+{
+  "entity": {
+    "base": {
+      "id": {
+        "id": "uno/object",
+        "parentId": "uno",
+        "type": "Class",
+        "modifiers": [
+          "public",
+          "intrinsic"
+        ]
+      },
+      "uri": {
+        "idUri": "uno/object",
+        "href": "uno/object"
+      },
+      "titles": {
+        "indexTitle": "object",
+        "fullyQualifiedIndexTitle": "object"
+      }
+    },
+    "location": {
+      "namespaceTitle": "Fuse.Input",
+      "namespaceUri": "fuse/input",
+      "packageName": "Fuse.Nodes",
+      "packageVersion": "1.8.0-rc2"
+    },
+    "inheritance": {
+      "root": {
+        "uri": "uno/object",
+        "title": "object",
+        "children": [
+          {
+            "uri": "fuse/input/gesture",
+            "title": "Fuse.Input.Gesture",
+            "children": [],
+            "isCurrent": true
+          }
+        ],
+        "isAncestor": true
+      },
+      "hasInheritance": true
+    },
+    "implementedInterfaces": [
+      {
+        "id": {
+          "id": "uno/ux/ipropertylistener",
+          "parentId": "uno/ux",
+          "type": "Interface",
+          "modifiers": [
+            "public",
+            "abstract"
+          ]
+        },
+        "uri": {
+          "idUri": "uno/ux/ipropertylistener",
+          "href": "uno/ux/ipropertylistener"
+        },
+        "titles": {
+          "indexTitle": "IPropertyListener",
+          "fullyQualifiedIndexTitle": "Uno.UX.IPropertyListener"
+        }
+      }
+    ],
+    "id": {
+      "id": "fuse/input/gesture",
+      "parentId": "fuse/input",
+      "type": "Class",
+      "modifiers": [
+        "public"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/input/gesture",
+      "href": "fuse/input/gesture"
+    },
+    "titles": {
+      "pageTitle": "Gesture Class",
+      "navigationTitle": "Gesture Class",
+      "fullTitle": "Fuse.Input.Gesture",
+      "indexTitle": "Gesture",
+      "fullyQualifiedIndexTitle": "Fuse.Input.Gesture"
+    },
+    "syntax": {
+      "uno": "public class Gesture : Uno.UX.IPropertyListener {}"
+    },
+    "comment": {
+      "brief": "The binding between an IGesture and the Gestures manager. A Gesture represents the ability of a handler to detect, and use, pointer input within a node.",
+      "full": "The binding between an IGesture and the Gestures manager. A Gesture represents the ability of a handler to detect, and use, pointer input within a node.\n\nAn IGesture is primarily a slave to the Gestures management. Whether it gets a capture, soft or hard, and when it loses/escalates the capture, are at the whims of this system.",
+      "attributes": {
+        "advanced": true,
+        "experimental": true
+      }
+    }
+  },
+  "tableOfContents": {
+    "properties": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/input/gesture",
+            "parentId": "fuse/input",
+            "type": "Class",
+            "modifiers": [
+              "public"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/input/gesture",
+            "href": "fuse/input/gesture"
+          },
+          "titles": {
+            "indexTitle": "Gesture",
+            "fullyQualifiedIndexTitle": "Fuse.Input.Gesture"
+          }
+        },
+        "items": [
+          {
+            "comment": {
+              "attributes": {
+                "returns": {
+                  "text": "true if the gesture currently has a hard capture. false otherwise."
+                }
+              }
+            },
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "id": {
+              "id": "fuse/input/gesture/ishardcapture",
+              "parentId": "fuse/input/gesture",
+              "type": "Property",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/input/gesture/ishardcapture",
+              "href": "fuse/input/gesture/ishardcapture"
+            },
+            "titles": {
+              "indexTitle": "IsHardCapture",
+              "fullyQualifiedIndexTitle": "Fuse.Input.Gesture.IsHardCapture"
+            }
+          }
+        ]
+      }
+    ],
+    "methods": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/input/gesture",
+            "parentId": "fuse/input",
+            "type": "Class",
+            "modifiers": [
+              "public"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/input/gesture",
+            "href": "fuse/input/gesture"
+          },
+          "titles": {
+            "indexTitle": "Gesture",
+            "fullyQualifiedIndexTitle": "Fuse.Input.Gesture"
+          }
+        },
+        "items": [
+          {
+            "comment": {
+              "brief": "Removes support of this gesture from the system.",
+              "full": "Removes support of this gesture from the system.\n\nThis typically happens during unrooting, but could happen prior to that point."
+            },
+            "id": {
+              "id": "fuse/input/gesture/dispose",
+              "parentId": "fuse/input/gesture",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/input/gesture/dispose",
+              "href": "fuse/input/gesture/dispose"
+            },
+            "titles": {
+              "indexTitle": "Dispose",
+              "fullyQualifiedIndexTitle": "Fuse.Input.Gesture.Dispose"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Calculates the significance of an offset relative to a vector.",
+              "full": "Calculates the significance of an offset relative to a vector.\n\nThis will return 0 if the orthogonal distance becomes too large -- indicating it's not movement along the vector anymore."
+            },
+            "returns": {
+              "href": "uno/float",
+              "title": "float",
+              "fullyQualifiedTitle": "float"
+            },
+            "parameters": [
+              {
+                "name": "vector",
+                "href": "uno/float2",
+                "title": "float2",
+                "fullyQualifiedTitle": "float2"
+              },
+              {
+                "name": "offset",
+                "href": "uno/float2",
+                "title": "float2",
+                "fullyQualifiedTitle": "float2"
+              }
+            ],
+            "id": {
+              "id": "fuse/input/gesture/vectorsignificance_35c8f868",
+              "parentId": "fuse/input/gesture",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/input/gesture/vectorsignificance_35c8f868",
+              "href": "fuse/input/gesture/vectorsignificance_35c8f868"
+            },
+            "titles": {
+              "indexTitle": "VectorSignificance(float2, float2)",
+              "fullyQualifiedIndexTitle": "Fuse.Input.Gesture.VectorSignificance(float2, float2)"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "uno/object",
+            "parentId": "uno",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "intrinsic"
+            ]
+          },
+          "uri": {
+            "idUri": "uno/object",
+            "href": "uno/object"
+          },
+          "titles": {
+            "indexTitle": "object",
+            "fullyQualifiedIndexTitle": "object"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "parameters": [
+              {
+                "name": "o",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              }
+            ],
+            "id": {
+              "id": "fuse/input/gesture/equals_a09c80e3",
+              "parentId": "fuse/input/gesture",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/input/gesture/equals_a09c80e3",
+              "href": "uno/object/equals_a09c80e3",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Equals(object)",
+              "fullyQualifiedIndexTitle": "Uno.Object.Equals(object)"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/int",
+              "title": "int",
+              "fullyQualifiedTitle": "int"
+            },
+            "id": {
+              "id": "fuse/input/gesture/gethashcode",
+              "parentId": "fuse/input/gesture",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/input/gesture/gethashcode",
+              "href": "uno/object/gethashcode",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetHashCode",
+              "fullyQualifiedIndexTitle": "Uno.Object.GetHashCode"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/type",
+              "title": "Type",
+              "fullyQualifiedTitle": "Uno.Type"
+            },
+            "id": {
+              "id": "fuse/input/gesture/gettype",
+              "parentId": "fuse/input/gesture",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/input/gesture/gettype",
+              "href": "uno/object/gettype",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetType",
+              "fullyQualifiedIndexTitle": "Uno.Object.GetType"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "id": {
+              "id": "fuse/input/gesture/tostring",
+              "parentId": "fuse/input/gesture",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/input/gesture/tostring",
+              "href": "uno/object/tostring",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "ToString",
+              "fullyQualifiedIndexTitle": "Uno.Object.ToString"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

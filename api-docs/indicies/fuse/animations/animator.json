@@ -1,0 +1,306 @@
+{
+  "root": {
+    "id": {
+      "id": "fuse/animations/animator",
+      "parentId": "fuse/animations",
+      "type": "Class",
+      "modifiers": [
+        "public",
+        "abstract"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/animations/animator",
+      "href": "fuse/animations/animator"
+    },
+    "titles": {
+      "indexTitle": "Animator",
+      "fullyQualifiedIndexTitle": "Fuse.Animations.Animator"
+    }
+  },
+  "descendants": [
+    {
+      "comment": {
+        "brief": "Temporarily changes the value of a property while its containing trigger is active. To permanently change a value, use the @Set animator.",
+        "full": "Temporarily changes the value of a property while its containing trigger is active. To permanently change a value, use the @Set animator.\n\n**Tip**: You can specify @(Units) with `Value` as long as the unit matches the original unit of the `Target`.\n\nBecause the task of setting a target property and value is so common, UX has a special syntax for this. Instead of\n\n    <Change Target=\"target.Property\" Value=\"Value\"/>\n\none can do the following:\n\n    <Change target.Property=\"Value\"/>\n\n# Example\n\nAs with other animators, you can also specify a `Duration`:\n\n    <Panel ux:Name=\"panel\" Color=\"#000\">\n        <WhilePressed>\n            <Change panel.Color=\"#fff\" Duration=\"0.5\" />\n        </WhilePressed>\n    </Panel>\n\nIf the value is continuous this will result in a continously interpolated change in value.\nIf the value cannot be continuously animated, the value will change discretely."
+      },
+      "id": {
+        "id": "fuse/animations/change_1",
+        "parentId": "fuse/animations",
+        "type": "UxClass",
+        "modifiers": [
+          "public",
+          "sealed"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/animations/change_1",
+        "href": "fuse/animations/change_1"
+      },
+      "titles": {
+        "indexTitle": "Change<T>",
+        "fullyQualifiedIndexTitle": "Fuse.Animations.Change<T>"
+      }
+    },
+    {
+      "comment": {
+        "brief": "Animates a repeating cycle between a high and low value using a given waveform.",
+        "full": "Animates a repeating cycle between a high and low value using a given waveform.\n\nThe cycling of the animation continues even when the `Trigger.Progress` reaches 1. When a trigger is deactivated the cycling will play backwards, possibly beyond reaching Progress=1, until it finds a suitable rest state. This ensure that `Cycle` does not produce any jarring switches when the triggers are activated and deactivated.\n\n## Example\n\nThe below example creates a simple pulsing effect on the panel while it is pressed.\n\n    <Panel Color=\"Blue\" ux:Name=\"panel1\" Width=\"100\" Height=\"100\">\n        <WhilePressed>\n            <Cycle Target=\"panel1.Width\" Low=\"80\" High=\"120\" Frequency=\"0.5\"/>\n        </WhilePressed>\n    </Panel>\n\nBy adjusting the `Waveform` you can creates animations that wrap-around instead of bouncing back and forth.\n\n    <Cycle Target=\"panel.X\" Low=\"-100\" High=\"100\" Waveform=\"Triangle\"/>\n\nThe \"wrap-around\" here is simply the nature of the triangular waveform -- the default waveform is sinusoidal.\n\n## Formula\n\nThe properties are defined to be a simple interface, but it may be easier to understand see how they all relate in an expression. Given a current time offset the value of the `Target` is defined roughly as:\n\n    Target.Value = Lerp( Low, High, Easing( Waveform(Time) ) ) * Base + Offset\n\n`Low` and `High` can only be scalar values. `Cycle` checks whether these values cross zero, or one. If they do, it will start at that value, and return to that value when done (this is the default value for `ProgressOffset`). This allows a smooth return to rest state in animation.\n\nModifying `Base` and `Offset` allows you to use `Cycle` with non-scalar values. Though be aware not all combinations of value can provide for a smooth return to the rest state."
+      },
+      "id": {
+        "id": "fuse/animations/cycle_1",
+        "parentId": "fuse/animations",
+        "type": "UxClass",
+        "modifiers": [
+          "public"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/animations/cycle_1",
+        "href": "fuse/animations/cycle_1"
+      },
+      "titles": {
+        "indexTitle": "Cycle<T>",
+        "fullyQualifiedIndexTitle": "Fuse.Animations.Cycle<T>"
+      }
+    },
+    {
+      "comment": {
+        "brief": "Animates the translation a visual element.",
+        "full": "Animates the translation a visual element.\n\n`Move` does not affect layout, so the element will just get an offset from its actual location.\n\nExample:\n\n    <WhilePressed>\n        <Move X=\"50\" Duration=\"1\" Easing=\"BackOut\" />\n    </WhilePressed>\n\nWhen pressed, this will move the element by 50 points in the X direction over 1 second, with\na back-out easing curve.\n\n## Relative motion\n\nYou may want for an element to move relative to its own size or some other elements size.\nTo achieve this we can use the @RelativeTo property, for instance:\n\n    <Move X=\"0.5\" RelativeTo=\"Size\" />\n\nThe above line moves the element by 50% of its own size to the right."
+      },
+      "id": {
+        "id": "fuse/animations/move",
+        "parentId": "fuse/animations",
+        "type": "UxClass",
+        "modifiers": [
+          "public",
+          "sealed"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/animations/move",
+        "href": "fuse/animations/move"
+      },
+      "titles": {
+        "indexTitle": "Move",
+        "fullyQualifiedIndexTitle": "Fuse.Animations.Move"
+      }
+    },
+    {
+      "comment": {
+        "brief": "Allows you to artificially extend the timeline",
+        "full": "Allows you to artificially extend the timeline\n\nAll animations for a `Trigger` share a common timeline, which ends when the last animation has completed. In some rare cases, you may want to artificially extend the timeline. This can be done using `Nothing`. Logically, it is a blank animation with a set length, forcing the length of the timeline to be at least the duration of the `Nothing`."
+      },
+      "id": {
+        "id": "fuse/animations/nothing",
+        "parentId": "fuse/animations",
+        "type": "UxClass",
+        "modifiers": [
+          "public",
+          "sealed"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/animations/nothing",
+        "href": "fuse/animations/nothing"
+      },
+      "titles": {
+        "indexTitle": "Nothing",
+        "fullyQualifiedIndexTitle": "Fuse.Animations.Nothing"
+      }
+    },
+    {
+      "comment": {
+        "brief": "Open animators animate repeatedly for as long as the trigger is active.",
+        "full": "Open animators animate repeatedly for as long as the trigger is active.\n\nThe `Duration` and `Delay` specify when this animator is \"on\". This is the time when the animator will be actively applying its effect. Outside of this period the animator is \"off\".  When off the animator will continue playing until it reaches a suitable resting value. This prevents the animation from jerking between values.\n\n## Available open animators\n[subclass Fuse.Animation.OpenAnimator]",
+        "attributes": {
+          "topic": "Open animators"
+        }
+      },
+      "id": {
+        "id": "fuse/animations/openanimator",
+        "parentId": "fuse/animations",
+        "type": "Class",
+        "modifiers": [
+          "public",
+          "abstract"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/animations/openanimator",
+        "href": "fuse/animations/openanimator"
+      },
+      "titles": {
+        "indexTitle": "OpenAnimator",
+        "fullyQualifiedIndexTitle": "Fuse.Animations.OpenAnimator"
+      }
+    },
+    {
+      "comment": {
+        "brief": "An @Animator that changes the size of an @Element.",
+        "full": "An @Animator that changes the size of an @Element.\n\nThis is typically used as part of a @LayoutAnimation.\n\nThe size is considered a temporary size for the element, not it's true intended size. When the animator is disabled the natural size will be restored.\n\n# Example\n\n    <Panel>\n        <LayoutAnimation>\n            <Resize RelativeTo=\"SizeChange\" Duration=\"1\" Vector=\"1\"/>\n            <Move RelativeTo=\"PositionChange\" Duration=\"1\" Vector=\"1\"/>\n        </LayoutAnimation>\n    </Panel>"
+      },
+      "id": {
+        "id": "fuse/animations/resize",
+        "parentId": "fuse/animations",
+        "type": "UxClass",
+        "modifiers": [
+          "public"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/animations/resize",
+        "href": "fuse/animations/resize"
+      },
+      "titles": {
+        "indexTitle": "Resize",
+        "fullyQualifiedIndexTitle": "Fuse.Animations.Resize"
+      }
+    },
+    {
+      "comment": {
+        "brief": "Rotates the Visual. This does the same transform as @Rotation.",
+        "full": "Rotates the Visual. This does the same transform as @Rotation.\n\nThe standard units for angle are radians. Use the `Degrees...` properties to specify in degrees.\n\n# Example\nThis example rotates a panel while the mouse pointer hovers over it\n\n    <Panel>\n        <WhileHovering>\n            <Rotate Degrees=\"90\" Duration=\"0.5\"/>\n        </WhileHovering>\n    </Panel>"
+      },
+      "id": {
+        "id": "fuse/animations/rotate",
+        "parentId": "fuse/animations",
+        "type": "UxClass",
+        "modifiers": [
+          "public",
+          "sealed"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/animations/rotate",
+        "href": "fuse/animations/rotate"
+      },
+      "titles": {
+        "indexTitle": "Rotate",
+        "fullyQualifiedIndexTitle": "Fuse.Animations.Rotate"
+      }
+    },
+    {
+      "comment": {
+        "brief": "Scales the element. Note that scale doesn't actually change the elements size. This means that the rest of the UI layout wont be affected and the animation is guaranteed to be fast.",
+        "full": "Scales the element. Note that scale doesn't actually change the elements size. This means that the rest of the UI layout wont be affected and the animation is guaranteed to be fast.\n\nYou can scale an element uniformly along all axes by using the `Factor` property. Alternatively, you can also scale on a per-axis basis using `Vector` or `X`, `Y`, and `Z`.\n\n**Tip**: You can use `Scale` relative to something using the `RelativeTo` property. The two choices are:\n\n* `SizeChange` - scales relative to the change in size of the element specified by the `RelativeNode` property.\n* `SizeFactor` - scales with a factor relative to another element, specified by `RelativeNode`. A factor of `1` would make it the same size as the `RelativeNode`, while a factor of `0.5` would make it half the size, and so on.\n\n# Example\nThe following example scales a rectangle when it is being pressed\n\n    <Rectangle>\n        <WhilePressed>\n            <Scale Factor=\"2\" Duration=\"0.4\"/>\n        </WhilePressed>\n    </Rectangle>"
+      },
+      "id": {
+        "id": "fuse/animations/scale",
+        "parentId": "fuse/animations",
+        "type": "UxClass",
+        "modifiers": [
+          "public",
+          "sealed"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/animations/scale",
+        "href": "fuse/animations/scale"
+      },
+      "titles": {
+        "indexTitle": "Scale",
+        "fullyQualifiedIndexTitle": "Fuse.Animations.Scale"
+      }
+    },
+    {
+      "comment": {
+        "brief": "Allows you to animate a skew transform on an element.",
+        "full": "Allows you to animate a skew transform on an element.\n\n# Example\nThis example animates a skew on a panel as it is being pressed\n\n    <Panel Background=\"#F00\">\n        <WhilePressed>\n            <Skew DegreesX=\"30\" Duration=\"0.4\"/>\n        </WhilePressed>\n    </Panel>"
+      },
+      "id": {
+        "id": "fuse/animations/skew",
+        "parentId": "fuse/animations",
+        "type": "UxClass",
+        "modifiers": [
+          "public",
+          "sealed"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/animations/skew",
+        "href": "fuse/animations/skew"
+      },
+      "titles": {
+        "indexTitle": "Skew",
+        "fullyQualifiedIndexTitle": "Fuse.Animations.Skew"
+      }
+    },
+    {
+      "comment": {
+        "brief": "Continuously rotates an element, given a `Frequency` measured in full rotations per second.",
+        "full": "Continuously rotates an element, given a `Frequency` measured in full rotations per second.\n\n    <Panel>\n    <WhilePressed>\n        <Spin Frequency=\"2\" />\n    </WhilePressed>\n    </Panel>\n\nAs with @(Cycle), you may also specify a `Duration` to control the length of the animation."
+      },
+      "id": {
+        "id": "fuse/animations/spin",
+        "parentId": "fuse/animations",
+        "type": "UxClass",
+        "modifiers": [
+          "public",
+          "sealed"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/animations/spin",
+        "href": "fuse/animations/spin"
+      },
+      "titles": {
+        "indexTitle": "Spin",
+        "fullyQualifiedIndexTitle": "Fuse.Animations.Spin"
+      }
+    },
+    {
+      "comment": {
+        "brief": "Track animators animate to a specific target value over a fixed duration.",
+        "full": "Track animators animate to a specific target value over a fixed duration.\n\nThe `...Back` parameters implicitly create a backwards timeline. The second timeline has it's own duration, and all properties and then specified in that timeline. This backwards timeline is for all of the animators, not just the ones with a `...Back` property specified. This is important for understanding how the timing works in complex scenarios.\n\nTracks can be a continuous (like a floating point value), discrete (like an enum value), or a spline track. This is specified implicitly based on the properties used. Note that some properties only have effects with certain track types.\n\n[subclass Fuse.Animation.TrackAnimator]",
+        "attributes": {
+          "topic": "Track animators"
+        }
+      },
+      "id": {
+        "id": "fuse/animations/trackanimator",
+        "parentId": "fuse/animations",
+        "type": "Class",
+        "modifiers": [
+          "public",
+          "abstract"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/animations/trackanimator",
+        "href": "fuse/animations/trackanimator"
+      },
+      "titles": {
+        "indexTitle": "TrackAnimator",
+        "fullyQualifiedIndexTitle": "Fuse.Animations.TrackAnimator"
+      }
+    },
+    {
+      "comment": {
+        "brief": "Transform animators animate the translation, rotation or scaling of a visual.",
+        "full": "Transform animators animate the translation, rotation or scaling of a visual.\n\nTransform animators do not affect the layout of an @Element, instead it animates relative to\nthe result of layout. This means transform animators are very fast and are appropriate for\nreal-time transitions.\n\n## Available transform animators\n\n[subclass Fuse.Animations.TransformAnimator]",
+        "attributes": {
+          "topic": "Transform animators"
+        }
+      },
+      "id": {
+        "id": "fuse/animations/transformanimator_1",
+        "parentId": "fuse/animations",
+        "type": "Class",
+        "modifiers": [
+          "public",
+          "abstract"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/animations/transformanimator_1",
+        "href": "fuse/animations/transformanimator_1"
+      },
+      "titles": {
+        "indexTitle": "TransformAnimator<TransformType>",
+        "fullyQualifiedIndexTitle": "Fuse.Animations.TransformAnimator<TransformType>"
+      }
+    }
+  ]
+}

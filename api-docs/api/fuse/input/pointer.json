@@ -1,0 +1,726 @@
+{
+  "entity": {
+    "location": {
+      "namespaceTitle": "Fuse.Input",
+      "namespaceUri": "fuse/input",
+      "packageName": "Fuse.Nodes",
+      "packageVersion": "1.8.0-rc2"
+    },
+    "id": {
+      "id": "fuse/input/pointer",
+      "parentId": "fuse/input",
+      "type": "Class",
+      "modifiers": [
+        "public",
+        "static",
+        "partial"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/input/pointer",
+      "href": "fuse/input/pointer"
+    },
+    "titles": {
+      "pageTitle": "Pointer Class",
+      "navigationTitle": "Pointer Class",
+      "fullTitle": "Fuse.Input.Pointer",
+      "indexTitle": "Pointer",
+      "fullyQualifiedIndexTitle": "Fuse.Input.Pointer"
+    },
+    "syntax": {
+      "uno": "public static partial class Pointer {}"
+    },
+    "comment": {
+      "brief": "Directly using the `Pointer` class is not advised. For all typical UI controls you should iuse the @Gestures system. The gesture system is better able to deal with conflict between gestures.",
+      "full": "Directly using the `Pointer` class is not advised. For all typical UI controls you should iuse the @Gestures system. The gesture system is better able to deal with conflict between gestures.\n\n## Captures\n\nA capture indicates some listener is interested in receiving events for a pointer event even if they no longer hit the target visual. Any capture blocks events from being sent outside of the tree starting at the provided visual.\n\nAn `identity` is used to identify the capture listener. Each identity has only one capture. This may be at different levels, or involve single or multiple pointer indexes. Multiple captures with the same `identity` can not be created -- it always modifies the existing one.\n\nOnly one `CaptureType.Hard` can exist for a `PointIndex` at one time. This will also cancel all soft captures that also accept that point (even if it isn't the only point they accept). An exception is those with `NodeShare`.",
+      "attributes": {
+        "advanced": true
+      }
+    }
+  },
+  "tableOfContents": {
+    "uxProperties": [
+      {
+        "items": [
+          {
+            "returns": {
+              "href": "fuse/input/ipointereventresponder",
+              "title": "IPointerEventResponder",
+              "fullyQualifiedTitle": "Fuse.Input.IPointerEventResponder"
+            },
+            "id": {
+              "id": "fuse/input/pointer/eventresponder",
+              "parentId": "fuse/input/pointer",
+              "type": "UxProperty",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/input/pointer/eventresponder",
+              "href": "fuse/input/pointer/eventresponder"
+            },
+            "titles": {
+              "indexTitle": "EventResponder",
+              "fullyQualifiedIndexTitle": "Fuse.Input.Pointer.EventResponder"
+            }
+          }
+        ]
+      }
+    ],
+    "properties": [
+      {
+        "items": [
+          {
+            "returns": {
+              "href": "uno/float2",
+              "title": "float2",
+              "fullyQualifiedTitle": "float2"
+            },
+            "id": {
+              "id": "fuse/input/pointer/coord",
+              "parentId": "fuse/input/pointer",
+              "type": "Property",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/input/pointer/coord",
+              "href": "fuse/input/pointer/coord"
+            },
+            "titles": {
+              "indexTitle": "Coord",
+              "fullyQualifiedIndexTitle": "Fuse.Input.Pointer.Coord"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/float2",
+              "title": "float2[]",
+              "fullyQualifiedTitle": "float2[]"
+            },
+            "id": {
+              "id": "fuse/input/pointer/coords",
+              "parentId": "fuse/input/pointer",
+              "type": "Property",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/input/pointer/coords",
+              "href": "fuse/input/pointer/coords"
+            },
+            "titles": {
+              "indexTitle": "Coords",
+              "fullyQualifiedIndexTitle": "Fuse.Input.Pointer.Coords"
+            }
+          },
+          {
+            "returns": {
+              "href": "fuse/visualevent_2",
+              "title": "VisualEvent<PointerEnteredHandler (object, PointerEnteredArgs), PointerEnteredArgs>",
+              "fullyQualifiedTitle": "Fuse.VisualEvent<Fuse.Input.PointerEnteredHandler (object, Fuse.Input.PointerEnteredArgs), Fuse.Input.PointerEnteredArgs>"
+            },
+            "id": {
+              "id": "fuse/input/pointer/entered",
+              "parentId": "fuse/input/pointer",
+              "type": "Property",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/input/pointer/entered",
+              "href": "fuse/input/pointer/entered"
+            },
+            "titles": {
+              "indexTitle": "Entered",
+              "fullyQualifiedIndexTitle": "Fuse.Input.Pointer.Entered"
+            }
+          },
+          {
+            "returns": {
+              "href": "fuse/visualevent_2",
+              "title": "VisualEvent<PointerLeftHandler (object, PointerLeftArgs), PointerLeftArgs>",
+              "fullyQualifiedTitle": "Fuse.VisualEvent<Fuse.Input.PointerLeftHandler (object, Fuse.Input.PointerLeftArgs), Fuse.Input.PointerLeftArgs>"
+            },
+            "id": {
+              "id": "fuse/input/pointer/left",
+              "parentId": "fuse/input/pointer",
+              "type": "Property",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/input/pointer/left",
+              "href": "fuse/input/pointer/left"
+            },
+            "titles": {
+              "indexTitle": "Left",
+              "fullyQualifiedIndexTitle": "Fuse.Input.Pointer.Left"
+            }
+          },
+          {
+            "returns": {
+              "href": "fuse/visualevent_2",
+              "title": "VisualEvent<PointerMovedHandler (object, PointerMovedArgs), PointerMovedArgs>",
+              "fullyQualifiedTitle": "Fuse.VisualEvent<Fuse.Input.PointerMovedHandler (object, Fuse.Input.PointerMovedArgs), Fuse.Input.PointerMovedArgs>"
+            },
+            "id": {
+              "id": "fuse/input/pointer/moved",
+              "parentId": "fuse/input/pointer",
+              "type": "Property",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/input/pointer/moved",
+              "href": "fuse/input/pointer/moved"
+            },
+            "titles": {
+              "indexTitle": "Moved",
+              "fullyQualifiedIndexTitle": "Fuse.Input.Pointer.Moved"
+            }
+          },
+          {
+            "returns": {
+              "href": "fuse/visualevent_2",
+              "title": "VisualEvent<PointerPressedHandler (object, PointerPressedArgs), PointerPressedArgs>",
+              "fullyQualifiedTitle": "Fuse.VisualEvent<Fuse.Input.PointerPressedHandler (object, Fuse.Input.PointerPressedArgs), Fuse.Input.PointerPressedArgs>"
+            },
+            "id": {
+              "id": "fuse/input/pointer/pressed",
+              "parentId": "fuse/input/pointer",
+              "type": "Property",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/input/pointer/pressed",
+              "href": "fuse/input/pointer/pressed"
+            },
+            "titles": {
+              "indexTitle": "Pressed",
+              "fullyQualifiedIndexTitle": "Fuse.Input.Pointer.Pressed"
+            }
+          },
+          {
+            "returns": {
+              "href": "fuse/visualevent_2",
+              "title": "VisualEvent<PointerReleasedHandler (object, PointerReleasedArgs), PointerReleasedArgs>",
+              "fullyQualifiedTitle": "Fuse.VisualEvent<Fuse.Input.PointerReleasedHandler (object, Fuse.Input.PointerReleasedArgs), Fuse.Input.PointerReleasedArgs>"
+            },
+            "id": {
+              "id": "fuse/input/pointer/released",
+              "parentId": "fuse/input/pointer",
+              "type": "Property",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/input/pointer/released",
+              "href": "fuse/input/pointer/released"
+            },
+            "titles": {
+              "indexTitle": "Released",
+              "fullyQualifiedIndexTitle": "Fuse.Input.Pointer.Released"
+            }
+          },
+          {
+            "returns": {
+              "href": "fuse/visualevent_2",
+              "title": "VisualEvent<PointerWheelMovedHandler (object, PointerWheelMovedArgs), PointerWheelMovedArgs>",
+              "fullyQualifiedTitle": "Fuse.VisualEvent<Fuse.Input.PointerWheelMovedHandler (object, Fuse.Input.PointerWheelMovedArgs), Fuse.Input.PointerWheelMovedArgs>"
+            },
+            "id": {
+              "id": "fuse/input/pointer/wheelmoved",
+              "parentId": "fuse/input/pointer",
+              "type": "Property",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/input/pointer/wheelmoved",
+              "href": "fuse/input/pointer/wheelmoved"
+            },
+            "titles": {
+              "indexTitle": "WheelMoved",
+              "fullyQualifiedIndexTitle": "Fuse.Input.Pointer.WheelMoved"
+            }
+          }
+        ]
+      }
+    ],
+    "methods": [
+      {
+        "items": [
+          {
+            "parameters": [
+              {
+                "name": "node",
+                "href": "fuse/visual",
+                "title": "Visual",
+                "fullyQualifiedTitle": "Fuse.Visual"
+              },
+              {
+                "name": "pressed",
+                "href": "fuse/input/pointerpressedhandler",
+                "title": "PointerPressedHandler (object, PointerPressedArgs)",
+                "fullyQualifiedTitle": "Fuse.Input.PointerPressedHandler (object, Fuse.Input.PointerPressedArgs)"
+              },
+              {
+                "name": "moved",
+                "href": "fuse/input/pointermovedhandler",
+                "title": "PointerMovedHandler (object, PointerMovedArgs)",
+                "fullyQualifiedTitle": "Fuse.Input.PointerMovedHandler (object, Fuse.Input.PointerMovedArgs)"
+              },
+              {
+                "name": "released",
+                "href": "fuse/input/pointerreleasedhandler",
+                "title": "PointerReleasedHandler (object, PointerReleasedArgs)",
+                "fullyQualifiedTitle": "Fuse.Input.PointerReleasedHandler (object, Fuse.Input.PointerReleasedArgs)"
+              },
+              {
+                "name": "entered",
+                "href": "fuse/input/pointerenteredhandler",
+                "title": "PointerEnteredHandler (object, PointerEnteredArgs)",
+                "fullyQualifiedTitle": "Fuse.Input.PointerEnteredHandler (object, Fuse.Input.PointerEnteredArgs)"
+              },
+              {
+                "name": "left",
+                "href": "fuse/input/pointerlefthandler",
+                "title": "PointerLeftHandler (object, PointerLeftArgs)",
+                "fullyQualifiedTitle": "Fuse.Input.PointerLeftHandler (object, Fuse.Input.PointerLeftArgs)"
+              },
+              {
+                "name": "wheelMoved",
+                "href": "fuse/input/pointerwheelmovedhandler",
+                "title": "PointerWheelMovedHandler (object, PointerWheelMovedArgs)",
+                "fullyQualifiedTitle": "Fuse.Input.PointerWheelMovedHandler (object, Fuse.Input.PointerWheelMovedArgs)"
+              }
+            ],
+            "id": {
+              "id": "fuse/input/pointer/addhandlers_a15c53ab",
+              "parentId": "fuse/input/pointer",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/input/pointer/addhandlers_a15c53ab",
+              "href": "fuse/input/pointer/addhandlers_a15c53ab"
+            },
+            "titles": {
+              "indexTitle": "AddHandlers(Visual, PointerPressedHandler (object, PointerPressedArgs), PointerMovedHandler (object, PointerMovedArgs), PointerReleasedHandler (object, PointerReleasedArgs), PointerEnteredHandler (object, PointerEnteredArgs), PointerLeftHandler (object, PointerLeftArgs), PointerWheelMovedHandler (object, PointerWheelMovedArgs))",
+              "fullyQualifiedIndexTitle": "Fuse.Input.Pointer.AddHandlers(Fuse.Visual, Fuse.Input.PointerPressedHandler (object, Fuse.Input.PointerPressedArgs), Fuse.Input.PointerMovedHandler (object, Fuse.Input.PointerMovedArgs), Fuse.Input.PointerReleasedHandler (object, Fuse.Input.PointerReleasedArgs), Fuse.Input.PointerEnteredHandler (object, Fuse.Input.PointerEnteredArgs), Fuse.Input.PointerLeftHandler (object, Fuse.Input.PointerLeftArgs), Fuse.Input.PointerWheelMovedHandler (object, Fuse.Input.PointerWheelMovedArgs))"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Adds more points to an existing capture. All the points will be captured in the same fashion as the original capture (such as Hard or Soft).",
+              "full": "Adds more points to an existing capture. All the points will be captured in the same fashion as the original capture (such as Hard or Soft).",
+              "attributes": {
+                "returns": {
+                  "text": "`false` if this is not allowed based on other captures (existing hard capture for example). In this case the original capture will be left unchanged. `true` if the capture now watches this new point in addition to any previous points."
+                }
+              }
+            },
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "parameters": [
+              {
+                "name": "identity",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              },
+              {
+                "name": "pointIndex",
+                "href": "uno/int",
+                "title": "int",
+                "fullyQualifiedTitle": "int"
+              }
+            ],
+            "id": {
+              "id": "fuse/input/pointer/extendcapture_9ff0fc46",
+              "parentId": "fuse/input/pointer",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/input/pointer/extendcapture_9ff0fc46",
+              "href": "fuse/input/pointer/extendcapture_9ff0fc46"
+            },
+            "titles": {
+              "indexTitle": "ExtendCapture(object, int)",
+              "fullyQualifiedIndexTitle": "Fuse.Input.Pointer.ExtendCapture(object, int)"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "parameters": [
+              {
+                "name": "type",
+                "href": "fuse/input/capturetype",
+                "title": "CaptureType",
+                "fullyQualifiedTitle": "Fuse.Input.CaptureType"
+              },
+              {
+                "name": "pointIndex",
+                "href": "uno/int",
+                "title": "int",
+                "fullyQualifiedTitle": "int"
+              },
+              {
+                "name": "identity",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              }
+            ],
+            "id": {
+              "id": "fuse/input/pointer/iscaptured_65ed7168",
+              "parentId": "fuse/input/pointer",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/input/pointer/iscaptured_65ed7168",
+              "href": "fuse/input/pointer/iscaptured_65ed7168"
+            },
+            "titles": {
+              "indexTitle": "IsCaptured(CaptureType, int, object)",
+              "fullyQualifiedIndexTitle": "Fuse.Input.Pointer.IsCaptured(Fuse.Input.CaptureType, int, object)"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "parameters": [
+              {
+                "name": "pointIndex",
+                "href": "uno/int",
+                "title": "int",
+                "fullyQualifiedTitle": "int"
+              },
+              {
+                "name": "identity",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              }
+            ],
+            "id": {
+              "id": "fuse/input/pointer/iscaptured_0435704d",
+              "parentId": "fuse/input/pointer",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/input/pointer/iscaptured_0435704d",
+              "href": "fuse/input/pointer/iscaptured_0435704d"
+            },
+            "titles": {
+              "indexTitle": "IsCaptured(int, object)",
+              "fullyQualifiedIndexTitle": "Fuse.Input.Pointer.IsCaptured(int, object)"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "id": {
+              "id": "fuse/input/pointer/ispressed",
+              "parentId": "fuse/input/pointer",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/input/pointer/ispressed",
+              "href": "fuse/input/pointer/ispressed"
+            },
+            "titles": {
+              "indexTitle": "IsPressed",
+              "fullyQualifiedIndexTitle": "Fuse.Input.Pointer.IsPressed"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "parameters": [
+              {
+                "name": "pointIndex",
+                "href": "uno/int",
+                "title": "int",
+                "fullyQualifiedTitle": "int"
+              }
+            ],
+            "id": {
+              "id": "fuse/input/pointer/ispressed_56ad0a96",
+              "parentId": "fuse/input/pointer",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/input/pointer/ispressed_56ad0a96",
+              "href": "fuse/input/pointer/ispressed_56ad0a96"
+            },
+            "titles": {
+              "indexTitle": "IsPressed(int)",
+              "fullyQualifiedIndexTitle": "Fuse.Input.Pointer.IsPressed(int)"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Modifies the type of an existing capture.",
+              "full": "Modifies the type of an existing capture."
+            },
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "parameters": [
+              {
+                "name": "identity",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              },
+              {
+                "name": "type",
+                "href": "fuse/input/capturetype",
+                "title": "CaptureType",
+                "fullyQualifiedTitle": "Fuse.Input.CaptureType"
+              }
+            ],
+            "id": {
+              "id": "fuse/input/pointer/modifycapture_dd0d6b86",
+              "parentId": "fuse/input/pointer",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/input/pointer/modifycapture_dd0d6b86",
+              "href": "fuse/input/pointer/modifycapture_dd0d6b86"
+            },
+            "titles": {
+              "indexTitle": "ModifyCapture(object, CaptureType)",
+              "fullyQualifiedIndexTitle": "Fuse.Input.Pointer.ModifyCapture(object, Fuse.Input.CaptureType)"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Only one capture per identity is allowed. If an existing capture is overridden the previous lostCallback will not be called.",
+              "full": "Only one capture per identity is allowed. If an existing capture is overridden the previous lostCallback will not be called.",
+              "attributes": {
+                "returns": {
+                  "text": "true if the capture succeeded. false if it was not allowed due to something else having a higher priority capture."
+                }
+              }
+            },
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "parameters": [
+              {
+                "name": "identity",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              },
+              {
+                "name": "visual",
+                "href": "fuse/visual",
+                "title": "Visual",
+                "fullyQualifiedTitle": "Fuse.Visual"
+              },
+              {
+                "name": "lostCallback",
+                "href": "uno/action",
+                "title": "Action",
+                "fullyQualifiedTitle": "Uno.Action"
+              },
+              {
+                "name": "type",
+                "href": "fuse/input/capturetype",
+                "title": "CaptureType",
+                "fullyQualifiedTitle": "Fuse.Input.CaptureType"
+              },
+              {
+                "name": "pointIndex",
+                "href": "uno/int",
+                "title": "int",
+                "fullyQualifiedTitle": "int"
+              }
+            ],
+            "id": {
+              "id": "fuse/input/pointer/modifycapture_bf8883a0",
+              "parentId": "fuse/input/pointer",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/input/pointer/modifycapture_bf8883a0",
+              "href": "fuse/input/pointer/modifycapture_bf8883a0"
+            },
+            "titles": {
+              "indexTitle": "ModifyCapture(object, Visual, Action, CaptureType, int)",
+              "fullyQualifiedIndexTitle": "Fuse.Input.Pointer.ModifyCapture(object, Fuse.Visual, Uno.Action, Fuse.Input.CaptureType, int)"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Releases a capture with the provided identity. The `LostCallback` will not be called.",
+              "full": "Releases a capture with the provided identity. The `LostCallback` will not be called.\n\nIf no capture with this identity exists then nothing happens. This makes this function safe to call during cleanup."
+            },
+            "parameters": [
+              {
+                "name": "identity",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              }
+            ],
+            "id": {
+              "id": "fuse/input/pointer/releasecapture_a09c80e3",
+              "parentId": "fuse/input/pointer",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/input/pointer/releasecapture_a09c80e3",
+              "href": "fuse/input/pointer/releasecapture_a09c80e3"
+            },
+            "titles": {
+              "indexTitle": "ReleaseCapture(object)",
+              "fullyQualifiedIndexTitle": "Fuse.Input.Pointer.ReleaseCapture(object)"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "node",
+                "href": "fuse/visual",
+                "title": "Visual",
+                "fullyQualifiedTitle": "Fuse.Visual"
+              },
+              {
+                "name": "pressed",
+                "href": "fuse/input/pointerpressedhandler",
+                "title": "PointerPressedHandler (object, PointerPressedArgs)",
+                "fullyQualifiedTitle": "Fuse.Input.PointerPressedHandler (object, Fuse.Input.PointerPressedArgs)"
+              },
+              {
+                "name": "moved",
+                "href": "fuse/input/pointermovedhandler",
+                "title": "PointerMovedHandler (object, PointerMovedArgs)",
+                "fullyQualifiedTitle": "Fuse.Input.PointerMovedHandler (object, Fuse.Input.PointerMovedArgs)"
+              },
+              {
+                "name": "released",
+                "href": "fuse/input/pointerreleasedhandler",
+                "title": "PointerReleasedHandler (object, PointerReleasedArgs)",
+                "fullyQualifiedTitle": "Fuse.Input.PointerReleasedHandler (object, Fuse.Input.PointerReleasedArgs)"
+              },
+              {
+                "name": "entered",
+                "href": "fuse/input/pointerenteredhandler",
+                "title": "PointerEnteredHandler (object, PointerEnteredArgs)",
+                "fullyQualifiedTitle": "Fuse.Input.PointerEnteredHandler (object, Fuse.Input.PointerEnteredArgs)"
+              },
+              {
+                "name": "left",
+                "href": "fuse/input/pointerlefthandler",
+                "title": "PointerLeftHandler (object, PointerLeftArgs)",
+                "fullyQualifiedTitle": "Fuse.Input.PointerLeftHandler (object, Fuse.Input.PointerLeftArgs)"
+              },
+              {
+                "name": "wheelMoved",
+                "href": "fuse/input/pointerwheelmovedhandler",
+                "title": "PointerWheelMovedHandler (object, PointerWheelMovedArgs)",
+                "fullyQualifiedTitle": "Fuse.Input.PointerWheelMovedHandler (object, Fuse.Input.PointerWheelMovedArgs)"
+              }
+            ],
+            "id": {
+              "id": "fuse/input/pointer/removehandlers_a15c53ab",
+              "parentId": "fuse/input/pointer",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/input/pointer/removehandlers_a15c53ab",
+              "href": "fuse/input/pointer/removehandlers_a15c53ab"
+            },
+            "titles": {
+              "indexTitle": "RemoveHandlers(Visual, PointerPressedHandler (object, PointerPressedArgs), PointerMovedHandler (object, PointerMovedArgs), PointerReleasedHandler (object, PointerReleasedArgs), PointerEnteredHandler (object, PointerEnteredArgs), PointerLeftHandler (object, PointerLeftArgs), PointerWheelMovedHandler (object, PointerWheelMovedArgs))",
+              "fullyQualifiedIndexTitle": "Fuse.Input.Pointer.RemoveHandlers(Fuse.Visual, Fuse.Input.PointerPressedHandler (object, Fuse.Input.PointerPressedArgs), Fuse.Input.PointerMovedHandler (object, Fuse.Input.PointerMovedArgs), Fuse.Input.PointerReleasedHandler (object, Fuse.Input.PointerReleasedArgs), Fuse.Input.PointerEnteredHandler (object, Fuse.Input.PointerEnteredArgs), Fuse.Input.PointerLeftHandler (object, Fuse.Input.PointerLeftArgs), Fuse.Input.PointerWheelMovedHandler (object, Fuse.Input.PointerWheelMovedArgs))"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

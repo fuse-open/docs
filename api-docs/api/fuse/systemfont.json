@@ -1,0 +1,327 @@
+{
+  "entity": {
+    "base": {
+      "id": {
+        "id": "fuse/font",
+        "parentId": "fuse",
+        "type": "UxClass",
+        "modifiers": [
+          "public"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/font",
+        "href": "fuse/font"
+      },
+      "titles": {
+        "indexTitle": "Font",
+        "fullyQualifiedIndexTitle": "Fuse.Font"
+      }
+    },
+    "location": {
+      "namespaceTitle": "Fuse",
+      "namespaceUri": "fuse",
+      "packageName": "Fuse.Common",
+      "packageVersion": "1.8.0-rc2"
+    },
+    "inheritance": {
+      "root": {
+        "uri": "uno/object",
+        "title": "object",
+        "children": [
+          {
+            "uri": "fuse/font",
+            "title": "Fuse.Font",
+            "children": [
+              {
+                "uri": "fuse/systemfont",
+                "title": "Fuse.SystemFont",
+                "children": [],
+                "isCurrent": true
+              }
+            ],
+            "isAncestor": true
+          }
+        ],
+        "isAncestor": true
+      },
+      "hasInheritance": true
+    },
+    "uxProperties": {
+      "uxNamespaceTitle": "Fuse",
+      "uxNamespaceUri": "fuse",
+      "uxName": "SystemFont"
+    },
+    "id": {
+      "id": "fuse/systemfont",
+      "parentId": "fuse",
+      "type": "UxClass",
+      "modifiers": [
+        "public",
+        "sealed"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/systemfont",
+      "href": "fuse/systemfont"
+    },
+    "titles": {
+      "pageTitle": "SystemFont Class",
+      "navigationTitle": "SystemFont Class",
+      "fullTitle": "Fuse.SystemFont",
+      "indexTitle": "SystemFont",
+      "fullyQualifiedIndexTitle": "Fuse.SystemFont"
+    },
+    "syntax": {
+      "uno": "public sealed class SystemFont : Fuse.Font {}",
+      "ux": "<SystemFont />"
+    },
+    "comment": {
+      "brief": "A system-specific typeface from the target device.",
+      "full": "A system-specific typeface from the target device.\n\nThis allows us to get fonts available on the target system on Android and iOS.\nBy using this we can save space by not bundling fonts that are known to be available on the target system with our app.\n\nReturns the default font if no matching font is found.\n\n## Example\n\nThe following example shows how to use a bold font from the Baskerville font family:\n\n    <SystemFont Family=\"Baskerville\" Style=\"Normal\" Weight=\"Bold\" ux:Global=\"BaskervilleBold\" />\n    <Text Font=\"BaskervilleBold\">Hello, world!</Text>\n\nAndroid typically uses abstract font families (e.g. `sans-serif`),\nwhereas iOS uses concrete (e.g. `Helvetica Neue`), so it is often the case that\nwe want to specify different font families that are depending on the target. To do this,\nwe can use local resources:\n\n    <Android>\n        <SystemFont Family=\"monospace\" Style=\"Normal\" Weight=\"Normal\" ux:Key=\"Monospace\" />\n    </Android>\n    <iOS>\n        <SystemFont Family=\"Courier\" Style=\"Normal\" Weight=\"Normal\" ux:Key=\"Monospace\" />\n    </iOS>\n    <Text Font=\"{Resource Monospace}\">Hello, world!</Text>\n\nNote that this only works on iOS and Android, and that it is not guaranteed to\nbe consistent across devices, OSes, or OS versions."
+    }
+  },
+  "tableOfContents": {
+    "attachedUxProperties": [
+      {
+        "items": [
+          {
+            "comment": {
+              "brief": "The `ux:Global` attribute creates a global resource that is accessible everywhere in UX markup.",
+              "full": "The `ux:Global` attribute creates a global resource that is accessible everywhere in UX markup.\n\nSee @Resources for more information.\n\nThe `ux:Global` attribute on an UX element creates a single object (singleton) that is globally available.\nUsing this attribute will prevent the object from being inserted by default the object at its defined location\nin the UX tree."
+            },
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "parameters": [
+              {
+                "name": "obj",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              },
+              {
+                "name": "key",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              }
+            ],
+            "id": {
+              "id": "fuse/systemfont/resource_globalkey_setglobalkey_4c3ac72d",
+              "parentId": "fuse/systemfont",
+              "type": "AttachedUxProperty",
+              "modifiers": []
+            },
+            "uri": {
+              "idUri": "fuse/systemfont/resource_globalkey_setglobalkey_4c3ac72d",
+              "href": "uno/ux/resource/setglobalkey_4c3ac72d",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Resource.GlobalKey",
+              "fullyQualifiedIndexTitle": "Resource.GlobalKey"
+            }
+          }
+        ]
+      }
+    ],
+    "constructors": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/systemfont",
+            "parentId": "fuse",
+            "type": "UxClass",
+            "modifiers": [
+              "public",
+              "sealed"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/systemfont",
+            "href": "fuse/systemfont"
+          },
+          "titles": {
+            "indexTitle": "SystemFont",
+            "fullyQualifiedIndexTitle": "Fuse.SystemFont"
+          }
+        },
+        "items": [
+          {
+            "parameters": [
+              {
+                "name": "family",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              },
+              {
+                "name": "style",
+                "href": "fuse/systemfont/style",
+                "title": "Style",
+                "fullyQualifiedTitle": "Fuse.Style"
+              },
+              {
+                "name": "weight",
+                "href": "fuse/systemfont/weight",
+                "title": "Weight",
+                "fullyQualifiedTitle": "Fuse.Weight"
+              }
+            ],
+            "id": {
+              "id": "fuse/systemfont/_ctor_05b636ba",
+              "parentId": "fuse/systemfont",
+              "type": "Constructor",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/systemfont/_ctor_05b636ba",
+              "href": "fuse/systemfont/_ctor_05b636ba"
+            },
+            "titles": {
+              "indexTitle": "SystemFont(string, Style, Weight)",
+              "fullyQualifiedIndexTitle": "Fuse.SystemFont.SystemFont(string, Fuse.Style, Fuse.Weight)"
+            }
+          }
+        ]
+      }
+    ],
+    "methods": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "uno/object",
+            "parentId": "uno",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "intrinsic"
+            ]
+          },
+          "uri": {
+            "idUri": "uno/object",
+            "href": "uno/object"
+          },
+          "titles": {
+            "indexTitle": "object",
+            "fullyQualifiedIndexTitle": "object"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "parameters": [
+              {
+                "name": "o",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              }
+            ],
+            "id": {
+              "id": "fuse/systemfont/equals_a09c80e3",
+              "parentId": "fuse/systemfont",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/systemfont/equals_a09c80e3",
+              "href": "uno/object/equals_a09c80e3",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Equals(object)",
+              "fullyQualifiedIndexTitle": "Uno.Object.Equals(object)"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/int",
+              "title": "int",
+              "fullyQualifiedTitle": "int"
+            },
+            "id": {
+              "id": "fuse/systemfont/gethashcode",
+              "parentId": "fuse/systemfont",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/systemfont/gethashcode",
+              "href": "uno/object/gethashcode",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetHashCode",
+              "fullyQualifiedIndexTitle": "Uno.Object.GetHashCode"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/type",
+              "title": "Type",
+              "fullyQualifiedTitle": "Uno.Type"
+            },
+            "id": {
+              "id": "fuse/systemfont/gettype",
+              "parentId": "fuse/systemfont",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/systemfont/gettype",
+              "href": "uno/object/gettype",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetType",
+              "fullyQualifiedIndexTitle": "Uno.Object.GetType"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "id": {
+              "id": "fuse/systemfont/tostring",
+              "parentId": "fuse/systemfont",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/systemfont/tostring",
+              "href": "uno/object/tostring",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "ToString",
+              "fullyQualifiedIndexTitle": "Uno.Object.ToString"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

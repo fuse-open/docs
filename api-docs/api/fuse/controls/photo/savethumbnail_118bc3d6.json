@@ -1,0 +1,71 @@
+{
+  "entity": {
+    "location": {
+      "namespaceTitle": "Fuse.Controls",
+      "namespaceUri": "fuse/controls",
+      "packageName": "Fuse.Controls.CameraView",
+      "packageVersion": "0.9.0-rc2"
+    },
+    "parameters": [
+      {
+        "name": "context",
+        "href": "fuse/scripting/context",
+        "title": "Context",
+        "fullyQualifiedTitle": "Fuse.Scripting.Context"
+      },
+      {
+        "name": "photo",
+        "href": "fuse/controls/photo",
+        "title": "Photo",
+        "fullyQualifiedTitle": "Fuse.Controls.Photo"
+      },
+      {
+        "name": "args",
+        "href": "uno/object",
+        "title": "object[]",
+        "fullyQualifiedTitle": "object[]"
+      }
+    ],
+    "returns": {
+      "href": "uno/threading/future_1",
+      "title": "Future<string>",
+      "fullyQualifiedTitle": "Uno.Threading.Future<string>"
+    },
+    "id": {
+      "id": "fuse/controls/photo/savethumbnail_118bc3d6",
+      "parentId": "fuse/controls/photo",
+      "type": "JsMethod",
+      "modifiers": [
+        "private",
+        "static"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/controls/photo/savethumbnail_118bc3d6",
+      "href": "fuse/controls/photo/savethumbnail_118bc3d6"
+    },
+    "titles": {
+      "pageTitle": "Photo.saveThumbnail Method (Context, Photo, object[])",
+      "navigationTitle": "saveThumbnail Method (Context, Photo, object[])",
+      "fullTitle": "Fuse.Controls.Photo.saveThumbnail",
+      "indexTitle": "saveThumbnail(Context, Photo, object[])",
+      "fullyQualifiedIndexTitle": "Fuse.Controls.Photo.saveThumbnail(Fuse.Scripting.Context, Fuse.Controls.Photo, object[])"
+    },
+    "syntax": {
+      "uno": "private static Uno.Threading.Future<string> saveThumbnail(Fuse.Scripting.Context context, Fuse.Controls.Photo photo, object[] args) {}"
+    },
+    "comment": {
+      "brief": "Save a downscaled version of the photo",
+      "full": "Save a downscaled version of the photo\n\nUse this method if you need a downscaled versions of the photo. An optional argument can\nbe passed with a size hint. The thumbnail will try to fit the provided size hint and maintain\nits aspect ratio.\n\nIts good practice to provide a sizehint if you know what size the thumbnail should be.\nThe sizehint will be interpreted as points.\n\n    <CameraView ux:Name=\"Camera\" />\n    <JavaScript>\n        Camera.capturePhoto()\n            .then(function(photo) {\n                var sizehint = {\n                    width: 128,\n                    height: 128\n                };\n                photo.saveThumbnail(sizehint)\n                    .then(function(outputFilePath) {\n                        console.log(\"Thumbnail saved to: \" + outputFilePath);\n                        photo.release();\n                    })\n                    .catch(function(err) {\n                        photo.release();\n                    })\n            })\n            .catch(function(err) { });\n    </JavaScript>",
+      "attributes": {
+        "scriptMethod": {
+          "name": "saveThumbnail",
+          "parameters": [
+            "sizeHint"
+          ]
+        }
+      }
+    }
+  },
+  "tableOfContents": {}
+}

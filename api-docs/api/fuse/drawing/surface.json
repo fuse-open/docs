@@ -1,0 +1,748 @@
+{
+  "entity": {
+    "base": {
+      "id": {
+        "id": "uno/object",
+        "parentId": "uno",
+        "type": "Class",
+        "modifiers": [
+          "public",
+          "intrinsic"
+        ]
+      },
+      "uri": {
+        "idUri": "uno/object",
+        "href": "uno/object"
+      },
+      "titles": {
+        "indexTitle": "object",
+        "fullyQualifiedIndexTitle": "object"
+      }
+    },
+    "location": {
+      "namespaceTitle": "Fuse.Drawing",
+      "namespaceUri": "fuse/drawing",
+      "packageName": "Fuse.Drawing.Surface",
+      "packageVersion": "1.8.0-rc2"
+    },
+    "inheritance": {
+      "root": {
+        "uri": "uno/object",
+        "title": "object",
+        "children": [
+          {
+            "uri": "fuse/drawing/surface",
+            "title": "Fuse.Drawing.Surface",
+            "children": [],
+            "isCurrent": true
+          }
+        ],
+        "isAncestor": true
+      },
+      "hasInheritance": true
+    },
+    "implementedInterfaces": [
+      {
+        "id": {
+          "id": "uno/idisposable",
+          "parentId": "uno",
+          "type": "Interface",
+          "modifiers": [
+            "public",
+            "abstract"
+          ]
+        },
+        "uri": {
+          "idUri": "uno/idisposable",
+          "href": "uno/idisposable"
+        },
+        "titles": {
+          "indexTitle": "IDisposable",
+          "fullyQualifiedIndexTitle": "Uno.IDisposable"
+        }
+      }
+    ],
+    "id": {
+      "id": "fuse/drawing/surface",
+      "parentId": "fuse/drawing",
+      "type": "Class",
+      "modifiers": [
+        "public",
+        "abstract"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/drawing/surface",
+      "href": "fuse/drawing/surface"
+    },
+    "titles": {
+      "pageTitle": "Surface Class",
+      "navigationTitle": "Surface Class",
+      "fullTitle": "Fuse.Drawing.Surface",
+      "indexTitle": "Surface",
+      "fullyQualifiedIndexTitle": "Fuse.Drawing.Surface"
+    },
+    "syntax": {
+      "uno": "public abstract class Surface : Uno.IDisposable {}"
+    },
+    "comment": {
+      "brief": "The Surface is a path-based drawing API. A call to `CreatePath` is used to create a path, then one of `StrokePath` or `FillPath` is used to draw it.",
+      "full": "The Surface is a path-based drawing API. A call to `CreatePath` is used to create a path, then one of `StrokePath` or `FillPath` is used to draw it.\n\nThis allows the users of `Canvas` to optimize for animation of either the path or the stroke/fill objects independently.\n\nThis also keeps the API minimal. There are no convenience functions in this class. Those are provided via higher-level classes, such as `LineSegments` or `SurfaceUtil`.",
+      "attributes": {
+        "advanced": true,
+        "experimental": true
+      }
+    }
+  },
+  "tableOfContents": {
+    "properties": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/drawing/surface",
+            "parentId": "fuse/drawing",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/drawing/surface",
+            "href": "fuse/drawing/surface"
+          },
+          "titles": {
+            "indexTitle": "Surface",
+            "fullyQualifiedIndexTitle": "Fuse.Drawing.Surface"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/float2",
+              "title": "float2",
+              "fullyQualifiedTitle": "float2"
+            },
+            "id": {
+              "id": "fuse/drawing/surface/elementsize",
+              "parentId": "fuse/drawing/surface",
+              "type": "Property",
+              "modifiers": [
+                "protected"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/surface/elementsize",
+              "href": "fuse/drawing/surface/elementsize"
+            },
+            "titles": {
+              "indexTitle": "ElementSize",
+              "fullyQualifiedIndexTitle": "Fuse.Drawing.Surface.ElementSize"
+            }
+          }
+        ]
+      }
+    ],
+    "methods": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/drawing/surface",
+            "parentId": "fuse/drawing",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/drawing/surface",
+            "href": "fuse/drawing/surface"
+          },
+          "titles": {
+            "indexTitle": "Surface",
+            "fullyQualifiedIndexTitle": "Fuse.Drawing.Surface"
+          }
+        },
+        "items": [
+          {
+            "comment": {
+              "brief": "(TEMPORARY)\nThis is the GL entrypoint to start drawing to a framebuffer.",
+              "full": "(TEMPORARY)\nThis is the GL entrypoint to start drawing to a framebuffer.\n\n`pixelsPerPoint` is the density to use when converting path points to pixels.\n\nIt is undefined if the framebuffer is updated prior to `End` being called."
+            },
+            "parameters": [
+              {
+                "name": "dc",
+                "href": "fuse/drawcontext",
+                "title": "DrawContext",
+                "fullyQualifiedTitle": "Fuse.DrawContext"
+              },
+              {
+                "name": "fb",
+                "href": "uno/graphics/framebuffer",
+                "title": "framebuffer",
+                "fullyQualifiedTitle": "framebuffer"
+              },
+              {
+                "name": "pixelsPerPoint",
+                "href": "uno/float",
+                "title": "float",
+                "fullyQualifiedTitle": "float"
+              }
+            ],
+            "id": {
+              "id": "fuse/drawing/surface/begin_963b2354",
+              "parentId": "fuse/drawing/surface",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/surface/begin_963b2354",
+              "href": "fuse/drawing/surface/begin_963b2354"
+            },
+            "titles": {
+              "indexTitle": "Begin(DrawContext, framebuffer, float)",
+              "fullyQualifiedIndexTitle": "Fuse.Drawing.Surface.Begin(Fuse.DrawContext, framebuffer, float)"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Creates a pth from the provided list of segments.",
+              "full": "Creates a pth from the provided list of segments."
+            },
+            "returns": {
+              "href": "fuse/drawing/surfacepath",
+              "title": "SurfacePath",
+              "fullyQualifiedTitle": "Fuse.Drawing.SurfacePath"
+            },
+            "parameters": [
+              {
+                "name": "segments",
+                "href": "uno/collections/ilist_1",
+                "title": "IList<LineSegment>",
+                "fullyQualifiedTitle": "Uno.Collections.IList<Fuse.Drawing.LineSegment>"
+              },
+              {
+                "name": "fillRule",
+                "href": "fuse/drawing/fillrule",
+                "title": "FillRule",
+                "fullyQualifiedTitle": "Fuse.Drawing.FillRule"
+              }
+            ],
+            "id": {
+              "id": "fuse/drawing/surface/createpath_481e3481",
+              "parentId": "fuse/drawing/surface",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/surface/createpath_481e3481",
+              "href": "fuse/drawing/surface/createpath_481e3481"
+            },
+            "titles": {
+              "indexTitle": "CreatePath(IList<LineSegment>, FillRule)",
+              "fullyQualifiedIndexTitle": "Fuse.Drawing.Surface.CreatePath(Uno.Collections.IList<Fuse.Drawing.LineSegment>, Fuse.Drawing.FillRule)"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Frees up all resources associated with this surface. All paths and prepared objects are invalid after a call to this method. However, whethere they are actually freed now, or when `Unprepare` or `DisposePath` is called is undefined. This means it must always be safe to call those two fucntions, even on an disposed Surface.",
+              "full": "Frees up all resources associated with this surface. All paths and prepared objects are invalid after a call to this method. However, whethere they are actually freed now, or when `Unprepare` or `DisposePath` is called is undefined. This means it must always be safe to call those two fucntions, even on an disposed Surface."
+            },
+            "id": {
+              "id": "fuse/drawing/surface/dispose",
+              "parentId": "fuse/drawing/surface",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/surface/dispose",
+              "href": "fuse/drawing/surface/dispose"
+            },
+            "titles": {
+              "indexTitle": "Dispose",
+              "fullyQualifiedIndexTitle": "Fuse.Drawing.Surface.Dispose"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Disposes of a path object created by `CreatePath`.",
+              "full": "Disposes of a path object created by `CreatePath`."
+            },
+            "parameters": [
+              {
+                "name": "path",
+                "href": "fuse/drawing/surfacepath",
+                "title": "SurfacePath",
+                "fullyQualifiedTitle": "Fuse.Drawing.SurfacePath"
+              }
+            ],
+            "id": {
+              "id": "fuse/drawing/surface/disposepath_993403c5",
+              "parentId": "fuse/drawing/surface",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/surface/disposepath_993403c5",
+              "href": "fuse/drawing/surface/disposepath_993403c5"
+            },
+            "titles": {
+              "indexTitle": "DisposePath(SurfacePath)",
+              "fullyQualifiedIndexTitle": "Fuse.Drawing.Surface.DisposePath(Fuse.Drawing.SurfacePath)"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "dc",
+                "href": "fuse/drawcontext",
+                "title": "DrawContext",
+                "fullyQualifiedTitle": "Fuse.DrawContext"
+              },
+              {
+                "name": "elm",
+                "href": "fuse/elements/element",
+                "title": "Element",
+                "fullyQualifiedTitle": "Fuse.Elements.Element"
+              },
+              {
+                "name": "drawable",
+                "href": "fuse/drawing/isurfacedrawable",
+                "title": "ISurfaceDrawable",
+                "fullyQualifiedTitle": "Fuse.Drawing.ISurfaceDrawable"
+              }
+            ],
+            "id": {
+              "id": "fuse/drawing/surface/draw_d1447ed7",
+              "parentId": "fuse/drawing/surface",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/surface/draw_d1447ed7",
+              "href": "fuse/drawing/surface/draw_d1447ed7"
+            },
+            "titles": {
+              "indexTitle": "Draw(DrawContext, Element, ISurfaceDrawable)",
+              "fullyQualifiedIndexTitle": "Fuse.Drawing.Surface.Draw(Fuse.DrawContext, Fuse.Elements.Element, Fuse.Drawing.ISurfaceDrawable)"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Call this method instead of `drawable.Draw` directly. This will configure the canvas correctly.",
+              "full": "Call this method instead of `drawable.Draw` directly. This will configure the canvas correctly.\n\nThis assumes the canvas has been configured to have coordinates local to the drawable already."
+            },
+            "parameters": [
+              {
+                "name": "drawable",
+                "href": "fuse/drawing/isurfacedrawable",
+                "title": "ISurfaceDrawable",
+                "fullyQualifiedTitle": "Fuse.Drawing.ISurfaceDrawable"
+              }
+            ],
+            "id": {
+              "id": "fuse/drawing/surface/drawlocal_18f5e4ca",
+              "parentId": "fuse/drawing/surface",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/surface/drawlocal_18f5e4ca",
+              "href": "fuse/drawing/surface/drawlocal_18f5e4ca"
+            },
+            "titles": {
+              "indexTitle": "DrawLocal(ISurfaceDrawable)",
+              "fullyQualifiedIndexTitle": "Fuse.Drawing.Surface.DrawLocal(Fuse.Drawing.ISurfaceDrawable)"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Ends drawing. All drawing called after `Begin` and to now must be completed by now. This copies the resulting image to the desired output setup in `Begin`.",
+              "full": "Ends drawing. All drawing called after `Begin` and to now must be completed by now. This copies the resulting image to the desired output setup in `Begin`."
+            },
+            "id": {
+              "id": "fuse/drawing/surface/end",
+              "parentId": "fuse/drawing/surface",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/surface/end",
+              "href": "fuse/drawing/surface/end"
+            },
+            "titles": {
+              "indexTitle": "End",
+              "fullyQualifiedIndexTitle": "Fuse.Drawing.Surface.End"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Fills the path with the given brush.",
+              "full": "Fills the path with the given brush.\n\nThis brush must have been passed to `Prepare` previously."
+            },
+            "parameters": [
+              {
+                "name": "path",
+                "href": "fuse/drawing/surfacepath",
+                "title": "SurfacePath",
+                "fullyQualifiedTitle": "Fuse.Drawing.SurfacePath"
+              },
+              {
+                "name": "fill",
+                "href": "fuse/drawing/brush",
+                "title": "Brush",
+                "fullyQualifiedTitle": "Fuse.Drawing.Brush"
+              }
+            ],
+            "id": {
+              "id": "fuse/drawing/surface/fillpath_17d00f4f",
+              "parentId": "fuse/drawing/surface",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/surface/fillpath_17d00f4f",
+              "href": "fuse/drawing/surface/fillpath_17d00f4f"
+            },
+            "titles": {
+              "indexTitle": "FillPath(SurfacePath, Brush)",
+              "fullyQualifiedIndexTitle": "Fuse.Drawing.Surface.FillPath(Fuse.Drawing.SurfacePath, Fuse.Drawing.Brush)"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Removes the transform added via`PushTransform`",
+              "full": "Removes the transform added via`PushTransform`"
+            },
+            "id": {
+              "id": "fuse/drawing/surface/poptransform",
+              "parentId": "fuse/drawing/surface",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/surface/poptransform",
+              "href": "fuse/drawing/surface/poptransform"
+            },
+            "titles": {
+              "indexTitle": "PopTransform",
+              "fullyQualifiedIndexTitle": "Fuse.Drawing.Surface.PopTransform"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Prepares this brush for drawing. If this is called a second time with the same `Brush` it indicates the properties of that brush have changed.",
+              "full": "Prepares this brush for drawing. If this is called a second time with the same `Brush` it indicates the properties of that brush have changed."
+            },
+            "parameters": [
+              {
+                "name": "brush",
+                "href": "fuse/drawing/brush",
+                "title": "Brush",
+                "fullyQualifiedTitle": "Fuse.Drawing.Brush"
+              }
+            ],
+            "id": {
+              "id": "fuse/drawing/surface/prepare_42c05a42",
+              "parentId": "fuse/drawing/surface",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/surface/prepare_42c05a42",
+              "href": "fuse/drawing/surface/prepare_42c05a42"
+            },
+            "titles": {
+              "indexTitle": "Prepare(Brush)",
+              "fullyQualifiedIndexTitle": "Fuse.Drawing.Surface.Prepare(Fuse.Drawing.Brush)"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Concatenates a transform to be used for rendering paths (FillPath and StrokePath).",
+              "full": "Concatenates a transform to be used for rendering paths (FillPath and StrokePath).\n\nThis should really be a 2x3 transform:\n    [ M11 M12 ]\n    [ M21 M22]\n    [ M31 M32 ]\nOnly 2D translation, rotation, and scaling need should be supported."
+            },
+            "parameters": [
+              {
+                "name": "transform",
+                "href": "uno/float4x4",
+                "title": "float4x4",
+                "fullyQualifiedTitle": "float4x4"
+              }
+            ],
+            "id": {
+              "id": "fuse/drawing/surface/pushtransform_480923c4",
+              "parentId": "fuse/drawing/surface",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/surface/pushtransform_480923c4",
+              "href": "fuse/drawing/surface/pushtransform_480923c4"
+            },
+            "titles": {
+              "indexTitle": "PushTransform(float4x4)",
+              "fullyQualifiedIndexTitle": "Fuse.Drawing.Surface.PushTransform(float4x4)"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "size",
+                "href": "uno/float2",
+                "title": "float2",
+                "fullyQualifiedTitle": "float2"
+              }
+            ],
+            "id": {
+              "id": "fuse/drawing/surface/setelementsize_92485797",
+              "parentId": "fuse/drawing/surface",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/surface/setelementsize_92485797",
+              "href": "fuse/drawing/surface/setelementsize_92485797"
+            },
+            "titles": {
+              "indexTitle": "SetElementSize(float2)",
+              "fullyQualifiedIndexTitle": "Fuse.Drawing.Surface.SetElementSize(float2)"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Strokes the path with the given stroke.",
+              "full": "Strokes the path with the given stroke.\n\nThis stroke, and it's brush, must have been passed to `Prepare` previously."
+            },
+            "parameters": [
+              {
+                "name": "path",
+                "href": "fuse/drawing/surfacepath",
+                "title": "SurfacePath",
+                "fullyQualifiedTitle": "Fuse.Drawing.SurfacePath"
+              },
+              {
+                "name": "stroke",
+                "href": "fuse/drawing/stroke",
+                "title": "Stroke",
+                "fullyQualifiedTitle": "Fuse.Drawing.Stroke"
+              }
+            ],
+            "id": {
+              "id": "fuse/drawing/surface/strokepath_eda2e3a4",
+              "parentId": "fuse/drawing/surface",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/surface/strokepath_eda2e3a4",
+              "href": "fuse/drawing/surface/strokepath_eda2e3a4"
+            },
+            "titles": {
+              "indexTitle": "StrokePath(SurfacePath, Stroke)",
+              "fullyQualifiedIndexTitle": "Fuse.Drawing.Surface.StrokePath(Fuse.Drawing.SurfacePath, Fuse.Drawing.Stroke)"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Indicates the brush will no longer be used for drawing. It's resources can be freed.",
+              "full": "Indicates the brush will no longer be used for drawing. It's resources can be freed."
+            },
+            "parameters": [
+              {
+                "name": "brush",
+                "href": "fuse/drawing/brush",
+                "title": "Brush",
+                "fullyQualifiedTitle": "Fuse.Drawing.Brush"
+              }
+            ],
+            "id": {
+              "id": "fuse/drawing/surface/unprepare_42c05a42",
+              "parentId": "fuse/drawing/surface",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/surface/unprepare_42c05a42",
+              "href": "fuse/drawing/surface/unprepare_42c05a42"
+            },
+            "titles": {
+              "indexTitle": "Unprepare(Brush)",
+              "fullyQualifiedIndexTitle": "Fuse.Drawing.Surface.Unprepare(Fuse.Drawing.Brush)"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "uno/object",
+            "parentId": "uno",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "intrinsic"
+            ]
+          },
+          "uri": {
+            "idUri": "uno/object",
+            "href": "uno/object"
+          },
+          "titles": {
+            "indexTitle": "object",
+            "fullyQualifiedIndexTitle": "object"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "parameters": [
+              {
+                "name": "o",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              }
+            ],
+            "id": {
+              "id": "fuse/drawing/surface/equals_a09c80e3",
+              "parentId": "fuse/drawing/surface",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/surface/equals_a09c80e3",
+              "href": "uno/object/equals_a09c80e3",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Equals(object)",
+              "fullyQualifiedIndexTitle": "Uno.Object.Equals(object)"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/int",
+              "title": "int",
+              "fullyQualifiedTitle": "int"
+            },
+            "id": {
+              "id": "fuse/drawing/surface/gethashcode",
+              "parentId": "fuse/drawing/surface",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/surface/gethashcode",
+              "href": "uno/object/gethashcode",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetHashCode",
+              "fullyQualifiedIndexTitle": "Uno.Object.GetHashCode"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/type",
+              "title": "Type",
+              "fullyQualifiedTitle": "Uno.Type"
+            },
+            "id": {
+              "id": "fuse/drawing/surface/gettype",
+              "parentId": "fuse/drawing/surface",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/surface/gettype",
+              "href": "uno/object/gettype",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetType",
+              "fullyQualifiedIndexTitle": "Uno.Object.GetType"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "id": {
+              "id": "fuse/drawing/surface/tostring",
+              "parentId": "fuse/drawing/surface",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/drawing/surface/tostring",
+              "href": "uno/object/tostring",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "ToString",
+              "fullyQualifiedIndexTitle": "Uno.Object.ToString"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

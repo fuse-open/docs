@@ -1,0 +1,71 @@
+{
+  "entity": {
+    "location": {
+      "namespaceTitle": "Fuse.Controls",
+      "namespaceUri": "fuse/controls",
+      "packageName": "Fuse.Controls.CameraView",
+      "packageVersion": "0.9.0-rc2"
+    },
+    "parameters": [
+      {
+        "name": "context",
+        "href": "fuse/scripting/context",
+        "title": "Context",
+        "fullyQualifiedTitle": "Fuse.Scripting.Context"
+      },
+      {
+        "name": "self",
+        "href": "fuse/controls/cameraviewbase",
+        "title": "CameraViewBase",
+        "fullyQualifiedTitle": "Fuse.Controls.CameraViewBase"
+      },
+      {
+        "name": "args",
+        "href": "uno/object",
+        "title": "object[]",
+        "fullyQualifiedTitle": "object[]"
+      }
+    ],
+    "returns": {
+      "href": "uno/threading/future_1",
+      "title": "Future<CameraInfo>",
+      "fullyQualifiedTitle": "Uno.Threading.Future<Fuse.Controls.CameraInfo>"
+    },
+    "id": {
+      "id": "fuse/controls/cameraviewbase/getcamerainfo_62888d26",
+      "parentId": "fuse/controls/cameraviewbase",
+      "type": "JsMethod",
+      "modifiers": [
+        "private",
+        "static"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/controls/cameraviewbase/getcamerainfo_62888d26",
+      "href": "fuse/controls/cameraviewbase/getcamerainfo_62888d26"
+    },
+    "titles": {
+      "pageTitle": "CameraViewBase.getCameraInfo Method (Context, CameraViewBase, object[])",
+      "navigationTitle": "getCameraInfo Method (Context, CameraViewBase, object[])",
+      "fullTitle": "Fuse.Controls.CameraViewBase.getCameraInfo",
+      "indexTitle": "getCameraInfo(Context, CameraViewBase, object[])",
+      "fullyQualifiedIndexTitle": "Fuse.Controls.CameraViewBase.getCameraInfo(Fuse.Scripting.Context, Fuse.Controls.CameraViewBase, object[])"
+    },
+    "syntax": {
+      "uno": "private static Uno.Threading.Future<Fuse.Controls.CameraInfo> getCameraInfo(Fuse.Scripting.Context context, Fuse.Controls.CameraViewBase self, object[] args) {}"
+    },
+    "comment": {
+      "brief": "Get CameraInfo",
+      "full": "Get CameraInfo\n\nReturns a promise that resolves to an object containing information about the camera state. The object will always\ncontain the current FlashMode, CaptureMode and CameraFacing.\n\nThis promise does not resolve until the camera is fully loaded. When the camera is loaded this promise resolves immediatley.\n\n    <CameraView ux:Name=\"Camera\" />\n    <JavaScript>\n        Camera.getCameraInfo()\n            .then(function(info) {\n                console.log(info[Camera.INFO_FLASH_MODE]);\n                console.log(info[Camera.INFO_CAPTURE_MODE]);\n                console.log(info[Camera.INFO_CAMERA_FACING]);\n                console.log(info[Camera.INFO_SUPPORTED_FLASH_MODES].join());\n            })\n            .catch(function(error) { });\n    </JavaScript>\n\nOn Android the user should set the output resolution for photos, while on iOS you cannot set a specific resolution.\nIn this abstraction we try to pick a sensible resolution based on the max width and height of OpenGL textures and\nthe aspect of the camera preview. However you might want to configure this yourself. Due to this platform difference\n`getCameraInfo` will return additional information on Android, an array of available photo resolutions:\n\n    <CameraView ux:Name=\"Camera\" />\n    <JavaScript>\n        Camera.getCameraInfo()\n            .then(function(info) {\n                // check if INFO_PHOTO_RESOLUTIONS exists. It will not on iOS\n                if (Camera.INFO_PHOTO_RESOLUTIONS in info) {\n                    info[Camera.INFO_PHOTO_RESOLUTIONS].forEach(function(e) {\n                        console.log(e.width + \"x\" + e.height);\n                    });\n                }\n            })\n            .catch(function(error) { });\n    </JavaScript>",
+      "attributes": {
+        "scriptMethod": {
+          "name": "getCameraInfo",
+          "parameters": [
+            ""
+          ]
+        }
+      }
+    }
+  },
+  "tableOfContents": {}
+}

@@ -1,0 +1,44 @@
+{
+  "entity": {
+    "location": {
+      "namespaceTitle": "Fuse.Input",
+      "namespaceUri": "fuse/input",
+      "packageName": "Fuse.Nodes",
+      "packageVersion": "1.8.0-rc2"
+    },
+    "parameters": [],
+    "returns": {
+      "href": "fuse/input/gesturepriorityconfig",
+      "title": "GesturePriorityConfig",
+      "fullyQualifiedTitle": "Fuse.Input.GesturePriorityConfig"
+    },
+    "id": {
+      "id": "fuse/input/igesture/priority",
+      "parentId": "fuse/input/igesture",
+      "type": "Property",
+      "modifiers": [
+        "public",
+        "abstract"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/input/igesture/priority",
+      "href": "fuse/input/igesture/priority"
+    },
+    "titles": {
+      "pageTitle": "IGesture.Priority Property",
+      "navigationTitle": "Priority Property",
+      "fullTitle": "Fuse.Input.IGesture.Priority",
+      "indexTitle": "Priority",
+      "fullyQualifiedIndexTitle": "Fuse.Input.IGesture.Priority"
+    },
+    "syntax": {
+      "uno": "public abstract Fuse.Input.GesturePriorityConfig Priority { get; }"
+    },
+    "comment": {
+      "brief": "Obtains the priority settings of the gesture.",
+      "full": "Obtains the priority settings of the gesture.\n\nThese values may change during the handling of a gesture. If a handler recognizes multiple gestures or compound gestures, it may decide to change the priority during handling.\n\n## priority\n\nThe primary priority of the gesture.\n\n## significance\n\nThe intended visual significance of the gesture, if applied, based on the current pointer feedback. This is a value measured in points.\n\nFor example, if the point has moved 5 points to the left, a Swiper may report 5 to indicate how much it would move (this is a logical movement, since the true animation depends on the animators and triggers being used).\n\n## adjustment\n\nAn adjustment can be used to adjust the ordering between two gestures that have the same priority. This adjust the order in which captures may be elevated, giving the one with a higher adjustment first chance to escalated to a hard capture.\n\nIt's used, for example, to resolve that edge swipes resolve prior to directional swipes even if the SwipeGesture's are in different nodes.\n\nThis should generally return `0`. A typical control will not modify this value."
+    }
+  },
+  "tableOfContents": {}
+}

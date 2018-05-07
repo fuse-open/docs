@@ -1,0 +1,43 @@
+{
+  "entity": {
+    "location": {
+      "namespaceTitle": "Fuse.Elements",
+      "namespaceUri": "fuse/elements",
+      "packageName": "Fuse.Elements",
+      "packageVersion": "1.8.0-rc2"
+    },
+    "returns": {
+      "href": "fuse/placedhandler",
+      "title": "PlacedHandler (object, PlacedArgs)",
+      "fullyQualifiedTitle": "Fuse.PlacedHandler (object, Fuse.PlacedArgs)"
+    },
+    "uxProperties": {},
+    "id": {
+      "id": "fuse/elements/element/placed",
+      "parentId": "fuse/elements/element",
+      "type": "UxEvent",
+      "modifiers": [
+        "public"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/elements/element/placed",
+      "href": "fuse/elements/element/placed"
+    },
+    "titles": {
+      "pageTitle": "Element.Placed Event",
+      "navigationTitle": "Placed Event",
+      "fullTitle": "Fuse.Elements.Element.Placed",
+      "indexTitle": "Placed",
+      "fullyQualifiedIndexTitle": "Fuse.Elements.Element.Placed"
+    },
+    "syntax": {
+      "uno": "public Fuse.PlacedHandler (object, Fuse.PlacedArgs) Placed {}"
+    },
+    "comment": {
+      "brief": "Raised when the element receives a new position and size by the layout engine.",
+      "full": "Raised when the element receives a new position and size by the layout engine.\n\nEvent handlers are called with an instance of [PlacedArgs](api:fuse/placedargs).\n\nAll coordinates are in the parent node's local space, in points.\n\n> **Note:** Due to the asynchronous nature of JavaScript and the way it communicates with UX,\n> there is no guarantee of exactly _when_ an event handler will fire. For this reason,\n> **we strongly discourage using `Placed` or JavaScript in general for controlling layout**,\n> as doing so can lead to flickering and other artifacts.\n\n## Example\n\n    <JavaScript>\n        function panelPlaced(args) {\n            console.dir(\"New position:\", [args.x, args.y]);\n            console.dir(\"New size:\", [args.width, args.height]);\n        }\n\n        module.exports = { panelPlaced: panelPlaced };\n    </JavaScript>\n\n    <Panel Placed=\"{panelPlaced}\"/>"
+    }
+  },
+  "tableOfContents": {}
+}

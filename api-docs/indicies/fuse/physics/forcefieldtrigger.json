@@ -1,0 +1,108 @@
+{
+  "root": {
+    "id": {
+      "id": "fuse/physics/forcefieldtrigger",
+      "parentId": "fuse/physics",
+      "type": "Class",
+      "modifiers": [
+        "public",
+        "abstract"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/physics/forcefieldtrigger",
+      "href": "fuse/physics/forcefieldtrigger"
+    },
+    "titles": {
+      "indexTitle": "ForceFieldTrigger",
+      "fullyQualifiedIndexTitle": "Fuse.Physics.ForceFieldTrigger"
+    }
+  },
+  "descendants": [
+    {
+      "comment": {
+        "brief": "Triggers as a draggable element enters the force field.",
+        "full": "Triggers as a draggable element enters the force field.\n\nAs it is a pulse trigger, the forward animation will play in one continous run when the trigger is activated, and play the backwards animation continously when deactivated.\n\n## Example\nIn the following example, a circle in the middle of the screen flashes green if a smaller, blue circle, is moved into its force field:\n\n    <Panel>\n        <Panel Width=\"60\" Height=\"60\" Alignment=\"BottomLeft\">\n            <Circle Color=\"#42A5F5\" />\n            <Draggable />\n            <EnteredForceField ForceField=\"centerAttract\">\n                <Change centerCircle.Color=\"#66BB6A\" Duration=\".5\"/>\n            </EnteredForceField>\n        </Panel>\n        <Panel Width=\"200\" Height=\"200\" Alignment=\"Center\" >\n            <Circle ux:Name=\"centerCircle\" Color=\"#EF5350\" />\n            <PointAttractor ux:Name=\"centerAttract\" Radius=\"150\" Strength=\"250\" />\n        </Panel>\n    </Panel>\n    <Panel Alignment=\"BottomLeft\" Width=\"100\" Height=\"100\">\n        <PointAttractor Radius=\"500\" Strength=\"100\" Offset=\"0,0,0\"/>\n    </Panel>"
+      },
+      "id": {
+        "id": "fuse/physics/enteredforcefield",
+        "parentId": "fuse/physics",
+        "type": "UxClass",
+        "modifiers": [
+          "public"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/physics/enteredforcefield",
+        "href": "fuse/physics/enteredforcefield"
+      },
+      "titles": {
+        "indexTitle": "EnteredForceField",
+        "fullyQualifiedIndexTitle": "Fuse.Physics.EnteredForceField"
+      }
+    },
+    {
+      "comment": {
+        "brief": "Triggers as a draggable element leaves the force field.",
+        "full": "Triggers as a draggable element leaves the force field.\n\nAs it is a pulse trigger, the forward animation will play in one continous run when the trigger is activated, and play the backwards animation continously when deactivated.\n\n## Example\nIn the following example, a circle with a `PointAttractor` in the middle of the screen flashes green if a smaller, blue circle, is removed from the forcefield.\n\n    <Panel>\n        <Panel Width=\"60\" Height=\"60\" Alignment=\"Center\">\n            <Circle Color=\"#42A5F5\" />\n            <Draggable />\n            <ExitedForceField ForceField=\"centerAttract\">\n                <Change centerCircle.Color=\"#66BB6A\" Duration=\".5\"/>\n            </ExitedForceField>\n        </Panel>\n        <Panel Width=\"200\" Height=\"200\" Alignment=\"Center\" >\n            <Circle ux:Name=\"centerCircle\" Color=\"#EF5350\" />\n            <PointAttractor ux:Name=\"centerAttract\" Radius=\"150\" Strength=\"250\" />\n        </Panel>\n    </Panel>"
+      },
+      "id": {
+        "id": "fuse/physics/exitedforcefield",
+        "parentId": "fuse/physics",
+        "type": "UxClass",
+        "modifiers": [
+          "public"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/physics/exitedforcefield",
+        "href": "fuse/physics/exitedforcefield"
+      },
+      "titles": {
+        "indexTitle": "ExitedForceField",
+        "fullyQualifiedIndexTitle": "Fuse.Physics.ExitedForceField"
+      }
+    },
+    {
+      "id": {
+        "id": "fuse/physics/forcefieldeventtrigger",
+        "parentId": "fuse/physics",
+        "type": "Class",
+        "modifiers": [
+          "public",
+          "abstract"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/physics/forcefieldeventtrigger",
+        "href": "fuse/physics/forcefieldeventtrigger"
+      },
+      "titles": {
+        "indexTitle": "ForceFieldEventTrigger",
+        "fullyQualifiedIndexTitle": "Fuse.Physics.ForceFieldEventTrigger"
+      }
+    },
+    {
+      "comment": {
+        "brief": "Animates a draggable element depending on how close it is to a point attractor",
+        "full": "Animates a draggable element depending on how close it is to a point attractor\n\nThe animation will animate from 0(outside the forcefield radius), to 1(at the center of the forcefield), unless `From` and `To` are used to specify a custom range. This is the same as using a `RangeAdapter`.\n\n# Example\nIn the following example, a red circle will get smaller as a blue, filled circle nears the center `PointAttract`, `centerAttract`. Because `To` is set to `1.3` on the `InForceFieldAnimation`, the animation will never animate further than `0.77`.\n\n    <Panel>\n        <Panel Width=\"60\" Height=\"60\" Alignment=\"BottomLeft\">\n            <Circle Color=\"#42A5F5\" />\n            <Draggable />\n            <InForceFieldAnimation  ForceField=\"centerAttract\" From=\"0\" To=\"1.3\">\n                <Scale Target=\"centerCircle\" Factor=\".0\" />\n            </InForceFieldAnimation>\n        </Panel>\n        <Panel Width=\"300\" Height=\"300\" Alignment=\"Center\" >\n            <Circle ux:Name=\"centerCircle\" >\n                <Stroke Color=\"#F00\" Width=\"4\"/>\n            </Circle>\n            <PointAttractor ux:Name=\"centerAttract\" Radius=\"150\" Strength=\"250\" />\n        </Panel>\n    </Panel>\n    <Panel Alignment=\"BottomLeft\" Width=\"100\" Height=\"100\">\n        <PointAttractor Radius=\"300\" Strength=\"150\" Offset=\"0,0,0\"/>\n    </Panel>"
+      },
+      "id": {
+        "id": "fuse/physics/inforcefieldanimation",
+        "parentId": "fuse/physics",
+        "type": "UxClass",
+        "modifiers": [
+          "public"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/physics/inforcefieldanimation",
+        "href": "fuse/physics/inforcefieldanimation"
+      },
+      "titles": {
+        "indexTitle": "InForceFieldAnimation",
+        "fullyQualifiedIndexTitle": "Fuse.Physics.InForceFieldAnimation"
+      }
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "entity": {
+    "location": {
+      "namespaceTitle": "Fuse.Reactive",
+      "namespaceUri": "fuse/reactive",
+      "packageName": "Fuse.Reactive.Bindings",
+      "packageVersion": "1.8.0-rc2"
+    },
+    "parameters": [],
+    "returns": {
+      "href": "fuse/reactive/instancedefaults",
+      "title": "InstanceDefaults",
+      "fullyQualifiedTitle": "Fuse.Reactive.InstanceDefaults"
+    },
+    "uxProperties": {},
+    "values": [
+      {
+        "uri": "fuse/reactive/instancedefaults/standard",
+        "title": "Standard",
+        "comment": {
+          "brief": "The standard strategy is used: if no matching specifiers use all templates, or the ones marked default if they exist",
+          "full": "The standard strategy is used: if no matching specifiers use all templates, or the ones marked default if they exist"
+        }
+      },
+      {
+        "uri": "fuse/reactive/instancedefaults/default",
+        "title": "Default",
+        "comment": {
+          "brief": "Only ones marked default will be used as defaults",
+          "full": "Only ones marked default will be used as defaults"
+        }
+      },
+      {
+        "uri": "fuse/reactive/instancedefaults/none",
+        "title": "None",
+        "comment": {
+          "brief": "No defaults will be used",
+          "full": "No defaults will be used"
+        }
+      }
+    ],
+    "id": {
+      "id": "fuse/reactive/instantiator/defaults",
+      "parentId": "fuse/reactive/instantiator",
+      "type": "UxProperty",
+      "modifiers": [
+        "public"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/reactive/instantiator/defaults",
+      "href": "fuse/reactive/instantiator/defaults"
+    },
+    "titles": {
+      "pageTitle": "Instantiator.Defaults Property",
+      "navigationTitle": "Defaults Property",
+      "fullTitle": "Fuse.Reactive.Instantiator.Defaults",
+      "indexTitle": "Defaults",
+      "fullyQualifiedIndexTitle": "Fuse.Reactive.Instantiator.Defaults"
+    },
+    "syntax": {
+      "uno": "public Fuse.Reactive.InstanceDefaults Defaults { get; get; }"
+    },
+    "comment": {
+      "brief": "Which templates are instantiating when nothing else matches.",
+      "full": "Which templates are instantiating when nothing else matches.\n\nIt is recommend to specified `Defaults=\"Default\"` or `Defaults=\"None\"` when using an expression, or binding, for the matching fields. This avoids an issue where the field may be momentarily unset, resulting in all templates being instantiated.\n\nThe default is `Standard`: if none of `Match`, `MatchKey` or `TemplateKey` are specified the default will be created. If there is no explicitly marked default then all templates are instantiated.\n\nA default template is marked wtih `ux:DefaultTemplate=\"true\"`\n\n    <Each Items=\"{items}\" MatchKey=\"{type}\">\n        <FrontCard ux:Template=\"front\"/>\n        <BackCard ux:Template=\"back\"/>\n        <DefaultCard ux:DefaultTemplate=\"true\"/>\n    </Each>"
+    }
+  },
+  "tableOfContents": {}
+}

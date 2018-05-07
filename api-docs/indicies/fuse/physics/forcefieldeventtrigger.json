@@ -1,0 +1,67 @@
+{
+  "root": {
+    "id": {
+      "id": "fuse/physics/forcefieldeventtrigger",
+      "parentId": "fuse/physics",
+      "type": "Class",
+      "modifiers": [
+        "public",
+        "abstract"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/physics/forcefieldeventtrigger",
+      "href": "fuse/physics/forcefieldeventtrigger"
+    },
+    "titles": {
+      "indexTitle": "ForceFieldEventTrigger",
+      "fullyQualifiedIndexTitle": "Fuse.Physics.ForceFieldEventTrigger"
+    }
+  },
+  "descendants": [
+    {
+      "comment": {
+        "brief": "Triggers as a draggable element enters the force field.",
+        "full": "Triggers as a draggable element enters the force field.\n\nAs it is a pulse trigger, the forward animation will play in one continous run when the trigger is activated, and play the backwards animation continously when deactivated.\n\n## Example\nIn the following example, a circle in the middle of the screen flashes green if a smaller, blue circle, is moved into its force field:\n\n    <Panel>\n        <Panel Width=\"60\" Height=\"60\" Alignment=\"BottomLeft\">\n            <Circle Color=\"#42A5F5\" />\n            <Draggable />\n            <EnteredForceField ForceField=\"centerAttract\">\n                <Change centerCircle.Color=\"#66BB6A\" Duration=\".5\"/>\n            </EnteredForceField>\n        </Panel>\n        <Panel Width=\"200\" Height=\"200\" Alignment=\"Center\" >\n            <Circle ux:Name=\"centerCircle\" Color=\"#EF5350\" />\n            <PointAttractor ux:Name=\"centerAttract\" Radius=\"150\" Strength=\"250\" />\n        </Panel>\n    </Panel>\n    <Panel Alignment=\"BottomLeft\" Width=\"100\" Height=\"100\">\n        <PointAttractor Radius=\"500\" Strength=\"100\" Offset=\"0,0,0\"/>\n    </Panel>"
+      },
+      "id": {
+        "id": "fuse/physics/enteredforcefield",
+        "parentId": "fuse/physics",
+        "type": "UxClass",
+        "modifiers": [
+          "public"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/physics/enteredforcefield",
+        "href": "fuse/physics/enteredforcefield"
+      },
+      "titles": {
+        "indexTitle": "EnteredForceField",
+        "fullyQualifiedIndexTitle": "Fuse.Physics.EnteredForceField"
+      }
+    },
+    {
+      "comment": {
+        "brief": "Triggers as a draggable element leaves the force field.",
+        "full": "Triggers as a draggable element leaves the force field.\n\nAs it is a pulse trigger, the forward animation will play in one continous run when the trigger is activated, and play the backwards animation continously when deactivated.\n\n## Example\nIn the following example, a circle with a `PointAttractor` in the middle of the screen flashes green if a smaller, blue circle, is removed from the forcefield.\n\n    <Panel>\n        <Panel Width=\"60\" Height=\"60\" Alignment=\"Center\">\n            <Circle Color=\"#42A5F5\" />\n            <Draggable />\n            <ExitedForceField ForceField=\"centerAttract\">\n                <Change centerCircle.Color=\"#66BB6A\" Duration=\".5\"/>\n            </ExitedForceField>\n        </Panel>\n        <Panel Width=\"200\" Height=\"200\" Alignment=\"Center\" >\n            <Circle ux:Name=\"centerCircle\" Color=\"#EF5350\" />\n            <PointAttractor ux:Name=\"centerAttract\" Radius=\"150\" Strength=\"250\" />\n        </Panel>\n    </Panel>"
+      },
+      "id": {
+        "id": "fuse/physics/exitedforcefield",
+        "parentId": "fuse/physics",
+        "type": "UxClass",
+        "modifiers": [
+          "public"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/physics/exitedforcefield",
+        "href": "fuse/physics/exitedforcefield"
+      },
+      "titles": {
+        "indexTitle": "ExitedForceField",
+        "fullyQualifiedIndexTitle": "Fuse.Physics.ExitedForceField"
+      }
+    }
+  ]
+}

@@ -1,0 +1,421 @@
+{
+  "entity": {
+    "base": {
+      "id": {
+        "id": "uno/object",
+        "parentId": "uno",
+        "type": "Class",
+        "modifiers": [
+          "public",
+          "intrinsic"
+        ]
+      },
+      "uri": {
+        "idUri": "uno/object",
+        "href": "uno/object"
+      },
+      "titles": {
+        "indexTitle": "object",
+        "fullyQualifiedIndexTitle": "object"
+      }
+    },
+    "location": {
+      "namespaceTitle": "Fuse",
+      "namespaceUri": "fuse",
+      "packageName": "Fuse.Common",
+      "packageVersion": "1.8.0-rc2"
+    },
+    "inheritance": {
+      "root": {
+        "uri": "uno/object",
+        "title": "object",
+        "children": [
+          {
+            "uri": "fuse/namevaluepair",
+            "title": "Fuse.NameValuePair",
+            "children": [],
+            "isCurrent": true
+          }
+        ],
+        "isAncestor": true
+      },
+      "hasInheritance": true
+    },
+    "implementedInterfaces": [
+      {
+        "comment": {
+          "brief": "Represents a key-value object, where the keys can be enumerated and looked up by string name.",
+          "full": "Represents a key-value object, where the keys can be enumerated and looked up by string name.\n\nThe enumerable keys do not neccessarily correspond to Uno properties on the object.\n\nAllthough read-only through this interface, the object is not neccessarily immutable.\nChanges to the object can only happen on the UI thread. This means the UI thread can safely\nread properties from this object.\n\nIf the object also supports `Fuse.Reactive.IObservableObject`, consumers can subscribe\nto receive change notifications.",
+          "attributes": {
+            "deprecated": true
+          }
+        },
+        "id": {
+          "id": "fuse/iobject",
+          "parentId": "fuse",
+          "type": "Interface",
+          "modifiers": [
+            "public",
+            "abstract"
+          ]
+        },
+        "uri": {
+          "idUri": "fuse/iobject",
+          "href": "fuse/iobject"
+        },
+        "titles": {
+          "indexTitle": "IObject",
+          "fullyQualifiedIndexTitle": "Fuse.IObject"
+        }
+      }
+    ],
+    "id": {
+      "id": "fuse/namevaluepair",
+      "parentId": "fuse",
+      "type": "Class",
+      "modifiers": [
+        "public",
+        "sealed"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/namevaluepair",
+      "href": "fuse/namevaluepair"
+    },
+    "titles": {
+      "pageTitle": "NameValuePair Class",
+      "navigationTitle": "NameValuePair Class",
+      "fullTitle": "Fuse.NameValuePair",
+      "indexTitle": "NameValuePair",
+      "fullyQualifiedIndexTitle": "Fuse.NameValuePair"
+    },
+    "syntax": {
+      "uno": "public sealed class NameValuePair : Fuse.IObject {}"
+    },
+    "comment": {
+      "brief": "Represents a name-value pair, as denoted by `name: value` in UX expressions.",
+      "full": "Represents a name-value pair, as denoted by `name: value` in UX expressions.\n\nImplements `IObject`, which means the `NameValuePair` can be viewed as an object\nwith a single property.\n\nImplements `IArray`, which means the `NameValuePair` can be viewed as an array\nwith a single element.\n\nAn `IArray` containing some `NameValuePairs` can be converted to an `IObject`\nimplementation containing all those properties using the `ObjectFromArray` method."
+    }
+  },
+  "tableOfContents": {
+    "constructors": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/namevaluepair",
+            "parentId": "fuse",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "sealed"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/namevaluepair",
+            "href": "fuse/namevaluepair"
+          },
+          "titles": {
+            "indexTitle": "NameValuePair",
+            "fullyQualifiedIndexTitle": "Fuse.NameValuePair"
+          }
+        },
+        "items": [
+          {
+            "parameters": [
+              {
+                "name": "name",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              },
+              {
+                "name": "value",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              }
+            ],
+            "id": {
+              "id": "fuse/namevaluepair/_ctor_d062e5a9",
+              "parentId": "fuse/namevaluepair",
+              "type": "Constructor",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/namevaluepair/_ctor_d062e5a9",
+              "href": "fuse/namevaluepair/_ctor_d062e5a9"
+            },
+            "titles": {
+              "indexTitle": "NameValuePair(string, object)",
+              "fullyQualifiedIndexTitle": "Fuse.NameValuePair.NameValuePair(string, object)"
+            }
+          }
+        ]
+      }
+    ],
+    "properties": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/namevaluepair",
+            "parentId": "fuse",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "sealed"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/namevaluepair",
+            "href": "fuse/namevaluepair"
+          },
+          "titles": {
+            "indexTitle": "NameValuePair",
+            "fullyQualifiedIndexTitle": "Fuse.NameValuePair"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "id": {
+              "id": "fuse/namevaluepair/name",
+              "parentId": "fuse/namevaluepair",
+              "type": "Property",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/namevaluepair/name",
+              "href": "fuse/namevaluepair/name"
+            },
+            "titles": {
+              "indexTitle": "Name",
+              "fullyQualifiedIndexTitle": "Fuse.NameValuePair.Name"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/object",
+              "title": "object",
+              "fullyQualifiedTitle": "object"
+            },
+            "id": {
+              "id": "fuse/namevaluepair/value",
+              "parentId": "fuse/namevaluepair",
+              "type": "Property",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/namevaluepair/value",
+              "href": "fuse/namevaluepair/value"
+            },
+            "titles": {
+              "indexTitle": "Value",
+              "fullyQualifiedIndexTitle": "Fuse.NameValuePair.Value"
+            }
+          }
+        ]
+      }
+    ],
+    "methods": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/namevaluepair",
+            "parentId": "fuse",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "sealed"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/namevaluepair",
+            "href": "fuse/namevaluepair"
+          },
+          "titles": {
+            "indexTitle": "NameValuePair",
+            "fullyQualifiedIndexTitle": "Fuse.NameValuePair"
+          }
+        },
+        "items": [
+          {
+            "comment": {
+              "brief": "Creates an IObject implementation from an `IArray` of `NameValuePair`.\nIf the items are not `NameValuePair` instances, or there is a duplicate, they will be\nadded with an indexed key value (unspecified) -- this is to pass through information\nto later error detection rather than silently discarding it.",
+              "full": "Creates an IObject implementation from an `IArray` of `NameValuePair`.\nIf the items are not `NameValuePair` instances, or there is a duplicate, they will be\nadded with an indexed key value (unspecified) -- this is to pass through information\nto later error detection rather than silently discarding it.\n\nTODO: we probably don't need this function after  this issue is done:\nhttps://github.com/fusetools/fuselibs-public/issues/233"
+            },
+            "returns": {
+              "href": "fuse/iobject",
+              "title": "IObject",
+              "fullyQualifiedTitle": "Fuse.IObject"
+            },
+            "parameters": [
+              {
+                "name": "list",
+                "href": "fuse/iarray",
+                "title": "IArray",
+                "fullyQualifiedTitle": "Fuse.IArray"
+              }
+            ],
+            "id": {
+              "id": "fuse/namevaluepair/objectfromarray_05055298",
+              "parentId": "fuse/namevaluepair",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/namevaluepair/objectfromarray_05055298",
+              "href": "fuse/namevaluepair/objectfromarray_05055298"
+            },
+            "titles": {
+              "indexTitle": "ObjectFromArray(IArray)",
+              "fullyQualifiedIndexTitle": "Fuse.NameValuePair.ObjectFromArray(Fuse.IArray)"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "uno/object",
+            "parentId": "uno",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "intrinsic"
+            ]
+          },
+          "uri": {
+            "idUri": "uno/object",
+            "href": "uno/object"
+          },
+          "titles": {
+            "indexTitle": "object",
+            "fullyQualifiedIndexTitle": "object"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "parameters": [
+              {
+                "name": "o",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              }
+            ],
+            "id": {
+              "id": "fuse/namevaluepair/equals_a09c80e3",
+              "parentId": "fuse/namevaluepair",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/namevaluepair/equals_a09c80e3",
+              "href": "uno/object/equals_a09c80e3",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Equals(object)",
+              "fullyQualifiedIndexTitle": "Uno.Object.Equals(object)"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/int",
+              "title": "int",
+              "fullyQualifiedTitle": "int"
+            },
+            "id": {
+              "id": "fuse/namevaluepair/gethashcode",
+              "parentId": "fuse/namevaluepair",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/namevaluepair/gethashcode",
+              "href": "uno/object/gethashcode",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetHashCode",
+              "fullyQualifiedIndexTitle": "Uno.Object.GetHashCode"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/type",
+              "title": "Type",
+              "fullyQualifiedTitle": "Uno.Type"
+            },
+            "id": {
+              "id": "fuse/namevaluepair/gettype",
+              "parentId": "fuse/namevaluepair",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/namevaluepair/gettype",
+              "href": "uno/object/gettype",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetType",
+              "fullyQualifiedIndexTitle": "Uno.Object.GetType"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "id": {
+              "id": "fuse/namevaluepair/tostring",
+              "parentId": "fuse/namevaluepair",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/namevaluepair/tostring",
+              "href": "uno/object/tostring",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "ToString",
+              "fullyQualifiedIndexTitle": "Uno.Object.ToString"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

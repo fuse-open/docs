@@ -1,0 +1,350 @@
+{
+  "entity": {
+    "base": {
+      "id": {
+        "id": "uno/object",
+        "parentId": "uno",
+        "type": "Class",
+        "modifiers": [
+          "public",
+          "intrinsic"
+        ]
+      },
+      "uri": {
+        "idUri": "uno/object",
+        "href": "uno/object"
+      },
+      "titles": {
+        "indexTitle": "object",
+        "fullyQualifiedIndexTitle": "object"
+      }
+    },
+    "location": {
+      "namespaceTitle": "Fuse",
+      "namespaceUri": "fuse",
+      "packageName": "Fuse.Nodes",
+      "packageVersion": "1.8.0-rc2"
+    },
+    "inheritance": {
+      "root": {
+        "uri": "uno/object",
+        "title": "object",
+        "children": [
+          {
+            "uri": "fuse/iviewport",
+            "title": "Fuse.IViewport",
+            "children": [],
+            "isCurrent": true
+          }
+        ],
+        "isAncestor": true
+      },
+      "hasInheritance": true
+    },
+    "implementedInterfaces": [
+      {
+        "id": {
+          "id": "fuse/icommonviewport",
+          "parentId": "fuse",
+          "type": "Interface",
+          "modifiers": [
+            "public",
+            "abstract"
+          ]
+        },
+        "uri": {
+          "idUri": "fuse/icommonviewport",
+          "href": "fuse/icommonviewport"
+        },
+        "titles": {
+          "indexTitle": "ICommonViewport",
+          "fullyQualifiedIndexTitle": "Fuse.ICommonViewport"
+        }
+      }
+    ],
+    "id": {
+      "id": "fuse/iviewport",
+      "parentId": "fuse",
+      "type": "Interface",
+      "modifiers": [
+        "public",
+        "abstract"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/iviewport",
+      "href": "fuse/iviewport"
+    },
+    "titles": {
+      "pageTitle": "IViewport Interface",
+      "navigationTitle": "IViewport Interface",
+      "fullTitle": "Fuse.IViewport",
+      "indexTitle": "IViewport",
+      "fullyQualifiedIndexTitle": "Fuse.IViewport"
+    },
+    "syntax": {
+      "uno": "public abstract interface IViewport : Fuse.ICommonViewport {}"
+    },
+    "comment": {
+      "brief": "Defines the current logical viewport for input translation.",
+      "full": "Defines the current logical viewport for input translation.\n\nEach viewport defines a new world."
+    }
+  },
+  "tableOfContents": {
+    "methods": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/iviewport",
+            "parentId": "fuse",
+            "type": "Interface",
+            "modifiers": [
+              "public",
+              "abstract"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/iviewport",
+            "href": "fuse/iviewport"
+          },
+          "titles": {
+            "indexTitle": "IViewport",
+            "fullyQualifiedIndexTitle": "Fuse.IViewport"
+          }
+        },
+        "items": [
+          {
+            "comment": {
+              "brief": "Obtain a Ray in the world defined by this Viewport from the position in the window.",
+              "full": "Obtain a Ray in the world defined by this Viewport from the position in the window."
+            },
+            "returns": {
+              "href": "fuse/ray",
+              "title": "Ray",
+              "fullyQualifiedTitle": "Fuse.Ray"
+            },
+            "parameters": [
+              {
+                "name": "pointPos",
+                "href": "uno/float2",
+                "title": "float2",
+                "fullyQualifiedTitle": "float2"
+              }
+            ],
+            "id": {
+              "id": "fuse/iviewport/pointtoworldray_92485797",
+              "parentId": "fuse/iviewport",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/iviewport/pointtoworldray_92485797",
+              "href": "fuse/iviewport/pointtoworldray_92485797"
+            },
+            "titles": {
+              "indexTitle": "PointToWorldRay(float2)",
+              "fullyQualifiedIndexTitle": "Fuse.IViewport.PointToWorldRay(float2)"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Transform a Ray from a world ray into a local ray.",
+              "full": "Transform a Ray from a world ray into a local ray.",
+              "attributes": {
+                "parameters": [
+                  {
+                    "name": "world",
+                    "description": "The world from which this ray originates. Usually the object on which `PointToWorldRay` was called."
+                  },
+                  {
+                    "name": "worldRay",
+                    "description": "The worldRay to transform"
+                  },
+                  {
+                    "name": "where",
+                    "description": "Into the local space of this Visual"
+                  }
+                ]
+              }
+            },
+            "returns": {
+              "href": "fuse/ray",
+              "title": "Ray",
+              "fullyQualifiedTitle": "Fuse.Ray"
+            },
+            "parameters": [
+              {
+                "name": "world",
+                "href": "fuse/iviewport",
+                "title": "IViewport",
+                "fullyQualifiedTitle": "Fuse.IViewport"
+              },
+              {
+                "name": "worldRay",
+                "href": "fuse/ray",
+                "title": "Ray",
+                "fullyQualifiedTitle": "Fuse.Ray"
+              },
+              {
+                "name": "where",
+                "href": "fuse/visual",
+                "title": "Visual",
+                "fullyQualifiedTitle": "Fuse.Visual"
+              }
+            ],
+            "id": {
+              "id": "fuse/iviewport/worldtolocalray_95aa8aca",
+              "parentId": "fuse/iviewport",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/iviewport/worldtolocalray_95aa8aca",
+              "href": "fuse/iviewport/worldtolocalray_95aa8aca"
+            },
+            "titles": {
+              "indexTitle": "WorldToLocalRay(IViewport, Ray, Visual)",
+              "fullyQualifiedIndexTitle": "Fuse.IViewport.WorldToLocalRay(Fuse.IViewport, Fuse.Ray, Fuse.Visual)"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "uno/object",
+            "parentId": "uno",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "intrinsic"
+            ]
+          },
+          "uri": {
+            "idUri": "uno/object",
+            "href": "uno/object"
+          },
+          "titles": {
+            "indexTitle": "object",
+            "fullyQualifiedIndexTitle": "object"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "parameters": [
+              {
+                "name": "o",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              }
+            ],
+            "id": {
+              "id": "fuse/iviewport/equals_a09c80e3",
+              "parentId": "fuse/iviewport",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/iviewport/equals_a09c80e3",
+              "href": "uno/object/equals_a09c80e3",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Equals(object)",
+              "fullyQualifiedIndexTitle": "Uno.Object.Equals(object)"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/int",
+              "title": "int",
+              "fullyQualifiedTitle": "int"
+            },
+            "id": {
+              "id": "fuse/iviewport/gethashcode",
+              "parentId": "fuse/iviewport",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/iviewport/gethashcode",
+              "href": "uno/object/gethashcode",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetHashCode",
+              "fullyQualifiedIndexTitle": "Uno.Object.GetHashCode"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/type",
+              "title": "Type",
+              "fullyQualifiedTitle": "Uno.Type"
+            },
+            "id": {
+              "id": "fuse/iviewport/gettype",
+              "parentId": "fuse/iviewport",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/iviewport/gettype",
+              "href": "uno/object/gettype",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetType",
+              "fullyQualifiedIndexTitle": "Uno.Object.GetType"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "id": {
+              "id": "fuse/iviewport/tostring",
+              "parentId": "fuse/iviewport",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/iviewport/tostring",
+              "href": "uno/object/tostring",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "ToString",
+              "fullyQualifiedIndexTitle": "Uno.Object.ToString"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

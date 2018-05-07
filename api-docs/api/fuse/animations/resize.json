@@ -1,0 +1,1059 @@
+{
+  "entity": {
+    "base": {
+      "id": {
+        "id": "fuse/animations/trackanimator",
+        "parentId": "fuse/animations",
+        "type": "Class",
+        "modifiers": [
+          "public",
+          "abstract"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/animations/trackanimator",
+        "href": "fuse/animations/trackanimator"
+      },
+      "titles": {
+        "indexTitle": "TrackAnimator",
+        "fullyQualifiedIndexTitle": "Fuse.Animations.TrackAnimator"
+      }
+    },
+    "location": {
+      "namespaceTitle": "Fuse.Animations",
+      "namespaceUri": "fuse/animations",
+      "packageName": "Fuse.Animations",
+      "packageVersion": "1.8.0-rc2"
+    },
+    "inheritance": {
+      "root": {
+        "uri": "uno/object",
+        "title": "object",
+        "children": [
+          {
+            "uri": "uno/ux/propertyobject",
+            "title": "Uno.UX.PropertyObject",
+            "children": [
+              {
+                "uri": "fuse/animations/animator",
+                "title": "Fuse.Animations.Animator",
+                "children": [
+                  {
+                    "uri": "fuse/animations/trackanimator",
+                    "title": "Fuse.Animations.TrackAnimator",
+                    "children": [
+                      {
+                        "uri": "fuse/animations/resize",
+                        "title": "Fuse.Animations.Resize",
+                        "children": [],
+                        "isCurrent": true
+                      }
+                    ],
+                    "isAncestor": true
+                  }
+                ],
+                "isAncestor": true
+              }
+            ],
+            "isAncestor": true
+          }
+        ],
+        "isAncestor": true
+      },
+      "hasInheritance": true
+    },
+    "uxProperties": {
+      "uxNamespaceTitle": "Fuse.Animations",
+      "uxNamespaceUri": "fuse/animations",
+      "uxName": "Resize"
+    },
+    "id": {
+      "id": "fuse/animations/resize",
+      "parentId": "fuse/animations",
+      "type": "UxClass",
+      "modifiers": [
+        "public"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/animations/resize",
+      "href": "fuse/animations/resize"
+    },
+    "titles": {
+      "pageTitle": "Resize Class",
+      "navigationTitle": "Resize Class",
+      "fullTitle": "Fuse.Animations.Resize",
+      "indexTitle": "Resize",
+      "fullyQualifiedIndexTitle": "Fuse.Animations.Resize"
+    },
+    "syntax": {
+      "uno": "public class Resize : Fuse.Animations.TrackAnimator {}",
+      "ux": "<Resize />"
+    },
+    "comment": {
+      "brief": "An @Animator that changes the size of an @Element.",
+      "full": "An @Animator that changes the size of an @Element.\n\nThis is typically used as part of a @LayoutAnimation.\n\nThe size is considered a temporary size for the element, not it's true intended size. When the animator is disabled the natural size will be restored.\n\n# Example\n\n    <Panel>\n        <LayoutAnimation>\n            <Resize RelativeTo=\"SizeChange\" Duration=\"1\" Vector=\"1\"/>\n            <Move RelativeTo=\"PositionChange\" Duration=\"1\" Vector=\"1\"/>\n        </LayoutAnimation>\n    </Panel>"
+    }
+  },
+  "tableOfContents": {
+    "uxProperties": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/animations/resize",
+            "parentId": "fuse/animations",
+            "type": "UxClass",
+            "modifiers": [
+              "public"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/animations/resize",
+            "href": "fuse/animations/resize"
+          },
+          "titles": {
+            "indexTitle": "Resize",
+            "fullyQualifiedIndexTitle": "Fuse.Animations.Resize"
+          }
+        },
+        "items": [
+          {
+            "comment": {
+              "brief": "Relative to which node, used in combination with `RelativeTo`",
+              "full": "Relative to which node, used in combination with `RelativeTo`"
+            },
+            "returns": {
+              "href": "fuse/visual",
+              "title": "Visual",
+              "fullyQualifiedTitle": "Fuse.Visual"
+            },
+            "id": {
+              "id": "fuse/animations/resize/relativenode",
+              "parentId": "fuse/animations/resize",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/resize/relativenode",
+              "href": "fuse/animations/resize/relativenode"
+            },
+            "titles": {
+              "indexTitle": "RelativeNode",
+              "fullyQualifiedIndexTitle": "Fuse.Animations.Resize.RelativeNode"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Specifies how the size for `Resize` is calculated. This is the size that will be applied when at Progress=1.",
+              "full": "Specifies how the size for `Resize` is calculated. This is the size that will be applied when at Progress=1.\n\n    * `SizeChange`: The size of the element prior to the most recent layout change.\n    * `Size`: The size of `RelativeNode`"
+            },
+            "returns": {
+              "href": "fuse/animations/iresizemode",
+              "title": "IResizeMode",
+              "fullyQualifiedTitle": "Fuse.Animations.IResizeMode"
+            },
+            "id": {
+              "id": "fuse/animations/resize/relativeto",
+              "parentId": "fuse/animations/resize",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/resize/relativeto",
+              "href": "fuse/animations/resize/relativeto"
+            },
+            "titles": {
+              "indexTitle": "RelativeTo",
+              "fullyQualifiedIndexTitle": "Fuse.Animations.Resize.RelativeTo"
+            }
+          },
+          {
+            "comment": {
+              "brief": "An alternate target for the resize, instead of the default: the parent of the animator",
+              "full": "An alternate target for the resize, instead of the default: the parent of the animator"
+            },
+            "returns": {
+              "href": "fuse/visual",
+              "title": "Visual",
+              "fullyQualifiedTitle": "Fuse.Visual"
+            },
+            "id": {
+              "id": "fuse/animations/resize/target",
+              "parentId": "fuse/animations/resize",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/resize/target",
+              "href": "fuse/animations/resize/target"
+            },
+            "titles": {
+              "indexTitle": "Target",
+              "fullyQualifiedIndexTitle": "Fuse.Animations.Resize.Target"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Specifies the factor of the size to apply to each dimension.",
+              "full": "Specifies the factor of the size to apply to each dimension.\n\nThe default if `0`. The most common use-case is to have `Vector=\"1\"`."
+            },
+            "returns": {
+              "href": "uno/float2",
+              "title": "float2",
+              "fullyQualifiedTitle": "float2"
+            },
+            "id": {
+              "id": "fuse/animations/resize/vector",
+              "parentId": "fuse/animations/resize",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/resize/vector",
+              "href": "fuse/animations/resize/vector"
+            },
+            "titles": {
+              "indexTitle": "Vector",
+              "fullyQualifiedIndexTitle": "Fuse.Animations.Resize.Vector"
+            }
+          },
+          {
+            "comment": {
+              "brief": "The `X` value of `Vector`",
+              "full": "The `X` value of `Vector`"
+            },
+            "returns": {
+              "href": "uno/float",
+              "title": "float",
+              "fullyQualifiedTitle": "float"
+            },
+            "id": {
+              "id": "fuse/animations/resize/x",
+              "parentId": "fuse/animations/resize",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/resize/x",
+              "href": "fuse/animations/resize/x"
+            },
+            "titles": {
+              "indexTitle": "X",
+              "fullyQualifiedIndexTitle": "Fuse.Animations.Resize.X"
+            }
+          },
+          {
+            "comment": {
+              "brief": "The `Y` value of `Vector`",
+              "full": "The `Y` value of `Vector`"
+            },
+            "returns": {
+              "href": "uno/float",
+              "title": "float",
+              "fullyQualifiedTitle": "float"
+            },
+            "id": {
+              "id": "fuse/animations/resize/y",
+              "parentId": "fuse/animations/resize",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/resize/y",
+              "href": "fuse/animations/resize/y"
+            },
+            "titles": {
+              "indexTitle": "Y",
+              "fullyQualifiedIndexTitle": "Fuse.Animations.Resize.Y"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/animations/trackanimator",
+            "parentId": "fuse/animations",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/animations/trackanimator",
+            "href": "fuse/animations/trackanimator"
+          },
+          "titles": {
+            "indexTitle": "TrackAnimator",
+            "fullyQualifiedIndexTitle": "Fuse.Animations.TrackAnimator"
+          }
+        },
+        "items": [
+          {
+            "comment": {
+              "brief": "How long to wait, from the end of the backward timeline, before the animator starts changing the value.",
+              "full": "How long to wait, from the end of the backward timeline, before the animator starts changing the value."
+            },
+            "returns": {
+              "href": "uno/double",
+              "title": "double",
+              "fullyQualifiedTitle": "double"
+            },
+            "id": {
+              "id": "fuse/animations/resize/delayback",
+              "parentId": "fuse/animations/resize",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/resize/delayback",
+              "href": "fuse/animations/trackanimator/delayback",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "DelayBack",
+              "fullyQualifiedIndexTitle": "Fuse.Animations.TrackAnimator.DelayBack"
+            }
+          },
+          {
+            "comment": {
+              "brief": "For a continuous track: The duration of the change of the value.",
+              "full": "For a continuous track: The duration of the change of the value."
+            },
+            "returns": {
+              "href": "uno/double",
+              "title": "double",
+              "fullyQualifiedTitle": "double"
+            },
+            "id": {
+              "id": "fuse/animations/resize/duration",
+              "parentId": "fuse/animations/resize",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/resize/duration",
+              "href": "fuse/animations/trackanimator/duration",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Duration",
+              "fullyQualifiedIndexTitle": "Fuse.Animations.TrackAnimator.Duration"
+            }
+          },
+          {
+            "comment": {
+              "brief": "For a continuous track: The duraciton of the change of the value in the backward timeline.",
+              "full": "For a continuous track: The duraciton of the change of the value in the backward timeline."
+            },
+            "returns": {
+              "href": "uno/double",
+              "title": "double",
+              "fullyQualifiedTitle": "double"
+            },
+            "id": {
+              "id": "fuse/animations/resize/durationback",
+              "parentId": "fuse/animations/resize",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/resize/durationback",
+              "href": "fuse/animations/trackanimator/durationback",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "DurationBack",
+              "fullyQualifiedIndexTitle": "Fuse.Animations.TrackAnimator.DurationBack"
+            }
+          },
+          {
+            "comment": {
+              "brief": "For a continuous track: This specifies the transition easing between a source and target value.",
+              "full": "For a continuous track: This specifies the transition easing between a source and target value."
+            },
+            "returns": {
+              "href": "fuse/animations/easing",
+              "title": "Easing",
+              "fullyQualifiedTitle": "Fuse.Animations.Easing"
+            },
+            "flags": {
+              "uxContent": true
+            },
+            "id": {
+              "id": "fuse/animations/resize/easing",
+              "parentId": "fuse/animations/resize",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/resize/easing",
+              "href": "fuse/animations/trackanimator/easing",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Easing",
+              "fullyQualifiedIndexTitle": "Fuse.Animations.TrackAnimator.Easing"
+            }
+          },
+          {
+            "comment": {
+              "brief": "For a continuous track: This specified the easing for the backward timeline.",
+              "full": "For a continuous track: This specified the easing for the backward timeline."
+            },
+            "returns": {
+              "href": "fuse/animations/easing",
+              "title": "Easing",
+              "fullyQualifiedTitle": "Fuse.Animations.Easing"
+            },
+            "id": {
+              "id": "fuse/animations/resize/easingback",
+              "parentId": "fuse/animations/resize",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/resize/easingback",
+              "href": "fuse/animations/trackanimator/easingback",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "EasingBack",
+              "fullyQualifiedIndexTitle": "Fuse.Animations.TrackAnimator.EasingBack"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Specifies how the @Keyframes are interpolated.",
+              "full": "Specifies how the @Keyframes are interpolated."
+            },
+            "returns": {
+              "href": "fuse/animations/keyframeinterpolation",
+              "title": "KeyframeInterpolation",
+              "fullyQualifiedTitle": "Fuse.Animations.KeyframeInterpolation"
+            },
+            "id": {
+              "id": "fuse/animations/resize/keyframeinterpolation",
+              "parentId": "fuse/animations/resize",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/resize/keyframeinterpolation",
+              "href": "fuse/animations/trackanimator/keyframeinterpolation",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "KeyframeInterpolation",
+              "fullyQualifiedIndexTitle": "Fuse.Animations.TrackAnimator.KeyframeInterpolation"
+            }
+          },
+          {
+            "comment": {
+              "brief": "The list of keyframes for this animator.",
+              "full": "The list of keyframes for this animator.\n\nIf no keyframes are specified, the animator simply uses the @Easing and @Duration properties to determine\ninterpolation between start and end values.\n\nFor the cases where we want to specify several steps for an animation, we can specify keyframes.\n\nExample:\n\n    <Move RelativeTo=\"ParentSize\">\n        <Keyframe X=\"10\" Time=\"0.5\"/>\n        <Keyframe X=\"15\" Time=\"1\"/>\n        <Keyframe X=\"5\" Time=\"2\"/>\n    </Move>\n\nThis @(Move) animator will first animate X to 10 over 0.5 second, then from 10 to 15 over 0.5 second. Finally, it will go from an\nX of 15 to 5 over 1 second.    Here is an example of using @Keyframes with a @Change animator:\n\n    <Page>\n        <SolidColor ux:Name=\"background\" Color=\"#f00\"/>\n        <ActivatingAnimation>\n            <Change Target=\"background.Color\">\n                <Keyframe Value=\"#0f0\" TimeDelta=\"0.25\"/>\n                <Keyframe Value=\"#f00\" TimeDelta=\"0.25\"/>\n                <Keyframe Value=\"#ff0\" TimeDelta=\"0.25\"/>\n                <Keyframe Value=\"#0ff\" TimeDelta=\"0.25\"/>\n            </Change>\n        </ActivatingAnimation>\n    </Page>\n\nThis time we use `TimeDelta` instead of time. With `TimeDelta` we can specify time as a relative term instead of absolute.\nThis means that the order of the @Keyframes matter, but it lets us reason about the keyframes in terms of\ntheir duration instead of their absolute time on the timeline.",
+              "attributes": {
+                "topic": "Keyframes"
+              }
+            },
+            "returns": {
+              "href": "uno/collections/ilist_1",
+              "title": "IList<Keyframe>",
+              "fullyQualifiedTitle": "Uno.Collections.IList<Fuse.Animations.Keyframe>"
+            },
+            "flags": {
+              "uxContent": true
+            },
+            "id": {
+              "id": "fuse/animations/resize/keyframes",
+              "parentId": "fuse/animations/resize",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/resize/keyframes",
+              "href": "fuse/animations/trackanimator/keyframes",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Keyframes",
+              "fullyQualifiedIndexTitle": "Fuse.Animations.TrackAnimator.Keyframes"
+            }
+          },
+          {
+            "returns": {
+              "href": "fuse/animations/itrackprovider",
+              "title": "ITrackProvider",
+              "fullyQualifiedTitle": "Fuse.Animations.ITrackProvider"
+            },
+            "flags": {
+              "uxContent": true
+            },
+            "id": {
+              "id": "fuse/animations/resize/provider",
+              "parentId": "fuse/animations/resize",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/resize/provider",
+              "href": "fuse/animations/trackanimator/provider",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Provider",
+              "fullyQualifiedIndexTitle": "Fuse.Animations.TrackAnimator.Provider"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Allows the value set by this animator to be increased or decreased in significance (the default is 1).",
+              "full": "Allows the value set by this animator to be increased or decreased in significance (the default is 1).\n\nThis is used for `MixOp=\"Weight\"`. When two animators are active the value of the target attribute will be the weighted average of the applied animators."
+            },
+            "returns": {
+              "href": "uno/double",
+              "title": "double",
+              "fullyQualifiedTitle": "double"
+            },
+            "id": {
+              "id": "fuse/animations/resize/weight",
+              "parentId": "fuse/animations/resize",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/resize/weight",
+              "href": "fuse/animations/trackanimator/weight",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Weight",
+              "fullyQualifiedIndexTitle": "Fuse.Animations.TrackAnimator.Weight"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/animations/animator",
+            "parentId": "fuse/animations",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/animations/animator",
+            "href": "fuse/animations/animator"
+          },
+          "titles": {
+            "indexTitle": "Animator",
+            "fullyQualifiedIndexTitle": "Fuse.Animations.Animator"
+          }
+        },
+        "items": [
+          {
+            "comment": {
+              "brief": "Seconds from the start of the trigger until this animator should play.",
+              "full": "Seconds from the start of the trigger until this animator should play.\n\nNote that some triggers are often played backwards in some scenarios. Delay will then be measured\nfrom the end of the animation, to when this animator should be completed."
+            },
+            "returns": {
+              "href": "uno/double",
+              "title": "double",
+              "fullyQualifiedTitle": "double"
+            },
+            "id": {
+              "id": "fuse/animations/resize/delay",
+              "parentId": "fuse/animations/resize",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/resize/delay",
+              "href": "fuse/animations/animator/delay",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Delay",
+              "fullyQualifiedIndexTitle": "Fuse.Animations.Animator.Delay"
+            }
+          },
+          {
+            "comment": {
+              "brief": "How to mix this animator when there are multiple conflicting animators affecting the target.",
+              "full": "How to mix this animator when there are multiple conflicting animators affecting the target."
+            },
+            "returns": {
+              "href": "fuse/animations/mixop",
+              "title": "MixOp",
+              "fullyQualifiedTitle": "Fuse.Animations.MixOp"
+            },
+            "id": {
+              "id": "fuse/animations/resize/mixop",
+              "parentId": "fuse/animations/resize",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/resize/mixop",
+              "href": "fuse/animations/animator/mixop",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "MixOp",
+              "fullyQualifiedIndexTitle": "Fuse.Animations.Animator.MixOp"
+            }
+          }
+        ]
+      }
+    ],
+    "attachedUxProperties": [
+      {
+        "items": [
+          {
+            "comment": {
+              "brief": "The `ux:Global` attribute creates a global resource that is accessible everywhere in UX markup.",
+              "full": "The `ux:Global` attribute creates a global resource that is accessible everywhere in UX markup.\n\nSee @Resources for more information.\n\nThe `ux:Global` attribute on an UX element creates a single object (singleton) that is globally available.\nUsing this attribute will prevent the object from being inserted by default the object at its defined location\nin the UX tree."
+            },
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "parameters": [
+              {
+                "name": "obj",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              },
+              {
+                "name": "key",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              }
+            ],
+            "id": {
+              "id": "fuse/animations/resize/resource_globalkey_setglobalkey_4c3ac72d",
+              "parentId": "fuse/animations/resize",
+              "type": "AttachedUxProperty",
+              "modifiers": []
+            },
+            "uri": {
+              "idUri": "fuse/animations/resize/resource_globalkey_setglobalkey_4c3ac72d",
+              "href": "uno/ux/resource/setglobalkey_4c3ac72d",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Resource.GlobalKey",
+              "fullyQualifiedIndexTitle": "Resource.GlobalKey"
+            }
+          }
+        ]
+      }
+    ],
+    "constructors": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/animations/resize",
+            "parentId": "fuse/animations",
+            "type": "UxClass",
+            "modifiers": [
+              "public"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/animations/resize",
+            "href": "fuse/animations/resize"
+          },
+          "titles": {
+            "indexTitle": "Resize",
+            "fullyQualifiedIndexTitle": "Fuse.Animations.Resize"
+          }
+        },
+        "items": [
+          {
+            "comment": {
+              "brief": "Creates a new Resize",
+              "full": "Creates a new Resize"
+            },
+            "id": {
+              "id": "fuse/animations/resize/_ctor",
+              "parentId": "fuse/animations/resize",
+              "type": "Constructor",
+              "modifiers": [
+                "public",
+                "generated"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/resize/_ctor",
+              "href": "fuse/animations/resize/_ctor"
+            },
+            "titles": {
+              "indexTitle": "Resize",
+              "fullyQualifiedIndexTitle": "Fuse.Animations.Resize.Resize"
+            }
+          }
+        ]
+      }
+    ],
+    "methods": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "uno/ux/propertyobject",
+            "parentId": "uno/ux",
+            "type": "Class",
+            "modifiers": [
+              "public"
+            ]
+          },
+          "uri": {
+            "idUri": "uno/ux/propertyobject",
+            "href": "uno/ux/propertyobject"
+          },
+          "titles": {
+            "indexTitle": "PropertyObject",
+            "fullyQualifiedIndexTitle": "Uno.UX.PropertyObject"
+          }
+        },
+        "items": [
+          {
+            "parameters": [
+              {
+                "name": "listener",
+                "href": "uno/ux/ipropertylistener",
+                "title": "IPropertyListener",
+                "fullyQualifiedTitle": "Uno.UX.IPropertyListener"
+              }
+            ],
+            "id": {
+              "id": "fuse/animations/resize/addpropertylistener_496a874a",
+              "parentId": "fuse/animations/resize",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/resize/addpropertylistener_496a874a",
+              "href": "uno/ux/propertyobject/addpropertylistener_496a874a",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "AddPropertyListener(IPropertyListener)",
+              "fullyQualifiedIndexTitle": "Uno.UX.PropertyObject.AddPropertyListener(Uno.UX.IPropertyListener)"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "property",
+                "href": "uno/ux/selector",
+                "title": "Selector",
+                "fullyQualifiedTitle": "Uno.UX.Selector"
+              }
+            ],
+            "id": {
+              "id": "fuse/animations/resize/onpropertychanged_16d735f3",
+              "parentId": "fuse/animations/resize",
+              "type": "Method",
+              "modifiers": [
+                "protected"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/resize/onpropertychanged_16d735f3",
+              "href": "uno/ux/propertyobject/onpropertychanged_16d735f3",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "OnPropertyChanged(Selector)",
+              "fullyQualifiedIndexTitle": "Uno.UX.PropertyObject.OnPropertyChanged(Uno.UX.Selector)"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "property",
+                "href": "uno/ux/selector",
+                "title": "Selector",
+                "fullyQualifiedTitle": "Uno.UX.Selector"
+              },
+              {
+                "name": "origin",
+                "href": "uno/ux/ipropertylistener",
+                "title": "IPropertyListener",
+                "fullyQualifiedTitle": "Uno.UX.IPropertyListener"
+              }
+            ],
+            "id": {
+              "id": "fuse/animations/resize/onpropertychanged_6422fe92",
+              "parentId": "fuse/animations/resize",
+              "type": "Method",
+              "modifiers": [
+                "protected",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/resize/onpropertychanged_6422fe92",
+              "href": "uno/ux/propertyobject/onpropertychanged_6422fe92",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "OnPropertyChanged(Selector, IPropertyListener)",
+              "fullyQualifiedIndexTitle": "Uno.UX.PropertyObject.OnPropertyChanged(Uno.UX.Selector, Uno.UX.IPropertyListener)"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "listener",
+                "href": "uno/ux/ipropertylistener",
+                "title": "IPropertyListener",
+                "fullyQualifiedTitle": "Uno.UX.IPropertyListener"
+              }
+            ],
+            "id": {
+              "id": "fuse/animations/resize/removepropertylistener_496a874a",
+              "parentId": "fuse/animations/resize",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/resize/removepropertylistener_496a874a",
+              "href": "uno/ux/propertyobject/removepropertylistener_496a874a",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "RemovePropertyListener(IPropertyListener)",
+              "fullyQualifiedIndexTitle": "Uno.UX.PropertyObject.RemovePropertyListener(Uno.UX.IPropertyListener)"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "uno/object",
+            "parentId": "uno",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "intrinsic"
+            ]
+          },
+          "uri": {
+            "idUri": "uno/object",
+            "href": "uno/object"
+          },
+          "titles": {
+            "indexTitle": "object",
+            "fullyQualifiedIndexTitle": "object"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "parameters": [
+              {
+                "name": "o",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              }
+            ],
+            "id": {
+              "id": "fuse/animations/resize/equals_a09c80e3",
+              "parentId": "fuse/animations/resize",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/resize/equals_a09c80e3",
+              "href": "uno/object/equals_a09c80e3",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Equals(object)",
+              "fullyQualifiedIndexTitle": "Uno.Object.Equals(object)"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/int",
+              "title": "int",
+              "fullyQualifiedTitle": "int"
+            },
+            "id": {
+              "id": "fuse/animations/resize/gethashcode",
+              "parentId": "fuse/animations/resize",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/resize/gethashcode",
+              "href": "uno/object/gethashcode",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetHashCode",
+              "fullyQualifiedIndexTitle": "Uno.Object.GetHashCode"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/type",
+              "title": "Type",
+              "fullyQualifiedTitle": "Uno.Type"
+            },
+            "id": {
+              "id": "fuse/animations/resize/gettype",
+              "parentId": "fuse/animations/resize",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/resize/gettype",
+              "href": "uno/object/gettype",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetType",
+              "fullyQualifiedIndexTitle": "Uno.Object.GetType"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "id": {
+              "id": "fuse/animations/resize/tostring",
+              "parentId": "fuse/animations/resize",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/resize/tostring",
+              "href": "uno/object/tostring",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "ToString",
+              "fullyQualifiedIndexTitle": "Uno.Object.ToString"
+            }
+          }
+        ]
+      }
+    ],
+    "fields": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/animations/animator",
+            "parentId": "fuse/animations",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/animations/animator",
+            "href": "fuse/animations/animator"
+          },
+          "titles": {
+            "indexTitle": "Animator",
+            "fullyQualifiedIndexTitle": "Fuse.Animations.Animator"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "fuse/animations/imixer",
+              "title": "IMixer",
+              "fullyQualifiedTitle": "Fuse.Animations.IMixer"
+            },
+            "id": {
+              "id": "fuse/animations/resize/mixer",
+              "parentId": "fuse/animations/resize",
+              "type": "Field",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/animations/resize/mixer",
+              "href": "fuse/animations/animator/mixer",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Mixer",
+              "fullyQualifiedIndexTitle": "Fuse.Animations.Animator.Mixer"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

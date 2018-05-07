@@ -1,0 +1,494 @@
+{
+  "entity": {
+    "base": {
+      "id": {
+        "id": "fuse/reactive/innerlistener",
+        "parentId": "fuse/reactive",
+        "type": "Class",
+        "modifiers": [
+          "public",
+          "abstract"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/reactive/innerlistener",
+        "href": "fuse/reactive/innerlistener"
+      },
+      "titles": {
+        "indexTitle": "InnerListener",
+        "fullyQualifiedIndexTitle": "Fuse.Reactive.InnerListener"
+      }
+    },
+    "location": {
+      "namespaceTitle": "Fuse.Reactive",
+      "namespaceUri": "fuse/reactive",
+      "packageName": "Fuse.Reactive.Expressions",
+      "packageVersion": "1.8.0-rc2"
+    },
+    "inheritance": {
+      "root": {
+        "uri": "uno/object",
+        "title": "object",
+        "children": [
+          {
+            "uri": "fuse/reactive/innerlistener",
+            "title": "Fuse.Reactive.InnerListener",
+            "children": [
+              {
+                "uri": "fuse/reactive/expressionsubscriber",
+                "title": "Fuse.Reactive.ExpressionSubscriber",
+                "children": [],
+                "isCurrent": true
+              }
+            ],
+            "isAncestor": true
+          }
+        ],
+        "isAncestor": true
+      },
+      "hasInheritance": true
+    },
+    "implementedInterfaces": [
+      {
+        "id": {
+          "id": "uno/idisposable",
+          "parentId": "uno",
+          "type": "Interface",
+          "modifiers": [
+            "public",
+            "abstract"
+          ]
+        },
+        "uri": {
+          "idUri": "uno/idisposable",
+          "href": "uno/idisposable"
+        },
+        "titles": {
+          "indexTitle": "IDisposable",
+          "fullyQualifiedIndexTitle": "Uno.IDisposable"
+        }
+      },
+      {
+        "id": {
+          "id": "fuse/reactive/ilistener",
+          "parentId": "fuse/reactive",
+          "type": "Interface",
+          "modifiers": [
+            "public",
+            "abstract"
+          ]
+        },
+        "uri": {
+          "idUri": "fuse/reactive/ilistener",
+          "href": "fuse/reactive/ilistener"
+        },
+        "titles": {
+          "indexTitle": "IListener",
+          "fullyQualifiedIndexTitle": "Fuse.Reactive.IListener"
+        }
+      }
+    ],
+    "id": {
+      "id": "fuse/reactive/expressionsubscriber",
+      "parentId": "fuse/reactive",
+      "type": "Class",
+      "modifiers": [
+        "public",
+        "abstract"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/reactive/expressionsubscriber",
+      "href": "fuse/reactive/expressionsubscriber"
+    },
+    "titles": {
+      "pageTitle": "ExpressionSubscriber Class",
+      "navigationTitle": "ExpressionSubscriber Class",
+      "fullTitle": "Fuse.Reactive.ExpressionSubscriber",
+      "indexTitle": "ExpressionSubscriber",
+      "fullyQualifiedIndexTitle": "Fuse.Reactive.ExpressionSubscriber"
+    },
+    "syntax": {
+      "uno": "public abstract class ExpressionSubscriber : Fuse.Reactive.InnerListener {}"
+    },
+    "comment": {
+      "brief": "Subscribes to many argument expressions used in higher level functions. This collects common\nbehaviour and means to simplify higher-level code.",
+      "full": "Subscribes to many argument expressions used in higher level functions. This collects common\nbehaviour and means to simplify higher-level code.\n\nNOTE: The use of InnerListener is questionable but unavoidable at this time.\nhttps://github.com/fusetools/fuselibs-public/issues/785\n\n@hide"
+    }
+  },
+  "tableOfContents": {
+    "methods": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/reactive/expressionsubscriber",
+            "parentId": "fuse/reactive",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/reactive/expressionsubscriber",
+            "href": "fuse/reactive/expressionsubscriber"
+          },
+          "titles": {
+            "indexTitle": "ExpressionSubscriber",
+            "fullyQualifiedIndexTitle": "Fuse.Reactive.ExpressionSubscriber"
+          }
+        },
+        "items": [
+          {
+            "comment": {
+              "brief": "Must be called by instantiators of subscription after construction.\nThis avoids race condition if subscriptions call back synchronously.",
+              "full": "Must be called by instantiators of subscription after construction.\nThis avoids race condition if subscriptions call back synchronously."
+            },
+            "parameters": [
+              {
+                "name": "context",
+                "href": "fuse/reactive/icontext",
+                "title": "IContext",
+                "fullyQualifiedTitle": "Fuse.Reactive.IContext"
+              }
+            ],
+            "id": {
+              "id": "fuse/reactive/expressionsubscriber/init_30b662c8",
+              "parentId": "fuse/reactive/expressionsubscriber",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/expressionsubscriber/init_30b662c8",
+              "href": "fuse/reactive/expressionsubscriber/init_30b662c8"
+            },
+            "titles": {
+              "indexTitle": "Init(IContext)",
+              "fullyQualifiedIndexTitle": "Fuse.Reactive.ExpressionSubscriber.Init(Fuse.Reactive.IContext)"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Will only be called if all non-optional arguments have been provided.",
+              "full": "Will only be called if all non-optional arguments have been provided.\n\nIt is the implementers responsibility to call `SetData` or `ClearData` as appropriate.  Note that this class will however call `ClearData` on its own if not all optional arguments are provided, or there is an error."
+            },
+            "parameters": [
+              {
+                "name": "args",
+                "href": "fuse/reactive/expression/argument",
+                "title": "Argument[]",
+                "fullyQualifiedTitle": "Fuse.Reactive.Argument[]"
+              }
+            ],
+            "id": {
+              "id": "fuse/reactive/expressionsubscriber/onarguments_32782760",
+              "parentId": "fuse/reactive/expressionsubscriber",
+              "type": "Method",
+              "modifiers": [
+                "protected",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/expressionsubscriber/onarguments_32782760",
+              "href": "fuse/reactive/expressionsubscriber/onarguments_32782760"
+            },
+            "titles": {
+              "indexTitle": "OnArguments(Argument[])",
+              "fullyQualifiedIndexTitle": "Fuse.Reactive.ExpressionSubscriber.OnArguments(Fuse.Reactive.Argument[])"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/reactive/innerlistener",
+            "parentId": "fuse/reactive",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/reactive/innerlistener",
+            "href": "fuse/reactive/innerlistener"
+          },
+          "titles": {
+            "indexTitle": "InnerListener",
+            "fullyQualifiedIndexTitle": "Fuse.Reactive.InnerListener"
+          }
+        },
+        "items": [
+          {
+            "id": {
+              "id": "fuse/reactive/expressionsubscriber/cleardiagnostic",
+              "parentId": "fuse/reactive/expressionsubscriber",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/expressionsubscriber/cleardiagnostic",
+              "href": "fuse/reactive/innerlistener/cleardiagnostic",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "ClearDiagnostic",
+              "fullyQualifiedIndexTitle": "Fuse.Reactive.InnerListener.ClearDiagnostic"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/reactive/expressionsubscriber/dispose",
+              "parentId": "fuse/reactive/expressionsubscriber",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/expressionsubscriber/dispose",
+              "href": "fuse/reactive/innerlistener/dispose",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Dispose",
+              "fullyQualifiedIndexTitle": "Fuse.Reactive.InnerListener.Dispose"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "source",
+                "href": "fuse/reactive/iexpression",
+                "title": "IExpression",
+                "fullyQualifiedTitle": "Fuse.Reactive.IExpression"
+              }
+            ],
+            "id": {
+              "id": "fuse/reactive/expressionsubscriber/onlostdata_3f048aaa",
+              "parentId": "fuse/reactive/expressionsubscriber",
+              "type": "Method",
+              "modifiers": [
+                "protected",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/expressionsubscriber/onlostdata_3f048aaa",
+              "href": "fuse/reactive/innerlistener/onlostdata_3f048aaa",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "OnLostData(IExpression)",
+              "fullyQualifiedIndexTitle": "Fuse.Reactive.InnerListener.OnLostData(Fuse.Reactive.IExpression)"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "source",
+                "href": "fuse/reactive/iexpression",
+                "title": "IExpression",
+                "fullyQualifiedTitle": "Fuse.Reactive.IExpression"
+              },
+              {
+                "name": "value",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              }
+            ],
+            "id": {
+              "id": "fuse/reactive/expressionsubscriber/onnewdata_47e32fb0",
+              "parentId": "fuse/reactive/expressionsubscriber",
+              "type": "Method",
+              "modifiers": [
+                "protected",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/expressionsubscriber/onnewdata_47e32fb0",
+              "href": "fuse/reactive/innerlistener/onnewdata_47e32fb0",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "OnNewData(IExpression, object)",
+              "fullyQualifiedIndexTitle": "Fuse.Reactive.InnerListener.OnNewData(Fuse.Reactive.IExpression, object)"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "message",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              },
+              {
+                "name": "source",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              }
+            ],
+            "id": {
+              "id": "fuse/reactive/expressionsubscriber/setdiagnostic_d062e5a9",
+              "parentId": "fuse/reactive/expressionsubscriber",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/expressionsubscriber/setdiagnostic_d062e5a9",
+              "href": "fuse/reactive/innerlistener/setdiagnostic_d062e5a9",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "SetDiagnostic(string, object)",
+              "fullyQualifiedIndexTitle": "Fuse.Reactive.InnerListener.SetDiagnostic(string, object)"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "uno/object",
+            "parentId": "uno",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "intrinsic"
+            ]
+          },
+          "uri": {
+            "idUri": "uno/object",
+            "href": "uno/object"
+          },
+          "titles": {
+            "indexTitle": "object",
+            "fullyQualifiedIndexTitle": "object"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "parameters": [
+              {
+                "name": "o",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              }
+            ],
+            "id": {
+              "id": "fuse/reactive/expressionsubscriber/equals_a09c80e3",
+              "parentId": "fuse/reactive/expressionsubscriber",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/expressionsubscriber/equals_a09c80e3",
+              "href": "uno/object/equals_a09c80e3",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Equals(object)",
+              "fullyQualifiedIndexTitle": "Uno.Object.Equals(object)"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/int",
+              "title": "int",
+              "fullyQualifiedTitle": "int"
+            },
+            "id": {
+              "id": "fuse/reactive/expressionsubscriber/gethashcode",
+              "parentId": "fuse/reactive/expressionsubscriber",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/expressionsubscriber/gethashcode",
+              "href": "uno/object/gethashcode",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetHashCode",
+              "fullyQualifiedIndexTitle": "Uno.Object.GetHashCode"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/type",
+              "title": "Type",
+              "fullyQualifiedTitle": "Uno.Type"
+            },
+            "id": {
+              "id": "fuse/reactive/expressionsubscriber/gettype",
+              "parentId": "fuse/reactive/expressionsubscriber",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/expressionsubscriber/gettype",
+              "href": "uno/object/gettype",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetType",
+              "fullyQualifiedIndexTitle": "Uno.Object.GetType"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "id": {
+              "id": "fuse/reactive/expressionsubscriber/tostring",
+              "parentId": "fuse/reactive/expressionsubscriber",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/expressionsubscriber/tostring",
+              "href": "uno/object/tostring",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "ToString",
+              "fullyQualifiedIndexTitle": "Uno.Object.ToString"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,896 @@
+{
+  "entity": {
+    "base": {
+      "id": {
+        "id": "fuse/appbase",
+        "parentId": "fuse",
+        "type": "Class",
+        "modifiers": [
+          "public",
+          "abstract"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/appbase",
+        "href": "fuse/appbase"
+      },
+      "titles": {
+        "indexTitle": "AppBase",
+        "fullyQualifiedIndexTitle": "Fuse.AppBase"
+      }
+    },
+    "location": {
+      "namespaceTitle": "Fuse",
+      "namespaceUri": "fuse",
+      "packageName": "Fuse.Desktop",
+      "packageVersion": "1.8.0-rc2"
+    },
+    "inheritance": {
+      "root": {
+        "uri": "uno/object",
+        "title": "object",
+        "children": [
+          {
+            "uri": "uno/platform/coreapp",
+            "title": "Uno.Platform.CoreApp",
+            "children": [
+              {
+                "uri": "uno/application",
+                "title": "Uno.Application",
+                "children": [
+                  {
+                    "uri": "fuse/appbase",
+                    "title": "Fuse.AppBase",
+                    "children": [
+                      {
+                        "uri": "fuse/app",
+                        "title": "Fuse.App",
+                        "children": [],
+                        "isCurrent": true
+                      }
+                    ],
+                    "isAncestor": true
+                  }
+                ],
+                "isAncestor": true
+              }
+            ],
+            "isAncestor": true
+          }
+        ],
+        "isAncestor": true
+      },
+      "hasInheritance": true
+    },
+    "implementedInterfaces": [
+      {
+        "id": {
+          "id": "fuse/iproperties",
+          "parentId": "fuse",
+          "type": "Interface",
+          "modifiers": [
+            "public",
+            "abstract"
+          ]
+        },
+        "uri": {
+          "idUri": "fuse/iproperties",
+          "href": "fuse/iproperties"
+        },
+        "titles": {
+          "indexTitle": "IProperties",
+          "fullyQualifiedIndexTitle": "Fuse.IProperties"
+        }
+      },
+      {
+        "id": {
+          "id": "fuse/irootvisualprovider",
+          "parentId": "fuse",
+          "type": "Interface",
+          "modifiers": [
+            "public",
+            "abstract"
+          ]
+        },
+        "uri": {
+          "idUri": "fuse/irootvisualprovider",
+          "href": "fuse/irootvisualprovider"
+        },
+        "titles": {
+          "indexTitle": "IRootVisualProvider",
+          "fullyQualifiedIndexTitle": "Fuse.IRootVisualProvider"
+        }
+      }
+    ],
+    "id": {
+      "id": "fuse/app",
+      "parentId": "fuse",
+      "type": "Class",
+      "modifiers": [
+        "public",
+        "abstract"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/app",
+      "href": "fuse/app"
+    },
+    "titles": {
+      "pageTitle": "App Class",
+      "navigationTitle": "App Class",
+      "fullTitle": "Fuse.App",
+      "indexTitle": "App",
+      "fullyQualifiedIndexTitle": "Fuse.App"
+    },
+    "syntax": {
+      "uno": "public abstract class App : Fuse.AppBase {}"
+    },
+    "comment": {
+      "brief": "Base class for apps.\nA Fuse project should contain exactly one `App` tag, which is the root\nnode for the entire application.",
+      "full": "Base class for apps.\nA Fuse project should contain exactly one `App` tag, which is the root\nnode for the entire application."
+    }
+  },
+  "tableOfContents": {
+    "uxProperties": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/appbase",
+            "parentId": "fuse",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/appbase",
+            "href": "fuse/appbase"
+          },
+          "titles": {
+            "indexTitle": "AppBase",
+            "fullyQualifiedIndexTitle": "Fuse.AppBase"
+          }
+        },
+        "items": [
+          {
+            "comment": {
+              "brief": "The clear color of the root graphics view of the @App, if applicable.",
+              "full": "The clear color of the root graphics view of the @App, if applicable."
+            },
+            "returns": {
+              "href": "uno/float4",
+              "title": "float4",
+              "fullyQualifiedTitle": "float4"
+            },
+            "id": {
+              "id": "fuse/app/background",
+              "parentId": "fuse/app",
+              "type": "UxProperty",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/app/background",
+              "href": "fuse/appbase/background",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Background",
+              "fullyQualifiedIndexTitle": "Fuse.AppBase.Background"
+            }
+          },
+          {
+            "comment": {
+              "brief": "The @Node.Children of the virtual root @Node of the @App.\nNote that the virtual root node might be different from the @RootViewport depending\non platform.",
+              "full": "The @Node.Children of the virtual root @Node of the @App.\nNote that the virtual root node might be different from the @RootViewport depending\non platform."
+            },
+            "returns": {
+              "href": "uno/collections/ilist_1",
+              "title": "IList<Node>",
+              "fullyQualifiedTitle": "Uno.Collections.IList<Fuse.Node>"
+            },
+            "flags": {
+              "uxPrimary": true
+            },
+            "id": {
+              "id": "fuse/app/children",
+              "parentId": "fuse/app",
+              "type": "UxProperty",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/app/children",
+              "href": "fuse/appbase/children",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Children",
+              "fullyQualifiedIndexTitle": "Fuse.AppBase.Children"
+            }
+          },
+          {
+            "comment": {
+              "brief": "The @Node.Resources of the virtual root node of the @App.\nNote that the virtual root node might be different from the @RootViewport depending\non platform",
+              "full": "The @Node.Resources of the virtual root node of the @App.\nNote that the virtual root node might be different from the @RootViewport depending\non platform"
+            },
+            "returns": {
+              "href": "uno/collections/ilist_1",
+              "title": "IList<Resource>",
+              "fullyQualifiedTitle": "Uno.Collections.IList<Uno.UX.Resource>"
+            },
+            "flags": {
+              "uxContent": true
+            },
+            "id": {
+              "id": "fuse/app/resources",
+              "parentId": "fuse/app",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/app/resources",
+              "href": "fuse/appbase/resources",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Resources",
+              "fullyQualifiedIndexTitle": "Fuse.AppBase.Resources"
+            }
+          }
+        ]
+      }
+    ],
+    "uxEvents": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/appbase",
+            "parentId": "fuse",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/appbase",
+            "href": "fuse/appbase"
+          },
+          "titles": {
+            "indexTitle": "AppBase",
+            "fullyQualifiedIndexTitle": "Fuse.AppBase"
+          }
+        },
+        "items": [
+          {
+            "comment": {
+              "brief": "Occurs when an exception is unhandled within the @App.\nYou can subscribe to this event to handle exceptions that were otherwise\nunhandled by the @App, to avoid crashing the app. If the `IsHandled`\nproperty of the @UnhandledExceptionArgs object is set to `true` by a handler,\nthe app will not crash, but resume execution.",
+              "full": "Occurs when an exception is unhandled within the @App.\nYou can subscribe to this event to handle exceptions that were otherwise\nunhandled by the @App, to avoid crashing the app. If the `IsHandled`\nproperty of the @UnhandledExceptionArgs object is set to `true` by a handler,\nthe app will not crash, but resume execution.\n\n@hide"
+            },
+            "returns": {
+              "href": "fuse/unhandledexceptionhandler",
+              "title": "UnhandledExceptionHandler (object, UnhandledExceptionArgs)",
+              "fullyQualifiedTitle": "Fuse.UnhandledExceptionHandler (object, Fuse.UnhandledExceptionArgs)"
+            },
+            "id": {
+              "id": "fuse/app/unhandledexception",
+              "parentId": "fuse/app",
+              "type": "UxEvent",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/app/unhandledexception",
+              "href": "fuse/appbase/unhandledexception",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "UnhandledException",
+              "fullyQualifiedIndexTitle": "Fuse.AppBase.UnhandledException"
+            }
+          }
+        ]
+      }
+    ],
+    "constructors": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/app",
+            "parentId": "fuse",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/app",
+            "href": "fuse/app"
+          },
+          "titles": {
+            "indexTitle": "App",
+            "fullyQualifiedIndexTitle": "Fuse.App"
+          }
+        },
+        "items": [
+          {
+            "id": {
+              "id": "fuse/app/_ctor",
+              "parentId": "fuse/app",
+              "type": "Constructor",
+              "modifiers": [
+                "protected"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/app/_ctor",
+              "href": "fuse/app/_ctor"
+            },
+            "titles": {
+              "indexTitle": "App",
+              "fullyQualifiedIndexTitle": "Fuse.App.App"
+            }
+          }
+        ]
+      }
+    ],
+    "properties": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/appbase",
+            "parentId": "fuse",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/appbase",
+            "href": "fuse/appbase"
+          },
+          "titles": {
+            "indexTitle": "AppBase",
+            "fullyQualifiedIndexTitle": "Fuse.AppBase"
+          }
+        },
+        "items": [
+          {
+            "comment": {
+              "brief": "The virtual root @Visual of the @App. This is where @Children are located.",
+              "full": "The virtual root @Visual of the @App. This is where @Children are located."
+            },
+            "returns": {
+              "href": "fuse/visual",
+              "title": "Visual",
+              "fullyQualifiedTitle": "Fuse.Visual"
+            },
+            "id": {
+              "id": "fuse/app/childrenvisual",
+              "parentId": "fuse/app",
+              "type": "Property",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/app/childrenvisual",
+              "href": "fuse/appbase/childrenvisual",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "ChildrenVisual",
+              "fullyQualifiedIndexTitle": "Fuse.AppBase.ChildrenVisual"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/float4",
+              "title": "float4",
+              "fullyQualifiedTitle": "float4"
+            },
+            "id": {
+              "id": "fuse/app/clearcolor",
+              "parentId": "fuse/app",
+              "type": "Property",
+              "modifiers": [
+                "protected"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/app/clearcolor",
+              "href": "fuse/appbase/clearcolor",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "ClearColor",
+              "fullyQualifiedIndexTitle": "Fuse.AppBase.ClearColor"
+            }
+          },
+          {
+            "returns": {
+              "href": "fuse/properties",
+              "title": "Properties",
+              "fullyQualifiedTitle": "Fuse.Properties"
+            },
+            "id": {
+              "id": "fuse/app/properties",
+              "parentId": "fuse/app",
+              "type": "Property",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/app/properties",
+              "href": "fuse/appbase/properties",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Properties",
+              "fullyQualifiedIndexTitle": "Fuse.AppBase.Properties"
+            }
+          },
+          {
+            "comment": {
+              "brief": "The top-level root viewport of this @App. This object has `null` as parent.",
+              "full": "The top-level root viewport of this @App. This object has `null` as parent."
+            },
+            "returns": {
+              "href": "fuse/rootviewport",
+              "title": "RootViewport",
+              "fullyQualifiedTitle": "Fuse.RootViewport"
+            },
+            "id": {
+              "id": "fuse/app/rootviewport",
+              "parentId": "fuse/app",
+              "type": "Property",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/app/rootviewport",
+              "href": "fuse/appbase/rootviewport",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "RootViewport",
+              "fullyQualifiedIndexTitle": "Fuse.AppBase.RootViewport"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "uno/application",
+            "parentId": "uno",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract"
+            ]
+          },
+          "uri": {
+            "idUri": "uno/application",
+            "href": "uno/application"
+          },
+          "titles": {
+            "indexTitle": "Application",
+            "fullyQualifiedIndexTitle": "Uno.Application"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/graphics/graphicscontroller",
+              "title": "GraphicsController",
+              "fullyQualifiedTitle": "Uno.Graphics.GraphicsController"
+            },
+            "id": {
+              "id": "fuse/app/graphicscontroller",
+              "parentId": "fuse/app",
+              "type": "Property",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/app/graphicscontroller",
+              "href": "uno/application/graphicscontroller",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GraphicsController",
+              "fullyQualifiedIndexTitle": "Uno.Application.GraphicsController"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "id": {
+              "id": "fuse/app/needsredraw",
+              "parentId": "fuse/app",
+              "type": "Property",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/app/needsredraw",
+              "href": "uno/application/needsredraw",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "NeedsRedraw",
+              "fullyQualifiedIndexTitle": "Uno.Application.NeedsRedraw"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/platform/window",
+              "title": "Window",
+              "fullyQualifiedTitle": "Uno.Platform.Window"
+            },
+            "id": {
+              "id": "fuse/app/window",
+              "parentId": "fuse/app",
+              "type": "Property",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/app/window",
+              "href": "uno/application/window",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Window",
+              "fullyQualifiedIndexTitle": "Uno.Application.Window"
+            }
+          }
+        ]
+      }
+    ],
+    "methods": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/appbase",
+            "parentId": "fuse",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/appbase",
+            "href": "fuse/appbase"
+          },
+          "titles": {
+            "indexTitle": "AppBase",
+            "fullyQualifiedIndexTitle": "Fuse.AppBase"
+          }
+        },
+        "items": [
+          {
+            "comment": {
+              "brief": "Notfies the @App about an unhandled exception within a subsystem of the app.\nIf implementing a subsystems (such as separate threads) where exceptions can be\nthrown out of the app, you can catch such otherwise unhandled exceptions and report them\nto this method, to allow users to use the @UnhandledException event to deal with\nsuch exceptions instead of crashing the @App.",
+              "full": "Notfies the @App about an unhandled exception within a subsystem of the app.\nIf implementing a subsystems (such as separate threads) where exceptions can be\nthrown out of the app, you can catch such otherwise unhandled exceptions and report them\nto this method, to allow users to use the @UnhandledException event to deal with\nsuch exceptions instead of crashing the @App.\n\n@hide"
+            },
+            "parameters": [
+              {
+                "name": "e",
+                "href": "uno/exception",
+                "title": "Exception",
+                "fullyQualifiedTitle": "Uno.Exception"
+              },
+              {
+                "name": "propagate",
+                "href": "uno/bool",
+                "title": "bool",
+                "fullyQualifiedTitle": "bool"
+              }
+            ],
+            "id": {
+              "id": "fuse/app/onunhandledexception_b48b8df2",
+              "parentId": "fuse/app",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/app/onunhandledexception_b48b8df2",
+              "href": "fuse/appbase/onunhandledexception_b48b8df2",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "OnUnhandledException(Exception, bool)",
+              "fullyQualifiedIndexTitle": "Fuse.AppBase.OnUnhandledException(Uno.Exception, bool)"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Called when the application updates.\nThis method can be overridden by platform-specific @App implementations, but should not\nbe overridden in user code. Use @UpdateManager instead.",
+              "full": "Called when the application updates.\nThis method can be overridden by platform-specific @App implementations, but should not\nbe overridden in user code. Use @UpdateManager instead."
+            },
+            "id": {
+              "id": "fuse/app/onupdate",
+              "parentId": "fuse/app",
+              "type": "Method",
+              "modifiers": [
+                "protected",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/app/onupdate",
+              "href": "fuse/appbase/onupdate",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "OnUpdate",
+              "fullyQualifiedIndexTitle": "Fuse.AppBase.OnUpdate"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "uno/application",
+            "parentId": "uno",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract"
+            ]
+          },
+          "uri": {
+            "idUri": "uno/application",
+            "href": "uno/application"
+          },
+          "titles": {
+            "indexTitle": "Application",
+            "fullyQualifiedIndexTitle": "Uno.Application"
+          }
+        },
+        "items": [
+          {
+            "id": {
+              "id": "fuse/app/draw",
+              "parentId": "fuse/app",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/app/draw",
+              "href": "uno/application/draw",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Draw",
+              "fullyQualifiedIndexTitle": "Uno.Application.Draw"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/app/update",
+              "parentId": "fuse/app",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/app/update",
+              "href": "uno/application/update",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Update",
+              "fullyQualifiedIndexTitle": "Uno.Application.Update"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "uno/platform/coreapp",
+            "parentId": "uno/platform",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract"
+            ]
+          },
+          "uri": {
+            "idUri": "uno/platform/coreapp",
+            "href": "uno/platform/coreapp"
+          },
+          "titles": {
+            "indexTitle": "CoreApp",
+            "fullyQualifiedIndexTitle": "Uno.Platform.CoreApp"
+          }
+        },
+        "items": [
+          {
+            "id": {
+              "id": "fuse/app/load",
+              "parentId": "fuse/app",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/app/load",
+              "href": "uno/platform/coreapp/load",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Load",
+              "fullyQualifiedIndexTitle": "Uno.Platform.CoreApp.Load"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "uno/object",
+            "parentId": "uno",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "intrinsic"
+            ]
+          },
+          "uri": {
+            "idUri": "uno/object",
+            "href": "uno/object"
+          },
+          "titles": {
+            "indexTitle": "object",
+            "fullyQualifiedIndexTitle": "object"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "parameters": [
+              {
+                "name": "o",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              }
+            ],
+            "id": {
+              "id": "fuse/app/equals_a09c80e3",
+              "parentId": "fuse/app",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/app/equals_a09c80e3",
+              "href": "uno/object/equals_a09c80e3",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Equals(object)",
+              "fullyQualifiedIndexTitle": "Uno.Object.Equals(object)"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/int",
+              "title": "int",
+              "fullyQualifiedTitle": "int"
+            },
+            "id": {
+              "id": "fuse/app/gethashcode",
+              "parentId": "fuse/app",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/app/gethashcode",
+              "href": "uno/object/gethashcode",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetHashCode",
+              "fullyQualifiedIndexTitle": "Uno.Object.GetHashCode"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/type",
+              "title": "Type",
+              "fullyQualifiedTitle": "Uno.Type"
+            },
+            "id": {
+              "id": "fuse/app/gettype",
+              "parentId": "fuse/app",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/app/gettype",
+              "href": "uno/object/gettype",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetType",
+              "fullyQualifiedIndexTitle": "Uno.Object.GetType"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "id": {
+              "id": "fuse/app/tostring",
+              "parentId": "fuse/app",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/app/tostring",
+              "href": "uno/object/tostring",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "ToString",
+              "fullyQualifiedIndexTitle": "Uno.Object.ToString"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

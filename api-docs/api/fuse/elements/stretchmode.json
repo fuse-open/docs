@@ -1,0 +1,836 @@
+{
+  "entity": {
+    "base": {
+      "id": {
+        "id": "uno/int",
+        "parentId": "uno",
+        "type": "Struct",
+        "modifiers": [
+          "public",
+          "intrinsic"
+        ]
+      },
+      "uri": {
+        "idUri": "uno/int",
+        "href": "uno/int"
+      },
+      "titles": {
+        "indexTitle": "int",
+        "fullyQualifiedIndexTitle": "int"
+      }
+    },
+    "location": {
+      "namespaceTitle": "Fuse.Elements",
+      "namespaceUri": "fuse/elements",
+      "packageName": "Fuse.Elements",
+      "packageVersion": "1.8.0-rc2"
+    },
+    "inheritance": {
+      "root": {
+        "uri": "uno/object",
+        "title": "object",
+        "children": [
+          {
+            "uri": "uno/int",
+            "title": "int",
+            "children": [
+              {
+                "uri": "fuse/elements/stretchmode",
+                "title": "Fuse.Elements.StretchMode",
+                "children": [],
+                "isCurrent": true
+              }
+            ],
+            "isAncestor": true
+          }
+        ],
+        "isAncestor": true
+      },
+      "hasInheritance": true
+    },
+    "values": [
+      {
+        "uri": "fuse/elements/stretchmode/pointprecise",
+        "title": "PointPrecise",
+        "comment": {
+          "brief": "The size of the source image, in points calculated with density, are used as the image size. This is the default: a 100x50 source image will be 100x50 points in size. This preserves size across various device densities.",
+          "full": "The size of the source image, in points calculated with density, are used as the image size. This is the default: a 100x50 source image will be 100x50 points in size. This preserves size across various device densities."
+        }
+      },
+      {
+        "uri": "fuse/elements/stretchmode/pixelprecise",
+        "title": "PixelPrecise",
+        "comment": {
+          "brief": "The size is pixel matched to the source so the image is drawn 1:1. This means the visual size changes across device densities, but the image remains sharp.",
+          "full": "The size is pixel matched to the source so the image is drawn 1:1. This means the visual size changes across device densities, but the image remains sharp."
+        }
+      },
+      {
+        "uri": "fuse/elements/stretchmode/pointprefer",
+        "title": "PointPrefer",
+        "comment": {
+          "brief": "If the size of the image in `PixelPrecise` mode is close to `PointPrecise` then use `PixelPrecise` mode, otherwise use `PointPrecise` mode. This retains sharpness with slightly varying sizes, but prevents too much size variation.",
+          "full": "If the size of the image in `PixelPrecise` mode is close to `PointPrecise` then use `PixelPrecise` mode, otherwise use `PointPrecise` mode. This retains sharpness with slightly varying sizes, but prevents too much size variation."
+        }
+      },
+      {
+        "uri": "fuse/elements/stretchmode/fill",
+        "title": "Fill",
+        "comment": {
+          "brief": "The image is stretched to fill the available space. The aspect ratio is not retained.",
+          "full": "The image is stretched to fill the available space. The aspect ratio is not retained."
+        }
+      },
+      {
+        "uri": "fuse/elements/stretchmode/scale9",
+        "title": "Scale9",
+        "comment": {
+          "brief": "The image is stretched in 9-segments defined by the `Scale9Margin`. Corners are not stretched, borders are stretced in one direction, the center is stretched in both directions.",
+          "full": "The image is stretched in 9-segments defined by the `Scale9Margin`. Corners are not stretched, borders are stretced in one direction, the center is stretched in both directions."
+        }
+      },
+      {
+        "uri": "fuse/elements/stretchmode/uniform",
+        "title": "Uniform",
+        "comment": {
+          "brief": "Stretches the image to touch the sides of the available space and retain the aspect ratio. This will result in unfilled sections on either the left/right or top/bottom sides of the image.",
+          "full": "Stretches the image to touch the sides of the available space and retain the aspect ratio. This will result in unfilled sections on either the left/right or top/bottom sides of the image."
+        }
+      },
+      {
+        "uri": "fuse/elements/stretchmode/uniformtofill",
+        "title": "UniformToFill",
+        "comment": {
+          "brief": "Stretches an image to touch all sides of the available space and retain the aspect ratio. This will result in the image being clipped on the left/right or top/bottom.",
+          "full": "Stretches an image to touch all sides of the available space and retain the aspect ratio. This will result in the image being clipped on the left/right or top/bottom."
+        }
+      }
+    ],
+    "id": {
+      "id": "fuse/elements/stretchmode",
+      "parentId": "fuse/elements",
+      "type": "Enum",
+      "modifiers": [
+        "public"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/elements/stretchmode",
+      "href": "fuse/elements/stretchmode"
+    },
+    "titles": {
+      "pageTitle": "StretchMode Enum",
+      "navigationTitle": "StretchMode Enum",
+      "fullTitle": "Fuse.Elements.StretchMode",
+      "indexTitle": "StretchMode",
+      "fullyQualifiedIndexTitle": "Fuse.Elements.StretchMode"
+    },
+    "syntax": {
+      "uno": "public enum StretchMode : int {}"
+    },
+    "comment": {
+      "brief": "Specifies how an image size is calculated and how it is stretched.",
+      "full": "Specifies how an image size is calculated and how it is stretched."
+    }
+  },
+  "tableOfContents": {
+    "methods": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/elements/stretchmode",
+            "parentId": "fuse/elements",
+            "type": "Enum",
+            "modifiers": [
+              "public"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/elements/stretchmode",
+            "href": "fuse/elements/stretchmode"
+          },
+          "titles": {
+            "indexTitle": "StretchMode",
+            "fullyQualifiedIndexTitle": "Fuse.Elements.StretchMode"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "parameters": [
+              {
+                "name": "flag",
+                "href": "fuse/elements/stretchmode",
+                "title": "StretchMode",
+                "fullyQualifiedTitle": "Fuse.Elements.StretchMode"
+              }
+            ],
+            "id": {
+              "id": "fuse/elements/stretchmode/hasflag_24706ba1",
+              "parentId": "fuse/elements/stretchmode",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "intrinsic",
+                "generated"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/elements/stretchmode/hasflag_24706ba1",
+              "href": "fuse/elements/stretchmode/hasflag_24706ba1"
+            },
+            "titles": {
+              "indexTitle": "HasFlag(StretchMode)",
+              "fullyQualifiedIndexTitle": "Fuse.Elements.StretchMode.HasFlag(Fuse.Elements.StretchMode)"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "uno/object",
+            "parentId": "uno",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "intrinsic"
+            ]
+          },
+          "uri": {
+            "idUri": "uno/object",
+            "href": "uno/object"
+          },
+          "titles": {
+            "indexTitle": "object",
+            "fullyQualifiedIndexTitle": "object"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "parameters": [
+              {
+                "name": "o",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              }
+            ],
+            "id": {
+              "id": "fuse/elements/stretchmode/equals_a09c80e3",
+              "parentId": "fuse/elements/stretchmode",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/elements/stretchmode/equals_a09c80e3",
+              "href": "uno/object/equals_a09c80e3",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Equals(object)",
+              "fullyQualifiedIndexTitle": "Uno.Object.Equals(object)"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/int",
+              "title": "int",
+              "fullyQualifiedTitle": "int"
+            },
+            "id": {
+              "id": "fuse/elements/stretchmode/gethashcode",
+              "parentId": "fuse/elements/stretchmode",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/elements/stretchmode/gethashcode",
+              "href": "uno/object/gethashcode",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetHashCode",
+              "fullyQualifiedIndexTitle": "Uno.Object.GetHashCode"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/type",
+              "title": "Type",
+              "fullyQualifiedTitle": "Uno.Type"
+            },
+            "id": {
+              "id": "fuse/elements/stretchmode/gettype",
+              "parentId": "fuse/elements/stretchmode",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/elements/stretchmode/gettype",
+              "href": "uno/object/gettype",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetType",
+              "fullyQualifiedIndexTitle": "Uno.Object.GetType"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "id": {
+              "id": "fuse/elements/stretchmode/tostring",
+              "parentId": "fuse/elements/stretchmode",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/elements/stretchmode/tostring",
+              "href": "uno/object/tostring",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "ToString",
+              "fullyQualifiedIndexTitle": "Uno.Object.ToString"
+            }
+          }
+        ]
+      }
+    ],
+    "operators": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/elements/stretchmode",
+            "parentId": "fuse/elements",
+            "type": "Enum",
+            "modifiers": [
+              "public"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/elements/stretchmode",
+            "href": "fuse/elements/stretchmode"
+          },
+          "titles": {
+            "indexTitle": "StretchMode",
+            "fullyQualifiedIndexTitle": "Fuse.Elements.StretchMode"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "fuse/elements/stretchmode",
+              "title": "StretchMode",
+              "fullyQualifiedTitle": "Fuse.Elements.StretchMode"
+            },
+            "parameters": [
+              {
+                "name": "operand",
+                "href": "fuse/elements/stretchmode",
+                "title": "StretchMode",
+                "fullyQualifiedTitle": "Fuse.Elements.StretchMode"
+              }
+            ],
+            "id": {
+              "id": "fuse/elements/stretchmode/op_onescomplement_24706ba1",
+              "parentId": "fuse/elements/stretchmode",
+              "type": "Operator",
+              "modifiers": [
+                "public",
+                "intrinsic",
+                "static",
+                "generated"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/elements/stretchmode/op_onescomplement_24706ba1",
+              "href": "fuse/elements/stretchmode/op_onescomplement_24706ba1"
+            },
+            "titles": {
+              "indexTitle": "~ StretchMode",
+              "fullyQualifiedIndexTitle": "Fuse.Elements.StretchMode.~ StretchMode"
+            }
+          },
+          {
+            "returns": {
+              "href": "fuse/elements/stretchmode",
+              "title": "StretchMode",
+              "fullyQualifiedTitle": "Fuse.Elements.StretchMode"
+            },
+            "parameters": [
+              {
+                "name": "left",
+                "href": "fuse/elements/stretchmode",
+                "title": "StretchMode",
+                "fullyQualifiedTitle": "Fuse.Elements.StretchMode"
+              },
+              {
+                "name": "right",
+                "href": "fuse/elements/stretchmode",
+                "title": "StretchMode",
+                "fullyQualifiedTitle": "Fuse.Elements.StretchMode"
+              }
+            ],
+            "id": {
+              "id": "fuse/elements/stretchmode/op_subtraction_1f0b28d6",
+              "parentId": "fuse/elements/stretchmode",
+              "type": "Operator",
+              "modifiers": [
+                "public",
+                "intrinsic",
+                "static",
+                "generated"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/elements/stretchmode/op_subtraction_1f0b28d6",
+              "href": "fuse/elements/stretchmode/op_subtraction_1f0b28d6"
+            },
+            "titles": {
+              "indexTitle": "StretchMode - StretchMode",
+              "fullyQualifiedIndexTitle": "Fuse.Elements.StretchMode.StretchMode - StretchMode"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "parameters": [
+              {
+                "name": "left",
+                "href": "fuse/elements/stretchmode",
+                "title": "StretchMode",
+                "fullyQualifiedTitle": "Fuse.Elements.StretchMode"
+              },
+              {
+                "name": "right",
+                "href": "fuse/elements/stretchmode",
+                "title": "StretchMode",
+                "fullyQualifiedTitle": "Fuse.Elements.StretchMode"
+              }
+            ],
+            "id": {
+              "id": "fuse/elements/stretchmode/op_inequality_1f0b28d6",
+              "parentId": "fuse/elements/stretchmode",
+              "type": "Operator",
+              "modifiers": [
+                "public",
+                "intrinsic",
+                "static",
+                "generated"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/elements/stretchmode/op_inequality_1f0b28d6",
+              "href": "fuse/elements/stretchmode/op_inequality_1f0b28d6"
+            },
+            "titles": {
+              "indexTitle": "StretchMode != StretchMode",
+              "fullyQualifiedIndexTitle": "Fuse.Elements.StretchMode.StretchMode != StretchMode"
+            }
+          },
+          {
+            "returns": {
+              "href": "fuse/elements/stretchmode",
+              "title": "StretchMode",
+              "fullyQualifiedTitle": "Fuse.Elements.StretchMode"
+            },
+            "parameters": [
+              {
+                "name": "left",
+                "href": "fuse/elements/stretchmode",
+                "title": "StretchMode",
+                "fullyQualifiedTitle": "Fuse.Elements.StretchMode"
+              },
+              {
+                "name": "right",
+                "href": "fuse/elements/stretchmode",
+                "title": "StretchMode",
+                "fullyQualifiedTitle": "Fuse.Elements.StretchMode"
+              }
+            ],
+            "id": {
+              "id": "fuse/elements/stretchmode/op_bitwiseand_1f0b28d6",
+              "parentId": "fuse/elements/stretchmode",
+              "type": "Operator",
+              "modifiers": [
+                "public",
+                "intrinsic",
+                "static",
+                "generated"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/elements/stretchmode/op_bitwiseand_1f0b28d6",
+              "href": "fuse/elements/stretchmode/op_bitwiseand_1f0b28d6"
+            },
+            "titles": {
+              "indexTitle": "StretchMode & StretchMode",
+              "fullyQualifiedIndexTitle": "Fuse.Elements.StretchMode.StretchMode & StretchMode"
+            }
+          },
+          {
+            "returns": {
+              "href": "fuse/elements/stretchmode",
+              "title": "StretchMode",
+              "fullyQualifiedTitle": "Fuse.Elements.StretchMode"
+            },
+            "parameters": [
+              {
+                "name": "left",
+                "href": "fuse/elements/stretchmode",
+                "title": "StretchMode",
+                "fullyQualifiedTitle": "Fuse.Elements.StretchMode"
+              },
+              {
+                "name": "right",
+                "href": "fuse/elements/stretchmode",
+                "title": "StretchMode",
+                "fullyQualifiedTitle": "Fuse.Elements.StretchMode"
+              }
+            ],
+            "id": {
+              "id": "fuse/elements/stretchmode/op_exclusiveor_1f0b28d6",
+              "parentId": "fuse/elements/stretchmode",
+              "type": "Operator",
+              "modifiers": [
+                "public",
+                "intrinsic",
+                "static",
+                "generated"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/elements/stretchmode/op_exclusiveor_1f0b28d6",
+              "href": "fuse/elements/stretchmode/op_exclusiveor_1f0b28d6"
+            },
+            "titles": {
+              "indexTitle": "StretchMode ^ StretchMode",
+              "fullyQualifiedIndexTitle": "Fuse.Elements.StretchMode.StretchMode ^ StretchMode"
+            }
+          },
+          {
+            "returns": {
+              "href": "fuse/elements/stretchmode",
+              "title": "StretchMode",
+              "fullyQualifiedTitle": "Fuse.Elements.StretchMode"
+            },
+            "parameters": [
+              {
+                "name": "left",
+                "href": "fuse/elements/stretchmode",
+                "title": "StretchMode",
+                "fullyQualifiedTitle": "Fuse.Elements.StretchMode"
+              },
+              {
+                "name": "right",
+                "href": "fuse/elements/stretchmode",
+                "title": "StretchMode",
+                "fullyQualifiedTitle": "Fuse.Elements.StretchMode"
+              }
+            ],
+            "id": {
+              "id": "fuse/elements/stretchmode/op_bitwiseor_1f0b28d6",
+              "parentId": "fuse/elements/stretchmode",
+              "type": "Operator",
+              "modifiers": [
+                "public",
+                "intrinsic",
+                "static",
+                "generated"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/elements/stretchmode/op_bitwiseor_1f0b28d6",
+              "href": "fuse/elements/stretchmode/op_bitwiseor_1f0b28d6"
+            },
+            "titles": {
+              "indexTitle": "StretchMode | StretchMode",
+              "fullyQualifiedIndexTitle": "Fuse.Elements.StretchMode.StretchMode | StretchMode"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "parameters": [
+              {
+                "name": "left",
+                "href": "fuse/elements/stretchmode",
+                "title": "StretchMode",
+                "fullyQualifiedTitle": "Fuse.Elements.StretchMode"
+              },
+              {
+                "name": "right",
+                "href": "fuse/elements/stretchmode",
+                "title": "StretchMode",
+                "fullyQualifiedTitle": "Fuse.Elements.StretchMode"
+              }
+            ],
+            "id": {
+              "id": "fuse/elements/stretchmode/op_equality_1f0b28d6",
+              "parentId": "fuse/elements/stretchmode",
+              "type": "Operator",
+              "modifiers": [
+                "public",
+                "intrinsic",
+                "static",
+                "generated"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/elements/stretchmode/op_equality_1f0b28d6",
+              "href": "fuse/elements/stretchmode/op_equality_1f0b28d6"
+            },
+            "titles": {
+              "indexTitle": "StretchMode == StretchMode",
+              "fullyQualifiedIndexTitle": "Fuse.Elements.StretchMode.StretchMode == StretchMode"
+            }
+          }
+        ]
+      }
+    ],
+    "literals": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/elements/stretchmode",
+            "parentId": "fuse/elements",
+            "type": "Enum",
+            "modifiers": [
+              "public"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/elements/stretchmode",
+            "href": "fuse/elements/stretchmode"
+          },
+          "titles": {
+            "indexTitle": "StretchMode",
+            "fullyQualifiedIndexTitle": "Fuse.Elements.StretchMode"
+          }
+        },
+        "items": [
+          {
+            "comment": {
+              "brief": "The image is stretched to fill the available space. The aspect ratio is not retained.",
+              "full": "The image is stretched to fill the available space. The aspect ratio is not retained."
+            },
+            "returns": {
+              "href": "fuse/elements/stretchmode",
+              "title": "StretchMode",
+              "fullyQualifiedTitle": "Fuse.Elements.StretchMode"
+            },
+            "id": {
+              "id": "fuse/elements/stretchmode/fill",
+              "parentId": "fuse/elements/stretchmode",
+              "type": "Literal",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/elements/stretchmode/fill",
+              "href": "fuse/elements/stretchmode/fill"
+            },
+            "titles": {
+              "indexTitle": "Fill",
+              "fullyQualifiedIndexTitle": "Fuse.Elements.StretchMode.Fill"
+            }
+          },
+          {
+            "comment": {
+              "brief": "The size is pixel matched to the source so the image is drawn 1:1. This means the visual size changes across device densities, but the image remains sharp.",
+              "full": "The size is pixel matched to the source so the image is drawn 1:1. This means the visual size changes across device densities, but the image remains sharp."
+            },
+            "returns": {
+              "href": "fuse/elements/stretchmode",
+              "title": "StretchMode",
+              "fullyQualifiedTitle": "Fuse.Elements.StretchMode"
+            },
+            "id": {
+              "id": "fuse/elements/stretchmode/pixelprecise",
+              "parentId": "fuse/elements/stretchmode",
+              "type": "Literal",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/elements/stretchmode/pixelprecise",
+              "href": "fuse/elements/stretchmode/pixelprecise"
+            },
+            "titles": {
+              "indexTitle": "PixelPrecise",
+              "fullyQualifiedIndexTitle": "Fuse.Elements.StretchMode.PixelPrecise"
+            }
+          },
+          {
+            "comment": {
+              "brief": "The size of the source image, in points calculated with density, are used as the image size. This is the default: a 100x50 source image will be 100x50 points in size. This preserves size across various device densities.",
+              "full": "The size of the source image, in points calculated with density, are used as the image size. This is the default: a 100x50 source image will be 100x50 points in size. This preserves size across various device densities."
+            },
+            "returns": {
+              "href": "fuse/elements/stretchmode",
+              "title": "StretchMode",
+              "fullyQualifiedTitle": "Fuse.Elements.StretchMode"
+            },
+            "id": {
+              "id": "fuse/elements/stretchmode/pointprecise",
+              "parentId": "fuse/elements/stretchmode",
+              "type": "Literal",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/elements/stretchmode/pointprecise",
+              "href": "fuse/elements/stretchmode/pointprecise"
+            },
+            "titles": {
+              "indexTitle": "PointPrecise",
+              "fullyQualifiedIndexTitle": "Fuse.Elements.StretchMode.PointPrecise"
+            }
+          },
+          {
+            "comment": {
+              "brief": "If the size of the image in `PixelPrecise` mode is close to `PointPrecise` then use `PixelPrecise` mode, otherwise use `PointPrecise` mode. This retains sharpness with slightly varying sizes, but prevents too much size variation.",
+              "full": "If the size of the image in `PixelPrecise` mode is close to `PointPrecise` then use `PixelPrecise` mode, otherwise use `PointPrecise` mode. This retains sharpness with slightly varying sizes, but prevents too much size variation."
+            },
+            "returns": {
+              "href": "fuse/elements/stretchmode",
+              "title": "StretchMode",
+              "fullyQualifiedTitle": "Fuse.Elements.StretchMode"
+            },
+            "id": {
+              "id": "fuse/elements/stretchmode/pointprefer",
+              "parentId": "fuse/elements/stretchmode",
+              "type": "Literal",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/elements/stretchmode/pointprefer",
+              "href": "fuse/elements/stretchmode/pointprefer"
+            },
+            "titles": {
+              "indexTitle": "PointPrefer",
+              "fullyQualifiedIndexTitle": "Fuse.Elements.StretchMode.PointPrefer"
+            }
+          },
+          {
+            "comment": {
+              "brief": "The image is stretched in 9-segments defined by the `Scale9Margin`. Corners are not stretched, borders are stretced in one direction, the center is stretched in both directions.",
+              "full": "The image is stretched in 9-segments defined by the `Scale9Margin`. Corners are not stretched, borders are stretced in one direction, the center is stretched in both directions."
+            },
+            "returns": {
+              "href": "fuse/elements/stretchmode",
+              "title": "StretchMode",
+              "fullyQualifiedTitle": "Fuse.Elements.StretchMode"
+            },
+            "id": {
+              "id": "fuse/elements/stretchmode/scale9",
+              "parentId": "fuse/elements/stretchmode",
+              "type": "Literal",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/elements/stretchmode/scale9",
+              "href": "fuse/elements/stretchmode/scale9"
+            },
+            "titles": {
+              "indexTitle": "Scale9",
+              "fullyQualifiedIndexTitle": "Fuse.Elements.StretchMode.Scale9"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Stretches the image to touch the sides of the available space and retain the aspect ratio. This will result in unfilled sections on either the left/right or top/bottom sides of the image.",
+              "full": "Stretches the image to touch the sides of the available space and retain the aspect ratio. This will result in unfilled sections on either the left/right or top/bottom sides of the image."
+            },
+            "returns": {
+              "href": "fuse/elements/stretchmode",
+              "title": "StretchMode",
+              "fullyQualifiedTitle": "Fuse.Elements.StretchMode"
+            },
+            "id": {
+              "id": "fuse/elements/stretchmode/uniform",
+              "parentId": "fuse/elements/stretchmode",
+              "type": "Literal",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/elements/stretchmode/uniform",
+              "href": "fuse/elements/stretchmode/uniform"
+            },
+            "titles": {
+              "indexTitle": "Uniform",
+              "fullyQualifiedIndexTitle": "Fuse.Elements.StretchMode.Uniform"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Stretches an image to touch all sides of the available space and retain the aspect ratio. This will result in the image being clipped on the left/right or top/bottom.",
+              "full": "Stretches an image to touch all sides of the available space and retain the aspect ratio. This will result in the image being clipped on the left/right or top/bottom."
+            },
+            "returns": {
+              "href": "fuse/elements/stretchmode",
+              "title": "StretchMode",
+              "fullyQualifiedTitle": "Fuse.Elements.StretchMode"
+            },
+            "id": {
+              "id": "fuse/elements/stretchmode/uniformtofill",
+              "parentId": "fuse/elements/stretchmode",
+              "type": "Literal",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/elements/stretchmode/uniformtofill",
+              "href": "fuse/elements/stretchmode/uniformtofill"
+            },
+            "titles": {
+              "indexTitle": "UniformToFill",
+              "fullyQualifiedIndexTitle": "Fuse.Elements.StretchMode.UniformToFill"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

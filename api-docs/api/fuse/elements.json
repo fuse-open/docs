@@ -1,0 +1,674 @@
+{
+  "entity": {
+    "id": {
+      "id": "fuse/elements",
+      "parentId": "fuse",
+      "type": "Namespace",
+      "modifiers": []
+    },
+    "uri": {
+      "idUri": "fuse/elements",
+      "href": "fuse/elements"
+    },
+    "titles": {
+      "pageTitle": "Fuse.Elements Namespace",
+      "navigationTitle": "Fuse.Elements Namespace",
+      "fullTitle": "Fuse.Elements",
+      "indexTitle": "Fuse.Elements",
+      "fullyQualifiedIndexTitle": "Fuse.Elements"
+    },
+    "syntax": {
+      "uno": "namespace Elements {}"
+    }
+  },
+  "tableOfContents": {
+    "classes": [
+      {
+        "items": [
+          {
+            "id": {
+              "id": "fuse/elements/alignmenthelpers",
+              "parentId": "fuse/elements",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/elements/alignmenthelpers",
+              "href": "fuse/elements/alignmenthelpers"
+            },
+            "titles": {
+              "indexTitle": "AlignmentHelpers",
+              "fullyQualifiedIndexTitle": "Fuse.Elements.AlignmentHelpers"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Elements are visuals that cover a rectangular 2D region.",
+              "full": "Elements are visuals that cover a rectangular 2D region.\n\n# Common properties\r\n\r\n## HitTestMode\r\n\r\nWhen interacting with an element, it is sometimes desirable to be able to differentiate which elements can be interacted with and how. This is typically referred to as \"hit testing\". In Fuse, how elements interact with user input can be set using `HitTestMode`.\r\n\r\n### Example\r\nThis example will layout two `Rectangle`s and add `Clicked`-triggers to both of them. However, only the left one will output anything when clicked, as the hit testing has been explicitly disabled on the right rectangle:\r\n\r\n\t<Grid ColumnCount=\"2\">\r\n\t\t<Rectangle Width=\"100\" Height=\"100\" Fill=\"#808\" >\r\n\t\t\t<Clicked>\r\n\t\t\t\t<DebugAction Message=\"Clicked left\" />\r\n\t\t\t</Clicked>\r\n\t\t</Rectangle>\r\n\t\t<Rectangle Width=\"100\" Height=\"100\" Fill=\"#808\" HitTestMode=\"None\" >\r\n\t\t\t<Clicked>\r\n\t\t\t\t<DebugAction Message=\"Clicked right\" />\r\n\t\t\t</Clicked>\r\n\t\t</Rectangle>\r\n\t</Grid>\r\n\t\r\n This can be very helpful if you have visual elements obscuring elements below it, where you want the lower elements respond to input.\r\n\r\n## ClipToBounds\r\n\r\nNormally, when laying out an element inside the other, the inner element can freely live outside the parent element:\r\n\r\n\t<Panel Width=\"100\" Height=\"100\">\r\n\t\t\t<Image Margin=\"-100\" File=\"Pictures/Picture1.jpg\"\r\n\t\t\t\tStretchMode=\"UniformToFill\" />\r\n\t</Panel>\r\n\r\nThis `Image` will appear to be 300pt wide and tall, as the `Panel` doesn't clip children to its bounds.\r\n\r\nIf you intend to have the `Image` clip to its parent size, simply set `ClipToBounds=\"true\"` on the `Panel`:\r\n\r\n\t\t<Panel Width=\"100\" Height=\"100\" ClipToBounds=\"true\">\r\n\t\t\t<Image Margin=\"-100\" File=\"Pictures/Picture1.jpg\"\r\n\t\t\t\tStretchMode=\"UniformToFill\" />\r\n\t\t</Panel>\r\n\r\nNow, the `Image` will not overflow the bounds of the `Panel`.\r\n\r\n## Opacity\r\n\r\nYou can set the transparency of objects using the `Opacity`-property. When `Opacity=\"0\"`, the element is completely transparent.\r\n\r\n### Example\r\n\r\nIn this example, a panel's opacity is set to 0.5\r\n\r\n\t<Panel>\r\n\t\t<Opacity Value=\"0.5\" />\r\n\t</Panel>\r\n\r\n## Layers\r\n\r\nIt is often helpful to redefine what existing controls should look like. Elements that are added to containers can be assigned to different layers. If you want a button to appear with a red background, you can redefine its `Background` `Layer`:\r\n\r\n\t<Button Text=\"Hello!\">\r\n\t\t<Rectangle Fill=\"#931\" Layer=\"Background\" />\r\n\t</Button>\r\n\r\nThis will not change the layout or behavior of the @Button, but its appearance will change.\r\n\r\n\n# Available Element classes\n\n[subclass Fuse.Elements.Element]",
+              "attributes": {
+                "topic": "Elements"
+              }
+            },
+            "id": {
+              "id": "fuse/elements/element",
+              "parentId": "fuse/elements",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "abstract",
+                "partial"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/elements/element",
+              "href": "fuse/elements/element"
+            },
+            "titles": {
+              "indexTitle": "Element",
+              "fullyQualifiedIndexTitle": "Fuse.Elements.Element"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Returns the height of an @Element: `ActualSize.Y`",
+              "full": "Returns the height of an @Element: `ActualSize.Y`"
+            },
+            "id": {
+              "id": "fuse/elements/heightfunction",
+              "parentId": "fuse/elements",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/elements/heightfunction",
+              "href": "fuse/elements/heightfunction"
+            },
+            "titles": {
+              "indexTitle": "HeightFunction",
+              "fullyQualifiedIndexTitle": "Fuse.Elements.HeightFunction"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/elements/interactivetransform",
+              "parentId": "fuse/elements",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/elements/interactivetransform",
+              "href": "fuse/elements/interactivetransform"
+            },
+            "titles": {
+              "indexTitle": "InteractiveTransform",
+              "fullyQualifiedIndexTitle": "Fuse.Elements.InteractiveTransform"
+            }
+          },
+          {
+            "comment": {
+              "brief": "These functions provide a layout property of an @Element.",
+              "full": "These functions provide a layout property of an @Element.\n\nThe returned values are the actual values, resulting after layout has been performed. If the element does not yet have a layout, or the layout has been lost, the values here will also be lost.\n\n[subclass Fuse.Elements.LayoutFunction]\n[subclass Fuse.Elements.XYBaseLayoutFunction]"
+            },
+            "id": {
+              "id": "fuse/elements/layoutfunction",
+              "parentId": "fuse/elements",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/elements/layoutfunction",
+              "href": "fuse/elements/layoutfunction"
+            },
+            "titles": {
+              "indexTitle": "LayoutFunction",
+              "fullyQualifiedIndexTitle": "Fuse.Elements.LayoutFunction"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/elements/layoutmasterattr",
+              "parentId": "fuse/elements",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/elements/layoutmasterattr",
+              "href": "fuse/elements/layoutmasterattr"
+            },
+            "titles": {
+              "indexTitle": "LayoutMasterAttr",
+              "fullyQualifiedIndexTitle": "Fuse.Elements.LayoutMasterAttr"
+            }
+          },
+          {
+            "comment": {
+              "brief": "For any placement change the following happens:",
+              "full": "For any placement change the following happens:\n\n- child layout is performed\n- Preplacement dispatched\n- actual local placement modified\n- layout change event deferred"
+            },
+            "id": {
+              "id": "fuse/elements/preplacementargs",
+              "parentId": "fuse/elements",
+              "type": "Class",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/elements/preplacementargs",
+              "href": "fuse/elements/preplacementargs"
+            },
+            "titles": {
+              "indexTitle": "PreplacementArgs",
+              "fullyQualifiedIndexTitle": "Fuse.Elements.PreplacementArgs"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/elements/transformorigins",
+              "parentId": "fuse/elements",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/elements/transformorigins",
+              "href": "fuse/elements/transformorigins"
+            },
+            "titles": {
+              "indexTitle": "TransformOrigins",
+              "fullyQualifiedIndexTitle": "Fuse.Elements.TransformOrigins"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/elements/translationmodes",
+              "parentId": "fuse/elements",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/elements/translationmodes",
+              "href": "fuse/elements/translationmodes"
+            },
+            "titles": {
+              "indexTitle": "TranslationModes",
+              "fullyQualifiedIndexTitle": "Fuse.Elements.TranslationModes"
+            }
+          },
+          {
+            "comment": {
+              "brief": "The Viewport element allows you to perform 3D transformations with perspective projection.",
+              "full": "The Viewport element allows you to perform 3D transformations with perspective projection.\n\nThe Perspective property controls how far away the camera is from the Z = 0 plane (where everything is drawn by default), in points.\n\n    <App>\n        <Viewport Perspective=\"400\">\n            <Panel>\n                <Rectangle Width=\"200\" Height=\"200\" Background=\"#2ecc71\">\n                    <Clicked>\n                        <Rotate DegreesX=\"360\" Duration=\"1.5\" Easing=\"QuadraticInOut\" DurationBack=\"0\" />\n                    </Clicked>\n                </Rectangle>\n            </Panel>\n        </Viewport>\n    </App>"
+            },
+            "id": {
+              "id": "fuse/elements/viewport",
+              "parentId": "fuse/elements",
+              "type": "Class",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/elements/viewport",
+              "href": "fuse/elements/viewport"
+            },
+            "titles": {
+              "indexTitle": "Viewport",
+              "fullyQualifiedIndexTitle": "Fuse.Elements.Viewport"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Returns the width of an @Element: `ActualSize.X`",
+              "full": "Returns the width of an @Element: `ActualSize.X`"
+            },
+            "id": {
+              "id": "fuse/elements/widthfunction",
+              "parentId": "fuse/elements",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/elements/widthfunction",
+              "href": "fuse/elements/widthfunction"
+            },
+            "titles": {
+              "indexTitle": "WidthFunction",
+              "fullyQualifiedIndexTitle": "Fuse.Elements.WidthFunction"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Returns one of:",
+              "full": "Returns one of:\n\n- The `ActualPosition.X` of an @Element. Refer to @LayoutFunction\n- The `X` value of a `float`, `float2`, `float3`, or `float4`"
+            },
+            "id": {
+              "id": "fuse/elements/xfunction",
+              "parentId": "fuse/elements",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/elements/xfunction",
+              "href": "fuse/elements/xfunction"
+            },
+            "titles": {
+              "indexTitle": "XFunction",
+              "fullyQualifiedIndexTitle": "Fuse.Elements.XFunction"
+            }
+          },
+          {
+            "comment": {
+              "brief": "These are overloaded functions that either provide a layout property or a vector component.",
+              "full": "These are overloaded functions that either provide a layout property or a vector component.\n\n[subclass Fuse.Elements.XYBaseLayoutFunction]"
+            },
+            "id": {
+              "id": "fuse/elements/xybaselayoutfunction",
+              "parentId": "fuse/elements",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/elements/xybaselayoutfunction",
+              "href": "fuse/elements/xybaselayoutfunction"
+            },
+            "titles": {
+              "indexTitle": "XYBaseLayoutFunction",
+              "fullyQualifiedIndexTitle": "Fuse.Elements.XYBaseLayoutFunction"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Returns one of:",
+              "full": "Returns one of:\n\n- The `ActualPosition.Y` of an @Element. Refer to @LayoutFunction\n- The `Y` value of a `float2`, `float3`, or `float4`"
+            },
+            "id": {
+              "id": "fuse/elements/yfunction",
+              "parentId": "fuse/elements",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/elements/yfunction",
+              "href": "fuse/elements/yfunction"
+            },
+            "titles": {
+              "indexTitle": "YFunction",
+              "fullyQualifiedIndexTitle": "Fuse.Elements.YFunction"
+            }
+          }
+        ]
+      }
+    ],
+    "delegates": [
+      {
+        "items": [
+          {
+            "parameters": [
+              {
+                "name": "sender",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              },
+              {
+                "name": "args",
+                "href": "fuse/elements/preplacementargs",
+                "title": "PreplacementArgs",
+                "fullyQualifiedTitle": "Fuse.Elements.PreplacementArgs"
+              }
+            ],
+            "id": {
+              "id": "fuse/elements/preplacementhandler",
+              "parentId": "fuse/elements",
+              "type": "Delegate",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/elements/preplacementhandler",
+              "href": "fuse/elements/preplacementhandler"
+            },
+            "titles": {
+              "indexTitle": "PreplacementHandler (object, PreplacementArgs)",
+              "fullyQualifiedIndexTitle": "Fuse.Elements.PreplacementHandler (object, Fuse.Elements.PreplacementArgs)"
+            }
+          }
+        ]
+      }
+    ],
+    "enums": [
+      {
+        "items": [
+          {
+            "comment": {
+              "brief": "Refers to the alignment of an element, or content, in its parent.",
+              "full": "Refers to the alignment of an element, or content, in its parent.\n\nThis encodes both a vertical and horizontal alignment.\n\n- `Left`, `HorizontalCenter`, `Right` specify horizontal alignment\n- `Top`, `VerticalCenter`, `Bottom` specify vertical alignment"
+            },
+            "id": {
+              "id": "fuse/elements/alignment",
+              "parentId": "fuse/elements",
+              "type": "Enum",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/elements/alignment",
+              "href": "fuse/elements/alignment"
+            },
+            "titles": {
+              "indexTitle": "Alignment",
+              "fullyQualifiedIndexTitle": "Fuse.Elements.Alignment"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/elements/aspectconstraint",
+              "parentId": "fuse/elements",
+              "type": "Enum",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/elements/aspectconstraint",
+              "href": "fuse/elements/aspectconstraint"
+            },
+            "titles": {
+              "indexTitle": "AspectConstraint",
+              "fullyQualifiedIndexTitle": "Fuse.Elements.AspectConstraint"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/elements/cachingmode",
+              "parentId": "fuse/elements",
+              "type": "Enum",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/elements/cachingmode",
+              "href": "fuse/elements/cachingmode"
+            },
+            "titles": {
+              "indexTitle": "CachingMode",
+              "fullyQualifiedIndexTitle": "Fuse.Elements.CachingMode"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Specifies how hit testing should be performed on an @Element",
+              "full": "Specifies how hit testing should be performed on an @Element"
+            },
+            "id": {
+              "id": "fuse/elements/hittestmode",
+              "parentId": "fuse/elements",
+              "type": "Enum",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/elements/hittestmode",
+              "href": "fuse/elements/hittestmode"
+            },
+            "titles": {
+              "indexTitle": "HitTestMode",
+              "fullyQualifiedIndexTitle": "Fuse.Elements.HitTestMode"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/elements/layoutmastermode",
+              "parentId": "fuse/elements",
+              "type": "Enum",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/elements/layoutmastermode",
+              "href": "fuse/elements/layoutmastermode"
+            },
+            "titles": {
+              "indexTitle": "LayoutMasterMode",
+              "fullyQualifiedIndexTitle": "Fuse.Elements.LayoutMasterMode"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/elements/perspectiverelativetomode",
+              "parentId": "fuse/elements",
+              "type": "Enum",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/elements/perspectiverelativetomode",
+              "href": "fuse/elements/perspectiverelativetomode"
+            },
+            "titles": {
+              "indexTitle": "PerspectiveRelativeToMode",
+              "fullyQualifiedIndexTitle": "Fuse.Elements.PerspectiveRelativeToMode"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Specifies whether an image can become larger or smaller to fill the available space.",
+              "full": "Specifies whether an image can become larger or smaller to fill the available space."
+            },
+            "id": {
+              "id": "fuse/elements/stretchdirection",
+              "parentId": "fuse/elements",
+              "type": "Enum",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/elements/stretchdirection",
+              "href": "fuse/elements/stretchdirection"
+            },
+            "titles": {
+              "indexTitle": "StretchDirection",
+              "fullyQualifiedIndexTitle": "Fuse.Elements.StretchDirection"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Specifies how an image size is calculated and how it is stretched.",
+              "full": "Specifies how an image size is calculated and how it is stretched."
+            },
+            "id": {
+              "id": "fuse/elements/stretchmode",
+              "parentId": "fuse/elements",
+              "type": "Enum",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/elements/stretchmode",
+              "href": "fuse/elements/stretchmode"
+            },
+            "titles": {
+              "indexTitle": "StretchMode",
+              "fullyQualifiedIndexTitle": "Fuse.Elements.StretchMode"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Specifies how the size of an image is calculated during layout.",
+              "full": "Specifies how the size of an image is calculated during layout."
+            },
+            "id": {
+              "id": "fuse/elements/stretchsizing",
+              "parentId": "fuse/elements",
+              "type": "Enum",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/elements/stretchsizing",
+              "href": "fuse/elements/stretchsizing"
+            },
+            "titles": {
+              "indexTitle": "StretchSizing",
+              "fullyQualifiedIndexTitle": "Fuse.Elements.StretchSizing"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Specifies how the viewport behaves",
+              "full": "Specifies how the viewport behaves"
+            },
+            "id": {
+              "id": "fuse/elements/viewportmode",
+              "parentId": "fuse/elements",
+              "type": "Enum",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/elements/viewportmode",
+              "href": "fuse/elements/viewportmode"
+            },
+            "titles": {
+              "indexTitle": "ViewportMode",
+              "fullyQualifiedIndexTitle": "Fuse.Elements.ViewportMode"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/elements/visibility",
+              "parentId": "fuse/elements",
+              "type": "Enum",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/elements/visibility",
+              "href": "fuse/elements/visibility"
+            },
+            "titles": {
+              "indexTitle": "Visibility",
+              "fullyQualifiedIndexTitle": "Fuse.Elements.Visibility"
+            }
+          }
+        ]
+      }
+    ],
+    "interfaces": [
+      {
+        "items": [
+          {
+            "id": {
+              "id": "fuse/elements/itransformorigin",
+              "parentId": "fuse/elements",
+              "type": "Interface",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/elements/itransformorigin",
+              "href": "fuse/elements/itransformorigin"
+            },
+            "titles": {
+              "indexTitle": "ITransformOrigin",
+              "fullyQualifiedIndexTitle": "Fuse.Elements.ITransformOrigin"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/elements/itreerenderer",
+              "parentId": "fuse/elements",
+              "type": "Interface",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/elements/itreerenderer",
+              "href": "fuse/elements/itreerenderer"
+            },
+            "titles": {
+              "indexTitle": "ITreeRenderer",
+              "fullyQualifiedIndexTitle": "Fuse.Elements.ITreeRenderer"
+            }
+          }
+        ]
+      }
+    ],
+    "structs": [
+      {
+        "items": [
+          {
+            "comment": {
+              "brief": "@hide Not sure how this ended up public",
+              "full": "@hide Not sure how this ended up public"
+            },
+            "id": {
+              "id": "fuse/elements/boxplacement",
+              "parentId": "fuse/elements",
+              "type": "Struct",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/elements/boxplacement",
+              "href": "fuse/elements/boxplacement"
+            },
+            "titles": {
+              "indexTitle": "BoxPlacement",
+              "fullyQualifiedIndexTitle": "Fuse.Elements.BoxPlacement"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

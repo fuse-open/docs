@@ -1,0 +1,70 @@
+{
+  "entity": {
+    "location": {
+      "namespaceTitle": "Fuse.Reactive",
+      "namespaceUri": "fuse/reactive",
+      "packageName": "Fuse.Reactive.Bindings",
+      "packageVersion": "1.8.0-rc2"
+    },
+    "parameters": [],
+    "returns": {
+      "href": "fuse/reactive/instanceidentity",
+      "title": "InstanceIdentity",
+      "fullyQualifiedTitle": "Fuse.Reactive.InstanceIdentity"
+    },
+    "uxProperties": {},
+    "values": [
+      {
+        "uri": "fuse/reactive/instanceidentity/none",
+        "title": "None",
+        "comment": {
+          "brief": "New objects are always new, never matched to an existing one",
+          "full": "New objects are always new, never matched to an existing one"
+        }
+      },
+      {
+        "uri": "fuse/reactive/instanceidentity/key",
+        "title": "Key",
+        "comment": {
+          "brief": "The `IdentityKey` is used to compare objects. This value is chosen implicitly if `IdentityKey` is used.",
+          "full": "The `IdentityKey` is used to compare objects. This value is chosen implicitly if `IdentityKey` is used."
+        }
+      },
+      {
+        "uri": "fuse/reactive/instanceidentity/object",
+        "title": "Object",
+        "comment": {
+          "brief": "Use the object itself as the matching key. Suitable for when the object is a plain string or number.",
+          "full": "Use the object itself as the matching key. Suitable for when the object is a plain string or number."
+        }
+      }
+    ],
+    "id": {
+      "id": "fuse/reactive/instantiator/identity",
+      "parentId": "fuse/reactive/instantiator",
+      "type": "UxProperty",
+      "modifiers": [
+        "public"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/reactive/instantiator/identity",
+      "href": "fuse/reactive/instantiator/identity"
+    },
+    "titles": {
+      "pageTitle": "Instantiator.Identity Property",
+      "navigationTitle": "Identity Property",
+      "fullTitle": "Fuse.Reactive.Instantiator.Identity",
+      "indexTitle": "Identity",
+      "fullyQualifiedIndexTitle": "Fuse.Reactive.Instantiator.Identity"
+    },
+    "syntax": {
+      "uno": "public Fuse.Reactive.InstanceIdentity Identity { get; get; }"
+    },
+    "comment": {
+      "brief": "Reuses existing nodes if the new objects match the old ones.",
+      "full": "Reuses existing nodes if the new objects match the old ones.\n\nThis field is typically set implicity. It defaults to `None`. Use `IdentityKey` instead if you want to match based on a id field.\n\nIf you need to match on the observable value itself, set this to `Object`, otherwise it works like `IdentityKey`"
+    }
+  },
+  "tableOfContents": {}
+}

@@ -1,0 +1,731 @@
+{
+  "entity": {
+    "location": {
+      "namespaceTitle": "Fuse",
+      "namespaceUri": "fuse",
+      "packageName": "Fuse.Common",
+      "packageVersion": "1.8.0-rc2"
+    },
+    "id": {
+      "id": "fuse/diagnostics",
+      "parentId": "fuse",
+      "type": "Class",
+      "modifiers": [
+        "public",
+        "static"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/diagnostics",
+      "href": "fuse/diagnostics"
+    },
+    "titles": {
+      "pageTitle": "Diagnostics Class",
+      "navigationTitle": "Diagnostics Class",
+      "fullTitle": "Fuse.Diagnostics",
+      "indexTitle": "Diagnostics",
+      "fullyQualifiedIndexTitle": "Fuse.Diagnostics"
+    },
+    "syntax": {
+      "uno": "public static class Diagnostics {}"
+    },
+    "comment": {
+      "brief": "Static API for reporting diagnostic warnings and errors for display in visual tools",
+      "full": "Static API for reporting diagnostic warnings and errors for display in visual tools\n\nThe `User...` messages indicate the user (programmer) has done something wrong and needs\nto modify their code. These will most likely be displayed prominantly to the user. This should be seen\nfrom the point of view of a typical UX/JS user, not somebody writing Uno code.\n\nThe `Internal...` messages are for situations that can't be directly attributed to a user error. They\nare an indication of a fuselibs error, or a Uno programmer error.\n\nThe `Unknown...` messages are for errors coming from the native platform or in places\nwhere the cause of the error really isn't known, but probably isn't a user or internal programming\nerror.\n\nThe `object` of the error messages should be the object which is generating the error; the Node\nwhich it would most likely be associated with in the UX tree. This is typically `this` in instance\ncontexts."
+    }
+  },
+  "tableOfContents": {
+    "uxEvents": [
+      {
+        "items": [
+          {
+            "returns": {
+              "href": "fuse/diagnostichandler",
+              "title": "DiagnosticHandler (Diagnostic)",
+              "fullyQualifiedTitle": "Fuse.DiagnosticHandler (Fuse.Diagnostic)"
+            },
+            "id": {
+              "id": "fuse/diagnostics/diagnosticdismissed",
+              "parentId": "fuse/diagnostics",
+              "type": "UxEvent",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/diagnostics/diagnosticdismissed",
+              "href": "fuse/diagnostics/diagnosticdismissed"
+            },
+            "titles": {
+              "indexTitle": "DiagnosticDismissed",
+              "fullyQualifiedIndexTitle": "Fuse.Diagnostics.DiagnosticDismissed"
+            }
+          },
+          {
+            "returns": {
+              "href": "fuse/diagnostichandler",
+              "title": "DiagnosticHandler (Diagnostic)",
+              "fullyQualifiedTitle": "Fuse.DiagnosticHandler (Fuse.Diagnostic)"
+            },
+            "id": {
+              "id": "fuse/diagnostics/diagnosticreported",
+              "parentId": "fuse/diagnostics",
+              "type": "UxEvent",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/diagnostics/diagnosticreported",
+              "href": "fuse/diagnostics/diagnosticreported"
+            },
+            "titles": {
+              "indexTitle": "DiagnosticReported",
+              "fullyQualifiedIndexTitle": "Fuse.Diagnostics.DiagnosticReported"
+            }
+          }
+        ]
+      }
+    ],
+    "methods": [
+      {
+        "items": [
+          {
+            "parameters": [
+              {
+                "name": "msg",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              },
+              {
+                "name": "obj",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              },
+              {
+                "name": "filePath",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              },
+              {
+                "name": "lineNumber",
+                "href": "uno/int",
+                "title": "int",
+                "fullyQualifiedTitle": "int"
+              },
+              {
+                "name": "memberName",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              }
+            ],
+            "id": {
+              "id": "fuse/diagnostics/deprecated_319f9ed6",
+              "parentId": "fuse/diagnostics",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/diagnostics/deprecated_319f9ed6",
+              "href": "fuse/diagnostics/deprecated_319f9ed6"
+            },
+            "titles": {
+              "indexTitle": "Deprecated(string, object, string, int, string)",
+              "fullyQualifiedIndexTitle": "Fuse.Diagnostics.Deprecated(string, object, string, int, string)"
+            }
+          },
+          {
+            "comment": {
+              "brief": "An error that is most likely not a direct result of the user (programmer) doing something incorrectly\nbut is an internal fuselibs error.",
+              "full": "An error that is most likely not a direct result of the user (programmer) doing something incorrectly\nbut is an internal fuselibs error."
+            },
+            "parameters": [
+              {
+                "name": "msg",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              },
+              {
+                "name": "obj",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              },
+              {
+                "name": "filePath",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              },
+              {
+                "name": "lineNumber",
+                "href": "uno/int",
+                "title": "int",
+                "fullyQualifiedTitle": "int"
+              },
+              {
+                "name": "memberName",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              }
+            ],
+            "id": {
+              "id": "fuse/diagnostics/internalerror_319f9ed6",
+              "parentId": "fuse/diagnostics",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/diagnostics/internalerror_319f9ed6",
+              "href": "fuse/diagnostics/internalerror_319f9ed6"
+            },
+            "titles": {
+              "indexTitle": "InternalError(string, object, string, int, string)",
+              "fullyQualifiedIndexTitle": "Fuse.Diagnostics.InternalError(string, object, string, int, string)"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "msg",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              },
+              {
+                "name": "filePath",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              },
+              {
+                "name": "lineNumber",
+                "href": "uno/int",
+                "title": "int",
+                "fullyQualifiedTitle": "int"
+              },
+              {
+                "name": "memberName",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              }
+            ],
+            "id": {
+              "id": "fuse/diagnostics/performancewarning_f6e95c36",
+              "parentId": "fuse/diagnostics",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/diagnostics/performancewarning_f6e95c36",
+              "href": "fuse/diagnostics/performancewarning_f6e95c36"
+            },
+            "titles": {
+              "indexTitle": "PerformanceWarning(string, string, int, string)",
+              "fullyQualifiedIndexTitle": "Fuse.Diagnostics.PerformanceWarning(string, string, int, string)"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "d",
+                "href": "fuse/diagnostic",
+                "title": "Diagnostic",
+                "fullyQualifiedTitle": "Fuse.Diagnostic"
+              }
+            ],
+            "id": {
+              "id": "fuse/diagnostics/report_64903dec",
+              "parentId": "fuse/diagnostics",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/diagnostics/report_64903dec",
+              "href": "fuse/diagnostics/report_64903dec"
+            },
+            "titles": {
+              "indexTitle": "Report(Diagnostic)",
+              "fullyQualifiedIndexTitle": "Fuse.Diagnostics.Report(Fuse.Diagnostic)"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Reports a temporary diagnostic condition.",
+              "full": "Reports a temporary diagnostic condition.\n\nThe error is also sent to debug_log. If this is not desired, use `ReportTemporalWarning`.\n\nThe condition is valid until `.Dispose()` is called on the returned object."
+            },
+            "returns": {
+              "href": "uno/idisposable",
+              "title": "IDisposable",
+              "fullyQualifiedTitle": "Uno.IDisposable"
+            },
+            "parameters": [
+              {
+                "name": "d",
+                "href": "fuse/diagnostic",
+                "title": "Diagnostic",
+                "fullyQualifiedTitle": "Fuse.Diagnostic"
+              }
+            ],
+            "id": {
+              "id": "fuse/diagnostics/reporttemporal_64903dec",
+              "parentId": "fuse/diagnostics",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/diagnostics/reporttemporal_64903dec",
+              "href": "fuse/diagnostics/reporttemporal_64903dec"
+            },
+            "titles": {
+              "indexTitle": "ReportTemporal(Diagnostic)",
+              "fullyQualifiedIndexTitle": "Fuse.Diagnostics.ReportTemporal(Fuse.Diagnostic)"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/idisposable",
+              "title": "IDisposable",
+              "fullyQualifiedTitle": "Uno.IDisposable"
+            },
+            "parameters": [
+              {
+                "name": "message",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              },
+              {
+                "name": "origin",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              }
+            ],
+            "id": {
+              "id": "fuse/diagnostics/reporttemporaluserwarning_d062e5a9",
+              "parentId": "fuse/diagnostics",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/diagnostics/reporttemporaluserwarning_d062e5a9",
+              "href": "fuse/diagnostics/reporttemporaluserwarning_d062e5a9"
+            },
+            "titles": {
+              "indexTitle": "ReportTemporalUserWarning(string, object)",
+              "fullyQualifiedIndexTitle": "Fuse.Diagnostics.ReportTemporalUserWarning(string, object)"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Reports a temporary diagnostic condition that should not be printed to debug_log.\nThe condition is valid until `.Dispose()` is called on the returned object.",
+              "full": "Reports a temporary diagnostic condition that should not be printed to debug_log.\nThe condition is valid until `.Dispose()` is called on the returned object."
+            },
+            "returns": {
+              "href": "uno/idisposable",
+              "title": "IDisposable",
+              "fullyQualifiedTitle": "Uno.IDisposable"
+            },
+            "parameters": [
+              {
+                "name": "d",
+                "href": "fuse/diagnostic",
+                "title": "Diagnostic",
+                "fullyQualifiedTitle": "Fuse.Diagnostic"
+              }
+            ],
+            "id": {
+              "id": "fuse/diagnostics/reporttemporalwarning_64903dec",
+              "parentId": "fuse/diagnostics",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/diagnostics/reporttemporalwarning_64903dec",
+              "href": "fuse/diagnostics/reporttemporalwarning_64903dec"
+            },
+            "titles": {
+              "indexTitle": "ReportTemporalWarning(Diagnostic)",
+              "fullyQualifiedIndexTitle": "Fuse.Diagnostics.ReportTemporalWarning(Fuse.Diagnostic)"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Used when an expected exception is caught and otherwise ignored (processing continues).\nInternal implies the immediate cause is not known and it cannot be attributed to a user error.",
+              "full": "Used when an expected exception is caught and otherwise ignored (processing continues).\nInternal implies the immediate cause is not known and it cannot be attributed to a user error."
+            },
+            "parameters": [
+              {
+                "name": "msg",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              },
+              {
+                "name": "ex",
+                "href": "uno/exception",
+                "title": "Exception",
+                "fullyQualifiedTitle": "Uno.Exception"
+              },
+              {
+                "name": "obj",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              },
+              {
+                "name": "filePath",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              },
+              {
+                "name": "lineNumber",
+                "href": "uno/int",
+                "title": "int",
+                "fullyQualifiedTitle": "int"
+              },
+              {
+                "name": "memberName",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              }
+            ],
+            "id": {
+              "id": "fuse/diagnostics/unknownexception_7b89b1e6",
+              "parentId": "fuse/diagnostics",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/diagnostics/unknownexception_7b89b1e6",
+              "href": "fuse/diagnostics/unknownexception_7b89b1e6"
+            },
+            "titles": {
+              "indexTitle": "UnknownException(string, Exception, object, string, int, string)",
+              "fullyQualifiedIndexTitle": "Fuse.Diagnostics.UnknownException(string, Uno.Exception, object, string, int, string)"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "msg",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              },
+              {
+                "name": "obj",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              },
+              {
+                "name": "filePath",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              },
+              {
+                "name": "lineNumber",
+                "href": "uno/int",
+                "title": "int",
+                "fullyQualifiedTitle": "int"
+              },
+              {
+                "name": "memberName",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              }
+            ],
+            "id": {
+              "id": "fuse/diagnostics/unsupported_319f9ed6",
+              "parentId": "fuse/diagnostics",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/diagnostics/unsupported_319f9ed6",
+              "href": "fuse/diagnostics/unsupported_319f9ed6"
+            },
+            "titles": {
+              "indexTitle": "Unsupported(string, object, string, int, string)",
+              "fullyQualifiedIndexTitle": "Fuse.Diagnostics.Unsupported(string, object, string, int, string)"
+            }
+          },
+          {
+            "comment": {
+              "brief": "An error that has most likely been caused by a high-level programming mistake, such\nas a property mismatch, unsupported enum, or other UX setup error.",
+              "full": "An error that has most likely been caused by a high-level programming mistake, such\nas a property mismatch, unsupported enum, or other UX setup error."
+            },
+            "parameters": [
+              {
+                "name": "msg",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              },
+              {
+                "name": "obj",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              },
+              {
+                "name": "filePath",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              },
+              {
+                "name": "lineNumber",
+                "href": "uno/int",
+                "title": "int",
+                "fullyQualifiedTitle": "int"
+              },
+              {
+                "name": "memberName",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              },
+              {
+                "name": "e",
+                "href": "uno/exception",
+                "title": "Exception",
+                "fullyQualifiedTitle": "Uno.Exception"
+              }
+            ],
+            "id": {
+              "id": "fuse/diagnostics/usererror_2ffb8bbe",
+              "parentId": "fuse/diagnostics",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/diagnostics/usererror_2ffb8bbe",
+              "href": "fuse/diagnostics/usererror_2ffb8bbe"
+            },
+            "titles": {
+              "indexTitle": "UserError(string, object, string, int, string, Exception)",
+              "fullyQualifiedIndexTitle": "Fuse.Diagnostics.UserError(string, object, string, int, string, Uno.Exception)"
+            }
+          },
+          {
+            "comment": {
+              "brief": "A node was rooted in a place where it should not have been. This is a common enough scenario\nto warrant custom handling for consistency.",
+              "full": "A node was rooted in a place where it should not have been. This is a common enough scenario\nto warrant custom handling for consistency."
+            },
+            "parameters": [
+              {
+                "name": "expectedType",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              },
+              {
+                "name": "actualParent",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              },
+              {
+                "name": "obj",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              },
+              {
+                "name": "filePath",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              },
+              {
+                "name": "lineNumber",
+                "href": "uno/int",
+                "title": "int",
+                "fullyQualifiedTitle": "int"
+              },
+              {
+                "name": "memberName",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              }
+            ],
+            "id": {
+              "id": "fuse/diagnostics/userrooterror_993a179c",
+              "parentId": "fuse/diagnostics",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/diagnostics/userrooterror_993a179c",
+              "href": "fuse/diagnostics/userrooterror_993a179c"
+            },
+            "titles": {
+              "indexTitle": "UserRootError(string, object, object, string, int, string)",
+              "fullyQualifiedIndexTitle": "Fuse.Diagnostics.UserRootError(string, object, object, string, int, string)"
+            }
+          },
+          {
+            "comment": {
+              "brief": "In some situations it's possible to detect that the user has resolved an error. This function\ncan report such things.",
+              "full": "In some situations it's possible to detect that the user has resolved an error. This function\ncan report such things."
+            },
+            "parameters": [
+              {
+                "name": "msg",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              },
+              {
+                "name": "obj",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              },
+              {
+                "name": "filePath",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              },
+              {
+                "name": "lineNumber",
+                "href": "uno/int",
+                "title": "int",
+                "fullyQualifiedTitle": "int"
+              },
+              {
+                "name": "memberName",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              }
+            ],
+            "id": {
+              "id": "fuse/diagnostics/usersuccess_319f9ed6",
+              "parentId": "fuse/diagnostics",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/diagnostics/usersuccess_319f9ed6",
+              "href": "fuse/diagnostics/usersuccess_319f9ed6"
+            },
+            "titles": {
+              "indexTitle": "UserSuccess(string, object, string, int, string)",
+              "fullyQualifiedIndexTitle": "Fuse.Diagnostics.UserSuccess(string, object, string, int, string)"
+            }
+          },
+          {
+            "comment": {
+              "brief": "The user is doing something that warrants a warning about use. This should be used for things\nthat are almost errors, but the code may still work nonetheless.",
+              "full": "The user is doing something that warrants a warning about use. This should be used for things\nthat are almost errors, but the code may still work nonetheless.\n\nThis should be used only in rare circumstances. Generally code works without issue, or it has\nbeen deprecated, or the user has made an error. Use a different reporting function as appropriate."
+            },
+            "parameters": [
+              {
+                "name": "msg",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              },
+              {
+                "name": "obj",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              },
+              {
+                "name": "filePath",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              },
+              {
+                "name": "lineNumber",
+                "href": "uno/int",
+                "title": "int",
+                "fullyQualifiedTitle": "int"
+              },
+              {
+                "name": "memberName",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              }
+            ],
+            "id": {
+              "id": "fuse/diagnostics/userwarning_319f9ed6",
+              "parentId": "fuse/diagnostics",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/diagnostics/userwarning_319f9ed6",
+              "href": "fuse/diagnostics/userwarning_319f9ed6"
+            },
+            "titles": {
+              "indexTitle": "UserWarning(string, object, string, int, string)",
+              "fullyQualifiedIndexTitle": "Fuse.Diagnostics.UserWarning(string, object, string, int, string)"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "entity": {
+    "location": {
+      "namespaceTitle": "Fuse.Gestures",
+      "namespaceUri": "fuse/gestures",
+      "packageName": "Fuse.Gestures",
+      "packageVersion": "1.8.0-rc2"
+    },
+    "parameters": [],
+    "returns": {
+      "href": "fuse/elements/element",
+      "title": "Element",
+      "fullyQualifiedTitle": "Fuse.Elements.Element"
+    },
+    "uxProperties": {},
+    "id": {
+      "id": "fuse/gestures/pangesture/constrainelement",
+      "parentId": "fuse/gestures/pangesture",
+      "type": "UxProperty",
+      "modifiers": [
+        "public"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/gestures/pangesture/constrainelement",
+      "href": "fuse/gestures/pangesture/constrainelement"
+    },
+    "titles": {
+      "pageTitle": "PanGesture.ConstrainElement Property",
+      "navigationTitle": "ConstrainElement Property",
+      "fullTitle": "Fuse.Gestures.PanGesture.ConstrainElement",
+      "indexTitle": "ConstrainElement",
+      "fullyQualifiedIndexTitle": "Fuse.Gestures.PanGesture.ConstrainElement"
+    },
+    "syntax": {
+      "uno": "public Fuse.Elements.Element ConstrainElement { get; get; }"
+    },
+    "comment": {
+      "brief": "Constrains the gesture so the resulting scaled and translated @Visual will remain visible within the @ConstrainElement. That is, you can't pan it outside of the visible area.",
+      "full": "Constrains the gesture so the resulting scaled and translated @Visual will remain visible within the @ConstrainElement. That is, you can't pan it outside of the visible area.\n\nThis assumes the visual content is the same size (when not transformed) as the element given here. For @Image use `Constraint` instead.\n\n## Example\n\nThe circle in this example will always be visible in the light grey area when zoomed in and panned.\n\n    <Panel HitTestMode=\"LocalBounds\" Width=\"400\" Height=\"400\" ux:Name=\"TheWrapper\" Color=\"#aaa\" ClipToBounds=\"true\">\n        <Circle Color=\"#afa\">\n            <InteractiveTransform ux:Name=\"ImageTrans\"/>\n        </Circle>\n        <ZoomGesture Target=\"ImageTrans\"/>\n        <PanGesture Target=\"ImageTrans\" ConstrainElement=\"TheWrapper\"/>\n    </Panel>"
+    }
+  },
+  "tableOfContents": {}
+}

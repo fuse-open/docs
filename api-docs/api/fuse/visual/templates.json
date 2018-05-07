@@ -1,0 +1,68 @@
+{
+  "entity": {
+    "location": {
+      "namespaceTitle": "Fuse",
+      "namespaceUri": "fuse",
+      "packageName": "Fuse.Nodes",
+      "packageVersion": "1.8.0-rc2"
+    },
+    "parameters": [],
+    "returns": {
+      "href": "uno/collections/ilist_1",
+      "title": "IList<Template>",
+      "fullyQualifiedTitle": "Uno.Collections.IList<Uno.UX.Template>"
+    },
+    "uxProperties": {},
+    "flags": {
+      "uxContent": true
+    },
+    "attributes": [
+      {
+        "id": {
+          "id": "uno/ux/uxcontentattribute",
+          "parentId": "uno/ux",
+          "type": "Class",
+          "modifiers": [
+            "public",
+            "sealed"
+          ]
+        },
+        "uri": {
+          "idUri": "uno/ux/uxcontentattribute",
+          "href": "uno/ux/uxcontentattribute"
+        },
+        "titles": {
+          "indexTitle": "UXContentAttribute",
+          "fullyQualifiedIndexTitle": "Uno.UX.UXContentAttribute"
+        }
+      }
+    ],
+    "id": {
+      "id": "fuse/visual/templates",
+      "parentId": "fuse/visual",
+      "type": "UxProperty",
+      "modifiers": [
+        "public"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/visual/templates",
+      "href": "fuse/visual/templates"
+    },
+    "titles": {
+      "pageTitle": "Visual.Templates Property",
+      "navigationTitle": "Templates Property",
+      "fullTitle": "Fuse.Visual.Templates",
+      "indexTitle": "Templates",
+      "fullyQualifiedIndexTitle": "Fuse.Visual.Templates"
+    },
+    "syntax": {
+      "uno": "[Uno.UX.UXContent]\r\npublic Uno.Collections.IList<Uno.UX.Template> Templates { get; }"
+    },
+    "comment": {
+      "brief": "List of templates that will be used to populate this Visual.",
+      "full": "List of templates that will be used to populate this Visual.\n\nThis list allows you to place nodes with a `ux:Template=\"key\"` attribute inside a @Visual in UX Markup,\nwhere `key` is the match key to be used when selecting a template.\n\nThis list has many use cases. For example, when populating a view with data, the correct template can be\npicked based on a field    in the data source:\n\n    <StackPanel Items=\"{items}\" MatchKey=\"type\">\n        <SmallProfile ux:Template=\"small_profile\" />\n        <BigProfile ux:Template=\"big_profile\" />\n    </StackPanel>\n\nThe name of the template can also have a special significance in certain contexts, for example when dealing\nwith native control wrappers:\n\n    <Control ux:Class=\"MySlider\">\n        <MyWrappers.iOS.Slider ux:Template=\"iOSAppearance\" />\n        <MyWrappers.Android.Slider ux:Template=\"AndroidAppearance\" />\n        <MyWrappers.Graphics.Slider ux:Template=\"GraphicsAppearance\" />\n    </Control>"
+    }
+  },
+  "tableOfContents": {}
+}

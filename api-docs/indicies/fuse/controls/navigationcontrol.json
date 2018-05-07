@@ -1,0 +1,115 @@
+{
+  "root": {
+    "id": {
+      "id": "fuse/controls/navigationcontrol",
+      "parentId": "fuse/controls",
+      "type": "Class",
+      "modifiers": [
+        "public",
+        "abstract",
+        "partial"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/controls/navigationcontrol",
+      "href": "fuse/controls/navigationcontrol"
+    },
+    "titles": {
+      "indexTitle": "NavigationControl",
+      "fullyQualifiedIndexTitle": "Fuse.Controls.NavigationControl"
+    }
+  },
+  "descendants": [
+    {
+      "comment": {
+        "brief": "A navigation control for panels that slide in from the sides of the display.",
+        "full": "A navigation control for panels that slide in from the sides of the display.\n\nAdd an `Edge` property to the children to define on which edge they attach. The user can swipe from that side to reveal the panel.\n\nUse a `GoBack` inside this navigation to dismiss side-panels from UX, or use the `dismiss` method from JavaScript.\n\n## Model\n\nThe EdgeNavigator can be bound to a model with the `Pages` property. For example:\n\n   <EdgeNavigator Pages=\"{pages}\">\n       <Panel Edge=\"Left\" ux:Template=\"left\"/>\n       <Panel Edge=\"Right\" ux:Template=\"right\"/>\n       <Panel ux:Template=\"main\"/>\n   </EdgeNavigator>\n\nThen in your main model state you define `pages`\n\n   export default class MainState {\n       constructor() {\n           this.pages = [ new LeftPage(), new RightPage(), new MainPage() ]\n       }\n   }\n\n   class LeftPage {\n       constructor() {\n           this.$path = \"left\"\n       }\n   }\n\n   class RightPage {\n       constructor() {\n           this.$path = \"right\"\n       }\n   }\n\n   class MainPage {\n       constructor() {\n           this.$path = \"main\"\n       }\n   }"
+      },
+      "id": {
+        "id": "fuse/controls/edgenavigator",
+        "parentId": "fuse/controls",
+        "type": "UxClass",
+        "modifiers": [
+          "public",
+          "partial"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/controls/edgenavigator",
+        "href": "fuse/controls/edgenavigator"
+      },
+      "titles": {
+        "indexTitle": "EdgeNavigator",
+        "fullyQualifiedIndexTitle": "Fuse.Controls.EdgeNavigator"
+      }
+    },
+    {
+      "comment": {
+        "brief": "General-purpose navigation container with on-demand instantiation and recycling of pages.",
+        "full": "General-purpose navigation container with on-demand instantiation and recycling of pages.\n\n> Note: It is recommended that you first read the [Navigation guide](/docs/navigation/navigation) for a full overview of Fuse's navigation system.\r\n\r\n## Pages\r\n\r\n`Navigator` takes a collection of [templates](/docs/basics/creating-components#templates-ux-template) as its children.\r\nThis allows it to instantiate and recycle pages as it needs.\r\n\r\nYou can declare a node as a template by specifying the `ux:Template` attribute. The path of the route is matched to the `ux:Template` value to select a template.\r\n\r\n\t<Page ux:Template=\"matchPath\">\r\n\r\nYou can read more about templates [here](/docs/basics/creating-components#templates-ux-template).\r\n\r\nNon-template pages can also be used. The `Name` of the page will be used to match the path:\r\n\r\n\t<Page Name=\"matchPath\">\r\n\t\r\nThese pages always just have the one instance, will always be reused, and will never be removed. Otherwise they function the same as the template pages.\r\n\r\nHere are some general rules that will you help decide whether you want to use a template or non-template page:\r\n\r\n- If you need transitions between pages with the same path, but different parameter, then use a template.\r\n- If you have pages that impact performance even when inactive, or for other reasons should be removed when unused, then use a template.\r\n- If you have a page that should always exist to preserve state, or is very frequently navigated to, use a non-template.\r\n\r\nNote that templates and non-templates can be mixed within one `Navigator`.\r\n\r\n## Transitions\r\n\r\nNavigator comes with a set of default transitions that match the behavior of\r\n[`push()`](/docs/fuse/navigation/router/push_0f0d575d),\r\n[`goBack()`](/docs/fuse/navigation/router/goback_0f0d575d) and\r\n[`goto()`](/docs/fuse/navigation/router/goto_0f0d575d).\r\n\r\nTo have complete control over page transitions use the @PageView class. It works just like a `Navigator` but has no standard transitions or state changes.\r\n\r\nWhen using custom transitions be sure to add a @ReleasePage action. This instructs the `Navigator` and `PageView` on when it can reuse, discard, or add the page to its cache.\r\n\r\n## Example\r\n\t\r\nThe following example illustrates a basic navigation setup using a @Router and @Navigator.\r\nFor a complete introduction and proper examples of Fuse's navigation system, see the [Navigation guide](/docs/navigation/navigation).\r\n\t\r\n\t<JavaScript>\r\n\t\tmodule.exports = {\r\n\t\t\tgotoFirst: function() { router.goto(\"firstPage\"); },\r\n\t\t\tgotoSecond: function() { router.goto(\"secondPage\"); }\r\n\t\t};\r\n\t</JavaScript>\r\n\r\n\t<Router ux:Name=\"router\" />\r\n\r\n\t<DockPanel>\r\n\t\t<Navigator DefaultPath=\"firstPage\">\r\n\t\t\t<Page ux:Template=\"firstPage\">\r\n\t\t\t\t<Text Alignment=\"Center\">This is the first page.</Text>\r\n\t\t\t</Page>\r\n\t\t\t<Page ux:Template=\"secondPage\">\r\n\t\t\t\t<Text Alignment=\"Center\">This is the second page.</Text>\r\n\t\t\t</Page>\r\n\t\t</Navigator>\r\n\t\t\r\n\t\t<Grid Dock=\"Bottom\" Columns=\"1*,1*\">\r\n\t\t\t<Button Text=\"First page\" Padding=\"20\" Clicked=\"{gotoFirst}\" />\r\n\t\t\t<Button Text=\"Second page\" Padding=\"20\" Clicked=\"{gotoSecond}\" />\r\n\t\t</Grid>\r\n\t</DockPanel>\r\n\t\r\n## Navigation Order\r\n\r\nThe `Navigator` uses discrete page progress changes while navigating. The active page will have progress `0`. If a page is pushed it will start at `1` and be switched immediately to `0`. The previously active page will become `-1`. A \"back\" operation will reverse the transition.\r\n\r\nOnly progresses `-1`, `0`, and `1` are used. Further distance is not calculated, nor are partial values possible.\r\n\r\nSee [Navigation Order](articles:navigation/navigationorder.md)"
+      },
+      "id": {
+        "id": "fuse/controls/navigator",
+        "parentId": "fuse/controls",
+        "type": "UxClass",
+        "modifiers": [
+          "public",
+          "partial"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/controls/navigator",
+        "href": "fuse/controls/navigator"
+      },
+      "titles": {
+        "indexTitle": "Navigator",
+        "fullyQualifiedIndexTitle": "Fuse.Controls.Navigator"
+      }
+    },
+    {
+      "comment": {
+        "brief": "Provides standard transitions, user interaction, and page handling for a basic linear navigation.",
+        "full": "Provides standard transitions, user interaction, and page handling for a basic linear navigation.\n\n# Examples\n\nThe following example illustrates the default behavior of `PageControl`, which is to slide the pages in response to swipe gestures:\n\n    <PageControl>\n        <Panel Background=\"Red\"/>\n        <Panel Background=\"Blue\"/>\n    </PageControl>\n\n`PageControl` is a router outlet, meaning that it can be controlled by a @Router.\nYou can disable this behavior by setting the @IsRouterOutlet property to `false`.\n\n    <JavaScript>\n        module.exports = {\n            gotoPage1: function() { router.goto(\"page1\"); },\n            gotoPage2: function() { router.goto(\"page2\"); },\n            gotoPage3: function() { router.goto(\"page3\"); }\n        };\n    </JavaScript>\n\n    <Router ux:Name=\"router\" />\n\n    <PageControl>\n        <Panel ux:Name=\"page1\" Color=\"#e74c3c\" Clicked=\"{gotoPage2}\" />\n        <Panel ux:Name=\"page2\" Color=\"#2ecc71\" Clicked=\"{gotoPage3}\" />\n        <Panel ux:Name=\"page3\" Color=\"#3498db\" Clicked=\"{gotoPage1}\" />\n    </PageControl>\n\nBy using data binding, you can set the currently active page by `Name` using the `Active` property.\nIn the following example, We have three pages and a button that returns the user to the first page.\n\n    <DockPanel>\n        <JavaScript>\n            var Observable = require(\"FuseJS/Observable\");\n            var currentPage = Observable(\"page1\");\n            function clickHandler() {\n                currentPage.value = \"page1\";\n            }\n            module.exports = {\n                clickHandler: clickHandler,\n                currentPage: currentPage\n            };\n        </JavaScript>\n        <PageControl Active=\"{currentPage}\">\n            <Panel Name=\"page1\" Background=\"Red\"/>\n            <Panel Name=\"page2\" Background=\"Green\"/>\n            <Panel Name=\"page3\" Background=\"Blue\"/>\n        </PageControl>\n        <Button Text=\"Home\" Clicked=\"{clickHandler}\" Dock=\"Bottom\"/>\n    </DockPanel>\n\nTake a look at the [Slides](/examples/page-control) example to see how this can be used in practice.\n\n## Navigation Order\n\nThe pages of a `PageControl` are ordered front to back, with the first child being in the front. Going forward means going towards the first child and going backwards means going towards the last child.\n\n`PageControl` uses continous navigation between pages (not discrete changes).\n\nSee [Navigation Order](articles:navigation/navigationorder.md)"
+      },
+      "id": {
+        "id": "fuse/controls/pagecontrol",
+        "parentId": "fuse/controls",
+        "type": "UxClass",
+        "modifiers": [
+          "public",
+          "partial"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/controls/pagecontrol",
+        "href": "fuse/controls/pagecontrol"
+      },
+      "titles": {
+        "indexTitle": "PageControl",
+        "fullyQualifiedIndexTitle": "Fuse.Controls.PageControl"
+      }
+    },
+    {
+      "comment": {
+        "brief": "A @Navigator without standard transitions.\nThis is convenient when you want to provide custom transitions for all pages.",
+        "full": "A @Navigator without standard transitions.\nThis is convenient when you want to provide custom transitions for all pages.\n\n`<PageView />` is equivalent to the following:\n\n    <Navigator Transition=\"None\" GotoState=\"Unchanged\" />"
+      },
+      "id": {
+        "id": "fuse/controls/pageview",
+        "parentId": "fuse/controls",
+        "type": "UxClass",
+        "modifiers": [
+          "public"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/controls/pageview",
+        "href": "fuse/controls/pageview"
+      },
+      "titles": {
+        "indexTitle": "PageView",
+        "fullyQualifiedIndexTitle": "Fuse.Controls.PageView"
+      }
+    }
+  ]
+}

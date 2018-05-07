@@ -1,0 +1,65 @@
+{
+  "entity": {
+    "location": {
+      "namespaceTitle": "Fuse.Reactive",
+      "namespaceUri": "fuse/reactive",
+      "packageName": "Fuse.Reactive.Bindings",
+      "packageVersion": "1.8.0-rc2"
+    },
+    "parameters": [],
+    "returns": {
+      "href": "fuse/reactive/instancereuse",
+      "title": "InstanceReuse",
+      "fullyQualifiedTitle": "Fuse.Reactive.InstanceReuse"
+    },
+    "uxProperties": {},
+    "values": [
+      {
+        "uri": "fuse/reactive/instancereuse/none",
+        "title": "None",
+        "comment": {
+          "brief": "Instances are not reused",
+          "full": "Instances are not reused"
+        }
+      },
+      {
+        "uri": "fuse/reactive/instancereuse/frame",
+        "title": "Frame",
+        "comment": {
+          "brief": "Instances can be reused in the same frame",
+          "full": "Instances can be reused in the same frame"
+        }
+      }
+    ],
+    "id": {
+      "id": "fuse/reactive/instantiator/reuse",
+      "parentId": "fuse/reactive/instantiator",
+      "type": "UxProperty",
+      "modifiers": [
+        "public"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/reactive/instantiator/reuse",
+      "href": "fuse/reactive/instantiator/reuse"
+    },
+    "titles": {
+      "pageTitle": "Instantiator.Reuse Property",
+      "navigationTitle": "Reuse Property",
+      "fullTitle": "Fuse.Reactive.Instantiator.Reuse",
+      "indexTitle": "Reuse",
+      "fullyQualifiedIndexTitle": "Fuse.Reactive.Instantiator.Reuse"
+    },
+    "syntax": {
+      "uno": "public Fuse.Reactive.InstanceReuse Reuse { get; get; }"
+    },
+    "comment": {
+      "brief": "Attempts to reuse template instances when items are being removed and created.",
+      "full": "Attempts to reuse template instances when items are being removed and created.\n\nThe default is `None`\n\nBe aware that when using this feature several other features may no longer work as expected, such as:\n    - RemovingAnimation: the reused items are not actually removed\n    - AddingAnimation: the resused items are not actually added, just moved\n    - Completed: As a reused item is not added/removed it will not trigger a second time\n\nThis feature will remain experimental until we can figure out which of these issues can be solved, avoided, or just need to be accepted.",
+      "attributes": {
+        "experimental": true
+      }
+    }
+  },
+  "tableOfContents": {}
+}

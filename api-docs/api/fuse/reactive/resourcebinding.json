@@ -1,0 +1,758 @@
+{
+  "entity": {
+    "base": {
+      "id": {
+        "id": "fuse/reactive/databinding",
+        "parentId": "fuse/reactive",
+        "type": "UxClass",
+        "modifiers": [
+          "public"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/reactive/databinding",
+        "href": "fuse/reactive/databinding"
+      },
+      "titles": {
+        "indexTitle": "DataBinding",
+        "fullyQualifiedIndexTitle": "Fuse.Reactive.DataBinding"
+      }
+    },
+    "location": {
+      "namespaceTitle": "Fuse.Reactive",
+      "namespaceUri": "fuse/reactive",
+      "packageName": "Fuse.Reactive.Bindings",
+      "packageVersion": "1.8.0-rc2"
+    },
+    "inheritance": {
+      "root": {
+        "uri": "uno/object",
+        "title": "object",
+        "children": [
+          {
+            "uri": "fuse/binding",
+            "title": "Fuse.Binding",
+            "children": [
+              {
+                "uri": "fuse/reactive/expressionbinding",
+                "title": "Fuse.Reactive.ExpressionBinding",
+                "children": [
+                  {
+                    "uri": "fuse/reactive/databinding",
+                    "title": "Fuse.Reactive.DataBinding",
+                    "children": [
+                      {
+                        "uri": "fuse/reactive/resourcebinding",
+                        "title": "Fuse.Reactive.ResourceBinding",
+                        "children": [],
+                        "isCurrent": true
+                      }
+                    ],
+                    "isAncestor": true
+                  }
+                ],
+                "isAncestor": true
+              }
+            ],
+            "isAncestor": true
+          }
+        ],
+        "isAncestor": true
+      },
+      "hasInheritance": true
+    },
+    "uxProperties": {
+      "uxNamespaceTitle": "Fuse.Reactive",
+      "uxNamespaceUri": "fuse/reactive",
+      "uxName": "ResourceBinding"
+    },
+    "implementedInterfaces": [
+      {
+        "comment": {
+          "brief": "Interface of objects that listens to changes in names, as recorded by the @NameRegistry.",
+          "full": "Interface of objects that listens to changes in names, as recorded by the @NameRegistry."
+        },
+        "id": {
+          "id": "fuse/inamelistener",
+          "parentId": "fuse",
+          "type": "Interface",
+          "modifiers": [
+            "public",
+            "abstract"
+          ]
+        },
+        "uri": {
+          "idUri": "fuse/inamelistener",
+          "href": "fuse/inamelistener"
+        },
+        "titles": {
+          "indexTitle": "INameListener",
+          "fullyQualifiedIndexTitle": "Fuse.INameListener"
+        }
+      },
+      {
+        "id": {
+          "id": "uno/ux/ipropertylistener",
+          "parentId": "uno/ux",
+          "type": "Interface",
+          "modifiers": [
+            "public",
+            "abstract"
+          ]
+        },
+        "uri": {
+          "idUri": "uno/ux/ipropertylistener",
+          "href": "uno/ux/ipropertylistener"
+        },
+        "titles": {
+          "indexTitle": "IPropertyListener",
+          "fullyQualifiedIndexTitle": "Uno.UX.IPropertyListener"
+        }
+      },
+      {
+        "id": {
+          "id": "fuse/reactive/icontext",
+          "parentId": "fuse/reactive",
+          "type": "Interface",
+          "modifiers": [
+            "public",
+            "abstract"
+          ]
+        },
+        "uri": {
+          "idUri": "fuse/reactive/icontext",
+          "href": "fuse/reactive/icontext"
+        },
+        "titles": {
+          "indexTitle": "IContext",
+          "fullyQualifiedIndexTitle": "Fuse.Reactive.IContext"
+        }
+      },
+      {
+        "id": {
+          "id": "fuse/reactive/ilistener",
+          "parentId": "fuse/reactive",
+          "type": "Interface",
+          "modifiers": [
+            "public",
+            "abstract"
+          ]
+        },
+        "uri": {
+          "idUri": "fuse/reactive/ilistener",
+          "href": "fuse/reactive/ilistener"
+        },
+        "titles": {
+          "indexTitle": "IListener",
+          "fullyQualifiedIndexTitle": "Fuse.Reactive.IListener"
+        }
+      }
+    ],
+    "id": {
+      "id": "fuse/reactive/resourcebinding",
+      "parentId": "fuse/reactive",
+      "type": "UxClass",
+      "modifiers": [
+        "public"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/reactive/resourcebinding",
+      "href": "fuse/reactive/resourcebinding"
+    },
+    "titles": {
+      "pageTitle": "ResourceBinding Class",
+      "navigationTitle": "ResourceBinding Class",
+      "fullTitle": "Fuse.Reactive.ResourceBinding",
+      "indexTitle": "ResourceBinding",
+      "fullyQualifiedIndexTitle": "Fuse.Reactive.ResourceBinding"
+    },
+    "syntax": {
+      "uno": "public class ResourceBinding : Fuse.Reactive.DataBinding {}",
+      "ux": "<ResourceBinding />"
+    }
+  },
+  "tableOfContents": {
+    "attachedUxProperties": [
+      {
+        "items": [
+          {
+            "comment": {
+              "brief": "The `ux:Global` attribute creates a global resource that is accessible everywhere in UX markup.",
+              "full": "The `ux:Global` attribute creates a global resource that is accessible everywhere in UX markup.\n\nSee @Resources for more information.\n\nThe `ux:Global` attribute on an UX element creates a single object (singleton) that is globally available.\nUsing this attribute will prevent the object from being inserted by default the object at its defined location\nin the UX tree."
+            },
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "parameters": [
+              {
+                "name": "obj",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              },
+              {
+                "name": "key",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              }
+            ],
+            "id": {
+              "id": "fuse/reactive/resourcebinding/resource_globalkey_setglobalkey_4c3ac72d",
+              "parentId": "fuse/reactive/resourcebinding",
+              "type": "AttachedUxProperty",
+              "modifiers": []
+            },
+            "uri": {
+              "idUri": "fuse/reactive/resourcebinding/resource_globalkey_setglobalkey_4c3ac72d",
+              "href": "uno/ux/resource/setglobalkey_4c3ac72d",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Resource.GlobalKey",
+              "fullyQualifiedIndexTitle": "Resource.GlobalKey"
+            }
+          }
+        ]
+      }
+    ],
+    "constructors": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/reactive/resourcebinding",
+            "parentId": "fuse/reactive",
+            "type": "UxClass",
+            "modifiers": [
+              "public"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/reactive/resourcebinding",
+            "href": "fuse/reactive/resourcebinding"
+          },
+          "titles": {
+            "indexTitle": "ResourceBinding",
+            "fullyQualifiedIndexTitle": "Fuse.Reactive.ResourceBinding"
+          }
+        },
+        "items": [
+          {
+            "parameters": [
+              {
+                "name": "target",
+                "href": "uno/ux/property",
+                "title": "Property",
+                "fullyQualifiedTitle": "Uno.UX.Property"
+              },
+              {
+                "name": "key",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              }
+            ],
+            "id": {
+              "id": "fuse/reactive/resourcebinding/_ctor_9d164b8b",
+              "parentId": "fuse/reactive/resourcebinding",
+              "type": "Constructor",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/resourcebinding/_ctor_9d164b8b",
+              "href": "fuse/reactive/resourcebinding/_ctor_9d164b8b"
+            },
+            "titles": {
+              "indexTitle": "ResourceBinding(Property, string)",
+              "fullyQualifiedIndexTitle": "Fuse.Reactive.ResourceBinding.ResourceBinding(Uno.UX.Property, string)"
+            }
+          }
+        ]
+      }
+    ],
+    "properties": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/reactive/databinding",
+            "parentId": "fuse/reactive",
+            "type": "UxClass",
+            "modifiers": [
+              "public"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/reactive/databinding",
+            "href": "fuse/reactive/databinding"
+          },
+          "titles": {
+            "indexTitle": "DataBinding",
+            "fullyQualifiedIndexTitle": "Fuse.Reactive.DataBinding"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/ux/property",
+              "title": "Property",
+              "fullyQualifiedTitle": "Uno.UX.Property"
+            },
+            "id": {
+              "id": "fuse/reactive/resourcebinding/target",
+              "parentId": "fuse/reactive/resourcebinding",
+              "type": "Property",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/resourcebinding/target",
+              "href": "fuse/reactive/databinding/target",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Target",
+              "fullyQualifiedIndexTitle": "Fuse.Reactive.DataBinding.Target"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/reactive/expressionbinding",
+            "parentId": "fuse/reactive",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/reactive/expressionbinding",
+            "href": "fuse/reactive/expressionbinding"
+          },
+          "titles": {
+            "indexTitle": "ExpressionBinding",
+            "fullyQualifiedIndexTitle": "Fuse.Reactive.ExpressionBinding"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "fuse/reactive/iexpression",
+              "title": "IExpression",
+              "fullyQualifiedTitle": "Fuse.Reactive.IExpression"
+            },
+            "id": {
+              "id": "fuse/reactive/resourcebinding/key",
+              "parentId": "fuse/reactive/resourcebinding",
+              "type": "Property",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/resourcebinding/key",
+              "href": "fuse/reactive/expressionbinding/key",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Key",
+              "fullyQualifiedIndexTitle": "Fuse.Reactive.ExpressionBinding.Key"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/binding",
+            "parentId": "fuse",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/binding",
+            "href": "fuse/binding"
+          },
+          "titles": {
+            "indexTitle": "Binding",
+            "fullyQualifiedIndexTitle": "Fuse.Binding"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "id": {
+              "id": "fuse/reactive/resourcebinding/isrooted",
+              "parentId": "fuse/reactive/resourcebinding",
+              "type": "Property",
+              "modifiers": [
+                "protected"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/resourcebinding/isrooted",
+              "href": "fuse/binding/isrooted",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "IsRooted",
+              "fullyQualifiedIndexTitle": "Fuse.Binding.IsRooted"
+            }
+          },
+          {
+            "returns": {
+              "href": "fuse/node",
+              "title": "Node",
+              "fullyQualifiedTitle": "Fuse.Node"
+            },
+            "id": {
+              "id": "fuse/reactive/resourcebinding/parent",
+              "parentId": "fuse/reactive/resourcebinding",
+              "type": "Property",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/resourcebinding/parent",
+              "href": "fuse/binding/parent",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Parent",
+              "fullyQualifiedIndexTitle": "Fuse.Binding.Parent"
+            }
+          }
+        ]
+      }
+    ],
+    "methods": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/reactive/databinding",
+            "parentId": "fuse/reactive",
+            "type": "UxClass",
+            "modifiers": [
+              "public"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/reactive/databinding",
+            "href": "fuse/reactive/databinding"
+          },
+          "titles": {
+            "indexTitle": "DataBinding",
+            "fullyQualifiedIndexTitle": "Fuse.Reactive.DataBinding"
+          }
+        },
+        "items": [
+          {
+            "parameters": [
+              {
+                "name": "newValue",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              }
+            ],
+            "id": {
+              "id": "fuse/reactive/resourcebinding/pushvalue_a09c80e3",
+              "parentId": "fuse/reactive/resourcebinding",
+              "type": "Method",
+              "modifiers": [
+                "protected",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/resourcebinding/pushvalue_a09c80e3",
+              "href": "fuse/reactive/databinding/pushvalue_a09c80e3",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "PushValue(object)",
+              "fullyQualifiedIndexTitle": "Fuse.Reactive.DataBinding.PushValue(object)"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/reactive/expressionbinding",
+            "parentId": "fuse/reactive",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/reactive/expressionbinding",
+            "href": "fuse/reactive/expressionbinding"
+          },
+          "titles": {
+            "indexTitle": "ExpressionBinding",
+            "fullyQualifiedIndexTitle": "Fuse.Reactive.ExpressionBinding"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/idisposable",
+              "title": "IDisposable",
+              "fullyQualifiedTitle": "Uno.IDisposable"
+            },
+            "parameters": [
+              {
+                "name": "source",
+                "href": "fuse/reactive/iexpression",
+                "title": "IExpression",
+                "fullyQualifiedTitle": "Fuse.Reactive.IExpression"
+              },
+              {
+                "name": "key",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              },
+              {
+                "name": "listener",
+                "href": "fuse/reactive/ilistener",
+                "title": "IListener",
+                "fullyQualifiedTitle": "Fuse.Reactive.IListener"
+              }
+            ],
+            "id": {
+              "id": "fuse/reactive/resourcebinding/subscriberesource_dc8ab51c",
+              "parentId": "fuse/reactive/resourcebinding",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/resourcebinding/subscriberesource_dc8ab51c",
+              "href": "fuse/reactive/expressionbinding/subscriberesource_dc8ab51c",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "SubscribeResource(IExpression, string, IListener)",
+              "fullyQualifiedIndexTitle": "Fuse.Reactive.ExpressionBinding.SubscribeResource(Fuse.Reactive.IExpression, string, Fuse.Reactive.IListener)"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/binding",
+            "parentId": "fuse",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/binding",
+            "href": "fuse/binding"
+          },
+          "titles": {
+            "indexTitle": "Binding",
+            "fullyQualifiedIndexTitle": "Fuse.Binding"
+          }
+        },
+        "items": [
+          {
+            "id": {
+              "id": "fuse/reactive/resourcebinding/onrooted",
+              "parentId": "fuse/reactive/resourcebinding",
+              "type": "Method",
+              "modifiers": [
+                "protected",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/resourcebinding/onrooted",
+              "href": "fuse/binding/onrooted",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "OnRooted",
+              "fullyQualifiedIndexTitle": "Fuse.Binding.OnRooted"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/reactive/resourcebinding/onunrooted",
+              "parentId": "fuse/reactive/resourcebinding",
+              "type": "Method",
+              "modifiers": [
+                "protected",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/resourcebinding/onunrooted",
+              "href": "fuse/binding/onunrooted",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "OnUnrooted",
+              "fullyQualifiedIndexTitle": "Fuse.Binding.OnUnrooted"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "uno/object",
+            "parentId": "uno",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "intrinsic"
+            ]
+          },
+          "uri": {
+            "idUri": "uno/object",
+            "href": "uno/object"
+          },
+          "titles": {
+            "indexTitle": "object",
+            "fullyQualifiedIndexTitle": "object"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "parameters": [
+              {
+                "name": "o",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              }
+            ],
+            "id": {
+              "id": "fuse/reactive/resourcebinding/equals_a09c80e3",
+              "parentId": "fuse/reactive/resourcebinding",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/resourcebinding/equals_a09c80e3",
+              "href": "uno/object/equals_a09c80e3",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Equals(object)",
+              "fullyQualifiedIndexTitle": "Uno.Object.Equals(object)"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/int",
+              "title": "int",
+              "fullyQualifiedTitle": "int"
+            },
+            "id": {
+              "id": "fuse/reactive/resourcebinding/gethashcode",
+              "parentId": "fuse/reactive/resourcebinding",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/resourcebinding/gethashcode",
+              "href": "uno/object/gethashcode",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetHashCode",
+              "fullyQualifiedIndexTitle": "Uno.Object.GetHashCode"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/type",
+              "title": "Type",
+              "fullyQualifiedTitle": "Uno.Type"
+            },
+            "id": {
+              "id": "fuse/reactive/resourcebinding/gettype",
+              "parentId": "fuse/reactive/resourcebinding",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/resourcebinding/gettype",
+              "href": "uno/object/gettype",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetType",
+              "fullyQualifiedIndexTitle": "Uno.Object.GetType"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "id": {
+              "id": "fuse/reactive/resourcebinding/tostring",
+              "parentId": "fuse/reactive/resourcebinding",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/resourcebinding/tostring",
+              "href": "uno/object/tostring",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "ToString",
+              "fullyQualifiedIndexTitle": "Uno.Object.ToString"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,161 @@
+{
+  "root": {
+    "id": {
+      "id": "fuse/controls/ellipticalshape",
+      "parentId": "fuse/controls",
+      "type": "Class",
+      "modifiers": [
+        "public",
+        "abstract",
+        "partial"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/controls/ellipticalshape",
+      "href": "fuse/controls/ellipticalshape"
+    },
+    "titles": {
+      "indexTitle": "EllipticalShape",
+      "fullyQualifiedIndexTitle": "Fuse.Controls.EllipticalShape"
+    }
+  },
+  "descendants": [
+    {
+      "comment": {
+        "brief": "A bordered circle, generally used for profile images.",
+        "full": "A bordered circle, generally used for profile images.\n\n    <Alive.Bubble>\n        <Alive.ImageFill File=\"Assets/image.jpg\" />\n    </Alive.Bubble>\n\n[Bubbles](api:alive/bubbles) displays a row of partially overlapping Bubbles.\n\n    <Alive.Bubbles>\n        <Each Items=\"{friends}\">\n            <Alive.Bubble>\n                <Alive.ImageFill Url=\"{profileImageUrl}\" />\n            </Alive.Bubble>\n        </Each>\n    </Alive.Bubbles>"
+      },
+      "id": {
+        "id": "alive/bubble",
+        "parentId": "alive",
+        "type": "Class",
+        "modifiers": [
+          "public",
+          "partial"
+        ]
+      },
+      "uri": {
+        "idUri": "alive/bubble",
+        "href": "alive/bubble"
+      },
+      "titles": {
+        "indexTitle": "Bubble",
+        "fullyQualifiedIndexTitle": "Alive.Bubble"
+      }
+    },
+    {
+      "comment": {
+        "brief": "A colored circle, generally used to communicate category.",
+        "full": "A colored circle, generally used to communicate category.\n\n    <Alive.Donut StrokeColor=\"{Resource Alive.Red}\" />\n\nSee also [ColorBadge](api:alive/colorbadge)"
+      },
+      "id": {
+        "id": "alive/donut",
+        "parentId": "alive",
+        "type": "Class",
+        "modifiers": [
+          "public",
+          "partial"
+        ]
+      },
+      "uri": {
+        "idUri": "alive/donut",
+        "href": "alive/donut"
+      },
+      "titles": {
+        "indexTitle": "Donut",
+        "fullyQualifiedIndexTitle": "Alive.Donut"
+      }
+    },
+    {
+      "comment": {
+        "brief": "Creates a wedge shape for a pie chart.",
+        "full": "Creates a wedge shape for a pie chart.\n\nThis sets the `StartAngle` and `EndAngle` of the base `Ellipse` class. You should not override this properties, though other `Ellipse` and `Shape` properties are okay.\n\n    <Panel BoxSizing=\"FillAspect\" Aspect=\"1\">\n        <c:PlotData>\n            <c:PlotWedge StrokeColor=\"#000\" StrokeWidth=\"2\">\n        </c:PlotData>\n    </Panel>"
+      },
+      "id": {
+        "id": "fuse/charting/plotwedge",
+        "parentId": "fuse/charting",
+        "type": "UxClass",
+        "modifiers": [
+          "public"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/charting/plotwedge",
+        "href": "fuse/charting/plotwedge"
+      },
+      "titles": {
+        "indexTitle": "PlotWedge",
+        "fullyQualifiedIndexTitle": "Fuse.Charting.PlotWedge"
+      }
+    },
+    {
+      "comment": {
+        "brief": "Displays an arc.",
+        "full": "Displays an arc.\n\nArc is a @Shape that can have @Strokes. An Arc is equivalent to a stroke on the circumference of an @Ellipse (an Arc has no lines to/from the center as a stroke on the @Ellipse would have).\n\nIt is undefined what shape is filled if a `Fill` is used on an Arc. Use only a stroke."
+      },
+      "id": {
+        "id": "fuse/controls/arc",
+        "parentId": "fuse/controls",
+        "type": "UxClass",
+        "modifiers": [
+          "public",
+          "partial"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/controls/arc",
+        "href": "fuse/controls/arc"
+      },
+      "titles": {
+        "indexTitle": "Arc",
+        "fullyQualifiedIndexTitle": "Fuse.Controls.Arc"
+      }
+    },
+    {
+      "comment": {
+        "brief": "Displays a circle",
+        "full": "Displays a circle\n\nCircle is a @Shape that can have @Fills and @Strokes.\nBy default Circle does not have a size, fills or strokes. You must add some for it\nto become visible.\n\n### StartAngle / EndAngle\n\n`StartAngle` and `EndAngle` can be used to only draw a slice of a @Circle.\nThere are 6 different properties that can be used to control this in different ways.\n\n* `StartAngle` - The angle in radians where the slice begins\n* `StartAngleDegrees` - The angle in degrees where the slice begins\n* `EndAngle` - The angle in radians where the slice ends\n* `EndAngleDegrees` - The angle in degrees where the slice ends\n* `LengthAngle` - An offset in radians from `StartAngle`. This can be used instead of `EndAngle`\n* `LengthAngleDegrees` - An offset in degrees from `StartAngle`. This can be used instead of `EndAngleDegrees`.\n\nNote that using for example both @(StartAngle) and @(StartAngleDegrees) on the same @(Circle) will have an undefined behavior.\n\n## Examples\n\nDisplaying a red @Circle:\n\n```\n<Circle Width=\"100\" Height=\"100\" Color=\"#f00\" />\n```\n\nGetting fancy with a @Stroke and @LinearGradient:\n\n```\n<Circle Width=\"100\" Height=\"100\" >\n    <LinearGradient>\n        <GradientStop Offset=\"0\" Color=\"#cf0\" />\n        <GradientStop Offset=\"1\" Color=\"#f40\" />\n    </LinearGradient>\n    <Stroke Width=\"1\">\n        <SolidColor Color=\"#000\" />\n    </Stroke>\n</Circle>\n```\n\nDrawing a slice of a circle:\n\n```\n<Circle Width=\"150\" Height=\"150\" Color=\"#f00\" StartAngleDegrees=\"135\" LengthAngleDegrees=\"145\" />\n```"
+      },
+      "id": {
+        "id": "fuse/controls/circle",
+        "parentId": "fuse/controls",
+        "type": "UxClass",
+        "modifiers": [
+          "public",
+          "partial"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/controls/circle",
+        "href": "fuse/controls/circle"
+      },
+      "titles": {
+        "indexTitle": "Circle",
+        "fullyQualifiedIndexTitle": "Fuse.Controls.Circle"
+      }
+    },
+    {
+      "comment": {
+        "brief": "Displays an ellipse",
+        "full": "Displays an ellipse\n\nEllipse is a @Shape that can have @Fills and @Strokes.\nBy default Ellipse does not have a size, fills or strokes. You must add some for it\nto become visible.\n\n## Example:\n\n    <Ellipse Width=\"300\" Height=\"100\">\n        <LinearGradient>\n            <GradientStop Offset=\"0\" Color=\"#0cc\" />\n            <GradientStop Offset=\"1\" Color=\"#cc0\" />\n        </LinearGradient>\n        <Stroke Width=\"1\">\n            <SolidColor Color=\"#000\" />\n        </Stroke>\n    </Ellipse>"
+      },
+      "id": {
+        "id": "fuse/controls/ellipse",
+        "parentId": "fuse/controls",
+        "type": "UxClass",
+        "modifiers": [
+          "public",
+          "partial"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/controls/ellipse",
+        "href": "fuse/controls/ellipse"
+      },
+      "titles": {
+        "indexTitle": "Ellipse",
+        "fullyQualifiedIndexTitle": "Fuse.Controls.Ellipse"
+      }
+    }
+  ]
+}

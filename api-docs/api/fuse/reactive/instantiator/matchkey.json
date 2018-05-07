@@ -1,0 +1,44 @@
+{
+  "entity": {
+    "location": {
+      "namespaceTitle": "Fuse.Reactive",
+      "namespaceUri": "fuse/reactive",
+      "packageName": "Fuse.Reactive.Bindings",
+      "packageVersion": "1.8.0-rc2"
+    },
+    "parameters": [],
+    "returns": {
+      "href": "uno/string",
+      "title": "string",
+      "fullyQualifiedTitle": "string"
+    },
+    "uxProperties": {},
+    "id": {
+      "id": "fuse/reactive/instantiator/matchkey",
+      "parentId": "fuse/reactive/instantiator",
+      "type": "UxProperty",
+      "modifiers": [
+        "public"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/reactive/instantiator/matchkey",
+      "href": "fuse/reactive/instantiator/matchkey"
+    },
+    "titles": {
+      "pageTitle": "Instantiator.MatchKey Property",
+      "navigationTitle": "MatchKey Property",
+      "fullTitle": "Fuse.Reactive.Instantiator.MatchKey",
+      "indexTitle": "MatchKey",
+      "fullyQualifiedIndexTitle": "Fuse.Reactive.Instantiator.MatchKey"
+    },
+    "syntax": {
+      "uno": "public string MatchKey { get; get; }"
+    },
+    "comment": {
+      "brief": "Name of the field on each data object which selects templates for the data objects.",
+      "full": "Name of the field on each data object which selects templates for the data objects.\n\nIf set, the `Each` will instantiate the template with a name matching the `MatchKey`. If no\nmatch is found then the default template will be used, or no template if there is no default.\nThe default template is the one explicitly marked with `ux:DefaultTemplate=\"true\"`.\n\n## Example\n\nMatchKey can be used together with `ux:Template` to select the correct template based on\na string field in the data source.\n\nInstead of:\n\n    <Each Items=\"{listData}\">\n    <Deferred>\n        <Match Value=\"{type}\">\n            <Case String=\"month\">\n                <Panel ...\nDo:\n\n    <Each Items=\"{listData}\" MatchKey=\"type\">\n        <Deferred ux:Template=\"month\">\n            <Panel ..."
+    }
+  },
+  "tableOfContents": {}
+}

@@ -1,0 +1,68 @@
+{
+  "entity": {
+    "location": {
+      "namespaceTitle": "Fuse.Controls",
+      "namespaceUri": "fuse/controls",
+      "packageName": "Fuse.Controls.Primitives",
+      "packageVersion": "1.8.0-rc2"
+    },
+    "parameters": [],
+    "returns": {
+      "href": "fuse/resources/memorypolicy",
+      "title": "MemoryPolicy",
+      "fullyQualifiedTitle": "Fuse.Resources.MemoryPolicy"
+    },
+    "uxProperties": {},
+    "flags": {
+      "uxContent": true
+    },
+    "attributes": [
+      {
+        "id": {
+          "id": "uno/ux/uxcontentattribute",
+          "parentId": "uno/ux",
+          "type": "Class",
+          "modifiers": [
+            "public",
+            "sealed"
+          ]
+        },
+        "uri": {
+          "idUri": "uno/ux/uxcontentattribute",
+          "href": "uno/ux/uxcontentattribute"
+        },
+        "titles": {
+          "indexTitle": "UXContentAttribute",
+          "fullyQualifiedIndexTitle": "Uno.UX.UXContentAttribute"
+        }
+      }
+    ],
+    "id": {
+      "id": "fuse/controls/image/memorypolicy",
+      "parentId": "fuse/controls/image",
+      "type": "UxProperty",
+      "modifiers": [
+        "public"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/controls/image/memorypolicy",
+      "href": "fuse/controls/image/memorypolicy"
+    },
+    "titles": {
+      "pageTitle": "Image.MemoryPolicy Property",
+      "navigationTitle": "MemoryPolicy Property",
+      "fullTitle": "Fuse.Controls.Image.MemoryPolicy",
+      "indexTitle": "MemoryPolicy",
+      "fullyQualifiedIndexTitle": "Fuse.Controls.Image.MemoryPolicy"
+    },
+    "syntax": {
+      "uno": "[Uno.UX.UXContent]\r\npublic Fuse.Resources.MemoryPolicy MemoryPolicy { get; get; }"
+    },
+    "comment": {
+      "brief": "Specifies a policy to control the loading and unloading of the image. The two common policies are `PreloadRetain`, the default which loads images at startup and keeps them loaded, and `UnloadUnused` which keeps only used images loaded.",
+      "full": "Specifies a policy to control the loading and unloading of the image. The two common policies are `PreloadRetain`, the default which loads images at startup and keeps them loaded, and `UnloadUnused` which keeps only used images loaded.\n\nFor dynamic images, such as those coming from HTTP, you should use the `UnloadUnused` policy, otherwise you'll continue to consume more memory as more images are loaded. For example:\n\n    <Image Url=\"{imageLocation}\" MemoryPolicy=\"UnloadUnused\"/>"
+    }
+  },
+  "tableOfContents": {}
+}

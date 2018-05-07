@@ -1,0 +1,44 @@
+{
+  "entity": {
+    "location": {
+      "namespaceTitle": "Fuse",
+      "namespaceUri": "fuse",
+      "packageName": "Fuse.Nodes",
+      "packageVersion": "1.8.0-rc2"
+    },
+    "parameters": [],
+    "returns": {
+      "href": "uno/string",
+      "title": "string",
+      "fullyQualifiedTitle": "string"
+    },
+    "uxProperties": {},
+    "id": {
+      "id": "fuse/visual/parameter",
+      "parentId": "fuse/visual",
+      "type": "UxProperty",
+      "modifiers": [
+        "public"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/visual/parameter",
+      "href": "fuse/visual/parameter"
+    },
+    "titles": {
+      "pageTitle": "Visual.Parameter Property",
+      "navigationTitle": "Parameter Property",
+      "fullTitle": "Fuse.Visual.Parameter",
+      "indexTitle": "Parameter",
+      "fullyQualifiedIndexTitle": "Fuse.Visual.Parameter"
+    },
+    "syntax": {
+      "uno": "public string Parameter { get; get; }"
+    },
+    "comment": {
+      "brief": "The parameter data for this visual, encoded as JSON, provided by a router if this visual represents a navigation page.",
+      "full": "The parameter data for this visual, encoded as JSON, provided by a router if this visual represents a navigation page.\n\nWhen this value is set, the parameter can be accessed in JavaScript through the `.Parameter` property on this object.\n\nExample:\n\n    <JavaScript>\n        router.goto(\"profile\", { id: 3 });\n    </JavaScript>\n    ...\n    <Page ux:Name=\"profile\">\n        <JavaScript>\n            profile.Parameter.onValueChanged(module, function(param) {\n                // param holds the deserialized object { id: 3 }\n            });\n        </JavaScript>\n    </Page>"
+    }
+  },
+  "tableOfContents": {}
+}

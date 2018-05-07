@@ -1,0 +1,128 @@
+{
+  "root": {
+    "id": {
+      "id": "fuse/binding",
+      "parentId": "fuse",
+      "type": "Class",
+      "modifiers": [
+        "public",
+        "abstract"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/binding",
+      "href": "fuse/binding"
+    },
+    "titles": {
+      "indexTitle": "Binding",
+      "fullyQualifiedIndexTitle": "Fuse.Binding"
+    }
+  },
+  "descendants": [
+    {
+      "comment": {
+        "brief": "Data bindings allow you to bind properties on UX markup objects to values coming from\na @JavaScript or other data context.",
+        "full": "Data bindings allow you to bind properties on UX markup objects to values coming from\na @JavaScript or other data context.\n\nData bindings are most easily expressed in UX Markup using the `{expression}` syntax, where `expression` is\nthe binding path, like so:\n\n    <Text Value=\"{textKey}\" />\n\nData bindings can also be declared explicitly. Explicit databindings allow you\nto specify a default value that is used before the data binding is resolved:\n\n    <Panel ux:Name=\"panel1\" Width=\"100\" />\n    <DataBinding Target=\"panel1.Width\" Key=\"panelWidth\" />\n\n> Note: The expression passed to `Key` in explicit mode is by default in the data scope. To reference global names, escape it using `{= }`\n\nThe above code will use `100` as the default value for `panel1.Width` until the `panelWidth`\ndata is resolved.",
+        "attributes": {
+          "topic": "Data binding"
+        }
+      },
+      "id": {
+        "id": "fuse/reactive/databinding",
+        "parentId": "fuse/reactive",
+        "type": "UxClass",
+        "modifiers": [
+          "public"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/reactive/databinding",
+        "href": "fuse/reactive/databinding"
+      },
+      "titles": {
+        "indexTitle": "DataBinding",
+        "fullyQualifiedIndexTitle": "Fuse.Reactive.DataBinding"
+      }
+    },
+    {
+      "comment": {
+        "brief": "Event bindings allows binding events to to JavaScript functions.",
+        "full": "Event bindings allows binding events to to JavaScript functions.\n\nYou can hook up event handlers to call JavaScript functions with similar syntax to data bindings:\n\n    <JavaScript>\n        module.exports = {\n            clickHandler: function (args) {\n                console.log(\"I was clicked: \" + JSON.stringify(args));\n            }\n        };\n    </JavaScript>\n    <Button Clicked=\"{clickHandler}\" Text=\"Click me!\" />\n\nFor more information, see @DataBinding.",
+        "attributes": {
+          "topic": "Event binding"
+        }
+      },
+      "id": {
+        "id": "fuse/reactive/eventbinding",
+        "parentId": "fuse/reactive",
+        "type": "UxClass",
+        "modifiers": [
+          "public"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/reactive/eventbinding",
+        "href": "fuse/reactive/eventbinding"
+      },
+      "titles": {
+        "indexTitle": "EventBinding",
+        "fullyQualifiedIndexTitle": "Fuse.Reactive.EventBinding"
+      }
+    },
+    {
+      "id": {
+        "id": "fuse/reactive/expressionbinding",
+        "parentId": "fuse/reactive",
+        "type": "Class",
+        "modifiers": [
+          "public",
+          "abstract"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/reactive/expressionbinding",
+        "href": "fuse/reactive/expressionbinding"
+      },
+      "titles": {
+        "indexTitle": "ExpressionBinding",
+        "fullyQualifiedIndexTitle": "Fuse.Reactive.ExpressionBinding"
+      }
+    },
+    {
+      "id": {
+        "id": "fuse/reactive/propertybinding",
+        "parentId": "fuse/reactive",
+        "type": "UxClass",
+        "modifiers": [
+          "public"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/reactive/propertybinding",
+        "href": "fuse/reactive/propertybinding"
+      },
+      "titles": {
+        "indexTitle": "PropertyBinding",
+        "fullyQualifiedIndexTitle": "Fuse.Reactive.PropertyBinding"
+      }
+    },
+    {
+      "id": {
+        "id": "fuse/reactive/resourcebinding",
+        "parentId": "fuse/reactive",
+        "type": "UxClass",
+        "modifiers": [
+          "public"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/reactive/resourcebinding",
+        "href": "fuse/reactive/resourcebinding"
+      },
+      "titles": {
+        "indexTitle": "ResourceBinding",
+        "fullyQualifiedIndexTitle": "Fuse.Reactive.ResourceBinding"
+      }
+    }
+  ]
+}

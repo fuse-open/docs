@@ -1,0 +1,167 @@
+{
+  "entity": {
+    "id": {
+      "id": "fuse/geolocation",
+      "parentId": "fuse",
+      "type": "Namespace",
+      "modifiers": []
+    },
+    "uri": {
+      "idUri": "fuse/geolocation",
+      "href": "fuse/geolocation"
+    },
+    "titles": {
+      "pageTitle": "Fuse.GeoLocation Namespace",
+      "navigationTitle": "Fuse.GeoLocation Namespace",
+      "fullTitle": "Fuse.GeoLocation",
+      "indexTitle": "Fuse.GeoLocation",
+      "fullyQualifiedIndexTitle": "Fuse.GeoLocation"
+    },
+    "syntax": {
+      "uno": "namespace GeoLocation {}"
+    }
+  },
+  "tableOfContents": {
+    "jsModules": [
+      {
+        "items": [
+          {
+            "comment": {
+              "brief": "Provides geolocation services.",
+              "full": "Provides geolocation services.\n\nUsing geolocation services requires device authorization. Including the `Fuse.GeoLocation` package\nin your project will trigger a prompt for this authorization when the app is launched.\n\nUse [startListening](api:fuse/geolocation/geolocation/startlistening_bbef95e2.json)\nto get continual location updates. Use\n[location](api:fuse/geolocation/geolocation/getlocation.json)\nor [getLocation](api:fuse/geolocation/geolocation/getlocationasync_95a738ba.json) for one-time location requests.\n\nYou need to add a reference to `\"Fuse.GeoLocation\"` in your project file to use this feature.\n\nThis module is an @EventEmitter, so the methods from @EventEmitter can be used to listen to events.\n\n## Example\n\nThe following example shows how the different modes of operation can be used:\n\n    <JavaScript>\n        var Observable = require(\"FuseJS/Observable\");\n        var GeoLocation = require(\"FuseJS/GeoLocation\");\n\n        // Immediate\n        var immediateLocation = JSON.stringify(GeoLocation.location);\n\n        // Timeout\n        var timeoutLocation = Observable(\"\");\n        var timeoutMs = 5000;\n        GeoLocation.getLocation(timeoutMs).then(function(location) {\n            timeoutLocation.value = JSON.stringify(location);\n        }).catch(function(fail) {\n            console.log(\"getLocation fail \" + fail);\n        });\n\n        // Continuous\n        var continuousLocation = GeoLocation.observe(\"changed\").map(JSON.stringify);\n\n        GeoLocation.on(\"error\", function(fail) {\n            console.log(\"GeoLocation error \" + fail);\n        });\n\n        function startContinuousListener() {\n            var intervalMs = 1000;\n            var desiredAccuracyInMeters = 10;\n            GeoLocation.startListening(intervalMs, desiredAccuracyInMeters);\n        }\n\n        function stopContinuousListener() {\n            GeoLocation.stopListening();\n        }\n\n        module.exports = {\n            immediateLocation: immediateLocation,\n            timeoutLocation: timeoutLocation,\n            continuousLocation: continuousLocation,\n\n            startContinuousListener: startContinuousListener,\n            stopContinuousListener: stopContinuousListener\n        };\n    </JavaScript>\n\n    <StackPanel>\n        <Text>Immediate:</Text>\n        <Text Value=\"{immediateLocation}\" />\n\n        <Text>Timeout:</Text>\n        <Text Value=\"{timeoutLocation}\" />\n\n        <Text>Continuous:</Text>\n        <Text Value=\"{continuousLocation}\" />\n\n        <Button Text=\"Start continuous listener\" Clicked=\"{startContinuousListener}\" />\n        <Button Text=\"Stop continuous listener\" Clicked=\"{stopContinuousListener}\" />\n    </StackPanel>\n\nIn the above example we're using the @EventEmitter `observe` method to create an @Observable from the\n`\"changed\"` event. We can also listen to changes by using the `on` method, as follows:\n\n    GeoLocation.on(\"changed\", function(location) { ... })\n\nLocations returned by this module are JavaScript objects of the following form:\n\n    {\n        latitude: a number measured in decimal degrees,\n        longitude: a number measured in decimal degrees,\n        accuracy: a number measured in meters\n    }\n\nTo handle errors from GeoLocation we can listen to the `\"error\"` event, as follows:\n\n    GeoLocation.on(\"error\", function(err) { ... })",
+              "attributes": {
+                "scriptModule": "FuseJS/GeoLocation"
+              }
+            },
+            "id": {
+              "id": "fuse/geolocation/geolocation",
+              "parentId": "fuse/geolocation",
+              "type": "JsModule",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/geolocation/geolocation",
+              "href": "fuse/geolocation/geolocation"
+            },
+            "titles": {
+              "indexTitle": "GeoLocation",
+              "fullyQualifiedIndexTitle": "Fuse.GeoLocation.GeoLocation"
+            }
+          }
+        ]
+      }
+    ],
+    "uxClasses": [
+      {
+        "items": [
+          {
+            "id": {
+              "id": "fuse/geolocation/locationtracker",
+              "parentId": "fuse/geolocation",
+              "type": "UxClass",
+              "modifiers": [
+                "public",
+                "partial"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/geolocation/locationtracker",
+              "href": "fuse/geolocation/locationtracker"
+            },
+            "titles": {
+              "indexTitle": "LocationTracker",
+              "fullyQualifiedIndexTitle": "Fuse.GeoLocation.LocationTracker"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/geolocation/spooflocationprovider",
+              "parentId": "fuse/geolocation",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/geolocation/spooflocationprovider",
+              "href": "fuse/geolocation/spooflocationprovider"
+            },
+            "titles": {
+              "indexTitle": "SpoofLocationProvider",
+              "fullyQualifiedIndexTitle": "Fuse.GeoLocation.SpoofLocationProvider"
+            }
+          }
+        ]
+      }
+    ],
+    "classes": [
+      {
+        "items": [
+          {
+            "id": {
+              "id": "fuse/geolocation/geocoordinates",
+              "parentId": "fuse/geolocation",
+              "type": "Class",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/geolocation/geocoordinates",
+              "href": "fuse/geolocation/geocoordinates"
+            },
+            "titles": {
+              "indexTitle": "GeoCoordinates",
+              "fullyQualifiedIndexTitle": "Fuse.GeoLocation.GeoCoordinates"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/geolocation/location",
+              "parentId": "fuse/geolocation",
+              "type": "Class",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/geolocation/location",
+              "href": "fuse/geolocation/location"
+            },
+            "titles": {
+              "indexTitle": "Location",
+              "fullyQualifiedIndexTitle": "Fuse.GeoLocation.Location"
+            }
+          }
+        ]
+      }
+    ],
+    "enums": [
+      {
+        "items": [
+          {
+            "id": {
+              "id": "fuse/geolocation/geolocationauthorizationtype",
+              "parentId": "fuse/geolocation",
+              "type": "Enum",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/geolocation/geolocationauthorizationtype",
+              "href": "fuse/geolocation/geolocationauthorizationtype"
+            },
+            "titles": {
+              "indexTitle": "GeoLocationAuthorizationType",
+              "fullyQualifiedIndexTitle": "Fuse.GeoLocation.GeoLocationAuthorizationType"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

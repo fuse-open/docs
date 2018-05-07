@@ -1,0 +1,1402 @@
+{
+  "entity": {
+    "base": {
+      "id": {
+        "id": "fuse/scripting/nativeeventemittermodule",
+        "parentId": "fuse/scripting",
+        "type": "Class",
+        "modifiers": [
+          "public"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/scripting/nativeeventemittermodule",
+        "href": "fuse/scripting/nativeeventemittermodule"
+      },
+      "titles": {
+        "indexTitle": "NativeEventEmitterModule",
+        "fullyQualifiedIndexTitle": "Fuse.Scripting.NativeEventEmitterModule"
+      }
+    },
+    "location": {
+      "namespaceTitle": "Fuse.GeoLocation",
+      "namespaceUri": "fuse/geolocation",
+      "packageName": "Fuse.GeoLocation",
+      "packageVersion": "1.8.0-rc2"
+    },
+    "inheritance": {
+      "root": {
+        "uri": "uno/object",
+        "title": "object",
+        "children": [
+          {
+            "uri": "fuse/scripting/module",
+            "title": "Fuse.Scripting.Module",
+            "children": [
+              {
+                "uri": "fuse/scripting/nativemodule",
+                "title": "Fuse.Scripting.NativeModule",
+                "children": [
+                  {
+                    "uri": "fuse/scripting/nativeeventemittermodule",
+                    "title": "Fuse.Scripting.NativeEventEmitterModule",
+                    "children": [
+                      {
+                        "uri": "fuse/geolocation/geolocation",
+                        "title": "Fuse.GeoLocation.GeoLocation",
+                        "children": [],
+                        "isCurrent": true
+                      }
+                    ],
+                    "isAncestor": true
+                  }
+                ],
+                "isAncestor": true
+              }
+            ],
+            "isAncestor": true
+          }
+        ],
+        "isAncestor": true
+      },
+      "hasInheritance": true
+    },
+    "uxProperties": {
+      "uxNamespaceTitle": "Fuse",
+      "uxNamespaceUri": "fuse",
+      "uxName": "GeoLocation.GeoLocation"
+    },
+    "implementedInterfaces": [
+      {
+        "id": {
+          "id": "fuse/scripting/imoduleprovider",
+          "parentId": "fuse/scripting",
+          "type": "Interface",
+          "modifiers": [
+            "public",
+            "abstract"
+          ]
+        },
+        "uri": {
+          "idUri": "fuse/scripting/imoduleprovider",
+          "href": "fuse/scripting/imoduleprovider"
+        },
+        "titles": {
+          "indexTitle": "IModuleProvider",
+          "fullyQualifiedIndexTitle": "Fuse.Scripting.IModuleProvider"
+        }
+      },
+      {
+        "id": {
+          "id": "uno/idisposable",
+          "parentId": "uno",
+          "type": "Interface",
+          "modifiers": [
+            "public",
+            "abstract"
+          ]
+        },
+        "uri": {
+          "idUri": "uno/idisposable",
+          "href": "uno/idisposable"
+        },
+        "titles": {
+          "indexTitle": "IDisposable",
+          "fullyQualifiedIndexTitle": "Uno.IDisposable"
+        }
+      }
+    ],
+    "attributes": [
+      {
+        "id": {
+          "id": "uno/ux/uxglobalmoduleattribute",
+          "parentId": "uno/ux",
+          "type": "Class",
+          "modifiers": [
+            "public",
+            "sealed"
+          ]
+        },
+        "uri": {
+          "idUri": "uno/ux/uxglobalmoduleattribute",
+          "href": "uno/ux/uxglobalmoduleattribute"
+        },
+        "titles": {
+          "indexTitle": "UXGlobalModuleAttribute",
+          "fullyQualifiedIndexTitle": "Uno.UX.UXGlobalModuleAttribute"
+        }
+      }
+    ],
+    "id": {
+      "id": "fuse/geolocation/geolocation",
+      "parentId": "fuse/geolocation",
+      "type": "JsModule",
+      "modifiers": [
+        "public",
+        "sealed"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/geolocation/geolocation",
+      "href": "fuse/geolocation/geolocation"
+    },
+    "titles": {
+      "pageTitle": "GeoLocation Class",
+      "navigationTitle": "GeoLocation Class",
+      "fullTitle": "Fuse.GeoLocation.GeoLocation",
+      "indexTitle": "GeoLocation",
+      "fullyQualifiedIndexTitle": "Fuse.GeoLocation.GeoLocation"
+    },
+    "syntax": {
+      "uno": "[Uno.UX.UXGlobalModule]\r\npublic sealed class GeoLocation : Fuse.Scripting.NativeEventEmitterModule {}",
+      "ux": "<GeoLocation.GeoLocation />"
+    },
+    "comment": {
+      "brief": "Provides geolocation services.",
+      "full": "Provides geolocation services.\n\nUsing geolocation services requires device authorization. Including the `Fuse.GeoLocation` package\nin your project will trigger a prompt for this authorization when the app is launched.\n\nUse [startListening](api:fuse/geolocation/geolocation/startlistening_bbef95e2.json)\nto get continual location updates. Use\n[location](api:fuse/geolocation/geolocation/getlocation.json)\nor [getLocation](api:fuse/geolocation/geolocation/getlocationasync_95a738ba.json) for one-time location requests.\n\nYou need to add a reference to `\"Fuse.GeoLocation\"` in your project file to use this feature.\n\nThis module is an @EventEmitter, so the methods from @EventEmitter can be used to listen to events.\n\n## Example\n\nThe following example shows how the different modes of operation can be used:\n\n    <JavaScript>\n        var Observable = require(\"FuseJS/Observable\");\n        var GeoLocation = require(\"FuseJS/GeoLocation\");\n\n        // Immediate\n        var immediateLocation = JSON.stringify(GeoLocation.location);\n\n        // Timeout\n        var timeoutLocation = Observable(\"\");\n        var timeoutMs = 5000;\n        GeoLocation.getLocation(timeoutMs).then(function(location) {\n            timeoutLocation.value = JSON.stringify(location);\n        }).catch(function(fail) {\n            console.log(\"getLocation fail \" + fail);\n        });\n\n        // Continuous\n        var continuousLocation = GeoLocation.observe(\"changed\").map(JSON.stringify);\n\n        GeoLocation.on(\"error\", function(fail) {\n            console.log(\"GeoLocation error \" + fail);\n        });\n\n        function startContinuousListener() {\n            var intervalMs = 1000;\n            var desiredAccuracyInMeters = 10;\n            GeoLocation.startListening(intervalMs, desiredAccuracyInMeters);\n        }\n\n        function stopContinuousListener() {\n            GeoLocation.stopListening();\n        }\n\n        module.exports = {\n            immediateLocation: immediateLocation,\n            timeoutLocation: timeoutLocation,\n            continuousLocation: continuousLocation,\n\n            startContinuousListener: startContinuousListener,\n            stopContinuousListener: stopContinuousListener\n        };\n    </JavaScript>\n\n    <StackPanel>\n        <Text>Immediate:</Text>\n        <Text Value=\"{immediateLocation}\" />\n\n        <Text>Timeout:</Text>\n        <Text Value=\"{timeoutLocation}\" />\n\n        <Text>Continuous:</Text>\n        <Text Value=\"{continuousLocation}\" />\n\n        <Button Text=\"Start continuous listener\" Clicked=\"{startContinuousListener}\" />\n        <Button Text=\"Stop continuous listener\" Clicked=\"{stopContinuousListener}\" />\n    </StackPanel>\n\nIn the above example we're using the @EventEmitter `observe` method to create an @Observable from the\n`\"changed\"` event. We can also listen to changes by using the `on` method, as follows:\n\n    GeoLocation.on(\"changed\", function(location) { ... })\n\nLocations returned by this module are JavaScript objects of the following form:\n\n    {\n        latitude: a number measured in decimal degrees,\n        longitude: a number measured in decimal degrees,\n        accuracy: a number measured in meters\n    }\n\nTo handle errors from GeoLocation we can listen to the `\"error\"` event, as follows:\n\n    GeoLocation.on(\"error\", function(err) { ... })",
+      "attributes": {
+        "scriptModule": "FuseJS/GeoLocation"
+      }
+    }
+  },
+  "tableOfContents": {
+    "attachedUxProperties": [
+      {
+        "items": [
+          {
+            "comment": {
+              "brief": "The `ux:Global` attribute creates a global resource that is accessible everywhere in UX markup.",
+              "full": "The `ux:Global` attribute creates a global resource that is accessible everywhere in UX markup.\n\nSee @Resources for more information.\n\nThe `ux:Global` attribute on an UX element creates a single object (singleton) that is globally available.\nUsing this attribute will prevent the object from being inserted by default the object at its defined location\nin the UX tree."
+            },
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "parameters": [
+              {
+                "name": "obj",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              },
+              {
+                "name": "key",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              }
+            ],
+            "id": {
+              "id": "fuse/geolocation/geolocation/resource_globalkey_setglobalkey_4c3ac72d",
+              "parentId": "fuse/geolocation/geolocation",
+              "type": "AttachedUxProperty",
+              "modifiers": []
+            },
+            "uri": {
+              "idUri": "fuse/geolocation/geolocation/resource_globalkey_setglobalkey_4c3ac72d",
+              "href": "uno/ux/resource/setglobalkey_4c3ac72d",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Resource.GlobalKey",
+              "fullyQualifiedIndexTitle": "Resource.GlobalKey"
+            }
+          }
+        ]
+      }
+    ],
+    "uxEvents": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/scripting/nativemodule",
+            "parentId": "fuse/scripting",
+            "type": "Class",
+            "modifiers": [
+              "public"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/scripting/nativemodule",
+            "href": "fuse/scripting/nativemodule"
+          },
+          "titles": {
+            "indexTitle": "NativeModule",
+            "fullyQualifiedIndexTitle": "Fuse.Scripting.NativeModule"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/eventhandler",
+              "title": "EventHandler (object, EventArgs)",
+              "fullyQualifiedTitle": "Uno.EventHandler (object, Uno.EventArgs)"
+            },
+            "id": {
+              "id": "fuse/geolocation/geolocation/reset",
+              "parentId": "fuse/geolocation/geolocation",
+              "type": "UxEvent",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/geolocation/geolocation/reset",
+              "href": "fuse/scripting/nativemodule/reset",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Reset",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.NativeModule.Reset"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/scripting/module",
+            "parentId": "fuse/scripting",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/scripting/module",
+            "href": "fuse/scripting/module"
+          },
+          "titles": {
+            "indexTitle": "Module",
+            "fullyQualifiedIndexTitle": "Fuse.Scripting.Module"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/eventhandler",
+              "title": "EventHandler (object, EventArgs)",
+              "fullyQualifiedTitle": "Uno.EventHandler (object, Uno.EventArgs)"
+            },
+            "id": {
+              "id": "fuse/geolocation/geolocation/evaluated",
+              "parentId": "fuse/geolocation/geolocation",
+              "type": "UxEvent",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/geolocation/geolocation/evaluated",
+              "href": "fuse/scripting/module/evaluated",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Evaluated",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.Module.Evaluated"
+            }
+          }
+        ]
+      }
+    ],
+    "jsEvents": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/geolocation/geolocation",
+            "parentId": "fuse/geolocation",
+            "type": "JsModule",
+            "modifiers": [
+              "public",
+              "sealed"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/geolocation/geolocation",
+            "href": "fuse/geolocation/geolocation"
+          },
+          "titles": {
+            "indexTitle": "GeoLocation",
+            "fullyQualifiedIndexTitle": "Fuse.GeoLocation.GeoLocation"
+          }
+        },
+        "items": [
+          {
+            "comment": {
+              "brief": "Raised when the location changes.",
+              "full": "Raised when the location changes.\n\nUse [startListening](api:fuse/geolocation/geolocation/startlistening_bbef95e2.json) to get these events.\n\nThe parameter object is of the following form:\n\n    {\n        altitude: altitude measured in meters,\n        latitude: a number measured in decimal degrees,\n        longitude: a number measured in decimal degrees,\n        accuracy: a number measured in meters,\n        speed: speed measured in meters per second\n    }\n\nSee [the GeoLocation module](api:fuse/geolocation/geolocation) for an example.",
+              "attributes": {
+                "scriptEvent": "changed(location)",
+                "parameters": [
+                  {
+                    "name": "location",
+                    "description": "will contain the new location, see @location"
+                  }
+                ]
+              }
+            },
+            "parameters": [
+              {
+                "name": "location",
+                "href": "fuse/geolocation/location",
+                "title": "Location",
+                "fullyQualifiedTitle": "Fuse.GeoLocation.Location"
+              }
+            ],
+            "id": {
+              "id": "fuse/geolocation/geolocation/locationchanged_adbb1cba",
+              "parentId": "fuse/geolocation/geolocation",
+              "type": "JsEvent",
+              "modifiers": [
+                "private"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/geolocation/geolocation/locationchanged_adbb1cba",
+              "href": "fuse/geolocation/geolocation/locationchanged_adbb1cba"
+            },
+            "titles": {
+              "indexTitle": "LocationChanged(Location)",
+              "fullyQualifiedIndexTitle": "Fuse.GeoLocation.GeoLocation.LocationChanged(Fuse.GeoLocation.Location)"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Raised when an error occurs.",
+              "full": "Raised when an error occurs.",
+              "attributes": {
+                "scriptEvent": "error(error)",
+                "parameters": [
+                  {
+                    "name": "error",
+                    "description": "a string describing the error"
+                  }
+                ]
+              }
+            },
+            "parameters": [
+              {
+                "name": "error",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              }
+            ],
+            "id": {
+              "id": "fuse/geolocation/geolocation/locationerror_968f99a6",
+              "parentId": "fuse/geolocation/geolocation",
+              "type": "JsEvent",
+              "modifiers": [
+                "private"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/geolocation/geolocation/locationerror_968f99a6",
+              "href": "fuse/geolocation/geolocation/locationerror_968f99a6"
+            },
+            "titles": {
+              "indexTitle": "LocationError(string)",
+              "fullyQualifiedIndexTitle": "Fuse.GeoLocation.GeoLocation.LocationError(string)"
+            }
+          }
+        ]
+      }
+    ],
+    "jsProperties": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/geolocation/geolocation",
+            "parentId": "fuse/geolocation",
+            "type": "JsModule",
+            "modifiers": [
+              "public",
+              "sealed"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/geolocation/geolocation",
+            "href": "fuse/geolocation/geolocation"
+          },
+          "titles": {
+            "indexTitle": "GeoLocation",
+            "fullyQualifiedIndexTitle": "Fuse.GeoLocation.GeoLocation"
+          }
+        },
+        "items": [
+          {
+            "comment": {
+              "brief": "The last known location.",
+              "full": "The last known location.\n\nThe returned object is of the following form:\n\n    {\n        altitude: altitude measured in meters,\n        latitude: a number measured in decimal degrees,\n        longitude: a number measured in decimal degrees,\n        accuracy: a number measured in meters,\n        speed: speed measured in meters per second\n    }\n\nSee [the GeoLocation module](api:fuse/geolocation/geolocation) for an example.",
+              "attributes": {
+                "scriptProperty": "location"
+              }
+            },
+            "returns": {
+              "href": "fuse/geolocation/location",
+              "title": "Location",
+              "fullyQualifiedTitle": "Fuse.GeoLocation.Location"
+            },
+            "id": {
+              "id": "fuse/geolocation/geolocation/getlocation",
+              "parentId": "fuse/geolocation/geolocation",
+              "type": "JsProperty",
+              "modifiers": [
+                "private"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/geolocation/geolocation/getlocation",
+              "href": "fuse/geolocation/geolocation/getlocation"
+            },
+            "titles": {
+              "indexTitle": "GetLocation",
+              "fullyQualifiedIndexTitle": "Fuse.GeoLocation.GeoLocation.GetLocation"
+            }
+          },
+          {
+            "comment": {
+              "brief": "The type of authorization request to make to the user.",
+              "full": "The type of authorization request to make to the user.\n\nThis property currently only affects iOS. It should be\nset before using the rest of the GeoLocation API.\n\nSetting this property to `1`, which is also the\ndefault, for example as follows:\n\n    var GeoLocation = require(\"FuseJS/GeoLocation\");\n    GeoLocation.authorizationRequest = 1;\n\nMeans that the app should request permission from the\nuser to use location services while the app is in the\nforeground. Setting it to `2`, as follows:\n\n    GeoLocation.authorizationRequest = 2;\n\nMeans that the app should request permission from the\nuser to use location services whenever the app is\nrunning.",
+              "attributes": {
+                "scriptProperty": "authorizationRequest",
+                "parameters": [
+                  {
+                    "name": "value",
+                    "typeHint": "int",
+                    "description": "Set the authorization request type1 = When in use (default)\r\n2 = Always"
+                  }
+                ]
+              }
+            },
+            "parameters": [
+              {
+                "name": "value",
+                "href": "uno/int",
+                "title": "int",
+                "fullyQualifiedTitle": "int"
+              }
+            ],
+            "id": {
+              "id": "fuse/geolocation/geolocation/setauthorizationrequest_56ad0a96",
+              "parentId": "fuse/geolocation/geolocation",
+              "type": "JsProperty",
+              "modifiers": [
+                "private"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/geolocation/geolocation/setauthorizationrequest_56ad0a96",
+              "href": "fuse/geolocation/geolocation/setauthorizationrequest_56ad0a96"
+            },
+            "titles": {
+              "indexTitle": "SetAuthorizationRequest(int)",
+              "fullyQualifiedIndexTitle": "Fuse.GeoLocation.GeoLocation.SetAuthorizationRequest(int)"
+            }
+          }
+        ]
+      }
+    ],
+    "jsMethods": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/geolocation/geolocation",
+            "parentId": "fuse/geolocation",
+            "type": "JsModule",
+            "modifiers": [
+              "public",
+              "sealed"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/geolocation/geolocation",
+            "href": "fuse/geolocation/geolocation"
+          },
+          "titles": {
+            "indexTitle": "GeoLocation",
+            "fullyQualifiedIndexTitle": "Fuse.GeoLocation.GeoLocation"
+          }
+        },
+        "items": [
+          {
+            "comment": {
+              "brief": "Gets the current location as a promise.",
+              "full": "Gets the current location as a promise.\n\nCan optionally be passed a timeout (in milliseconds)\nthat the promise should be rejected after.\n\nIf successful, the promise is resolved with an object of the following form:\n\n    {\n        altitude: altitude measured in meters,\n        latitude: a number measured in decimal degrees,\n        longitude: a number measured in decimal degrees,\n        accuracy: a number measured in meters,\n        speed: speed measured in meters per second\n    }\n\nSee [the GeoLocation module](api:fuse/geolocation/geolocation) for an example.",
+              "attributes": {
+                "scriptMethod": {
+                  "name": "getLocation",
+                  "parameters": [
+                    "timeout"
+                  ]
+                },
+                "returns": {
+                  "text": "a promise"
+                },
+                "parameters": [
+                  {
+                    "name": "timeout",
+                    "typeHint": "int",
+                    "description": "Optional timeout in milliseconds"
+                  }
+                ]
+              }
+            },
+            "returns": {
+              "href": "uno/threading/future_1",
+              "title": "Future<Location>",
+              "fullyQualifiedTitle": "Uno.Threading.Future<Fuse.GeoLocation.Location>"
+            },
+            "parameters": [
+              {
+                "name": "args",
+                "href": "uno/object",
+                "title": "object[]",
+                "fullyQualifiedTitle": "object[]"
+              }
+            ],
+            "id": {
+              "id": "fuse/geolocation/geolocation/getlocationasync_95a738ba",
+              "parentId": "fuse/geolocation/geolocation",
+              "type": "JsMethod",
+              "modifiers": [
+                "private"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/geolocation/geolocation/getlocationasync_95a738ba",
+              "href": "fuse/geolocation/geolocation/getlocationasync_95a738ba"
+            },
+            "titles": {
+              "indexTitle": "GetLocationAsync(object[])",
+              "fullyQualifiedIndexTitle": "Fuse.GeoLocation.GeoLocation.GetLocationAsync(object[])"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Starts the GeoLocation listening service.",
+              "full": "Starts the GeoLocation listening service.\n\n[onChanged](api:fuse/geolocation/geolocation/locationchanged_adbb1cba.json)\nevents will be generated as the location changes.\n\nUse [stopListening](api:fuse/geolocation/geolocation/stoplistening_bbef95e2.json) to stop the service.\n\nThe parameters here are desired values; the actual interval and accuracy are dependent on the\ndevice.\n\nSee [the GeoLocation module](api:fuse/geolocation/geolocation) for an example.",
+              "attributes": {
+                "scriptMethod": {
+                  "name": "startListening",
+                  "parameters": [
+                    "minimumReportInterval",
+                    "desiredAccuracy"
+                  ]
+                },
+                "parameters": [
+                  {
+                    "name": "minimumReportInterval",
+                    "description": "how often the position should be updated. Value in milliseconds"
+                  },
+                  {
+                    "name": "desiredAccuracy",
+                    "description": "how accurate, in meters, should the values be"
+                  }
+                ]
+              }
+            },
+            "returns": {
+              "href": "uno/object",
+              "title": "object",
+              "fullyQualifiedTitle": "object"
+            },
+            "parameters": [
+              {
+                "name": "c",
+                "href": "fuse/scripting/context",
+                "title": "Context",
+                "fullyQualifiedTitle": "Fuse.Scripting.Context"
+              },
+              {
+                "name": "args",
+                "href": "uno/object",
+                "title": "object[]",
+                "fullyQualifiedTitle": "object[]"
+              }
+            ],
+            "id": {
+              "id": "fuse/geolocation/geolocation/startlistening_bbef95e2",
+              "parentId": "fuse/geolocation/geolocation",
+              "type": "JsMethod",
+              "modifiers": [
+                "private"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/geolocation/geolocation/startlistening_bbef95e2",
+              "href": "fuse/geolocation/geolocation/startlistening_bbef95e2"
+            },
+            "titles": {
+              "indexTitle": "StartListening(Context, object[])",
+              "fullyQualifiedIndexTitle": "Fuse.GeoLocation.GeoLocation.StartListening(Fuse.Scripting.Context, object[])"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Stops the GeoLocation listening service.",
+              "full": "Stops the GeoLocation listening service.\n\nSee [the GeoLocation module](api:fuse/geolocation/geolocation) for an example.",
+              "attributes": {
+                "scriptMethod": {
+                  "name": "stopListening",
+                  "parameters": [
+                    ""
+                  ]
+                }
+              }
+            },
+            "returns": {
+              "href": "uno/object",
+              "title": "object",
+              "fullyQualifiedTitle": "object"
+            },
+            "parameters": [
+              {
+                "name": "c",
+                "href": "fuse/scripting/context",
+                "title": "Context",
+                "fullyQualifiedTitle": "Fuse.Scripting.Context"
+              },
+              {
+                "name": "args",
+                "href": "uno/object",
+                "title": "object[]",
+                "fullyQualifiedTitle": "object[]"
+              }
+            ],
+            "id": {
+              "id": "fuse/geolocation/geolocation/stoplistening_bbef95e2",
+              "parentId": "fuse/geolocation/geolocation",
+              "type": "JsMethod",
+              "modifiers": [
+                "private"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/geolocation/geolocation/stoplistening_bbef95e2",
+              "href": "fuse/geolocation/geolocation/stoplistening_bbef95e2"
+            },
+            "titles": {
+              "indexTitle": "StopListening(Context, object[])",
+              "fullyQualifiedIndexTitle": "Fuse.GeoLocation.GeoLocation.StopListening(Fuse.Scripting.Context, object[])"
+            }
+          }
+        ]
+      }
+    ],
+    "constructors": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/geolocation/geolocation",
+            "parentId": "fuse/geolocation",
+            "type": "JsModule",
+            "modifiers": [
+              "public",
+              "sealed"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/geolocation/geolocation",
+            "href": "fuse/geolocation/geolocation"
+          },
+          "titles": {
+            "indexTitle": "GeoLocation",
+            "fullyQualifiedIndexTitle": "Fuse.GeoLocation.GeoLocation"
+          }
+        },
+        "items": [
+          {
+            "id": {
+              "id": "fuse/geolocation/geolocation/_ctor",
+              "parentId": "fuse/geolocation/geolocation",
+              "type": "Constructor",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/geolocation/geolocation/_ctor",
+              "href": "fuse/geolocation/geolocation/_ctor"
+            },
+            "titles": {
+              "indexTitle": "GeoLocation",
+              "fullyQualifiedIndexTitle": "Fuse.GeoLocation.GeoLocation.GeoLocation"
+            }
+          }
+        ]
+      }
+    ],
+    "properties": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/scripting/module",
+            "parentId": "fuse/scripting",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/scripting/module",
+            "href": "fuse/scripting/module"
+          },
+          "titles": {
+            "indexTitle": "Module",
+            "fullyQualifiedIndexTitle": "Fuse.Scripting.Module"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "id": {
+              "id": "fuse/geolocation/geolocation/isevaluated",
+              "parentId": "fuse/geolocation/geolocation",
+              "type": "Property",
+              "modifiers": [
+                "protected"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/geolocation/geolocation/isevaluated",
+              "href": "fuse/scripting/module/isevaluated",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "IsEvaluated",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.Module.IsEvaluated"
+            }
+          }
+        ]
+      }
+    ],
+    "methods": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/scripting/nativeeventemittermodule",
+            "parentId": "fuse/scripting",
+            "type": "Class",
+            "modifiers": [
+              "public"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/scripting/nativeeventemittermodule",
+            "href": "fuse/scripting/nativeeventemittermodule"
+          },
+          "titles": {
+            "indexTitle": "NativeEventEmitterModule",
+            "fullyQualifiedIndexTitle": "Fuse.Scripting.NativeEventEmitterModule"
+          }
+        },
+        "items": [
+          {
+            "comment": {
+              "brief": "Call `emit` with the given arguments on the underlying JS EventEmitter.",
+              "full": "Call `emit` with the given arguments on the underlying JS EventEmitter.\n\nThe `emit` action is dispatched to the JS thread."
+            },
+            "parameters": [
+              {
+                "name": "args",
+                "href": "uno/object",
+                "title": "object[]",
+                "fullyQualifiedTitle": "object[]"
+              }
+            ],
+            "id": {
+              "id": "fuse/geolocation/geolocation/emit_95a738ba",
+              "parentId": "fuse/geolocation/geolocation",
+              "type": "Method",
+              "modifiers": [
+                "protected"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/geolocation/geolocation/emit_95a738ba",
+              "href": "fuse/scripting/nativeeventemittermodule/emit_95a738ba",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Emit(object[])",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.NativeEventEmitterModule.Emit(object[])"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Call `emit(\"error\", reason)` on the underlying JS EventEmitter.",
+              "full": "Call `emit(\"error\", reason)` on the underlying JS EventEmitter."
+            },
+            "parameters": [
+              {
+                "name": "reason",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              }
+            ],
+            "id": {
+              "id": "fuse/geolocation/geolocation/emiterror_968f99a6",
+              "parentId": "fuse/geolocation/geolocation",
+              "type": "Method",
+              "modifiers": [
+                "protected"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/geolocation/geolocation/emiterror_968f99a6",
+              "href": "fuse/scripting/nativeeventemittermodule/emiterror_968f99a6",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "EmitError(string)",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.NativeEventEmitterModule.EmitError(string)"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Call `emit(\"error\", new Error(reason))` on the underlying JS EventEmitter.",
+              "full": "Call `emit(\"error\", new Error(reason))` on the underlying JS EventEmitter."
+            },
+            "parameters": [
+              {
+                "name": "reason",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              }
+            ],
+            "id": {
+              "id": "fuse/geolocation/geolocation/emiterrorobject_968f99a6",
+              "parentId": "fuse/geolocation/geolocation",
+              "type": "Method",
+              "modifiers": [
+                "protected"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/geolocation/geolocation/emiterrorobject_968f99a6",
+              "href": "fuse/scripting/nativeeventemittermodule/emiterrorobject_968f99a6",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "EmitErrorObject(string)",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.NativeEventEmitterModule.EmitErrorObject(string)"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Call `emit` on the underlying JS EventEmitter with factory-generated arguments.",
+              "full": "Call `emit` on the underlying JS EventEmitter with factory-generated arguments.\n\nThe `argsFactory` parameter will be called on the JS\nthread with a valid context, allowing us to use it to\ngenerate the arguments to `emit`."
+            },
+            "parameters": [
+              {
+                "name": "argsFactory",
+                "href": "uno/func_2",
+                "title": "Func<Context, object[]> (Context)",
+                "fullyQualifiedTitle": "Uno.Func<Fuse.Scripting.Context, object[]> (Fuse.Scripting.Context)"
+              }
+            ],
+            "id": {
+              "id": "fuse/geolocation/geolocation/emitfactory_77c0158b",
+              "parentId": "fuse/geolocation/geolocation",
+              "type": "Method",
+              "modifiers": [
+                "protected"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/geolocation/geolocation/emitfactory_77c0158b",
+              "href": "fuse/scripting/nativeeventemittermodule/emitfactory_77c0158b",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "EmitFactory(Func<Context, object[]> (Context))",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.NativeEventEmitterModule.EmitFactory(Uno.Func<Fuse.Scripting.Context, object[]> (Fuse.Scripting.Context))"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Call `emit` on the underlying JS EventEmitter with factory-generated arguments.",
+              "full": "Call `emit` on the underlying JS EventEmitter with factory-generated arguments.\n\nThe `argsFactory` parameter will be called on the JS\nthread with a valid context, allowing us to use it to\ngenerate the arguments to `emit`."
+            },
+            "parameters": [
+              {
+                "name": "argsFactory",
+                "href": "uno/func_3",
+                "title": "Func<Context, T, object[]> (Context, T)",
+                "fullyQualifiedTitle": "Uno.Func<Fuse.Scripting.Context, T, object[]> (Fuse.Scripting.Context, T)"
+              },
+              {
+                "name": "t",
+                "isVirtual": true,
+                "title": "T",
+                "fullyQualifiedTitle": "Fuse.Scripting.T"
+              }
+            ],
+            "id": {
+              "id": "fuse/geolocation/geolocation/emitfactory_1_964a64f9",
+              "parentId": "fuse/geolocation/geolocation",
+              "type": "Method",
+              "modifiers": [
+                "protected"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/geolocation/geolocation/emitfactory_1_964a64f9",
+              "href": "fuse/scripting/nativeeventemittermodule/emitfactory_1_964a64f9",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "EmitFactory<T>(Func<Context, T, object[]> (Context, T), T)",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.NativeEventEmitterModule.EmitFactory<T>(Uno.Func<Fuse.Scripting.Context, T, object[]> (Fuse.Scripting.Context, T), T)"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Connect a @Callback to an event.",
+              "full": "Connect a @Callback to an event.\n\nThe @Callback will be called whenever the event is triggered."
+            },
+            "parameters": [
+              {
+                "name": "eventName",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              },
+              {
+                "name": "listener",
+                "href": "fuse/scripting/callback",
+                "title": "Callback (Context, object[])",
+                "fullyQualifiedTitle": "Fuse.Scripting.Callback (Fuse.Scripting.Context, object[])"
+              }
+            ],
+            "id": {
+              "id": "fuse/geolocation/geolocation/on_a22edd7d",
+              "parentId": "fuse/geolocation/geolocation",
+              "type": "Method",
+              "modifiers": [
+                "protected"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/geolocation/geolocation/on_a22edd7d",
+              "href": "fuse/scripting/nativeeventemittermodule/on_a22edd7d",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "On(object, Callback (Context, object[]))",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.NativeEventEmitterModule.On(object, Fuse.Scripting.Callback (Fuse.Scripting.Context, object[]))"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Connect a @NativeEvent to an event.",
+              "full": "Connect a @NativeEvent to an event.\n\nThe @NativeEvent will be triggered whenever the event is triggered."
+            },
+            "parameters": [
+              {
+                "name": "eventName",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              },
+              {
+                "name": "nativeEvent",
+                "href": "fuse/scripting/nativeevent",
+                "title": "NativeEvent",
+                "fullyQualifiedTitle": "Fuse.Scripting.NativeEvent"
+              }
+            ],
+            "id": {
+              "id": "fuse/geolocation/geolocation/on_d9bc62ce",
+              "parentId": "fuse/geolocation/geolocation",
+              "type": "Method",
+              "modifiers": [
+                "protected"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/geolocation/geolocation/on_d9bc62ce",
+              "href": "fuse/scripting/nativeeventemittermodule/on_d9bc62ce",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "On(object, NativeEvent)",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.NativeEventEmitterModule.On(object, Fuse.Scripting.NativeEvent)"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/scripting/nativemodule",
+            "parentId": "fuse/scripting",
+            "type": "Class",
+            "modifiers": [
+              "public"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/scripting/nativemodule",
+            "href": "fuse/scripting/nativemodule"
+          },
+          "titles": {
+            "indexTitle": "NativeModule",
+            "fullyQualifiedIndexTitle": "Fuse.Scripting.NativeModule"
+          }
+        },
+        "items": [
+          {
+            "parameters": [
+              {
+                "name": "member",
+                "href": "fuse/scripting/nativemember",
+                "title": "NativeMember",
+                "fullyQualifiedTitle": "Fuse.Scripting.NativeMember"
+              }
+            ],
+            "id": {
+              "id": "fuse/geolocation/geolocation/addmember_645dc1d4",
+              "parentId": "fuse/geolocation/geolocation",
+              "type": "Method",
+              "modifiers": [
+                "protected"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/geolocation/geolocation/addmember_645dc1d4",
+              "href": "fuse/scripting/nativemodule/addmember_645dc1d4",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "AddMember(NativeMember)",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.NativeModule.AddMember(Fuse.Scripting.NativeMember)"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/scripting/module",
+            "parentId": "fuse/scripting",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/scripting/module",
+            "href": "fuse/scripting/module"
+          },
+          "titles": {
+            "indexTitle": "Module",
+            "fullyQualifiedIndexTitle": "Fuse.Scripting.Module"
+          }
+        },
+        "items": [
+          {
+            "id": {
+              "id": "fuse/geolocation/geolocation/dispose",
+              "parentId": "fuse/geolocation/geolocation",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/geolocation/geolocation/dispose",
+              "href": "fuse/scripting/module/dispose",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Dispose",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.Module.Dispose"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "c",
+                "href": "fuse/scripting/context",
+                "title": "Context",
+                "fullyQualifiedTitle": "Fuse.Scripting.Context"
+              },
+              {
+                "name": "result",
+                "href": "fuse/scripting/moduleresult",
+                "title": "ModuleResult",
+                "fullyQualifiedTitle": "Fuse.Scripting.ModuleResult"
+              }
+            ],
+            "id": {
+              "id": "fuse/geolocation/geolocation/evaluate_0c699bd3",
+              "parentId": "fuse/geolocation/geolocation",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/geolocation/geolocation/evaluate_0c699bd3",
+              "href": "fuse/scripting/module/evaluate_0c699bd3",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Evaluate(Context, ModuleResult)",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.Module.Evaluate(Fuse.Scripting.Context, Fuse.Scripting.ModuleResult)"
+            }
+          },
+          {
+            "returns": {
+              "href": "fuse/scripting/moduleresult",
+              "title": "ModuleResult",
+              "fullyQualifiedTitle": "Fuse.Scripting.ModuleResult"
+            },
+            "parameters": [
+              {
+                "name": "c",
+                "href": "fuse/scripting/context",
+                "title": "Context",
+                "fullyQualifiedTitle": "Fuse.Scripting.Context"
+              },
+              {
+                "name": "id",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              }
+            ],
+            "id": {
+              "id": "fuse/geolocation/geolocation/evaluate_8fde98fd",
+              "parentId": "fuse/geolocation/geolocation",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/geolocation/geolocation/evaluate_8fde98fd",
+              "href": "fuse/scripting/module/evaluate_8fde98fd",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Evaluate(Context, string)",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.Module.Evaluate(Fuse.Scripting.Context, string)"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/object",
+              "title": "object",
+              "fullyQualifiedTitle": "object"
+            },
+            "parameters": [
+              {
+                "name": "c",
+                "href": "fuse/scripting/context",
+                "title": "Context",
+                "fullyQualifiedTitle": "Fuse.Scripting.Context"
+              },
+              {
+                "name": "id",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              }
+            ],
+            "id": {
+              "id": "fuse/geolocation/geolocation/evaluateexports_8fde98fd",
+              "parentId": "fuse/geolocation/geolocation",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/geolocation/geolocation/evaluateexports_8fde98fd",
+              "href": "fuse/scripting/module/evaluateexports_8fde98fd",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "EvaluateExports(Context, string)",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.Module.EvaluateExports(Fuse.Scripting.Context, string)"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Returns the file source that will be watched by the Context for changes in Fuse preview.\nOverride in subclasses and return correct file source to support live updates\nin Fuse preview.",
+              "full": "Returns the file source that will be watched by the Context for changes in Fuse preview.\nOverride in subclasses and return correct file source to support live updates\nin Fuse preview."
+            },
+            "returns": {
+              "href": "uno/ux/filesource",
+              "title": "FileSource",
+              "fullyQualifiedTitle": "Uno.UX.FileSource"
+            },
+            "id": {
+              "id": "fuse/geolocation/geolocation/getfile",
+              "parentId": "fuse/geolocation/geolocation",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/geolocation/geolocation/getfile",
+              "href": "fuse/scripting/module/getfile",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetFile",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.Module.GetFile"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "uno/object",
+            "parentId": "uno",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "intrinsic"
+            ]
+          },
+          "uri": {
+            "idUri": "uno/object",
+            "href": "uno/object"
+          },
+          "titles": {
+            "indexTitle": "object",
+            "fullyQualifiedIndexTitle": "object"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "parameters": [
+              {
+                "name": "o",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              }
+            ],
+            "id": {
+              "id": "fuse/geolocation/geolocation/equals_a09c80e3",
+              "parentId": "fuse/geolocation/geolocation",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/geolocation/geolocation/equals_a09c80e3",
+              "href": "uno/object/equals_a09c80e3",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Equals(object)",
+              "fullyQualifiedIndexTitle": "Uno.Object.Equals(object)"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/int",
+              "title": "int",
+              "fullyQualifiedTitle": "int"
+            },
+            "id": {
+              "id": "fuse/geolocation/geolocation/gethashcode",
+              "parentId": "fuse/geolocation/geolocation",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/geolocation/geolocation/gethashcode",
+              "href": "uno/object/gethashcode",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetHashCode",
+              "fullyQualifiedIndexTitle": "Uno.Object.GetHashCode"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/type",
+              "title": "Type",
+              "fullyQualifiedTitle": "Uno.Type"
+            },
+            "id": {
+              "id": "fuse/geolocation/geolocation/gettype",
+              "parentId": "fuse/geolocation/geolocation",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/geolocation/geolocation/gettype",
+              "href": "uno/object/gettype",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetType",
+              "fullyQualifiedIndexTitle": "Uno.Object.GetType"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "id": {
+              "id": "fuse/geolocation/geolocation/tostring",
+              "parentId": "fuse/geolocation/geolocation",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/geolocation/geolocation/tostring",
+              "href": "uno/object/tostring",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "ToString",
+              "fullyQualifiedIndexTitle": "Uno.Object.ToString"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

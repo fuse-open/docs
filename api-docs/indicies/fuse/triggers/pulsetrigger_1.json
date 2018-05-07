@@ -1,0 +1,199 @@
+{
+  "root": {
+    "id": {
+      "id": "fuse/triggers/pulsetrigger_1",
+      "parentId": "fuse/triggers",
+      "type": "Class",
+      "modifiers": [
+        "public",
+        "abstract"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/triggers/pulsetrigger_1",
+      "href": "fuse/triggers/pulsetrigger_1"
+    },
+    "titles": {
+      "indexTitle": "PulseTrigger<CompletedEventArgs>",
+      "fullyQualifiedIndexTitle": "Fuse.Triggers.PulseTrigger<Fuse.Triggers.CompletedEventArgs>"
+    }
+  },
+  "descendants": [
+    {
+      "comment": {
+        "brief": "Active whenever a page becomes active.",
+        "full": "Active whenever a page becomes active.\n\nThis trigger will also be pulsed at rooting time if the page is currently the active one.\n\n## Example\n\nThis example will print to the console whenever the each of the two pages is activated:\n\n    <PageControl>\n        <Page Background=\"Red\">\n            <Activated>\n                <DebugAction Message=\"Red page activated\" />\n            </Activated>\n        </Page>\n        <Page Background=\"Blue\">\n            <Activated>\n                <DebugAction Message=\"Blue page activated\" />\n            </Activated>\n        </Page>\n    </PageControl>\n\nNote that this trigger may also be used as an attached event directly on a `Page`, like so:\n\n    <Page Activated=\"{jsActivated}\">\n    </Page>"
+      },
+      "id": {
+        "id": "fuse/navigation/activated",
+        "parentId": "fuse/navigation",
+        "type": "UxClass",
+        "modifiers": [
+          "public"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/navigation/activated",
+        "href": "fuse/navigation/activated"
+      },
+      "titles": {
+        "indexTitle": "Activated",
+        "fullyQualifiedIndexTitle": "Fuse.Navigation.Activated"
+      }
+    },
+    {
+      "comment": {
+        "brief": "Active whenever a page becomes inactive.",
+        "full": "Active whenever a page becomes inactive.\n\nThis trigger may not pulse when the trigger, navigation, or the page is unrooted.\n\n## Example\n\nThis example will print to the console whenever the each of the two pages is deactivated:\n\n    <PageControl>\n        <Page Background=\"Red\">\n            <Deactivated>\n                <DebugAction Message=\"Red page deactivated\" />\n            </Deactivated>\n        </Page>\n        <Page Background=\"Blue\">\n            <Deactivated>\n                <DebugAction Message=\"Blue page deactivated\" />\n            </Deactivated>\n        </Page>\n    </PageControl>\n\nNote that this trigger may also be used as an attached event directly on a `Page`, like so:\n\n    <Page Deactivated=\"{jsDeactivated}\">\n    </Page>"
+      },
+      "id": {
+        "id": "fuse/navigation/deactivated",
+        "parentId": "fuse/navigation",
+        "type": "UxClass",
+        "modifiers": [
+          "public"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/navigation/deactivated",
+        "href": "fuse/navigation/deactivated"
+      },
+      "titles": {
+        "indexTitle": "Deactivated",
+        "fullyQualifiedIndexTitle": "Fuse.Navigation.Deactivated"
+      }
+    },
+    {
+      "comment": {
+        "brief": "@hide",
+        "full": "@hide"
+      },
+      "id": {
+        "id": "fuse/navigation/navigationtrigger",
+        "parentId": "fuse/navigation",
+        "type": "Class",
+        "modifiers": [
+          "public",
+          "abstract"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/navigation/navigationtrigger",
+        "href": "fuse/navigation/navigationtrigger"
+      },
+      "titles": {
+        "indexTitle": "NavigationTrigger",
+        "fullyQualifiedIndexTitle": "Fuse.Navigation.NavigationTrigger"
+      }
+    },
+    {
+      "comment": {
+        "brief": "Fired when the @Selectable is removed from the @Selection.",
+        "full": "Fired when the @Selectable is removed from the @Selection."
+      },
+      "id": {
+        "id": "fuse/selection/deselected",
+        "parentId": "fuse/selection",
+        "type": "UxClass",
+        "modifiers": [
+          "public"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/selection/deselected",
+        "href": "fuse/selection/deselected"
+      },
+      "titles": {
+        "indexTitle": "Deselected",
+        "fullyQualifiedIndexTitle": "Fuse.Selection.Deselected"
+      }
+    },
+    {
+      "comment": {
+        "brief": "Fired when the @Selectable is assed to the @Selection.",
+        "full": "Fired when the @Selectable is assed to the @Selection."
+      },
+      "id": {
+        "id": "fuse/selection/selected",
+        "parentId": "fuse/selection",
+        "type": "UxClass",
+        "modifiers": [
+          "public"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/selection/selected",
+        "href": "fuse/selection/selected"
+      },
+      "titles": {
+        "indexTitle": "Selected",
+        "fullyQualifiedIndexTitle": "Fuse.Selection.Selected"
+      }
+    },
+    {
+      "id": {
+        "id": "fuse/selection/selectionevent",
+        "parentId": "fuse/selection",
+        "type": "Class",
+        "modifiers": [
+          "public",
+          "abstract"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/selection/selectionevent",
+        "href": "fuse/selection/selectionevent"
+      },
+      "titles": {
+        "indexTitle": "SelectionEvent",
+        "fullyQualifiedIndexTitle": "Fuse.Selection.SelectionEvent"
+      }
+    },
+    {
+      "comment": {
+        "brief": "Pulses when the busy status of a node is cleared.",
+        "full": "Pulses when the busy status of a node is cleared.\n\n`Completed` is used to respond to the completion of a preparation, loading, or other busy task.\n\nThis example draws attention to an `Image` when it has completed loading:\n\n    <Image Url=\"some_big_image\">\n        <Completed>\n            <Scale Factor=\"0.8\" Duration=\"0.4\"/>\n        </Completed>\n    </Image>\n\n`Completed` always fires, even if the node wasn't busy before. This makes it suitable for things that should always run. It also makes it useful in combination with other triggers. For example, the below scales the image when the navigation page is both active and completed.\n\n    <Page>\n        <Image Alignment=\"Center\" Url=\"some_image\" ux:Name=\"theImage\"/>\n        <WhileActive>\n            <Completed>\n                <Scale Target=\"theImage\" Factor=\"1.5\" Duration=\"0.3\"/>\n            </Completed>\n        </WhileActive>\n    </Page>"
+      },
+      "id": {
+        "id": "fuse/triggers/completed",
+        "parentId": "fuse/triggers",
+        "type": "UxClass",
+        "modifiers": [
+          "public",
+          "partial"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/triggers/completed",
+        "href": "fuse/triggers/completed"
+      },
+      "titles": {
+        "indexTitle": "Completed",
+        "fullyQualifiedIndexTitle": "Fuse.Triggers.Completed"
+      }
+    },
+    {
+      "comment": {
+        "brief": "Triggers when the ScrollView is scrolled to within a specified region.",
+        "full": "Triggers when the ScrollView is scrolled to within a specified region.\n\n`Scrolled` triggers only once when the ScrollView enters the region. It will not trigger again until the scrolling leaves and comes back. See the `check` function if you need to force a recheck."
+      },
+      "id": {
+        "id": "fuse/triggers/scrolled",
+        "parentId": "fuse/triggers",
+        "type": "UxClass",
+        "modifiers": [
+          "public",
+          "partial"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/triggers/scrolled",
+        "href": "fuse/triggers/scrolled"
+      },
+      "titles": {
+        "indexTitle": "Scrolled",
+        "fullyQualifiedIndexTitle": "Fuse.Triggers.Scrolled"
+      }
+    }
+  ]
+}
