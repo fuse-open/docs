@@ -44,7 +44,7 @@ Also on your android device itself you will need to enable 'developer options' &
 
 ### iOS setup
 
-You will need Mac OS X and [Xcode](https://itunes.apple.com/en/app/xcode/id497799835) to preview and export your app to iOS.
+You will need Mac OS X and [Xcode](https://developer.apple.com/xcode/) to preview and export your app to iOS.
 
 You also need to create a free Apple Developer account and register it under Xcode's settings as shown below.
 
