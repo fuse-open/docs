@@ -13,94 +13,184 @@ Packages can be all sorts of things; examples, libraries, plugins or tools. Inst
 
 ## Package list
 
-| Package | Github link |
-|:---------------------|---------:|
-| &nbsp; | &nbsp; |
-| **admob**<br>Use AdMob with Fuse projects (Android)<br>`Library` by **aToO57** | [Go to page](https://github.com/aToO57/AdMob) |
-|&nbsp;||
-| **appstax-fuse**<br>Official AppStax SDK for Fuse<br>`Library` by **Appstax** | [Go to page](https://github.com/Appstax/appstax-fuse) |
-|&nbsp;||
-| **barcodescanner**<br>Bar code scanner<br>`Library` by **bolav** | [Go to page](https://github.com/bolav/fuse-barcodescanner) |
-|&nbsp;||
-| **cachingimagesource**<br>Caches downloaded images on disk<br>`Library` by **bolav** | [Go to page](https://github.com/bolav/fuse-cachingimagesource) |
-|&nbsp;||
-| **camerapanel**<br>Use the camera feed as a panel (iOS)<br>`Library` by **bolav** | [Go to page](https://github.com/bolav/fuse-camerapanel) |
-|&nbsp;||
-| **contacts**<br>Get phone contact list in JS<br>`Library` by **bolav** | [Go to page](https://github.com/bolav/fuse-contacts) |
-|&nbsp;||
-| **cocoapods**<br>Cocoapods integration (iOS)<br>`Library` by **bolav** | [Go to page](https://github.com/bolav/fuse-cocoapods) |
-|&nbsp;||
-| **emacs**<br>Emacs plugin for Fuse<br>`Plugin` by **hasselknippe** | [Go to page](https://github.com/kristianhasselknippe/fuse-mode) |
-|&nbsp;||
-| **facebook-login**<br>Facebook login example (iOS)<br>`Library` by **bolav** | [Go to page](https://github.com/bolav/fuse-facebook-login) |
-|&nbsp;||
-| **firebase**<br>Use Google Firebase with Fuse<br>`Library` by **baggers** | [Go to page](https://github.com/cbaggers/Fuse.Firebase) |
-|&nbsp;||
-| **Fuse.Billing.Android**<br>Receive payments through Google Play<br>`Library` by **Fuse** | [Go to page](https://github.com/fusetools/Fuse.Billing.Android) |
-|&nbsp;||
-| **Fuse.RMStore**<br>Bindings around the excellent RM.Store library<br>`Library` by **Fuse** | [Go to page](https://github.com/fusetools/Fuse.RMStore) |
-|&nbsp;||
-| **fuse-customdatepicker**<br>Disk shaped date picker for Fuse<br>`Library` by **sacketty** | [Go to page](https://github.com/sacketty/fuse-customdatepicker) |
-|&nbsp;||
-| **fuse-clipboard**<br>Clipboard class for Fuse Tools<br>`Library` by **jmoleiro** | [Go to page](https://github.com/jmoleiro/fuse-clipboard) |
-|&nbsp;||
-| **fuse-device**<br>Get basic device functions<br>`Library` by **MaxGraey** | [Go to page](https://github.com/MaxGraey/fuse-device) |
-|&nbsp;||
-| **fuse-google-analytics**<br>Use Google Analytics with Fuse<br>`Library` by **ErickTamayo** | [Go to page](https://github.com/ErickTamayo/fuse-google-analytics) |
-|&nbsp;||
-| **fuse-motion**<br>Motion - iOS accelerometer, gyroscope, magnetometer readings and more<br>`Library` by **AlexGustafsson** | [Go to page](https://github.com/AlexGustafsson/fuse-motion) |
-|&nbsp;||
-| **FuseNativeControls**<br>Cross-platform native controls for Fuse, including date and time picker<br>`Library` by **nekronos** | [Go to page](https://github.com/nekronos/FuseNativeControls) |
-|&nbsp;||
-| **gallery**<br>Load images from the phone's gallery<br>`Library` by **bolav** | [Go to page](https://github.com/bolav/fuse-gallery) |
-|&nbsp;||
-| **homescreen**<br>UX action to go to the home screen on Android<br>`Library` by **bolav** | [Go to page](https://github.com/bolav/fuse-homescreen) |
-|&nbsp;||
-| **materialdesign**<br>Cross-platform, open source implementation of Google's material design in Fuse<br>`Library` by **Duckers** | [Go to page](https://github.com/Duckers/Fuse.MaterialDesign) |
-|&nbsp;||
-| **onetimepassword**<br>Onetimepassword and other integrations<br>`Library` by **torial** | [Go to page](https://github.com/torial/fuse-community) |
-|&nbsp;||
-| **qreader**<br>QR code reader<br>`Library`  by **zean00** | [Go to page](https://github.com/zean00/fuse-qreader) |
-|&nbsp;||
-| **socketio**<br>Socket.io<br>`Example` by **bolav** | [Go to page](https://github.com/bolav/fuse-example-using-socketio) |
-|&nbsp;||
-| **sqlite**<br>Use SQLite database from JS in Fuse<br>`Library` by **bolav** | [Go to page](https://github.com/bolav/fuse-sqlite) |
-|&nbsp;||
-| **syncano**<br>Syncano backend example<br>`Library` by **bolav** | [Go to page](https://github.com/bolav/fuse-example-using-syncano) |
-|&nbsp;||
-| **testfairy**<br>TestFairy integration<br>`Library` by **bolav** | [Go to page](https://github.com/bolav/fuse-testfairy) |
-|&nbsp;||
-| **touchid**<br>Touch ID integration (iOS)<br>`Library` by **bolav** | [Go to page](https://github.com/bolav/fuse-touchid) |
-|&nbsp;||
-| **uno-bash**<br>Simple bash auto-completion for Uno CLI<br>`Tool` by **Fuse** | [Go to page](https://github.com/fusetools/UnoBashCompletion) |
-|&nbsp;||
-| **vscode**<br>VSCode plugin<br>`Plugin` by **hazealign** | [Go to page](https://github.com/Hazealign/vscode-fuse) |
-|&nbsp;||
-| **vscode-fuse-syntax**<br>Syntax highlighting in Visual Studio Code<br>`Extension` by **Sergii Naumov** | [Go to page](https://marketplace.visualstudio.com/items?itemName=naumovs.vscode-fuse-syntax) |
-|&nbsp;||
-| **whilevisibleinscrollview**<br>WhileVisibleInScrollView UX trigger<br>`Library` by **bolav** | [Go to page](https://github.com/bolav/fuse-whilevisibleinscrollview) |
-|&nbsp;||
-| **YouTube**<br>YouTube integration<br>`Library` by **bolav** | [Go to page](https://github.com/bolav/fuse-youtube) |
-|&nbsp;||
-| **FuseShareSheet**<br>Native share sheets<br>`Library` by **Heavenchains** | [Go to page](https://github.com/heavenchains/FuseShareSheet) |
-|&nbsp;||
-| **fuse-log**<br>Get Fuse log messages in VS Code<br>`Plugin` by **bstrr** | [Go to page](https://github.com/bstrr/vscode-fuse-log) |
-|&nbsp;||
-| **fuse-backgroundservice**<br>Long running services for Android<br>`Plugin` by **Benny2871** | [Go to page](https://github.com/benny2871/fuse-backgroundservice) |
-|&nbsp;||
-| **fuse-android-toast**<br>Use the native Android Toast view in Fuse<br>`Library` by **blackrider401** | [Go to page](https://github.com/blackrider401/Fuse_Android_Toast) |
-|&nbsp;||
-| **SocialShare**<br>Library to use social share options in Fuse<br>`Library` by **jesusmartinoza** | [Go to page](https://github.com/jesusmartinoza/Fuse.SocialShare) |
-|&nbsp;||
-| **fuse-cordova-bridge**<br>Project that allows cordova plugins to be used in Fuse apps<br>`Library` by **akalyan** | [Go to page](https://github.com/akalyan/fuse-cordova-bridge) |
-|&nbsp;||
-| **fuse-dfp**<br>Implementation of DoubleClick for Publishers SDK in Fuse<br>`Library` by **jmoleiro** | [Go to page](https://github.com/jmoleiro/fuse-dfp) |
-|&nbsp;||
-| **listenup**<br>Example of Snowboy hotword detection in Fuse<br>`Library` by **bkono** | [Go to page](https://github.com/bkono/listenup) |
-|&nbsp;||
-| **fuse-tools-icon-sets**<br>A collection of files with icon code mappings to quickly add icons to your fuse tools project<br>`Library` by **IsaacSomething** | [Go to page](https://github.com/IsaacSomething/fuse-tools-icon-sets) |
-|&nbsp;||
-
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Package</th>
+<th style="text-align:right">Github link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>admob</strong><br>Use AdMob with Fuse projects (Android)<br><code>Library</code> by <strong>aToO57</strong></td>
+<td style="text-align:right"><a href="https://github.com/aToO57/AdMob">Go to page</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>appstax-fuse</strong><br>Official AppStax SDK for Fuse<br><code>Library</code> by <strong>Appstax</strong></td>
+<td style="text-align:right"><a href="https://github.com/Appstax/appstax-fuse">Go to page</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>barcodescanner</strong><br>Bar code scanner<br><code>Library</code> by <strong>bolav</strong></td>
+<td style="text-align:right"><a href="https://github.com/bolav/fuse-barcodescanner">Go to page</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>cachingimagesource</strong><br>Caches downloaded images on disk<br><code>Library</code> by <strong>bolav</strong></td>
+<td style="text-align:right"><a href="https://github.com/bolav/fuse-cachingimagesource">Go to page</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>camerapanel</strong><br>Use the camera feed as a panel (iOS)<br><code>Library</code> by <strong>bolav</strong></td>
+<td style="text-align:right"><a href="https://github.com/bolav/fuse-camerapanel">Go to page</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>contacts</strong><br>Get phone contact list in JS<br><code>Library</code> by <strong>bolav</strong></td>
+<td style="text-align:right"><a href="https://github.com/bolav/fuse-contacts">Go to page</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>cocoapods</strong><br>Cocoapods integration (iOS)<br><code>Library</code> by <strong>bolav</strong></td>
+<td style="text-align:right"><a href="https://github.com/bolav/fuse-cocoapods">Go to page</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>emacs</strong><br>Emacs plugin for Fuse<br><code>Plugin</code> by <strong>hasselknippe</strong></td>
+<td style="text-align:right"><a href="https://github.com/kristianhasselknippe/fuse-mode">Go to page</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>facebook-login</strong><br>Facebook login example (iOS)<br><code>Library</code> by <strong>bolav</strong></td>
+<td style="text-align:right"><a href="https://github.com/bolav/fuse-facebook-login">Go to page</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>firebase</strong><br>Use Google Firebase with Fuse<br><code>Library</code> by <strong>baggers</strong></td>
+<td style="text-align:right"><a href="https://github.com/cbaggers/Fuse.Firebase">Go to page</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Fuse.Billing.Android</strong><br>Receive payments through Google Play<br><code>Library</code> by <strong>Fuse</strong></td>
+<td style="text-align:right"><a href="https://github.com/fusetools/Fuse.Billing.Android">Go to page</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Fuse.RMStore</strong><br>Bindings around the excellent RM.Store library<br><code>Library</code> by <strong>Fuse</strong></td>
+<td style="text-align:right"><a href="https://github.com/fusetools/Fuse.RMStore">Go to page</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>fuse-customdatepicker</strong><br>Disk shaped date picker for Fuse<br><code>Library</code> by <strong>sacketty</strong></td>
+<td style="text-align:right"><a href="https://github.com/sacketty/fuse-customdatepicker">Go to page</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>fuse-clipboard</strong><br>Clipboard class for Fuse Tools<br><code>Library</code> by <strong>jmoleiro</strong></td>
+<td style="text-align:right"><a href="https://github.com/jmoleiro/fuse-clipboard">Go to page</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>fuse-device</strong><br>Get basic device functions<br><code>Library</code> by <strong>MaxGraey</strong></td>
+<td style="text-align:right"><a href="https://github.com/MaxGraey/fuse-device">Go to page</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>fuse-google-analytics</strong><br>Use Google Analytics with Fuse<br><code>Library</code> by <strong>ErickTamayo</strong></td>
+<td style="text-align:right"><a href="https://github.com/ErickTamayo/fuse-google-analytics">Go to page</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>fuse-motion</strong><br>Motion - iOS accelerometer, gyroscope, magnetometer readings and more<br><code>Library</code> by <strong>AlexGustafsson</strong></td>
+<td style="text-align:right"><a href="https://github.com/AlexGustafsson/fuse-motion">Go to page</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>FuseNativeControls</strong><br>Cross-platform native controls for Fuse, including date and time picker<br><code>Library</code> by <strong>nekronos</strong></td>
+<td style="text-align:right"><a href="https://github.com/nekronos/FuseNativeControls">Go to page</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>gallery</strong><br>Load images from the phone&#39;s gallery<br><code>Library</code> by <strong>bolav</strong></td>
+<td style="text-align:right"><a href="https://github.com/bolav/fuse-gallery">Go to page</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>homescreen</strong><br>UX action to go to the home screen on Android<br><code>Library</code> by <strong>bolav</strong></td>
+<td style="text-align:right"><a href="https://github.com/bolav/fuse-homescreen">Go to page</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>materialdesign</strong><br>Cross-platform, open source implementation of Google&#39;s material design in Fuse<br><code>Library</code> by <strong>Duckers</strong></td>
+<td style="text-align:right"><a href="https://github.com/Duckers/Fuse.MaterialDesign">Go to page</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>onetimepassword</strong><br>Onetimepassword and other integrations<br><code>Library</code> by <strong>torial</strong></td>
+<td style="text-align:right"><a href="https://github.com/torial/fuse-community">Go to page</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>qreader</strong><br>QR code reader<br><code>Library</code>  by <strong>zean00</strong></td>
+<td style="text-align:right"><a href="https://github.com/zean00/fuse-qreader">Go to page</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>socketio</strong><br>Socket.io<br><code>Example</code> by <strong>bolav</strong></td>
+<td style="text-align:right"><a href="https://github.com/bolav/fuse-example-using-socketio">Go to page</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>sqlite</strong><br>Use SQLite database from JS in Fuse<br><code>Library</code> by <strong>bolav</strong></td>
+<td style="text-align:right"><a href="https://github.com/bolav/fuse-sqlite">Go to page</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>syncano</strong><br>Syncano backend example<br><code>Library</code> by <strong>bolav</strong></td>
+<td style="text-align:right"><a href="https://github.com/bolav/fuse-example-using-syncano">Go to page</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>testfairy</strong><br>TestFairy integration<br><code>Library</code> by <strong>bolav</strong></td>
+<td style="text-align:right"><a href="https://github.com/bolav/fuse-testfairy">Go to page</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>touchid</strong><br>Touch ID integration (iOS)<br><code>Library</code> by <strong>bolav</strong></td>
+<td style="text-align:right"><a href="https://github.com/bolav/fuse-touchid">Go to page</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>uno-bash</strong><br>Simple bash auto-completion for Uno CLI<br><code>Tool</code> by <strong>Fuse</strong></td>
+<td style="text-align:right"><a href="https://github.com/fusetools/UnoBashCompletion">Go to page</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>vscode</strong><br>VSCode plugin<br><code>Plugin</code> by <strong>hazealign</strong></td>
+<td style="text-align:right"><a href="https://github.com/Hazealign/vscode-fuse">Go to page</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>vscode-fuse-syntax</strong><br>Syntax highlighting in Visual Studio Code<br><code>Extension</code> by <strong>Sergii Naumov</strong></td>
+<td style="text-align:right"><a href="https://marketplace.visualstudio.com/items?itemName=naumovs.vscode-fuse-syntax">Go to page</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>whilevisibleinscrollview</strong><br>WhileVisibleInScrollView UX trigger<br><code>Library</code> by <strong>bolav</strong></td>
+<td style="text-align:right"><a href="https://github.com/bolav/fuse-whilevisibleinscrollview">Go to page</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>YouTube</strong><br>YouTube integration<br><code>Library</code> by <strong>bolav</strong></td>
+<td style="text-align:right"><a href="https://github.com/bolav/fuse-youtube">Go to page</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>FuseShareSheet</strong><br>Native share sheets<br><code>Library</code> by <strong>Heavenchains</strong></td>
+<td style="text-align:right"><a href="https://github.com/heavenchains/FuseShareSheet">Go to page</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>fuse-log</strong><br>Get Fuse log messages in VS Code<br><code>Plugin</code> by <strong>bstrr</strong></td>
+<td style="text-align:right"><a href="https://github.com/bstrr/vscode-fuse-log">Go to page</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>fuse-backgroundservice</strong><br>Long running services for Android<br><code>Plugin</code> by <strong>Benny2871</strong></td>
+<td style="text-align:right"><a href="https://github.com/benny2871/fuse-backgroundservice">Go to page</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>fuse-android-toast</strong><br>Use the native Android Toast view in Fuse<br><code>Library</code> by <strong>blackrider401</strong></td>
+<td style="text-align:right"><a href="https://github.com/blackrider401/Fuse_Android_Toast">Go to page</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>SocialShare</strong><br>Library to use social share options in Fuse<br><code>Library</code> by <strong>jesusmartinoza</strong></td>
+<td style="text-align:right"><a href="https://github.com/jesusmartinoza/Fuse.SocialShare">Go to page</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>fuse-cordova-bridge</strong><br>Project that allows cordova plugins to be used in Fuse apps<br><code>Library</code> by <strong>akalyan</strong></td>
+<td style="text-align:right"><a href="https://github.com/akalyan/fuse-cordova-bridge">Go to page</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>fuse-dfp</strong><br>Implementation of DoubleClick for Publishers SDK in Fuse<br><code>Library</code> by <strong>jmoleiro</strong></td>
+<td style="text-align:right"><a href="https://github.com/jmoleiro/fuse-dfp">Go to page</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>listenup</strong><br>Example of Snowboy hotword detection in Fuse<br><code>Library</code> by <strong>bkono</strong></td>
+<td style="text-align:right"><a href="https://github.com/bkono/listenup">Go to page</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>fuse-tools-icon-sets</strong><br>A collection of files with icon code mappings to quickly add icons to your fuse tools project<br><code>Library</code> by <strong>IsaacSomething</strong></td>
+<td style="text-align:right"><a href="https://github.com/IsaacSomething/fuse-tools-icon-sets">Go to page</a></td>
+</tr>
+</tbody>
+</table>
 
 ## Submitting a new package
 
