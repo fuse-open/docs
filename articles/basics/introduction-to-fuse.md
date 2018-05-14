@@ -258,7 +258,7 @@ The following figure shows how objects respond to a handful of the alignment opt
 
 ### Layout types
 
-Now it's time to learn about some layout types and how they can be combined to create almost any app layout you can think of. You'll be introduced to three layout types: `StackPanel`, `DockPanel` and `Grid`. Note however that these aren't the only layout types in Fuse. They are however by far the most commonly used ones, and cover most of the use-cases you'll run into. You'll see more of them listed in the outline at [fusetools.com/docs](https://www.fusetools.com/docs).
+Now it's time to learn about some layout types and how they can be combined to create almost any app layout you can think of. You'll be introduced to three layout types: `StackPanel`, `DockPanel` and `Grid`. Note however that these aren't the only layout types in Fuse. They are however by far the most commonly used ones, and cover most of the use-cases you'll run into. You'll see more of them listed in the outline of [the docs](https://fuse-open.github.io/docs).
 
 [callout info]
 The various panels we introduce here are actually just normal panels with an associated `Layout` type. What we mean by this is that a `StackPanel` is actually just a `Panel` with a `StackLayout` attached to it. Some of the available layout types do not have these `Panel` wrappers, and so you have to add them to a normal `Panel` yourself in order to use them.

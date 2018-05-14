@@ -169,9 +169,9 @@ We can of course also still use [preview on Android and iOS devices](preview-and
 
 ## How to report a bug
 
-If you think you've found a bug, we would appreciate you letting us know by submitting a bug report in our [forum](https://www.fusetools.com/community/forums/bug_reports).
-The more information we have on an issue, the easier it is for us to solve it. 
-We've therefore put together a small list of information you should try to include in your bug reports.
+If you think you've found a bug, we would appreciate you letting us know by submitting issues at the [fuselibs github repository](https://github.com/fuse-open/fuselibs/issues).
+
+The more information we have on an issue, the easier it is for us to solve it. Here is a recommended list of information you should try to include in your bug reports.
 
 1. What version of Fuse are you using? Run `fuse --version` in your terminal/cmd and copy the output.
 2. Your operating system and its version.
@@ -181,8 +181,6 @@ We've therefore put together a small list of information you should try to inclu
     - Local preview - run `fuse preview`
 	- Device preview - run `fuse preview -tios` or `fuse preview -tandroid`
 	- Export build - run `fuse build -tios` or `fuse build -tandroid`
-6. A minimal reproduction project and instructions on how to trigger the bug (be specific).
-    - Repro cases can be safely uploaded to us via this link: https://www.dropbox.com/request/ZgndLtJQm5eGzG9cicGK
-    - If the repro case is quite small, you can paste your code in the forum post with 4 spaces of indentation.
+6. A link to a minimal reproduction project and instructions on how to trigger the bug (be specific).
+    - If the repro case is quite small, you can paste your code in the issue description.
     - Try to make the project as small as possible; only include the code that is needed to make the issue manifest.
-    - Before making a compressed archive (a zip file for example), please run `uno clean` in your terminal/cmd to remove any cached builds that would otherwise bloat the file size.
