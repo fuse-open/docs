@@ -2,11 +2,9 @@
 
 The `Fuse.Views` package allows you to take any UX UI component and export them as a native Library for iOS and Android. In this tutorial we will step by step look at how this is done.
 
-> **Note:** This is a premium feature, included with Fuse's [Professional and Custom plans](https://www.fusetools.com/plans).
-
 ## Step 0: Installing dependencies
 
-To integrate with Xcode and Android Studio make sure you have a Professional license, and that you have installed the Fuse.Views package using the following command in either terminal (on macOS) or cmd (on Windows):
+To integrate with Xcode and Android Studio make sure you have installed the Fuse.Views package using the following command in either terminal (on macOS) or cmd (on Windows):
 
 ```
 uno install Fuse.Views
@@ -323,7 +321,7 @@ public interface ICallback {
 }
 ```
 
-If you are familiar with [`JavaScript`](https://www.fusetools.com/docs/fuse/reactive/javascript) and [`DataBinding`](https://www.fusetools.com/docs/fuse/reactive/databinding) in fuse this will be quite easy to understand. `setDataJson` is the equivalent of having a `module.exports` in JavaScript and `setCallback` is the equivalent of adding a function to the `exports`. The function arguments passed to the native callback in Fuse views will contain the same data you would get in `JavaScript`, but you get the through the methods available on the `Arguments`. Since the function arguments needs to be serialized to strings and JSON, accessing the `Arguments` will lazily serialize what you request. In the common case you are more interested in getting the callback than accessing the whole data context. Please have a look at [`Binding functions`](https://www.fusetools.com/docs/scripting/scripting#binding-functions) for an overview of what arguments will be passed.
+If you are familiar with [`JavaScript`](https://fuse-open.github.io/docs/fuse/reactive/javascript) and [`DataBinding`](https://fuse-open.github.io/docs/fuse/reactive/databinding) in fuse this will be quite easy to understand. `setDataJson` is the equivalent of having a `module.exports` in JavaScript and `setCallback` is the equivalent of adding a function to the `exports`. The function arguments passed to the native callback in Fuse views will contain the same data you would get in `JavaScript`, but you get the through the methods available on the `Arguments`. Since the function arguments needs to be serialized to strings and JSON, accessing the `Arguments` will lazily serialize what you request. In the common case you are more interested in getting the callback than accessing the whole data context. Please have a look at [`Binding functions`](https://fuse-open.github.io/docs/scripting/scripting#binding-functions) for an overview of what arguments will be passed.
 
 ```
 @interface Arguments : NSObject

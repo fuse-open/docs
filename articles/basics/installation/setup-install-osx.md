@@ -6,7 +6,7 @@ A modern Mac, running [macOS Yosemite or later](../supported-platforms.md).
 Internet access is required during installation.
 
 ## Fuse
-Download Fuse for macOS from [the Downloads page](https://www.fusetools.com/downloads) and run the installer.
+Download Fuse for macOS from [the Downloads page](https://fuse-open.github.io/downloads) and run the installer.
 After installation, we can find the Fuse application in the "Applications" folder. We can also start it simply by opening a terminal window and typing `fuse`. When Fuse is running we can see its tray icon in the menu bar. Our dashboard should also pop up right after running `fuse` for the first time. The dashboard can always be started from the tray icon.
 
 ## Post Installation

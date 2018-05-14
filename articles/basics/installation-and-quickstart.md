@@ -4,7 +4,7 @@ This is a step-by-step tutorial that takes you through setting up Fuse and creat
 
 ## Installation
 
-The latest version of Fuse can always be downloaded from the <a target="_blank" href="https://www.fusetools.com/downloads">downloads page</a>. Download the installer for your operating system and open it to start the installation procedure.
+The latest version of Fuse can always be downloaded from the <a target="_blank" href="https://fuse-open.github.io/downloads">downloads page</a>. Download the installer for your operating system and open it to start the installation procedure.
 
 [callout info]
 Both the Windows and macOS installers require an internet connection in order to complete.
@@ -82,10 +82,6 @@ After clicking the "create" button, Fuse starts a local preview viewport. You'll
 
 After Fuse is done downloading all the required packages, the preview viewport is started, and you'll notice that all we have to start with is a white background.
 
-### Logging in
-
-You can log in to Fuse using your Fuse account. Click the log in button in the top right corner of Fuse to log in. If you have a Fuse professional license this is required in order to access the visual tooling that is a part of Fuse Studio.
-
 ### Making some changes
 
 To open the project in your text editor, either click the "Project" tab and select `MainView.ux` or open the project folder directly from your text editor.
@@ -117,4 +113,4 @@ If you ever need to include non-standard packages or Uno code in your project th
 
 ## What next?
 
-Now that you're all set up, it's time to get started learning the fundamentals of Fuse. A good next step is to take a look at the [Introduction to Fuse](https://www.fusetools.com/docs/basics/introduction-to-fuse) module, which will take you through the fundamentals of Fuse. If you prefer learning by example, the [hikr tutorial](https://www.fusetools.com/docs/tutorial/tutorial) will lead you through the creation of a simple hiking app, while explaining each step along the way. If you simply want to start digging into example code and play around on your own, there is a ton of content to look at on our [examples page](http://fusetools.com/examples) as well as in the [fuse-samples github repo](https://www.github.com/fusetools/fuse-samples/).
+Now that you're all set up, it's time to get started learning the fundamentals of Fuse. A good next step is to take a look at the [Introduction to Fuse](https://fuse-open.github.io/docs/basics/introduction-to-fuse) module, which will take you through the fundamentals of Fuse. If you prefer learning by example, the [hikr tutorial](https://fuse-open.github.io/docs/tutorial/tutorial) will lead you through the creation of a simple hiking app, while explaining each step along the way. If you simply want to start digging into example code and play around on your own, there is a ton of content to look at on our [examples page](http://fusetools.com/examples) as well as in the [fuse-samples github repo](https://www.github.com/fusetools/fuse-samples/).

@@ -7,14 +7,6 @@ Take UX authoring to the next level with Fuse Studio.
 
 ![Fuse Studio](../../media/fuse-studio/overview.png)
 
-## Logging in
-
-Logging in can be done from the dashboard or the workspace, and is, in conjunction with a pro subscription, required in order to access many of the features described below.
-
-From the Dashboard, this can be achieved by clicking the "Log in" button at the top of the window. From the workspace, this can be achieved by clicking the "Log in" button in the top right of the window.
-
-![login-workspace](../../media/fuse-studio/login.png)
-
 ## Panes
 
 A quick introduction to the various panes and views you'll interact with in Fuse Studio.
@@ -27,7 +19,7 @@ When starting Fuse the first thing we are presented with is the dashboard. From 
 
 ### Workspace
 
-The area which contains our preview viewports is called the workspace. Here we can also find the log window. In the workspace we can spawn as many preview viewports as we need, and configure them in different sizes and aspects (requires a pro license).
+The area which contains our preview viewports is called the workspace. Here we can also find the log window. In the workspace we can spawn as many preview viewports as we need, and configure them in different sizes and aspects.
 
 ![workspace](../../media/fuse-studio/workspace_sliced.png)
 

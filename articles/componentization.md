@@ -29,7 +29,7 @@ It can then be used anywhere, like so:
 </StackPanel>
 ```
 
-Take a look at the [ux:Class documentation](https://www.fusetools.com/docs/ux-markup/classes) for more details about `ux:Class`.
+Take a look at the [ux:Class documentation](https://fuse-open.github.io/docs/ux-markup/classes) for more details about `ux:Class`.
 
 ### What do we mean by inheritance
 
@@ -69,7 +69,7 @@ The `ux:Property` attribute allows us to send data to our component, give defaul
 </StackPanel>
 ```
 
-Take a look at the [ux:Property documentation](https://www.fusetools.com/docs/ux-markup/properties) for more details about creating properties.
+Take a look at the [ux:Property documentation](https://fuse-open.github.io/docs/ux-markup/properties) for more details about creating properties.
 
 ### Specifying dependencies
 
@@ -106,7 +106,7 @@ The following example shows how we can use `ux:Dependency` to toggle the state o
 <DependentPanel aTrigger="showSomething" /> 
 ```
 
-Take a look at the [ux:Dependency documentation](https://www.fusetools.com/docs/ux-markup/dependencies) for more details.
+Take a look at the [ux:Dependency documentation](https://fuse-open.github.io/docs/ux-markup/dependencies) for more details.
 
 #### Inheriting dependencies
 
@@ -121,7 +121,7 @@ Dependencies are not forwarded when you subclass. Therefore, you have to manuall
 </A>
 ```
 
-You can find more details about the `ux:Binding` attribute [here](https://www.fusetools.com/docs/ux-markup/binding-and-auto-bind#ux-binding).
+You can find more details about the `ux:Binding` attribute [here](https://fuse-open.github.io/docs/ux-markup/binding-and-auto-bind#ux-binding).
 
 ### Inner logic using JavaScript
 
@@ -194,7 +194,7 @@ We recommend subclassing `OnUserEvent` instead of using it directly and setting 
 
 Note that `OnMyEvent` will only be usable inside `MyComponent`.
 
-Check out the full [documentation on the user event API](https://www.fusetools.com/docs/ux-markup/user-events) for more details.
+Check out the full [documentation on the user event API](https://fuse-open.github.io/docs/ux-markup/user-events) for more details.
 
 ## When to create components
 
@@ -450,11 +450,11 @@ The `Container` class can be used as a base class when creating components that 
 
 ![container_ex](../media/componentization/container.png)
 
-Check out the [reference documentation](https://www.fusetools.com/docs/fuse/controls/container) for container for a more details.
+Check out the [reference documentation](https://fuse-open.github.io/docs/fuse/controls/container) for container for a more details.
 
 ## Templates (ux:Template)
 
-Templates can be used to increase the customizability of a component by allowing it to take custom objects to be used as its appearance. An example of this in action is the `PageIndicator`, which spawns an object from a template for each page in a `PageControl`. An element is made into a template by setting the `ux:Template` attribute to a name you want to identify that template by. This name is used by elements which accepts templates as children. Check out the [ux:Template docs](https://www.fusetools.com/docs/ux-markup/templates) for more details.
+Templates can be used to increase the customizability of a component by allowing it to take custom objects to be used as its appearance. An example of this in action is the `PageIndicator`, which spawns an object from a template for each page in a `PageControl`. An element is made into a template by setting the `ux:Template` attribute to a name you want to identify that template by. This name is used by elements which accepts templates as children. Check out the [ux:Template docs](https://fuse-open.github.io/docs/ux-markup/templates) for more details.
 
 Templates can be instantiated using an `Each`. `Each` has a property called `TemplateSource`, which specifies the node in which `Each` looks for templates. As mentioned before, templates identify themselves by a name. The `TemplateKey` property specifies which template `Each` should use, if it is available.
 
