@@ -9,21 +9,18 @@ You don’t have to read everything here; the best way to learn Fuse is to play 
 When you download and install Fuse you get a few things:
 
 * ### The Dashboard: ###
-> When you launch Fuse this is what you will see. From here you can manage and create projects. You can also log in to your Fuse account here and if you have a Professional plan that will give you access to Fuse Studio.
+> When you launch Fuse this is what you will see. From here you can manage and create projects.
 
 * ### Live app preview: ###
 > When you run a Fuse project, you’ll get a live preview of your app in the Fuse application. The live preview allows you to interact with the app or visually select objects. You can switch between your selection in preview and your text editor with a simple `⌥ ⌘ L`/`alt ctrl L`.
 
 * ### On device preview: ###
-> This requires an extra few steps to get running. Because Fuse is running a genuine native app on your device you’ll need to download and install the relevant Android and iOS SDKs. There is some info [here](https://www.fusetools.com/docs/basics/preview-and-export) on how to do this.
+> This requires an extra few steps to get running. Because Fuse is running a genuine native app on your device you’ll need to download and install the relevant Android and iOS SDKs. There is some info [here](https://fuse-open.github.io/docs/basics/preview-and-export) on how to do this.
 
 ### What’s not in the box:
 
 * ### A text editor: ###
 > A text editor is an application that allows you to write and edit code. There are many great ones out there. Currently Fuse has plugins for Atom, Sublime and Visual Studio Code. We recommend downloading Visual Studio Code, it’s completely free and has JS debugging built right in. But you can use whichever one suits you.
-
-* ### Fuse Studio: ###
-> You might have seen screenshots/videos of Fuse Studio, a visual tool for creating and editing Fuse apps. This is part of the Fuse Professional plan. But don’t worry, you can do everything you need to with the free version. Studio just enhances that same workflow.
 
 # What is a Fuse project?
 
@@ -512,7 +509,7 @@ Animators have a few other important properties: duration, delay and easing.
 
 * `Delay` specifies if there should be a delay before starting the animation.
 
-* `Easing` specifies an easing curve for the animation. [Here](https://www.fusetools.com/docs/fuse/animations/easing) is a list of all the curves Fuse allows.
+* `Easing` specifies an easing curve for the animation. [Here](https://fuse-open.github.io/docs/fuse/animations/easing) is a list of all the curves Fuse allows.
 
 By default animations will play themselves in reverse when returning to rest state. But if you want you can change the way this happens you can specify how each of those properties play in reverse:
 
@@ -587,7 +584,7 @@ You can specify which `Page` should be the default by using the `Active` propert
 
 The limitation of PageControl is that its not very smart. It really only works for linear navigation, you can see this above as it navigates through the yellow page to the red page. But to get you started this should be all you need to create some basic prototypes.
 
-_Note: If you feel comfortable learning some more advanced concepts, check out the docs on [Navigation](https://www.fusetools.com/docs/navigation/navigation), [Router](https://www.fusetools.com/docs/fuse/navigation/router) and [Navigator](https://www.fusetools.com/docs/fuse/controls/navigator)._
+_Note: If you feel comfortable learning some more advanced concepts, check out the docs on [Navigation](https://fuse-open.github.io/docs/navigation/navigation), [Router](https://fuse-open.github.io/docs/fuse/navigation/router) and [Navigator](https://fuse-open.github.io/docs/fuse/controls/navigator)._
 
 # Classes
 
@@ -721,7 +718,7 @@ So now when you create an instance of that class, you have access to that new pr
 
 ![Class Properties](../media/fuse-for-designers/Images/Class-Properties.png)
 
-_Note: You can do this for more than just text. In fact you can expose just about any property that the class has. If you want to expose properties that aren’t text, you will need to specify a different value-type. Color uses `<float4/>` type and for a normal number `<int/>` type will do. There is some info on all the different value-types [here](https://www.fusetools.com/docs/ux-markup/literals)._
+_Note: You can do this for more than just text. In fact you can expose just about any property that the class has. If you want to expose properties that aren’t text, you will need to specify a different value-type. Color uses `<float4/>` type and for a normal number `<int/>` type will do. There is some info on all the different value-types [here](https://fuse-open.github.io/docs/ux-markup/literals)._
 
 ### Inheritance
 
@@ -1002,7 +999,7 @@ By creating a `DataBinding` in UX you automatically create a subscription to tha
 ```
 There is no obvious visual change with anything we just did, but it does allow you to create more dynamic applications. For instance you could create an app where the user modifies the `Fruits` data and the UI reflects those changes instantly.
 
-_Note: if you don’t create a subscription anywhere in UX or JS the value of the `Observable` never populates. `Observables` need subscribers to work. You can read more about that [here](https://www.fusetools.com/docs/fusejs/observable)._
+_Note: if you don’t create a subscription anywhere in UX or JS the value of the `Observable` never populates. `Observables` need subscribers to work. You can read more about that [here](https://fuse-open.github.io/docs/fusejs/observable)._
 
 # Project Organisation
 

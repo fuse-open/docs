@@ -120,7 +120,7 @@ Other `Panel` types behave slightly differently. For example, let's take a look 
 
 ![alignment_example_3](../../media/responsive-layout/alignment_affects_layout_3.png)
 
-A vertical `StackPanel` stacks its children one after the other, and stretches to accommodate the combined height of all children. The red `StackPanel` in the example above is now 220 points high and aligned to the top of the yellow `Panel`. You can find more details on `StackPanel` behaviour in [StackPanel docs](https://www.fusetools.com/docs/fuse/controls/stackpanel).
+A vertical `StackPanel` stacks its children one after the other, and stretches to accommodate the combined height of all children. The red `StackPanel` in the example above is now 220 points high and aligned to the top of the yellow `Panel`. You can find more details on `StackPanel` behaviour in [StackPanel docs](https://fuse-open.github.io/docs/fuse/controls/stackpanel).
 
 It's worth noting that aside from `Alignment`, other visual properties have an effect on the layout calculation too. These include `Width`, `Height`, `MinWidth`, `MinHeight`, `MaxWidth`, `MaxHeight`, `X`, `Y`, `Margin`, `Padding` and a few more. When setting such properties, be sure to always test how your layout looks on different target devices.
 
@@ -128,7 +128,7 @@ It's worth noting that aside from `Alignment`, other visual properties have an e
 
 #### DockPanel
 
-`DockPanel` is one of the most frequently used layout containers. It lets us dock elements to its sides, consuming that space in the process so that the next item being docked only considers the remaining space. See the [DockPanel docs](https://www.fusetools.com/docs/fuse/controls/dockpanel) for more details.
+`DockPanel` is one of the most frequently used layout containers. It lets us dock elements to its sides, consuming that space in the process so that the next item being docked only considers the remaining space. See the [DockPanel docs](https://fuse-open.github.io/docs/fuse/controls/dockpanel) for more details.
 
 ![dockpanel_example](../../media/responsive-layout/dockpanel_docking_explanation.png)
 
@@ -143,7 +143,7 @@ It's worth noting that aside from `Alignment`, other visual properties have an e
 
 #### StackPanel
 
-As the name suggests, you want to use a `StackPanel` for stacking items. This is very useful when creating lists of items, but it's applicable in any situation when you need to stack elements either vertically or horizontally. We often use `StackPanel` when we don't know exactly how many items we need to display. The `StackPanel` can just grow to fit as many children as it is given (unlike the `DockPanel` for example). Because of this, a `StackPanel` can grow to become larger than its parent, overflowing its available size. See the [StackPanel docs](https://www.fusetools.com/docs/fuse/controls/stackpanel) for more details.
+As the name suggests, you want to use a `StackPanel` for stacking items. This is very useful when creating lists of items, but it's applicable in any situation when you need to stack elements either vertically or horizontally. We often use `StackPanel` when we don't know exactly how many items we need to display. The `StackPanel` can just grow to fit as many children as it is given (unlike the `DockPanel` for example). Because of this, a `StackPanel` can grow to become larger than its parent, overflowing its available size. See the [StackPanel docs](https://fuse-open.github.io/docs/fuse/controls/stackpanel) for more details.
 
 ```
 <StackPanel Alignment="Top" Margin="8" ItemSpacing="4">
@@ -160,7 +160,7 @@ As the name suggests, you want to use a `StackPanel` for stacking items. This is
 
 #### Grid
 
-`Grid` comes in handy when you need to build a responsive layout with flexible row or column sizes. By default, elements in a `Grid` are placed in the order they appear in UX, from left to right, top to bottom. However, you have full control over how a `Grid` behaves by using its properties `RowCount` and `ColumnCount`, or `Rows` and `Columns`. You can also explicitly tell each child to which row and column it should attach itself by using the `Row`, `Column`, `RowSpan` and `ColumnSpan` properties. See the [Grid docs](https://www.fusetools.com/docs/fuse/controls/grid) for more details.
+`Grid` comes in handy when you need to build a responsive layout with flexible row or column sizes. By default, elements in a `Grid` are placed in the order they appear in UX, from left to right, top to bottom. However, you have full control over how a `Grid` behaves by using its properties `RowCount` and `ColumnCount`, or `Rows` and `Columns`. You can also explicitly tell each child to which row and column it should attach itself by using the `Row`, `Column`, `RowSpan` and `ColumnSpan` properties. See the [Grid docs](https://fuse-open.github.io/docs/fuse/controls/grid) for more details.
 
 ```
 <Grid RowCount="2" Columns="1*,2*">
@@ -180,7 +180,7 @@ As the name suggests, you want to use a `StackPanel` for stacking items. This is
 
 #### WrapPanel
 
-The `WrapPanel` is used when you need to lay out children one after another in a given orientation, and wrap around whenever you reach the end of the available space in a particular direction. By default it lays its children out horizontally, and wraps around vertically. See the [WrapPanel docs](https://www.fusetools.com/docs/fuse/controls/wrappanel) for more details.
+The `WrapPanel` is used when you need to lay out children one after another in a given orientation, and wrap around whenever you reach the end of the available space in a particular direction. By default it lays its children out horizontally, and wraps around vertically. See the [WrapPanel docs](https://fuse-open.github.io/docs/fuse/controls/wrappanel) for more details.
 
 ```
 <App>
@@ -198,7 +198,7 @@ The `WrapPanel` is used when you need to lay out children one after another in a
 
 #### Panel
 
-A `Panel` is arguably the simplest container in Fuse. You want to use `Panel` when you want to position its children in the same area of available space without subdividing it like for example `DockPanel` does. Details can be found [here](https://www.fusetools.com/docs/fuse/controls/panel).
+A `Panel` is arguably the simplest container in Fuse. You want to use `Panel` when you want to position its children in the same area of available space without subdividing it like for example `DockPanel` does. Details can be found [here](https://fuse-open.github.io/docs/fuse/controls/panel).
 
 ```
 <Panel Height="56" Margin="24,0">

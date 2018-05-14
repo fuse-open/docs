@@ -20,9 +20,9 @@ Fuse automatically finds the @App tag of your project and uses that as the root 
 
 ## Components
 
-In Fuse, an app is simply a tree of UX markup components (instances of Uno classes).
+In Fuse, an app is tree of UX markup components (instances of Uno classes).
 
-The basic building blocks are primitives such as @Text, @Rectangle, @Video, @Slider or @MapView. These can be composed using @Panels for hierarchical layout, such as @StackPanel and @Grid.
+The basic building blocks are primitives such as @Text, @Rectangle, @Video, @Slider or @Image. These can be composed using @Panels for hierarchical layout, such as @StackPanel and @Grid.
 
 	<App>
 		<StackPanel>

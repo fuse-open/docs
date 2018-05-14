@@ -58,7 +58,7 @@ These are the instructions for building your own custom preview. If your app pro
 > **Note:** When running preview for iOS, Fuse doesn't run your app directly, but will open the project in Xcode.
 > From there, press the "play" button to run the preview session.
 
-When we open a project in Fuse, it starts in preview mode inside the tool. Users with a Fuse Pro license will also see visual tools to inspect and modify the app. To start preview on a device, use the "Preview" menu.
+When we open a project in Fuse, it starts in preview mode inside the tool, along with visual tools to inspect and modify the app. To start preview on a device, use the "Preview" menu.
 
 ![Preview menu](../../media/preview-menu.png)
 

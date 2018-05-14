@@ -1,6 +1,6 @@
 # Alive UX Kit
 
-Alive is a suite of UX components included with [Professional and Custom plans](https://fusetools.com/plans) of Fuse.
+Alive is a suite of included UX components that demonstrate advanced UX capabilities.
 
 ![screenshots](../../media/alive/screenshots.png)
 
