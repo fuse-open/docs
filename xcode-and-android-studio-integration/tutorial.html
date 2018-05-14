@@ -6,10 +6,10 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Xcode and Android Studio Integration - Fuse Documentation</title>
-    <link rel="stylesheet" href="https://fuse-open.github.io/docs/font-awesome.css?_v=20180514135810">
-    <link rel="stylesheet" href="https://fuse-open.github.io/docs/bootstrap.css?_v=20180514135810">
-    <link rel="stylesheet" href="https://fuse-open.github.io/docs/prism.css?_v=20180514135810">
-    <link rel="stylesheet" href="https://fuse-open.github.io/docs/site.css?_v=20180514135810">
+    <link rel="stylesheet" href="https://fuse-open.github.io/docs/font-awesome.css?_v=20180514141219">
+    <link rel="stylesheet" href="https://fuse-open.github.io/docs/bootstrap.css?_v=20180514141219">
+    <link rel="stylesheet" href="https://fuse-open.github.io/docs/prism.css?_v=20180514141219">
+    <link rel="stylesheet" href="https://fuse-open.github.io/docs/site.css?_v=20180514141219">
   </head>
 
   <body>
@@ -85,7 +85,7 @@
 		</ul>
 		</li>
 		<li>
-			<a href="https://fuse-open.github.io/docs/fuse-studio/fuse-studio.html">Fuse Studio (Pro)</a>
+			<a href="https://fuse-open.github.io/docs/fuse-studio/fuse-studio.html">Fuse Studio</a>
 		</li>
 		<li>
 			<a href="https://fuse-open.github.io/docs/tutorial/tutorial.html">Tutorial</a>
@@ -166,7 +166,7 @@
 		</ul>
 		</li>
 		<li>
-			<a href="https://fuse-open.github.io/docs/xcode-and-android-studio-integration/tutorial.html">XCode &amp; Android Studio Integration (Pro)</a>
+			<a href="https://fuse-open.github.io/docs/xcode-and-android-studio-integration/tutorial.html">XCode &amp; Android Studio Integration</a>
 		</li>
 		<li>
 			<a href="https://fuse-open.github.io/docs/primitives/primitives.html">Primitives</a>
@@ -200,7 +200,7 @@
 		</ul>
 		</li>
 		<li>
-			<a href="https://fuse-open.github.io/docs/charting/charting.html">Charting (Pro)</a>
+			<a href="https://fuse-open.github.io/docs/charting/charting.html">Charting</a>
 		<ul class="list-unstyled outline-nav outline-nav-level-2">
 			<li>
 				<a href="https://fuse-open.github.io/docs/fuse/charting/plot.html">Plot</a>
@@ -276,7 +276,7 @@
 				<a href="https://fuse-open.github.io/docs/fuse/controls/switch.html">Switch</a>
 			</li>
 			<li>
-				<a href="https://fuse-open.github.io/docs/fuse/controls/cameraviewbase.html">CameraView (Pro)</a>
+				<a href="https://fuse-open.github.io/docs/fuse/controls/cameraviewbase.html">CameraView</a>
 			</li>
 			<li>
 				<a href="https://fuse-open.github.io/docs/fuse/controls/mapview.html">MapView</a>
@@ -535,7 +535,7 @@
 		</ul>
 		</li>
 		<li>
-			<a href="https://fuse-open.github.io/docs/alive/alive.html">Alive UX Kit (Pro)</a>
+			<a href="https://fuse-open.github.io/docs/alive/alive.html">Alive UX Kit</a>
 		<ul class="list-unstyled outline-nav outline-nav-level-2">
 			<li>
 				<a href="https://fuse-open.github.io/docs/alive.html">Components</a>
@@ -568,11 +568,8 @@
         <div role="main" class="col-12 col-lg-10 ml-sm-auto order-1 order-lg-2 px-4 main-content">
           <h1 id="xcode-and-android-studio-integration">Xcode and Android Studio Integration</h1>
 <p>The <code>Fuse.Views</code> package allows you to take any UX UI component and export them as a native Library for iOS and Android. In this tutorial we will step by step look at how this is done.</p>
-<blockquote>
-<p><strong>Note:</strong> This is a premium feature, included with Fuse's <a href="https://www.fusetools.com/plans">Professional and Custom plans</a>.</p>
-</blockquote>
 <h2 id="step-0-installing-dependencies">Step 0: Installing dependencies</h2>
-<p>To integrate with Xcode and Android Studio make sure you have a Professional license, and that you have installed the Fuse.Views package using the following command in either terminal (on macOS) or cmd (on Windows):</p>
+<p>To integrate with Xcode and Android Studio make sure you have installed the Fuse.Views package using the following command in either terminal (on macOS) or cmd (on Windows):</p>
 <pre><code>uno install Fuse.Views
 </code></pre>
 <p>In your <code>.unoproj</code>, add a package reference to <code>Fuse.Views</code>.
@@ -778,7 +775,7 @@ parent.addView(nativeView);
     void invoke(IArguments args);
 }
 </code></pre>
-<p>If you are familiar with <a href="https://www.fusetools.com/docs/fuse/reactive/javascript"><code>JavaScript</code></a> and <a href="https://www.fusetools.com/docs/fuse/reactive/databinding"><code>DataBinding</code></a> in fuse this will be quite easy to understand. <code>setDataJson</code> is the equivalent of having a <code>module.exports</code> in JavaScript and <code>setCallback</code> is the equivalent of adding a function to the <code>exports</code>. The function arguments passed to the native callback in Fuse views will contain the same data you would get in <code>JavaScript</code>, but you get the through the methods available on the <code>Arguments</code>. Since the function arguments needs to be serialized to strings and JSON, accessing the <code>Arguments</code> will lazily serialize what you request. In the common case you are more interested in getting the callback than accessing the whole data context. Please have a look at <a href="https://www.fusetools.com/docs/scripting/scripting#binding-functions"><code>Binding functions</code></a> for an overview of what arguments will be passed.</p>
+<p>If you are familiar with <a href="https://fuse-open.github.io/docs/fuse/reactive/javascript"><code>JavaScript</code></a> and <a href="https://fuse-open.github.io/docs/fuse/reactive/databinding"><code>DataBinding</code></a> in fuse this will be quite easy to understand. <code>setDataJson</code> is the equivalent of having a <code>module.exports</code> in JavaScript and <code>setCallback</code> is the equivalent of adding a function to the <code>exports</code>. The function arguments passed to the native callback in Fuse views will contain the same data you would get in <code>JavaScript</code>, but you get the through the methods available on the <code>Arguments</code>. Since the function arguments needs to be serialized to strings and JSON, accessing the <code>Arguments</code> will lazily serialize what you request. In the common case you are more interested in getting the callback than accessing the whole data context. Please have a look at <a href="https://fuse-open.github.io/docs/scripting/scripting#binding-functions"><code>Binding functions</code></a> for an overview of what arguments will be passed.</p>
 <pre><code>@interface Arguments : NSObject
 
 @property (readonly) NSDictionary&lt;NSString*,NSString*&gt;* args;
@@ -837,10 +834,10 @@ usersListView.setCallback(&quot;user_clicked&quot;, new ICallback() {
       </div>
     </div>
 
-    <script type="text/javascript" src="https://fuse-open.github.io/docs/jquery.js?_v=20180514135810"></script>
-    <script type="text/javascript" src="https://fuse-open.github.io/docs/popper.js?_v=20180514135810"></script>
-    <script type="text/javascript" src="https://fuse-open.github.io/docs/bootstrap.js?_v=20180514135810"></script>
-    <script type="text/javascript" src="https://fuse-open.github.io/docs/prism.js?_v=20180514135810"></script>
-    <script type="text/javascript" src="https://fuse-open.github.io/docs/site.js?_v=20180514135810"></script>
+    <script type="text/javascript" src="https://fuse-open.github.io/docs/jquery.js?_v=20180514141219"></script>
+    <script type="text/javascript" src="https://fuse-open.github.io/docs/popper.js?_v=20180514141219"></script>
+    <script type="text/javascript" src="https://fuse-open.github.io/docs/bootstrap.js?_v=20180514141219"></script>
+    <script type="text/javascript" src="https://fuse-open.github.io/docs/prism.js?_v=20180514141219"></script>
+    <script type="text/javascript" src="https://fuse-open.github.io/docs/site.js?_v=20180514141219"></script>
   </body>
 </html>
