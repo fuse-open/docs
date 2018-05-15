@@ -157,6 +157,6 @@ From the command line you do this by typing
 
 ### Okay, that was easy! What's next?
 
-Once you are comfortable with the basics above, we suggest you take a look at our [end-to-end tutorial](../tutorial/tutorial.md), where we'll build a hike-tracking app called hikr from scratch. You should also check out the [Example section](https://examples.fusetools.com/)!
+Once you are comfortable with the basics above, we suggest you take a look at our [end-to-end tutorial](../tutorial/tutorial.md), where we'll build a hike-tracking app called hikr from scratch. You should also check out the [Example section](https://fuse-open.github.io/examples/)!
 
 We are also happy to answer all your questions in the [Forums](https://forums.fusetools.com/)
