@@ -1,6 +1,6 @@
 # Installation and Quickstart
 
-This is a step-by-step tutorial that takes you through setting up Fuse and creating your first project. Should you happen to run into problems during installation, please [let us know](https://www.fusetools.com/community/forums/bug_reports)!
+This is a step-by-step tutorial that takes you through setting up Fuse and creating your first project. Should you happen to run into problems during installation, please [let us know](https://forums.fusetools.com/c/bug-reports)!
 
 ## Installation
 
