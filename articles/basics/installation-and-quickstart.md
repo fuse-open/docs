@@ -76,7 +76,7 @@ To start a new project, we first have to pick a template. Fuse comes with a few 
 
 ![create project](../../media/installation_quickstart/createprojectname.png)
 
-After clicking the "create" button, Fuse starts a local preview viewport. You'll notice that this process take some time, as Fuse has to download the packages containing the [framework code](http://github.com/fusetools/fuselibs-public) used to create apps with Fuse. This only happens the first time Fuse is run after installation. You can see the download progress in the "Log" panel at the bottom of the window.
+After clicking the "create" button, Fuse starts a local preview viewport. You'll notice that this process take some time, as Fuse has to download the packages containing the [framework code](http://github.com/fuse-open/fuselibs) used to create apps with Fuse. This only happens the first time Fuse is run after installation. You can see the download progress in the "Log" panel at the bottom of the window.
 
 ![preview](../../media/installation_quickstart/preview.png)
 
