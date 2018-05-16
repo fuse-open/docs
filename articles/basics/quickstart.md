@@ -6,7 +6,7 @@ Depending on your background (experienced coder, rookie coder, experienced desig
 
 ## Setup
 
-Simply [download the latest version of Fuse](https://github.com/fusetools/fuse-releases/releases), install it and you're ready to go.
+Simply [download the latest version of Fuse](https://fuse-open.github.io/downloads/), install it and you're ready to go.
 
 Installation should be a breeze, but in case something iffy happens there are also detailed setup instructions for [OS X](installation/setup-install-osx.md) and [Windows](installation/setup-install-win.md), plus [uninstall instructions for OS X](https://gist.github.com/Tapped/daa78c08882f33b0c7c3) if you need them.
 
