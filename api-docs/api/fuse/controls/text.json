@@ -24,7 +24,7 @@
       "namespaceTitle": "Fuse.Controls",
       "namespaceUri": "fuse/controls",
       "packageName": "Fuse.Controls.Primitives",
-      "packageVersion": "1.8.0-rc2"
+      "packageVersion": "1.9.0-rc1"
     },
     "inheritance": {
       "root": {
@@ -387,6 +387,29 @@
         }
       },
       {
+        "comment": {
+          "brief": "@hide",
+          "full": "@hide"
+        },
+        "id": {
+          "id": "fuse/isourcelocation",
+          "parentId": "fuse",
+          "type": "Interface",
+          "modifiers": [
+            "public",
+            "abstract"
+          ]
+        },
+        "uri": {
+          "idUri": "fuse/isourcelocation",
+          "href": "fuse/isourcelocation"
+        },
+        "titles": {
+          "indexTitle": "ISourceLocation",
+          "fullyQualifiedIndexTitle": "Fuse.ISourceLocation"
+        }
+      },
+      {
         "id": {
           "id": "uno/collections/icollection_1",
           "parentId": "uno/collections",
@@ -450,7 +473,7 @@
     },
     "comment": {
       "brief": "Displays a block of text.",
-      "full": "Displays a block of text.\n\nThe `Text` UI-control renders read-only text.\r\n\r\nYou can import a @Font from ttf files containing TrueType fonts. Because a font is typically referred to throughout an application, it is best to simply create a global resource for it using `ux:Global`. This way of importing the font ensures that the font is available throughout the whole project, and is only loaded once.\r\n\r\n> **Note**\r\n>\r\n> When running desktop preview, neither fallback fonts, colored glyphs, nor Unicode characters outside the basic multilingual plane are supported.\r\n>\r\n> Because of this, **certain text features (e.g. emoji) are not supported when running local preview.**\r\n> Do not be surprised if desktop rendering doesn't match device rendering 100%. This is an issue that is being worked on.\r\n\n# Examples \r\n\r\n## Text properties\r\n\r\n```\r\n<Text Color=\"#999\">Left</Text>\r\n<Text TextAlignment=\"Center\">Center</Text>\r\n<Text FontSize=\"24\" TextAlignment=\"Right\">Right</Text>\r\n<Text LineSpacing=\"10\">\r\nMultiple\r\nLines\r\n</Text>\r\n```\r\n\r\nIn this example, the first text element will be left aligned as this is the default, and have its color set to a medium light grey. The second text will be center aligned. The third will be right aligned and have a larger font. The fourth will span two lines with 10 points of space inbetween.\r\n\r\n## Custom text-components\r\n\r\n\t<App>\r\n\t\t<Font File=\"Roboto-Medium.ttf\" ux:Global=\"Medium\" />\r\n\t\t<Font File=\"Roboto-Light.ttf\" ux:Global=\"Light\" />\r\n\r\n\t\t<Text ux:Class=\"Light\" Font=\"Light\" />\r\n\t\t<Text ux:Class=\"Medium\" Font=\"Medium\" TextWrapping=\"Wrap\" />\r\n\t\t<Text ux:Class=\"Warning\" \r\n\t\t\tFont=\"Medium\" \r\n\t\t\tFontSize=\"42\"\r\n\t\t\tTextAlignment=\"Center\"\r\n\t\t\tColor=\"#f00\" />\r\n\t\t\t\r\n\t\t<StackPanel>\r\n\t\t\t<Light>Just some text</Light>\r\n\t\t\t<Warning>The robots are coming!</Warning>\r\n\t\t\t<Medium>This is just some medium text, but it will happily wrap when the edges of the screen is reached.</Medium>\r\n\t\t</StackPanel>\r\n\t</App>\r\n\r\nIn this example we load two fonts and create three different semantic classes, `Light`, `Medium` and `Warning`, combining some of the available `Text` properties. In this example, the fonts are located in the same directory as the relevant UX file. \r\n\n# Remarks\r\n\r\n`Text` is the primary control for displaying read-only text in apps."
+      "full": "Displays a block of text.\n\nThe `Text` UI-control renders read-only text.\n\nYou can import a @Font from ttf files containing TrueType fonts. Because a font is typically referred to throughout an application, it is best to simply create a global resource for it using `ux:Global`. This way of importing the font ensures that the font is available throughout the whole project, and is only loaded once.\n\n> **Note**\n>\n> When running desktop preview, neither fallback fonts, colored glyphs, nor Unicode characters outside the basic multilingual plane are supported.\n>\n> Because of this, **certain text features (e.g. emoji) are not supported when running local preview.**\n> Do not be surprised if desktop rendering doesn't match device rendering 100%. This is an issue that is being worked on.\n\n# Examples \n\n## Text properties\n\n```\n<Text Color=\"#999\">Left</Text>\n<Text TextAlignment=\"Center\">Center</Text>\n<Text FontSize=\"24\" TextAlignment=\"Right\">Right</Text>\n<Text LineSpacing=\"10\">\nMultiple\nLines\n</Text>\n```\n\nIn this example, the first text element will be left aligned as this is the default, and have its color set to a medium light grey. The second text will be center aligned. The third will be right aligned and have a larger font. The fourth will span two lines with 10 points of space inbetween.\n\n## Custom text-components\n\n\t<App>\n\t\t<Font File=\"Roboto-Medium.ttf\" ux:Global=\"Medium\" />\n\t\t<Font File=\"Roboto-Light.ttf\" ux:Global=\"Light\" />\n\n\t\t<Text ux:Class=\"Light\" Font=\"Light\" />\n\t\t<Text ux:Class=\"Medium\" Font=\"Medium\" TextWrapping=\"Wrap\" />\n\t\t<Text ux:Class=\"Warning\" \n\t\t\tFont=\"Medium\" \n\t\t\tFontSize=\"42\"\n\t\t\tTextAlignment=\"Center\"\n\t\t\tColor=\"#f00\" />\n\t\t\t\n\t\t<StackPanel>\n\t\t\t<Light>Just some text</Light>\n\t\t\t<Warning>The robots are coming!</Warning>\n\t\t\t<Medium>This is just some medium text, but it will happily wrap when the edges of the screen is reached.</Medium>\n\t\t</StackPanel>\n\t</App>\n\nIn this example we load two fonts and create three different semantic classes, `Light`, `Medium` and `Warning`, combining some of the available `Text` properties. In this example, the fonts are located in the same directory as the relevant UX file. \n\n# Remarks\n\n`Text` is the primary control for displaying read-only text in apps."
     }
   },
   "tableOfContents": {
@@ -2047,6 +2070,62 @@
             "titles": {
               "indexTitle": "Name",
               "fullyQualifiedIndexTitle": "Fuse.Node.Name"
+            }
+          },
+          {
+            "comment": {
+              "brief": "@hide",
+              "full": "@hide"
+            },
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "id": {
+              "id": "fuse/controls/text/sourcefilename",
+              "parentId": "fuse/controls/text",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/controls/text/sourcefilename",
+              "href": "fuse/node/sourcefilename",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "SourceFileName",
+              "fullyQualifiedIndexTitle": "Fuse.Node.SourceFileName"
+            }
+          },
+          {
+            "comment": {
+              "brief": "@hide",
+              "full": "@hide"
+            },
+            "returns": {
+              "href": "uno/int",
+              "title": "int",
+              "fullyQualifiedTitle": "int"
+            },
+            "id": {
+              "id": "fuse/controls/text/sourcelinenumber",
+              "parentId": "fuse/controls/text",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/controls/text/sourcelinenumber",
+              "href": "fuse/node/sourcelinenumber",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "SourceLineNumber",
+              "fullyQualifiedIndexTitle": "Fuse.Node.SourceLineNumber"
             }
           }
         ]
@@ -7230,7 +7309,7 @@
             "comment": {
               "attributes": {
                 "returns": {
-                  "text": "Yes if the child influences the results of ArrangeMarginBox (size or layout of this node),No if it cannot, and Maybe otherwise (in cases of stretching)\r\n"
+                  "text": "Yes if the child influences the results of ArrangeMarginBox (size or layout of this node),No if it cannot, and Maybe otherwise (in cases of stretching)\n"
                 }
               }
             },

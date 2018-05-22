@@ -23,7 +23,7 @@
       "namespaceTitle": "Fuse.Controls",
       "namespaceUri": "fuse/controls",
       "packageName": "Fuse.Maps",
-      "packageVersion": "1.8.0-rc2"
+      "packageVersion": "1.9.0-rc1"
     },
     "inheritance": {
       "root": {
@@ -392,6 +392,29 @@
         }
       },
       {
+        "comment": {
+          "brief": "@hide",
+          "full": "@hide"
+        },
+        "id": {
+          "id": "fuse/isourcelocation",
+          "parentId": "fuse",
+          "type": "Interface",
+          "modifiers": [
+            "public",
+            "abstract"
+          ]
+        },
+        "uri": {
+          "idUri": "fuse/isourcelocation",
+          "href": "fuse/isourcelocation"
+        },
+        "titles": {
+          "indexTitle": "ISourceLocation",
+          "fullyQualifiedIndexTitle": "Fuse.ISourceLocation"
+        }
+      },
+      {
         "id": {
           "id": "uno/collections/icollection_1",
           "parentId": "uno/collections",
@@ -456,8 +479,8 @@
     },
     "comment": {
       "brief": "Displays a native map view.",
-      "full": "Displays a native map view.\n\nThe `MapView` allows you to present annotated, interactive world-wide maps to the user using the mapping APIs native to the platform: Google Maps on Android and Apple Maps on iOS.\r\n\r\nThe `MapView` is a native control, and thus needs to be contained in a @NativeViewHost to be displayed. As with other native mobile controls, there currently isn't a `MapView` available for desktop targets.\r\n\r\n*Note:* You need to add a reference to `Fuse.Maps` in the `Packages` section of your `.unoproj`:\r\n\r\n```\r\n\"Packages\": [\r\n\t\"Fuse.Maps\",\r\n\t\"Fuse\",\r\n\t\"FuseJS\"\r\n]\r\n```\r\n\r\nGetting a `MapView` included in your app is straight forward: Simply include the node in your UX as you normally would with a native control:\r\n\r\n```XML\r\n<NativeViewHost>\r\n\t<MapView/>\r\n</NativeViewHost>\r\n```\r\n\r\nTo initialize and manipulate the map camera, use the [Latitude](api:fuse/controls/mapview/latitude), [Longitude](api:fuse/controls/mapview/longitude), [Zoom](api:fuse/controls/mapview/zoom), [Tilt](api:fuse/controls/mapview/tilt) and [Bearing](api:fuse/controls/mapview/bearing) properties, all of which are two-way bindable.\r\n`Zoom` follows Google's \"zoom levels\", which can be read about in detail [here](https://developers.google.com/maps/documentation/static-maps/intro#Zoomlevels).\r\n\r\nThe map can be further customized by setting the rendering style using the [Style](api:fuse/controls/mapview/style) property.\r\nOptions are `Normal`, `Satellite` and `Hybrid`.\r\n\r\nTo annotate the map with labelled markers, see @MapMarker\r\n\r\n## Maps on Android\r\n\r\nGoogle Maps requires a valid Google Maps API key. Follow [Google's documentation](https://developers.google.com/maps/documentation/android-api/signup) to get one set up. Once you have your key it must be added to your project file, as shown below\r\n\r\n```JSON\r\n\"Android\": {\r\n   \"Geo\": {\r\n        \"ApiKey\": \"your_key_here\"\r\n    }\r\n}\r\n```\r\n\r\nThis example displays a map with an average zoom level focused on Fuse's home in Oslo, Norway",
-      "ux": "```ux\n<App>\r\n\t<ClientPanel>\r\n\t\t<NativeViewHost>\r\n\t\t\t<MapView Latitude=\"59.911567\" Longitude=\"10.741030\" Zoom=\"10\">\r\n\t\t\t\t<MapMarker Latitude=\"59.911567\" Longitude=\"10.741030\" Label=\"Fuse HQ\"/>\r\n\t\t\t</MapView>\r\n\t\t</NativeViewHost>\r\n\t</ClientPanel>\r\n</App>\r\n\n```"
+      "full": "Displays a native map view.\n\nThe `MapView` allows you to present annotated, interactive world-wide maps to the user using the mapping APIs native to the platform: Google Maps on Android and Apple Maps on iOS.\n\nThe `MapView` is a native control, and thus needs to be contained in a @NativeViewHost to be displayed. As with other native mobile controls, there currently isn't a `MapView` available for desktop targets.\n\n*Note:* You need to add a reference to `Fuse.Maps` in the `Packages` section of your `.unoproj`:\n\n```\n\"Packages\": [\n\t\"Fuse.Maps\",\n\t\"Fuse\",\n\t\"FuseJS\"\n]\n```\n\nGetting a `MapView` included in your app is straight forward: Simply include the node in your UX as you normally would with a native control:\n\n```XML\n<NativeViewHost>\n\t<MapView/>\n</NativeViewHost>\n```\n\nTo initialize and manipulate the map camera, use the [Latitude](api:fuse/controls/mapview/latitude), [Longitude](api:fuse/controls/mapview/longitude), [Zoom](api:fuse/controls/mapview/zoom), [Tilt](api:fuse/controls/mapview/tilt) and [Bearing](api:fuse/controls/mapview/bearing) properties, all of which are two-way bindable.\n`Zoom` follows Google's \"zoom levels\", which can be read about in detail [here](https://developers.google.com/maps/documentation/static-maps/intro#Zoomlevels).\n\nThe map can be further customized by setting the rendering style using the [Style](api:fuse/controls/mapview/style) property.\nOptions are `Normal`, `Satellite` and `Hybrid`.\n\nTo annotate the map with labelled markers, see @MapMarker\n\n## Maps on Android\n\nGoogle Maps requires a valid Google Maps API key. Follow [Google's documentation](https://developers.google.com/maps/documentation/android-api/signup) to get one set up. Once you have your key it must be added to your project file, as shown below\n\n```JSON\n\"Android\": {\n   \"Geo\": {\n        \"ApiKey\": \"your_key_here\"\n    }\n}\n```\n\nThis example displays a map with an average zoom level focused on Fuse's home in Oslo, Norway",
+      "ux": "```ux\n<App>\n\t<ClientPanel>\n\t\t<NativeViewHost>\n\t\t\t<MapView Latitude=\"59.911567\" Longitude=\"10.741030\" Zoom=\"10\">\n\t\t\t\t<MapMarker Latitude=\"59.911567\" Longitude=\"10.741030\" Label=\"Fuse HQ\"/>\n\t\t\t</MapView>\n\t\t</NativeViewHost>\n\t</ClientPanel>\n</App>\n\n```"
     }
   },
   "tableOfContents": {
@@ -2192,6 +2215,62 @@
             "titles": {
               "indexTitle": "Name",
               "fullyQualifiedIndexTitle": "Fuse.Node.Name"
+            }
+          },
+          {
+            "comment": {
+              "brief": "@hide",
+              "full": "@hide"
+            },
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "id": {
+              "id": "fuse/controls/mapview/sourcefilename",
+              "parentId": "fuse/controls/mapview",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/controls/mapview/sourcefilename",
+              "href": "fuse/node/sourcefilename",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "SourceFileName",
+              "fullyQualifiedIndexTitle": "Fuse.Node.SourceFileName"
+            }
+          },
+          {
+            "comment": {
+              "brief": "@hide",
+              "full": "@hide"
+            },
+            "returns": {
+              "href": "uno/int",
+              "title": "int",
+              "fullyQualifiedTitle": "int"
+            },
+            "id": {
+              "id": "fuse/controls/mapview/sourcelinenumber",
+              "parentId": "fuse/controls/mapview",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/controls/mapview/sourcelinenumber",
+              "href": "fuse/node/sourcelinenumber",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "SourceLineNumber",
+              "fullyQualifiedIndexTitle": "Fuse.Node.SourceLineNumber"
             }
           }
         ]
@@ -7736,7 +7815,7 @@
             "comment": {
               "attributes": {
                 "returns": {
-                  "text": "Yes if the child influences the results of ArrangeMarginBox (size or layout of this node),No if it cannot, and Maybe otherwise (in cases of stretching)\r\n"
+                  "text": "Yes if the child influences the results of ArrangeMarginBox (size or layout of this node),No if it cannot, and Maybe otherwise (in cases of stretching)\n"
                 }
               }
             },

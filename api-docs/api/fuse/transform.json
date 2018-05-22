@@ -24,7 +24,7 @@
       "namespaceTitle": "Fuse",
       "namespaceUri": "fuse",
       "packageName": "Fuse.Nodes",
-      "packageVersion": "1.8.0-rc2"
+      "packageVersion": "1.9.0-rc1"
     },
     "inheritance": {
       "root": {
@@ -119,6 +119,29 @@
         }
       },
       {
+        "comment": {
+          "brief": "@hide",
+          "full": "@hide"
+        },
+        "id": {
+          "id": "fuse/isourcelocation",
+          "parentId": "fuse",
+          "type": "Interface",
+          "modifiers": [
+            "public",
+            "abstract"
+          ]
+        },
+        "uri": {
+          "idUri": "fuse/isourcelocation",
+          "href": "fuse/isourcelocation"
+        },
+        "titles": {
+          "indexTitle": "ISourceLocation",
+          "fullyQualifiedIndexTitle": "Fuse.ISourceLocation"
+        }
+      },
+      {
         "id": {
           "id": "uno/collections/icollection_1",
           "parentId": "uno/collections",
@@ -183,7 +206,7 @@
     "comment": {
       "brief": "Transforms are used to move, rotate, scale and skew elements beyond their assigned placement by the Fuse layout engine.",
       "full": "Transforms are used to move, rotate, scale and skew elements beyond their assigned placement by the Fuse layout engine.\n\nTransforms are added to elements just like other elements and triggers.\n\n# Example\nIn this example, we scale a circle to become three times its original size:\n\n    <Circle Color=\"Green\" Width=\"50\" Height=\"50\">\n        <Scaling Factor=\"3\" />\n    </Circle>\n\n## Available transforms\n[subclass Fuse.Transform]",
-      "remarks": "## Why not just Move, Scale and Rotate directly?\r\n\r\nWhen you want to do several transformations on the same element, the order in which they are applied matters. Being explicit about adding transforms lets us exploit this fact.\r\n\r\n```\r\n<Rectangle Color=\"Green\" Width=\"50\" Height=\"50\">\r\n\t<Translation X=\"100\" />\r\n\t<Rotation Degrees=\"45\" />\r\n</Rectangle>\r\n\r\n<Rectangle Color=\"Red\" Width=\"50\" Height=\"50\">\r\n\t<Rotation Degrees=\"45\" />\r\n\t<Translation X=\"100\" />\r\n</Rectangle>\r\n```\r\n\r\nThe top rectangle is moved 100 points to the right, and then rotated by 45 degrees. It ends up being placed 100 points to the right of its original position.\r\n\r\nThe second rectangle however is rotated first, and then moved. Because of the initial rotation, the positive X direction is now towards the bottom right. Because of this, the rectangle ends up 100 points towards the bottom right.\r\n\r\n\r\n## Caveats\r\n\r\nScaling an element too much can lead to aliasing effects. This is because the element being scaled is first rendered to a texture, which then gets scaled. This makes animating the `Scaling` very fast compared to animating an elements `Width` and `Height`.",
+      "remarks": "## Why not just Move, Scale and Rotate directly?\n\nWhen you want to do several transformations on the same element, the order in which they are applied matters. Being explicit about adding transforms lets us exploit this fact.\n\n```\n<Rectangle Color=\"Green\" Width=\"50\" Height=\"50\">\n\t<Translation X=\"100\" />\n\t<Rotation Degrees=\"45\" />\n</Rectangle>\n\n<Rectangle Color=\"Red\" Width=\"50\" Height=\"50\">\n\t<Rotation Degrees=\"45\" />\n\t<Translation X=\"100\" />\n</Rectangle>\n```\n\nThe top rectangle is moved 100 points to the right, and then rotated by 45 degrees. It ends up being placed 100 points to the right of its original position.\n\nThe second rectangle however is rotated first, and then moved. Because of the initial rotation, the positive X direction is now towards the bottom right. Because of this, the rectangle ends up 100 points towards the bottom right.\n\n\n## Caveats\n\nScaling an element too much can lead to aliasing effects. This is because the element being scaled is first rendered to a texture, which then gets scaled. This makes animating the `Scaling` very fast compared to animating an elements `Width` and `Height`.",
       "attributes": {
         "topic": "Transforms"
       }
@@ -270,6 +293,62 @@
             "titles": {
               "indexTitle": "Name",
               "fullyQualifiedIndexTitle": "Fuse.Node.Name"
+            }
+          },
+          {
+            "comment": {
+              "brief": "@hide",
+              "full": "@hide"
+            },
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "id": {
+              "id": "fuse/transform/sourcefilename",
+              "parentId": "fuse/transform",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/transform/sourcefilename",
+              "href": "fuse/node/sourcefilename",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "SourceFileName",
+              "fullyQualifiedIndexTitle": "Fuse.Node.SourceFileName"
+            }
+          },
+          {
+            "comment": {
+              "brief": "@hide",
+              "full": "@hide"
+            },
+            "returns": {
+              "href": "uno/int",
+              "title": "int",
+              "fullyQualifiedTitle": "int"
+            },
+            "id": {
+              "id": "fuse/transform/sourcelinenumber",
+              "parentId": "fuse/transform",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/transform/sourcelinenumber",
+              "href": "fuse/node/sourcelinenumber",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "SourceLineNumber",
+              "fullyQualifiedIndexTitle": "Fuse.Node.SourceLineNumber"
             }
           }
         ]

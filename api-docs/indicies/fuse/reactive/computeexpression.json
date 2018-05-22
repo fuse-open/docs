@@ -21,44 +21,6 @@
   "descendants": [
     {
       "id": {
-        "id": "alive/darkenfunction",
-        "parentId": "alive",
-        "type": "Class",
-        "modifiers": [
-          "public",
-          "sealed"
-        ]
-      },
-      "uri": {
-        "idUri": "alive/darkenfunction",
-        "href": "alive/darkenfunction"
-      },
-      "titles": {
-        "indexTitle": "DarkenFunction",
-        "fullyQualifiedIndexTitle": "Alive.DarkenFunction"
-      }
-    },
-    {
-      "id": {
-        "id": "alive/lightenfunction",
-        "parentId": "alive",
-        "type": "Class",
-        "modifiers": [
-          "public",
-          "sealed"
-        ]
-      },
-      "uri": {
-        "idUri": "alive/lightenfunction",
-        "href": "alive/lightenfunction"
-      },
-      "titles": {
-        "indexTitle": "LightenFunction",
-        "fullyQualifiedIndexTitle": "Alive.LightenFunction"
-      }
-    },
-    {
-      "id": {
         "id": "alive/mixfunction",
         "parentId": "alive",
         "type": "Class",
@@ -177,6 +139,29 @@
     },
     {
       "comment": {
+        "brief": "Adjusts the hue of the color.",
+        "full": "Adjusts the hue of the color.\n\nThis adds the hue value to the hue in HSL color space. It is wrapped around to remain in the range 0..1."
+      },
+      "id": {
+        "id": "fuse/reactive/adjusthuefunction",
+        "parentId": "fuse/reactive",
+        "type": "UxClass",
+        "modifiers": [
+          "public",
+          "sealed"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/reactive/adjusthuefunction",
+        "href": "fuse/reactive/adjusthuefunction"
+      },
+      "titles": {
+        "indexTitle": "AdjustHueFunction",
+        "fullyQualifiedIndexTitle": "Fuse.Reactive.AdjustHueFunction"
+      }
+    },
+    {
+      "comment": {
         "brief": "Alternate between true/false values for ranges of integers.",
         "full": "Alternate between true/false values for ranges of integers.\n\n    alternate( value, groupSize )\n\nInput values are rounded to the nearest integer.\n\nExample:\n\n    alternate( value, 3 )\n\nThis will yield true for values 0,1,2, false for 3,4,5, true for 6,7,8, false for 9,10,11, etc."
       },
@@ -288,6 +273,29 @@
       "titles": {
         "indexTitle": "AtanVector",
         "fullyQualifiedIndexTitle": "Fuse.Reactive.AtanVector"
+      }
+    },
+    {
+      "comment": {
+        "brief": "Functions for modifying color values.",
+        "full": "Functions for modifying color values.\n\nColors in Fuse are represented as RGBA values. A `float3` converts to a `float4` by having a `1` implicitly added as the alpha value. Hex strings can also convert to color values.\n\nMost of the operations are calculated in HSL color space, first by converting the RGB value to HSL, performing the operation, and converting back to RGB.  The alpha value is not modified by RGB <=> HSL conversions.\n\nClamping is, in general, not done on the inputs, intermediaries, or outputs. This means you may end up with RGB values outside of the 0..1 range. This ensures that color information is not prematurely lost when performing multiplate operations.\n\n[subclass Fuse.Reactive.BinaryColorFunction]\n\nTo work directly with HSL values you can use the `hslaToRgba` and `rgbaToHsla` functions."
+      },
+      "id": {
+        "id": "fuse/reactive/binarycolorfunction",
+        "parentId": "fuse/reactive",
+        "type": "Class",
+        "modifiers": [
+          "public",
+          "abstract"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/reactive/binarycolorfunction",
+        "href": "fuse/reactive/binarycolorfunction"
+      },
+      "titles": {
+        "indexTitle": "BinaryColorFunction",
+        "fullyQualifiedIndexTitle": "Fuse.Reactive.BinaryColorFunction"
       }
     },
     {
@@ -440,6 +448,29 @@
       }
     },
     {
+      "comment": {
+        "brief": "Reduces the lightness of a color.",
+        "full": "Reduces the lightness of a color.\n\nThis subtracts the lightness value in HSL color space.\n\nThe result is not clamped; refer to @BinaryColorFunction."
+      },
+      "id": {
+        "id": "fuse/reactive/darkenfunction",
+        "parentId": "fuse/reactive",
+        "type": "UxClass",
+        "modifiers": [
+          "public",
+          "sealed"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/reactive/darkenfunction",
+        "href": "fuse/reactive/darkenfunction"
+      },
+      "titles": {
+        "indexTitle": "DarkenFunction",
+        "fullyQualifiedIndexTitle": "Fuse.Reactive.DarkenFunction"
+      }
+    },
+    {
       "id": {
         "id": "fuse/reactive/degreestoradians",
         "parentId": "fuse/reactive",
@@ -456,6 +487,29 @@
       "titles": {
         "indexTitle": "DegreesToRadians",
         "fullyQualifiedIndexTitle": "Fuse.Reactive.DegreesToRadians"
+      }
+    },
+    {
+      "comment": {
+        "brief": "Decreases the saturation of a color.",
+        "full": "Decreases the saturation of a color.\n\nThis subtracts the saturation value in HSL color space.\n\nThe result is not clamped; refer to @BinaryColorFunction."
+      },
+      "id": {
+        "id": "fuse/reactive/desaturatefunction",
+        "parentId": "fuse/reactive",
+        "type": "UxClass",
+        "modifiers": [
+          "public",
+          "sealed"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/reactive/desaturatefunction",
+        "href": "fuse/reactive/desaturatefunction"
+      },
+      "titles": {
+        "indexTitle": "DesaturateFunction",
+        "fullyQualifiedIndexTitle": "Fuse.Reactive.DesaturateFunction"
       }
     },
     {
@@ -634,6 +688,29 @@
       }
     },
     {
+      "comment": {
+        "brief": "Converts a color from HSLA to RGBA.",
+        "full": "Converts a color from HSLA to RGBA.\n\nSee @RgbaToHslaFunction for notes on the format."
+      },
+      "id": {
+        "id": "fuse/reactive/hslatorgbafunction",
+        "parentId": "fuse/reactive",
+        "type": "UxClass",
+        "modifiers": [
+          "public",
+          "sealed"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/reactive/hslatorgbafunction",
+        "href": "fuse/reactive/hslatorgbafunction"
+      },
+      "titles": {
+        "indexTitle": "HslaToRgbaFunction",
+        "fullyQualifiedIndexTitle": "Fuse.Reactive.HslaToRgbaFunction"
+      }
+    },
+    {
       "id": {
         "id": "fuse/reactive/infixoperator",
         "parentId": "fuse/reactive",
@@ -760,6 +837,29 @@
       "titles": {
         "indexTitle": "LessThan",
         "fullyQualifiedIndexTitle": "Fuse.Reactive.LessThan"
+      }
+    },
+    {
+      "comment": {
+        "brief": "Increases the lightness of a color.",
+        "full": "Increases the lightness of a color.\n\nThis adds the lightness value in HSL color space.\n\nThe result is not clamped; refer to @BinaryColorFunction."
+      },
+      "id": {
+        "id": "fuse/reactive/lightenfunction",
+        "parentId": "fuse/reactive",
+        "type": "UxClass",
+        "modifiers": [
+          "public",
+          "sealed"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/reactive/lightenfunction",
+        "href": "fuse/reactive/lightenfunction"
+      },
+      "titles": {
+        "indexTitle": "LightenFunction",
+        "fullyQualifiedIndexTitle": "Fuse.Reactive.LightenFunction"
       }
     },
     {
@@ -1124,6 +1224,29 @@
       }
     },
     {
+      "comment": {
+        "brief": "Converts a color from RGBA to HSLA color space.",
+        "full": "Converts a color from RGBA to HSLA color space.\n\nThe result is a float4 with this format:\n\n    float4( hue, saturation, lightness, alpha )\n\nValues in HSL are normalized just like in RGB. Hue is 0..1, covering the range 0° to 360°. Saturation and lightness are 0..1. Alpha is 0..1 is copied from the input RGBA value."
+      },
+      "id": {
+        "id": "fuse/reactive/rgbatohslafunction",
+        "parentId": "fuse/reactive",
+        "type": "UxClass",
+        "modifiers": [
+          "public",
+          "sealed"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/reactive/rgbatohslafunction",
+        "href": "fuse/reactive/rgbatohslafunction"
+      },
+      "titles": {
+        "indexTitle": "RgbaToHslaFunction",
+        "fullyQualifiedIndexTitle": "Fuse.Reactive.RgbaToHslaFunction"
+      }
+    },
+    {
       "id": {
         "id": "fuse/reactive/round",
         "parentId": "fuse/reactive",
@@ -1140,6 +1263,75 @@
       "titles": {
         "indexTitle": "Round",
         "fullyQualifiedIndexTitle": "Fuse.Reactive.Round"
+      }
+    },
+    {
+      "comment": {
+        "brief": "Increases the saturation of a color.",
+        "full": "Increases the saturation of a color.\n\nThis adds the saturation value in HSL color space.\n\nThe result is not clamped; refer to @BinaryColorFunction."
+      },
+      "id": {
+        "id": "fuse/reactive/saturatefunction",
+        "parentId": "fuse/reactive",
+        "type": "UxClass",
+        "modifiers": [
+          "public",
+          "sealed"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/reactive/saturatefunction",
+        "href": "fuse/reactive/saturatefunction"
+      },
+      "titles": {
+        "indexTitle": "SaturateFunction",
+        "fullyQualifiedIndexTitle": "Fuse.Reactive.SaturateFunction"
+      }
+    },
+    {
+      "comment": {
+        "brief": "Scales the lightness of the color towards white or black.",
+        "full": "Scales the lightness of the color towards white or black.\n\nPositive values from 0..1 lerp between the current lightness and `1`.\nNegative values from 0..1 lerp between the current ligthness and `0`.\n\nThe scaling is done in HSL color space."
+      },
+      "id": {
+        "id": "fuse/reactive/scalelightnessfunction",
+        "parentId": "fuse/reactive",
+        "type": "UxClass",
+        "modifiers": [
+          "public",
+          "sealed"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/reactive/scalelightnessfunction",
+        "href": "fuse/reactive/scalelightnessfunction"
+      },
+      "titles": {
+        "indexTitle": "ScaleLightnessFunction",
+        "fullyQualifiedIndexTitle": "Fuse.Reactive.ScaleLightnessFunction"
+      }
+    },
+    {
+      "comment": {
+        "brief": "Scales the saturation of the color towards full or none.",
+        "full": "Scales the saturation of the color towards full or none.\n\nPositive values from 0..1 lerp between the current saturation and `1`.\nNegative values from 0..1 lerp between the current saturation and `0`.\n\nThe scaling is done in HSL color space."
+      },
+      "id": {
+        "id": "fuse/reactive/scalesaturationfunction",
+        "parentId": "fuse/reactive",
+        "type": "UxClass",
+        "modifiers": [
+          "public",
+          "sealed"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/reactive/scalesaturationfunction",
+        "href": "fuse/reactive/scalesaturationfunction"
+      },
+      "titles": {
+        "indexTitle": "ScaleSaturationFunction",
+        "fullyQualifiedIndexTitle": "Fuse.Reactive.ScaleSaturationFunction"
       }
     },
     {

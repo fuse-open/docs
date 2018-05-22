@@ -24,7 +24,7 @@
       "namespaceTitle": "Fuse.Controls",
       "namespaceUri": "fuse/controls",
       "packageName": "Fuse.Controls",
-      "packageVersion": "1.8.0-rc2"
+      "packageVersion": "1.9.0-rc1"
     },
     "inheritance": {
       "root": {
@@ -342,6 +342,29 @@
         }
       },
       {
+        "comment": {
+          "brief": "@hide",
+          "full": "@hide"
+        },
+        "id": {
+          "id": "fuse/isourcelocation",
+          "parentId": "fuse",
+          "type": "Interface",
+          "modifiers": [
+            "public",
+            "abstract"
+          ]
+        },
+        "uri": {
+          "idUri": "fuse/isourcelocation",
+          "href": "fuse/isourcelocation"
+        },
+        "titles": {
+          "indexTitle": "ISourceLocation",
+          "fullyQualifiedIndexTitle": "Fuse.ISourceLocation"
+        }
+      },
+      {
         "id": {
           "id": "uno/collections/icollection_1",
           "parentId": "uno/collections",
@@ -406,7 +429,7 @@
     },
     "comment": {
       "brief": "Controls display a native control or graphics-based control based on context.",
-      "full": "Controls display a native control or graphics-based control based on context.\n\nIn Fuse, UI Controls refers to the common components for interaction and data entry typically found in most operating systems and UI kits.\n\nFuse gives you access to two different technologies for displaying UI Controls:\n\n* Fully portable custom controls drawn by OpenGL (default, see @GraphicsView)\n* The real native controls provided from the OS itself (see @NativeViewHost)\n\nIn a native context (inside of a @NativeViewHost ), controls will display a native control, if supported for\nthe given control an platform. In other context, the graphics-based appearance will be used.\n\n## Available UI controls\n\n[subclass Fuse.Controls.Control]\n\n## Adding more UI controls\n\nYou can create your own UI controls in two ways:\n\n* Extend an existing control in UX markup using @ux:Class\n* Creating [custom UX wrappers for native controls](https://www.fusetools.com/docs/native-interop/native-ux-components)",
+      "full": "Controls display a native control or graphics-based control based on context.\n\nIn Fuse, UI Controls refers to the common components for interaction and data entry typically found in most operating systems and UI kits.\n\nFuse gives you access to two different technologies for displaying UI Controls:\n\n* Fully portable custom controls drawn by OpenGL (default, see @GraphicsView)\n* The real native controls provided from the OS itself (see @NativeViewHost)\n\nIn a native context (inside of a @NativeViewHost ), controls will display a native control, if supported for\nthe given control an platform. In other context, the graphics-based appearance will be used.\n\n## Available UI controls\n\n[subclass Fuse.Controls.Control]\n\n## Adding more UI controls\n\nYou can create your own UI controls in two ways:\n\n* Extend an existing control in UX markup using @ux:Class\n* Creating [custom UX wrappers for native controls](https://fuse-open.github.io/docs/native-interop/native-ux-components)",
       "attributes": {
         "topic": "Controls"
       }
@@ -1608,6 +1631,62 @@
             "titles": {
               "indexTitle": "Name",
               "fullyQualifiedIndexTitle": "Fuse.Node.Name"
+            }
+          },
+          {
+            "comment": {
+              "brief": "@hide",
+              "full": "@hide"
+            },
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "id": {
+              "id": "fuse/controls/control/sourcefilename",
+              "parentId": "fuse/controls/control",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/controls/control/sourcefilename",
+              "href": "fuse/node/sourcefilename",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "SourceFileName",
+              "fullyQualifiedIndexTitle": "Fuse.Node.SourceFileName"
+            }
+          },
+          {
+            "comment": {
+              "brief": "@hide",
+              "full": "@hide"
+            },
+            "returns": {
+              "href": "uno/int",
+              "title": "int",
+              "fullyQualifiedTitle": "int"
+            },
+            "id": {
+              "id": "fuse/controls/control/sourcelinenumber",
+              "parentId": "fuse/controls/control",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/controls/control/sourcelinenumber",
+              "href": "fuse/node/sourcelinenumber",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "SourceLineNumber",
+              "fullyQualifiedIndexTitle": "Fuse.Node.SourceLineNumber"
             }
           }
         ]
@@ -4769,7 +4848,7 @@
             "comment": {
               "attributes": {
                 "returns": {
-                  "text": "Yes if the child influences the results of ArrangeMarginBox (size or layout of this node),No if it cannot, and Maybe otherwise (in cases of stretching)\r\n"
+                  "text": "Yes if the child influences the results of ArrangeMarginBox (size or layout of this node),No if it cannot, and Maybe otherwise (in cases of stretching)\n"
                 }
               }
             },

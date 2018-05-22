@@ -22,7 +22,7 @@
       "namespaceTitle": "Fuse.Triggers",
       "namespaceUri": "fuse/triggers",
       "packageName": "Fuse.Triggers",
-      "packageVersion": "1.8.0-rc2"
+      "packageVersion": "1.9.0-rc1"
     },
     "inheritance": {
       "root": {
@@ -176,6 +176,29 @@
         }
       },
       {
+        "comment": {
+          "brief": "@hide",
+          "full": "@hide"
+        },
+        "id": {
+          "id": "fuse/isourcelocation",
+          "parentId": "fuse",
+          "type": "Interface",
+          "modifiers": [
+            "public",
+            "abstract"
+          ]
+        },
+        "uri": {
+          "idUri": "fuse/isourcelocation",
+          "href": "fuse/isourcelocation"
+        },
+        "titles": {
+          "indexTitle": "ISourceLocation",
+          "fullyQualifiedIndexTitle": "Fuse.ISourceLocation"
+        }
+      },
+      {
         "id": {
           "id": "uno/collections/icollection_1",
           "parentId": "uno/collections",
@@ -240,7 +263,7 @@
     "comment": {
       "brief": "Active while the context has failed.",
       "full": "Active while the context has failed.\n\nThis trigger can be used inside a @Video, an @Image, or an @Each element.\n\n`<WhileFailed>` is equivalent to `<WhileBusy Activity=\"Failed\" IsHandled=\"true\"/>`",
-      "examples": "The following example shows how we can use triggers inside a @Video to display\r\nan overlay over the video when it is loading, paused, completed, or has failed.\r\nIt also uses these triggers to display a play button and a pause button only at\r\nappropriate times.\r\n\r\n\r\n\t<StackPanel>\r\n\t\t<Panel>\r\n\t\t\t<Panel ux:Name=\"overlay\" Background=\"Black\" Opacity=\"0\">\r\n\t\t\t\t<Text ux:Name=\"overlayText\" Color=\"White\" Alignment=\"Center\" />\r\n\t\t\t</Panel>\r\n\r\n\t\t\t<WhileTrue ux:Name=\"showOverlay\">\r\n\t\t\t\t<Change overlay.Opacity=\"0.5\" Duration=\"0.2\" />\r\n\t\t\t</WhileTrue>\r\n\r\n\t\t\t<Video ux:Name=\"video\" Url=\"http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4\" >\r\n\t\t\t\t<WhilePlaying>\r\n\t\t\t\t\t<Change playButton.Visibility=\"Hidden\" />\r\n\t\t\t\t\t<Change pauseButton.Visibility=\"Visible\" />\r\n\t\t\t\t</WhilePlaying>\r\n\r\n\t\t\t\t<WhileLoading>\r\n\t\t\t\t\t<Change showOverlay.Value=\"True\" />\r\n\t\t\t\t\t<Change overlayText.Value=\"Loading...\" />\r\n\t\t\t\t</WhileLoading>\r\n\r\n\t\t\t\t<WhilePaused>\r\n\t\t\t\t\t<Change showOverlay.Value=\"True\" />\r\n\t\t\t\t\t<Change overlayText.Value=\"Paused\" />\r\n\t\t\t\t</WhilePaused>\r\n\r\n\t\t\t\t<WhileCompleted>\r\n\t\t\t\t\t<Change showOverlay.Value=\"True\" />\r\n\t\t\t\t\t<Change overlayText.Value=\"Completed\" />\r\n\t\t\t\t</WhileCompleted>\r\n\r\n\t\t\t\t<WhileFailed>\r\n\t\t\t\t\t<Change showOverlay.Value=\"True\" />\r\n\t\t\t\t\t<Change overlayText.Value=\"Error\" />\r\n\t\t\t\t</WhileFailed>\r\n\t\t\t</Video>\r\n\t\t</Panel>\r\n\r\n\t\t<Grid ColumnCount=\"2\">\r\n\t\t\t<Button ux:Name=\"playButton\" Text=\"Play\">\r\n\t\t\t\t<Clicked>\r\n\t\t\t\t\t<Resume Target=\"video\" />\r\n\t\t\t\t</Clicked>\r\n\t\t\t</Button>\r\n\t\t\t<Button ux:Name=\"pauseButton\" Text=\"Pause\" Visibility=\"Hidden\">\r\n\t\t\t\t<Clicked>\r\n\t\t\t\t\t<Pause Target=\"video\" />\r\n\t\t\t\t</Clicked>\r\n\t\t\t</Button>\r\n\t\t</Grid>\r\n\t</StackPanel>"
+      "examples": "The following example shows how we can use triggers inside a @Video to display\nan overlay over the video when it is loading, paused, completed, or has failed.\nIt also uses these triggers to display a play button and a pause button only at\nappropriate times.\n\n\n\t<StackPanel>\n\t\t<Panel>\n\t\t\t<Panel ux:Name=\"overlay\" Background=\"Black\" Opacity=\"0\">\n\t\t\t\t<Text ux:Name=\"overlayText\" Color=\"White\" Alignment=\"Center\" />\n\t\t\t</Panel>\n\n\t\t\t<WhileTrue ux:Name=\"showOverlay\">\n\t\t\t\t<Change overlay.Opacity=\"0.5\" Duration=\"0.2\" />\n\t\t\t</WhileTrue>\n\n\t\t\t<Video ux:Name=\"video\" Url=\"http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4\" >\n\t\t\t\t<WhilePlaying>\n\t\t\t\t\t<Change playButton.Visibility=\"Hidden\" />\n\t\t\t\t\t<Change pauseButton.Visibility=\"Visible\" />\n\t\t\t\t</WhilePlaying>\n\n\t\t\t\t<WhileLoading>\n\t\t\t\t\t<Change showOverlay.Value=\"True\" />\n\t\t\t\t\t<Change overlayText.Value=\"Loading...\" />\n\t\t\t\t</WhileLoading>\n\n\t\t\t\t<WhilePaused>\n\t\t\t\t\t<Change showOverlay.Value=\"True\" />\n\t\t\t\t\t<Change overlayText.Value=\"Paused\" />\n\t\t\t\t</WhilePaused>\n\n\t\t\t\t<WhileCompleted>\n\t\t\t\t\t<Change showOverlay.Value=\"True\" />\n\t\t\t\t\t<Change overlayText.Value=\"Completed\" />\n\t\t\t\t</WhileCompleted>\n\n\t\t\t\t<WhileFailed>\n\t\t\t\t\t<Change showOverlay.Value=\"True\" />\n\t\t\t\t\t<Change overlayText.Value=\"Error\" />\n\t\t\t\t</WhileFailed>\n\t\t\t</Video>\n\t\t</Panel>\n\n\t\t<Grid ColumnCount=\"2\">\n\t\t\t<Button ux:Name=\"playButton\" Text=\"Play\">\n\t\t\t\t<Clicked>\n\t\t\t\t\t<Resume Target=\"video\" />\n\t\t\t\t</Clicked>\n\t\t\t</Button>\n\t\t\t<Button ux:Name=\"pauseButton\" Text=\"Pause\" Visibility=\"Hidden\">\n\t\t\t\t<Clicked>\n\t\t\t\t\t<Pause Target=\"video\" />\n\t\t\t\t</Clicked>\n\t\t\t</Button>\n\t\t</Grid>\n\t</StackPanel>"
     }
   },
   "tableOfContents": {
@@ -806,6 +829,62 @@
             "titles": {
               "indexTitle": "Name",
               "fullyQualifiedIndexTitle": "Fuse.Node.Name"
+            }
+          },
+          {
+            "comment": {
+              "brief": "@hide",
+              "full": "@hide"
+            },
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "id": {
+              "id": "fuse/triggers/whilefailed/sourcefilename",
+              "parentId": "fuse/triggers/whilefailed",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/whilefailed/sourcefilename",
+              "href": "fuse/node/sourcefilename",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "SourceFileName",
+              "fullyQualifiedIndexTitle": "Fuse.Node.SourceFileName"
+            }
+          },
+          {
+            "comment": {
+              "brief": "@hide",
+              "full": "@hide"
+            },
+            "returns": {
+              "href": "uno/int",
+              "title": "int",
+              "fullyQualifiedTitle": "int"
+            },
+            "id": {
+              "id": "fuse/triggers/whilefailed/sourcelinenumber",
+              "parentId": "fuse/triggers/whilefailed",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/whilefailed/sourcelinenumber",
+              "href": "fuse/node/sourcelinenumber",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "SourceLineNumber",
+              "fullyQualifiedIndexTitle": "Fuse.Node.SourceLineNumber"
             }
           }
         ]

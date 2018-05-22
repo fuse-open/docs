@@ -22,7 +22,7 @@
       "namespaceTitle": "FuseJS",
       "namespaceUri": "fusejs",
       "packageName": "FuseJS",
-      "packageVersion": "1.8.0-rc2"
+      "packageVersion": "1.9.0-rc1"
     },
     "inheritance": {
       "root": {
@@ -136,14 +136,14 @@
       "fullyQualifiedIndexTitle": "FuseJS.Environment"
     },
     "syntax": {
-      "uno": "[Uno.UX.UXGlobalModule]\r\npublic sealed class Environment : Fuse.Scripting.NativeModule {}"
+      "uno": "[Uno.UX.UXGlobalModule]\npublic sealed class Environment : Fuse.Scripting.NativeModule {}"
     },
     "comment": {
       "brief": "The Environment API allows you to check which platform your app is currently running on.",
       "full": "The Environment API allows you to check which platform your app is currently running on.\n\nYou need to add a reference to `\"FuseJS\"` in your project file to use this feature.\n\n## Examples\n\nYou can check which platform your app is running on using the following boolean properties:\n\n    var Environment = require('FuseJS/Environment');\n\n    if(Environment.ios)        console.log(\"Running on iOS\");\n    if(Environment.android)    console.log(\"Running on Android\");\n    if(Environment.preview)    console.log(\"Running in preview mode\");\n    if(Environment.mobile)     console.log(\"Running on iOS or Android\");\n    if(Environment.desktop)    console.log(\"Running on desktop\");\n\nYou can also get the version of the current *mobile* OS as a\nhuman-readable string using the `mobileOSVersion` property.\n\n    console.log(Environment.mobileOSVersion);\n\n> *Note*\n>\n> On Android, `mobileOSVersion` returns [Build.VERSION.RELEASE](https://developer.android.com/reference/android/os/Build.VERSION.html#RELEASE)\n> (e.g. `1.0` or `3.4b5`).\n> On iOS, it returns a string in the format of `<major>.<minor>.<patch>`\n> (e.g. `9.2.1`).\n> Returns an empty string on all other platforms.",
       "attributes": {
         "scriptModule": "FuseJS/Environment",
-        "scriptProperty": "(string) mobileOSVersion A user-readable OS version number.On Android, it returns [Build.VERSION.RELEASE](https://developer.android.com/reference/android/os/Build.VERSION.html#RELEASE)\r\n(e.g. `1.0` or `3.4b5`).\r\nOn iOS, it returns a string in the format of `<major>.<minor>.<patch>` (e.g. `9.2.1`).\r\nReturns an empty string on all other platforms.\r\n"
+        "scriptProperty": "(string) mobileOSVersion A user-readable OS version number.On Android, it returns [Build.VERSION.RELEASE](https://developer.android.com/reference/android/os/Build.VERSION.html#RELEASE)\n(e.g. `1.0` or `3.4b5`).\nOn iOS, it returns a string in the format of `<major>.<minor>.<patch>` (e.g. `9.2.1`).\nReturns an empty string on all other platforms.\n"
       }
     }
   },
