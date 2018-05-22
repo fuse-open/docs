@@ -269,7 +269,7 @@ function send(fuseClient, msgType, serializedMsg) {
 }
 ```
 
-For a full real-world example, please refer to the official open source [Atom Plugin](https://github.com/fusetools/Fuse.AtomPlugin).
+For a full real-world example, please refer to the official open source [Atom Plugin](https://github.com/fuse-open/Fuse.AtomPlugin).
 
 ## Fuse API Reference<a name="fuse-api-reference"></a>
 
