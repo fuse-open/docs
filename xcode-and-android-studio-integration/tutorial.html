@@ -6,10 +6,10 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Xcode and Android Studio Integration - Fuse Documentation</title>
-    <link rel="stylesheet" href="https://fuse-open.github.io/docs/font-awesome.css?_v=20180522084956">
-    <link rel="stylesheet" href="https://fuse-open.github.io/docs/bootstrap.css?_v=20180522084956">
-    <link rel="stylesheet" href="https://fuse-open.github.io/docs/prism.css?_v=20180522084956">
-    <link rel="stylesheet" href="https://fuse-open.github.io/docs/site.css?_v=20180522084956">
+    <link rel="stylesheet" href="https://fuse-open.github.io/docs/font-awesome.css?_v=20180523155934">
+    <link rel="stylesheet" href="https://fuse-open.github.io/docs/bootstrap.css?_v=20180523155934">
+    <link rel="stylesheet" href="https://fuse-open.github.io/docs/prism.css?_v=20180523155934">
+    <link rel="stylesheet" href="https://fuse-open.github.io/docs/site.css?_v=20180523155934">
   </head>
 
   <body>
@@ -651,6 +651,10 @@ android:configChanges=&quot;orientation|keyboardHidden|screenSize|smallestScreen
 <li>By default Xcode imports frameworks to the project root directory. This is where you want to overwrite.</li>
 <li>If you are using Android Studio you must do a rebuild after updating the aar for code completion and code errors to work properly.</li>
 </ul>
+<p>Notes when updating Fuse:</p>
+<ul>
+<li>To ensure that your project is running the last FuseViews package, cut <code>compile(name:'app-debug', ext:'aar')</code> line from your gradle file, Sync and add the dependency again.</li>
+</ul>
 <h2 id="step-3-bootstrapping-fuse-views">Step 3: Bootstrapping Fuse Views</h2>
 <p>Before you can instantiate your exported views, fuse needs to be initialized.</p>
 <h4 id="objective-c">Objective-C</h4>
@@ -678,6 +682,19 @@ android:configChanges=&quot;orientation|keyboardHidden|screenSize|smallestScreen
 <h4 id="java">Java</h4>
 <p>In your main <code>Activity</code>, inherit from <code>com.fuse.views.FuseViewsActivity</code>.</p>
 <pre><code>public class MainActivity extends com.fuse.views.FuseViewsActivity {
+</code></pre>
+<h5 id="fragment-support">Fragment support</h5>
+<p>To use your View as <code>Fragment</code>, inherit from <code>com.fuse.views.FuseViewsFragment</code></p>
+<pre><code>public class FuseFragment extends com.fuse.views.FuseViewsFragment {
+</code></pre>
+<p>In your <code>Activity</code> init FuseViewsFragment on your <code>onCreate()</code> method just before the <code>setContentView()</code></p>
+<pre><code>@Override
+protected void onCreate(Bundle savedInstanceState) {
+	super.onCreate(savedInstanceState);
+	FuseViewsFragment.init(this, savedInstanceState);
+	setContentView(R.layout.activity_main);
+	...
+}
 </code></pre>
 <h2 id="step-4-instantiating-a-view">Step 4: Instantiating a View</h2>
 <p>You are now ready to instantiate your exported views.
@@ -829,15 +846,36 @@ usersListView.setCallback(&quot;user_clicked&quot;, new ICallback() {
     public void invoke(HashMap&lt;String, String&gt; args) { ... }
 });
 </code></pre>
+<h5 id="fragment-support">Fragment support</h5>
+<p>The full workaround when using <code>Fragment</code></p>
+<pre><code>
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        RelativeLayout relativeLayout = new RelativeLayout(getContext());
+        ViewHandle videoView = ExportedViews.instantiate(&quot;VideoView&quot;);
+        android.view.View nativeView = videoView.getView();
+
+	videoView.setDataJson(&quot;{ \&quot;users\&quot; : [...] }&quot;);
+        videoView.setCallback(&quot;user_clicked&quot;, new ICallback() {
+            @Override
+            public void invoke(IArguments iArguments) { ... }
+        });
+
+        nativeView.setLayoutParams(new android.widget.RelativeLayout.LayoutParams(MATCH_PARENT, MATCH_PARENT));
+        relativeLayout.addView(nativeView);
+
+        return relativeLayout;
+    }
+</code></pre>
 
         </div>
       </div>
     </div>
 
-    <script type="text/javascript" src="https://fuse-open.github.io/docs/jquery.js?_v=20180522084956"></script>
-    <script type="text/javascript" src="https://fuse-open.github.io/docs/popper.js?_v=20180522084956"></script>
-    <script type="text/javascript" src="https://fuse-open.github.io/docs/bootstrap.js?_v=20180522084956"></script>
-    <script type="text/javascript" src="https://fuse-open.github.io/docs/prism.js?_v=20180522084956"></script>
-    <script type="text/javascript" src="https://fuse-open.github.io/docs/site.js?_v=20180522084956"></script>
+    <script type="text/javascript" src="https://fuse-open.github.io/docs/jquery.js?_v=20180523155934"></script>
+    <script type="text/javascript" src="https://fuse-open.github.io/docs/popper.js?_v=20180523155934"></script>
+    <script type="text/javascript" src="https://fuse-open.github.io/docs/bootstrap.js?_v=20180523155934"></script>
+    <script type="text/javascript" src="https://fuse-open.github.io/docs/prism.js?_v=20180523155934"></script>
+    <script type="text/javascript" src="https://fuse-open.github.io/docs/site.js?_v=20180523155934"></script>
   </body>
 </html>
