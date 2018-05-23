@@ -128,6 +128,9 @@ Notes when updating the framework/aar:
 - By default Xcode imports frameworks to the project root directory. This is where you want to overwrite.
 - If you are using Android Studio you must do a rebuild after updating the aar for code completion and code errors to work properly.
 
+Notes when updating Fuse:
+- To ensure that your project is running the last FuseViews package, cut `compile(name:'app-debug', ext:'aar')` line from your gradle file, Sync and add the dependency again. 
+
 ## Step 3: Bootstrapping Fuse Views
 
 Before you can instantiate your exported views, fuse needs to be initialized.
@@ -175,6 +178,22 @@ In your main `Activity`, inherit from `com.fuse.views.FuseViewsActivity`.
 public class MainActivity extends com.fuse.views.FuseViewsActivity {
 ```
 
+##### Fragment support
+To use your View as `Fragment`, inherit from `com.fuse.views.FuseViewsFragment` 
+```
+public class FuseFragment extends com.fuse.views.FuseViewsFragment {
+```
+
+In your `Activity` init FuseViewsFragment on your `onCreate()` method just before the `setContentView()`
+```
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+	super.onCreate(savedInstanceState);
+	FuseViewsFragment.init(this, savedInstanceState);
+	setContentView(R.layout.activity_main);
+	...
+}
+```
 ## Step 4: Instantiating a View
 
 You are now ready to instantiate your exported views.
@@ -394,4 +413,27 @@ usersListView.setCallback("user_clicked", new ICallback() {
     @Override
     public void invoke(HashMap<String, String> args) { ... }
 });
+```
+
+##### Fragment support
+The full workaround when using `Fragment`
+```
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        RelativeLayout relativeLayout = new RelativeLayout(getContext());
+        ViewHandle videoView = ExportedViews.instantiate("VideoView");
+        android.view.View nativeView = videoView.getView();
+
+	videoView.setDataJson("{ \"users\" : [...] }");
+        videoView.setCallback("user_clicked", new ICallback() {
+            @Override
+            public void invoke(IArguments iArguments) { ... }
+        });
+
+        nativeView.setLayoutParams(new android.widget.RelativeLayout.LayoutParams(MATCH_PARENT, MATCH_PARENT));
+        relativeLayout.addView(nativeView);
+
+        return relativeLayout;
+    }
 ```
