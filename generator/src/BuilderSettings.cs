@@ -8,7 +8,6 @@ namespace Builder
         public string OutputPath { get; }
         public bool GenerateReport { get; }
         public string BaseUrl { get; }
-        public string BuildVersion { get; }
 
         public BuilderSettings(string rootPath, string outputPath, bool generateReport, string baseUrl)
         {
@@ -16,7 +15,6 @@ namespace Builder
             OutputPath = outputPath;
             GenerateReport = generateReport;
             BaseUrl = baseUrl;
-            BuildVersion = DateTime.UtcNow.ToString("yyyyMMddHHmmss");
         }
     }
 }

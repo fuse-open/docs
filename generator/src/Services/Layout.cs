@@ -6,13 +6,11 @@ namespace Builder.Services
     public class Layout
     {
         private readonly string _template;
-        private readonly string _buildVersion;
         private readonly string _baseUrl;
 
         public Layout(BuilderSettings settings)
         {
             _template = ReadTemplate(settings.RootPath);
-            _buildVersion = settings.BuildVersion;
             _baseUrl = settings.BaseUrl;
         }
 
@@ -27,7 +25,6 @@ namespace Builder.Services
             html = _template.Replace("##BODY##", html)
                             .Replace("##NAVIGATION##", outline)
                             .Replace("##TITLE##", HtmlEncoder.Default.Encode(fullTitle))
-                            .Replace("##BUILD_VERSION##", _buildVersion)
                             .Replace("##BASE_URL##", _baseUrl);
             return html;
         }
