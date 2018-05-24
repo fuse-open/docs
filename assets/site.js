@@ -23,4 +23,10 @@ $(document).ready(function() {
         heading.prepend(anchor);
     });
 
+    docsearch({
+            apiKey: '37ca02a1d0b845d74a74a48683774e97',
+            indexName: 'fuse',
+            inputSelector: '#search-input',
+            debug: false // Set debug to true if you want to inspect the dropdown
+            });
 });
