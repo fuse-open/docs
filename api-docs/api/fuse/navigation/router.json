@@ -24,7 +24,7 @@
       "namespaceTitle": "Fuse.Navigation",
       "namespaceUri": "fuse/navigation",
       "packageName": "Fuse.Navigation",
-      "packageVersion": "1.8.0-rc2"
+      "packageVersion": "1.9.0-rc1"
     },
     "inheritance": {
       "root": {
@@ -144,6 +144,29 @@
         "titles": {
           "indexTitle": "IProperties",
           "fullyQualifiedIndexTitle": "Fuse.IProperties"
+        }
+      },
+      {
+        "comment": {
+          "brief": "@hide",
+          "full": "@hide"
+        },
+        "id": {
+          "id": "fuse/isourcelocation",
+          "parentId": "fuse",
+          "type": "Interface",
+          "modifiers": [
+            "public",
+            "abstract"
+          ]
+        },
+        "uri": {
+          "idUri": "fuse/isourcelocation",
+          "href": "fuse/isourcelocation"
+        },
+        "titles": {
+          "indexTitle": "ISourceLocation",
+          "fullyQualifiedIndexTitle": "Fuse.ISourceLocation"
         }
       },
       {
@@ -396,6 +419,62 @@
               "indexTitle": "Name",
               "fullyQualifiedIndexTitle": "Fuse.Node.Name"
             }
+          },
+          {
+            "comment": {
+              "brief": "@hide",
+              "full": "@hide"
+            },
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "id": {
+              "id": "fuse/navigation/router/sourcefilename",
+              "parentId": "fuse/navigation/router",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/router/sourcefilename",
+              "href": "fuse/node/sourcefilename",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "SourceFileName",
+              "fullyQualifiedIndexTitle": "Fuse.Node.SourceFileName"
+            }
+          },
+          {
+            "comment": {
+              "brief": "@hide",
+              "full": "@hide"
+            },
+            "returns": {
+              "href": "uno/int",
+              "title": "int",
+              "fullyQualifiedTitle": "int"
+            },
+            "id": {
+              "id": "fuse/navigation/router/sourcelinenumber",
+              "parentId": "fuse/navigation/router",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/router/sourcelinenumber",
+              "href": "fuse/node/sourcelinenumber",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "SourceLineNumber",
+              "fullyQualifiedIndexTitle": "Fuse.Node.SourceLineNumber"
+            }
           }
         ]
       }
@@ -468,6 +547,33 @@
           }
         },
         "items": [
+          {
+            "comment": {
+              "brief": "Raised when the user pressed the back button (hardware or simulated) and there is no back page (root of navigation stack).",
+              "full": "Raised when the user pressed the back button (hardware or simulated) and there is no back page (root of navigation stack)."
+            },
+            "returns": {
+              "href": "fuse/navigation/router/backatrootpressedhandler",
+              "title": "BackAtRootPressedHandler (object, EventArgs)",
+              "fullyQualifiedTitle": "Fuse.Navigation.BackAtRootPressedHandler (object, Uno.EventArgs)"
+            },
+            "id": {
+              "id": "fuse/navigation/router/backatrootpressed",
+              "parentId": "fuse/navigation/router",
+              "type": "UxEvent",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/router/backatrootpressed",
+              "href": "fuse/navigation/router/backatrootpressed"
+            },
+            "titles": {
+              "indexTitle": "BackAtRootPressed",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.Router.BackAtRootPressed"
+            }
+          },
           {
             "returns": {
               "href": "fuse/navigation/historychangedhandler",
@@ -1191,6 +1297,24 @@
             }
           },
           {
+            "id": {
+              "id": "fuse/navigation/router/fuse_navigation_ibasenavigation_goback",
+              "parentId": "fuse/navigation/router",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/router/fuse_navigation_ibasenavigation_goback",
+              "href": "fuse/navigation/router/fuse_navigation_ibasenavigation_goback"
+            },
+            "titles": {
+              "indexTitle": "Fuse.Navigation.IBaseNavigation.GoBack",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.Router.Fuse.Navigation.IBaseNavigation.GoBack"
+            }
+          },
+          {
             "returns": {
               "href": "fuse/navigation/route",
               "title": "Route",
@@ -1217,6 +1341,11 @@
             "comment": {
               "brief": "Goes back to the previous page in the navigation history, or up one level in the route if the history is empty.",
               "full": "Goes back to the previous page in the navigation history, or up one level in the route if the history is empty.\n\nIf the navigation history is nonempty, this pops the previous item from the history and makes\nthat the current route.\n\nIf the navigation history is empty, this method goes to a route one level above the current\nroute. If the current route is already a top level route, this method does nothing."
+            },
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
             },
             "id": {
               "id": "fuse/navigation/router/goback",

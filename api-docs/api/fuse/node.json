@@ -22,7 +22,7 @@
       "namespaceTitle": "Fuse",
       "namespaceUri": "fuse",
       "packageName": "Fuse.Nodes",
-      "packageVersion": "1.8.0-rc2"
+      "packageVersion": "1.9.0-rc1"
     },
     "inheritance": {
       "root": {
@@ -110,6 +110,29 @@
         }
       },
       {
+        "comment": {
+          "brief": "@hide",
+          "full": "@hide"
+        },
+        "id": {
+          "id": "fuse/isourcelocation",
+          "parentId": "fuse",
+          "type": "Interface",
+          "modifiers": [
+            "public",
+            "abstract"
+          ]
+        },
+        "uri": {
+          "idUri": "fuse/isourcelocation",
+          "href": "fuse/isourcelocation"
+        },
+        "titles": {
+          "indexTitle": "ISourceLocation",
+          "fullyQualifiedIndexTitle": "Fuse.ISourceLocation"
+        }
+      },
+      {
         "id": {
           "id": "uno/collections/icollection_1",
           "parentId": "uno/collections",
@@ -170,12 +193,12 @@
       "fullyQualifiedIndexTitle": "Fuse.Node"
     },
     "syntax": {
-      "uno": "public abstract partial class Node : Uno.UX.PropertyObject, Uno.Collections.IList<Fuse.Binding>, Fuse.Scripting.IScriptObject, Fuse.IProperties, Uno.Collections.ICollection<Fuse.Binding>, Uno.Collections.IEnumerable<Fuse.Binding> {}"
+      "uno": "public abstract partial class Node : Uno.UX.PropertyObject, Uno.Collections.IList<Fuse.Binding>, Fuse.Scripting.IScriptObject, Fuse.IProperties, Fuse.ISourceLocation, Uno.Collections.ICollection<Fuse.Binding>, Uno.Collections.IEnumerable<Fuse.Binding> {}"
     },
     "comment": {
       "brief": "Nodes are the basic building blocks of Fuse apps.",
       "full": "Nodes are the basic building blocks of Fuse apps.\n\nNodes are typically instantiated in UX Markup, and come in many different subclasses.\n\nSubclasses inheriting @Visual have a visual representation on the screen, and/or manages input for a\nspecific visual region.\n\nSubclasses inheriting @Behaviors modify the behavior of @Visuals.",
-      "remarks": "## The \"rooted\" concept\r\n\r\nNodes can be *rooted* within an @App. This means that they form part of the subtree currently\r\nconnected to the @App singleton. In the following example, the @Panel and @Rectangle are always\r\nrooted:\r\n\r\n\t<App>\r\n\t\t<Panel>\r\n\t\t\t<Rectangle />\r\n\t\t</Panel>\r\n\t</App>\r\n\r\nWhen a node\tis removed from a rooted tree, it becomes *unrooted*.\r\n\r\nWhile rooted, nodes have a @Parent. Only @Visual nodes can be parents of other nodes. However, \r\n@Behaviors may contain other nodes in UX markup. In the following example, the @WhilePressed\r\n(which is a @Behavior) contains a @Circle. The @Circle is not rooted by default.\r\n\r\n\t<Panel>\r\n\t\t<WhilePressed>\r\n\t\t\t<Circle />\r\n\t\t</WhilePressed>\r\n\t</Panel>\r\n\r\nWhile the @Panel is pressed, the @Circle is added to the @Panel. Assuming the @Panel is rooted,\r\nthis will make the @Circle *rooted*. When the @Panel is no longer pressed, the @Circle is removed\r\nfrom the @Panel, *unrooting* the @Circle.",
+      "remarks": "## The \"rooted\" concept\n\nNodes can be *rooted* within an @App. This means that they form part of the subtree currently\nconnected to the @App singleton. In the following example, the @Panel and @Rectangle are always\nrooted:\n\n\t<App>\n\t\t<Panel>\n\t\t\t<Rectangle />\n\t\t</Panel>\n\t</App>\n\nWhen a node\tis removed from a rooted tree, it becomes *unrooted*.\n\nWhile rooted, nodes have a @Parent. Only @Visual nodes can be parents of other nodes. However, \n@Behaviors may contain other nodes in UX markup. In the following example, the @WhilePressed\n(which is a @Behavior) contains a @Circle. The @Circle is not rooted by default.\n\n\t<Panel>\n\t\t<WhilePressed>\n\t\t\t<Circle />\n\t\t</WhilePressed>\n\t</Panel>\n\nWhile the @Panel is pressed, the @Circle is added to the @Panel. Assuming the @Panel is rooted,\nthis will make the @Circle *rooted*. When the @Panel is no longer pressed, the @Circle is removed\nfrom the @Panel, *unrooting* the @Circle.",
       "attributes": {
         "topic": "Nodes"
       }
@@ -260,6 +283,60 @@
             "titles": {
               "indexTitle": "Name",
               "fullyQualifiedIndexTitle": "Fuse.Node.Name"
+            }
+          },
+          {
+            "comment": {
+              "brief": "@hide",
+              "full": "@hide"
+            },
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "id": {
+              "id": "fuse/node/sourcefilename",
+              "parentId": "fuse/node",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/node/sourcefilename",
+              "href": "fuse/node/sourcefilename"
+            },
+            "titles": {
+              "indexTitle": "SourceFileName",
+              "fullyQualifiedIndexTitle": "Fuse.Node.SourceFileName"
+            }
+          },
+          {
+            "comment": {
+              "brief": "@hide",
+              "full": "@hide"
+            },
+            "returns": {
+              "href": "uno/int",
+              "title": "int",
+              "fullyQualifiedTitle": "int"
+            },
+            "id": {
+              "id": "fuse/node/sourcelinenumber",
+              "parentId": "fuse/node",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/node/sourcelinenumber",
+              "href": "fuse/node/sourcelinenumber"
+            },
+            "titles": {
+              "indexTitle": "SourceLineNumber",
+              "fullyQualifiedIndexTitle": "Fuse.Node.SourceLineNumber"
             }
           }
         ]

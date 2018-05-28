@@ -23,7 +23,7 @@
       "namespaceTitle": "Fuse.Animations",
       "namespaceUri": "fuse/animations",
       "packageName": "Fuse.Animations",
-      "packageVersion": "1.8.0-rc2"
+      "packageVersion": "1.9.0-rc1"
     },
     "inheritance": {
       "root": {
@@ -113,13 +113,13 @@
       "fullyQualifiedIndexTitle": "Fuse.Animations.Change<T>"
     },
     "syntax": {
-      "uno": "[Uno.UX.UXAutoGeneric(alias = \"Change\", property = \"Target\")]\r\npublic sealed class Change<T> : Fuse.Animations.TrackAnimator {}",
+      "uno": "[Uno.UX.UXAutoGeneric(alias = \"Change\", property = \"Target\")]\npublic sealed class Change<T> : Fuse.Animations.TrackAnimator {}",
       "ux": "<Change />"
     },
     "comment": {
       "brief": "Temporarily changes the value of a property while its containing trigger is active. To permanently change a value, use the @Set animator.",
       "full": "Temporarily changes the value of a property while its containing trigger is active. To permanently change a value, use the @Set animator.\n\n**Tip**: You can specify @(Units) with `Value` as long as the unit matches the original unit of the `Target`.\n\nBecause the task of setting a target property and value is so common, UX has a special syntax for this. Instead of\n\n    <Change Target=\"target.Property\" Value=\"Value\"/>\n\none can do the following:\n\n    <Change target.Property=\"Value\"/>\n\n# Example\n\nAs with other animators, you can also specify a `Duration`:\n\n    <Panel ux:Name=\"panel\" Color=\"#000\">\n        <WhilePressed>\n            <Change panel.Color=\"#fff\" Duration=\"0.5\" />\n        </WhilePressed>\n    </Panel>\n\nIf the value is continuous this will result in a continously interpolated change in value.\nIf the value cannot be continuously animated, the value will change discretely.",
-      "remarks": "## Animating layout properties\r\n\r\nWhile animating layout properties such as `Width`, `Height` or `Margin` is possible, it can lead to huge performance issues.\r\nThis is because the app has to recalculate its entire layout for each frame of the animation.\r\n\r\nA much faster alternative is to use @LayoutAnimation, as it only needs to recalculate layout for the children of the element being animated.\r\nTake a look at the @LayoutAnimation docs for more info."
+      "remarks": "## Animating layout properties\n\nWhile animating layout properties such as `Width`, `Height` or `Margin` is possible, it can lead to huge performance issues.\nThis is because the app has to recalculate its entire layout for each frame of the animation.\n\nA much faster alternative is to use @LayoutAnimation, as it only needs to recalculate layout for the children of the element being animated.\nTake a look at the @LayoutAnimation docs for more info."
     }
   },
   "tableOfContents": {

@@ -22,7 +22,7 @@
       "namespaceTitle": "Fuse.Triggers.Actions",
       "namespaceUri": "fuse/triggers/actions",
       "packageName": "Fuse.Triggers",
-      "packageVersion": "1.8.0-rc2"
+      "packageVersion": "1.9.0-rc1"
     },
     "inheritance": {
       "root": {
@@ -47,6 +47,31 @@
       },
       "hasInheritance": true
     },
+    "implementedInterfaces": [
+      {
+        "comment": {
+          "brief": "@hide",
+          "full": "@hide"
+        },
+        "id": {
+          "id": "fuse/isourcelocation",
+          "parentId": "fuse",
+          "type": "Interface",
+          "modifiers": [
+            "public",
+            "abstract"
+          ]
+        },
+        "uri": {
+          "idUri": "fuse/isourcelocation",
+          "href": "fuse/isourcelocation"
+        },
+        "titles": {
+          "indexTitle": "ISourceLocation",
+          "fullyQualifiedIndexTitle": "Fuse.ISourceLocation"
+        }
+      }
+    ],
     "id": {
       "id": "fuse/triggers/actions/triggeraction",
       "parentId": "fuse/triggers/actions",
@@ -68,7 +93,7 @@
       "fullyQualifiedIndexTitle": "Fuse.Triggers.Actions.TriggerAction"
     },
     "syntax": {
-      "uno": "public abstract class TriggerAction : Uno.UX.PropertyObject {}"
+      "uno": "public abstract class TriggerAction : Uno.UX.PropertyObject, Fuse.ISourceLocation {}"
     },
     "comment": {
       "brief": "Trigger actions performs an action at a given delay after a trigger is activated.",
@@ -199,6 +224,60 @@
             "titles": {
               "indexTitle": "IsActive",
               "fullyQualifiedIndexTitle": "Fuse.Triggers.Actions.TriggerAction.IsActive"
+            }
+          },
+          {
+            "comment": {
+              "brief": "@hide",
+              "full": "@hide"
+            },
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "id": {
+              "id": "fuse/triggers/actions/triggeraction/sourcefilename",
+              "parentId": "fuse/triggers/actions/triggeraction",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/actions/triggeraction/sourcefilename",
+              "href": "fuse/triggers/actions/triggeraction/sourcefilename"
+            },
+            "titles": {
+              "indexTitle": "SourceFileName",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.Actions.TriggerAction.SourceFileName"
+            }
+          },
+          {
+            "comment": {
+              "brief": "@hide",
+              "full": "@hide"
+            },
+            "returns": {
+              "href": "uno/int",
+              "title": "int",
+              "fullyQualifiedTitle": "int"
+            },
+            "id": {
+              "id": "fuse/triggers/actions/triggeraction/sourcelinenumber",
+              "parentId": "fuse/triggers/actions/triggeraction",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/actions/triggeraction/sourcelinenumber",
+              "href": "fuse/triggers/actions/triggeraction/sourcelinenumber"
+            },
+            "titles": {
+              "indexTitle": "SourceLineNumber",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.Actions.TriggerAction.SourceLineNumber"
             }
           },
           {

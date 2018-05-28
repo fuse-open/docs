@@ -23,7 +23,7 @@
       "namespaceTitle": "Fuse.Triggers",
       "namespaceUri": "fuse/triggers",
       "packageName": "Fuse.Triggers",
-      "packageVersion": "1.8.0-rc2"
+      "packageVersion": "1.9.0-rc1"
     },
     "inheritance": {
       "root": {
@@ -130,6 +130,29 @@
         }
       },
       {
+        "comment": {
+          "brief": "@hide",
+          "full": "@hide"
+        },
+        "id": {
+          "id": "fuse/isourcelocation",
+          "parentId": "fuse",
+          "type": "Interface",
+          "modifiers": [
+            "public",
+            "abstract"
+          ]
+        },
+        "uri": {
+          "idUri": "fuse/isourcelocation",
+          "href": "fuse/isourcelocation"
+        },
+        "titles": {
+          "indexTitle": "ISourceLocation",
+          "fullyQualifiedIndexTitle": "Fuse.ISourceLocation"
+        }
+      },
+      {
         "id": {
           "id": "uno/collections/icollection_1",
           "parentId": "uno/collections",
@@ -193,8 +216,8 @@
       "ux": "<StateGroup />"
     },
     "comment": {
-      "brief": "StateGroup manages a set of @State triggers, making sure only a single @State is active at once.\r\nA @State is a regular @Trigger that is controlled by a @StateGroup.\r\nAnimators inside a @State define what should change while that state is active.\r\n\r\nThe basic structure of a StateGroup looks like this:\r\n\r\n```xml\r\n<StateGroup>\r\n\t<State ux:Name=\"firstState\" />\r\n\t<State ux:Name=\"secondState\" />\r\n</StateGroup>\r\n```\r\n\r\nNow, this setup does nothing at all. We need to add some animators to our @States, so that they actually do something.\r\nWe'll add a @Panel as well, so we have something to animate.\r\n\r\n```xml\r\n<Panel ux:Name=\"thePanel\" Width=\"100\" Height=\"100\" />\r\n\t<StateGroup>\r\n\t\t<State ux:Name=\"firstState\">\r\n\t\t\t<Change thePanel.Color=\"#f00\" />\r\n\t\t</State>\r\n\t\t<State ux:Name=\"secondState\">\r\n\t\t\t<Change thePanel.Color=\"#00f\" />\r\n\t\t</State>\t\r\n\t</StateGroup>\r\n</Panel>\r\n```\r\n\r\nSince the first @State in a StateGroup will be activated by default, the above example will display a red @Panel.\r\n\r\nAt this point, we'd like to switch to a different state somehow. This can be achieved in several ways, as seen below.\r\n\r\n## The `Active` property\r\n\r\nThe `Active` property can be used to activate a particular @State.\r\nThe below example displays a colored @Panel, along with three buttons that change its color.\r\n\r\n```xml\r\n<StackPanel>\r\n\t<Panel ux:Name=\"thePanel\" Width=\"100\" Height=\"100\" />\r\n\r\n\t<StateGroup ux:Name=\"stateGroup\">\r\n\t\t<State ux:Name=\"redState\">\r\n\t\t\t<Change thePanel.Color=\"#f00\" Duration=\"0.2\"/>\r\n\t\t</State>\r\n\t\t<State ux:Name=\"greenState\">\r\n\t\t\t<Change thePanel.Color=\"#0f0\" Duration=\"0.2\"/>\r\n\t\t</State>\r\n\t\t<State ux:Name=\"blueState\">\r\n\t\t\t<Change thePanel.Color=\"#00f\" Duration=\"0.2\"/>\r\n\t\t</State>\r\n\t</StateGroup>\r\n\r\n\t<Grid ColumnCount=\"3\">\r\n\t\t<Button Text=\"Red\">\r\n\t\t\t<Clicked>\r\n\t\t\t\t<Set stateGroup.Active=\"redState\"/>\r\n\t\t\t</Clicked>\r\n\t\t</Button>\r\n\t\t<Button Text=\"Green\">\r\n\t\t\t<Clicked>\r\n\t\t\t\t<Set stateGroup.Active=\"greenState\"/>\r\n\t\t\t</Clicked>\r\n\t\t</Button>\r\n\t\t<Button Text=\"Blue\">\r\n\t\t\t<Clicked>\r\n\t\t\t\t<Set stateGroup.Active=\"blueState\"/>\r\n\t\t\t</Clicked>\r\n\t\t</Button>\r\n\t</Grid>\r\n</StackPanel>\r\n```\r\n\r\n## TransitionState\r\n\r\nInstead of directly jumping to a particular state, the @TransitionState action can be used to advance to the next @State in a StateGroup, following the order in which they are declared.\r\nIf a @TransitionState is triggered while the last @State is active, it wraps around to activate the first @State.\r\n\r\nThe following example displays a panel that will cycle its color between red, green and blue when clicked.\r\n\r\n```xml\r\n<Panel ux:Name=\"thePanel\" Width=\"100\" Height=\"100\">\r\n\t<StateGroup ux:Name=\"stateGroup\">\r\n\t\t<State ux:Name=\"redState\">\r\n\t\t\t<Change thePanel.Color=\"#f00\" Duration=\"0.2\"/>\r\n\t\t</State>\r\n\t\t<State ux:Name=\"greenState\">\r\n\t\t\t<Change thePanel.Color=\"#0f0\" Duration=\"0.2\"/>\r\n\t\t</State>\r\n\t\t<State ux:Name=\"blueState\">\r\n\t\t\t<Change thePanel.Color=\"#00f\" Duration=\"0.2\"/>\r\n\t\t</State>\r\n\t</StateGroup>\r\n\r\n\t<Clicked>\r\n\t\t<TransitionState Type=\"Next\" Target=\"stateGroup\" />\r\n\t</Clicked>\r\n</Panel>\r\n```\r\n\r\n## Controlling StateGroup using JavaScript\r\n\r\nA `StateGroup` may be controlled via its JavaScript interface.\r\nThis is done either by calling the `goto(state)` or `gotoNext()` methods on the @StateGroup itself, or by calling the `goto()` method on a particular @State.\r\n\r\n```xml\r\n<JavaScript>\r\n\texports.gotoNextState = function()\r\n\t{\r\n\t\tstateGroup.gotoNext();\r\n\t}\r\n\r\n\texports.gotoSecondState = function()\r\n\t{\r\n\t\tstateGroup.goto(secondState);\r\n\t}\r\n\r\n\texports.gotoThirdState = function()\r\n\t{\r\n\t\tthirdState.goto();\r\n\t}\r\n</JavaScript>\r\n\r\n<StateGroup ux:Name=\"stateGroup\">\r\n\t<State ux:Name=\"firstState\">\r\n\t\t<!-- ... -->\t\r\n\t</State>\r\n\t<State ux:Name=\"secondState\">\r\n\t\t<!-- ... -->\r\n\t</State>\r\n\t<State ux:Name=\"thirdState\">\r\n\t\t<!-- ... -->\r\n\t</State>\r\n</StateGroup>\r\n\r\n<StackPanel>\r\n\t<Button Clicked=\"{gotoNextState}\" Text=\"Next state\" />\r\n\t<Button Clicked=\"{gotoSecondState}\" Text=\"Second state\" />\r\n\t<Button Clicked=\"{gotoThirdState}\" Text=\"Third state\" />\r\n</StackPanel>\r\n```\r\n\r\n## Transition\r\n\r\nWe can also specify the `Transition` property, which can be either `Exclusive` or `Parallel`.\r\n`Exclusive` means that each state will have to be fully deactivated before the next state becomes active.\r\n`Parallel` means that as one state deactivates, the next one will become active and whatever properties they animate will be interpolated between them.",
-      "full": "StateGroup manages a set of @State triggers, making sure only a single @State is active at once.\r\nA @State is a regular @Trigger that is controlled by a @StateGroup.\r\nAnimators inside a @State define what should change while that state is active.\r\n\r\nThe basic structure of a StateGroup looks like this:\r\n\r\n```xml\r\n<StateGroup>\r\n\t<State ux:Name=\"firstState\" />\r\n\t<State ux:Name=\"secondState\" />\r\n</StateGroup>\r\n```\r\n\r\nNow, this setup does nothing at all. We need to add some animators to our @States, so that they actually do something.\r\nWe'll add a @Panel as well, so we have something to animate.\r\n\r\n```xml\r\n<Panel ux:Name=\"thePanel\" Width=\"100\" Height=\"100\" />\r\n\t<StateGroup>\r\n\t\t<State ux:Name=\"firstState\">\r\n\t\t\t<Change thePanel.Color=\"#f00\" />\r\n\t\t</State>\r\n\t\t<State ux:Name=\"secondState\">\r\n\t\t\t<Change thePanel.Color=\"#00f\" />\r\n\t\t</State>\t\r\n\t</StateGroup>\r\n</Panel>\r\n```\r\n\r\nSince the first @State in a StateGroup will be activated by default, the above example will display a red @Panel.\r\n\r\nAt this point, we'd like to switch to a different state somehow. This can be achieved in several ways, as seen below.\r\n\r\n## The `Active` property\r\n\r\nThe `Active` property can be used to activate a particular @State.\r\nThe below example displays a colored @Panel, along with three buttons that change its color.\r\n\r\n```xml\r\n<StackPanel>\r\n\t<Panel ux:Name=\"thePanel\" Width=\"100\" Height=\"100\" />\r\n\r\n\t<StateGroup ux:Name=\"stateGroup\">\r\n\t\t<State ux:Name=\"redState\">\r\n\t\t\t<Change thePanel.Color=\"#f00\" Duration=\"0.2\"/>\r\n\t\t</State>\r\n\t\t<State ux:Name=\"greenState\">\r\n\t\t\t<Change thePanel.Color=\"#0f0\" Duration=\"0.2\"/>\r\n\t\t</State>\r\n\t\t<State ux:Name=\"blueState\">\r\n\t\t\t<Change thePanel.Color=\"#00f\" Duration=\"0.2\"/>\r\n\t\t</State>\r\n\t</StateGroup>\r\n\r\n\t<Grid ColumnCount=\"3\">\r\n\t\t<Button Text=\"Red\">\r\n\t\t\t<Clicked>\r\n\t\t\t\t<Set stateGroup.Active=\"redState\"/>\r\n\t\t\t</Clicked>\r\n\t\t</Button>\r\n\t\t<Button Text=\"Green\">\r\n\t\t\t<Clicked>\r\n\t\t\t\t<Set stateGroup.Active=\"greenState\"/>\r\n\t\t\t</Clicked>\r\n\t\t</Button>\r\n\t\t<Button Text=\"Blue\">\r\n\t\t\t<Clicked>\r\n\t\t\t\t<Set stateGroup.Active=\"blueState\"/>\r\n\t\t\t</Clicked>\r\n\t\t</Button>\r\n\t</Grid>\r\n</StackPanel>\r\n```\r\n\r\n## TransitionState\r\n\r\nInstead of directly jumping to a particular state, the @TransitionState action can be used to advance to the next @State in a StateGroup, following the order in which they are declared.\r\nIf a @TransitionState is triggered while the last @State is active, it wraps around to activate the first @State.\r\n\r\nThe following example displays a panel that will cycle its color between red, green and blue when clicked.\r\n\r\n```xml\r\n<Panel ux:Name=\"thePanel\" Width=\"100\" Height=\"100\">\r\n\t<StateGroup ux:Name=\"stateGroup\">\r\n\t\t<State ux:Name=\"redState\">\r\n\t\t\t<Change thePanel.Color=\"#f00\" Duration=\"0.2\"/>\r\n\t\t</State>\r\n\t\t<State ux:Name=\"greenState\">\r\n\t\t\t<Change thePanel.Color=\"#0f0\" Duration=\"0.2\"/>\r\n\t\t</State>\r\n\t\t<State ux:Name=\"blueState\">\r\n\t\t\t<Change thePanel.Color=\"#00f\" Duration=\"0.2\"/>\r\n\t\t</State>\r\n\t</StateGroup>\r\n\r\n\t<Clicked>\r\n\t\t<TransitionState Type=\"Next\" Target=\"stateGroup\" />\r\n\t</Clicked>\r\n</Panel>\r\n```\r\n\r\n## Controlling StateGroup using JavaScript\r\n\r\nA `StateGroup` may be controlled via its JavaScript interface.\r\nThis is done either by calling the `goto(state)` or `gotoNext()` methods on the @StateGroup itself, or by calling the `goto()` method on a particular @State.\r\n\r\n```xml\r\n<JavaScript>\r\n\texports.gotoNextState = function()\r\n\t{\r\n\t\tstateGroup.gotoNext();\r\n\t}\r\n\r\n\texports.gotoSecondState = function()\r\n\t{\r\n\t\tstateGroup.goto(secondState);\r\n\t}\r\n\r\n\texports.gotoThirdState = function()\r\n\t{\r\n\t\tthirdState.goto();\r\n\t}\r\n</JavaScript>\r\n\r\n<StateGroup ux:Name=\"stateGroup\">\r\n\t<State ux:Name=\"firstState\">\r\n\t\t<!-- ... -->\t\r\n\t</State>\r\n\t<State ux:Name=\"secondState\">\r\n\t\t<!-- ... -->\r\n\t</State>\r\n\t<State ux:Name=\"thirdState\">\r\n\t\t<!-- ... -->\r\n\t</State>\r\n</StateGroup>\r\n\r\n<StackPanel>\r\n\t<Button Clicked=\"{gotoNextState}\" Text=\"Next state\" />\r\n\t<Button Clicked=\"{gotoSecondState}\" Text=\"Second state\" />\r\n\t<Button Clicked=\"{gotoThirdState}\" Text=\"Third state\" />\r\n</StackPanel>\r\n```\r\n\r\n## Transition\r\n\r\nWe can also specify the `Transition` property, which can be either `Exclusive` or `Parallel`.\r\n`Exclusive` means that each state will have to be fully deactivated before the next state becomes active.\r\n`Parallel` means that as one state deactivates, the next one will become active and whatever properties they animate will be interpolated between them."
+      "brief": "StateGroup manages a set of @State triggers, making sure only a single @State is active at once.\nA @State is a regular @Trigger that is controlled by a @StateGroup.\nAnimators inside a @State define what should change while that state is active.",
+      "full": "StateGroup manages a set of @State triggers, making sure only a single @State is active at once.\nA @State is a regular @Trigger that is controlled by a @StateGroup.\nAnimators inside a @State define what should change while that state is active.\n\nThe basic structure of a StateGroup looks like this:\n\n```xml\n<StateGroup>\n\t<State ux:Name=\"firstState\" />\n\t<State ux:Name=\"secondState\" />\n</StateGroup>\n```\n\nNow, this setup does nothing at all. We need to add some animators to our @States, so that they actually do something.\nWe'll add a @Panel as well, so we have something to animate.\n\n```xml\n<Panel ux:Name=\"thePanel\" Width=\"100\" Height=\"100\" />\n\t<StateGroup>\n\t\t<State ux:Name=\"firstState\">\n\t\t\t<Change thePanel.Color=\"#f00\" />\n\t\t</State>\n\t\t<State ux:Name=\"secondState\">\n\t\t\t<Change thePanel.Color=\"#00f\" />\n\t\t</State>\t\n\t</StateGroup>\n</Panel>\n```\n\nSince the first @State in a StateGroup will be activated by default, the above example will display a red @Panel.\n\nAt this point, we'd like to switch to a different state somehow. This can be achieved in several ways, as seen below.\n\n## The `Active` property\n\nThe `Active` property can be used to activate a particular @State.\nThe below example displays a colored @Panel, along with three buttons that change its color.\n\n```xml\n<StackPanel>\n\t<Panel ux:Name=\"thePanel\" Width=\"100\" Height=\"100\" />\n\n\t<StateGroup ux:Name=\"stateGroup\">\n\t\t<State ux:Name=\"redState\">\n\t\t\t<Change thePanel.Color=\"#f00\" Duration=\"0.2\"/>\n\t\t</State>\n\t\t<State ux:Name=\"greenState\">\n\t\t\t<Change thePanel.Color=\"#0f0\" Duration=\"0.2\"/>\n\t\t</State>\n\t\t<State ux:Name=\"blueState\">\n\t\t\t<Change thePanel.Color=\"#00f\" Duration=\"0.2\"/>\n\t\t</State>\n\t</StateGroup>\n\n\t<Grid ColumnCount=\"3\">\n\t\t<Button Text=\"Red\">\n\t\t\t<Clicked>\n\t\t\t\t<Set stateGroup.Active=\"redState\"/>\n\t\t\t</Clicked>\n\t\t</Button>\n\t\t<Button Text=\"Green\">\n\t\t\t<Clicked>\n\t\t\t\t<Set stateGroup.Active=\"greenState\"/>\n\t\t\t</Clicked>\n\t\t</Button>\n\t\t<Button Text=\"Blue\">\n\t\t\t<Clicked>\n\t\t\t\t<Set stateGroup.Active=\"blueState\"/>\n\t\t\t</Clicked>\n\t\t</Button>\n\t</Grid>\n</StackPanel>\n```\n\n## TransitionState\n\nInstead of directly jumping to a particular state, the @TransitionState action can be used to advance to the next @State in a StateGroup, following the order in which they are declared.\nIf a @TransitionState is triggered while the last @State is active, it wraps around to activate the first @State.\n\nThe following example displays a panel that will cycle its color between red, green and blue when clicked.\n\n```xml\n<Panel ux:Name=\"thePanel\" Width=\"100\" Height=\"100\">\n\t<StateGroup ux:Name=\"stateGroup\">\n\t\t<State ux:Name=\"redState\">\n\t\t\t<Change thePanel.Color=\"#f00\" Duration=\"0.2\"/>\n\t\t</State>\n\t\t<State ux:Name=\"greenState\">\n\t\t\t<Change thePanel.Color=\"#0f0\" Duration=\"0.2\"/>\n\t\t</State>\n\t\t<State ux:Name=\"blueState\">\n\t\t\t<Change thePanel.Color=\"#00f\" Duration=\"0.2\"/>\n\t\t</State>\n\t</StateGroup>\n\n\t<Clicked>\n\t\t<TransitionState Type=\"Next\" Target=\"stateGroup\" />\n\t</Clicked>\n</Panel>\n```\n\n## Controlling StateGroup using JavaScript\n\nA `StateGroup` may be controlled via its JavaScript interface.\nThis is done either by calling the `goto(state)` or `gotoNext()` methods on the @StateGroup itself, or by calling the `goto()` method on a particular @State.\n\n```xml\n<JavaScript>\n\texports.gotoNextState = function()\n\t{\n\t\tstateGroup.gotoNext();\n\t}\n\n\texports.gotoSecondState = function()\n\t{\n\t\tstateGroup.goto(secondState);\n\t}\n\n\texports.gotoThirdState = function()\n\t{\n\t\tthirdState.goto();\n\t}\n</JavaScript>\n\n<StateGroup ux:Name=\"stateGroup\">\n\t<State ux:Name=\"firstState\">\n\t\t<!-- ... -->\t\n\t</State>\n\t<State ux:Name=\"secondState\">\n\t\t<!-- ... -->\n\t</State>\n\t<State ux:Name=\"thirdState\">\n\t\t<!-- ... -->\n\t</State>\n</StateGroup>\n\n<StackPanel>\n\t<Button Clicked=\"{gotoNextState}\" Text=\"Next state\" />\n\t<Button Clicked=\"{gotoSecondState}\" Text=\"Second state\" />\n\t<Button Clicked=\"{gotoThirdState}\" Text=\"Third state\" />\n</StackPanel>\n```\n\n## Transition\n\nWe can also specify the `Transition` property, which can be either `Exclusive` or `Parallel`.\n`Exclusive` means that each state will have to be fully deactivated before the next state becomes active.\n`Parallel` means that as one state deactivates, the next one will become active and whatever properties they animate will be interpolated between them."
     }
   },
   "tableOfContents": {
@@ -396,6 +419,62 @@
             "titles": {
               "indexTitle": "Name",
               "fullyQualifiedIndexTitle": "Fuse.Node.Name"
+            }
+          },
+          {
+            "comment": {
+              "brief": "@hide",
+              "full": "@hide"
+            },
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "id": {
+              "id": "fuse/triggers/stategroup/sourcefilename",
+              "parentId": "fuse/triggers/stategroup",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/stategroup/sourcefilename",
+              "href": "fuse/node/sourcefilename",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "SourceFileName",
+              "fullyQualifiedIndexTitle": "Fuse.Node.SourceFileName"
+            }
+          },
+          {
+            "comment": {
+              "brief": "@hide",
+              "full": "@hide"
+            },
+            "returns": {
+              "href": "uno/int",
+              "title": "int",
+              "fullyQualifiedTitle": "int"
+            },
+            "id": {
+              "id": "fuse/triggers/stategroup/sourcelinenumber",
+              "parentId": "fuse/triggers/stategroup",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/triggers/stategroup/sourcelinenumber",
+              "href": "fuse/node/sourcelinenumber",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "SourceLineNumber",
+              "fullyQualifiedIndexTitle": "Fuse.Node.SourceLineNumber"
             }
           }
         ]

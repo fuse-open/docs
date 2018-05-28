@@ -23,7 +23,7 @@
       "namespaceTitle": "Fuse.Reactive",
       "namespaceUri": "fuse/reactive",
       "packageName": "Fuse.Reactive.Bindings",
-      "packageVersion": "1.8.0-rc2"
+      "packageVersion": "1.9.0-rc1"
     },
     "inheritance": {
       "root": {
@@ -157,6 +157,29 @@
         "titles": {
           "indexTitle": "IProperties",
           "fullyQualifiedIndexTitle": "Fuse.IProperties"
+        }
+      },
+      {
+        "comment": {
+          "brief": "@hide",
+          "full": "@hide"
+        },
+        "id": {
+          "id": "fuse/isourcelocation",
+          "parentId": "fuse",
+          "type": "Interface",
+          "modifiers": [
+            "public",
+            "abstract"
+          ]
+        },
+        "uri": {
+          "idUri": "fuse/isourcelocation",
+          "href": "fuse/isourcelocation"
+        },
+        "titles": {
+          "indexTitle": "ISourceLocation",
+          "fullyQualifiedIndexTitle": "Fuse.ISourceLocation"
         }
       },
       {
@@ -440,7 +463,7 @@
           {
             "comment": {
               "brief": "If specified will reuse existing items if a new item is created that has the same id.",
-              "full": "If specified will reuse existing items if a new item is created that has the same id.\n\nThe `IdentityKey` is a key into the provided objects. If the key is not found the item will not have an id, and will not be matched.\n\nMatched items keep the same Node instances that they had before. This makes it suitable for using in combination with `LayoutAnimation`. It also makes it possible to use `AddingAnimation` and `RemovingAnimation` with `Each`, as the Node lifetime will now follow the logical lifetime.\n\nThis feature works in conjunction with `replaceAt` and `replaceAll` on Observable's.\n\nNOTE: This feature, if using animations, does not yet operate well in combination with `Reuse`. It may result in reuse of unintended items and/or unexpected animations.\nhttps://github.com/fusetools/fuselibs-public/issues/175"
+              "full": "If specified will reuse existing items if a new item is created that has the same id.\n\nThe `IdentityKey` is a key into the provided objects. If the key is not found the item will not have an id, and will not be matched.\n\nMatched items keep the same Node instances that they had before. This makes it suitable for using in combination with `LayoutAnimation`. It also makes it possible to use `AddingAnimation` and `RemovingAnimation` with `Each`, as the Node lifetime will now follow the logical lifetime.\n\nThis feature works in conjunction with `replaceAt` and `replaceAll` on Observable's.\n\nNOTE: This feature, if using animations, does not yet operate well in combination with `Reuse`. It may result in reuse of unintended items and/or unexpected animations.\nhttps://github.com/fuse-open/fuselibs/issues/175"
             },
             "returns": {
               "href": "uno/string",
@@ -720,6 +743,62 @@
             "titles": {
               "indexTitle": "Name",
               "fullyQualifiedIndexTitle": "Fuse.Node.Name"
+            }
+          },
+          {
+            "comment": {
+              "brief": "@hide",
+              "full": "@hide"
+            },
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "id": {
+              "id": "fuse/reactive/instance/sourcefilename",
+              "parentId": "fuse/reactive/instance",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/instance/sourcefilename",
+              "href": "fuse/node/sourcefilename",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "SourceFileName",
+              "fullyQualifiedIndexTitle": "Fuse.Node.SourceFileName"
+            }
+          },
+          {
+            "comment": {
+              "brief": "@hide",
+              "full": "@hide"
+            },
+            "returns": {
+              "href": "uno/int",
+              "title": "int",
+              "fullyQualifiedTitle": "int"
+            },
+            "id": {
+              "id": "fuse/reactive/instance/sourcelinenumber",
+              "parentId": "fuse/reactive/instance",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/instance/sourcelinenumber",
+              "href": "fuse/node/sourcelinenumber",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "SourceLineNumber",
+              "fullyQualifiedIndexTitle": "Fuse.Node.SourceLineNumber"
             }
           }
         ]

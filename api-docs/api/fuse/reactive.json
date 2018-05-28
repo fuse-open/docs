@@ -110,6 +110,29 @@
           },
           {
             "comment": {
+              "brief": "Adjusts the hue of the color.",
+              "full": "Adjusts the hue of the color.\n\nThis adds the hue value to the hue in HSL color space. It is wrapped around to remain in the range 0..1."
+            },
+            "id": {
+              "id": "fuse/reactive/adjusthuefunction",
+              "parentId": "fuse/reactive",
+              "type": "UxClass",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/adjusthuefunction",
+              "href": "fuse/reactive/adjusthuefunction"
+            },
+            "titles": {
+              "indexTitle": "AdjustHueFunction",
+              "fullyQualifiedIndexTitle": "Fuse.Reactive.AdjustHueFunction"
+            }
+          },
+          {
+            "comment": {
               "brief": "Alternate between true/false values for ranges of integers.",
               "full": "Alternate between true/false values for ranges of integers.\n\n    alternate( value, groupSize )\n\nInput values are rounded to the nearest integer.\n\nExample:\n\n    alternate( value, 3 )\n\nThis will yield true for values 0,1,2, false for 3,4,5, true for 6,7,8, false for 9,10,11, etc."
             },
@@ -390,6 +413,29 @@
             }
           },
           {
+            "comment": {
+              "brief": "Reduces the lightness of a color.",
+              "full": "Reduces the lightness of a color.\n\nThis subtracts the lightness value in HSL color space.\n\nThe result is not clamped; refer to @BinaryColorFunction."
+            },
+            "id": {
+              "id": "fuse/reactive/darkenfunction",
+              "parentId": "fuse/reactive",
+              "type": "UxClass",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/darkenfunction",
+              "href": "fuse/reactive/darkenfunction"
+            },
+            "titles": {
+              "indexTitle": "DarkenFunction",
+              "fullyQualifiedIndexTitle": "Fuse.Reactive.DarkenFunction"
+            }
+          },
+          {
             "id": {
               "id": "fuse/reactive/data",
               "parentId": "fuse/reactive",
@@ -494,6 +540,29 @@
             "titles": {
               "indexTitle": "DegreesToRadians",
               "fullyQualifiedIndexTitle": "Fuse.Reactive.DegreesToRadians"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Decreases the saturation of a color.",
+              "full": "Decreases the saturation of a color.\n\nThis subtracts the saturation value in HSL color space.\n\nThe result is not clamped; refer to @BinaryColorFunction."
+            },
+            "id": {
+              "id": "fuse/reactive/desaturatefunction",
+              "parentId": "fuse/reactive",
+              "type": "UxClass",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/desaturatefunction",
+              "href": "fuse/reactive/desaturatefunction"
+            },
+            "titles": {
+              "indexTitle": "DesaturateFunction",
+              "fullyQualifiedIndexTitle": "Fuse.Reactive.DesaturateFunction"
             }
           },
           {
@@ -719,6 +788,29 @@
             }
           },
           {
+            "comment": {
+              "brief": "Converts a color from HSLA to RGBA.",
+              "full": "Converts a color from HSLA to RGBA.\n\nSee @RgbaToHslaFunction for notes on the format."
+            },
+            "id": {
+              "id": "fuse/reactive/hslatorgbafunction",
+              "parentId": "fuse/reactive",
+              "type": "UxClass",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/hslatorgbafunction",
+              "href": "fuse/reactive/hslatorgbafunction"
+            },
+            "titles": {
+              "indexTitle": "HslaToRgbaFunction",
+              "fullyQualifiedIndexTitle": "Fuse.Reactive.HslaToRgbaFunction"
+            }
+          },
+          {
             "id": {
               "id": "fuse/reactive/indexfunction",
               "parentId": "fuse/reactive",
@@ -916,7 +1008,7 @@
           {
             "comment": {
               "brief": "The `JavaScript` tag is used to run JavaScript and assigns its `module.exports` as data context for the parent visual.",
-              "full": "The `JavaScript` tag is used to run JavaScript and assigns its `module.exports` as data context for the parent visual.\n\n**Note:** ECMAScript 5.1 is the only JavaScript version that is supported across all platforms.\nWhile newer JavaScript features might work on some devices, this can't be guaranteed (particularly for earlier iOS versions).\n\n\r\n\r\n\r\n## Getting started\r\n\r\nJavaScript can be used in UX markup through the `JavaScript` class, either by pointing to external JavaScript files, like this:\r\n\r\n\t<JavaScript File=\"SomeCode.js\" />\r\n\r\nOr by inlining the JavaScript code in the tag, like this:\r\n\r\n\t<JavaScript>\r\n\t\tconsole.log(\"Hello, FuseJS!\");\r\n\t</JavaScript>\r\n\r\n## About FuseJS \r\n\r\nFuseJS is a JavaScript framework for writing cross-platform mobile app business logic. It consists of a bunch of classes that covers\r\nthe basic functionality required for creating native mobile apps, as well as the @Observable class which lets you expose data to the UI in a functional reactive way.\r\n\r\n## Modules\r\n\r\nFuseJS implements the <a href=\"http://www.commonjs.org/\">CommonJS</a> module system. Each code file or inline snippet is a _module_.\r\n\r\nIn order to expose data and functions to other modules, one can add them to the `module.exports` object:\r\n\r\n\t<JavaScript>\r\n\t\tmodule.exports = {\r\n\t\t\texportedSymbol: \"Hello, rest of the world!\"\r\n\t\t};\r\n\t</JavaScript>\r\n\r\nFailing to export from modules will make it impossible to reach defined data inside the module:\r\n\r\n\t<JavaScript>\r\n\t\tvar data = [1, 2, 3];\r\n\t\tvar invisible = \"I'm invisible\";\r\n\r\n\t\tmodule.exports = {\r\n\t\t\tdata: data\r\n\t\t};\r\n\t</JavaScript>\r\n\r\nThis is good for hiding implementation details from other calling JavaScript modules and UX code.\r\n\r\n\r\n## Importing modules\r\n\r\nEach code file (or inline snippet) defines a module.\r\n\r\nYou can import JavaScript modules by their file name. To do this, make sure your JavaScript files are included in your .unoproj file as \"Bundle\" files:\r\n\r\n\r\n\t\"Includes\": [\r\n\t\t\"yourJavaScriptFile.js:Bundle\"\r\n\t\t..other files ..\r\n\t]\r\n\r\nor if you want to make all JavaScript files be includes as bundled files:\r\n\r\n\t\"Includes\": [\r\n\t\t\"**.js:Bundle\"\r\n\t]\r\n\r\nThen, you can require using the JavaScript file name:\r\n\r\n\tvar myModule = require('/someJavaScriptFile.js');\r\n\r\n\r\nNote that prefixing the file name with a \"/\" means that we are looking for the file relative to the project root directory. To name a file relative to the current file, prefix with \"./\". By omitting the prefixes, the file name is relative to the project root, or the global module it's in.\r\n\r\n\tvar relativeToProjectRoot = require('/SomeComponent');\r\n\tvar relativeFile = require('./MainView');\r\n\tvar relativeToRootOrGlobalModule = require('SomeOtherComponent.js');\r\n\r\n> Note that you may omit the .js file extension in the file name if you wish\r\n\r\n## Module instancing\r\n\r\nFuse's treatment of the `<JavaScript>` tag has some important differences from how modules work in the <a href=\"http://www.commonjs.org/\">CommonJS</a> module system.\r\n\r\nA module inside a `<JavaScript>` tag (or pointed to in an external file) will be instantiated once *for each time* the surrounding UX scope is instantiated. This means that if the `<JavaScript>` tag is part of a component, each instance of that component will initialise the code and have a separate set of the local variables and exports.\r\n\r\n### Cleaning up after modules\r\n\r\nIn Fuse, a JavaScript module can correspond to multiple module instances that get created and destroyed on the fly. If your module allocates resources that need manual cleanup, such as creating explicit `Observable` subscriptions, you can assign a handler to `module.disposed` and clean up after yourself there.\r\n\r\nExample:\r\n\r\n\tvar foo = getSomeGlobalObservable();\r\n\r\n\tfunction fooChanged() { ... }\r\n\t\r\n\tfoo.addSubscriber(fooChanged);\r\n\r\n\t...\r\n\r\n\tmodule.disposed = function () {\r\n\t\tfoo.removeSubscriber(fooChanged)\r\n\t}\r\n\r\n## Design and motivation\r\n\r\nThe key design goal of FuseJS is to keep your JavaScript code small, clean and only concerned with the practical functions of your application. Meanwhile\r\nall things related to UX, such as layout, data presentation, animation and gesture response, is left to declarative UX markup and native UI components.\r\n\r\nThe way Fuse separates JavaScript business logic from UX markup presentation has some clear benefits:\r\n\r\n* Performance - all the performance critical bits are handled in native code and based on native UI components.\r\n* Easy - declarative code is easy to read, write and understand even with limited programming knowledge\r\n* Less error prone - fewer states means fewer things can go wrong\r\n  * Visual tooling - UX markup can be edited by Fuse tools such as inspectors, timelines and generally cool drag & droppy stuff.\r\n\r\nNote that Fuse has tons of declarative APIs (designed for UX markup) that replace the need for controlling animation from JavaScript (i.e. imperatively).\r\n\r\nMany other JavaScript frameworks mix imperative UI code, animation and performance critical tasks into JavaScript, hence many people new to FuseJS tend to try\r\ndoing things this way in the beginning. While most of these things are technically possible in FuseJS, it is discouraged. We recommend taking some\r\ntime to study the Fuse examples to get a feel for the new way of doing things.\r\n\r\nPurifying your code by separating view and logic into UX markup and JavaScript can shrink your code base significantly, make it more maintainable, and allow\r\nmore effective collaboration between UX designers and developers.\r\n\r\nIf you need to write performance-critical business logic, we recommend doing that in native code or alternatively in Uno code instead of in JavaScript.",
+              "full": "The `JavaScript` tag is used to run JavaScript and assigns its `module.exports` as data context for the parent visual.\n\n**Note:** ECMAScript 5.1 is the only JavaScript version that is supported across all platforms.\nWhile newer JavaScript features might work on some devices, this can't be guaranteed (particularly for earlier iOS versions).\n\n## Getting started\n\nJavaScript can be used in UX markup through the `JavaScript` class, either by pointing to external JavaScript files, like this:\n\n\t<JavaScript File=\"SomeCode.js\" />\n\nOr by inlining the JavaScript code in the tag, like this:\n\n\t<JavaScript>\n\t\tconsole.log(\"Hello, FuseJS!\");\n\t</JavaScript>\n\n## About FuseJS \n\nFuseJS is a JavaScript framework for writing cross-platform mobile app business logic. It consists of a bunch of classes that covers\nthe basic functionality required for creating native mobile apps, as well as the @Observable class which lets you expose data to the UI in a functional reactive way.\n\n## Modules\n\nFuseJS implements the <a href=\"http://www.commonjs.org/\">CommonJS</a> module system. Each code file or inline snippet is a _module_.\n\nIn order to expose data and functions to other modules, one can add them to the `module.exports` object:\n\n\t<JavaScript>\n\t\tmodule.exports = {\n\t\t\texportedSymbol: \"Hello, rest of the world!\"\n\t\t};\n\t</JavaScript>\n\nFailing to export from modules will make it impossible to reach defined data inside the module:\n\n\t<JavaScript>\n\t\tvar data = [1, 2, 3];\n\t\tvar invisible = \"I'm invisible\";\n\n\t\tmodule.exports = {\n\t\t\tdata: data\n\t\t};\n\t</JavaScript>\n\nThis is good for hiding implementation details from other calling JavaScript modules and UX code.\n\n## Importing modules\n\nEach code file (or inline snippet) defines a module.\n\nYou can import JavaScript modules by their file name. To do this, make sure your JavaScript files are included in your .unoproj file as \"Bundle\" files:\n\n\t\"Includes\": [\n\t\t\"yourJavaScriptFile.js:Bundle\"\n\t\t..other files ..\n\t]\n\nor if you want to make all JavaScript files be includes as bundled files:\n\n\t\"Includes\": [\n\t\t\"**.js:Bundle\"\n\t]\n\nThen, you can require using the JavaScript file name:\n\n\tvar myModule = require('/someJavaScriptFile.js');\n\nNote that prefixing the file name with a \"/\" means that we are looking for the file relative to the project root directory. To name a file relative to the current file, prefix with \"./\". By omitting the prefixes, the file name is relative to the project root, or the global module it's in.\n\n\tvar relativeToProjectRoot = require('/SomeComponent');\n\tvar relativeFile = require('./MainView');\n\tvar relativeToRootOrGlobalModule = require('SomeOtherComponent.js');\n\n> Note that you may omit the .js file extension in the file name if you wish\n\n## Module instancing\n\nFuse's treatment of the `<JavaScript>` tag has some important differences from how modules work in the <a href=\"http://www.commonjs.org/\">CommonJS</a> module system.\n\nA module inside a `<JavaScript>` tag (or pointed to in an external file) will be instantiated once *for each time* the surrounding UX scope is instantiated. This means that if the `<JavaScript>` tag is part of a component, each instance of that component will initialise the code and have a separate set of the local variables and exports.\n\n### Cleaning up after modules\n\nIn Fuse, a JavaScript module can correspond to multiple module instances that get created and destroyed on the fly. If your module allocates resources that need manual cleanup, such as creating explicit `Observable` subscriptions, you can assign a handler to `module.disposed` and clean up after yourself there.\n\nExample:\n\n\tvar foo = getSomeGlobalObservable();\n\n\tfunction fooChanged() { ... }\n\t\n\tfoo.addSubscriber(fooChanged);\n\n\t...\n\n\tmodule.disposed = function () {\n\t\tfoo.removeSubscriber(fooChanged)\n\t}\n\n## Design and motivation\n\nThe key design goal of FuseJS is to keep your JavaScript code small, clean and only concerned with the practical functions of your application. Meanwhile\nall things related to UX, such as layout, data presentation, animation and gesture response, is left to declarative UX markup and native UI components.\n\nThe way Fuse separates JavaScript business logic from UX markup presentation has some clear benefits:\n\n* Performance - all the performance critical bits are handled in native code and based on native UI components.\n* Easy - declarative code is easy to read, write and understand even with limited programming knowledge\n* Less error prone - fewer states means fewer things can go wrong\n  * Visual tooling - UX markup can be edited by Fuse tools such as inspectors, timelines and generally cool drag & droppy stuff.\n\nNote that Fuse has tons of declarative APIs (designed for UX markup) that replace the need for controlling animation from JavaScript (i.e. imperatively).\n\nMany other JavaScript frameworks mix imperative UI code, animation and performance critical tasks into JavaScript, hence many people new to FuseJS tend to try\ndoing things this way in the beginning. While most of these things are technically possible in FuseJS, it is discouraged. We recommend taking some\ntime to study the Fuse examples to get a feel for the new way of doing things.\n\nPurifying your code by separating view and logic into UX markup and JavaScript can shrink your code base significantly, make it more maintainable, and allow\nmore effective collaboration between UX designers and developers.\n\nIf you need to write performance-critical business logic, we recommend doing that in native code or alternatively in Uno code instead of in JavaScript.",
               "attributes": {
                 "topic": "JavaScript"
               }
@@ -1199,6 +1291,29 @@
             "titles": {
               "indexTitle": "LetString",
               "fullyQualifiedIndexTitle": "Fuse.Reactive.LetString"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Increases the lightness of a color.",
+              "full": "Increases the lightness of a color.\n\nThis adds the lightness value in HSL color space.\n\nThe result is not clamped; refer to @BinaryColorFunction."
+            },
+            "id": {
+              "id": "fuse/reactive/lightenfunction",
+              "parentId": "fuse/reactive",
+              "type": "UxClass",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/lightenfunction",
+              "href": "fuse/reactive/lightenfunction"
+            },
+            "titles": {
+              "indexTitle": "LightenFunction",
+              "fullyQualifiedIndexTitle": "Fuse.Reactive.LightenFunction"
             }
           },
           {
@@ -1737,6 +1852,29 @@
             }
           },
           {
+            "comment": {
+              "brief": "Converts a color from RGBA to HSLA color space.",
+              "full": "Converts a color from RGBA to HSLA color space.\n\nThe result is a float4 with this format:\n\n    float4( hue, saturation, lightness, alpha )\n\nValues in HSL are normalized just like in RGB. Hue is 0..1, covering the range 0° to 360°. Saturation and lightness are 0..1. Alpha is 0..1 is copied from the input RGBA value."
+            },
+            "id": {
+              "id": "fuse/reactive/rgbatohslafunction",
+              "parentId": "fuse/reactive",
+              "type": "UxClass",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/rgbatohslafunction",
+              "href": "fuse/reactive/rgbatohslafunction"
+            },
+            "titles": {
+              "indexTitle": "RgbaToHslaFunction",
+              "fullyQualifiedIndexTitle": "Fuse.Reactive.RgbaToHslaFunction"
+            }
+          },
+          {
             "id": {
               "id": "fuse/reactive/round",
               "parentId": "fuse/reactive",
@@ -1753,6 +1891,75 @@
             "titles": {
               "indexTitle": "Round",
               "fullyQualifiedIndexTitle": "Fuse.Reactive.Round"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Increases the saturation of a color.",
+              "full": "Increases the saturation of a color.\n\nThis adds the saturation value in HSL color space.\n\nThe result is not clamped; refer to @BinaryColorFunction."
+            },
+            "id": {
+              "id": "fuse/reactive/saturatefunction",
+              "parentId": "fuse/reactive",
+              "type": "UxClass",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/saturatefunction",
+              "href": "fuse/reactive/saturatefunction"
+            },
+            "titles": {
+              "indexTitle": "SaturateFunction",
+              "fullyQualifiedIndexTitle": "Fuse.Reactive.SaturateFunction"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Scales the lightness of the color towards white or black.",
+              "full": "Scales the lightness of the color towards white or black.\n\nPositive values from 0..1 lerp between the current lightness and `1`.\nNegative values from 0..1 lerp between the current ligthness and `0`.\n\nThe scaling is done in HSL color space."
+            },
+            "id": {
+              "id": "fuse/reactive/scalelightnessfunction",
+              "parentId": "fuse/reactive",
+              "type": "UxClass",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/scalelightnessfunction",
+              "href": "fuse/reactive/scalelightnessfunction"
+            },
+            "titles": {
+              "indexTitle": "ScaleLightnessFunction",
+              "fullyQualifiedIndexTitle": "Fuse.Reactive.ScaleLightnessFunction"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Scales the saturation of the color towards full or none.",
+              "full": "Scales the saturation of the color towards full or none.\n\nPositive values from 0..1 lerp between the current saturation and `1`.\nNegative values from 0..1 lerp between the current saturation and `0`.\n\nThe scaling is done in HSL color space."
+            },
+            "id": {
+              "id": "fuse/reactive/scalesaturationfunction",
+              "parentId": "fuse/reactive",
+              "type": "UxClass",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/scalesaturationfunction",
+              "href": "fuse/reactive/scalesaturationfunction"
+            },
+            "titles": {
+              "indexTitle": "ScaleSaturationFunction",
+              "fullyQualifiedIndexTitle": "Fuse.Reactive.ScaleSaturationFunction"
             }
           },
           {
@@ -2218,6 +2425,29 @@
         "items": [
           {
             "comment": {
+              "brief": "Functions for modifying color values.",
+              "full": "Functions for modifying color values.\n\nColors in Fuse are represented as RGBA values. A `float3` converts to a `float4` by having a `1` implicitly added as the alpha value. Hex strings can also convert to color values.\n\nMost of the operations are calculated in HSL color space, first by converting the RGB value to HSL, performing the operation, and converting back to RGB.  The alpha value is not modified by RGB <=> HSL conversions.\n\nClamping is, in general, not done on the inputs, intermediaries, or outputs. This means you may end up with RGB values outside of the 0..1 range. This ensures that color information is not prematurely lost when performing multiplate operations.\n\n[subclass Fuse.Reactive.BinaryColorFunction]\n\nTo work directly with HSL values you can use the `hslaToRgba` and `rgbaToHsla` functions."
+            },
+            "id": {
+              "id": "fuse/reactive/binarycolorfunction",
+              "parentId": "fuse/reactive",
+              "type": "Class",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/binarycolorfunction",
+              "href": "fuse/reactive/binarycolorfunction"
+            },
+            "titles": {
+              "indexTitle": "BinaryColorFunction",
+              "fullyQualifiedIndexTitle": "Fuse.Reactive.BinaryColorFunction"
+            }
+          },
+          {
+            "comment": {
               "brief": "[subclass Fuse.Reactive.BinaryFloatOperator]",
               "full": "[subclass Fuse.Reactive.BinaryFloatOperator]"
             },
@@ -2429,7 +2659,7 @@
           {
             "comment": {
               "brief": "Subscribes to many argument expressions used in higher level functions. This collects common\nbehaviour and means to simplify higher-level code.",
-              "full": "Subscribes to many argument expressions used in higher level functions. This collects common\nbehaviour and means to simplify higher-level code.\n\nNOTE: The use of InnerListener is questionable but unavoidable at this time.\nhttps://github.com/fusetools/fuselibs-public/issues/785\n\n@hide"
+              "full": "Subscribes to many argument expressions used in higher level functions. This collects common\nbehaviour and means to simplify higher-level code.\n\nNOTE: The use of InnerListener is questionable but unavoidable at this time.\nhttps://github.com/fuse-open/fuselibs/issues/785\n\n@hide"
             },
             "id": {
               "id": "fuse/reactive/expressionsubscriber",

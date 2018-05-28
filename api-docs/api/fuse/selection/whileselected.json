@@ -23,7 +23,7 @@
       "namespaceTitle": "Fuse.Selection",
       "namespaceUri": "fuse/selection",
       "packageName": "Fuse.Selection",
-      "packageVersion": "1.8.0-rc2"
+      "packageVersion": "1.9.0-rc1"
     },
     "inheritance": {
       "root": {
@@ -170,6 +170,29 @@
         }
       },
       {
+        "comment": {
+          "brief": "@hide",
+          "full": "@hide"
+        },
+        "id": {
+          "id": "fuse/isourcelocation",
+          "parentId": "fuse",
+          "type": "Interface",
+          "modifiers": [
+            "public",
+            "abstract"
+          ]
+        },
+        "uri": {
+          "idUri": "fuse/isourcelocation",
+          "href": "fuse/isourcelocation"
+        },
+        "titles": {
+          "indexTitle": "ISourceLocation",
+          "fullyQualifiedIndexTitle": "Fuse.ISourceLocation"
+        }
+      },
+      {
         "id": {
           "id": "uno/collections/icollection_1",
           "parentId": "uno/collections",
@@ -234,7 +257,7 @@
     "comment": {
       "brief": "This trigger is active while the @Selectable is currently selected in the @Selection",
       "full": "This trigger is active while the @Selectable is currently selected in the @Selection\n\nThis attaches to the first @Selectable node that is an ancestor of this one.\n\nConsider also the `isSelected()` function for use in expressions.",
-      "examples": "The following example uses @Selection to create a simple list of options. Tap the items to toggle their selection. `Values` is bound to a JavaScript `Observable` in order to track the currently selected items.\r\n\r\n\t<Panel ux:Class=\"MyItem\" Color=\"#aaa\">\r\n\t\t<string ux:Property=\"Label\" />\r\n\t\t<string ux:Property=\"Value\" />\r\n\t\t\r\n\t\t<Selectable Value=\"{ReadProperty this.Value}\" />\r\n\t\t<Text Value=\"{ReadProperty this.Label}\" />\r\n\t\t\r\n\t\t<WhileSelected>\r\n\t\t\t<Change this.Color=\"#ffc\" />\r\n\t\t</WhileSelected>\r\n\t\t<Tapped>\r\n\t\t\t<ToggleSelection />\r\n\t\t</Tapped>\r\n\t</Panel>\r\n\r\n\t<JavaScript>\r\n\t\tvar Observable = require(\"FuseJS/Observable\");\r\n\r\n\t\tvar values = Observable();\r\n\t\tvar list = Observable(function() {\r\n\t\t\treturn values.toArray().join(\",\");\r\n\t\t});\r\n\r\n\t\tmodule.exports = {\r\n\t\t\tvalues: values,\r\n\t\t\tlist: list\r\n\t\t};\r\n\t</JavaScript>\r\n\r\n\t<StackPanel>\r\n\t\t<Selection Values=\"{values}\" />\r\n\t\r\n\t\t<MyItem Label=\"Big Red One\" Value=\"sku-01\" />\r\n\t\t<MyItem Label=\"Small Green Two\" Value=\"sku-02\" />\r\n\t\t<MyItem Label=\"Third Last One\" Value=\"sku-03\" />\r\n\t\t<MyItem Label=\"Four Fore For\" Value=\"sku-04\" />\r\n\t\t<MyItem Label=\"Point Oh-Five\" Value=\"sku-05\" />\r\n\r\n\t\t<Text Value=\"Selected:\" Margin=\"0,10,0,0\" />\r\n\t\t<Text Value=\"{list}\" />\r\n\t</StackPanel>"
+      "examples": "The following example uses @Selection to create a simple list of options. Tap the items to toggle their selection. `Values` is bound to a JavaScript `Observable` in order to track the currently selected items.\n\n\t<Panel ux:Class=\"MyItem\" Color=\"#aaa\">\n\t\t<string ux:Property=\"Label\" />\n\t\t<string ux:Property=\"Value\" />\n\t\t\n\t\t<Selectable Value=\"{ReadProperty this.Value}\" />\n\t\t<Text Value=\"{ReadProperty this.Label}\" />\n\t\t\n\t\t<WhileSelected>\n\t\t\t<Change this.Color=\"#ffc\" />\n\t\t</WhileSelected>\n\t\t<Tapped>\n\t\t\t<ToggleSelection />\n\t\t</Tapped>\n\t</Panel>\n\n\t<JavaScript>\n\t\tvar Observable = require(\"FuseJS/Observable\");\n\n\t\tvar values = Observable();\n\t\tvar list = Observable(function() {\n\t\t\treturn values.toArray().join(\",\");\n\t\t});\n\n\t\tmodule.exports = {\n\t\t\tvalues: values,\n\t\t\tlist: list\n\t\t};\n\t</JavaScript>\n\n\t<StackPanel>\n\t\t<Selection Values=\"{values}\" />\n\t\n\t\t<MyItem Label=\"Big Red One\" Value=\"sku-01\" />\n\t\t<MyItem Label=\"Small Green Two\" Value=\"sku-02\" />\n\t\t<MyItem Label=\"Third Last One\" Value=\"sku-03\" />\n\t\t<MyItem Label=\"Four Fore For\" Value=\"sku-04\" />\n\t\t<MyItem Label=\"Point Oh-Five\" Value=\"sku-05\" />\n\n\t\t<Text Value=\"Selected:\" Margin=\"0,10,0,0\" />\n\t\t<Text Value=\"{list}\" />\n\t</StackPanel>"
     }
   },
   "tableOfContents": {
@@ -698,6 +721,62 @@
             "titles": {
               "indexTitle": "Name",
               "fullyQualifiedIndexTitle": "Fuse.Node.Name"
+            }
+          },
+          {
+            "comment": {
+              "brief": "@hide",
+              "full": "@hide"
+            },
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "id": {
+              "id": "fuse/selection/whileselected/sourcefilename",
+              "parentId": "fuse/selection/whileselected",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/selection/whileselected/sourcefilename",
+              "href": "fuse/node/sourcefilename",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "SourceFileName",
+              "fullyQualifiedIndexTitle": "Fuse.Node.SourceFileName"
+            }
+          },
+          {
+            "comment": {
+              "brief": "@hide",
+              "full": "@hide"
+            },
+            "returns": {
+              "href": "uno/int",
+              "title": "int",
+              "fullyQualifiedTitle": "int"
+            },
+            "id": {
+              "id": "fuse/selection/whileselected/sourcelinenumber",
+              "parentId": "fuse/selection/whileselected",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/selection/whileselected/sourcelinenumber",
+              "href": "fuse/node/sourcelinenumber",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "SourceLineNumber",
+              "fullyQualifiedIndexTitle": "Fuse.Node.SourceLineNumber"
             }
           }
         ]

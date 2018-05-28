@@ -2,8 +2,8 @@
   "entity": {
     "base": {
       "id": {
-        "id": "fuse/navigation/navigationtriggeraction",
-        "parentId": "fuse/navigation",
+        "id": "fuse/triggers/actions/triggeraction",
+        "parentId": "fuse/triggers/actions",
         "type": "Class",
         "modifiers": [
           "public",
@@ -11,19 +11,19 @@
         ]
       },
       "uri": {
-        "idUri": "fuse/navigation/navigationtriggeraction",
-        "href": "fuse/navigation/navigationtriggeraction"
+        "idUri": "fuse/triggers/actions/triggeraction",
+        "href": "fuse/triggers/actions/triggeraction"
       },
       "titles": {
-        "indexTitle": "NavigationTriggerAction",
-        "fullyQualifiedIndexTitle": "Fuse.Navigation.NavigationTriggerAction"
+        "indexTitle": "TriggerAction",
+        "fullyQualifiedIndexTitle": "Fuse.Triggers.Actions.TriggerAction"
       }
     },
     "location": {
       "namespaceTitle": "Fuse.Navigation",
       "namespaceUri": "fuse/navigation",
       "packageName": "Fuse.Navigation",
-      "packageVersion": "1.8.0-rc2"
+      "packageVersion": "1.9.0-rc1"
     },
     "inheritance": {
       "root": {
@@ -39,17 +39,10 @@
                 "title": "Fuse.Triggers.Actions.TriggerAction",
                 "children": [
                   {
-                    "uri": "fuse/navigation/navigationtriggeraction",
-                    "title": "Fuse.Navigation.NavigationTriggerAction",
-                    "children": [
-                      {
-                        "uri": "fuse/navigation/navigatetoggle",
-                        "title": "Fuse.Navigation.NavigateToggle",
-                        "children": [],
-                        "isCurrent": true
-                      }
-                    ],
-                    "isAncestor": true
+                    "uri": "fuse/navigation/navigatetoggle",
+                    "title": "Fuse.Navigation.NavigateToggle",
+                    "children": [],
+                    "isCurrent": true
                   }
                 ],
                 "isAncestor": true
@@ -67,6 +60,31 @@
       "uxNamespaceUri": "fuse/navigation",
       "uxName": "NavigateToggle"
     },
+    "implementedInterfaces": [
+      {
+        "comment": {
+          "brief": "@hide",
+          "full": "@hide"
+        },
+        "id": {
+          "id": "fuse/isourcelocation",
+          "parentId": "fuse",
+          "type": "Interface",
+          "modifiers": [
+            "public",
+            "abstract"
+          ]
+        },
+        "uri": {
+          "idUri": "fuse/isourcelocation",
+          "href": "fuse/isourcelocation"
+        },
+        "titles": {
+          "indexTitle": "ISourceLocation",
+          "fullyQualifiedIndexTitle": "Fuse.ISourceLocation"
+        }
+      }
+    ],
     "id": {
       "id": "fuse/navigation/navigatetoggle",
       "parentId": "fuse/navigation",
@@ -87,7 +105,7 @@
       "fullyQualifiedIndexTitle": "Fuse.Navigation.NavigateToggle"
     },
     "syntax": {
-      "uno": "public class NavigateToggle : Fuse.Navigation.NavigationTriggerAction {}",
+      "uno": "public class NavigateToggle : Fuse.Triggers.Actions.TriggerAction {}",
       "ux": "<NavigateToggle />"
     },
     "comment": {
@@ -119,6 +137,34 @@
         "items": [
           {
             "comment": {
+              "attributes": {
+                "deprecated": true
+              }
+            },
+            "returns": {
+              "href": "fuse/navigation/inavigation",
+              "title": "INavigation",
+              "fullyQualifiedTitle": "Fuse.Navigation.INavigation"
+            },
+            "id": {
+              "id": "fuse/navigation/navigatetoggle/navigationcontext",
+              "parentId": "fuse/navigation/navigatetoggle",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/navigatetoggle/navigationcontext",
+              "href": "fuse/navigation/navigatetoggle/navigationcontext"
+            },
+            "titles": {
+              "indexTitle": "NavigationContext",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.NavigateToggle.NavigationContext"
+            }
+          },
+          {
+            "comment": {
               "brief": "The item to have its navigated state toggled.",
               "full": "The item to have its navigated state toggled."
             },
@@ -142,53 +188,6 @@
             "titles": {
               "indexTitle": "Target",
               "fullyQualifiedIndexTitle": "Fuse.Navigation.NavigateToggle.Target"
-            }
-          }
-        ]
-      },
-      {
-        "declaredIn": {
-          "id": {
-            "id": "fuse/navigation/navigationtriggeraction",
-            "parentId": "fuse/navigation",
-            "type": "Class",
-            "modifiers": [
-              "public",
-              "abstract"
-            ]
-          },
-          "uri": {
-            "idUri": "fuse/navigation/navigationtriggeraction",
-            "href": "fuse/navigation/navigationtriggeraction"
-          },
-          "titles": {
-            "indexTitle": "NavigationTriggerAction",
-            "fullyQualifiedIndexTitle": "Fuse.Navigation.NavigationTriggerAction"
-          }
-        },
-        "items": [
-          {
-            "returns": {
-              "href": "fuse/navigation/inavigation",
-              "title": "INavigation",
-              "fullyQualifiedTitle": "Fuse.Navigation.INavigation"
-            },
-            "id": {
-              "id": "fuse/navigation/navigatetoggle/navigationcontext",
-              "parentId": "fuse/navigation/navigatetoggle",
-              "type": "UxProperty",
-              "modifiers": [
-                "public"
-              ]
-            },
-            "uri": {
-              "idUri": "fuse/navigation/navigatetoggle/navigationcontext",
-              "href": "fuse/navigation/navigationtriggeraction/navigationcontext",
-              "isVirtual": true
-            },
-            "titles": {
-              "indexTitle": "NavigationContext",
-              "fullyQualifiedIndexTitle": "Fuse.Navigation.NavigationTriggerAction.NavigationContext"
             }
           }
         ]
@@ -316,6 +315,62 @@
             "titles": {
               "indexTitle": "IsActive",
               "fullyQualifiedIndexTitle": "Fuse.Triggers.Actions.TriggerAction.IsActive"
+            }
+          },
+          {
+            "comment": {
+              "brief": "@hide",
+              "full": "@hide"
+            },
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "id": {
+              "id": "fuse/navigation/navigatetoggle/sourcefilename",
+              "parentId": "fuse/navigation/navigatetoggle",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/navigatetoggle/sourcefilename",
+              "href": "fuse/triggers/actions/triggeraction/sourcefilename",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "SourceFileName",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.Actions.TriggerAction.SourceFileName"
+            }
+          },
+          {
+            "comment": {
+              "brief": "@hide",
+              "full": "@hide"
+            },
+            "returns": {
+              "href": "uno/int",
+              "title": "int",
+              "fullyQualifiedTitle": "int"
+            },
+            "id": {
+              "id": "fuse/navigation/navigatetoggle/sourcelinenumber",
+              "parentId": "fuse/navigation/navigatetoggle",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/navigatetoggle/sourcelinenumber",
+              "href": "fuse/triggers/actions/triggeraction/sourcelinenumber",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "SourceLineNumber",
+              "fullyQualifiedIndexTitle": "Fuse.Triggers.Actions.TriggerAction.SourceLineNumber"
             }
           },
           {
@@ -516,63 +571,6 @@
       }
     ],
     "methods": [
-      {
-        "declaredIn": {
-          "id": {
-            "id": "fuse/navigation/navigationtriggeraction",
-            "parentId": "fuse/navigation",
-            "type": "Class",
-            "modifiers": [
-              "public",
-              "abstract"
-            ]
-          },
-          "uri": {
-            "idUri": "fuse/navigation/navigationtriggeraction",
-            "href": "fuse/navigation/navigationtriggeraction"
-          },
-          "titles": {
-            "indexTitle": "NavigationTriggerAction",
-            "fullyQualifiedIndexTitle": "Fuse.Navigation.NavigationTriggerAction"
-          }
-        },
-        "items": [
-          {
-            "parameters": [
-              {
-                "name": "ctx",
-                "href": "fuse/navigation/inavigation",
-                "title": "INavigation",
-                "fullyQualifiedTitle": "Fuse.Navigation.INavigation"
-              },
-              {
-                "name": "n",
-                "href": "fuse/node",
-                "title": "Node",
-                "fullyQualifiedTitle": "Fuse.Node"
-              }
-            ],
-            "id": {
-              "id": "fuse/navigation/navigatetoggle/perform_76ae2ead",
-              "parentId": "fuse/navigation/navigatetoggle",
-              "type": "Method",
-              "modifiers": [
-                "protected",
-                "abstract"
-              ]
-            },
-            "uri": {
-              "idUri": "fuse/navigation/navigatetoggle/perform_76ae2ead",
-              "href": "fuse/navigation/navigationtriggeraction/perform_76ae2ead",
-              "isVirtual": true
-            },
-            "titles": {
-              "indexTitle": "Perform(INavigation, Node)",
-              "fullyQualifiedIndexTitle": "Fuse.Navigation.NavigationTriggerAction.Perform(Fuse.Navigation.INavigation, Fuse.Node)"
-            }
-          }
-        ]
-      },
       {
         "declaredIn": {
           "id": {
