@@ -148,6 +148,24 @@ Just to clarify:
 
 When that has been done we can cast the object back to its original type.
 
+
+#### Declaring `Java.Object`s for Java and `ObjC.Object`s for Objective-C
+
+You may want to declare your objects some time in your class...
+
+For Objective-C:
+
+```
+extern(iOS) ObjC.Object _objcObject;
+```
+
+For Java:
+
+```
+extern(Android) Java.Object _javaObject;
+```
+
+
 ## Arrays
 
 There is special support for passing Uno arrays to foreign code. For performance reasons we don't make a copy of the data straight away. Instead, we pass a handle to the Uno array that we can use in our foreign code. If we need a full copy of the data we call `arr.copyArray()` (in Java) or `[arr copyArray]` (in Objective-C) to get the native version of that type. The full details are below.
