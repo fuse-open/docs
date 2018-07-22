@@ -83,9 +83,8 @@ First, we'll just display our array of hikes as buttons. But how do we do that i
 <ScrollView>
 	<StackPanel>
 		<Each Items="{hikes}">
+			<Text Value="{name}" />
 		</Each>
-
-		<Text Value="{name}" />
 ```
 
 @Each is a very powerful UX feature. What @Each does is take the collection specified by its `Items` property and _project_ each item into a copy of the visual subtree inside the @Each tag. We can think of it kind of like copying and pasting the code inside @Each for each item in `Items`.
