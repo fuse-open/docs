@@ -33,7 +33,7 @@ If you open up Fuse and select `New Fuse project` in the Dashboard, it will gene
 * The `AppName.unoproj` is used for some more advanced stuff, but it also lets Fuse know where your project is and what it’s called. When you add new files and folders to your project, it’s always going to be relative to this file.
 
 * The `MainView.ux` contains all the visual stuff that appears in your app. If you open it up in a text editor you will see these app tags, `<App><App/>`. Whatever you put between those tags will constitute the UI of your app. That sounds like it might be quite large by the time you build an entire App, right? Well, Fuse is designed to be as modular as possible so that this doesn’t happen. If you are interested in that, check out the Classes section.
-  
+
 * There will be a `build` folder here after you have run the app in Fuse. It contains a bunch of stuff Fuse uses to make the preview of your app. You can completely ignore this for the most part. If you need to send your app to someone else, just delete this to save space.
 
 Aside from that, there is no witchcraft happening here. This is just a normal folder. You can add sub-folders. You can use Git to track the versioning. You can zip it to friend and they’ll be able to run it.
@@ -84,8 +84,8 @@ A `/` signifies the end of an element. The `/` before the last `>` means that th
 Objects can be left open and then closed around another object like this:
 
 ```
-<Rectangle Color=“Red”>
-  <Text Value=“Hey, I am some text” Color=“White” Alignment=“Center”/>`
+<Rectangle Color="Red">
+  <Text Value="Hey, I am some text" Color="White" Alignment="Center"/>`
 </Rectangle>
 ```
 
@@ -230,7 +230,7 @@ You can also specify different values for each side like so:
 
 ![Different Margins](../media/fuse-for-designers/Images/Different_Margins.png)
 
-There are 4 values in the `Margin` property this time, each separated by a comma: `Margin=”40,30,20,10"`. This is the same as saying:
+There are 4 values in the `Margin` property this time, each separated by a comma: `Margin="40,30,20,10"`. This is the same as saying:
 ```
 Margin-Left="40"
 Margin-Top="30"
@@ -239,7 +239,7 @@ Margin-Bottom="10"
 ```
 Fuse doesn’t use different types of `Margin` and `Padding`, instead you specify them all in one value. It’s handy to remember that the values start from Left and go clockwise: `Left`,`Top`, `Right`, `Bottom`.
 
-_Note: You can also set Margin and Padding like this: Margin=”40,20".
+_Note: You can also set Margin and Padding like this: Margin="40,20".
 It’s the same as saying:_
 ```
 Margin-Left-and-Right="40"
@@ -284,7 +284,7 @@ Most objects want to take up as much space as is available to them but one of th
 
 We expect the purple `Panel` to align to the bottom of the space that is provided for all children. Instead the purple `Panel` is aligned to the bottom of the space provided only for itself. Which, visually, doesn’t alter its position at all. In this instance a fix might be to use a different kind of `Panel` that doesn’t divide it’s available space. So, if `Alignment` is tripping you up, remember to think about the way space is being allocated in your app.
 
-Finally, setting `Alignment` on an object has another side-effect on the way that object takes up space. Above we said _“most objects want to take up as much space as is available to them”_ and this is true, until we set `Alignment` on them. Check out this code:
+Finally, setting `Alignment` on an object has another side-effect on the way that object takes up space. Above we said _"most objects want to take up as much space as is available to them"_ and this is true, until we set `Alignment` on them. Check out this code:
 
 ```
 <!-- Red Panel -->
@@ -300,13 +300,13 @@ It is just some `Text` inside a `Panel`. The `Background` of the `Text `is set t
 <!-- Red Panel -->
 <Panel Color="#DB6882" Width="300" Height="300" Padding="20">
   <!-- Text with Yellow BG -->
-  <Text Value="Hey there" Color="Black" Background="#F1D751"   
+  <Text Value="Hey there" Color="Black" Background="#F1D751"
    Alignment="TopCenter" />
 </Panel>
 ```
 ![Text Alignment Collapsed](../media/fuse-for-designers/Images/Alignment_text_Collapsed.png)
 
-So two things happened there. The `Text` moved to the `TopCenter` of the available space and it switched to only occupying as much space as it needs to display its `Value`. Setting `Alignment` is the same as saying to an object _“Go sit in that corner and don’t take up much space.”_
+So two things happened there. The `Text` moved to the `TopCenter` of the available space and it switched to only occupying as much space as it needs to display its `Value`. Setting `Alignment` is the same as saying to an object _"Go sit in that corner and don’t take up much space."_
 This might cause some un-expected results when you initially start playing with layout so it’s worthwhile to spend some time to get your head around it.
 
 ### Units
@@ -359,18 +359,18 @@ Project Folder> Assets> Asset Type
 ```
 Then when you include the file in MainView.ux, you do so relative to the project root folder like this:
 ```
-<Image File=“Assets/AssetType/Asset.jpeg”/>
+<Image File="Assets/AssetType/Asset.jpeg"/>
 ```
 
 ### Using MultiDensity Images
 
 Of course you want to make sure that the images you include look good on all devices. The best way to do this is to export your images at multiple pixel densities from Sketch, Figma or Photoshop. Luckily, that is the hardest part of the process. Fuse has a really neat way of figuring out which image to use on each screen density. All you need to do is include the images like so:
 ```
-<Image StretchMode=”PointPrefer”>
+<Image StretchMode="PointPrefer">
   <MultiDensityImageSource>
-    <FileImageSource File=”Icon.png” Density=”1"/>
-    <FileImageSource File=”Icon@2x.png” Density=”2"/>
-    <FileImageSource File=”Icon@3x.png” Density=“3”/>
+    <FileImageSource File="Icon.png" Density="1"/>
+    <FileImageSource File="Icon@2x.png" Density="2"/>
+    <FileImageSource File="Icon@3x.png" Density="3"/>
   </MultiDensityImageSource>
 </Image>
 ```
@@ -378,39 +378,39 @@ The `Density` property here tells Fuse which asset you want used at each density
 
 ### Making Text Styles
 
-One of the most convenient aspects of design programs is the ability to create re-usable styles for text. It helps ensure consistency across a design with minimal effort. 
+One of the most convenient aspects of design programs is the ability to create re-usable styles for text. It helps ensure consistency across a design with minimal effort.
 In Fuse you can do something pretty similar. To get started you need to include a font of your choice by putting it in your `Assets` folder, like so:
 
 ![Font Folder](../media/fuse-for-designers/Images/Font_folder.png)
 
 Next you need to make that font globally available in your app. Fuse has a `<Font/>` object which allows you to include a font in your project:
 ```
-<Font File=”Assets/Fonts/Comic Sans MS.ttf” />
+<Font File="Assets/Fonts/Comic Sans MS.ttf" />
 ```
 You’ll need to copy the actual font file into your project folder. Then you make it globally available like so:
 ```
-<Font File=”Assets/Fonts/Comic Sans MS.ttf” ux:Global=”MyDefaultFont” />
+<Font File="Assets/Fonts/Comic Sans MS.ttf" ux:Global="MyDefaultFont" />
 ```
 The `ux:Global` property as you may have guessed, makes the font a globally available resource in your app. Meaning that whenever you make a new `Text` object, you can apply the font like this:
 ```
-<Text Font=”MyDefaultFont” Value="Oh, hi there" />
+<Text Font="MyDefaultFont" Value="Oh, hi there" />
 ```
 
 ![Adding Font](../media/fuse-for-designers/Images/Font-first.png)
 
 There is one more step here to make a truly re-usable style and it requires using `ux:Class`. We will cover classes a bit further on in this article in more detail, so don’t stress if it’s a new concept to you. For this task all you need to know is that putting `ux:Class` on an object makes it into a new type of object that you can re-use. So, if you do this:
 ```
-<Text ux:Class=“MyHeadlineText” FontSize="32" Font=”MyDefaultFont” />
+<Text ux:Class="MyHeadlineText" FontSize="32" Font="MyDefaultFont" />
 ```
 You can then re-use that text style every-time you need a headline, like this:
 ```
-<MyHeadlineText Value=“Oh, hi there”/>
+<MyHeadlineText Value="Oh, hi there"/>
 ```
 ![Font Class](../media/fuse-for-designers/Images/Font-Class.png)
 
 Then if you want to change the way headlines look across the app, you tweak the original class:
 ```
-<Text ux:Class=“MyHeadlineText” Size=“32” Font=”MyDefaultFont” Color="#DB6882" />
+<Text ux:Class="MyHeadlineText" Size="32" Font="MyDefaultFont" Color="#DB6882" />
 ```
 ![Font Red](../media/fuse-for-designers/Images/Font-Red.png)
 
@@ -420,17 +420,17 @@ Then if you want to change the way headlines look across the app, you tweak the 
 Another aspect of design programs you can replicate is a color palette. To avoid the tedium of typing in hex codes over and over you can create global colors and apply them by name.
 First thing you need to do is declare a color like so:
 ```
-<float4 ux:Value=”#8A5182" />
+<float4 ux:Value="#8A5182" />
 ```
-You may be wondering what a `<float4/>` is. Without getting into too much detail, it’s a value-type Fuse uses for colors. You are saying to Fuse that you want to make a new thing and it will be `<float4/>` type. Then you define the value of that thing as `#8A5182`. If you typed in a value that wasn’t the right type, like `“Hello”` , Fuse would throw an error.
+You may be wondering what a `<float4/>` is. Without getting into too much detail, it’s a value-type Fuse uses for colors. You are saying to Fuse that you want to make a new thing and it will be `<float4/>` type. Then you define the value of that thing as `#8A5182`. If you typed in a value that wasn’t the right type, like `"Hello"` , Fuse would throw an error.
 
 By adding the following, we can make that color globally available.
 ```
-<float4 ux:Global=“MyFavColor” ux:Value=”#8A5182" />
+<float4 ux:Global="MyFavColor" ux:Value="#8A5182" />
 ```
 Then you can apply it to anything that takes a `Color` property by using the unique `ux:Global` name you made:
 ```
-<Text Size=“16” Font=”MyDefaultFont” Color=“MyFavColor” />
+<Text Size="16" Font="MyDefaultFont" Color="MyFavColor" />
 ```
 You can make as many colors as you need to. It’s really great because if you change your mind about the exact kind of color you want, you can tweak the color here and it will update to every object using that color.
 
@@ -440,14 +440,14 @@ You can make as many colors as you need to. It’s really great because if you c
 
 ![Animation Intro](../media/fuse-for-designers/Gifs/Animation_intro.gif)
 
-We haven’t touched on what is arguably Fuse’s best feature: its animation system. We are going to go through some of the core concepts of the animation system but we will leave the more advanced transitions for another time. This should be enough to get you going. 
- 
+We haven’t touched on what is arguably Fuse’s best feature: its animation system. We are going to go through some of the core concepts of the animation system but we will leave the more advanced transitions for another time. This should be enough to get you going.
+
 If you have done any sort of animation you know that it can get tricky real fast. Fuse is designed so that doesn’t happen. That’s thanks to the core concept of the animation system.
 
-> “Animation is deviation from rest state”
+> "Animation is deviation from rest state"
 
 That means when you animate an object you are moving it away from its rest state. When the animation is over, the object returns to rest state. The important part to grasp here is that objects want to go back to their original state. This might seem unintuitive right now, but the advantage is you don’t need to specify where the object is at any given time. UX is declarative remember, so that means you tell Fuse what you want to happen and let it take care of how it gets from a to b.
-This allows you to define your design entirely separately from its transitions and animated behaviours, because you always design for the scenario where things have “come to a rest”.
+This allows you to define your design entirely separately from its transitions and animated behaviours, because you always design for the scenario where things have "come to a rest".
 
 ![Rest State](../media/fuse-for-designers/Images/Animation_restState.png)
 
@@ -463,13 +463,13 @@ Triggers listen for specific events, gestures or inputs. When that event takes p
 ```
 ![Scale](../media/fuse-for-designers/Gifs/Animation_Scale.gif)
 
-Notice that `<WhilePressed/>`? It tells Fuse “While that object is pressed, do this.” Fuse then listens for the condition specified by that trigger, in this case a touch event on the `Cirlce`.
+Notice that `<WhilePressed/>`? It tells Fuse "While that object is pressed, do this." Fuse then listens for the condition specified by that trigger, in this case a touch event on the `Cirlce`.
 
 When placing a trigger inside of an object the trigger is scoped to the object you put it in. This means it will ignore touch events everywhere else on the screen, only acting when its parent is pressed.
 
 ![Hit Test](../media/fuse-for-designers/Gifs/Animation_HitTest.gif)
 
-Triggers that begin with `<While.../>` will continue to remain active the whole time their required conditions are true. In the above example, the `Circle` will remain scaled until the user stops pressing. Then it will return to its rest state by animating itself backwards. Triggers in Fuse are pretty smart, and they always know how to return to their rest state, even if you interrupt their animation mid way: 
+Triggers that begin with `<While.../>` will continue to remain active the whole time their required conditions are true. In the above example, the `Circle` will remain scaled until the user stops pressing. Then it will return to its rest state by animating itself backwards. Triggers in Fuse are pretty smart, and they always know how to return to their rest state, even if you interrupt their animation mid way:
 
 ![Rest State Explainer](../media/fuse-for-designers/Gifs/RestState_explainer.gif)
 
@@ -525,7 +525,7 @@ By default animations will play themselves in reverse when returning to rest sta
 ```
 ![Animation Return](../media/fuse-for-designers/Gifs/Ainimation_Back.gif)
 
-### Change 
+### Change
 
 Although Fuse has a bunch of different animators, there is one that is more versatile than the rest. `Change` allows you to animate any property that the targeted object has. For instance:
 ```
@@ -542,7 +542,7 @@ Although Fuse has a bunch of different animators, there is one that is more vers
 
 In this example, the `Change` animator is animating the `Color` property of the other `Circle`. You can use `ObjectName.Property` to target and animate specific properties of other objects. Change can target almost any property in this way which makes it extremely versatile.
 
-_Note: you could use this notation, `circleName.Color="#6DBFD2"`, to achieve the same as `Target=”circleName.Color” Value=”#6DBFD2"`._
+_Note: you could use this notation, `circleName.Color="#6DBFD2"`, to achieve the same as `Target="circleName.Color" Value="#6DBFD2"`._
 
 # Navigation
 
@@ -597,18 +597,18 @@ In basic terms when you make a class you are making a blueprint. When you tell F
 ```
 <StackPanel Padding="20" ItemSpacing="40">
   <StackPanel ItemSpacing="20">
-    <Text FontSize="24" TextColor="#0006" Value="This is a short      
+    <Text FontSize="24" TextColor="#0006" Value="This is a short
      Headline." />
     <Text FontSize="16" TextColor="#0004" Value="This is a sub-
      heading. It can be much longer and wrap over two lines
-     sometimes." TextWrapping="Wrap" /> 
+     sometimes." TextWrapping="Wrap" />
   </StackPanel>
   <StackPanel ItemSpacing="20">
-    <Text FontSize="24" TextColor="#0006" Value="This is a short 
+    <Text FontSize="24" TextColor="#0006" Value="This is a short
      Headline." />
     <Text FontSize="16" TextColor="#0004" Value="This is a sub-
-     heading. It can be much longer and wrap over two lines 
-     sometimes." TextWrapping="Wrap" /> 
+     heading. It can be much longer and wrap over two lines
+     sometimes." TextWrapping="Wrap" />
   </StackPanel>
 </StackPanel>
 ```
@@ -618,11 +618,11 @@ In basic terms when you make a class you are making a blueprint. When you tell F
 There’s some clear repetition here so this is a perfect place to use classes. To do this, you set `ux:Class` on the first `StackPanel`, like so:
 ```
 <StackPanel ux:Class="MyFirstClass" ItemSpacing="20" >
-    <Text FontSize="24" TextColor="#0006" Value="This is a short      
+    <Text FontSize="24" TextColor="#0006" Value="This is a short
      Headline." />
     <Text FontSize="16" TextColor="#0004" Value="This is a sub-
      heading. It can be much longer and wrap over two lines
-     sometimes." TextWrapping="Wrap" /> 
+     sometimes." TextWrapping="Wrap" />
 </StackPanel>
 ```
 This makes the `StackPanel` and all of its children into a re-usable class. Brilliant! But, something weird happens now. One of the components is missing:
@@ -637,11 +637,11 @@ You can see that when you make a class, you really are making a new custom type 
 ```
 <StackPanel Padding="20" ItemSpacing="40" >
   <StackPanel ItemSpacing="20" ux:Class="MyFirstClass">
-    <Text FontSize="24" TextColor="#0006" Value="This is a short 
+    <Text FontSize="24" TextColor="#0006" Value="This is a short
      Headline." />
     <Text FontSize="16" TextColor="#0004" Value="This is a sub-
-     heading. It can be much longer and wrap over two lines 
-     sometimes." TextWrapping="Wrap" /> 
+     heading. It can be much longer and wrap over two lines
+     sometimes." TextWrapping="Wrap" />
   </StackPanel>
   <MyFirstClass/>
   <MyFirstClass/>
@@ -659,7 +659,7 @@ _Note: in the interest of code cleanliness you should make your class declaratio
 
 Obviously, you will need the ability to have class instances that are slightly different from each other. This is where `ux:Property` comes in. It allows you to tell a class which of its properties you want to _expose_.
 
-When you expose properties in a class, it means you can change those properties every time you make an instance. This is sort of like over-rides in Sketch symbols, but way more powerful. 
+When you expose properties in a class, it means you can change those properties every time you make an instance. This is sort of like over-rides in Sketch symbols, but way more powerful.
 This can get a bit tricky but it really only consists of two steps:
 
 * Making a new property of a particular type. The types tell Fuse what kind of value it should expect.
@@ -676,14 +676,14 @@ So now the code should look like this:
 ```
 <StackPanel ItemSpacing="20" ux:Class="MyFirstClass">
   <string ux:Property="HeadlineText"/>
-  <Text FontSize="24" TextColor="#0006" Value="{Property    
+  <Text FontSize="24" TextColor="#0006" Value="{Property
    HeadlineText}" />
   <Text FontSize="16" TextColor="#0004" Value="This is a sub-
-   heading. It can be much longer and wrap over two lines 
-   sometimes." TextWrapping="Wrap" /> 
+   heading. It can be much longer and wrap over two lines
+   sometimes." TextWrapping="Wrap" />
 </StackPanel>
 ```
-What is going on here? Well string means something with a text-value. You are telling Fuse “I am making a new thing that will have a text value. I want this thing to be a property called HeadlineText. So if any `Object` says it has a property called `HeadlineText`, expect it to be text.”
+What is going on here? Well string means something with a text-value. You are telling Fuse "I am making a new thing that will have a text value. I want this thing to be a property called HeadlineText. So if any `Object` says it has a property called `HeadlineText`, expect it to be text."
 
 That’s a bit confusing, so reading over it a few times might be useful. But now we have this empty property floating around we need to _bind_ it to the place we want to use it.
 
@@ -700,7 +700,7 @@ Lets break down what is happening here step by step:
 
 ![Property Brackets](../media/fuse-for-designers/Images/property_explainer_brackets.png)
 
-First we have these curly braces. They tell Fuse “You’re going to get a different value here”. These curly brackets are used when the value you provide for a property isn’t explicit, meaning it needs to be worked out first.
+First we have these curly braces. They tell Fuse "You’re going to get a different value here". These curly brackets are used when the value you provide for a property isn’t explicit, meaning it needs to be worked out first.
 
 ![Property Keyword](../media/fuse-for-designers/Images/property_explainer_Property.png)
 
@@ -722,7 +722,7 @@ _Note: You can do this for more than just text. In fact you can expose just abou
 
 ### Inheritance
 
-When you make an instance of your class that instance is a new object. It inherits all of the properties of the original class . But, those can be over-ridden because each instance is an object all on it’s own. So if the class has `Alignment=”Center”` on it, we can over-ride that on individual instances:
+When you make an instance of your class that instance is a new object. It inherits all of the properties of the original class . But, those can be over-ridden because each instance is an object all on it’s own. So if the class has `Alignment="Center"` on it, we can over-ride that on individual instances:
 
 ![Inheritance](../media/fuse-for-designers/Images/Inheritence.png)
 
@@ -733,19 +733,19 @@ Inheritance is a one way street. Changing something on an instance does not effe
 #### Of course you really don’t want to populate your App by hand. You want the machines to do the tedious stuff for you.
 
 The best way to take care of that problem, is to link your UI to a data source. This may be uncharted territory for you so lets understand some basic concepts about data first.
-_Note: This section is more advanced. Depending on your needs, you might not need to know any of this. 
+_Note: This section is more advanced. Depending on your needs, you might not need to know any of this.
 Furthermore, we have opted for simplicity for the sake of understanding here, Fuse is more flexible than this brief introduction might suggest._
 
 ### A brief intro
 
-Data comes in a bunch of different types, but in most cases it consists of some sort of list. The complexity of the list can vary greatly, sure, but when you use data in Fuse you are basically telling Fuse “Over here, I want you to go check that list I mentioned earlier and whatever value you find throw it in here.”
+Data comes in a bunch of different types, but in most cases it consists of some sort of list. The complexity of the list can vary greatly, sure, but when you use data in Fuse you are basically telling Fuse "Over here, I want you to go check that list I mentioned earlier and whatever value you find throw it in here."
 
 The nice thing about this approach is that if you want to change some items in the list, you don’t have to worry about updating the UI. The UI is always pointed towards the data and the data is the source of truth.
 
 ### Data in JavaScript
 
 Data comes in a bunch of different types and formats. For the sake of simplicity here we are going to take a look at how data works in JavaScript. Mainly because this is the easiest way to get data into our apps.
- 
+
 As mentioned above, data is usually just some sort of list. This is just a list of Fruit types:
 ```
 Fruits:
@@ -772,7 +772,7 @@ It's a little bit hard to see with all the syntax so lets dig into what all of t
 
 * Each object in the list is separated by a comma `,` and wrapped in `{ }` .
 
-* The `type : “Apple”` relationship inside each object is known as a key-value pair.
+* The `type : "Apple"` relationship inside each object is known as a key-value pair.
 
 You can also have lists inside of lists (list-ception?), basically until infinity. This means you can create more complicated data structures like so:
 
@@ -811,7 +811,7 @@ Fruits:
         - Blood
         - Satsuma
 ```
-So why should you care about this? Well, it’s not likely that you will ever need to make your own data structures but it does help you understand how how it is structured. When we need to access the `sub-types` of `Apples` it would be helpful to know how to tell Fuse “Hey go check that Fruits list and when you get to the Apple list inside of it, give me all of those.”
+So why should you care about this? Well, it’s not likely that you will ever need to make your own data structures but it does help you understand how how it is structured. When we need to access the `sub-types` of `Apples` it would be helpful to know how to tell Fuse "Hey go check that Fruits list and when you get to the Apple list inside of it, give me all of those."
 
 ### Creating mock data:
 
@@ -831,7 +831,7 @@ So what is going on there? Well in between those `<JavaScript/>` tags you have `
 To recreate that list from the last section you write the following:
 ```
 <JavaScript >
-module.exports = { 
+module.exports = {
     Fruits: [
       { type: "Apple" },
       { type: "Orange" },
@@ -856,9 +856,9 @@ To get it into UX:
 
 To get data into UX you need to use `{}` inside property values. We call this step data-binding and those curly brackets tell Fuse two things:
 
-* “There is no explicit value here. You’re going to have to work it out”
+* "There is no explicit value here. You’re going to have to work it out"
 
-* “You should go check the data context for this. Whatever value you find there that matches this word, bring it back here”
+* "You should go check the data context for this. Whatever value you find there that matches this word, bring it back here"
 
 ### Each
 
@@ -873,12 +873,12 @@ Lets break it down. What does `Each` really do? Well simply `Each` repeats whate
 ```
 ![Each Count](../media/fuse-for-designers/Images/EachCount.png)
 
-That’s great, but what is actually happening when you tell `Each` to do this? 
+That’s great, but what is actually happening when you tell `Each` to do this?
 Think about it like this:
 
 * Step1: `Each` takes its children and makes them into one re-usable component.
 
-* Step2: It then makes copies of that component based on the number in `Count=“”` property.
+* Step2: It then makes copies of that component based on the number in `Count=""` property.
 
 * Step3: It places those as children of the `Each’s` parent.
 
@@ -894,7 +894,7 @@ Back to the example from the last section:
 *Data:*
 ```
 <JavaScript >
-module.exports = { 
+module.exports = {
     Fruits: [
       { type: "Apple" },
       { type: "Orange" },
@@ -918,11 +918,11 @@ module.exports = {
 
 Here, the `Each` is told to look for the data object `Fruits` and the `Text` inside it is told to populate with the contents of the `Fruits` list.
 
-Letting `Each` do all the work is pretty great because you don’t actually have to know in advance how many items you have. You can add or remove things from the data without worrying about explicitly updating the UI. 
- 
+Letting `Each` do all the work is pretty great because you don’t actually have to know in advance how many items you have. You can add or remove things from the data without worrying about explicitly updating the UI.
+
 It gets better though. You can easily have more complicated components inside of the `Each` that draw from the same data. Here is an example:
 ```
-Fruits: [ 
+Fruits: [
     {
         type: "Apple",
         subtypes: [
@@ -959,20 +959,20 @@ Here there is an `Each` for the `type` of `Fruit` and inside of that is another 
 
 If you haven’t quite grasped `Each`, you should read through a few more times. It’s really worth it.
 
-_Note: `Each` limits the data context for its children, meaning that `Text` can’t see anything outside of the `Fruits` list. In fact it can’t even see that the list is called `Fruits`. So using the empty brackets here `Value=”{}”` tells the `Text` object that it should just display the value of the list that the `Each` gives it. This is a bit complicated but is helpful to know._
+_Note: `Each` limits the data context for its children, meaning that `Text` can’t see anything outside of the `Fruits` list. In fact it can’t even see that the list is called `Fruits`. So using the empty brackets here `Value="{}"` tells the `Text` object that it should just display the value of the list that the `Each` gives it. This is a bit complicated but is helpful to know._
 
 ### Observables
 
 This is a more advanced concept, that we will only go through briefly here. If you want to learn more about them there is a great explainer in the docs.
- 
+
 Let’s take a look at this example:
 ```
 <Text Value="{Fruits}" />
 ```
-The way this is set up means that Fuse gets to the property `Value` in UX and encounters the curly braces. It looks through the data context for the value, finds it (or doesn’t), updates the value and moves on. It doesn’t think about that value until the whole process runs again. So if that value were to change dynamically in the background, the UI wouldn’t necessarily know about that change. 
- 
+The way this is set up means that Fuse gets to the property `Value` in UX and encounters the curly braces. It looks through the data context for the value, finds it (or doesn’t), updates the value and moves on. It doesn’t think about that value until the whole process runs again. So if that value were to change dynamically in the background, the UI wouldn’t necessarily know about that change.
+
 However, if you make `Fruits` an `Observable`, Fuse will watch for _dynamic_ changes of that value and update the UI in real time. What is actually happening is that you create a _subscription_ to that value at that point in the UI. This is really helpful. It means you can dynamically change the data and not worry about having to manually tell the UI that there have been changes. It’s sort of magic.
- 
+
 Here’s what you have to do make that happen. First you have to make sure you import the `Observables` module in JavaScript with this line of code:
 ```
 var Observable = require("FuseJS/Observable");
@@ -989,8 +989,8 @@ var Fruits = Observable([
 ```
 Lastly, we need to make sure we export Fruits
 ```
-module.exports = { 
-    Fruits : Fruits 
+module.exports = {
+    Fruits : Fruits
     };
 ```
 By creating a `DataBinding` in UX you automatically create a subscription to that value.
@@ -1012,7 +1012,7 @@ Your `MainView.ux` file might be getting a bit unruly at this stage so it’s pr
 ### Pages and Components
 
 You’ll see that you have made folders for `Pages` and `Components`. The idea here is that you separate high level containers/pages from the low-level components. A helpful analogy here might be Sketch: You can think about Artboards as Pages, and Symbols as Components.
-It’s likely that the Pages will contain multiple Components but instead of writing out the code for that component every time, you create classes out of them. You then create instances of the Components inside those Pages. 
+It’s likely that the Pages will contain multiple Components but instead of writing out the code for that component every time, you create classes out of them. You then create instances of the Components inside those Pages.
 It’s a good idea to keep them in separate folders, especially when you start to have multiple pages.
 
 ### MainView.ux
@@ -1023,7 +1023,7 @@ To keep things simple it’s smart to keep it in the same folder as the .unoproj
 ### Resources.ux
 
 So what is in here? Well throughout the app you might have a lot of places where you include images and other assets. All of these will use file paths to determine where the asset is located like so:
-`File=“Assets/AssetType/Asset.jpeg”`
+`File="Assets/AssetType/Asset.jpeg"`
 
 The problem is, keeping track of these paths can get tricky and if you need to re-arrange something your file paths will break. So instead, you create all your assets as classes in this file. Check out this example:
 Instead of:
@@ -1053,15 +1053,15 @@ Why? If all your file paths are relative to the same document, it’s much easie
 Much like `Resource.ux` you want to separate out all the global resources you have made available. So inside this file will be your color palette, fonts and any other globals you might have defined. You could include this in your `Resources.ux` file, but for the sake of keeping things tidy it’s a good idea to separate the two concepts. Once again, you want to keep this file in the root to make file paths easier to maintain.
 To make it even neater, you might want to wrap all your separate globals up in a `Panel` like this:
 ```
-<!-- ColorPalette --> 
+<!-- ColorPalette -->
 <Panel>
-    <float4 ux:Global=”SecondarySolid” ux:Value=”#8A5182" />
-    <float4 ux:Global=”DarkGrey” ux:Value=”#636363" />
-    <float4 ux:Global=”MidGrey” ux:Value=”#979797" />
-    <float4 ux:Global=”LightGrey” ux:Value=”#D8D8D8"/>
-    <float4 ux:Global=”PrimaryText” ux:Value=”#282D67" />
-    <float4 ux:Global=”PrimarySolid” ux:Value=”#426E89" />
-    <float4 ux:Global=”TextGrey” ux:Value=”#3A4454" />
+    <float4 ux:Global="SecondarySolid" ux:Value="#8A5182" />
+    <float4 ux:Global="DarkGrey" ux:Value="#636363" />
+    <float4 ux:Global="MidGrey" ux:Value="#979797" />
+    <float4 ux:Global="LightGrey" ux:Value="#D8D8D8"/>
+    <float4 ux:Global="PrimaryText" ux:Value="#282D67" />
+    <float4 ux:Global="PrimarySolid" ux:Value="#426E89" />
+    <float4 ux:Global="TextGrey" ux:Value="#3A4454" />
 </Panel>
 ```
 
