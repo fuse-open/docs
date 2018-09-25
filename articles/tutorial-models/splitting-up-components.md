@@ -131,7 +131,7 @@ EditHikePage.ux:
 If we save these files, our preview will update, but this time, our contents will vanish! The reason for this is simple - we've only created the `EditHikePage` class, but we haven't _used_ it anywhere! To fix this, we'll just add an _instance_ of the `EditHikePage` class inside the @ClientPanel in `MainView.ux`, like so:
 
 ```
-<App>
+<App Model="App">
 	<ClientPanel>
 		<EditHikePage />
 	</ClientPanel>
@@ -193,7 +193,7 @@ For now, to keep things simple, we'll use a @PageControl instead. A @PageControl
 So, if we take a look at `MainView.ux`, it currently looks something like this:
 
 ```
-<App>
+<App Model="App">
 	<ClientPanel>
 		<EditHikePage />
 	</ClientPanel>
@@ -204,7 +204,7 @@ So, if we take a look at `MainView.ux`, it currently looks something like this:
 Let's place the `EditHikePage` instance inside a @PageControl, like so:
 
 ```
-<App>
+<App Model="App">
 	<ClientPanel>
 		<PageControl>
 			<EditHikePage />
@@ -216,7 +216,7 @@ Let's place the `EditHikePage` instance inside a @PageControl, like so:
 Now, all we have to do is add a `HomePage` instance inside our @PageControl as well. Because it's the home page, let's place it above our existing `EditHikePage` instance:
 
 ```
-<App>
+<App Model="App">
 	<ClientPanel>
 		<PageControl>
 			<HomePage />
