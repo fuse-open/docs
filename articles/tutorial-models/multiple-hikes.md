@@ -8,7 +8,7 @@ The final code for this chapter is available [here](https://github.com/fusetools
 
 ## Creating our List of Hikes
 
-In order for us to display a list of hikes to choose from, we first need a list of hikes. 
+In order for us to display a list of hikes to choose from, we first need a list of hikes.
 
 We start by creating a new class that models a single hike. This could be put in its own JavaScript file, but for simplicity, we are just going to put it right over our `App` class in `App.js`.
 
@@ -19,7 +19,7 @@ class Hike {
 		this.location = location;
 		this.distance = distance;
 		this.rating = rating;
-		this.comments = comment;
+		this.comments = comments;
 	}
 }
 ```
@@ -193,7 +193,7 @@ The code hasn't grown too much, either. It looks like this:
 				<Each Items="{hikes}">
 					<Button Text="{name}" Clicked="{chooseHike}" />
 				</Each>
-				
+
 				<Text>Name:</Text>
 				<TextBox Value="{hike.name}" />
 
