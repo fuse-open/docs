@@ -17,7 +17,7 @@ So, how do we request which component to navigate to when using a @Navigator? we
 First, let's open up `MainView.ux`, and simply replace @PageControl with @Navigator:
 
 ```
-<App>
+<App Model="App">
 	<ClientPanel>
 		<Navigator>
 			<HomePage />
@@ -30,7 +30,7 @@ First, let's open up `MainView.ux`, and simply replace @PageControl with @Naviga
 Now, because the @Navigator expects _templates_ instead of instances for its children, we'll need to update these as well. Luckily, Fuse makes this pretty easy - all we have to do is add a `ux:Template` attribute to each of our @Navigator's children, like so:
 
 ```
-<App>
+<App Model="App">
 	<ClientPanel>
 		<Navigator>
 			<HomePage ux:Template="HomePage" />
@@ -51,7 +51,7 @@ Now, if we save this, our previews will update, but our pages will disappear! Th
 To specify the default path for our @Navigator, all we have to do is add a `DefaultPath` attribute which will specify the key of the template we want the @Navigator to instantiate initially:
 
 ```
-<App>
+<App Model="App">
 	<ClientPanel>
 		<Navigator DefaultPath="HomePage">
 			<HomePage ux:Template="HomePage" />

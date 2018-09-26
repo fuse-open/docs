@@ -716,7 +716,7 @@ Looking good! At this point, we don't really have to split this styled `TextView
 
 `TextView.ux`:
 ```
-<TextView ux:Class=”hikr.TextView” TextColor="White" CaretColor="White" Padding="5">
+<TextView ux:Class="hikr.TextView" TextColor="White" CaretColor="White" Padding="5">
 	<Rectangle Layer="Background" Color="#fff2" CornerRadius="4" />
 </TextView>
 ```
