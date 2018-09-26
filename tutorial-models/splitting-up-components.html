@@ -682,7 +682,7 @@ You can find out more about classes in our <a href="https://fuse-open.github.io/
 &lt;/Page&gt;
 </code></pre>
 <p>If we save these files, our preview will update, but this time, our contents will vanish! The reason for this is simple - we've only created the <code>EditHikePage</code> class, but we haven't <em>used</em> it anywhere! To fix this, we'll just add an <em>instance</em> of the <code>EditHikePage</code> class inside the ClientPanel in <code>MainView.ux</code>, like so:</p>
-<pre><code>&lt;App&gt;
+<pre><code>&lt;App Model=&quot;App&quot;&gt;
 	&lt;ClientPanel&gt;
 		&lt;EditHikePage /&gt;
 	&lt;/ClientPanel&gt;
@@ -722,7 +722,7 @@ You can find out more about classes in our <a href="https://fuse-open.github.io/
 <p>By now, we've got multiple pages, and we'll need a way to display them and navigate between them. In Fuse, this is handled by the <a href="../fuse/controls/navigator.html">Navigator</a> component. Navigation in general will need a proper introduction, and we'll want to take our time learning how to do it properly, so we'll take a closer look at it in the next chapter.</p>
 <p>For now, to keep things simple, we'll use a <a href="../fuse/controls/pagecontrol.html">PageControl</a> instead. A <a href="../fuse/controls/pagecontrol.html">PageControl</a> is great for cases where we want to have a few pages side-by-side that we'll to swipe between, which is just fine for initially displaying our two pages.</p>
 <p>So, if we take a look at <code>MainView.ux</code>, it currently looks something like this:</p>
-<pre><code>&lt;App&gt;
+<pre><code>&lt;App Model=&quot;App&quot;&gt;
 	&lt;ClientPanel&gt;
 		&lt;EditHikePage /&gt;
 	&lt;/ClientPanel&gt;
@@ -730,7 +730,7 @@ You can find out more about classes in our <a href="https://fuse-open.github.io/
 
 </code></pre>
 <p>Let's place the <code>EditHikePage</code> instance inside a <a href="../fuse/controls/pagecontrol.html">PageControl</a>, like so:</p>
-<pre><code>&lt;App&gt;
+<pre><code>&lt;App Model=&quot;App&quot;&gt;
 	&lt;ClientPanel&gt;
 		&lt;PageControl&gt;
 			&lt;EditHikePage /&gt;
@@ -739,7 +739,7 @@ You can find out more about classes in our <a href="https://fuse-open.github.io/
 &lt;/App&gt;
 </code></pre>
 <p>Now, all we have to do is add a <code>HomePage</code> instance inside our <a href="../fuse/controls/pagecontrol.html">PageControl</a> as well. Because it's the home page, let's place it above our existing <code>EditHikePage</code> instance:</p>
-<pre><code>&lt;App&gt;
+<pre><code>&lt;App Model=&quot;App&quot;&gt;
 	&lt;ClientPanel&gt;
 		&lt;PageControl&gt;
 			&lt;HomePage /&gt;
@@ -770,7 +770,7 @@ You can find out more about classes in our <a href="https://fuse-open.github.io/
 }
 </code></pre>
 <p><code>MainView.ux</code>:</p>
-<pre><code>&lt;App&gt;
+<pre><code>&lt;App Model=&quot;App&quot;&gt;
 	&lt;ClientPanel&gt;
 		&lt;PageControl&gt;
 			&lt;HomePage /&gt;

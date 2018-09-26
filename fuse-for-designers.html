@@ -662,8 +662,8 @@ Just don’t get too carried away as you might have a lot to clean up later.</p>
 <p>A <code>/</code> signifies the end of an element. The <code>/</code> before the last <code>&gt;</code> means that the <code>Rectangle</code> has been closed.</p>
 <p><img src="media/fuse-for-designers/Images/UX_explainer_ClosingSlash.png" alt="UX_Explainer Closing Slash"></p>
 <p>Objects can be left open and then closed around another object like this:</p>
-<pre><code>&lt;Rectangle Color=“Red”&gt;
-  &lt;Text Value=“Hey, I am some text” Color=“White” Alignment=“Center”/&gt;`
+<pre><code>&lt;Rectangle Color=&quot;Red&quot;&gt;
+  &lt;Text Value=&quot;Hey, I am some text&quot; Color=&quot;White&quot; Alignment=&quot;Center&quot;/&gt;`
 &lt;/Rectangle&gt;
 </code></pre>
 <p>Notice the first <code>&lt;Rectangle&gt;</code> has no <code>/</code> but the second one starts with a <code>&lt;/</code>? This makes the enclosed object a <em>child</em> of the outermost object.
@@ -807,14 +807,14 @@ This is usually called wrapping. The <code>Rectangle</code> is <em>wrapping</em>
 &lt;/Panel&gt;
 </code></pre>
 <p><img src="media/fuse-for-designers/Images/Different_Margins.png" alt="Different Margins"></p>
-<p>There are 4 values in the <code>Margin</code> property this time, each separated by a comma: <code>Margin=”40,30,20,10&quot;</code>. This is the same as saying:</p>
+<p>There are 4 values in the <code>Margin</code> property this time, each separated by a comma: <code>Margin=&quot;40,30,20,10&quot;</code>. This is the same as saying:</p>
 <pre><code>Margin-Left=&quot;40&quot;
 Margin-Top=&quot;30&quot;
 Margin-Right=&quot;20&quot;
 Margin-Bottom=&quot;10&quot;
 </code></pre>
 <p>Fuse doesn’t use different types of <code>Margin</code> and <code>Padding</code>, instead you specify them all in one value. It’s handy to remember that the values start from Left and go clockwise: <code>Left</code>,<code>Top</code>, <code>Right</code>, <code>Bottom</code>.</p>
-<p><em>Note: You can also set Margin and Padding like this: Margin=”40,20&quot;.
+<p><em>Note: You can also set Margin and Padding like this: Margin=&quot;40,20&quot;.
 It’s the same as saying:</em></p>
 <pre><code>Margin-Left-and-Right=&quot;40&quot;
 Margin-Top-and-Bottom=&quot;20&quot;
@@ -845,7 +845,7 @@ Margin-Top-and-Bottom=&quot;20&quot;
 <p>Most objects want to take up as much space as is available to them but one of the nuances of a <code>StackPanel</code> is that it only gives its children as much space as they need. So the purple <code>Panel</code> only has available space equivalent to its size. Confused? Check this out:</p>
 <p><img src="media/fuse-for-designers/Images/StackPanel_Alignment.png" alt="StackPanel Alignment"></p>
 <p>We expect the purple <code>Panel</code> to align to the bottom of the space that is provided for all children. Instead the purple <code>Panel</code> is aligned to the bottom of the space provided only for itself. Which, visually, doesn’t alter its position at all. In this instance a fix might be to use a different kind of <code>Panel</code> that doesn’t divide it’s available space. So, if <code>Alignment</code> is tripping you up, remember to think about the way space is being allocated in your app.</p>
-<p>Finally, setting <code>Alignment</code> on an object has another side-effect on the way that object takes up space. Above we said <em>“most objects want to take up as much space as is available to them”</em> and this is true, until we set <code>Alignment</code> on them. Check out this code:</p>
+<p>Finally, setting <code>Alignment</code> on an object has another side-effect on the way that object takes up space. Above we said <em>&quot;most objects want to take up as much space as is available to them&quot;</em> and this is true, until we set <code>Alignment</code> on them. Check out this code:</p>
 <pre><code>&lt;!-- Red Panel --&gt;
 &lt;Panel Color=&quot;#DB6882&quot; Width=&quot;300&quot; Height=&quot;300&quot; Padding=&quot;20&quot;&gt;
   &lt;!-- Text with Yellow BG --&gt;
@@ -857,12 +857,12 @@ Margin-Top-and-Bottom=&quot;20&quot;
 <pre><code>&lt;!-- Red Panel --&gt;
 &lt;Panel Color=&quot;#DB6882&quot; Width=&quot;300&quot; Height=&quot;300&quot; Padding=&quot;20&quot;&gt;
   &lt;!-- Text with Yellow BG --&gt;
-  &lt;Text Value=&quot;Hey there&quot; Color=&quot;Black&quot; Background=&quot;#F1D751&quot;   
+  &lt;Text Value=&quot;Hey there&quot; Color=&quot;Black&quot; Background=&quot;#F1D751&quot;
    Alignment=&quot;TopCenter&quot; /&gt;
 &lt;/Panel&gt;
 </code></pre>
 <p><img src="media/fuse-for-designers/Images/Alignment_text_Collapsed.png" alt="Text Alignment Collapsed"></p>
-<p>So two things happened there. The <code>Text</code> moved to the <code>TopCenter</code> of the available space and it switched to only occupying as much space as it needs to display its <code>Value</code>. Setting <code>Alignment</code> is the same as saying to an object <em>“Go sit in that corner and don’t take up much space.”</em>
+<p>So two things happened there. The <code>Text</code> moved to the <code>TopCenter</code> of the available space and it switched to only occupying as much space as it needs to display its <code>Value</code>. Setting <code>Alignment</code> is the same as saying to an object <em>&quot;Go sit in that corner and don’t take up much space.&quot;</em>
 This might cause some un-expected results when you initially start playing with layout so it’s worthwhile to spend some time to get your head around it.</p>
 <h3 id="units">Units</h3>
 <p>A quick note on units. You will have undoubtedly noticed that you haven’t needed to specify units in the code. This is because Fuse uses <code>points</code> by default. <code>Points</code> ensure consistency across multiple screen densities but there are a few other options. Properties like <code>Width</code>, <code>Height</code>, <code>X</code> and <code>Y</code> etc can all take their values in <code>percent</code> and <code>pixels</code> too:</p>
@@ -900,15 +900,15 @@ This might cause some un-expected results when you initially start playing with 
 <pre><code>Project Folder&gt; Assets&gt; Asset Type
 </code></pre>
 <p>Then when you include the file in MainView.ux, you do so relative to the project root folder like this:</p>
-<pre><code>&lt;Image File=“Assets/AssetType/Asset.jpeg”/&gt;
+<pre><code>&lt;Image File=&quot;Assets/AssetType/Asset.jpeg&quot;/&gt;
 </code></pre>
 <h3 id="using-multidensity-images">Using MultiDensity Images</h3>
 <p>Of course you want to make sure that the images you include look good on all devices. The best way to do this is to export your images at multiple pixel densities from Sketch, Figma or Photoshop. Luckily, that is the hardest part of the process. Fuse has a really neat way of figuring out which image to use on each screen density. All you need to do is include the images like so:</p>
-<pre><code>&lt;Image StretchMode=”PointPrefer”&gt;
+<pre><code>&lt;Image StretchMode=&quot;PointPrefer&quot;&gt;
   &lt;MultiDensityImageSource&gt;
-    &lt;FileImageSource File=”Icon.png” Density=”1&quot;/&gt;
-    &lt;FileImageSource File=”Icon@2x.png” Density=”2&quot;/&gt;
-    &lt;FileImageSource File=”Icon@3x.png” Density=“3”/&gt;
+    &lt;FileImageSource File=&quot;Icon.png&quot; Density=&quot;1&quot;/&gt;
+    &lt;FileImageSource File=&quot;Icon@2x.png&quot; Density=&quot;2&quot;/&gt;
+    &lt;FileImageSource File=&quot;Icon@3x.png&quot; Density=&quot;3&quot;/&gt;
   &lt;/MultiDensityImageSource&gt;
 &lt;/Image&gt;
 </code></pre>
@@ -918,37 +918,37 @@ This might cause some un-expected results when you initially start playing with 
 In Fuse you can do something pretty similar. To get started you need to include a font of your choice by putting it in your <code>Assets</code> folder, like so:</p>
 <p><img src="media/fuse-for-designers/Images/Font_folder.png" alt="Font Folder"></p>
 <p>Next you need to make that font globally available in your app. Fuse has a <code>&lt;Font/&gt;</code> object which allows you to include a font in your project:</p>
-<pre><code>&lt;Font File=”Assets/Fonts/Comic Sans MS.ttf” /&gt;
+<pre><code>&lt;Font File=&quot;Assets/Fonts/Comic Sans MS.ttf&quot; /&gt;
 </code></pre>
 <p>You’ll need to copy the actual font file into your project folder. Then you make it globally available like so:</p>
-<pre><code>&lt;Font File=”Assets/Fonts/Comic Sans MS.ttf” ux:Global=”MyDefaultFont” /&gt;
+<pre><code>&lt;Font File=&quot;Assets/Fonts/Comic Sans MS.ttf&quot; ux:Global=&quot;MyDefaultFont&quot; /&gt;
 </code></pre>
 <p>The <code>ux:Global</code> property as you may have guessed, makes the font a globally available resource in your app. Meaning that whenever you make a new <code>Text</code> object, you can apply the font like this:</p>
-<pre><code>&lt;Text Font=”MyDefaultFont” Value=&quot;Oh, hi there&quot; /&gt;
+<pre><code>&lt;Text Font=&quot;MyDefaultFont&quot; Value=&quot;Oh, hi there&quot; /&gt;
 </code></pre>
 <p><img src="media/fuse-for-designers/Images/Font-first.png" alt="Adding Font"></p>
 <p>There is one more step here to make a truly re-usable style and it requires using <code>ux:Class</code>. We will cover classes a bit further on in this article in more detail, so don’t stress if it’s a new concept to you. For this task all you need to know is that putting <code>ux:Class</code> on an object makes it into a new type of object that you can re-use. So, if you do this:</p>
-<pre><code>&lt;Text ux:Class=“MyHeadlineText” FontSize=&quot;32&quot; Font=”MyDefaultFont” /&gt;
+<pre><code>&lt;Text ux:Class=&quot;MyHeadlineText&quot; FontSize=&quot;32&quot; Font=&quot;MyDefaultFont&quot; /&gt;
 </code></pre>
 <p>You can then re-use that text style every-time you need a headline, like this:</p>
-<pre><code>&lt;MyHeadlineText Value=“Oh, hi there”/&gt;
+<pre><code>&lt;MyHeadlineText Value=&quot;Oh, hi there&quot;/&gt;
 </code></pre>
 <p><img src="media/fuse-for-designers/Images/Font-Class.png" alt="Font Class"></p>
 <p>Then if you want to change the way headlines look across the app, you tweak the original class:</p>
-<pre><code>&lt;Text ux:Class=“MyHeadlineText” Size=“32” Font=”MyDefaultFont” Color=&quot;#DB6882&quot; /&gt;
+<pre><code>&lt;Text ux:Class=&quot;MyHeadlineText&quot; Size=&quot;32&quot; Font=&quot;MyDefaultFont&quot; Color=&quot;#DB6882&quot; /&gt;
 </code></pre>
 <p><img src="media/fuse-for-designers/Images/Font-Red.png" alt="Font Red"></p>
 <h3 id="making-color-palettes">Making Color Palettes</h3>
 <p>Another aspect of design programs you can replicate is a color palette. To avoid the tedium of typing in hex codes over and over you can create global colors and apply them by name.
 First thing you need to do is declare a color like so:</p>
-<pre><code>&lt;float4 ux:Value=”#8A5182&quot; /&gt;
+<pre><code>&lt;float4 ux:Value=&quot;#8A5182&quot; /&gt;
 </code></pre>
-<p>You may be wondering what a <code>&lt;float4/&gt;</code> is. Without getting into too much detail, it’s a value-type Fuse uses for colors. You are saying to Fuse that you want to make a new thing and it will be <code>&lt;float4/&gt;</code> type. Then you define the value of that thing as <code>#8A5182</code>. If you typed in a value that wasn’t the right type, like <code>“Hello”</code> , Fuse would throw an error.</p>
+<p>You may be wondering what a <code>&lt;float4/&gt;</code> is. Without getting into too much detail, it’s a value-type Fuse uses for colors. You are saying to Fuse that you want to make a new thing and it will be <code>&lt;float4/&gt;</code> type. Then you define the value of that thing as <code>#8A5182</code>. If you typed in a value that wasn’t the right type, like <code>&quot;Hello&quot;</code> , Fuse would throw an error.</p>
 <p>By adding the following, we can make that color globally available.</p>
-<pre><code>&lt;float4 ux:Global=“MyFavColor” ux:Value=”#8A5182&quot; /&gt;
+<pre><code>&lt;float4 ux:Global=&quot;MyFavColor&quot; ux:Value=&quot;#8A5182&quot; /&gt;
 </code></pre>
 <p>Then you can apply it to anything that takes a <code>Color</code> property by using the unique <code>ux:Global</code> name you made:</p>
-<pre><code>&lt;Text Size=“16” Font=”MyDefaultFont” Color=“MyFavColor” /&gt;
+<pre><code>&lt;Text Size=&quot;16&quot; Font=&quot;MyDefaultFont&quot; Color=&quot;MyFavColor&quot; /&gt;
 </code></pre>
 <p>You can make as many colors as you need to. It’s really great because if you change your mind about the exact kind of color you want, you can tweak the color here and it will update to every object using that color.</p>
 <h1 id="animation">Animation</h1>
@@ -957,10 +957,10 @@ First thing you need to do is declare a color like so:</p>
 <p>We haven’t touched on what is arguably Fuse’s best feature: its animation system. We are going to go through some of the core concepts of the animation system but we will leave the more advanced transitions for another time. This should be enough to get you going.</p>
 <p>If you have done any sort of animation you know that it can get tricky real fast. Fuse is designed so that doesn’t happen. That’s thanks to the core concept of the animation system.</p>
 <blockquote>
-<p>“Animation is deviation from rest state”</p>
+<p>&quot;Animation is deviation from rest state&quot;</p>
 </blockquote>
 <p>That means when you animate an object you are moving it away from its rest state. When the animation is over, the object returns to rest state. The important part to grasp here is that objects want to go back to their original state. This might seem unintuitive right now, but the advantage is you don’t need to specify where the object is at any given time. UX is declarative remember, so that means you tell Fuse what you want to happen and let it take care of how it gets from a to b.
-This allows you to define your design entirely separately from its transitions and animated behaviours, because you always design for the scenario where things have “come to a rest”.</p>
+This allows you to define your design entirely separately from its transitions and animated behaviours, because you always design for the scenario where things have &quot;come to a rest&quot;.</p>
 <p><img src="media/fuse-for-designers/Images/Animation_restState.png" alt="Rest State"></p>
 <h3 id="triggers">Triggers</h3>
 <p>Triggers listen for specific events, gestures or inputs. When that event takes place the trigger activates and performs an animation in response. More specifically the trigger performs whatever animations/actions you place inside of it. Let’s look at a basic example:</p>
@@ -971,7 +971,7 @@ This allows you to define your design entirely separately from its transitions a
 &lt;/Circle&gt;
 </code></pre>
 <p><img src="media/fuse-for-designers/Gifs/Animation_Scale.gif" alt="Scale"></p>
-<p>Notice that <code>&lt;WhilePressed/&gt;</code>? It tells Fuse “While that object is pressed, do this.” Fuse then listens for the condition specified by that trigger, in this case a touch event on the <code>Cirlce</code>.</p>
+<p>Notice that <code>&lt;WhilePressed/&gt;</code>? It tells Fuse &quot;While that object is pressed, do this.&quot; Fuse then listens for the condition specified by that trigger, in this case a touch event on the <code>Cirlce</code>.</p>
 <p>When placing a trigger inside of an object the trigger is scoped to the object you put it in. This means it will ignore touch events everywhere else on the screen, only acting when its parent is pressed.</p>
 <p><img src="media/fuse-for-designers/Gifs/Animation_HitTest.gif" alt="Hit Test"></p>
 <p>Triggers that begin with <code>&lt;While.../&gt;</code> will continue to remain active the whole time their required conditions are true. In the above example, the <code>Circle</code> will remain scaled until the user stops pressing. Then it will return to its rest state by animating itself backwards. Triggers in Fuse are pretty smart, and they always know how to return to their rest state, even if you interrupt their animation mid way:</p>
@@ -1034,7 +1034,7 @@ Animators have a few other important properties: duration, delay and easing.</p>
 </code></pre>
 <p><img src="media/fuse-for-designers/Gifs/Change.gif" alt="Change"></p>
 <p>In this example, the <code>Change</code> animator is animating the <code>Color</code> property of the other <code>Circle</code>. You can use <code>ObjectName.Property</code> to target and animate specific properties of other objects. Change can target almost any property in this way which makes it extremely versatile.</p>
-<p><em>Note: you could use this notation, <code>circleName.Color=&quot;#6DBFD2&quot;</code>, to achieve the same as <code>Target=”circleName.Color” Value=”#6DBFD2&quot;</code>.</em></p>
+<p><em>Note: you could use this notation, <code>circleName.Color=&quot;#6DBFD2&quot;</code>, to achieve the same as <code>Target=&quot;circleName.Color&quot; Value=&quot;#6DBFD2&quot;</code>.</em></p>
 <h1 id="navigation">Navigation</h1>
 <h4 id="fuse-has-a-flexible-and-extensive-navigation-system-and-as-with-most-things-that-are-this-powerful-there-is-a-learning-curve">Fuse has a flexible and extensive navigation system and, as with most things that are this powerful, there is a learning curve.</h4>
 <p>To create extensive multi-page navigation requires hooking a few things up behind the scenes. So for this introduction to Fuse, we’ll only talk about a simple navigation type here.
@@ -1071,29 +1071,29 @@ Animators have a few other important properties: duration, delay and easing.</p>
 <p>In basic terms when you make a class you are making a blueprint. When you tell Fuse to build that class, it knows exactly what to do because it has the plans. Lets imagine you have the following code:</p>
 <pre><code>&lt;StackPanel Padding=&quot;20&quot; ItemSpacing=&quot;40&quot;&gt;
   &lt;StackPanel ItemSpacing=&quot;20&quot;&gt;
-    &lt;Text FontSize=&quot;24&quot; TextColor=&quot;#0006&quot; Value=&quot;This is a short      
+    &lt;Text FontSize=&quot;24&quot; TextColor=&quot;#0006&quot; Value=&quot;This is a short
      Headline.&quot; /&gt;
     &lt;Text FontSize=&quot;16&quot; TextColor=&quot;#0004&quot; Value=&quot;This is a sub-
      heading. It can be much longer and wrap over two lines
-     sometimes.&quot; TextWrapping=&quot;Wrap&quot; /&gt; 
+     sometimes.&quot; TextWrapping=&quot;Wrap&quot; /&gt;
   &lt;/StackPanel&gt;
   &lt;StackPanel ItemSpacing=&quot;20&quot;&gt;
-    &lt;Text FontSize=&quot;24&quot; TextColor=&quot;#0006&quot; Value=&quot;This is a short 
+    &lt;Text FontSize=&quot;24&quot; TextColor=&quot;#0006&quot; Value=&quot;This is a short
      Headline.&quot; /&gt;
     &lt;Text FontSize=&quot;16&quot; TextColor=&quot;#0004&quot; Value=&quot;This is a sub-
-     heading. It can be much longer and wrap over two lines 
-     sometimes.&quot; TextWrapping=&quot;Wrap&quot; /&gt; 
+     heading. It can be much longer and wrap over two lines
+     sometimes.&quot; TextWrapping=&quot;Wrap&quot; /&gt;
   &lt;/StackPanel&gt;
 &lt;/StackPanel&gt;
 </code></pre>
 <p><img src="media/fuse-for-designers/Images/Class-Repition.png" alt="Repetition"></p>
 <p>There’s some clear repetition here so this is a perfect place to use classes. To do this, you set <code>ux:Class</code> on the first <code>StackPanel</code>, like so:</p>
 <pre><code>&lt;StackPanel ux:Class=&quot;MyFirstClass&quot; ItemSpacing=&quot;20&quot; &gt;
-    &lt;Text FontSize=&quot;24&quot; TextColor=&quot;#0006&quot; Value=&quot;This is a short      
+    &lt;Text FontSize=&quot;24&quot; TextColor=&quot;#0006&quot; Value=&quot;This is a short
      Headline.&quot; /&gt;
     &lt;Text FontSize=&quot;16&quot; TextColor=&quot;#0004&quot; Value=&quot;This is a sub-
      heading. It can be much longer and wrap over two lines
-     sometimes.&quot; TextWrapping=&quot;Wrap&quot; /&gt; 
+     sometimes.&quot; TextWrapping=&quot;Wrap&quot; /&gt;
 &lt;/StackPanel&gt;
 </code></pre>
 <p>This makes the <code>StackPanel</code> and all of its children into a re-usable class. Brilliant! But, something weird happens now. One of the components is missing:</p>
@@ -1104,11 +1104,11 @@ Animators have a few other important properties: duration, delay and easing.</p>
 <p>You can see that when you make a class, you really are making a new custom type of object that you can use instead of writing all that code again. Hence, you can now delete the other <code>StackPanel</code>, so your code should look like this:</p>
 <pre><code>&lt;StackPanel Padding=&quot;20&quot; ItemSpacing=&quot;40&quot; &gt;
   &lt;StackPanel ItemSpacing=&quot;20&quot; ux:Class=&quot;MyFirstClass&quot;&gt;
-    &lt;Text FontSize=&quot;24&quot; TextColor=&quot;#0006&quot; Value=&quot;This is a short 
+    &lt;Text FontSize=&quot;24&quot; TextColor=&quot;#0006&quot; Value=&quot;This is a short
      Headline.&quot; /&gt;
     &lt;Text FontSize=&quot;16&quot; TextColor=&quot;#0004&quot; Value=&quot;This is a sub-
-     heading. It can be much longer and wrap over two lines 
-     sometimes.&quot; TextWrapping=&quot;Wrap&quot; /&gt; 
+     heading. It can be much longer and wrap over two lines
+     sometimes.&quot; TextWrapping=&quot;Wrap&quot; /&gt;
   &lt;/StackPanel&gt;
   &lt;MyFirstClass/&gt;
   &lt;MyFirstClass/&gt;
@@ -1137,14 +1137,14 @@ This can get a bit tricky but it really only consists of two steps:</p>
 <p>So now the code should look like this:</p>
 <pre><code>&lt;StackPanel ItemSpacing=&quot;20&quot; ux:Class=&quot;MyFirstClass&quot;&gt;
   &lt;string ux:Property=&quot;HeadlineText&quot;/&gt;
-  &lt;Text FontSize=&quot;24&quot; TextColor=&quot;#0006&quot; Value=&quot;{Property    
+  &lt;Text FontSize=&quot;24&quot; TextColor=&quot;#0006&quot; Value=&quot;{Property
    HeadlineText}&quot; /&gt;
   &lt;Text FontSize=&quot;16&quot; TextColor=&quot;#0004&quot; Value=&quot;This is a sub-
-   heading. It can be much longer and wrap over two lines 
-   sometimes.&quot; TextWrapping=&quot;Wrap&quot; /&gt; 
+   heading. It can be much longer and wrap over two lines
+   sometimes.&quot; TextWrapping=&quot;Wrap&quot; /&gt;
 &lt;/StackPanel&gt;
 </code></pre>
-<p>What is going on here? Well string means something with a text-value. You are telling Fuse “I am making a new thing that will have a text value. I want this thing to be a property called HeadlineText. So if any <code>Object</code> says it has a property called <code>HeadlineText</code>, expect it to be text.”</p>
+<p>What is going on here? Well string means something with a text-value. You are telling Fuse &quot;I am making a new thing that will have a text value. I want this thing to be a property called HeadlineText. So if any <code>Object</code> says it has a property called <code>HeadlineText</code>, expect it to be text.&quot;</p>
 <p>That’s a bit confusing, so reading over it a few times might be useful. But now we have this empty property floating around we need to <em>bind</em> it to the place we want to use it.</p>
 <p><strong>Step2: Bind the Property</strong></p>
 <p>In the first text object of your class you should change <code>Value</code> to:</p>
@@ -1153,7 +1153,7 @@ This can get a bit tricky but it really only consists of two steps:</p>
 <p><img src="media/fuse-for-designers/Images/property_explainer_all.png" alt="Property All"></p>
 <p>Lets break down what is happening here step by step:</p>
 <p><img src="media/fuse-for-designers/Images/property_explainer_brackets.png" alt="Property Brackets"></p>
-<p>First we have these curly braces. They tell Fuse “You’re going to get a different value here”. These curly brackets are used when the value you provide for a property isn’t explicit, meaning it needs to be worked out first.</p>
+<p>First we have these curly braces. They tell Fuse &quot;You’re going to get a different value here&quot;. These curly brackets are used when the value you provide for a property isn’t explicit, meaning it needs to be worked out first.</p>
 <p><img src="media/fuse-for-designers/Images/property_explainer_Property.png" alt="Property Keyword"></p>
 <p>So now that Fuse is in the right frame of mind, the <code>Property</code> keyword tells it that it needs to look for a property that you have created.</p>
 <p><img src="media/fuse-for-designers/Images/property_explainer_PropertyName.png" alt="Property Name"></p>
@@ -1165,7 +1165,7 @@ This can get a bit tricky but it really only consists of two steps:</p>
 <p><img src="media/fuse-for-designers/Images/Class-Properties.png" alt="Class Properties"></p>
 <p><em>Note: You can do this for more than just text. In fact you can expose just about any property that the class has. If you want to expose properties that aren’t text, you will need to specify a different value-type. Color uses <code>&lt;float4/&gt;</code> type and for a normal number <code>&lt;int/&gt;</code> type will do. There is some info on all the different value-types <a href="https://fuse-open.github.io/docs/ux-markup/literals">here</a>.</em></p>
 <h3 id="inheritance">Inheritance</h3>
-<p>When you make an instance of your class that instance is a new object. It inherits all of the properties of the original class . But, those can be over-ridden because each instance is an object all on it’s own. So if the class has <code>Alignment=”Center”</code> on it, we can over-ride that on individual instances:</p>
+<p>When you make an instance of your class that instance is a new object. It inherits all of the properties of the original class . But, those can be over-ridden because each instance is an object all on it’s own. So if the class has <code>Alignment=&quot;Center&quot;</code> on it, we can over-ride that on individual instances:</p>
 <p><img src="media/fuse-for-designers/Images/Inheritence.png" alt="Inheritance"></p>
 <p>Inheritance is a one way street. Changing something on an instance does not effect the class. But, changing something on the class effects all instances.</p>
 <h1 id="data">Data</h1>
@@ -1174,7 +1174,7 @@ This can get a bit tricky but it really only consists of two steps:</p>
 <em>Note: This section is more advanced. Depending on your needs, you might not need to know any of this.
 Furthermore, we have opted for simplicity for the sake of understanding here, Fuse is more flexible than this brief introduction might suggest.</em></p>
 <h3 id="a-brief-intro">A brief intro</h3>
-<p>Data comes in a bunch of different types, but in most cases it consists of some sort of list. The complexity of the list can vary greatly, sure, but when you use data in Fuse you are basically telling Fuse “Over here, I want you to go check that list I mentioned earlier and whatever value you find throw it in here.”</p>
+<p>Data comes in a bunch of different types, but in most cases it consists of some sort of list. The complexity of the list can vary greatly, sure, but when you use data in Fuse you are basically telling Fuse &quot;Over here, I want you to go check that list I mentioned earlier and whatever value you find throw it in here.&quot;</p>
 <p>The nice thing about this approach is that if you want to change some items in the list, you don’t have to worry about updating the UI. The UI is always pointed towards the data and the data is the source of truth.</p>
 <h3 id="data-in-javascript">Data in JavaScript</h3>
 <p>Data comes in a bunch of different types and formats. For the sake of simplicity here we are going to take a look at how data works in JavaScript. Mainly because this is the easiest way to get data into our apps.</p>
@@ -1205,7 +1205,7 @@ Furthermore, we have opted for simplicity for the sake of understanding here, Fu
 <p>Each object in the list is separated by a comma <code>,</code> and wrapped in <code>{ }</code> .</p>
 </li>
 <li>
-<p>The <code>type : “Apple”</code> relationship inside each object is known as a key-value pair.</p>
+<p>The <code>type : &quot;Apple&quot;</code> relationship inside each object is known as a key-value pair.</p>
 </li>
 </ul>
 <p>You can also have lists inside of lists (list-ception?), basically until infinity. This means you can create more complicated data structures like so:</p>
@@ -1242,7 +1242,7 @@ Furthermore, we have opted for simplicity for the sake of understanding here, Fu
         - Blood
         - Satsuma
 </code></pre>
-<p>So why should you care about this? Well, it’s not likely that you will ever need to make your own data structures but it does help you understand how how it is structured. When we need to access the <code>sub-types</code> of <code>Apples</code> it would be helpful to know how to tell Fuse “Hey go check that Fruits list and when you get to the Apple list inside of it, give me all of those.”</p>
+<p>So why should you care about this? Well, it’s not likely that you will ever need to make your own data structures but it does help you understand how how it is structured. When we need to access the <code>sub-types</code> of <code>Apples</code> it would be helpful to know how to tell Fuse &quot;Hey go check that Fruits list and when you get to the Apple list inside of it, give me all of those.&quot;</p>
 <h3 id="creating-mock-data">Creating mock data:</h3>
 <p>If you need to some local data for a prototype or to test something, you can do that pretty easily in your UX file. Calling it ‘mock’ data merely implies that it’s not a genuine live data source.</p>
 <p><em>Note: This is not the way we recommend working with data on larger or more serious projects. It’s better to work with data in separate JSON files and then include those in JS. That method means you can easily plug in a live data source at a later date.</em></p>
@@ -1255,7 +1255,7 @@ Furthermore, we have opted for simplicity for the sake of understanding here, Fu
 <p>So what is going on there? Well in between those <code>&lt;JavaScript/&gt;</code> tags you have <code>module.exports</code>. This allows you to export from JS and make things available in your <em>data-context</em>. Data-context is just a term used to describe the data that we have access to in the application.</p>
 <p>To recreate that list from the last section you write the following:</p>
 <pre><code>&lt;JavaScript &gt;
-module.exports = { 
+module.exports = {
     Fruits: [
       { type: &quot;Apple&quot; },
       { type: &quot;Orange&quot; },
@@ -1278,10 +1278,10 @@ module.exports = {
 <p>To get data into UX you need to use <code>{}</code> inside property values. We call this step data-binding and those curly brackets tell Fuse two things:</p>
 <ul>
 <li>
-<p>“There is no explicit value here. You’re going to have to work it out”</p>
+<p>&quot;There is no explicit value here. You’re going to have to work it out&quot;</p>
 </li>
 <li>
-<p>“You should go check the data context for this. Whatever value you find there that matches this word, bring it back here”</p>
+<p>&quot;You should go check the data context for this. Whatever value you find there that matches this word, bring it back here&quot;</p>
 </li>
 </ul>
 <h3 id="each">Each</h3>
@@ -1301,7 +1301,7 @@ Think about it like this:</p>
 <p>Step1: <code>Each</code> takes its children and makes them into one re-usable component.</p>
 </li>
 <li>
-<p>Step2: It then makes copies of that component based on the number in <code>Count=“”</code> property.</p>
+<p>Step2: It then makes copies of that component based on the number in <code>Count=&quot;&quot;</code> property.</p>
 </li>
 <li>
 <p>Step3: It places those as children of the <code>Each’s</code> parent.</p>
@@ -1322,7 +1322,7 @@ Think about it like this:</p>
 <p>Back to the example from the last section:
 <em>Data:</em></p>
 <pre><code>&lt;JavaScript &gt;
-module.exports = { 
+module.exports = {
     Fruits: [
       { type: &quot;Apple&quot; },
       { type: &quot;Orange&quot; },
@@ -1344,7 +1344,7 @@ module.exports = {
 <p>Here, the <code>Each</code> is told to look for the data object <code>Fruits</code> and the <code>Text</code> inside it is told to populate with the contents of the <code>Fruits</code> list.</p>
 <p>Letting <code>Each</code> do all the work is pretty great because you don’t actually have to know in advance how many items you have. You can add or remove things from the data without worrying about explicitly updating the UI.</p>
 <p>It gets better though. You can easily have more complicated components inside of the <code>Each</code> that draw from the same data. Here is an example:</p>
-<pre><code>Fruits: [ 
+<pre><code>Fruits: [
     {
         type: &quot;Apple&quot;,
         subtypes: [
@@ -1375,7 +1375,7 @@ module.exports = {
 <p><img src="media/fuse-for-designers/Images/NestedList.png" alt="Nested List"></p>
 <p>Here there is an <code>Each</code> for the <code>type</code> of <code>Fruit</code> and inside of that is another <code>Each</code> for every <code>subtype</code> of <code>Fruit</code>. Creating a list within a list.</p>
 <p>If you haven’t quite grasped <code>Each</code>, you should read through a few more times. It’s really worth it.</p>
-<p><em>Note: <code>Each</code> limits the data context for its children, meaning that <code>Text</code> can’t see anything outside of the <code>Fruits</code> list. In fact it can’t even see that the list is called <code>Fruits</code>. So using the empty brackets here <code>Value=”{}”</code> tells the <code>Text</code> object that it should just display the value of the list that the <code>Each</code> gives it. This is a bit complicated but is helpful to know.</em></p>
+<p><em>Note: <code>Each</code> limits the data context for its children, meaning that <code>Text</code> can’t see anything outside of the <code>Fruits</code> list. In fact it can’t even see that the list is called <code>Fruits</code>. So using the empty brackets here <code>Value=&quot;{}&quot;</code> tells the <code>Text</code> object that it should just display the value of the list that the <code>Each</code> gives it. This is a bit complicated but is helpful to know.</em></p>
 <h3 id="observables">Observables</h3>
 <p>This is a more advanced concept, that we will only go through briefly here. If you want to learn more about them there is a great explainer in the docs.</p>
 <p>Let’s take a look at this example:</p>
@@ -1396,8 +1396,8 @@ module.exports = {
     ]);
 </code></pre>
 <p>Lastly, we need to make sure we export Fruits</p>
-<pre><code>module.exports = { 
-    Fruits : Fruits 
+<pre><code>module.exports = {
+    Fruits : Fruits
     };
 </code></pre>
 <p>By creating a <code>DataBinding</code> in UX you automatically create a subscription to that value.</p>
@@ -1418,7 +1418,7 @@ It’s a good idea to keep them in separate folders, especially when you start t
 To keep things simple it’s smart to keep it in the same folder as the .unoproj file.</p>
 <h3 id="resources-ux">Resources.ux</h3>
 <p>So what is in here? Well throughout the app you might have a lot of places where you include images and other assets. All of these will use file paths to determine where the asset is located like so:
-<code>File=“Assets/AssetType/Asset.jpeg”</code></p>
+<code>File=&quot;Assets/AssetType/Asset.jpeg&quot;</code></p>
 <p>The problem is, keeping track of these paths can get tricky and if you need to re-arrange something your file paths will break. So instead, you create all your assets as classes in this file. Check out this example:
 Instead of:</p>
 <pre><code>&lt;Grid&gt;
@@ -1441,15 +1441,15 @@ Instead of:</p>
 <h3 id="globals-ux">Globals.ux</h3>
 <p>Much like <code>Resource.ux</code> you want to separate out all the global resources you have made available. So inside this file will be your color palette, fonts and any other globals you might have defined. You could include this in your <code>Resources.ux</code> file, but for the sake of keeping things tidy it’s a good idea to separate the two concepts. Once again, you want to keep this file in the root to make file paths easier to maintain.
 To make it even neater, you might want to wrap all your separate globals up in a <code>Panel</code> like this:</p>
-<pre><code>&lt;!-- ColorPalette --&gt; 
+<pre><code>&lt;!-- ColorPalette --&gt;
 &lt;Panel&gt;
-    &lt;float4 ux:Global=”SecondarySolid” ux:Value=”#8A5182&quot; /&gt;
-    &lt;float4 ux:Global=”DarkGrey” ux:Value=”#636363&quot; /&gt;
-    &lt;float4 ux:Global=”MidGrey” ux:Value=”#979797&quot; /&gt;
-    &lt;float4 ux:Global=”LightGrey” ux:Value=”#D8D8D8&quot;/&gt;
-    &lt;float4 ux:Global=”PrimaryText” ux:Value=”#282D67&quot; /&gt;
-    &lt;float4 ux:Global=”PrimarySolid” ux:Value=”#426E89&quot; /&gt;
-    &lt;float4 ux:Global=”TextGrey” ux:Value=”#3A4454&quot; /&gt;
+    &lt;float4 ux:Global=&quot;SecondarySolid&quot; ux:Value=&quot;#8A5182&quot; /&gt;
+    &lt;float4 ux:Global=&quot;DarkGrey&quot; ux:Value=&quot;#636363&quot; /&gt;
+    &lt;float4 ux:Global=&quot;MidGrey&quot; ux:Value=&quot;#979797&quot; /&gt;
+    &lt;float4 ux:Global=&quot;LightGrey&quot; ux:Value=&quot;#D8D8D8&quot;/&gt;
+    &lt;float4 ux:Global=&quot;PrimaryText&quot; ux:Value=&quot;#282D67&quot; /&gt;
+    &lt;float4 ux:Global=&quot;PrimarySolid&quot; ux:Value=&quot;#426E89&quot; /&gt;
+    &lt;float4 ux:Global=&quot;TextGrey&quot; ux:Value=&quot;#3A4454&quot; /&gt;
 &lt;/Panel&gt;
 </code></pre>
 <h3 id="you-re-done-congrats">You’re done. Congrats.</h3>

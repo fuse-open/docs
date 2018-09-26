@@ -593,7 +593,7 @@
 <p>Similar to a <a href="../fuse/controls/pagecontrol.html">PageControl</a>, a <a href="../fuse/controls/navigator.html">Navigator</a> is a <em>navigation container</em>. This is a fancy way of saying it's a control that can contain components (usually <a href="../fuse/controls/page.html">Page</a>s) that we can navigate to. However, unlike a <a href="../fuse/controls/pagecontrol.html">PageControl</a>, a <a href="../fuse/controls/navigator.html">Navigator</a> uses <em>templates</em> to instantiate its child components on-demand. This allows a <a href="../fuse/controls/navigator.html">Navigator</a> to instantiate and recycle pages as needed, conserving precious system resources. Also, <a href="../fuse/controls/navigator.html">Navigator</a> doesn't support swiping between its pages by default like <a href="../fuse/controls/pagecontrol.html">PageControl</a>, but that's because it can express richer relationships between its children. It is of course possible to add swiping behavior to pages in a <a href="../fuse/controls/navigator.html">Navigator</a> for the cases where that's needed.</p>
 <p>So, how do we request which component to navigate to when using a <a href="../fuse/controls/navigator.html">Navigator</a>? we'll cover that in the next section when we cover how to hook the <a href="../fuse/controls/navigator.html">Navigator</a> up to JavaScript. Essentially, the best way to explain these concepts is to see them in action, and before we do that, we need a <a href="../fuse/controls/navigator.html">Navigator</a>. So let's start by replacing our <a href="../fuse/controls/pagecontrol.html">PageControl</a> with a <a href="../fuse/controls/navigator.html">Navigator</a>!</p>
 <p>First, let's open up <code>MainView.ux</code>, and simply replace <a href="../fuse/controls/pagecontrol.html">PageControl</a> with <a href="../fuse/controls/navigator.html">Navigator</a>:</p>
-<pre><code>&lt;App&gt;
+<pre><code>&lt;App Model=&quot;App&quot;&gt;
 	&lt;ClientPanel&gt;
 		&lt;Navigator&gt;
 			&lt;HomePage /&gt;
@@ -603,7 +603,7 @@
 &lt;/App&gt;
 </code></pre>
 <p>Now, because the <a href="../fuse/controls/navigator.html">Navigator</a> expects <em>templates</em> instead of instances for its children, we'll need to update these as well. Luckily, Fuse makes this pretty easy - all we have to do is add a <code>ux:Template</code> attribute to each of our <a href="../fuse/controls/navigator.html">Navigator</a>'s children, like so:</p>
-<pre><code>&lt;App&gt;
+<pre><code>&lt;App Model=&quot;App&quot;&gt;
 	&lt;ClientPanel&gt;
 		&lt;Navigator&gt;
 			&lt;HomePage ux:Template=&quot;HomePage&quot; /&gt;
@@ -618,7 +618,7 @@ By convention, we name the templates the same as the class names when used in a 
 <p>Basically, what each of these attributes says is that for a given <em>key</em> (<code>HomePage</code> and <code>EditHikePage</code> in this case), we want the <a href="../fuse/controls/navigator.html">Navigator</a> to instantiate the associated class. So, if the <a href="../fuse/controls/navigator.html">Navigator</a> is asked to navigate to <code>HomePage</code>, it will instantiate a <code>HomePage</code> instance (if it hasn't already) and navigate there. Similarly, when asked to navigate to <code>EditHikePage</code>, it will instantiate an <code>EditHikePage</code> instance (if it hasn't already) and navigate to that instead. We can add any amount of templates we want, given that each of the keys is <em>unique</em> (if they weren't, the <a href="../fuse/controls/navigator.html">Navigator</a> wouldn't know which template to use for a given key).</p>
 <p>Now, if we save this, our previews will update, but our pages will disappear! This makes sense, because we've only specified which templates our <a href="../fuse/controls/navigator.html">Navigator</a> will use to create its child components, but we haven't asked it to actually instantiate anything yet. Typically, we'll do this by navigating to a specific <em>route</em>, as we'll see in the next section. However, <a href="../fuse/controls/navigator.html">Navigator</a> also supports specifying a <em>default path</em> that will be used to create a default child if we haven't navigated to one of its children yet. This is a common case that's perfect for our use case, as we'll want our <a href="../fuse/controls/navigator.html">Navigator</a> to display our <code>HomePage</code> first, and then navigate to the <code>EditHikePage</code> once we've selected a hike to edit.</p>
 <p>To specify the default path for our <a href="../fuse/controls/navigator.html">Navigator</a>, all we have to do is add a <code>DefaultPath</code> attribute which will specify the key of the template we want the <a href="../fuse/controls/navigator.html">Navigator</a> to instantiate initially:</p>
-<pre><code>&lt;App&gt;
+<pre><code>&lt;App Model=&quot;App&quot;&gt;
 	&lt;ClientPanel&gt;
 		&lt;Navigator DefaultPath=&quot;HomePage&quot;&gt;
 			&lt;HomePage ux:Template=&quot;HomePage&quot; /&gt;

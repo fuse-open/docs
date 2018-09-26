@@ -1108,7 +1108,7 @@
 </code></pre>
 <p>Looking good! At this point, we don't really have to split this styled <code>TextView</code> into its own component like we have with the others, as it's only being used for this one instance. However, for good measure, let's go ahead and do so. Just like before, we'll create a file in our <code>Components</code> directory called <code>hikr.TextView.ux</code>, and place our styled <code>TextView</code> code in there, adding a <code>ux:Class</code> definition. Then, we'll update our <code>EditHikePage</code> to use this <code>hikr.TextView</code> for the <code>Comments</code> editor. Be sure to leave the <code>TextWrapping=&quot;Wrap&quot;</code> and <code>Value</code> binding on the <em>instance</em> instead of putting them in the component, as these are properties that we would very likely want to set ourselves when using the component:</p>
 <p><code>TextView.ux</code>:</p>
-<pre><code>&lt;TextView ux:Class=”hikr.TextView” TextColor=&quot;White&quot; CaretColor=&quot;White&quot; Padding=&quot;5&quot;&gt;
+<pre><code>&lt;TextView ux:Class=&quot;hikr.TextView&quot; TextColor=&quot;White&quot; CaretColor=&quot;White&quot; Padding=&quot;5&quot;&gt;
 	&lt;Rectangle Layer=&quot;Background&quot; Color=&quot;#fff2&quot; CornerRadius=&quot;4&quot; /&gt;
 &lt;/TextView&gt;
 </code></pre>
