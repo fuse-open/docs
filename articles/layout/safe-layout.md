@@ -4,7 +4,7 @@ Many devices have areas of the screen containing system controls, such as the ti
 
 Fuse has a few features to help create your layout.
 
-> It's recommended that you test your layout on various devices, in particular, those with physical margins, like the iPhoneX. The XCode simulator allows you to test on a variety of iOS devices.
+> It's recommended that you test your layout on various devices, in particular, those with physical margins, like the iPhoneX. The Xcode simulator allows you to test on a variety of iOS devices.
 
 
 ## SafeEdgePanel
