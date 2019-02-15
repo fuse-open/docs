@@ -14,7 +14,7 @@ Fuse can:
 * Live update the assets if you change the sketch file after initial import.
 
 
-> *Note*: Importing `.sketch` files only works on Mac OS X (like Sketch itself), and is currently experimental.
+> *Note*: Importing `.sketch` files only works on macOS (like Sketch itself), and is currently experimental.
 
 ## Best practices
 

@@ -16,7 +16,7 @@ The full list of supported platforms for both Fuse and exports can be found [her
 
 When investigating issues it's often useful to check the logs written by Fuse and the editor plugins. These can be be found in:
 
-- OS X: `~/.fuse/logs`
+- macOS: `~/.fuse/logs`
 - Windows: `%localappdata%\Fusetools\Fuse\logs`
 
 ### Installer logs
@@ -58,10 +58,10 @@ You get a stack trace with `FailedToConnectToDaemon` somewhere in it
 
 - First, try to stop the Fuse daemon.
  - Windows: Right click on the Fuse icon in the tray, click "Exit"
- - OS X: Control-click on the Fuse icon in the menu bar, click "Quit"
+ - macOS: Control-click on the Fuse icon in the menu bar, click "Quit"
 - A fresh daemon will then start automatically the next time you interact with Fuse.
 - If that did not help, please try running `fuse kill-all`. This will terminate all running Fuse processes.
-- If that did not help, please try logging out of and back in to Windows / OS X.
+- If that did not help, please try logging out of and back in to Windows / macOS.
 - If that did not help, please try to reboot your computer.
 
 ---
@@ -118,7 +118,7 @@ While previewing on an iOS or Android device, you get the message "Failed to con
 
 - Open the dashboard, click "Sublime Text Setup" and follow the wizard.
 - Make sure that Sublime Text is installed in its default location, `/Applications/Sublime\ Text.app`
-- If that didn't work, delete the files staring with `Fuse` in `%APPDATA%\Sublime Text 3\Installed Packages` (Windows) or `~/Library/Application Support/Sublime Text 3/Installed Packages` (OS X), and try the wizard again.
+- If that didn't work, delete the files staring with `Fuse` in `%APPDATA%\Sublime Text 3\Installed Packages` (Windows) or `~/Library/Application Support/Sublime Text 3/Installed Packages` (macOS), and try the wizard again.
 
 ## Sublime plugin doesn't find Fuse
 ### Symptoms

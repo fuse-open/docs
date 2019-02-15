@@ -44,7 +44,7 @@ Also on your android device itself you will need to enable 'developer options' &
 
 ### iOS setup
 
-You will need Mac OS X and [Xcode](https://developer.apple.com/xcode/) to preview and export your app to iOS.
+You will need macOS and [Xcode](https://developer.apple.com/xcode/) to preview and export your app to iOS.
 
 You also need to create a free Apple Developer account and register it under Xcode's settings as shown below.
 
@@ -74,13 +74,13 @@ To preview from sublime text, right-click any `ux` or `unoproj` file in the side
 
 ![Sublime preview from sidebar](../../media/preview-and-export-device-preview-osx-sublime-preview-menu.png)
 
-We can also start preview from the command palette. Press `Cmd+Shift+P` (OS X) or `Ctrl+Shift+P` (Windows) to bring up the palette, and type `Fuse Preview` to see a list of preview targets.
+We can also start preview from the command palette. Press `Cmd+Shift+P` (macOS) or `Ctrl+Shift+P` (Windows) to bring up the palette, and type `Fuse Preview` to see a list of preview targets.
 
 ![Sublime Text preview from command palette](../../media/preview-and-export-device-preview-sublime-command-palette.png)
 
 #### Preview from Atom
 
-Press `Cmd+Shift+P` (OS X) or `Ctrl+Shift+P` (Windows) to bring up the command palette, and type `Fuse Preview` to see a list of preview targets.
+Press `Cmd+Shift+P` (macOS) or `Ctrl+Shift+P` (Windows) to bring up the command palette, and type `Fuse Preview` to see a list of preview targets.
 
 ![Atom preview from command palette](../../media/preview-and-export-device-preview-atom-command-palette.png)
 

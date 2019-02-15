@@ -266,7 +266,7 @@ function goBack() {
 
 Here we're just telling our @Router object to go back to the route it was at previously by calling its `goBack` function. This works because a @Router can keep track of its history as it moves through the app, and because we navigated to this page using the `push` function, we've guaranteed this would happen. Interestingly enough, if we had used the @Router's `goto` function, we still would have been able to get to our `EditHikePage`, but the @Router wouldn't have kept track of the history for us.
 
-> Note: `goBack` is automatically hooked up to the device's built-in back button, where applicable. We can simulate pushing this button in PC preview by using Cmd+B (OS X) or Control+B (Windows).
+> Note: `goBack` is automatically hooked up to the device's built-in back button, where applicable. We can simulate pushing this button in PC preview by using Cmd+B (macOS) or Control+B (Windows).
 
 Finally, we can save all of this and see that our back button does indeed work! Now we're really starting to see how these pieces are working together.
 

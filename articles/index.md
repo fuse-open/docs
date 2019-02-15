@@ -1,6 +1,6 @@
 # What is Fuse Open?
 
-Fuse is a set of user experience development tools for Windows and OSX that unify design, prototyping and implementation of high quality mobile apps on iOS and Android.
+Fuse is a set of user experience development tools for Windows and macOS that unify design, prototyping and implementation of high quality mobile apps on iOS and Android.
 
 ## Unique Tech Stack
 
