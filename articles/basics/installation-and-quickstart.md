@@ -6,17 +6,23 @@ This is a step-by-step tutorial that takes you through setting up Fuse and creat
 
 The latest version of Fuse can always be downloaded from the <a target="_blank" href="https://fuse-open.github.io/downloads">downloads page</a>. Download the installer for your operating system and open it to start the installation procedure.
 
-[callout info]
+<blockquote class="callout-info">
+
 Both the Windows and macOS installers require an internet connection in order to complete.
-[/callout]
 
-[callout info]
+</blockquote>
+
+<blockquote class="callout-info">
+
 __Windows:__ You may have to log out and in again (or simply reboot) to make sure the path for fuse is properly updated.
-[/callout]
 
-[callout info]
+</blockquote>
+
+<blockquote class="callout-info">
+
 __macOS:__ If for any reason you need to remove all of the Fuse components, you can use [this uninstall script](https://gist.github.com/Tapped/daa78c08882f33b0c7c3).
-[/callout]
+
+</blockquote>
 
 ### macOS Requirements
 
@@ -64,9 +70,11 @@ We currently provide plugins for the following text editors:
 
 To open Fuse, double click the the Fuse icon. On macOS it is located in the "Applications" folder. If you are on Windows, it can be located in the start menu.
 
-[callout info]
+<blockquote class="callout-info">
+
 You can also start Fuse by running `fuse` from terminal on macOS or command prompt on Windows.
-[/callout]
+
+</blockquote>
 
 When opening Fuse, the first thing you'll see is the dashboard:
 

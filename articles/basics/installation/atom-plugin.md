@@ -1,6 +1,10 @@
 # Atom plugin installation
 
-> *Note:* We also provide a [plugin for Sublime Text 3](sublime-plugin.md) and [Visual Studo Code](visual-studio-code-plugin.md).
+<blockquote class="callout-info">
+
+*Note:* We also provide a [plugin for Sublime Text 3](sublime-plugin.md) and [Visual Studo Code](visual-studio-code-plugin.md).
+
+</blockquote>
 
 Make sure you've installed [Atom](https://atom.io/) first.
 
