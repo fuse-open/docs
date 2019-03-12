@@ -1,9 +1,9 @@
 
 # FuseJS
 
-[callout warn]
-Although included in the most recent public Fuse release, the features outlined in this document are still considered experimental and not yet ready for production use. That being said, we encourage you to try it out for yourself. Feedback will always be welcome!
-[/callout]
+
+> [callout_warn] Although included in the most recent public Fuse release, the features outlined in this document are still considered experimental and not yet ready for production use. That being said, we encourage you to try it out for yourself. Feedback will always be welcome!
+
 
 FuseJS allows you to write your Fuse app logic in minimalistic, modern, testable and scaleable ECMAScript 6.
 
@@ -411,9 +411,8 @@ export default class MyComponent {
 }
 ```
 
-[callout warn]
-*Warning:* The JavaScript module you specify using the `Model` attribute will be re-evaluated every time one of the `ModelArgs` change.
-[/callout]
+> [callout_warn] *Warning:* The JavaScript module you specify using the `Model` attribute will be re-evaluated every time one of the `ModelArgs` change.
+
 
 #### Automatic ux:Property binding
 

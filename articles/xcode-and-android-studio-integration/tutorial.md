@@ -1,6 +1,6 @@
-# Xcode and Android Studio Integration
+# Fuse Views
 
-The `Fuse.Views` package allows you to take any UX UI component and export them as a native Library for iOS and Android. In this tutorial we will step by step look at how this is done.
+The `Fuse.Views` package allows you to take any UX UI component and export them as a native Library for iOS and Android. In this tutorial we will step by step look at how this is done in Xcode and Android Studio.
 
 ## Step 0: Installing dependencies
 

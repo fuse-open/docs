@@ -76,9 +76,8 @@ With the **available space** concept settled firmly, let's move on and throw `Al
 
 In this case, the nested red `Panel` with `Alignment="Top"` set will take up only 16pt vertically, and be aligned to the top of the yellow `Panel`. When we assign an `Alignment` to an element, it tries to stick to the particular side of its parent and take up as little space in the respective direction as possible. The red `Panel` still stretches to fill the full width of the available space since there are no horizontal constraints set on it.
 
-[callout info]
-At this point you might wonder what the difference between "docking" something in a `DockPanel` and aligning something is. Although the two have similar effects, __the most important difference is that aligning something does not subdivide its parents available space.__ What we mean by this is that the red `Panel` in the previous example does not "spend" its parent available space (as was done by the blue and green panels), it is instead just a way of declaring where panel should appear in the case where it is smaller (or bigger) than its parent in one or more dimensions.
-[/callout]
+> [callout_info] At this point you might wonder what the difference between "docking" something in a `DockPanel` and aligning something is. Although the two have similar effects, __the most important difference is that aligning something does not subdivide its parents available space.__ What we mean by this is that the red `Panel` in the previous example does not "spend" its parent available space (as was done by the blue and green panels), it is instead just a way of declaring where panel should appear in the case where it is smaller (or bigger) than its parent in one or more dimensions.
+
 
 If we remove the explicit `Height` on the red `Panel` and add some child elements with non-zero dimensions inside of it, the children will push the parent dimensions to accommodate the tallest child, the 200pt high maroon `Panel` in this case:
 

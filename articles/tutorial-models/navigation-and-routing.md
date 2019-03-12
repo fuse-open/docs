@@ -40,9 +40,8 @@ Now, because the @Navigator expects _templates_ instead of instances for its chi
 </App>
 ```
 
-[callout info]
-By convention, we name the templates the same as the class names when used in a navigation context. _Why_, will become apparent in the next section.
-[/callout]
+> [callout_info] By convention, we name the templates the same as the class names when used in a navigation context. _Why_, will become apparent in the next section.
+
 
 Basically, what each of these attributes says is that for a given _key_ (`HomePage` and `EditHikePage` in this case), we want the @Navigator to instantiate the associated class. So, if the @Navigator is asked to navigate to `HomePage`, it will instantiate a `HomePage` instance (if it hasn't already) and navigate there. Similarly, when asked to navigate to `EditHikePage`, it will instantiate an `EditHikePage` instance (if it hasn't already) and navigate to that instead. We can add any amount of templates we want, given that each of the keys is _unique_ (if they weren't, the @Navigator wouldn't know which template to use for a given key).
 

@@ -113,9 +113,8 @@ We also need to make sure we update the path to our model in `MainView.ux`, sinc
 <App Model="Models/App">
 ```
 
-[callout info]
-After moving the model class like we just did, you might need to __rebuild__ the project in order for Fuse to pick up the change. This can be done from the menu by going to Preview->Rebuild.
-[/callout]
+> [callout_info] After moving the model class like we just did, you might need to __rebuild__ the project in order for Fuse to pick up the change. This can be done from the menu by going to Preview->Rebuild.
+
 
 Now we're ready to start implementing our mock backend. As it turns out, our `Models/App.js` file already contains all the data we'll need to present. Lets start our mock backend implementation by simply moving the `hikes` array to our newly created `Services/MockBackend.js` file. But instead of assigning it to `this.hikes`, lets make it a constant and a part of the files root scope (notice the `const hikes` part):
 

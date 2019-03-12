@@ -53,9 +53,8 @@ As for the second question, `ux:Class` means that instead of creating an _instan
 
 But what does _extend_ mean in this context? It simply means that we're going to make our own class that is basically the same as a given class, but we'll add a few things of our own. In our case, we still want to end up with a @Page, but we want some extra stuff on it as well (the stuff that's specific to our view). So, we'll say `<Page ux:Class="EditHikePage" />`, which means we're going to create our own class called `EditHikePage` that extends the @Page class. Then, whenever we want to use this class (create an instance), instead of saying `<Page />` and putting all of our custom stuff inside it, we can simply say `<EditHikePage />`.
 
-[callout info]
-You can find out more about classes in our [Creating Components](https://fuse-open.github.io/docs/basics/creating-components) documentation.
-[/callout]
+> [callout_info]You can find out more about classes in our [Creating Components](https://fuse-open.github.io/docs/basics/creating-components) documentation.
+
 
 Now that we've understood the basic contents of this file, it's time to migrate the code we want in our view over from `MainView.ux`. If we take a look at that file, we'll see something like this:
 

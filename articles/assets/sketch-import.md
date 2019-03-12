@@ -1,8 +1,7 @@
 # Import assets from Sketch
 
-[callout warn]
-This page relates to the old, soon-to-be-deprecated Sketch integration. You should probably check out the [new Sketch importer](./sketch-symbol-import.md) instead!
-[/callout]
+> [callout_warn] This page relates to the old, soon-to-be-deprecated Sketch integration. You should probably check out the [new Sketch importer](./sketch-symbol-import.md) instead!
+
 
 Sketch is a great vector design tool for Mac. If you haven't tried it, <a href="https://www.sketchapp.com">check it out</a>!.
 

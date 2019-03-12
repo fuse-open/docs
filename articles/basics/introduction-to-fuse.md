@@ -4,9 +4,8 @@ This module will provide you with an introduction to the fundamentals of Fuse an
 
 The goal of this module is to give you a good understanding of what makes up a Fuse app, and to gain some practical knowledge in the process.
 
-[callout info]
-We will also cover how JavaScript fits in with Fuse, so some experience with JavaScript will be helpful in that section.
-[/callout]
+> [callout_info] We will also cover how JavaScript fits in with Fuse, so some experience with JavaScript will be helpful in that section.
+
 
 ## New project
 
@@ -28,9 +27,8 @@ Every Fuse app consists of at least two files:
 
 When we start the Fuse preview, it looks for a `.unoproj` file in the folder we're in. As long as this file exists, and we have a `.ux` file with an `App` tag (we'll cover UX markup next), we have a valid Fuse project.
 
-[callout info]
-Why is it called .unoproj you might wonder? Fuse is built on top of a programming language called Uno. This means that when Fuse compiles your code, it is actually compiling an Uno project. Knowledge about Uno is __not required__ in order to use Fuse, but for anyone who wants to dig deeper into the Fuse technology stack, more information can be found [here](articles:native-interop/native-interop).
-[/callout]
+> [callout_info] Why is it called .unoproj you might wonder? Fuse is built on top of a programming language called Uno. This means that when Fuse compiles your code, it is actually compiling an Uno project. Knowledge about Uno is __not required__ in order to use Fuse, but for anyone who wants to dig deeper into the Fuse technology stack, more information can be found [here](articles:native-interop/native-interop).
+
 
 #### UX files
 
@@ -38,9 +36,8 @@ All UX file names end with the`.ux` file extension. UX is a markup language base
 
 Our chosen project template gives us only one UX file to start with, called `MainView.ux`. To start building your app, open this file in your text editor of choice. You'll notice the file only contains two lines of code; a pair of opening and closing `App` tags.
 
-[callout info]
-UX markup is explained in detail in the next section.
-[/callout]
+> [callout_info] UX markup is explained in detail in the next section.
+
 
 ```
 <App>
@@ -61,9 +58,8 @@ If you paste the following code into your MainView.ux file and save it, you'll n
 
 As mentioned in the previous section, UX is the way we do most of our work in Fuse. It is where we define everything visual, as well as animations and navigation. In this section we'll introduce the basics of UX markup.
 
-[callout info]
-If you're already familiar with XML, feel free to skip forward to the next sub chapter. The terminology is a bit different from regular XML though so it may be worth a look.
-[/callout]
+> [callout_info] If you're already familiar with XML, feel free to skip forward to the next sub chapter. The terminology is a bit different from regular XML though so it may be worth a look.
+
 
 ### What is UX for?
 
@@ -107,9 +103,8 @@ This is an _object_ that doesn't contain any other _objects_. When you see a tag
 
 Here we see that the `<Something>` tag doesn't end in `/>` so it needs to be closed. That's why the second tag starts with `</`. It is saying that this is 'closing tag' for a `Something` tag above.
 
-[callout info]
-Remember that even though example number two has 2 tags it is still one _object_. It's just one that can contain other _objects_ as well.
-[/callout]
+> [callout_info] Remember that even though example number two has 2 tags it is still one _object_. It's just one that can contain other _objects_ as well.
+
 
 #### Using this knowledge
 
@@ -209,11 +204,10 @@ And now we can use it just like any other object that came with Fuse!
 <TextRectangle />
 ```
 
-[callout info]
-*Top tips:*
+> [callout_info] *Top tips:*
 - You may be wondering if the objects we have already seen (`StackPanel` & `Text`) have classes too, and the answer is yes. The Objects you make are just as powerful as the ones that come with the product which is pretty cool.
 - Even though `ux:Class` looks like a `Property` it is not one. If you see something that looks like a `Property` but which start with `ux:`, then it has special behavior. These special behaviors are explained in the documentation so don't worry about trying to memorize them all straight away.
-[/callout]
+
 
 ## Introduction to Layout
 
@@ -260,9 +254,8 @@ The following figure shows how objects respond to a handful of the alignment opt
 
 Now it's time to learn about some layout types and how they can be combined to create almost any app layout you can think of. You'll be introduced to three layout types: `StackPanel`, `DockPanel` and `Grid`. Note however that these aren't the only layout types in Fuse. They are however by far the most commonly used ones, and cover most of the use-cases you'll run into. You'll see more of them listed in the outline of [the docs](https://fuse-open.github.io/docs).
 
-[callout info]
-The various panels we introduce here are actually just normal panels with an associated `Layout` type. What we mean by this is that a `StackPanel` is actually just a `Panel` with a `StackLayout` attached to it. Some of the available layout types do not have these `Panel` wrappers, and so you have to add them to a normal `Panel` yourself in order to use them.
-[/callout]
+> [callout_info] The various panels we introduce here are actually just normal panels with an associated `Layout` type. What we mean by this is that a `StackPanel` is actually just a `Panel` with a `StackLayout` attached to it. Some of the available layout types do not have these `Panel` wrappers, and so you have to add them to a normal `Panel` yourself in order to use them.
+
 
 Here is an example showing how you can use the `ColumnLayout` layout:
 
@@ -461,9 +454,8 @@ observableValue.value = 40;
 
 if we data-bind to this variable, the UI will automatically update whenever we make changes to it.
 
-[callout info]
-We do __not__ use the `new` keyword when creating Observable values.
-[/callout]
+> [callout_info] We do __not__ use the `new` keyword when creating Observable values.
+
 
 #### List observables
 
@@ -621,9 +613,8 @@ uno test ProjectName.unoproj
 
 If a test throws an error, it will be regarded as failing. If nothing is thrown, the test passes. Pretty simple! Check out the [ux:Test documentation](articles:testing/testing.md) for more details.
 
-[callout info]
-The current implementation of unit tests in Fuse is quite rudimentary. You can expect the testing API to be expanded upon in the future.
-[/callout]
+> [callout_info] The current implementation of unit tests in Fuse is quite rudimentary. You can expect the testing API to be expanded upon in the future.
+
 
 ## Animation basics
 

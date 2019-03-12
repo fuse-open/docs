@@ -160,9 +160,8 @@ The easiest way to customize the animation of pages entering and exiting a `Page
 </Page>
 ```
 
-[callout info]
-Since the `PageControl` already defines how to animate pages as the user swipes, we need to disable this if we want to add our own. We do this by setting the `Transition` property of the `Page` to `None`.
-[/callout]
+> [callout_info] Since the `PageControl` already defines how to animate pages as the user swipes, we need to disable this if we want to add our own. We do this by setting the `Transition` property of the `Page` to `None`.
+
 
 The `EnteringAnimation` and `ExitingAnimation` can be a source of confusion for people who first encounter them, but we'll try to explain them here:
 

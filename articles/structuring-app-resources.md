@@ -66,9 +66,8 @@ In the above example we've defined the same color, but as a dynamic resource ins
 We have wrapped the `Rectangle` and `float4` resource in a `Panel` to illustrate that the resource has to be either a sibling of the `Rectangle`, or belong to one of its ancestors in order to be visible. Since we put it on the `Panel` it is available to the panels descendants, or any of its descendants.
 You might also have noticed that we needed to use a special _binding syntax_ in order to access this resource: `{Resource AppBackground}`. Since the resource might change while the app is running, we need to create a binding here so that our `Rectangle` is notified whenever that occurs. 
 
-[callout info]
-The `{Resource <key>}` binding also works for static resources defined using `ux:Global`. It will first look for a dynamic resource defined by `ux:Key`, but if none is present, it will pick the static one by the same name instead.
-[/callout]
+> [callout_info] The `{Resource <key>}` binding also works for static resources defined using `ux:Global`. It will first look for a dynamic resource defined by `ux:Key`, but if none is present, it will pick the static one by the same name instead.
+
 
 ## Color palettes
 
@@ -133,9 +132,8 @@ Since `MyTheme` inherits from the `WhileTrue` trigger, it can easily be turned o
 </App>
 ```
 
-[callout info]
-Note that we here have also defined a `ux:Global` for `MyApp.PrimaryColor`. This is to make sure our app has a fallback value for the case when no theme has been specified.
-[/callout]
+> [callout_info] Note that we here have also defined a `ux:Global` for `MyApp.PrimaryColor`. This is to make sure our app has a fallback value for the case when no theme has been specified.
+
 
 
 ## Fonts and text styles
