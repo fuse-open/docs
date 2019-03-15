@@ -2,28 +2,28 @@
   "entity": {
     "base": {
       "id": {
-        "id": "uno/object",
+        "id": "uno/valuetype",
         "parentId": "uno",
         "type": "Class",
         "modifiers": [
           "public",
-          "intrinsic"
+          "abstract"
         ]
       },
       "uri": {
-        "idUri": "uno/object",
-        "href": "uno/object"
+        "idUri": "uno/valuetype",
+        "href": "uno/valuetype"
       },
       "titles": {
-        "indexTitle": "object",
-        "fullyQualifiedIndexTitle": "object"
+        "indexTitle": "ValueType",
+        "fullyQualifiedIndexTitle": "Uno.ValueType"
       }
     },
     "location": {
       "namespaceTitle": "Uno.Content.Fonts",
       "namespaceUri": "uno/content/fonts",
       "packageName": "UnoCore",
-      "packageVersion": "1.9.0"
+      "packageVersion": "1.11.1"
     },
     "inheritance": {
       "root": {
@@ -31,10 +31,17 @@
         "title": "object",
         "children": [
           {
-            "uri": "uno/content/fonts/renderedglyph",
-            "title": "Uno.Content.Fonts.RenderedGlyph",
-            "children": [],
-            "isCurrent": true
+            "uri": "uno/valuetype",
+            "title": "Uno.ValueType",
+            "children": [
+              {
+                "uri": "uno/content/fonts/renderedglyph",
+                "title": "Uno.Content.Fonts.RenderedGlyph",
+                "children": [],
+                "isCurrent": true
+              }
+            ],
+            "isAncestor": true
           }
         ],
         "isAncestor": true
@@ -61,7 +68,7 @@
       "fullyQualifiedIndexTitle": "Uno.Content.Fonts.RenderedGlyph"
     },
     "syntax": {
-      "uno": "public struct RenderedGlyph {}"
+      "uno": "public struct RenderedGlyph : Uno.ValueType {}"
     }
   },
   "tableOfContents": {
@@ -122,6 +129,103 @@
             "titles": {
               "indexTitle": "RenderedGlyph(float2, float2, Bitmap)",
               "fullyQualifiedIndexTitle": "Uno.Content.Fonts.RenderedGlyph.RenderedGlyph(float2, float2, Uno.Content.Images.Bitmap)"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "advance",
+                "href": "uno/float2",
+                "title": "float2",
+                "fullyQualifiedTitle": "float2"
+              },
+              {
+                "name": "bearing",
+                "href": "uno/float2",
+                "title": "float2",
+                "fullyQualifiedTitle": "float2"
+              },
+              {
+                "name": "size",
+                "href": "uno/int2",
+                "title": "int2",
+                "fullyQualifiedTitle": "int2"
+              },
+              {
+                "name": "format",
+                "href": "uno/graphics/format",
+                "title": "Format",
+                "fullyQualifiedTitle": "Uno.Graphics.Format"
+              },
+              {
+                "name": "data",
+                "href": "uno/byte",
+                "title": "byte[]",
+                "fullyQualifiedTitle": "byte[]"
+              }
+            ],
+            "id": {
+              "id": "uno/content/fonts/renderedglyph/_ctor_97686f95",
+              "parentId": "uno/content/fonts/renderedglyph",
+              "type": "Constructor",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "uno/content/fonts/renderedglyph/_ctor_97686f95",
+              "href": "uno/content/fonts/renderedglyph/_ctor_97686f95"
+            },
+            "titles": {
+              "indexTitle": "RenderedGlyph(float2, float2, int2, Format, byte[])",
+              "fullyQualifiedIndexTitle": "Uno.Content.Fonts.RenderedGlyph.RenderedGlyph(float2, float2, int2, Uno.Graphics.Format, byte[])"
+            }
+          }
+        ]
+      }
+    ],
+    "properties": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "uno/content/fonts/renderedglyph",
+            "parentId": "uno/content/fonts",
+            "type": "Struct",
+            "modifiers": [
+              "public"
+            ]
+          },
+          "uri": {
+            "idUri": "uno/content/fonts/renderedglyph",
+            "href": "uno/content/fonts/renderedglyph"
+          },
+          "titles": {
+            "indexTitle": "RenderedGlyph",
+            "fullyQualifiedIndexTitle": "Uno.Content.Fonts.RenderedGlyph"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/content/images/bitmap",
+              "title": "Bitmap",
+              "fullyQualifiedTitle": "Uno.Content.Images.Bitmap"
+            },
+            "id": {
+              "id": "uno/content/fonts/renderedglyph/bitmap",
+              "parentId": "uno/content/fonts/renderedglyph",
+              "type": "Property",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "uno/content/fonts/renderedglyph/bitmap",
+              "href": "uno/content/fonts/renderedglyph/bitmap"
+            },
+            "titles": {
+              "indexTitle": "Bitmap",
+              "fullyQualifiedIndexTitle": "Uno.Content.Fonts.RenderedGlyph.Bitmap"
             }
           }
         ]
@@ -328,12 +432,12 @@
           },
           {
             "returns": {
-              "href": "uno/content/images/bitmap",
-              "title": "Bitmap",
-              "fullyQualifiedTitle": "Uno.Content.Images.Bitmap"
+              "href": "uno/byte",
+              "title": "byte[]",
+              "fullyQualifiedTitle": "byte[]"
             },
             "id": {
-              "id": "uno/content/fonts/renderedglyph/bitmap",
+              "id": "uno/content/fonts/renderedglyph/data",
               "parentId": "uno/content/fonts/renderedglyph",
               "type": "Field",
               "modifiers": [
@@ -341,12 +445,58 @@
               ]
             },
             "uri": {
-              "idUri": "uno/content/fonts/renderedglyph/bitmap",
-              "href": "uno/content/fonts/renderedglyph/bitmap"
+              "idUri": "uno/content/fonts/renderedglyph/data",
+              "href": "uno/content/fonts/renderedglyph/data"
             },
             "titles": {
-              "indexTitle": "Bitmap",
-              "fullyQualifiedIndexTitle": "Uno.Content.Fonts.RenderedGlyph.Bitmap"
+              "indexTitle": "Data",
+              "fullyQualifiedIndexTitle": "Uno.Content.Fonts.RenderedGlyph.Data"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/graphics/format",
+              "title": "Format",
+              "fullyQualifiedTitle": "Uno.Graphics.Format"
+            },
+            "id": {
+              "id": "uno/content/fonts/renderedglyph/format",
+              "parentId": "uno/content/fonts/renderedglyph",
+              "type": "Field",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "uno/content/fonts/renderedglyph/format",
+              "href": "uno/content/fonts/renderedglyph/format"
+            },
+            "titles": {
+              "indexTitle": "Format",
+              "fullyQualifiedIndexTitle": "Uno.Content.Fonts.RenderedGlyph.Format"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/int2",
+              "title": "int2",
+              "fullyQualifiedTitle": "int2"
+            },
+            "id": {
+              "id": "uno/content/fonts/renderedglyph/size",
+              "parentId": "uno/content/fonts/renderedglyph",
+              "type": "Field",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "uno/content/fonts/renderedglyph/size",
+              "href": "uno/content/fonts/renderedglyph/size"
+            },
+            "titles": {
+              "indexTitle": "Size",
+              "fullyQualifiedIndexTitle": "Uno.Content.Fonts.RenderedGlyph.Size"
             }
           }
         ]

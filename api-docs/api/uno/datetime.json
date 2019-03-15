@@ -2,28 +2,28 @@
   "entity": {
     "base": {
       "id": {
-        "id": "uno/object",
+        "id": "uno/valuetype",
         "parentId": "uno",
         "type": "Class",
         "modifiers": [
           "public",
-          "intrinsic"
+          "abstract"
         ]
       },
       "uri": {
-        "idUri": "uno/object",
-        "href": "uno/object"
+        "idUri": "uno/valuetype",
+        "href": "uno/valuetype"
       },
       "titles": {
-        "indexTitle": "object",
-        "fullyQualifiedIndexTitle": "object"
+        "indexTitle": "ValueType",
+        "fullyQualifiedIndexTitle": "Uno.ValueType"
       }
     },
     "location": {
       "namespaceTitle": "Uno",
       "namespaceUri": "uno",
       "packageName": "UnoCore",
-      "packageVersion": "1.9.0"
+      "packageVersion": "1.11.1"
     },
     "inheritance": {
       "root": {
@@ -31,10 +31,17 @@
         "title": "object",
         "children": [
           {
-            "uri": "uno/datetime",
-            "title": "Uno.DateTime",
-            "children": [],
-            "isCurrent": true
+            "uri": "uno/valuetype",
+            "title": "Uno.ValueType",
+            "children": [
+              {
+                "uri": "uno/datetime",
+                "title": "Uno.DateTime",
+                "children": [],
+                "isCurrent": true
+              }
+            ],
+            "isAncestor": true
           }
         ],
         "isAncestor": true
@@ -85,7 +92,7 @@
       "fullyQualifiedIndexTitle": "Uno.DateTime"
     },
     "syntax": {
-      "uno": "[Uno.Compiler.ExportTargetInterop.DotNetType(fullName = \"System.DateTime\")]\npublic struct DateTime {}"
+      "uno": "[Uno.Compiler.ExportTargetInterop.DotNetType(fullName = \"System.DateTime\")]\npublic struct DateTime : Uno.ValueType {}"
     }
   },
   "tableOfContents": {

@@ -2,28 +2,28 @@
   "entity": {
     "base": {
       "id": {
-        "id": "uno/object",
+        "id": "uno/valuetype",
         "parentId": "uno",
         "type": "Class",
         "modifiers": [
           "public",
-          "intrinsic"
+          "abstract"
         ]
       },
       "uri": {
-        "idUri": "uno/object",
-        "href": "uno/object"
+        "idUri": "uno/valuetype",
+        "href": "uno/valuetype"
       },
       "titles": {
-        "indexTitle": "object",
-        "fullyQualifiedIndexTitle": "object"
+        "indexTitle": "ValueType",
+        "fullyQualifiedIndexTitle": "Uno.ValueType"
       }
     },
     "location": {
       "namespaceTitle": "Fuse.Elements",
       "namespaceUri": "fuse/elements",
       "packageName": "Fuse.Elements",
-      "packageVersion": "1.9.0"
+      "packageVersion": "1.11.2"
     },
     "inheritance": {
       "root": {
@@ -31,10 +31,17 @@
         "title": "object",
         "children": [
           {
-            "uri": "fuse/elements/boxplacement",
-            "title": "Fuse.Elements.BoxPlacement",
-            "children": [],
-            "isCurrent": true
+            "uri": "uno/valuetype",
+            "title": "Uno.ValueType",
+            "children": [
+              {
+                "uri": "fuse/elements/boxplacement",
+                "title": "Fuse.Elements.BoxPlacement",
+                "children": [],
+                "isCurrent": true
+              }
+            ],
+            "isAncestor": true
           }
         ],
         "isAncestor": true
@@ -61,7 +68,7 @@
       "fullyQualifiedIndexTitle": "Fuse.Elements.BoxPlacement"
     },
     "syntax": {
-      "uno": "public struct BoxPlacement {}"
+      "uno": "public struct BoxPlacement : Uno.ValueType {}"
     },
     "comment": {
       "brief": "@hide Not sure how this ended up public",

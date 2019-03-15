@@ -1,10 +1,52 @@
 {
   "entity": {
+    "base": {
+      "id": {
+        "id": "uno/valuetype",
+        "parentId": "uno",
+        "type": "Class",
+        "modifiers": [
+          "public",
+          "abstract"
+        ]
+      },
+      "uri": {
+        "idUri": "uno/valuetype",
+        "href": "uno/valuetype"
+      },
+      "titles": {
+        "indexTitle": "ValueType",
+        "fullyQualifiedIndexTitle": "Uno.ValueType"
+      }
+    },
     "location": {
       "namespaceTitle": "Uno",
       "namespaceUri": "uno",
       "packageName": "UnoCore",
-      "packageVersion": "1.9.0"
+      "packageVersion": "1.11.1"
+    },
+    "inheritance": {
+      "root": {
+        "uri": "uno/object",
+        "title": "object",
+        "children": [
+          {
+            "uri": "uno/valuetype",
+            "title": "Uno.ValueType",
+            "children": [
+              {
+                "uri": "uno/enum",
+                "title": "Uno.Enum",
+                "children": [],
+                "isCurrent": true
+              }
+            ],
+            "isAncestor": true
+          }
+        ],
+        "isAncestor": true
+      },
+      "hasInheritance": true
     },
     "id": {
       "id": "uno/enum",
@@ -12,7 +54,7 @@
       "type": "Class",
       "modifiers": [
         "public",
-        "static"
+        "abstract"
       ]
     },
     "uri": {
@@ -27,12 +69,79 @@
       "fullyQualifiedIndexTitle": "Uno.Enum"
     },
     "syntax": {
-      "uno": "public static class Enum {}"
+      "uno": "public abstract class Enum : Uno.ValueType {}"
     }
   },
   "tableOfContents": {
+    "constructors": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "uno/enum",
+            "parentId": "uno",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract"
+            ]
+          },
+          "uri": {
+            "idUri": "uno/enum",
+            "href": "uno/enum"
+          },
+          "titles": {
+            "indexTitle": "Enum",
+            "fullyQualifiedIndexTitle": "Uno.Enum"
+          }
+        },
+        "items": [
+          {
+            "comment": {
+              "brief": "Creates a new Enum",
+              "full": "Creates a new Enum"
+            },
+            "id": {
+              "id": "uno/enum/_ctor",
+              "parentId": "uno/enum",
+              "type": "Constructor",
+              "modifiers": [
+                "protected",
+                "generated"
+              ]
+            },
+            "uri": {
+              "idUri": "uno/enum/_ctor",
+              "href": "uno/enum/_ctor"
+            },
+            "titles": {
+              "indexTitle": "Enum",
+              "fullyQualifiedIndexTitle": "Uno.Enum.Enum"
+            }
+          }
+        ]
+      }
+    ],
     "methods": [
       {
+        "declaredIn": {
+          "id": {
+            "id": "uno/enum",
+            "parentId": "uno",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract"
+            ]
+          },
+          "uri": {
+            "idUri": "uno/enum",
+            "href": "uno/enum"
+          },
+          "titles": {
+            "indexTitle": "Enum",
+            "fullyQualifiedIndexTitle": "Uno.Enum"
+          }
+        },
         "items": [
           {
             "returns": {
@@ -196,6 +305,136 @@
             "titles": {
               "indexTitle": "TryParse<TEnum>(string, TEnum)",
               "fullyQualifiedIndexTitle": "Uno.Enum.TryParse<TEnum>(string, TEnum)"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "uno/object",
+            "parentId": "uno",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "intrinsic"
+            ]
+          },
+          "uri": {
+            "idUri": "uno/object",
+            "href": "uno/object"
+          },
+          "titles": {
+            "indexTitle": "object",
+            "fullyQualifiedIndexTitle": "object"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "parameters": [
+              {
+                "name": "o",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              }
+            ],
+            "id": {
+              "id": "uno/enum/equals_a09c80e3",
+              "parentId": "uno/enum",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "uno/enum/equals_a09c80e3",
+              "href": "uno/object/equals_a09c80e3",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Equals(object)",
+              "fullyQualifiedIndexTitle": "Uno.Object.Equals(object)"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/int",
+              "title": "int",
+              "fullyQualifiedTitle": "int"
+            },
+            "id": {
+              "id": "uno/enum/gethashcode",
+              "parentId": "uno/enum",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "uno/enum/gethashcode",
+              "href": "uno/object/gethashcode",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetHashCode",
+              "fullyQualifiedIndexTitle": "Uno.Object.GetHashCode"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/type",
+              "title": "Type",
+              "fullyQualifiedTitle": "Uno.Type"
+            },
+            "id": {
+              "id": "uno/enum/gettype",
+              "parentId": "uno/enum",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "uno/enum/gettype",
+              "href": "uno/object/gettype",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetType",
+              "fullyQualifiedIndexTitle": "Uno.Object.GetType"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "id": {
+              "id": "uno/enum/tostring",
+              "parentId": "uno/enum",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "uno/enum/tostring",
+              "href": "uno/object/tostring",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "ToString",
+              "fullyQualifiedIndexTitle": "Uno.Object.ToString"
             }
           }
         ]

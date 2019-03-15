@@ -2,28 +2,28 @@
   "entity": {
     "base": {
       "id": {
-        "id": "uno/object",
+        "id": "uno/valuetype",
         "parentId": "uno",
         "type": "Class",
         "modifiers": [
           "public",
-          "intrinsic"
+          "abstract"
         ]
       },
       "uri": {
-        "idUri": "uno/object",
-        "href": "uno/object"
+        "idUri": "uno/valuetype",
+        "href": "uno/valuetype"
       },
       "titles": {
-        "indexTitle": "object",
-        "fullyQualifiedIndexTitle": "object"
+        "indexTitle": "ValueType",
+        "fullyQualifiedIndexTitle": "Uno.ValueType"
       }
     },
     "location": {
       "namespaceTitle": "Uno.Runtime.InteropServices",
       "namespaceUri": "uno/runtime/interopservices",
       "packageName": "UnoCore",
-      "packageVersion": "1.9.0"
+      "packageVersion": "1.11.1"
     },
     "inheritance": {
       "root": {
@@ -31,10 +31,17 @@
         "title": "object",
         "children": [
           {
-            "uri": "uno/runtime/interopservices/gchandle",
-            "title": "Uno.Runtime.InteropServices.GCHandle",
-            "children": [],
-            "isCurrent": true
+            "uri": "uno/valuetype",
+            "title": "Uno.ValueType",
+            "children": [
+              {
+                "uri": "uno/runtime/interopservices/gchandle",
+                "title": "Uno.Runtime.InteropServices.GCHandle",
+                "children": [],
+                "isCurrent": true
+              }
+            ],
+            "isAncestor": true
           }
         ],
         "isAncestor": true
@@ -61,7 +68,7 @@
       "fullyQualifiedIndexTitle": "Uno.Runtime.InteropServices.GCHandle"
     },
     "syntax": {
-      "uno": "public struct GCHandle {}"
+      "uno": "public struct GCHandle : Uno.ValueType {}"
     }
   },
   "tableOfContents": {
@@ -133,6 +140,29 @@
           }
         },
         "items": [
+          {
+            "returns": {
+              "href": "uno/intptr",
+              "title": "IntPtr",
+              "fullyQualifiedTitle": "Uno.IntPtr"
+            },
+            "id": {
+              "id": "uno/runtime/interopservices/gchandle/addrofpinnedobject",
+              "parentId": "uno/runtime/interopservices/gchandle",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "uno/runtime/interopservices/gchandle/addrofpinnedobject",
+              "href": "uno/runtime/interopservices/gchandle/addrofpinnedobject"
+            },
+            "titles": {
+              "indexTitle": "AddrOfPinnedObject",
+              "fullyQualifiedIndexTitle": "Uno.Runtime.InteropServices.GCHandle.AddrOfPinnedObject"
+            }
+          },
           {
             "returns": {
               "href": "uno/runtime/interopservices/gchandle",
