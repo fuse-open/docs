@@ -27,10 +27,15 @@ namespace Builder
                 Console.Error.WriteLine($"Root path '{rootPath}' does not exist");
                 return 1;
             }
+
             var baseUrl = args[1];
 
+            var outputPath = Path.Combine(rootPath, "generated");
+            if (args.Length == 3)
+                outputPath = args[2];
+
             var settings = new BuilderSettings(rootPath: rootPath,
-                                               outputPath: Path.Combine(rootPath, "generated"),
+                                               outputPath: outputPath,
                                                generateReport: args.Any(e => e == "--report"),
                                                baseUrl: baseUrl);
 
