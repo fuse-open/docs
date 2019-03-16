@@ -3,9 +3,8 @@ mono: none
 dotnet: 2.1.102
 
 script:
-  - dotnet run -p generator/src/generator.csproj -- . "https://fuse-open.github.io/docs/"
+  - dotnet run -p generator/src/generator.csproj -- . "https://fuse-open.github.io/docs/" _site
   - |
-    cp -r generated _site
     cp -r media _site/
     cp -r assets/fonts/. _site/
     cp -r assets/font-awesome-4.7.0/fonts/. _site/
