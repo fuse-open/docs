@@ -20,5 +20,4 @@ Run the following command:
 
 	apm install fuse
 
-	
 That's it! You're now ready to start using Atom with Fuse.

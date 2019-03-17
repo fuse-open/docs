@@ -221,5 +221,3 @@ The following example shows how we can display a `Rectangle` with a nice fading 
 	</Rectangle>
 </WhileTrue>
 ```
-
-
