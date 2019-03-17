@@ -30,7 +30,7 @@ Before we put any content in here, let's first make sure that Fuse will _bundle_
 
 For that, we'll add some info to our _project file_ that tells Fuse that our `hikes.js` file should be bundled with our app. If we open up the `hikr.unoproj` file, we'll see something like this:
 
-```
+```json
 {
   "Packages": [
     "Fuse",
@@ -45,7 +45,7 @@ For that, we'll add some info to our _project file_ that tells Fuse that our `hi
 
 As you can see, there's not much to it; basically just some simple info about our project. The section we're particularly interested in is the `"Includes"` section. Currently, it has one entry:
 
-```
+```json
   "Includes": [
     "*"
   ]
@@ -53,7 +53,7 @@ As you can see, there's not much to it; basically just some simple info about ou
 
 This basically means that the Fuse project should include a lot of the files commonly associated with Fuse projects. This covers .ux files, .uno files, and a few others. However, it does _not_ include JavaScript files, so we'll have to add our `hikes.js` file explicitly. To do this, we'll add another item to this list:
 
-```
+```json
 {
   "Packages": [
     "Fuse",
@@ -70,7 +70,7 @@ All we've done here is placed a comma after the `"*"` entry, and added a `"hikes
 
 At this point, we'll need to actually move our `hikes` array from inside `MainView.ux` into our `hikes.js` file. First, we'll copy it from our `MainView.ux` file, and then remove it:
 
-```
+```xml
 		<JavaScript>
 			var Observable = require("FuseJS/Observable");
 
@@ -104,7 +104,7 @@ Notice how we left the reference to `hikes` in `module.exports`. This will cause
 
 But first, we'll place the array inside `hikes.js`:
 
-```
+```js
 var hikes = [
 	{
 		id: 0,
@@ -151,7 +151,7 @@ var hikes = [
 
 Once that's done, we'll need to _export_ this array from this new module so that we can see the data from our views again. This is done using `module.exports`, just like it was when exposing data from our inline JavaScript modules to the surrounding UX code. However, in this case, it gets a little bit simpler. Because we're just going to have this one piece of data in this file, we can simple write the following at the bottom:
 
-```
+```js
 module.exports = hikes;
 ```
 
@@ -159,7 +159,7 @@ And that's it! Now we can save this file, and our new module is ready to go.
 
 Now, back to our view code. Since we've moved our `hikes` array out of this file, we need to _import_ it from our new module. This is actually super easy to do. Remember the `var Observable = require("FuseJS/Observable");` line in `MainView.ux`? This tells Fuse to import FuseJS' @Observable module, and bind it to the name `Observable`. For our new `hikes` module, we'll do almost exactly the same thing:
 
-```
+```js
 			var Observable = require("FuseJS/Observable");
 			var hikes = require("hikes");
 ```
@@ -181,7 +181,7 @@ $ tree
 
 Inside this new folder, we'll create a new file called `EditHikePage.ux`. Inside there, we'll place the following code:
 
-```
+```xml
 <Page ux:Class="EditHikePage"></Page>
 ```
 
@@ -199,7 +199,7 @@ $ tree
 
 Now before we move on, I need to explain a couple things. Let's take another look at our new `EditHikePage.ux` file's contents:
 
-```
+```xml
 <Page ux:Class="EditHikePage"></Page>
 ```
 
@@ -215,7 +215,7 @@ But what does _extend_ mean in this context? It simply means that we're going to
 
 Now that we've understood the basic contents of this file, it's time to migrate the code we want in our view over from `MainView.ux`. If we take a look at that file, we'll see something like this:
 
-```
+```xml
 <App>
 	<ClientPanel>
 		<JavaScript>
@@ -279,7 +279,7 @@ Looking at the top-level parts of this file, we first see our @App, and then a @
 
 MainView.ux:
 
-```
+```xml
 <App>
 	<ClientPanel>
 	</ClientPanel>
@@ -288,7 +288,7 @@ MainView.ux:
 
 EditHikePage.ux:
 
-```
+```xml
 <Page ux:Class="EditHikePage">
 	<JavaScript>
 		var Observable = require("FuseJS/Observable");
@@ -348,7 +348,7 @@ EditHikePage.ux:
 
 If we save these files, our preview will update, but this time, our contents will vanish! The reason for this is simple - we've only created the `EditHikePage` class, but we haven't _used_ it anywhere! To fix this, we'll just add an _instance_ of the `EditHikePage` class inside the @ClientPanel in `MainView.ux`, like so:
 
-```
+```xml
 <App>
 	<ClientPanel>
 		<EditHikePage />
@@ -374,7 +374,7 @@ $ tree
 Then we'll take all of the code from our `JavaScript` tag in `EditHikePage.ux` and move it over to our `EditHikePage.js` file:
 
 EditHikePage.ux:
-```
+```xml
 <Page ux:Class="EditHikePage">
 	<JavaScript>
 	</JavaScript>
@@ -407,7 +407,7 @@ EditHikePage.ux:
 ```
 
 EditHikePage.js:
-```
+```js
 var Observable = require("FuseJS/Observable");
 var hikes = require("hikes");
 
@@ -438,7 +438,7 @@ module.exports = {
 
 Go ahead and save this file. Finally, we'll change the `JavaScript` tags in our `EditHikePage.ux` file into a single tag that refers to our newly created JavaScript file:
 
-```
+```xml
 <Page ux:Class="EditHikePage">
 	<JavaScript File="EditHikePage.js" />
 
@@ -455,13 +455,13 @@ At this point, our `EditHikePage` class is actually two components in one - a hi
 
 Now that we've basically done this before, this second time should be a little easier. First, we'll create a blank page class that will become our home page, in a file called `HomePage.ux` in our `Pages` directory:
 
-```
+```xml
 <Page ux:Class="HomePage"></Page>
 ```
 
 Next, we'll migrate the home page-specific UX code from `EditHikePage.ux` into `HomePage.ux`. Specifically, we're after the @Each tag that displayed the `hikes` collection:
 
-```
+```xml
 <Each Items="{hikes}">
 	<Button Text="{name}" Clicked="{chooseHike}" />
 </Each>
@@ -469,7 +469,7 @@ Next, we'll migrate the home page-specific UX code from `EditHikePage.ux` into `
 
 So let's go ahead and move that over:
 
-```
+```xml
 <Page ux:Class="HomePage">
 	<Each Items="{hikes}">
 		<Button Text="{name}" Clicked="{chooseHike}" />
@@ -479,7 +479,7 @@ So let's go ahead and move that over:
 
 Also, since we're going to be displaying a bunch of these hikes, we'll want to place them inside a @StackPanel. It's a good idea to also have that inside a @ScrollView, so we'll set that up too:
 
-```
+```xml
 <Page ux:Class="HomePage">
 	<ScrollView>
 		<StackPanel>
@@ -495,7 +495,7 @@ However, if we save all this, we'll notice a couple things. Particularly, our ne
 
 Like before, we'll create our `HomePage.js` file, right next to our `HomePage.ux`, and we'll place the following code in there:
 
-```
+```js
 var hikes = require("hikes");
 
 function chooseHike(arg) {
@@ -511,7 +511,7 @@ module.exports = {
 
 This is basically the same code that's in `EditHikePage.js` currently, except we've commented out the contents of our `chooseHike` function. We'll get to that in the next chapter. But we no longer need this code in both places, since `EditHikePage` won't need to display all of the hikes. So, we'll go ahead and remove the `require`, `chooseHike` function, and their exports from `EditHikePage.js` while we're at it:
 
-```
+```js
 var Observable = require("FuseJS/Observable");
 
 var hike = Observable();
@@ -533,7 +533,7 @@ module.exports = {
 
 Now that our JavaScript is all ready to go, we'll go ahead and link to that file in `HomePage.ux`, like so:
 
-```
+```xml
 <Page ux:Class="HomePage">
 	<JavaScript File="HomePage.js" />
 ```
@@ -548,7 +548,7 @@ For now, to keep things simple, we'll use a @PageControl instead. A @PageControl
 
 So, if we take a look at `MainView.ux`, it currently looks something like this:
 
-```
+```xml
 <App>
 	<ClientPanel>
 		<EditHikePage />
@@ -559,7 +559,7 @@ So, if we take a look at `MainView.ux`, it currently looks something like this:
 
 Let's place the `EditHikePage` instance inside a @PageControl, like so:
 
-```
+```xml
 <App>
 	<ClientPanel>
 		<PageControl>
@@ -571,7 +571,7 @@ Let's place the `EditHikePage` instance inside a @PageControl, like so:
 
 Now, all we have to do is add a `HomePage` instance inside our @PageControl as well. Because it's the home page, let's place it above our existing `EditHikePage` instance:
 
-```
+```xml
 <App>
 	<ClientPanel>
 		<PageControl>
@@ -599,7 +599,7 @@ Phew, we've covered a lot of ground here! At this point, we've got our two views
 And here's what the code for all of our various files looks like. It's a few more files now, but they're much simpler now in isolation:
 
 `hikr.unoproj`:
-```
+```json
 {
   "Packages": [
     "Fuse",
@@ -613,7 +613,7 @@ And here's what the code for all of our various files looks like. It's a few mor
 ```
 
 `MainView.ux`:
-```
+```xml
 <App>
 	<ClientPanel>
 		<PageControl>
@@ -625,7 +625,7 @@ And here's what the code for all of our various files looks like. It's a few mor
 ```
 
 `hikes.js`:
-```
+```js
 var hikes = [
 	{
 		id: 0,
@@ -673,7 +673,7 @@ module.exports = hikes;
 ```
 
 `Pages/EditHikePage.ux`:
-```
+```xml
 <Page ux:Class="EditHikePage">
 	<JavaScript File="EditHikePage.js" />
 
@@ -701,7 +701,7 @@ module.exports = hikes;
 ```
 
 `Pages/EditHikePage.js`:
-```
+```js
 var Observable = require("FuseJS/Observable");
 
 var hike = Observable();
@@ -722,7 +722,7 @@ module.exports = {
 ```
 
 `Pages/HomePage.ux`:
-```
+```xml
 <Page ux:Class="HomePage">
 	<JavaScript File="HomePage.js" />
 
@@ -737,7 +737,7 @@ module.exports = {
 ```
 
 `Pages/HomePage.js`
-```
+```js
 var hikes = require("hikes");
 
 function chooseHike(arg) {

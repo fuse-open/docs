@@ -4,7 +4,7 @@ Observables are a key concept to understand in order to be effective with Fuse. 
 
 Here is a tiny example to give you an idea of what we'll be looking at:
 
-```
+```xml
 <App>
 	<JavaScript>
 		var Observable = require("FuseJS/Observable");
@@ -82,7 +82,7 @@ Whenever we data-bind to an `Observable` from UX using the curly brace syntax, w
 
 In some cases, we're interested in running some imperative code in response to an `Observable` changing. We can do this by subscribing using the `.onValueChanged(module, func(item))` function, which fires the function `func` every time the value of a single value Observable changes. The module parameter lets us connect the lifetime of this subscription to the lifetime of a module. In most cases we just pass the module we're currently in:
 
-```
+```js
 var myObservable = Observable(1);
 myObservable.onValueChanged(module, function(item) {
 	//do something
@@ -109,7 +109,7 @@ A thing to be aware of with this "push based" approach, is that values won't act
 
 We usually think of observables as streams of values flowing from a source (or a set of sources) to a destination (or set of destinations). Along the way, the stream can be transformed, filtered and combined with other streams by using reactive operators like `.map`, `.where` and `.combine` (find information about all the operators [here](articles:fusejs/observable-api.md). Here is an example:
 
-```
+```js
 var source = Observable(2);
 
 var destination = source.map(function(x) {
@@ -125,7 +125,7 @@ In the code above, we create a source `Observable` with a single initial value; 
 
 Observables can also be passed into custom made components using Properties. We can add a property which accepts Observables by making an `object` property:
 
-```
+```xml
 <Panel ux:Class="CoolPanel">
 	<object ux:Property="ObservableProperty" />
 	<JavaScript>

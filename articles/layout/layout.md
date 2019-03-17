@@ -8,7 +8,7 @@ UIs in Fuse are created by a hierarchy of @Panels, as well as other primitives l
 
 The following example shows how to make a grid with two rows and three columns filled with rectangles of various colors.
 
-```
+```xml
 <App>
 	<Grid RowCount="2" ColumnCount="3">
 		<Rectangle Color="#ff4500"/>
@@ -23,7 +23,7 @@ The following example shows how to make a grid with two rows and three columns f
 
 We can nest several panels to create more complex structures:
 
-```
+```xml
 <App>
 	<StackPanel>
 		<DockPanel Height="50">
@@ -48,7 +48,7 @@ For each UX-tag representing a `Visual` element, we can set properties that will
 `Margin` and `Padding` are two of the most used element properties. `Margin` controls the distance from the edges of an element to the corresponding edges of its container. @Padding works similarly to @Margin, but instead works inwards. It sets the distance from its edges to the corresponding edges of its child elements.
 
 Both `Margin` and `Padding` are of type `float4`, which means they have four floating point value components. They are specified in UX as comma separated lists:
-```
+```xml
 <Panel Margin="10,20,30,40" />
 <Panel Padding="10,20,30,40" />
 ```
@@ -57,7 +57,7 @@ Each value represents one of the elements four edges: "10(left),20(top),30(right
 
 We can also write in shortened forms:
 
-```
+```xml
 <Panel Margin="10" /> <!-- is expanded to "10,10,10,10" -->
 <Panel Padding="10,20" /> <!-- is expanded to "10,20,10,20" -->
 ```
@@ -68,7 +68,7 @@ In the cases where an element is smaller than the available space it is assigned
 
 The following example shows how to place rectangles in the four corners of the screen.
 
-```
+```xml
 <App>
 	<Panel>
 		<Rectangle Alignment="TopLeft"     Width="40" Height="40" Color="Red" />
@@ -108,7 +108,7 @@ Here are a couple examples:
 
 Here is an example of how it looks in UX:
 
-```
+```xml
 <Grid ColumnCount="3" RowCount="1">
 	<Panel Row="0" Column="0" Color="#f00"/>
 	<Panel Row="0" Column="2" Color="#00f"/>
@@ -119,7 +119,7 @@ Here is an example of how it looks in UX:
 
 Normally, the order in which elements are drawn depends on their place in the child list. Elements defined further up in the document are drawn on top of elements defined further down. In the following case, The red rectangle will be drawn on top of the green circle.
 
-```
+```xml
 <Panel>
 	<Rectangle Color="Red" Margin="100"/>
 	<Circle Color="Green"/>
@@ -130,7 +130,7 @@ To take control over this behavior, we can use the @ZOffset property. This prope
 
 In the following example, the @Circle is drawn on top of the @Rectangle because its `ZOffset` of 1.0 is higher than the rectangles `ZOffset` of 0.0 (default).
 
-```
+```xml
 <Panel>
 	<Rectangle Color="Red" ZOffset="0.0" Margin="100"/>
 	<Circle Color="Green" ZOffset="1.0"/>

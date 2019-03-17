@@ -115,7 +115,7 @@ These functions are currently available:
 
 * `attract(value, config)` - animates the change in a value by using an `AttractorConfig` to define the animation style
 
-```
+```xml
 <AttractorConfig Unit="Points" Easing="SinusoidalInOut" Duration="0.3" ux:Global="asPoints" />
 <Panel>
 	<Translation X="attract({xOffset}, asPoints)"/>
@@ -129,7 +129,7 @@ These functions are currently available:
 * `index()` - returns the index of this item inside `Each.Items`
 * `offsetIndex()` - returns the index of this item inside `Each.Items`, relative to `Each.Offset`
 
-```
+```xml
 <JavaScript>
 	var items = [1,2,3,4,5,6,7,8,9,10];
 	module.exports = {
@@ -147,6 +147,6 @@ These functions are currently available:
 
 **Note:** Avoid using layout functions (like `width(element)`, `height(element)`, `x(element)` or `y(element)`) as input to layout parameters (like `Width`, `Height`, `Margin` or `Padding`) . Doing this can cause unwanted or glitchy behavior:
 
-```
+```xml
 <Panel Width="10" Height="width(this)" />
 ```

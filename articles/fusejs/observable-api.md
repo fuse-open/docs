@@ -29,7 +29,7 @@ See the full list of members to see what's possible with observable lists.
 
 Observables can be used to supply all the basic types; number, string, boolean, as well as vector types. Number, string and boolean are created using their usual JavaScript literals:
 
-```
+```js
 var obsNumber = Observable(10.5);
 var obsString = Observable("hello");
 var obsBool = Observable(true);
@@ -37,7 +37,7 @@ var obsBool = Observable(true);
 
 For data-bindings requiring vector types (e.g. colors), we can use JavaScript arrays:
 
-```
+```js
 var obsRedColor = Observable([1,0,0,1]);
 var obsWhiteAndBlack = Observable([1,1,1,1], [0,0,0,1]);
 ```
@@ -599,7 +599,7 @@ We use `.flatMap()` instead of `.map()` here because we return observables from 
 
 > Note! The above approach is fast, but has one caveat: it does not conserve the items order in the observable in the case where the observable condition changes. This means that the `items` Observable effectively gets cleared and filled from scratch. There is a second pattern for observing a condition with `.where` which does not have this problem, but it can potentially be quite slow on large lists. It is included here for completeness:
 
-```
+```js
 var filteredItems = conditionObservable.flatMap(function(cond){
 	return items.where(function(item){
 		return cond.value;

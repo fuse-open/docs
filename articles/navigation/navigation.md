@@ -127,7 +127,7 @@ In `UserPage.js` we can read the parameter using the @Observable `Parameter`, wh
 Make a note of the fact that `this.Parameter` is an @Observable, which means that its value is not necessarily available when the module is being evaluated.
 Make sure you either expose it using an observable operator (like in the example above), or add a handler to it using the `onValueChanged` function:
 
-```
+```js
 this.Parameter.onValueChanged(module, function(param) {
 	//At this point we know then new parameter value.
 	

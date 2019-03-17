@@ -27,7 +27,7 @@ If you need a log from the Windows installer, pass `-l <log file name>` to the i
 ### Why does `Text.Padding` not add padding to my text?
 
 `Padding` applies to the *children* of an element. The text is part of the `<Text>` element itself, not a child of it. If you want padding around a piece of text, put `Padding` in the containing element instead:
-```
+```xml
 	<Panel Padding="10" Color="#9f9" Alignment="Center">
 		<Text Alignment="Center" Value="text"/>
 	</Panel>

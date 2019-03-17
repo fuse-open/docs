@@ -3,7 +3,7 @@
 A test in UX consists of an element with a `ux:Test` attribute.
 The value of this attribute determines the name of the test.
 
-```
+```xml
 <Panel ux:Test="MyTest">
 
 </Panel>
@@ -11,7 +11,7 @@ The value of this attribute determines the name of the test.
 
 Any JavaScript code that throws an `Error` will make the test fail.
 
-```
+```xml
 <Panel ux:Test="MyTest">
 	<JavaScript>
 		throw new Error("This will always fail");
@@ -21,7 +21,7 @@ Any JavaScript code that throws an `Error` will make the test fail.
 
 Pure JavaScript tests are also possible using `JavaScriptTest`:
 
-```
+```xml
 <JavaScriptTest ux:Test="MyJsTest" File="myJsTest.js" />
 ```
 

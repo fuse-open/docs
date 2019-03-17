@@ -42,12 +42,12 @@ There are two ways we can define resources and while they act in a similar way, 
 
 Lets take a look at an example:
 
-```
+```xml
 <float4 ux:Global="AppBackground" ux:Value="#7FDBFF" />
 ```
 Here we have defined the name `AppBackground` to refer to the blueish color #7FDBFF. This value can then be used like so, anywhere in our app:
 
-```
+```xml
 <Rectangle Color="AppBackground" />
 ```
 
@@ -55,7 +55,7 @@ Defining static resources/globals with meaningful names like this lets us easily
 
 A limitation of static globals is that they cannot be changed while the app is running. For that use-case, we have dynamic resources:
 
-```
+```xml
 <Panel>
 	<float4 ux:Key="AppBackground" ux:Value="#7FDBFF" />
 	<Rectangle Color="{Resource AppBackground}"/>
@@ -75,7 +75,7 @@ The `{Resource <key>}` binding also works for static resources defined using `ux
 When defining a color palette for our app, it can be a good idea to put it in its own file. This way we don't get a long list of color definitions cluttering our UI code, and it becomes easier to make color changes at a later stage. One detail of Fuse is that all files must define a `ux:Class` in order to be included in the app. When we just want to define a bunch of resources however, we don't want to also have to define a class to contain them.
 To make grouping resources more convenient, UX markup has a special tag called `ux:Resources`, which is used as follows:
 
-```
+```xml
 <ux:Resources>
 	<float4 ux:Global="MyApp.RedColor" ux:Value="#F44336" />
 	<float4 ux:Global="MyApp.PrimaryColor" ux:Value="MyApp.RedColor" />
@@ -95,7 +95,7 @@ All resources defined inside `ux:Resources` tags are automatically included in t
 The current way of creating themes in Fuse is to simply group all resources associated with the theme in an active trigger:
 
 ColorPalette.ux
-```
+```xml
 <ux:Resources>
 	<float4 ux:Global="Sienna" ux:Value="#a0522d" />
 	<float4 ux:Global="SkyBlue" ux:Value="#7ec0ee" />
@@ -105,7 +105,7 @@ ColorPalette.ux
 ```
 
 MyTheme.ux
-```
+```xml
 <WhileTrue ux:Class="MyTheme" Value="true">
 	<float4 ux:Global="MyApp.PrimaryColor" ux:Value="SkyBlue" />
 </WhileTrue>
@@ -113,7 +113,7 @@ MyTheme.ux
 
 We can then very easily use this theme in our app by adding it to our app root:
 
-```
+```xml
 <App>
 	<MyTheme />
 	<Panel Color="{Resource MyApp.PrimaryColor}" />
@@ -122,7 +122,7 @@ We can then very easily use this theme in our app by adding it to our app root:
 
 Since `MyTheme` inherits from the `WhileTrue` trigger, it can easily be turned on and off by either data-binding its `Value` property to a `JavaScript` variable, or with pure UX using for example a `Clicked` trigger and a `Toggle` action:
 
-```
+```xml
 <App>
 	<MyTheme ux:Name="myTheme"/>
 	<Panel Color="{Resource MyApp.PrimaryColor}">
@@ -142,24 +142,24 @@ Note that we here have also defined a `ux:Global` for `MyApp.PrimaryColor`. This
 
 Fuse supports both `.otf` (OpenType) and `.ttf` (TrueType) font files. In order to make a font available throughout your app you can create a static resource for it:
 
-```
+```xml
 <Font ux:Global="RobotoBold" File="Assets/Fonts/Roboto-Bold.ttf" />
 ```
 
 The font is then ready to be used in `Text` and `TextInput` objects by assigning their `Font` property:
 
-```
+```xml
 <Text Font="RobotoBold">Hello with Font</Text>
 ```
 
 Instead of assigning your custom font to all text objects however we prefer creating a set of text styles using `ux:Class` and instead use those in our app. This makes it easy to switch our fonts, text size and colors throughout our app by making changes in a single place.
 
-```
+```xml
 <Text ux:Class="MyApp.TitleText" Font="RobotoBold" FontSize="20" Color="{Resource MyApp.TitleTextColor}" />
 <Text ux:Class="MyApp.BodyText" Font="RobotoRegular" FontSize="13" Color="{Resource MyApp.BodyTextColor}" />
 ```
 
-```
+```xml
 <StackPanel>
 	<MyApp.TitleText>This is a title</MyApp.TitleText>
 	<MyApp.BodyText>And this is some body text...</MyApp.BodyText>

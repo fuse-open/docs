@@ -135,13 +135,13 @@ In Fuse, all classes can be *subclassed* to create new classes.
 
 For example, let's say we don't want to specify the font size for every text element. Instead of using `<Text FontSize="40">` everywhere, we should create or own subclass that describes the type of text we want:
 
-```
+```xml
 <Text ux:Class="BigHeader" FontSize="40" />
 ```
 
 And then, wherever we want to display a big header, do:
 
-```
+```xml
 <BigHeader>Welcome!</BigHeader>
 ```
 

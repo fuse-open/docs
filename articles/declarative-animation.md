@@ -5,7 +5,7 @@ Fuse has a powerful animation system that allows you to write your animations in
 The way we describe animations in Fuse is as deviations from what we call the "rest state". The rest state is the layout as it normally looks, when there has been no external inputs or events.
 We then apply animations to this rest state in response to input, for example to scale down a button while it is being pressed:
 
-```
+```xml
 <Button Text="Hello world!">
 	<WhilePressed>
 		<Scale Factor="0.8" Duration="0.2" />
@@ -27,7 +27,7 @@ As mentioned, we use animators to make changes and animate our UI. There is a bu
 
 A really neat thing about Fuse' declarative animation, is that it automatically knows how to undo its own effects. Say we for example change the color of a `Rectangle` to red using a change animator:
 
-```
+```xml
 <Rectangle ux:Name="myRectangle" Color="#00f">
 	<WhilePressed>
 		<Change myRectangle.Color="#f00" Duration="0.5" />
@@ -50,7 +50,7 @@ There is a set of common properties that you can expect to find on all animators
 Animators play relative to the moment the trigger they are in is activated. This means that all animators inside a trigger are played simultaneously.
 In the following example, we have a rectangle that, while pressed, rotates 180 degrees over 0.5 seconds, then fades to blue over a duration half a second.
 
-```
+```xml
 <Rectangle ux:Name="myRectangle" Color="#f00">
 	<WhilePressed>
 		<Rotate Degrees="180" Duration="0.5" />
@@ -66,7 +66,7 @@ The solution to this problem is to change the easing curve using the `Easing` an
 
 To get started, the `CubicInOut` easing tends to give a nice result for general use-cases.
 
-```
+```xml
 <WhilePressed>
 	<Rotate Easing="CubicInOut" Degrees="180" Duration="0.5" />
 	<Change Easing="CubicInOut" myRectangle.Color="#00f" Duration="0.5" Delay="0.5" />
@@ -80,7 +80,7 @@ It achieves this by creating a reversed version of its animation under the hood,
 
 Say we have an animation that looks something like this:
 
-```
+```xml
 <Change Duration="0.5" />
 <Move Duration="0.5" Delay="0.25" />
 ```
@@ -96,7 +96,7 @@ The common animator properties each have a corresponding `Back` variant (`Durati
 
 Here is an example of the above timeline after we've altered the `DelayBack` property of both animators as follows:
 
-```
+```xml
 <Change Duration="0.5" DelayBack="0"/>
 <Move Duration="0.5" Delay="0.25" DelayBack="0.25"/>
 ```
@@ -105,7 +105,7 @@ Here is an example of the above timeline after we've altered the `DelayBack` pro
 
 For the rare case when we want a completely different set of animators for when a trigger deactivates, we can use the `TriggerAnimation` class, and bind it to the triggers `BackwardAnimation` property. Here is an example of what that looks like:
 
-```
+```xml
 <WhileTrue>
 	<Move X="100" Duration="0.5" />
 	
@@ -129,7 +129,7 @@ The various triggers in Fuse can be roughly grouped in to three categories: whil
 
 Pulse triggers represent one-off events, that can occur due to certain input or events, or changes in app state. They are recognizable by their past tense verb names like `Clicked`, `Activated` and `Scrolled`. Since pulse triggers don't represent persistent state, they are deactivated as soon as their animators have completed. This also means that the triggers don't have any inherent duration themselves. If we therefore put animators without any duration on them inside pulse triggers, the animation will happen "instantly" and won't be visible.
 
-```
+```xml
 <Panel Width="150" Height="50" Color="Blue">
 	<Clicked>
 		<Rotate Degrees="180" Duration="0.5" />
@@ -190,7 +190,7 @@ Some controls, like `Slider` and `Video` have an inherent _progress_ property, w
 
 Here is an example of how `ProgressAnimation` can be used with a `Slider` to scale and rotate a `Rectangle` in response to the slider being slid by the user.
 
-```
+```xml
 <Panel>
 	<Slider>
 		<ProgressAnimation>
@@ -209,7 +209,7 @@ A very useful feature of triggers is that they can also contain arbitrary elemen
 
 The following example shows how we can display a `Rectangle` with a nice fading animation using a `WhileTrue` trigger. Note that the `AddingAnimation` trigger does not animate back when the element is removed, and thus we also need a `RemovingAnimation` to make the `Rectangle` fade back out. Another thing to note here is that the `AddingAnimation` animated backwards when the element is added to the visual tree. This is, like with `EnteringAnimation` and `ExitingAnimation` because we want to describe the animation as a deviation from the rest state, which in this case is how the `Rectangle` looks when it is visible.
 
-```
+```xml
 <WhileTrue>
 	<Rectangle ux:Name="rect" Color="Red" Width="100" Height="100">
 		<AddingAnimation>
