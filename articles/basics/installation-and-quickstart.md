@@ -88,7 +88,7 @@ To open the project in your text editor, either click the "Project" tab and sele
 
 To get started, paste the following code directly into `MainView.ux`, replacing the existing code:
 
-```
+```xml
 <App Background="#2196F3">
   <ClientPanel>
       <StackPanel ItemSpacing="10">

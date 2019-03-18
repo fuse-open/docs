@@ -83,7 +83,7 @@ A `/` signifies the end of an element. The `/` before the last `>` means that th
 
 Objects can be left open and then closed around another object like this:
 
-```
+```xml
 <Rectangle Color="Red">
   <Text Value="Hey, I am some text" Color="White" Alignment="Center"/>`
 </Rectangle>
@@ -162,7 +162,7 @@ _Note: Some design programs already have relative layout features. Figma’s con
 
 In Fuse’s layout system, when you draw a rectangle, you tell it how it should align relative to its parent. So when the parent changes size, the rectangle will change its position relative to its parent. That might seem complicated, so lets look at a practical example:
 
-```
+```xml
 <!-- Red Panel -->
 <Panel Color="#DB6882" Width="200" Padding="20" Height="300">
   <!-- Yellow Panel -->
@@ -176,7 +176,7 @@ If you change the `Width` of the parent `<Panel/>` you can see how the child adj
 
 You also have the ability to let a parent object dictate the way its children are arranged. A `<StackPanel/>` is a good example of this. The children of a `StackPanel` are stacked one after the other, rather than trying to occupy the same space. Here’s an example:
 
-```
+```xml
 <!-- Red Panel -->
 <StackPanel Color="#DB6882" Width="300" Height="300" Padding="20">
   <!-- Yellow Panel -->
@@ -202,7 +202,7 @@ You might have noticed in the above code that the parent object has the `Padding
 
 Simply put, `Margin` is the space outside the object and `Padding` is the space inside the object. Setting `Margin` on an object creates space between the object and its parent. Setting `Padding` creates space between the object and any children it contains. Here is a short demo:
 
-```
+```xml
 <!-- Red Panel -->
 <Panel Color="#DB6882" Width="300" Height="300">
   <!-- Yellow Panel -->
@@ -220,7 +220,7 @@ Check out the yellow `Panel`, notice how it’s ‘pushing’ itself away from t
 
 You can also specify different values for each side like so:
 
-```
+```xml
 <!-- Red Panel -->
 <Panel Color="#DB6882" Width="300" Height="300">
   <!-- Yellow Panel -->
@@ -253,7 +253,7 @@ Margin-Top-and-Bottom="20"
 ![Alignment](../media/fuse-for-designers/Images/Alignment.png)
 
 For the most part, `Alignment` is really straightforward; it does exactly what it says on the tin. But sometimes you won’t get something to align as expected and most of the time that is because of _available space_. Consider this:
-```
+```xml
 <!-- Red Panel -->
 <StackPanel Color="#DB6882" Width="300" Height="300" Padding="20">
   <!-- Yellow Panel -->
@@ -267,7 +267,7 @@ For the most part, `Alignment` is really straightforward; it does exactly what i
 
 Here you have two `Panels` inside a `StackPanel`. What if you want the purple `Panel` to align to the bottom of the `StackPanel`? You can see that there is plenty of extra space in the `StackPanel`, shouldn’t be an issue.
 
-```
+```xml
 <!-- Red Panel -->
 <StackPanel Color="#DB6882" Width="300" Height="300" Padding="20">
   <!-- Yellow Panel -->
@@ -286,7 +286,7 @@ We expect the purple `Panel` to align to the bottom of the space that is provide
 
 Finally, setting `Alignment` on an object has another side-effect on the way that object takes up space. Above we said _"most objects want to take up as much space as is available to them"_ and this is true, until we set `Alignment` on them. Check out this code:
 
-```
+```xml
 <!-- Red Panel -->
 <Panel Color="#DB6882" Width="300" Height="300" Padding="20">
   <!-- Text with Yellow BG -->
@@ -296,7 +296,7 @@ Finally, setting `Alignment` on an object has another side-effect on the way tha
 ![Text Alignment](../media/fuse-for-designers/Images/Alignment_text.png)
 
 It is just some `Text` inside a `Panel`. The `Background` of the `Text `is set to yellow so you can easily see how much space the text is taking up. As you can tell, it is filling the entirety of the available space. So let’s add an `Alignment` to the `Text` and see how it changes:
-```
+```xml
 <!-- Red Panel -->
 <Panel Color="#DB6882" Width="300" Height="300" Padding="20">
   <!-- Text with Yellow BG -->
@@ -324,7 +324,7 @@ A quick note on units. You will have undoubtedly noticed that you haven’t need
 #### Styling in Fuse is really simple and intuitive.
 
 In Fuse, styling works in a pretty similar way to a vector based program. Each object has styling properties, like `Color`, that you specify on the object. This is unlike CSS where objects inherit their styling from a rule.
-```
+```xml
 <Rectangle Color="#46E3D6" Width="200" Height="100"/>
 ```
 
@@ -333,7 +333,7 @@ In Fuse, styling works in a pretty similar way to a vector based program. Each o
 Shape objects like `Rectangle` and `Circle` have a few more style related properties than a typical Panel. For instance, `Rectangle` can have `Stroke` and `CornerRadius` whereas `Panel` can’t. Shape objects usually have a visual role where a `Panel` will often be used to help construct a layout, where they will be invisible.
 
 What is really interesting is that you can create some styles as their own objects:
-```
+```xml
 <Rectangle  Width="200" Height="100">
    <SolidColor Color="#46E3D6" />
    <Stroke Color="#6DBFD2" Width="2" />
@@ -358,14 +358,14 @@ At some point you will probably want to use assets in your app. It’s pretty si
 Project Folder> Assets> Asset Type
 ```
 Then when you include the file in MainView.ux, you do so relative to the project root folder like this:
-```
+```xml
 <Image File="Assets/AssetType/Asset.jpeg"/>
 ```
 
 ### Using MultiDensity Images
 
 Of course you want to make sure that the images you include look good on all devices. The best way to do this is to export your images at multiple pixel densities from Sketch, Figma or Photoshop. Luckily, that is the hardest part of the process. Fuse has a really neat way of figuring out which image to use on each screen density. All you need to do is include the images like so:
-```
+```xml
 <Image StretchMode="PointPrefer">
   <MultiDensityImageSource>
     <FileImageSource File="Icon.png" Density="1"/>
@@ -384,32 +384,32 @@ In Fuse you can do something pretty similar. To get started you need to include 
 ![Font Folder](../media/fuse-for-designers/Images/Font_folder.png)
 
 Next you need to make that font globally available in your app. Fuse has a `<Font/>` object which allows you to include a font in your project:
-```
+```xml
 <Font File="Assets/Fonts/Comic Sans MS.ttf" />
 ```
 You’ll need to copy the actual font file into your project folder. Then you make it globally available like so:
-```
+```xml
 <Font File="Assets/Fonts/Comic Sans MS.ttf" ux:Global="MyDefaultFont" />
 ```
 The `ux:Global` property as you may have guessed, makes the font a globally available resource in your app. Meaning that whenever you make a new `Text` object, you can apply the font like this:
-```
+```xml
 <Text Font="MyDefaultFont" Value="Oh, hi there" />
 ```
 
 ![Adding Font](../media/fuse-for-designers/Images/Font-first.png)
 
 There is one more step here to make a truly re-usable style and it requires using `ux:Class`. We will cover classes a bit further on in this article in more detail, so don’t stress if it’s a new concept to you. For this task all you need to know is that putting `ux:Class` on an object makes it into a new type of object that you can re-use. So, if you do this:
-```
+```xml
 <Text ux:Class="MyHeadlineText" FontSize="32" Font="MyDefaultFont" />
 ```
 You can then re-use that text style every-time you need a headline, like this:
-```
+```xml
 <MyHeadlineText Value="Oh, hi there"/>
 ```
 ![Font Class](../media/fuse-for-designers/Images/Font-Class.png)
 
 Then if you want to change the way headlines look across the app, you tweak the original class:
-```
+```xml
 <Text ux:Class="MyHeadlineText" Size="32" Font="MyDefaultFont" Color="#DB6882" />
 ```
 ![Font Red](../media/fuse-for-designers/Images/Font-Red.png)
@@ -419,17 +419,17 @@ Then if you want to change the way headlines look across the app, you tweak the 
 
 Another aspect of design programs you can replicate is a color palette. To avoid the tedium of typing in hex codes over and over you can create global colors and apply them by name.
 First thing you need to do is declare a color like so:
-```
+```xml
 <float4 ux:Value="#8A5182" />
 ```
 You may be wondering what a `<float4/>` is. Without getting into too much detail, it’s a value-type Fuse uses for colors. You are saying to Fuse that you want to make a new thing and it will be `<float4/>` type. Then you define the value of that thing as `#8A5182`. If you typed in a value that wasn’t the right type, like `"Hello"` , Fuse would throw an error.
 
 By adding the following, we can make that color globally available.
-```
+```xml
 <float4 ux:Global="MyFavColor" ux:Value="#8A5182" />
 ```
 Then you can apply it to anything that takes a `Color` property by using the unique `ux:Global` name you made:
-```
+```xml
 <Text Size="16" Font="MyDefaultFont" Color="MyFavColor" />
 ```
 You can make as many colors as you need to. It’s really great because if you change your mind about the exact kind of color you want, you can tweak the color here and it will update to every object using that color.
@@ -454,7 +454,7 @@ This allows you to define your design entirely separately from its transitions a
 ### Triggers
 
 Triggers listen for specific events, gestures or inputs. When that event takes place the trigger activates and performs an animation in response. More specifically the trigger performs whatever animations/actions you place inside of it. Let’s look at a basic example:
-```
+```xml
 <Circle Height="60" Color="#6DBFD2" >
    <WhilePressed>
      <Scale Factor="0.9" Easing="BounceInOut" Duration="0.2"/>
@@ -478,7 +478,7 @@ There are other types of triggers that will only execute their action or animati
 ### Animators
 
 Animators tell triggers what to do when their conditions are met. The `<Scale/>` we used above is an animator. So is this `<Move/>`:
-```
+```xml
 <Circle Height="60" Color="#6DBFD2" >
    <WhilePressed>
      <Move Y="-1" RelativeTo="Size" Easing="BounceInOut" Duration="0.2"/>
@@ -489,7 +489,7 @@ Animators tell triggers what to do when their conditions are met. The `<Scale/>`
 ![Move](../media/fuse-for-designers/Gifs/Animation_Move.gif)
 
 Animators want to know what to animate. In the above example the `<Move/>` animates its parent, but sometimes you want to animate a different object. In this case you need to explicitly tell them through the `Target` property as seen in the `<Move/>` below:
-```
+```xml
 <StackPanel Orientation="Horizontal" Alignment="Center" ItemSpacing="10">
   <Circle ux:Name="circleName" Height="60" Width="60" Color="#F1D751"/>
   <Circle Height="60" Width="60" Color="#6DBFD2" >
@@ -513,7 +513,7 @@ Animators have a few other important properties: duration, delay and easing.
 
 By default animations will play themselves in reverse when returning to rest state. But if you want you can change the way this happens you can specify how each of those properties play in reverse:
 
-```
+```xml
 <StackPanel Orientation="Horizontal" Alignment="Center" ItemSpacing="10">
   <Circle Height="60" Width="60" Color="#F1D751" ux:Name="circleName" />
   <Circle Height="60" Width="60" Color="#6DBFD2" >
@@ -528,7 +528,7 @@ By default animations will play themselves in reverse when returning to rest sta
 ### Change
 
 Although Fuse has a bunch of different animators, there is one that is more versatile than the rest. `Change` allows you to animate any property that the targeted object has. For instance:
-```
+```xml
 <StackPanel Orientation="Horizontal" Alignment="Center" ItemSpacing="10">
   <Circle Height="60" Width="60" Color="#F1D751" ux:Name="circleName" />
   <Circle Height="60" Width="60" Color="#6DBFD2" >
@@ -554,7 +554,7 @@ _Note: If you feel comfortable learning about more complex navigation, skip to t
 ### PageControl
 
 A `PageControl` object simply allows navigation between its children in a linear order. Users can swipe through the children from beginning to end:
-```
+```xml
 <PageControl>
     <Page Background="#6DBFD2" />
     <Page Background="#F1D751" />
@@ -567,7 +567,7 @@ A `Page` is basically just a `Panel` with a `Title` property. You could actually
 
 You can specify which `Page` should be the default by using the `Active` property. You can also make a `PageControl` navigate to a specific `Page` for you. These both require giving each `Page` a unique `ux:Name` so that the `PageControl` knows which is which. Then you just add a `NavigateTo` animator to force the navigation. Check it out:
 
-```
+```xml
 <PageControl>
   <Page Background="#6DBFD2" ux:Name="bluePage" >
     <Text Value="Click Me!" Alignment="Center" TextColor="White">
@@ -594,7 +594,7 @@ Classes are very similar to the concept to Symbols in Sketch, Components in Figm
 
 In basic terms when you make a class you are making a blueprint. When you tell Fuse to build that class, it knows exactly what to do because it has the plans. Lets imagine you have the following code:
 
-```
+```xml
 <StackPanel Padding="20" ItemSpacing="40">
   <StackPanel ItemSpacing="20">
     <Text FontSize="24" TextColor="#0006" Value="This is a short
@@ -616,7 +616,7 @@ In basic terms when you make a class you are making a blueprint. When you tell F
 ![Repetition](../media/fuse-for-designers/Images/Class-Repition.png)
 
 There’s some clear repetition here so this is a perfect place to use classes. To do this, you set `ux:Class` on the first `StackPanel`, like so:
-```
+```xml
 <StackPanel ux:Class="MyFirstClass" ItemSpacing="20" >
     <Text FontSize="24" TextColor="#0006" Value="This is a short
      Headline." />
@@ -630,11 +630,11 @@ This makes the `StackPanel` and all of its children into a re-usable class. Bril
 ![Declaration](../media/fuse-for-designers/Images/Class-Declaration.png)
 
 The reason this happens is that what you just did is declare the class, but there is no instance of that class. To create an instance, we need to do the following:
-```
+```xml
 <MyFirstClass/>
 ```
 You can see that when you make a class, you really are making a new custom type of object that you can use instead of writing all that code again. Hence, you can now delete the other `StackPanel`, so your code should look like this:
-```
+```xml
 <StackPanel Padding="20" ItemSpacing="40" >
   <StackPanel ItemSpacing="20" ux:Class="MyFirstClass">
     <Text FontSize="24" TextColor="#0006" Value="This is a short
@@ -669,11 +669,11 @@ This can get a bit tricky but it really only consists of two steps:
 **Step1: Make a new Property**
 
 Lets re-visit the class from above and inside of it write:
-```
+```xml
 <string ux:Property="HeadlineText"/>
 ```
 So now the code should look like this:
-```
+```xml
 <StackPanel ItemSpacing="20" ux:Class="MyFirstClass">
   <string ux:Property="HeadlineText"/>
   <Text FontSize="24" TextColor="#0006" Value="{Property
@@ -690,7 +690,7 @@ That’s a bit confusing, so reading over it a few times might be useful. But no
 **Step2: Bind the Property**
 
 In the first text object of your class you should change `Value` to:
-```
+```xml
 <Text FontSize="24" TextColor="#0006" Value="{Property HeadlineText}" />
 ```
 
@@ -711,7 +711,7 @@ So now that Fuse is in the right frame of mind, the `Property` keyword tells it 
 Fuse needs some more info about the property because there could be a few different properties in this class. So the last piece of the puzzle is the unique name of your property.
 
 So now when you create an instance of that class, you have access to that new property:
-```
+```xml
 <MyFirstClass HeadlineText="Woah, they can be different everytime? "/>
 <MyFirstClass HeadlineText="Hey, this is neat"/>
 ```
@@ -757,7 +757,7 @@ Fruits:
     - Plum
 ```
 In JavaScript, we would represent the same data like this:
-```
+```js
 Fruits: [
       { type: "Apple" },
       { type: "Orange" },
@@ -776,7 +776,7 @@ It's a little bit hard to see with all the syntax so lets dig into what all of t
 
 You can also have lists inside of lists (list-ception?), basically until infinity. This means you can create more complicated data structures like so:
 
-```
+```js
 Fruits: [
   {
     type: "Apple",
@@ -820,7 +820,7 @@ If you need to some local data for a prototype or to test something, you can do 
 _Note: This is not the way we recommend working with data on larger or more serious projects. It’s better to work with data in separate JSON files and then include those in JS. That method means you can easily plug in a live data source at a later date._
 
 First you need to use a `<JavaScript/>` object at the top of your `MainView.ux`. Anything written inside a `<JavaScript/>` object is well… JavaScript. It’s important that it is at the top of your ux file, so that Fuse reads this before executing the rest of the code. Copy the following at the top of your `MainView.ux`:
-```
+```xml
 <JavaScript>
     module.exports = {
     };
@@ -829,7 +829,7 @@ First you need to use a `<JavaScript/>` object at the top of your `MainView.ux`.
 So what is going on there? Well in between those `<JavaScript/>` tags you have `module.exports`. This allows you to export from JS and make things available in your _data-context_. Data-context is just a term used to describe the data that we have access to in the application.
 
 To recreate that list from the last section you write the following:
-```
+```xml
 <JavaScript >
 module.exports = {
     Fruits: [
@@ -845,7 +845,7 @@ module.exports = {
 This adds the list `Fruits` as an `Object` in the `module exports`. This is a quick and easy way of making that data available in the data context.
 
 To get it into UX:
-```
+```xml
 <Grid Alignment="Center" CellSpacing="10">
   <Each Items="{Fruits}">
     <Text Value="{type}"/>
@@ -864,7 +864,7 @@ To get data into UX you need to use `{}` inside property values. We call this st
 
 Now that we know a bit more about using data in your UI we can talk about those `Each` objects we used above. `Each` can be a bit daunting at first as it combines a lot of the concepts at once.
 Lets break it down. What does `Each` really do? Well simply `Each` repeats whatever children it has. You can specify how many times the children repeat like so:
-```
+```xml
 <Grid Alignment="Center" CellSpacing="10" >
   <Each Count="5">
     <Text Value="This is a Fruit list"/>
@@ -892,7 +892,7 @@ So that’s all fairly understandable. Where it gets a bit tricky is when you us
 
 Back to the example from the last section:
 *Data:*
-```
+```xml
 <JavaScript >
 module.exports = {
     Fruits: [
@@ -906,7 +906,7 @@ module.exports = {
 </JavaScript>
 ```
 *UX:*
-```
+```xml
 <Grid Alignment="Center" CellSpacing="10" >
   <Each Items="{Fruits}">
     <Text Value="{type}" />
@@ -921,7 +921,7 @@ Here, the `Each` is told to look for the data object `Fruits` and the `Text` ins
 Letting `Each` do all the work is pretty great because you don’t actually have to know in advance how many items you have. You can add or remove things from the data without worrying about explicitly updating the UI.
 
 It gets better though. You can easily have more complicated components inside of the `Each` that draw from the same data. Here is an example:
-```
+```js
 Fruits: [
     {
         type: "Apple",
@@ -942,7 +942,7 @@ Fruits: [
 ]
 ```
 
-```
+```xml
 <Grid Alignment="Center" CellSpacing="10" >
   <Each Items="{Fruits}">
     <Text Value="{type}"/>
@@ -966,7 +966,7 @@ _Note: `Each` limits the data context for its children, meaning that `Text` can�
 This is a more advanced concept, that we will only go through briefly here. If you want to learn more about them there is a great explainer in the docs.
 
 Let’s take a look at this example:
-```
+```xml
 <Text Value="{Fruits}" />
 ```
 The way this is set up means that Fuse gets to the property `Value` in UX and encounters the curly braces. It looks through the data context for the value, finds it (or doesn’t), updates the value and moves on. It doesn’t think about that value until the whole process runs again. So if that value were to change dynamically in the background, the UI wouldn’t necessarily know about that change.
@@ -974,11 +974,11 @@ The way this is set up means that Fuse gets to the property `Value` in UX and en
 However, if you make `Fruits` an `Observable`, Fuse will watch for _dynamic_ changes of that value and update the UI in real time. What is actually happening is that you create a _subscription_ to that value at that point in the UI. This is really helpful. It means you can dynamically change the data and not worry about having to manually tell the UI that there have been changes. It’s sort of magic.
 
 Here’s what you have to do make that happen. First you have to make sure you import the `Observables` module in JavaScript with this line of code:
-```
+```js
 var Observable = require("FuseJS/Observable");
 ```
 Then, you have to explicitly state that the data object is an `Observable`:
-```
+```js
 var Fruits = Observable([
       { "type": "Apple" },
       { "type": "Orange" },
@@ -988,13 +988,13 @@ var Fruits = Observable([
     ]);
 ```
 Lastly, we need to make sure we export Fruits
-```
+```js
 module.exports = {
     Fruits : Fruits
     };
 ```
 By creating a `DataBinding` in UX you automatically create a subscription to that value.
-```
+```xml
 <Text Value="{Fruits}" />
 ```
 There is no obvious visual change with anything we just did, but it does allow you to create more dynamic applications. For instance you could create an app where the user modifies the `Fruits` data and the UI reflects those changes instantly.
@@ -1027,7 +1027,7 @@ So what is in here? Well throughout the app you might have a lot of places where
 
 The problem is, keeping track of these paths can get tricky and if you need to re-arrange something your file paths will break. So instead, you create all your assets as classes in this file. Check out this example:
 Instead of:
-```
+```xml
 <Grid>
   <Image StretchMode="UniformToFill" File="Assets/icon.png"/>
   <Image StretchMode="UniformToFill" File="Assets/icon.png"/>
@@ -1035,11 +1035,11 @@ Instead of:
 </Grid>
 ```
 You create the class in `resources.ux` like so:
-```
+```xml
 <Image ux:Class="Icon" StretchMode="UniformToFill" File="Assets/icon.png"/>
 ```
 And reference it in the original position:
-```
+```xml
 <Grid>
   <Icon/>
   <Icon/>
@@ -1052,7 +1052,7 @@ Why? If all your file paths are relative to the same document, it’s much easie
 
 Much like `Resource.ux` you want to separate out all the global resources you have made available. So inside this file will be your color palette, fonts and any other globals you might have defined. You could include this in your `Resources.ux` file, but for the sake of keeping things tidy it’s a good idea to separate the two concepts. Once again, you want to keep this file in the root to make file paths easier to maintain.
 To make it even neater, you might want to wrap all your separate globals up in a `Panel` like this:
-```
+```xml
 <!-- ColorPalette -->
 <Panel>
     <float4 ux:Global="SecondarySolid" ux:Value="#8A5182" />

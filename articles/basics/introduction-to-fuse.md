@@ -42,7 +42,7 @@ Our chosen project template gives us only one UX file to start with, called `Mai
 UX markup is explained in detail in the next section.
 [/callout]
 
-```
+```xml
 <App>
 </App>
 ```
@@ -51,7 +51,7 @@ Any Fuse project must, and can only, have one pair of `App` tags, and everything
 
 If you paste the following code into your MainView.ux file and save it, you'll notice the Fuse preview window updating with the text "Hello, world!" displayed in the top left corner. Don't worry too much about the code means, we will cover everything in the next section.
 
-```
+```xml
 <App>
 	<Text Value="Hello, world!" />
 </App>
@@ -115,7 +115,7 @@ Remember that even though example number two has 2 tags it is still one _object_
 
 If you are anything like me, then at this point your head is swimming with all these terms that we don't have a use for yet, so lets look at some real UX.
 
-```
+```xml
 <StackPanel Orientation="Horizontal">
   <Text Value="Hello Jim!" ></Text>
   <Text Value="World" />
@@ -146,7 +146,7 @@ If we have an apple in real life and you were asked about its properties, you mi
 
 Let's look back at the example above:
 
-```
+```xml
 <Text Value="Hello Jim!" />
 ```
 The `Text` _object_ is what we use to show text in our App and the `Value` Property tells Fuse you want the text to be "Hello Jim".
@@ -189,7 +189,7 @@ Luckily all we have to do is make something we like and then tell Fuse that this
 
 For example, let's say we make a nice `Rectangle` with a `Text` object inside it:
 
-```
+```xml
 <Rectangle Color="#f0a">
 	<Text Value="Button" Margin="10" />
 </Rectangle>
@@ -197,7 +197,7 @@ For example, let's say we make a nice `Rectangle` with a `Text` object inside it
 
 Later on we decide we want to use this in lots of places in our app. All we have to do to turn this into a `Class` (a recipe for objects) is use `ux:Class` and give it a name.
 
-```
+```xml
 <Rectangle ux:Class="TextRectangle" Color="#f0a">
 	<Text Value="Button" Margin="10" />
 </Rectangle>
@@ -205,7 +205,7 @@ Later on we decide we want to use this in lots of places in our app. All we have
 
 And now we can use it just like any other object that came with Fuse!
 
-```
+```xml
 <TextRectangle />
 ```
 
@@ -266,7 +266,7 @@ The various panels we introduce here are actually just normal panels with an ass
 
 Here is an example showing how you can use the `ColumnLayout` layout:
 
-```
+```xml
 <Panel>
 	<ColumnLayout />
 </Panel>
@@ -276,7 +276,7 @@ Here is an example showing how you can use the `ColumnLayout` layout:
 
 The `StackPanel` arranges its children in a line, either vertically or horizontally.
 
-```
+```xml
 <StackPanel ItemSpacing="10">
 	<Rectangle Color="Red" Height="50"/>
 	<Text Value="Some text" />
@@ -296,7 +296,7 @@ The `DockPanel` allows us to subdivide the available space by "docking" each chi
 
 ![Dock layout](../../media/intro_to_fuse/dock_layout.png)
 
-```
+```xml
 <DockPanel>
 	<Rectangle Dock="Left" Width="100" Color="Red"/>
 	<Rectangle Dock="Top" Height="100" Color="Green"/>
@@ -314,7 +314,7 @@ Read all about the `DockPanel` [here](api:fuse/controls/dockpanel)
 
 `Grid` lets us divide the available space into a set of rows and columns, and use those to place its children.
 
-```
+```xml
 <Grid RowCount="2" ColumnCount="3">
 	<Rectangle Color="Red"/>
 	<Rectangle Color="Green"/>
@@ -335,7 +335,7 @@ We have many options when defining the rows and columns of a Grid. The RowCount 
 
 Lets combine what we've learned so far to create something a bit more complex than just a single layout panel.
 
-```
+```xml
 <App Background="#ddd">
 	<DockPanel>
 		<Rectangle Dock="Top" Color="#63b8ff">
@@ -369,7 +369,7 @@ If you copy and paste this code into your `MainView.ux` and save the file, you'l
 
 The easiest way to get started adding some JavaScript to our app is to add a `JavaScript` object. We can then write JavaScript directly inside it, like so:
 
-```
+```xml
 <JavaScript>
 	var some = "JavaScript code";
 </JavaScript>
@@ -377,13 +377,13 @@ The easiest way to get started adding some JavaScript to our app is to add a `Ja
 
 We can either write the code inline, like above, or keep it in its own file and reference it from UX:
 
-```
+```xml
 <JavaScript File="someJSFile.js" />
 ```
 
 In either case, the JavaScript object defines a [CommonJS](http://requirejs.org/docs/commonjs.html) module. For our purposes, what this means is that there exists an object called `module`, through which we can export our variables to the outside world (our UX). By adding them to the `exports` member on the `module` object:
 
-```
+```xml
 <JavaScript>
 	var myVariable = 1234;
 	module.exports = {
@@ -394,13 +394,13 @@ In either case, the JavaScript object defines a [CommonJS](http://requirejs.org/
 
 `myVariable` is now available from UX. In order to use it however, we need to create a binding to it. This is very easily done by enclosing the name in curly braces: `{``name``}`. In our case, we can bind to `myVariable` like so: `{myVariable}`. The following example shows how we would bind the `Value` property of a `Text` object to the `myVariable` variable:
 
-```
+```xml
 <Text Value="{myVariable}" />
 ```
 
 Your can also bind events to functions:
 
-```
+```xml
 <JavaScript>
 	function buttonClicked() {
 		console.log("A button was clicked");
@@ -418,7 +418,7 @@ Most apps need to display lists of content, and for a lot of apps this is how mo
 
 `Each` is a class that can be used to replicate an object once per item in an array. `Each` has a property called `Items` which we can bind to an array. It will then replicate whatever children it has once per item in that array. The following example creates a stack of colored rectangles, each with their own text item.
 
-```
+```xml
 <JavaScript>
 	var ourList = [
 		{ text: "Welcome", color: "#7FDBFF" },
@@ -443,19 +443,19 @@ Most apps need to display lists of content, and for a lot of apps this is how mo
 
 In order to make our UI automatically update when we make changes to our data, we need a way to let it know that a something has happened. In Fuse, we do this through something called Observables. An Observable value is a value that can change over time. Other entities, like our UI, can subscribe to being notified of whenever one of these observable values have changed. To create an Observable value, we first have to get a hold of the `FuseJS/Observable` module:
 
-```
+```js
 var Observable = require("FuseJS/Observable");
 ```
 
 With the observable module at hand, we can very easily create an observable value like so:
 
-```
+```js
 var observableValue = Observable(10);
 ```
 
 and make changes to it through its `value` property:
 
-```
+```js
 observableValue.value = 40;
 ```
 
@@ -469,13 +469,13 @@ We do __not__ use the `new` keyword when creating Observable values.
 
 Observables can also act as lists of observable values. We create an observable list in the exact same way as we create observable values:
 
-```
+```js
 var observableList = Observable(1,2,3,4,5) //observable list with 5 values
 ```
 
 We can then display this list in the exact same way as we did with the array, except we can now also add and remove items and have the UI automatically update.
 
-```
+```js
 observableList.add(6);
 observableList.remove(5);
 observableList.removeAt(0);
@@ -495,7 +495,7 @@ Componentization is a cornerstone of the Fuse workflow. Componentization is the 
 
 Since componentization is such an important part of Fuse, we've spent a lot of our time and effort in making it both simple and powerful. As mentioned earlier in this module; all that is needed in order to turn a piece of UX into a reusable component, is to add the `ux:Class` attribute to it, at which point we call that piece of UX a _class definition_. Lets see how we can use this to clean up the code we wrote in the layout chapter:
 
-```
+```xml
 <App Background="#ddd">
 	<DockPanel>
 
@@ -529,7 +529,7 @@ This app screen has three logical components: the top bar, the bottom bar, and t
 
 __AppBar.ux:__
 
-```
+```xml
 <Rectangle ux:Class="TopBar" Color="#63b8ff">
 	<Text Value="My first app" Alignment="Center" Margin="20"/>
 </Rectangle>
@@ -537,7 +537,7 @@ __AppBar.ux:__
 
 __TabBar.ux:__
 
-```
+```xml
 <Grid ux:Class="TabBar" ColumnCount="3" Height="60" Color="White">
 	<Text Alignment="Center" Value="Left" />
 	<Text Alignment="Center" Value="Center" />
@@ -547,7 +547,7 @@ __TabBar.ux:__
 
 __Card.ux:__
 
-```
+```xml
 <Rectangle ux:Class="Card" Color="White" CornerRadius="5" >
 	<StackPanel Alignment="Center" Margin="45">
 		<Text Alignment="HorizontalCenter" FontSize="35">This is</Text>
@@ -563,7 +563,7 @@ __Card.ux:__
 
 and with these three components in place, we can simplify our `MainView.ux` into the following:
 
-```
+```xml
 <App Background="#ddd">
 	<DockPanel>
 		<TopBar Dock="Top"/>
@@ -600,7 +600,7 @@ _Styles_ contain styled components, which are defined to give your app a consist
 
 You can easily add unit tests for your Fuse projects using the `ux:Test` attribute:
 
-```
+```xml
 <Panel ux:Test="AUnitTest">
 	<JavaScript>
 		throw new Error("This test fails")
@@ -633,7 +633,7 @@ There are two core concepts you need to grasp in order to create animations in F
 
 An important thing to understand about animations in Fuse, is that they describe a "deviation from a rest state". The rest state is the app as you describe it in UX, before any animation. If we for example are creating a button, we usually define the rest state of the button to be the "unpressed" state. We can then easily describe how the button should look when we press it using a `WhilePressed` trigger. The following example creates a custom button which is scaled down while it is pressed:
 
-```
+```xml
 <Rectangle ux:Class="AnimatedButton">
 	<Text Value="Press me" />
 	<WhilePressed>
@@ -664,7 +664,7 @@ Any visual object in Fuse is clickable, so animating in response to the user pre
 
 In the following example, we've extended our button to have a more complete animation. We now change its color, scale, and shadow distance, to make it look more natural. We've also added some nice `Easing` curves to it.
 
-```
+```xml
 <Rectangle ux:Class="AnimatedButton">
 	<Shadow ux:Name="shadow" Distance="7" Angle="45"/>
 
@@ -691,7 +691,7 @@ Most non-trivial apps consists of more than just one screen. When making multi-p
 
 For the purpose of just getting started, lets take a look at a different navigation primitive in Fuse, called the `PageControl`. The `PageControl`, although more limited in its usage, is an extremely useful control. It allows us to swipe with our finger to navigate horizontally (by default) between as many pages as we want. Lets create an app with three pages, each with its own full screen color:
 
-```
+```xml
 <App>
 	<PageControl>
 		<Page Color="Red" />
@@ -703,7 +703,7 @@ For the purpose of just getting started, lets take a look at a different navigat
 
 It's that simple! Feel free to open up one of the pages and start adding some content to the pages. Just open the `Page` object and put whatever you want in between. You can also try moving the pages to their own files using the `ux:Class` attribute discussed earlier.
 
-```
+```xml
 <App>
 	<PageControl>
 		<Page Color="Red">

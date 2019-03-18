@@ -21,7 +21,7 @@ A component is defined using the `ux:Class` attribute. This turns the object it 
 
 It can then be used anywhere, like so:
 
-```
+```xml
 <StackPanel>
 	<MyButton />
 	<MyButton />
@@ -35,7 +35,7 @@ Take a look at the [ux:Class documentation](https://fuse-open.github.io/docs/ux-
 
 When we say that `MyButton` _inherits_ from `Panel`, what we really mean is that `MyButton` will get all the same properties as `Panel`, as well as any new properties we define ourselves. That means that a class without any extra children or properties (custom properties are covered in the next section) added acts as exactly the same as its parent class:
 
-```
+```xml
 <Panel ux:Class="NotSoSpecialPanel"/>
 
 <Panel />
@@ -48,20 +48,20 @@ In this case, `Panel` and `NotSoSpecialPanel` behave exactly the same.
 
 In many cases, like with our custom button, we want to create an interface to our component that allows us to specify various properties on a per instance basis. For our custom button for example, we want to be able to specify a different text for each instance:
 
-```
+```xml
 <MyButton Text="Custom button text"/>
 ```
 
 The `ux:Property` attribute allows us to send data to our component, give default values and even animate it:
 
-```
+```xml
 <Panel ux:Class="MyButton" Color="#09d" ButtonText="Default text" Margin="4">
 	<string ux:Property="ButtonText" />
 	<Text Value="{ReadProperty ButtonText}" Alignment="Center" Margin="20,10" Color="#fff"/>
 </Panel>
 ```
 
-```
+```xml
 <StackPanel>
 	<MyButton ButtonText="First" />
 	<MyButton ButtonText="Second" />
@@ -75,7 +75,7 @@ Take a look at the [ux:Property documentation](https://fuse-open.github.io/docs/
 
 In some cases, our components cannot work alone and need a way to express that they depend on some other part of our UX defined outside of our component. This could be to animate it or trigger an event. A very common use case is needing to share a common `Router` instance among several pages. The way this use case is different from our use of ux:Property is that we __require__ our component to get a `Router` when it is instantiated. This way, from our components perspective, it _always_ has a `Router` available. For this we use the `ux:Dependency` attribute:
 
-```
+```xml
 <Router ux:Dependency="router" />
 ```
 
@@ -83,7 +83,7 @@ If we try to instantiate our component without specifying the `router` dependenc
 
 From within the class definition, dependencies can be used exactly in the same way as if they were defined with the `ux:Name` attribute:
 
-```
+```xml
 <WhileTrue ux:Dependency="myTrigger" />
 <WhileTrue ux:Name="myTrigger" /> 
 ```
@@ -92,7 +92,7 @@ Both the `WhileTrue` declared as a dependency and the one declared with `ux:Name
 
 The following example shows how we can use `ux:Dependency` to toggle the state of a `WhileTrue` defined outside the class definition.
 
-```
+```xml
 <Panel ux:Class="DependentPanel" Color="Blue">
 	<WhileTrue ux:Dependency="aTrigger" />
 	<Clicked>
@@ -112,7 +112,7 @@ Take a look at the [ux:Dependency documentation](https://fuse-open.github.io/doc
 
 Dependencies are not forwarded when you subclass. Therefore, you have to manually forward them to the baseclass you are sublcassing:
 
-```
+```xml
 <Page ux:Class="A">
 	<Router ux:Dependency="router" />
 </Page>
@@ -127,7 +127,7 @@ You can find more details about the `ux:Binding` attribute [here](https://fuse-o
 
 Components can contain custom business logic using the `JavaScript` tag. Here we can define local state as well as functions that act upon dependencies or other components. The following component takes a `Router` as a dependency, and uses it through JavaScript.
 
-```
+```xml
 <Panel ux:Class="MyClass">
 	<Router ux:Dependency="router" />
 	<JavaScript>
@@ -151,7 +151,7 @@ We can use `UserEvent` for exactly this, which allows us to raise and handle eve
 We put a `UserEvent` at the root of our component class to indicate that it can raise a particular event.
 Where we place our `UserEvent` is important, since only the node it is attached to and its children can raise or handle it.
 
-```
+```xml
 <Panel ux:Class="MyComponent">
 	<UserEvent ux:Name="myEvent" />
 </Panel>
@@ -161,7 +161,7 @@ This creates an event named `myEvent`.
 
 We can now use `RaiseUserEvent` to raise the event from UX.
 
-```
+```xml
 <Clicked>
 	<RaiseUserEvent EventName="myEvent" />
 </Clicked>
@@ -169,7 +169,7 @@ We can now use `RaiseUserEvent` to raise the event from UX.
 
 When we instantiate our component, we can respond to its events using the `OnUserEvent` trigger.
 
-```
+```xml
 <MyComponent>
 	<OnUserEvent EventName="myEvent">
 		... animations & actions ...
@@ -179,7 +179,7 @@ When we instantiate our component, we can respond to its events using the `OnUse
 
 We recommend subclassing `OnUserEvent` instead of using it directly and setting its `EventName` each time:
 
-```
+```xml
 <Panel ux:Class="MyComponent">
 	<UserEvent ux:Name="myEvent" />
 	<OnUserEvent ux:Class="OnMyEvent" EventName="myEvent"/>
@@ -208,7 +208,7 @@ Since componentization in Fuse is so quick, a common workflow when writing UX is
 
 Making Fuse components is sometimes the art of determining effective component boundaries. The following example illustrates a case where there are several ways we might componentize:
 
-```
+```xml
 <StackPanel Margin="10" Padding="10" Color="#eee" ItemSpacing="8">
 	<Circle ux:Name="status" Width="40" Height="40" Color="Gray" />
 	<Grid ColumnCount="2" CellSpacing="8">
@@ -236,7 +236,7 @@ This is a `Panel` with a colored `Circle`, and two custom buttons that change it
 
 __Everything as one component:__
 
-```
+```xml
 <StackPanel ux:Class="StatusPanel" ...>
 	...
 </StackPanel>
@@ -244,15 +244,14 @@ __Everything as one component:__
 
 __Or we can componentize the two buttons:__
 
-```
+```xml
 <StackPanel Margin="10" Padding="10" Color="#eee" ItemSpacing="8">
 	<Circle ux:Name="status" Width="40" Height="40" Color="Gray" />
 	<OnOffButtons />
 </StackPanel>
 ```
 
-```
-
+```xml
 <Grid ux:Class="OnOffButtons" ColumnCount="2" CellSpacing="8">
 	<Circle ux:Dependency="status" />
 	
@@ -273,7 +272,6 @@ __Or we can componentize the two buttons:__
 </Grid>
 ```
 
-
 At this point we can see that there is a dependency between the inner workings of the `OnOffButtons` class and the "status" circle. We might be tempted to call this a dependency from `OnOffButtons` to a `Circle`, and declare that using `ux:Dependency` as we have done in the example above.
 
 This is however a good time to consider whether we have discovered an actual component dependency, or whether this is just a shared view state.
@@ -282,7 +280,7 @@ In most cases, it is preferable to have components be as independent as possible
 
 Let's let these two components share state using `JavaScript` instead:
 
-```
+```xml
 <Grid ux:Class="OnOffButtons" ColumnCount="2">
 	<Panel Clicked="{turnOn}">
 		<Text Value="On" Alignment="Center" Margin="8" Color="White"/>
@@ -321,7 +319,7 @@ This time, our two components are independent of each other. They are, however, 
 
 Let's instead add a `ux:Property` to the component which we can then data-bind at the point of instantiation:
 
-```
+```xml
 <Grid ux:Class="OnOffButtons" ColumnCount="2">
 	<bool ux:Property="Value" />
 
@@ -364,7 +362,7 @@ Let's instead add a `ux:Property` to the component which we can then data-bind a
 
 The "status" circle is at this point a good candidate for componentization as well, just to increase the readability and maintainability of our UX:
 
-```
+```xml
 <Grid ux:Class="OnOffButtons" ColumnCount="2">
 	<bool ux:Property="Value" />
 
@@ -414,7 +412,7 @@ Now we have two independent components, with clearly defined interfaces.
 
 There are cases where we would like to pass references to files to our components. Examples include embedding images or videos. We can do this by creating properties of the type `FileSource` and then property-bind the `File` property of the `Image` or `Video` object to it. Then we can reference local files by their path when we instantiate our class:
 
-```
+```xml
 <App>
 	<Panel ux:Class="TestComponent">
 
@@ -435,7 +433,7 @@ There are cases where we would like to pass references to files to our component
 
 The `Container` class can be used as a base class when creating components that should position its children deeper into its own subtree. Here is a quick example:
 
-```
+```xml
 <Container ux:Class="MyContainer" Subtree="innerPanel">
     <Rectangle ux:Binding="Children" CornerRadius="10" Margin="10">
         <Stroke Color="Red" Width="2" />
@@ -460,7 +458,7 @@ Templates can be instantiated using an `Each`. `Each` has a property called `Tem
 
 Here we set `TemplateSource="this"` because `Each` should look for the key in its parent class (`CoolRepeater`):
 
-```
+```xml
 <StackPanel ux:Class="CoolRepeater" Background="#FAD">
 	<Each TemplateSource="this" TemplateKey="Item" Count="20">
 		<Text>Default template</Text>
@@ -470,9 +468,8 @@ Here we set `TemplateSource="this"` because `Each` should look for the key in it
 
 This is a custom component which accepts a template, which it repeats 20 times. If no template is given, the `Each` will fallback to its default template: whatever is inside the `Each`. The custom component can then be used like this:
 
-```
+```xml
 <CoolRepeater>
 	<Text ux:Template="Item">Hello, world!</Text>
 </CoolRepeater>
 ```
-

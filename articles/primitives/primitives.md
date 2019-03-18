@@ -7,7 +7,7 @@ Fuse comes with a set of primitive elements which are the basic building blocks 
 
 The two most used shapes in apps are rectangles and circles. They each have their own type in Fuse:
 
-```
+```xml
 <Panel>
 	<Circle Color="#bbfdff" />
 	<Rectangle Color="#ff6eb4" />
@@ -21,19 +21,19 @@ All visual elements in Fuse have a `Color` property. This property maps to what 
 
 For shapes, like rectangle and circle, one expects the `Color` property to translate to a @SolidColor brush of that color. This means that the following sample:
 
-```
+```xml
 <Rectangle Color="#f0f" />
 ```
 
 is actually turned into
 
-```
+```xml
 <Rectangle Fill="#f0f"/>
 ```
 
 Since the `Fill` property is of the @Brush type, the `Fill="#f0f` part is actually expanded even further into the following equivalent:
 
-```
+```xml
 <Rectangle>
 	<SolidColor Color="#f0f"/>
 </Rectangle>
@@ -71,14 +71,14 @@ Here is an overview of the difference between the different text-related control
 
 We can easily include images and videos by using the @Image and @Video elements:
 
-```
+```xml
 <Image File="someImage.jpg" />
 <Video File="someVideo.mp4" />
 ```
 
 Both @Image and @Video also supports getting a url instead of a local file:
 
-```
+```xml
 <Image Url="http://www.some.com/image.jpg" />
 <Video Url="http://www.some.com/video.mp4" />
 ```

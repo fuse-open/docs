@@ -1,6 +1,6 @@
 # Sublime Text 3 plugin installation
 
-> *Note:* We also provide a [plugin for Atom](atom-plugin.md).
+> *Note:* We also provide a [plugin for Atom](atom-plugin.md) and [Visual Studo Code](visual-studio-code-plugin.md).
 
 The Sublime plugin can be installed via the Fuse main menu or the command line.
 

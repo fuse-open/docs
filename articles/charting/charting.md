@@ -44,7 +44,7 @@ A `Plot` requires these two key components to produce a minimal chart:
 
 Following is a minimal example of a bar chart.
 
-```
+```xml
 <App xmlns:c="Fuse.Charting">
 	<JavaScript>
 		var Observable = require("FuseJS/Observable");
