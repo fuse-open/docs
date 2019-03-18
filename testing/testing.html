@@ -587,19 +587,19 @@
           <h1 id="testing">Testing</h1>
 <p>A test in UX consists of an element with a <code>ux:Test</code> attribute.
 The value of this attribute determines the name of the test.</p>
-<pre><code>&lt;Panel ux:Test=&quot;MyTest&quot;&gt;
+<pre><code class="language-xml">&lt;Panel ux:Test=&quot;MyTest&quot;&gt;
 
 &lt;/Panel&gt;
 </code></pre>
 <p>Any JavaScript code that throws an <code>Error</code> will make the test fail.</p>
-<pre><code>&lt;Panel ux:Test=&quot;MyTest&quot;&gt;
+<pre><code class="language-xml">&lt;Panel ux:Test=&quot;MyTest&quot;&gt;
 	&lt;JavaScript&gt;
 		throw new Error(&quot;This will always fail&quot;);
 	&lt;/JavaScript&gt;
 &lt;/Panel&gt;
 </code></pre>
 <p>Pure JavaScript tests are also possible using <code>JavaScriptTest</code>:</p>
-<pre><code>&lt;JavaScriptTest ux:Test=&quot;MyJsTest&quot; File=&quot;myJsTest.js&quot; /&gt;
+<pre><code class="language-xml">&lt;JavaScriptTest ux:Test=&quot;MyJsTest&quot; File=&quot;myJsTest.js&quot; /&gt;
 </code></pre>
 <p>To run your tests, open a command-line shell and execute the following:</p>
 <pre><code>uno test &lt;path-to-unoproj&gt;

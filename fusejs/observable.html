@@ -587,7 +587,7 @@
           <h1 id="observables">Observables</h1>
 <p>Observables are a key concept to understand in order to be effective with Fuse. Observables let us automatically update the UI whenever there are changes to the data-model. They are also extremely useful for describing view-models; which means mapping the data-model into a view friendly format. When <a href="../fuse/reactive/databinding.html">data-binding</a> to an <code>Observable</code> using the curly brace syntax (<code>{&lt;some_observable&gt;}</code>), a subscription is automatically created that will update the UI whenever the <code>Observable</code> changes. This article is a quick introduction to understanding and using the FuseJS/Observable API.</p>
 <p>Here is a tiny example to give you an idea of what we'll be looking at:</p>
-<pre><code>&lt;App&gt;
+<pre><code class="language-xml">&lt;App&gt;
 	&lt;JavaScript&gt;
 		var Observable = require(&quot;FuseJS/Observable&quot;);
 		module.exports.myValue = Observable(1);
@@ -643,7 +643,7 @@ console.log(&quot;SquaredNumbers length: &quot; + someNumbersSquared.length); //
 <p>Whenever we data-bind to an <code>Observable</code> from UX using the curly brace syntax, we automatically create a subscription to it. This is the most common way of creating subscriptions. For more information about data-binding, take a look at <a href="../fuse/reactive/databinding.html">this article</a>.</p>
 <h3 id="-onvaluechanged-module-func-item">.onValueChanged(module, func(item))</h3>
 <p>In some cases, we're interested in running some imperative code in response to an <code>Observable</code> changing. We can do this by subscribing using the <code>.onValueChanged(module, func(item))</code> function, which fires the function <code>func</code> every time the value of a single value Observable changes. The module parameter lets us connect the lifetime of this subscription to the lifetime of a module. In most cases we just pass the module we're currently in:</p>
-<pre><code>var myObservable = Observable(1);
+<pre><code class="language-js">var myObservable = Observable(1);
 myObservable.onValueChanged(module, function(item) {
 	//do something
 });
@@ -658,7 +658,7 @@ myObservable.onValueChanged(module, function(item) {
 <p>A thing to be aware of with this &quot;push based&quot; approach, is that values won't actually be pushed through unless someone has subscribed to be notified of these pushes, as mentioned earlier.</p>
 <h4 id="what-do-we-mean-by-an-observable-producing-values">What do we mean by an Observable producing values</h4>
 <p>We usually think of observables as streams of values flowing from a source (or a set of sources) to a destination (or set of destinations). Along the way, the stream can be transformed, filtered and combined with other streams by using reactive operators like <code>.map</code>, <code>.where</code> and <code>.combine</code> (find information about all the operators <a href="../fusejs/observable-api.html">here</a>. Here is an example:</p>
-<pre><code>var source = Observable(2);
+<pre><code class="language-js">var source = Observable(2);
 
 var destination = source.map(function(x) {
 	return x * x;
@@ -669,7 +669,7 @@ var destination = source.map(function(x) {
 <p>In the code above, we create a source <code>Observable</code> with a single initial value; the number 2. We then use the reactive operator <code>.map</code> to transform the value with a &quot;mapping-function&quot; that squares the number. Lastly, we use the reactive operator <code>.where</code> to filter the observable so that only values that are below 50 will be propagated further. The <code>.where</code> operator is expected to return either <code>true</code> or <code>false</code>; <code>true</code> if we allow the value to propagate, <code>false</code> if not.</p>
 <h2 id="passing-observables-through-properties">Passing observables through properties</h2>
 <p>Observables can also be passed into custom made components using Properties. We can add a property which accepts Observables by making an <code>object</code> property:</p>
-<pre><code>&lt;Panel ux:Class=&quot;CoolPanel&quot;&gt;
+<pre><code class="language-xml">&lt;Panel ux:Class=&quot;CoolPanel&quot;&gt;
 	&lt;object ux:Property=&quot;ObservableProperty&quot; /&gt;
 	&lt;JavaScript&gt;
 		var passedInObservable = this.ObservableProperty.inner();

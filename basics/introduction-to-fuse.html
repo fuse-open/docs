@@ -615,12 +615,12 @@ Why is it called .unoproj you might wonder? Fuse is built on top of a programmin
 <p>[callout info]
 UX markup is explained in detail in the next section.
 [/callout]</p>
-<pre><code>&lt;App&gt;
+<pre><code class="language-xml">&lt;App&gt;
 &lt;/App&gt;
 </code></pre>
 <p>Any Fuse project must, and can only, have one pair of <code>App</code> tags, and everything between these tags is a part of your app.</p>
 <p>If you paste the following code into your MainView.ux file and save it, you'll notice the Fuse preview window updating with the text &quot;Hello, world!&quot; displayed in the top left corner. Don't worry too much about the code means, we will cover everything in the next section.</p>
-<pre><code>&lt;App&gt;
+<pre><code class="language-xml">&lt;App&gt;
 	&lt;Text Value=&quot;Hello, world!&quot; /&gt;
 &lt;/App&gt;
 </code></pre>
@@ -662,7 +662,7 @@ Remember that even though example number two has 2 tags it is still one <em>obje
 [/callout]</p>
 <h4 id="using-this-knowledge">Using this knowledge</h4>
 <p>If you are anything like me, then at this point your head is swimming with all these terms that we don't have a use for yet, so lets look at some real UX.</p>
-<pre><code>&lt;StackPanel Orientation=&quot;Horizontal&quot;&gt;
+<pre><code class="language-xml">&lt;StackPanel Orientation=&quot;Horizontal&quot;&gt;
   &lt;Text Value=&quot;Hello Jim!&quot; &gt;&lt;/Text&gt;
   &lt;Text Value=&quot;World&quot; /&gt;
 &lt;/StackPanel&gt;
@@ -685,7 +685,7 @@ Remember that even though example number two has 2 tags it is still one <em>obje
 <p>But you may be looking at those opening and self closing tags above and wondering why they have extra stuff in them. If you are then well spotted! Those are called <code>Properties</code>.</p>
 <p>If we have an apple in real life and you were asked about its properties, you might say &quot;it's round&quot; or &quot;it's ripe&quot; or something like that. Properties in this case gives us extra information about the nature of the apple. The exact same it true for Properties in UX.</p>
 <p>Let's look back at the example above:</p>
-<pre><code>&lt;Text Value=&quot;Hello Jim!&quot; /&gt;
+<pre><code class="language-xml">&lt;Text Value=&quot;Hello Jim!&quot; /&gt;
 </code></pre>
 <p>The <code>Text</code> <em>object</em> is what we use to show text in our App and the <code>Value</code> Property tells Fuse you want the text to be &quot;Hello Jim&quot;.</p>
 <p>Just like how an apple and a truck have different properties in real life, different <em>objects</em> in UX have different properties too. To find what properties you can put on each <em>object</em> type, we have lots of <a href="../full-ux-class-reference.html">documentation</a> to help.</p>
@@ -714,17 +714,17 @@ Remember that even though example number two has 2 tags it is still one <em>obje
 <p>A class defines a <em>recipe</em> for an <em>object</em>. Fuse has lots of useful objects defined for you but very soon you will want to define your own.</p>
 <p>Luckily all we have to do is make something we like and then tell Fuse that this is a recipe for making <em>objects</em> just like it.</p>
 <p>For example, let's say we make a nice <code>Rectangle</code> with a <code>Text</code> object inside it:</p>
-<pre><code>&lt;Rectangle Color=&quot;#f0a&quot;&gt;
+<pre><code class="language-xml">&lt;Rectangle Color=&quot;#f0a&quot;&gt;
 	&lt;Text Value=&quot;Button&quot; Margin=&quot;10&quot; /&gt;
 &lt;/Rectangle&gt;
 </code></pre>
 <p>Later on we decide we want to use this in lots of places in our app. All we have to do to turn this into a <code>Class</code> (a recipe for objects) is use <code>ux:Class</code> and give it a name.</p>
-<pre><code>&lt;Rectangle ux:Class=&quot;TextRectangle&quot; Color=&quot;#f0a&quot;&gt;
+<pre><code class="language-xml">&lt;Rectangle ux:Class=&quot;TextRectangle&quot; Color=&quot;#f0a&quot;&gt;
 	&lt;Text Value=&quot;Button&quot; Margin=&quot;10&quot; /&gt;
 &lt;/Rectangle&gt;
 </code></pre>
 <p>And now we can use it just like any other object that came with Fuse!</p>
-<pre><code>&lt;TextRectangle /&gt;
+<pre><code class="language-xml">&lt;TextRectangle /&gt;
 </code></pre>
 <p>[callout info]
 <em>Top tips:</em></p>
@@ -769,13 +769,13 @@ Remember that even though example number two has 2 tags it is still one <em>obje
 The various panels we introduce here are actually just normal panels with an associated <code>Layout</code> type. What we mean by this is that a <code>StackPanel</code> is actually just a <code>Panel</code> with a <code>StackLayout</code> attached to it. Some of the available layout types do not have these <code>Panel</code> wrappers, and so you have to add them to a normal <code>Panel</code> yourself in order to use them.
 [/callout]</p>
 <p>Here is an example showing how you can use the <code>ColumnLayout</code> layout:</p>
-<pre><code>&lt;Panel&gt;
+<pre><code class="language-xml">&lt;Panel&gt;
 	&lt;ColumnLayout /&gt;
 &lt;/Panel&gt;
 </code></pre>
 <h4 id="stackpanel">StackPanel</h4>
 <p>The <code>StackPanel</code> arranges its children in a line, either vertically or horizontally.</p>
-<pre><code>&lt;StackPanel ItemSpacing=&quot;10&quot;&gt;
+<pre><code class="language-xml">&lt;StackPanel ItemSpacing=&quot;10&quot;&gt;
 	&lt;Rectangle Color=&quot;Red&quot; Height=&quot;50&quot;/&gt;
 	&lt;Text Value=&quot;Some text&quot; /&gt;
 	&lt;Rectangle Color=&quot;Blue&quot; Height=&quot;50&quot;/&gt;
@@ -787,7 +787,7 @@ The various panels we introduce here are actually just normal panels with an ass
 <h4 id="dockpanel">DockPanel</h4>
 <p>The <code>DockPanel</code> allows us to subdivide the available space by &quot;docking&quot; each child to one of its four sides, one after the other.</p>
 <p><img src="../media/intro_to_fuse/dock_layout.png" alt="Dock layout"></p>
-<pre><code>&lt;DockPanel&gt;
+<pre><code class="language-xml">&lt;DockPanel&gt;
 	&lt;Rectangle Dock=&quot;Left&quot; Width=&quot;100&quot; Color=&quot;Red&quot;/&gt;
 	&lt;Rectangle Dock=&quot;Top&quot; Height=&quot;100&quot; Color=&quot;Green&quot;/&gt;
 	&lt;Rectangle Dock=&quot;Right&quot; Width=&quot;100&quot; Color=&quot;Blue&quot;/&gt;
@@ -799,7 +799,7 @@ The various panels we introduce here are actually just normal panels with an ass
 <p>Read all about the <code>DockPanel</code> <a href="../fuse/controls/dockpanel.html">here</a></p>
 <h4 id="grid">Grid</h4>
 <p><code>Grid</code> lets us divide the available space into a set of rows and columns, and use those to place its children.</p>
-<pre><code>&lt;Grid RowCount=&quot;2&quot; ColumnCount=&quot;3&quot;&gt;
+<pre><code class="language-xml">&lt;Grid RowCount=&quot;2&quot; ColumnCount=&quot;3&quot;&gt;
 	&lt;Rectangle Color=&quot;Red&quot;/&gt;
 	&lt;Rectangle Color=&quot;Green&quot;/&gt;
 	&lt;Rectangle Color=&quot;Blue&quot;/&gt;
@@ -813,7 +813,7 @@ The various panels we introduce here are actually just normal panels with an ass
 <p>We have many options when defining the rows and columns of a Grid. The RowCount and ColumnCount properties provide us with a convenient way of defining a number of equally sized rows and columns, but there are other, more configurable, ways of defining them as well. You can read about it <a href="../fuse/controls/grid.html">here</a>.</p>
 <h4 id="combining-layout-types-to-create-something-real">Combining layout types to create something real</h4>
 <p>Lets combine what we've learned so far to create something a bit more complex than just a single layout panel.</p>
-<pre><code>&lt;App Background=&quot;#ddd&quot;&gt;
+<pre><code class="language-xml">&lt;App Background=&quot;#ddd&quot;&gt;
 	&lt;DockPanel&gt;
 		&lt;Rectangle Dock=&quot;Top&quot; Color=&quot;#63b8ff&quot;&gt;
 			&lt;Text Value=&quot;My first app&quot; Alignment=&quot;Center&quot; Margin=&quot;20&quot;/&gt;
@@ -841,15 +841,15 @@ The various panels we introduce here are actually just normal panels with an ass
 <p>If you copy and paste this code into your <code>MainView.ux</code> and save the file, you'll notice how easy it is to get started creating realistic app layouts, with just a few lines of UX.</p>
 <h2 id="adding-some-business-logic-with-javascript">Adding some business logic with JavaScript</h2>
 <p>The easiest way to get started adding some JavaScript to our app is to add a <code>JavaScript</code> object. We can then write JavaScript directly inside it, like so:</p>
-<pre><code>&lt;JavaScript&gt;
+<pre><code class="language-xml">&lt;JavaScript&gt;
 	var some = &quot;JavaScript code&quot;;
 &lt;/JavaScript&gt;
 </code></pre>
 <p>We can either write the code inline, like above, or keep it in its own file and reference it from UX:</p>
-<pre><code>&lt;JavaScript File=&quot;someJSFile.js&quot; /&gt;
+<pre><code class="language-xml">&lt;JavaScript File=&quot;someJSFile.js&quot; /&gt;
 </code></pre>
 <p>In either case, the JavaScript object defines a <a href="http://requirejs.org/docs/commonjs.html">CommonJS</a> module. For our purposes, what this means is that there exists an object called <code>module</code>, through which we can export our variables to the outside world (our UX). By adding them to the <code>exports</code> member on the <code>module</code> object:</p>
-<pre><code>&lt;JavaScript&gt;
+<pre><code class="language-xml">&lt;JavaScript&gt;
 	var myVariable = 1234;
 	module.exports = {
 		myVariable: myVariable
@@ -857,10 +857,10 @@ The various panels we introduce here are actually just normal panels with an ass
 &lt;/JavaScript&gt;
 </code></pre>
 <p><code>myVariable</code> is now available from UX. In order to use it however, we need to create a binding to it. This is very easily done by enclosing the name in curly braces: <code>{``name``}</code>. In our case, we can bind to <code>myVariable</code> like so: <code>{myVariable}</code>. The following example shows how we would bind the <code>Value</code> property of a <code>Text</code> object to the <code>myVariable</code> variable:</p>
-<pre><code>&lt;Text Value=&quot;{myVariable}&quot; /&gt;
+<pre><code class="language-xml">&lt;Text Value=&quot;{myVariable}&quot; /&gt;
 </code></pre>
 <p>Your can also bind events to functions:</p>
-<pre><code>&lt;JavaScript&gt;
+<pre><code class="language-xml">&lt;JavaScript&gt;
 	function buttonClicked() {
 		console.log(&quot;A button was clicked&quot;);
 	}
@@ -873,7 +873,7 @@ The various panels we introduce here are actually just normal panels with an ass
 <h3 id="displaying-lists-of-data">Displaying lists of data</h3>
 <p>Most apps need to display lists of content, and for a lot of apps this is how most of its content is displayed. You can export arrays of data from JavaScript just as you export any other variable. You might wonder how we build a list using UX? The answer is the <code>Each</code> class.</p>
 <p><code>Each</code> is a class that can be used to replicate an object once per item in an array. <code>Each</code> has a property called <code>Items</code> which we can bind to an array. It will then replicate whatever children it has once per item in that array. The following example creates a stack of colored rectangles, each with their own text item.</p>
-<pre><code>&lt;JavaScript&gt;
+<pre><code class="language-xml">&lt;JavaScript&gt;
 	var ourList = [
 		{ text: &quot;Welcome&quot;, color: &quot;#7FDBFF&quot; },
 		{ text: &quot;to&quot;, color: &quot;#01FF70&quot; },
@@ -894,13 +894,13 @@ The various panels we introduce here are actually just normal panels with an ass
 </code></pre>
 <h3 id="responding-to-changes-in-the-data">Responding to changes in the data</h3>
 <p>In order to make our UI automatically update when we make changes to our data, we need a way to let it know that a something has happened. In Fuse, we do this through something called Observables. An Observable value is a value that can change over time. Other entities, like our UI, can subscribe to being notified of whenever one of these observable values have changed. To create an Observable value, we first have to get a hold of the <code>FuseJS/Observable</code> module:</p>
-<pre><code>var Observable = require(&quot;FuseJS/Observable&quot;);
+<pre><code class="language-js">var Observable = require(&quot;FuseJS/Observable&quot;);
 </code></pre>
 <p>With the observable module at hand, we can very easily create an observable value like so:</p>
-<pre><code>var observableValue = Observable(10);
+<pre><code class="language-js">var observableValue = Observable(10);
 </code></pre>
 <p>and make changes to it through its <code>value</code> property:</p>
-<pre><code>observableValue.value = 40;
+<pre><code class="language-js">observableValue.value = 40;
 </code></pre>
 <p>if we data-bind to this variable, the UI will automatically update whenever we make changes to it.</p>
 <p>[callout info]
@@ -908,10 +908,10 @@ We do <strong>not</strong> use the <code>new</code> keyword when creating Observ
 [/callout]</p>
 <h4 id="list-observables">List observables</h4>
 <p>Observables can also act as lists of observable values. We create an observable list in the exact same way as we create observable values:</p>
-<pre><code>var observableList = Observable(1,2,3,4,5) //observable list with 5 values
+<pre><code class="language-js">var observableList = Observable(1,2,3,4,5) //observable list with 5 values
 </code></pre>
 <p>We can then display this list in the exact same way as we did with the array, except we can now also add and remove items and have the UI automatically update.</p>
-<pre><code>observableList.add(6);
+<pre><code class="language-js">observableList.add(6);
 observableList.remove(5);
 observableList.removeAt(0);
 </code></pre>
@@ -922,7 +922,7 @@ observableList.removeAt(0);
 <h2 id="working-with-components">Working with components</h2>
 <p>Componentization is a cornerstone of the Fuse workflow. Componentization is the act of splitting your UX into smaller reusable blocks, either as a means of styling, to reduce the need for repeating UX in several places, or just as a way of splitting our UX up into different files.</p>
 <p>Since componentization is such an important part of Fuse, we've spent a lot of our time and effort in making it both simple and powerful. As mentioned earlier in this module; all that is needed in order to turn a piece of UX into a reusable component, is to add the <code>ux:Class</code> attribute to it, at which point we call that piece of UX a <em>class definition</em>. Lets see how we can use this to clean up the code we wrote in the layout chapter:</p>
-<pre><code>&lt;App Background=&quot;#ddd&quot;&gt;
+<pre><code class="language-xml">&lt;App Background=&quot;#ddd&quot;&gt;
 	&lt;DockPanel&gt;
 
 		&lt;Rectangle Dock=&quot;Top&quot; Color=&quot;#63b8ff&quot;&gt;
@@ -952,19 +952,19 @@ observableList.removeAt(0);
 </code></pre>
 <p>This app screen has three logical components: the top bar, the bottom bar, and the card we've put in the center. Lets turn each into a component and put it in its own file:</p>
 <p><strong>AppBar.ux:</strong></p>
-<pre><code>&lt;Rectangle ux:Class=&quot;TopBar&quot; Color=&quot;#63b8ff&quot;&gt;
+<pre><code class="language-xml">&lt;Rectangle ux:Class=&quot;TopBar&quot; Color=&quot;#63b8ff&quot;&gt;
 	&lt;Text Value=&quot;My first app&quot; Alignment=&quot;Center&quot; Margin=&quot;20&quot;/&gt;
 &lt;/Rectangle&gt;
 </code></pre>
 <p><strong>TabBar.ux:</strong></p>
-<pre><code>&lt;Grid ux:Class=&quot;TabBar&quot; ColumnCount=&quot;3&quot; Height=&quot;60&quot; Color=&quot;White&quot;&gt;
+<pre><code class="language-xml">&lt;Grid ux:Class=&quot;TabBar&quot; ColumnCount=&quot;3&quot; Height=&quot;60&quot; Color=&quot;White&quot;&gt;
 	&lt;Text Alignment=&quot;Center&quot; Value=&quot;Left&quot; /&gt;
 	&lt;Text Alignment=&quot;Center&quot; Value=&quot;Center&quot; /&gt;
 	&lt;Text Alignment=&quot;Center&quot; Value=&quot;Right&quot; /&gt;
 &lt;/Grid&gt;
 </code></pre>
 <p><strong>Card.ux:</strong></p>
-<pre><code>&lt;Rectangle ux:Class=&quot;Card&quot; Color=&quot;White&quot; CornerRadius=&quot;5&quot; &gt;
+<pre><code class="language-xml">&lt;Rectangle ux:Class=&quot;Card&quot; Color=&quot;White&quot; CornerRadius=&quot;5&quot; &gt;
 	&lt;StackPanel Alignment=&quot;Center&quot; Margin=&quot;45&quot;&gt;
 		&lt;Text Alignment=&quot;HorizontalCenter&quot; FontSize=&quot;35&quot;&gt;This is&lt;/Text&gt;
 		&lt;Text Alignment=&quot;HorizontalCenter&quot;&gt;our&lt;/Text&gt;
@@ -977,7 +977,7 @@ observableList.removeAt(0);
 &lt;/Rectangle&gt;
 </code></pre>
 <p>and with these three components in place, we can simplify our <code>MainView.ux</code> into the following:</p>
-<pre><code>&lt;App Background=&quot;#ddd&quot;&gt;
+<pre><code class="language-xml">&lt;App Background=&quot;#ddd&quot;&gt;
 	&lt;DockPanel&gt;
 		&lt;TopBar Dock=&quot;Top&quot;/&gt;
 		&lt;Card Alignment=&quot;Center&quot; /&gt;
@@ -1001,7 +1001,7 @@ observableList.removeAt(0);
 <p><em>Styles</em> contain styled components, which are defined to give your app a consistent look. <code>Text</code> classes with specific font and font sizes as well as styled with the correct colors. You will also want to define sizes and margins which should be the same across your entire app.</p>
 <h3 id="testing">Testing</h3>
 <p>You can easily add unit tests for your Fuse projects using the <code>ux:Test</code> attribute:</p>
-<pre><code>&lt;Panel ux:Test=&quot;AUnitTest&quot;&gt;
+<pre><code class="language-xml">&lt;Panel ux:Test=&quot;AUnitTest&quot;&gt;
 	&lt;JavaScript&gt;
 		throw new Error(&quot;This test fails&quot;)
 	&lt;/JavaScript&gt;
@@ -1023,7 +1023,7 @@ The current implementation of unit tests in Fuse is quite rudimentary. You can e
 <p>Fuse comes with a declarative and extremely expressive animation system, which is both easy to learn and very fun to play with.</p>
 <p>There are two core concepts you need to grasp in order to create animations in Fuse: triggers and animators. In short, triggers are objects that respond to events or user input and which activate animators, while animators are in charge of transforming objects or changing their properties over time in response to being activated by triggers. A very nice thing about animators in Fuse, is that they always know how to undo themselves. This means that you never have to make sure you animate your objects back into place whenever a trigger is deactivated; this is taken care of by Fuse.</p>
 <p>An important thing to understand about animations in Fuse, is that they describe a &quot;deviation from a rest state&quot;. The rest state is the app as you describe it in UX, before any animation. If we for example are creating a button, we usually define the rest state of the button to be the &quot;unpressed&quot; state. We can then easily describe how the button should look when we press it using a <code>WhilePressed</code> trigger. The following example creates a custom button which is scaled down while it is pressed:</p>
-<pre><code>&lt;Rectangle ux:Class=&quot;AnimatedButton&quot;&gt;
+<pre><code class="language-xml">&lt;Rectangle ux:Class=&quot;AnimatedButton&quot;&gt;
 	&lt;Text Value=&quot;Press me&quot; /&gt;
 	&lt;WhilePressed&gt;
 		&lt;Scale Factor=&quot;0.8&quot; Duration=&quot;0.2&quot; /&gt;
@@ -1049,7 +1049,7 @@ The current implementation of unit tests in Fuse is quite rudimentary. You can e
 </ul>
 <hr>
 <p>In the following example, we've extended our button to have a more complete animation. We now change its color, scale, and shadow distance, to make it look more natural. We've also added some nice <code>Easing</code> curves to it.</p>
-<pre><code>&lt;Rectangle ux:Class=&quot;AnimatedButton&quot;&gt;
+<pre><code class="language-xml">&lt;Rectangle ux:Class=&quot;AnimatedButton&quot;&gt;
 	&lt;Shadow ux:Name=&quot;shadow&quot; Distance=&quot;7&quot; Angle=&quot;45&quot;/&gt;
 
 	&lt;Text Value=&quot;Press me&quot; Color=&quot;White&quot; Margin=&quot;18,14&quot;/&gt;
@@ -1071,7 +1071,7 @@ The current implementation of unit tests in Fuse is quite rudimentary. You can e
 <h2 id="navigation-basics">Navigation basics</h2>
 <p>Most non-trivial apps consists of more than just one screen. When making multi-page apps, it is important to have a clear way of defining how one can move between pages. Fuse has its own hierarchical navigation system, based on the <code>Router</code> and <code>Navigator</code> classes. By using this system we automatically get the ability to keep track of navigation history, and make use of the hardware back button in the case of Android. Learning to use this system is however beyond the scope of this module, so if you're interested, take a look <a href="../navigation/navigation.html">here</a>.</p>
 <p>For the purpose of just getting started, lets take a look at a different navigation primitive in Fuse, called the <code>PageControl</code>. The <code>PageControl</code>, although more limited in its usage, is an extremely useful control. It allows us to swipe with our finger to navigate horizontally (by default) between as many pages as we want. Lets create an app with three pages, each with its own full screen color:</p>
-<pre><code>&lt;App&gt;
+<pre><code class="language-xml">&lt;App&gt;
 	&lt;PageControl&gt;
 		&lt;Page Color=&quot;Red&quot; /&gt;
 		&lt;Page Color=&quot;Green&quot;/&gt;
@@ -1080,7 +1080,7 @@ The current implementation of unit tests in Fuse is quite rudimentary. You can e
 &lt;/App&gt;
 </code></pre>
 <p>It's that simple! Feel free to open up one of the pages and start adding some content to the pages. Just open the <code>Page</code> object and put whatever you want in between. You can also try moving the pages to their own files using the <code>ux:Class</code> attribute discussed earlier.</p>
-<pre><code>&lt;App&gt;
+<pre><code class="language-xml">&lt;App&gt;
 	&lt;PageControl&gt;
 		&lt;Page Color=&quot;Red&quot;&gt;
 			&lt;Text Value=&quot;This is some content&quot; Alignment=&quot;Center&quot; FontSize=&quot;35&quot;/&gt;

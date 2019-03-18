@@ -588,7 +588,7 @@
 <p>Fuse comes with a set of primitive elements which are the basic building blocks of more complex visual elements. These primitives includes <a href="../fuse/controls/text.html">Text</a>, <a href="../fuse/controls/rectangle.html">Rectangle</a>, <a href="../fuse/controls/circle.html">Circle</a>, <a href="../fuse/controls/image.html">Image</a> and <a href="../fuse/controls/video.html">Video</a>.</p>
 <h2 id="shapes">Shapes</h2>
 <p>The two most used shapes in apps are rectangles and circles. They each have their own type in Fuse:</p>
-<pre><code>&lt;Panel&gt;
+<pre><code class="language-xml">&lt;Panel&gt;
 	&lt;Circle Color=&quot;#bbfdff&quot; /&gt;
 	&lt;Rectangle Color=&quot;#ff6eb4&quot; /&gt;
 &lt;/Panel&gt;
@@ -597,13 +597,13 @@
 <h2 id="color">Color</h2>
 <p>All visual elements in Fuse have a <code>Color</code> property. This property maps to what would intuitively be considered the main color of the element in question.</p>
 <p>For shapes, like rectangle and circle, one expects the <code>Color</code> property to translate to a <a href="../fuse/drawing/solidcolor.html">SolidColor</a> brush of that color. This means that the following sample:</p>
-<pre><code>&lt;Rectangle Color=&quot;#f0f&quot; /&gt;
+<pre><code class="language-xml">&lt;Rectangle Color=&quot;#f0f&quot; /&gt;
 </code></pre>
 <p>is actually turned into</p>
-<pre><code>&lt;Rectangle Fill=&quot;#f0f&quot;/&gt;
+<pre><code class="language-xml">&lt;Rectangle Fill=&quot;#f0f&quot;/&gt;
 </code></pre>
 <p>Since the <code>Fill</code> property is of the <a href="../fuse/drawing/brush.html">Brush</a> type, the <code>Fill=&quot;#f0f</code> part is actually expanded even further into the following equivalent:</p>
-<pre><code>&lt;Rectangle&gt;
+<pre><code class="language-xml">&lt;Rectangle&gt;
 	&lt;SolidColor Color=&quot;#f0f&quot;/&gt;
 &lt;/Rectangle&gt;
 </code></pre>
@@ -644,11 +644,11 @@
 </ul>
 <h2 id="image-video">Image / Video</h2>
 <p>We can easily include images and videos by using the <a href="../fuse/controls/image.html">Image</a> and <a href="../fuse/controls/video.html">Video</a> elements:</p>
-<pre><code>&lt;Image File=&quot;someImage.jpg&quot; /&gt;
+<pre><code class="language-xml">&lt;Image File=&quot;someImage.jpg&quot; /&gt;
 &lt;Video File=&quot;someVideo.mp4&quot; /&gt;
 </code></pre>
 <p>Both <a href="../fuse/controls/image.html">Image</a> and <a href="../fuse/controls/video.html">Video</a> also supports getting a url instead of a local file:</p>
-<pre><code>&lt;Image Url=&quot;http://www.some.com/image.jpg&quot; /&gt;
+<pre><code class="language-xml">&lt;Image Url=&quot;http://www.some.com/image.jpg&quot; /&gt;
 &lt;Video Url=&quot;http://www.some.com/video.mp4&quot; /&gt;
 </code></pre>
 <p>Check out <a href="../fuse/controls/image.html">Image</a> and <a href="../fuse/controls/video.html">Video</a> documentation detailed documentation.</p>

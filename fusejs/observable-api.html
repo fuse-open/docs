@@ -607,12 +607,12 @@ console.log(friends.length); // prints 4
 <p>See the full list of members to see what's possible with observable lists.</p>
 <h4 id="data-types-with-observables">Data types with Observables</h4>
 <p>Observables can be used to supply all the basic types; number, string, boolean, as well as vector types. Number, string and boolean are created using their usual JavaScript literals:</p>
-<pre><code>var obsNumber = Observable(10.5);
+<pre><code class="language-js">var obsNumber = Observable(10.5);
 var obsString = Observable(&quot;hello&quot;);
 var obsBool = Observable(true);
 </code></pre>
 <p>For data-bindings requiring vector types (e.g. colors), we can use JavaScript arrays:</p>
-<pre><code>var obsRedColor = Observable([1,0,0,1]);
+<pre><code class="language-js">var obsRedColor = Observable([1,0,0,1]);
 var obsWhiteAndBlack = Observable([1,1,1,1], [0,0,0,1]);
 </code></pre>
 <h4 id="observable-functions">Observable functions</h4>
@@ -1042,7 +1042,7 @@ This is no longer allowed. The best practice for achieving the same effect is to
 <blockquote>
 <p>Note! The above approach is fast, but has one caveat: it does not conserve the items order in the observable in the case where the observable condition changes. This means that the <code>items</code> Observable effectively gets cleared and filled from scratch. There is a second pattern for observing a condition with <code>.where</code> which does not have this problem, but it can potentially be quite slow on large lists. It is included here for completeness:</p>
 </blockquote>
-<pre><code>var filteredItems = conditionObservable.flatMap(function(cond){
+<pre><code class="language-js">var filteredItems = conditionObservable.flatMap(function(cond){
 	return items.where(function(item){
 		return cond.value;
 	});

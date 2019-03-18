@@ -598,7 +598,7 @@
 &lt;/Panel&gt;
 </code></pre>
 <p>It can then be used anywhere, like so:</p>
-<pre><code>&lt;StackPanel&gt;
+<pre><code class="language-xml">&lt;StackPanel&gt;
 	&lt;MyButton /&gt;
 	&lt;MyButton /&gt;
 	&lt;MyButton /&gt;
@@ -607,7 +607,7 @@
 <p>Take a look at the <a href="https://fuse-open.github.io/docs/ux-markup/classes">ux:Class documentation</a> for more details about <code>ux:Class</code>.</p>
 <h3 id="what-do-we-mean-by-inheritance">What do we mean by inheritance</h3>
 <p>When we say that <code>MyButton</code> <em>inherits</em> from <code>Panel</code>, what we really mean is that <code>MyButton</code> will get all the same properties as <code>Panel</code>, as well as any new properties we define ourselves. That means that a class without any extra children or properties (custom properties are covered in the next section) added acts as exactly the same as its parent class:</p>
-<pre><code>&lt;Panel ux:Class=&quot;NotSoSpecialPanel&quot;/&gt;
+<pre><code class="language-xml">&lt;Panel ux:Class=&quot;NotSoSpecialPanel&quot;/&gt;
 
 &lt;Panel /&gt;
 &lt;NotSoSpecialPanel /&gt;
@@ -615,15 +615,15 @@
 <p>In this case, <code>Panel</code> and <code>NotSoSpecialPanel</code> behave exactly the same.</p>
 <h3 id="defining-properties">Defining properties</h3>
 <p>In many cases, like with our custom button, we want to create an interface to our component that allows us to specify various properties on a per instance basis. For our custom button for example, we want to be able to specify a different text for each instance:</p>
-<pre><code>&lt;MyButton Text=&quot;Custom button text&quot;/&gt;
+<pre><code class="language-xml">&lt;MyButton Text=&quot;Custom button text&quot;/&gt;
 </code></pre>
 <p>The <code>ux:Property</code> attribute allows us to send data to our component, give default values and even animate it:</p>
-<pre><code>&lt;Panel ux:Class=&quot;MyButton&quot; Color=&quot;#09d&quot; ButtonText=&quot;Default text&quot; Margin=&quot;4&quot;&gt;
+<pre><code class="language-xml">&lt;Panel ux:Class=&quot;MyButton&quot; Color=&quot;#09d&quot; ButtonText=&quot;Default text&quot; Margin=&quot;4&quot;&gt;
 	&lt;string ux:Property=&quot;ButtonText&quot; /&gt;
 	&lt;Text Value=&quot;{ReadProperty ButtonText}&quot; Alignment=&quot;Center&quot; Margin=&quot;20,10&quot; Color=&quot;#fff&quot;/&gt;
 &lt;/Panel&gt;
 </code></pre>
-<pre><code>&lt;StackPanel&gt;
+<pre><code class="language-xml">&lt;StackPanel&gt;
 	&lt;MyButton ButtonText=&quot;First&quot; /&gt;
 	&lt;MyButton ButtonText=&quot;Second&quot; /&gt;
 	&lt;MyButton ButtonText=&quot;Last&quot; /&gt; 
@@ -632,16 +632,16 @@
 <p>Take a look at the <a href="https://fuse-open.github.io/docs/ux-markup/properties">ux:Property documentation</a> for more details about creating properties.</p>
 <h3 id="specifying-dependencies">Specifying dependencies</h3>
 <p>In some cases, our components cannot work alone and need a way to express that they depend on some other part of our UX defined outside of our component. This could be to animate it or trigger an event. A very common use case is needing to share a common <code>Router</code> instance among several pages. The way this use case is different from our use of ux:Property is that we <strong>require</strong> our component to get a <code>Router</code> when it is instantiated. This way, from our components perspective, it <em>always</em> has a <code>Router</code> available. For this we use the <code>ux:Dependency</code> attribute:</p>
-<pre><code>&lt;Router ux:Dependency=&quot;router&quot; /&gt;
+<pre><code class="language-xml">&lt;Router ux:Dependency=&quot;router&quot; /&gt;
 </code></pre>
 <p>If we try to instantiate our component without specifying the <code>router</code> dependency we will get a UX compilation error, since this component cannot function without a <code>Router</code>. Unlike properties, dependencies cannot have default values.</p>
 <p>From within the class definition, dependencies can be used exactly in the same way as if they were defined with the <code>ux:Name</code> attribute:</p>
-<pre><code>&lt;WhileTrue ux:Dependency=&quot;myTrigger&quot; /&gt;
+<pre><code class="language-xml">&lt;WhileTrue ux:Dependency=&quot;myTrigger&quot; /&gt;
 &lt;WhileTrue ux:Name=&quot;myTrigger&quot; /&gt; 
 </code></pre>
 <p>Both the <code>WhileTrue</code> declared as a dependency and the one declared with <code>ux:Name</code> can be referenced directly using the name <code>myTrigger</code>. Therefore, we cannot use the same identifier for a <code>ux:Dependency</code> and a <code>ux:Name</code>.</p>
 <p>The following example shows how we can use <code>ux:Dependency</code> to toggle the state of a <code>WhileTrue</code> defined outside the class definition.</p>
-<pre><code>&lt;Panel ux:Class=&quot;DependentPanel&quot; Color=&quot;Blue&quot;&gt;
+<pre><code class="language-xml">&lt;Panel ux:Class=&quot;DependentPanel&quot; Color=&quot;Blue&quot;&gt;
 	&lt;WhileTrue ux:Dependency=&quot;aTrigger&quot; /&gt;
 	&lt;Clicked&gt;
 		&lt;Toggle Target=&quot;aTrigger&quot; /&gt;
@@ -656,7 +656,7 @@
 <p>Take a look at the <a href="https://fuse-open.github.io/docs/ux-markup/dependencies">ux:Dependency documentation</a> for more details.</p>
 <h4 id="inheriting-dependencies">Inheriting dependencies</h4>
 <p>Dependencies are not forwarded when you subclass. Therefore, you have to manually forward them to the baseclass you are sublcassing:</p>
-<pre><code>&lt;Page ux:Class=&quot;A&quot;&gt;
+<pre><code class="language-xml">&lt;Page ux:Class=&quot;A&quot;&gt;
 	&lt;Router ux:Dependency=&quot;router&quot; /&gt;
 &lt;/Page&gt;
 &lt;A ux:Class=&quot;B&quot;&gt;
@@ -666,7 +666,7 @@
 <p>You can find more details about the <code>ux:Binding</code> attribute <a href="https://fuse-open.github.io/docs/ux-markup/binding-and-auto-bind#ux-binding">here</a>.</p>
 <h3 id="inner-logic-using-javascript">Inner logic using JavaScript</h3>
 <p>Components can contain custom business logic using the <code>JavaScript</code> tag. Here we can define local state as well as functions that act upon dependencies or other components. The following component takes a <code>Router</code> as a dependency, and uses it through JavaScript.</p>
-<pre><code>&lt;Panel ux:Class=&quot;MyClass&quot;&gt;
+<pre><code class="language-xml">&lt;Panel ux:Class=&quot;MyClass&quot;&gt;
 	&lt;Router ux:Dependency=&quot;router&quot; /&gt;
 	&lt;JavaScript&gt;
 		function goBack() { 
@@ -685,25 +685,25 @@
 We can use <code>UserEvent</code> for exactly this, which allows us to raise and handle events in both UX and JavaScript.</p>
 <p>We put a <code>UserEvent</code> at the root of our component class to indicate that it can raise a particular event.
 Where we place our <code>UserEvent</code> is important, since only the node it is attached to and its children can raise or handle it.</p>
-<pre><code>&lt;Panel ux:Class=&quot;MyComponent&quot;&gt;
+<pre><code class="language-xml">&lt;Panel ux:Class=&quot;MyComponent&quot;&gt;
 	&lt;UserEvent ux:Name=&quot;myEvent&quot; /&gt;
 &lt;/Panel&gt;
 </code></pre>
 <p>This creates an event named <code>myEvent</code>.</p>
 <p>We can now use <code>RaiseUserEvent</code> to raise the event from UX.</p>
-<pre><code>&lt;Clicked&gt;
+<pre><code class="language-xml">&lt;Clicked&gt;
 	&lt;RaiseUserEvent EventName=&quot;myEvent&quot; /&gt;
 &lt;/Clicked&gt;
 </code></pre>
 <p>When we instantiate our component, we can respond to its events using the <code>OnUserEvent</code> trigger.</p>
-<pre><code>&lt;MyComponent&gt;
+<pre><code class="language-xml">&lt;MyComponent&gt;
 	&lt;OnUserEvent EventName=&quot;myEvent&quot;&gt;
 		... animations &amp; actions ...
 	&lt;/OnUserEvent&gt;
 &lt;/MyComponent&gt;
 </code></pre>
 <p>We recommend subclassing <code>OnUserEvent</code> instead of using it directly and setting its <code>EventName</code> each time:</p>
-<pre><code>&lt;Panel ux:Class=&quot;MyComponent&quot;&gt;
+<pre><code class="language-xml">&lt;Panel ux:Class=&quot;MyComponent&quot;&gt;
 	&lt;UserEvent ux:Name=&quot;myEvent&quot; /&gt;
 	&lt;OnUserEvent ux:Class=&quot;OnMyEvent&quot; EventName=&quot;myEvent&quot;/&gt;
 &lt;/Panel&gt;
@@ -722,7 +722,7 @@ Where we place our <code>UserEvent</code> is important, since only the node it i
 <p>Since componentization in Fuse is so quick, a common workflow when writing UX is to first write everything &quot;in-line&quot; without caring about components at all. We only componentize after we have found a structure we want to move forward with. The reason for why this approach is so valuable is that it avoids the potential pitfalls of prematurely abstracting code. This way, we can let all the reusable components naturally appear before we decide to abstract and assign class names.</p>
 <h3 id="recognizing-component-boundaries">Recognizing component boundaries</h3>
 <p>Making Fuse components is sometimes the art of determining effective component boundaries. The following example illustrates a case where there are several ways we might componentize:</p>
-<pre><code>&lt;StackPanel Margin=&quot;10&quot; Padding=&quot;10&quot; Color=&quot;#eee&quot; ItemSpacing=&quot;8&quot;&gt;
+<pre><code class="language-xml">&lt;StackPanel Margin=&quot;10&quot; Padding=&quot;10&quot; Color=&quot;#eee&quot; ItemSpacing=&quot;8&quot;&gt;
 	&lt;Circle ux:Name=&quot;status&quot; Width=&quot;40&quot; Height=&quot;40&quot; Color=&quot;Gray&quot; /&gt;
 	&lt;Grid ColumnCount=&quot;2&quot; CellSpacing=&quot;8&quot;&gt;
 		&lt;Panel&gt;
@@ -745,18 +745,17 @@ Where we place our <code>UserEvent</code> is important, since only the node it i
 <p><img src="media/componentization/onoff_all_3.png" alt="component_boundary_example"></p>
 <p>This is a <code>Panel</code> with a colored <code>Circle</code>, and two custom buttons that change its color. We already have several options for how to split this up:</p>
 <p><strong>Everything as one component:</strong></p>
-<pre><code>&lt;StackPanel ux:Class=&quot;StatusPanel&quot; ...&gt;
+<pre><code class="language-xml">&lt;StackPanel ux:Class=&quot;StatusPanel&quot; ...&gt;
 	...
 &lt;/StackPanel&gt;
 </code></pre>
 <p><strong>Or we can componentize the two buttons:</strong></p>
-<pre><code>&lt;StackPanel Margin=&quot;10&quot; Padding=&quot;10&quot; Color=&quot;#eee&quot; ItemSpacing=&quot;8&quot;&gt;
+<pre><code class="language-xml">&lt;StackPanel Margin=&quot;10&quot; Padding=&quot;10&quot; Color=&quot;#eee&quot; ItemSpacing=&quot;8&quot;&gt;
 	&lt;Circle ux:Name=&quot;status&quot; Width=&quot;40&quot; Height=&quot;40&quot; Color=&quot;Gray&quot; /&gt;
 	&lt;OnOffButtons /&gt;
 &lt;/StackPanel&gt;
 </code></pre>
-<pre><code>
-&lt;Grid ux:Class=&quot;OnOffButtons&quot; ColumnCount=&quot;2&quot; CellSpacing=&quot;8&quot;&gt;
+<pre><code class="language-xml">&lt;Grid ux:Class=&quot;OnOffButtons&quot; ColumnCount=&quot;2&quot; CellSpacing=&quot;8&quot;&gt;
 	&lt;Circle ux:Dependency=&quot;status&quot; /&gt;
 	
 	&lt;Panel&gt;
@@ -779,7 +778,7 @@ Where we place our <code>UserEvent</code> is important, since only the node it i
 <p>This is however a good time to consider whether we have discovered an actual component dependency, or whether this is just a shared view state.</p>
 <p>In most cases, it is preferable to have components be as independent as possible. In the example above, we would like to split our components up in a way such that the <code>OnOffButtons</code> component can be used in other situations as well; not only to toggle the color of a <code>Circle</code>.</p>
 <p>Let's let these two components share state using <code>JavaScript</code> instead:</p>
-<pre><code>&lt;Grid ux:Class=&quot;OnOffButtons&quot; ColumnCount=&quot;2&quot;&gt;
+<pre><code class="language-xml">&lt;Grid ux:Class=&quot;OnOffButtons&quot; ColumnCount=&quot;2&quot;&gt;
 	&lt;Panel Clicked=&quot;{turnOn}&quot;&gt;
 		&lt;Text Value=&quot;On&quot; Alignment=&quot;Center&quot; Margin=&quot;8&quot; Color=&quot;White&quot;/&gt;
 		&lt;Rectangle CornerRadius=&quot;3&quot; Color=&quot;#0af&quot; /&gt;
@@ -814,7 +813,7 @@ Where we place our <code>UserEvent</code> is important, since only the node it i
 </code></pre>
 <p>This time, our two components are independent of each other. They are, however, not independent of the view model (the <code>JavaScript</code> tag). Notice that the <code>OnOffButtons</code> component now has data-bindings that reach outside the component itself. While this works fine, and can be very useful, it can reduce code clarity and creates an unnecessary dependency on the view-model.</p>
 <p>Let's instead add a <code>ux:Property</code> to the component which we can then data-bind at the point of instantiation:</p>
-<pre><code>&lt;Grid ux:Class=&quot;OnOffButtons&quot; ColumnCount=&quot;2&quot;&gt;
+<pre><code class="language-xml">&lt;Grid ux:Class=&quot;OnOffButtons&quot; ColumnCount=&quot;2&quot;&gt;
 	&lt;bool ux:Property=&quot;Value&quot; /&gt;
 
 	&lt;Panel HitTestMode=&quot;LocalBounds&quot;&gt;
@@ -854,7 +853,7 @@ Where we place our <code>UserEvent</code> is important, since only the node it i
 &lt;/StackPanel&gt;
 </code></pre>
 <p>The &quot;status&quot; circle is at this point a good candidate for componentization as well, just to increase the readability and maintainability of our UX:</p>
-<pre><code>&lt;Grid ux:Class=&quot;OnOffButtons&quot; ColumnCount=&quot;2&quot;&gt;
+<pre><code class="language-xml">&lt;Grid ux:Class=&quot;OnOffButtons&quot; ColumnCount=&quot;2&quot;&gt;
 	&lt;bool ux:Property=&quot;Value&quot; /&gt;
 
 	&lt;Panel HitTestMode=&quot;LocalBounds&quot;&gt;
@@ -899,7 +898,7 @@ Where we place our <code>UserEvent</code> is important, since only the node it i
 <p>Now we have two independent components, with clearly defined interfaces.</p>
 <h2 id="referencing-files-through-properties">Referencing files through properties</h2>
 <p>There are cases where we would like to pass references to files to our components. Examples include embedding images or videos. We can do this by creating properties of the type <code>FileSource</code> and then property-bind the <code>File</code> property of the <code>Image</code> or <code>Video</code> object to it. Then we can reference local files by their path when we instantiate our class:</p>
-<pre><code>&lt;App&gt;
+<pre><code class="language-xml">&lt;App&gt;
 	&lt;Panel ux:Class=&quot;TestComponent&quot;&gt;
 
 		&lt;FileSource ux:Property=&quot;ImageFile&quot; /&gt;
@@ -916,7 +915,7 @@ Where we place our <code>UserEvent</code> is important, since only the node it i
 </code></pre>
 <h2 id="container">Container</h2>
 <p>The <code>Container</code> class can be used as a base class when creating components that should position its children deeper into its own subtree. Here is a quick example:</p>
-<pre><code>&lt;Container ux:Class=&quot;MyContainer&quot; Subtree=&quot;innerPanel&quot;&gt;
+<pre><code class="language-xml">&lt;Container ux:Class=&quot;MyContainer&quot; Subtree=&quot;innerPanel&quot;&gt;
     &lt;Rectangle ux:Binding=&quot;Children&quot; CornerRadius=&quot;10&quot; Margin=&quot;10&quot;&gt;
         &lt;Stroke Color=&quot;Red&quot; Width=&quot;2&quot; /&gt;
         &lt;Panel Margin=&quot;10&quot; ux:Name=&quot;innerPanel&quot; /&gt;
@@ -933,14 +932,14 @@ Where we place our <code>UserEvent</code> is important, since only the node it i
 <p>Templates can be used to increase the customizability of a component by allowing it to take custom objects to be used as its appearance. An example of this in action is the <code>PageIndicator</code>, which spawns an object from a template for each page in a <code>PageControl</code>. An element is made into a template by setting the <code>ux:Template</code> attribute to a name you want to identify that template by. This name is used by elements which accepts templates as children. Check out the <a href="https://fuse-open.github.io/docs/ux-markup/templates">ux:Template docs</a> for more details.</p>
 <p>Templates can be instantiated using an <code>Each</code>. <code>Each</code> has a property called <code>TemplateSource</code>, which specifies the node in which <code>Each</code> looks for templates. As mentioned before, templates identify themselves by a name. The <code>TemplateKey</code> property specifies which template <code>Each</code> should use, if it is available.</p>
 <p>Here we set <code>TemplateSource=&quot;this&quot;</code> because <code>Each</code> should look for the key in its parent class (<code>CoolRepeater</code>):</p>
-<pre><code>&lt;StackPanel ux:Class=&quot;CoolRepeater&quot; Background=&quot;#FAD&quot;&gt;
+<pre><code class="language-xml">&lt;StackPanel ux:Class=&quot;CoolRepeater&quot; Background=&quot;#FAD&quot;&gt;
 	&lt;Each TemplateSource=&quot;this&quot; TemplateKey=&quot;Item&quot; Count=&quot;20&quot;&gt;
 		&lt;Text&gt;Default template&lt;/Text&gt;
 	&lt;/Each&gt;
 &lt;/StackPanel&gt;
 </code></pre>
 <p>This is a custom component which accepts a template, which it repeats 20 times. If no template is given, the <code>Each</code> will fallback to its default template: whatever is inside the <code>Each</code>. The custom component can then be used like this:</p>
-<pre><code>&lt;CoolRepeater&gt;
+<pre><code class="language-xml">&lt;CoolRepeater&gt;
 	&lt;Text ux:Template=&quot;Item&quot;&gt;Hello, world!&lt;/Text&gt;
 &lt;/CoolRepeater&gt;
 </code></pre>

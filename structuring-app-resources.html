@@ -636,14 +636,14 @@ Another very useful aspect of resources is that they can be overridden at any ti
 <li><strong>Dynamic resources</strong> are defined using the <code>ux:Key</code> attribute and allow us to associate a value with a key. This makes the value available to the entire subtree of where it is defined.</li>
 </ul>
 <p>Lets take a look at an example:</p>
-<pre><code>&lt;float4 ux:Global=&quot;AppBackground&quot; ux:Value=&quot;#7FDBFF&quot; /&gt;
+<pre><code class="language-xml">&lt;float4 ux:Global=&quot;AppBackground&quot; ux:Value=&quot;#7FDBFF&quot; /&gt;
 </code></pre>
 <p>Here we have defined the name <code>AppBackground</code> to refer to the blueish color #7FDBFF. This value can then be used like so, anywhere in our app:</p>
-<pre><code>&lt;Rectangle Color=&quot;AppBackground&quot; /&gt;
+<pre><code class="language-xml">&lt;Rectangle Color=&quot;AppBackground&quot; /&gt;
 </code></pre>
 <p>Defining static resources/globals with meaningful names like this lets us easily tweak the look and feel of our app with only a single code change, even though the color is used in many places.</p>
 <p>A limitation of static globals is that they cannot be changed while the app is running. For that use-case, we have dynamic resources:</p>
-<pre><code>&lt;Panel&gt;
+<pre><code class="language-xml">&lt;Panel&gt;
 	&lt;float4 ux:Key=&quot;AppBackground&quot; ux:Value=&quot;#7FDBFF&quot; /&gt;
 	&lt;Rectangle Color=&quot;{Resource AppBackground}&quot;/&gt;
 &lt;/Panel&gt;
@@ -657,7 +657,7 @@ The <code>{Resource &lt;key&gt;}</code> binding also works for static resources 
 <h2 id="color-palettes">Color palettes</h2>
 <p>When defining a color palette for our app, it can be a good idea to put it in its own file. This way we don't get a long list of color definitions cluttering our UI code, and it becomes easier to make color changes at a later stage. One detail of Fuse is that all files must define a <code>ux:Class</code> in order to be included in the app. When we just want to define a bunch of resources however, we don't want to also have to define a class to contain them.
 To make grouping resources more convenient, UX markup has a special tag called <code>ux:Resources</code>, which is used as follows:</p>
-<pre><code>&lt;ux:Resources&gt;
+<pre><code class="language-xml">&lt;ux:Resources&gt;
 	&lt;float4 ux:Global=&quot;MyApp.RedColor&quot; ux:Value=&quot;#F44336&quot; /&gt;
 	&lt;float4 ux:Global=&quot;MyApp.PrimaryColor&quot; ux:Value=&quot;MyApp.RedColor&quot; /&gt;
 	&lt;float4 ux:Global=&quot;MyApp.TopBarBackgroundColor&quot; ux:Value=&quot;MyApp.PrimaryColor&quot; /&gt;
@@ -672,7 +672,7 @@ To make grouping resources more convenient, UX markup has a special tag called <
 <h2 id="themes">Themes</h2>
 <p>The current way of creating themes in Fuse is to simply group all resources associated with the theme in an active trigger:</p>
 <p>ColorPalette.ux</p>
-<pre><code>&lt;ux:Resources&gt;
+<pre><code class="language-xml">&lt;ux:Resources&gt;
 	&lt;float4 ux:Global=&quot;Sienna&quot; ux:Value=&quot;#a0522d&quot; /&gt;
 	&lt;float4 ux:Global=&quot;SkyBlue&quot; ux:Value=&quot;#7ec0ee&quot; /&gt;
 	
@@ -680,18 +680,18 @@ To make grouping resources more convenient, UX markup has a special tag called <
 &lt;/ux:Resources&gt;
 </code></pre>
 <p>MyTheme.ux</p>
-<pre><code>&lt;WhileTrue ux:Class=&quot;MyTheme&quot; Value=&quot;true&quot;&gt;
+<pre><code class="language-xml">&lt;WhileTrue ux:Class=&quot;MyTheme&quot; Value=&quot;true&quot;&gt;
 	&lt;float4 ux:Global=&quot;MyApp.PrimaryColor&quot; ux:Value=&quot;SkyBlue&quot; /&gt;
 &lt;/WhileTrue&gt;
 </code></pre>
 <p>We can then very easily use this theme in our app by adding it to our app root:</p>
-<pre><code>&lt;App&gt;
+<pre><code class="language-xml">&lt;App&gt;
 	&lt;MyTheme /&gt;
 	&lt;Panel Color=&quot;{Resource MyApp.PrimaryColor}&quot; /&gt;
 &lt;/App&gt;
 </code></pre>
 <p>Since <code>MyTheme</code> inherits from the <code>WhileTrue</code> trigger, it can easily be turned on and off by either data-binding its <code>Value</code> property to a <code>JavaScript</code> variable, or with pure UX using for example a <code>Clicked</code> trigger and a <code>Toggle</code> action:</p>
-<pre><code>&lt;App&gt;
+<pre><code class="language-xml">&lt;App&gt;
 	&lt;MyTheme ux:Name=&quot;myTheme&quot;/&gt;
 	&lt;Panel Color=&quot;{Resource MyApp.PrimaryColor}&quot;&gt;
 		&lt;Clicked&gt;
@@ -705,16 +705,16 @@ Note that we here have also defined a <code>ux:Global</code> for <code>MyApp.Pri
 [/callout]</p>
 <h2 id="fonts-and-text-styles">Fonts and text styles</h2>
 <p>Fuse supports both <code>.otf</code> (OpenType) and <code>.ttf</code> (TrueType) font files. In order to make a font available throughout your app you can create a static resource for it:</p>
-<pre><code>&lt;Font ux:Global=&quot;RobotoBold&quot; File=&quot;Assets/Fonts/Roboto-Bold.ttf&quot; /&gt;
+<pre><code class="language-xml">&lt;Font ux:Global=&quot;RobotoBold&quot; File=&quot;Assets/Fonts/Roboto-Bold.ttf&quot; /&gt;
 </code></pre>
 <p>The font is then ready to be used in <code>Text</code> and <code>TextInput</code> objects by assigning their <code>Font</code> property:</p>
-<pre><code>&lt;Text Font=&quot;RobotoBold&quot;&gt;Hello with Font&lt;/Text&gt;
+<pre><code class="language-xml">&lt;Text Font=&quot;RobotoBold&quot;&gt;Hello with Font&lt;/Text&gt;
 </code></pre>
 <p>Instead of assigning your custom font to all text objects however we prefer creating a set of text styles using <code>ux:Class</code> and instead use those in our app. This makes it easy to switch our fonts, text size and colors throughout our app by making changes in a single place.</p>
-<pre><code>&lt;Text ux:Class=&quot;MyApp.TitleText&quot; Font=&quot;RobotoBold&quot; FontSize=&quot;20&quot; Color=&quot;{Resource MyApp.TitleTextColor}&quot; /&gt;
+<pre><code class="language-xml">&lt;Text ux:Class=&quot;MyApp.TitleText&quot; Font=&quot;RobotoBold&quot; FontSize=&quot;20&quot; Color=&quot;{Resource MyApp.TitleTextColor}&quot; /&gt;
 &lt;Text ux:Class=&quot;MyApp.BodyText&quot; Font=&quot;RobotoRegular&quot; FontSize=&quot;13&quot; Color=&quot;{Resource MyApp.BodyTextColor}&quot; /&gt;
 </code></pre>
-<pre><code>&lt;StackPanel&gt;
+<pre><code class="language-xml">&lt;StackPanel&gt;
 	&lt;MyApp.TitleText&gt;This is a title&lt;/MyApp.TitleText&gt;
 	&lt;MyApp.BodyText&gt;And this is some body text...&lt;/MyApp.BodyText&gt;
 &lt;/StackPanel&gt;

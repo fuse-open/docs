@@ -604,7 +604,7 @@
 </code></pre>
 <p>Before we put any content in here, let's first make sure that Fuse will <em>bundle</em> it with our app. Normally, if you write inline JavaScript code in UX by using the <code>JavaScript</code> tag, or refer to a specific file like <code>&lt;JavaScript File=&quot;myFile.js&quot; /&gt;</code>, Fuse will automatically make sure that JavaScript code is bundled with our app. However, when we have individual JavaScript modules in our project that aren't referred to by a <code>JavaScript</code> tag directly, we need to tell Fuse that this code is part of our project.</p>
 <p>For that, we'll add some info to our <em>project file</em> that tells Fuse that our <code>hikes.js</code> file should be bundled with our app. If we open up the <code>hikr.unoproj</code> file, we'll see something like this:</p>
-<pre><code>{
+<pre><code class="language-json">{
   &quot;Packages&quot;: [
     &quot;Fuse&quot;,
     &quot;FuseJS&quot;
@@ -616,12 +616,12 @@
 
 </code></pre>
 <p>As you can see, there's not much to it; basically just some simple info about our project. The section we're particularly interested in is the <code>&quot;Includes&quot;</code> section. Currently, it has one entry:</p>
-<pre><code>  &quot;Includes&quot;: [
+<pre><code class="language-json">  &quot;Includes&quot;: [
     &quot;*&quot;
   ]
 </code></pre>
 <p>This basically means that the Fuse project should include a lot of the files commonly associated with Fuse projects. This covers .ux files, .uno files, and a few others. However, it does <em>not</em> include JavaScript files, so we'll have to add our <code>hikes.js</code> file explicitly. To do this, we'll add another item to this list:</p>
-<pre><code>{
+<pre><code class="language-json">{
   &quot;Packages&quot;: [
     &quot;Fuse&quot;,
     &quot;FuseJS&quot;
@@ -634,7 +634,7 @@
 </code></pre>
 <p>All we've done here is placed a comma after the <code>&quot;*&quot;</code> entry, and added a <code>&quot;hikes.js:Bundle&quot;</code> entry after it. This is just saying &quot;Hey, Fuse, you know that hikes.js file? Go ahead and bundle that with my app.&quot; Nice and simple! Now we can save this file, and we're all set.</p>
 <p>At this point, we'll need to actually move our <code>hikes</code> array from inside <code>MainView.ux</code> into our <code>hikes.js</code> file. First, we'll copy it from our <code>MainView.ux</code> file, and then remove it:</p>
-<pre><code>		&lt;JavaScript&gt;
+<pre><code class="language-xml">		&lt;JavaScript&gt;
 			var Observable = require(&quot;FuseJS/Observable&quot;);
 
 			var hike = Observable();
@@ -664,7 +664,7 @@
 </code></pre>
 <p>Notice how we left the reference to <code>hikes</code> in <code>module.exports</code>. This will cause an error if we save the file, but don't worry - we'll fix this up in a minute.</p>
 <p>But first, we'll place the array inside <code>hikes.js</code>:</p>
-<pre><code>var hikes = [
+<pre><code class="language-js">var hikes = [
 	{
 		id: 0,
 		name: &quot;Tricky Trails&quot;,
@@ -708,11 +708,11 @@
 ];
 </code></pre>
 <p>Once that's done, we'll need to <em>export</em> this array from this new module so that we can see the data from our views again. This is done using <code>module.exports</code>, just like it was when exposing data from our inline JavaScript modules to the surrounding UX code. However, in this case, it gets a little bit simpler. Because we're just going to have this one piece of data in this file, we can simple write the following at the bottom:</p>
-<pre><code>module.exports = hikes;
+<pre><code class="language-js">module.exports = hikes;
 </code></pre>
 <p>And that's it! Now we can save this file, and our new module is ready to go.</p>
 <p>Now, back to our view code. Since we've moved our <code>hikes</code> array out of this file, we need to <em>import</em> it from our new module. This is actually super easy to do. Remember the <code>var Observable = require(&quot;FuseJS/Observable&quot;);</code> line in <code>MainView.ux</code>? This tells Fuse to import FuseJS' <a href="../fusejs/observable.html">Observable</a> module, and bind it to the name <code>Observable</code>. For our new <code>hikes</code> module, we'll do almost exactly the same thing:</p>
-<pre><code>			var Observable = require(&quot;FuseJS/Observable&quot;);
+<pre><code class="language-js">			var Observable = require(&quot;FuseJS/Observable&quot;);
 			var hikes = require(&quot;hikes&quot;);
 </code></pre>
 <p>In this case, Fuse will import a module called <code>hikes</code>, which corresponds to our <code>hikes.js</code> file. It will also bind the module's <code>module.exports</code> object to the name <code>hikes</code>, which, in <code>hikes.js</code>, was our <code>hikes</code> array. Cool! That's actually all we need to do to use our newly-created, reusable JavaScript module. If we save <code>MainView.ux</code>, our live preview will reload. It may not look any different on the outside, but on the inside we're well on our way to a very clean and manageable project structure!</p>
@@ -726,7 +726,7 @@
 |- Pages
 </code></pre>
 <p>Inside this new folder, we'll create a new file called <code>EditHikePage.ux</code>. Inside there, we'll place the following code:</p>
-<pre><code>&lt;Page ux:Class=&quot;EditHikePage&quot;&gt;&lt;/Page&gt;
+<pre><code class="language-xml">&lt;Page ux:Class=&quot;EditHikePage&quot;&gt;&lt;/Page&gt;
 </code></pre>
 <p>Our directory tree should now look a bit like this:</p>
 <pre><code>$ tree
@@ -738,7 +738,7 @@
    |- EditHikePage.ux
 </code></pre>
 <p>Now before we move on, I need to explain a couple things. Let's take another look at our new <code>EditHikePage.ux</code> file's contents:</p>
-<pre><code>&lt;Page ux:Class=&quot;EditHikePage&quot;&gt;&lt;/Page&gt;
+<pre><code class="language-xml">&lt;Page ux:Class=&quot;EditHikePage&quot;&gt;&lt;/Page&gt;
 </code></pre>
 <p>At first glance, it looks like we're just creating a <a href="../fuse/controls/page.html">Page</a> with a funny <code>ux:Class</code> property and nothing in it. But what's a <a href="../fuse/controls/page.html">Page</a> exactly? And what's with this <code>ux:Class</code> stuff?</p>
 <p>To answer the first question, a <a href="../fuse/controls/page.html">Page</a> is basically a special kind of UI element that will participate in navigation. We don't actually <em>have</em> to use a <a href="../fuse/controls/page.html">Page</a> here; we could just as well use a <code>Panel</code>, a <code>Button</code>, or something else entirely. But it's generally considered best practice to use a <a href="../fuse/controls/page.html">Page</a> if you're going to use the component with navigation specifically, which we'll do a bit later in this chapter and the following one.</p>
@@ -748,7 +748,7 @@
 <p>Note: You can find out more about classes in our <a href="https://fuse-open.github.io/docs/basics/creating-components">Creating Components</a> documentation.</p>
 </blockquote>
 <p>Now that we've understood the basic contents of this file, it's time to migrate the code we want in our view over from <code>MainView.ux</code>. If we take a look at that file, we'll see something like this:</p>
-<pre><code>&lt;App&gt;
+<pre><code class="language-xml">&lt;App&gt;
 	&lt;ClientPanel&gt;
 		&lt;JavaScript&gt;
 			var Observable = require(&quot;FuseJS/Observable&quot;);
@@ -808,13 +808,13 @@
 </code></pre>
 <p>Looking at the top-level parts of this file, we first see our <a href="../fuse/app.html">App</a>, and then a ClientPanel. All of the other contents (in particular, the <code>JavaScript</code> and <a href="../fuse/controls/scrollview.html">ScrollView</a> tags) are what make up our view specifically. So these are the parts we'll want to move over to our <code>EditHikePage.ux</code> file, inside the <a href="../fuse/controls/page.html">Page</a>. This will look something like this:</p>
 <p>MainView.ux:</p>
-<pre><code>&lt;App&gt;
+<pre><code class="language-xml">&lt;App&gt;
 	&lt;ClientPanel&gt;
 	&lt;/ClientPanel&gt;
 &lt;/App&gt;
 </code></pre>
 <p>EditHikePage.ux:</p>
-<pre><code>&lt;Page ux:Class=&quot;EditHikePage&quot;&gt;
+<pre><code class="language-xml">&lt;Page ux:Class=&quot;EditHikePage&quot;&gt;
 	&lt;JavaScript&gt;
 		var Observable = require(&quot;FuseJS/Observable&quot;);
 		var hikes = require(&quot;hikes&quot;);
@@ -871,7 +871,7 @@
 &lt;/Page&gt;
 </code></pre>
 <p>If we save these files, our preview will update, but this time, our contents will vanish! The reason for this is simple - we've only created the <code>EditHikePage</code> class, but we haven't <em>used</em> it anywhere! To fix this, we'll just add an <em>instance</em> of the <code>EditHikePage</code> class inside the ClientPanel in <code>MainView.ux</code>, like so:</p>
-<pre><code>&lt;App&gt;
+<pre><code class="language-xml">&lt;App&gt;
 	&lt;ClientPanel&gt;
 		&lt;EditHikePage /&gt;
 	&lt;/ClientPanel&gt;
@@ -890,7 +890,7 @@
 </code></pre>
 <p>Then we'll take all of the code from our <code>JavaScript</code> tag in <code>EditHikePage.ux</code> and move it over to our <code>EditHikePage.js</code> file:</p>
 <p>EditHikePage.ux:</p>
-<pre><code>&lt;Page ux:Class=&quot;EditHikePage&quot;&gt;
+<pre><code class="language-xml">&lt;Page ux:Class=&quot;EditHikePage&quot;&gt;
 	&lt;JavaScript&gt;
 	&lt;/JavaScript&gt;
 
@@ -921,7 +921,7 @@
 &lt;/Page&gt;
 </code></pre>
 <p>EditHikePage.js:</p>
-<pre><code>var Observable = require(&quot;FuseJS/Observable&quot;);
+<pre><code class="language-js">var Observable = require(&quot;FuseJS/Observable&quot;);
 var hikes = require(&quot;hikes&quot;);
 
 var hike = Observable();
@@ -949,7 +949,7 @@ module.exports = {
 };
 </code></pre>
 <p>Go ahead and save this file. Finally, we'll change the <code>JavaScript</code> tags in our <code>EditHikePage.ux</code> file into a single tag that refers to our newly created JavaScript file:</p>
-<pre><code>&lt;Page ux:Class=&quot;EditHikePage&quot;&gt;
+<pre><code class="language-xml">&lt;Page ux:Class=&quot;EditHikePage&quot;&gt;
 	&lt;JavaScript File=&quot;EditHikePage.js&quot; /&gt;
 
 	&lt;ScrollView&gt;
@@ -960,22 +960,22 @@ module.exports = {
 <h2 id="separating-our-home-page">Separating our home page</h2>
 <p>At this point, our <code>EditHikePage</code> class is actually two components in one - a hike selector, and a hike editor. Generally, when making components, it's a good idea to make sure they're a simple as possible, and that they only represent one <em>thing</em>, like a single view. What we'll do next is to separate the selector view into its own class, which we'll call the <code>HomePage</code>.</p>
 <p>Now that we've basically done this before, this second time should be a little easier. First, we'll create a blank page class that will become our home page, in a file called <code>HomePage.ux</code> in our <code>Pages</code> directory:</p>
-<pre><code>&lt;Page ux:Class=&quot;HomePage&quot;&gt;&lt;/Page&gt;
+<pre><code class="language-xml">&lt;Page ux:Class=&quot;HomePage&quot;&gt;&lt;/Page&gt;
 </code></pre>
 <p>Next, we'll migrate the home page-specific UX code from <code>EditHikePage.ux</code> into <code>HomePage.ux</code>. Specifically, we're after the <a href="../fuse/reactive/each.html">Each</a> tag that displayed the <code>hikes</code> collection:</p>
-<pre><code>&lt;Each Items=&quot;{hikes}&quot;&gt;
+<pre><code class="language-xml">&lt;Each Items=&quot;{hikes}&quot;&gt;
 	&lt;Button Text=&quot;{name}&quot; Clicked=&quot;{chooseHike}&quot; /&gt;
 &lt;/Each&gt;
 </code></pre>
 <p>So let's go ahead and move that over:</p>
-<pre><code>&lt;Page ux:Class=&quot;HomePage&quot;&gt;
+<pre><code class="language-xml">&lt;Page ux:Class=&quot;HomePage&quot;&gt;
 	&lt;Each Items=&quot;{hikes}&quot;&gt;
 		&lt;Button Text=&quot;{name}&quot; Clicked=&quot;{chooseHike}&quot; /&gt;
 	&lt;/Each&gt;
 &lt;/Page&gt;
 </code></pre>
 <p>Also, since we're going to be displaying a bunch of these hikes, we'll want to place them inside a <a href="../fuse/controls/stackpanel.html">StackPanel</a>. It's a good idea to also have that inside a <a href="../fuse/controls/scrollview.html">ScrollView</a>, so we'll set that up too:</p>
-<pre><code>&lt;Page ux:Class=&quot;HomePage&quot;&gt;
+<pre><code class="language-xml">&lt;Page ux:Class=&quot;HomePage&quot;&gt;
 	&lt;ScrollView&gt;
 		&lt;StackPanel&gt;
 			&lt;Each Items=&quot;{hikes}&quot;&gt;
@@ -987,7 +987,7 @@ module.exports = {
 </code></pre>
 <p>However, if we save all this, we'll notice a couple things. Particularly, our new <code>HomePage.ux</code> doesn't yet know about the <code>hikes</code> collection. We'll fix that by adding some JavaScript for this view.</p>
 <p>Like before, we'll create our <code>HomePage.js</code> file, right next to our <code>HomePage.ux</code>, and we'll place the following code in there:</p>
-<pre><code>var hikes = require(&quot;hikes&quot;);
+<pre><code class="language-js">var hikes = require(&quot;hikes&quot;);
 
 function chooseHike(arg) {
 	// TODO
@@ -1000,7 +1000,7 @@ module.exports = {
 };
 </code></pre>
 <p>This is basically the same code that's in <code>EditHikePage.js</code> currently, except we've commented out the contents of our <code>chooseHike</code> function. We'll get to that in the next chapter. But we no longer need this code in both places, since <code>EditHikePage</code> won't need to display all of the hikes. So, we'll go ahead and remove the <code>require</code>, <code>chooseHike</code> function, and their exports from <code>EditHikePage.js</code> while we're at it:</p>
-<pre><code>var Observable = require(&quot;FuseJS/Observable&quot;);
+<pre><code class="language-js">var Observable = require(&quot;FuseJS/Observable&quot;);
 
 var hike = Observable();
 
@@ -1019,7 +1019,7 @@ module.exports = {
 };
 </code></pre>
 <p>Now that our JavaScript is all ready to go, we'll go ahead and link to that file in <code>HomePage.ux</code>, like so:</p>
-<pre><code>&lt;Page ux:Class=&quot;HomePage&quot;&gt;
+<pre><code class="language-xml">&lt;Page ux:Class=&quot;HomePage&quot;&gt;
 	&lt;JavaScript File=&quot;HomePage.js&quot; /&gt;
 </code></pre>
 <p>At this point, our page should be ready for display!</p>
@@ -1027,7 +1027,7 @@ module.exports = {
 <p>By now, we've got multiple pages, and we'll need a way to display them and navigate between them. In Fuse, this is handled by the <a href="../fuse/controls/navigator.html">Navigator</a> and <a href="../fuse/navigation/router.html">Router</a> components. These components will need a proper introduction, and we'll want to take our time learning how to use them properly to fully understand how powerful they are, so we'll take a look at those in detail in the next chapter.</p>
 <p>For now, to keep things simple, we'll use a <a href="../fuse/controls/pagecontrol.html">PageControl</a> instead. A <a href="../fuse/controls/pagecontrol.html">PageControl</a> is great for cases where we want to have a few pages side-by-side that we'll to swipe between, which is just fine for initially displaying our two pages.</p>
 <p>So, if we take a look at <code>MainView.ux</code>, it currently looks something like this:</p>
-<pre><code>&lt;App&gt;
+<pre><code class="language-xml">&lt;App&gt;
 	&lt;ClientPanel&gt;
 		&lt;EditHikePage /&gt;
 	&lt;/ClientPanel&gt;
@@ -1035,7 +1035,7 @@ module.exports = {
 
 </code></pre>
 <p>Let's place the <code>EditHikePage</code> instance inside a <a href="../fuse/controls/pagecontrol.html">PageControl</a>, like so:</p>
-<pre><code>&lt;App&gt;
+<pre><code class="language-xml">&lt;App&gt;
 	&lt;ClientPanel&gt;
 		&lt;PageControl&gt;
 			&lt;EditHikePage /&gt;
@@ -1044,7 +1044,7 @@ module.exports = {
 &lt;/App&gt;
 </code></pre>
 <p>Now, all we have to do is add a <code>HomePage</code> instance inside our <a href="../fuse/controls/pagecontrol.html">PageControl</a> as well. Because it's the home page, let's place it above our existing <code>EditHikePage</code> instance:</p>
-<pre><code>&lt;App&gt;
+<pre><code class="language-xml">&lt;App&gt;
 	&lt;ClientPanel&gt;
 		&lt;PageControl&gt;
 			&lt;HomePage /&gt;
@@ -1062,7 +1062,7 @@ module.exports = {
 <p><img src="../media/hikr/chapter-3/edithikepage.png" alt="End of chapter result"></p>
 <p>And here's what the code for all of our various files looks like. It's a few more files now, but they're much simpler now in isolation:</p>
 <p><code>hikr.unoproj</code>:</p>
-<pre><code>{
+<pre><code class="language-json">{
   &quot;Packages&quot;: [
     &quot;Fuse&quot;,
     &quot;FuseJS&quot;
@@ -1074,7 +1074,7 @@ module.exports = {
 }
 </code></pre>
 <p><code>MainView.ux</code>:</p>
-<pre><code>&lt;App&gt;
+<pre><code class="language-xml">&lt;App&gt;
 	&lt;ClientPanel&gt;
 		&lt;PageControl&gt;
 			&lt;HomePage /&gt;
@@ -1084,7 +1084,7 @@ module.exports = {
 &lt;/App&gt;
 </code></pre>
 <p><code>hikes.js</code>:</p>
-<pre><code>var hikes = [
+<pre><code class="language-js">var hikes = [
 	{
 		id: 0,
 		name: &quot;Tricky Trails&quot;,
@@ -1130,7 +1130,7 @@ module.exports = {
 module.exports = hikes;
 </code></pre>
 <p><code>Pages/EditHikePage.ux</code>:</p>
-<pre><code>&lt;Page ux:Class=&quot;EditHikePage&quot;&gt;
+<pre><code class="language-xml">&lt;Page ux:Class=&quot;EditHikePage&quot;&gt;
 	&lt;JavaScript File=&quot;EditHikePage.js&quot; /&gt;
 
 	&lt;ScrollView&gt;
@@ -1156,7 +1156,7 @@ module.exports = hikes;
 &lt;/Page&gt;
 </code></pre>
 <p><code>Pages/EditHikePage.js</code>:</p>
-<pre><code>var Observable = require(&quot;FuseJS/Observable&quot;);
+<pre><code class="language-js">var Observable = require(&quot;FuseJS/Observable&quot;);
 
 var hike = Observable();
 
@@ -1175,7 +1175,7 @@ module.exports = {
 };
 </code></pre>
 <p><code>Pages/HomePage.ux</code>:</p>
-<pre><code>&lt;Page ux:Class=&quot;HomePage&quot;&gt;
+<pre><code class="language-xml">&lt;Page ux:Class=&quot;HomePage&quot;&gt;
 	&lt;JavaScript File=&quot;HomePage.js&quot; /&gt;
 
 	&lt;ScrollView&gt;
@@ -1188,7 +1188,7 @@ module.exports = {
 &lt;/Page&gt;
 </code></pre>
 <p><code>Pages/HomePage.js</code></p>
-<pre><code>var hikes = require(&quot;hikes&quot;);
+<pre><code class="language-js">var hikes = require(&quot;hikes&quot;);
 
 function chooseHike(arg) {
 	// TODO
