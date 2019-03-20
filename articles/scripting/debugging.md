@@ -11,13 +11,13 @@ debugging procedure is slightly different.
 [Click here](https://youtu.be/GloEpBr2lK0) for a video tutorial showing you how to do this.
 
 Targets that use the V8 JavaScript engine include Android, DotNet (including
-local preview) on both OS X and Windows, CMake on OS X, and MSVC on Windows.
+local preview) on both macOS and Windows, CMake on macOS, and MSVC on Windows.
 
 Fuse uses the V8 JavaScript engine and its debugger protocol. Fuse applications
 that are built using the `-DDEBUG_V8` automatically listen for connections on a
 local socket, port 5858. While any debugger that uses the V8 debugger protocol
 should work in principle, we recommend using [Visual Studio Code](https://code.visualstudio.com/),
-which is available both for OS X and Windows.
+which is available both for macOS and Windows.
 
 ### Setup
 

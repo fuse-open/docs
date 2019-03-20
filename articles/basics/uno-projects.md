@@ -718,7 +718,7 @@ Corresponds to [UILaunchImages](https://developer.apple.com/library/ios/document
 
 #### iOS.SystemCapabilities
 
-Capabilities are App Services which need special declarations in the XCode project.
+Capabilities are App Services which need special declarations in the Xcode project.
 
 In all cases where it is reliable to do so, Fuse will also add the appropriate Entitlements to your project.
 

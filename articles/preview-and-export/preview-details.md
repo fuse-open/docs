@@ -12,7 +12,7 @@ In addition to building the actual preview app for the device, a Fuse host is al
 
 ![PreviewBuilt](../../media/preview-details-built.png)
 
-<!-- TODO: The two boxes in the lower left should probably look like a real OS X window and a real Android device. -->
+<!-- TODO: The two boxes in the lower left should probably look like a real macOS window and a real Android device. -->
 
 As we can see, a preview-capable app has now been started on both the local computer and the Android device. The Fuse host has also been started on the local computer, and it is monitoring the files which are part of the app.
 
