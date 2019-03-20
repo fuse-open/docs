@@ -613,9 +613,9 @@
 	&lt;/ClientPanel&gt;
 &lt;/App&gt;
 </code></pre>
-<p>[callout info]
-By convention, we name the templates the same as the class names when used in a navigation context. <em>Why</em>, will become apparent in the next section.
-[/callout]</p>
+<blockquote class="callout-info">
+<p>By convention, we name the templates the same as the class names when used in a navigation context. <em>Why</em>, will become apparent in the next section.</p>
+</blockquote>
 <p>Basically, what each of these attributes says is that for a given <em>key</em> (<code>HomePage</code> and <code>EditHikePage</code> in this case), we want the <a href="../fuse/controls/navigator.html">Navigator</a> to instantiate the associated class. So, if the <a href="../fuse/controls/navigator.html">Navigator</a> is asked to navigate to <code>HomePage</code>, it will instantiate a <code>HomePage</code> instance (if it hasn't already) and navigate there. Similarly, when asked to navigate to <code>EditHikePage</code>, it will instantiate an <code>EditHikePage</code> instance (if it hasn't already) and navigate to that instead. We can add any amount of templates we want, given that each of the keys is <em>unique</em> (if they weren't, the <a href="../fuse/controls/navigator.html">Navigator</a> wouldn't know which template to use for a given key).</p>
 <p>Now, if we save this, our previews will update, but our pages will disappear! This makes sense, because we've only specified which templates our <a href="../fuse/controls/navigator.html">Navigator</a> will use to create its child components, but we haven't asked it to actually instantiate anything yet. Typically, we'll do this by navigating to a specific <em>route</em>, as we'll see in the next section. However, <a href="../fuse/controls/navigator.html">Navigator</a> also supports specifying a <em>default path</em> that will be used to create a default child if we haven't navigated to one of its children yet. This is a common case that's perfect for our use case, as we'll want our <a href="../fuse/controls/navigator.html">Navigator</a> to display our <code>HomePage</code> first, and then navigate to the <code>EditHikePage</code> once we've selected a hike to edit.</p>
 <p>To specify the default path for our <a href="../fuse/controls/navigator.html">Navigator</a>, all we have to do is add a <code>DefaultPath</code> attribute which will specify the key of the template we want the <a href="../fuse/controls/navigator.html">Navigator</a> to instantiate initially:</p>

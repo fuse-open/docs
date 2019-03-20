@@ -634,9 +634,9 @@
 </code></pre>
 <p><img src="../media/responsive-layout/alignment_affects_layout_1.png" alt="alignment_example_1"></p>
 <p>In this case, the nested red <code>Panel</code> with <code>Alignment=&quot;Top&quot;</code> set will take up only 16pt vertically, and be aligned to the top of the yellow <code>Panel</code>. When we assign an <code>Alignment</code> to an element, it tries to stick to the particular side of its parent and take up as little space in the respective direction as possible. The red <code>Panel</code> still stretches to fill the full width of the available space since there are no horizontal constraints set on it.</p>
-<p>[callout info]
-At this point you might wonder what the difference between &quot;docking&quot; something in a <code>DockPanel</code> and aligning something is. Although the two have similar effects, <strong>the most important difference is that aligning something does not subdivide its parents available space.</strong> What we mean by this is that the red <code>Panel</code> in the previous example does not &quot;spend&quot; its parent available space (as was done by the blue and green panels), it is instead just a way of declaring where panel should appear in the case where it is smaller (or bigger) than its parent in one or more dimensions.
-[/callout]</p>
+<blockquote class="callout-info">
+<p>At this point you might wonder what the difference between &quot;docking&quot; something in a <code>DockPanel</code> and aligning something is. Although the two have similar effects, <strong>the most important difference is that aligning something does not subdivide its parents available space.</strong> What we mean by this is that the red <code>Panel</code> in the previous example does not &quot;spend&quot; its parent available space (as was done by the blue and green panels), it is instead just a way of declaring where panel should appear in the case where it is smaller (or bigger) than its parent in one or more dimensions.</p>
+</blockquote>
 <p>If we remove the explicit <code>Height</code> on the red <code>Panel</code> and add some child elements with non-zero dimensions inside of it, the children will push the parent dimensions to accommodate the tallest child, the 200pt high maroon <code>Panel</code> in this case:</p>
 <pre><code class="language-xml">&lt;App&gt;
     &lt;DockPanel&gt;

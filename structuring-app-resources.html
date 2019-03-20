@@ -652,9 +652,9 @@ Another very useful aspect of resources is that they can be overridden at any ti
 <p>In the above example we've defined the same color, but as a dynamic resource instead. There are a couple things to notice about this snippet.
 We have wrapped the <code>Rectangle</code> and <code>float4</code> resource in a <code>Panel</code> to illustrate that the resource has to be either a sibling of the <code>Rectangle</code>, or belong to one of its ancestors in order to be visible. Since we put it on the <code>Panel</code> it is available to the panels descendants, or any of its descendants.
 You might also have noticed that we needed to use a special <em>binding syntax</em> in order to access this resource: <code>{Resource AppBackground}</code>. Since the resource might change while the app is running, we need to create a binding here so that our <code>Rectangle</code> is notified whenever that occurs.</p>
-<p>[callout info]
-The <code>{Resource &lt;key&gt;}</code> binding also works for static resources defined using <code>ux:Global</code>. It will first look for a dynamic resource defined by <code>ux:Key</code>, but if none is present, it will pick the static one by the same name instead.
-[/callout]</p>
+<blockquote class="callout-info">
+<p>The <code>{Resource &lt;key&gt;}</code> binding also works for static resources defined using <code>ux:Global</code>. It will first look for a dynamic resource defined by <code>ux:Key</code>, but if none is present, it will pick the static one by the same name instead.</p>
+</blockquote>
 <h2 id="color-palettes">Color palettes</h2>
 <p>When defining a color palette for our app, it can be a good idea to put it in its own file. This way we don't get a long list of color definitions cluttering our UI code, and it becomes easier to make color changes at a later stage. One detail of Fuse is that all files must define a <code>ux:Class</code> in order to be included in the app. When we just want to define a bunch of resources however, we don't want to also have to define a class to contain them.
 To make grouping resources more convenient, UX markup has a special tag called <code>ux:Resources</code>, which is used as follows:</p>
@@ -701,9 +701,9 @@ To make grouping resources more convenient, UX markup has a special tag called <
 	&lt;/Panel&gt;
 &lt;/App&gt;
 </code></pre>
-<p>[callout info]
-Note that we here have also defined a <code>ux:Global</code> for <code>MyApp.PrimaryColor</code>. This is to make sure our app has a fallback value for the case when no theme has been specified.
-[/callout]</p>
+<blockquote class="callout-info">
+<p>Note that we here have also defined a <code>ux:Global</code> for <code>MyApp.PrimaryColor</code>. This is to make sure our app has a fallback value for the case when no theme has been specified.</p>
+</blockquote>
 <h2 id="fonts-and-text-styles">Fonts and text styles</h2>
 <p>Fuse supports both <code>.otf</code> (OpenType) and <code>.ttf</code> (TrueType) font files. In order to make a font available throughout your app you can create a static resource for it:</p>
 <pre><code class="language-xml">&lt;Font ux:Global=&quot;RobotoBold&quot; File=&quot;Assets/Fonts/Roboto-Bold.ttf&quot; /&gt;

@@ -695,9 +695,9 @@ The common animator properties each have a corresponding <code>Back</code> varia
 	&lt;/ExitingAnimation&gt;
 &lt;/Page&gt;
 </code></pre>
-<p>[callout info]
-Since the <code>PageControl</code> already defines how to animate pages as the user swipes, we need to disable this if we want to add our own. We do this by setting the <code>Transition</code> property of the <code>Page</code> to <code>None</code>.
-[/callout]</p>
+<blockquote class="callout-info">
+<p>Since the <code>PageControl</code> already defines how to animate pages as the user swipes, we need to disable this if we want to add our own. We do this by setting the <code>Transition</code> property of the <code>Page</code> to <code>None</code>.</p>
+</blockquote>
 <p>The <code>EnteringAnimation</code> and <code>ExitingAnimation</code> can be a source of confusion for people who first encounter them, but we'll try to explain them here:</p>
 <p>The &quot;current&quot; page in a <code>PageControl</code> is the one the user is currently looking at. Swiping to the left causes the current page to &quot;enter&quot; with the animations defined by the <code>EnteringAnimation</code>, and causes the next page to &quot;exit backwards&quot; with the animations defined by the <code>ExitingAnimation</code>, played backwards. Why is <code>ExitingAnimation</code> played backwards you might wonder? Well, this is because the rest states of our page is defined as the way it looks while being the current page. Its animation then defines the offset from that rest state and how it is moved out of the way before it enters.</p>
 <p>You might wonder what happens when the user swipes to the right? This actually causes the previous page to &quot;enter backwards (causing it to re-enter the screen)&quot; and the &quot;current&quot; page to &quot;exit forwards (causing it to exit the screen)&quot; This means that in this case, the <code>EnteringAnimation</code> is played backwards while the <code>ExitingAnimation</code> is played forwards.</p>

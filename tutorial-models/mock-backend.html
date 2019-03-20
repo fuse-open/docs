@@ -666,9 +666,9 @@ MockBackend.updateItem(...)
 <p>We also need to make sure we update the path to our model in <code>MainView.ux</code>, since it has now changed place:</p>
 <pre><code>&lt;App Model=&quot;Models/App&quot;&gt;
 </code></pre>
-<p>[callout info]
-After moving the model class like we just did, you might need to <strong>rebuild</strong> the project in order for Fuse to pick up the change. This can be done from the menu by going to Preview-&gt;Rebuild.
-[/callout]</p>
+<blockquote class="callout-info">
+<p>After moving the model class like we just did, you might need to <strong>rebuild</strong> the project in order for Fuse to pick up the change. This can be done from the menu by going to Preview-&gt;Rebuild.</p>
+</blockquote>
 <p>Now we're ready to start implementing our mock backend. As it turns out, our <code>Models/App.js</code> file already contains all the data we'll need to present. Lets start our mock backend implementation by simply moving the <code>hikes</code> array to our newly created <code>Services/MockBackend.js</code> file. But instead of assigning it to <code>this.hikes</code>, lets make it a constant and a part of the files root scope (notice the <code>const hikes</code> part):</p>
 <pre><code>const hikes = [
 	new Hike(

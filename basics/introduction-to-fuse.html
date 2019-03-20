@@ -588,9 +588,9 @@
           <h1 id="introduction-to-fuse">Introduction to Fuse</h1>
 <p>This module will provide you with an introduction to the fundamentals of Fuse and is a good place to be if you're just getting started. While we don't assume any prior experience with programming, some familiarity with markup languages can be helpful.</p>
 <p>The goal of this module is to give you a good understanding of what makes up a Fuse app, and to gain some practical knowledge in the process.</p>
-<p>[callout info]
-We will also cover how JavaScript fits in with Fuse, so some experience with JavaScript will be helpful in that section.
-[/callout]</p>
+<blockquote class="callout-info">
+<p>We will also cover how JavaScript fits in with Fuse, so some experience with JavaScript will be helpful in that section.</p>
+</blockquote>
 <h2 id="new-project">New project</h2>
 <p>We start off by creating a new project. If you followed the quickstart guide, feel free to skip to the next section.</p>
 <p>When you first open Fuse, you are presented with the Fuse dashboard. From here, you can start a new project using one of the provided templates, or open one of your previous ones. For this section, we want to create a new project using the &quot;Fuse project&quot; template. This gives us a good starting point for playing around with some of the core features of Fuse.</p>
@@ -607,15 +607,15 @@ We will also cover how JavaScript fits in with Fuse, so some experience with Jav
 </li>
 </ul>
 <p>When we start the Fuse preview, it looks for a <code>.unoproj</code> file in the folder we're in. As long as this file exists, and we have a <code>.ux</code> file with an <code>App</code> tag (we'll cover UX markup next), we have a valid Fuse project.</p>
-<p>[callout info]
-Why is it called .unoproj you might wonder? Fuse is built on top of a programming language called Uno. This means that when Fuse compiles your code, it is actually compiling an Uno project. Knowledge about Uno is <strong>not required</strong> in order to use Fuse, but for anyone who wants to dig deeper into the Fuse technology stack, more information can be found <a href="../native-interop/native-interop.html">here</a>.
-[/callout]</p>
+<blockquote class="callout-info">
+<p>Why is it called .unoproj you might wonder? Fuse is built on top of a programming language called Uno. This means that when Fuse compiles your code, it is actually compiling an Uno project. Knowledge about Uno is <strong>not required</strong> in order to use Fuse, but for anyone who wants to dig deeper into the Fuse technology stack, more information can be found <a href="../native-interop/native-interop.html">here</a>.</p>
+</blockquote>
 <h4 id="ux-files">UX files</h4>
 <p>All UX file names end with the<code>.ux</code> file extension. UX is a markup language based on XML. It provides a powerful and expressive way of defining all visual aspects of our apps: GUI layout, animations, navigation structure, reusable components, input controls, and more.</p>
 <p>Our chosen project template gives us only one UX file to start with, called <code>MainView.ux</code>. To start building your app, open this file in your text editor of choice. You'll notice the file only contains two lines of code; a pair of opening and closing <code>App</code> tags.</p>
-<p>[callout info]
-UX markup is explained in detail in the next section.
-[/callout]</p>
+<blockquote class="callout-info">
+<p>UX markup is explained in detail in the next section.</p>
+</blockquote>
 <pre><code class="language-xml">&lt;App&gt;
 &lt;/App&gt;
 </code></pre>
@@ -627,9 +627,9 @@ UX markup is explained in detail in the next section.
 </code></pre>
 <h2 id="introduction-to-ux">Introduction to UX</h2>
 <p>As mentioned in the previous section, UX is the way we do most of our work in Fuse. It is where we define everything visual, as well as animations and navigation. In this section we'll introduce the basics of UX markup.</p>
-<p>[callout info]
-If you're already familiar with XML, feel free to skip forward to the next sub chapter. The terminology is a bit different from regular XML though so it may be worth a look.
-[/callout]</p>
+<blockquote class="callout-info">
+<p>If you're already familiar with XML, feel free to skip forward to the next sub chapter. The terminology is a bit different from regular XML though so it may be worth a look.</p>
+</blockquote>
 <h3 id="what-is-ux-for">What is UX for?</h3>
 <p>UX is used for anything and everything visual. You define your app layout, all animations, navigation, and even gesture recognition in UX.</p>
 <p><strong>Layout</strong> is the act of arranging various shapes and controls on the screen. Fuse layout engine lets us easily define reactive layouts, that automatically adapt to different screen sizes and aspect ratios.</p>
@@ -658,9 +658,9 @@ If you're already familiar with XML, feel free to skip forward to the next sub c
 <li><code>&lt;Something&gt; &lt;/Something&gt;</code></li>
 </ul>
 <p>Here we see that the <code>&lt;Something&gt;</code> tag doesn't end in <code>/&gt;</code> so it needs to be closed. That's why the second tag starts with <code>&lt;/</code>. It is saying that this is 'closing tag' for a <code>Something</code> tag above.</p>
-<p>[callout info]
-Remember that even though example number two has 2 tags it is still one <em>object</em>. It's just one that can contain other <em>objects</em> as well.
-[/callout]</p>
+<blockquote class="callout-info">
+<p>Remember that even though example number two has 2 tags it is still one <em>object</em>. It's just one that can contain other <em>objects</em> as well.</p>
+</blockquote>
 <h4 id="using-this-knowledge">Using this knowledge</h4>
 <p>If you are anything like me, then at this point your head is swimming with all these terms that we don't have a use for yet, so lets look at some real UX.</p>
 <pre><code class="language-xml">&lt;StackPanel Orientation=&quot;Horizontal&quot;&gt;
@@ -727,13 +727,13 @@ Remember that even though example number two has 2 tags it is still one <em>obje
 <p>And now we can use it just like any other object that came with Fuse!</p>
 <pre><code class="language-xml">&lt;TextRectangle /&gt;
 </code></pre>
-<p>[callout info]
-<em>Top tips:</em></p>
+<blockquote class="callout-info">
+<p><em>Top tips:</em></p>
 <ul>
 <li>You may be wondering if the objects we have already seen (<code>StackPanel</code> &amp; <code>Text</code>) have classes too, and the answer is yes. The Objects you make are just as powerful as the ones that come with the product which is pretty cool.</li>
-<li>Even though <code>ux:Class</code> looks like a <code>Property</code> it is not one. If you see something that looks like a <code>Property</code> but which start with <code>ux:</code>, then it has special behavior. These special behaviors are explained in the documentation so don't worry about trying to memorize them all straight away.
-[/callout]</li>
+<li>Even though <code>ux:Class</code> looks like a <code>Property</code> it is not one. If you see something that looks like a <code>Property</code> but which start with <code>ux:</code>, then it has special behavior. These special behaviors are explained in the documentation so don't worry about trying to memorize them all straight away.</li>
 </ul>
+</blockquote>
 <h2 id="introduction-to-layout">Introduction to Layout</h2>
 <p>As we mentioned in the previous section; layout is the act of sizing and positioning elements on the screen. Since our apps are expected to run on a ton of different screen sizes, with different aspect ratios and pixel densities, creating app layouts is not as simple in the real world as it is in a prototyping tool. Now, that doesn't necessarily make it harder, you just have to be aware of how to properly structure things in order to get the expected layout on your various devices.</p>
 <p>We do this in Fuse by grouping objects together using various different <code>Panel</code> types, each with their own layout behavior. Panels are in charge of positioning their children according to different predefined layout rules. In this section we'll cover the most important ones, and how they can be used together to easily create almost any app layout.</p>
@@ -766,9 +766,9 @@ Remember that even though example number two has 2 tags it is still one <em>obje
 <p><img src="../media/intro_to_fuse/alignment.png" alt="alignment"></p>
 <h3 id="layout-types">Layout types</h3>
 <p>Now it's time to learn about some layout types and how they can be combined to create almost any app layout you can think of. You'll be introduced to three layout types: <code>StackPanel</code>, <code>DockPanel</code> and <code>Grid</code>. Note however that these aren't the only layout types in Fuse. They are however by far the most commonly used ones, and cover most of the use-cases you'll run into. You'll see more of them listed in the outline of <a href="https://fuse-open.github.io/docs">the docs</a>.</p>
-<p>[callout info]
-The various panels we introduce here are actually just normal panels with an associated <code>Layout</code> type. What we mean by this is that a <code>StackPanel</code> is actually just a <code>Panel</code> with a <code>StackLayout</code> attached to it. Some of the available layout types do not have these <code>Panel</code> wrappers, and so you have to add them to a normal <code>Panel</code> yourself in order to use them.
-[/callout]</p>
+<blockquote class="callout-info">
+<p>The various panels we introduce here are actually just normal panels with an associated <code>Layout</code> type. What we mean by this is that a <code>StackPanel</code> is actually just a <code>Panel</code> with a <code>StackLayout</code> attached to it. Some of the available layout types do not have these <code>Panel</code> wrappers, and so you have to add them to a normal <code>Panel</code> yourself in order to use them.</p>
+</blockquote>
 <p>Here is an example showing how you can use the <code>ColumnLayout</code> layout:</p>
 <pre><code class="language-xml">&lt;Panel&gt;
 	&lt;ColumnLayout /&gt;
@@ -904,9 +904,9 @@ The various panels we introduce here are actually just normal panels with an ass
 <pre><code class="language-js">observableValue.value = 40;
 </code></pre>
 <p>if we data-bind to this variable, the UI will automatically update whenever we make changes to it.</p>
-<p>[callout info]
-We do <strong>not</strong> use the <code>new</code> keyword when creating Observable values.
-[/callout]</p>
+<blockquote class="callout-info">
+<p>We do <strong>not</strong> use the <code>new</code> keyword when creating Observable values.</p>
+</blockquote>
 <h4 id="list-observables">List observables</h4>
 <p>Observables can also act as lists of observable values. We create an observable list in the exact same way as we create observable values:</p>
 <pre><code class="language-js">var observableList = Observable(1,2,3,4,5) //observable list with 5 values
@@ -1017,9 +1017,9 @@ observableList.removeAt(0);
 <pre><code>uno test ProjectName.unoproj
 </code></pre>
 <p>If a test throws an error, it will be regarded as failing. If nothing is thrown, the test passes. Pretty simple! Check out the <a href="../testing/testing.html">ux:Test documentation</a> for more details.</p>
-<p>[callout info]
-The current implementation of unit tests in Fuse is quite rudimentary. You can expect the testing API to be expanded upon in the future.
-[/callout]</p>
+<blockquote class="callout-info">
+<p>The current implementation of unit tests in Fuse is quite rudimentary. You can expect the testing API to be expanded upon in the future.</p>
+</blockquote>
 <h2 id="animation-basics">Animation basics</h2>
 <p>Fuse comes with a declarative and extremely expressive animation system, which is both easy to learn and very fun to play with.</p>
 <p>There are two core concepts you need to grasp in order to create animations in Fuse: triggers and animators. In short, triggers are objects that respond to events or user input and which activate animators, while animators are in charge of transforming objects or changing their properties over time in response to being activated by triggers. A very nice thing about animators in Fuse, is that they always know how to undo themselves. This means that you never have to make sure you animate your objects back into place whenever a trigger is deactivated; this is taken care of by Fuse.</p>
