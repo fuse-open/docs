@@ -7,7 +7,7 @@
 
 An empty app now looks like this:
 
-```
+```xml
 <App>
 </App>
 ```
@@ -35,7 +35,7 @@ You might also want to add a reference to the following depending on whether you
 
 A minimal .unoproj file should now look something like this:
 
-```
+```json
 {
   "Packages": [
     "Fuse",
@@ -60,7 +60,7 @@ Using `ux:Global` on JavaScript modules to make them accessible to `require()` w
 
 Instead require the JS file directly by including it in your project as a bundle file, for example:
 
-```
+```json
 "Includes": [
     "*",
     "*.js:Bundle"
@@ -69,7 +69,7 @@ Instead require the JS file directly by including it in your project as a bundle
 
 and then use require with the filename instead:
 
-```
+```js
 var foo = require('foo'); // requires foo.js in the project root
 var bar = require('./../bar'); // requires bar.js in the folder above the current file
 ```
@@ -88,17 +88,19 @@ Check out [the detailed docs](fusejs/fusejs.md#importing-modules-by-file-name) f
 * As `TextInput` is invisible by default, we can use the new `TextBox` to get a decorated text input (easier while prototyping).
 
 We can now style `TextInput` by putting elements inside it. It behaves like a `DockPanel` where remaining space is the actual editor:
-
+```xml
 	<TextInput>
 		<Rectangle Dock="Bottom" Height="2" Color="Blue" Margin="4" />
 	</TextInput>
+```
 
 #### Changes (bugfixes) to UX element ordering semantics
 
 * `Element`s placed inside `Trigger`s will now be placed at the same location in the children list as their containing `Trigger`.
 
 Here is an example where this matters:
-```
+
+```xml
 <Panel>
 	<Each Count="2">
 		<ElemOne/>
@@ -108,7 +110,8 @@ Here is an example where this matters:
 ```
 
 The previous behavior turned the above UX into the following equivalent:
-```
+
+```xml
 <Panel>
 	<ElemTwo/>
 	<ElemOne/>
@@ -118,7 +121,8 @@ The previous behavior turned the above UX into the following equivalent:
 Notice that the element inside the `Each` are placed after element outside it.
 
 The new behavior works like this:
-```
+
+```xml
 <Panel>
 	<ElemOne/>
 	<ElemOne/>
@@ -149,14 +153,17 @@ The `PageControl.DotFactory` has been renamed to `PageControl.DotTemplate`.
 
 If you need to use a custom `Easing` and `Duration`, rewrite
 
+```xml
 	<LinearNavigation Easing="CubicOut" Duration="0.3" />
+```
 
 To this:
 
+```xml
 	<LinearNavigation>
 		<NavigationMotion Easing="CubicOut" Duration="0.3" />
 	</LinearNavigation>
-
+```
 
 #### Uno API Changes
 
@@ -169,11 +176,11 @@ These changes are only relevant if you have custom `.uno` code in your projects.
 * Many places that used to take in a `Node` now take in a `Visual` instead.
   For example, in the`WhileLoaded` trigger:
 
-```
+```csharp
 public static void SetState(Node n, bool loaded)
 ```
 has become
-```
+```csharp
 public static void SetState(Visual v, bool loading)
 ```
 

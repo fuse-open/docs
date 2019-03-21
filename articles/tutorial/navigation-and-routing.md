@@ -16,7 +16,7 @@ So, how do we request which component to navigate to when using a @Navigator? we
 
 First, let's open up `MainView.ux`, and simply replace @PageControl with @Navigator:
 
-```
+```xml
 <App>
 	<ClientPanel>
 		<Navigator>
@@ -29,7 +29,7 @@ First, let's open up `MainView.ux`, and simply replace @PageControl with @Naviga
 
 Now, because the @Navigator expects _templates_ instead of instances for its children, we'll need to update these as well. Luckily, Fuse makes this pretty easy - all we have to do is add a `ux:Template` attribute to each of our @Navigator's children, like so:
 
-```
+```xml
 <App>
 	<ClientPanel>
 		<Navigator>
@@ -46,7 +46,7 @@ Now, if we save this, our previews will update, but our pages will disappear! Th
 
 To specify the default path for our @Navigator, all we have to do is add a `DefaultPath` attribute which will specify the key of the template we want the @Navigator to instantiate initially:
 
-```
+```xml
 <App>
 	<ClientPanel>
 		<Navigator DefaultPath="home">
@@ -69,7 +69,7 @@ Now, that can be a lot to take in. Indeed, the @Router is capable of quite a lot
 
 The first thing we'll do is actually create a @Router instance. In our case, we'll only need one @Router for the entire app. This is quite common. So, we'll add our @Router near the top of our `App` class:
 
-```
+```xml
 <App>
 	<Router />
 
@@ -83,7 +83,7 @@ Now that we've got a @Router instance, we need to _inject_ it into our `HomePage
 
 So, let's add a @Router dependency to our `HomePage`. This is very similar to adding a @Router instance, so we'll do that first at the top of the @Page:
 
-```
+```xml
 <Page ux:Class="HomePage">
 	<Router />
 
@@ -92,7 +92,7 @@ So, let's add a @Router dependency to our `HomePage`. This is very similar to ad
 
 All we have to do to make this a dependency is to add a `ux:Dependency` attribute that will specify the _name_ of this dependency in the context of our component. For example, let's add this attribute and call our dependency @Router:
 
-```
+```xml
 <Page ux:Class="HomePage">
 	<Router ux:Dependency="router" />
 
@@ -103,7 +103,7 @@ Now, instead of creating a @Router instance, Fuse will expect that we specified 
 
 To do this, we'll go back to `MainView.ux`. First, we'll give our @Router a name by using a `ux:Name` attribute:
 
-```
+```xml
 <App>
 	<Router ux:Name="router" />
 
@@ -112,7 +112,7 @@ To do this, we'll go back to `MainView.ux`. First, we'll give our @Router a name
 
 By giving it a name, we can now refer to this particular @Router instance easily. Next, we'll make sure that this instance is provided to our `HomePage` instance like so:
 
-```
+```xml
 <App>
 	<Router ux:Name="router" />
 
@@ -129,7 +129,7 @@ At this point, we can save both `MainView.ux` and `HomePage.ux`. Note that if we
 
 Now that our `HomePage` has a @Router instance to work with, we'll want it to use that @Router to navigate to the `EditHikePage`. If we look at our `HomePage.js` file, we already have a function hooked up to our selector view that we'll want to fill in for this, called `chooseHike`:
 
-```
+```js
 function chooseHike(arg) {
 	// TODO
 }
@@ -137,7 +137,7 @@ function chooseHike(arg) {
 
 Before we fill in this function, I'd like to rename it from `chooseHike` to `goToHike`. This is a small detail, but will better communicate the intent of the function and keep things a bit cleaner. So, let's change its name:
 
-```
+```js
 function goToHike(arg) {
 	// TODO
 }
@@ -145,7 +145,7 @@ function goToHike(arg) {
 
 We'll also update its name in our `module.exports` below:
 
-```
+```js
 module.exports = {
 	hikes: hikes,
 
@@ -155,7 +155,7 @@ module.exports = {
 
 Finally, we'll update the reference to it in `HomePage.ux`:
 
-```
+```xml
 			<Each Items="{hikes}">
 				<Button Text="{name}" Clicked="{goToHike}" />
 			</Each>
@@ -165,7 +165,7 @@ That's better! Now we can save these files, and we're ready to go back to `HomeP
 
 The first thing we'll need to do is grab the hike object from the function's argument. We'll do this exactly like we did in [chapter 2](multiple-hikes.md), which looks like this:
 
-```
+```js
 function goToHike(arg) {
 	var hike = arg.data;
 }
@@ -173,7 +173,7 @@ function goToHike(arg) {
 
 Now that we've got our hike object, we'll want to navigate to our `EditHikePage`, so we'll also need our @Router dependency from UX. Luckily, in Fuse, the value of a `ux:Dependency` can be retrieved from JavaScript simply by referring to its name. So, if we refer to @Router in `HomePage.js`, we're actually referring to the @Router that was passed in from `MainView.ux` through the `ux:Dependency` in `HomePage.ux`:
 
-```
+```js
 function goToHike(arg) {
 	var hike = arg.data;
 	router // We have our Router, but what will we do with it?
@@ -182,7 +182,7 @@ function goToHike(arg) {
 
 It's that easy! Now, all we need to do is tell @Router to navigate to the `EditHikePage`. To do this, we'll use a JavaScript function that's available on @Router called `push`:
 
-```
+```js
 function goToHike(arg) {
 	var hike = arg.data;
 	router.push("editHike");
@@ -199,7 +199,7 @@ However, since we're not making any model changes yet, we'll start by making a `
 
 First, we'll need to add a @Router dependency to `EditHikePage`, just like we did with `HomePage`. In `EditHikePage.ux`, we'll add the dependency:
 
-```
+```xml
 <Page ux:Class="EditHikePage">
 	<Router ux:Dependency="router" />
 
@@ -208,7 +208,7 @@ First, we'll need to add a @Router dependency to `EditHikePage`, just like we di
 
 And in `MainView.ux`, we'll satisfy that dependency:
 
-```
+```xml
 		<Navigator DefaultPath="home">
 			<HomePage ux:Template="home" router="router" />
 			<EditHikePage ux:Template="editHike" router="router" />
@@ -216,7 +216,7 @@ And in `MainView.ux`, we'll satisfy that dependency:
 
 Easy enough! Let's save these files, and then we'll head back to `EditHikePage.ux` and create a simple back button at the bottom, like so:
 
-```
+```xml
 			...
 
 			<TextView Value="{comments}" TextWrapping="Wrap" />
@@ -229,7 +229,7 @@ Easy enough! Let's save these files, and then we'll head back to `EditHikePage.u
 
 Let's also add a `Clicked` handler while we're at it, even though we haven't created the function it will refer to yet (we'll do that right after):
 
-```
+```xml
 			...
 
 			<TextView Value="{comments}" TextWrapping="Wrap" />
@@ -242,7 +242,7 @@ Let's also add a `Clicked` handler while we're at it, even though we haven't cre
 
 Our handler will be called `goBack`. Let's go to `EditHikePage.js`, create this function, and add it to our exports:
 
-```
+```js
 ...
 
 function goBack() {
@@ -258,7 +258,7 @@ module.exports = {
 
 Now, we're ready to fill in this function. This is really simple:
 
-```
+```js
 function goBack() {
 	router.goBack();
 }
@@ -276,7 +276,7 @@ The last thing we need to do is send our hike to `EditHikePage` in addition to n
 
 This part will be pretty easy. If we go back to `HomePage.js`, we already have most of the parts there in our `goToHike` function:
 
-```
+```js
 function goToHike(arg) {
 	var hike = arg.data;
 	router.push("editHike");
@@ -287,7 +287,7 @@ All we need to do is add our hike object to the route when calling `push`, and t
 
 To send our hike, we'll just pass the `hike` object along with our route in the call to `push`, like so:
 
-```
+```js
 function goToHike(arg) {
 	var hike = arg.data;
 	router.push("editHike", hike);
@@ -300,7 +300,7 @@ This way, we tell the @Router to navigate to the `editHike` route, and pass our 
 
 Now that we're also sending the hike data to our `EditHikePage`, we need to add some code to `EditHikePage` to receive that data. Fuse provides a special tool specifically for this purpose. In JavaScript, we can access a special @Observable called `Parameter` that's available to our JS module. This `Parameter` @Observable represents all of the incoming values passed to our component via the @Router. To use this, let's take a look at our `hike` @Observable that we already have in `EditHikePage.js`:
 
-```
+```js
 var Observable = require("FuseJS/Observable");
 
 var hike = Observable();
@@ -310,7 +310,7 @@ var hike = Observable();
 
 Ideally, what we want to do is populate this `hike` @Observable with all of the values that come in via the `Parameter` @Observable. There are a couple ways we can do that, but the simplest is to just do the following:
 
-```
+```js
 var hike = this.Parameter;
 
 ...
@@ -331,7 +331,7 @@ At this point, we've got our two components all set up with navigation and passi
 And here's the code for the various files we modified in this chapter:
 
 `MainView.ux`
-```
+```xml
 <App>
 	<Router ux:Name="router" />
 
@@ -345,7 +345,7 @@ And here's the code for the various files we modified in this chapter:
 ```
 
 `Pages/HomePage.ux`:
-```
+```xml
 <Page ux:Class="HomePage">
 	<Router ux:Dependency="router" />
 
@@ -362,7 +362,7 @@ And here's the code for the various files we modified in this chapter:
 ```
 
 `Pages/HomePage.js`:
-```
+```js
 var hikes = require("hikes");
 
 function goToHike(arg) {
@@ -378,7 +378,7 @@ module.exports = {
 ```
 
 `Pages/EditHikePage.ux`:
-```
+```xml
 <Page ux:Class="EditHikePage">
 	<Router ux:Dependency="router" />
 	
@@ -410,7 +410,7 @@ module.exports = {
 ```
 
 `Pages/EditHikePage.js`:
-```
+```js
 var hike = this.Parameter;
 
 var name = hike.map(function(x) { return x.name; });

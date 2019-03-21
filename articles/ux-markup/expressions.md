@@ -10,12 +10,16 @@ UX Markup's *Reactive Expressions* allow you to combine *literals*, *resources* 
 
 In the following example, a slider controls the position of a rectangle.
 
+```xml
 	<Rectangle X="spring({Property slider.Value})*30% + 50%" Alignment="TopLeft" Width="32" Height="32" />
 	<Slider ux:Name="slider" Minimum="-1" Maximum="1" />
+```
 
 Note in particular the expression for the `X`-offset of the rectangle:
 
+```js
 	spring({Property slider.Value})*30% + 50%
+```
 
 This means that the rectangle will be offset by `50%`, plus a value that ranges between `-30%` and `30%` through a `spring` physics function.
 
@@ -34,34 +38,46 @@ Note that inline expressions (`{= expression}`) also use the curly brace syntax,
 
 UX expressions can add (`+`), subtract (`-`), multiply (`*`) and divide (`/`) any scalar or vector value, with or without units (such as `%` and `px`).
 
+```xml
 	<Panel Width="{foo} * 100% + 40%" />
 	<Slider Margin="{foo}" />
-
+```
 Arithmetic can only be performed between values of the same unit, or between one value with unit and one value without unit. You can **not** do `10% + 10px`, for example. This will give a runtime error.
 
 ## Vectors
 
 Vectors (up to 4 components) can be constructed using the comma `,` operator:
 
+```xml
 	<Panel Margin="10, {spacing}, 10, {spacing} / 2" />
+```
 
 Vectors will also be automatically expanded to the appropriate size from a shorter vector, according to the following rules: `X` -> `XXXX`, `XY -> XYXY` and `XYZ` -> `XYZ1`.
 
+```xml
 	<Panel Margin="{spacing}" />
+```
 
 ## Strings and text
 
 String properties (such as `<Text Value=""`) are parsed differently from other properties. A string property is treated as a literal string, except for curly braced operands.
 
+```xml
 	<Text>Hello, {username}!</Text>
+```
+
 
 Or, equivalently:
 
+```xml
 	<Text Value="Hello, {username}" />
+```
 
 To embed a computed expression inside a string value, you can use the `{= expression}` syntax, for example:
 
+```xml
 	<Text>Hello, {= toLower({username})}!</Text>
+```
 
 ## Functions
 

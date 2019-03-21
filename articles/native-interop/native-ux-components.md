@@ -11,6 +11,7 @@ There are two types of views we can implement. `ParentView` allows you to wrap a
 
 We start out by creating a class which defines our slider with some boilerplate code for handling properties. We also declare a pair of interfaces that we will use to communicate between native and our slider class.
 
+```csharp
 	namespace Native
 	{
 		using Uno;
@@ -66,6 +67,7 @@ We start out by creating a class which defines our slider with some boilerplate 
 		}
 
 	}
+```
 
 We move on to creating a wrapper for the native view, by extending the `LeafView` class(es). We need to make separate versions for iOS and Android, preferably in separate files. If you only want to support one platform, that's fine. We can then simply skip the steps for the other platform.
 
@@ -77,6 +79,7 @@ There are two versions of the `LeafView` class for iOS and Android respectively,
 
 We create our `LeafView` class in Uno with foreign Objective-C code:
 
+```csharp
 	namespace Native.iOS
 	{
 		using Uno;
@@ -126,6 +129,7 @@ We create our `LeafView` class in Uno with foreign Objective-C code:
 			}
 		}
 	}
+```
 
 > The above example only implements setting the `Value`, it does not hook onto the `UIControlEventValueChanged` to feed events back to Fuse when the user interacts with the control. A complete useful wrapper would need that.
 
@@ -136,6 +140,7 @@ To get access to the `ObjC.Object` representing the `UISlider` from within your 
 The `MySlider` class has the `extern(iOS)` attribute, and will therefore only be available when building for iOS. To make it possible to use this class
 in UX markup, it must be valid on all platforms. Therefore we must provide a dummy implementation with just the public interface marked with `extern(!iOS)` within the same namespace:
 
+```csharp
 	namespace Native.iOS
 	{
 		extern(!iOS) public class MySlider
@@ -144,11 +149,13 @@ in UX markup, it must be valid on all platforms. Therefore we must provide a dum
 			public MySlider([UXParameter("Host")]ISliderHost host) { }
 		}
 	}
+```
 
 ## Implementing `LeafView` for Android
 
 And then, let's write the equivalent Android implementation:
 
+```csharp
 	namespace Native.Android
 	{
 		using Uno;
@@ -203,11 +210,13 @@ And then, let's write the equivalent Android implementation:
 			}
 		}
 	}
+```
 
 The above implementation also shows how to implement an `OnSeekBarChangeListener` to get events back from android to update the `Value` proeprty.
 
 As for iOS, we also need a dummy implementation for `extern(!Android)` to allow this to be used in UX markup:
 
+```csharp
 	namespace Native.Android
 	{
 		extern(!Android) public class MySlider
@@ -216,6 +225,7 @@ As for iOS, we also need a dummy implementation for `extern(!Android)` to allow 
 			public MySlider([UXParameter("Host")]ISliderHost host) { }
 		}
 	}
+```
 
 ### Creating a UX wrapper `Control`
 
@@ -229,6 +239,7 @@ The `Fuse.Controls.Control` class contains a neat piece of magic. It allows you 
 
 So in order to make our `Slider` work on all platforms, we must provide one template for each scenario. We pass `this` to the `Host` attibuite to connect `Native.MySlider` with the native counterpart.
 
+```xml
 	<Native.MySlider ux:Class="NativeSlider">
 		<Native.Android.MySlider ux:Template="AndroidAppearance" Host="this" />
 		<Native.iOS.MySlider ux:Template="iOSAppearance" Host="this" />
@@ -236,6 +247,7 @@ So in order to make our `Slider` work on all platforms, we must provide one temp
 			MySlider is not available in this context.
 		</Text>
 	</Native.MySlider>
+```
 
 This hooks everything up, so if we use `<NativeSlider />` in UX markup now, it will use the correct implementation on each platform if we are inside a `NativeViewHost`. It will display an error `Text` message in other scenarios. 
 

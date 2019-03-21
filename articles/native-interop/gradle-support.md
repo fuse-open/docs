@@ -8,13 +8,13 @@ You can specify the build tools version and target version for your project.
 
 For example:
 
-```
+```sh
 fuse build -t=android -r --set:SDK.BuildToolsVersion="23.0.3" --set:SDK.CompileVersion="23" --set:SDK.TargetVersion="23"`
 ```
 
 To find out which version of the tools you have installed run:
 
-```
+```sh
 uno android
 ```
 
@@ -24,7 +24,7 @@ In your terminal or command prompt. This will open the Android SDK Manager. From
 
 To add a gradle dependency on a project add the following attribute to an Uno class
 
-```
+```csharp
 [Require("Gradle.Dependency.Compile", "com.github.lecho:hellocharts-library:1.5.8@aar")]
 ```
 
@@ -34,13 +34,13 @@ Swapping out the `com.github.lecho:hellocharts-library:1.5.8@aar` with a library
 
 To specify an additional repository please add the following attribute to an Uno class
 
-```
+```csharp
 [Require("Gradle.Repository", "maven { url 'https://maven.fabric.io/public' }")]
 ```
 
 If you need to add a repository to the `model.repositories` section of the `build.gradle` file then use:
 
-```
+```csharp
 [Require("Gradle.Module.Repository", "maven { url 'https://maven.fabric.io/public' }")]
 ```
 

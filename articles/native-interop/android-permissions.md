@@ -9,6 +9,7 @@ Fuse unifies these two different declarations to hopefully make android's approa
 Let's look and an example and then we will break it down:
 
 
+```csharp
     public void TakePicture(object a1, EventArgs a2)
     {
         var permissionPromise = Permissions.Request(Permissions.Android.CAMERA); // [0]
@@ -24,6 +25,7 @@ Let's look and an example and then we will break it down:
     {
         debug_log "Blast: " + e.Message;
     }
+```
 
 `[0]` - Here we request the permission by calling the `Request` method and passing in the permission we want to be granted. Simply be referencing that permission Fuse will add it to your `AndroidManifest.xml` file.
 

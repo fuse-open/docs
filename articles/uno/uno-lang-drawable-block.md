@@ -6,7 +6,7 @@ The drawable block keyword sequence can be used within classes or blocks. It can
 
 ## Syntax
 
-```
+```csharp
 drawable block [<optional name>]  { <optional meta property block> }
 ```
 

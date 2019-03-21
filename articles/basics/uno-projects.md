@@ -7,7 +7,7 @@ Fuse projects are basically Uno projects which references the Fuse libraries. Th
 
 An Uno project file (`.unoproj`) is a plain JSON text file, that has this basic stucture:
 
-```
+```json
 {
 	"Packages": [
 		"Fuse",
@@ -31,7 +31,7 @@ To make a Fuse project, you typically have to reference at least the `Fuse` and 
 
 What packages you reference may affect the *permissions* your app requires.
 
-```
+```json
 {
 	"Packages": [
 		"Fuse",
@@ -47,7 +47,7 @@ This feature is used to implement many of the top-level properties, such as [Tit
 
 For instance, say you set the `Version` property as follows:
 
-```
+```json
 {
 	"Version": "0.9.4"
 }
@@ -55,7 +55,7 @@ For instance, say you set the `Version` property as follows:
 
 By default, both [Android.VersionName](#android-versionname) and [iOS.BundleVersion](#ios-bundleversion) are set as follows:
 
-```
+```json
 {
 	"Android": {
 		"VersionName": "$(Version)"
@@ -72,7 +72,7 @@ This will make those properties inherit the top-level `Version` property.
 
 The `Projects` section is optional, and allows you to reference other Uno projects in the local file system. By relative paths to other `.unoproj` files.
 
-```
+```json
 {
 	"Projects": [
 		"../../SomeOtherProject/SomeOtherProject.unoproj"
@@ -84,7 +84,7 @@ The `Projects` section is optional, and allows you to reference other Uno projec
 
 The `Includes` and `Excludes` properties lets you control which files to include in your project. They are both arrays of strings, as shown in the snippet below:
 
-```
+```json
 {
 	"Includes": [
 		"*.ux",
@@ -105,7 +105,7 @@ An include/exclude entry can take one of the following forms:
 
 A glob pattern, as described further down in this document.
 
-```
+```json
 {
 	"Includes": [
 		"*.ux",
@@ -195,7 +195,7 @@ Use globstar (`**`) for explicit recursion:
 
 This tells the Uno compiler to include a single file, interpreting it as a certain [type](#allowed-include-types).
 
-```
+```json
 {
 	"Includes": [
 		"MainView.ux:UX"
@@ -207,7 +207,7 @@ This tells the Uno compiler to include a single file, interpreting it as a certa
 
 In addition to a file of a certain [type](#allowed-include-types), you may specify a condition that will determine if the file will be included or not.
 
-```
+```json
 {
 	"Includes": [
 		"AndroidOnly.java:Java:Android",
@@ -238,7 +238,7 @@ The user-readable title of your app. Defaults to `$(Name)`.
 
 *unrealisticallyLongNameForAnApp.unoproj*:
 
-```
+```json
 {
 	"Title": "ShorterName"
 }
@@ -248,7 +248,7 @@ The user-readable title of your app. Defaults to `$(Name)`.
 
 User-readable description of your app. Empty by default.
 
-```
+```json
 {
 	"Description": "An app that helps you organize, track and analyze cat pictures on the internet."
 }
@@ -258,7 +258,7 @@ User-readable description of your app. Empty by default.
 
 Your app's copyright notice. Defaults to `Copyright (C) <current year> $(Publisher)`.
 
-```
+```json
 {
 	"Copyright": "Copyright © 2003-2016 $(Publisher)"
 }
@@ -268,7 +268,7 @@ Your app's copyright notice. Defaults to `Copyright (C) <current year> $(Publish
 
 The legal entity in charge of publishing the application. Defaults to `$(Publisher)`.
 
-```
+```json
 {
 	"Publisher": "VeryBusinessCorp Inc."
 }
@@ -278,7 +278,7 @@ The legal entity in charge of publishing the application. Defaults to `$(Publish
 
 The current version of your app,  Defaults to `0.0.0`.
 
-```
+```json
 {
 	"Version": "1.2.9"
 }
@@ -288,7 +288,7 @@ The current version of your app,  Defaults to `0.0.0`.
 
 Some platforms (currently only Android) want an integral version code in addition to a version string. Further documentation can be found [here](http://developer.Android.com/tools/publishing/versioning.html#appversioning). Defaults to `0`.
 
-```
+```json
 {
 	"VersionCode": 125
 }
@@ -298,7 +298,7 @@ Some platforms (currently only Android) want an integral version code in additio
 
 The root namespace to use. Defaults to `$(QIdentifier)`.
 
-```
+```json
 {
 	"RootNamespace": "MyCompany.MyApp"
 }
@@ -308,7 +308,7 @@ The root namespace to use. Defaults to `$(QIdentifier)`.
 
 Where to place temporary files and executables for various build configurations and targets. Defaults to `build`.
 
-```
+```json
 {
 	"BuildDirectory": "build"
 }
@@ -321,7 +321,7 @@ Paths are relative to the project root by default. Note that it can be unwise to
 Where to place temporary files and executables for *the current build target and configuration*.
 Defaults to `$(BuildDirectory)/@(Target)/@(Configuration)`.
 
-```
+```json
 {
 	"OutputDirectory": "$(BuildDirectory)/@(Target)/@(Configuration)"
 }
@@ -331,7 +331,7 @@ Defaults to `$(BuildDirectory)/@(Target)/@(Configuration)`.
 
 Where to place Uno's cache files. Defaults to `.uno`.
 
-```
+```json
 {
 	"CacheDirectory": ".cache"
 }
@@ -341,7 +341,7 @@ Where to place Uno's cache files. Defaults to `.uno`.
 
 Whether or not UnoCore should be referenced. You will probably never need this, as it's only used internally. Defaults to `true`.
 
-```
+```json
 {
 	"UnoCoreReference": true
 }
@@ -357,7 +357,7 @@ Specifies an URI scheme that can be used to launch your app.
 
 For instance, setting `"UriScheme": "abcd"` will make your app launch when an `abcd://` URI is launched.
 
-```
+```json
 {
 	"Mobile": {
 		"UriScheme": "abcd"
@@ -369,7 +369,7 @@ For instance, setting `"UriScheme": "abcd"` will make your app launch when an `a
 
 If set to `true`, the screen won't dim and eventually turn off while your app is open. Defaults to `false`.
 
-```
+```json
 {
 	"Mobile": {
 		"KeepAlive": false
@@ -381,7 +381,7 @@ If set to `true`, the screen won't dim and eventually turn off while your app is
 
 Whether or not to show the status bar. Defaults to `true`.
 
-```
+```json
 {
 	"Mobile": {
 		"ShowStatusbar": true
@@ -393,7 +393,7 @@ Whether or not to show the status bar. Defaults to `true`.
 
 Controls whether or not your app should continue running when the user presses the home button. Defaults to `true`.
 
-```
+```json
 {
 	"Mobile": {
 		"RunsInBackground": false
@@ -414,7 +414,7 @@ Can be one of the following values:
 - `LandscapeLeft`
 - `LandscapeRight`
 
-```
+```json
 {
 	"Mobile": {
 		"Orientations": "Portrait"
@@ -430,7 +430,7 @@ A dictionary of options that apply to Android targets only.
 
 A user-readable label for the application, specific to Android. This is the Android equivalent of the top-level [Title](#title) property. defaults to `$(Title)`.
 
-```
+```json
 {
 	"Android": {
 		"ApplicationLabel": "MyFancyApp"
@@ -442,7 +442,7 @@ A user-readable label for the application, specific to Android. This is the Andr
 
 The same as [Description](#description), but specific to Android. Defaults to `$(Description)`.
 
-```
+```json
 {
 	"Android": {
 		"Description": "This is an Android-specific description!"
@@ -454,7 +454,7 @@ The same as [Description](#description), but specific to Android. Defaults to `$
 
 The same as [VersionCode](#versioncode), but specific to Android. Defaults to `$(VersionCode)`.
 
-```
+```json
 {
 	"Android": {
 		"VersionCode": 412
@@ -466,7 +466,7 @@ The same as [VersionCode](#versioncode), but specific to Android. Defaults to `$
 
 The same as [Version](#version), but specific to Android. Defaults to `$(Version)`.
 
-```
+```json
 {
 	"Android": {
 		"VersionName": "0.5.2"
@@ -478,7 +478,7 @@ The same as [Version](#version), but specific to Android. Defaults to `$(Version
 
 The name of the java package to use for Android export. Defaults to `$(QIdentifier)`.
 
-```
+```json
 {
 	"Android": {
 		"Package": "com.mycompany.myapp"
@@ -491,7 +491,7 @@ The name of the java package to use for Android export in preview mode. Defaults
 It's only used during `fuse preview -t=android`, to differentiate between a normal package and a preview package.
 Use this setting if you want to have both a preview version and an exported version of your app installed on the device simultaneously.
 
-```
+```json
 {
 	"Android": {
     	"PreviewPackage": "com.mycompany.myapp.preview"
@@ -505,7 +505,7 @@ Instead of providing one uniformly sized icon to be used on all platforms, we ca
 
 *Note:* This only applies to Android, however we can achieve the same on iOS using [iOS.Icons](#ios-icons).
 
-```
+```json
 {
 	"Android": {
 		"Icons": {
@@ -528,7 +528,7 @@ See [signing](../preview-and-export/signing.md).
 
 Your Google Maps API key, for use with [MapView](../fuse/controls/mapview.md).
 
-```
+```json
 {
 	"Android": {
 		"Geo": {
@@ -542,7 +542,7 @@ Your Google Maps API key, for use with [MapView](../fuse/controls/mapview.md).
 
 In order to use the [push notification api](../fuse/pushnotifications/push.md) on Android, you have to specify a project ID from the [Google Developers Console](https://console.developers.google.com/).
 
-```
+```json
 {
 	"Android": {
 	    "GooglePlay": {
@@ -556,7 +556,7 @@ In order to use the [push notification api](../fuse/pushnotifications/push.md) o
 
 The NDK platform version to use. Defaults to `9`.
 
-```
+```json
 {
 	"Android": {
 		"NDK": {
@@ -571,7 +571,7 @@ The NDK platform version to use. Defaults to `9`.
 Specifies version constraints for the Android SDK to build against.
 The following example shows the default values of each property.
 
-```
+```json
 {
 	"Android": {
 		"SDK": {
@@ -592,7 +592,7 @@ The iOS bundle identifier.
 
 Corresponds to [CFBundleIdentifier](https://developer.apple.com/library/ios/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html#//apple_ref/doc/uid/20001431-102070).
 
-```
+```json
 {
 	"iOS": {
 		"BundleIdentifier": "com.mycompany.myapp"
@@ -605,7 +605,7 @@ The iOS bundle identifier in preview mode. Defaults to `iOS.BundleIdentifier`.
 It's only used during `fuse preview -t=iOS`, to differentiate between a normal bundle and a preview bundle.
 Use this setting if you want to have both a preview version and an exported version of your app installed on the device simultaneously.
 
-```
+```json
 {
 	"iOS": {
     	"PreviewBundleIdentifier": "com.mycompany.myapp.preview"
@@ -619,7 +619,7 @@ A user-readable label for the application specific to iOS. This is the iOS equiv
 Corresponds to [CFBundleName](https://developer.apple.com/library/ios/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html#//apple_ref/doc/uid/TP40009249-109585).
 Defaults to `$(Title)`.
 
-```
+```json
 {
 	"iOS": {
 		"BundleName": "MyAwesomeApp"
@@ -634,7 +634,7 @@ Defaults to `$(Version)`.
 
 Corresponds to [CFBundleVersion](https://developer.apple.com/library/ios/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html#//apple_ref/doc/uid/20001431-102364).
 
-```
+```json
 {
 	"iOS": {
 		"BundleVersion": "0.5.2"
@@ -647,7 +647,7 @@ Corresponds to [CFBundleVersion](https://developer.apple.com/library/ios/documen
 The minimum iOS version your app can run on.
 Defaults to `8.0`.
 
-```
+```json
 {
 	"iOS": {
 		"DeploymentTarget": "8.0"
@@ -664,7 +664,7 @@ Corresponds to [CFBundleIconFiles](https://developer.apple.com/library/ios/docum
 
 *Note:* This only applies to iOS, however we can achieve the same on Android using [Android.Icons](#android-icons).
 
-```
+```json
 {
 	"iOS": {
 		"Icons": {
@@ -696,7 +696,7 @@ Corresponds to [CFBundleIconFiles](https://developer.apple.com/library/ios/docum
 Specifies launch images of different sizes to be used on iOS.
 Corresponds to [UILaunchImages](https://developer.apple.com/library/ios/documentation/General/Reference/InfoPlistKeyReference/Articles/iPhoneOSKeys.html#//apple_ref/doc/uid/TP40009252-SW28).
 
-```
+```json
 {
 	"iOS": {
 		"LaunchImages": {
@@ -724,7 +724,7 @@ In all cases where it is reliable to do so, Fuse will also add the appropriate E
 
 For more info on the valid values for `AssociatedDomains`, `KeychainSharing` & `ApplicationGroups` please see the [Apple documentation](https://developer.apple.com/library/content/documentation/IDEs/Conceptual/AppDistributionGuide/AddingCapabilities/AddingCapabilities.html)
 
-```
+```json
 {
 	"iOS": {
 		"SystemCapabilities": {
@@ -754,7 +754,7 @@ A dictionary of entries that will be included in the `Info.plist` file of the iO
 An array of strings, specifying the modes of transportation for which the app is capable of giving map directions.
 Reference can be found [here](https://developer.apple.com/library/ios/documentation/General/Reference/InfoPlistKeyReference/Articles/iPhoneOSKeys.html#//apple_ref/doc/uid/TP40009252-SW33).
 
-```
+```json
 {
 	"iOS": {
 		"PList": {
@@ -772,7 +772,7 @@ Reference can be found [here](https://developer.apple.com/library/ios/documentat
 An array of strings, specifying which device-related capabilities must be available for the app to function.
 Reference can be found [here](https://developer.apple.com/library/ios/documentation/General/Reference/InfoPlistKeyReference/Articles/iPhoneOSKeys.html#//apple_ref/doc/uid/TP40009252-SW3).
 
-```
+```json
 {
 	"iOS": {
 		"PList": {
@@ -789,7 +789,7 @@ Reference can be found [here](https://developer.apple.com/library/ios/documentat
 
 A message that will be shown to the user when the app is requesting HealthKit data.
 
-```
+```json
 {
 	"iOS": {
 		"PList": {
@@ -805,7 +805,7 @@ When `true`, the app will terminate rather than being sent to the background whe
 
 Reference can be found [here](https://developer.apple.com/library/ios/documentation/General/Reference/InfoPlistKeyReference/Articles/iPhoneOSKeys.html#//apple_ref/doc/uid/TP40009252-SW23).
 
-```
+```json
 {
 	"iOS": {
 		"PList": {
@@ -822,7 +822,7 @@ Defaults to `false`.
 
 Reference can be found [here](https://developer.apple.com/library/ios/documentation/General/Reference/InfoPlistKeyReference/Articles/iPhoneOSKeys.html#//apple_ref/doc/uid/TP40009252-SW20).
 
-```
+```json
 {
 	"iOS": {
 		"PList": {
@@ -838,7 +838,7 @@ Specifies whether the app presents its contents in the iOS Newsstand app. Defaul
 
 Reference can be found [here](https://developer.apple.com/library/ios/documentation/General/Reference/InfoPlistKeyReference/Articles/iPhoneOSKeys.html#//apple_ref/doc/uid/TP40009252-SW25).
 
-```
+```json
 {
 	"iOS": {
 		"PList": {
@@ -850,7 +850,7 @@ Reference can be found [here](https://developer.apple.com/library/ios/documentat
 
 ##### iOS.PList.UIPrerenderedIcon
 
-```
+```json
 {
 	"iOS": {
 		"PList": {
@@ -866,7 +866,7 @@ An array of strings specifying which external accessory protocols your app is ca
 
 Reference can be found [here](https://developer.apple.com/library/ios/documentation/General/Reference/InfoPlistKeyReference/Articles/iPhoneOSKeys.html#//apple_ref/doc/uid/TP40009252-SW4).
 
-```
+```json
 {
 	"iOS": {
 		"PList": {
@@ -890,7 +890,7 @@ Specifies whether Core Animation layers use antialiasing when drawing a layer th
 
 Reference can be found [here](https://developer.apple.com/library/ios/documentation/General/Reference/InfoPlistKeyReference/Articles/iPhoneOSKeys.html#//apple_ref/doc/uid/TP40009252-SW5).
 
-```
+```json
 {
 	"iOS": {
 		"PList": {

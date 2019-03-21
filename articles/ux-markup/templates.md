@@ -4,7 +4,9 @@ The `ux:Template` attribute in UX Markup, when placed on an XML element, specifi
 
 ## Syntax
 
+```xml
 	<type ux:Template="template_name" />
+```
 
 Where `type` is any valid UX Markup type, and `template_name` is a valid Uno identifier.
 
@@ -21,14 +23,18 @@ Inside node marked `ux:Template`, the current copy (instance) of the current tem
 
 For example, in a contained `<JavaScript>` tag, we can refer to the template instance by name:
 
+```xml
 	<Page ux:Template="homePage">
 		<JavaScript>
 			homePage.Parameter.onValueChanged(module, function() { ...
+```
 
 Also, in UX markup in general, we can use the page name in expressions:
 
+```xml
 	<Page ux:Template="homePage">
 		<Rectangle LayoutMaster="homePage" ... />
+```
 
 ## Using templates for component customizability
 
@@ -38,14 +44,18 @@ Templates are drawn using `Each`. `Each` has a property called `TemplateSource`,
 
 A common `TemplateSource` is a `ux:Class` the `Each` is a child of:
 
+```xml
 	<StackPanel ux:Class="CoolRepeater" Background="#FAD">
 		<Each TemplateSource="this" TemplateKey="Item" Count="20">
 			<Text>Default template</Text>
 		</Each>
 	</StackPanel>
+```
 
 This is a custom component which accepts a template, which it repeats 20 times. If no template is given, the `Each` will fallback to its default template: whatever is inside the `Each`. The custom component can then be used like this:
 
+```xml
 	<CoolRepeater>
 		<Text ux:Template="Item">Hello, world!</Text>
 	</CoolRepeater>
+```

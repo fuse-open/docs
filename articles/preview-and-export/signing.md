@@ -6,7 +6,7 @@ When publishing your app to Google Play or the iOS App Store, it needs to be sig
 
 A Uno Project set up for signing can look like this:
 
-```
+```json
 {
 	"Android": {
 		"Key": {
@@ -23,7 +23,7 @@ A file named `release.keystore` is expected to be found in the same folder as th
 
 This file can be created by running the following command in your shell (`keytool` is part of the JDK):
 
-```
+```sh
 keytool -genkey -v -keystore release.keystore \
     -alias application -keyalg RSA -keysize 2048 -validity 10000
 ```
@@ -36,7 +36,7 @@ Note that only release builds are signed using the specified key. Debug builds a
 
 Run the following command in your shell:
 
-```
+```sh
 uno build --target=iOS --configuration=Release -adebug
 ```
 
@@ -52,7 +52,7 @@ Your Team ID can be found [here](https://developer.apple.com/account/#/membershi
 
 Uno attempts to automatically find an Xcode Development Team ID by querying the machine's code-signing identities and selecting the first valid one it finds. If this is not the correct one it can be set manually in an `unoproj`s as follows:
 
-```
+```json
 {
   "iOS": {
     "DevelopmentTeam": "YOURTEAMID"
@@ -63,14 +63,14 @@ Uno attempts to automatically find an Xcode Development Team ID by querying the 
 
 It can also be set by passing the `--set:Project.iOS.DevelopmentTeam="YOURTEAMID"` flag to `uno build`, e.g.
 
-```
+```sh
 uno build iOS --set:Project.iOS.DevelopmentTeam="YOURTEAMID"
 
 ```
 
 The Development Team ID can also be set user-wide by adding the following to ~/.unoconfig:
 
-```
+```json
 iOS.DevelopmentTeam: "YOURTEAMID"
 ```
 

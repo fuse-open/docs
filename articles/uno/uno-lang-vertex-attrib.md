@@ -19,7 +19,7 @@ The vertex_attrib operator takes a vertex array, and optionally an index array, 
 
 This method will convert the array provided to a vertex buffer, on initialization if possible, and fetch an element from that buffer using the array's data type. The syntax for this method is:
 
-```
+```csharp
 vertex_attrib(vertexArray)
 ```
 

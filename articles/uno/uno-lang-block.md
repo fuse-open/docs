@@ -10,7 +10,7 @@ Blocks can not extend classes or blocks, nor implement interfaces. Instead, bloc
 
 ## Syntax
 
-```
+```csharp
 [modifiers] block block_name[: using_list]
 {
     [block_items]

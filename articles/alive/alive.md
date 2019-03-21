@@ -15,6 +15,7 @@ Open up a command line shell (Terminal on macOS, `cmd` on Windows) and run the f
 Then, we need to add a package reference to `Fuse.UXKits.Alive` and `Fuse.Charting` in our `.unoproj`.
 It should look something like the following.
 
+```json
 	{
 		"Packages": [
 			"Fuse",
@@ -26,7 +27,7 @@ It should look something like the following.
 			"*"
 		]
 	}
-
+```
 
 Now, there is a small bit of setup that is required for themes to work properly.
 Alive provides both a [LightTheme](api:alive/lighttheme) and a [DarkTheme](api:alive/darktheme).
@@ -34,6 +35,7 @@ Alive provides both a [LightTheme](api:alive/lighttheme) and a [DarkTheme](api:a
 We'll add a [Alive.FallbackTheme](api:alive/fallbacktheme) inside a panel at the root of our App.
 This sets up default theme colors and makes sure we always have one of the themes enabled at any point in the UX tree.
 
+```xml
 	<App>
 		<Panel>
 			<Alive.FallbackTheme />
@@ -43,11 +45,12 @@ This sets up default theme colors and makes sure we always have one of the theme
 			</Panel>
 		</Panel>
 	</App>
-
+```
 
 **Note:** Alive.FallbackTheme is explicitly a [LightTheme](api:alive/lighttheme).
 To make the entire app be [DarkTheme](api:alive/darktheme), enclose it within a @Panel together with the rest of the app's content.
 
+```xml
 	<App>
 		<Panel>
 			<Alive.FallbackTheme />
@@ -59,7 +62,7 @@ To make the entire app be [DarkTheme](api:alive/darktheme), enclose it within a 
 			</Panel>
 		</Panel>
 	</App>
-
+```
 
 See [themes](themes.md) for more info on how to work with themes.
 

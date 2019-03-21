@@ -191,7 +191,7 @@ Let's consider an example.
 We'll register `my-app` as the [URI scheme](../basics/uno-projects.md#mobile-urischeme) in our Uno project file (`.unoproj`).
 This will make our app launch when an URI starting in `my-app:` is launched.
 
-```
+```json
 {
 	"Mobile": {
 		"UriScheme": "my-app"

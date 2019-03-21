@@ -6,6 +6,7 @@
 
 This is an example on how to take a JavaScript object, POST it as JSON and receive JSON data which is turned back into a JavaScript object using `fetch`:
 
+```js
 	var status = 0;
 	var response_ok = false;
 
@@ -22,6 +23,7 @@ This is an example on how to take a JavaScript object, POST it as JSON and recei
 	}).catch(function(err) {
 		// An error occurred somewhere in the Promise chain
 	});
+```
 
 [Complete documentation for `fetch` can be found here](https://developer.mozilla.org/en-US/docs/Web/API/GlobalFetch/fetch)
 

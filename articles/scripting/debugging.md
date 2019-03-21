@@ -27,7 +27,7 @@ which is available both for macOS and Windows.
   Using a standard Fuse installation and with a single Android device
   connected, run (in a terminal or command prompt):
 
-  ```
+  ```sh
   uno adb forward tcp:5858 tcp:5858
   ```
 
@@ -46,7 +46,7 @@ which is available both for macOS and Windows.
   some location where it will be run. For example, try putting it at the very
   start of your JavaScript code, like the following:
 
-  ```
+  ```js
   <JavaScript>
     debugger;
     ... more code
@@ -55,7 +55,7 @@ which is available both for macOS and Windows.
 
   It can also be useful to break when some event is triggered:
 
-  ```
+  ```js
   function someEvent() {
     debugger;
     ... more code
@@ -64,13 +64,13 @@ which is available both for macOS and Windows.
 
 * Build and run your app with `-DDEBUG_V8`. For example, run
 
-  ```
+  ```sh
   fuse preview . -DDEBUG_V8
   ```
 
   to preview the project in the current working directory locally or
 
-  ```
+  ```sh
   uno build --target=Android --run -DDEBUG_V8
   ```
 

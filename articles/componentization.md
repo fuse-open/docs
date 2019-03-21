@@ -10,7 +10,7 @@ UX Markup is a composable declarative language where existing components can eas
 
 A component is defined using the `ux:Class` attribute. This turns the object it is on into a _class definition_, meaning we can reuse that piece of UX in as many places as we want. A class definition also _inherits_ all the properties of the class it is created from (sometimes called its _parent class_ or _super class_). When we create an object from a class definition, we say that we are _creating an instance_ of that class. The following example defines a class called `MyButton` which inherits from `Panel` and contains a `Text` object.
 
-```
+```xml
      ------------------- parent class
     /              ----- class name
    v              v

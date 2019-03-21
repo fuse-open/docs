@@ -8,6 +8,7 @@ This will result in an Observable of an Observable of our future data – *almos
 We therefore use [inner()](#inner) to "unwrap" the inner Observable in place of the outer one, and voila!
 We end up with an Observable that will be updated with our asynchronously fetched data whenever the input changes.
 
+```js
 	var inputUrl = Observable("https://example.com/");
 	
 	var output = inputUrl.map(function(url) {
@@ -21,7 +22,7 @@ We end up with an Observable that will be updated with our asynchronously fetche
 	    
 	    return resultObservable;
 	}).inner();
-	
+```
 	
 ## Using Observables to define view-models
 
@@ -33,7 +34,8 @@ Since the Observable API easily lets us do complex transformations on our data, 
 
 In order to filter a list based on an observable condition you use a combination of `.flatMap` and `.where`.
 
+```js
 	var items = conditionObservable.flatMap(function(v) {
 		return itemsObservable.where(function(x) { return v != x; });
 	});
-	
+```

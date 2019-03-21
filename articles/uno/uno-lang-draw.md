@@ -6,7 +6,7 @@ For a practical guide on using the draw keyword refer to the development guide.
 
 ## Syntax
 
-```
+```csharp
 draw [ <block1> [, <block2> ...]] [ { <inline block> } ] ; 
 ```
 
@@ -14,13 +14,13 @@ The draw keyword indicates the start of a draw statement. A draw statement consi
 
 The referenced blocks will be applied, in order. This means that:
 
-```
+```csharp
 draw Foo, Bar;
 ```
 
 Is equivalent too:
 
-```
+```csharp
 draw { apply Foo; apply Bar; };
 ```
 
@@ -108,7 +108,7 @@ draw
 
 Note that there should be no comma before the inline block when there are more blocks in the draw path:
 
-```
+```csharp
 draw DefaultShading, Sphere { PixelColor: Red; };
 ```
 

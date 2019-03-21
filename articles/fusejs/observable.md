@@ -27,10 +27,13 @@ An `Observable` can hold a single value, or be treated as a list of values with 
 
 Start off by importing the observable module, which returns a function:
 
+```js
 	var Observable = require("FuseJS/Observable");
+```
 
 Observables are created by calling the `Observable` function directly with zero or more initial values.
 
+```js
 	var emptyObservable = Observable();
 	var singleValueObservable = Observable(true);
 	var listObservable = Observable(1,2,3,4);
@@ -38,25 +41,32 @@ Observables are created by calling the `Observable` function directly with zero 
 	var singleValueObservable = Observable(10); //now has .value == 10
 	singleValueObservable.value = 20; //now has .value == 20
 	var theValue = singleValueObservable.value; //theValue is now == 20
-	
+```
+
 When using an observable as a list, we can add and remove items using the `.add` and `.remove` methods.
 
+```js
 	var multiValueObservable = Observable(1,2);
 	multiValueObservable.add(5); //now contains 1,2,5
 	multiValueObservable.remove(2); //now contains 1,5
-	
+```
+
 We can also apply various transformations to observables using a set of methods we collectively call "reactive operators". These operators are methods we can call on observables that return new observables. We cover them in more detail later in this article. The following example squares all the numbers in the `someNumbers` observable using the `.map` operator. Map works by converting all the items in an `Observable` from one form into an other using the supplied function.
 
+```js
 	var someNumbers = Observable(1,2,3,4); //now contains 1,2,3,4
 	var someNumbersSquared = someNumbers.map(function(x){ return x * x; }); //someNumbersSquared will eventually contain 1,4,9,16
-	
+```
+
 Since all the reactive operators return new observables, we can put several of them after one another to create a long chain of reactive operations.
 
+```js
 	var someNumbers = Observable(1,2,3,4);
 	var someTransformedNumbers = someNumbers
 		.map(function(x){ return x * x; })
 		.where(function(x){ return x < 10; })
 		.map(function(x){ return -x; }); //will eventually contain -1, -4, -9
+```
 
 ## State Observables and derived Observables
 	
@@ -64,10 +74,12 @@ When working with Observables, it is important to understand the difference betw
 
 One thing to note about the example above, that catches a lot of new Fusers off guard, is that `someTransformedNumbers` won't actually contain data immediately after the statement that declares it:
 
+```js
 	var someNumbers = Observable(1,2,3,4); // someNumbers is a state Observable
 	var someNumbersSquared = someNumbers.map(function(x){ return x * x; }); // someNumbersSquared is a derived Observable
 	console.log("SquaredNumbers length: " + someNumbersSquared.length); // this will print 0
-	
+```
+
 The difference between state Observables and derived Observables is explained in [Observable API docs](articles:fusejs/observable-api.md#state-observables-and-derived-observables). In short, derived Observables won't propagate data unless there is a subscriber at the end of the chain, while the data in state Observables is available synchronously. Keep reading to learn more about how subscriptions work.
 
 ## Subscribing to changes in Observables

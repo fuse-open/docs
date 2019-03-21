@@ -10,7 +10,9 @@ Properties can be refered to within UX Markup using *property bindings*, on the 
 
 ## Syntax
 
+```xml
 	<type ux:Property="property_name" />
+```
 
 Where `type` is the name of an Uno type (such as `Panel` or `string`), and `property_name` is a valid Uno identifier.
 
@@ -20,10 +22,12 @@ The defaul value for a property can be specified as a regular property on the co
 
 Example:
 
+```xml
 	<Panel ux:Class="MyComponent" NumberOfThings="13">
 		<int ux:Property="NumberOfThings" />
 		...
 	</Panel>
+```
 
 ## Remarks
 
@@ -38,23 +42,29 @@ Property bindings can be *two-way* (default), *read-only* (`{ReadProperty ...}`)
 
 In the following example, the control defines a new property called `BackgroundColor`, with a default value (set on the root node) of `#f00`. This color is then property-bound to the `Color` property of a background rectangle with rounded corners. 
 
+```xml
 	<Panel ux:Class="MyButton" BackgroundColor="#f00">
 		<float4 ux:Property="BackgroundColor" />
 		<Text>SUBMIT</Text>
 		<Rectangle Layer="Background" Color="{Property BackgroundColor}" CornerRadius="10" />
 	</Panel>
+```
 
 When the component is instantiated, the user can either leave the default `BackgroundColor`, or set a new one.
 
+```xml
 	<MyButton />  <!-- this one will keep the default color -->
 	<MyButton BackgroundColor="#0f0" /> <!-- this one will use green instead -->
+```
 
 Properties can also be animated using a `<Change>` animator:
 
+```xml
 	<MyButton ux:Name="mb1" />
 	<WhilePressed>
 		<Change mb1.BackgroundColor="#00f" Duration="1" />
 	</WhilePressed>
+```
 
 ### Choosing the right type for a property
 
@@ -89,6 +99,7 @@ All user-defined properties (defined through `ux:Property`) are automatically re
 
 Here is an example of how to respond to property changes in JavaScript:
 
+```xml
 	<Panel ux:Class="RgbDisplayer" RGB="#A00">
 		<float4 ux:Property="RGB" />
 		<JavaScript>
@@ -102,6 +113,7 @@ Here is an example of how to respond to property changes in JavaScript:
 		</JavaScript>
 		<Text Value="{rgbString}" />
 	</Panel>
+```
 
 ### Important to understand about Properties in JavaScript
 
@@ -115,6 +127,7 @@ If you need the value of the property available immediately when your module exe
 
 Observables can also be passed into custom made components using Properties. We can add a property which accepts Observables by making an `object` property:
 
+```xml
 	<Panel ux:Class="CoolPanel">
 		<object ux:Property="ObservableProperty" />
 		<JavaScript>
@@ -128,5 +141,6 @@ Observables can also be passed into custom made components using Properties. We 
 		};
 	</JavaScript>
 	<CoolPanel ObservableProperty="{valueToPass}" />
+```
 
 You are almost always interested in using `inner()` when fetching an observable passed in through properties. This is because the javascript value `this.PropertyName` is an observable with whatever `PropertyName` contains. If we pass an Observable in, `this.PropertyName` will contain an observable with the observable we passed through.

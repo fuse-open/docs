@@ -12,6 +12,7 @@ Open up a command line shell (Terminal on macOS, `cmd` on Windows) and run the f
 Then, we need to add a package reference to `Fuse.Charting` in our `.unoproj`.
 It should look something like the following.
 
+```json
 	{
 		"Packages": [
 			"Fuse",
@@ -22,11 +23,14 @@ It should look something like the following.
 			"*"
 		]
 	}
+```
 
 To use charting in your UX you'll need to import the namespace.
 You can do this at the top of each UX file as part of your `App` tag or `ux:Class` declaration.
 
+```xml
 	<Panel ux:Class="MyChart" xmlns:c="Fuse.Charting">
+```
 
 The `xmlns:c="Fuse.Charting"` declares `c` to refer to the charting API, allowing for example `c:Plot` and `c:PlotBar`.
 Note, this namespace is valid only for this one file. You'll need to add the same declaration to each file you wish to use the charting API.

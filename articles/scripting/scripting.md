@@ -10,6 +10,7 @@ Data-binding is then done using the curly brace syntax, `Property="{variable}"`.
 
 We can place a `<JavaScript>` tag anywhere inline in the UX markup by using the `<JavaScript/>` tag, for example directly in the `<App>` tag to create an app-global module:
 
+```xml
 	<App>
 		<JavaScript>
 			module.exports.foo = "bar";
@@ -18,20 +19,24 @@ We can place a `<JavaScript>` tag anywhere inline in the UX markup by using the 
 			<Text Value="{foo}"/>
 		</Panel>
 	</App>
+```
 
 Code does not need to be inline in the UX markup. We can put it in a separate file, and reference it by name. This has the samme effect:
 
+```xml
 	<App>
 		<JavaScript File="Main.js"/>
 		<Panel>
 			<Text Value="{foo}"/>
 		</Panel>
 	</App>
+```
 
 ## Component-local scripts
 
 We can also place `<JavaScript>` tags inside an `ux:Class`. This will evaluate the module for each instance of the class, giving us component-local state and data.
 
+```xml
 	<Panel ux:Class="MyComponent">
 		<JavaScript>
 			var Observable = require("FuseJS/Observable");
@@ -41,6 +46,7 @@ We can also place `<JavaScript>` tags inside an `ux:Class`. This will evaluate t
 
 		<Text Value="{foo}" />
 	</Panel>
+```
 
 The 'foo' variable now exists for each instance of MyComponent, and the data binding below 
 
@@ -56,6 +62,7 @@ In short: you'll have greater success with Fuse (and more fun!) if you approach 
 
 The curly brace syntax binds to the closest object in the data context that matches the binding path.
 
+```xml
 	<App>
 		<JavaScript>
 			var hello = "world";
@@ -73,7 +80,8 @@ The curly brace syntax binds to the closest object in the data context that matc
 			<Text Value="{hello}" Clicked="{writeHello}"/>
 		</Panel>
 	</App>
-	
+```
+
 ## Binding functions
 
 We can also bind functions to events like `Clicked`, `Tapped` and `Callback.Handler`. Bound functions are passed a parameter containing various properties. These properties also vary depending on which event the function has been bound to:
@@ -102,6 +110,7 @@ In all cases, we additionally get a `data` property, which contains the data con
  
 The following example shows how the age value can be retrieved from a clicked event happening on an item in an `Each` tag.
 
+```xml
 	<JavaScript>
 		function clicked(arg) {
 			console.log("Age: " + arg.data.age);
@@ -122,12 +131,14 @@ The following example shows how the age value can be retrieved from a clicked ev
 			</StackPanel>
 		</Each>
 	</StackPanel>
+```
 
 
 ## Data-binding to arrays
 
 We can data-bind to an array using the @Each behavior:
 
+```xml
 	<App>
 		<JavaScript>
 			var colors = ["#f00", "#0f0", "#00f"];
@@ -142,6 +153,7 @@ We can data-bind to an array using the @Each behavior:
 			</Each>
 		</StackPanel>
 	</App>
+```
 
 The @Each behavior will instantiate its children once for each item in its bound array. That item then becomes the data context for that instance which is why we can data-bind to the color value by an empty set of curly braces `{}`.
 
@@ -151,6 +163,7 @@ Most of the time one wants to display dynamic data that changes over the lifetim
 
 Observables act like a single value or a list of values. Any data-bound `Observable` will update the view automatically when its value is changed:
 
+```xml
 	<App>
 		<JavaScript>
 			var Observable = require('FuseJS/Observable');
@@ -168,11 +181,13 @@ Observables act like a single value or a list of values. Any data-bound `Observa
 			<Button Text="increment" Clicked="{increment}"/>
 		</StackPanel>
 	</App>
+```
 
 ### Changing lists
 
 We can also add more items to and `Observable` by using the `add` method:
 
+```xml
 	<App>
 		<JavaScript>
 			var Observable = require('FuseJS/Observable');
@@ -194,6 +209,7 @@ We can also add more items to and `Observable` by using the `add` method:
 			</StackPanel>
 		</DockPanel>
 	</App>
+```
 
 
 The @Each behavior will update itself when the contents of its data-bound @Observable changes.
@@ -202,6 +218,7 @@ The @Each behavior will update itself when the contents of its data-bound @Obser
 
 We can add our own functions to a component, and call them from anywhere the component is instantiated:
 
+```xml
 	<Panel ux:Class="TestThing" >
 		<JavaScript>
 			this.doThing = function() {
@@ -216,3 +233,4 @@ We can add our own functions to a component, and call them from anywhere the com
 	</JavaScript>
 	<TestThing ux:Name="thing" />
 	<Button Text="Press me" Clicked="{thingPressed}" />
+```
