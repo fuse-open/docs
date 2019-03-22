@@ -27,7 +27,7 @@ Once a name is given, the object can be referenced by that name within the same 
 Names can be used direclty in UX Expressions, for example like this:
 
 ```xml
-	<Rectangle Width="width(panel1) / 2"
+	<Rectangle Width="width(panel1) / 2" />
 ```
 
 > Note that ux:Name can not be data-bound as it is a compile-time attribute. Data-binding happens at run-time.
