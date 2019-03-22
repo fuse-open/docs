@@ -591,7 +591,7 @@
 <p>The final code for this chapter is available <a href="https://github.com/fusetools/hikr/tree/chapter-2">here</a>.</p>
 <h2 id="creating-our-list-of-hikes">Creating our List of Hikes</h2>
 <p>In order for us to display a list of hikes to choose from, we first need a list of hikes. This is where we'll start building something that looks like a <em>model</em> for our app. At first, we'll just use a simple array of hikes. Near the top of the JavaScript portion of our <code>MainView.ux</code> file, we'll place the following array:</p>
-<pre><code>var hikes = [
+<pre><code class="language-js">var hikes = [
 	{
 		id: 0,
 		name: &quot;Tricky Trails&quot;,
@@ -638,7 +638,7 @@
 <h2 id="displaying-our-list-of-hikes">Displaying our List of Hikes</h2>
 <p>Now that we've got our list of hikes, we'll make a simple view to display them.</p>
 <p>The first thing we'll do is export our <code>hikes</code> variable to make it available from UX:</p>
-<pre><code>module.exports = {
+<pre><code class="language-js">module.exports = {
 	hikes: hikes,
 
 	name: name,
@@ -650,7 +650,7 @@
 </code></pre>
 <p>Since we want to be able to select one of the hikes we're displaying, we'll display each hike as a button that, when pressed, will select that specific hike and populate the edit hike view.</p>
 <p>First, we'll just display our array of hikes as buttons. But how do we do that in UX? For these kinds of scenarios, UX provides a very helpful mechanism called <a href="../fuse/reactive/each.html">Each</a>:</p>
-<pre><code>&lt;ScrollView&gt;
+<pre><code class="language-xml">&lt;ScrollView&gt;
 	&lt;StackPanel&gt;
 		&lt;Each Items=&quot;{hikes}&quot;&gt;
 			&lt;Text Value=&quot;{name}&quot; /&gt;
@@ -658,7 +658,7 @@
 </code></pre>
 <p><a href="../fuse/reactive/each.html">Each</a> is a very powerful UX feature. What <a href="../fuse/reactive/each.html">Each</a> does is take the collection specified by its <code>Items</code> property and <em>project</em> each item into a copy of the visual subtree inside the <a href="../fuse/reactive/each.html">Each</a> tag. We can think of it kind of like copying and pasting the code inside <a href="../fuse/reactive/each.html">Each</a> for each item in <code>Items</code>.</p>
 <p>In our case, we'll use <a href="../fuse/reactive/each.html">Each</a> to create a <a href="../fuse/controls/button.html">Button</a> for each of our hikes whose <a href="../fuse/controls/text.html">Text</a> will be set to that hike's <code>name</code>. That will look like this:</p>
-<pre><code>&lt;Each Items=&quot;{hikes}&quot;&gt;
+<pre><code class="language-xml">&lt;Each Items=&quot;{hikes}&quot;&gt;
 	&lt;Button Text=&quot;{name}&quot; /&gt;
 &lt;/Each&gt;
 </code></pre>
@@ -667,11 +667,11 @@
 <h2 id="selecting-hikes">Selecting Hikes</h2>
 <p>Now that we've got a button for each of the hikes in our model, we want to be able to select one by clicking one of these buttons.</p>
 <p>Currently, our view model consists of many separate <a href="../fusejs/observable.html">Observable</a>'s for the various fields we can edit. Let's also add an <a href="../fusejs/observable.html">Observable</a> whose <code>value</code> represents the hike we're currently editing. Initially, this will be empty, as we haven't yet selected a hike to edit:</p>
-<pre><code>var hike = Observable();
+<pre><code class="language-js">var hike = Observable();
 </code></pre>
 <p>Now we need to get the data from <code>hike</code> to our other <a href="../fusejs/observable.html">Observable</a>'s, and this is where things get interesting. On one hand, we could imperatively populate all of our field <a href="../fusejs/observable.html">Observable</a>'s whenever <code>hike</code> is populated, but this would mean we'd have to subscribe to the <a href="../fusejs/observable.html">Observable</a> and is frankly a bit too imperative for my taste. We'd much prefer doing something declarative instead!</p>
 <p>Rather, what we'll do is <em>transform</em>, or <em>map</em>, the value of the <code>hike</code> <a href="../fusejs/observable.html">Observable</a> into the value of its various properties. For example, this is what that might look like for <code>name</code>:</p>
-<pre><code>var name = hike.map(function(x) { return x.name; });
+<pre><code class="language-js">var name = hike.map(function(x) { return x.name; });
 </code></pre>
 <p>This might look a bit daunting at first if you're not yet used to functional reactive programming, but not to worry - it can be quite intuitive once you get a feel for it.</p>
 <p>If we break down this code into parts, you'll notice a couple things. First of all, we're calling the <code>map</code> function on <code>hike</code>. <code>map</code> itself will return a new <a href="../fusejs/observable.html">Observable</a> that acts just like any other <a href="../fusejs/observable.html">Observable</a>, with the added benefit that each value that goes inside our <code>hike</code> <a href="../fusejs/observable.html">Observable</a> will be <em>propagated</em> to our new <a href="../fusejs/observable.html">Observable</a>. In other words, all of the values in <code>name</code> will be <em>based on</em>, or <em>mapped from</em>, values in <code>hike</code>.</p>
@@ -682,18 +682,18 @@
 <p>Note: We can find out more information on Observables in our <a href="https://www.youtube.com/watch?v=bB9P4mTGtVU">Observable Crash Course</a> video, as well as our <a href="../fusejs/observable.html">Observable</a> docs.</p>
 </blockquote>
 <p>Now, let's refactor the other <a href="../fusejs/observable.html">Observable</a>'s to also be based on <code>hike</code> like we did with <code>name</code>:</p>
-<pre><code>var name = hike.map(function(x) { return x.name; });
+<pre><code class="language-js">var name = hike.map(function(x) { return x.name; });
 var location = hike.map(function(x) { return x.location; });
 var distance = hike.map(function(x) { return x.distance; });
 var rating = hike.map(function(x) { return x.rating; });
 var comments = hike.map(function(x) { return x.comments; });
 </code></pre>
 <p>Finally, we need to hook up each of our buttons to a function that will populate our <code>hike</code> <a href="../fusejs/observable.html">Observable</a> (which in turn will populate all of the <a href="../fusejs/observable.html">Observable</a>'s for individual fields). We'll start by creating an empty function in JavaScript, which we'll fill in in a moment:</p>
-<pre><code>function chooseHike() {
+<pre><code class="language-js">function chooseHike() {
 }
 </code></pre>
 <p>Next, let's add it to our exports so that UX can see it:</p>
-<pre><code>module.exports = {
+<pre><code class="language-js">module.exports = {
 	hikes: hikes,
 
 	name: name,
@@ -706,15 +706,15 @@ var comments = hike.map(function(x) { return x.comments; });
 };
 </code></pre>
 <p>And we'll go ahead and hook up all of our buttons to it like this:</p>
-<pre><code>&lt;Button Text=&quot;{name}&quot; Clicked=&quot;{chooseHike}&quot; /&gt;
+<pre><code class="language-xml">&lt;Button Text=&quot;{name}&quot; Clicked=&quot;{chooseHike}&quot; /&gt;
 </code></pre>
 <p>Now it's time to fill in our function. The basic idea is that we'll fill in the value of our <code>hike</code> <a href="../fusejs/observable.html">Observable</a>:</p>
-<pre><code>function chooseHike() {
+<pre><code class="language-js">function chooseHike() {
 	hike.value = ???
 }
 </code></pre>
 <p>But what will we set it to, exactly? As it turns out, when we databind a function to <code>Clicked</code> on a <a href="../fuse/controls/button.html">Button</a>, that function can receive an argument. This argument contains a <code>data</code> field, which will represent the current data context for the <a href="../fuse/controls/button.html">Button</a>. And because of the way we've used <a href="../fuse/reactive/each.html">Each</a>, that means that <code>data</code> will actually be the <code>hike</code> we're after. Cool! So, let's update our function to accept that argument and put its <code>data</code> property into our <code>hike</code> <a href="../fusejs/observable.html">Observable</a>:</p>
-<pre><code>function chooseHike(arg) {
+<pre><code class="language-js">function chooseHike(arg) {
 	hike.value = arg.data;
 }
 </code></pre>
@@ -723,7 +723,7 @@ var comments = hike.map(function(x) { return x.comments; });
 <p>So now we've started to get a basic model made up of many hikes, a view to select one of these hikes, and a view to edit the selected hike. Altogether, it looks like this:</p>
 <p><img src="../media/hikr/chapter-2/end-of-chapter.png" alt="End of chapter result"></p>
 <p>The code hasn't grown too much, either. It looks like this:</p>
-<pre><code>&lt;App&gt;
+<pre><code class="language-xml">&lt;App&gt;
 	&lt;ClientPanel&gt;
 		&lt;JavaScript&gt;
 			var Observable = require(&quot;FuseJS/Observable&quot;);

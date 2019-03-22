@@ -588,46 +588,46 @@
           <h1 id="alive-themes">Alive themes</h1>
 <p>An <a href="../alive/fallbacktheme.html">Alive.FallbackTheme</a> is required inside a <a href="../fuse/controls/panel.html">Panel</a> at the root of our App.
 This sets up default theme colors and makes sure we always have one of the themes enabled at any point in the UX tree.</p>
-<pre><code>&lt;App&gt;
-	&lt;Panel&gt;
-		&lt;Alive.FallbackTheme /&gt;
-
+<pre><code class="language-xml">	&lt;App&gt;
 		&lt;Panel&gt;
-			&lt;!-- app content --&gt;
+			&lt;Alive.FallbackTheme /&gt;
+
+			&lt;Panel&gt;
+				&lt;!-- app content --&gt;
+			&lt;/Panel&gt;
 		&lt;/Panel&gt;
-	&lt;/Panel&gt;
-&lt;/App&gt;
+	&lt;/App&gt;
 </code></pre>
 <p><strong>Note:</strong> Alive.FallbackTheme is explicitly a <a href="../alive/lighttheme.html">LightTheme</a>.
 To make the entire app be <a href="../alive/darktheme.html">DarkTheme</a>, enclose it within a <a href="../fuse/controls/panel.html">Panel</a> together with the rest of the app's content.</p>
-<pre><code>&lt;App&gt;
-	&lt;Panel&gt;
-		&lt;Alive.FallbackTheme /&gt;
-
+<pre><code class="language-xml">	&lt;App&gt;
 		&lt;Panel&gt;
-			&lt;Alive.DarkTheme /&gt;
+			&lt;Alive.FallbackTheme /&gt;
 
-			&lt;!-- app content --&gt;
+			&lt;Panel&gt;
+				&lt;Alive.DarkTheme /&gt;
+
+				&lt;!-- app content --&gt;
+			&lt;/Panel&gt;
 		&lt;/Panel&gt;
-	&lt;/Panel&gt;
-&lt;/App&gt;
+	&lt;/App&gt;
 </code></pre>
 <p>In fact, you can place a theme on any <a href="../fuse/controls/graphics/visual.html">Visual</a>, which will make that <a href="../fuse/controls/graphics/visual.html">Visual</a> and all of its children use the specified theme.
 In the below example, the <a href="../alive/themedcard.html">ThemedCard</a> has the dark theme, while the <a href="../alive/slider.html">Slider</a> has the light theme.</p>
-<pre><code>&lt;App&gt;
-	&lt;Panel&gt;
-		&lt;Alive.FallbackTheme /&gt;
-		
-		&lt;Alive.ThemedCard&gt;
-			&lt;Alive.DarkTheme /&gt;
+<pre><code class="language-xml">	&lt;App&gt;
+		&lt;Panel&gt;
+			&lt;Alive.FallbackTheme /&gt;
+			
+			&lt;Alive.ThemedCard&gt;
+				&lt;Alive.DarkTheme /&gt;
 
-			&lt;Alive.Slider&gt;
-				&lt;Alive.LightTheme /&gt;
-			&lt;/Alive.Slider&gt;
+				&lt;Alive.Slider&gt;
+					&lt;Alive.LightTheme /&gt;
+				&lt;/Alive.Slider&gt;
 
-		&lt;/Alive.ThemedCard&gt;
-	&lt;/Panel&gt;
-&lt;/App&gt;
+			&lt;/Alive.ThemedCard&gt;
+		&lt;/Panel&gt;
+	&lt;/App&gt;
 </code></pre>
 <p>Themes work by exposing a collection of <a href="../ux-markup/resources.html">Resources</a>.
 The components themselves can then access these resources using <code>{Resource</code> bindings.</p>
@@ -636,10 +636,10 @@ The components themselves can then access these resources using <code>{Resource<
 <p>Since the dark and light themes use different colors, we must specify an accent color for both themes.
 <strong>Note:</strong>: You <em>should not</em> override <code>Alive.AccentColor</code> directly, since it will be overriden by any themes deeper in the tree.
 Instead, provide the same value for both <code>Alive.Light.AccentColor</code> and <code>Alive.Dark.AccentColor</code></p>
-<pre><code>&lt;Panel&gt;
-	&lt;float4 ux:Key=&quot;Alive.Light.AccentColor&quot; ux:Value=&quot;Alive.Light.Blue&quot; /&gt;
-	&lt;float4 ux:Key=&quot;Alive.Dark.AccentColor&quot; ux:Value=&quot;Alive.Dark.Blue&quot; /&gt;
-&lt;/Panel&gt;
+<pre><code class="language-xml">	&lt;Panel&gt;
+		&lt;float4 ux:Key=&quot;Alive.Light.AccentColor&quot; ux:Value=&quot;Alive.Light.Blue&quot; /&gt;
+		&lt;float4 ux:Key=&quot;Alive.Dark.AccentColor&quot; ux:Value=&quot;Alive.Dark.Blue&quot; /&gt;
+	&lt;/Panel&gt;
 </code></pre>
 
         </div>

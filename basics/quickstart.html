@@ -624,23 +624,23 @@ If the path is omitted, it will be created as a subdirectory of your current dir
 </ul>
 <p>Using one of the above editors with their plugin provides syntax highlighting and auto-completion.</p>
 <p>The contents of <code>MainView.ux</code> should be the following:</p>
-<pre><code>&lt;App&gt;
-&lt;/App&gt;
+<pre><code class="language-XML">	&lt;App&gt;
+	&lt;/App&gt;
 </code></pre>
 <p>Try adding some UI elements:</p>
-<pre><code>&lt;App&gt;
-	&lt;DockPanel&gt;
-		&lt;StatusBarBackground Dock=&quot;Top&quot; /&gt;
-		&lt;ScrollView ClipToBounds=&quot;true&quot;&gt;
-			&lt;StackPanel&gt;
-				&lt;Text FontSize=&quot;30&quot;&gt;Hello, world!&lt;/Text&gt;
-				&lt;Slider /&gt;
-				&lt;Button Text=&quot;Button&quot; /&gt;
-				&lt;Switch Alignment=&quot;Left&quot; /&gt;
-			&lt;/StackPanel&gt;
-		&lt;/ScrollView&gt;
-	&lt;/DockPanel&gt;
-&lt;/App&gt;
+<pre><code class="language-xml">	&lt;App&gt;
+		&lt;DockPanel&gt;
+			&lt;StatusBarBackground Dock=&quot;Top&quot; /&gt;
+			&lt;ScrollView ClipToBounds=&quot;true&quot;&gt;
+				&lt;StackPanel&gt;
+					&lt;Text FontSize=&quot;30&quot;&gt;Hello, world!&lt;/Text&gt;
+					&lt;Slider /&gt;
+					&lt;Button Text=&quot;Button&quot; /&gt;
+					&lt;Switch Alignment=&quot;Left&quot; /&gt;
+				&lt;/StackPanel&gt;
+			&lt;/ScrollView&gt;
+		&lt;/DockPanel&gt;
+	&lt;/App&gt;
 </code></pre>
 <p>While the app is running in preview, changes will be reflected instantly in all preview sessions (both local and on device) each time you save your UX markup file (hit Ctrl/Cmd+S).</p>
 <h3 id="understanding-the-markup">Understanding the markup</h3>
@@ -663,24 +663,24 @@ If the path is omitted, it will be created as a subdirectory of your current dir
 <p>Fuse lets you use JavaScript to add logic to your app. By combining UX markup and scripting you have everything you need to implement apps, from look and feel to data models, logic and backend integration.</p>
 <p>However, in this first example we'll simply create a counter which increases when the button is clicked.</p>
 <p>First add the following JavaScript snippet inside the DockPanel:</p>
-<pre><code>&lt;JavaScript&gt;
-	var Observable = require('FuseJS/Observable');
-	var buttonText = Observable('Button');
-	var clickCount = 0;
+<pre><code class="language-js">	&lt;JavaScript&gt;
+		var Observable = require('FuseJS/Observable');
+		var buttonText = Observable('Button');
+		var clickCount = 0;
 
-	function onClick() {
-		clickCount += 1;
-		buttonText.value = 'Clicks: ' + clickCount;
-	}
+		function onClick() {
+			clickCount += 1;
+			buttonText.value = 'Clicks: ' + clickCount;
+		}
 
-	module.exports = {
-		buttonText: buttonText,
-		onClick: onClick
-	}
-&lt;/JavaScript&gt;
+		module.exports = {
+			buttonText: buttonText,
+			onClick: onClick
+		}
+	&lt;/JavaScript&gt;
 </code></pre>
 <p>and then bind the <code>onClick</code> handler and <code>buttonText</code> variable to the <a href="../fuse/controls/button.html">Button</a> that already exists in the .ux</p>
-<pre><code>&lt;Button Text=&quot;{buttonText}&quot; Clicked=&quot;{onClick}&quot;/&gt;
+<pre><code class="language-xml">	&lt;Button Text=&quot;{buttonText}&quot; Clicked=&quot;{onClick}&quot;/&gt;
 </code></pre>
 <p>Just like when changing UX markup, changes to JavaScript will also instantly update in all preview sessions when making changes.</p>
 <h3 id="creating-reusable-styles-and-components">Creating reusable styles and components</h3>
@@ -695,7 +695,7 @@ If the path is omitted, it will be created as a subdirectory of your current dir
 <h3 id="exporting-your-app">Exporting your app</h3>
 <p>Now that your app has at least one feature of (questionable) value, it is time to export it to Android and/or iOS.</p>
 <p>From the command line you do this by typing</p>
-<pre><code>fuse build --target=&lt;iOS or Android&gt; --run
+<pre><code class="language-sh">	fuse build --target=&lt;iOS or Android&gt; --run
 </code></pre>
 <h3 id="okay-that-was-easy-what-s-next">Okay, that was easy! What's next?</h3>
 <p>Once you are comfortable with the basics above, we suggest you take a look at our <a href="../tutorial/tutorial.html">end-to-end tutorial</a>, where we'll build a hike-tracking app called hikr from scratch. You should also check out the <a href="https://fuse-open.github.io/examples/">Example section</a>!</p>

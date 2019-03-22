@@ -588,9 +588,9 @@
           <h1 id="observable-api">Observable API</h1>
 <h4 id="observable-value">Observable value</h4>
 <p>If the observable holds exactly one value, we can get or set that value using the <code>.value</code> property:</p>
-<pre><code>var someString = Observable(&quot;foobar&quot;);
-console.log(someString.value); // prints &quot;foobar&quot;
-someString.value = &quot;barfoo&quot;; // sets the value, notifies subscribers.
+<pre><code class="language-js">	var someString = Observable(&quot;foobar&quot;);
+	console.log(someString.value); // prints &quot;foobar&quot;
+	someString.value = &quot;barfoo&quot;; // sets the value, notifies subscribers.
 </code></pre>
 <p>When the <code>.value</code> property is set, all subscribers are notified.</p>
 <ul>
@@ -622,33 +622,33 @@ of the observable is computed by evaluating the function.</p>
 <p>Reactive dependencies are automatically generated with all other observables touched while
 evaluating the function.</p>
 <p>Example:</p>
-<pre><code>var firstName = Observable(&quot;John&quot;);
-var lastName = Observable(&quot;Doe&quot;);
+<pre><code class="language-js">	var firstName = Observable(&quot;John&quot;);
+	var lastName = Observable(&quot;Doe&quot;);
 
-var fullName = Observable(function() {
-	return firstName.value + &quot; &quot; + lastName.value;
-})
+	var fullName = Observable(function() {
+		return firstName.value + &quot; &quot; + lastName.value;
+	})
 </code></pre>
 <p>If the <code>firstName</code> or <code>lastName</code> changes, the <code>fullName</code> will now update automatically.</p>
 <p>Yes, it's magic.</p>
 <h3 id="state-observables-and-derived-observables">State Observables and derived Observables</h3>
 <p>When working with Observables, it is important to understand the difference between <strong>state Observables</strong> and <strong>derived Observables</strong>. In short, a state Observable is an Observable that is explicitly <em>made by you</em>, while a derived Observable is returned by other APIs, such as <a href="../fusejs/observable-api.html#reactive-operators">reactive operators</a>.</p>
-<pre><code>var stateObs = Observable(&quot;foo&quot;); // stateObs is a state Observable
-var derivedObs = stateObs.map(function(val) { // derivedObs is a derived Observable
-	return &quot;derived: &quot; + val;
-});
+<pre><code class="language-js">	var stateObs = Observable(&quot;foo&quot;); // stateObs is a state Observable
+	var derivedObs = stateObs.map(function(val) { // derivedObs is a derived Observable
+		return &quot;derived: &quot; + val;
+	});
 </code></pre>
 <p>The main difference between the two is that the data in state Observables is available synchronously. It is not necessary to add a subscriber for the data to be available, and we can access it directly:</p>
-<pre><code>var list = Observable(1,2,3,4,5);
-list.forEach(function(i) {
-	console.log(i); // loops through the list, prints 1, then 2, 3, 4, 5
-});
+<pre><code class="language-js">	var list = Observable(1,2,3,4,5);
+	list.forEach(function(i) {
+		console.log(i); // loops through the list, prints 1, then 2, 3, 4, 5
+	});
 </code></pre>
 <p>The data in derived Observables is not available synchronously, so we cannot use a synchronous approach like shown in the example above. Instead, we use <a href="../fusejs/observable-api.html#reactive-operators">reactive operators</a> (such as <code>.map()</code>) to react when data eventually becomes available:</p>
-<pre><code>var list = Observable(1,2,3,4,5);
-var asyncList = list.map(function(i) {
-	return i * i;
-});
+<pre><code class="language-js">	var list = Observable(1,2,3,4,5);
+	var asyncList = list.map(function(i) {
+		return i * i;
+	});
 </code></pre>
 <p>In the example above, the <code>asyncList</code> derived Observable will eventually contain the squared values for the numbers in <code>list</code> state Observable. Note that we cannot iterate over <code>asyncList</code> with a <code>forEach()</code> statement here, because the data in <code>asyncList</code> is populated asynchronously, and only when there is a subscriber added to it. Later in this article, you'll find more details on <a href="../fusejs/observable-api.html#subscribing-to-updates">subscribing to updates</a>.</p>
 <p><a href="../fusejs/observable-api.html#reactive-operators">Reactive operators</a> are just one example of APIs that return derived Observables.
@@ -659,168 +659,168 @@ A very common use case are properties of <code>ux:Class</code> defined using the
 <p>Gets or sets the current value of the <a href="../fusejs/observable.html">Observable</a>.</p>
 <p>The <code>value</code> property acts as a shorthand for <code>getAt(0)</code> and <code>replaceAt(0)</code>.
 It is most often used with single value Observables, although this is not a requirement.</p>
-<pre><code>if (isSomethingEnabled.value) {
-	doSomething();
-}
-isSomethingEnabled.value = false;
+<pre><code class="language-js">	if (isSomethingEnabled.value) {
+		doSomething();
+	}
+	isSomethingEnabled.value = false;
 </code></pre>
 <h4 id="toarray">toArray()</h4>
 <p>Returns a shallow copy of the Observables internal values array.</p>
-<pre><code>var obs = Observable(1,2,3);
-var obsArray = obs.toArray(); //obsArray == [1,2,3]
+<pre><code class="language-js">	var obs = Observable(1,2,3);
+	var obsArray = obs.toArray(); //obsArray == [1,2,3]
 </code></pre>
 <h3 id="list-operators">List operators</h3>
 <h4 id="add-value">add(value)</h4>
 <p>Adds <code>value</code> to the observable list of values.</p>
-<pre><code>var colors = Observable(&quot;Red&quot;, &quot;Green&quot;);
-colors.add(&quot;Blue&quot;);
+<pre><code class="language-js">	var colors = Observable(&quot;Red&quot;, &quot;Green&quot;);
+	colors.add(&quot;Blue&quot;);
 </code></pre>
 <h4 id="addall-items">addAll(items)</h4>
 <p>Appends the array <code>items</code> to the end of the observable.</p>
-<pre><code>var val = new Observable(1, 2, 3);
+<pre><code class="language-js">	var val = new Observable(1, 2, 3);
 
-val.addAll([4, 5, 6]);
-
-//val = Observable(1, 2, 3, 4, 5, 6);
+	val.addAll([4, 5, 6]);
+	
+	//val = Observable(1, 2, 3, 4, 5, 6);
 </code></pre>
 <h4 id="clear">clear()</h4>
 <p>Removes all values from the <a href="../fusejs/observable.html">Observable</a>.</p>
-<pre><code>var colors = Observable(&quot;Red&quot;, &quot;Green&quot;);
-colors.clear();
+<pre><code class="language-js">	var colors = Observable(&quot;Red&quot;, &quot;Green&quot;);
+	colors.clear();
 </code></pre>
 <h4 id="contains-value">contains(value)</h4>
 <p>Returns true if <code>value</code> exists in the <code>var</code>.</p>
-<pre><code>Observable seasons = Observable(&quot;Summer&quot;, &quot;Fall&quot;, &quot;Winter&quot;, &quot;Spring&quot;);
-var winterExists = seasons.contains(&quot;Winter&quot;); // true
+<pre><code class="language-js">	Observable seasons = Observable(&quot;Summer&quot;, &quot;Fall&quot;, &quot;Winter&quot;, &quot;Spring&quot;);
+	var winterExists = seasons.contains(&quot;Winter&quot;); // true
 </code></pre>
 <h4 id="foreach-func-item">forEach(func(item))</h4>
 <p>Invokes <code>func</code> on every value in the <a href="../fusejs/observable.html">Observable</a>.</p>
-<pre><code>var numbers = Observable(10, 2, 50, 3);
-numbers.forEach(function(number) {
-	console.log(number + &quot; is a nice number!&quot;);
-});
+<pre><code class="language-js">	var numbers = Observable(10, 2, 50, 3);
+	numbers.forEach(function(number) {
+		console.log(number + &quot; is a nice number!&quot;);
+	});
 </code></pre>
 <h4 id="foreach-func-item-index">forEach(func(item,index))</h4>
 <p>Invokes <code>func</code> on every value in the <a href="../fusejs/observable.html">Observable</a>.</p>
-<pre><code>var numbers = Observable(10, 2, 50, 3);
-numbers.forEach(function(number, index) {
-	console.log(number + &quot; has the index: &quot; + index);
-});
+<pre><code class="language-js">	var numbers = Observable(10, 2, 50, 3);
+	numbers.forEach(function(number, index) {
+		console.log(number + &quot; has the index: &quot; + index);
+	});
 </code></pre>
 <p>If <code>func</code> accepts two arguments, the second argument is the index of that item in the <a href="../fusejs/observable.html">Observable</a>.</p>
 <h4 id="getat-index">getAt(index)</h4>
 <p>Returns the value at the given <code>index</code></p>
-<pre><code>var seasons = Observable(&quot;Summer&quot;, &quot;Fall&quot;, &quot;Winter&quot;, &quot;Spring&quot;);
-console.log(seasons.getAt(2)); //output: &quot;Winter&quot;
+<pre><code class="language-js">	var seasons = Observable(&quot;Summer&quot;, &quot;Fall&quot;, &quot;Winter&quot;, &quot;Spring&quot;);
+	console.log(seasons.getAt(2)); //output: &quot;Winter&quot;
 </code></pre>
 <h4 id="identity">identity()</h4>
 <p>Equivalent to calling <code>map</code> with the identity function, aka <code>map(function(x) { return x; })</code>.</p>
 <p>Useful in cases where two-way databinding is necessary, but we don't want to clobber the original <code>Observable</code>'s data.</p>
-<pre><code>var originalData = Observable(&quot;This is my original data&quot;);
-var nonClobberedData = originalData.identity(); // Safe for two-way databinding
+<pre><code class="language-js">	var originalData = Observable(&quot;This is my original data&quot;);
+	var nonClobberedData = originalData.identity(); // Safe for two-way databinding
 </code></pre>
 <h4 id="indexof-value">indexOf(value)</h4>
 <p>Returns the index of the first occurrence of <code>value</code>.</p>
-<pre><code>var seasons = Observable(&quot;Summer&quot;, &quot;Fall&quot;, &quot;Winter&quot;, &quot;Spring&quot;);
-var index = seasons.indexOf(&quot;Winter&quot;); // 2
+<pre><code class="language-js">	var seasons = Observable(&quot;Summer&quot;, &quot;Fall&quot;, &quot;Winter&quot;, &quot;Spring&quot;);
+	var index = seasons.indexOf(&quot;Winter&quot;); // 2
 </code></pre>
 <h4 id="insertall-index-array">insertAll(index, array)</h4>
 <p>Inserts the contents of <code>array</code> at the specified <code>index</code>.</p>
-<pre><code>var clouds = Observable(&quot;Cirrus&quot;, &quot;Alto&quot;, &quot;Stratus&quot;);
-clouds.insertAll(1, [&quot;Cumulus&quot;, &quot;Mammatus&quot;]);
-
-//clouds = Observable(&quot;Cirrus&quot;, &quot;Cumulus&quot;, &quot;Mammatus&quot;, &quot;Alto&quot;, &quot;Stratus&quot;);
+<pre><code class="language-js">	var clouds = Observable(&quot;Cirrus&quot;, &quot;Alto&quot;, &quot;Stratus&quot;);
+	clouds.insertAll(1, [&quot;Cumulus&quot;, &quot;Mammatus&quot;]);
+	
+	//clouds = Observable(&quot;Cirrus&quot;, &quot;Cumulus&quot;, &quot;Mammatus&quot;, &quot;Alto&quot;, &quot;Stratus&quot;);
 </code></pre>
 <h4 id="insertat-index-value">insertAt(index, value)</h4>
 <p>Inserts <code>value</code> at the specified <code>index</code>.</p>
-<pre><code>var words = Observable(&quot;foo&quot;, &quot;bar&quot;);
-words.insertAt(1, &quot;baz&quot;);
-
-console.log(words); // Observable(&quot;foo&quot;, &quot;baz&quot;, &quot;bar&quot;)
+<pre><code class="language-js">	var words = Observable(&quot;foo&quot;, &quot;bar&quot;);
+	words.insertAt(1, &quot;baz&quot;);
+	
+	console.log(words); // Observable(&quot;foo&quot;, &quot;baz&quot;, &quot;bar&quot;)
 </code></pre>
 <h4 id="-length">.length</h4>
 <p>Returns the number of values in the <a href="../fusejs/observable.html">Observable</a></p>
-<pre><code>var fruits = Observable(&quot;Orange&quot;, &quot;Apple&quot;, &quot;Pear&quot;);
-console.log(fruits.length); //output: 3
+<pre><code class="language-js">	var fruits = Observable(&quot;Orange&quot;, &quot;Apple&quot;, &quot;Pear&quot;);
+	console.log(fruits.length); //output: 3
 </code></pre>
 <h4 id="refreshall-newvalues-comparefunc-updatefunc-mapfunc">refreshAll(newValues, compareFunc, updateFunc, mapFunc)</h4>
 <p>Updates all items in the <a href="../fusejs/observable.html">Observable</a> with the values from <code>newValues</code>.
 <code>compareFunc</code> is used to determine whether two items are equal. <code>updateFunc</code> is used to update an existing item with new values when a match is found by <code>compareFunc</code>.
 <code>mapFunc</code> is called whenever a new item is found and allows it to be mapped to a new object.</p>
-<pre><code>var items = Observable(
-	{id: 1, text: &quot;one&quot; },
-	{id: 2, text: &quot;two&quot; },
-	{id: 3, text: &quot;tres&quot; }
-);
-
-var newItems = [
-	{id: 3, text: &quot;three&quot; },
-	{id: 4, text: &quot;four&quot; },
-	{id: 5, text: &quot;five&quot; }
-];
-
-items.refreshAll(newItems,
-	//Compare on ID
-	function(oldItem, newItem){
-		return oldItem.id == newItem.id;
-	},
-	// Update text
-	function(oldItem, newItem){
-		oldItem.text.value = newItem.text;
-	},
-	// Map to object with an observable version of text
-	function(newItem){
-		return {
-			id: newItem.id,
-			text: Observable(newItem.text)
-		};
-	}
-);
+<pre><code class="language-js">	var items = Observable(
+		{id: 1, text: &quot;one&quot; },
+		{id: 2, text: &quot;two&quot; },
+		{id: 3, text: &quot;tres&quot; }
+	);
+	
+	var newItems = [
+		{id: 3, text: &quot;three&quot; },
+		{id: 4, text: &quot;four&quot; },
+		{id: 5, text: &quot;five&quot; }
+	];
+	
+	items.refreshAll(newItems,
+		//Compare on ID
+		function(oldItem, newItem){
+			return oldItem.id == newItem.id;
+		},
+		// Update text
+		function(oldItem, newItem){
+			oldItem.text.value = newItem.text;
+		},
+		// Map to object with an observable version of text
+		function(newItem){
+			return {
+				id: newItem.id,
+				text: Observable(newItem.text)
+			};
+		}
+	);
 </code></pre>
 <h4 id="remove-value">remove(value)</h4>
 <p>Removes the first occurrence of <code>value</code> from the observable list of values.</p>
-<pre><code>var shapes = Observable(&quot;Round&quot;, &quot;Square&quot;, &quot;Rectangular&quot;);
-shapes.remove(&quot;Rectangular&quot;);
+<pre><code class="language-js">	var shapes = Observable(&quot;Round&quot;, &quot;Square&quot;, &quot;Rectangular&quot;);
+	shapes.remove(&quot;Rectangular&quot;);
 </code></pre>
 <h4 id="removeat-index">removeAt(index)</h4>
 <p>Remove the value at the given <code>index</code>.</p>
-<pre><code>var shapes = Observable(&quot;Round&quot;, &quot;Square&quot;, &quot;Rectangular&quot;);
-shapes.removeAt(2);
+<pre><code class="language-js">	var shapes = Observable(&quot;Round&quot;, &quot;Square&quot;, &quot;Rectangular&quot;);
+	shapes.removeAt(2);
 </code></pre>
 <h4 id="removerange-start-count">removeRange(start, count)</h4>
 <p>Removes <code>count</code> items, starting from <code>start</code>.</p>
-<pre><code>var letters = Observable(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;);
-letters.removeRange(1, 2);
-//letters = Observable(&quot;a&quot;, &quot;d&quot;);
+<pre><code class="language-js">	var letters = Observable(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;);
+	letters.removeRange(1, 2);
+	//letters = Observable(&quot;a&quot;, &quot;d&quot;);
 </code></pre>
 <h4 id="removewhere-func">removeWhere(func)</h4>
 <p>Removes all values for which <code>func</code> is true.</p>
-<pre><code>var hotPlaces = Observable(
-	{name: &quot;Oslo&quot;, temperature: 30},
-	{name: &quot;New York&quot;, temperature: 24},
-	{name: &quot;California&quot;, temperature: 27},
-	{name: &quot;Sydney&quot;, temperature: 10}
-).removeWhere(function(place){
-	return place.temperature &lt; 20;
-}); //Removes Sydney from the list
+<pre><code class="language-js">	var hotPlaces = Observable(
+		{name: &quot;Oslo&quot;, temperature: 30},
+		{name: &quot;New York&quot;, temperature: 24},
+		{name: &quot;California&quot;, temperature: 27},
+		{name: &quot;Sydney&quot;, temperature: 10}
+	).removeWhere(function(place){
+		return place.temperature &lt; 20;
+	}); //Removes Sydney from the list
 </code></pre>
 <h4 id="replaceall-array">replaceAll(array)</h4>
 <p>Replaces the Observables values with values from the <code>array</code>.</p>
-<pre><code>var colors = Observable(&quot;Red&quot;, &quot;Green&quot;, &quot;Blue&quot;);
-colors.replaceAll([&quot;Orange&quot;, &quot;Cyan&quot;, &quot;Pink&quot;]);
+<pre><code class="language-js">	var colors = Observable(&quot;Red&quot;, &quot;Green&quot;, &quot;Blue&quot;);
+	colors.replaceAll([&quot;Orange&quot;, &quot;Cyan&quot;, &quot;Pink&quot;]);
 </code></pre>
 <h4 id="replaceat-index-value">replaceAt(index, value)</h4>
 <p>Replaces the value at <code>index</code> with <code>value</code>.</p>
-<pre><code>var ingredients = Observable(&quot;sugar&quot;, &quot;milk&quot;, &quot;potato&quot;);
-ingredients.replaceAt(2, &quot;flour&quot;); //Replaces &quot;potato&quot; with &quot;flour&quot;
+<pre><code class="language-js">	var ingredients = Observable(&quot;sugar&quot;, &quot;milk&quot;, &quot;potato&quot;);
+	ingredients.replaceAt(2, &quot;flour&quot;); //Replaces &quot;potato&quot; with &quot;flour&quot;
 </code></pre>
 <h4 id="tryremove-value">tryRemove(value)</h4>
 <p>Tries to remove the first occurrence of <code>value</code> from the observable list of values.
 Returns true if successful, and false otherwise.</p>
-<pre><code>var shapes = Observable(&quot;Round&quot;, &quot;Square&quot;, &quot;Rectangular&quot;);
-if(shapes.tryRemove(&quot;Rectangular&quot;)) {
-	console.log(&quot;success&quot;);
-}
+<pre><code class="language-js">	var shapes = Observable(&quot;Round&quot;, &quot;Square&quot;, &quot;Rectangular&quot;);
+	if(shapes.tryRemove(&quot;Rectangular&quot;)) {
+		console.log(&quot;success&quot;);
+	}
 </code></pre>
 <h3 id="reactive-operators">Reactive operators</h3>
 <p>FuseJS comes with set of reactive operators that return derived Observables from other Observables. This means that if the original
@@ -829,30 +829,30 @@ if(shapes.tryRemove(&quot;Rectangular&quot;)) {
 <p><em>Be aware that many of the operators work with objects, as well as values. If you modify the properties of an object in the derived Observable you might be updating the source as well, since they are the same object. It's also possible that your source contains a list of <code>Observable</code> objects, in which case changes to them will propagate as normal from that <code>Observable</code>. One-way/Two-way refers only to which directions changes in the high level observable, made by the operator, are propagated.</em></p>
 <h4 id="any-filter">any(filter)</h4>
 <p>Returns a new <a href="../fusejs/observable.html">Observable</a> containing a boolean representing whether or not the observable it is called on contains any entries that match the <code>filter</code>.</p>
-<pre><code>var vehicles = Observable(
-	{type: &quot;car&quot;, name: &quot;SuperSpeeder 2000&quot;},
-	{type: &quot;car&quot;, name: &quot;Initial Dash 2k00&quot;},
-	{type: &quot;boat&quot;, name: &quot;Floaty McFloatface&quot;}
-);
-
-var hasBoats = vehicles.any({type: &quot;boat&quot;}); //true
-var hasAircraft = vehicles.any({type: &quot;aircraft&quot;}); //false
-var hasCar = veichles.any(function(x) { return x.type === &quot;car&quot;; }) //true
+<pre><code class="language-js">	var vehicles = Observable(
+		{type: &quot;car&quot;, name: &quot;SuperSpeeder 2000&quot;},
+		{type: &quot;car&quot;, name: &quot;Initial Dash 2k00&quot;},
+		{type: &quot;boat&quot;, name: &quot;Floaty McFloatface&quot;}
+	);
+	
+	var hasBoats = vehicles.any({type: &quot;boat&quot;}); //true
+	var hasAircraft = vehicles.any({type: &quot;aircraft&quot;}); //false
+	var hasCar = veichles.any(function(x) { return x.type === &quot;car&quot;; }) //true
 </code></pre>
 <h4 id="combine-obs-func">combine([obs, ...], func)</h4>
 <p>Invokes <code>func</code> every time the current observable or any of the <code>obs</code> observables (collectively &quot;the dependencies&quot;) change.</p>
 <p>The arguments will hold the current <code>.value</code> of each of the dependencies, with <code>this.value</code> as the first argument, followed by the value of each successive observable in order.</p>
-<pre><code>var foo = Observable(1);
-var boo = Observable(2);
-var moo = Observable(3);
+<pre><code class="language-js">	var foo = Observable(1);
+	var boo = Observable(2);
+	var moo = Observable(3);
 
-var res = foo.combine(boo, moo, function(f, b, m) {
-	// f holds the current .value of foo
-	// b holds the current .value of boo
-	// m holds the current .value of moo
+	var res = foo.combine(boo, moo, function(f, b, m) {
+		// f holds the current .value of foo
+		// b holds the current .value of boo
+		// m holds the current .value of moo
 
-	return f+b+m; // the resulting observable will yield the value 6
-})
+		return f+b+m; // the resulting observable will yield the value 6
+	})
 </code></pre>
 <p>If the <code>func</code> provided to <code>combine</code> returns a value, that value will replace the <code>.value</code> of the resulting observable. If the function returns nothing (<code>undefined</code>),
 the <code>func</code> is expected to take care of updating the resulting observable by modifying the <code>this</code> parameter in the <code>func</code>.</p>
@@ -863,105 +863,106 @@ of the dependencies that, see <code>.combineArrays</code>.</p>
 <p>Same as <code>combine</code>, but does not fire <code>func</code> until at least one value is available (<code>.length &gt; 0</code>) for all of the dependencies.</p>
 <h3 id="combinearrays-obs-func">combineArrays([obs, ...], func)</h3>
 <p>Same as <code>combine</code>, but provides an array for each dependency with all the values of each of the observable instead of just the first value of each observable.</p>
-<pre><code>var foo = Observable(1);
-var boo = Observable(&quot;a&quot;, &quot;b&quot;, c);
-var moo = Observable(3);
+<pre><code class="language-js">	var foo = Observable(1);
+	var boo = Observable(&quot;a&quot;, &quot;b&quot;, c);
+	var moo = Observable(3);
 
-var res = foo.combineArrays(boo, moo, function(f, b, m) {
-	// f holds [1]
-	// b holds [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]
-	// m holds [3]
+	var res = foo.combineArrays(boo, moo, function(f, b, m) {
+		// f holds [1]
+		// b holds [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]
+		// m holds [3]
 
-	return [f[0], m[0], b.length]; // the resulting observable will hold the values (1, 3, 3)
-})
+		return [f[0], m[0], b.length]; // the resulting observable will hold the values (1, 3, 3)
+	})
 </code></pre>
 <p>If the <code>func</code> provided to <code>combineArrays</code> returns an array, the elements from the array will replace all elements in the resulting observable. If the function returns nothing (<code>undefined</code>),
 the <code>func</code> is expected to take care of updating the resulting observable by modifying the <code>this</code> parameter in the <code>func</code>.</p>
 <h4 id="count">count()</h4>
 <p>Returns the number of values in the <a href="../fusejs/observable.html">Observable</a> as an observable number. Whenever an item is added or removed from the <a href="../fusejs/observable.html">Observable</a>, the <code>count</code> changes.</p>
-<pre><code>books = Observable(
-	&quot;UX and you&quot;,
-	&quot;Observing the observer&quot;,
-	&quot;Documenting the documenter&quot;
-);
-
-numBooks = books.count(); //result: 3
+<pre><code class="language-js">	books = Observable(
+		&quot;UX and you&quot;,
+		&quot;Observing the observer&quot;,
+		&quot;Documenting the documenter&quot;
+	);
+	
+	numBooks = books.count(); //result: 3
 </code></pre>
 <h4 id="count-condition">count(condition)</h4>
 <p>If <code>condition</code> is a function, it returns an observable number of values for which <code>condition</code> is true. If <code>condition</code> is an object, it returns an observable containing the amount of values whom properties equal properties in <code>condition</code>.</p>
-<pre><code>var tasks = Observable(
-	{ title: &quot;Learn Fuse&quot;, isDone: true },
-	{ title: &quot;Learn about Observables&quot;, isDone: true },
-	{ title: &quot;Make awesome app&quot;, isDone: false }
-);
-var tasksDone = tasks.count(function(x){
-	return x.isDone;
-}); // 2
-var tasksDone = tasks.count({isDone: true}); //2
+<pre><code class="language-js">	var tasks = Observable(
+		{ title: &quot;Learn Fuse&quot;, isDone: true },
+		{ title: &quot;Learn about Observables&quot;, isDone: true },
+		{ title: &quot;Make awesome app&quot;, isDone: false }
+	);
+	var tasksDone = tasks.count(function(x){
+		return x.isDone;
+	}); // 2
+	var tasksDone = tasks.count({isDone: true}); //2
 </code></pre>
 <h4 id="expand-func">expand(func)</h4>
 <p>When an <a href="../fusejs/observable.html">Observable</a> contains only a single array, expand will return an <a href="../fusejs/observable.html">Observable</a> containing the values from that array.</p>
-<p>Observable([1,2,3]).expand() -&gt; Observable(1,2,3)</p>
+<pre><code class="language-js">Observable([1,2,3]).expand() -&gt; Observable(1,2,3)
+</code></pre>
 <h4 id="filter-condition">filter(condition)</h4>
 <p>Returns an observable that will only propagate values that pass the given <code>condition</code>, otherwise it retains its previous value.</p>
 <p>This method only considers the first (single) value of an observable.</p>
 <!-- TODO: Make example -->
 <h4 id="first">first()</h4>
 <p>Returns a new <a href="../fusejs/observable.html">Observable</a> containing the value of the first entry in the observable it is called on.</p>
-<pre><code>var values = Observable(1, 2, 3);
-var firstEntry = values.first(); //Observable(1)
+<pre><code class="language-js">	var values = Observable(1, 2, 3);
+	var firstEntry = values.first(); //Observable(1)
 </code></pre>
 <h4 id="flatmap-func-item">flatMap(func(item))</h4>
 <p>Calls <code>func</code> for every item in the <a href="../fusejs/observable.html">Observable</a>, then merges the items of all the <code>func</code> calls into one <a href="../fusejs/observable.html">Observable</a> array.</p>
-<pre><code>var numbers = Observable(
-	[1, 2, 3],
-	[4, 5, 6]
-);
-var counts = numbers.flatMap(function(item) {
-	return [item, item+1];
-});
-//counts == Observable([1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7])
+<pre><code class="language-js">	var numbers = Observable(
+		[1, 2, 3],
+		[4, 5, 6]
+	);
+	var counts = numbers.flatMap(function(item) {
+		return [item, item+1];
+	});
+	//counts == Observable([1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7])
 </code></pre>
 <h4 id="inner">inner()</h4>
 <p>Returns a new Observable that reflects the inner value when two Observables are nested (the <code>.value</code> of the Observable is an Observable).
 If the Observable it is called on is <em>not</em> nested then <code>.inner()</code> simply reflects its value.</p>
 <p>If the current Observable is not nested, the returned observable reflects the value of the current observable.</p>
-<pre><code>var foo = Observable(Observable(4))
-var bar = foo.inner(); // bar.value = 4
-foo.value.value = 9;   // bar.value = 9
-foo.value = 3;         // bar.value = 3
+<pre><code class="language-js">	var foo = Observable(Observable(4))
+	var bar = foo.inner(); // bar.value = 4
+	foo.value.value = 9;   // bar.value = 9
+	foo.value = 3;         // bar.value = 3
 </code></pre>
 <p>This is particularly useful when dealing with Observables passed via <code>ux:Property</code>.</p>
 <h4 id="innertwoway">innerTwoWay()</h4>
 <p>A version of <code>inner()</code> that creates a two-way binding with the output. Values modified in the returned <a href="../fusejs/observable.html">Observable</a> will update the value in the source observable.</p>
-<pre><code>var outerObs = Observable(Observable(&quot;John&quot;));
-var innerObs = outerObs.innerTwoWay();
-innerObs.value = &quot;Jake&quot;; // outerObs.value.value = &quot;Jake&quot;
+<pre><code class="language-js">	var outerObs = Observable(Observable(&quot;John&quot;));
+	var innerObs = outerObs.innerTwoWay();
+	innerObs.value = &quot;Jake&quot;; // outerObs.value.value = &quot;Jake&quot;
 </code></pre>
 <p><code>.innerTwoWay()</code> works on both single-value Observables and on Observable lists.</p>
-<pre><code>var outerObs = Observable(Observable(&quot;1&quot;,&quot;3&quot;,&quot;5&quot;));
-var innerObs = outerObs.innerTwoWay();
-innerObs.removeAt(0); // outerObs.value.toArray() = [&quot;3&quot;,&quot;5&quot;]
+<pre><code class="language-js">	var outerObs = Observable(Observable(&quot;1&quot;,&quot;3&quot;,&quot;5&quot;));
+	var innerObs = outerObs.innerTwoWay();
+	innerObs.removeAt(0); // outerObs.value.toArray() = [&quot;3&quot;,&quot;5&quot;]
 </code></pre>
 <h4 id="last">last()</h4>
 <p>Returns a new <a href="../fusejs/observable.html">Observable</a> containing the value of the last entry in the observable it is called on.</p>
-<pre><code>var values = Observable(1, 2, 3);
-var lastEntry = values.last(); //Observable(3)
+<pre><code class="language-js">	var values = Observable(1, 2, 3);
+	var lastEntry = values.last(); //Observable(3)
 </code></pre>
 <h4 id="map-func-item">map(func(item)))</h4>
 <p>Invokes <code>func</code> on every value in the <a href="../fusejs/observable.html">Observable</a> returning a new <a href="../fusejs/observable.html">Observable</a> with the results.</p>
-<pre><code>var numbers = Observable(1, 4, 9);
-var roots = numbers.map(function(number) {
-	return Math.sqrt(number);
-});
+<pre><code class="language-js">	var numbers = Observable(1, 4, 9);
+	var roots = numbers.map(function(number) {
+		return Math.sqrt(number);
+	});
 </code></pre>
 <p>The values of <code>roots</code> becomes the square root of the numbers in <code>numbers</code>. The values in <code>numbers</code> remain unchanged.</p>
 <h4 id="map-func-item-index">map(func(item, index)))</h4>
 <p>Invokes <code>func</code> on every value in the <a href="../fusejs/observable.html">Observable</a> returning a new <a href="../fusejs/observable.html">Observable</a> with the results.</p>
-<pre><code>var numbers = Observable(&quot;this&quot;, &quot;item&quot;, &quot;is&quot;);
-var roots = numbers.map(function(item, index) {
-	return item + &quot; has the index nr: &quot; + index;
-});
+<pre><code class="language-js">	var numbers = Observable(&quot;this&quot;, &quot;item&quot;, &quot;is&quot;);
+	var roots = numbers.map(function(item, index) {
+		return item + &quot; has the index nr: &quot; + index;
+	});
 </code></pre>
 <p>When Observable.map is used with a function which takes two arguments, the second argument is the index of that item in the <a href="../fusejs/observable.html">Observable</a>.</p>
 <h4 id="maptwoway-mapfunc-sourcevalue-unmapfunc-partvalue-sourcevalue">mapTwoWay(mapFunc(sourceValue), unmapFunc(partValue,sourceValue))</h4>
@@ -969,35 +970,35 @@ var roots = numbers.map(function(item, index) {
 <p><code>mapFunc(sourceValue)</code> converts a value from source observable: it returns the mapped value for the output.</p>
 <p><code>unmapFunc(partValue, sourceValue)</code> converts a value form the output back to the form for the input. The current  <code>sourceValue</code> is provided in case the output was only a partial value.</p>
 <p>Here is an example for  simple mapping to convert radians to degrees and back (this example does not need the <code>sourceValue</code>):</p>
-<pre><code>var angles = Observable(0, Math.PI, 2*Math.PI)
-exports.angleDegrees = angles.mapTwoWay( function(value) {
-	return value * 180 / Math.PI 
-}, function( value, sourceValue ) {
-	return value * Math.PI / 180 
-})
+<pre><code class="language-js">	var angles = Observable(0, Math.PI, 2*Math.PI)
+	exports.angleDegrees = angles.mapTwoWay( function(value) {
+		return value * 180 / Math.PI 
+	}, function( value, sourceValue ) {
+		return value * Math.PI / 180 
+	})
 </code></pre>
 <p>Here is an example the returns a field in an object and recreates the full object in the <code>umapFunc</code>. If this is all you're doing then use <code>pickTwoWay</code> instead, which does exactly this (in this example it would be <code>users.pickTwoWay(&quot;name&quot;)</code>.</p>
-<pre><code>var users = Observable(
-	{ id: &quot;tom&quot;, name: &quot;Tommy&quot; },
-	{ id: &quot;sal&quot;, name: &quot;Sally&quot; }
-)
-
-exports.names = users.mapTwoWay( function(user) {
-	return user.name
-}, function( name, sourceUser ) {
-	sourceUser.name = name
-	return sourceUser
-})
+<pre><code class="language-js">	var users = Observable(
+		{ id: &quot;tom&quot;, name: &quot;Tommy&quot; },
+		{ id: &quot;sal&quot;, name: &quot;Sally&quot; }
+	)
+	
+	exports.names = users.mapTwoWay( function(user) {
+		return user.name
+	}, function( name, sourceUser ) {
+		sourceUser.name = name
+		return sourceUser
+	})
 </code></pre>
 <h4 id="not">not()</h4>
 <p>Returns an <a href="../fusejs/observable.html">Observable</a> that has the inverse value of the <a href="../fusejs/observable.html">Observable</a> you are calling it on. If the <a href="../fusejs/observable.html">Observable</a> is <code>true</code>, the returned one will be <code>false</code>, and vice versa.</p>
-<pre><code>falseValue = Observable(false);
-trueValue = falseValue.not();
+<pre><code class="language-js">	falseValue = Observable(false);
+	trueValue = falseValue.not();
 </code></pre>
 <h4 id="pick-index">pick(index)</h4>
 <p>Returns a new <a href="../fusejs/observable.html">Observable</a> containing the item at the index, or named property, <code>index</code> of every entry in the observable it is called on.</p>
-<pre><code>var values = Observable([1, 2], [3, 4], [5, 6]);
-var picked_values = values.pick(1); //Observable(2, 4, 6);
+<pre><code class="language-js">	var values = Observable([1, 2], [3, 4], [5, 6]);
+	var picked_values = values.pick(1); //Observable(2, 4, 6);
 </code></pre>
 <h4 id="picktwoway-index">pickTwoWay(index)</h4>
 <p>Like <code>pick</code>, but creates a two-way relationship. Modifications to the output map will update the value in the source map.</p>
@@ -1005,8 +1006,8 @@ var picked_values = values.pick(1); //Observable(2, 4, 6);
 <p>Returns a new observable that reflects a slice of the current observable.</p>
 <p>See the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice">documentation for <code>Array.slice()</code></a> for explaination
 of the arguments to this function.</p>
-<pre><code>var foo = Observable(1,2,3,4);
-var bar = foo.slice(1,2) // bar = Observable[2, 3]
+<pre><code class="language-js">	var foo = Observable(1,2,3,4);
+	var bar = foo.slice(1,2) // bar = Observable[2, 3]
 </code></pre>
 <p>Hints:</p>
 <ul>
@@ -1018,26 +1019,26 @@ var bar = foo.slice(1,2) // bar = Observable[2, 3]
 If <code>condition</code> is a function, it will return a new <a href="../fusejs/observable.html">Observable</a> with only the values for which <code>condition</code> returns true.
 However, if <code>condition</code> is an object, it will return a new <a href="../fusejs/observable.html">Observable</a> with only the values where parameters match parameters in <code>condition</code>, checked using strict equality (<code>===</code>).</p>
 <p>The new <a href="../fusejs/observable.html">Observable</a> observes the old <a href="../fusejs/observable.html">Observable</a>, and will therefore update whenever a value changes in the original observable.</p>
-<pre><code>fruits = Observable(
-	{ name: &quot;Apple&quot; , color: &quot;red&quot;    },
-	{ name: &quot;Lemon&quot; , color: &quot;yellow&quot; },
-	{ name: &quot;Pear&quot;  , color: &quot;green&quot;  },
-	{ name: &quot;Banana&quot;, color: &quot;yellow&quot; });
+<pre><code class="language-js">	fruits = Observable(
+		{ name: &quot;Apple&quot; , color: &quot;red&quot;    },
+		{ name: &quot;Lemon&quot; , color: &quot;yellow&quot; },
+		{ name: &quot;Pear&quot;  , color: &quot;green&quot;  },
+		{ name: &quot;Banana&quot;, color: &quot;yellow&quot; });
 
-goodFruits = fruits.where({color: &quot;yellow&quot;});
-
-goodFruits = fruits.where(function(e){
-	return e.color === &quot;yellow&quot;;
-});
+	goodFruits = fruits.where({color: &quot;yellow&quot;});
+	
+	goodFruits = fruits.where(function(e){
+		return e.color === &quot;yellow&quot;;
+	});
 </code></pre>
 <blockquote>
 <p>Note! You used to be able to return an Observable function with the .where operator in order to make the condition itself observable.
 This is no longer allowed. The best practice for achieving the same effect is to instead use <a href="#flatmap-func-item">flatMap()</a>.</p>
 </blockquote>
 <p>In order to filter a list based on an observable condition you use a combination of <code>.flatMap</code> and <code>.where</code>.</p>
-<pre><code>var items = conditionObservable.flatMap(function(v) {
-	return itemsObservable.where(function(x) { return v != x; });
-});
+<pre><code class="language-js">	var items = conditionObservable.flatMap(function(v) {
+		return itemsObservable.where(function(x) { return v != x; });
+	});
 </code></pre>
 <p>We use <code>.flatMap()</code> instead of <code>.map()</code> here because we return observables from the mapping function.</p>
 <blockquote>
@@ -1055,19 +1056,19 @@ This is no longer allowed. The best practice for achieving the same effect is to
 <h4 id="onvaluechanged-module-func">onValueChanged(module,func)</h4>
 <p>To manually react to changes in a single value <a href="../fusejs/observable.html">Observable</a>, we can use the <code>onValueChanged</code> method. It automatically creates a subscription for us and ties its lifetime to that of <code>module</code>.
 <code>func</code> will be called whenever the single value <a href="../fusejs/observable.html">Observable</a> changes.</p>
-<pre><code>someObservable.onValueChanged(module, function(x) {
-	console.log(&quot;We got a new value: &quot; + x);
-});
+<pre><code class="language-js">	someObservable.onValueChanged(module, function(x) {
+		console.log(&quot;We got a new value: &quot; + x);
+	});
 </code></pre>
 <h4 id="addsubscriber-func">addSubscriber(func)</h4>
 <p>Lets you manually create a subscription for an <a href="../fusejs/observable.html">Observable</a>. Note that you have to manually remove the subscription using <code>removeSubscriber</code> at the appropriate time. For that reason, you should almost always prefer using <code>onValueChanged</code> unless you are implementing a custom observable operator.</p>
 <h4 id="removesubscriber-func">removeSubscriber(func)</h4>
 <p>When you are done consuming the values from the Observable it is important to clean it up by removing the subscription. If we forget to do this we risk accumulating memory garbage over time. This is only needed if you manually created a subscription using <code>addSubscriber</code>. Remember that <code>onValueChanged</code> handles this cleanup automatically for us.</p>
-<pre><code>username.removeSubscriber(usernameLogger);
+<pre><code class="language-js">	username.removeSubscriber(usernameLogger);
 </code></pre>
 <h3 id="-subscribe-module">.subscribe(module)</h3>
 <p>When you only need to use an <a href="../fusejs/observable.html">Observable</a> in JavaScript and data-binding to it from UX isn't desired, you can use <code>.subscribe(module)</code> to create a subscription that is tied to the lifetime of a module. This is similar to <code>onValueChanged</code>, except we don't have the possibility to specify a callback function.</p>
-<pre><code>someObservable.subscribe(module);
+<pre><code class="language-js">	someObservable.subscribe(module);
 </code></pre>
 <h3 id="asynchronous-data-fetching-with-observables">Asynchronous data fetching with Observables</h3>
 <p>There are cases where you need to asynchronously request some data in response to the value of an <code>Observable</code> changing, and get the result as another Observable.
@@ -1076,19 +1077,19 @@ We can achieve this in an elegant way using a combination of <code>map()</code> 
 This will result in an Observable of an Observable of our future data – <em>almost</em> what we want.
 We therefore use <a href="#inner">inner()</a> to &quot;unwrap&quot; the inner Observable in place of the outer one, and voila!
 We end up with an Observable that will be updated with our asynchronously fetched data whenever the input changes.</p>
-<pre><code>var inputUrl = Observable(&quot;https://example.com/&quot;);
-
-var output = inputUrl.map(function(url) {
-    var resultObservable = Observable(&quot;Placeholder value&quot;);
-    
-    fetch(url)
-        .then(function(response) { return response.text(); })
-        .then(function(result) {
-            resultObservable.value = result;
-        });
-    
-    return resultObservable;
-}).inner();
+<pre><code class="language-js">	var inputUrl = Observable(&quot;https://example.com/&quot;);
+	
+	var output = inputUrl.map(function(url) {
+	    var resultObservable = Observable(&quot;Placeholder value&quot;);
+	    
+	    fetch(url)
+	        .then(function(response) { return response.text(); })
+	        .then(function(result) {
+	            resultObservable.value = result;
+	        });
+	    
+	    return resultObservable;
+	}).inner();
 </code></pre>
 <h3 id="failures">Failures</h3>
 <p>An Observables may be in a failed state. This means that it cannot provide a value, and that it's current value has been cleared. Observables are marked as failed when their ultimate provider, such as a network request, is unable to provide a value.</p>
@@ -1115,8 +1116,8 @@ var output = inputUrl.map(function(url) {
 -->
 <h4 id="tostring">toString()</h4>
 <p>Returns a string representation of an observable and its contents.</p>
-<pre><code>var testObservable = Observable(1, &quot;two&quot;, &quot;3&quot;);
-testObservable.toString(); // &quot;(observable) 1,two,3&quot;
+<pre><code class="language-js">	var testObservable = Observable(1, &quot;two&quot;, &quot;3&quot;);
+	testObservable.toString(); // &quot;(observable) 1,two,3&quot;
 </code></pre>
 
         </div>

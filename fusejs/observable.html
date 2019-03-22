@@ -603,39 +603,39 @@
 <h2 id="using-observables">Using observables</h2>
 <p>An <code>Observable</code> can hold a single value, or be treated as a list of values with 0 or more elements. When the value(s) of the <code>Observable</code> changes, all <em>subscribers</em> are automatically notified. The concept of subscribers/subscriptions is discussed in detail later in this article.</p>
 <p>Start off by importing the observable module, which returns a function:</p>
-<pre><code>var Observable = require(&quot;FuseJS/Observable&quot;);
+<pre><code class="language-js">	var Observable = require(&quot;FuseJS/Observable&quot;);
 </code></pre>
 <p>Observables are created by calling the <code>Observable</code> function directly with zero or more initial values.</p>
-<pre><code>var emptyObservable = Observable();
-var singleValueObservable = Observable(true);
-var listObservable = Observable(1,2,3,4);
+<pre><code class="language-js">	var emptyObservable = Observable();
+	var singleValueObservable = Observable(true);
+	var listObservable = Observable(1,2,3,4);
 
-var singleValueObservable = Observable(10); //now has .value == 10
-singleValueObservable.value = 20; //now has .value == 20
-var theValue = singleValueObservable.value; //theValue is now == 20
+	var singleValueObservable = Observable(10); //now has .value == 10
+	singleValueObservable.value = 20; //now has .value == 20
+	var theValue = singleValueObservable.value; //theValue is now == 20
 </code></pre>
 <p>When using an observable as a list, we can add and remove items using the <code>.add</code> and <code>.remove</code> methods.</p>
-<pre><code>var multiValueObservable = Observable(1,2);
-multiValueObservable.add(5); //now contains 1,2,5
-multiValueObservable.remove(2); //now contains 1,5
+<pre><code class="language-js">	var multiValueObservable = Observable(1,2);
+	multiValueObservable.add(5); //now contains 1,2,5
+	multiValueObservable.remove(2); //now contains 1,5
 </code></pre>
 <p>We can also apply various transformations to observables using a set of methods we collectively call &quot;reactive operators&quot;. These operators are methods we can call on observables that return new observables. We cover them in more detail later in this article. The following example squares all the numbers in the <code>someNumbers</code> observable using the <code>.map</code> operator. Map works by converting all the items in an <code>Observable</code> from one form into an other using the supplied function.</p>
-<pre><code>var someNumbers = Observable(1,2,3,4); //now contains 1,2,3,4
-var someNumbersSquared = someNumbers.map(function(x){ return x * x; }); //someNumbersSquared will eventually contain 1,4,9,16
+<pre><code class="language-js">	var someNumbers = Observable(1,2,3,4); //now contains 1,2,3,4
+	var someNumbersSquared = someNumbers.map(function(x){ return x * x; }); //someNumbersSquared will eventually contain 1,4,9,16
 </code></pre>
 <p>Since all the reactive operators return new observables, we can put several of them after one another to create a long chain of reactive operations.</p>
-<pre><code>var someNumbers = Observable(1,2,3,4);
-var someTransformedNumbers = someNumbers
-	.map(function(x){ return x * x; })
-	.where(function(x){ return x &lt; 10; })
-	.map(function(x){ return -x; }); //will eventually contain -1, -4, -9
+<pre><code class="language-js">	var someNumbers = Observable(1,2,3,4);
+	var someTransformedNumbers = someNumbers
+		.map(function(x){ return x * x; })
+		.where(function(x){ return x &lt; 10; })
+		.map(function(x){ return -x; }); //will eventually contain -1, -4, -9
 </code></pre>
 <h2 id="state-observables-and-derived-observables">State Observables and derived Observables</h2>
 <p>When working with Observables, it is important to understand the difference between <strong>state Observables</strong> and <strong>derived Observables</strong>. A state Observable is an Observable that is explicitly <em>made by you</em>, while a derived Observable is returned by other APIs, such as <a href="../fusejs/observable-api.html#reactive-operators">reactive operators</a>.</p>
 <p>One thing to note about the example above, that catches a lot of new Fusers off guard, is that <code>someTransformedNumbers</code> won't actually contain data immediately after the statement that declares it:</p>
-<pre><code>var someNumbers = Observable(1,2,3,4); // someNumbers is a state Observable
-var someNumbersSquared = someNumbers.map(function(x){ return x * x; }); // someNumbersSquared is a derived Observable
-console.log(&quot;SquaredNumbers length: &quot; + someNumbersSquared.length); // this will print 0
+<pre><code class="language-js">	var someNumbers = Observable(1,2,3,4); // someNumbers is a state Observable
+	var someNumbersSquared = someNumbers.map(function(x){ return x * x; }); // someNumbersSquared is a derived Observable
+	console.log(&quot;SquaredNumbers length: &quot; + someNumbersSquared.length); // this will print 0
 </code></pre>
 <p>The difference between state Observables and derived Observables is explained in <a href="../fusejs/observable-api.html#state-observables-and-derived-observables">Observable API docs</a>. In short, derived Observables won't propagate data unless there is a subscriber at the end of the chain, while the data in state Observables is available synchronously. Keep reading to learn more about how subscriptions work.</p>
 <h2 id="subscribing-to-changes-in-observables">Subscribing to changes in Observables</h2>

@@ -589,22 +589,22 @@
 <h2 id="fetch">fetch()</h2>
 <p><code>fetch</code> is the main way to do HTTP requests.</p>
 <p>This is an example on how to take a JavaScript object, POST it as JSON and receive JSON data which is turned back into a JavaScript object using <code>fetch</code>:</p>
-<pre><code>var status = 0;
-var response_ok = false;
+<pre><code class="language-js">	var status = 0;
+	var response_ok = false;
 
-fetch('http://example.com', {
-	method: 'POST',
-	headers: { &quot;Content-type&quot;: &quot;application/json&quot;},
-	body: JSON.stringify(requestObject)
-}).then(function(response) {
-	status = response.status;  // Get the HTTP status code
-	response_ok = response.ok; // Is response.status in the 200-range?
-	return response.json();    // This returns a promise
-}).then(function(responseObject) {
-	// Do something with the result
-}).catch(function(err) {
-	// An error occurred somewhere in the Promise chain
-});
+	fetch('http://example.com', {
+		method: 'POST',
+		headers: { &quot;Content-type&quot;: &quot;application/json&quot;},
+		body: JSON.stringify(requestObject)
+	}).then(function(response) {
+		status = response.status;  // Get the HTTP status code
+		response_ok = response.ok; // Is response.status in the 200-range?
+		return response.json();    // This returns a promise
+	}).then(function(responseObject) {
+		// Do something with the result
+	}).catch(function(err) {
+		// An error occurred somewhere in the Promise chain
+	});
 </code></pre>
 <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/GlobalFetch/fetch">Complete documentation for <code>fetch</code> can be found here</a></p>
 <h2 id="xmlhttprequest">XMLHttpRequest</h2>

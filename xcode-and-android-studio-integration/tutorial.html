@@ -589,11 +589,11 @@
 <p>The <code>Fuse.Views</code> package allows you to take any UX UI component and export them as a native Library for iOS and Android. In this tutorial we will step by step look at how this is done.</p>
 <h2 id="step-0-installing-dependencies">Step 0: Installing dependencies</h2>
 <p>To integrate with Xcode and Android Studio make sure you have installed the Fuse.Views package using the following command in either terminal (on macOS) or cmd (on Windows):</p>
-<pre><code>uno install Fuse.Views
+<pre><code class="language-sh">uno install Fuse.Views
 </code></pre>
 <p>In your <code>.unoproj</code>, add a package reference to <code>Fuse.Views</code>.
 It should look something like the following.</p>
-<pre><code>{
+<pre><code class="language-json">{
 	&quot;Packages&quot;: [
 		&quot;Fuse&quot;,
 		&quot;FuseJS&quot;,
@@ -607,7 +607,7 @@ It should look something like the following.</p>
 <h2 id="step-1-exporting-views">Step 1: Exporting Views</h2>
 <p>In Fuse Views you must explicitly specify which views you want to be able to instantiate from Swift, Objective-C and Java. You can export any UX component, except for non-UI elements (like Triggers and Animations) and <a href="../ux-markup/classes.html">UX Classes</a> that have <a href="../ux-markup/dependencies.html">dependencies</a>.</p>
 <p>Let's say that, for example, you have defined the following components somewhere in your Fuse project:</p>
-<pre><code>&lt;Panel ux:Class=&quot;VideoView&quot;&gt;
+<pre><code class="language-xml">&lt;Panel ux:Class=&quot;VideoView&quot;&gt;
     &lt;!-- ... --&gt;
 &lt;/Panel&gt;
 
@@ -616,7 +616,7 @@ It should look something like the following.</p>
 &lt;/Panel&gt;
 </code></pre>
 <p>We can then export these components by providing them as <a href="../ux-markup/templates.html">UX Templates</a> to a special <code>ExportedViews</code> tag.</p>
-<pre><code>&lt;App&gt;
+<pre><code class="language-xml">&lt;App&gt;
     &lt;ExportedViews&gt;
         &lt;VideoView ux:Template=&quot;VideoView&quot; /&gt;
         &lt;StatsView ux:Template=&quot;StatsView&quot; /&gt;
@@ -624,7 +624,7 @@ It should look something like the following.</p>
 &lt;/App&gt;
 </code></pre>
 <p>Export an <a href="https://developer.apple.com/library/content/documentation/MacOSX/Conceptual/BPFrameworks/Concepts/WhatAreFrameworks.html">Xcode Framework</a> or an <a href="https://developer.android.com/studio/projects/android-library.html">Android aar</a> by compiling with <code>-DLIBRARY</code> set.</p>
-<pre><code>uno build -t=ios -DLIBRARY
+<pre><code class="language-sh">uno build -t=ios -DLIBRARY
 uno build -t=android -DLIBRARY
 </code></pre>
 <p>Now you will find the Xcode framework and the Android aar under the following paths:</p>
@@ -642,10 +642,10 @@ uno build -t=android -DLIBRARY
 <p><img src="../media/fuse-views/disable_bitcode.png" alt="Disable Bitcode"></p>
 <h4 id="android">Android</h4>
 <p>In <code>YourAndroidApp/app/build.gradle</code>, just under this line:</p>
-<pre><code>apply plugin: 'com.android.application'
+<pre><code class="language-js">apply plugin: 'com.android.application'
 </code></pre>
 <p>Add the following:</p>
-<pre><code>allprojects {
+<pre><code class="language-js">allprojects {
     repositories {
         jcenter()
         flatDir {
@@ -655,10 +655,10 @@ uno build -t=android -DLIBRARY
 }
 </code></pre>
 <p>and in the dependency section, add:</p>
-<pre><code>compile(name:'app-debug', ext:'aar')
+<pre><code class="language-js">compile(name:'app-debug', ext:'aar')
 </code></pre>
 <p>In <code>AndroidManifest.xml</code> add the following attributes to the main <code>activity</code> declaration:</p>
-<pre><code>android:launchMode=&quot;singleTask&quot;
+<pre><code class="language-js">android:launchMode=&quot;singleTask&quot;
 android:taskAffinity=&quot;&quot;
 android:configChanges=&quot;orientation|keyboardHidden|screenSize|smallestScreenSize&quot;
 </code></pre>
@@ -678,9 +678,9 @@ android:configChanges=&quot;orientation|keyboardHidden|screenSize|smallestScreen
 <p>Before you can instantiate your exported views, fuse needs to be initialized.</p>
 <h4 id="objective-c">Objective-C</h4>
 <p>Add the following in your <code>AppDelegate</code></p>
-<pre><code>#import &lt;FuseProjectName/Context.h&gt;
+<pre><code class="language-objectivec">#import &lt;FuseProjectName/Context.h&gt;
 </code></pre>
-<pre><code>- (BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+<pre><code class="language-objectivec">- (BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [uContext initSharedContextWithWindow:^UIWindow* () { return [self window]; }];
     [[uContext sharedContext] application:application willFinishLaunchingWithOptions:launchOptions];
@@ -689,10 +689,10 @@ android:configChanges=&quot;orientation|keyboardHidden|screenSize|smallestScreen
 </code></pre>
 <h4 id="swift">Swift</h4>
 <p>Add a Swift-Objective-C bridging header and add this import:</p>
-<pre><code>#import &lt;FuseProjectName/Context.h&gt;
+<pre><code class="language-swift">#import &lt;FuseProjectName/Context.h&gt;
 </code></pre>
 <p>Then add the following to your <code>AppDelegate</code>.</p>
-<pre><code>func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -&gt; Bool {
+<pre><code class="language-swift">func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -&gt; Bool {
     uContext.initSharedContext(window: { return self.window })
     uContext.shared().application(application, willFinishLaunchingWithOptions: launchOptions)
     return true
@@ -700,14 +700,14 @@ android:configChanges=&quot;orientation|keyboardHidden|screenSize|smallestScreen
 </code></pre>
 <h4 id="java">Java</h4>
 <p>In your main <code>Activity</code>, inherit from <code>com.fuse.views.FuseViewsActivity</code>.</p>
-<pre><code>public class MainActivity extends com.fuse.views.FuseViewsActivity {
+<pre><code class="language-java">public class MainActivity extends com.fuse.views.FuseViewsActivity {
 </code></pre>
 <h5 id="fragment-support">Fragment support</h5>
 <p>To use your View as <code>Fragment</code>, inherit from <code>com.fuse.views.FuseViewsFragment</code></p>
-<pre><code>public class FuseFragment extends com.fuse.views.FuseViewsFragment {
+<pre><code class="language-java">public class FuseFragment extends com.fuse.views.FuseViewsFragment {
 </code></pre>
 <p>In your <code>Activity</code> init FuseViewsFragment on your <code>onCreate()</code> method just before the <code>setContentView()</code></p>
-<pre><code>@Override
+<pre><code class="language-java">@Override
 protected void onCreate(Bundle savedInstanceState) {
 	super.onCreate(savedInstanceState);
 	FuseViewsFragment.init(this, savedInstanceState);
@@ -721,35 +721,35 @@ To interop with your views you will get a handle object with some methods that a
 Through the handle you can get a native View that will display your exported view.</p>
 <h4 id="objective-c">Objective-C</h4>
 <p>Make sure to have these headers imported:</p>
-<pre><code>#import &lt;ProjectName/ExportedViews.h&gt;
+<pre><code class="language-objectivec">#import &lt;ProjectName/ExportedViews.h&gt;
 #import &lt;ProjectName/ViewHandle.h&gt;
 </code></pre>
 <p>Instantiating the view handle and getting the native view:</p>
-<pre><code>ViewHandle* videoView = [ExportedViews instantiate:@&quot;VideoView&quot;];
+<pre><code class="language-objectivec">ViewHandle* videoView = [ExportedViews instantiate:@&quot;VideoView&quot;];
 UIView* nativeView = [videoView view];
 </code></pre>
 <h4 id="swift">Swift</h4>
 <p>Make sure to have these headers imported in your Swift-Objective-C bridging header:</p>
-<pre><code>#import &lt;ProjectName/ExportedViews.h&gt;
+<pre><code class="language-swift">#import &lt;ProjectName/ExportedViews.h&gt;
 #import &lt;ProjectName/ViewHandle.h&gt;
 </code></pre>
 <p>Instantiating the view handle and getting the native view:</p>
-<pre><code>let videoView: ViewHandle? = ExportedViews.instantiate(&quot;VideoView&quot;);
+<pre><code class="language-swift">let videoView: ViewHandle? = ExportedViews.instantiate(&quot;VideoView&quot;);
 let view: UIView = videoView?.view
 </code></pre>
 <h4 id="java">Java</h4>
 <p>Make sure you have these imports in your java file:</p>
-<pre><code>import com.fuse.views.ExportedViews;
+<pre><code class="language-java">import com.fuse.views.ExportedViews;
 import com.fuse.views.ViewHandle;
 </code></pre>
 <p>Instantiating the view handle and getting the native view:</p>
-<pre><code>ViewHandle videoView = ExportedViews.instantiate(&quot;VideoView&quot;);
+<pre><code class="language-java">ViewHandle videoView = ExportedViews.instantiate(&quot;VideoView&quot;);
 android.view.View nativeView = videoView.getView();
 </code></pre>
 <h2 id="step-5-use-the-fuse-view-in-a-native-layout">Step 5: Use the fuse view in a native layout</h2>
 <p>A Fuse View will interop with the native layout, for size it relies on the native layout doing a measure pass on its views. On iOS this might not be the case depending on what kind of layout you have used. So you might have to manage the size by yourself. Using the super view's <code>bounds</code> should be sufficient in most cases.</p>
 <h4 id="objective-c">Objective-C</h4>
-<pre><code>UIView* parent = ...;
+<pre><code class="language-objectivec">UIView* parent = ...;
 
 ViewHandle* videoView = [ExportedViews instantiate:@&quot;VideoView&quot;];
 UIView* nativeView = [videoView view];
@@ -760,7 +760,7 @@ UIView* nativeView = [videoView view];
 [nativeView setFrame:parent.bounds];
 </code></pre>
 <h4 id="swift">Swift</h4>
-<pre><code>let parent: UIView = ...;
+<pre><code class="language-swift">let parent: UIView = ...;
 
 let videoView: ViewHandle? = ExportedViews.instantiate(&quot;VideoView&quot;);
 let view: UIView = videoView?.view
@@ -773,7 +773,7 @@ let height = parent.frame.height
 view?.frame = CGRect(x: 0, y: 0, width: width, height: height)
 </code></pre>
 <h4 id="java">Java</h4>
-<pre><code>android.widget.RelativeLayout parent = ...;
+<pre><code class="language-java">android.widget.RelativeLayout parent = ...;
 
 ViewHandle videoView = ExportedViews.instantiate(&quot;VideoView&quot;);
 android.view.View nativeView = videoView.getView();
@@ -785,7 +785,7 @@ parent.addView(nativeView);
 <p>As mentioned the <code>ViewHandle</code> object acts as your interface with fuse. You can set a data context for your view in the form of JSON, a key-value pair and add callbacks.</p>
 <p>Lets take a look at the API:</p>
 <h4 id="objective-c">Objective-C</h4>
-<pre><code>@interface ViewHandle : NSObject
+<pre><code class="language-objectivec">@interface ViewHandle : NSObject
 
 @property (readonly) UIView* view;
 
@@ -796,10 +796,10 @@ parent.addView(nativeView);
 @end
 </code></pre>
 <p>The signature of <code>Callback</code> is as follows:</p>
-<pre><code>typedef void(^Callback)(Arguments*);
+<pre><code class="language-objectivec">typedef void(^Callback)(Arguments*);
 </code></pre>
 <h4 id="java">Java</h4>
-<pre><code>public class ViewHandle {
+<pre><code class="language-java">public class ViewHandle {
     public android.view.View getView();
     public void setDataJson(String json);
     public void setDataString(String key, String value);
@@ -807,25 +807,25 @@ parent.addView(nativeView);
 }
 </code></pre>
 <p>The interface of <code>ICallback</code> is as follows:</p>
-<pre><code>public interface ICallback {
+<pre><code class="language-java">public interface ICallback {
     void invoke(IArguments args);
 }
 </code></pre>
 <p>If you are familiar with <a href="https://fuse-open.github.io/docs/fuse/reactive/javascript"><code>JavaScript</code></a> and <a href="https://fuse-open.github.io/docs/fuse/reactive/databinding"><code>DataBinding</code></a> in fuse this will be quite easy to understand. <code>setDataJson</code> is the equivalent of having a <code>module.exports</code> in JavaScript and <code>setCallback</code> is the equivalent of adding a function to the <code>exports</code>. The function arguments passed to the native callback in Fuse views will contain the same data you would get in <code>JavaScript</code>, but you get the through the methods available on the <code>Arguments</code>. Since the function arguments needs to be serialized to strings and JSON, accessing the <code>Arguments</code> will lazily serialize what you request. In the common case you are more interested in getting the callback than accessing the whole data context. Please have a look at <a href="https://fuse-open.github.io/docs/scripting/scripting#binding-functions"><code>Binding functions</code></a> for an overview of what arguments will be passed.</p>
-<pre><code>@interface Arguments : NSObject
+<pre><code class="language-objectivec">@interface Arguments : NSObject
 
 @property (readonly) NSDictionary&lt;NSString*,NSString*&gt;* args;
 @property (readonly) NSString* dataJson;
 
 @end
 </code></pre>
-<pre><code>public interface IArguments {
+<pre><code class="language-objectivec">public interface IArguments {
     HashMap&lt;String,String&gt; getArgs();
     String getDataJson();
 }
 </code></pre>
 <p>Let's look at an example with UX and see how that component can be populated with data from JavaScript and from a native language with fuse views:</p>
-<pre><code>&lt;DockPanel&gt;
+<pre><code class="language-xml">&lt;DockPanel&gt;
     &lt;Text Value=&quot;{title}&quot; Dock=&quot;Top&quot; Margin=&quot;8&quot; TextAlignment=&quot;Center&quot; /&gt;
     &lt;StackPanel ux:Class=&quot;UsersListView&quot; Dock=&quot;Fill&quot;&gt;
         &lt;Each Items=&quot;{users}&quot;&gt;
@@ -837,7 +837,7 @@ parent.addView(nativeView);
 &lt;/DockPanel&gt;
 </code></pre>
 <p>For the above UX code we can populate it with JavaScript:</p>
-<pre><code>module.exports = {
+<pre><code class="language-js">module.exports = {
     title: &quot;Meetup attendees&quot;,
     users: [...],
     user_clicked: function(args) { ... }
@@ -845,19 +845,19 @@ parent.addView(nativeView);
 </code></pre>
 <p>The equivalent in fuse views will look like this:</p>
 <h4 id="objective-c">Objective-C</h4>
-<pre><code>ViewHandle* usersListView = [ExportedViews instantiate:@&quot;UsersListView&quot;];
+<pre><code class="language-objectivec">ViewHandle* usersListView = [ExportedViews instantiate:@&quot;UsersListView&quot;];
 [usersListView setDataString:@&quot;Meetup attendees&quot; forKey:@&quot;title&quot;];
 [usersListView setDataJson:@&quot;{ \&quot;users\&quot; : [...] }&quot;];
 [usersListView setCallback:^void(NSDictionary&lt;NSString*,NSString*&gt;* args) { ... } forKey:@&quot;user_clicked&quot;];
 </code></pre>
 <h4 id="swift">Swift</h4>
-<pre><code>let usersListView: ViewHandle? = ExportedViews.instantiate(&quot;UsersListView&quot;)
+<pre><code class="language-swift">let usersListView: ViewHandle? = ExportedViews.instantiate(&quot;UsersListView&quot;)
 usersListView?.setDataString(&quot;Meetup attendees&quot; as String!, &quot;title&quot; as String!)
 usersListView?.setDataJson(&quot;{ \&quot;users\&quot; : [...] }&quot; as String!)
 usersListView?.setCallback({ (args) -&gt; Void in { ... } }, forKey: &quot;user_clicked&quot;)
 </code></pre>
 <h4 id="java">Java</h4>
-<pre><code>ViewHandle usersListView = ExportedViews.instantiate(&quot;UsersListView&quot;);
+<pre><code class="language-java">ViewHandle usersListView = ExportedViews.instantiate(&quot;UsersListView&quot;);
 usersListView.setDataString(&quot;title&quot;, &quot;Meetup attendees&quot;);
 usersListView.setDataJson(&quot;{ \&quot;users\&quot; : [...] }&quot;);
 usersListView.setCallback(&quot;user_clicked&quot;, new ICallback() {
@@ -867,7 +867,7 @@ usersListView.setCallback(&quot;user_clicked&quot;, new ICallback() {
 </code></pre>
 <h5 id="fragment-support">Fragment support</h5>
 <p>The full workaround when using <code>Fragment</code></p>
-<pre><code>
+<pre><code class="language-csharp">
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         RelativeLayout relativeLayout = new RelativeLayout(getContext());

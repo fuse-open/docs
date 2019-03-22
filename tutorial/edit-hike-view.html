@@ -590,35 +590,35 @@
 <p>The final code for this chapter is available <a href="https://github.com/fusetools/hikr/tree/chapter-1">here</a>.</p>
 <h2 id="creating-our-project">Creating our Project</h2>
 <p>The first thing we'll do is create our project, and we'll call it &quot;hikr&quot;. Just like in the <a href="../basics/quickstart.html">quickstart</a>, this can be done using the Fuse dashboard or the Fuse command like tools. For example:</p>
-<pre><code>fuse create app hikr [optional path]
+<pre><code class="language-sh">fuse create app hikr [optional path]
 </code></pre>
 <p>This should create the following directory structure:</p>
-<pre><code>$ tree
+<pre><code class="language-sh">$ tree
 .
 |- MainView.ux
 |- hikr.unoproj
 </code></pre>
 <p>These two files are all it takes to build a Fuse app! <code>MainView.ux</code> will contain the UX code for the top-level view of our app, and <code>hikr.unoproj</code> will contain various project settings. Everything we'll be covering in this chapter will happen inside <code>MainView.ux</code>.</p>
 <p>If the project was created from the command line, open it in Fuse:</p>
-<pre><code>cd hikr
+<pre><code class="language-sh">cd hikr
 fuse preview
 </code></pre>
 <p>Remember that we can also start previews on our devices, and now's a pretty good time to do so. See our <a href="../basics/preview-and-export.html">Preview and Export</a> guide for info on how to get those up and running.</p>
 <h2 id="displaying-our-first-hike">Displaying our First Hike</h2>
 <p>Now that we've got our project and our previews are up and running, it's time to start displaying things and fleshing out our data model. We won't worry about setting up the different pages in our app or anything just yet - that comes later. For now, we'll start by simply displaying some text.</p>
 <p>If we open up <code>MainView.ux</code> in a text editor, it should look something like this:</p>
-<pre><code class="language-ux">&lt;App&gt;
+<pre><code class="language-xml">&lt;App&gt;
 &lt;/App&gt;
 </code></pre>
 <p>As we can see, it's just an empty <a href="../fuse/app.html">App</a> tag, representing a clean slate for us to start working on. Also note that in UX, tags are case-sensitive; <a href="../fuse/app.html">App</a> is different than <code>app</code>, for example.</p>
 <p>Now we'll add a basic <a href="../fuse/controls/text.html">Text</a> element:</p>
-<pre><code class="language-ux">&lt;App&gt;
+<pre><code class="language-xml">&lt;App&gt;
 	&lt;Text&gt;Tricky Trails&lt;/Text&gt;
 &lt;/App&gt;
 </code></pre>
 <p>At this point, we'll save <code>MainView.ux</code>, and immediately, our various previews will update, showing our changes! When working with Fuse, it's recommended to save often, as this can help catch errors and typos immediately, instead of having them pile up and dealing with them later on down the line.</p>
 <p>As we can see, <a href="../fuse/controls/text.html">Text</a> is used to display a read-only block of text. This is great, but you may have noticed this text is partially covered by the status bar if you're previewing on your device, so we'll go ahead and fix that real quick. To do this, all we have to do is wrap our <a href="../fuse/controls/text.html">Text</a> element inside a ClientPanel tag, like so:</p>
-<pre><code class="language-ux">&lt;App&gt;
+<pre><code class="language-xml">&lt;App&gt;
 	&lt;ClientPanel&gt;
 		&lt;Text&gt;Tricky Trails&lt;/Text&gt;
 	&lt;/ClientPanel&gt;
@@ -626,7 +626,7 @@ fuse preview
 </code></pre>
 <p>A ClientPanel is really just a container that will reserve space at the top and bottom of the screen for various OS-specific visuals, which is perfect in our case.</p>
 <p>Before we move on, let's also place our <a href="../fuse/controls/text.html">Text</a> element inside a <a href="../fuse/controls/stackpanel.html">StackPanel</a>. A <a href="../fuse/controls/stackpanel.html">StackPanel</a> is a sort of <em>container</em> for multiple elements that will stack each of its <em>child</em> elements vertically or horizontally. In our case, we only have one element, so it won't really do anything, but it'll be a good idea to make one now so we don't have to worry about it later. The code to do this is pretty simple:</p>
-<pre><code class="language-ux">&lt;App&gt;
+<pre><code class="language-xml">&lt;App&gt;
 	&lt;ClientPanel&gt;
 		&lt;StackPanel&gt;
 			&lt;Text&gt;Tricky Trails&lt;/Text&gt;
@@ -637,7 +637,7 @@ fuse preview
 <h3 id="view-model-and-databinding">View Model and Databinding</h3>
 <p>Cool! So now we've got some text on the screen, but it's displaying a hardcoded string from UX. Since this view will eventually be used to edit one of our hikes, we'll need this text to be dynamic instead. This is where our <em>view model</em> comes in, which we'll implement in JavaScript. Then, we'll use databinding to tie it all together.</p>
 <p>Let's add some inline JavaScript to our app that will just exports a name for our hike:</p>
-<pre><code class="language-ux">&lt;App&gt;
+<pre><code class="language-xml">&lt;App&gt;
 	&lt;ClientPanel&gt;
 		&lt;JavaScript&gt;
 			var name = &quot;Tricky Trails&quot;;
@@ -654,7 +654,7 @@ fuse preview
 &lt;/App&gt;
 </code></pre>
 <p>Now we've got a value in JS exposed to UX, but we're still displaying the hardcoded string from UX. Let's change the <a href="../fuse/controls/text.html">Text</a> element to display our JS variable's value instead:</p>
-<pre><code class="language-ux">&lt;Text Value=&quot;{name}&quot; /&gt;
+<pre><code class="language-xml">&lt;Text Value=&quot;{name}&quot; /&gt;
 </code></pre>
 <p>Great! Now we're displaying the name of one of our hikes. This is an example of <em>one-way</em> databinding, where data flows from JavaScript (our view model) to UX (our view). This is great for <em>displaying</em> data, but we'll want to <em>edit</em> it as well. So let's set that up next.</p>
 <h3 id="observables-and-two-way-databinding">Observables and Two-Way Databinding</h3>
@@ -667,7 +667,7 @@ fuse preview
 </code></pre>
 <p>Now, <code>name</code> is an <a href="../fusejs/observable.html">Observable</a> instead of a regular variable. This means that any changes to it can be observed by the UI or any other <em>subscribers</em> the <a href="../fusejs/observable.html">Observable</a> has. And when we databind to an <a href="../fusejs/observable.html">Observable</a>, this is exactly what happens - Fuse takes care of all the plumbing necessary to ensure that when an <a href="../fusejs/observable.html">Observable</a>'s value is changed, the UI will update accordingly. Awesome!</p>
 <p>Of course, now we actually need something that will change this value. So, let's go ahead and add that <a href="../fuse/controls/textbox.html">TextBox</a> we talked about earlier:</p>
-<pre><code class="language-ux">&lt;App&gt;
+<pre><code class="language-xml">&lt;App&gt;
 	&lt;ClientPanel&gt;
 		&lt;JavaScript&gt;
 			var Observable = require(&quot;FuseJS/Observable&quot;);
@@ -689,7 +689,7 @@ fuse preview
 </code></pre>
 <p>Now, when we save this, we'll have both a <a href="../fuse/controls/text.html">Text</a> and a <a href="../fuse/controls/textbox.html">TextBox</a> element displaying the value of our <code>name</code> <a href="../fusejs/observable.html">Observable</a>. And when we edit the contents of the <a href="../fuse/controls/textbox.html">TextBox</a>, we can see that the <a href="../fuse/controls/text.html">Text</a>'s value also changes! This is because databinding to <a href="../fuse/controls/textbox.html">TextBox</a>'s <code>value</code> property gives us a <em>two-way</em> databinding, which means that not only will the UI update to display incoming values, but it can make changes to these values as well.</p>
 <p>And while we're at it, let's add a caption for it as well by simply adding another <a href="../fuse/controls/text.html">Text</a> element above it:</p>
-<pre><code class="language-ux">&lt;Text&gt;Name:&lt;/Text&gt;
+<pre><code class="language-xml">&lt;Text&gt;Name:&lt;/Text&gt;
 &lt;TextBox Value=&quot;{name}&quot; /&gt;
 </code></pre>
 <p>Looking good!</p>
@@ -717,7 +717,7 @@ rating: rating,
 comments: comments
 </code></pre>
 <p>Then, we'll add a bunch of <a href="../fuse/controls/textbox.html">TextBox</a>'s that we'll bind to these <a href="../fusejs/observable.html">Observable</a>'s (along with some helpful captions as well):</p>
-<pre><code class="language-ux">&lt;Text&gt;Location:&lt;/Text&gt;
+<pre><code class="language-xml">&lt;Text&gt;Location:&lt;/Text&gt;
 &lt;TextBox Value=&quot;{location}&quot; /&gt;
 
 &lt;Text&gt;Distance (km):&lt;/Text&gt;
@@ -736,12 +736,12 @@ comments: comments
 <p><img src="../media/hikr/chapter-1/textbox-overflow.png" alt="Too much text"></p>
 <p>As we can see, there's a bit too much text to fit on just this one line. It would be much nicer if this editor showed all of the text and allowed us to insert multiple lines for this field.</p>
 <p>The fix for this is super simple - instead of using a <a href="../fuse/controls/textbox.html">TextBox</a>, we'll use a <a href="../fuse/controls/textview.html">TextView</a>, and ensure its <code>TextWrapping</code> property is set to <code>Wrap</code>, like so:</p>
-<pre><code class="language-ux">&lt;Text&gt;Comments:&lt;/Text&gt;
+<pre><code class="language-xml">&lt;Text&gt;Comments:&lt;/Text&gt;
 &lt;TextView Value=&quot;{comments}&quot; TextWrapping=&quot;Wrap&quot; /&gt;
 </code></pre>
 <p>This gives us exactly what we were after - a multi-line editor with text wrapping displaying all of the text in the field. Of course, it's a bit hard to see, but we'll fix that in a later chapter about styling. For now, let's just continue to focus on blocking out the major parts of our app.</p>
 <p>The last thing we'll do is ensure that all of our value editors are accessible, even when they take up a lot of space (for example, when the <code>comments</code> value is quite long). To do this, we'll simply place our <a href="../fuse/controls/stackpanel.html">StackPanel</a> inside a <a href="../fuse/controls/scrollview.html">ScrollView</a>, like so:</p>
-<pre><code class="language-ux">&lt;ScrollView&gt;
+<pre><code class="language-xml">&lt;ScrollView&gt;
 	&lt;StackPanel&gt;
 		&lt;Text Value=&quot;{name}&quot; /&gt;
 
@@ -767,7 +767,7 @@ comments: comments
 <p>At this point, we've got a view for displaying/editing the data for a specific hike. It looks something like this:</p>
 <p><img src="../media/hikr/chapter-1/end-of-chapter.png" alt="End of chapter result"></p>
 <p>And here's what our final code should look like:</p>
-<pre><code class="language-ux">&lt;App&gt;
+<pre><code class="language-xml">&lt;App&gt;
 	&lt;ClientPanel&gt;
 		&lt;JavaScript&gt;
 			var Observable = require(&quot;FuseJS/Observable&quot;);

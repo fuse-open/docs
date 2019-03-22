@@ -588,18 +588,18 @@
           <h1 id="local-names-ux-name">Local names (ux:Name)</h1>
 <p>The <code>ux:Name</code> attribute in UX Markup is used to provide a local name to a UX object.</p>
 <h2 id="syntax">Syntax</h2>
-<pre><code>&lt;type ux:Name=&quot;node_name&quot; /&gt;
+<pre><code class="language-xml">	&lt;type ux:Name=&quot;node_name&quot; /&gt;
 </code></pre>
 <p>Where <code>type</code> is any type accessible in UX Markup, and <code>node_name</code> is a valid Uno identifier.</p>
 <h2 id="remarks">Remarks</h2>
 <p>Any object (XML element) in UX markup can be given a <code>ux:Name</code> attribute to assign a local name to it.</p>
-<pre><code>&lt;Panel ux:Name=&quot;panel1&quot; /&gt;
+<pre><code class="language-xml">	&lt;Panel ux:Name=&quot;panel1&quot; /&gt;
 </code></pre>
 <p>Once a name is given, the object can be referenced by that name within the same <em>scope</em>. Any UX expression can then refer to this object by it's plain name. Local names take precedence over global resources with the same name.</p>
-<pre><code>&lt;Rectangle LayoutMaster=&quot;panel1&quot; /&gt;
+<pre><code class="language-xml">	&lt;Rectangle LayoutMaster=&quot;panel1&quot; /&gt;
 </code></pre>
 <p>Names can be used direclty in UX Expressions, for example like this:</p>
-<pre><code>&lt;Rectangle Width=&quot;width(panel1) / 2&quot;
+<pre><code class="language-xml">	&lt;Rectangle Width=&quot;width(panel1) / 2&quot;
 </code></pre>
 <blockquote>
 <p>Note that ux:Name can not be data-bound as it is a compile-time attribute. Data-binding happens at run-time.</p>

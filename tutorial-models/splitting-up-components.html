@@ -592,7 +592,7 @@
 <p>The final code for this chapter is available <a href="https://github.com/fusetools/hikr/tree/models-chapter-3">here</a>.</p>
 <h2 id="transforming-the-edit-hike-view-into-a-component">Transforming the Edit Hike view into a component</h2>
 <p>At this point it is a good idea to move our components into their own files so that we eventually can design a navigation flow between them. We'll do this in small steps. First, we'll want to create a new folder in our project called <code>Pages</code>:</p>
-<pre><code>$ tree
+<pre><code class="language-sh">$ tree
 .
 |- MainView.ux
 |- App.js
@@ -600,10 +600,10 @@
 |- Pages
 </code></pre>
 <p>Inside this new folder, we'll create a new file called <code>EditHikePage.ux</code>. Inside there, we'll place the following code:</p>
-<pre><code>&lt;Page ux:Class=&quot;EditHikePage&quot;&gt;&lt;/Page&gt;
+<pre><code class="language-xml">&lt;Page ux:Class=&quot;EditHikePage&quot;&gt;&lt;/Page&gt;
 </code></pre>
 <p>Our directory tree should now look a bit like this:</p>
-<pre><code>$ tree
+<pre><code class="language-sh">$ tree
 .
 |- MainView.ux
 |- App.js
@@ -612,7 +612,7 @@
    |- EditHikePage.ux
 </code></pre>
 <p>Now before we move on, I need to explain a couple things. Let's take another look at our new <code>EditHikePage.ux</code> file's contents:</p>
-<pre><code>&lt;Page ux:Class=&quot;EditHikePage&quot;&gt;&lt;/Page&gt;
+<pre><code class="language-xml">&lt;Page ux:Class=&quot;EditHikePage&quot;&gt;&lt;/Page&gt;
 </code></pre>
 <p>At first glance, it looks like we're just creating a <a href="../fuse/controls/page.html">Page</a> with a funny <code>ux:Class</code> property and nothing in it. But what's a <a href="../fuse/controls/page.html">Page</a> exactly? And what's with this <code>ux:Class</code> stuff?</p>
 <p>To answer the first question, a <a href="../fuse/controls/page.html">Page</a> is basically a special kind of UI element that will participate in navigation. We don't actually <em>have</em> to use a <a href="../fuse/controls/page.html">Page</a> here; we could just as well use a <code>Panel</code>, a <code>Button</code>, or something else entirely. But it's generally considered best practice to use a <a href="../fuse/controls/page.html">Page</a> if you're going to use the component with navigation specifically, which we'll do a bit later in this chapter and the following one.</p>
@@ -622,7 +622,7 @@
 <p>You can find out more about classes in our <a href="https://fuse-open.github.io/docs/basics/creating-components">Creating Components</a> documentation.</p>
 </blockquote>
 <p>Now that we've understood the basic contents of this file, it's time to migrate the code we want in our view over from <code>MainView.ux</code>. If we take a look at that file, we'll see something like this:</p>
-<pre><code>&lt;App Model=&quot;App&quot;&gt;
+<pre><code class="language-xml">&lt;App Model=&quot;App&quot;&gt;
 	&lt;ClientPanel&gt;
 		&lt;ScrollView&gt;
 			&lt;StackPanel&gt;
@@ -651,13 +651,13 @@
 </code></pre>
 <p>Looking at the top-level parts of this file, we first see our <a href="../fuse/app.html">App</a>, and then a ClientPanel. All of the other contents are what make up our view specifically. So these are the parts we'll want to move over to our <code>EditHikePage.ux</code> file, inside the <a href="../fuse/controls/page.html">Page</a>. This will look something like this:</p>
 <p>MainView.ux:</p>
-<pre><code>&lt;App Model=&quot;App&quot;&gt;
+<pre><code class="language-xml">&lt;App Model=&quot;App&quot;&gt;
 	&lt;ClientPanel&gt;
 	&lt;/ClientPanel&gt;
 &lt;/App&gt;
 </code></pre>
 <p>EditHikePage.ux:</p>
-<pre><code>&lt;Page ux:Class=&quot;EditHikePage&quot;&gt;
+<pre><code class="language-xml">&lt;Page ux:Class=&quot;EditHikePage&quot;&gt;
 	&lt;ScrollView&gt;
 		&lt;StackPanel&gt;
 			&lt;Each Items=&quot;{hikes}&quot;&gt;
@@ -683,7 +683,7 @@
 &lt;/Page&gt;
 </code></pre>
 <p>If we save these files, our preview will update, but this time, our contents will vanish! The reason for this is simple - we've only created the <code>EditHikePage</code> class, but we haven't <em>used</em> it anywhere! To fix this, we'll just add an <em>instance</em> of the <code>EditHikePage</code> class inside the ClientPanel in <code>MainView.ux</code>, like so:</p>
-<pre><code>&lt;App Model=&quot;App&quot;&gt;
+<pre><code class="language-xml">&lt;App Model=&quot;App&quot;&gt;
 	&lt;ClientPanel&gt;
 		&lt;EditHikePage /&gt;
 	&lt;/ClientPanel&gt;
@@ -693,22 +693,22 @@
 <h2 id="separating-our-home-page">Separating our home page</h2>
 <p>At this point, our <code>EditHikePage</code> class is actually two components in one - a hike selector, and a hike editor. Generally, when making components, it's a good idea to make sure they're a simple as possible, and that they only represent one <em>thing</em>, like a single view. What we'll do next is to separate the selector view into its own class, which we'll call the <code>HomePage</code>.</p>
 <p>Now that we've basically done this before, this second time should be a little easier. First, we'll create a blank page class that will become our home page, in a file called <code>HomePage.ux</code> in our <code>Pages</code> directory:</p>
-<pre><code>&lt;Page ux:Class=&quot;HomePage&quot;&gt;&lt;/Page&gt;
+<pre><code class="language-xml">&lt;Page ux:Class=&quot;HomePage&quot;&gt;&lt;/Page&gt;
 </code></pre>
 <p>Next, we'll migrate the home page-specific UX code from <code>EditHikePage.ux</code> into <code>HomePage.ux</code>. Specifically, we're after the <a href="../fuse/reactive/each.html">Each</a> tag that displayed the <code>hikes</code> collection:</p>
-<pre><code>&lt;Each Items=&quot;{hikes}&quot;&gt;
+<pre><code class="language-xml">&lt;Each Items=&quot;{hikes}&quot;&gt;
 	&lt;Button Text=&quot;{name}&quot; Clicked=&quot;{chooseHike}&quot; /&gt;
 &lt;/Each&gt;
 </code></pre>
 <p>So let's go ahead and move that over:</p>
-<pre><code>&lt;Page ux:Class=&quot;HomePage&quot;&gt;
+<pre><code class="language-xml">&lt;Page ux:Class=&quot;HomePage&quot;&gt;
 	&lt;Each Items=&quot;{hikes}&quot;&gt;
 		&lt;Button Text=&quot;{name}&quot; Clicked=&quot;{chooseHike}&quot; /&gt;
 	&lt;/Each&gt;
 &lt;/Page&gt;
 </code></pre>
 <p>Also, since we're going to be displaying a bunch of these hikes, we'll want to place them inside a <a href="../fuse/controls/stackpanel.html">StackPanel</a>. It's a good idea to also have that inside a <a href="../fuse/controls/scrollview.html">ScrollView</a>, so we'll set that up too:</p>
-<pre><code>&lt;Page ux:Class=&quot;HomePage&quot;&gt;
+<pre><code class="language-xml">&lt;Page ux:Class=&quot;HomePage&quot;&gt;
 	&lt;ScrollView&gt;
 		&lt;StackPanel&gt;
 			&lt;Each Items=&quot;{hikes}&quot;&gt;
@@ -723,7 +723,7 @@
 <p>By now, we've got multiple pages, and we'll need a way to display them and navigate between them. In Fuse, this is handled by the <a href="../fuse/controls/navigator.html">Navigator</a> component. Navigation in general will need a proper introduction, and we'll want to take our time learning how to do it properly, so we'll take a closer look at it in the next chapter.</p>
 <p>For now, to keep things simple, we'll use a <a href="../fuse/controls/pagecontrol.html">PageControl</a> instead. A <a href="../fuse/controls/pagecontrol.html">PageControl</a> is great for cases where we want to have a few pages side-by-side that we'll to swipe between, which is just fine for initially displaying our two pages.</p>
 <p>So, if we take a look at <code>MainView.ux</code>, it currently looks something like this:</p>
-<pre><code>&lt;App Model=&quot;App&quot;&gt;
+<pre><code class="language-xml">&lt;App Model=&quot;App&quot;&gt;
 	&lt;ClientPanel&gt;
 		&lt;EditHikePage /&gt;
 	&lt;/ClientPanel&gt;
@@ -731,7 +731,7 @@
 
 </code></pre>
 <p>Let's place the <code>EditHikePage</code> instance inside a <a href="../fuse/controls/pagecontrol.html">PageControl</a>, like so:</p>
-<pre><code>&lt;App Model=&quot;App&quot;&gt;
+<pre><code class="language-xml">&lt;App Model=&quot;App&quot;&gt;
 	&lt;ClientPanel&gt;
 		&lt;PageControl&gt;
 			&lt;EditHikePage /&gt;
@@ -740,7 +740,7 @@
 &lt;/App&gt;
 </code></pre>
 <p>Now, all we have to do is add a <code>HomePage</code> instance inside our <a href="../fuse/controls/pagecontrol.html">PageControl</a> as well. Because it's the home page, let's place it above our existing <code>EditHikePage</code> instance:</p>
-<pre><code>&lt;App Model=&quot;App&quot;&gt;
+<pre><code class="language-xml">&lt;App Model=&quot;App&quot;&gt;
 	&lt;ClientPanel&gt;
 		&lt;PageControl&gt;
 			&lt;HomePage /&gt;
@@ -758,7 +758,7 @@
 <p><img src="../media/hikr/chapter-3/edithikepage.png" alt="End of chapter result"></p>
 <p>And here's what the code for all of our various files looks like. It's a few more files now, but they're much simpler now in isolation:</p>
 <p><code>hikr.unoproj</code>:</p>
-<pre><code>{
+<pre><code class="language-json">{
   &quot;RootNamespace&quot;:&quot;&quot;,
   &quot;Packages&quot;: [
     &quot;Fuse&quot;,
@@ -771,7 +771,7 @@
 }
 </code></pre>
 <p><code>MainView.ux</code>:</p>
-<pre><code>&lt;App Model=&quot;App&quot;&gt;
+<pre><code class="language-xml">&lt;App Model=&quot;App&quot;&gt;
 	&lt;ClientPanel&gt;
 		&lt;PageControl&gt;
 			&lt;HomePage /&gt;
@@ -781,7 +781,7 @@
 &lt;/App&gt;
 </code></pre>
 <p><code>App.js</code></p>
-<pre><code>class Hike {
+<pre><code class="language-js">class Hike {
 	constructor(name, location, distance, rating, comments) {
 		this.name = name;
 		this.location = location;
@@ -845,7 +845,7 @@ export default class App {
 }
 </code></pre>
 <p><code>Pages/EditHikePage.ux</code>:</p>
-<pre><code>&lt;Page ux:Class=&quot;EditHikePage&quot;&gt;
+<pre><code class="language-xml">&lt;Page ux:Class=&quot;EditHikePage&quot;&gt;
 	&lt;ScrollView&gt;
 		&lt;StackPanel&gt;
 			&lt;Text Value=&quot;{name}&quot; /&gt;
@@ -869,7 +869,7 @@ export default class App {
 &lt;/Page&gt;
 </code></pre>
 <p><code>Pages/HomePage.ux</code>:</p>
-<pre><code>&lt;Page ux:Class=&quot;HomePage&quot;&gt;
+<pre><code class="language-xml">&lt;Page ux:Class=&quot;HomePage&quot;&gt;
 	&lt;ScrollView&gt;
 		&lt;StackPanel&gt;
 			&lt;Each Items=&quot;{hikes}&quot;&gt;

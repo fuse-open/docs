@@ -592,7 +592,7 @@
 <li>Remove <code>ux:InheritStyle</code>, <code>ux:Cascade</code>, <code>IgnoreStyle</code> attributes, as they no longer have any meaning or effect.</li>
 </ul>
 <p>An empty app now looks like this:</p>
-<pre><code>&lt;App&gt;
+<pre><code class="language-xml">&lt;App&gt;
 &lt;/App&gt;
 </code></pre>
 <p>Note that all semantic controls (<code>Button</code>, <code>Switch</code>, <code>Slider</code> and <code>TextInput</code>) will no longer get the <code>Basic</code> theme apperance, but instead a much more plain generic look/no look at all. To keep the old appearance, prefix all uses of those controls with <code>Basic.</code>, e.g. <code>&lt;Basic.Button /&gt;</code>. Remember to add a reference to <code>Fuse.BasicTheme</code> in your <code>.unoproj</code> if you want access to this (not default).</p>
@@ -613,7 +613,7 @@
 <li><code>&quot;Fuse.BasicTheme&quot;</code></li>
 </ul>
 <p>A minimal .unoproj file should now look something like this:</p>
-<pre><code>{
+<pre><code class="language-json">{
   &quot;Packages&quot;: [
     &quot;Fuse&quot;,
     &quot;FuseJS&quot;,
@@ -630,13 +630,13 @@
 <h4 id="ux-global-on-javascript-tags-is-now-deprecated"><code>ux:Global</code> on JavaScript tags is now deprecated</h4>
 <p>Using <code>ux:Global</code> on JavaScript modules to make them accessible to <code>require()</code> will have unpredictable behavior in <code>fuse preview</code>.</p>
 <p>Instead require the JS file directly by including it in your project as a bundle file, for example:</p>
-<pre><code>&quot;Includes&quot;: [
+<pre><code class="language-json">&quot;Includes&quot;: [
     &quot;*&quot;,
     &quot;*.js:Bundle&quot;
 ]
 </code></pre>
 <p>and then use require with the filename instead:</p>
-<pre><code>var foo = require('foo'); // requires foo.js in the project root
+<pre><code class="language-js">var foo = require('foo'); // requires foo.js in the project root
 var bar = require('./../bar'); // requires bar.js in the folder above the current file
 </code></pre>
 <p>Check out <a href="fusejs/fusejs.html#importing-modules-by-file-name">the detailed docs</a> for more info.</p>
@@ -650,16 +650,16 @@ var bar = require('./../bar'); // requires bar.js in the folder above the curren
 <li>As <code>TextInput</code> is invisible by default, we can use the new <code>TextBox</code> to get a decorated text input (easier while prototyping).</li>
 </ul>
 <p>We can now style <code>TextInput</code> by putting elements inside it. It behaves like a <code>DockPanel</code> where remaining space is the actual editor:</p>
-<pre><code>&lt;TextInput&gt;
-	&lt;Rectangle Dock=&quot;Bottom&quot; Height=&quot;2&quot; Color=&quot;Blue&quot; Margin=&quot;4&quot; /&gt;
-&lt;/TextInput&gt;
+<pre><code class="language-xml">	&lt;TextInput&gt;
+		&lt;Rectangle Dock=&quot;Bottom&quot; Height=&quot;2&quot; Color=&quot;Blue&quot; Margin=&quot;4&quot; /&gt;
+	&lt;/TextInput&gt;
 </code></pre>
 <h4 id="changes-bugfixes-to-ux-element-ordering-semantics">Changes (bugfixes) to UX element ordering semantics</h4>
 <ul>
 <li><code>Element</code>s placed inside <code>Trigger</code>s will now be placed at the same location in the children list as their containing <code>Trigger</code>.</li>
 </ul>
 <p>Here is an example where this matters:</p>
-<pre><code>&lt;Panel&gt;
+<pre><code class="language-xml">&lt;Panel&gt;
 	&lt;Each Count=&quot;2&quot;&gt;
 		&lt;ElemOne/&gt;
 	&lt;/Each&gt;
@@ -667,7 +667,7 @@ var bar = require('./../bar'); // requires bar.js in the folder above the curren
 &lt;/Panel&gt;
 </code></pre>
 <p>The previous behavior turned the above UX into the following equivalent:</p>
-<pre><code>&lt;Panel&gt;
+<pre><code class="language-xml">&lt;Panel&gt;
 	&lt;ElemTwo/&gt;
 	&lt;ElemOne/&gt;
 	&lt;ElemOne/&gt;
@@ -675,7 +675,7 @@ var bar = require('./../bar'); // requires bar.js in the folder above the curren
 </code></pre>
 <p>Notice that the element inside the <code>Each</code> are placed after element outside it.</p>
 <p>The new behavior works like this:</p>
-<pre><code>&lt;Panel&gt;
+<pre><code class="language-xml">&lt;Panel&gt;
 	&lt;ElemOne/&gt;
 	&lt;ElemOne/&gt;
 	&lt;ElemTwo/&gt;
@@ -700,12 +700,12 @@ var bar = require('./../bar'); // requires bar.js in the folder above the curren
 </li>
 </ul>
 <p>If you need to use a custom <code>Easing</code> and <code>Duration</code>, rewrite</p>
-<pre><code>&lt;LinearNavigation Easing=&quot;CubicOut&quot; Duration=&quot;0.3&quot; /&gt;
+<pre><code class="language-xml">	&lt;LinearNavigation Easing=&quot;CubicOut&quot; Duration=&quot;0.3&quot; /&gt;
 </code></pre>
 <p>To this:</p>
-<pre><code>&lt;LinearNavigation&gt;
-	&lt;NavigationMotion Easing=&quot;CubicOut&quot; Duration=&quot;0.3&quot; /&gt;
-&lt;/LinearNavigation&gt;
+<pre><code class="language-xml">	&lt;LinearNavigation&gt;
+		&lt;NavigationMotion Easing=&quot;CubicOut&quot; Duration=&quot;0.3&quot; /&gt;
+	&lt;/LinearNavigation&gt;
 </code></pre>
 <h4 id="uno-api-changes">Uno API Changes</h4>
 <p>These changes are only relevant if you have custom <code>.uno</code> code in your projects.</p>
@@ -721,10 +721,10 @@ var bar = require('./../bar'); // requires bar.js in the folder above the curren
 For example, in the<code>WhileLoaded</code> trigger:</p>
 </li>
 </ul>
-<pre><code>public static void SetState(Node n, bool loaded)
+<pre><code class="language-csharp">public static void SetState(Node n, bool loaded)
 </code></pre>
 <p>has become</p>
-<pre><code>public static void SetState(Visual v, bool loading)
+<pre><code class="language-csharp">public static void SetState(Visual v, bool loading)
 </code></pre>
 <p>For further details, please see the <a href="https://fuse-open.github.io/downloads">change log</a>.</p>
 

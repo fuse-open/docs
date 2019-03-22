@@ -594,20 +594,20 @@ Open up a command line shell (Terminal on macOS, <code>cmd</code> on Windows) an
 </code></pre>
 <p>Then, we need to add a package reference to <code>Fuse.Charting</code> in our <code>.unoproj</code>.
 It should look something like the following.</p>
-<pre><code>{
-	&quot;Packages&quot;: [
-		&quot;Fuse&quot;,
-		&quot;FuseJS&quot;,
-		&quot;Fuse.Charting&quot;
-	],
-	&quot;Includes&quot;: [
-		&quot;*&quot;
-	]
-}
+<pre><code class="language-json">	{
+		&quot;Packages&quot;: [
+			&quot;Fuse&quot;,
+			&quot;FuseJS&quot;,
+			&quot;Fuse.Charting&quot;
+		],
+		&quot;Includes&quot;: [
+			&quot;*&quot;
+		]
+	}
 </code></pre>
 <p>To use charting in your UX you'll need to import the namespace.
 You can do this at the top of each UX file as part of your <code>App</code> tag or <code>ux:Class</code> declaration.</p>
-<pre><code>&lt;Panel ux:Class=&quot;MyChart&quot; xmlns:c=&quot;Fuse.Charting&quot;&gt;
+<pre><code class="language-xml">	&lt;Panel ux:Class=&quot;MyChart&quot; xmlns:c=&quot;Fuse.Charting&quot;&gt;
 </code></pre>
 <p>The <code>xmlns:c=&quot;Fuse.Charting&quot;</code> declares <code>c</code> to refer to the charting API, allowing for example <code>c:Plot</code> and <code>c:PlotBar</code>.
 Note, this namespace is valid only for this one file. You'll need to add the same declaration to each file you wish to use the charting API.

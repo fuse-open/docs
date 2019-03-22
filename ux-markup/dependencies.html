@@ -588,51 +588,51 @@
           <h1 id="dependencies-ux-dependency">Dependencies (ux:Dependency)</h1>
 <p>The <code>ux:Dependency</code> attribute in UX Markup defines a new hard dependency (Uno constructor argument) that the containing <code>ux:Class</code> requires in order to be constructable.</p>
 <h2 id="syntax">Syntax</h2>
-<pre><code>&lt;type ux:Dependency=&quot;dependency_name&quot; /&gt;
+<pre><code class="language-xml">	&lt;type ux:Dependency=&quot;dependency_name&quot; /&gt;
 </code></pre>
 <p>Where <code>type</code> is any type accessible in UX Markup, and <code>dependency_name</code> is a valid Uno identifier.</p>
 <h2 id="remarks">Remarks</h2>
 <p>Components (defined with <code>ux:Class</code>) often require access to certain objects or services in it's environment to work. For example, a component may require access to the <a href="../fuse/app.html">App</a>'s <a href="../fuse/navigation/router.html">Router</a>.</p>
 <p>We can declare a dependency in our component using the <code>ux:Dependency</code> attribute as follows:</p>
-<pre><code>&lt;Panel ux:Class=&quot;MyBackButton&quot;&gt;
-	&lt;Router ux:Dependency=&quot;router&quot; /&gt;
-	&lt;Panel ux:Dependency=&quot;panel&quot; /&gt;
-	
-	&lt;JavaScript&gt;
-		function clicked() {
-			router.goBack();
-		}
+<pre><code class="language-xml">	&lt;Panel ux:Class=&quot;MyBackButton&quot;&gt;
+		&lt;Router ux:Dependency=&quot;router&quot; /&gt;
+		&lt;Panel ux:Dependency=&quot;panel&quot; /&gt;
 		
-		module.exports = { clicked: clicked };
-	&lt;JavaScript&gt;
-	
-	&lt;Clicked&gt;
-		&lt;Callback Handler=&quot;{clicked}&quot;&gt;
-	&lt;/Clicked&gt;
-	
-	&lt;WhilePressed&gt;
-		&lt;Change panel.Opacity=&quot;0.5&quot; Duration=&quot;0.3&quot; /&gt;
-	&lt;/WhilePressed&gt;
-&lt;/Panel&gt;
+		&lt;JavaScript&gt;
+			function clicked() {
+				router.goBack();
+			}
+			
+			module.exports = { clicked: clicked };
+		&lt;JavaScript&gt;
+		
+		&lt;Clicked&gt;
+			&lt;Callback Handler=&quot;{clicked}&quot;&gt;
+		&lt;/Clicked&gt;
+		
+		&lt;WhilePressed&gt;
+			&lt;Change panel.Opacity=&quot;0.5&quot; Duration=&quot;0.3&quot; /&gt;
+		&lt;/WhilePressed&gt;
+	&lt;/Panel&gt;
 </code></pre>
 <p>The above example declares two dependencies, <code>router</code> and <code>panel</code>. The <code>router</code> will be used to <code>.goBack()</code> when the component is clicked. The panel dubbed <code>panel</code> will be faded to half opacity while the component is pressed.</p>
 <p>Dependencies are equivalent to constructor arguments in Uno, stored in <code>readonly</code> fields. This means the object is always known at initialization time and will never change, so we can safely use the object directly in <a href="../fuse/reactive/javascript.html">JavaScript</a> or in animators such as <code>Change</code> by its given name.</p>
 <p>When instantiating a component with dependencies, you have to provide objects for each dependency (i.e. dependency injection), otherwise a compile time error will be generated.</p>
-<pre><code>&lt;App&gt;
-	&lt;Router ux:Name=&quot;router&quot; /&gt;
-	&lt;Panel ux:Name=&quot;p1&quot; /&gt;
-	&lt;MyBackButton router=&quot;router&quot; panel=&quot;p1&quot; /&gt;
-&lt;/App&gt;
+<pre><code class="language-xml">	&lt;App&gt;
+		&lt;Router ux:Name=&quot;router&quot; /&gt;
+		&lt;Panel ux:Name=&quot;p1&quot; /&gt;
+		&lt;MyBackButton router=&quot;router&quot; panel=&quot;p1&quot; /&gt;
+	&lt;/App&gt;
 </code></pre>
 <p>A component can not provide a default value for its dependencies.</p>
 <h2 id="inheriting-dependencies">Inheriting dependencies</h2>
 <p>Dependencies are not forwarded when you subclass. Therefore, you have to manually forward them to the baseclass you are sublcassing:</p>
-<pre><code>&lt;Page ux:Class=&quot;A&quot;&gt;
-	&lt;Router ux:Dependency=&quot;router&quot; /&gt;
-&lt;/Page&gt;
-&lt;A ux:Class=&quot;B&quot;&gt;
-	&lt;Router ux:Dependency=&quot;router&quot; ux:Binding=&quot;router&quot; /&gt;
-&lt;/A&gt;
+<pre><code class="language-xml">	&lt;Page ux:Class=&quot;A&quot;&gt;
+		&lt;Router ux:Dependency=&quot;router&quot; /&gt;
+	&lt;/Page&gt;
+	&lt;A ux:Class=&quot;B&quot;&gt;
+		&lt;Router ux:Dependency=&quot;router&quot; ux:Binding=&quot;router&quot; /&gt;
+	&lt;/A&gt;
 </code></pre>
 <h3 id="how-is-ux-dependency-different-from-ux-property">How is <code>ux:Dependency</code> different from <code>ux:Property</code> ?</h3>
 <p>Dependencies work similarly to properties, however there are a few key differences:</p>

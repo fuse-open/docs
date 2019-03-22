@@ -590,21 +590,21 @@
 <p>It was not always this way however. Before Android 6 you only had to declare the permission in the manifest (and the runtime request api was not available).</p>
 <p>Fuse unifies these two different declarations to hopefully make android's approach slightly easier to work with.</p>
 <p>Let's look and an example and then we will break it down:</p>
-<pre><code>public void TakePicture(object a1, EventArgs a2)
-{
-    var permissionPromise = Permissions.Request(Permissions.Android.CAMERA); // [0]
-    permissionPromise.Then(OnPermitted, OnRejected); // [1]
-}
+<pre><code class="language-csharp">    public void TakePicture(object a1, EventArgs a2)
+    {
+        var permissionPromise = Permissions.Request(Permissions.Android.CAMERA); // [0]
+        permissionPromise.Then(OnPermitted, OnRejected); // [1]
+    }
 
-void OnPermitted(PlatformPermission permission)
-{
-    debug_log &quot;Woo, we can take the picture now&quot;;
-}
+    void OnPermitted(PlatformPermission permission)
+    {
+        debug_log &quot;Woo, we can take the picture now&quot;;
+    }
 
-void OnRejected(Exception e)
-{
-    debug_log &quot;Blast: &quot; + e.Message;
-}
+    void OnRejected(Exception e)
+    {
+        debug_log &quot;Blast: &quot; + e.Message;
+    }
 </code></pre>
 <p><code>[0]</code> - Here we request the permission by calling the <code>Request</code> method and passing in the permission we want to be granted. Simply be referencing that permission Fuse will add it to your <code>AndroidManifest.xml</code> file.</p>
 <p><code>[1]</code> - We now specify which method to call if the permission is granted or if the permission is rejected.</p>

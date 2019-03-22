@@ -594,9 +594,9 @@
 <h2 id="overview">Overview</h2>
 <h3 id="creating-objects">Creating Objects</h3>
 <p>The basic function of a UX Markup element is to create (instantiate) an object of a certain <em>class</em>. For example, the following snippet creates instances of the <a href="../fuse/app.html">App</a> and <a href="../fuse/controls/rectangle.html">Rectangle</a> classes, and makes the <a href="../fuse/controls/rectangle.html">Rectangle</a> a child of the <a href="../fuse/app.html">App</a>.</p>
-<pre><code>&lt;App&gt;
-	&lt;Rectangle Color=&quot;Blue&quot; /&gt;
-&lt;/App&gt;
+<pre><code class="language-xml">	&lt;App&gt;
+		&lt;Rectangle Color=&quot;Blue&quot; /&gt;
+	&lt;/App&gt;
 </code></pre>
 <p>The name of the element tag must be the name of an <em>Uno class</em> accessible in the project. In the above example, <a href="../fuse/app.html">App</a> and <a href="../fuse/controls/rectangle.html">Rectangle</a> are pre-defined classes within the Fuse libraries.</p>
 <blockquote>
@@ -604,53 +604,53 @@
 </blockquote>
 <h3 id="creating-heirarchies">Creating Heirarchies</h3>
 <p>When one element (child) is placed inside another element (parent) in UX Markup, the outer element is called the <em>parent</em>, while the inner element is called the <em>child</em>.</p>
-<pre><code>&lt;Grid Rows=&quot;1*,1*&quot;&gt;
-	&lt;Rectangle Color=&quot;Blue&quot; Margin=&quot;10&quot; /&gt;
-	&lt;Rectangle Color=&quot;Blue&quot; Margin=&quot;10&quot; /&gt;
-&lt;/Grid&gt;
+<pre><code class="language-xml">	&lt;Grid Rows=&quot;1*,1*&quot;&gt;
+		&lt;Rectangle Color=&quot;Blue&quot; Margin=&quot;10&quot; /&gt;
+		&lt;Rectangle Color=&quot;Blue&quot; Margin=&quot;10&quot; /&gt;
+	&lt;/Grid&gt;
 </code></pre>
 <p>By default, UX Markup will find a suitable property on the parent element to which it can <em>bind</em> the child element.</p>
 <p>To disable this behavior for a given child element, we can specify <code>ux:AutoBind=&quot;false&quot;</code>. This will create a loose object within your app that can be attached to your app later by logic.</p>
 <p>To bind to a specific property of the parent, we can specify <code>ux:Binding=&quot;TheProperty&quot;</code>. This will disable auto-binding for the element, and instead bind to <code>TheProperty</code>.</p>
 <h3 id="creating-reusable-classes-ux-class">Creating reusable classes (<code>ux:Class</code>)</h3>
 <p>Any UX element tree can be converted to a reusable class (component) by giving it the <code>ux:Class</code> attribute.</p>
-<pre><code>&lt;Panel ux:Class=&quot;MyNamespace.MyComponent&quot; Color=&quot;Yellow&quot; &gt;
-	&lt;WhilePressed&gt;
-		&lt;Scale Factor=&quot;2&quot; Duration=&quot;0.3&quot; Easing=&quot;BackOut&quot; /&gt;
-	&lt;/WhilePressed&gt;
-&lt;/Panel&gt;
+<pre><code class="language-xml">	&lt;Panel ux:Class=&quot;MyNamespace.MyComponent&quot; Color=&quot;Yellow&quot; &gt;
+		&lt;WhilePressed&gt;
+			&lt;Scale Factor=&quot;2&quot; Duration=&quot;0.3&quot; Easing=&quot;BackOut&quot; /&gt;
+		&lt;/WhilePressed&gt;
+	&lt;/Panel&gt;
 </code></pre>
 <p>This creates a new subclass of <code>Panel</code> called <code>MyComponent</code> in the <code>MyNamespace</code> namespace. Namespaces are optional, but recommended when creating components for reuse in other projects, to avoid name collisions.</p>
 <p>Once a class is created, it can be instantiated just like any of the built-in classes:</p>
-<pre><code>&lt;MyNamespace.MyComponent /&gt;
+<pre><code class="language-xml">	&lt;MyNamespace.MyComponent /&gt;
 </code></pre>
 <p>Each <code>ux:Class</code> creates a new <em>root scope</em>, which means that nodes inside the class have no access to names (<code>ux:Name</code>) outside of the class. This means dependencies must be injected explicitly.</p>
 <h2 id="the-app-tag">The <a href="../fuse/app.html">App</a> tag</h2>
 <p>The <code>App</code> tag is the ultimate root of your app project.</p>
-<pre><code>&lt;App&gt;
-	&lt;!-- your app goes here --&gt;
-&lt;/App&gt;
+<pre><code class="language-xml">	&lt;App&gt;
+		&lt;!-- your app goes here --&gt;
+	&lt;/App&gt;
 </code></pre>
 <p>Any <a href="../fuse/app.html">App</a> tag is implicitly a <code>ux:Class</code> with the same name as the containing file excluding file extension. We can also give your app class a different name by specifying <code>ux:Class</code> manually:</p>
-<pre><code>&lt;App ux:Class=&quot;MyNamespace.MyApp&quot; /&gt;
+<pre><code class="language-xml">	&lt;App ux:Class=&quot;MyNamespace.MyApp&quot; /&gt;
 </code></pre>
 <p>Projects that don't contain an <code>App</code> tag does not produce an actual app, but a packages of components that can be referenced by other projects.</p>
 <h2 id="namespaces">Namespaces</h2>
 <p>UX Markup supports XML namespaces (<code>xmlns</code>), but to keep code verbosity down, sensible defaults have been set. This is why you rarely see it used in UX markup files.</p>
 <p>The default XML namespace (<code>xmlns</code>) points by default to all the standard Fuse namespaces, so classes from there (e.g. <a href="../fuse/app.html">App</a> and <a href="../fuse/controls/rectangle.html">Rectangle</a>) can be used without full namespace qualifier.</p>
 <p>For other classes we can use the full qualified name of a class directly on a tag:</p>
-<pre><code>&lt;App&gt;
-	&lt;MyNamespace.MyClass /&gt;
-&lt;/App&gt;
+<pre><code class="language-xml">	&lt;App&gt;
+		&lt;MyNamespace.MyClass /&gt;
+	&lt;/App&gt;
 </code></pre>
 <p>Or, we can specify a custom <code>xmlns</code> declaration for a scope:</p>
-<pre><code>&lt;App xmlns:m=&quot;MyNamespace&quot;&gt;
-	&lt;m:MyClass /&gt;
-&lt;/App&gt;
+<pre><code class="language-xml">	&lt;App xmlns:m=&quot;MyNamespace&quot;&gt;
+		&lt;m:MyClass /&gt;
+	&lt;/App&gt;
 </code></pre>
 <h2 id="including-ux-files-ux-include">Including UX files (<code>ux:Include</code>)</h2>
 <p>We can include the content of one UX file in another using <code>ux:Include</code> as follows:</p>
-<pre><code>&lt;ux:Include File=&quot;Resources.ux&quot; /&gt;
+<pre><code class="language-xml">	&lt;ux:Include File=&quot;Resources.ux&quot; /&gt;
 </code></pre>
 <p><code>ux:Include</code> is useful for declaring static resources such as <a href="../fuse/font.html">Font</a>s, <a href="../fuse/controls/image.html">Image</a>s, colors, etc. in a separate file.</p>
 <p>It is however not recommended practice for splitting parts of your view into files. See the <a href="../componentization.html">Creating Components</a> article for a better approach.</p>

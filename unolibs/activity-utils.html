@@ -594,7 +594,7 @@
 </ul>
 <h2 id="using-the-library">Using the library</h2>
 <p>Simply include <code>Android.ActivityUtils</code> in the <code>Packages</code> list in your <code>unoproj</code> file. Something like:</p>
-<pre><code>{
+<pre><code class="language-json">{
 	&quot;Packages&quot;: [
 		&quot;Fuse&quot;,
 		&quot;FuseJS&quot;,
@@ -620,7 +620,7 @@
 <p>The third does the same as the second but let's you pass any uno object to <code>StartActivity</code>. This object is not sent, but is instead passed to your callback along with the result when the result is ready.</p>
 <p><code>ActivityResultCallback</code> is a delegate defined as <code>delegate void ActivityResultCallback(int resultCode, Java.Object intent, object info)</code></p>
 <p>Here is an example of a valid callback method in Uno</p>
-<pre><code>extern(android) void OnResult(int resultCode, Java.Object intent, object info)
+<pre><code class="language-csharp">extern(android) void OnResult(int resultCode, Java.Object intent, object info)
 {
 	debug_log &quot;\nblam!: &quot;+resultCode+&quot; - &quot;+intent + &quot;\n&quot;;
 }

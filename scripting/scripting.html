@@ -591,34 +591,34 @@
 <p>Data-binding is then done using the curly brace syntax, <code>Property=&quot;{variable}&quot;</code>.</p>
 <h2 id="app-global-scripts">App-global scripts</h2>
 <p>We can place a <code>&lt;JavaScript&gt;</code> tag anywhere inline in the UX markup by using the <code>&lt;JavaScript/&gt;</code> tag, for example directly in the <code>&lt;App&gt;</code> tag to create an app-global module:</p>
-<pre><code>&lt;App&gt;
-	&lt;JavaScript&gt;
-		module.exports.foo = &quot;bar&quot;;
-	&lt;/JavaScript&gt;
-	&lt;Panel&gt;
-		&lt;Text Value=&quot;{foo}&quot;/&gt;
-	&lt;/Panel&gt;
-&lt;/App&gt;
+<pre><code class="language-xml">	&lt;App&gt;
+		&lt;JavaScript&gt;
+			module.exports.foo = &quot;bar&quot;;
+		&lt;/JavaScript&gt;
+		&lt;Panel&gt;
+			&lt;Text Value=&quot;{foo}&quot;/&gt;
+		&lt;/Panel&gt;
+	&lt;/App&gt;
 </code></pre>
 <p>Code does not need to be inline in the UX markup. We can put it in a separate file, and reference it by name. This has the samme effect:</p>
-<pre><code>&lt;App&gt;
-	&lt;JavaScript File=&quot;Main.js&quot;/&gt;
-	&lt;Panel&gt;
-		&lt;Text Value=&quot;{foo}&quot;/&gt;
-	&lt;/Panel&gt;
-&lt;/App&gt;
+<pre><code class="language-xml">	&lt;App&gt;
+		&lt;JavaScript File=&quot;Main.js&quot;/&gt;
+		&lt;Panel&gt;
+			&lt;Text Value=&quot;{foo}&quot;/&gt;
+		&lt;/Panel&gt;
+	&lt;/App&gt;
 </code></pre>
 <h2 id="component-local-scripts">Component-local scripts</h2>
 <p>We can also place <code>&lt;JavaScript&gt;</code> tags inside an <code>ux:Class</code>. This will evaluate the module for each instance of the class, giving us component-local state and data.</p>
-<pre><code>&lt;Panel ux:Class=&quot;MyComponent&quot;&gt;
-	&lt;JavaScript&gt;
-		var Observable = require(&quot;FuseJS/Observable&quot;);
-		var foo = Observable(10); 
-		module.exports = { foo }
-	&lt;/JavaScript&gt;
+<pre><code class="language-xml">	&lt;Panel ux:Class=&quot;MyComponent&quot;&gt;
+		&lt;JavaScript&gt;
+			var Observable = require(&quot;FuseJS/Observable&quot;);
+			var foo = Observable(10); 
+			module.exports = { foo }
+		&lt;/JavaScript&gt;
 
-	&lt;Text Value=&quot;{foo}&quot; /&gt;
-&lt;/Panel&gt;
+		&lt;Text Value=&quot;{foo}&quot; /&gt;
+	&lt;/Panel&gt;
 </code></pre>
 <p>The 'foo' variable now exists for each instance of MyComponent, and the data binding below</p>
 <h2 id="important-note-about-javascript-in-fuse">Important note about JavaScript in Fuse</h2>
@@ -627,23 +627,23 @@
 <p>In short: you'll have greater success with Fuse (and more fun!) if you approach it as a new thing rather than a typical DOM-based JS framework. :)</p>
 <h2 id="data-binding-example">Data-binding example</h2>
 <p>The curly brace syntax binds to the closest object in the data context that matches the binding path.</p>
-<pre><code>&lt;App&gt;
-	&lt;JavaScript&gt;
-		var hello = &quot;world&quot;;
+<pre><code class="language-xml">	&lt;App&gt;
+		&lt;JavaScript&gt;
+			var hello = &quot;world&quot;;
 
-		function writeHello(){
-			console.log(&quot;hello &quot; + hello);
-		}
+			function writeHello(){
+				console.log(&quot;hello &quot; + hello);
+			}
 
-		module.exports = {
-			hello : hello,
-			writeHello : writeHello
-		};
-	&lt;/JavaScript&gt;
-	&lt;Panel&gt;
-		&lt;Text Value=&quot;{hello}&quot; Clicked=&quot;{writeHello}&quot;/&gt;
-	&lt;/Panel&gt;
-&lt;/App&gt;
+			module.exports = {
+				hello : hello,
+				writeHello : writeHello
+			};
+		&lt;/JavaScript&gt;
+		&lt;Panel&gt;
+			&lt;Text Value=&quot;{hello}&quot; Clicked=&quot;{writeHello}&quot;/&gt;
+		&lt;/Panel&gt;
+	&lt;/App&gt;
 </code></pre>
 <h2 id="binding-functions">Binding functions</h2>
 <p>We can also bind functions to events like <code>Clicked</code>, <code>Tapped</code> and <code>Callback.Handler</code>. Bound functions are passed a parameter containing various properties. These properties also vary depending on which event the function has been bound to:</p>
@@ -691,107 +691,107 @@
 </ul>
 <p>In all cases, we additionally get a <code>data</code> property, which contains the data context of the node from which the function was called. A normal use of this property, is to retrieve the data object from which the node was created, for example when using the <code>Each</code> class.</p>
 <p>The following example shows how the age value can be retrieved from a clicked event happening on an item in an <code>Each</code> tag.</p>
-<pre><code>&lt;JavaScript&gt;
-	function clicked(arg) {
-		console.log(&quot;Age: &quot; + arg.data.age);
-	}
-	module.exports = {
-		clicked: clicked,
-		items: [
-			{ name: &quot;Jake&quot;, age: 24 },
-			{ name: &quot;Julie&quot;, age: 25 },
-			{ name: &quot;Jerard&quot;, age: 26 }
-		]
-	};
-	&lt;/JavaScript&gt;
-	&lt;StackPanel&gt;
-	&lt;Each Items=&quot;{items}&quot;&gt;
-		&lt;StackPanel Clicked=&quot;{clicked}&quot; Margin=&quot;10&quot;&gt;
-			&lt;Text Value=&quot;{name}&quot; /&gt;
-		&lt;/StackPanel&gt;
-	&lt;/Each&gt;
-&lt;/StackPanel&gt;
+<pre><code class="language-xml">	&lt;JavaScript&gt;
+		function clicked(arg) {
+			console.log(&quot;Age: &quot; + arg.data.age);
+		}
+		module.exports = {
+			clicked: clicked,
+			items: [
+				{ name: &quot;Jake&quot;, age: 24 },
+				{ name: &quot;Julie&quot;, age: 25 },
+				{ name: &quot;Jerard&quot;, age: 26 }
+			]
+		};
+		&lt;/JavaScript&gt;
+		&lt;StackPanel&gt;
+		&lt;Each Items=&quot;{items}&quot;&gt;
+			&lt;StackPanel Clicked=&quot;{clicked}&quot; Margin=&quot;10&quot;&gt;
+				&lt;Text Value=&quot;{name}&quot; /&gt;
+			&lt;/StackPanel&gt;
+		&lt;/Each&gt;
+	&lt;/StackPanel&gt;
 </code></pre>
 <h2 id="data-binding-to-arrays">Data-binding to arrays</h2>
 <p>We can data-bind to an array using the <a href="../fuse/reactive/each.html">Each</a> behavior:</p>
-<pre><code>&lt;App&gt;
-	&lt;JavaScript&gt;
-		var colors = [&quot;#f00&quot;, &quot;#0f0&quot;, &quot;#00f&quot;];
+<pre><code class="language-xml">	&lt;App&gt;
+		&lt;JavaScript&gt;
+			var colors = [&quot;#f00&quot;, &quot;#0f0&quot;, &quot;#00f&quot;];
 
-		module.exports = {
-			colors: colors
-		};
-		&lt;/JavaScript&gt;
-	&lt;StackPanel&gt;
-		&lt;Each Items=&quot;{colors}&quot;&gt;
-			&lt;Rectangle Color=&quot;{}&quot; Height=&quot;40&quot;/&gt;
-		&lt;/Each&gt;
-	&lt;/StackPanel&gt;
-&lt;/App&gt;
+			module.exports = {
+				colors: colors
+			};
+			&lt;/JavaScript&gt;
+		&lt;StackPanel&gt;
+			&lt;Each Items=&quot;{colors}&quot;&gt;
+				&lt;Rectangle Color=&quot;{}&quot; Height=&quot;40&quot;/&gt;
+			&lt;/Each&gt;
+		&lt;/StackPanel&gt;
+	&lt;/App&gt;
 </code></pre>
 <p>The <a href="../fuse/reactive/each.html">Each</a> behavior will instantiate its children once for each item in its bound array. That item then becomes the data context for that instance which is why we can data-bind to the color value by an empty set of curly braces <code>{}</code>.</p>
 <h2 id="making-the-ui-react-to-changes">Making the UI react to changes</h2>
 <p>Most of the time one wants to display dynamic data that changes over the lifetime of the app. This is simply done by storing the data in an <code>Observable</code>. The <code>Observable</code> is a core part of the Fuse reactive data-binding system, and is used everywhere in Fuse apps.</p>
 <p>Observables act like a single value or a list of values. Any data-bound <code>Observable</code> will update the view automatically when its value is changed:</p>
-<pre><code>&lt;App&gt;
-	&lt;JavaScript&gt;
-		var Observable = require('FuseJS/Observable');
-		var count = Observable(0);
-		function increment(){
-			count.value = count.value + 1;
-		};
-		module.exports = {
-			count : count,
-			increment : increment
-		};
-	&lt;/JavaScript&gt;
-	&lt;StackPanel&gt;
-		&lt;Text Value=&quot;{count}&quot;/&gt;
-		&lt;Button Text=&quot;increment&quot; Clicked=&quot;{increment}&quot;/&gt;
-	&lt;/StackPanel&gt;
-&lt;/App&gt;
+<pre><code class="language-xml">	&lt;App&gt;
+		&lt;JavaScript&gt;
+			var Observable = require('FuseJS/Observable');
+			var count = Observable(0);
+			function increment(){
+				count.value = count.value + 1;
+			};
+			module.exports = {
+				count : count,
+				increment : increment
+			};
+		&lt;/JavaScript&gt;
+		&lt;StackPanel&gt;
+			&lt;Text Value=&quot;{count}&quot;/&gt;
+			&lt;Button Text=&quot;increment&quot; Clicked=&quot;{increment}&quot;/&gt;
+		&lt;/StackPanel&gt;
+	&lt;/App&gt;
 </code></pre>
 <h3 id="changing-lists">Changing lists</h3>
 <p>We can also add more items to and <code>Observable</code> by using the <code>add</code> method:</p>
-<pre><code>&lt;App&gt;
-	&lt;JavaScript&gt;
-		var Observable = require('FuseJS/Observable');
-		var numbers = Observable(0);
-		function increment(){
-			numbers.add(numbers.length);
-		};
-		module.exports = {
-			numbers : numbers,
-			increment : increment
-		};
-	&lt;/JavaScript&gt;
-	&lt;DockPanel&gt;
-		&lt;Button Text=&quot;increment&quot; Clicked=&quot;{increment}&quot; Dock=&quot;Top&quot;/&gt;
-		&lt;StackPanel&gt;
-			&lt;Each Items=&quot;{numbers}&quot;&gt;
-				&lt;Text Value=&quot;{}&quot;/&gt;
-			&lt;/Each&gt;
-		&lt;/StackPanel&gt;
-	&lt;/DockPanel&gt;
-&lt;/App&gt;
+<pre><code class="language-xml">	&lt;App&gt;
+		&lt;JavaScript&gt;
+			var Observable = require('FuseJS/Observable');
+			var numbers = Observable(0);
+			function increment(){
+				numbers.add(numbers.length);
+			};
+			module.exports = {
+				numbers : numbers,
+				increment : increment
+			};
+		&lt;/JavaScript&gt;
+		&lt;DockPanel&gt;
+			&lt;Button Text=&quot;increment&quot; Clicked=&quot;{increment}&quot; Dock=&quot;Top&quot;/&gt;
+			&lt;StackPanel&gt;
+				&lt;Each Items=&quot;{numbers}&quot;&gt;
+					&lt;Text Value=&quot;{}&quot;/&gt;
+				&lt;/Each&gt;
+			&lt;/StackPanel&gt;
+		&lt;/DockPanel&gt;
+	&lt;/App&gt;
 </code></pre>
 <p>The <a href="../fuse/reactive/each.html">Each</a> behavior will update itself when the contents of its data-bound <a href="../fusejs/observable.html">Observable</a> changes.</p>
 <h3 id="adding-public-javascript-functions-to-components">Adding public JavaScript functions to components</h3>
 <p>We can add our own functions to a component, and call them from anywhere the component is instantiated:</p>
-<pre><code>&lt;Panel ux:Class=&quot;TestThing&quot; &gt;
+<pre><code class="language-xml">	&lt;Panel ux:Class=&quot;TestThing&quot; &gt;
+		&lt;JavaScript&gt;
+			this.doThing = function() {
+				console.log(&quot;thing&quot;);
+			};
+		&lt;/JavaScript&gt;
+	&lt;/Panel&gt;
 	&lt;JavaScript&gt;
-		this.doThing = function() {
-			console.log(&quot;thing&quot;);
+		exports.thingPressed = function() {
+			thing.doThing();
 		};
 	&lt;/JavaScript&gt;
-&lt;/Panel&gt;
-&lt;JavaScript&gt;
-	exports.thingPressed = function() {
-		thing.doThing();
-	};
-&lt;/JavaScript&gt;
-&lt;TestThing ux:Name=&quot;thing&quot; /&gt;
-&lt;Button Text=&quot;Press me&quot; Clicked=&quot;{thingPressed}&quot; /&gt;
+	&lt;TestThing ux:Name=&quot;thing&quot; /&gt;
+	&lt;Button Text=&quot;Press me&quot; Clicked=&quot;{thingPressed}&quot; /&gt;
 </code></pre>
 
         </div>

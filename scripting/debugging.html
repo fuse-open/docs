@@ -610,7 +610,7 @@ which is available both for macOS and Windows.</p>
 done using <code>adb</code>, which is bundled with Fuse and can be invoked using <code>uno adb</code>.
 Using a standard Fuse installation and with a single Android device
 connected, run (in a terminal or command prompt):</p>
-<pre><code>uno adb forward tcp:5858 tcp:5858
+<pre><code class="language-sh">uno adb forward tcp:5858 tcp:5858
 </code></pre>
 <p>It's likely that you will have to re-run this command every time you
 reconnect your device. Also remember to remove the forwarding using e.g.
@@ -634,13 +634,13 @@ select <code>Node.js</code> as the Debug Environment.</p>
 <p>Set a breakpoint in your JavaScript code by adding a <code>debugger;</code> statement at
 some location where it will be run. For example, try putting it at the very
 start of your JavaScript code, like the following:</p>
-<pre><code>&lt;JavaScript&gt;
+<pre><code class="language-js">&lt;JavaScript&gt;
   debugger;
   ... more code
 &lt;/JavaScript&gt;
 </code></pre>
 <p>It can also be useful to break when some event is triggered:</p>
-<pre><code>function someEvent() {
+<pre><code class="language-js">function someEvent() {
   debugger;
   ... more code
 }
@@ -648,10 +648,10 @@ start of your JavaScript code, like the following:</p>
 </li>
 <li>
 <p>Build and run your app with <code>-DDEBUG_V8</code>. For example, run</p>
-<pre><code>fuse preview . -DDEBUG_V8
+<pre><code class="language-sh">fuse preview . -DDEBUG_V8
 </code></pre>
 <p>to preview the project in the current working directory locally or</p>
-<pre><code>uno build --target=Android --run -DDEBUG_V8
+<pre><code class="language-sh">uno build --target=Android --run -DDEBUG_V8
 </code></pre>
 <p>to build and run on Android.</p>
 </li>

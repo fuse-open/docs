@@ -589,14 +589,14 @@
 <p>The draw keyword is used to draw graphic primitives to the current framebuffer based on parameters derived from the draw path.</p>
 <p>For a practical guide on using the draw keyword refer to the development guide.</p>
 <h2 id="syntax">Syntax</h2>
-<pre><code>draw [ &lt;block1&gt; [, &lt;block2&gt; ...]] [ { &lt;inline block&gt; } ] ; 
+<pre><code class="language-csharp">draw [ &lt;block1&gt; [, &lt;block2&gt; ...]] [ { &lt;inline block&gt; } ] ; 
 </code></pre>
 <p>The draw keyword indicates the start of a draw statement. A draw statement consists of the draw keyword followed by zero or more block references or lambda blocks, and terminated by an optional a single inline block and a semicolon.</p>
 <p>The referenced blocks will be applied, in order. This means that:</p>
-<pre><code>draw Foo, Bar;
+<pre><code class="language-csharp">draw Foo, Bar;
 </code></pre>
 <p>Is equivalent too:</p>
-<pre><code>draw { apply Foo; apply Bar; };
+<pre><code class="language-csharp">draw { apply Foo; apply Bar; };
 </code></pre>
 <p>See the documentation on the apply keyword for more information about what this means.</p>
 <p>When block references are object references, they can be prefixed with the keyword virtual to imply that the run-time type of the object should be applied instead of the compile-time type of the reference variable. This is called virtual apply.</p>
@@ -661,7 +661,7 @@ draw DefaultShading, Model(&quot;foo.DAE&quot;);
 };
 </code></pre>
 <p>Note that there should be no comma before the inline block when there are more blocks in the draw path:</p>
-<pre><code>draw DefaultShading, Sphere { PixelColor: Red; };
+<pre><code class="language-csharp">draw DefaultShading, Sphere { PixelColor: Red; };
 </code></pre>
 <h3 id="lambda-blocks">Lambda blocks</h3>
 <p>The following draw statement applies DefaultShading specifies Scaling: 2.0f; in a lambda block, then applies a sphere, and finally overrides some meta properties in the inline block at the end:</p>

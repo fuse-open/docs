@@ -591,12 +591,12 @@
 assert a&gt;5;
 </code></pre>
 <p>Results in the runtime message:</p>
-<pre><code>Assertion Failed: 'a &gt; 5' in /Path/MyApplication/App.uno(14)
+<pre><code class="language-sh">Assertion Failed: 'a &gt; 5' in /Path/MyApplication/App.uno(14)
 </code></pre>
 <p>A failed condition does not stop program flow, it only records an error message in the debug output.</p>
 <h2 id="assertion-handler">Assertion Handler</h2>
 <p>If you wish to intercept assertion statements, you can install an assertion handler. Use SetAssertionHandler in Uno.Diagnostics.Debug.</p>
-<pre><code>Debug.SetAssertionHandler( MyAssert );
+<pre><code class="language-csharp">Debug.SetAssertionHandler( MyAssert );
 </code></pre>
 <p>This handler records a message and raises an exception:</p>
 <pre><code class="language-csharp">void MyAssert(bool value, string expression, string filename, int line, params object[] operands)

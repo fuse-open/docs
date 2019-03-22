@@ -588,42 +588,42 @@
           <h1 id="ux-binding">ux:Binding</h1>
 <p><code>ux:Binding</code> is used to explicitly choose which property a UX object should bind to.</p>
 <h2 id="syntax">Syntax</h2>
-<pre><code>&lt;type ux:Binding=&quot;some_property&quot; /&gt;
+<pre><code class="language-xml">	&lt;type ux:Binding=&quot;some_property&quot; /&gt;
 </code></pre>
 <h2 id="remarks">Remarks</h2>
 <p>It is seldom necessary, but there are a few cases where we need to explicitly bind to another property than the default. An example can be found in the chapter about <code>ux:Dependency</code> and how those are forwarded using <code>ux:Binding</code>. Here are a few other examples:</p>
 <h3 id="the-container-class">The Container class</h3>
 <p>In the following example we have to explicitly bind the <code>Rectangle</code> to the <code>Children</code> property of <code>Container</code> using <code>ux:Binding</code>. This is because <code>Container</code> doesn't have <code>Children</code> as its default property. It instead forwards its child elements to the element specified by its <code>Subtree</code> property.</p>
-<pre><code>&lt;Container ux:Class=&quot;MyContainer&quot; Subtree=&quot;innerPanel&quot;&gt;
-    &lt;Rectangle ux:Binding=&quot;Children&quot; CornerRadius=&quot;10&quot; Margin=&quot;10&quot;&gt;
-        &lt;Stroke Color=&quot;Red&quot; Width=&quot;2&quot; /&gt;
-        &lt;Panel Margin=&quot;10&quot; ux:Name=&quot;innerPanel&quot; /&gt;
-    &lt;/Rectangle&gt;
-&lt;/Container&gt;
+<pre><code class="language-xml">	&lt;Container ux:Class=&quot;MyContainer&quot; Subtree=&quot;innerPanel&quot;&gt;
+	    &lt;Rectangle ux:Binding=&quot;Children&quot; CornerRadius=&quot;10&quot; Margin=&quot;10&quot;&gt;
+	        &lt;Stroke Color=&quot;Red&quot; Width=&quot;2&quot; /&gt;
+	        &lt;Panel Margin=&quot;10&quot; ux:Name=&quot;innerPanel&quot; /&gt;
+	    &lt;/Rectangle&gt;
+	&lt;/Container&gt;
 </code></pre>
 <h3 id="specifying-different-forward-and-backward-easing-with-cubicbeziereasing">Specifying different forward and backward easing with <code>CubicBezierEasing</code></h3>
-<pre><code>&lt;Move X=&quot;100&quot; Duration=&quot;0.3&quot;&gt;
-    &lt;CubicBezierEasing ux:Binding=&quot;Easing&quot; ControlPoints=&quot;0.4, 0.0, 1.0, 1.0&quot; /&gt;
-    &lt;CubicBezierEasing ux:Binding=&quot;EasingBack&quot; ControlPoints=&quot;0.3, 0.0, 0.3, 1.0&quot; /&gt;
-&lt;/Move&gt;
+<pre><code class="language-xml">	&lt;Move X=&quot;100&quot; Duration=&quot;0.3&quot;&gt;
+	    &lt;CubicBezierEasing ux:Binding=&quot;Easing&quot; ControlPoints=&quot;0.4, 0.0, 1.0, 1.0&quot; /&gt;
+	    &lt;CubicBezierEasing ux:Binding=&quot;EasingBack&quot; ControlPoints=&quot;0.3, 0.0, 0.3, 1.0&quot; /&gt;
+	&lt;/Move&gt;
 </code></pre>
 <p>In the above example, we have to use <code>ux:Binding</code> in order to explicitly bind the two <code>CubicBezierEasing</code> objects to different properties. Otherwise, they would both try to bind to the default property of <code>Move</code>, which for <code>CubicBezierEasing</code> would be the <code>Easing</code> property.</p>
 <h1 id="ux-autobind">ux:AutoBind</h1>
 <p>The <code>ux:AutoBind</code> attribute is used to specify whether a UX object should automatically bind to the default property (that matches its type) of its parent. This is something we normally don't have to think about, except for a few edge-cases.</p>
 <h2 id="syntax">Syntax</h2>
-<pre><code>&lt;type ux:AutoBind=&quot;true/false&quot; /&gt;
+<pre><code class="language-xml">	&lt;type ux:AutoBind=&quot;true/false&quot; /&gt;
 </code></pre>
 <h2 id="remarks">Remarks</h2>
-<pre><code>&lt;StackPanel&gt;
-	&lt;Text Value=&quot;Hello&quot; /&gt;
-	&lt;Rectangle Color=&quot;Red&quot; /&gt;
-&lt;/StackPanel&gt;
+<pre><code class="language-xml">	&lt;StackPanel&gt;
+		&lt;Text Value=&quot;Hello&quot; /&gt;
+		&lt;Rectangle Color=&quot;Red&quot; /&gt;
+	&lt;/StackPanel&gt;
 </code></pre>
 <p>In the above example, the <code>Text</code> and <code>Rectangle</code> are automatically bound to the <code>Children</code> property of the <code>StackPanel</code> this is an implementation detail we usually shouldn't worry about, but for the cases we do, we can use <code>ux:AutoBind</code> to turn of that behavior:</p>
-<pre><code>&lt;StackPanel&gt;
-	&lt;Text Value=&quot;Hello&quot; ux:AutoBind=&quot;false&quot; /&gt;
-	&lt;Rectangle Color=&quot;Red&quot; ux:AutoBind=&quot;false&quot;/&gt;
-&lt;/StackPanel&gt;
+<pre><code class="language-xml">	&lt;StackPanel&gt;
+		&lt;Text Value=&quot;Hello&quot; ux:AutoBind=&quot;false&quot; /&gt;
+		&lt;Rectangle Color=&quot;Red&quot; ux:AutoBind=&quot;false&quot;/&gt;
+	&lt;/StackPanel&gt;
 </code></pre>
 <p>In the above example, we end up with two &quot;free floating&quot; elements which can be bound to properties by using <code>ux:Binding</code>.</p>
 

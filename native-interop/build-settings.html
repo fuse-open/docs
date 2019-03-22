@@ -602,31 +602,31 @@ Uno class or method.  The benefit of doing these as attributes is that they
 then only take effect when that class is used (since Uno strips out unused
 code), which is usually what you want.</p>
 <p>To use a setting on an Uno class, add</p>
-<pre><code>using Uno.Compiler.ExportTargetInterop;
+<pre><code class="language-csharp">    using Uno.Compiler.ExportTargetInterop;
 </code></pre>
 <p>to the top of the file and use e.g. the following code:</p>
-<pre><code>[Require(&quot;LinkDirectory&quot;, &quot;my/path&quot;)]
-public class MyClass
-{
-    ...
-}
+<pre><code class="language-csharp">    [Require(&quot;LinkDirectory&quot;, &quot;my/path&quot;)]
+    public class MyClass
+    {
+        ...
+    }
 </code></pre>
 <p>When the settings become numerous or require long strings, it can be convenient
 to do it in a separate file. We use <code>.uxl</code> files with <code>unoproj</code> filetype
 <code>Extensions</code> to do this.</p>
 <p>An example of <code>uxl</code> file that adds to the Xcode <code>plist</code> file is the following:</p>
-<pre><code>&lt;Extensions Backend=&quot;CPlusPlus&quot; Condition=&quot;iOS&quot;&gt;
-    &lt;Require Xcode.Plist.Element&gt;
-        &lt;![CDATA[
-            &lt;key&gt;NSLocationUsageDescription&lt;/key&gt;
-            &lt;string&gt;&lt;/string&gt;
-            &lt;key&gt;NSLocationWhenInUseUsageDescription&lt;/key&gt;
-            &lt;string&gt;&lt;/string&gt;
-            &lt;key&gt;NSLocationAlwaysUsageDescription&lt;/key&gt;
-            &lt;string&gt;&lt;/string&gt;
-        ]]&gt;
-    &lt;/Require&gt;
-&lt;/Extensions&gt;
+<pre><code class="language-xml">    &lt;Extensions Backend=&quot;CPlusPlus&quot; Condition=&quot;iOS&quot;&gt;
+        &lt;Require Xcode.Plist.Element&gt;
+            &lt;![CDATA[
+                &lt;key&gt;NSLocationUsageDescription&lt;/key&gt;
+                &lt;string&gt;&lt;/string&gt;
+                &lt;key&gt;NSLocationWhenInUseUsageDescription&lt;/key&gt;
+                &lt;string&gt;&lt;/string&gt;
+                &lt;key&gt;NSLocationAlwaysUsageDescription&lt;/key&gt;
+                &lt;string&gt;&lt;/string&gt;
+            ]]&gt;
+        &lt;/Require&gt;
+    &lt;/Extensions&gt;
 </code></pre>
 <p>Here we see we first specify the backend (usually <code>CPlusPlus</code>), and
 (optionally) a target <code>Condition</code>, meaning that the code is only used on <code>iOS</code>
@@ -641,7 +641,7 @@ desktop preview use the CIL target.</p>
 <p>The following is an example of how a typical library might be included in the
 project when targeting iOS. See below for a reference for the settings that we
 use.</p>
-<pre><code>[extern(iOS) Require(&quot;LinkDirectory&quot;, &quot;@('typicalLibrary/lib':Path)&quot;)]
+<pre><code class="language-csharp">[extern(iOS) Require(&quot;LinkDirectory&quot;, &quot;@('typicalLibrary/lib':Path)&quot;)]
 [extern(iOS) Require(&quot;IncludeDirectory&quot;, &quot;@('typicalLibrary/include':Path)&quot;)]
 [extern(iOS) Require(&quot;LinkLibrary&quot;, &quot;typicalLibrary&quot;)]
 [extern(iOS) Require(&quot;Source.Include&quot;, &quot;typicalLibrary.h&quot;)]
@@ -654,7 +654,7 @@ class AClassThatNeedsTypicalLibrary { }
 <p>We use <code>extern(iOS)</code> on the attributes to only link the library when targeting
 iOS.</p>
 <p>We also add the library's files to our <code>unoproj</code>:</p>
-<pre><code>{
+<pre><code class="language-json">{
     ...
 
     &quot;Includes&quot;: [
@@ -668,84 +668,84 @@ iOS.</p>
 special with the files. We do this since we're including the files manually by
 using attributes.</p>
 <h3 id="build-flags">Build flags</h3>
-<pre><code>[Require(&quot;LinkDirectory&quot;, &quot;my/path&quot;)]
+<pre><code class="language-csharp">    [Require(&quot;LinkDirectory&quot;, &quot;my/path&quot;)]
 </code></pre>
 <p>Adds <code>my/path</code> to the library search path. This is equivalent to passing
 <code>-Lmy/path</code> to the C++ compiler. Using <code>&quot;@('my/relative/path':Path)&quot;</code> as the
 path means that it's relative.</p>
 <hr>
-<pre><code>[Require(&quot;LinkLibrary&quot;, &quot;mylibrary&quot;)]
+<pre><code class="language-csharp">    [Require(&quot;LinkLibrary&quot;, &quot;mylibrary&quot;)]
 </code></pre>
 <p>Link the application with <code>mylibrary</code>. This is equivalent to passing
 <code>-lmylibrary</code> to the C++ compiler.</p>
 <p>Note: For linking libraries on Android, use the <code>JNI.*</code> settings below.</p>
 <hr>
-<pre><code>[Require(&quot;IncludeDirectory&quot;, &quot;my/path&quot;)]
+<pre><code class="language-csharp">    [Require(&quot;IncludeDirectory&quot;, &quot;my/path&quot;)]
 </code></pre>
 <p>Adds <code>my/path</code> to the include search path. This is equivalent to passing
 <code>-Imy/path</code> to the C++ compiler.  Using <code>&quot;@('my/relative/path':Path)&quot;</code> as the
 path means that it's relative.</p>
 <h3 id="including-foreign-source-files">Including foreign source files</h3>
 <p>We add Objective-C, Java, and C source files to Uno projects as follows:</p>
-<pre><code>{
-    ...
+<pre><code class="language-json">    {
+        ...
 
-    &quot;Includes&quot;: [
-        &quot;*&quot;,
-        &quot;Example.hh:ObjCHeader:iOS&quot;,
-        &quot;Example.mm:ObjCSource:iOS&quot;,
-        &quot;Example.java:Java:Android&quot;
-        &quot;Example.h:CHeader&quot;,
-        &quot;Example.c:CSource&quot;,
-    ]
-}
+        &quot;Includes&quot;: [
+            &quot;*&quot;,
+            &quot;Example.hh:ObjCHeader:iOS&quot;,
+            &quot;Example.mm:ObjCSource:iOS&quot;,
+            &quot;Example.java:Java:Android&quot;
+            &quot;Example.h:CHeader&quot;,
+            &quot;Example.c:CSource&quot;,
+        ]
+    }
 </code></pre>
 <p>For more information, see <a href="../native-interop/foreign-code.html">the foreign code documentation</a>.</p>
 <h3 id="android-specific-settings">Android-specific settings</h3>
 <h4 id="jni">JNI</h4>
 <p>Since we treat shared and static native libraries differently on Android we do
 not use <code>LinkLibrary</code> for both, but instead use the following two elements:</p>
-<pre><code>[Require(&quot;JNI.SharedLibrary&quot;, &quot;mylib.so&quot;)]
+<pre><code class="language-csharp">    [Require(&quot;JNI.SharedLibrary&quot;, &quot;mylib.so&quot;)]
 </code></pre>
 <p>Loads <code>mylib.so</code> using <code>System.loadLibrary</code> when the application starts, and
 includes <code>mylib.so</code> in the app.</p>
 <hr>
-<pre><code>[Require(&quot;JNI.SystemLibrary&quot;, &quot;systemlib&quot;)]
+<pre><code class="language-csharp">    [Require(&quot;JNI.SystemLibrary&quot;, &quot;systemlib&quot;)]
 </code></pre>
 <p>Loads <code>systemlib</code> using <code>System.loadLibrary</code> when the application starts
 (without including it in the app, assuming it's a system library like <code>log</code>).</p>
 <hr>
-<pre><code>[Require(&quot;JNI.StaticLibrary&quot;, &quot;mylib.a&quot;)]
+<pre><code class="language-csharp">    [Require(&quot;JNI.StaticLibrary&quot;, &quot;mylib.a&quot;)]
 </code></pre>
 <p>Statically links the application with <code>mylib.a</code>.</p>
 <h4 id="resources">Resources</h4>
-<pre><code>[Require(&quot;Android.ResStrings.Declaration&quot;, &quot;&lt;string name=\&quot;hello\&quot;&gt;Hello!&lt;/string&gt;&quot;)]
+<pre><code class="language-csharp">    [Require(&quot;Android.ResStrings.Declaration&quot;, &quot;&lt;string name=\&quot;hello\&quot;&gt;Hello!&lt;/string&gt;&quot;)]
 </code></pre>
 <p>Adds <code>&lt;string name=&quot;hello&quot;&gt;Hello!&lt;/string&gt;</code> to the string resource file:
 <code>res/values/strings.xml</code>.</p>
 <h4 id="manifest">Manifest</h4>
-<pre><code>[Require(&quot;AndroidManifest.ActivityElement&quot;, &quot;&lt;an-activity-element /&gt;&quot;)]
+<pre><code class="language-csharp">    [Require(&quot;AndroidManifest.ActivityElement&quot;, &quot;&lt;an-activity-element /&gt;&quot;)]
 </code></pre>
 <p>Adds <code>&lt;an-activity-element /&gt;</code> to the application's <code>activity</code> section in the
 <code>AndroidManifest.xml</code> file.</p>
 <hr>
-<pre><code>[Require(&quot;AndroidManifest.ApplicationElement&quot;, &quot;&lt;an-application-element /&gt;&quot;)]
+<pre><code class="language-csharp">    [Require(&quot;AndroidManifest.ApplicationElement&quot;, &quot;&lt;an-application-element /&gt;&quot;)]
 </code></pre>
 <p>Adds <code>&lt;an-application-element /&gt;</code> to the <code>application</code> section in the
 <code>AndroidManifest.xml</code> file.</p>
 <hr>
-<pre><code>[Require(&quot;AndroidManifest.Permission&quot;, &quot;android.permission.A_PERMISSION&quot;)]
+<pre><code class="language-csharp">    [Require(&quot;AndroidManifest.Permission&quot;, &quot;android.permission.A_PERMISSION&quot;)]
 </code></pre>
 <p>Adds <code>&lt;uses-permission android:name=&quot;android.permission.A_PERMISSION&quot; /&gt;</code> to
 the <code>AndroidManifest.xml</code> file.</p>
 <hr>
-<pre><code>[Require(&quot;AndroidManifest.RootElement&quot;, &quot;&lt;a-root-element /&gt;&quot;)]
+<pre><code class="language-csharp">    [Require(&quot;AndroidManifest.RootElement&quot;, &quot;&lt;a-root-element /&gt;&quot;)]
 </code></pre>
 <p>Adds <code>&lt;a-root-element /&gt;</code> at the root level below the <code>manifest</code> tag in the
 <code>AndroidManifest.xml</code> file.</p>
 <hr>
-<pre><code>[Require(&quot;AndroidManifest.Activity.ViewIntentFilter&quot;,
-    &quot;android:host=\&quot;sites.google.com\&quot; android:pathPrefix=\&quot;/site/appindexingex/home/main\&quot; android:scheme=\&quot;https\&quot;&quot;)]
+<pre><code class="language-csharp">    [Require(&quot;AndroidManifest.Activity.ViewIntentFilter&quot;,
+        &quot;android:host=\&quot;sites.google.com\&quot; android:pathPrefix=\&quot;/site/appindexingex/home/main\&quot; android:scheme=\&quot;https\&quot;&quot;)]
 </code></pre>
 <p>Adds the specified string to the application view's intent-filter.</p>
 <h4 id="gradle">Gradle</h4>
@@ -755,36 +755,36 @@ See
 <a href="https://docs.gradle.org/current/userguide/artifact_dependencies_tutorial.html">this</a>
 for more information about dependency management using Gradle.</p>
 <hr>
-<pre><code>[Require(&quot;Gradle.Dependency&quot;, &quot;compile('myDependency') { transitive = true }&quot;)]
+<pre><code class="language-csharp">    [Require(&quot;Gradle.Dependency&quot;, &quot;compile('myDependency') { transitive = true }&quot;)]
 </code></pre>
 <p>Adds <code>compile('myDependency') { transitive = true }</code> to <code>dependencies</code> in the
 app's generated <code>build.gradle</code> file.</p>
 <hr>
-<pre><code>[Require(&quot;Gradle.Dependency.ClassPath&quot;, &quot;myDependency&quot;)]
+<pre><code class="language-csharp">    [Require(&quot;Gradle.Dependency.ClassPath&quot;, &quot;myDependency&quot;)]
 </code></pre>
 <p>Adds <code>classpath 'myDependency'</code> to <code>dependencies</code> in the top-level generated <code>build.gradle</code>
 file.</p>
 <hr>
-<pre><code>[Require(&quot;Gradle.Dependency.Compile&quot;, &quot;myDependency&quot;)]
+<pre><code class="language-csharp">    [Require(&quot;Gradle.Dependency.Compile&quot;, &quot;myDependency&quot;)]
 </code></pre>
 <p>Adds <code>compile 'myDependency'</code> to <code>dependencies</code> in the app's generated <code>build.gradle</code>
 file.</p>
 <hr>
-<pre><code>[Require(&quot;Gradle.BuildFile.End&quot;, &quot;stuff&quot;)]
+<pre><code class="language-csharp">    [Require(&quot;Gradle.BuildFile.End&quot;, &quot;stuff&quot;)]
 </code></pre>
 <p>Adds <code>stuff</code> to the very end of the app's generated <code>build.gradle</code> file.</p>
 <hr>
-<pre><code>[Require(&quot;Gradle.Repository&quot;, &quot;mavenCentral()&quot;)]
+<pre><code class="language-csharp">    [Require(&quot;Gradle.Repository&quot;, &quot;mavenCentral()&quot;)]
 </code></pre>
 <p>Adds <code>mavenCentral()</code> to <code>repositories</code> in the app's generated <code>build.gradle</code> file.</p>
 <h3 id="ios-specific-settings">iOS-specific settings</h3>
 <h4 id="xcode-settings">Xcode settings</h4>
-<pre><code>[Require(&quot;Xcode.EmbeddedFramework&quot;, &quot;my.framework&quot;)]
+<pre><code class="language-csharp">    [Require(&quot;Xcode.EmbeddedFramework&quot;, &quot;my.framework&quot;)]
 </code></pre>
 <p>Adds <code>my.framework</code> as an embedded framework to the generated Xcode project.
 Using <code>&quot;@('my/relative.framework':Path)&quot;</code> as the path means that it's relative.</p>
 <hr>
-<pre><code>[Require(&quot;Xcode.Framework&quot;, &quot;a.framework&quot;)]
+<pre><code class="language-csharp">    [Require(&quot;Xcode.Framework&quot;, &quot;a.framework&quot;)]
 </code></pre>
 <p>Adds <code>a.framework</code> as a framework to the generated Xcode project. If the path
 to the framework is not absolute, it is assumed to be relative to
@@ -792,7 +792,7 @@ to the framework is not absolute, it is assumed to be relative to
 from the iPhone SDK.</p>
 <p>Using <code>&quot;@('my/relative.framework':Path)&quot;</code> as the path means that it's relative.</p>
 <hr>
-<pre><code>[Require(&quot;Xcode.FrameworkDirectory&quot;, &quot;@('my/relative/framework/path':Path&quot;)]
+<pre><code class="language-csharp">    [Require(&quot;Xcode.FrameworkDirectory&quot;, &quot;@('my/relative/framework/path':Path&quot;)]
 </code></pre>
 <p>Adds <code>my/relative/framework/path</code> to the framework search path. This is
 equivalent to passing <code>-Fmy/relative/framework/path</code> to the C++ compiler.
@@ -800,41 +800,41 @@ Note: When including frameworks using <code>Xcode.Framework</code> or
 <code>Xcode.EmbeddedFramework</code> this flag is automatically set, so it need not be set
 in that case.</p>
 <hr>
-<pre><code>[Require(&quot;Xcode.Plist.Element&quot;, &quot;&lt;plist-element /&gt;&quot;)]
+<pre><code class="language-csharp">    [Require(&quot;Xcode.Plist.Element&quot;, &quot;&lt;plist-element /&gt;&quot;)]
 </code></pre>
 <p>Adds <code>&lt;plist-element /&gt;</code> to the application's <code>plist</code> file.</p>
 <hr>
-<pre><code>[Require(&quot;Xcode.ShellScript&quot;, &quot;someScript&quot;)]
+<pre><code class="language-csharp">    [Require(&quot;Xcode.ShellScript&quot;, &quot;someScript&quot;)]
 </code></pre>
 <p>Adds <code>someScript</code> in a <code>PBXProjShellScriptBuildPhase</code> in the generated
 Xcode project's <code>.pbxproj</code> file.</p>
 <h4 id="cocoapods">CocoaPods</h4>
 <p>These settings apply when building for iOS using our preliminary CocoaPods
 support which is enabled when building with the <code>-DCOCOAPODS</code> Uno flag.</p>
-<pre><code>[Require(&quot;Cocoapods.Platform.Name&quot;, &quot;platformName&quot;)]
+<pre><code class="language-csharp">    [Require(&quot;Cocoapods.Platform.Name&quot;, &quot;platformName&quot;)]
 </code></pre>
 <p>Adds</p>
 <pre><code>platform :platformName, ''
 </code></pre>
 <p>to the generated <code>Podfile</code>.</p>
 <hr>
-<pre><code>[Require(&quot;Cocoapods.Platform.Version&quot;, &quot;platformVersion&quot;)]
+<pre><code class="language-csharp">    [Require(&quot;Cocoapods.Platform.Version&quot;, &quot;platformVersion&quot;)]
 </code></pre>
 <p>If <code>Cocoapods.Platform.Name</code> is set to <code>platformName</code>, adds</p>
 <pre><code>platform :platformName, 'platformVersion'
 </code></pre>
 <p>to the generated <code>Podfile</code>.</p>
 <hr>
-<pre><code>[Require(&quot;Cocoapods.Podfile.Target&quot;, &quot;pod 'Firebase'&quot;)]
+<pre><code class="language-csharp">    [Require(&quot;Cocoapods.Podfile.Target&quot;, &quot;pod 'Firebase'&quot;)]
 </code></pre>
 <p>Adds <code>pod 'Firebase'</code> to the application's <code>target</code> configuration in the
 generated <code>Podfile</code>.</p>
 <hr>
-<pre><code>[Require(&quot;Cocoapods.Podfile.Pre&quot;, &quot;myPreStatement&quot;)]
+<pre><code class="language-csharp">    [Require(&quot;Cocoapods.Podfile.Pre&quot;, &quot;myPreStatement&quot;)]
 </code></pre>
 <p>Adds <code>myPreStatement</code> to the beginning of the generated <code>Podfile</code>.</p>
 <hr>
-<pre><code>[Require(&quot;Cocoapods.Podfile.Post&quot;, &quot;myPostStatement&quot;)]
+<pre><code class="language-csharp">    [Require(&quot;Cocoapods.Podfile.Post&quot;, &quot;myPostStatement&quot;)]
 </code></pre>
 <p>Adds <code>myPostStatement</code> to the end of the generated <code>Podfile</code>.</p>
 

@@ -588,7 +588,7 @@
           <h1 id="templates-ux-template">Templates (ux:Template)</h1>
 <p>The <code>ux:Template</code> attribute in UX Markup, when placed on an XML element, specifies that the given XML element and its entire subtree is a template (<code>Uno.UX.Template</code>). Templates can construct an arbitrary number of copies of the UX Markup tree at runtime.</p>
 <h2 id="syntax">Syntax</h2>
-<pre><code>&lt;type ux:Template=&quot;template_name&quot; /&gt;
+<pre><code class="language-xml">	&lt;type ux:Template=&quot;template_name&quot; /&gt;
 </code></pre>
 <p>Where <code>type</code> is any valid UX Markup type, and <code>template_name</code> is a valid Uno identifier.</p>
 <h2 id="remarks">Remarks</h2>
@@ -600,28 +600,28 @@
 <h2 id="the-ux-name-of-the-template-instance">The <code>ux:Name</code> of the template instance</h2>
 <p>Inside node marked <code>ux:Template</code>, the current copy (instance) of the current template can be refered to by the <code>template_name</code>, the same way as if it was named the same way using <code>ux:Name</code>.</p>
 <p>For example, in a contained <code>&lt;JavaScript&gt;</code> tag, we can refer to the template instance by name:</p>
-<pre><code>&lt;Page ux:Template=&quot;homePage&quot;&gt;
-	&lt;JavaScript&gt;
-		homePage.Parameter.onValueChanged(module, function() { ...
+<pre><code class="language-xml">	&lt;Page ux:Template=&quot;homePage&quot;&gt;
+		&lt;JavaScript&gt;
+			homePage.Parameter.onValueChanged(module, function() { ...
 </code></pre>
 <p>Also, in UX markup in general, we can use the page name in expressions:</p>
-<pre><code>&lt;Page ux:Template=&quot;homePage&quot;&gt;
-	&lt;Rectangle LayoutMaster=&quot;homePage&quot; ... /&gt;
+<pre><code class="language-xml">	&lt;Page ux:Template=&quot;homePage&quot;&gt;
+		&lt;Rectangle LayoutMaster=&quot;homePage&quot; ... /&gt;
 </code></pre>
 <h2 id="using-templates-for-component-customizability">Using templates for component customizability</h2>
 <p>Templates can be used to increase the customizability of a component by allowing it to take custom elements to be used for its appearance. An example of this in action is the <a href="../fuse/controls/pageindicator.html">PageIndicator</a> element, which spawns an element from a template for each page in a <code>PageControl</code>. An element is made a template by setting the <code>ux:Template</code> property to a key you want to identify that template by. This key is used by template accepting elements when looking for appropriate templates to draw.</p>
 <p>Templates are drawn using <code>Each</code>. <code>Each</code> has a property called <code>TemplateSource</code>, which specifies the element from which <code>Each</code> gets its template. As mentioned before, templates identify themselves using a key. The key <code>Each</code> will look for a template with is specified using the <code>TemplateKey</code> property.</p>
 <p>A common <code>TemplateSource</code> is a <code>ux:Class</code> the <code>Each</code> is a child of:</p>
-<pre><code>&lt;StackPanel ux:Class=&quot;CoolRepeater&quot; Background=&quot;#FAD&quot;&gt;
-	&lt;Each TemplateSource=&quot;this&quot; TemplateKey=&quot;Item&quot; Count=&quot;20&quot;&gt;
-		&lt;Text&gt;Default template&lt;/Text&gt;
-	&lt;/Each&gt;
-&lt;/StackPanel&gt;
+<pre><code class="language-xml">	&lt;StackPanel ux:Class=&quot;CoolRepeater&quot; Background=&quot;#FAD&quot;&gt;
+		&lt;Each TemplateSource=&quot;this&quot; TemplateKey=&quot;Item&quot; Count=&quot;20&quot;&gt;
+			&lt;Text&gt;Default template&lt;/Text&gt;
+		&lt;/Each&gt;
+	&lt;/StackPanel&gt;
 </code></pre>
 <p>This is a custom component which accepts a template, which it repeats 20 times. If no template is given, the <code>Each</code> will fallback to its default template: whatever is inside the <code>Each</code>. The custom component can then be used like this:</p>
-<pre><code>&lt;CoolRepeater&gt;
-	&lt;Text ux:Template=&quot;Item&quot;&gt;Hello, world!&lt;/Text&gt;
-&lt;/CoolRepeater&gt;
+<pre><code class="language-xml">	&lt;CoolRepeater&gt;
+		&lt;Text ux:Template=&quot;Item&quot;&gt;Hello, world!&lt;/Text&gt;
+	&lt;/CoolRepeater&gt;
 </code></pre>
 
         </div>

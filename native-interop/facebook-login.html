@@ -603,7 +603,7 @@ initiate login by pressing a Fuse button.</p>
 <h3 id="triggering-and-responding-to-login">Triggering and responding to login</h3>
 <p>The main login functionality is implemented in an Uno method with the following
 signature:</p>
-<pre><code>public void Login(Action&lt;AccessToken&gt; onSuccess, Action onCancelled, Action&lt;string&gt; onError)
+<pre><code class="language-csharp">public void Login(Action&lt;AccessToken&gt; onSuccess, Action onCancelled, Action&lt;string&gt; onError)
 </code></pre>
 <p>This method is contained in the <code>FacebookLogin</code> class and accepts actions that will
 be invoked depending on the outcome of the login.</p>
@@ -613,14 +613,14 @@ normal braces. The special braces tell Uno to not parse the code as normal Uno
 code, and the attribute tells the compiler what language the code is actually
 written in (Java in this case). We can only use this version of the method on
 Android, so we use <code>extern(Android)</code> to only compile it when targeting Android.</p>
-<pre><code>[Foreign(Language.Java)]
+<pre><code class="language-csharp">[Foreign(Language.Java)]
 public extern(Android) void Login(Action&lt;AccessToken&gt; onSuccess, Action onCancelled, Action&lt;string&gt; onError)
 @{
 @}
 </code></pre>
 <p>The <code>AccessToken</code> class, used as the argument to the <code>onSuccess</code> action, is a
 thin wrapper around a Java object:</p>
-<pre><code>public class AccessToken
+<pre><code class="language-csharp">public class AccessToken
 {
 	extern(Android) Java.Object _token;
 
@@ -643,7 +643,7 @@ contained in the access token.</p>
 initialised in the next section.</p>
 <p>We are now ready to implement the body of the <code>Login</code> method in Java.</p>
 <p>To start with, we use a macro  to get the <code>callbackManager</code> from the <code>_this</code> object:</p>
-<pre><code>@{
+<pre><code class="language-csharp">@{
 	CallbackManager callbackManager = (CallbackManager)@{FacebookLogin:Of(_this)._callbackManager:Get()};
 	...
 @}
@@ -656,7 +656,7 @@ documentation</a> for more details). <code>Java.Object</code>s in Uno are
 converted into plain Java <code>Object</code>s on the Java side, so we cast it to
 <code>CallbackManager</code>, the type that we know that it has.</p>
 <p>Next, we register our callbacks with the Facebook <code>LoginManager</code>:</p>
-<pre><code>LoginManager.getInstance().registerCallback(callbackManager,
+<pre><code class="language-csharp">LoginManager.getInstance().registerCallback(callbackManager,
 	new FacebookCallback&lt;LoginResult&gt;()
 	{
 		@Override
@@ -707,7 +707,7 @@ exactly like in Facebook's documentation.</p>
 <p>First, we hook our <code>FacebookLogin</code> class up to get callbacks when the relevant
 events are triggered. This is achieved by using the <code>Lifecycle</code> class in
 <code>Fuse.Platform</code>.  In the constructor of <code>FacebookLogin</code>, we do:</p>
-<pre><code>public FacebookLogin()
+<pre><code class="language-csharp">public FacebookLogin()
 {
 	Lifecycle.Started += Started;
 	Lifecycle.EnteringInteractive += OnEnteringInteractive;
@@ -715,7 +715,7 @@ events are triggered. This is achieved by using the <code>Lifecycle</code> class
 }
 </code></pre>
 <p>Our implemententation of <code>Started</code> looks like this:</p>
-<pre><code>[Foreign(Language.Java)]
+<pre><code class="language-csharp">[Foreign(Language.Java)]
 extern(Android) void Started(ApplicationState state)
 @{
 	FacebookSdk.sdkInitialize(Activity.getRootActivity());
@@ -744,7 +744,7 @@ is what the <code>subscribeToResults</code> call does.</p>
 the Java code needs imports, which it does in this case, we can use the
 <code>ForeignInclude</code> attribute on that class to add it to the generated Java file.
 For our <code>FacebookLogin</code> class, it looks like this:</p>
-<pre><code>[ForeignInclude(Language.Java, &quot;android.content.Intent&quot;)]
+<pre><code class="language-csharp">[ForeignInclude(Language.Java, &quot;android.content.Intent&quot;)]
 [ForeignInclude(Language.Java, &quot;com.facebook.*&quot;)]
 [ForeignInclude(Language.Java, &quot;com.facebook.appevents.AppEventsLogger&quot;)]
 [ForeignInclude(Language.Java, &quot;com.facebook.login.*&quot;)]
@@ -760,7 +760,7 @@ build system on Android, provided we build with the <code>-DGRADLE</code> flag, 
 generates a Gradle build file each time the app is built. We can instruct the
 compiler to add items to the <code>dependencies</code> and <code>repositories</code> sections by
 adding the following attributes to the class:</p>
-<pre><code>[Require(&quot;Gradle.Dependency&quot;,&quot;compile('com.facebook.android:facebook-android-sdk:4.8.+') { exclude module: 'support-v4' }&quot;)]
+<pre><code class="language-csharp">[Require(&quot;Gradle.Dependency&quot;,&quot;compile('com.facebook.android:facebook-android-sdk:4.8.+') { exclude module: 'support-v4' }&quot;)]
 [Require(&quot;Gradle.Repository&quot;,&quot;mavenCentral()&quot;)]
 </code></pre>
 <h3 id="changing-the-android-manifest">Changing the Android manifest</h3>
@@ -769,7 +769,7 @@ is another file that Uno generates when we build the app. We can get changes
 added to it in a way similar to how we added the Gradle dependencies. This time
 the changes are a bit too big to comfortably add as an attribute, so we will be
 using an <code>.uxl</code> file to to specify them, which looks like this:</p>
-<pre><code>&lt;Extensions Backend=&quot;CPlusPlus&quot;&gt;
+<pre><code class="language-xml">&lt;Extensions Backend=&quot;CPlusPlus&quot;&gt;
   &lt;Set Facebook.AppID=&quot;YOUR-FACEBOOK-APP-ID&quot; /&gt;
   &lt;Require Condition=&quot;Android&quot; Android.ResStrings.Declaration&gt;
     &lt;![CDATA[
@@ -808,7 +808,7 @@ to initiate login by pressing a Fuse button.</p>
 events.  The iOS implementation is a little bit easier, because we do not need
 to store any state in the surrounding Uno object.</p>
 <p>The login method is implemented using foreign Objective-C as follows:</p>
-<pre><code>[Foreign(Language.ObjC)]
+<pre><code class="language-csharp">[Foreign(Language.ObjC)]
 public extern(iOS) void Login(Action&lt;AccessToken&gt; onSuccess, Action onCancelled, Action&lt;string&gt; onError)
 @{
 	FBSDKLoginManager* login = [[FBSDKLoginManager alloc] init];
@@ -848,7 +848,7 @@ the type <code>id&lt;UnoObject&gt;</code>.</p>
 <p>The initialization on iOS is similar to that on Android, only using the
 Objective-C interface to the SDK.</p>
 <p>In the application <code>Started</code> hook, we do the following:</p>
-<pre><code>[Foreign(Language.ObjC)]
+<pre><code class="language-csharp">[Foreign(Language.ObjC)]
 extern(iOS) void Started(ApplicationState state)
 @{
 	[[FBSDKApplicationDelegate sharedInstance]
@@ -857,7 +857,7 @@ extern(iOS) void Started(ApplicationState state)
 @}
 </code></pre>
 <p>Similarly, we invoke <code>activateApp</code> when entering interactive:</p>
-<pre><code>[Foreign(Language.ObjC)]
+<pre><code class="language-csharp">[Foreign(Language.ObjC)]
 static extern(iOS) void OnEnteringInteractive(ApplicationState state)
 @{
 	[FBSDKAppEvents activateApp];
@@ -866,7 +866,7 @@ static extern(iOS) void OnEnteringInteractive(ApplicationState state)
 <p>On iOS we also need to pass received URIs to the Facebook SDK for it to know
 when a login is successful. We can hook onto such events using
 <code>Fuse.Platform.InterApp.ReceivedURI</code>, so we add to the constructor:</p>
-<pre><code>public FacebookLogin()
+<pre><code class="language-csharp">public FacebookLogin()
 {
 	...
 	InterApp.ReceivedURI += OnReceivedUri;
@@ -874,7 +874,7 @@ when a login is successful. We can hook onto such events using
 </code></pre>
 <p>When we get a callback with an URI that starts with <code>fb</code>, we pass it on to
 Facebook:</p>
-<pre><code>static void OnReceivedUri(string uri)
+<pre><code class="language-csharp">static void OnReceivedUri(string uri)
 {
 	if (uri.StartsWith(&quot;fb&quot;))
 	{
@@ -899,7 +899,7 @@ in.</p>
 <p>Uno generates an Xcode project each time we build for iOS. To get the Facebook
 SDK framework added to the project, we add the following attributes to the Uno
 class:</p>
-<pre><code>[Require(&quot;Xcode.FrameworkDirectory&quot;, &quot;@('FacebookSDKs-iOS':Path)&quot;)]
+<pre><code class="language-csharp">[Require(&quot;Xcode.FrameworkDirectory&quot;, &quot;@('FacebookSDKs-iOS':Path)&quot;)]
 [Require(&quot;Xcode.Framework&quot;, &quot;@('FacebookSDKs-iOS/FBSDKCoreKit.framework':Path)&quot;)]
 [Require(&quot;Xcode.Framework&quot;, &quot;@('FacebookSDKs-iOS/FBSDKLoginKit.framework':Path)&quot;)]
 public class FacebookLogin
@@ -919,14 +919,14 @@ the <a href="../native-interop/build-settings.html">build settings</a> documenta
 <p>Next, we need to make sure that the file generated from our Uno class that uses
 the Facebook SDK in foreign code has the required includes. We can achieve that
 like this since we're using entities from <code>CoreKit</code> and <code>LoginKit</code>:</p>
-<pre><code>[ForeignInclude(Language.ObjC, &quot;FBSDKCoreKit/FBSDKCoreKit.h&quot;)]
+<pre><code class="language-csharp">[ForeignInclude(Language.ObjC, &quot;FBSDKCoreKit/FBSDKCoreKit.h&quot;)]
 [ForeignInclude(Language.ObjC, &quot;FBSDKLoginKit/FBSDKLoginKit.h&quot;)]
 </code></pre>
 <h4 id="plists">Plists</h4>
 <p>The Facebook SDK requires us to add some elements to our Xcode project's
 <code>plist</code> file.  Since that is generated on build, we do this in UXL, in the same
 file that we used to add elements to the AndroidManifest:</p>
-<pre><code>&lt;Require Condition=&quot;iOS&quot; Xcode.Plist.Element&gt;
+<pre><code class="language-xml">&lt;Require Condition=&quot;iOS&quot; Xcode.Plist.Element&gt;
 &lt;![CDATA[
   &lt;key&gt;CFBundleURLTypes&lt;/key&gt;
   &lt;array&gt;

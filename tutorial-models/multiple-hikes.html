@@ -592,7 +592,7 @@
 <h2 id="creating-our-list-of-hikes">Creating our List of Hikes</h2>
 <p>In order for us to display a list of hikes to choose from, we first need a list of hikes.</p>
 <p>We start by creating a new class that models a single hike. This could be put in its own JavaScript file, but for simplicity, we are just going to put it right over our <code>App</code> class in <code>App.js</code>.</p>
-<pre><code>class Hike {
+<pre><code class="language-js">class Hike {
 	constructor(name, location, distance, rating, comments) {
 		this.name = name;
 		this.location = location;
@@ -603,7 +603,7 @@
 }
 </code></pre>
 <p>We then modify the contructor of <code>App</code> to use this new class instead just listing all its individual fields.</p>
-<pre><code>export default class App {
+<pre><code class="language-js">export default class App {
 	constructor() {
 		this.hike = new Hike(&quot;Tricky Trails&quot;,
 				 &quot;Lakebed, Utah&quot;,
@@ -614,7 +614,7 @@
 }
 </code></pre>
 <p>Finally we need to update our UX to look for its data bindings in the hike field:</p>
-<pre><code>&lt;Text&gt;Name:&lt;/Text&gt;
+<pre><code class="language-xml">&lt;Text&gt;Name:&lt;/Text&gt;
 &lt;TextBox Value=&quot;{hike.name}&quot; /&gt;
 
 &lt;Text&gt;Location:&lt;/Text&gt;
@@ -630,7 +630,7 @@
 &lt;TextView Value=&quot;{hike.comments}&quot; TextWrapping=&quot;Wrap&quot; /&gt;
 </code></pre>
 <p>At this point, we are ready to add more hikes to our model. At first, we'll just use a simple array of hikes. We start by adding the following set of hikes to our <code>App.js</code> file:</p>
-<pre><code>constructor() {
+<pre><code class="language-js">constructor() {
 	this.hike = new Hike(
 		&quot;Tricky Trails&quot;,
 		&quot;Lakebed, Utah&quot;,
@@ -681,7 +681,7 @@
 <p>Now that we've got our list of hikes, we'll make a simple view to display them.</p>
 <p>Since we want to be able to select one of the hikes we're displaying, we'll display each hike as a button that, when pressed, will select that specific hike and populate the edit hike view.</p>
 <p>First, we'll just display our array of hikes as buttons. But how do we do that in UX? For these kinds of scenarios, UX provides a very helpful mechanism called <a href="../fuse/reactive/each.html">Each</a>:</p>
-<pre><code>&lt;ScrollView&gt;
+<pre><code class="language-xml">&lt;ScrollView&gt;
 	&lt;StackPanel&gt;
 		&lt;Each Items=&quot;{hikes}&quot;&gt;
 		&lt;/Each&gt;
@@ -690,7 +690,7 @@
 </code></pre>
 <p><a href="../fuse/reactive/each.html">Each</a> is a very powerful UX feature. What <a href="../fuse/reactive/each.html">Each</a> does is take the collection specified by its <code>Items</code> property and <em>project</em> each item into a copy of the visual subtree inside the <a href="../fuse/reactive/each.html">Each</a> tag. We can think of it kind of like copying and pasting the code inside <a href="../fuse/reactive/each.html">Each</a> for each item in <code>Items</code>.</p>
 <p>In our case, we'll use <a href="../fuse/reactive/each.html">Each</a> to create a <a href="../fuse/controls/button.html">Button</a> for each of our hikes whose <a href="../fuse/controls/text.html">Text</a> will be set to that hike's <code>name</code>. That will look like this:</p>
-<pre><code>&lt;Each Items=&quot;{hikes}&quot;&gt;
+<pre><code class="language-xml">&lt;Each Items=&quot;{hikes}&quot;&gt;
 	&lt;Button Text=&quot;{name}&quot; /&gt;
 &lt;/Each&gt;
 </code></pre>
@@ -700,20 +700,20 @@
 <p>Now that we've got a button for each of the hikes in our model, we want to be able to select one by clicking one of these buttons.</p>
 <p>We already have a field in our model that represents the current hike. Now we need a way to change the value behind this field, when one of our items is clicked.</p>
 <p>We'll start by creating an empty method in our App class, which we'll fill in in a moment:</p>
-<pre><code>chooseHike() {
+<pre><code class="language-js">chooseHike() {
 
 }
 </code></pre>
 <p>And we'll go ahead and hook up all of our buttons to it like this:</p>
-<pre><code>&lt;Button Text=&quot;{name}&quot; Clicked=&quot;{chooseHike}&quot; /&gt;
+<pre><code class="language-xml">&lt;Button Text=&quot;{name}&quot; Clicked=&quot;{chooseHike}&quot; /&gt;
 </code></pre>
 <p>Now it's time to fill in our function. The basic idea is that we'll fill in the value of our <code>hike</code> field:</p>
-<pre><code>chooseHike() {
+<pre><code class="language-js">chooseHike() {
 	this.hike = ???
 }
 </code></pre>
 <p>But what will we set it to, exactly? As it turns out, when we databind a function to <code>Clicked</code> on a <a href="../fuse/controls/button.html">Button</a>, that function can receive an argument. This argument contains a <code>data</code> field, which will represent the current data context for the <a href="../fuse/controls/button.html">Button</a>. And because of the way we've used <a href="../fuse/reactive/each.html">Each</a>, that means that <code>data</code> will actually be the <code>hike</code> we're after. Cool! So, let's update our function to accept that argument and put its <code>data</code> property into our <code>hike</code> field:</p>
-<pre><code>chooseHike(arg) {
+<pre><code class="language-js">chooseHike(arg) {
 	this.hike = arg.data;
 }
 </code></pre>
@@ -722,7 +722,7 @@
 <p>So now we've started to get a basic model made up of many hikes, a view to select one of these hikes, and a view to edit the selected hike. Altogether, it looks like this:</p>
 <p><img src="../media/hikr/chapter-2/end-of-chapter.png" alt="End of chapter result"></p>
 <p>The code hasn't grown too much, either. It looks like this:</p>
-<pre><code>&lt;App Model=&quot;App&quot;&gt;
+<pre><code class="language-xml">&lt;App Model=&quot;App&quot;&gt;
 	&lt;ClientPanel&gt;
 		&lt;ScrollView&gt;
 			&lt;StackPanel&gt;
@@ -749,7 +749,7 @@
 	&lt;/ClientPanel&gt;
 &lt;/App&gt;
 </code></pre>
-<pre><code>class Hike {
+<pre><code class="language-js">class Hike {
 	constructor(name, location, distance, rating, comments) {
 		this.name = name;
 		this.location = location;

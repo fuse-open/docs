@@ -590,23 +590,23 @@
 <h2 id="specifying-gradle-and-sdk-version">Specifying Gradle and SDK version</h2>
 <p>You can specify the build tools version and target version for your project.</p>
 <p>For example:</p>
-<pre><code>fuse build -t=android -r --set:SDK.BuildToolsVersion=&quot;23.0.3&quot; --set:SDK.CompileVersion=&quot;23&quot; --set:SDK.TargetVersion=&quot;23&quot;`
+<pre><code class="language-sh">fuse build -t=android -r --set:SDK.BuildToolsVersion=&quot;23.0.3&quot; --set:SDK.CompileVersion=&quot;23&quot; --set:SDK.TargetVersion=&quot;23&quot;`
 </code></pre>
 <p>To find out which version of the tools you have installed run:</p>
-<pre><code>uno android
+<pre><code class="language-sh">uno android
 </code></pre>
 <p>In your terminal or command prompt. This will open the Android SDK Manager. From here you can check &amp; install different versions.</p>
 <h2 id="specifying-a-dependency">Specifying a dependency</h2>
 <p>To add a gradle dependency on a project add the following attribute to an Uno class</p>
-<pre><code>[Require(&quot;Gradle.Dependency.Compile&quot;, &quot;com.github.lecho:hellocharts-library:1.5.8@aar&quot;)]
+<pre><code class="language-csharp">[Require(&quot;Gradle.Dependency.Compile&quot;, &quot;com.github.lecho:hellocharts-library:1.5.8@aar&quot;)]
 </code></pre>
 <p>Swapping out the <code>com.github.lecho:hellocharts-library:1.5.8@aar</code> with a library of your choice.</p>
 <h2 id="adding-additional-repositories">Adding additional repositories</h2>
 <p>To specify an additional repository please add the following attribute to an Uno class</p>
-<pre><code>[Require(&quot;Gradle.Repository&quot;, &quot;maven { url 'https://maven.fabric.io/public' }&quot;)]
+<pre><code class="language-csharp">[Require(&quot;Gradle.Repository&quot;, &quot;maven { url 'https://maven.fabric.io/public' }&quot;)]
 </code></pre>
 <p>If you need to add a repository to the <code>model.repositories</code> section of the <code>build.gradle</code> file then use:</p>
-<pre><code>[Require(&quot;Gradle.Module.Repository&quot;, &quot;maven { url 'https://maven.fabric.io/public' }&quot;)]
+<pre><code class="language-csharp">[Require(&quot;Gradle.Module.Repository&quot;, &quot;maven { url 'https://maven.fabric.io/public' }&quot;)]
 </code></pre>
 <h2 id="a-note-on-android-studio">A note on Android Studio</h2>
 <p>While Fuse supports <code>Gradle</code>, it does not explicitly support <code>Android Studio</code>. By this we mean that, when we ship each release, we will make sure that to the best of our knowledge projects compile correctly with gradle, however we will not make the same claim about Android Studio.</p>

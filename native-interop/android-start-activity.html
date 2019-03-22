@@ -594,69 +594,69 @@
 <li>Finally call <code>ActivityUtils.StartActivity</code> with the intent object and method to call on completion</li>
 </ul>
 <p>For example the code to take a picture on Android looks like this:</p>
-<pre><code>using Uno;
-using Uno.Graphics;
-using Uno.Platform;
-using Uno.Collections;
-using Fuse;
-using Fuse.Controls;
-using Fuse.Triggers;
-using Fuse.Resources;
-using Android;
-using Uno.Compiler.ExportTargetInterop;
+<pre><code class="language-csharp">	using Uno;
+	using Uno.Graphics;
+	using Uno.Platform;
+	using Uno.Collections;
+	using Fuse;
+	using Fuse.Controls;
+	using Fuse.Triggers;
+	using Fuse.Resources;
+	using Android;
+	using Uno.Compiler.ExportTargetInterop;
 
-[ForeignInclude(Language.Java,
-				&quot;android.app.Activity&quot;,
-				&quot;android.content.Intent&quot;,
-				&quot;android.net.Uri&quot;,
-				&quot;android.os.Bundle&quot;,
-				&quot;android.provider.MediaStore&quot;,
-				&quot;java.io.File&quot;)]
-public partial class MainView
-{
-	void ClickPlay(object a1, EventArgs a2)
+	[ForeignInclude(Language.Java,
+					&quot;android.app.Activity&quot;,
+					&quot;android.content.Intent&quot;,
+					&quot;android.net.Uri&quot;,
+					&quot;android.os.Bundle&quot;,
+					&quot;android.provider.MediaStore&quot;,
+					&quot;java.io.File&quot;)]
+	public partial class MainView
 	{
-		var intent = MakeMyIntent(); // [0]
-		if (intent!=null)
+		void ClickPlay(object a1, EventArgs a2)
 		{
-			ActivityUtils.StartActivity(intent, OnResult);  // [1]
-		} else {
-			debug_log &quot;Failed to make intent.&quot;;
+			var intent = MakeMyIntent(); // [0]
+			if (intent!=null)
+			{
+				ActivityUtils.StartActivity(intent, OnResult);  // [1]
+			} else {
+				debug_log &quot;Failed to make intent.&quot;;
+			}
 		}
-	}
 
-	extern(android) void OnResult(int resultCode, Java.Object intent, object info)  // [2]
-	{
-		debug_log &quot;Success!: &quot; + resultCode + &quot; - &quot; + intent + &quot;\n&quot;;
-	}
+		extern(android) void OnResult(int resultCode, Java.Object intent, object info)  // [2]
+		{
+			debug_log &quot;Success!: &quot; + resultCode + &quot; - &quot; + intent + &quot;\n&quot;;
+		}
 
-	[Foreign(Language.Java)]
-	static extern(android) Java.Object MakeMyIntent()
-	@{
-		try {
-			String fileName = &quot;JPEG_TEST&quot;;
-			String ext = &quot;.jpg&quot;;
-			File storageDir = com.fuse.Activity.getRootActivity().getExternalFilesDir(null);
-			File photoFile = File.createTempFile(fileName, ext, storageDir);
-			Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-			Bundle bdl = new Bundle();
-			bdl.putParcelable(MediaStore.EXTRA_OUTPUT, Uri.fromFile((File)photoFile));
-			takePictureIntent.putExtras(bdl);
-			return takePictureIntent;
-		} catch (Exception ex) {
+		[Foreign(Language.Java)]
+		static extern(android) Java.Object MakeMyIntent()
+		@{
+			try {
+				String fileName = &quot;JPEG_TEST&quot;;
+				String ext = &quot;.jpg&quot;;
+				File storageDir = com.fuse.Activity.getRootActivity().getExternalFilesDir(null);
+				File photoFile = File.createTempFile(fileName, ext, storageDir);
+				Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+				Bundle bdl = new Bundle();
+				bdl.putParcelable(MediaStore.EXTRA_OUTPUT, Uri.fromFile((File)photoFile));
+				takePictureIntent.putExtras(bdl);
+				return takePictureIntent;
+			} catch (Exception ex) {
+				return null;
+			}
+		@}
+
+		extern(!android) void OnResult(int resultCode, object intent)
+		{
+		}
+
+		static extern(!android) object MakeMyIntent()
+		{
 			return null;
 		}
-	@}
-
-	extern(!android) void OnResult(int resultCode, object intent)
-	{
 	}
-
-	static extern(!android) object MakeMyIntent()
-	{
-		return null;
-	}
-}
 </code></pre>
 <p><code>[0]</code> - First we call a foreign method to create the <code>Intent</code> object in the usual Android fashion.
 <code>[1]</code> - Here we call <code>StartActivity</code> with our intent and the method to call on completion.

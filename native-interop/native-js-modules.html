@@ -603,49 +603,49 @@ constructor through the <code>AddMember()</code> method.</p>
 <p>Note: For the time being, exposing native modules to JavaScript is a bit hacky. You need to mark your class with the <code>[UXGlobalModule]</code> attribute, make it a singleton with a public constructor, and expose it as a global resource using <code>Resource.SetGlobalKey()</code>. We are working on a prettier way to solve this.</p>
 </blockquote>
 <p>Here is a simple example, exposing a custom logging function:</p>
-<pre><code>using Fuse;
-using Fuse.Scripting;
-using Uno.UX;
+<pre><code class="language-csharp">	using Fuse;
+	using Fuse.Scripting;
+	using Uno.UX;
 
-[UXGlobalModule]
-public class MyLogModule : NativeModule
-{
-	static readonly MyLogModule _instance;
-	
-	public MyLogModule()
+	[UXGlobalModule]
+	public class MyLogModule : NativeModule
 	{
-		// Make sure we're only initializing the module once
-		if (_instance != null) return;
+		static readonly MyLogModule _instance;
+		
+		public MyLogModule()
+		{
+			// Make sure we're only initializing the module once
+			if (_instance != null) return;
 
-		_instance = this;
-		Resource.SetGlobalKey(_instance, &quot;MyLogModule&quot;);
-		AddMember(new NativeFunction(&quot;Log&quot;, (NativeCallback)Log));
+			_instance = this;
+			Resource.SetGlobalKey(_instance, &quot;MyLogModule&quot;);
+			AddMember(new NativeFunction(&quot;Log&quot;, (NativeCallback)Log));
+		}
+
+		static object Log(Context c, object[] args)
+		{
+			foreach (var arg in args)
+				debug_log arg;
+
+			return null;
+		}
 	}
-
-	static object Log(Context c, object[] args)
-	{
-		foreach (var arg in args)
-			debug_log arg;
-
-		return null;
-	}
-}
 </code></pre>
 <p>We can then use your native module from JavaScript, as shown below.</p>
-<pre><code>&lt;App&gt;
-	&lt;Panel&gt;
-		&lt;JavaScript&gt;
-			var LogModule = require(&quot;MyLogModule&quot;);
+<pre><code class="language-xml">	&lt;App&gt;
+		&lt;Panel&gt;
+			&lt;JavaScript&gt;
+				var LogModule = require(&quot;MyLogModule&quot;);
 
-			LogModule.Log(&quot;Hello from JavaScript!&quot;);
-		&lt;/JavaScript&gt;
-	&lt;/Panel&gt;
-&lt;/App&gt;
+				LogModule.Log(&quot;Hello from JavaScript!&quot;);
+			&lt;/JavaScript&gt;
+		&lt;/Panel&gt;
+	&lt;/App&gt;
 </code></pre>
 <h2 id="nativefunction">NativeFunction</h2>
 <p>Native functions are defined by providing a <code>Fuse.Scripting.NativeCallback</code> delegate, which
 has the following signature:</p>
-<pre><code>public delegate object NativeCallback(Context c, object[] args);
+<pre><code class="language-csharp">	public delegate object NativeCallback(Context c, object[] args);
 </code></pre>
 <p>Where <code>args</code> is a list of JavaScript arguments passed to the function. An argument can be
 of one of the following types, depending on what is passed to the function at runtime:</p>
@@ -687,38 +687,38 @@ named events, and <a href="../fuse/scripting/nativeeventemittermodule.html">Nati
 events from Uno.</p>
 <p>The following example illustrates how to create a <a href="../fuse/scripting/nativeeventemittermodule.html">NativeEventEmitterModule</a>
 that uses an event to echo any message sent to it using a <code>send</code> function:</p>
-<pre><code>using Fuse;
-using Fuse.Scripting;
-using Uno.UX;
+<pre><code class="language-csharp">	using Fuse;
+	using Fuse.Scripting;
+	using Uno.UX;
 
-[UXGlobalModule]
-public class Chat : NativeEventEmitterModule
-{
-	static readonly Chat _instance;
-
-	public Chat()
-		: base(true, &quot;messageReceived&quot;)
+	[UXGlobalModule]
+	public class Chat : NativeEventEmitterModule
 	{
-		if (_instance != null) return;
+		static readonly Chat _instance;
 
-		_instance = this;
-		Resource.SetGlobalKey(_instance, &quot;Chat&quot;);
+		public Chat()
+			: base(true, &quot;messageReceived&quot;)
+		{
+			if (_instance != null) return;
 
-		AddMember(new NativeFunction(&quot;send&quot;, (NativeCallback)SendMessage));
+			_instance = this;
+			Resource.SetGlobalKey(_instance, &quot;Chat&quot;);
+
+			AddMember(new NativeFunction(&quot;send&quot;, (NativeCallback)SendMessage));
+		}
+
+		object[] SendMessage(Fuse.Scripting.Context context, object[] args)
+		{
+			var arg = args.Length &gt; 0 ? args[0] as string : null;
+
+			if (arg == null)
+				Emit(&quot;messageReceived&quot;, &quot;----&quot;);
+			else
+				Emit(&quot;messageReceived&quot;, arg);
+
+			return null;
+		}
 	}
-
-	object[] SendMessage(Fuse.Scripting.Context context, object[] args)
-	{
-		var arg = args.Length &gt; 0 ? args[0] as string : null;
-
-		if (arg == null)
-			Emit(&quot;messageReceived&quot;, &quot;----&quot;);
-		else
-			Emit(&quot;messageReceived&quot;, arg);
-
-		return null;
-	}
-}
 </code></pre>
 <p>Note that we have to explicitly call the base class constructor when creating a
 <a href="../fuse/scripting/nativeeventemittermodule.html">NativeEventEmitterModule</a>. The first argument is a bool that determines
@@ -728,15 +728,15 @@ this case we only have one event called <code>&quot;messageReceived&quot;</code>
 <p>We call <code>Emit(&quot;messageReceived&quot;, arg)</code> to pass <code>arg</code> to any listeners that
 listen to the <code>&quot;messageReceived&quot;</code> event on the JavaScript side.</p>
 <p>The <code>chat</code> module can then be used from JavaScript like so:</p>
-<pre><code>var chat = require(&quot;Chat&quot;);
+<pre><code class="language-js">	var chat = require(&quot;Chat&quot;);
 
-function send() {
-    chat.send(new Date().toString());
-}
+	function send() {
+	    chat.send(new Date().toString());
+	}
 
-chat.on(&quot;messageReceived&quot;, function(message) {
-    console.log(&quot;Message received &quot; + message);
-});
+	chat.on(&quot;messageReceived&quot;, function(message) {
+	    console.log(&quot;Message received &quot; + message);
+	});
 </code></pre>
 <p>See the documentation of <a href="../fusejs/eventemitter.html">EventEmitter</a> for more information.</p>
 <h2 id="nativepromise">NativePromise</h2>
@@ -745,10 +745,10 @@ or fail in retrieving that object. Examples are results of HTTP requests, dialog
 with the camera.</p>
 <p>Native modules support wrapping Uno promises in JS promises automatically, through the <code>NativePromise</code> class.</p>
 <p>The syntax is:</p>
-<pre><code>new NativePromise&lt;TUno, TJavaScript&gt;(name, futureFactory [, converter])
+<pre><code class="language-csharp">	new NativePromise&lt;TUno, TJavaScript&gt;(name, futureFactory [, converter])
 </code></pre>
 <p>or</p>
-<pre><code>new NativePromise&lt;TUno, TJavaScript&gt;(name, resultFactory [, converter])
+<pre><code class="language-csharp">	new NativePromise&lt;TUno, TJavaScript&gt;(name, resultFactory [, converter])
 </code></pre>
 <p>Where:</p>
 <ul>
@@ -781,112 +781,112 @@ automatically, and the result will be dispatched back to the JavaScript thread w
 of implementing simple promises. To reject the promise, throw an <code>Exception</code> from the resultFactory.</p>
 <p>Note that <code>Future&lt;T&gt;</code> and <code>Promise&lt;T&gt;</code> are Uno types currently defined in the <code>Experimental.Threading</code> package.</p>
 <p>Below is an example of a very simple NativePromise module</p>
-<pre><code>using Fuse;
-using Fuse.Scripting;
-using Uno.UX;
-using Uno;
+<pre><code class="language-csharp">	using Fuse;
+	using Fuse.Scripting;
+	using Uno.UX;
+	using Uno;
 
-[UXGlobalModule]
-public class PromiseExample : NativeModule
-{
-	static readonly PromiseExample _instance;
+	[UXGlobalModule]
+	public class PromiseExample : NativeModule
+	{
+		static readonly PromiseExample _instance;
 
-	public PromiseExample()
-	{
-		if (_instance != null) return;
-		
-		_instance = this;
-		Resource.SetGlobalKey(_instance, &quot;PromiseExample&quot;);
-		
-		AddMember(new NativePromise&lt;string, Fuse.Scripting.Object&gt;(&quot;promiseMe&quot;, PromiseMe, Converter));
-	}
-	
-	static string PromiseMe(object[] args)
-	{
-		if (args.Length != 1)
+		public PromiseExample()
 		{
-			// This will reject the promise with the message of the exception
-			throw new Exception(&quot;promiseMe() requires exactly 1 parameter.&quot;);
+			if (_instance != null) return;
+			
+			_instance = this;
+			Resource.SetGlobalKey(_instance, &quot;PromiseExample&quot;);
+			
+			AddMember(new NativePromise&lt;string, Fuse.Scripting.Object&gt;(&quot;promiseMe&quot;, PromiseMe, Converter));
 		}
 		
-		// This will resolve the promise
-		return args[0] as string;
-	}
+		static string PromiseMe(object[] args)
+		{
+			if (args.Length != 1)
+			{
+				// This will reject the promise with the message of the exception
+				throw new Exception(&quot;promiseMe() requires exactly 1 parameter.&quot;);
+			}
+			
+			// This will resolve the promise
+			return args[0] as string;
+		}
 
-	static Fuse.Scripting.Object Converter(Context context, string str)
-	{
-		var wrapperObject = context.NewObject();
-		wrapperObject[&quot;foo&quot;] = str;
-		return wrapperObject;
+		static Fuse.Scripting.Object Converter(Context context, string str)
+		{
+			var wrapperObject = context.NewObject();
+			wrapperObject[&quot;foo&quot;] = str;
+			return wrapperObject;
+		}
 	}
-}
 </code></pre>
 <p>We can use the above code in JavaScript like so:</p>
-<pre><code>var PromiseExample = require(&quot;PromiseExample&quot;);
-PromiseExample.promiseMe(&quot;bar&quot;)
-	.then(function(result) {
-		console.dir(result);
-		// { foo: &quot;bar&quot; }
-	});
+<pre><code class="language-js">	var PromiseExample = require(&quot;PromiseExample&quot;);
+	PromiseExample.promiseMe(&quot;bar&quot;)
+		.then(function(result) {
+			console.dir(result);
+			// { foo: &quot;bar&quot; }
+		});
 
-PromiseExample.promiseMe()
-	.then(function() {
-		// This will never happen
-	}, function(err) {
-		console.log(&quot;Error: &quot; + err);
-		// Error: promiseMe() requires exactly 1 parameter.
-	})
+	PromiseExample.promiseMe()
+		.then(function() {
+			// This will never happen
+		}, function(err) {
+			console.log(&quot;Error: &quot; + err);
+			// Error: promiseMe() requires exactly 1 parameter.
+		})
 </code></pre>
 <h2 id="nativeevent">NativeEvent</h2>
 <p>Note: The recommended way to do native events is to use a <a href="../fuse/scripting/nativeeventemittermodule.html">NativeEventEmitterModule</a>, described above. <code>NativeEvent</code>s are an older feature that is being phased out.</p>
 <p>Native events can be used to call back to JavaScript from Uno code. This is done by adding a <code>NativeEvent</code> to the <code>NativeModule</code>.
 The <code>NativeEvent</code> can then be called using <code>yourNativeEvent.RaiseAsync(args)</code>.</p>
 <p>The following example illustrates how you create a <code>NativeModule</code> that echoes any message sent to it using a <code>send</code> function and an <code>onMessageReceived</code> event.</p>
-<pre><code>using Fuse;
-using Fuse.Scripting;
-using Uno.UX;
+<pre><code class="language-csharp">	using Fuse;
+	using Fuse.Scripting;
+	using Uno.UX;
 
-[UXGlobalModule]
-public class Chat : NativeModule
-{
-	static readonly Chat _instance;
-
-	NativeEvent _nativeEvent;
-
-	public Chat()
+	[UXGlobalModule]
+	public class Chat : NativeModule
 	{
-		if (_instance != null) return;
+		static readonly Chat _instance;
 
-		_instance = this;
-		Resource.SetGlobalKey(_instance, &quot;Chat&quot;);
+		NativeEvent _nativeEvent;
 
-		AddMember(new NativeFunction(&quot;send&quot;, (NativeCallback)SendMessage));
-		_nativeEvent = new NativeEvent(&quot;onMessageReceived&quot;);
-		AddMember(_nativeEvent);
+		public Chat()
+		{
+			if (_instance != null) return;
+
+			_instance = this;
+			Resource.SetGlobalKey(_instance, &quot;Chat&quot;);
+
+			AddMember(new NativeFunction(&quot;send&quot;, (NativeCallback)SendMessage));
+			_nativeEvent = new NativeEvent(&quot;onMessageReceived&quot;);
+			AddMember(_nativeEvent);
+		}
+
+		object SendMessage(Fuse.Scripting.Context context, object[] args)
+		{
+			var arg = args[0] as string;
+			if (arg != null)
+				_nativeEvent.RaiseAsync(arg);
+			else
+				_nativeEvent.RaiseAsync(&quot;----&quot;);
+
+			return null;
+		}
 	}
-
-	object SendMessage(Fuse.Scripting.Context context, object[] args)
-	{
-		var arg = args[0] as string;
-		if (arg != null)
-			_nativeEvent.RaiseAsync(arg);
-		else
-			_nativeEvent.RaiseAsync(&quot;----&quot;);
-
-		return null;
-	}
-}
 </code></pre>
 <p>The <code>chat</code> module can then be used from JavaScript like so:</p>
-<pre><code>var chat = require(&quot;Chat&quot;);
+<pre><code class="language-js">	var chat = require(&quot;Chat&quot;);
 
-function send() {
-    chat.send(new Date().toString());
-}
+	function send() {
+	    chat.send(new Date().toString());
+	}
 
-chat.onMessageReceived = function(message) {
-    console.log(&quot;onMessageReceived &quot; + message);
-};
+	chat.onMessageReceived = function(message) {
+	    console.log(&quot;onMessageReceived &quot; + message);
+	};
 </code></pre>
 
         </div>

@@ -591,7 +591,7 @@ This guide explains how we can use the foreign code feature in Uno to reach into
 <p><em>Note:</em> This feature replaces the old way of doing interop through language bindings. For more information about our reasons for doing so, we have written a <a href="https://medium.com/fusetools/a-sane-way-of-mixing-languages-in-fuse-660b351c2f96">standalone post</a> on the subject.</p>
 <h2 id="what-is-foreign-code">What is foreign code?</h2>
 <p>Foreign code allows us to write an Uno method body in a different language. Consider the following example:</p>
-<pre><code>using Uno.Compiler.ExportTargetInterop;
+<pre><code class="language-csharp">using Uno.Compiler.ExportTargetInterop;
 
 class Example
 {
@@ -618,14 +618,14 @@ class Example
 <h4 id="primitive-types">Primitive types</h4>
 <p>Primitive types (<code>int</code>, <code>float</code>, <code>char</code>, etc) are converted directly to their foreign equivalents with the one exception that Java does not have primitive unsigned bytes, so a <code>byte</code> in Java is an <code>sbyte</code> in Uno.</p>
 <p>So we can write this:</p>
-<pre><code>[Foreign(Language.Java)]
+<pre><code class="language-csharp">[Foreign(Language.Java)]
 public static extern(Android) void Foo(double x, long y)
 @{
 	android.util.Log.d(&quot;ForeignCodeExample&quot;, &quot;Well look at this: &quot; + x + &quot; and &quot; + y);
 @}
 </code></pre>
 <p>And call it in Uno like this:</p>
-<pre><code>Foo(1.2, 12345678);
+<pre><code class="language-csharp">Foo(1.2, 12345678);
 </code></pre>
 <h4 id="strings">Strings</h4>
 <p>Strings are also handled automatically. Uno strings map to:</p>
@@ -634,27 +634,27 @@ public static extern(Android) void Foo(double x, long y)
 <li><code>NSString*</code> in Objective-C</li>
 </ul>
 <p>Taking the introductory example again, we can write the following:</p>
-<pre><code>[Foreign(Language.ObjC)]
+<pre><code class="language-csharp">[Foreign(Language.ObjC)]
 public static extern(iOS) void Log(string message)
 @{
 	NSLog(@&quot;%@&quot;, message);
 @}
 </code></pre>
 <p>And call it in Uno like this:</p>
-<pre><code>Log(&quot;Type magic everywhere!&quot;);
+<pre><code class="language-csharp">Log(&quot;Type magic everywhere!&quot;);
 </code></pre>
 <h4 id="foreign-objects-passed-to-uno">Foreign objects passed to Uno</h4>
 <p>So what happens when we want to return a Java or Objective-C object from a foreign method? The answer is that we get an opaque object representing the foreign object.</p>
 <p>An Objective-C object (<code>id</code>) is an <code>ObjC.Object</code> and a Java object (<code>Object</code>) is a <code>Java.Object</code> in Uno.</p>
 <p>Here's how to get an object from Java:</p>
-<pre><code>[Foreign(Language.Java)]
+<pre><code class="language-csharp">[Foreign(Language.Java)]
 public static extern(Android) Java.Object Test(int texName)
 @{
     return new android.graphics.SurfaceTexture(texName);
 @}
 </code></pre>
 <p>And calling it:</p>
-<pre><code>var stex = Test(1);
+<pre><code class="language-csharp">var stex = Test(1);
 </code></pre>
 <p>You may wonder why we don't have special-case support for more types; it's not hard to think of a few more types that would be convenient to get automatic conversions for. The full answer to this can be found in the <a href="https://medium.com/fusetools/a-sane-way-of-mixing-languages-in-fuse-660b351c2f96">Medium article</a> mentioned earlier. To summarize:</p>
 <blockquote>
@@ -664,7 +664,7 @@ public static extern(Android) Java.Object Test(int texName)
 <p>We take the same approach. An Uno passed to Java or Objective-C is boxed inside an opaque object.</p>
 <p>In Objective-C the type of that box is <code>id&lt;UnoObject&gt;</code> and in Java it is <code>com.uno.UnoObject</code></p>
 <p>Here is an example of an Uno object being passed in:</p>
-<pre><code>[Foreign(Language.Java)]
+<pre><code class="language-csharp">[Foreign(Language.Java)]
 public static extern(Android) void Test(SomeFancyType soFancy)
 @{
 	// Inside here the type of soFancy is `UnoObject`
@@ -672,7 +672,7 @@ public static extern(Android) void Test(SomeFancyType soFancy)
 @}
 </code></pre>
 <p>Calling this method is straightforward:</p>
-<pre><code>var v = Test(new SomeFancyType(1, 2, 3));
+<pre><code class="language-csharp">var v = Test(new SomeFancyType(1, 2, 3));
 </code></pre>
 <h4 id="passing-java-objects-back-to-java-and-objc-object-back-to-objective-c">Passing <code>Java.Objects</code> back to Java and <code>ObjC.Object</code> back to Objective-C</h4>
 <p>We unbox the foreign objects again, so there is no need to worry about boxes-of-boxes-of-boxes.</p>
@@ -698,7 +698,7 @@ public static extern(Android) void Test(SomeFancyType soFancy)
 | <code>SomeType[]</code>                | <code>id&lt;UnoArray&gt;</code>        | <code>id&lt;UnoArray&gt;</code>      |</p>
 <p>Most types are already boxed, but note that primitive types like <code>int</code>, <code>bool</code>, and <code>char</code> are boxed as <code>NSNumber*</code> when accessed in a wrapped array. This means that to update an Uno array argument <code>int[] x</code> on the Objective-C side, we have to write e.g. <code>x[index] = @42;</code>. When copying an array, the resulting <code>NSArray*</code>'s elements are also boxed following the same rules.</p>
 <p>It's possible to circumvent the boxing behaviour by using UXL macros. The following examples contrast the two ways to use arrays in foreign Objective-C code:</p>
-<pre><code>[Foreign(Language.ObjC)]
+<pre><code class="language-csharp">[Foreign(Language.ObjC)]
 public static extern(iOS) void ForeignIntArray(int[] xs)
 @{
 	@{int[]:Of(xs).Set(3, 123)};
@@ -708,7 +708,7 @@ public static extern(iOS) void ForeignIntArray(int[] xs)
 	}
 @}
 </code></pre>
-<pre><code>[Foreign(Language.ObjC)]
+<pre><code class="language-csharp">[Foreign(Language.ObjC)]
 public static extern(iOS) void ForeignIntArray(int[] xs)
 @{
 	xs[3] = @123;
@@ -720,21 +720,21 @@ public static extern(iOS) void ForeignIntArray(int[] xs)
 </code></pre>
 <p><strong>Java:</strong></p>
 <p>Just like in Objective-C, Uno arrays are boxed when passed to Java. You can access a value from the Uno array by calling <code>get(index)</code> on it. E.g.</p>
-<pre><code>[Foreign(Language.Java)]
+<pre><code class="language-csharp">[Foreign(Language.Java)]
 public void Test0(string[] strArr)
 @{
 	debug_log(strArr.get(0));
 @}
 </code></pre>
 <p>You can set an element of the array using <code>set(index, newValue)</code></p>
-<pre><code>[Foreign(Language.Java)]
+<pre><code class="language-csharp">[Foreign(Language.Java)]
 public void Test1(int[] intArr)
 @{
 	intArr.set(0, 10);
 @}
 </code></pre>
 <p>Updates to the array it are reflected in the original Uno array --- it's a wrapper, not a copy. As mentioned, it's also possible to copy the uno array to an java array by calling <code>copyArray</code>.</p>
-<pre><code>[Foreign(Language.Java)]
+<pre><code class="language-csharp">[Foreign(Language.Java)]
 public void Test1(int[] intArr)
 @{
 	int[] intCopy = intArr.copyArray();
@@ -757,14 +757,14 @@ public void Test1(int[] intArr)
 | anyOtherType[] | com.uno.ObjectArray | com.uno.UnoObject[] |</p>
 <p>Next we may want to pass java arrays to Uno</p>
 <p>If we have a boxed Uno array in Java it is easy to return it as an uno array again:</p>
-<pre><code>[Foreign(Language.Java)]
+<pre><code class="language-csharp">[Foreign(Language.Java)]
 public string[] Test2(string[] wee)
 @{
 	return wee;
 @}
 </code></pre>
 <p>But what if we return a Java array? In that case it will be a <code>Java.Object</code> just like all other Java objects passed to Uno</p>
-<pre><code>[Foreign(Language.Java)]
+<pre><code class="language-csharp">[Foreign(Language.Java)]
 public Java.Object Test3()
 @{
     int[] myIntArray = {1,2,3};
@@ -772,7 +772,7 @@ public Java.Object Test3()
 @}
 </code></pre>
 <p>And passing it back to Java is the same too:</p>
-<pre><code>[Foreign(Language.Java)]
+<pre><code class="language-csharp">[Foreign(Language.Java)]
 public void Test4(Java.Object arr)
 @{
     int[] myIntArray = (int[])arr;
@@ -780,7 +780,7 @@ public void Test4(Java.Object arr)
 @}
 </code></pre>
 <p>There also may be occasions where you want to make an Uno array from Java.</p>
-<pre><code>[Foreign(Language.Java)]
+<pre><code class="language-csharp">[Foreign(Language.Java)]
 public string[] Test5()
 @{
 	StringArray freshStringArr = new StringArray(100);
@@ -794,7 +794,7 @@ public string[] Test5()
 <p><strong>Objective-C:</strong></p>
 <p>Delegates get converted to an Objective-C block of the corresponding type. As an example, an argument of the type <code>Action&lt;string, int&gt;</code> becomes a block of type <code>^ void(NSString*, int)</code>. The argument and return types of the block use the same type conversions as arguments to foreign functions normally do.</p>
 <p>Here is a simple example of this in action:</p>
-<pre><code>[Foreign(Language.ObjC)]
+<pre><code class="language-csharp">[Foreign(Language.ObjC)]
 public static extern(iOS) double DelegateArgument(Func&lt;int, double&gt; f)
 @{
 	 // f is of type `^ double(int)` here, so can be called like any function
@@ -804,13 +804,13 @@ public static extern(iOS) double DelegateArgument(Func&lt;int, double&gt; f)
 <p>It's worth noting that Uno boxes ObjC booleans as <code>bool</code> as opposed to Apple's <code>BOOL</code>. This has certain implications when managing Uno-created blocks with <code>bool</code> values. For instance the block <code>void(^)(BOOL)</code> is not the same as the <code>void(^)(bool)</code> created by passing in an <code>Action&lt;bool&gt;</code>, and cannot be stored in the same properties.</p>
 <p><strong>Java:</strong></p>
 <p>If we define a delegate like this:</p>
-<pre><code>namespace Foo
+<pre><code class="language-csharp">namespace Foo
 {
 	public delegate void Bar(float x, float y, float z);
 }
 </code></pre>
 <p>Then it can be used in foreign Java as follows.</p>
-<pre><code>[Foreign(Language.Java)]
+<pre><code class="language-csharp">[Foreign(Language.Java)]
 public static extern(Android) void ForeignDelegate(Bar x)
 @{
 	x.run(1.0f, 2.0f, 3.0f);
@@ -828,7 +828,7 @@ Action&lt;int[],int&gt; -&gt; com.foreign.Uno.Action_IntArray_int
 <p>Out and ref parameters are supported in foreign Objective-C methods.
 The Objective-C type for such a parameter is a pointer to the Objective-C type of the parameter according the <a href="#foreign-objc-type-table">rules for Objective-C/Uno type conversion</a>.</p>
 <p>The following two examples show how it works:</p>
-<pre><code>[Foreign(Language.ObjC)]
+<pre><code class="language-csharp">[Foreign(Language.ObjC)]
 extern(iOS) void PrimitiveOutParam(ref int m, out int n)
 @{
     // m and n are of type `int*` here.
@@ -862,19 +862,19 @@ C and C++.</p>
 <h3 id="get-and-set-static-uno-fields"><code>Get</code> and <code>Set</code> static Uno fields</h3>
 <p>We can get or set the value of a property using the <code>Get</code> and <code>Set</code> macros.</p>
 <p>The anatomy of a UXL <code>Get</code> expression is as follows:</p>
-<pre><code>v¯¯¯¯¯¯¯¯¯¯v¯ The `@{` `}` syntax means its a UXL macro
+<pre><code class="language-csharp">v¯¯¯¯¯¯¯¯¯¯v¯ The `@{` `}` syntax means its a UXL macro
 @{Foo:Get()}
    ^
  field name
 </code></pre>
 <p>And for <code>Set</code> expressions it looks like this:</p>
-<pre><code>          v¯¯¯¯¯¯ this is a foreign value
+<pre><code class="language-csharp">          v¯¯¯¯¯¯ this is a foreign value
 @{Foo:Set(20)}
    ^
  field name
 </code></pre>
 <p>Let's see this in some example code:</p>
-<pre><code>using Uno.Compiler.ExportTargetInterop;
+<pre><code class="language-csharp">using Uno.Compiler.ExportTargetInterop;
 
 public class Example
 {
@@ -899,11 +899,11 @@ public class Example
 <p>To call instance methods we need to have a <code>this</code> pointer.
 To not clash with the target languages' native meaning of <code>this</code>, foreign instance methods have access to <code>_this</code>, which refers to the object they are called on, wrapped as <code>UnoObject</code> or <code>id&lt;UnoObject&gt;</code>.</p>
 <p>The type of an expression in foreign code can't be automatically inferred by the Uno compiler in general, so we use the <code>:Of</code> macro to interact with <code>_this</code>:</p>
-<pre><code>@{MyClass:Of(_this)}
+<pre><code class="language-csharp">@{MyClass:Of(_this)}
 </code></pre>
 <p>The above code says <em>&quot;the Uno type of <code>_this</code> is <code>MyClass</code>&quot;</em></p>
 <p>The following code shows how it works:</p>
-<pre><code>using Uno.Compiler.ExportTargetInterop;
+<pre><code class="language-csharp">using Uno.Compiler.ExportTargetInterop;
 
 public class Example
 {
@@ -929,7 +929,7 @@ public class Example
 <h3 id="calling-static-uno-methods">Calling static Uno methods</h3>
 <p>UXL's <code>Call</code> macro lets us call Uno methods (and other foreign methods) from inside a foreign method.</p>
 <p>Let's start with a little anatomy:</p>
-<pre><code> the Uno method name          The foreign values to be passed as arguments
+<pre><code class="language-csharp"> the Uno method name          The foreign values to be passed as arguments
       v                         v  v
 @{Foobernator(int,string):Call(1, &quot;jam&quot;)}
                ^    ^
@@ -938,7 +938,7 @@ public class Example
 
 </code></pre>
 <p>Let's see an example of this:</p>
-<pre><code>using Uno.Compiler.ExportTargetInterop;
+<pre><code class="language-csharp">using Uno.Compiler.ExportTargetInterop;
 
 public class Example
 {
@@ -962,7 +962,7 @@ public class Example
 </code></pre>
 <h3 id="calling-uno-instance-method">Calling Uno instance method</h3>
 <p>To call Uno instance methods, we use the <code>Of</code> macro with <code>_this</code> again:</p>
-<pre><code>using Uno.Compiler.ExportTargetInterop;
+<pre><code class="language-csharp">using Uno.Compiler.ExportTargetInterop;
 
 class Example
 {
@@ -1006,7 +1006,7 @@ class Example
 <h2 id="external-source-files">External source files</h2>
 <p>A lot of Fuse's philosophy revolves around the idea of 'using the right tool for the right job'. Foreign code makes it easy to call into Java to get something done fast. We also believe that, if you need to write a lot of Java, it's best to do it in Java. To achieve this we have support for adding <code>.java</code>, <code>.mm</code> &amp; <code>.hh</code> files to <code>.unoproj</code>s to get them included in the build.</p>
 <p>We add Java and Objective-C files like this:</p>
-<pre><code>{
+<pre><code class="language-json">{
 	...
 
 	&quot;Includes&quot;: [
@@ -1022,7 +1022,7 @@ class Example
 <h3 id="java">Java</h3>
 <p>Fuse will parse the <code>package</code> statement in included Java files and ensure the folder hierarchy is correct in the project emitted by our compiler, so there is no need to worry about the folder structure when using Java.</p>
 <p>We can use the <code>ForeignInclude</code> attribute to add imports in Java. It can only be used on classes. The includes affect all foreign methods in the Uno class.</p>
-<pre><code>[ForeignInclude(Language.Java, &quot;java.lang.Runnable&quot;, &quot;java.lang.Boolean&quot;, &quot;android.app.Activity&quot;)]
+<pre><code class="language-csharp">[ForeignInclude(Language.Java, &quot;java.lang.Runnable&quot;, &quot;java.lang.Boolean&quot;, &quot;android.app.Activity&quot;)]
 public class SomeUnoClass : Uno.Application
 {
     ...
@@ -1030,7 +1030,7 @@ public class SomeUnoClass : Uno.Application
 </code></pre>
 <h3 id="objective-c">Objective-C</h3>
 <p>To use external Objective-C headers, we include them in the class, like so:</p>
-<pre><code>[ForeignInclude(Language.ObjC, &quot;Example.hh&quot;)]
+<pre><code class="language-csharp">[ForeignInclude(Language.ObjC, &quot;Example.hh&quot;)]
 class Example
 {
 	...
@@ -1041,7 +1041,7 @@ class Example
 <p>It's possible to add Swift files to our <code>unoproj</code>s. While we do not yet have support for directly using Swift code blocks in Uno, we can call Swift code from foreign Objective-C.</p>
 <p>The following example shows how to use this feature:</p>
 <p><code>Hello.swift:</code></p>
-<pre><code>import Foundation
+<pre><code class="language-csharp">import Foundation
 
 public class HelloSwiftWorld: NSObject {
     public func hello() {
@@ -1050,7 +1050,7 @@ public class HelloSwiftWorld: NSObject {
 }
 </code></pre>
 <p><code>unoproj</code>:</p>
-<pre><code>{
+<pre><code class="language-json">{
     &quot;Includes&quot;: [
         &quot;Hello.swift:Swift:iOS&quot;,
         ...
@@ -1059,7 +1059,7 @@ public class HelloSwiftWorld: NSObject {
 }
 </code></pre>
 <p>Since Swift can be used from Objective-C, we call into the Swift code by using Foreign Objective-C, for instance as follows:</p>
-<pre><code>[ForeignInclude(Language.ObjC, &quot;@(Project.Name)-Swift.h&quot;)]
+<pre><code class="language-csharp">[ForeignInclude(Language.ObjC, &quot;@(Project.Name)-Swift.h&quot;)]
 public class Example
 {
     [Foreign(Language.ObjC)]
@@ -1071,14 +1071,14 @@ public class Example
 }
 </code></pre>
 <p>The version of Swift that is used can be configured with the <code>iOS.SwiftVersion</code> project property:</p>
-<pre><code>&quot;iOS&quot;: {
+<pre><code class="language-json">&quot;iOS&quot;: {
 &quot;SwiftVersion&quot;: 3.0,
 },
 </code></pre>
 <p>Swift files currently do not get the foreign macro expansion that <code>ObjCSource</code> files get.</p>
 <h2 id="getting-the-root-activity">Getting the root Activity</h2>
 <p>Most Android-related tasks involve the app's root Activity in some way or another. We can get the root activity by calling the following method:</p>
-<pre><code>com.fuse.Activity.getRootActivity()
+<pre><code class="language-java">com.fuse.Activity.getRootActivity()
 </code></pre>
 
         </div>

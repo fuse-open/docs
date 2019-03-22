@@ -594,7 +594,7 @@
 <p>Similar to a <a href="../fuse/controls/pagecontrol.html">PageControl</a>, a <a href="../fuse/controls/navigator.html">Navigator</a> is a <em>navigation container</em>. This is a fancy way of saying it's a control that can contain components (usually <a href="../fuse/controls/page.html">Page</a>s) that we can navigate to. However, unlike a <a href="../fuse/controls/pagecontrol.html">PageControl</a>, a <a href="../fuse/controls/navigator.html">Navigator</a> uses <em>templates</em> to instantiate its child components on-demand. This allows a <a href="../fuse/controls/navigator.html">Navigator</a> to instantiate and recycle pages as needed, conserving precious system resources. Also, <a href="../fuse/controls/navigator.html">Navigator</a> doesn't support swiping between its pages by default like <a href="../fuse/controls/pagecontrol.html">PageControl</a>, but that's because it can express richer relationships between its children. It is of course possible to add swiping behavior to pages in a <a href="../fuse/controls/navigator.html">Navigator</a> for the cases where that's needed.</p>
 <p>So, how do we request which component to navigate to when using a <a href="../fuse/controls/navigator.html">Navigator</a>? we'll cover that in the next section when we cover how to hook the <a href="../fuse/controls/navigator.html">Navigator</a> up to JavaScript. Essentially, the best way to explain these concepts is to see them in action, and before we do that, we need a <a href="../fuse/controls/navigator.html">Navigator</a>. So let's start by replacing our <a href="../fuse/controls/pagecontrol.html">PageControl</a> with a <a href="../fuse/controls/navigator.html">Navigator</a>!</p>
 <p>First, let's open up <code>MainView.ux</code>, and simply replace <a href="../fuse/controls/pagecontrol.html">PageControl</a> with <a href="../fuse/controls/navigator.html">Navigator</a>:</p>
-<pre><code>&lt;App Model=&quot;App&quot;&gt;
+<pre><code class="language-xml">&lt;App Model=&quot;App&quot;&gt;
 	&lt;ClientPanel&gt;
 		&lt;Navigator&gt;
 			&lt;HomePage /&gt;
@@ -604,7 +604,7 @@
 &lt;/App&gt;
 </code></pre>
 <p>Now, because the <a href="../fuse/controls/navigator.html">Navigator</a> expects <em>templates</em> instead of instances for its children, we'll need to update these as well. Luckily, Fuse makes this pretty easy - all we have to do is add a <code>ux:Template</code> attribute to each of our <a href="../fuse/controls/navigator.html">Navigator</a>'s children, like so:</p>
-<pre><code>&lt;App Model=&quot;App&quot;&gt;
+<pre><code class="language-xml">&lt;App Model=&quot;App&quot;&gt;
 	&lt;ClientPanel&gt;
 		&lt;Navigator&gt;
 			&lt;HomePage ux:Template=&quot;HomePage&quot; /&gt;
@@ -619,7 +619,7 @@
 <p>Basically, what each of these attributes says is that for a given <em>key</em> (<code>HomePage</code> and <code>EditHikePage</code> in this case), we want the <a href="../fuse/controls/navigator.html">Navigator</a> to instantiate the associated class. So, if the <a href="../fuse/controls/navigator.html">Navigator</a> is asked to navigate to <code>HomePage</code>, it will instantiate a <code>HomePage</code> instance (if it hasn't already) and navigate there. Similarly, when asked to navigate to <code>EditHikePage</code>, it will instantiate an <code>EditHikePage</code> instance (if it hasn't already) and navigate to that instead. We can add any amount of templates we want, given that each of the keys is <em>unique</em> (if they weren't, the <a href="../fuse/controls/navigator.html">Navigator</a> wouldn't know which template to use for a given key).</p>
 <p>Now, if we save this, our previews will update, but our pages will disappear! This makes sense, because we've only specified which templates our <a href="../fuse/controls/navigator.html">Navigator</a> will use to create its child components, but we haven't asked it to actually instantiate anything yet. Typically, we'll do this by navigating to a specific <em>route</em>, as we'll see in the next section. However, <a href="../fuse/controls/navigator.html">Navigator</a> also supports specifying a <em>default path</em> that will be used to create a default child if we haven't navigated to one of its children yet. This is a common case that's perfect for our use case, as we'll want our <a href="../fuse/controls/navigator.html">Navigator</a> to display our <code>HomePage</code> first, and then navigate to the <code>EditHikePage</code> once we've selected a hike to edit.</p>
 <p>To specify the default path for our <a href="../fuse/controls/navigator.html">Navigator</a>, all we have to do is add a <code>DefaultPath</code> attribute which will specify the key of the template we want the <a href="../fuse/controls/navigator.html">Navigator</a> to instantiate initially:</p>
-<pre><code>&lt;App Model=&quot;App&quot;&gt;
+<pre><code class="language-xml">&lt;App Model=&quot;App&quot;&gt;
 	&lt;ClientPanel&gt;
 		&lt;Navigator DefaultPath=&quot;HomePage&quot;&gt;
 			&lt;HomePage ux:Template=&quot;HomePage&quot; /&gt;
@@ -633,54 +633,54 @@
 <p>Now that we're using a <a href="../fuse/controls/navigator.html">Navigator</a> and templates, it's time to tell the <a href="../fuse/controls/navigator.html">Navigator</a> which <a href="../fuse/controls/page.html">Page</a> we want to navigate to. This part is actually done using JavaScript.</p>
 <p>We usually model simple navigation like the one we need here using an stack of pages. Whichever is the top most page on the stack is the page that is currently active. Using a stack like this, we can easily push and pop pages onto the stack, and automatically get a navigation history that we can navigate back through.</p>
 <p>The easiest way to model a stack is to just use a simple JavaScript array. We start by adding a field to our App class called pages, and initialize it to an empty array:</p>
-<pre><code>this.pages = [];
+<pre><code class="language-js">this.pages = [];
 </code></pre>
 <p>Then we databind the <code>Pages</code> property of our <a href="../fuse/controls/navigator.html">Navigator</a> to this field:</p>
-<pre><code>&lt;Navigator Pages=&quot;{pages}&quot;&gt;
+<pre><code class="language-xml">&lt;Navigator Pages=&quot;{pages}&quot;&gt;
 	...
 </code></pre>
 <p>At this point, we need something that represents each of our pages in JavaScript. For that, we use normal ES6 classes, which will act as view models for our pages. Remember how we named the <code>ux:Templates</code> in the previous section? The main reason for this naming convention, is because the <a href="../fuse/controls/navigator.html">Navigator</a> will automatically pick which template to instantiate based on the class name of the items in our <code>pages</code> array.</p>
 <p>Lets start by creating a model for our <code>HomePage</code>. Create a new file called <code>HomePage.js</code> and put it next to <code>HomePage.ux</code> in the <code>Pages</code> folder. In this file, we want to export a class by the same name as our template for <code>HomePage</code> (which we conveniently named exactly the same):</p>
-<pre><code>export default class HomePage {
+<pre><code class="language-js">export default class HomePage {
 
 }
 </code></pre>
 <p>We then want to instantiate this class in our <code>pages</code> array in our <code>App</code> class. In order to do this, we first need to import our newly created class by adding the following to the top of <code>App.js</code>:</p>
-<pre><code>import HomePage from 'Pages/HomePage';
+<pre><code class="language-js">import HomePage from 'Pages/HomePage';
 </code></pre>
 <p>Then we create a new instance of <code>HomePage</code> directly in our newly created <code>pages</code> array:</p>
-<pre><code>this.pages = [new HomePage()];
+<pre><code class="language-js">this.pages = [new HomePage()];
 </code></pre>
 <p>Since we have now defined the <em>default</em> path to be <code>HomePage</code> by initializing the <code>pages</code> array with this type, we no longer need the <code>DefaultPath</code> property on our <a href="../fuse/controls/navigator.html">Navigator</a>, so you can go ahead and remove that:</p>
-<pre><code>&lt;Navigator Pages=&quot;{pages}&quot;&gt;
+<pre><code class="language-xml">&lt;Navigator Pages=&quot;{pages}&quot;&gt;
 </code></pre>
 <p>We should now see our <code>HomePage</code> in the preview window, but you'll notice that it is no longer possible to swipe to navigate to <code>EditHikePage</code>. What we'll do instead is to navigate to <code>EditHikePage</code> whenever the user clicks one of the buttons in <code>HomePage</code>.</p>
 <p>The first thing we need to do, is to create an ES6 class for our <code>EditHikePage</code> as well, which we'll do by the exact same process as for <code>HomePage</code>:</p>
 <p><code>EditHikePage.js</code></p>
-<pre><code>export default class EditHikePage {
+<pre><code class="language-js">export default class EditHikePage {
 }
 </code></pre>
 <p>Next, we import it in <code>App.js</code>, just like we did with <code>HomePage</code>:</p>
-<pre><code>import EditHikePage from 'Pages/EditHikePage';
+<pre><code class="language-js">import EditHikePage from 'Pages/EditHikePage';
 </code></pre>
 <p>Now we are ready to tell our <a href="../fuse/controls/navigator.html">Navigator</a> to navigate after we've chosen a hike. We do this by modifying our <code>chooseHike</code> method to push a new instance of <code>EditHikePage</code> to the <code>pages</code> array, after we've set the current hike:</p>
-<pre><code>chooseHike(arg) {
+<pre><code class="language-js">chooseHike(arg) {
 	this.hike = arg.data;
 	this.pages.push(new EditHikePage());
 }
 </code></pre>
 <p>If you hit save, you should now notice that we are indeed navigating to <code>EditHikePage</code> when we click one of the buttons in <code>HomePage</code>. Pretty easy, right?</p>
 <p>The last thing we want to fix before we finish up, is to add a way of navigating back to <code>HomePage</code>. This is very simple! All we need to do is to &quot;pop&quot; an element from the <code>pages</code> array, which is the same as removing the current page from the stack:</p>
-<pre><code>goBack() {
+<pre><code class="language-js">goBack() {
 	this.pages.pop();
 }
 </code></pre>
 <p>We then need a button on our <code>EditHomePage</code> that is bound to this function so that the user can navigate back:</p>
 <p>At the following below all the <a href="../fuse/controls/text.html">Text</a> and <a href="../fuse/controls/textbox.html">TextBox</a> elements in <code>EditHikePage.ux</code>:</p>
-<pre><code>&lt;Button Text=&quot;Back&quot; Clicked=&quot;{goBack}&quot; /&gt;
+<pre><code class="language-xml">&lt;Button Text=&quot;Back&quot; Clicked=&quot;{goBack}&quot; /&gt;
 </code></pre>
 <p>While we're at it, lets rename our <code>chooseHike</code> method to something that's more descriptive of its current function, like <code>goToHike</code>. Make sure you also update the binding in <code>HomePage.ux</code>.</p>
-<pre><code>goToHike(arg) {
+<pre><code class="language-js">goToHike(arg) {
 	this.hike = arg.data;
 	this.pages.push(new EditHikePage());
 }
@@ -691,12 +691,12 @@
 <h2 id="passing-data-to-our-page-models">Passing data to our page models</h2>
 <p>Our entire app model currently resides in <code>App.js</code>. Having all our data here is fine for now, but we at least want to move the view specific code, like which hike has been selected, in the page that cares about this information (which in this case is <code>EditHikePage</code>).</p>
 <p>We start off, by adding a constructor to our <code>EditHikePage</code> class in <code>EditHikePage.js</code>. It should accept the hike it is supposed to edit as an argument:</p>
-<pre><code>constructor(hike) {
+<pre><code class="language-js">constructor(hike) {
 	this.hike = hike;
 }
 </code></pre>
 <p>Next up we need to make sure we pass the current hike to the class when we instantiate it in our <code>goToHike</code> function:</p>
-<pre><code>goToHike(arg) {
+<pre><code class="language-js">goToHike(arg) {
 	this.pages.push(new EditHikePage(arg.data));
 }
 </code></pre>
@@ -707,7 +707,7 @@
 <p><img src="../media/hikr/chapter-4/chapter-4.gif" alt="End of chapter result"></p>
 <p>And here's the code for the various files we modified in this chapter:</p>
 <p><code>MainView.ux</code></p>
-<pre><code>&lt;App Model=&quot;App&quot;&gt;
+<pre><code class="language-xml">&lt;App Model=&quot;App&quot;&gt;
 	&lt;ClientPanel&gt;
 		&lt;Navigator Pages=&quot;{pages}&quot;&gt;
 			&lt;HomePage ux:Template=&quot;HomePage&quot; /&gt;
@@ -717,7 +717,7 @@
 &lt;/App&gt;
 </code></pre>
 <p><code>App.js</code></p>
-<pre><code>import HomePage from 'Pages/HomePage';
+<pre><code class="language-js">import HomePage from 'Pages/HomePage';
 import EditHikePage from 'Pages/EditHikePage';
 
 class Hike {
@@ -783,7 +783,7 @@ export default class App {
 }
 </code></pre>
 <p><code>Pages/HomePage.ux</code>:</p>
-<pre><code>&lt;Page ux:Class=&quot;HomePage&quot;&gt;
+<pre><code class="language-xml">&lt;Page ux:Class=&quot;HomePage&quot;&gt;
 	&lt;ScrollView&gt;
 		&lt;StackPanel&gt;
 			&lt;Each Items=&quot;{hikes}&quot;&gt;
@@ -794,10 +794,10 @@ export default class App {
 &lt;/Page&gt;
 </code></pre>
 <p><code>Pages/HomePage.js</code>:</p>
-<pre><code>export default class HomePage { }
+<pre><code class="language-js">export default class HomePage { }
 </code></pre>
 <p><code>Pages/EditHikePage.ux</code>:</p>
-<pre><code>&lt;Page ux:Class=&quot;EditHikePage&quot;&gt;
+<pre><code class="language-xml">&lt;Page ux:Class=&quot;EditHikePage&quot;&gt;
 	&lt;ScrollView&gt;
 		&lt;StackPanel&gt;
 			&lt;Text&gt;Name:&lt;/Text&gt;
@@ -821,7 +821,7 @@ export default class App {
 &lt;/Page&gt;
 </code></pre>
 <p><code>Pages/EditHikePage.js</code>:</p>
-<pre><code>export default class EditHikePage {
+<pre><code class="language-js">export default class EditHikePage {
 	constructor(hike) {
 		this.hike = hike;
 	}
