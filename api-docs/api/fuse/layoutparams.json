@@ -2,28 +2,28 @@
   "entity": {
     "base": {
       "id": {
-        "id": "uno/object",
+        "id": "uno/valuetype",
         "parentId": "uno",
         "type": "Class",
         "modifiers": [
           "public",
-          "intrinsic"
+          "abstract"
         ]
       },
       "uri": {
-        "idUri": "uno/object",
-        "href": "uno/object"
+        "idUri": "uno/valuetype",
+        "href": "uno/valuetype"
       },
       "titles": {
-        "indexTitle": "object",
-        "fullyQualifiedIndexTitle": "object"
+        "indexTitle": "ValueType",
+        "fullyQualifiedIndexTitle": "Uno.ValueType"
       }
     },
     "location": {
       "namespaceTitle": "Fuse",
       "namespaceUri": "fuse",
       "packageName": "Fuse.Nodes",
-      "packageVersion": "1.9.0"
+      "packageVersion": "1.11.2"
     },
     "inheritance": {
       "root": {
@@ -31,10 +31,17 @@
         "title": "object",
         "children": [
           {
-            "uri": "fuse/layoutparams",
-            "title": "Fuse.LayoutParams",
-            "children": [],
-            "isCurrent": true
+            "uri": "uno/valuetype",
+            "title": "Uno.ValueType",
+            "children": [
+              {
+                "uri": "fuse/layoutparams",
+                "title": "Fuse.LayoutParams",
+                "children": [],
+                "isCurrent": true
+              }
+            ],
+            "isAncestor": true
           }
         ],
         "isAncestor": true
@@ -61,7 +68,7 @@
       "fullyQualifiedIndexTitle": "Fuse.LayoutParams"
     },
     "syntax": {
-      "uno": "public struct LayoutParams {}"
+      "uno": "public struct LayoutParams : Uno.ValueType {}"
     },
     "comment": {
       "brief": "If a size parameter is not availble it will reutrn 0, via Size, X, Y",

@@ -2,28 +2,28 @@
   "entity": {
     "base": {
       "id": {
-        "id": "uno/object",
+        "id": "uno/valuetype",
         "parentId": "uno",
         "type": "Class",
         "modifiers": [
           "public",
-          "intrinsic"
+          "abstract"
         ]
       },
       "uri": {
-        "idUri": "uno/object",
-        "href": "uno/object"
+        "idUri": "uno/valuetype",
+        "href": "uno/valuetype"
       },
       "titles": {
-        "indexTitle": "object",
-        "fullyQualifiedIndexTitle": "object"
+        "indexTitle": "ValueType",
+        "fullyQualifiedIndexTitle": "Uno.ValueType"
       }
     },
     "location": {
       "namespaceTitle": "Fuse.Internal",
       "namespaceUri": "fuse/internal",
       "packageName": "Fuse.Common",
-      "packageVersion": "1.9.0"
+      "packageVersion": "1.11.2"
     },
     "inheritance": {
       "root": {
@@ -31,10 +31,17 @@
         "title": "object",
         "children": [
           {
-            "uri": "fuse/internal/cacheitem_2",
-            "title": "Fuse.Internal.CacheItem<TKey, TValue>",
-            "children": [],
-            "isCurrent": true
+            "uri": "uno/valuetype",
+            "title": "Uno.ValueType",
+            "children": [
+              {
+                "uri": "fuse/internal/cacheitem_2",
+                "title": "Fuse.Internal.CacheItem<TKey, TValue>",
+                "children": [],
+                "isCurrent": true
+              }
+            ],
+            "isAncestor": true
           }
         ],
         "isAncestor": true
@@ -82,7 +89,7 @@
       "fullyQualifiedIndexTitle": "Fuse.Internal.CacheItem<TKey, TValue>"
     },
     "syntax": {
-      "uno": "public struct CacheItem<TKey, TValue> : Uno.IDisposable {}"
+      "uno": "public struct CacheItem<TKey, TValue> : Uno.ValueType, Uno.IDisposable {}"
     },
     "comment": {
       "brief": "A `TValue` whose lifetime is managed by a `Cache`.",

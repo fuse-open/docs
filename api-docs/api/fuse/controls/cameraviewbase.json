@@ -23,7 +23,7 @@
       "namespaceTitle": "Fuse.Controls",
       "namespaceUri": "fuse/controls",
       "packageName": "Fuse.Controls.CameraView",
-      "packageVersion": "1.9.0"
+      "packageVersion": "1.11.2"
     },
     "inheritance": {
       "root": {
@@ -2051,6 +2051,66 @@
           },
           {
             "comment": {
+              "brief": "Set CameraFocusPoint",
+              "full": "Set CameraFocusPoint\n\nReturns a promise of nothing. Valid values are double x, double y, int cameraWidth, int cameraHeight and int isFocusLocked.\n\n    <CameraView ux:Name=\"Camera\" />\n    <JavaScript>\n        Camera.setCameraFocusPoint(x, y, cameraWidth, cameraHeight, isFocusLocked)\n            .then(function(isSet) {  })\n            .catch(function(error) { });\n    </JavaScript>",
+              "attributes": {
+                "scriptMethod": {
+                  "name": "setCameraFocusPoint",
+                  "parameters": [
+                    "x",
+                    "y",
+                    "cameraWidth",
+                    "cameraHeight",
+                    "isFocusLocked"
+                  ]
+                }
+              }
+            },
+            "returns": {
+              "href": "uno/threading/future_1",
+              "title": "Future<Nothing>",
+              "fullyQualifiedTitle": "Uno.Threading.Future<Fuse.Controls.Nothing>"
+            },
+            "parameters": [
+              {
+                "name": "context",
+                "href": "fuse/scripting/context",
+                "title": "Context",
+                "fullyQualifiedTitle": "Fuse.Scripting.Context"
+              },
+              {
+                "name": "self",
+                "href": "fuse/controls/cameraviewbase",
+                "title": "CameraViewBase",
+                "fullyQualifiedTitle": "Fuse.Controls.CameraViewBase"
+              },
+              {
+                "name": "args",
+                "href": "uno/object",
+                "title": "object[]",
+                "fullyQualifiedTitle": "object[]"
+              }
+            ],
+            "id": {
+              "id": "fuse/controls/cameraviewbase/setcamerafocuspoint_62888d26",
+              "parentId": "fuse/controls/cameraviewbase",
+              "type": "JsMethod",
+              "modifiers": [
+                "private",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/controls/cameraviewbase/setcamerafocuspoint_62888d26",
+              "href": "fuse/controls/cameraviewbase/setcamerafocuspoint_62888d26"
+            },
+            "titles": {
+              "indexTitle": "setCameraFocusPoint(Context, CameraViewBase, object[])",
+              "fullyQualifiedIndexTitle": "Fuse.Controls.CameraViewBase.setCameraFocusPoint(Fuse.Scripting.Context, Fuse.Controls.CameraViewBase, object[])"
+            }
+          },
+          {
+            "comment": {
               "brief": "Set CaptureMode",
               "full": "Set CaptureMode\n\nReturns a promise that resolves to the new `CaptureMode`. The values for `CaptureMode` can be found\nas constants on the `CameraView`. Valid values are `CAPTURE_MODE_PHOTO` and `CAPTURE_MODE_VIDEO`\n\n    <CameraView ux:Name=\"Camera\" />\n    <JavaScript>\n        Camera.setCaptureMode(Camera.CAPTURE_MODE_PHOTO)\n            .then(function(newCaptureMode) {  })\n            .catch(function(error) { });\n    </JavaScript>",
               "attributes": {
@@ -3787,6 +3847,61 @@
             "titles": {
               "indexTitle": "SetCameraFacing(CameraFacing)",
               "fullyQualifiedIndexTitle": "Fuse.Controls.CameraViewBase.SetCameraFacing(Fuse.Controls.CameraFacing)"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/threading/future_1",
+              "title": "Future<Nothing>",
+              "fullyQualifiedTitle": "Uno.Threading.Future<Fuse.Controls.Nothing>"
+            },
+            "parameters": [
+              {
+                "name": "x",
+                "href": "uno/double",
+                "title": "double",
+                "fullyQualifiedTitle": "double"
+              },
+              {
+                "name": "y",
+                "href": "uno/double",
+                "title": "double",
+                "fullyQualifiedTitle": "double"
+              },
+              {
+                "name": "cameraWidth",
+                "href": "uno/int",
+                "title": "int",
+                "fullyQualifiedTitle": "int"
+              },
+              {
+                "name": "cameraHeight",
+                "href": "uno/int",
+                "title": "int",
+                "fullyQualifiedTitle": "int"
+              },
+              {
+                "name": "isFocusLocked",
+                "href": "uno/int",
+                "title": "int",
+                "fullyQualifiedTitle": "int"
+              }
+            ],
+            "id": {
+              "id": "fuse/controls/cameraviewbase/setcamerafocuspoint_b6cd2bfd",
+              "parentId": "fuse/controls/cameraviewbase",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/controls/cameraviewbase/setcamerafocuspoint_b6cd2bfd",
+              "href": "fuse/controls/cameraviewbase/setcamerafocuspoint_b6cd2bfd"
+            },
+            "titles": {
+              "indexTitle": "SetCameraFocusPoint(double, double, int, int, int)",
+              "fullyQualifiedIndexTitle": "Fuse.Controls.CameraViewBase.SetCameraFocusPoint(double, double, int, int, int)"
             }
           },
           {

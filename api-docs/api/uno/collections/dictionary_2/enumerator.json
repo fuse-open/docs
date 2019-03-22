@@ -2,28 +2,28 @@
   "entity": {
     "base": {
       "id": {
-        "id": "uno/object",
+        "id": "uno/valuetype",
         "parentId": "uno",
         "type": "Class",
         "modifiers": [
           "public",
-          "intrinsic"
+          "abstract"
         ]
       },
       "uri": {
-        "idUri": "uno/object",
-        "href": "uno/object"
+        "idUri": "uno/valuetype",
+        "href": "uno/valuetype"
       },
       "titles": {
-        "indexTitle": "object",
-        "fullyQualifiedIndexTitle": "object"
+        "indexTitle": "ValueType",
+        "fullyQualifiedIndexTitle": "Uno.ValueType"
       }
     },
     "location": {
       "namespaceTitle": "Uno.Collections",
       "namespaceUri": "uno/collections",
       "packageName": "UnoCore",
-      "packageVersion": "1.9.0"
+      "packageVersion": "1.11.1"
     },
     "inheritance": {
       "root": {
@@ -31,10 +31,17 @@
         "title": "object",
         "children": [
           {
-            "uri": "uno/collections/dictionary_2/enumerator",
-            "title": "Uno.Collections.Enumerator",
-            "children": [],
-            "isCurrent": true
+            "uri": "uno/valuetype",
+            "title": "Uno.ValueType",
+            "children": [
+              {
+                "uri": "uno/collections/dictionary_2/enumerator",
+                "title": "Uno.Collections.Enumerator",
+                "children": [],
+                "isCurrent": true
+              }
+            ],
+            "isAncestor": true
           }
         ],
         "isAncestor": true
@@ -120,7 +127,7 @@
       "fullyQualifiedIndexTitle": "Uno.Collections.Enumerator"
     },
     "syntax": {
-      "uno": "public struct Enumerator : Uno.Collections.IEnumerator<Uno.Collections.KeyValuePair<TKey, TValue>>, Uno.IDisposable, Uno.Collections.IEnumerator {}"
+      "uno": "public struct Enumerator : Uno.ValueType, Uno.Collections.IEnumerator<Uno.Collections.KeyValuePair<TKey, TValue>>, Uno.IDisposable, Uno.Collections.IEnumerator {}"
     }
   },
   "tableOfContents": {

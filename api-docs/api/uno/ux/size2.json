@@ -2,28 +2,28 @@
   "entity": {
     "base": {
       "id": {
-        "id": "uno/object",
+        "id": "uno/valuetype",
         "parentId": "uno",
         "type": "Class",
         "modifiers": [
           "public",
-          "intrinsic"
+          "abstract"
         ]
       },
       "uri": {
-        "idUri": "uno/object",
-        "href": "uno/object"
+        "idUri": "uno/valuetype",
+        "href": "uno/valuetype"
       },
       "titles": {
-        "indexTitle": "object",
-        "fullyQualifiedIndexTitle": "object"
+        "indexTitle": "ValueType",
+        "fullyQualifiedIndexTitle": "Uno.ValueType"
       }
     },
     "location": {
       "namespaceTitle": "Uno.UX",
       "namespaceUri": "uno/ux",
       "packageName": "UnoCore",
-      "packageVersion": "1.9.0"
+      "packageVersion": "1.11.1"
     },
     "inheritance": {
       "root": {
@@ -31,10 +31,17 @@
         "title": "object",
         "children": [
           {
-            "uri": "uno/ux/size2",
-            "title": "Uno.UX.Size2",
-            "children": [],
-            "isCurrent": true
+            "uri": "uno/valuetype",
+            "title": "Uno.ValueType",
+            "children": [
+              {
+                "uri": "uno/ux/size2",
+                "title": "Uno.UX.Size2",
+                "children": [],
+                "isCurrent": true
+              }
+            ],
+            "isAncestor": true
           }
         ],
         "isAncestor": true
@@ -61,16 +68,11 @@
       "fullyQualifiedIndexTitle": "Uno.UX.Size2"
     },
     "syntax": {
-      "uno": "public struct Size2 {}"
+      "uno": "public struct Size2 : Uno.ValueType {}"
     },
     "comment": {
       "brief": "Denotes a two-dimensional size in points, pixels or percent of available space.",
-      "full": "Denotes a two-dimensional size in points, pixels or percent of available space.\n\nIn UX Markup, values of this type can be written as two comma-separated @Size values.\n\nExamples:\n\n* `100pt, 50%` means 100 points on the horizontal axis, and 50% on the vertical axis\n* `100, 100` means 100 unspecified units in both directions. Will default to points, unless another unit is implict.",
-      "attributes": {
-        "seeAlso": [
-          "Size"
-        ]
-      }
+      "full": "Denotes a two-dimensional size in points, pixels or percent of available space.\n\nIn UX Markup, values of this type can be written as two comma-separated @Size values.\n\nExamples:\n\n* `100pt, 50%` means 100 points on the horizontal axis, and 50% on the vertical axis\n* `100, 100` means 100 unspecified units in both directions. Will default to points, unless another unit is implict."
     }
   },
   "tableOfContents": {
