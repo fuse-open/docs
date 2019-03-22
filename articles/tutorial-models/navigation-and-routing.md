@@ -16,7 +16,7 @@ So, how do we request which component to navigate to when using a @Navigator? we
 
 First, let's open up `MainView.ux`, and simply replace @PageControl with @Navigator:
 
-```
+```xml
 <App Model="App">
 	<ClientPanel>
 		<Navigator>
@@ -29,7 +29,7 @@ First, let's open up `MainView.ux`, and simply replace @PageControl with @Naviga
 
 Now, because the @Navigator expects _templates_ instead of instances for its children, we'll need to update these as well. Luckily, Fuse makes this pretty easy - all we have to do is add a `ux:Template` attribute to each of our @Navigator's children, like so:
 
-```
+```xml
 <App Model="App">
 	<ClientPanel>
 		<Navigator>
@@ -52,7 +52,7 @@ Now, if we save this, our previews will update, but our pages will disappear! Th
 
 To specify the default path for our @Navigator, all we have to do is add a `DefaultPath` attribute which will specify the key of the template we want the @Navigator to instantiate initially:
 
-```
+```xml
 <App Model="App">
 	<ClientPanel>
 		<Navigator DefaultPath="HomePage">
@@ -73,13 +73,13 @@ We usually model simple navigation like the one we need here using an stack of p
 
 The easiest way to model a stack is to just use a simple JavaScript array. We start by adding a field to our App class called pages, and initialize it to an empty array:
 
-```
+```js
 this.pages = [];
 ```
 
 Then we databind the `Pages` property of our @Navigator to this field:
 
-```
+```xml
 <Navigator Pages="{pages}">
 	...
 ```
@@ -88,7 +88,7 @@ At this point, we need something that represents each of our pages in JavaScript
 
 Lets start by creating a model for our `HomePage`. Create a new file called `HomePage.js` and put it next to `HomePage.ux` in the `Pages` folder. In this file, we want to export a class by the same name as our template for `HomePage` (which we conveniently named exactly the same):
 
-```
+```js
 export default class HomePage {
 
 }
@@ -96,19 +96,19 @@ export default class HomePage {
 
 We then want to instantiate this class in our `pages` array in our `App` class. In order to do this, we first need to import our newly created class by adding the following to the top of `App.js`:
 
-```
+```js
 import HomePage from 'Pages/HomePage';
 ```
 
 Then we create a new instance of `HomePage` directly in our newly created `pages` array:
 
-```
+```js
 this.pages = [new HomePage()];
 ```
 
 Since we have now defined the _default_ path to be `HomePage` by initializing the `pages` array with this type, we no longer need the `DefaultPath` property on our @Navigator, so you can go ahead and remove that:
 
-```
+```xml
 <Navigator Pages="{pages}">
 ```
 
@@ -117,20 +117,20 @@ We should now see our `HomePage` in the preview window, but you'll notice that i
 The first thing we need to do, is to create an ES6 class for our `EditHikePage` as well, which we'll do by the exact same process as for `HomePage`:
 
 `EditHikePage.js`
-```
+```js
 export default class EditHikePage {
 }
 ```
 
 Next, we import it in `App.js`, just like we did with `HomePage`:
 
-```
+```js
 import EditHikePage from 'Pages/EditHikePage';
 ```
 
 Now we are ready to tell our @Navigator to navigate after we've chosen a hike. We do this by modifying our `chooseHike` method to push a new instance of `EditHikePage` to the `pages` array, after we've set the current hike:
 
-```
+```js
 chooseHike(arg) {
 	this.hike = arg.data;
 	this.pages.push(new EditHikePage());
@@ -141,7 +141,7 @@ If you hit save, you should now notice that we are indeed navigating to `EditHik
 
 The last thing we want to fix before we finish up, is to add a way of navigating back to `HomePage`. This is very simple! All we need to do is to "pop" an element from the `pages` array, which is the same as removing the current page from the stack:
 
-```
+```js
 goBack() {
 	this.pages.pop();
 }
@@ -151,13 +151,13 @@ We then need a button on our `EditHomePage` that is bound to this function so th
 
 At the following below all the @Text and @TextBox elements in `EditHikePage.ux`:
 
-```
+```xml
 <Button Text="Back" Clicked="{goBack}" />
 ```
 
 While we're at it, lets rename our `chooseHike` method to something that's more descriptive of its current function, like `goToHike`. Make sure you also update the binding in `HomePage.ux`.
 
-```
+```js
 goToHike(arg) {
 	this.hike = arg.data;
 	this.pages.push(new EditHikePage());
@@ -176,7 +176,7 @@ Our entire app model currently resides in `App.js`. Having all our data here is 
 
 We start off, by adding a constructor to our `EditHikePage` class in `EditHikePage.js`. It should accept the hike it is supposed to edit as an argument:
 
-```
+```js
 constructor(hike) {
 	this.hike = hike;
 }
@@ -184,7 +184,7 @@ constructor(hike) {
 
 Next up we need to make sure we pass the current hike to the class when we instantiate it in our `goToHike` function:
 
-```
+```js
 goToHike(arg) {
 	this.pages.push(new EditHikePage(arg.data));
 }
@@ -203,7 +203,7 @@ At this point, we've got our two components all set up with navigation! Our app 
 And here's the code for the various files we modified in this chapter:
 
 `MainView.ux`
-```
+```xml
 <App Model="App">
 	<ClientPanel>
 		<Navigator Pages="{pages}">
@@ -215,7 +215,7 @@ And here's the code for the various files we modified in this chapter:
 ```
 
 `App.js`
-```
+```js
 import HomePage from 'Pages/HomePage';
 import EditHikePage from 'Pages/EditHikePage';
 
@@ -283,7 +283,7 @@ export default class App {
 ```
 
 `Pages/HomePage.ux`:
-```
+```xml
 <Page ux:Class="HomePage">
 	<ScrollView>
 		<StackPanel>
@@ -296,12 +296,12 @@ export default class App {
 ```
 
 `Pages/HomePage.js`:
-```
+```js
 export default class HomePage { }
 ```
 
 `Pages/EditHikePage.ux`:
-```
+```xml
 <Page ux:Class="EditHikePage">
 	<ScrollView>
 		<StackPanel>
@@ -327,7 +327,7 @@ export default class HomePage { }
 ```
 
 `Pages/EditHikePage.js`:
-```
+```js
 export default class EditHikePage {
 	constructor(hike) {
 		this.hike = hike;

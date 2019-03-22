@@ -14,7 +14,7 @@ The final code for this chapter is available [here](https://github.com/fusetools
 
 Backends can be quite complex and how they look/behave can vary a lot, but their most basic interfaces tend to be fairly similar across the board, especially if we're only after a few core features. For example, we can ignore things like initialization, signup, authentication, etc., as those parts will be highly backend-specific, and are features we're not concerned with in our basic app. For our simple app case, we really only need some simple data storage/retrieval and a way to update that data. With these features in mind, a simple backend interface might look something like this:
 
-```
+```js
 class MockBackend {
 	// Returns an array of item objects
 	getItems() { ... }
@@ -25,7 +25,7 @@ class MockBackend {
 
 Then, our app would use this interface in a very straightforward way:
 
-```
+```js
 // Get the item objects from the backend
 var someItems = MockBackend.getItems();
 // Update one of the items in the backend
@@ -36,7 +36,7 @@ This should be straightforward enough. However, we've ignored a very important d
 
 To paraphrase [MDN's article about `Promise`s](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Promise): "A `Promise` represents a value which may be available now, or in the future, or never." This is a pretty basic explanation of what a `Promise` can do for us, but already from that description, we can see that this fits our use case of asynchronously communicating with our backend. With `Promise`s, our typical backend interface looks more like this:
 
-```
+```js
 class MockBackend {
 	// Returns a Promise that represents an array of item objects
 	getItems() { ... }
@@ -47,7 +47,7 @@ class MockBackend {
 
 From this, it doesn't look like our interface has really changed at all! Of course, actually _using_ these functions (and implementing them in the case of our mock backend) is slightly different, but not by much. For example, the code that uses this interface could look something like this:
 
-```
+```js
 // Get the item objects from the backend asynchronously
 var someItems = [];
 MockBackend.getItems()
@@ -85,7 +85,7 @@ Before we start implementing our mock backend, we'll want to talk about how we'l
 
 Lets start by creating a folder called `Services`, which is where we will put our mock backend code. We also create a new JS file called `MockBackend.js`.
 
-```
+```sh
 |- MainView.ux
 |- App.js
 |- Pages
@@ -97,7 +97,7 @@ Lets start by creating a folder called `Services`, which is where we will put ou
 
 While we're at it, lets also create a `Models` folder, and move the `App.js` to it.
 
-```
+```sh
 |- MainView.ux
 |- Models
 	|- App.js
@@ -109,7 +109,7 @@ While we're at it, lets also create a `Models` folder, and move the `App.js` to 
 
 We also need to make sure we update the path to our model in `MainView.ux`, since it has now changed place:
 
-```
+```xml
 <App Model="Models/App">
 ```
 
@@ -121,7 +121,7 @@ After moving the model class like we just did, you might need to __rebuild__ the
 
 Now we're ready to start implementing our mock backend. As it turns out, our `Models/App.js` file already contains all the data we'll need to present. Lets start our mock backend implementation by simply moving the `hikes` array to our newly created `Services/MockBackend.js` file. But instead of assigning it to `this.hikes`, lets make it a constant and a part of the files root scope (notice the `const hikes` part):
 
-```
+```js
 const hikes = [
 	new Hike(
 		"Tricky Trails",
@@ -163,7 +163,7 @@ const hikes = [
 
 A problem we have now, is that the hikes uses the actual `Hike` model to construct its items. This is a problem, since we don't want our mock backend to know about how we model its data on the client. What we'll do instead is to just use simple JavaScript object literals. We'll also give each item a unique `id` field, so that we can identiy exactly which item we are working with. This is to cover the case where our backend might have two items with exactly the same data, but that actually represet two unique cases:
 
-```
+```js
 const hikes = [
 	{
 		id: 0,
@@ -210,7 +210,7 @@ const hikes = [
 
 Lets also update our `Hike` class in `Models/App.js` to allow us to take care of the new `id` field:
 
-```
+```js
 class Hike {
 	constructor(id, name, location, distance, rating, comments) {
 		this.id = id;
@@ -227,7 +227,7 @@ If you hit save at this point, you might notice the "Problems" tab light up, com
 
 Our `Services/MockBackend.js` does not yet export any functionality that would allow our app to access the hikes, so lets get started creating that. We are aiming for the interface we discussed earlier:
 
-```
+```js
 export default class MockBackend {
 	// Returns a Promise that represents an array of hike objects
 	getHikes() { ... }
@@ -238,21 +238,21 @@ export default class MockBackend {
 
 Start by creating and exporting the `MockBackend` class:
 
-```
+```js
 export default class MockBackend {	
 }
 ```
 
 We'll create our `getHikes` function first.
 
-```
+```js
 getHikes() {
 }
 ```
 
 If we wanted this function to return our `hikes` array, we could simply write something like this (since the hikes array is directly accessible to the `MockBackend` class, due to being in the same file):
 
-```
+```js
 getHikes() {
 	return hikes;
 }
@@ -260,7 +260,7 @@ getHikes() {
 
 But instead, we want the function to return a `Promise` which will be fulfilled when our `hikes` are ready. This is to simulate fetching them from a backend. So, our actual `getHikes` function will look something like this instead:
 
-```
+```js
 getHikes() {
 	return new Promise((resolve, reject) => {
 		resolve(hikes);
@@ -272,7 +272,7 @@ Now, instead of returning the `hikes` array, we create a `Promise` using `new Pr
 
 We can also use JS' built-in `setTimeout` function to delay when this will actually be fulfilled by any number of milliseconds. `setTimeout` also takes two arguments. The first one is a function that will be called sometime in the future, and the second one is a number of milliseconds to delay before calling that function. For example, this code would resolve our `Promise` after half a second:
 
-```
+```js
 getHikes() {
 	return new Promise((resolve, reject) => {
 		setTimeout(() => {
@@ -284,7 +284,7 @@ getHikes() {
 
 This code is very useful if we want to test how our app deals with having to wait for data coming from the backend. However, to keep things simple for ourselves during testing, let's use `0` for the delay instead:
 
-```
+```js
 getHikes() {
 	return new Promise((resolve, reject) => {
 		setTimeout(() => {
@@ -298,14 +298,14 @@ Perfect, now we've got a nice `getHikes` function with a proper interface and so
 
 Now for our `updateHike` function. This is a function that will take in some information about a specific hike to update in our mock backend, and return a `Promise` that will be fulfilled when the update has completed. We'll start with an empty function:
 
-```
+```js
 updateHike() {
 }
 ```
 
 Then, we'll add some arguments to identify and update a specific hike:
 
-```
+```js
 updateHike(id, name, location, distance, rating, comments) {
 }
 ```
@@ -314,7 +314,7 @@ In this case, we'll use the `id` argument to identify the hike we want to update
 
 Next, we'll use the `Promise` constructor and `setTimeout` just like in `getHikes` to return a `Promise` with an optional time delay:
 
-```
+```js
 updateHike(id, name, location, distance, rating, comments) {
 	return new Promise((resolve, reject) => {
 		setTimeout(() => {
@@ -325,7 +325,7 @@ updateHike(id, name, location, distance, rating, comments) {
 
 Looking good! Now, we'll add the code to actually identify the hike by its `id` and update its members. Lets first `filter` the array to find the item that matches our `id` argument, and then update that item by looping over the returned array:
 
-```
+```js
 updateHike(id, name, location, distance, rating, comments) {
 	return new Promise((resolve, reject) => {
 		setTimeout(() => {
@@ -341,7 +341,7 @@ updateHike(id, name, location, distance, rating, comments) {
 
 Once we've identified the hike, we'll update its data with our function's arguments:
 
-```
+```js
 updateHike(id, name, location, distance, rating, comments) {
 	return new Promise((resolve, reject) => {
 		setTimeout(() => {
@@ -361,7 +361,7 @@ updateHike(id, name, location, distance, rating, comments) {
 
 Almost done. Finally, we'll make sure we resolve the `Promise` after the hike object has been updated. Since the `Promise` we're creating won't return any data, we just call `resolve` without any parameters, like so:
 
-```
+```js
 updateHike(id, name, location, distance, rating, comments) {
 	return new Promise((resolve, reject) => {
 		setTimeout(() => {
@@ -387,13 +387,13 @@ And with that, our mock backend is complete!
 
 Now it's time to make sure our model actually gets its data from our newly created mock backend. The first thing we need to do, is to import the mock backend service so that we can use it from our `App` class:
 
-```
+```js
 import MockBackend from 'Services/MockBackend';
 ```
 
 Next up, we need to actually fetch the hikes array from our backend when we start up our app. We'll do this in the `App` class constructor. We also remove the "default" hike that is left here from one of the previous chapters:
 
-```
+```js
 constructor() {
 	this.mockBackend = new MockBackend();
 	this.hikes = [];
@@ -419,7 +419,7 @@ We'll start with the `Save` button. This button will be almost identical to the 
 
 First, in `Pages/EditHikePage.ux`, we'll change both the text of our button and its clicked handler:
 
-```
+```xml
 			<Text>Comments:</Text>
 			<TextView Value="{comments}" TextWrapping="Wrap" />
 
@@ -429,7 +429,7 @@ First, in `Pages/EditHikePage.ux`, we'll change both the text of our button and 
 
 Next, in `Pages/EditHikePage.js`, we'll add a new function called `save`:
 
-```
+```js
 save() {
     //this should save and go back
 }
@@ -437,7 +437,7 @@ save() {
 
 This function should save any changes we've made to the current hike to the backend, and also navigate back. One problem now is that since we are in `EditHikePage.js` we no longer have access to the `pages` array, which is located in `App.js`. The easiest way to fix this problem for now is to just pass this array in as an argument when we create the `EditHikePage`.
 
-```
+```js
 	goToHike(arg) {
 		this.pages.push(new EditHikePage(arg.data, this.pages));
 	}
@@ -445,7 +445,7 @@ This function should save any changes we've made to the current hike to the back
 
 We also have to make sure we make `EditHikePage` accept and store this new argument:
 
-```
+```js
 	constructor(hike, pages) {
 		this.pages = pages;
 		this.hike = hike;
@@ -454,7 +454,7 @@ We also have to make sure we make `EditHikePage` accept and store this new argum
 
 Finally, we'll make this button commit any edits we've made in the view. To do this, we'll call mock backends `updateHike` function, passing in the `id` and data from our `hike` object. We now have the same problem as we did with the `pages` array, so lets pass the `mockBackend` instance as well as an argument to `EditHikePage`.
 
-```
+```js
 	goToHike(arg) {
 		this.pages.push(new EditHikePage(arg.data, this.pages, this.mockBackend));
 	}
@@ -462,7 +462,7 @@ Finally, we'll make this button commit any edits we've made in the view. To do t
 
 And make sure the `EditHikePage` constructor takes care of the argument:
 
-```
+```js
 	constructor(hike, pages, mockBackend) {
 		this.mockBackend = mockBackend;
 		this.pages = pages;
@@ -472,7 +472,7 @@ And make sure the `EditHikePage` constructor takes care of the argument:
 
 Next up is to actually call the `updateHike` function of the mock backend, and make sure to print any error messages to our console using the `catch` method on the returned promise:
 
-```
+```js
 save() {
 	this.mockBackend.updateHike(
 		this.hike.id, 
@@ -493,7 +493,7 @@ Great! Now our `Save` button should be all hooked up. Now, let's implement the `
 
 We'll first add the UX code for the button in `Pages/EditHikePage.ux` right beneath the code we just wrote for our `Save` button:
 
-```
+```xml
 			<Button Text="Save" Clicked="{save}" />
 			<Button Text="Cancel" Clicked="{cancel}" />
 		</StackPanel>
@@ -501,14 +501,14 @@ We'll first add the UX code for the button in `Pages/EditHikePage.ux` right bene
 
 Next, we'll add an empty `cancel` function and export it in `Pages/EditHikePage.js`:
 
-```
+```js
 cancel() {
 }
 ```
 
 Then, we'll make sure the `cancel` function will take us back to the previous page by calling `this.pages.pop()`, just like our `save` handler:
 
-```
+```js
 cancel() {
 	this.pages.pop();
 }
@@ -518,7 +518,7 @@ Finally, before the handler navigates back to the previous page, we want to reve
 
 We first need to store a copy of the `hike` in our constructor. We do this using the ES6 `Object.assign` function:
 
-```
+```js
 	constructor(hike, pages, mockBackend) {
 		...
 		
@@ -529,7 +529,7 @@ We first need to store a copy of the `hike` in our constructor. We do this using
 
 Then, in our `cancel` function, we can use the same function to set the values of the original hike object back to the values of our copy:
 
-```
+```js
 cancel() {
 	Object.assign(this.hike, this.hikeCopy);
 	this.pages.pop();
@@ -548,7 +548,7 @@ And here's the code for the various files we modified in this chapter:
 
 `Services/MockBackend.js`:
 
-```
+```js
 const hikes = [
 	{
 		id: 0,
@@ -625,7 +625,7 @@ export default class MockBackend {
 
 `Pages/EditHikePage.ux`:
 
-```
+```xml
 <Page ux:Class="EditHikePage">
 	<ScrollView>
 		<StackPanel>
@@ -653,7 +653,7 @@ export default class MockBackend {
 
 `Pages/EditHikePage.js`:
 
-```
+```js
 export default class EditHikePage {
 	constructor(hike, pages, mockBackend) {
 		this.mockBackend = mockBackend;

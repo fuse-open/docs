@@ -22,6 +22,7 @@ Currently, two types of members are supported:
 
 Here is a simple example, exposing a custom logging function:
 
+```csharp
 	using Fuse;
 	using Fuse.Scripting;
 	using Uno.UX;
@@ -49,9 +50,11 @@ Here is a simple example, exposing a custom logging function:
 			return null;
 		}
 	}
+```
 
 We can then use your native module from JavaScript, as shown below.
 
+```xml
 	<App>
 		<Panel>
 			<JavaScript>
@@ -61,13 +64,16 @@ We can then use your native module from JavaScript, as shown below.
 			</JavaScript>
 		</Panel>
 	</App>
+```
 
 ## NativeFunction
 
 Native functions are defined by providing a `Fuse.Scripting.NativeCallback` delegate, which
 has the following signature:
 
+```csharp
 	public delegate object NativeCallback(Context c, object[] args);
+```
 
 Where `args` is a list of JavaScript arguments passed to the function. An argument can be
 of one of the following types, depending on what is passed to the function at runtime:
@@ -99,6 +105,7 @@ events from Uno.
 The following example illustrates how to create a @NativeEventEmitterModule
 that uses an event to echo any message sent to it using a `send` function:
 
+```csharp
 	using Fuse;
 	using Fuse.Scripting;
 	using Uno.UX;
@@ -131,6 +138,7 @@ that uses an event to echo any message sent to it using a `send` function:
 			return null;
 		}
 	}
+```
 
 Note that we have to explicitly call the base class constructor when creating a
 @NativeEventEmitterModule. The first argument is a bool that determines
@@ -143,6 +151,7 @@ listen to the `"messageReceived"` event on the JavaScript side.
 
 The `chat` module can then be used from JavaScript like so:
 
+```js
 	var chat = require("Chat");
 
 	function send() {
@@ -152,6 +161,7 @@ The `chat` module can then be used from JavaScript like so:
 	chat.on("messageReceived", function(message) {
 	    console.log("Message received " + message);
 	});
+```
 
 See the documentation of @EventEmitter for more information.
 
@@ -165,11 +175,15 @@ Native modules support wrapping Uno promises in JS promises automatically, throu
 
 The syntax is:
 
+```csharp
 	new NativePromise<TUno, TJavaScript>(name, futureFactory [, converter])
+```
 
 or
 
+```csharp
 	new NativePromise<TUno, TJavaScript>(name, resultFactory [, converter])
+```
 
 Where:
 
@@ -200,6 +214,7 @@ Note that `Future<T>` and `Promise<T>` are Uno types currently defined in the `E
 
 Below is an example of a very simple NativePromise module
 
+```csharp
 	using Fuse;
 	using Fuse.Scripting;
 	using Uno.UX;
@@ -239,9 +254,11 @@ Below is an example of a very simple NativePromise module
 			return wrapperObject;
 		}
 	}
+```
 
 We can use the above code in JavaScript like so:
 
+```js
 	var PromiseExample = require("PromiseExample");
 	PromiseExample.promiseMe("bar")
 		.then(function(result) {
@@ -256,6 +273,7 @@ We can use the above code in JavaScript like so:
 			console.log("Error: " + err);
 			// Error: promiseMe() requires exactly 1 parameter.
 		})
+```
 
 ## NativeEvent
 
@@ -266,6 +284,7 @@ The `NativeEvent` can then be called using `yourNativeEvent.RaiseAsync(args)`.
 
 The following example illustrates how you create a `NativeModule` that echoes any message sent to it using a `send` function and an `onMessageReceived` event.
 
+```csharp
 	using Fuse;
 	using Fuse.Scripting;
 	using Uno.UX;
@@ -300,9 +319,11 @@ The following example illustrates how you create a `NativeModule` that echoes an
 			return null;
 		}
 	}
+```
 
 The `chat` module can then be used from JavaScript like so:
 
+```js
 	var chat = require("Chat");
 
 	function send() {
@@ -312,3 +333,4 @@ The `chat` module can then be used from JavaScript like so:
 	chat.onMessageReceived = function(message) {
 	    console.log("onMessageReceived " + message);
 	};
+```

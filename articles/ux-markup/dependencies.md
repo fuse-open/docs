@@ -4,7 +4,9 @@ The `ux:Dependency` attribute in UX Markup defines a new hard dependency (Uno co
 
 ## Syntax
 
+```xml
 	<type ux:Dependency="dependency_name" />
+```
 
 Where `type` is any type accessible in UX Markup, and `dependency_name` is a valid Uno identifier.
 
@@ -14,6 +16,7 @@ Components (defined with `ux:Class`) often require access to certain objects or 
 
 We can declare a dependency in our component using the `ux:Dependency` attribute as follows:
 
+```xml
 	<Panel ux:Class="MyBackButton">
 		<Router ux:Dependency="router" />
 		<Panel ux:Dependency="panel" />
@@ -34,6 +37,7 @@ We can declare a dependency in our component using the `ux:Dependency` attribute
 			<Change panel.Opacity="0.5" Duration="0.3" />
 		</WhilePressed>
 	</Panel>
+```
 
 The above example declares two dependencies, `router` and `panel`. The `router` will be used to `.goBack()` when the component is clicked. The panel dubbed `panel` will be faded to half opacity while the component is pressed.
 
@@ -41,11 +45,13 @@ Dependencies are equivalent to constructor arguments in Uno, stored in `readonly
 
 When instantiating a component with dependencies, you have to provide objects for each dependency (i.e. dependency injection), otherwise a compile time error will be generated. 
 
+```xml
 	<App>
 		<Router ux:Name="router" />
 		<Panel ux:Name="p1" />
 		<MyBackButton router="router" panel="p1" />
 	</App>
+```
 
 A component can not provide a default value for its dependencies.
 
@@ -53,12 +59,14 @@ A component can not provide a default value for its dependencies.
 
 Dependencies are not forwarded when you subclass. Therefore, you have to manually forward them to the baseclass you are sublcassing:
 
+```xml
 	<Page ux:Class="A">
 		<Router ux:Dependency="router" />
 	</Page>
 	<A ux:Class="B">
 		<Router ux:Dependency="router" ux:Binding="router" />
 	</A>
+```
 
 ### How is `ux:Dependency` different from `ux:Property` ?
 

@@ -4,7 +4,7 @@ The sample keyword is used as an operator for reading filtered samples from text
 
 ## Syntax
 
-```
+```csharp
 sample(texture, texCoord [, samplerState])
 ```
 

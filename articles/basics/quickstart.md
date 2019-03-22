@@ -57,11 +57,14 @@ Using one of the above editors with their plugin provides syntax highlighting an
 
 The contents of `MainView.ux` should be the following:
 
+```XML
 	<App>
 	</App>
+```
 
 Try adding some UI elements:
 
+```xml
 	<App>
 		<DockPanel>
 			<StatusBarBackground Dock="Top" />
@@ -75,6 +78,7 @@ Try adding some UI elements:
 			</ScrollView>
 		</DockPanel>
 	</App>
+```
 
 While the app is running in preview, changes will be reflected instantly in all preview sessions (both local and on device) each time you save your UX markup file (hit Ctrl/Cmd+S).
 
@@ -107,6 +111,7 @@ However, in this first example we'll simply create a counter which increases whe
 
 First add the following JavaScript snippet inside the DockPanel:
 
+```js
 	<JavaScript>
 		var Observable = require('FuseJS/Observable');
 		var buttonText = Observable('Button');
@@ -122,10 +127,13 @@ First add the following JavaScript snippet inside the DockPanel:
 			onClick: onClick
 		}
 	</JavaScript>
+```
 
 and then bind the `onClick` handler and `buttonText` variable to the @Button that already exists in the .ux
 
+```xml
 	<Button Text="{buttonText}" Clicked="{onClick}"/>
+```
 
 Just like when changing UX markup, changes to JavaScript will also instantly update in all preview sessions when making changes.
 
@@ -153,7 +161,9 @@ Now that your app has at least one feature of (questionable) value, it is time t
 
 From the command line you do this by typing
 
+```sh
 	fuse build --target=<iOS or Android> --run
+```
 
 ### Okay, that was easy! What's next?
 

@@ -8,13 +8,13 @@ The final code for this chapter is available [here](https://github.com/fusetools
 
 The first thing we'll do is create our project, and we'll call it "hikr". Just like in the [quickstart](../basics/quickstart.md), this can be done using the Fuse dashboard or the Fuse command like tools. For example:
 
-```
+```sh
 fuse create app hikr [optional path]
 ```
 
 This should create the following directory structure:
 
-```
+```sh
 $ tree
 .
 |- MainView.ux
@@ -25,7 +25,7 @@ These two files are all it takes to build a Fuse app! `MainView.ux` will contain
 
 If the project was created from the command line, open it in Fuse:
 
-```
+```sh
 cd hikr
 fuse preview
 ```
@@ -38,7 +38,7 @@ Now that we've got our project and our previews are up and running, it's time to
 
 If we open up `MainView.ux` in a text editor, it should look something like this:
 
-```ux
+```xml
 <App>
 </App>
 ```
@@ -47,7 +47,7 @@ As we can see, it's just an empty @App tag, representing a clean slate for us to
 
 Now we'll add a basic @Text element:
 
-```ux
+```xml
 <App>
 	<Text>Tricky Trails</Text>
 </App>
@@ -57,7 +57,7 @@ At this point, we'll save `MainView.ux`, and immediately, our various previews w
 
 As we can see, @Text is used to display a read-only block of text. This is great, but you may have noticed this text is partially covered by the status bar if you're previewing on your device, so we'll go ahead and fix that real quick. To do this, all we have to do is wrap our @Text element inside a @ClientPanel tag, like so:
 
-```ux
+```xml
 <App>
 	<ClientPanel>
 		<Text>Tricky Trails</Text>
@@ -69,7 +69,7 @@ A @ClientPanel is really just a container that will reserve space at the top and
 
 Before we move on, let's also place our @Text element inside a @StackPanel. A @StackPanel is a sort of _container_ for multiple elements that will stack each of its _child_ elements vertically or horizontally. In our case, we only have one element, so it won't really do anything, but it'll be a good idea to make one now so we don't have to worry about it later. The code to do this is pretty simple:
 
-```ux
+```xml
 <App>
 	<ClientPanel>
 		<StackPanel>
@@ -85,7 +85,7 @@ Cool! So now we've got some text on the screen, but it's displaying a hardcoded 
 
 Let's add some inline JavaScript to our app that will just exports a name for our hike:
 
-```ux
+```xml
 <App>
 	<ClientPanel>
 		<JavaScript>
@@ -105,7 +105,7 @@ Let's add some inline JavaScript to our app that will just exports a name for ou
 
 Now we've got a value in JS exposed to UX, but we're still displaying the hardcoded string from UX. Let's change the @Text element to display our JS variable's value instead:
 
-```ux
+```xml
 <Text Value="{name}" />
 ```
 
@@ -131,7 +131,7 @@ Now, `name` is an @Observable instead of a regular variable. This means that any
 
 Of course, now we actually need something that will change this value. So, let's go ahead and add that @TextBox we talked about earlier:
 
-```ux
+```xml
 <App>
 	<ClientPanel>
 		<JavaScript>
@@ -157,7 +157,7 @@ Now, when we save this, we'll have both a @Text and a @TextBox element displayin
 
 And while we're at it, let's add a caption for it as well by simply adding another @Text element above it:
 
-```ux
+```xml
 <Text>Name:</Text>
 <TextBox Value="{name}" />
 ```
@@ -196,7 +196,7 @@ comments: comments
 
 Then, we'll add a bunch of @TextBox's that we'll bind to these @Observable's (along with some helpful captions as well):
 
-```ux
+```xml
 <Text>Location:</Text>
 <TextBox Value="{location}" />
 
@@ -224,7 +224,7 @@ As we can see, there's a bit too much text to fit on just this one line. It woul
 
 The fix for this is super simple - instead of using a @TextBox, we'll use a @TextView, and ensure its `TextWrapping` property is set to `Wrap`, like so:
 
-```ux
+```xml
 <Text>Comments:</Text>
 <TextView Value="{comments}" TextWrapping="Wrap" />
 ```
@@ -233,7 +233,7 @@ This gives us exactly what we were after - a multi-line editor with text wrappin
 
 The last thing we'll do is ensure that all of our value editors are accessible, even when they take up a lot of space (for example, when the `comments` value is quite long). To do this, we'll simply place our @StackPanel inside a @ScrollView, like so:
 
-```ux
+```xml
 <ScrollView>
 	<StackPanel>
 		<Text Value="{name}" />
@@ -266,7 +266,7 @@ At this point, we've got a view for displaying/editing the data for a specific h
 
 And here's what our final code should look like:
 
-```ux
+```xml
 <App>
 	<ClientPanel>
 		<JavaScript>

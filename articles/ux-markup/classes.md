@@ -6,7 +6,9 @@ Any tree of UX Markup elements can easily be converted into a component using th
 
 ## Syntax
 
+```xml
 	<base_class ux:Class="class_name" />
+```
 
 Where `base_class` is any `class` accesible to UX Markup, and `class_name` is a fully qualified class name (including namespace path, if desired, separated by `.`).
 
@@ -14,6 +16,7 @@ Where `base_class` is any `class` accesible to UX Markup, and `class_name` is a 
 
 The following example defines a new class `MyCheckBox` which is blue while unchecked, and red while checked. Tapping the checkbox changes the state.
 
+```xml
 	<Panel ux:Class="MyCheckBox" Color="Blue">
 		<bool ux:Property="Value" />
 		<JavaScript>
@@ -33,6 +36,7 @@ The following example defines a new class `MyCheckBox` which is blue while unche
 			<Callback Handler="{toggle}" />
 		</Tapped>
 	</Panel>
+```
 
 ## Why use classes?
 
@@ -51,12 +55,15 @@ Fuse encourages breaking your app into components (classes) for several reasons:
 
 ## Syntax
 
+```xml
 	<base_class ux:InnerClass="class_name" />
+```
 
 ## Example
 
 In the following example, notice that we access `toggleStatusPanel` which is defined outside of our class definition of `MyInnerClass`. We can do this because we declare it using `ux:InnerClass` instead of `ux:Class`.
 
+```xml
 	<App>
 		<DockPanel>
 			<Panel ux:Name="statusPanel" Color="#f00" Height="80" Dock="Top"/>
@@ -78,6 +85,7 @@ In the following example, notice that we access `toggleStatusPanel` which is def
 			</StackPanel>
 		</DockPanel>
 	</App>
+```
 
 ## Remarks
 

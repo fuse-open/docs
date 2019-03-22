@@ -18,7 +18,7 @@ The final code for this chapter is available [here](https://github.com/fusetools
 
 Backends can be quite complex and how they look/behave can vary a lot, but their most basic interfaces tend to be fairly similar across the board, especially if we're only after a few core features. For example, we can ignore things like initialization, signup, authentication, etc., as those parts will be highly backend-specific, and are features we're not concerned with in our basic app. For our simple app case, we really only need some simple data storage/retrieval and a way to update that data. With these features in mind, a simple backend interface might look something like this:
 
-```
+```js
 // Returns an array of item objects
 function getItems() { ... }
 // Updates an item
@@ -27,7 +27,7 @@ function updateItem(...) { ... }
 
 Then, our app would use this interface in a very straightforward way:
 
-```
+```js
 // Get the item objects from the backend
 var someItems = getItems();
 // Update one of the items in the backend
@@ -38,7 +38,7 @@ This should be straightforward enough. However, we've ignored a very important d
 
 To paraphrase [MDN's article about `Promise`s](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Promise): "A `Promise` represents a value which may be available now, or in the future, or never." This is a pretty basic explanation of what a `Promise` can do for us, but already from that description, we can see that this fits our use case of asynchronously communicating with our backend. With `Promise`s, our typical backend interface looks more like this:
 
-```
+```js
 // Returns a Promise that represents an array of item objects
 function getItems() { ... }
 // Returns a Promise that will be fulfilled when the item is updated in the backend
@@ -47,7 +47,7 @@ function updateItem(...) { ... }
 
 From this, it doesn't look like our interface has really changed at all! Of course, actually _using_ these functions (and implementing them in the case of our mock backend) is slightly different, but not by much. For example, the code that uses this interface could look something like this:
 
-```
+```js
 // Get the item objects from the backend asynchronously
 var someItems = [];
 getItems()
@@ -85,7 +85,7 @@ All in all, using `Promise`s, we've arrived at a fairly good approximation of wh
 
 Before we start implementing our mock backend, we'll want to talk about how we'll organize our JavaScript moving forward. Currently, we only have one standalone JS module in our project (besides our view models of course), and that's our `hikes.js` file. Since we'll be adding some more modules, we'll want to make sure we keep our project nice and organized. Similar to our `Pages` folder, where we placed all of our files pertaining to the different pages in our app, let's create a `Modules` folder at the root of our project where we'll place all of our standalone JS modules:
 
-```
+```sh
 .
 |- MainView.ux
 |- Modules
@@ -97,7 +97,7 @@ Before we start implementing our mock backend, we'll want to talk about how we'l
 
 The next thing we'll do is make sure Fuse knows about our modules in this directory. Previously, when we added our `hikes.js` file to the project, we added a reference to it in our project file (`hikr.unoproj`) so it would be bundled with our app. Now that we've created our `Modules` folder, we'll replace that entry with one that will include every JavaScript file in the `Modules` directory as a bundle instead:
 
-```
+```json
 ...
 
   "Includes": [
@@ -111,7 +111,7 @@ Now we're ready to start implementing our mock backend. Since our old `hikes.js`
 
 If we take a look at our new `Backend.js` file, it simply exports the `hikes` array as-is. But since this will be our mock backend, we'll want it to expose an interface similar to the one we discussed previously instead. This should look something like this:
 
-```
+```js
 // Returns a Promise that represents an array of hike objects
 function getHikes() { ... }
 // Returns a Promise that will be fulfilled when the hike is updated in the backend
@@ -120,14 +120,14 @@ function updateHike(...) { ... }
 
 We'll create our `getHikes` function first. Below our `hikes` array, we'll start with an empty function:
 
-```
+```js
 function getHikes() {
 }
 ```
 
 If we wanted this function to return our `hikes` array, we could simply write something like this:
 
-```
+```js
 function getHikes() {
 	return hikes;
 }
@@ -135,7 +135,7 @@ function getHikes() {
 
 But instead, we want the function to return a `Promise` which will be fulfilled when our `hikes` are ready to simulate fetching them from a backend. So, our actual `getHikes` function will look something like this instead:
 
-```
+```js
 function getHikes() {
 	return new Promise(function(resolve, reject) {
 		resolve(hikes);
@@ -147,7 +147,7 @@ Now, instead of returning the `hikes` array, we create a `Promise` using `new Pr
 
 We can also use JS' built-in `setTimeout` function to delay when this will actually be fulfilled by any number of milliseconds. `setTimeout` also takes two arguments. The first one is a function that will be called sometime in the future, and the second one is a number of milliseconds to delay before calling that function. For example, this code would resolve our `Promise` after half a second:
 
-```
+```js
 function getHikes() {
 	return new Promise(function(resolve, reject) {
 		setTimeout(function() {
@@ -159,7 +159,7 @@ function getHikes() {
 
 This code is very useful if we want to test how our app deals with having to wait for data coming from the backend. However, to keep things simple for ourselves during testing, let's use `0` for the delay instead:
 
-```
+```js
 function getHikes() {
 	return new Promise(function(resolve, reject) {
 		setTimeout(function() {
@@ -173,14 +173,14 @@ Perfect, now we've got a nice `getHikes` function with a proper interface and so
 
 Now for our `updateHike` function. This is a function that will take in some information about a specific hike to update in our mock backend, and return a `Promise` that will be fulfilled when the update has completed. We'll start with an empty function:
 
-```
+```js
 function updateHike() {
 }
 ```
 
 Then, we'll add some arguments to identify and update a specific hike:
 
-```
+```js
 function updateHike(id, name, location, distance, rating, comments) {
 }
 ```
@@ -189,7 +189,7 @@ In this case, we'll use the `id` argument to identify the hike we want to update
 
 Next, we'll use the `Promise` constructor and `setTimeout` just like in `getHikes` to return a `Promise` with an optional time delay:
 
-```
+```js
 function updateHike(id, name, location, distance, rating, comments) {
 	return new Promise(function(resolve, reject) {
 		setTimeout(function() {
@@ -200,7 +200,7 @@ function updateHike(id, name, location, distance, rating, comments) {
 
 Looking good! Now, we'll add the code to actually identify the hike by its `id` and update its members. To keep things simple, we'll just do a simple linear search to find the hike we're looking for:
 
-```
+```js
 function updateHike(id, name, location, distance, rating, comments) {
 	return new Promise(function(resolve, reject) {
 		setTimeout(function() {
@@ -216,7 +216,7 @@ function updateHike(id, name, location, distance, rating, comments) {
 
 Once we've identified the hike, we'll update its data with our function's arguments and break out of the search loop:
 
-```
+```js
 function updateHike(id, name, location, distance, rating, comments) {
 	return new Promise(function(resolve, reject) {
 		setTimeout(function() {
@@ -238,7 +238,7 @@ function updateHike(id, name, location, distance, rating, comments) {
 
 Almost done. Finally, we'll make sure we resolve the `Promise` after the hike object has been updated. Since the `Promise` we're creating won't return any data, we just call `resolve` without any parameters, like so:
 
-```
+```js
 function updateHike(id, name, location, distance, rating, comments) {
 	return new Promise(function(resolve, reject) {
 		setTimeout(function() {
@@ -262,7 +262,7 @@ function updateHike(id, name, location, distance, rating, comments) {
 
 And that about does it for our mock backend's interface. The last thing we'll do is make sure to export these functions instead of our `hikes` array, like so:
 
-```
+```js
 module.exports = {
 	getHikes: getHikes,
 	updateHike: updateHike
@@ -277,7 +277,7 @@ As I mentioned earler, we _could_ have our view models interact with our mock ba
 
 To create our `Context` module, we'll start by making a new file in our `Modules` directory called `Context.js`:
 
-```
+```sh
 .
 |- MainView.ux
 |- Modules
@@ -291,13 +291,13 @@ To create our `Context` module, we'll start by making a new file in our `Modules
 
 In this file, we'll import FuseJS' `Observable` module:
 
-```
+```js
 var Observable = require("FuseJS/Observable");
 ```
 
 And we'll also import our `Backend` module, like so:
 
-```
+```js
 var Observable = require("FuseJS/Observable");
 var Backend = require("./Backend");
 ```
@@ -306,7 +306,7 @@ Notice how we imported the `Backend` module as `./Backend`. Normally, when impor
 
 Now for the meat of our `Context` module. The `Context` should provide our view models with a simple interface that makes it easy for them to consume and modify our app's data. Since we know our views will eventually display data from our view models via data binding, the `Context` should ideally expose our data via one or more @Observables. So, we'll start with a simple `hikes` `Observable`:
 
-```
+```js
 var hikes = Observable();
 ```
 
@@ -314,7 +314,7 @@ This `Observable` will be used by our view models to display all of the availabl
 
 When our app starts up, we'll call the `Backend` module's `getHikes` function and use the `Promise` it returns to populate our `hikes` `Observable` with its initial data:
 
-```
+```js
 var hikes = Observable();
 
 Backend.getHikes()
@@ -330,7 +330,7 @@ Notice how we use the `replaceAll` function on our `hikes` `Observable` to overw
 
 Next, we'll need to provide a mechanism for our view models to update the data as well. Similar to our mock backend, we can provide an `updateHike` function that takes an `id` to identify the hike to be updated, and the data to update it with. This function will both update our local `hikes` `Observable` (using a similar search the backend used to keep things simple and consistent) and tell the backend to update its data as well:
 
-```
+```js
 function updateHike(id, name, location, distance, rating, comments) {
 	for (var i = 0; i < hikes.length; i++) {
 		var hike = hikes.getAt(i);
@@ -353,7 +353,7 @@ function updateHike(id, name, location, distance, rating, comments) {
 
 Finally, we'll expose `hikes` and `updateHike` in our module's exports like so:
 
-```
+```js
 module.exports = {
 	hikes: hikes,
 
@@ -369,13 +369,13 @@ Now that we've got our `Backend` and `Context` modules set up, it's time to refa
 
 We'll start by migrating the `HomePage`. Since this page only displayed the list of hikes from the old `hikes` module, this will be pretty straightforward. We'll only need to make a couple changes in `Pages/HomePage.js`. First off, if we take a look at `HomePage.js`, the very first line imports our old `hikes` module. Let's change it to import our `Context` module instead:
 
-```
+```js
 var Context = require("Modules/Context");
 ```
 
 The only other thing we have to do is change the reference to `hikes` in the module exports to reference `Context.hikes` instead:
 
-```
+```js
 module.exports = {
 	hikes: Context.hikes,
 
@@ -393,7 +393,7 @@ We'll start with the `Save` button. This button will be almost identical to the 
 
 First, in `Pages/EditHikePage.ux`, we'll change both the text of our button and its clicked handler:
 
-```
+```xml
 			<Text>Comments:</Text>
 			<TextView Value="{comments}" TextWrapping="Wrap" />
 
@@ -403,7 +403,7 @@ First, in `Pages/EditHikePage.ux`, we'll change both the text of our button and 
 
 Next, in `Pages/EditHikePage.js`, we'll rename the `goBack` handler to `save`:
 
-```
+```js
 function save() {
 	router.goBack();
 }
@@ -411,7 +411,7 @@ function save() {
 
 And we'll update its name in the module's exports as well:
 
-```
+```js
 	rating: rating,
 	comments: comments,
 
@@ -421,7 +421,7 @@ And we'll update its name in the module's exports as well:
 
 Finally, we'll make this button commit any edits we've made in the view. To do this, we'll call our `Context` module's `updateHike` function, passing in the `id` from our `hike` @Observable's `value` and the data contained in our view model's `Observable`s:
 
-```
+```js
 function save() {
 	Context.updateHike(hike.value.id, name.value, location.value, distance.value, rating.value, comments.value);
 	router.goBack();
@@ -432,7 +432,7 @@ Great! Now our `Save` button should be all hooked up. Now, let's implement the `
 
 We'll first add the UX code for the button in `Pages/EditHikePage.ux` right beneath the code we just wrote for our `Save` button:
 
-```
+```xml
 			<Button Text="Save" Clicked="{save}" />
 			<Button Text="Cancel" Clicked="{cancel}" />
 		</StackPanel>
@@ -440,7 +440,7 @@ We'll first add the UX code for the button in `Pages/EditHikePage.ux` right bene
 
 Next, we'll add an empty `cancel` function and export it in `Pages/EditHikePage.js`:
 
-```
+```js
 function cancel() {
 }
 
@@ -456,7 +456,7 @@ module.exports = {
 
 Then, we'll make sure the `cancel` function will take us back to the previous page by calling `goBack` on our `Router` instance, just like our `save` handler:
 
-```
+```js
 function cancel() {
 	router.goBack();
 }
@@ -464,7 +464,7 @@ function cancel() {
 
 Finally, before the handler navigates back to the previous page, we want to revert any changes we've made in the view model. There are a few ways we could do this, but one of the easiest is to take advantage of the fact that all of the backing `Observable`s in our view model are the result of `map`'s of our `EditHikePage`'s `hike` `Observable`. Because of this, if we're to "refresh" the value of this `Observable`, all of the editor values will be reset to their original values. This can be achieved by simply assigning the `hike` `Observable`'s value to itself, like so:
 
-```
+```js
 function cancel() {
 	hike.value = hike.value;
 	router.goBack();
@@ -473,7 +473,7 @@ function cancel() {
 
 Easy! Now, while this code makes sense to us now, it may not be immediately clear why we're doing this to someone who hasn't read the code (or us in the future if we've forgotten about this trick), so let's go ahead and add a comment to go with it:
 
-```
+```js
 function cancel() {
 	// Refresh hike value to reset dependent Observables' values
 	hike.value = hike.value;
@@ -493,7 +493,7 @@ And here's the code for the various files we modified in this chapter:
 
 `Modules/Backend.js`:
 
-```
+```js
 var hikes = [
 	{
 		id: 0,
@@ -573,7 +573,7 @@ module.exports = {
 
 `Modules/Context.js`:
 
-```
+```js
 var Observable = require("FuseJS/Observable");
 var Backend = require("./Backend");
 
@@ -615,7 +615,7 @@ module.exports = {
 
 `Pages/HomePage.js`:
 
-```
+```js
 var Context = require("Modules/Context");
 
 function goToHike(arg) {
@@ -632,7 +632,7 @@ module.exports = {
 
 `Pages/EditHikePage.ux`:
 
-```
+```xml
 <Page ux:Class="EditHikePage">
 	<Router ux:Dependency="router" />
 	
@@ -666,7 +666,7 @@ module.exports = {
 
 `Pages/EditHikePage.js`:
 
-```
+```js
 var Context = require("Modules/Context");
 
 var hike = this.Parameter;
@@ -701,7 +701,7 @@ module.exports = {
 ```
 
 `hikr.unoproj`:
-```
+```json
 {
   "Packages": [
     "Fuse",

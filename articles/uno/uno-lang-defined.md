@@ -4,7 +4,7 @@ The defined operator can be used to write code that compiles or behaves differen
 
 ## Syntax
 
-```
+```csharp
 defined(variable)
 ```
 

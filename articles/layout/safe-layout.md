@@ -13,12 +13,14 @@ The @SafeEdgePanel is a panel that adds padding for the safe areas.  You should 
 
 For example, this panel adds a title at the top of the screen.
 
+```xml
     <DockPanel>
         <SafeEdgePanel Edges="LeftTopRight" Dock="Top" Color="#FFF" ExtraPadding="2">
             <Text Value="App Title" Alignment="Center">
         </SafeEdgePanel>
     </DockPanel>
-    
+```
+  
 On supported devices, this will draw the color `#FFF` behind the status bar. The text is positioned as to overlap with any system controls or device margins.
 
 A @SafeEdgePanel is essentially a @Panel with a device dependent `Padding`. The `Edges` property states which edges it touches, and thus which padding values are set. The property `ExtraPadding` allows you to add extra padding to this.
@@ -29,6 +31,7 @@ The rather wordy `Edges` properties like `LeftTopRight` allow for fine control o
 
 For example, you may wish to have a swipe panel form the right that is within the bounds of the title and action bars. In this case, you'd only specify `Edges="Right"`.
 
+```xml
     <DockPanel>
         <SafeEdgePanel Dock="Top" Edges="LeftTopRight" Color="#FFF">
             <!-- title area -->
@@ -45,7 +48,8 @@ For example, you may wish to have a swipe panel form the right that is within th
             <!-- right side bar -->
         </SafeEdgePanel>
     </DockPanel>
-        
+```
+ 
 The title bar accounts for the top margins, and the action bar for the bottom margins, thus the side bar only needs to add padding for the right device margins with `Edges="Right"`.
 
 
@@ -55,9 +59,11 @@ The values used by `SafeEdgePanel` are available directly with `window().safeMar
 
 For example, you may wish to have an action button in the bottom right corner. It makes more sense to adjust its margin than create a wrapping `SafeEdgePanel` panel with padding -- though that would work fine as well.
 
+```xml
     <Circle Width="50" Height="50" Color="#EEF"    Margin="window().safeMargins">
         <!-- icon & activation code -->
     </Circle>
+```
 
 This code specifies all four margins, but since it's in the bottom right corner the top and left margins have no visible effect.  Though it works here it may not always be okay. To get a strict a bottom-right margin use the expression `window().safeMargins * (0,0,1,1)` instead. This zeros out the top-left margin, keeping the bottom-right.
 

@@ -14,9 +14,11 @@ The App tag is the root of your application tree. The presence of an @App tag in
 
 Fuse automatically finds the @App tag of your project and uses that as the root component. We can only have one @App tag in our project.
 
+```xml
 	<App>
 		<Text>Hello, world!</Text>
 	</App>
+```
 
 ## Components
 
@@ -24,12 +26,14 @@ In Fuse, an app is tree of UX markup components (instances of Uno classes).
 
 The basic building blocks are primitives such as @Text, @Rectangle, @Video, @Slider or @Image. These can be composed using @Panels for hierarchical layout, such as @StackPanel and @Grid.
 
+```xml
 	<App>
 		<StackPanel>
 			<Text>Hello, World!</Text>
 			<Text>Hello again!</Text>
 		</StackPanel>
 	</App>
+```
 
 At the root levels of your @App, each element is only instantiated (created) *once* for the entire lifetime of the app. However, there are special UX nodes such as @Each and attributes like `ux:Template` which can create multiple instances, lazy-instantiate and recycle components as appropriate.
 
@@ -39,6 +43,7 @@ At the root levels of your @App, each element is only instantiated (created) *on
 
 Business logic in Fuse apps is done using script components such as the @JavaScript class. These can be placed at any level in the app tree.
 
+```xml
 	<App>
 		<JavaScript>
 			console.log("Hello, World!");
@@ -61,6 +66,7 @@ Business logic in Fuse apps is done using script components such as the @JavaScr
 			</Each>
 		</StackPanel>
 	</App>
+```
 
 Scripts will execute once for each instance of the containing node. For the first @JavaScript in the above example, that means just once for the entire app. However, the @JavaScript inside the `Each` will execute once for each instance of the Panel. In the above example, `hello!` is logged to the console three times.
 
@@ -80,13 +86,17 @@ To create a consistent look and feel througout your app, Fuse relies on creating
 
 For example, here is a simple class (component) that provides a fixed text style:
 
+```xml
 	<Text ux:Class="HeaderText" FontSize="36" Color="#88f">
 		<DropShadow Size="5" Angle="120" />
 	</Text>
+```
 
 It can be used like this:
 
+```xml
 	<HeaderText>This is a header</HeaderText>
+```
 
 Note how Fuse does *not* have any equivalent to CSS, nor does it make any attempt to separate style from structure. However, Fuse goes to great length to separate the visual user experience (defined in UX Markup) from the business logic (defined in e.g. JavaScript).
 
@@ -96,15 +106,19 @@ Another important use case of subclassing is building reusable components, optio
 
 As another example, here is a simple custom button component:
 
+```xml
 	<Panel ux:Class="MyButton">
 		<string ux:Property="Text" />
 		<Text Value="{ReadProperty this.Text}" />
 		<Rectangle CornerRadius="5" Color="#ccf" />
 	</Panel>
+```
 
 It can then be used anywhere in the project like any other component:
 
+```xml
 	<MyButton Text="Submit" Clicked="{doSomething}" />
+```
 
 > See [Creating Components](../componentization.md) for more info on this topic.
 
@@ -116,12 +130,15 @@ A typical app consists of a set of @Pages through which the user navigates using
 
 Navigation in a Fuse app is controlled via a @Router object that is typically placed directly inside your @App tag. This makes the router available to all nodes in the the class scope using the given name, and automatically hooks it up to the physical Back-button on devices that have them.
 
+```xml
 	<App>
 		<Router ux:Name="router" />
 	</App>
+```
 
 The @Router doesn't do much on its own. The @Router works though *router outlets* such as `PageControl` and `Navigator` placed in the subtree, which in turn contains the actual pages. The @Router can then be controlled from javascript.
 
+```xml
 	<App>
 		<Router ux:Name="router">
 		<PageControl>
@@ -136,6 +153,7 @@ The @Router doesn't do much on its own. The @Router works though *router outlets
 			</Page>
 		</PageControl>
 	</App>
+```
 
 > See the [Navigation chapter](../navigation/navigation.md) for more details on this topic.
 
@@ -152,13 +170,16 @@ Next, we need to identify and declare the *dependencies* of this page. It might 
 
 `ContactsPage.ux`
 
+```xml
 	<Page ux:Class="ContactsPage">
 		<Router ux:Dependency="router" />
 		...
 	</Page>
+```
 
 And similar for `NewsFeedPage.ux` and `SettingsPage.ux`. Then we change our App UX to:
 
+```xml
 	<App>
 		<Router ux:Name="router" />
 		<PageControl>
@@ -167,6 +188,7 @@ And similar for `NewsFeedPage.ux` and `SettingsPage.ux`. Then we change our App 
 			<Settings ux:Name="settings" router="router" />
 		</PageControl>
 	</App>
+```
 
 This gives identical behavior, while allowing the page components to be reused in other contexts. The only requirement for reusing the component elsewhere is that we can provide the dependencies (i.e. `router`).
 

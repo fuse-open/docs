@@ -21,15 +21,19 @@ code), which is usually what you want.
 
 To use a setting on an Uno class, add
 
+```csharp
     using Uno.Compiler.ExportTargetInterop;
+```
 
 to the top of the file and use e.g. the following code:
 
+```csharp
     [Require("LinkDirectory", "my/path")]
     public class MyClass
     {
         ...
     }
+```
 
 When the settings become numerous or require long strings, it can be convenient
 to do it in a separate file. We use `.uxl` files with `unoproj` filetype
@@ -37,6 +41,7 @@ to do it in a separate file. We use `.uxl` files with `unoproj` filetype
 
 An example of `uxl` file that adds to the Xcode `plist` file is the following:
 
+```xml
     <Extensions Backend="CPlusPlus" Condition="iOS">
         <Require Xcode.Plist.Element>
             <![CDATA[
@@ -49,6 +54,7 @@ An example of `uxl` file that adds to the Xcode `plist` file is the following:
             ]]>
         </Require>
     </Extensions>
+```
 
 Here we see we first specify the backend (usually `CPlusPlus`), and
 (optionally) a target `Condition`, meaning that the code is only used on `iOS`
@@ -68,7 +74,7 @@ The following is an example of how a typical library might be included in the
 project when targeting iOS. See below for a reference for the settings that we
 use.
 
-```
+```csharp
 [extern(iOS) Require("LinkDirectory", "@('typicalLibrary/lib':Path)")]
 [extern(iOS) Require("IncludeDirectory", "@('typicalLibrary/include':Path)")]
 [extern(iOS) Require("LinkLibrary", "typicalLibrary")]
@@ -86,7 +92,7 @@ iOS.
 
 We also add the library's files to our `unoproj`:
 
-```
+```json
 {
     ...
 
@@ -104,7 +110,9 @@ using attributes.
 
 ### Build flags
 
+```csharp
     [Require("LinkDirectory", "my/path")]
+```
 
 Adds `my/path` to the library search path. This is equivalent to passing
 `-Lmy/path` to the C++ compiler. Using `"@('my/relative/path':Path)"` as the
@@ -112,7 +120,9 @@ path means that it's relative.
 
 ---
 
+```csharp
     [Require("LinkLibrary", "mylibrary")]
+```
 
 Link the application with `mylibrary`. This is equivalent to passing
 `-lmylibrary` to the C++ compiler.
@@ -121,7 +131,9 @@ Note: For linking libraries on Android, use the `JNI.*` settings below.
 
 ---
 
+```csharp
     [Require("IncludeDirectory", "my/path")]
+```
 
 Adds `my/path` to the include search path. This is equivalent to passing
 `-Imy/path` to the C++ compiler.  Using `"@('my/relative/path':Path)"` as the
@@ -131,6 +143,7 @@ path means that it's relative.
 
 We add Objective-C, Java, and C source files to Uno projects as follows:
 
+```json
     {
         ...
 
@@ -143,6 +156,7 @@ We add Objective-C, Java, and C source files to Uno projects as follows:
             "Example.c:CSource",
         ]
     }
+```
 
 For more information, see [the foreign code documentation](../native-interop/foreign-code.md).
 
@@ -153,63 +167,80 @@ For more information, see [the foreign code documentation](../native-interop/for
 Since we treat shared and static native libraries differently on Android we do
 not use `LinkLibrary` for both, but instead use the following two elements:
 
+```csharp
     [Require("JNI.SharedLibrary", "mylib.so")]
+```
 
 Loads `mylib.so` using `System.loadLibrary` when the application starts, and
 includes `mylib.so` in the app.
 
 ---
 
+```csharp
     [Require("JNI.SystemLibrary", "systemlib")]
+```
 
 Loads `systemlib` using `System.loadLibrary` when the application starts
 (without including it in the app, assuming it's a system library like `log`).
 
 ---
 
+```csharp
     [Require("JNI.StaticLibrary", "mylib.a")]
+```
 
 Statically links the application with `mylib.a`.
 
 #### Resources
 
+```csharp
     [Require("Android.ResStrings.Declaration", "<string name=\"hello\">Hello!</string>")]
+```
 
 Adds `<string name="hello">Hello!</string>` to the string resource file:
 `res/values/strings.xml`.
 
 #### Manifest
 
+```csharp
     [Require("AndroidManifest.ActivityElement", "<an-activity-element />")]
+```
 
 Adds `<an-activity-element />` to the application's `activity` section in the
 `AndroidManifest.xml` file.
 
 ---
 
+```csharp
     [Require("AndroidManifest.ApplicationElement", "<an-application-element />")]
+```
 
 Adds `<an-application-element />` to the `application` section in the
 `AndroidManifest.xml` file.
 
 ---
 
+```csharp
     [Require("AndroidManifest.Permission", "android.permission.A_PERMISSION")]
+```
 
 Adds `<uses-permission android:name="android.permission.A_PERMISSION" />` to
 the `AndroidManifest.xml` file.
 
 ---
 
+```csharp
     [Require("AndroidManifest.RootElement", "<a-root-element />")]
+```
 
 Adds `<a-root-element />` at the root level below the `manifest` tag in the
 `AndroidManifest.xml` file.
 
 ---
-
+```csharp
     [Require("AndroidManifest.Activity.ViewIntentFilter",
         "android:host=\"sites.google.com\" android:pathPrefix=\"/site/appindexingex/home/main\" android:scheme=\"https\"")]
+```
 
 Adds the specified string to the application view's intent-filter.
 
@@ -224,34 +255,44 @@ for more information about dependency management using Gradle.
 
 ---
 
+```csharp
     [Require("Gradle.Dependency", "compile('myDependency') { transitive = true }")]
+```
 
 Adds `compile('myDependency') { transitive = true }` to `dependencies` in the
 app's generated `build.gradle` file.
 
 ---
 
+```csharp
     [Require("Gradle.Dependency.ClassPath", "myDependency")]
+```
 
 Adds `classpath 'myDependency'` to `dependencies` in the top-level generated `build.gradle`
 file.
 
 ---
 
+```csharp
     [Require("Gradle.Dependency.Compile", "myDependency")]
+```
 
 Adds `compile 'myDependency'` to `dependencies` in the app's generated `build.gradle`
 file.
 
 ---
 
+```csharp
     [Require("Gradle.BuildFile.End", "stuff")]
+```
 
 Adds `stuff` to the very end of the app's generated `build.gradle` file.
 
 ---
 
+```csharp
     [Require("Gradle.Repository", "mavenCentral()")]
+```
 
 Adds `mavenCentral()` to `repositories` in the app's generated `build.gradle` file.
 
@@ -260,14 +301,18 @@ Adds `mavenCentral()` to `repositories` in the app's generated `build.gradle` fi
 
 #### Xcode settings
 
+```csharp
     [Require("Xcode.EmbeddedFramework", "my.framework")]
+```
 
 Adds `my.framework` as an embedded framework to the generated Xcode project.
 Using `"@('my/relative.framework':Path)"` as the path means that it's relative.
 
 ---
 
+```csharp
     [Require("Xcode.Framework", "a.framework")]
+```
 
 Adds `a.framework` as a framework to the generated Xcode project. If the path
 to the framework is not absolute, it is assumed to be relative to
@@ -278,7 +323,9 @@ Using `"@('my/relative.framework':Path)"` as the path means that it's relative.
 
 ---
 
+```csharp
     [Require("Xcode.FrameworkDirectory", "@('my/relative/framework/path':Path")]
+```
 
 Adds `my/relative/framework/path` to the framework search path. This is
 equivalent to passing `-Fmy/relative/framework/path` to the C++ compiler.
@@ -288,13 +335,17 @@ in that case.
 
 ---
 
+```csharp
     [Require("Xcode.Plist.Element", "<plist-element />")]
+```
 
 Adds `<plist-element />` to the application's `plist` file.
 
 ---
 
+```csharp
     [Require("Xcode.ShellScript", "someScript")]
+```
 
 Adds `someScript` in a `PBXProjShellScriptBuildPhase` in the generated
 Xcode project's `.pbxproj` file.
@@ -305,7 +356,9 @@ Xcode project's `.pbxproj` file.
 These settings apply when building for iOS using our preliminary CocoaPods
 support which is enabled when building with the `-DCOCOAPODS` Uno flag.
 
+```csharp
     [Require("Cocoapods.Platform.Name", "platformName")]
+```
 
 Adds
 
@@ -315,7 +368,9 @@ to the generated `Podfile`.
 
 ---
 
+```csharp
     [Require("Cocoapods.Platform.Version", "platformVersion")]
+```
 
 If `Cocoapods.Platform.Name` is set to `platformName`, adds
 
@@ -325,19 +380,25 @@ to the generated `Podfile`.
 
 ---
 
+```csharp
     [Require("Cocoapods.Podfile.Target", "pod 'Firebase'")]
+```
 
 Adds `pod 'Firebase'` to the application's `target` configuration in the
 generated `Podfile`.
 
 ---
 
+```csharp
     [Require("Cocoapods.Podfile.Pre", "myPreStatement")]
+```
 
 Adds `myPreStatement` to the beginning of the generated `Podfile`.
 
 ---
 
+```csharp
     [Require("Cocoapods.Podfile.Post", "myPostStatement")]
+```
 
 Adds `myPostStatement` to the end of the generated `Podfile`.

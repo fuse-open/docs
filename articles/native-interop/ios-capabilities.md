@@ -6,7 +6,7 @@ Fuse allows you to configure these through the `unoproj` file under the `iOS →
 
 The available Capabilities and example values are as follows:
 
-```
+```json
   "iOS": {
     "SystemCapabilities": {
       "ApplicationGroups": ["group.A", "group.B"],

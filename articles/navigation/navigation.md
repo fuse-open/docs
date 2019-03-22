@@ -15,19 +15,23 @@ When designing a multi-page app, it is recommended to define each page in its ow
 
 `LoginPage.ux`
 
+```xml
 	<Page ux:Class="LoginPage">
 		<Router ux:Dependency="router" />
 		<JavaScript File="LoginPage.js" />
 		...
 	</Page>
+```
 
 `SettingsPage.ux`
 
+```xml
 	<Page ux:Class="SettingsPage">
 		<Router ux:Dependency="router" />
 		<JavaScript File="SettingsPage.js" />
 		...
 	</Page>
+```
 
 And so on, for each page.
 
@@ -41,6 +45,7 @@ If our page has other dependencies, we can declare them the same way.
 
 The basic structure of your main UX file should be something like this:
 
+```xml
 	<App>
 		<Router ux:Name="router" />
 		<Navigator DefaultPath="login">
@@ -50,6 +55,7 @@ The basic structure of your main UX file should be something like this:
 			<UserProfilePage ux:Template="user" router="router" />
 		</Navigator>
 	</App>
+```
 
 The `ux:Template` attribute indicates that this is not a real object instance, but rather a template that can be instantiated on demand. The `Navigator` will take care of instantiating as many instances of each template as needed, and recycle instances when they are not needed anymore.
 
@@ -67,15 +73,19 @@ In the above example, the `login` template (`LoginPage` class) will be our start
 
 Let's give the `LoginPage` a button:
 
+```xml
 	<Button Text="Login" Clicked="{loginClicked}" />
+```
 
 Hook its `Clicked` event up to this function in `LoginPage.js`:
 
+```js
 	function loginClicked() {
 		// TODO: validate login credentials
 
 		router.goto("home");
 	}
+```
 
 This will do what you expect, the navigator will animate the login screen out, and bam! We're on the `home` page.
 
@@ -87,7 +97,9 @@ Hierarchical navigation is navigating to ("pushing") a temporary page, and then 
 
 Let's say a button is supposed to open the `settings` page, and then the back-button should take us back to wherever we came from:
 
+```js
 	router.push("settings");
+```
 
 Easy, right? Now the back button on Android will take us back.
 
@@ -96,7 +108,9 @@ Easy, right? Now the back button on Android will take us back.
 
 We can also trigger a go-back from JavaScript:
 
+```js
 	router.goBack();
+```
 
 We can use `push()` multiple times to navigate "deeper". Then you have to tap the back button multiple times to get all the way back out.
 
@@ -110,12 +124,15 @@ For example, our `user` page could really benefit from knowing the ID of the use
 
 This is easy by passing argument objects to the router:
 
+```js
 	router.push("user", { userId: id });
+```
 
 This will temporarily open a new instance of our `user` template, with the provided object as parameter.
 
 In `UserPage.js` we can read the parameter using the @Observable `Parameter`, which lets you react to changes to the parameters:
 
+```js
 	var userId = this.Parameter.map(function(param) {
 		return param.userId;
 	});
@@ -123,6 +140,7 @@ In `UserPage.js` we can read the parameter using the @Observable `Parameter`, wh
 	module.exports = {
 		userId: userId
 	};
+```
 	
 Make a note of the fact that `this.Parameter` is an @Observable, which means that its value is not necessarily available when the module is being evaluated.
 Make sure you either expose it using an observable operator (like in the example above), or add a handler to it using the `onValueChanged` function:
@@ -148,6 +166,7 @@ Sometimes, it is not enough to just have one level of navigation. Our `home` scr
 
 No worries, the `Router` can deal with this just as easily. Say that our `HomePage.ux` looks something like this:
 
+```xml
 	<Page ux:Class="HomePage">
 		<Router ux:Dependency="router" />
 		<JavaScript File="HomePage.js" />
@@ -158,6 +177,7 @@ No worries, the `Router` can deal with this just as easily. Say that our `HomePa
 			<RecentNotificationsPage ux:Name="recent" />
 		</PageControl>
 	</Page>
+```
 
 > Note: PageControl expects to get live page objects, not templates. PageControl keeps all pages alive and only one instance of each, to e.g. allow swipe navigation between them.
 
@@ -165,7 +185,9 @@ Both `Navigator` and `PageControl` are so-called *router outlets*. This means th
 
 For example, our login-screen might want to send us directly to the `RecentNotificationsPage` instead of `SocialFeedPage`. That's done like this:
 
+```js
 	router.goto("home", {}, "recent", { scrollOffset: 300 });
+```
 
 And that's all! First the `Navigator` will get you to the `home` template, and then the `PageControl` within that template will go to the `recent` page. This is a *path*, and can also be specified relatively, as we will see below. This can be compared to the path of an URL, which would look like this: `home/recent?scrollOffset=300`
 
@@ -179,6 +201,7 @@ A neat trick to making custom pages independent of a large navigation tree, is t
 
 These two functions behave in the same way as their other variants(`goto`, and `push`), except that they expect a `Navigator` or `PageControl` as the first argument. Any path specified after this will be relative to the provided @Navigator/@PageControl.
 
+```xml
 	<JavaScript>
 		module.exports.toSub1 = function() {
 			router.pushRelative(secondNav, "option1");
@@ -190,6 +213,7 @@ These two functions behave in the same way as their other variants(`goto`, and `
 		</Panel>
 		<Panel Color="#FAA" ux:Template="option1" />
 	</Navigator>
+```
 
 ## Custom animations/transitions
 
@@ -198,7 +222,9 @@ in `Navigator` enter sliding in from the left, and exit shrinking and fading out
 
 If you want to customize the transtion, you probably want to disable the default transition first:
 
+```xml
 	<Page ux:Class="SettingsPage" Transition="None">
+```
 
 If you don't specify `Transition="None"`, your custom animation will be "on top of"/"in addition to" the default transition.
 
@@ -217,6 +243,7 @@ This system can be a bit tricky to wrap your head around, but it is actually nec
 
 For example:
 
+```xml
 	<Page ux:Class="SettingsPage" Transition="None">
 		<EnteringAnimation>
 			<Move X="1" RelativeTo="Size" Duration="0.4" Easing="BackOut" />
@@ -226,12 +253,14 @@ For example:
 		</ExitingAnimation>
 		...
 	</Page>
+```
 
 This will make your settings page fly in from the left, and exit by falling out the bottom of your screen. Feel free
 to spice it up by adding `<Change this.Opacity="0" Duration="0.3" ../>`, scaling, rotation or whatever you feel like.
 
 If you have a lot of pages and want them to share the transition code, we can make a common base class:
 
+```xml
 	<Page ux:Class="FancyTransitionPage" Transition="None">
 		<EnteringAnimation>
 			<Move X="1" RelativeTo="Size" Duration="0.4" Easing="BackOut" />
@@ -240,12 +269,15 @@ If you have a lot of pages and want them to share the transition code, we can ma
 			<Move Y="1" RelativeTo="Size" Duration="0.4" Easing="CubicIn" />
 		</ExitingAnimation>
 	</Page>
+```
 
 And then use that as base class for your pages:
 
+```xml
 	<FancyTransitionPage ux:Class="SettingsPage">
 		...
 	</FancyTransitionPage>
+```
 
 Other navigation-based triggers such as `ActivatingAnimation`, `WhileActive` etc. also works as expected in both `PageControl` and `Navigator`.
 

@@ -13,6 +13,7 @@ We like to keep files organized according to which role they fulfill in our app.
 
 ### Example
 
+```js
 - MyApp/
 	- MyApp.unoproj
 	- MainView.ux
@@ -29,6 +30,7 @@ We like to keep files organized according to which role they fulfill in our app.
 		- Images/
 			- DefaultAvatar.png
 			- SplashScreen.jpg
+```
 
 ## Resources
 

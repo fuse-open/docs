@@ -30,7 +30,7 @@ Check out this video to see how it's done! [fuse preview app](https://www.youtub
 To be able to preview or export to Android, you need to install the required SDK components.
 Pull up your terminal and run the following:
 
-```
+```sh
 fuse install android
 ```
 
@@ -106,7 +106,7 @@ The simplest way to export is to use the "Export" menu in Fuse. However, the com
 
 In the project root, run the following command in your shell:
 
-```
+```sh
 fuse build --target=Android --run
 ```
 
@@ -114,7 +114,7 @@ This will deploy and start the project on your connected Android device.
 
 To make a **release build**, run:
 
-```
+```sh
 fuse build --target=Android --configuration=Release
 ```
 
@@ -124,7 +124,7 @@ fuse build --target=Android --configuration=Release
 
 In the project root, run the following command in your shell:
 
-```
+```sh
 fuse build --target=iOS --run
 ```
 
@@ -132,7 +132,7 @@ If you instead want to open the generated project in Xcode, run `fuse build --ta
 
 To make a **release build**, run:
 
-```
+```sh
 fuse build --target=iOS --configuration=Release
 ```
 

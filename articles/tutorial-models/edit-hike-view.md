@@ -8,13 +8,13 @@ The final code for this chapter is available [here](https://github.com/fusetools
 
 The first thing we'll do is create our project, and we'll call it "hikr". Just like in the [quickstart](../basics/quickstart.md), this can be done using the Fuse dashboard or the Fuse command like tools. For example:
 
-```
+```sh
 fuse create app hikr [optional path]
 ```
 
 This should create the following directory structure:
 
-```
+```sh
 $ tree
 .
 |- MainView.ux
@@ -25,7 +25,7 @@ These two files are all it takes to build a Fuse app! `MainView.ux` will contain
 
 If the project was created from the command line, open it in Fuse:
 
-```
+```sh
 cd hikr
 fuse preview
 ```
@@ -38,7 +38,7 @@ Now that we've got our project and our previews are up and running, it's time to
 
 If we open up `MainView.ux` in a text editor, it should look something like this:
 
-```ux
+```xml
 <App>
 </App>
 ```
@@ -47,7 +47,7 @@ As we can see, it's just an empty @App tag, representing a clean slate for us to
 
 Now we'll add a basic @Text element:
 
-```ux
+```xml
 <App>
 	<Text>Tricky Trails</Text>
 </App>
@@ -57,7 +57,7 @@ At this point, we'll save `MainView.ux`, and immediately, our various previews w
 
 As we can see, @Text is used to display a read-only block of text. This is great, but you may have noticed this text is partially covered by the status bar if you're previewing on your device, so we'll go ahead and fix that real quick. To do this, all we have to do is wrap our @Text element inside a @ClientPanel tag, like so:
 
-```ux
+```xml
 <App>
 	<ClientPanel>
 		<Text>Tricky Trails</Text>
@@ -69,7 +69,7 @@ A @ClientPanel is really just a container that will reserve space at the top and
 
 Before we move on, let's also place our @Text element inside a @StackPanel. A @StackPanel is a sort of _container_ for multiple elements that will stack each of its _child_ elements vertically or horizontally. In our case, we only have one element, so it won't really do anything, but it'll be a good idea to make one now so we don't have to worry about it later. The code to do this is pretty simple:
 
-```ux
+```xml
 <App>
 	<ClientPanel>
 		<StackPanel>
@@ -87,7 +87,7 @@ Before we can add JavaScript to our app, we need to make a small change to our p
 
 To do this, open up the file called `hikr.unoproj`. It currently looks like this:
 
-```
+```json
 {
   "RootNamespace":"",
   "Packages": [
@@ -102,7 +102,7 @@ To do this, open up the file called `hikr.unoproj`. It currently looks like this
 
 It is a file consisting of pure JSON, and describes various properties about our project. Under the `"includes"` field, you'll see a single `*` inside a pair of square brackets. This basically means that we let Fuse include all files it recognizes by default. This does not include JavaScript files however, so we'll have to instruct Fuse on how we want those files inluded. Change the `includes` part to the following:
 
-```
+```json
   "Includes": [
     "*",
     "**.js:FuseJS"
@@ -115,7 +115,7 @@ At this point, we're ready to add some code to our project.
 
 Lets start by adding a new `.js` file which, for now, we'll include all our apps logic in. Lets call it `App.js`, and put in the root folder of our project. We also export a class called `App`, with a single field called `name`, by adding the following code:
 
-```
+```js
 export default class App {
 	constructor() {
 		this.name = "Tricky Trails";
@@ -125,13 +125,13 @@ export default class App {
 
 The last thing we need to do, is to tell Fuse to use this class as the main model for our app. We can specify this using the `Model` property on the @App tag in our `MainView.js` file.
 
-```
+```xml
 <App Model="App">
 ```
 
 Now we've got a value in JS exposed to UX, but we're still displaying the hardcoded string from UX. Let's change the @Text element to display our JS variable's value instead:
 
-```ux
+```xml
 <Text Value="{name}" />
 ```
 
@@ -141,7 +141,7 @@ Notice the curly braces around `name`? This is what we call a databinding, and i
 
 What we're going to do is add a @TextBox to our UI. @TextBox represents a simple single-line text input field with basic styling, which is perfect for editing `name` in our case. Lets go ahead and do that:
 
-```ux
+```xml
 <App Model="App">
 	<ClientPanel>
 		<StackPanel>
@@ -159,7 +159,7 @@ Fuse achieves this by automatically detecting changes to the app model, and then
 
 While we're at it, let's add a caption for it as well by simply adding another @Text element above it:
 
-```ux
+```xml
 <Text>Name:</Text>
 <TextBox Value="{name}" />
 ```
@@ -188,7 +188,7 @@ constructor() {
 
 Then, we'll add a bunch of @TextBox's that we'll bind to these fields (along with some helpful captions as well):
 
-```ux
+```xml
 <Text>Location:</Text>
 <TextBox Value="{location}" />
 
@@ -216,7 +216,7 @@ As we can see, there's a bit too much text to fit on just this one line. It woul
 
 The fix for this is super simple - instead of using a @TextBox, we'll use a @TextView, and ensure its `TextWrapping` property is set to `Wrap`, like so:
 
-```ux
+```xml
 <Text>Comments:</Text>
 <TextView Value="{comments}" TextWrapping="Wrap" />
 ```
@@ -225,7 +225,7 @@ This gives us exactly what we were after - a multi-line editor with text wrappin
 
 The last thing we'll do is ensure that all of our value editors are accessible, even when they take up a lot of space (for example, when the `comments` value is quite long). To do this, we'll simply place our @StackPanel inside a @ScrollView, like so:
 
-```ux
+```xml
 <ScrollView>
 	<StackPanel>
 		<Text Value="{name}" />
@@ -258,7 +258,7 @@ At this point, we've got a view for displaying/editing the data for a specific h
 
 And here's what our final code should look like:
 
-```ux
+```xml
 <App Model="App">
 	<ClientPanel>
 		<ScrollView>

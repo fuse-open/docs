@@ -16,7 +16,7 @@ To include a bundled file, add it to the `Includes` section of your `.unoproj` i
 Here is an example that will include all JavaScript files in the `js/` directory, as well as the file `dogs.json` as bundled files.
 
 
-```
+```json
 "Includes": [
 	...other includes...
 	
@@ -48,6 +48,7 @@ Bundle.read("dogs.json")
 
 Bundled files can also be referred to by path relative to the project root, and data bound to for example an image:
 
+```xml
 	<Panel>
 		<JavaScript>
 		    var Observable = require("FuseJS/Observable");
@@ -55,7 +56,7 @@ Bundled files can also be referred to by path relative to the project root, and 
 		</JavaScript>
 		<Image File="{cat}" />
 	</Panel>
-
+```
 
 
 ## Further reading

@@ -8,13 +8,15 @@ The ordering of navigation pages is important for triggers such as @EnteringAnim
 
 For example, consider this `PageControl`:
 
+```xml
 	<PageControl>
 		<Page ux:Name="A">...</Page>
 		<Page ux:Name="B">...</Page>
 		<Page ux:Name="C">...</Page>
 		<Page ux:Name="D">...</Page>
 	</PageControl>
-	
+```
+
 If the active page is `C`, then both `A` and `B` are in front of it, and `D` is behind it. When the active page changes to `B`, then `A` remains in front, `C` moves to the back, and `D` remains in the back.
 
 
@@ -28,13 +30,15 @@ Some navigation controls, such as `PageControl`, manage the transition between p
 
 For example, consider this `PageControl`:
 
+```xml
 	<PageControl>
 		<Page ux:Name="A">...</Page>
 		<Page ux:Name="B">...</Page>
 		<Page ux:Name="C">...</Page>
 		<Page ux:Name="D">...</Page>
 	</PageControl>
-	
+```
+
 Assume the user is in the middle of swiping from B -> C. The page progress of B will be `0.5` and C will be `-0.5`. This partial distance is used by the `Threshold` property of the @Fuse.Navigation.WhileNavigationTrigger triggers.
 
 > How far a page is from the active one can also be exploited in the @Fuse.Navigation.NavigationAnimation triggers. The `Scale` property adjusts the activiation level of the trigger based on the distance.

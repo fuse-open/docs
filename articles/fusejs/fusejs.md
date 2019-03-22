@@ -6,13 +6,17 @@ FuseJS is a JavaScript framework for writing cross-platform mobile app business 
 
 FuseJS can be used in @(UX Markup) through the `<JavaScript>` tag, either by pointing to external JavaScript files, like this:
 
+```xml
 	<JavaScript File="SomeCode.js" />
+```
 
 Or by inlining the JavaScript code in the tag, like this:
 
+```xml
 	<JavaScript>
 		console.log("Hello, FuseJS!");
 	</JavaScript>
+```
 
 ## Modules
 
@@ -20,14 +24,17 @@ FuseJS implements the <a href="http://www.commonjs.org/">CommonJS</a> module sys
 
 For things inside the module to be visible on the outside, we use the `module.exports`-construct:
 
+```xml
 	<JavaScript>
 		module.exports = {
 			exportedSymbol: "Hello, rest of the world!"
 		};
 	</JavaScript>
+```
 
 Failing to export from modules will make it impossible to reach defined data inside the module:
 
+```xml
 	<JavaScript>
 		var data = [1, 2, 3];
 		var invisible = "I'm invisible";
@@ -36,6 +43,7 @@ Failing to export from modules will make it impossible to reach defined data ins
 			data: data
 		};
 	</JavaScript>
+```
 
 This is good for hiding implementation details from other calling JavaScript modules and UX code.
 
@@ -45,32 +53,42 @@ Each code file (or inline snippet) is a module.
 
 To make a module available to other modules through `require`, you have to place it in a separate `.js` file make sure it is included in the `:Bundle` in your `.unoproj`, for example like this:
 
+```json
 	"Includes": [
 		"MyLibrary/SomeModule.js:Bundle",
 		...
+```
+
 We can then access this module in any other module in the same project like this:
 
+```js
 	var myModule = require('MyLibrary/SomeModule');
-	
+```
+
 > Including the `.js` extension in the `require()` string is optional.
 	
 You can also use globs to auto-bundle entire folders, e.g. `"MyLibrary/*.js:Bundle"`. 
 
 If you want to make all JavaScript files in your project be includes as bundled files, do:
 
+```json
 	"Includes": [
 		"**.js:Bundle"
 	]
+```
 
 We can then require any JavaScript file by name:
-
+```js
 	var myModule = require('/yourJavaScriptFile.js');
+```
 
 Note that prefixing the file name with a "/" means that we are looking for the file relative to the project root directory. To name a file relative to the current file, prefix with "./". By omitting the prefixes, the file name is relative to the project root, or the global module it's in.
 
+```js
 	var relativeToProjectRoot = require('/SomeComponent.js');
 	var relativeFile = require('./MainView.js');
 	var relativeToRootOrGlobalModule = require('SomeOtherComponent.js');
+```
 
 ## Design and motivation
 

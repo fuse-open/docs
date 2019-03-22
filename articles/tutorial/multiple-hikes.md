@@ -10,7 +10,7 @@ The final code for this chapter is available [here](https://github.com/fusetools
 
 In order for us to display a list of hikes to choose from, we first need a list of hikes. This is where we'll start building something that looks like a _model_ for our app. At first, we'll just use a simple array of hikes. Near the top of the JavaScript portion of our `MainView.ux` file, we'll place the following array:
 
-```
+```js
 var hikes = [
 	{
 		id: 0,
@@ -63,7 +63,7 @@ Now that we've got our list of hikes, we'll make a simple view to display them.
 
 The first thing we'll do is export our `hikes` variable to make it available from UX:
 
-```
+```js
 module.exports = {
 	hikes: hikes,
 
@@ -79,7 +79,7 @@ Since we want to be able to select one of the hikes we're displaying, we'll disp
 
 First, we'll just display our array of hikes as buttons. But how do we do that in UX? For these kinds of scenarios, UX provides a very helpful mechanism called @Each:
 
-```
+```xml
 <ScrollView>
 	<StackPanel>
 		<Each Items="{hikes}">
@@ -91,7 +91,7 @@ First, we'll just display our array of hikes as buttons. But how do we do that i
 
 In our case, we'll use @Each to create a @Button for each of our hikes whose @Text will be set to that hike's `name`. That will look like this:
 
-```
+```xml
 <Each Items="{hikes}">
 	<Button Text="{name}" />
 </Each>
@@ -107,7 +107,7 @@ Now that we've got a button for each of the hikes in our model, we want to be ab
 
 Currently, our view model consists of many separate @Observable's for the various fields we can edit. Let's also add an @Observable whose `value` represents the hike we're currently editing. Initially, this will be empty, as we haven't yet selected a hike to edit:
 
-```
+```js
 var hike = Observable();
 ```
 
@@ -115,7 +115,7 @@ Now we need to get the data from `hike` to our other @Observable's, and this is 
 
 Rather, what we'll do is _transform_, or _map_, the value of the `hike` @Observable into the value of its various properties. For example, this is what that might look like for `name`:
 
-```
+```js
 var name = hike.map(function(x) { return x.name; });
 ```
 
@@ -133,7 +133,7 @@ So, altogether, this means that we're taking `hike` and creating a new @Observab
 
 Now, let's refactor the other @Observable's to also be based on `hike` like we did with `name`:
 
-```
+```js
 var name = hike.map(function(x) { return x.name; });
 var location = hike.map(function(x) { return x.location; });
 var distance = hike.map(function(x) { return x.distance; });
@@ -143,14 +143,14 @@ var comments = hike.map(function(x) { return x.comments; });
 
 Finally, we need to hook up each of our buttons to a function that will populate our `hike` @Observable (which in turn will populate all of the @Observable's for individual fields). We'll start by creating an empty function in JavaScript, which we'll fill in in a moment:
 
-```
+```js
 function chooseHike() {
 }
 ```
 
 Next, let's add it to our exports so that UX can see it:
 
-```
+```js
 module.exports = {
 	hikes: hikes,
 
@@ -166,13 +166,13 @@ module.exports = {
 
 And we'll go ahead and hook up all of our buttons to it like this:
 
-```
+```xml
 <Button Text="{name}" Clicked="{chooseHike}" />
 ```
 
 Now it's time to fill in our function. The basic idea is that we'll fill in the value of our `hike` @Observable:
 
-```
+```js
 function chooseHike() {
 	hike.value = ???
 }
@@ -180,7 +180,7 @@ function chooseHike() {
 
 But what will we set it to, exactly? As it turns out, when we databind a function to `Clicked` on a @Button, that function can receive an argument. This argument contains a `data` field, which will represent the current data context for the @Button. And because of the way we've used @Each, that means that `data` will actually be the `hike` we're after. Cool! So, let's update our function to accept that argument and put its `data` property into our `hike` @Observable:
 
-```
+```js
 function chooseHike(arg) {
 	hike.value = arg.data;
 }
@@ -196,7 +196,7 @@ So now we've started to get a basic model made up of many hikes, a view to selec
 
 The code hasn't grown too much, either. It looks like this:
 
-```
+```xml
 <App>
 	<ClientPanel>
 		<JavaScript>

@@ -9,7 +9,7 @@ assert a>5;
 
 Results in the runtime message:
 
-```
+```sh
 Assertion Failed: 'a > 5' in /Path/MyApplication/App.uno(14)
 ```
 
@@ -19,7 +19,7 @@ A failed condition does not stop program flow, it only records an error message 
 
 If you wish to intercept assertion statements, you can install an assertion handler. Use SetAssertionHandler in Uno.Diagnostics.Debug.
 
-```
+```csharp
 Debug.SetAssertionHandler( MyAssert );
 ```
 

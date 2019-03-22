@@ -6,7 +6,9 @@ Resources can be used with *resource bindings*, created with the `{Resource reso
 
 ## Syntax
 
+```xml
 	<type ux:Key="resource_key" [ux:Value="value"] ... />
+```
 
 Where `type` is any type available to UX Markup, and `resource_key` is any string. 
 
@@ -20,7 +22,9 @@ To create a binding to a resource key, we use the `{Resource resource_key}` synt
 
 Example:
 
+```xml
 	<Panel Color="{Resource MyApp.ThemeColor}"
+```
 
 ## Global default resources (`ux:Global`)
 
@@ -30,6 +34,7 @@ The `ux:Global` attribute can be used to define global defaults for resource key
 
 The following example defines a `ux:Global` default value for the `MyApp.ThemeColor` resource key, which then applies for all parts of the app tree where nothing else is specified.
 
+```xml
 	<App>
 		<float4 ux:Global="MyApp.ThemeColor" ux:Value="Green" />
 
@@ -41,5 +46,6 @@ The following example defines a `ux:Global` default value for the `MyApp.ThemeCo
 			</SettingsPage>
 		</Navigator>
 	</App>
+```
 
 On the `SettingsPage`, we override the resource key using the `ux:Key` attribute, to `Blue` instead of `Green`. This means any use of `{Resource MyApp.ThemeColor}` whithin the settings page will be `Blue` instead of `Green`, unless overridden even deeper down the tree.

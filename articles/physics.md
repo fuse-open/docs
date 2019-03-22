@@ -12,14 +12,16 @@ Each physics behavior in Fuse implements its own physics rule. There are current
 
 The @PointAttractor is one of the most basic physics based behaviors. It creates a force field which attracts elements within a certain radius by a given force.
 
+```xml
 	<PointAttractor Radius="400" Strength="250" />
-
+```
 
 ## Draggable
 
 The @Draggable behavior lets you move an element by dragging it with the pointer. It is as simple as adding the @Draggable behavior directly to the element one wants to move.
 
+```xml
 	<Rectangle Color="Red" Width="100" Height="100">
 		<Draggable/>
 	</Rectangle>
-
+```

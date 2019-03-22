@@ -11,7 +11,7 @@ It currently provides:
 
 Simply include `Android.ActivityUtils` in the `Packages` list in your `unoproj` file. Something like:
 
-```
+```json
 {
 	"Packages": [
 		"Fuse",
@@ -48,7 +48,7 @@ The third does the same as the second but let's you pass any uno object to `Star
 
 Here is an example of a valid callback method in Uno
 
-```
+```csharp
 extern(android) void OnResult(int resultCode, Java.Object intent, object info)
 {
 	debug_log "\nblam!: "+resultCode+" - "+intent + "\n";

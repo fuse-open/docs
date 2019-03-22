@@ -12,7 +12,7 @@ The final code for this chapter is available [here](https://github.com/fusetools
 
 At this point it is a good idea to move our components into their own files so that we eventually can design a navigation flow between them. We'll do this in small steps. First, we'll want to create a new folder in our project called `Pages`:
 
-```
+```sh
 $ tree
 .
 |- MainView.ux
@@ -23,13 +23,13 @@ $ tree
 
 Inside this new folder, we'll create a new file called `EditHikePage.ux`. Inside there, we'll place the following code:
 
-```
+```xml
 <Page ux:Class="EditHikePage"></Page>
 ```
 
 Our directory tree should now look a bit like this:
 
-```
+```sh
 $ tree
 .
 |- MainView.ux
@@ -41,7 +41,7 @@ $ tree
 
 Now before we move on, I need to explain a couple things. Let's take another look at our new `EditHikePage.ux` file's contents:
 
-```
+```xml
 <Page ux:Class="EditHikePage"></Page>
 ```
 
@@ -61,7 +61,7 @@ You can find out more about classes in our [Creating Components](https://fuse-op
 
 Now that we've understood the basic contents of this file, it's time to migrate the code we want in our view over from `MainView.ux`. If we take a look at that file, we'll see something like this:
 
-```
+```xml
 <App Model="App">
 	<ClientPanel>
 		<ScrollView>
@@ -94,7 +94,7 @@ Looking at the top-level parts of this file, we first see our @App, and then a @
 
 MainView.ux:
 
-```
+```xml
 <App Model="App">
 	<ClientPanel>
 	</ClientPanel>
@@ -103,7 +103,7 @@ MainView.ux:
 
 EditHikePage.ux:
 
-```
+```xml
 <Page ux:Class="EditHikePage">
 	<ScrollView>
 		<StackPanel>
@@ -132,7 +132,7 @@ EditHikePage.ux:
 
 If we save these files, our preview will update, but this time, our contents will vanish! The reason for this is simple - we've only created the `EditHikePage` class, but we haven't _used_ it anywhere! To fix this, we'll just add an _instance_ of the `EditHikePage` class inside the @ClientPanel in `MainView.ux`, like so:
 
-```
+```xml
 <App Model="App">
 	<ClientPanel>
 		<EditHikePage />
@@ -148,13 +148,13 @@ At this point, our `EditHikePage` class is actually two components in one - a hi
 
 Now that we've basically done this before, this second time should be a little easier. First, we'll create a blank page class that will become our home page, in a file called `HomePage.ux` in our `Pages` directory:
 
-```
+```xml
 <Page ux:Class="HomePage"></Page>
 ```
 
 Next, we'll migrate the home page-specific UX code from `EditHikePage.ux` into `HomePage.ux`. Specifically, we're after the @Each tag that displayed the `hikes` collection:
 
-```
+```xml
 <Each Items="{hikes}">
 	<Button Text="{name}" Clicked="{chooseHike}" />
 </Each>
@@ -162,7 +162,7 @@ Next, we'll migrate the home page-specific UX code from `EditHikePage.ux` into `
 
 So let's go ahead and move that over:
 
-```
+```xml
 <Page ux:Class="HomePage">
 	<Each Items="{hikes}">
 		<Button Text="{name}" Clicked="{chooseHike}" />
@@ -172,7 +172,7 @@ So let's go ahead and move that over:
 
 Also, since we're going to be displaying a bunch of these hikes, we'll want to place them inside a @StackPanel. It's a good idea to also have that inside a @ScrollView, so we'll set that up too:
 
-```
+```xml
 <Page ux:Class="HomePage">
 	<ScrollView>
 		<StackPanel>
@@ -194,7 +194,7 @@ For now, to keep things simple, we'll use a @PageControl instead. A @PageControl
 
 So, if we take a look at `MainView.ux`, it currently looks something like this:
 
-```
+```xml
 <App Model="App">
 	<ClientPanel>
 		<EditHikePage />
@@ -205,7 +205,7 @@ So, if we take a look at `MainView.ux`, it currently looks something like this:
 
 Let's place the `EditHikePage` instance inside a @PageControl, like so:
 
-```
+```xml
 <App Model="App">
 	<ClientPanel>
 		<PageControl>
@@ -217,7 +217,7 @@ Let's place the `EditHikePage` instance inside a @PageControl, like so:
 
 Now, all we have to do is add a `HomePage` instance inside our @PageControl as well. Because it's the home page, let's place it above our existing `EditHikePage` instance:
 
-```
+```xml
 <App Model="App">
 	<ClientPanel>
 		<PageControl>
@@ -245,7 +245,7 @@ Phew, we've covered a lot of ground here! At this point, we've got our two views
 And here's what the code for all of our various files looks like. It's a few more files now, but they're much simpler now in isolation:
 
 `hikr.unoproj`:
-```
+```json
 {
   "RootNamespace":"",
   "Packages": [
@@ -260,7 +260,7 @@ And here's what the code for all of our various files looks like. It's a few mor
 ```
 
 `MainView.ux`:
-```
+```xml
 <App Model="App">
 	<ClientPanel>
 		<PageControl>
@@ -272,7 +272,7 @@ And here's what the code for all of our various files looks like. It's a few mor
 ```
 
 `App.js`
-```
+```js
 class Hike {
 	constructor(name, location, distance, rating, comments) {
 		this.name = name;
@@ -339,7 +339,7 @@ export default class App {
 
 
 `Pages/EditHikePage.ux`:
-```
+```xml
 <Page ux:Class="EditHikePage">
 	<ScrollView>
 		<StackPanel>
@@ -365,7 +365,7 @@ export default class App {
 ```
 
 `Pages/HomePage.ux`:
-```
+```xml
 <Page ux:Class="HomePage">
 	<ScrollView>
 		<StackPanel>

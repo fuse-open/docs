@@ -10,6 +10,7 @@ To make this a little nicer to work with from Uno, we have an API you can use. I
 
 For example the code to take a picture on Android looks like this:
 
+```csharp
 	using Uno;
 	using Uno.Graphics;
 	using Uno.Platform;
@@ -73,6 +74,7 @@ For example the code to take a picture on Android looks like this:
 			return null;
 		}
 	}
+```
 
 `[0]` - First we call a foreign method to create the `Intent` object in the usual Android fashion.
 `[1]` - Here we call `StartActivity` with our intent and the method to call on completion.

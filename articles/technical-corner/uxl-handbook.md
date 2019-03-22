@@ -16,6 +16,7 @@ For the rest of the document the phrases 'meets the condition' or 'the condition
 
 For example the following class will only be included when you are building for iOS:
 
+```csharp
     public extern(iOS) class Test0
     {
         public void SayHi()
@@ -23,9 +24,11 @@ For example the following class will only be included when you are building for 
             debug_log "hi from ios";
         }
     }
+```
 
 We can also use simple boolean logic inside the `extern()` condition
 
+```csharp
     public extern(!iOS) class Test0
     {
         public void SayHi()
@@ -33,6 +36,7 @@ We can also use simple boolean logic inside the `extern()` condition
             debug_log "hi from anything but iOS :)";
         }
     }
+```
 
 Stripping of `extern()` happens very early in the compilation process (while processing the AST) so most syntax bugs will not be caught if the condition is not met. Be sure to test *all targets* for code using UXL.
 
@@ -40,6 +44,7 @@ Because `extern()` stripping is done so early we can 'break' many Uno rules. For
 
 `extern()` can also be used on methods and fields
 
+```csharp
     class Test1 // we can use extern on methods too
     {
         public extern(ANDROID) void SayHi()
@@ -51,6 +56,7 @@ Because `extern()` stripping is done so early we can 'break' many Uno rules. For
             debug_log "hi from not android";
         }
     }
+```
 
 And, as with types, we don't get a collision even though the method signatures are identical.
 
@@ -60,6 +66,7 @@ And, as with types, we don't get a collision even though the method signatures a
 
 `if defined()` does the same thing for statements that `extern()` did for types, methods and fields.
 
+```csharp
     class Test2
     {
         public void SomeMethod()
@@ -74,6 +81,7 @@ And, as with types, we don't get a collision even though the method signatures a
             }
         }
     }
+```
 
 Note that the syntax is `if defined(CONDITION)` and not `if (defined(CONDITION))`. This by design to highlight the difference of *when* this is being evaluated.
 
@@ -81,6 +89,7 @@ Note that the syntax is `if defined(CONDITION)` and not `if (defined(CONDITION))
 
 `extern ""` (pronounced 'extern string') is a way of writing expressions in the native target language inline in your uno code. For example:
 
+```csharp
     public class Test
     {
         // note that the extern can go before the access modifiers
@@ -102,6 +111,7 @@ Note that the syntax is `if defined(CONDITION)` and not `if (defined(CONDITION))
             debug_log "why not do this in the first place?!"
         }
     }
+```
 
 Any time you use `extern ""` make sure it gets used only in the correct backend. For example in the above code we know the MOBILE platforms imply C++.
 
@@ -109,32 +119,38 @@ Any time you use `extern ""` make sure it gets used only in the correct backend.
 
 `extern ""` can return values:
 
+```csharp
     extern(CPLUSPLUS)
     public int AddOne()
     {
         var result = extern<int>"10 + 1"; // note that the `extern ""` is an expression and doesnt need a `;` inside the string
         return result;
     }
+```
 
 The generic-style type specifier can be any valid Uno type.
 
 `extern ""` can also have values passed into it:
 
+```csharp
     extern(CPLUSPLUS)
     public int AddOne(int x)
     {
         return extern<int>(x)"$0 + 1";
     }
+```
 
 `$0` is a UXL macro naming the first argument pass in to the form.
 
 `extern ""` can take multiple arguments:
 
+```csharp
     extern(CPLUSPLUS)
     public int AddIntAndFloat(int x, float y)
     {
         return extern<int>(x,y)"$0 + (int)$1";
     }
+```
 
 Just like `$0` names the first argument, `$1` names the second, and this applies to as many arguments as you like.
 
@@ -149,12 +165,14 @@ You may want to define a variable with an Uno type inside the native code. Or ma
 
 This can be done as follows:
 
+```csharp
     extern(CPLUSPLUS)
     public int AddIntAndFloat(long x, float y)
     {
         extern(x) "@{long} z = $0";
         return extern<long>(x,y)"z + (@{long})$1";
     }
+```
 
 Here we can see a few interesting features of `extern`:
 - `@{someUnoType}` will expand the native version of that Uno type
@@ -169,6 +187,7 @@ Here we can see a few interesting features of `extern`:
 #### Refer to static field in UXL
 We can access a static field of type easily from UXL. Below we show how to access the `_name` field of the `Test0` class:
 
+```csharp
     public class Test0 {
         public static string _name = "Jeff";
     }
@@ -180,12 +199,14 @@ We can access a static field of type easily from UXL. Below we show how to acces
             return extern<string>"tmp";
         }
     }
+```
 
 As you can see, the `@{type}` syntax works for classes too.
 
 #### Refer to a field on an instance of a type using the `:Of` macro
 UXL cannot infer the type of a C++ variable, so when we need access to instance data we have to tell UXL the type. We use the `:Of` macro for this:
 
+```csharp
     public class Test0 {
         public string _instanceName = "Jeff";
     }
@@ -198,6 +219,7 @@ UXL cannot infer the type of a C++ variable, so when we need access to instance 
             return extern<string>"tmp2";
         }
     }
+```
 
 This is a somewhat convoluted example but should show the point. Of course, if you really need the value of a field in UXL, then you should pass it in from Uno using:
 
@@ -205,6 +227,7 @@ This is a somewhat convoluted example but should show the point. Of course, if y
 
 #### Call a static method using UXL with the `:Call` macro
 
+```csharp
     public class Test0 {
         public static string AgeJeff(int x) { return "Jeff is " + x;  }
     }
@@ -215,6 +238,7 @@ This is a somewhat convoluted example but should show the point. Of course, if y
             return extern<string>"@{Test0.AgeJeff(int):Call(253)}";
         }
     }
+```
 
 To accurately specify the method to call we need to provide the signature (only the types are needed).
 
@@ -223,6 +247,7 @@ Then in the `Call` we provide the actual arguments.
 #### Call an instance method using UXL
 As you could guess, you use the `:Of` macro in the same way as we did for fields:
 
+```csharp
     public class Test0 {
         public string AgeJeff(int x) { return "Jeff is " + x;  }
     }
@@ -233,6 +258,7 @@ As you could guess, you use the `:Of` macro in the same way as we did for fields
             return extern<string>(x)"@{Test0:Of($0).AgeJeff(int):Call(253)}";
         }
     }
+```
 
 #### Notes on access modifiers
 
@@ -284,6 +310,7 @@ We also use the attribute on any method we want to implement in native code.
 
 Here is an example class:
 
+```csharp
     [TargetSpecificImplementation]
     class Test3
     {
@@ -306,6 +333,7 @@ Here is an example class:
             return (float)a*a;
         }
     }
+```
 
 There are some things to be aware of here:
 
@@ -328,6 +356,7 @@ The compiler doesn't enforce this, though.
 
 Here is a possible UXL file for the `Test3` class we saw above:
 
+```xml
     <Extensions Backend="CPlusPlus">
         <Type Name="Test3">
             <Method Signature="FirstMethod(int):float">
@@ -343,6 +372,7 @@ Here is a possible UXL file for the `Test3` class we saw above:
             </Method>
         </Type>
     </Extensions>
+```
 
 Here we can see some macros we will recognize, and some we may not.
 
@@ -389,13 +419,17 @@ If you use Objective C in your UXL you need to ensure that the file extension is
 #### UXL Equivalent of using
 Writing out fully qualified types can get tedious. The `Using` tag does the same job s Uno's `using` statement:
 
+```xml
     <Using Namespace="iOS.Foundation" />
+```
 
 #### Adding includes using the `Require` tag and the `:Include` macro
 In your UXL you may reference other Uno types, for example by calling one of their methods. However for some targets you need to include the header file for that type before you can use it. We do this with the require tag
 
+```xml
     <Require Source.Include="@{Android.Base.AndroidBindingMacros:Include}" />
     <Require Header.Include="@{Android.Base.AndroidBindingMacros:Include}" />
+```
 
 In the above we use the `:Include` macro to get the path of the `.h` file we require.
 
@@ -407,13 +441,16 @@ It is always preferable to use `Source.Include` where you can and `Header.Includ
 
 We can also include regular C/C++ header files by providing the path explicitly:
 
+```xml
     <Require Header.Include="Uno/Platform2.h" />
     <Require Header.Include="Uno/Platform2.h" />
+```
 
 #### Adding arbitrary source to native files using the `Require Source.Declaration` tag
 
 This feature is documented for completeness and as it is _very, very occasionally_ the right thing to use, however, if you are using it, it should be because there is no other option.
 
+```xml
         <Require Source.Declaration><![CDATA[
             void JNICALL Android_NativeActivityHelper_onActionModeFinished(JNIEnv *env, jclass clazz, jobject arg)
             {
@@ -421,6 +458,7 @@ This feature is documented for completeness and as it is _very, very occasionall
                 @{Activity.OnActionModeFinished:Call(arg)};
             }
         ]]></Require>
+```
 
 `Source.Declaration` will add the block of native code to the top of the compiled C++ code of the type. It will be after the includes but before the opening of any namespaces.
 
@@ -431,7 +469,9 @@ If you add multiple `Source.Declaration` blocks to a single class there is no gu
 #### UXL Conditions using `Condition=`
 UXL has an equivalent to `extern(CONDITION)`:
 
+```xml
     <Require Entity="Uno.Platform2.Display.OnTick(Uno.Platform2.TimerEventArgs)" Condition="MOBILE" />
+```
 
 For example, here we only add a reference to the `OnTick` method if we are compiling for mobile devices.
 
@@ -452,7 +492,9 @@ Note that in the last case you should define where the file will be put in the o
 
 Much like `ProcessFile`, this copies a file into the build output, but by not having to parse for UXL macros, it is much faster. Use this wherever possible.
 
-`<CopyFile Name="Camera.java" TargetName="src/com/fuse/Native/Camera.java" />`
+```xml
+<CopyFile Name="Camera.java" TargetName="src/com/fuse/Native/Camera.java" />
+```
 
 ## `TargetSpecificType`'s
 Whilst the name is quite similar to `TargetSpecificImplementation`, the purpose of `TargetSpecificType`'s is very different.
@@ -461,12 +503,17 @@ Whilst the name is quite similar to `TargetSpecificImplementation`, the purpose 
 
 Here is the simplest possible example of a `TargetSpecificType`:
 
+```csharp
     [TargetSpecificType]
     public extern(ANDROID) struct UJObject {}
+```
 
+
+```xml
     <Type Name="UJObject" Condition="ANDROID"
         TypeName="jobject"
         Include="jni.h" />
+```
 
 Here we are defining an Uno type that will stand in for the JNI `jobject` type. Some things to know:
 
@@ -478,7 +525,7 @@ Here we are defining an Uno type that will stand in for the JNI `jobject` type. 
 ### Defining Uno Methods on `TargetSpecificType`'s
 This is a really great way to move as much logic as possible into Uno. Here is a similified example of one such type:
 
-```
+```csharp
 [TargetSpecificType]
 public extern(ANDROID) struct AndroidNativeView
 {
@@ -525,7 +572,7 @@ public extern(ANDROID) struct AndroidNativeView
 }
 ```
 
-```
+```xml
 <Type Name="AndroidNativeView" Condition="Android"
     TypeName="jobject"
     Include="jni.h">
@@ -551,6 +598,7 @@ This section is coming soon.
 
 Templates are a way to group UXL tags under one name that can then be used in other UXL. For example, maybe you need to add references to a lot of methods if either of two classes are used. You could write:
 
+```xml
     <Template Name="Example">
         <Require Entity="Uno.Platform2.Application.Start()" />
         <Require Entity="Uno.Platform2.Application.EnterForeground()" />
@@ -560,10 +608,13 @@ Templates are a way to group UXL tags under one name that can then be used in ot
         <Require Entity="Uno.Platform2.Application.Terminate()" />
         <Require Entity="Uno.Platform2.Application.OnReceivedLowMemoryWarning()" />
     </Template>
+```
 
 and then simply add...
 
+```xml
     <Require Template="Example" />
+```
 
 ...to the two classes that need these methods.
 
@@ -578,7 +629,7 @@ The only valid UXL tags that can put in a template are:
 ### I'm getting loads of crazy errors using Objective C inside UXL when compiling to C++
 Here is my build log:
 
-```
+```sh
 /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSDictionary.h:5:
 In file included from /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSObject.h:7:
 /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSObjCRuntime.h:400:1: error: expected unqualified-id
@@ -607,7 +658,9 @@ In file included from /Applications/Xcode.app/Contents/Developer/Platforms/iPhon
 #### Answer:
 You are using Objective C in a file that is being compiled as 'regular' C++. For this to work, you need the file extension to be `.mm`. Add the following to your UXL file:
 
+```xml
     <Set Source.FileExtension="mm" />
+```
 
 This means if it was in an inline `extern ""` expression that you need to create a small UXL file.
 
@@ -626,4 +679,6 @@ TLDR: Try sticking `global::` at the beginning of the fully qualified type.
 #### Answer:
 yes :)
 
+```xml
     <Using Namespace="iOS.Foundation" />
+```

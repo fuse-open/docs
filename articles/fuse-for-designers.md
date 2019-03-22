@@ -231,7 +231,7 @@ You can also specify different values for each side like so:
 ![Different Margins](../media/fuse-for-designers/Images/Different_Margins.png)
 
 There are 4 values in the `Margin` property this time, each separated by a comma: `Margin="40,30,20,10"`. This is the same as saying:
-```
+```js
 Margin-Left="40"
 Margin-Top="30"
 Margin-Right="20"
@@ -241,7 +241,7 @@ Fuse doesn’t use different types of `Margin` and `Padding`, instead you specif
 
 _Note: You can also set Margin and Padding like this: Margin="40,20".
 It’s the same as saying:_
-```
+```js
 Margin-Left-and-Right="40"
 Margin-Top-and-Bottom="20"
 ```
@@ -747,7 +747,7 @@ The nice thing about this approach is that if you want to change some items in t
 Data comes in a bunch of different types and formats. For the sake of simplicity here we are going to take a look at how data works in JavaScript. Mainly because this is the easiest way to get data into our apps.
 
 As mentioned above, data is usually just some sort of list. This is just a list of Fruit types:
-```
+```js
 Fruits:
   - type:
     - Apple
@@ -797,7 +797,7 @@ Fruits: [
  ]
 ```
 This is sort of like saying:
-```
+```js
 Fruits:
   - type:
     - Apple

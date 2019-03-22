@@ -12,7 +12,7 @@ In order for us to display a list of hikes to choose from, we first need a list 
 
 We start by creating a new class that models a single hike. This could be put in its own JavaScript file, but for simplicity, we are just going to put it right over our `App` class in `App.js`.
 
-```
+```js
 class Hike {
 	constructor(name, location, distance, rating, comments) {
 		this.name = name;
@@ -26,7 +26,7 @@ class Hike {
 
 We then modify the contructor of `App` to use this new class instead just listing all its individual fields.
 
-```
+```js
 export default class App {
 	constructor() {
 		this.hike = new Hike("Tricky Trails",
@@ -40,7 +40,7 @@ export default class App {
 
 Finally we need to update our UX to look for its data bindings in the hike field:
 
-```
+```xml
 <Text>Name:</Text>
 <TextBox Value="{hike.name}" />
 
@@ -59,7 +59,7 @@ Finally we need to update our UX to look for its data bindings in the hike field
 
 At this point, we are ready to add more hikes to our model. At first, we'll just use a simple array of hikes. We start by adding the following set of hikes to our `App.js` file:
 
-```
+```js
 constructor() {
 	this.hike = new Hike(
 		"Tricky Trails",
@@ -116,7 +116,7 @@ Since we want to be able to select one of the hikes we're displaying, we'll disp
 
 First, we'll just display our array of hikes as buttons. But how do we do that in UX? For these kinds of scenarios, UX provides a very helpful mechanism called @Each:
 
-```
+```xml
 <ScrollView>
 	<StackPanel>
 		<Each Items="{hikes}">
@@ -129,7 +129,7 @@ First, we'll just display our array of hikes as buttons. But how do we do that i
 
 In our case, we'll use @Each to create a @Button for each of our hikes whose @Text will be set to that hike's `name`. That will look like this:
 
-```
+```xml
 <Each Items="{hikes}">
 	<Button Text="{name}" />
 </Each>
@@ -147,7 +147,7 @@ We already have a field in our model that represents the current hike. Now we ne
 
 We'll start by creating an empty method in our App class, which we'll fill in in a moment:
 
-```
+```js
 chooseHike() {
 
 }
@@ -155,13 +155,13 @@ chooseHike() {
 
 And we'll go ahead and hook up all of our buttons to it like this:
 
-```
+```xml
 <Button Text="{name}" Clicked="{chooseHike}" />
 ```
 
 Now it's time to fill in our function. The basic idea is that we'll fill in the value of our `hike` field:
 
-```
+```js
 chooseHike() {
 	this.hike = ???
 }
@@ -169,7 +169,7 @@ chooseHike() {
 
 But what will we set it to, exactly? As it turns out, when we databind a function to `Clicked` on a @Button, that function can receive an argument. This argument contains a `data` field, which will represent the current data context for the @Button. And because of the way we've used @Each, that means that `data` will actually be the `hike` we're after. Cool! So, let's update our function to accept that argument and put its `data` property into our `hike` field:
 
-```
+```js
 chooseHike(arg) {
 	this.hike = arg.data;
 }
@@ -185,7 +185,7 @@ So now we've started to get a basic model made up of many hikes, a view to selec
 
 The code hasn't grown too much, either. It looks like this:
 
-```
+```xml
 <App Model="App">
 	<ClientPanel>
 		<ScrollView>
@@ -214,7 +214,7 @@ The code hasn't grown too much, either. It looks like this:
 </App>
 ```
 
-```
+```js
 class Hike {
 	constructor(name, location, distance, rating, comments) {
 		this.name = name;
