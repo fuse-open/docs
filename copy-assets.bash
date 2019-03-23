@@ -6,5 +6,4 @@ if [ $# -ne 1 ]; then
 fi
 
 cp -r media $1/ &&
-cp assets/prism/prism.{css,js} $1/ &&
-cp assets/site.{css,js} $1/
+cp -r static/* $1/
