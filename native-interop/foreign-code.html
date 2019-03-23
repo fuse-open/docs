@@ -682,6 +682,14 @@ public static extern(Android) void Test(SomeFancyType soFancy)
 <li>A <code>Java.Object</code> passed back to a foreign Java method becomes an <code>Object</code>.</li>
 </ul>
 <p>When that has been done we can cast the object back to its original type.</p>
+<h4 id="declaring-java-objects-for-java-and-objc-objects-for-objective-c">Declaring <code>Java.Object</code>s for Java and <code>ObjC.Object</code>s for Objective-C</h4>
+<p>You may want to declare your objects some time in your class...</p>
+<p>For Objective-C:</p>
+<pre><code>extern(iOS) ObjC.Object _objcObject;
+</code></pre>
+<p>For Java:</p>
+<pre><code>extern(Android) Java.Object _javaObject;
+</code></pre>
 <h2 id="arrays">Arrays</h2>
 <p>There is special support for passing Uno arrays to foreign code. For performance reasons we don't make a copy of the data straight away. Instead, we pass a handle to the Uno array that we can use in our foreign code. If we need a full copy of the data we call <code>arr.copyArray()</code> (in Java) or <code>[arr copyArray]</code> (in Objective-C) to get the native version of that type. The full details are below.</p>
 <p><strong>Objective-C:</strong></p>
