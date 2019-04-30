@@ -1,0 +1,379 @@
+{
+  "entity": {
+    "id": {
+      "id": "fuse/sensor",
+      "parentId": "fuse",
+      "type": "Namespace",
+      "modifiers": []
+    },
+    "uri": {
+      "idUri": "fuse/sensor",
+      "href": "fuse/sensor"
+    },
+    "titles": {
+      "pageTitle": "Fuse.Sensor Namespace",
+      "navigationTitle": "Fuse.Sensor Namespace",
+      "fullTitle": "Fuse.Sensor",
+      "indexTitle": "Fuse.Sensor",
+      "fullyQualifiedIndexTitle": "Fuse.Sensor"
+    },
+    "syntax": {
+      "uno": "namespace Sensor {}"
+    }
+  },
+  "tableOfContents": {
+    "jsModules": [
+      {
+        "items": [
+          {
+            "comment": {
+              "brief": "This module provides easy access to sensors on the device. There are 8 types of sensors supported by this module, namely:\n* Accelerometer Sensor\n* Gyroscope sensor\n* Magnetometer sensor\n* Gravity Sensor\n* User Acceleration Sensor\n* Rotation sensor\n* Step Counter Sensor\n* Pressure sensor",
+              "full": "This module provides easy access to sensors on the device. There are 8 types of sensors supported by this module, namely:\n* Accelerometer Sensor\n* Gyroscope sensor\n* Magnetometer sensor\n* Gravity Sensor\n* User Acceleration Sensor\n* Rotation sensor\n* Step Counter Sensor\n* Pressure sensor\n\nBesides being able to read sensor data, this module can also monitor changes in state of the battery and network connectivity\n\nUse [startListening](api:fuse/sensor/sensormodule/startlistening_bbef95e2.json) to get continual sensor data updates.\n And use [stopListening](api:fuse/sensor/sensormodule/stoplistening_bbef95e2.json) to stop getting continual sensor data updates.\n\nYou need to add a reference to `\"Fuse.Sensor\"` in your project file to use this feature.\n\nThis module is an @EventEmitter, so the methods from @EventEmitter can be used to listen to events.\n\n> Please note that this module will not work on Desktop Preview. When running on the device, not all devices have a complete sensor hardware,\n>  so not all sensor output data can be obtained, it all depends on the availability of sensors on the device.\n>  Make sure to check \"error\" event for possible error that encounter.\n\n## Example\n\nThe following example shows how to access accelerometer sensor:\n\n    <JavaScript>\n        var Observable = require(\"FuseJS/Observable\");\n        var Sensor = require(\"FuseJS/Sensor\");\n        var accelerometerData = Observable(\"\")\n        var errorMessage = Observable(\"\")\n\n        Sensor.on(\"error\", function(failMessage) {\n            errorMessage.value = failMessage;\n        });\n\n        Sensor.on(\"changed\", function(data) {\n            if (data.type == Sensor.ACCELEROMETER) {\n                accelerometerData.value = \"X axis : \" + data.x + \" Y axis : \" + data.y + \" Z axis : \" + data.z;\n            }\n        });\n\n        function startAccelerometerContinuousListener() {\n            Sensor.startListening(Sensor.ACCELEROMETER);\n        }\n\n        function stopAccelerometerContinuousListener() {\n            Sensor.stopListening(Sensor.ACCELEROMETER);\n        }\n\n        module.exports = {\n            startAccelerometerContinuousListener,\n            stopAccelerometerContinuousListener,\n            accelerometerData,\n            errorMessage\n        };\n    </JavaScript>\n\n    <StackPanel ItemSpacing=\"5\" Margin=\"0,30,0,0\">\n        <Text>Accelerometer data :</Text>\n        <Text Value=\"{accelerometerData}\" />\n        <Text Value=\"{errorMessage}\" Color=\"Red\" />\n\n        <Button Text=\"Start continuous Accelerometer listener\" Clicked=\"{startAccelerometerContinuousListener}\" />\n        <Button Text=\"Stop continuous Accelerometer listener\" Clicked=\"{stopAccelerometerContinuousListener}\" />\n    </StackPanel>\n\nIn the above example we're using `\"changed\"` event. Data returned by this module are JavaScript objects of the following form:\n\n    {\n        type: sensor type (in this case is Sensor.ACCELEROMETER),\n        x: value of x axis,\n        y: value of y axis,\n        z: value of z axis,\n    }\n\n## Output\n\nData returned on the \"changed\" event argument are Javascript objects with always have `type` property.\n Value of `type` property determine what type sensor data it contains.\n\nAccelerometer, Gyroscope, Magnetometer, Gravity, User Acceleration and Rotation data all have same form of javascript object as desribed in the example below:\n\n    var Sensor = require(\"FuseJS/Sensor\")\n    Sensor.on('changed', function(data) {\n        switch (data.type) {\n            case Sensor.ACCELEROMETER:\n                console.log(\"X axis : \" + data.x + \" Y axis : \" + data.y + \" Z axis : \" + data.z);\n                break;\n            case Sensor.GYROSCOPE:\n                console.log(\"X axis : \" + data.x + \" Y axis : \" + data.y + \" Z axis : \" + data.z);\n                break;\n            case Sensor.MAGNETOMETER:\n                console.log(\"X axis : \" + data.x + \" Y axis : \" + data.y + \" Z axis : \" + data.z);\n                break;\n            case Sensor.GRAVITY:\n                console.log(\"X axis : \" + data.x + \" Y axis : \" + data.y + \" Z axis : \" + data.z);\n                break;\n            case Sensor.USER_ACCELERATION:\n                console.log(\"X axis : \" + data.x + \" Y axis : \" + data.y + \" Z axis : \" + data.z);\n                break;\n            case Sensor.ROTATION:\n                console.log(\"X axis : \" + data.x + \" Y axis : \" + data.y + \" Z axis : \" + data.z);\n                break;\n        }\n    });\n\n    function startListeningSensor() {\n        Sensor.startListening(Sensor.ACCELEROMETER);\n        Sensor.startListening(Sensor.GYROSCOPE);\n        Sensor.startListening(Sensor.MAGNETOMETER);\n        Sensor.startListening(Sensor.GRAVITY);\n        Sensor.startListening(Sensor.USER_ACCELERATION);\n        Sensor.startListening(Sensor.ROTATION);\n    }\n\n    function stopListeneingSensor() {\n        Sensor.stopListening(Sensor.ACCELEROMETER);\n        Sensor.stopListening(Sensor.GYROSCOPE);\n        Sensor.stopListening(Sensor.MAGNETOMETER);\n        Sensor.stopListening(Sensor.GRAVITY);\n        Sensor.stopListening(Sensor.USER_ACCELERATION);\n        Sensor.stopListening(Sensor.ROTATION);\n    }\n\nStep counter and pressure data has slightly different output javascript object as described in the example below:\n\n    var Sensor = require(\"FuseJS/Sensor\")\n    Sensor.on('changed', function(data) {\n        switch (data.type) {\n            case Sensor.STEP_COUNTER:\n                console.log(\"Num Steps taken : \" + data.x);\n                break;\n            case Sensor.PRESSURE:\n                console.log(\"Pressure in hPa / mbar : \" + data.x);\n                console.log(\"Relative Altitude (iOS only) in meters : \" + data.y);\n                break;\n        }\n    });\n\n    function startListeningSensor() {\n        Sensor.startListening(Sensor.STEP_COUNTER);\n        Sensor.startListening(Sensor.PRESSURE);\n    }\n\n    function stopListeneingSensor() {\n        Sensor.stopListening(Sensor.STEP_COUNTER);\n        Sensor.stopListening(Sensor.PRESSURE);\n    }\n\nLastly, monitoring state changes of battery or network connectivity has output javascript object as follow:\n\n    var Sensor = require(\"FuseJS/Sensor\")\n    Sensor.on('changed', function(data) {\n        switch (data.type) {\n            case Sensor.BATTERY:\n                console.log(\"Battery level : \" + data.level);\n                console.log(\"Battery state : \" + data.state); // possible values : charging, unplug, full, not charging, unknown\n                break;\n            case Sensor.CONNECTION_STATE:\n                console.log(\"connection state : \" + data.state); // boolan value : true connected, false disconnected\n                console.log(\"connection state string : \" + data.stateString); // possible values : 'connected' or 'disconnected'\n                break;\n        }\n    });\n\n    function startMonitoringState() {\n        Sensor.startListening(Sensor.BATTERY);\n        Sensor.startListening(Sensor.CONNECTION_STATE);\n    }\n\n    function stopLMenitoringState() {\n        Sensor.stopListening(Sensor.BATTERY);\n        Sensor.stopListening(Sensor.CONNECTION_STATE);\n    }\n\nTo handle errors from Sensor we can listen to the `\"error\"` event, as follows:\n\n    var Sensor = require(\"FuseJS/Sensor\")\n    Sensor.on(\"error\", function(err) { ... })",
+              "attributes": {
+                "scriptModule": "FuseJS/Sensor",
+                "scriptProperty": "(int) CONNECTION_STATE track network connectivity states."
+              }
+            },
+            "id": {
+              "id": "fuse/sensor/sensormodule",
+              "parentId": "fuse/sensor",
+              "type": "JsModule",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/sensor/sensormodule",
+              "href": "fuse/sensor/sensormodule"
+            },
+            "titles": {
+              "indexTitle": "SensorModule",
+              "fullyQualifiedIndexTitle": "Fuse.Sensor.SensorModule"
+            }
+          }
+        ]
+      }
+    ],
+    "uxClasses": [
+      {
+        "items": [
+          {
+            "id": {
+              "id": "fuse/sensor/accelerometertracker",
+              "parentId": "fuse/sensor",
+              "type": "UxClass",
+              "modifiers": [
+                "public",
+                "partial"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/sensor/accelerometertracker",
+              "href": "fuse/sensor/accelerometertracker"
+            },
+            "titles": {
+              "indexTitle": "AccelerometerTracker",
+              "fullyQualifiedIndexTitle": "Fuse.Sensor.AccelerometerTracker"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/sensor/basetracker",
+              "parentId": "fuse/sensor",
+              "type": "UxClass",
+              "modifiers": [
+                "public",
+                "partial"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/sensor/basetracker",
+              "href": "fuse/sensor/basetracker"
+            },
+            "titles": {
+              "indexTitle": "BaseTracker",
+              "fullyQualifiedIndexTitle": "Fuse.Sensor.BaseTracker"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/sensor/batterytracker",
+              "parentId": "fuse/sensor",
+              "type": "UxClass",
+              "modifiers": [
+                "public",
+                "partial"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/sensor/batterytracker",
+              "href": "fuse/sensor/batterytracker"
+            },
+            "titles": {
+              "indexTitle": "BatteryTracker",
+              "fullyQualifiedIndexTitle": "Fuse.Sensor.BatteryTracker"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/sensor/connectiontracker",
+              "parentId": "fuse/sensor",
+              "type": "UxClass",
+              "modifiers": [
+                "public",
+                "partial"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/sensor/connectiontracker",
+              "href": "fuse/sensor/connectiontracker"
+            },
+            "titles": {
+              "indexTitle": "ConnectionTracker",
+              "fullyQualifiedIndexTitle": "Fuse.Sensor.ConnectionTracker"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/sensor/gravitytracker",
+              "parentId": "fuse/sensor",
+              "type": "UxClass",
+              "modifiers": [
+                "public",
+                "partial"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/sensor/gravitytracker",
+              "href": "fuse/sensor/gravitytracker"
+            },
+            "titles": {
+              "indexTitle": "GravityTracker",
+              "fullyQualifiedIndexTitle": "Fuse.Sensor.GravityTracker"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/sensor/gyroscopetracker",
+              "parentId": "fuse/sensor",
+              "type": "UxClass",
+              "modifiers": [
+                "public",
+                "partial"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/sensor/gyroscopetracker",
+              "href": "fuse/sensor/gyroscopetracker"
+            },
+            "titles": {
+              "indexTitle": "GyroscopeTracker",
+              "fullyQualifiedIndexTitle": "Fuse.Sensor.GyroscopeTracker"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/sensor/magnetometertracker",
+              "parentId": "fuse/sensor",
+              "type": "UxClass",
+              "modifiers": [
+                "public",
+                "partial"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/sensor/magnetometertracker",
+              "href": "fuse/sensor/magnetometertracker"
+            },
+            "titles": {
+              "indexTitle": "MagnetometerTracker",
+              "fullyQualifiedIndexTitle": "Fuse.Sensor.MagnetometerTracker"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/sensor/pedometertracker",
+              "parentId": "fuse/sensor",
+              "type": "UxClass",
+              "modifiers": [
+                "public",
+                "partial"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/sensor/pedometertracker",
+              "href": "fuse/sensor/pedometertracker"
+            },
+            "titles": {
+              "indexTitle": "PedometerTracker",
+              "fullyQualifiedIndexTitle": "Fuse.Sensor.PedometerTracker"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/sensor/pressuretracker",
+              "parentId": "fuse/sensor",
+              "type": "UxClass",
+              "modifiers": [
+                "public",
+                "partial"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/sensor/pressuretracker",
+              "href": "fuse/sensor/pressuretracker"
+            },
+            "titles": {
+              "indexTitle": "PressureTracker",
+              "fullyQualifiedIndexTitle": "Fuse.Sensor.PressureTracker"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/sensor/rotationtracker",
+              "parentId": "fuse/sensor",
+              "type": "UxClass",
+              "modifiers": [
+                "public",
+                "partial"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/sensor/rotationtracker",
+              "href": "fuse/sensor/rotationtracker"
+            },
+            "titles": {
+              "indexTitle": "RotationTracker",
+              "fullyQualifiedIndexTitle": "Fuse.Sensor.RotationTracker"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/sensor/spoofsensorprovider",
+              "parentId": "fuse/sensor",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/sensor/spoofsensorprovider",
+              "href": "fuse/sensor/spoofsensorprovider"
+            },
+            "titles": {
+              "indexTitle": "SpoofSensorProvider",
+              "fullyQualifiedIndexTitle": "Fuse.Sensor.SpoofSensorProvider"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/sensor/useraccelerationtracker",
+              "parentId": "fuse/sensor",
+              "type": "UxClass",
+              "modifiers": [
+                "public",
+                "partial"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/sensor/useraccelerationtracker",
+              "href": "fuse/sensor/useraccelerationtracker"
+            },
+            "titles": {
+              "indexTitle": "UserAccelerationTracker",
+              "fullyQualifiedIndexTitle": "Fuse.Sensor.UserAccelerationTracker"
+            }
+          }
+        ]
+      }
+    ],
+    "classes": [
+      {
+        "items": [
+          {
+            "id": {
+              "id": "fuse/sensor/batterydata",
+              "parentId": "fuse/sensor",
+              "type": "Class",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/sensor/batterydata",
+              "href": "fuse/sensor/batterydata"
+            },
+            "titles": {
+              "indexTitle": "BatteryData",
+              "fullyQualifiedIndexTitle": "Fuse.Sensor.BatteryData"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/sensor/connectionstatedata",
+              "parentId": "fuse/sensor",
+              "type": "Class",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/sensor/connectionstatedata",
+              "href": "fuse/sensor/connectionstatedata"
+            },
+            "titles": {
+              "indexTitle": "ConnectionStateData",
+              "fullyQualifiedIndexTitle": "Fuse.Sensor.ConnectionStateData"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/sensor/sensordata",
+              "parentId": "fuse/sensor",
+              "type": "Class",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/sensor/sensordata",
+              "href": "fuse/sensor/sensordata"
+            },
+            "titles": {
+              "indexTitle": "SensorData",
+              "fullyQualifiedIndexTitle": "Fuse.Sensor.SensorData"
+            }
+          }
+        ]
+      }
+    ],
+    "enums": [
+      {
+        "items": [
+          {
+            "comment": {
+              "brief": "Determines the sensor type available for @SensorModule.",
+              "full": "Determines the sensor type available for @SensorModule."
+            },
+            "id": {
+              "id": "fuse/sensor/sensortype",
+              "parentId": "fuse/sensor",
+              "type": "Enum",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/sensor/sensortype",
+              "href": "fuse/sensor/sensortype"
+            },
+            "titles": {
+              "indexTitle": "SensorType",
+              "fullyQualifiedIndexTitle": "Fuse.Sensor.SensorType"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
