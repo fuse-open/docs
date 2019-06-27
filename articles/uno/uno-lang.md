@@ -98,6 +98,7 @@ The meaning of keywords are inherited from the C# specification, with a few mino
 * [void](http://msdn.microsoft.com/en-us/library/yah0tteb.aspx)
 * [while](http://msdn.microsoft.com/en-us/library/2aeyhxcd.aspx)
 
+Footnotes:
 * (x) : These keywords are not currently supported, but reserved for future improved compatiblity with C#.
 * (1) : A package in Uno is equivalent to a assembly in C#.
 * (2) : Uno does currenlty not support generic constraints (i.e. the new keyword cannot be used in this context)
