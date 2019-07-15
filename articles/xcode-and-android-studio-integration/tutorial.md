@@ -2,13 +2,7 @@
 
 The `Fuse.Views` package allows you to take any UX UI component and export them as a native Library for iOS and Android. In this tutorial we will step by step look at how this is done.
 
-## Step 0: Installing dependencies
-
-To integrate with Xcode and Android Studio make sure you have installed the Fuse.Views package using the following command in either terminal (on macOS) or cmd (on Windows):
-
-```sh
-uno install Fuse.Views
-```
+## Step 0: Setting up dependencies
 
 In your `.unoproj`, add a package reference to `Fuse.Views`.
 It should look something like the following.
