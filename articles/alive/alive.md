@@ -6,13 +6,7 @@ Alive is a suite of included UX components that demonstrate advanced UX capabili
 
 ## Getting started
 
-To include Alive in our project, we'll begin by installing the necessary dependencies.
-Open up a command line shell (Terminal on macOS, `cmd` on Windows) and run the following commands:
-
-	uno install Fuse.Charting
-	uno install Fuse.UXKits.Alive
-
-Then, we need to add a package reference to `Fuse.UXKits.Alive` and `Fuse.Charting` in our `.unoproj`.
+To include Alive in our project, we need to add a package reference to `Fuse.UXKits.Alive` and `Fuse.Charting` in our `.unoproj`.
 It should look something like the following.
 
 ```json

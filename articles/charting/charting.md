@@ -4,12 +4,7 @@
 
 ## Setting it up
 
-To include Fuse.Charting in our project, we'll begin by installing the necessary dependencies.
-Open up a command line shell (Terminal on macOS, `cmd` on Windows) and run the following command:
-
-	uno install Fuse.Charting
-
-Then, we need to add a package reference to `Fuse.Charting` in our `.unoproj`.
+To include Fuse.Charting in our project, we need to add a package reference to `Fuse.Charting` in our `.unoproj`.
 It should look something like the following.
 
 ```json
