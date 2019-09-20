@@ -12,7 +12,7 @@ Resources can be used with *resource bindings*, created with the `{Resource reso
 
 Where `type` is any type available to UX Markup, and `resource_key` is any string. 
 
-> Allthough not strictly required, it is reccommended to use a `resource_key` that consists of valid Uno identifiers, separated by periods `.` for namespacing.
+> Allthough not strictly required, it is recommended to use a `resource_key` that consists of valid Uno identifiers, separated by periods `.` for namespacing.
 
 If the type is a value type (such as `float4` or `int`), the `ux:Value` attribute must be specified.
 
