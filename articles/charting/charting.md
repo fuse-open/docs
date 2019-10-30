@@ -237,7 +237,7 @@ Within a @Plot the `{Plot variable}` expression can be used to access several us
 
 - `baseline` (per-axis) the relative position of the baseline (usually the zero point)
 - `hasNext` whether `Offset`,`Limit` could be increased to reveal more data
-- `hasPrev` whether `Offest` could be decreased to reveal more data
+- `hasPrev` whether `Offset` could be decreased to reveal more data
 - `count` the number of data points shown on the plot
 - `dataMaxline`, `dataMinline`  (per-axis) the relative position of the max/min value in the full data set
 
