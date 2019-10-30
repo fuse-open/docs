@@ -688,9 +688,9 @@ The API is a series of components that are used to build the chart.</p>
 <h3 id="multiple-dataseries">Multiple DataSeries</h3>
 <p><img src="../media/charting/chart_example2.png" alt=""></p>
 <p>You can use multiple <code>DataSeries</code> in one <code>Plot</code>. It's helpful to give them names for later reference:</p>
-<pre><code class="language-XML">	&lt;c:DataSeries Data=&quot;{dataA}&quot; ux:Name=&quot;seriesA&quot;/&gt;
-	&lt;c:DataSeries Data=&quot;{dataB}&quot; ux:Name=&quot;seriesB&quot;/&gt;
-	&lt;c:DataSeries Data=&quot;{dataC}&quot; ux:Name=&quot;seriesC&quot;/&gt;
+<pre><code class="language-XML">	&lt;c:DataSeries Data=&quot;{dataA}&quot; ux:Name=&quot;seriesA&quot; /&gt;
+	&lt;c:DataSeries Data=&quot;{dataB}&quot; ux:Name=&quot;seriesB&quot; /&gt;
+	&lt;c:DataSeries Data=&quot;{dataC}&quot; ux:Name=&quot;seriesC&quot; /&gt;
 </code></pre>
 <p>The <code>Plot</code> will calculate its ranges based on the values in all of its <code>DataSeries</code>. Each series still has its own data, but the calculated values are relative to the combination of all the sets.</p>
 <h2 id="plotdata">PlotData</h2>
@@ -705,7 +705,7 @@ The API is a series of components that are used to build the chart.</p>
 <pre><code class="language-XML">&lt;Panel&gt;
 	&lt;c:PlotData&gt;
 		&lt;c:PlotBar&gt;
-			&lt;Rectangle Color=&quot;#0808&quot; Height=&quot;80%&quot; Alignment=&quot;VerticalCenter&quot;/&gt;
+			&lt;Rectangle Color=&quot;#0808&quot; Height=&quot;80%&quot; Alignment=&quot;VerticalCenter&quot; /&gt;
 		&lt;/c:PlotBar&gt;
 	&lt;/c:PlotData&gt;
 &lt;/Panel&gt;
@@ -747,7 +747,7 @@ The API is a series of components that are used to build the chart.</p>
 <p><code>DataSeries</code> also supports the ability to create automatic ranges. Add a <code>Metric=&quot;Add&quot;</code> property to the second, and further, <code>DataSeries</code>. This will then add the <code>y</code> value to the cumulative total, and set <code>z</code> to the previous total. This creates a range of values suitable for creating a stacked bar chart.</p>
 <h2 id="gridlayout">GridLayout</h2>
 <p>A Plot doesn't have any default layout. A common approach is to use a <code>GridLayout</code> to add the labels, ticks, and plot data.</p>
-<pre><code class="language-XML">&lt;GridLayout Columns=&quot;50,10,1*&quot; Rows=&quot;1*,10,20&quot;/&gt;
+<pre><code class="language-XML">&lt;GridLayout Columns=&quot;50,10,1*&quot; Rows=&quot;1*,10,20&quot; /&gt;
 </code></pre>
 <p>This is a basic layout that allocates 50 points for the Y-axis labels, 20 points for the X-axis labels, 10 points for both X/Y tick marks, and the rest for the plot.</p>
 <blockquote>
@@ -757,7 +757,7 @@ The API is a series of components that are used to build the chart.</p>
 <p><img src="../media/charting/chart_example3.png" alt=""></p>
 <p>PlotAxis create labels on an axis. You must specify the <code>Axis</code> source for the data and provide a <code>Label</code> template that is used for each label.</p>
 <pre><code class="language-XML">&lt;c:PlotAxis&gt;
-	&lt;Text ux:Template=&quot;Label&quot; Value=&quot;{Plot axis.label}&quot;/&gt;
+	&lt;Text ux:Template=&quot;Label&quot; Value=&quot;{Plot axis.label}&quot; /&gt;
 &lt;/c:PlotAxis&gt;
 </code></pre>
 <blockquote>
@@ -771,7 +771,7 @@ The API is a series of components that are used to build the chart.</p>
 		&lt;Panel&gt;
 			&lt;Text X=&quot;{Plot axis.position} * 100%&quot; Y=&quot;0&quot; FontSize=&quot;18&quot; Color=&quot;#000&quot; 
 				Value=&quot;{Plot axis.label}&quot; Anchor=&quot;105%,45%&quot; TransformOrigin=&quot;Anchor&quot; ux:Name=&quot;t&quot;&gt;
-				&lt;Rotation Degrees=&quot;-60&quot;/&gt;
+				&lt;Rotation Degrees=&quot;-60&quot; /&gt;
 			&lt;/Text&gt;
 		&lt;/Panel&gt;
 	&lt;/c:PlotAxisData&gt;
@@ -789,7 +789,7 @@ The API is a series of components that are used to build the chart.</p>
 </ul>
 <h2 id="plotticks">PlotTicks</h2>
 <p>PlotTicks create tick marks, usually for an axis. This is a Shape, allowing <code>Stroke...</code> properties to be used for drawing the ticks.  The ticks that are drawn will line up with the labels of PlotAxis provided they are the same element size (either <code>Width</code> or <code>Height</code> depending on the axis).</p>
-<pre><code class="language-XML">&lt;c:PlotTicks Axis=&quot;X&quot; AxisLine=&quot;0&quot; StrokeWidth=&quot;1&quot; StrokeColor=&quot;#000&quot;/&gt;
+<pre><code class="language-XML">&lt;c:PlotTicks Axis=&quot;X&quot; AxisLine=&quot;0&quot; StrokeWidth=&quot;1&quot; StrokeColor=&quot;#000&quot; /&gt;
 </code></pre>
 <p><code>AxisLine</code> indicates a line across the entire access should be drawn at this offset. In this example it's the top of the ticks, making this suitable for the bottom of a chart.</p>
 <h2 id="-plot">{Plot *}</h2>
@@ -797,7 +797,7 @@ The API is a series of components that are used to build the chart.</p>
 <ul>
 <li><code>baseline</code> (per-axis) the relative position of the baseline (usually the zero point)</li>
 <li><code>hasNext</code> whether <code>Offset</code>,<code>Limit</code> could be increased to reveal more data</li>
-<li><code>hasPrev</code> whether <code>Offest</code> could be decreased to reveal more data</li>
+<li><code>hasPrev</code> whether <code>Offset</code> could be decreased to reveal more data</li>
 <li><code>count</code> the number of data points shown on the plot</li>
 <li><code>dataMaxline</code>, <code>dataMinline</code>  (per-axis) the relative position of the max/min value in the full data set</li>
 </ul>
@@ -808,7 +808,7 @@ The API is a series of components that are used to build the chart.</p>
 <p>The <code>PlotWedge</code> is a convenience element provided to draw elements of a simple pie chart.</p>
 <pre><code class="language-XML">&lt;VectorLayer HitTestMode=&quot;None&quot;&gt;
 	&lt;c:PlotData&gt;
-		&lt;c:PlotWedge Color=&quot;{Plot data.object}.color&quot; StrokeColor=&quot;#488&quot; StrokeWidth=&quot;1&quot;/&gt;
+		&lt;c:PlotWedge Color=&quot;{Plot data.object}.color&quot; StrokeColor=&quot;#488&quot; StrokeWidth=&quot;1&quot; /&gt;
 	&lt;/c:PlotData&gt;
 &lt;/VectorLayer&gt;
 </code></pre>
@@ -819,7 +819,7 @@ The API is a series of components that are used to build the chart.</p>
 <p>You can add labels to this chart using <code>c:PlotPoint</code>.</p>
 <pre><code class="language-XML">&lt;c:PlotData&gt;
 	&lt;c:PlotPoint Style=&quot;Radial&quot; PointOffset=&quot;0.05&quot; Attractor=&quot;pieAttract&quot;&gt;
-		&lt;Text Value=&quot;{Plot data.label}&quot;/&gt;
+		&lt;Text Value=&quot;{Plot data.label}&quot; /&gt;
 	&lt;/c:PlotPoint&gt;
 &lt;/c:PlotData&gt;
 </code></pre>
@@ -828,7 +828,7 @@ The API is a series of components that are used to build the chart.</p>
 	&lt;Arc
 		StartAngleDegrees=&quot;{Plot data.accumulatedWeight.y}*360&quot; 
 		EndAngleDegrees=&quot;{Plot data.cumulativeWeight.y}*360&quot; 
-		StrokeColor=&quot;#488&quot; StrokeWidth=&quot;2&quot;/&gt;
+		StrokeColor=&quot;#488&quot; StrokeWidth=&quot;2&quot; /&gt;
 &lt;/c:PlotData&gt;
 </code></pre>
 

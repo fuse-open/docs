@@ -699,8 +699,8 @@ It achieves this by creating a reversed version of its animation under the hood,
 <p>Here we can see that the backwards animation is a mirror image of the original animation, but there are several ways to control how this backwards animation behaves.
 The common animator properties each have a corresponding <code>Back</code> variant (<code>DurationBack</code>, <code>DelayBack</code>, and <code>EasingBack</code>). This lets us change the timeline so that it acts differently when the trigger is being deactivated from when its being activated.</p>
 <p>Here is an example of the above timeline after we've altered the <code>DelayBack</code> property of both animators as follows:</p>
-<pre><code class="language-xml">&lt;Change Duration=&quot;0.5&quot; DelayBack=&quot;0&quot;/&gt;
-&lt;Move Duration=&quot;0.5&quot; Delay=&quot;0.25&quot; DelayBack=&quot;0.25&quot;/&gt;
+<pre><code class="language-xml">&lt;Change Duration=&quot;0.5&quot; DelayBack=&quot;0&quot; /&gt;
+&lt;Move Duration=&quot;0.5&quot; Delay=&quot;0.25&quot; DelayBack=&quot;0.25&quot; /&gt;
 </code></pre>
 <p><img src="media/declarative-animation/timeline_3.png" alt="timeline_3"></p>
 <p>For the rare case when we want a completely different set of animators for when a trigger deactivates, we can use the <code>TriggerAnimation</code> class, and bind it to the triggers <code>BackwardAnimation</code> property. Here is an example of what that looks like:</p>
@@ -790,10 +790,10 @@ The common animator properties each have a corresponding <code>Back</code> varia
 <pre><code class="language-xml">&lt;WhileTrue&gt;
 	&lt;Rectangle ux:Name=&quot;rect&quot; Color=&quot;Red&quot; Width=&quot;100&quot; Height=&quot;100&quot;&gt;
 		&lt;AddingAnimation&gt;
-			&lt;Change rect.Opacity=&quot;0&quot; Duration=&quot;0.2&quot;/&gt;
+			&lt;Change rect.Opacity=&quot;0&quot; Duration=&quot;0.2&quot; /&gt;
 		&lt;/AddingAnimation&gt;
 		&lt;RemovingAnimation&gt;
-			&lt;Change rect.Opacity=&quot;0&quot; Duration=&quot;0.2&quot;/&gt;
+			&lt;Change rect.Opacity=&quot;0&quot; Duration=&quot;0.2&quot; /&gt;
 		&lt;/RemovingAnimation&gt;
 	&lt;/Rectangle&gt;
 &lt;/WhileTrue&gt;

@@ -637,12 +637,12 @@
 <p>The following example shows how to make a grid with two rows and three columns filled with rectangles of various colors.</p>
 <pre><code class="language-xml">&lt;App&gt;
 	&lt;Grid RowCount=&quot;2&quot; ColumnCount=&quot;3&quot;&gt;
-		&lt;Rectangle Color=&quot;#ff4500&quot;/&gt;
-		&lt;Rectangle Color=&quot;#ee7942&quot;/&gt;
-		&lt;Rectangle Color=&quot;#ee6363&quot;/&gt;
-		&lt;Rectangle Color=&quot;#ffb90f&quot;/&gt;
-		&lt;Rectangle Color=&quot;#eeb422&quot;/&gt;
-		&lt;Rectangle Color=&quot;#eedc82&quot;/&gt;
+		&lt;Rectangle Color=&quot;#ff4500&quot; /&gt;
+		&lt;Rectangle Color=&quot;#ee7942&quot; /&gt;
+		&lt;Rectangle Color=&quot;#ee6363&quot; /&gt;
+		&lt;Rectangle Color=&quot;#ffb90f&quot; /&gt;
+		&lt;Rectangle Color=&quot;#eeb422&quot; /&gt;
+		&lt;Rectangle Color=&quot;#eedc82&quot; /&gt;
 	&lt;/Grid&gt;
 &lt;/App&gt;
 </code></pre>
@@ -650,11 +650,11 @@
 <pre><code class="language-xml">&lt;App&gt;
 	&lt;StackPanel&gt;
 		&lt;DockPanel Height=&quot;50&quot;&gt;
-			&lt;Text Value=&quot;Hello&quot; Dock=&quot;Left&quot;/&gt;
+			&lt;Text Value=&quot;Hello&quot; Dock=&quot;Left&quot; /&gt;
 			&lt;Rectangle Color=&quot;#f00&quot; /&gt;
 		&lt;/DockPanel&gt;
 		&lt;DockPanel Height=&quot;50&quot;&gt;
-			&lt;Text Value=&quot;World&quot; Dock=&quot;Left&quot;/&gt;
+			&lt;Text Value=&quot;World&quot; Dock=&quot;Left&quot; /&gt;
 			&lt;Rectangle Color=&quot;#00f&quot; /&gt;
 		&lt;/DockPanel&gt;
 	&lt;/StackPanel&gt;
@@ -706,22 +706,22 @@
 </ul>
 <p>Here is an example of how it looks in UX:</p>
 <pre><code class="language-xml">&lt;Grid ColumnCount=&quot;3&quot; RowCount=&quot;1&quot;&gt;
-	&lt;Panel Row=&quot;0&quot; Column=&quot;0&quot; Color=&quot;#f00&quot;/&gt;
-	&lt;Panel Row=&quot;0&quot; Column=&quot;2&quot; Color=&quot;#00f&quot;/&gt;
+	&lt;Panel Row=&quot;0&quot; Column=&quot;0&quot; Color=&quot;#f00&quot; /&gt;
+	&lt;Panel Row=&quot;0&quot; Column=&quot;2&quot; Color=&quot;#00f&quot; /&gt;
 &lt;/Grid&gt;
 </code></pre>
 <h2 id="draw-order-and-the-zoffset-property">Draw order and the ZOffset property</h2>
 <p>Normally, the order in which elements are drawn depends on their place in the child list. Elements defined further up in the document are drawn on top of elements defined further down. In the following case, The red rectangle will be drawn on top of the green circle.</p>
 <pre><code class="language-xml">&lt;Panel&gt;
-	&lt;Rectangle Color=&quot;Red&quot; Margin=&quot;100&quot;/&gt;
-	&lt;Circle Color=&quot;Green&quot;/&gt;
+	&lt;Rectangle Color=&quot;Red&quot; Margin=&quot;100&quot; /&gt;
+	&lt;Circle Color=&quot;Green&quot; /&gt;
 &lt;/Panel&gt;
 </code></pre>
 <p>To take control over this behavior, we can use the <a href="../fuse/visual/zoffset.html">ZOffset</a> property. This property is a float value with a default of 0.0. The higher it is the higher on top the element will be drawn.</p>
 <p>In the following example, the <a href="../fuse/controls/circle.html">Circle</a> is drawn on top of the <a href="../fuse/controls/rectangle.html">Rectangle</a> because its <code>ZOffset</code> of 1.0 is higher than the rectangles <code>ZOffset</code> of 0.0 (default).</p>
 <pre><code class="language-xml">&lt;Panel&gt;
-	&lt;Rectangle Color=&quot;Red&quot; ZOffset=&quot;0.0&quot; Margin=&quot;100&quot;/&gt;
-	&lt;Circle Color=&quot;Green&quot; ZOffset=&quot;1.0&quot;/&gt;
+	&lt;Rectangle Color=&quot;Red&quot; ZOffset=&quot;0.0&quot; Margin=&quot;100&quot; /&gt;
+	&lt;Circle Color=&quot;Green&quot; ZOffset=&quot;1.0&quot; /&gt;
 &lt;/Panel&gt;
 </code></pre>
 

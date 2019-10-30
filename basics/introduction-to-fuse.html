@@ -822,9 +822,9 @@
 <h4 id="stackpanel">StackPanel</h4>
 <p>The <code>StackPanel</code> arranges its children in a line, either vertically or horizontally.</p>
 <pre><code class="language-xml">&lt;StackPanel ItemSpacing=&quot;10&quot;&gt;
-	&lt;Rectangle Color=&quot;Red&quot; Height=&quot;50&quot;/&gt;
+	&lt;Rectangle Color=&quot;Red&quot; Height=&quot;50&quot; /&gt;
 	&lt;Text Value=&quot;Some text&quot; /&gt;
-	&lt;Rectangle Color=&quot;Blue&quot; Height=&quot;50&quot;/&gt;
+	&lt;Rectangle Color=&quot;Blue&quot; Height=&quot;50&quot; /&gt;
 &lt;/StackPanel&gt;
 </code></pre>
 <p>Notice that we've set the <code>Height</code> of each <code>Rectangle</code> to <code>50</code>. This is necessary because rectangles don't have any implicit size. Otherwise, because of the way the <code>StackPanel</code> sizes its children, they wouldn't get any height at all. This is not necessary for <code>Text</code> objects since they have an implicit height based on their value and font size.</p>
@@ -834,11 +834,11 @@
 <p>The <code>DockPanel</code> allows us to subdivide the available space by &quot;docking&quot; each child to one of its four sides, one after the other.</p>
 <p><img src="../media/intro_to_fuse/dock_layout.png" alt="Dock layout"></p>
 <pre><code class="language-xml">&lt;DockPanel&gt;
-	&lt;Rectangle Dock=&quot;Left&quot; Width=&quot;100&quot; Color=&quot;Red&quot;/&gt;
-	&lt;Rectangle Dock=&quot;Top&quot; Height=&quot;100&quot; Color=&quot;Green&quot;/&gt;
-	&lt;Rectangle Dock=&quot;Right&quot; Width=&quot;100&quot; Color=&quot;Blue&quot;/&gt;
-	&lt;Rectangle Dock=&quot;Bottom&quot; Height=&quot;100&quot; Color=&quot;Teal&quot;/&gt;
-	&lt;Rectangle Color=&quot;Yellow&quot;/&gt;
+	&lt;Rectangle Dock=&quot;Left&quot; Width=&quot;100&quot; Color=&quot;Red&quot; /&gt;
+	&lt;Rectangle Dock=&quot;Top&quot; Height=&quot;100&quot; Color=&quot;Green&quot; /&gt;
+	&lt;Rectangle Dock=&quot;Right&quot; Width=&quot;100&quot; Color=&quot;Blue&quot; /&gt;
+	&lt;Rectangle Dock=&quot;Bottom&quot; Height=&quot;100&quot; Color=&quot;Teal&quot; /&gt;
+	&lt;Rectangle Color=&quot;Yellow&quot; /&gt;
 &lt;/DockPanel&gt;
 </code></pre>
 <p>Just as with the <code>StackPanel</code>, we must set the height and width of some of the children. When docking to the left or right, we must ensure that the object being docked has some width, either by assigning a width explicitly like we've done here, or by making sure the object has its own implicit width. If we don't specify the <code>Dock</code> property for a child, it is stretched to fill the remaining space of the <code>DockPanel</code>.</p>
@@ -846,12 +846,12 @@
 <h4 id="grid">Grid</h4>
 <p><code>Grid</code> lets us divide the available space into a set of rows and columns, and use those to place its children.</p>
 <pre><code class="language-xml">&lt;Grid RowCount=&quot;2&quot; ColumnCount=&quot;3&quot;&gt;
-	&lt;Rectangle Color=&quot;Red&quot;/&gt;
-	&lt;Rectangle Color=&quot;Green&quot;/&gt;
-	&lt;Rectangle Color=&quot;Blue&quot;/&gt;
-	&lt;Rectangle Color=&quot;Yellow&quot;/&gt;
-	&lt;Rectangle Color=&quot;Orange&quot;/&gt;
-	&lt;Rectangle Color=&quot;Teal&quot;/&gt;
+	&lt;Rectangle Color=&quot;Red&quot; /&gt;
+	&lt;Rectangle Color=&quot;Green&quot; /&gt;
+	&lt;Rectangle Color=&quot;Blue&quot; /&gt;
+	&lt;Rectangle Color=&quot;Yellow&quot; /&gt;
+	&lt;Rectangle Color=&quot;Orange&quot; /&gt;
+	&lt;Rectangle Color=&quot;Teal&quot; /&gt;
 &lt;/Grid&gt;
 </code></pre>
 <p><img src="../media/intro_to_fuse/grid_layout.png" alt="Grid layout"></p>
@@ -862,7 +862,7 @@
 <pre><code class="language-xml">&lt;App Background=&quot;#ddd&quot;&gt;
 	&lt;DockPanel&gt;
 		&lt;Rectangle Dock=&quot;Top&quot; Color=&quot;#63b8ff&quot;&gt;
-			&lt;Text Value=&quot;My first app&quot; Alignment=&quot;Center&quot; Margin=&quot;20&quot;/&gt;
+			&lt;Text Value=&quot;My first app&quot; Alignment=&quot;Center&quot; Margin=&quot;20&quot; /&gt;
 		&lt;/Rectangle&gt;
 		&lt;Rectangle Color=&quot;White&quot; CornerRadius=&quot;5&quot; Alignment=&quot;Center&quot;&gt;
 			&lt;StackPanel Alignment=&quot;Center&quot; Margin=&quot;45&quot;&gt;
@@ -871,7 +871,7 @@
 				&lt;Text Alignment=&quot;HorizontalCenter&quot; FontSize=&quot;25&quot;&gt;first&lt;/Text&gt;
 				&lt;Image Url=&quot;https://www.fusetools.com/assets/dist/images/logo-white-header.png&quot;
 					   Color=&quot;#333&quot;
-					   StretchMode=&quot;PixelPrecise&quot;/&gt;
+					   StretchMode=&quot;PixelPrecise&quot; /&gt;
 				&lt;Text Alignment=&quot;HorizontalCenter&quot; FontSize=&quot;30&quot;&gt;App&lt;/Text&gt;
 			&lt;/StackPanel&gt;
 		&lt;/Rectangle&gt;
@@ -914,7 +914,7 @@
 		buttonClicked: buttonClicked
 	};
 &lt;/JavaScript&gt;
-&lt;Button Text=&quot;My button&quot; Clicked=&quot;{buttonClicked}&quot;/&gt;
+&lt;Button Text=&quot;My button&quot; Clicked=&quot;{buttonClicked}&quot; /&gt;
 </code></pre>
 <h3 id="displaying-lists-of-data">Displaying lists of data</h3>
 <p>Most apps need to display lists of content, and for a lot of apps this is how most of its content is displayed. You can export arrays of data from JavaScript just as you export any other variable. You might wonder how we build a list using UX? The answer is the <code>Each</code> class.</p>
@@ -972,7 +972,7 @@ observableList.removeAt(0);
 	&lt;DockPanel&gt;
 
 		&lt;Rectangle Dock=&quot;Top&quot; Color=&quot;#63b8ff&quot;&gt;
-			&lt;Text Value=&quot;My first app&quot; Alignment=&quot;Center&quot; Margin=&quot;20&quot;/&gt;
+			&lt;Text Value=&quot;My first app&quot; Alignment=&quot;Center&quot; Margin=&quot;20&quot; /&gt;
 		&lt;/Rectangle&gt;
 
 		&lt;Rectangle Color=&quot;White&quot; CornerRadius=&quot;5&quot; Alignment=&quot;Center&quot;&gt;
@@ -982,7 +982,7 @@ observableList.removeAt(0);
 				&lt;Text Alignment=&quot;HorizontalCenter&quot; FontSize=&quot;25&quot;&gt;first&lt;/Text&gt;
 				&lt;Image Url=&quot;https://www.fusetools.com/assets/dist/images/logo-white-header.png&quot;
 					   Color=&quot;#333&quot;
-					   StretchMode=&quot;PixelPrecise&quot;/&gt;
+					   StretchMode=&quot;PixelPrecise&quot; /&gt;
 				&lt;Text Alignment=&quot;HorizontalCenter&quot; FontSize=&quot;30&quot;&gt;App&lt;/Text&gt;
 			&lt;/StackPanel&gt;
 		&lt;/Rectangle&gt;
@@ -999,7 +999,7 @@ observableList.removeAt(0);
 <p>This app screen has three logical components: the top bar, the bottom bar, and the card we've put in the center. Lets turn each into a component and put it in its own file:</p>
 <p><strong>AppBar.ux:</strong></p>
 <pre><code class="language-xml">&lt;Rectangle ux:Class=&quot;TopBar&quot; Color=&quot;#63b8ff&quot;&gt;
-	&lt;Text Value=&quot;My first app&quot; Alignment=&quot;Center&quot; Margin=&quot;20&quot;/&gt;
+	&lt;Text Value=&quot;My first app&quot; Alignment=&quot;Center&quot; Margin=&quot;20&quot; /&gt;
 &lt;/Rectangle&gt;
 </code></pre>
 <p><strong>TabBar.ux:</strong></p>
@@ -1017,7 +1017,7 @@ observableList.removeAt(0);
 		&lt;Text Alignment=&quot;HorizontalCenter&quot; FontSize=&quot;25&quot;&gt;first&lt;/Text&gt;
 		&lt;Image Url=&quot;https://www.fusetools.com/assets/dist/images/logo-white-header.png&quot;
 			   Color=&quot;#333&quot;
-			   StretchMode=&quot;PixelPrecise&quot;/&gt;
+			   StretchMode=&quot;PixelPrecise&quot; /&gt;
 		&lt;Text Alignment=&quot;HorizontalCenter&quot; FontSize=&quot;30&quot;&gt;App&lt;/Text&gt;
 	&lt;/StackPanel&gt;
 &lt;/Rectangle&gt;
@@ -1025,9 +1025,9 @@ observableList.removeAt(0);
 <p>and with these three components in place, we can simplify our <code>MainView.ux</code> into the following:</p>
 <pre><code class="language-xml">&lt;App Background=&quot;#ddd&quot;&gt;
 	&lt;DockPanel&gt;
-		&lt;TopBar Dock=&quot;Top&quot;/&gt;
+		&lt;TopBar Dock=&quot;Top&quot; /&gt;
 		&lt;Card Alignment=&quot;Center&quot; /&gt;
-		&lt;TabBr Dock=&quot;Bottom&quot;/&gt;
+		&lt;TabBr Dock=&quot;Bottom&quot; /&gt;
 	&lt;/DockPanel&gt;
 &lt;/App&gt;
 </code></pre>
@@ -1096,9 +1096,9 @@ observableList.removeAt(0);
 <hr>
 <p>In the following example, we've extended our button to have a more complete animation. We now change its color, scale, and shadow distance, to make it look more natural. We've also added some nice <code>Easing</code> curves to it.</p>
 <pre><code class="language-xml">&lt;Rectangle ux:Class=&quot;AnimatedButton&quot;&gt;
-	&lt;Shadow ux:Name=&quot;shadow&quot; Distance=&quot;7&quot; Angle=&quot;45&quot;/&gt;
+	&lt;Shadow ux:Name=&quot;shadow&quot; Distance=&quot;7&quot; Angle=&quot;45&quot; /&gt;
 
-	&lt;Text Value=&quot;Press me&quot; Color=&quot;White&quot; Margin=&quot;18,14&quot;/&gt;
+	&lt;Text Value=&quot;Press me&quot; Color=&quot;White&quot; Margin=&quot;18,14&quot; /&gt;
 
 	&lt;LinearGradient StartPoint=&quot;0,0&quot; EndPoint=&quot;1,0&quot;&gt;
 		&lt;GradientStop ux:Name=&quot;stop1&quot; Color=&quot;#23A1AD&quot; Offset=&quot;0&quot; /&gt;
@@ -1108,9 +1108,9 @@ observableList.removeAt(0);
 	&lt;WhilePressed&gt;
 		&lt;Change stop1.Color=&quot;#4EC4A7&quot; Duration=&quot;0.15&quot; /&gt;
 		&lt;Change stop2.Color=&quot;#43B4BD&quot; Duration=&quot;0.15&quot; /&gt;
-		&lt;Change shadow.Distance=&quot;4&quot; Duration=&quot;0.15&quot; Easing=&quot;CubicOut&quot; EasingBack=&quot;CubicIn&quot;/&gt;
-		&lt;Move Vector=&quot;-2,2,0&quot; Duration=&quot;0.15&quot; Easing=&quot;CubicOut&quot; EasingBack=&quot;CubicIn&quot;/&gt;
-		&lt;Scale Factor=&quot;0.95&quot; Duration=&quot;0.15&quot; Easing=&quot;CubicOut&quot; EasingBack=&quot;CubicIn&quot;/&gt;
+		&lt;Change shadow.Distance=&quot;4&quot; Duration=&quot;0.15&quot; Easing=&quot;CubicOut&quot; EasingBack=&quot;CubicIn&quot; /&gt;
+		&lt;Move Vector=&quot;-2,2,0&quot; Duration=&quot;0.15&quot; Easing=&quot;CubicOut&quot; EasingBack=&quot;CubicIn&quot; /&gt;
+		&lt;Scale Factor=&quot;0.95&quot; Duration=&quot;0.15&quot; Easing=&quot;CubicOut&quot; EasingBack=&quot;CubicIn&quot; /&gt;
 	&lt;/WhilePressed&gt;
 &lt;/Rectangle&gt;
 </code></pre>
@@ -1120,8 +1120,8 @@ observableList.removeAt(0);
 <pre><code class="language-xml">&lt;App&gt;
 	&lt;PageControl&gt;
 		&lt;Page Color=&quot;Red&quot; /&gt;
-		&lt;Page Color=&quot;Green&quot;/&gt;
-		&lt;Page Color=&quot;Blue&quot;/&gt;
+		&lt;Page Color=&quot;Green&quot; /&gt;
+		&lt;Page Color=&quot;Blue&quot; /&gt;
 	&lt;/PageControl&gt;
 &lt;/App&gt;
 </code></pre>
@@ -1129,13 +1129,13 @@ observableList.removeAt(0);
 <pre><code class="language-xml">&lt;App&gt;
 	&lt;PageControl&gt;
 		&lt;Page Color=&quot;Red&quot;&gt;
-			&lt;Text Value=&quot;This is some content&quot; Alignment=&quot;Center&quot; FontSize=&quot;35&quot;/&gt;
+			&lt;Text Value=&quot;This is some content&quot; Alignment=&quot;Center&quot; FontSize=&quot;35&quot; /&gt;
 		&lt;/Page&gt;
 		&lt;Page Color=&quot;Green&quot;&gt;
 			&lt;AnimatedButton Alignment=&quot;Center&quot; /&gt;
 		&lt;/Page&gt;
 		&lt;Page Color=&quot;Blue&quot;&gt;
-			&lt;Rectangle CornerRadius=&quot;10&quot; Color=&quot;#f0f&quot; Width=&quot;100&quot; Height=&quot;100&quot;/&gt;
+			&lt;Rectangle CornerRadius=&quot;10&quot; Color=&quot;#f0f&quot; Width=&quot;100&quot; Height=&quot;100&quot; /&gt;
 		&lt;/Page&gt;
 	&lt;/PageControl&gt;
 &lt;/App&gt;

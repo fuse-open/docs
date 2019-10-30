@@ -675,7 +675,7 @@ Another very useful aspect of resources is that they can be overridden at any ti
 <p>A limitation of static globals is that they cannot be changed while the app is running. For that use-case, we have dynamic resources:</p>
 <pre><code class="language-xml">&lt;Panel&gt;
 	&lt;float4 ux:Key=&quot;AppBackground&quot; ux:Value=&quot;#7FDBFF&quot; /&gt;
-	&lt;Rectangle Color=&quot;{Resource AppBackground}&quot;/&gt;
+	&lt;Rectangle Color=&quot;{Resource AppBackground}&quot; /&gt;
 &lt;/Panel&gt;
 </code></pre>
 <p>In the above example we've defined the same color, but as a dynamic resource instead. There are a couple things to notice about this snippet.
@@ -722,7 +722,7 @@ To make grouping resources more convenient, UX markup has a special tag called <
 </code></pre>
 <p>Since <code>MyTheme</code> inherits from the <code>WhileTrue</code> trigger, it can easily be turned on and off by either data-binding its <code>Value</code> property to a <code>JavaScript</code> variable, or with pure UX using for example a <code>Clicked</code> trigger and a <code>Toggle</code> action:</p>
 <pre><code class="language-xml">&lt;App&gt;
-	&lt;MyTheme ux:Name=&quot;myTheme&quot;/&gt;
+	&lt;MyTheme ux:Name=&quot;myTheme&quot; /&gt;
 	&lt;Panel Color=&quot;{Resource MyApp.PrimaryColor}&quot;&gt;
 		&lt;Clicked&gt;
 			&lt;Toggle Target=&quot;myTheme&quot; /&gt;

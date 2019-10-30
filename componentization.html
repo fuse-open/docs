@@ -640,7 +640,7 @@
     /              ----- class name
    v              v
 &lt;Panel ux:Class=&quot;MyButton&quot; Color=&quot;#09d&quot; Margin=&quot;4&quot;&gt;
-	&lt;Text Value=&quot;Button text&quot; Alignment=&quot;Center&quot; Margin=&quot;20,10&quot; Color=&quot;#fff&quot;/&gt;
+	&lt;Text Value=&quot;Button text&quot; Alignment=&quot;Center&quot; Margin=&quot;20,10&quot; Color=&quot;#fff&quot; /&gt;
 &lt;/Panel&gt;
 </code></pre>
 <p>It can then be used anywhere, like so:</p>
@@ -653,7 +653,7 @@
 <p>Take a look at the <a href="https://fuse-open.github.io/docs/ux-markup/classes">ux:Class documentation</a> for more details about <code>ux:Class</code>.</p>
 <h3 id="what-do-we-mean-by-inheritance">What do we mean by inheritance</h3>
 <p>When we say that <code>MyButton</code> <em>inherits</em> from <code>Panel</code>, what we really mean is that <code>MyButton</code> will get all the same properties as <code>Panel</code>, as well as any new properties we define ourselves. That means that a class without any extra children or properties (custom properties are covered in the next section) added acts as exactly the same as its parent class:</p>
-<pre><code class="language-xml">&lt;Panel ux:Class=&quot;NotSoSpecialPanel&quot;/&gt;
+<pre><code class="language-xml">&lt;Panel ux:Class=&quot;NotSoSpecialPanel&quot; /&gt;
 
 &lt;Panel /&gt;
 &lt;NotSoSpecialPanel /&gt;
@@ -661,12 +661,12 @@
 <p>In this case, <code>Panel</code> and <code>NotSoSpecialPanel</code> behave exactly the same.</p>
 <h3 id="defining-properties">Defining properties</h3>
 <p>In many cases, like with our custom button, we want to create an interface to our component that allows us to specify various properties on a per instance basis. For our custom button for example, we want to be able to specify a different text for each instance:</p>
-<pre><code class="language-xml">&lt;MyButton Text=&quot;Custom button text&quot;/&gt;
+<pre><code class="language-xml">&lt;MyButton Text=&quot;Custom button text&quot; /&gt;
 </code></pre>
 <p>The <code>ux:Property</code> attribute allows us to send data to our component, give default values and even animate it:</p>
 <pre><code class="language-xml">&lt;Panel ux:Class=&quot;MyButton&quot; Color=&quot;#09d&quot; ButtonText=&quot;Default text&quot; Margin=&quot;4&quot;&gt;
 	&lt;string ux:Property=&quot;ButtonText&quot; /&gt;
-	&lt;Text Value=&quot;{ReadProperty ButtonText}&quot; Alignment=&quot;Center&quot; Margin=&quot;20,10&quot; Color=&quot;#fff&quot;/&gt;
+	&lt;Text Value=&quot;{ReadProperty ButtonText}&quot; Alignment=&quot;Center&quot; Margin=&quot;20,10&quot; Color=&quot;#fff&quot; /&gt;
 &lt;/Panel&gt;
 </code></pre>
 <pre><code class="language-xml">&lt;StackPanel&gt;
@@ -751,7 +751,7 @@ Where we place our <code>UserEvent</code> is important, since only the node it i
 <p>We recommend subclassing <code>OnUserEvent</code> instead of using it directly and setting its <code>EventName</code> each time:</p>
 <pre><code class="language-xml">&lt;Panel ux:Class=&quot;MyComponent&quot;&gt;
 	&lt;UserEvent ux:Name=&quot;myEvent&quot; /&gt;
-	&lt;OnUserEvent ux:Class=&quot;OnMyEvent&quot; EventName=&quot;myEvent&quot;/&gt;
+	&lt;OnUserEvent ux:Class=&quot;OnMyEvent&quot; EventName=&quot;myEvent&quot; /&gt;
 &lt;/Panel&gt;
 
 &lt;MyComponent&gt;
@@ -772,14 +772,14 @@ Where we place our <code>UserEvent</code> is important, since only the node it i
 	&lt;Circle ux:Name=&quot;status&quot; Width=&quot;40&quot; Height=&quot;40&quot; Color=&quot;Gray&quot; /&gt;
 	&lt;Grid ColumnCount=&quot;2&quot; CellSpacing=&quot;8&quot;&gt;
 		&lt;Panel&gt;
-			&lt;Text Value=&quot;On&quot; Alignment=&quot;Center&quot; Margin=&quot;8&quot; Color=&quot;White&quot;/&gt;
+			&lt;Text Value=&quot;On&quot; Alignment=&quot;Center&quot; Margin=&quot;8&quot; Color=&quot;White&quot; /&gt;
 			&lt;Clicked&gt;
 				&lt;Set status.Color=&quot;Green&quot; /&gt;
 			&lt;/Clicked&gt;
 			&lt;Rectangle CornerRadius=&quot;3&quot; Color=&quot;#0af&quot; /&gt;
 		&lt;/Panel&gt;
 		&lt;Panel&gt;
-			&lt;Text Value=&quot;Off&quot; Alignment=&quot;Center&quot; Margin=&quot;8&quot; Color=&quot;White&quot;/&gt;
+			&lt;Text Value=&quot;Off&quot; Alignment=&quot;Center&quot; Margin=&quot;8&quot; Color=&quot;White&quot; /&gt;
 			&lt;Clicked&gt;
 				&lt;Set status.Color=&quot;Red&quot; /&gt;
 			&lt;/Clicked&gt;
@@ -805,14 +805,14 @@ Where we place our <code>UserEvent</code> is important, since only the node it i
 	&lt;Circle ux:Dependency=&quot;status&quot; /&gt;
 	
 	&lt;Panel&gt;
-		&lt;Text Value=&quot;On&quot; Alignment=&quot;Center&quot; Margin=&quot;8&quot; Color=&quot;White&quot;/&gt;
+		&lt;Text Value=&quot;On&quot; Alignment=&quot;Center&quot; Margin=&quot;8&quot; Color=&quot;White&quot; /&gt;
 		&lt;Clicked&gt;
 			&lt;Set status.Color=&quot;Green&quot; /&gt;
 		&lt;/Clicked&gt;
 		&lt;Rectangle CornerRadius=&quot;3&quot; Color=&quot;#0af&quot; /&gt;
 	&lt;/Panel&gt;
 	&lt;Panel&gt;
-		&lt;Text Value=&quot;Off&quot; Alignment=&quot;Center&quot; Margin=&quot;8&quot; Color=&quot;White&quot;/&gt;
+		&lt;Text Value=&quot;Off&quot; Alignment=&quot;Center&quot; Margin=&quot;8&quot; Color=&quot;White&quot; /&gt;
 		&lt;Clicked&gt;
 			&lt;Set status.Color=&quot;Red&quot; /&gt;
 		&lt;/Clicked&gt;
@@ -826,11 +826,11 @@ Where we place our <code>UserEvent</code> is important, since only the node it i
 <p>Let's let these two components share state using <code>JavaScript</code> instead:</p>
 <pre><code class="language-xml">&lt;Grid ux:Class=&quot;OnOffButtons&quot; ColumnCount=&quot;2&quot;&gt;
 	&lt;Panel Clicked=&quot;{turnOn}&quot;&gt;
-		&lt;Text Value=&quot;On&quot; Alignment=&quot;Center&quot; Margin=&quot;8&quot; Color=&quot;White&quot;/&gt;
+		&lt;Text Value=&quot;On&quot; Alignment=&quot;Center&quot; Margin=&quot;8&quot; Color=&quot;White&quot; /&gt;
 		&lt;Rectangle CornerRadius=&quot;3&quot; Color=&quot;#0af&quot; /&gt;
 	&lt;/Panel&gt;
 	&lt;Panel Clicked=&quot;{turnOff}&quot;&gt;
-		&lt;Text Value=&quot;Off&quot; Alignment=&quot;Center&quot; Margin=&quot;8&quot; Color=&quot;White&quot;/&gt;
+		&lt;Text Value=&quot;Off&quot; Alignment=&quot;Center&quot; Margin=&quot;8&quot; Color=&quot;White&quot; /&gt;
 		&lt;Rectangle CornerRadius=&quot;3&quot; Color=&quot;#0af&quot; /&gt;
 	&lt;/Panel&gt;
 &lt;/Grid&gt;
@@ -895,7 +895,7 @@ Where we place our <code>UserEvent</code> is important, since only the node it i
 		&lt;/WhileFalse&gt;
 	&lt;/Circle&gt;
 	
-	&lt;OnOffButtons Value=&quot;{status}&quot;/&gt;
+	&lt;OnOffButtons Value=&quot;{status}&quot; /&gt;
 &lt;/StackPanel&gt;
 </code></pre>
 <p>The &quot;status&quot; circle is at this point a good candidate for componentization as well, just to increase the readability and maintainability of our UX:</p>
@@ -951,12 +951,12 @@ Where we place our <code>UserEvent</code> is important, since only the node it i
 		&lt;FileSource ux:Property=&quot;VideoFile&quot; /&gt;
 
 		&lt;Grid Rows=&quot;1*,1*&quot;&gt;
-			&lt;Image File=&quot;{ReadProperty ImageFile}&quot; Margin=&quot;10&quot;/&gt;
-			&lt;Video File=&quot;{ReadProperty VideoFile}&quot; AutoPlay=&quot;true&quot; IsLooping=&quot;true&quot;/&gt;
+			&lt;Image File=&quot;{ReadProperty ImageFile}&quot; Margin=&quot;10&quot; /&gt;
+			&lt;Video File=&quot;{ReadProperty VideoFile}&quot; AutoPlay=&quot;true&quot; IsLooping=&quot;true&quot; /&gt;
 		&lt;/Grid&gt;
 	&lt;/Panel&gt;
 
-	&lt;TestComponent ImageFile=&quot;test.png&quot; VideoFile=&quot;testvideo.mp4&quot;/&gt;
+	&lt;TestComponent ImageFile=&quot;test.png&quot; VideoFile=&quot;testvideo.mp4&quot; /&gt;
 &lt;/App&gt;
 </code></pre>
 <h2 id="container">Container</h2>
@@ -969,7 +969,7 @@ Where we place our <code>UserEvent</code> is important, since only the node it i
 &lt;/Container&gt;
 &lt;MyContainer&gt;
 	&lt;Text Value=&quot;Some content for my container&quot;
-		Alignment=&quot;Center&quot;/&gt;
+		Alignment=&quot;Center&quot; /&gt;
 &lt;/MyContainer&gt;
 </code></pre>
 <p><img src="media/componentization/container.png" alt="container_ex"></p>

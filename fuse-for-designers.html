@@ -709,7 +709,7 @@ Just don’t get too carried away as you might have a lot to clean up later.</p>
 <p><img src="media/fuse-for-designers/Images/UX_explainer_ClosingSlash.png" alt="UX_Explainer Closing Slash"></p>
 <p>Objects can be left open and then closed around another object like this:</p>
 <pre><code class="language-xml">&lt;Rectangle Color=&quot;Red&quot;&gt;
-  &lt;Text Value=&quot;Hey, I am some text&quot; Color=&quot;White&quot; Alignment=&quot;Center&quot;/&gt;`
+  &lt;Text Value=&quot;Hey, I am some text&quot; Color=&quot;White&quot; Alignment=&quot;Center&quot; /&gt;`
 &lt;/Rectangle&gt;
 </code></pre>
 <p>Notice the first <code>&lt;Rectangle&gt;</code> has no <code>/</code> but the second one starts with a <code>&lt;/</code>? This makes the enclosed object a <em>child</em> of the outermost object.
@@ -926,7 +926,7 @@ This might cause some un-expected results when you initially start playing with 
 <h1 id="styling">Styling</h1>
 <h4 id="styling-in-fuse-is-really-simple-and-intuitive">Styling in Fuse is really simple and intuitive.</h4>
 <p>In Fuse, styling works in a pretty similar way to a vector based program. Each object has styling properties, like <code>Color</code>, that you specify on the object. This is unlike CSS where objects inherit their styling from a rule.</p>
-<pre><code class="language-xml">&lt;Rectangle Color=&quot;#46E3D6&quot; Width=&quot;200&quot; Height=&quot;100&quot;/&gt;
+<pre><code class="language-xml">&lt;Rectangle Color=&quot;#46E3D6&quot; Width=&quot;200&quot; Height=&quot;100&quot; /&gt;
 </code></pre>
 <p><img src="media/fuse-for-designers/Images/BasicStyling.png" alt="Basic Styling"></p>
 <p>Shape objects like <code>Rectangle</code> and <code>Circle</code> have a few more style related properties than a typical Panel. For instance, <code>Rectangle</code> can have <code>Stroke</code> and <code>CornerRadius</code> whereas <code>Panel</code> can’t. Shape objects usually have a visual role where a <code>Panel</code> will often be used to help construct a layout, where they will be invisible.</p>
@@ -946,15 +946,15 @@ This might cause some un-expected results when you initially start playing with 
 <pre><code>Project Folder&gt; Assets&gt; Asset Type
 </code></pre>
 <p>Then when you include the file in MainView.ux, you do so relative to the project root folder like this:</p>
-<pre><code class="language-xml">&lt;Image File=&quot;Assets/AssetType/Asset.jpeg&quot;/&gt;
+<pre><code class="language-xml">&lt;Image File=&quot;Assets/AssetType/Asset.jpeg&quot; /&gt;
 </code></pre>
 <h3 id="using-multidensity-images">Using MultiDensity Images</h3>
 <p>Of course you want to make sure that the images you include look good on all devices. The best way to do this is to export your images at multiple pixel densities from Sketch, Figma or Photoshop. Luckily, that is the hardest part of the process. Fuse has a really neat way of figuring out which image to use on each screen density. All you need to do is include the images like so:</p>
 <pre><code class="language-xml">&lt;Image StretchMode=&quot;PointPrefer&quot;&gt;
   &lt;MultiDensityImageSource&gt;
-    &lt;FileImageSource File=&quot;Icon.png&quot; Density=&quot;1&quot;/&gt;
-    &lt;FileImageSource File=&quot;Icon@2x.png&quot; Density=&quot;2&quot;/&gt;
-    &lt;FileImageSource File=&quot;Icon@3x.png&quot; Density=&quot;3&quot;/&gt;
+    &lt;FileImageSource File=&quot;Icon.png&quot; Density=&quot;1&quot; /&gt;
+    &lt;FileImageSource File=&quot;Icon@2x.png&quot; Density=&quot;2&quot; /&gt;
+    &lt;FileImageSource File=&quot;Icon@3x.png&quot; Density=&quot;3&quot; /&gt;
   &lt;/MultiDensityImageSource&gt;
 &lt;/Image&gt;
 </code></pre>
@@ -977,7 +977,7 @@ In Fuse you can do something pretty similar. To get started you need to include 
 <pre><code class="language-xml">&lt;Text ux:Class=&quot;MyHeadlineText&quot; FontSize=&quot;32&quot; Font=&quot;MyDefaultFont&quot; /&gt;
 </code></pre>
 <p>You can then re-use that text style every-time you need a headline, like this:</p>
-<pre><code class="language-xml">&lt;MyHeadlineText Value=&quot;Oh, hi there&quot;/&gt;
+<pre><code class="language-xml">&lt;MyHeadlineText Value=&quot;Oh, hi there&quot; /&gt;
 </code></pre>
 <p><img src="media/fuse-for-designers/Images/Font-Class.png" alt="Font Class"></p>
 <p>Then if you want to change the way headlines look across the app, you tweak the original class:</p>
@@ -1012,7 +1012,7 @@ This allows you to define your design entirely separately from its transitions a
 <p>Triggers listen for specific events, gestures or inputs. When that event takes place the trigger activates and performs an animation in response. More specifically the trigger performs whatever animations/actions you place inside of it. Let’s look at a basic example:</p>
 <pre><code class="language-xml">&lt;Circle Height=&quot;60&quot; Color=&quot;#6DBFD2&quot; &gt;
    &lt;WhilePressed&gt;
-     &lt;Scale Factor=&quot;0.9&quot; Easing=&quot;BounceInOut&quot; Duration=&quot;0.2&quot;/&gt;
+     &lt;Scale Factor=&quot;0.9&quot; Easing=&quot;BounceInOut&quot; Duration=&quot;0.2&quot; /&gt;
    &lt;/WhilePressed&gt;
 &lt;/Circle&gt;
 </code></pre>
@@ -1027,17 +1027,17 @@ This allows you to define your design entirely separately from its transitions a
 <p>Animators tell triggers what to do when their conditions are met. The <code>&lt;Scale/&gt;</code> we used above is an animator. So is this <code>&lt;Move/&gt;</code>:</p>
 <pre><code class="language-xml">&lt;Circle Height=&quot;60&quot; Color=&quot;#6DBFD2&quot; &gt;
    &lt;WhilePressed&gt;
-     &lt;Move Y=&quot;-1&quot; RelativeTo=&quot;Size&quot; Easing=&quot;BounceInOut&quot; Duration=&quot;0.2&quot;/&gt;
+     &lt;Move Y=&quot;-1&quot; RelativeTo=&quot;Size&quot; Easing=&quot;BounceInOut&quot; Duration=&quot;0.2&quot; /&gt;
    &lt;/WhilePressed&gt;
 &lt;/Circle&gt;
 </code></pre>
 <p><img src="media/fuse-for-designers/Gifs/Animation_Move.gif" alt="Move"></p>
 <p>Animators want to know what to animate. In the above example the <code>&lt;Move/&gt;</code> animates its parent, but sometimes you want to animate a different object. In this case you need to explicitly tell them through the <code>Target</code> property as seen in the <code>&lt;Move/&gt;</code> below:</p>
 <pre><code class="language-xml">&lt;StackPanel Orientation=&quot;Horizontal&quot; Alignment=&quot;Center&quot; ItemSpacing=&quot;10&quot;&gt;
-  &lt;Circle ux:Name=&quot;circleName&quot; Height=&quot;60&quot; Width=&quot;60&quot; Color=&quot;#F1D751&quot;/&gt;
+  &lt;Circle ux:Name=&quot;circleName&quot; Height=&quot;60&quot; Width=&quot;60&quot; Color=&quot;#F1D751&quot; /&gt;
   &lt;Circle Height=&quot;60&quot; Width=&quot;60&quot; Color=&quot;#6DBFD2&quot; &gt;
     &lt;WhilePressed&gt;
-      &lt;Move Target=&quot;circleName&quot; Y=&quot;-1&quot; RelativeTo=&quot;Size&quot; Easing=&quot;BounceInOut&quot; Duration=&quot;0.2&quot;/&gt;
+      &lt;Move Target=&quot;circleName&quot; Y=&quot;-1&quot; RelativeTo=&quot;Size&quot; Easing=&quot;BounceInOut&quot; Duration=&quot;0.2&quot; /&gt;
     &lt;/WhilePressed&gt;
   &lt;/Circle&gt;
 &lt;/StackPanel&gt;
@@ -1061,7 +1061,7 @@ Animators have a few other important properties: duration, delay and easing.</p>
   &lt;Circle Height=&quot;60&quot; Width=&quot;60&quot; Color=&quot;#F1D751&quot; ux:Name=&quot;circleName&quot; /&gt;
   &lt;Circle Height=&quot;60&quot; Width=&quot;60&quot; Color=&quot;#6DBFD2&quot; &gt;
     &lt;WhilePressed&gt;
-      &lt;Move Target=&quot;circleName&quot; Y=&quot;-1&quot; RelativeTo=&quot;Size&quot; Delay=&quot;0.2&quot; Easing=&quot;Linear&quot; Duration=&quot;0.2&quot; DurationBack=&quot;0.4&quot; EasingBack=&quot;ElasticIn&quot; DelayBack=&quot;0.4&quot;/&gt;
+      &lt;Move Target=&quot;circleName&quot; Y=&quot;-1&quot; RelativeTo=&quot;Size&quot; Delay=&quot;0.2&quot; Easing=&quot;Linear&quot; Duration=&quot;0.2&quot; DurationBack=&quot;0.4&quot; EasingBack=&quot;ElasticIn&quot; DelayBack=&quot;0.4&quot; /&gt;
     &lt;/WhilePressed&gt;
   &lt;/Circle&gt;
 &lt;/StackPanel&gt;
@@ -1073,7 +1073,7 @@ Animators have a few other important properties: duration, delay and easing.</p>
   &lt;Circle Height=&quot;60&quot; Width=&quot;60&quot; Color=&quot;#F1D751&quot; ux:Name=&quot;circleName&quot; /&gt;
   &lt;Circle Height=&quot;60&quot; Width=&quot;60&quot; Color=&quot;#6DBFD2&quot; &gt;
     &lt;WhilePressed&gt;
-     &lt;Change Target=&quot;circleName.Color&quot; Value=&quot;#6DBFD2&quot; Duration=&quot;0.4&quot;/&gt;
+     &lt;Change Target=&quot;circleName.Color&quot; Value=&quot;#6DBFD2&quot; Duration=&quot;0.4&quot; /&gt;
     &lt;/WhilePressed&gt;
   &lt;/Circle&gt;
 &lt;/StackPanel&gt;
@@ -1178,11 +1178,11 @@ This can get a bit tricky but it really only consists of two steps:</p>
 </ul>
 <p><strong>Step1: Make a new Property</strong></p>
 <p>Lets re-visit the class from above and inside of it write:</p>
-<pre><code class="language-xml">&lt;string ux:Property=&quot;HeadlineText&quot;/&gt;
+<pre><code class="language-xml">&lt;string ux:Property=&quot;HeadlineText&quot; /&gt;
 </code></pre>
 <p>So now the code should look like this:</p>
 <pre><code class="language-xml">&lt;StackPanel ItemSpacing=&quot;20&quot; ux:Class=&quot;MyFirstClass&quot;&gt;
-  &lt;string ux:Property=&quot;HeadlineText&quot;/&gt;
+  &lt;string ux:Property=&quot;HeadlineText&quot; /&gt;
   &lt;Text FontSize=&quot;24&quot; TextColor=&quot;#0006&quot; Value=&quot;{Property
    HeadlineText}&quot; /&gt;
   &lt;Text FontSize=&quot;16&quot; TextColor=&quot;#0004&quot; Value=&quot;This is a sub-
@@ -1205,8 +1205,8 @@ This can get a bit tricky but it really only consists of two steps:</p>
 <p><img src="media/fuse-for-designers/Images/property_explainer_PropertyName.png" alt="Property Name"></p>
 <p>Fuse needs some more info about the property because there could be a few different properties in this class. So the last piece of the puzzle is the unique name of your property.</p>
 <p>So now when you create an instance of that class, you have access to that new property:</p>
-<pre><code class="language-xml">&lt;MyFirstClass HeadlineText=&quot;Woah, they can be different everytime? &quot;/&gt;
-&lt;MyFirstClass HeadlineText=&quot;Hey, this is neat&quot;/&gt;
+<pre><code class="language-xml">&lt;MyFirstClass HeadlineText=&quot;Woah, they can be different everytime? &quot; /&gt;
+&lt;MyFirstClass HeadlineText=&quot;Hey, this is neat&quot; /&gt;
 </code></pre>
 <p><img src="media/fuse-for-designers/Images/Class-Properties.png" alt="Class Properties"></p>
 <p><em>Note: You can do this for more than just text. In fact you can expose just about any property that the class has. If you want to expose properties that aren’t text, you will need to specify a different value-type. Color uses <code>&lt;float4/&gt;</code> type and for a normal number <code>&lt;int/&gt;</code> type will do. There is some info on all the different value-types <a href="https://fuse-open.github.io/docs/ux-markup/literals">here</a>.</em></p>
@@ -1316,7 +1316,7 @@ module.exports = {
 <p>To get it into UX:</p>
 <pre><code class="language-xml">&lt;Grid Alignment=&quot;Center&quot; CellSpacing=&quot;10&quot;&gt;
   &lt;Each Items=&quot;{Fruits}&quot;&gt;
-    &lt;Text Value=&quot;{type}&quot;/&gt;
+    &lt;Text Value=&quot;{type}&quot; /&gt;
   &lt;/Each&gt;
 &lt;/Grid&gt;
 </code></pre>
@@ -1335,7 +1335,7 @@ module.exports = {
 Lets break it down. What does <code>Each</code> really do? Well simply <code>Each</code> repeats whatever children it has. You can specify how many times the children repeat like so:</p>
 <pre><code class="language-xml">&lt;Grid Alignment=&quot;Center&quot; CellSpacing=&quot;10&quot; &gt;
   &lt;Each Count=&quot;5&quot;&gt;
-    &lt;Text Value=&quot;This is a Fruit list&quot;/&gt;
+    &lt;Text Value=&quot;This is a Fruit list&quot; /&gt;
   &lt;/Each&gt;
 &lt;/Grid&gt;
 </code></pre>
@@ -1411,7 +1411,7 @@ module.exports = {
 </code></pre>
 <pre><code class="language-xml">&lt;Grid Alignment=&quot;Center&quot; CellSpacing=&quot;10&quot; &gt;
   &lt;Each Items=&quot;{Fruits}&quot;&gt;
-    &lt;Text Value=&quot;{type}&quot;/&gt;
+    &lt;Text Value=&quot;{type}&quot; /&gt;
     &lt;Each Items=&quot;{subtypes}&quot;&gt;
       &lt;Text Value=&quot;{}&quot; Margin=&quot;20,0,0,0&quot; /&gt;
     &lt;/Each&gt;
@@ -1468,13 +1468,13 @@ To keep things simple it’s smart to keep it in the same folder as the .unoproj
 <p>The problem is, keeping track of these paths can get tricky and if you need to re-arrange something your file paths will break. So instead, you create all your assets as classes in this file. Check out this example:
 Instead of:</p>
 <pre><code class="language-xml">&lt;Grid&gt;
-  &lt;Image StretchMode=&quot;UniformToFill&quot; File=&quot;Assets/icon.png&quot;/&gt;
-  &lt;Image StretchMode=&quot;UniformToFill&quot; File=&quot;Assets/icon.png&quot;/&gt;
-  &lt;Image StretchMode=&quot;UniformToFill&quot; File=&quot;Assets/icon.png&quot;/&gt;
+  &lt;Image StretchMode=&quot;UniformToFill&quot; File=&quot;Assets/icon.png&quot; /&gt;
+  &lt;Image StretchMode=&quot;UniformToFill&quot; File=&quot;Assets/icon.png&quot; /&gt;
+  &lt;Image StretchMode=&quot;UniformToFill&quot; File=&quot;Assets/icon.png&quot; /&gt;
 &lt;/Grid&gt;
 </code></pre>
 <p>You create the class in <code>resources.ux</code> like so:</p>
-<pre><code class="language-xml">&lt;Image ux:Class=&quot;Icon&quot; StretchMode=&quot;UniformToFill&quot; File=&quot;Assets/icon.png&quot;/&gt;
+<pre><code class="language-xml">&lt;Image ux:Class=&quot;Icon&quot; StretchMode=&quot;UniformToFill&quot; File=&quot;Assets/icon.png&quot; /&gt;
 </code></pre>
 <p>And reference it in the original position:</p>
 <pre><code class="language-xml">&lt;Grid&gt;
@@ -1492,7 +1492,7 @@ To make it even neater, you might want to wrap all your separate globals up in a
     &lt;float4 ux:Global=&quot;SecondarySolid&quot; ux:Value=&quot;#8A5182&quot; /&gt;
     &lt;float4 ux:Global=&quot;DarkGrey&quot; ux:Value=&quot;#636363&quot; /&gt;
     &lt;float4 ux:Global=&quot;MidGrey&quot; ux:Value=&quot;#979797&quot; /&gt;
-    &lt;float4 ux:Global=&quot;LightGrey&quot; ux:Value=&quot;#D8D8D8&quot;/&gt;
+    &lt;float4 ux:Global=&quot;LightGrey&quot; ux:Value=&quot;#D8D8D8&quot; /&gt;
     &lt;float4 ux:Global=&quot;PrimaryText&quot; ux:Value=&quot;#282D67&quot; /&gt;
     &lt;float4 ux:Global=&quot;PrimarySolid&quot; ux:Value=&quot;#426E89&quot; /&gt;
     &lt;float4 ux:Global=&quot;TextGrey&quot; ux:Value=&quot;#3A4454&quot; /&gt;
