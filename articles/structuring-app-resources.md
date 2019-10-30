@@ -60,7 +60,7 @@ A limitation of static globals is that they cannot be changed while the app is r
 ```xml
 <Panel>
 	<float4 ux:Key="AppBackground" ux:Value="#7FDBFF" />
-	<Rectangle Color="{Resource AppBackground}"/>
+	<Rectangle Color="{Resource AppBackground}" />
 </Panel>
 ```
 
@@ -128,7 +128,7 @@ Since `MyTheme` inherits from the `WhileTrue` trigger, it can easily be turned o
 
 ```xml
 <App>
-	<MyTheme ux:Name="myTheme"/>
+	<MyTheme ux:Name="myTheme" />
 	<Panel Color="{Resource MyApp.PrimaryColor}">
 		<Clicked>
 			<Toggle Target="myTheme" />

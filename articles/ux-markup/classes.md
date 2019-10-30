@@ -66,7 +66,7 @@ In the following example, notice that we access `toggleStatusPanel` which is def
 ```xml
 	<App>
 		<DockPanel>
-			<Panel ux:Name="statusPanel" Color="#f00" Height="80" Dock="Top"/>
+			<Panel ux:Name="statusPanel" Color="#f00" Height="80" Dock="Top" />
 			<WhileTrue ux:Name="toggleStatusPanel">
 				<Change statusPanel.Color="#0f0" />
 			</WhileTrue>

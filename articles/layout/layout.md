@@ -11,12 +11,12 @@ The following example shows how to make a grid with two rows and three columns f
 ```xml
 <App>
 	<Grid RowCount="2" ColumnCount="3">
-		<Rectangle Color="#ff4500"/>
-		<Rectangle Color="#ee7942"/>
-		<Rectangle Color="#ee6363"/>
-		<Rectangle Color="#ffb90f"/>
-		<Rectangle Color="#eeb422"/>
-		<Rectangle Color="#eedc82"/>
+		<Rectangle Color="#ff4500" />
+		<Rectangle Color="#ee7942" />
+		<Rectangle Color="#ee6363" />
+		<Rectangle Color="#ffb90f" />
+		<Rectangle Color="#eeb422" />
+		<Rectangle Color="#eedc82" />
 	</Grid>
 </App>
 ```
@@ -27,11 +27,11 @@ We can nest several panels to create more complex structures:
 <App>
 	<StackPanel>
 		<DockPanel Height="50">
-			<Text Value="Hello" Dock="Left"/>
+			<Text Value="Hello" Dock="Left" />
 			<Rectangle Color="#f00" />
 		</DockPanel>
 		<DockPanel Height="50">
-			<Text Value="World" Dock="Left"/>
+			<Text Value="World" Dock="Left" />
 			<Rectangle Color="#00f" />
 		</DockPanel>
 	</StackPanel>
@@ -110,8 +110,8 @@ Here is an example of how it looks in UX:
 
 ```xml
 <Grid ColumnCount="3" RowCount="1">
-	<Panel Row="0" Column="0" Color="#f00"/>
-	<Panel Row="0" Column="2" Color="#00f"/>
+	<Panel Row="0" Column="0" Color="#f00" />
+	<Panel Row="0" Column="2" Color="#00f" />
 </Grid>
 ```
 
@@ -121,8 +121,8 @@ Normally, the order in which elements are drawn depends on their place in the ch
 
 ```xml
 <Panel>
-	<Rectangle Color="Red" Margin="100"/>
-	<Circle Color="Green"/>
+	<Rectangle Color="Red" Margin="100" />
+	<Circle Color="Green" />
 </Panel>
 ```
 
@@ -132,7 +132,7 @@ In the following example, the @Circle is drawn on top of the @Rectangle because 
 
 ```xml
 <Panel>
-	<Rectangle Color="Red" ZOffset="0.0" Margin="100"/>
-	<Circle Color="Green" ZOffset="1.0"/>
+	<Rectangle Color="Red" ZOffset="0.0" Margin="100" />
+	<Circle Color="Green" ZOffset="1.0" />
 </Panel>
 ```

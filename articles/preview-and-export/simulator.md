@@ -15,12 +15,12 @@ The preview window can be switched to different screen densities and resolutions
 <tr>
 <td>
 
-<img src="../../media/preview-and-export-tool-preview-osx-preview-config.png" Width="365"/>
+<img src="../../media/preview-and-export-tool-preview-osx-preview-config.png" Width="365" />
 
 </td>
 <td>
 
-<img src="../../media/preview-and-export-tool-preview-win-preview-config.png"/>
+<img src="../../media/preview-and-export-tool-preview-win-preview-config.png" />
 
 </td>
 </tr>

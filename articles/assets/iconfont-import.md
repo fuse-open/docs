@@ -39,4 +39,4 @@ Once you have managed to escape your character as a string on the JavaScript sid
 			cog: cog
 		};
 	</JavaScript>
-	<Text Value="{cog}" Font="FontAwesome"/>
+	<Text Value="{cog}" Font="FontAwesome" />

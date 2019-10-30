@@ -85,7 +85,7 @@ Objects can be left open and then closed around another object like this:
 
 ```xml
 <Rectangle Color="Red">
-  <Text Value="Hey, I am some text" Color="White" Alignment="Center"/>`
+  <Text Value="Hey, I am some text" Color="White" Alignment="Center" />`
 </Rectangle>
 ```
 
@@ -325,7 +325,7 @@ A quick note on units. You will have undoubtedly noticed that you haven’t need
 
 In Fuse, styling works in a pretty similar way to a vector based program. Each object has styling properties, like `Color`, that you specify on the object. This is unlike CSS where objects inherit their styling from a rule.
 ```xml
-<Rectangle Color="#46E3D6" Width="200" Height="100"/>
+<Rectangle Color="#46E3D6" Width="200" Height="100" />
 ```
 
 ![Basic Styling](../media/fuse-for-designers/Images/BasicStyling.png)
@@ -359,7 +359,7 @@ Project Folder> Assets> Asset Type
 ```
 Then when you include the file in MainView.ux, you do so relative to the project root folder like this:
 ```xml
-<Image File="Assets/AssetType/Asset.jpeg"/>
+<Image File="Assets/AssetType/Asset.jpeg" />
 ```
 
 ### Using MultiDensity Images
@@ -368,9 +368,9 @@ Of course you want to make sure that the images you include look good on all dev
 ```xml
 <Image StretchMode="PointPrefer">
   <MultiDensityImageSource>
-    <FileImageSource File="Icon.png" Density="1"/>
-    <FileImageSource File="Icon@2x.png" Density="2"/>
-    <FileImageSource File="Icon@3x.png" Density="3"/>
+    <FileImageSource File="Icon.png" Density="1" />
+    <FileImageSource File="Icon@2x.png" Density="2" />
+    <FileImageSource File="Icon@3x.png" Density="3" />
   </MultiDensityImageSource>
 </Image>
 ```
@@ -404,7 +404,7 @@ There is one more step here to make a truly re-usable style and it requires usin
 ```
 You can then re-use that text style every-time you need a headline, like this:
 ```xml
-<MyHeadlineText Value="Oh, hi there"/>
+<MyHeadlineText Value="Oh, hi there" />
 ```
 ![Font Class](../media/fuse-for-designers/Images/Font-Class.png)
 
@@ -457,7 +457,7 @@ Triggers listen for specific events, gestures or inputs. When that event takes p
 ```xml
 <Circle Height="60" Color="#6DBFD2" >
    <WhilePressed>
-     <Scale Factor="0.9" Easing="BounceInOut" Duration="0.2"/>
+     <Scale Factor="0.9" Easing="BounceInOut" Duration="0.2" />
    </WhilePressed>
 </Circle>
 ```
@@ -481,7 +481,7 @@ Animators tell triggers what to do when their conditions are met. The `<Scale/>`
 ```xml
 <Circle Height="60" Color="#6DBFD2" >
    <WhilePressed>
-     <Move Y="-1" RelativeTo="Size" Easing="BounceInOut" Duration="0.2"/>
+     <Move Y="-1" RelativeTo="Size" Easing="BounceInOut" Duration="0.2" />
    </WhilePressed>
 </Circle>
 ```
@@ -491,10 +491,10 @@ Animators tell triggers what to do when their conditions are met. The `<Scale/>`
 Animators want to know what to animate. In the above example the `<Move/>` animates its parent, but sometimes you want to animate a different object. In this case you need to explicitly tell them through the `Target` property as seen in the `<Move/>` below:
 ```xml
 <StackPanel Orientation="Horizontal" Alignment="Center" ItemSpacing="10">
-  <Circle ux:Name="circleName" Height="60" Width="60" Color="#F1D751"/>
+  <Circle ux:Name="circleName" Height="60" Width="60" Color="#F1D751" />
   <Circle Height="60" Width="60" Color="#6DBFD2" >
     <WhilePressed>
-      <Move Target="circleName" Y="-1" RelativeTo="Size" Easing="BounceInOut" Duration="0.2"/>
+      <Move Target="circleName" Y="-1" RelativeTo="Size" Easing="BounceInOut" Duration="0.2" />
     </WhilePressed>
   </Circle>
 </StackPanel>
@@ -518,7 +518,7 @@ By default animations will play themselves in reverse when returning to rest sta
   <Circle Height="60" Width="60" Color="#F1D751" ux:Name="circleName" />
   <Circle Height="60" Width="60" Color="#6DBFD2" >
     <WhilePressed>
-      <Move Target="circleName" Y="-1" RelativeTo="Size" Delay="0.2" Easing="Linear" Duration="0.2" DurationBack="0.4" EasingBack="ElasticIn" DelayBack="0.4"/>
+      <Move Target="circleName" Y="-1" RelativeTo="Size" Delay="0.2" Easing="Linear" Duration="0.2" DurationBack="0.4" EasingBack="ElasticIn" DelayBack="0.4" />
     </WhilePressed>
   </Circle>
 </StackPanel>
@@ -533,7 +533,7 @@ Although Fuse has a bunch of different animators, there is one that is more vers
   <Circle Height="60" Width="60" Color="#F1D751" ux:Name="circleName" />
   <Circle Height="60" Width="60" Color="#6DBFD2" >
     <WhilePressed>
-     <Change Target="circleName.Color" Value="#6DBFD2" Duration="0.4"/>
+     <Change Target="circleName.Color" Value="#6DBFD2" Duration="0.4" />
     </WhilePressed>
   </Circle>
 </StackPanel>
@@ -670,12 +670,12 @@ This can get a bit tricky but it really only consists of two steps:
 
 Lets re-visit the class from above and inside of it write:
 ```xml
-<string ux:Property="HeadlineText"/>
+<string ux:Property="HeadlineText" />
 ```
 So now the code should look like this:
 ```xml
 <StackPanel ItemSpacing="20" ux:Class="MyFirstClass">
-  <string ux:Property="HeadlineText"/>
+  <string ux:Property="HeadlineText" />
   <Text FontSize="24" TextColor="#0006" Value="{Property
    HeadlineText}" />
   <Text FontSize="16" TextColor="#0004" Value="This is a sub-
@@ -712,8 +712,8 @@ Fuse needs some more info about the property because there could be a few differ
 
 So now when you create an instance of that class, you have access to that new property:
 ```xml
-<MyFirstClass HeadlineText="Woah, they can be different everytime? "/>
-<MyFirstClass HeadlineText="Hey, this is neat"/>
+<MyFirstClass HeadlineText="Woah, they can be different everytime? " />
+<MyFirstClass HeadlineText="Hey, this is neat" />
 ```
 
 ![Class Properties](../media/fuse-for-designers/Images/Class-Properties.png)
@@ -848,7 +848,7 @@ To get it into UX:
 ```xml
 <Grid Alignment="Center" CellSpacing="10">
   <Each Items="{Fruits}">
-    <Text Value="{type}"/>
+    <Text Value="{type}" />
   </Each>
 </Grid>
 ```
@@ -867,7 +867,7 @@ Lets break it down. What does `Each` really do? Well simply `Each` repeats whate
 ```xml
 <Grid Alignment="Center" CellSpacing="10" >
   <Each Count="5">
-    <Text Value="This is a Fruit list"/>
+    <Text Value="This is a Fruit list" />
   </Each>
 </Grid>
 ```
@@ -945,7 +945,7 @@ Fruits: [
 ```xml
 <Grid Alignment="Center" CellSpacing="10" >
   <Each Items="{Fruits}">
-    <Text Value="{type}"/>
+    <Text Value="{type}" />
     <Each Items="{subtypes}">
       <Text Value="{}" Margin="20,0,0,0" />
     </Each>
@@ -1029,14 +1029,14 @@ The problem is, keeping track of these paths can get tricky and if you need to r
 Instead of:
 ```xml
 <Grid>
-  <Image StretchMode="UniformToFill" File="Assets/icon.png"/>
-  <Image StretchMode="UniformToFill" File="Assets/icon.png"/>
-  <Image StretchMode="UniformToFill" File="Assets/icon.png"/>
+  <Image StretchMode="UniformToFill" File="Assets/icon.png" />
+  <Image StretchMode="UniformToFill" File="Assets/icon.png" />
+  <Image StretchMode="UniformToFill" File="Assets/icon.png" />
 </Grid>
 ```
 You create the class in `resources.ux` like so:
 ```xml
-<Image ux:Class="Icon" StretchMode="UniformToFill" File="Assets/icon.png"/>
+<Image ux:Class="Icon" StretchMode="UniformToFill" File="Assets/icon.png" />
 ```
 And reference it in the original position:
 ```xml
@@ -1058,7 +1058,7 @@ To make it even neater, you might want to wrap all your separate globals up in a
     <float4 ux:Global="SecondarySolid" ux:Value="#8A5182" />
     <float4 ux:Global="DarkGrey" ux:Value="#636363" />
     <float4 ux:Global="MidGrey" ux:Value="#979797" />
-    <float4 ux:Global="LightGrey" ux:Value="#D8D8D8"/>
+    <float4 ux:Global="LightGrey" ux:Value="#D8D8D8" />
     <float4 ux:Global="PrimaryText" ux:Value="#282D67" />
     <float4 ux:Global="PrimarySolid" ux:Value="#426E89" />
     <float4 ux:Global="TextGrey" ux:Value="#3A4454" />

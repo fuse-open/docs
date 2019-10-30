@@ -83,7 +83,7 @@ Alternatively, we can use the `Handler` event to pass the event into JavaScript:
 	</JavaScript>
 	
 	<MyComponent>
-		<OnUserEvent EventName="myEvent" Handler="{eventHandler}"/>
+		<OnUserEvent EventName="myEvent" Handler="{eventHandler}" />
 	</MyComponent>
 ```
 

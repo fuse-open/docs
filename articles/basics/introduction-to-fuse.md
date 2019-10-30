@@ -292,9 +292,9 @@ The `StackPanel` arranges its children in a line, either vertically or horizonta
 
 ```xml
 <StackPanel ItemSpacing="10">
-	<Rectangle Color="Red" Height="50"/>
+	<Rectangle Color="Red" Height="50" />
 	<Text Value="Some text" />
-	<Rectangle Color="Blue" Height="50"/>
+	<Rectangle Color="Blue" Height="50" />
 </StackPanel>
 ```
 
@@ -312,11 +312,11 @@ The `DockPanel` allows us to subdivide the available space by "docking" each chi
 
 ```xml
 <DockPanel>
-	<Rectangle Dock="Left" Width="100" Color="Red"/>
-	<Rectangle Dock="Top" Height="100" Color="Green"/>
-	<Rectangle Dock="Right" Width="100" Color="Blue"/>
-	<Rectangle Dock="Bottom" Height="100" Color="Teal"/>
-	<Rectangle Color="Yellow"/>
+	<Rectangle Dock="Left" Width="100" Color="Red" />
+	<Rectangle Dock="Top" Height="100" Color="Green" />
+	<Rectangle Dock="Right" Width="100" Color="Blue" />
+	<Rectangle Dock="Bottom" Height="100" Color="Teal" />
+	<Rectangle Color="Yellow" />
 </DockPanel>
 ```
 
@@ -330,12 +330,12 @@ Read all about the `DockPanel` [here](api:fuse/controls/dockpanel)
 
 ```xml
 <Grid RowCount="2" ColumnCount="3">
-	<Rectangle Color="Red"/>
-	<Rectangle Color="Green"/>
-	<Rectangle Color="Blue"/>
-	<Rectangle Color="Yellow"/>
-	<Rectangle Color="Orange"/>
-	<Rectangle Color="Teal"/>
+	<Rectangle Color="Red" />
+	<Rectangle Color="Green" />
+	<Rectangle Color="Blue" />
+	<Rectangle Color="Yellow" />
+	<Rectangle Color="Orange" />
+	<Rectangle Color="Teal" />
 </Grid>
 ```
 
@@ -353,7 +353,7 @@ Lets combine what we've learned so far to create something a bit more complex th
 <App Background="#ddd">
 	<DockPanel>
 		<Rectangle Dock="Top" Color="#63b8ff">
-			<Text Value="My first app" Alignment="Center" Margin="20"/>
+			<Text Value="My first app" Alignment="Center" Margin="20" />
 		</Rectangle>
 		<Rectangle Color="White" CornerRadius="5" Alignment="Center">
 			<StackPanel Alignment="Center" Margin="45">
@@ -362,7 +362,7 @@ Lets combine what we've learned so far to create something a bit more complex th
 				<Text Alignment="HorizontalCenter" FontSize="25">first</Text>
 				<Image Url="https://www.fusetools.com/assets/dist/images/logo-white-header.png"
 					   Color="#333"
-					   StretchMode="PixelPrecise"/>
+					   StretchMode="PixelPrecise" />
 				<Text Alignment="HorizontalCenter" FontSize="30">App</Text>
 			</StackPanel>
 		</Rectangle>
@@ -423,7 +423,7 @@ Your can also bind events to functions:
 		buttonClicked: buttonClicked
 	};
 </JavaScript>
-<Button Text="My button" Clicked="{buttonClicked}"/>
+<Button Text="My button" Clicked="{buttonClicked}" />
 ```
 
 ### Displaying lists of data
@@ -516,7 +516,7 @@ Since componentization is such an important part of Fuse, we've spent a lot of o
 	<DockPanel>
 
 		<Rectangle Dock="Top" Color="#63b8ff">
-			<Text Value="My first app" Alignment="Center" Margin="20"/>
+			<Text Value="My first app" Alignment="Center" Margin="20" />
 		</Rectangle>
 
 		<Rectangle Color="White" CornerRadius="5" Alignment="Center">
@@ -526,7 +526,7 @@ Since componentization is such an important part of Fuse, we've spent a lot of o
 				<Text Alignment="HorizontalCenter" FontSize="25">first</Text>
 				<Image Url="https://www.fusetools.com/assets/dist/images/logo-white-header.png"
 					   Color="#333"
-					   StretchMode="PixelPrecise"/>
+					   StretchMode="PixelPrecise" />
 				<Text Alignment="HorizontalCenter" FontSize="30">App</Text>
 			</StackPanel>
 		</Rectangle>
@@ -547,7 +547,7 @@ __AppBar.ux:__
 
 ```xml
 <Rectangle ux:Class="TopBar" Color="#63b8ff">
-	<Text Value="My first app" Alignment="Center" Margin="20"/>
+	<Text Value="My first app" Alignment="Center" Margin="20" />
 </Rectangle>
 ```
 
@@ -571,7 +571,7 @@ __Card.ux:__
 		<Text Alignment="HorizontalCenter" FontSize="25">first</Text>
 		<Image Url="https://www.fusetools.com/assets/dist/images/logo-white-header.png"
 			   Color="#333"
-			   StretchMode="PixelPrecise"/>
+			   StretchMode="PixelPrecise" />
 		<Text Alignment="HorizontalCenter" FontSize="30">App</Text>
 	</StackPanel>
 </Rectangle>
@@ -582,9 +582,9 @@ and with these three components in place, we can simplify our `MainView.ux` into
 ```xml
 <App Background="#ddd">
 	<DockPanel>
-		<TopBar Dock="Top"/>
+		<TopBar Dock="Top" />
 		<Card Alignment="Center" />
-		<TabBr Dock="Bottom"/>
+		<TabBr Dock="Bottom" />
 	</DockPanel>
 </App>
 ```
@@ -684,9 +684,9 @@ In the following example, we've extended our button to have a more complete anim
 
 ```xml
 <Rectangle ux:Class="AnimatedButton">
-	<Shadow ux:Name="shadow" Distance="7" Angle="45"/>
+	<Shadow ux:Name="shadow" Distance="7" Angle="45" />
 
-	<Text Value="Press me" Color="White" Margin="18,14"/>
+	<Text Value="Press me" Color="White" Margin="18,14" />
 
 	<LinearGradient StartPoint="0,0" EndPoint="1,0">
 		<GradientStop ux:Name="stop1" Color="#23A1AD" Offset="0" />
@@ -696,9 +696,9 @@ In the following example, we've extended our button to have a more complete anim
 	<WhilePressed>
 		<Change stop1.Color="#4EC4A7" Duration="0.15" />
 		<Change stop2.Color="#43B4BD" Duration="0.15" />
-		<Change shadow.Distance="4" Duration="0.15" Easing="CubicOut" EasingBack="CubicIn"/>
-		<Move Vector="-2,2,0" Duration="0.15" Easing="CubicOut" EasingBack="CubicIn"/>
-		<Scale Factor="0.95" Duration="0.15" Easing="CubicOut" EasingBack="CubicIn"/>
+		<Change shadow.Distance="4" Duration="0.15" Easing="CubicOut" EasingBack="CubicIn" />
+		<Move Vector="-2,2,0" Duration="0.15" Easing="CubicOut" EasingBack="CubicIn" />
+		<Scale Factor="0.95" Duration="0.15" Easing="CubicOut" EasingBack="CubicIn" />
 	</WhilePressed>
 </Rectangle>
 ```
@@ -713,8 +713,8 @@ For the purpose of just getting started, lets take a look at a different navigat
 <App>
 	<PageControl>
 		<Page Color="Red" />
-		<Page Color="Green"/>
-		<Page Color="Blue"/>
+		<Page Color="Green" />
+		<Page Color="Blue" />
 	</PageControl>
 </App>
 ```
@@ -725,13 +725,13 @@ It's that simple! Feel free to open up one of the pages and start adding some co
 <App>
 	<PageControl>
 		<Page Color="Red">
-			<Text Value="This is some content" Alignment="Center" FontSize="35"/>
+			<Text Value="This is some content" Alignment="Center" FontSize="35" />
 		</Page>
 		<Page Color="Green">
 			<AnimatedButton Alignment="Center" />
 		</Page>
 		<Page Color="Blue">
-			<Rectangle CornerRadius="10" Color="#f0f" Width="100" Height="100"/>
+			<Rectangle CornerRadius="10" Color="#f0f" Width="100" Height="100" />
 		</Page>
 	</PageControl>
 </App>

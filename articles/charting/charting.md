@@ -80,9 +80,9 @@ A `label` property can also be added to the items. This is primarily for 1-dimen
 You can use multiple `DataSeries` in one `Plot`. It's helpful to give them names for later reference:
 
 ```XML
-	<c:DataSeries Data="{dataA}" ux:Name="seriesA"/>
-	<c:DataSeries Data="{dataB}" ux:Name="seriesB"/>
-	<c:DataSeries Data="{dataC}" ux:Name="seriesC"/>
+	<c:DataSeries Data="{dataA}" ux:Name="seriesA" />
+	<c:DataSeries Data="{dataB}" ux:Name="seriesB" />
+	<c:DataSeries Data="{dataC}" ux:Name="seriesC" />
 ```
 
 The `Plot` will calculate its ranges based on the values in all of its `DataSeries`. Each series still has its own data, but the calculated values are relative to the combination of all the sets.
@@ -105,7 +105,7 @@ The above use of `PlotData` creates the points for a `Curve`.
 <Panel>
 	<c:PlotData>
 		<c:PlotBar>
-			<Rectangle Color="#0808" Height="80%" Alignment="VerticalCenter"/>
+			<Rectangle Color="#0808" Height="80%" Alignment="VerticalCenter" />
 		</c:PlotBar>
 	</c:PlotData>
 </Panel>
@@ -167,7 +167,7 @@ You can then use `Style="Range"` on a `PlotBar` to draw a bar that maps to this 
 A @Plot doesn't have any default layout. A common approach is to use a `GridLayout` to add the labels, ticks, and plot data.
 
 ```XML
-<GridLayout Columns="50,10,1*" Rows="1*,10,20"/>
+<GridLayout Columns="50,10,1*" Rows="1*,10,20" />
 ```
 
 This is a basic layout that allocates 50 points for the Y-axis labels, 20 points for the X-axis labels, 10 points for both X/Y tick marks, and the rest for the plot.
@@ -183,7 +183,7 @@ This is a basic layout that allocates 50 points for the Y-axis labels, 20 points
 
 ```XML
 <c:PlotAxis>
-	<Text ux:Template="Label" Value="{Plot axis.label}"/>
+	<Text ux:Template="Label" Value="{Plot axis.label}" />
 </c:PlotAxis>
 ```
 
@@ -201,7 +201,7 @@ This example positions angled labels along the X axis in a GridLayout. (NOTE: Th
 		<Panel>
 			<Text X="{Plot axis.position} * 100%" Y="0" FontSize="18" Color="#000" 
 				Value="{Plot axis.label}" Anchor="105%,45%" TransformOrigin="Anchor" ux:Name="t">
-				<Rotation Degrees="-60"/>
+				<Rotation Degrees="-60" />
 			</Text>
 		</Panel>
 	</c:PlotAxisData>
@@ -226,7 +226,7 @@ The `{Plot axis.*}` data contains variables used to construct an axis:
 @PlotTicks create tick marks, usually for an axis. This is a @Shape, allowing `Stroke...` properties to be used for drawing the ticks.  The ticks that are drawn will line up with the labels of @PlotAxis provided they are the same element size (either `Width` or `Height` depending on the axis).
 
 ```XML
-<c:PlotTicks Axis="X" AxisLine="0" StrokeWidth="1" StrokeColor="#000"/>
+<c:PlotTicks Axis="X" AxisLine="0" StrokeWidth="1" StrokeColor="#000" />
 ```
 
 `AxisLine` indicates a line across the entire access should be drawn at this offset. In this example it's the top of the ticks, making this suitable for the bottom of a chart.
@@ -237,7 +237,7 @@ Within a @Plot the `{Plot variable}` expression can be used to access several us
 
 - `baseline` (per-axis) the relative position of the baseline (usually the zero point)
 - `hasNext` whether `Offset`,`Limit` could be increased to reveal more data
-- `hasPrev` whether `Offest` could be decreased to reveal more data
+- `hasPrev` whether `Offset` could be decreased to reveal more data
 - `count` the number of data points shown on the plot
 - `dataMaxline`, `dataMinline`  (per-axis) the relative position of the max/min value in the full data set
 
@@ -255,7 +255,7 @@ The `PlotWedge` is a convenience element provided to draw elements of a simple p
 ```XML
 <VectorLayer HitTestMode="None">
 	<c:PlotData>
-		<c:PlotWedge Color="{Plot data.object}.color" StrokeColor="#488" StrokeWidth="1"/>
+		<c:PlotWedge Color="{Plot data.object}.color" StrokeColor="#488" StrokeWidth="1" />
 	</c:PlotData>
 </VectorLayer>
 ```
@@ -269,7 +269,7 @@ You can add labels to this chart using `c:PlotPoint`.
 ```XML
 <c:PlotData>
 	<c:PlotPoint Style="Radial" PointOffset="0.05" Attractor="pieAttract">
-		<Text Value="{Plot data.label}"/>
+		<Text Value="{Plot data.label}" />
 	</c:PlotPoint>
 </c:PlotData>
 ```
@@ -281,6 +281,6 @@ If you don't wish to use `PlotWedge` you can calculate the ranges for a plot you
 	<Arc
 		StartAngleDegrees="{Plot data.accumulatedWeight.y}*360" 
 		EndAngleDegrees="{Plot data.cumulativeWeight.y}*360" 
-		StrokeColor="#488" StrokeWidth="2"/>
+		StrokeColor="#488" StrokeWidth="2" />
 </c:PlotData>
 ```

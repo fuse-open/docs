@@ -247,7 +247,6 @@ And here's what the code for all of our various files looks like. It's a few mor
 `hikr.unoproj`:
 ```json
 {
-  "RootNamespace":"",
   "Packages": [
     "Fuse",
     "FuseJS"
