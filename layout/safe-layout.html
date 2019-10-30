@@ -94,7 +94,10 @@
 				<a href="https://fuseopen.com/docs/componentization.html">Componentization</a>
 			</li>
 			<li>
-				<a href="https://fuseopen.com/docs/layout/responsive-layout.html">Responsive layout</a>
+				<a href="https://fuseopen.com/docs/layout/responsive-layout.html">Responsive Layout</a>
+			</li>
+			<li>
+				<a href="https://fuseopen.com/docs/layout/safe-layout.html">Safe Layout</a>
 			</li>
 			<li>
 				<a href="https://fuseopen.com/docs/declarative-animation.html">Declarative animation</a>
@@ -640,7 +643,7 @@
 <p>The SafeEdgePanel is a panel that adds padding for the safe areas.  You should use it for any panel that touches the side of the display.</p>
 <p>For example, this panel adds a title at the top of the screen.</p>
 <pre><code class="language-xml">    &lt;DockPanel&gt;
-        &lt;SafeEdgePanel Edges=&quot;LeftTopRight&quot; Dock=&quot;Top&quot; Color=&quot;#FFF&quot; ExtraPadding=&quot;2&quot;&gt;
+        &lt;SafeEdgePanel PadEdges=&quot;LeftTopRight&quot; Dock=&quot;Top&quot; Color=&quot;#FFF&quot; ExtraPadding=&quot;2&quot;&gt;
             &lt;Text Value=&quot;App Title&quot; Alignment=&quot;Center&quot;&gt;
         &lt;/SafeEdgePanel&gt;
     &lt;/DockPanel&gt;
@@ -649,12 +652,12 @@
 <p>A SafeEdgePanel is essentially a <a href="../fuse/controls/panel.html">Panel</a> with a device dependent <code>Padding</code>. The <code>Edges</code> property states which edges it touches, and thus which padding values are set. The property <code>ExtraPadding</code> allows you to add extra padding to this.</p>
 <h3 id="fewer-edges">Fewer Edges</h3>
 <p>The rather wordy <code>Edges</code> properties like <code>LeftTopRight</code> allow for fine control over how you construct your layout. Though it's typical to specify three edges, it's common to have fewer edges.</p>
-<p>For example, you may wish to have a swipe panel form the right that is within the bounds of the title and action bars. In this case, you'd only specify <code>Edges=&quot;Right&quot;</code>.</p>
+<p>For example, you may wish to have a swipe panel form the right that is within the bounds of the title and action bars. In this case, you'd only specify <code>PadEdges=&quot;Right&quot;</code>.</p>
 <pre><code class="language-xml">    &lt;DockPanel&gt;
-        &lt;SafeEdgePanel Dock=&quot;Top&quot; Edges=&quot;LeftTopRight&quot; Color=&quot;#FFF&quot;&gt;
+        &lt;SafeEdgePanel Dock=&quot;Top&quot; PadEdges=&quot;LeftTopRight&quot; Color=&quot;#FFF&quot;&gt;
             &lt;!-- title area --&gt;
         &lt;/SafeEdgePanel&gt;
-        &lt;SafeEdgePanel Dock=&quot;Bottom&quot; Edges=&quot;LeftRightBottom&quot; Color=&quot;#FFF&quot;&gt;
+        &lt;SafeEdgePanel Dock=&quot;Bottom&quot; PadEdges=&quot;LeftRightBottom&quot; Color=&quot;#FFF&quot;&gt;
             &lt;!-- action bar --&gt;
         &lt;/SafeEdgePanel&gt;
         
@@ -667,7 +670,7 @@
         &lt;/SafeEdgePanel&gt;
     &lt;/DockPanel&gt;
 </code></pre>
-<p>The title bar accounts for the top margins, and the action bar for the bottom margins, thus the side bar only needs to add padding for the right device margins with <code>Edges=&quot;Right&quot;</code>.</p>
+<p>The title bar accounts for the top margins, and the action bar for the bottom margins, thus the side bar only needs to add padding for the right device margins with <code>PadEdges=&quot;Right&quot;</code>.</p>
 <h2 id="window">window()</h2>
 <p>The values used by <code>SafeEdgePanel</code> are available directly with <code>window().safeMargins</code>. You can use these values for finer control over your layout.</p>
 <p>For example, you may wish to have an action button in the bottom right corner. It makes more sense to adjust its margin than create a wrapping <code>SafeEdgePanel</code> panel with padding -- though that would work fine as well.</p>
