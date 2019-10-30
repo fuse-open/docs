@@ -139,7 +139,7 @@ It's worth noting that aside from `Alignment`, other visual properties have an e
 	<Rect Dock="Left" Color="Red" Width="50" />
 	<Rect Dock="Top" Color="Blue" Height="100" />
 	<Rect Dock="Right" Color="Green" Width="100" />
-	<Rect Color="Yellow"/>
+	<Rect Color="Yellow" />
 </DockPanel>
 ```
 
@@ -204,7 +204,7 @@ A `Panel` is arguably the simplest container in Fuse. You want to use `Panel` wh
 
 ```xml
 <Panel Height="56" Margin="24,0">
-	<TextInput Value="Some text" TextColor="#fff" Margin="10"/>
+	<TextInput Value="Some text" TextColor="#fff" Margin="10" />
 	<Rectangle Color="#18f" CornerRadius="2" />
 </Panel>
 ```

@@ -209,7 +209,7 @@ These two functions behave in the same way as their other variants(`goto`, and `
 	</JavaScript>
 	<Navigator ux:Name="secondNav" DefaultTemplate="optionList">
 		<Panel ux:Template="optionList">
-			<Button Margin="10" Text="Subpage 1" Clicked="{toSub1}"/>
+			<Button Margin="10" Text="Subpage 1" Clicked="{toSub1}" />
 		</Panel>
 		<Panel Color="#FAA" ux:Template="option1" />
 	</Navigator>

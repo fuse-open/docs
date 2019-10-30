@@ -15,7 +15,7 @@ A component is defined using the `ux:Class` attribute. This turns the object it 
     /              ----- class name
    v              v
 <Panel ux:Class="MyButton" Color="#09d" Margin="4">
-	<Text Value="Button text" Alignment="Center" Margin="20,10" Color="#fff"/>
+	<Text Value="Button text" Alignment="Center" Margin="20,10" Color="#fff" />
 </Panel>
 ```
 
@@ -36,7 +36,7 @@ Take a look at the [ux:Class documentation](https://fuse-open.github.io/docs/ux-
 When we say that `MyButton` _inherits_ from `Panel`, what we really mean is that `MyButton` will get all the same properties as `Panel`, as well as any new properties we define ourselves. That means that a class without any extra children or properties (custom properties are covered in the next section) added acts as exactly the same as its parent class:
 
 ```xml
-<Panel ux:Class="NotSoSpecialPanel"/>
+<Panel ux:Class="NotSoSpecialPanel" />
 
 <Panel />
 <NotSoSpecialPanel />
@@ -49,7 +49,7 @@ In this case, `Panel` and `NotSoSpecialPanel` behave exactly the same.
 In many cases, like with our custom button, we want to create an interface to our component that allows us to specify various properties on a per instance basis. For our custom button for example, we want to be able to specify a different text for each instance:
 
 ```xml
-<MyButton Text="Custom button text"/>
+<MyButton Text="Custom button text" />
 ```
 
 The `ux:Property` attribute allows us to send data to our component, give default values and even animate it:
@@ -57,7 +57,7 @@ The `ux:Property` attribute allows us to send data to our component, give defaul
 ```xml
 <Panel ux:Class="MyButton" Color="#09d" ButtonText="Default text" Margin="4">
 	<string ux:Property="ButtonText" />
-	<Text Value="{ReadProperty ButtonText}" Alignment="Center" Margin="20,10" Color="#fff"/>
+	<Text Value="{ReadProperty ButtonText}" Alignment="Center" Margin="20,10" Color="#fff" />
 </Panel>
 ```
 
@@ -182,7 +182,7 @@ We recommend subclassing `OnUserEvent` instead of using it directly and setting 
 ```xml
 <Panel ux:Class="MyComponent">
 	<UserEvent ux:Name="myEvent" />
-	<OnUserEvent ux:Class="OnMyEvent" EventName="myEvent"/>
+	<OnUserEvent ux:Class="OnMyEvent" EventName="myEvent" />
 </Panel>
 
 <MyComponent>
@@ -213,14 +213,14 @@ Making Fuse components is sometimes the art of determining effective component b
 	<Circle ux:Name="status" Width="40" Height="40" Color="Gray" />
 	<Grid ColumnCount="2" CellSpacing="8">
 		<Panel>
-			<Text Value="On" Alignment="Center" Margin="8" Color="White"/>
+			<Text Value="On" Alignment="Center" Margin="8" Color="White" />
 			<Clicked>
 				<Set status.Color="Green" />
 			</Clicked>
 			<Rectangle CornerRadius="3" Color="#0af" />
 		</Panel>
 		<Panel>
-			<Text Value="Off" Alignment="Center" Margin="8" Color="White"/>
+			<Text Value="Off" Alignment="Center" Margin="8" Color="White" />
 			<Clicked>
 				<Set status.Color="Red" />
 			</Clicked>
@@ -256,14 +256,14 @@ __Or we can componentize the two buttons:__
 	<Circle ux:Dependency="status" />
 	
 	<Panel>
-		<Text Value="On" Alignment="Center" Margin="8" Color="White"/>
+		<Text Value="On" Alignment="Center" Margin="8" Color="White" />
 		<Clicked>
 			<Set status.Color="Green" />
 		</Clicked>
 		<Rectangle CornerRadius="3" Color="#0af" />
 	</Panel>
 	<Panel>
-		<Text Value="Off" Alignment="Center" Margin="8" Color="White"/>
+		<Text Value="Off" Alignment="Center" Margin="8" Color="White" />
 		<Clicked>
 			<Set status.Color="Red" />
 		</Clicked>
@@ -283,11 +283,11 @@ Let's let these two components share state using `JavaScript` instead:
 ```xml
 <Grid ux:Class="OnOffButtons" ColumnCount="2">
 	<Panel Clicked="{turnOn}">
-		<Text Value="On" Alignment="Center" Margin="8" Color="White"/>
+		<Text Value="On" Alignment="Center" Margin="8" Color="White" />
 		<Rectangle CornerRadius="3" Color="#0af" />
 	</Panel>
 	<Panel Clicked="{turnOff}">
-		<Text Value="Off" Alignment="Center" Margin="8" Color="White"/>
+		<Text Value="Off" Alignment="Center" Margin="8" Color="White" />
 		<Rectangle CornerRadius="3" Color="#0af" />
 	</Panel>
 </Grid>
@@ -356,7 +356,7 @@ Let's instead add a `ux:Property` to the component which we can then data-bind a
 		</WhileFalse>
 	</Circle>
 	
-	<OnOffButtons Value="{status}"/>
+	<OnOffButtons Value="{status}" />
 </StackPanel>
 ```
 
@@ -420,12 +420,12 @@ There are cases where we would like to pass references to files to our component
 		<FileSource ux:Property="VideoFile" />
 
 		<Grid Rows="1*,1*">
-			<Image File="{ReadProperty ImageFile}" Margin="10"/>
-			<Video File="{ReadProperty VideoFile}" AutoPlay="true" IsLooping="true"/>
+			<Image File="{ReadProperty ImageFile}" Margin="10" />
+			<Video File="{ReadProperty VideoFile}" AutoPlay="true" IsLooping="true" />
 		</Grid>
 	</Panel>
 
-	<TestComponent ImageFile="test.png" VideoFile="testvideo.mp4"/>
+	<TestComponent ImageFile="test.png" VideoFile="testvideo.mp4" />
 </App>
 ```
 
@@ -442,7 +442,7 @@ The `Container` class can be used as a base class when creating components that 
 </Container>
 <MyContainer>
 	<Text Value="Some content for my container"
-		Alignment="Center"/>
+		Alignment="Center" />
 </MyContainer>
 ```
 

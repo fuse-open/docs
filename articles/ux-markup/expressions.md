@@ -134,7 +134,7 @@ These functions are currently available:
 ```xml
 <AttractorConfig Unit="Points" Easing="SinusoidalInOut" Duration="0.3" ux:Global="asPoints" />
 <Panel>
-	<Translation X="attract({xOffset}, asPoints)"/>
+	<Translation X="attract({xOffset}, asPoints)" />
 </Panel>
 ```
 

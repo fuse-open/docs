@@ -60,7 +60,7 @@ In the above example, the `Text` and `Rectangle` are automatically bound to the 
 ```xml
 	<StackPanel>
 		<Text Value="Hello" ux:AutoBind="false" />
-		<Rectangle Color="Red" ux:AutoBind="false"/>
+		<Rectangle Color="Red" ux:AutoBind="false" />
 	</StackPanel>
 ```
 

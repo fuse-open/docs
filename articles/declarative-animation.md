@@ -97,8 +97,8 @@ The common animator properties each have a corresponding `Back` variant (`Durati
 Here is an example of the above timeline after we've altered the `DelayBack` property of both animators as follows:
 
 ```xml
-<Change Duration="0.5" DelayBack="0"/>
-<Move Duration="0.5" Delay="0.25" DelayBack="0.25"/>
+<Change Duration="0.5" DelayBack="0" />
+<Move Duration="0.5" Delay="0.25" DelayBack="0.25" />
 ```
 
 ![timeline_3](../media/declarative-animation/timeline_3.png)
@@ -215,10 +215,10 @@ The following example shows how we can display a `Rectangle` with a nice fading 
 <WhileTrue>
 	<Rectangle ux:Name="rect" Color="Red" Width="100" Height="100">
 		<AddingAnimation>
-			<Change rect.Opacity="0" Duration="0.2"/>
+			<Change rect.Opacity="0" Duration="0.2" />
 		</AddingAnimation>
 		<RemovingAnimation>
-			<Change rect.Opacity="0" Duration="0.2"/>
+			<Change rect.Opacity="0" Duration="0.2" />
 		</RemovingAnimation>
 	</Rectangle>
 </WhileTrue>

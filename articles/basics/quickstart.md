@@ -132,7 +132,7 @@ First add the following JavaScript snippet inside the DockPanel:
 and then bind the `onClick` handler and `buttonText` variable to the @Button that already exists in the .ux
 
 ```xml
-	<Button Text="{buttonText}" Clicked="{onClick}"/>
+	<Button Text="{buttonText}" Clicked="{onClick}" />
 ```
 
 Just like when changing UX markup, changes to JavaScript will also instantly update in all preview sessions when making changes.

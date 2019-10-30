@@ -16,7 +16,7 @@ We can place a `<JavaScript>` tag anywhere inline in the UX markup by using the 
 			module.exports.foo = "bar";
 		</JavaScript>
 		<Panel>
-			<Text Value="{foo}"/>
+			<Text Value="{foo}" />
 		</Panel>
 	</App>
 ```
@@ -25,9 +25,9 @@ Code does not need to be inline in the UX markup. We can put it in a separate fi
 
 ```xml
 	<App>
-		<JavaScript File="Main.js"/>
+		<JavaScript File="Main.js" />
 		<Panel>
-			<Text Value="{foo}"/>
+			<Text Value="{foo}" />
 		</Panel>
 	</App>
 ```
@@ -77,7 +77,7 @@ The curly brace syntax binds to the closest object in the data context that matc
 			};
 		</JavaScript>
 		<Panel>
-			<Text Value="{hello}" Clicked="{writeHello}"/>
+			<Text Value="{hello}" Clicked="{writeHello}" />
 		</Panel>
 	</App>
 ```
@@ -149,7 +149,7 @@ We can data-bind to an array using the @Each behavior:
 			</JavaScript>
 		<StackPanel>
 			<Each Items="{colors}">
-				<Rectangle Color="{}" Height="40"/>
+				<Rectangle Color="{}" Height="40" />
 			</Each>
 		</StackPanel>
 	</App>
@@ -177,8 +177,8 @@ Observables act like a single value or a list of values. Any data-bound `Observa
 			};
 		</JavaScript>
 		<StackPanel>
-			<Text Value="{count}"/>
-			<Button Text="increment" Clicked="{increment}"/>
+			<Text Value="{count}" />
+			<Button Text="increment" Clicked="{increment}" />
 		</StackPanel>
 	</App>
 ```
@@ -201,10 +201,10 @@ We can also add more items to and `Observable` by using the `add` method:
 			};
 		</JavaScript>
 		<DockPanel>
-			<Button Text="increment" Clicked="{increment}" Dock="Top"/>
+			<Button Text="increment" Clicked="{increment}" Dock="Top" />
 			<StackPanel>
 				<Each Items="{numbers}">
-					<Text Value="{}"/>
+					<Text Value="{}" />
 				</Each>
 			</StackPanel>
 		</DockPanel>

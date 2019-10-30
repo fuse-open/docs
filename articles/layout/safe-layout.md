@@ -40,9 +40,9 @@ For example, you may wish to have a swipe panel form the right that is within th
             <!-- action bar -->
         </SafeEdgePanel>
         
-        <SwipeGesture Edge="Right" LengthNode="rightNode" ux:Name="rightSwipe" Type="Active"/>
+        <SwipeGesture Edge="Right" LengthNode="rightNode" ux:Name="rightSwipe" Type="Active" />
         <SwipingAnimation Source="rightSwipe">
-            <Move Target="rightNode" X="-1" RelativeTo="Size"/>
+            <Move Target="rightNode" X="-1" RelativeTo="Size" />
         </SwipingAnimation>
         <SafeEdgePanel PadEdges="Right" Color="#EFE" Alignment="Right" Anchor="0%,50%" ux:Name="rightNode" MinEdgePadding="10,5">
             <!-- right side bar -->

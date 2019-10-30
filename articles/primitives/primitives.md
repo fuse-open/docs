@@ -28,14 +28,14 @@ For shapes, like rectangle and circle, one expects the `Color` property to trans
 is actually turned into
 
 ```xml
-<Rectangle Fill="#f0f"/>
+<Rectangle Fill="#f0f" />
 ```
 
 Since the `Fill` property is of the @Brush type, the `Fill="#f0f` part is actually expanded even further into the following equivalent:
 
 ```xml
 <Rectangle>
-	<SolidColor Color="#f0f"/>
+	<SolidColor Color="#f0f" />
 </Rectangle>
 ```
 
