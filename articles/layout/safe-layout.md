@@ -15,7 +15,7 @@ For example, this panel adds a title at the top of the screen.
 
 ```xml
     <DockPanel>
-        <SafeEdgePanel Edges="LeftTopRight" Dock="Top" Color="#FFF" ExtraPadding="2">
+        <SafeEdgePanel PadEdges="LeftTopRight" Dock="Top" Color="#FFF" ExtraPadding="2">
             <Text Value="App Title" Alignment="Center">
         </SafeEdgePanel>
     </DockPanel>
@@ -29,14 +29,14 @@ A @SafeEdgePanel is essentially a @Panel with a device dependent `Padding`. The 
 
 The rather wordy `Edges` properties like `LeftTopRight` allow for fine control over how you construct your layout. Though it's typical to specify three edges, it's common to have fewer edges.
 
-For example, you may wish to have a swipe panel form the right that is within the bounds of the title and action bars. In this case, you'd only specify `Edges="Right"`.
+For example, you may wish to have a swipe panel form the right that is within the bounds of the title and action bars. In this case, you'd only specify `PadEdges="Right"`.
 
 ```xml
     <DockPanel>
-        <SafeEdgePanel Dock="Top" Edges="LeftTopRight" Color="#FFF">
+        <SafeEdgePanel Dock="Top" PadEdges="LeftTopRight" Color="#FFF">
             <!-- title area -->
         </SafeEdgePanel>
-        <SafeEdgePanel Dock="Bottom" Edges="LeftRightBottom" Color="#FFF">
+        <SafeEdgePanel Dock="Bottom" PadEdges="LeftRightBottom" Color="#FFF">
             <!-- action bar -->
         </SafeEdgePanel>
         
@@ -50,7 +50,7 @@ For example, you may wish to have a swipe panel form the right that is within th
     </DockPanel>
 ```
  
-The title bar accounts for the top margins, and the action bar for the bottom margins, thus the side bar only needs to add padding for the right device margins with `Edges="Right"`.
+The title bar accounts for the top margins, and the action bar for the bottom margins, thus the side bar only needs to add padding for the right device margins with `PadEdges="Right"`.
 
 
 ## window()
