@@ -162,7 +162,7 @@ Now that your app has at least one feature of (questionable) value, it is time t
 From the command line you do this by typing
 
 ```sh
-	fuse build --target=<iOS or Android> --run
+	uno build <ios or android> --run
 ```
 
 ### Okay, that was easy! What's next?

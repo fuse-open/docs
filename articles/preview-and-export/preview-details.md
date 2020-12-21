@@ -1,10 +1,10 @@
 # How Fuse Preview works
 
-This article is the first in a series on how `fuse preview` works, and how it differs from `fuse build`. As a start, let's assume you're working on an app consisting of a few UX files:
+This article is the first in a series on how `fuse preview` works, and how it differs from `uno build`. As a start, let's assume you're working on an app consisting of a few UX files:
 
 ![UXFiles](../../media/preview-details-ux-files.png)
 
-When you're exporting your app, for instance with `fuse build`, those files are compiled to native code for the given platform. The result is a normal app that runs on your device, can be uploaded to the App/Play store etc. The topic of this article is however how `fuse preview` differs from that, so let's dive in!
+When you're exporting your app, for instance with `uno build`, those files are compiled to native code for the given platform. The result is a normal app that runs on your device, can be uploaded to the App/Play store etc. The topic of this article is however how `fuse preview` differs from that, so let's dive in!
 
 When you start preview of your app, for instance with `fuse preview`, some extra code is injected into your app for it to be able to pick up and display your changes while you're making them. We can of course preview your app on multiple devices at once; in this example we start two previews, one on an Android device and one locally on a Mac. We use the `fuse preview` command to start preview here, but the same thing happens when you start preview from the dashboard, or one of our editor plugins.
 

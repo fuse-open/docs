@@ -51,8 +51,8 @@ We can then export these components by providing them as [UX Templates](articles
 Export an [Xcode Framework](https://developer.apple.com/library/content/documentation/MacOSX/Conceptual/BPFrameworks/Concepts/WhatAreFrameworks.html) or an [Android aar](https://developer.android.com/studio/projects/android-library.html) by compiling with `-DLIBRARY` set.
 
 ```sh
-uno build -t=ios -DLIBRARY
-uno build -t=android -DLIBRARY
+uno build ios -DLIBRARY
+uno build android -DLIBRARY
 ```
 
 Now you will find the Xcode framework and the Android aar under the following paths:

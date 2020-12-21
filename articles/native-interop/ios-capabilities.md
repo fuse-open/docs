@@ -31,4 +31,4 @@ Entitlements are described in the Apple Documentation as:
 
 > .. a single right granted to a particular app, tool, or other executable that gives it additional permissions above and beyond what it would ordinarily have.
 
-In most cases Fuse can accurately create the correct entitlement for your chosen capability and will do so. In the other cases you can configure it as usual in Xcode. To open Xcode at the end of a build simply add `-d` command line build options, for example: `fuse build -tiOS -d`
+In most cases Fuse can accurately create the correct entitlement for your chosen capability and will do so. In the other cases you can configure it as usual in Xcode. To open Xcode at the end of a build simply add `--debug` command line build options, for example: `uno build ios --debug`

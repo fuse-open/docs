@@ -9,7 +9,7 @@ You can specify the build tools version and target version for your project.
 For example:
 
 ```sh
-fuse build -t=android -r --set:SDK.BuildToolsVersion="23.0.3" --set:SDK.CompileVersion="23" --set:SDK.TargetVersion="23"`
+uno build android --run --set:SDK.BuildToolsVersion="23.0.3" --set:SDK.CompileVersion="23" --set:SDK.TargetVersion="23"`
 ```
 
 To find out which version of the tools you have installed run:
@@ -50,4 +50,4 @@ While Fuse supports `Gradle`, it does not explicitly support `Android Studio`. B
 
 The reason for this is that Android Studio is simply changing too quickly to keep up with, breaking changes are common and it is hard to test these changes with our current release cadence.
 
-We do however enable you to open builds in `Android Studio` by using the `-d` build flag, just please be aware that you may have to jump through a hoop or two to get things working if there have been updates.
+We do however enable you to open builds in `Android Studio` by using the `--debug` build flag, just please be aware that you may have to jump through a hoop or two to get things working if there have been updates.

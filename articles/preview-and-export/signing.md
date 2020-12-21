@@ -30,14 +30,14 @@ keytool -genkey -v -keystore release.keystore \
 
 The program will prompt you for an alias password and a store password, which should be the same as the respective values in the project file.
 
-Note that only release builds are signed using the specified key. Debug builds are automatically signed using a debug key. To do a release build, use `uno build --target=Android --configuration=Release`.
+Note that only release builds are signed using the specified key. Debug builds are automatically signed using a debug key. To do a release build, use `uno build android --configuration=Release`.
 
 ## iOS
 
 Run the following command in your shell:
 
 ```sh
-uno build --target=iOS --configuration=Release -adebug
+uno build ios --configuration=Release --debug
 ```
 
 Then follow the regular procedure for [adding your signing certificate](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/ConfiguringYourApp/ConfiguringYourApp.html#//apple_ref/doc/uid/TP40012582-CH28-SW1) and [submitting your app to the App Store](https://developer.apple.com/library/ios/documentation/LanguagesUtilities/Conceptual/iTunesConnect_Guide/Chapters/SubmittingTheApp.html#//apple_ref/doc/uid/TP40011225-CH33).
@@ -64,7 +64,7 @@ Uno attempts to automatically find an Xcode Development Team ID by querying the 
 It can also be set by passing the `--set:Project.iOS.DevelopmentTeam="YOURTEAMID"` flag to `uno build`, e.g.
 
 ```sh
-uno build iOS --set:Project.iOS.DevelopmentTeam="YOURTEAMID"
+uno build ios --set:Project.iOS.DevelopmentTeam="YOURTEAMID"
 
 ```
 
@@ -78,6 +78,6 @@ The file can be created if it doesn't already exist.
 
 ### Troubleshooting
 
-Error messages such as `No matching provisioning profiles found` are usually resolved automatically just by opening the generated Uno project in Xcode once by building with `-adebug`. Also make sure that the Development Team ID has been correctly set.
+Error messages such as `No matching provisioning profiles found` are usually resolved automatically just by opening the generated Uno project in Xcode once by building with `--debug`. Also make sure that the Development Team ID has been correctly set.
 
 [This](https://developer.apple.com/library/content/documentation/IDEs/Conceptual/AppDistributionGuide/Troubleshooting/Troubleshooting.html) page contains more information about troubleshooting certificate issues.
