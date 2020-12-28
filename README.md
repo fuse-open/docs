@@ -13,3 +13,10 @@ The documentation is hosted on GitHub Pages, from the [gh-pages branch](https://
 3. Run `find _site/media -type f \( -iname "*.png" -or -iname "*.jpg" \) -exec mogrify -strip -resize 450x450\> {} \;` to resize images to the appropriate sizes.
 4. Run `python3 -m http.server 8000 --directory _site/` (or whatever your favorite static http server is) to serve the website at port 8000.
 5. Open `http://localhost/:8000` in your web browser to view the result.
+
+## Updating `api-docs`
+
+1. Run `cd doc-export` to enter the project used to make doc-files.
+2. Run `npm install` to install dependencies.
+3. *Optional:* Run `npm install -S fuse-sdk` to upgrade to the latest version of Fuse SDK.
+4. Run `npm run build` to update `api-docs`.
