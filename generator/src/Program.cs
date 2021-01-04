@@ -46,7 +46,7 @@ namespace Builder
                                                   .AddSingleton<Outline>()
                                                   .AddSingleton<OutputPath>()
                                                   .AddSingleton<ApiDocuments>()
-                                                  .AddSingleton<ApiIndicies>()
+                                                  .AddSingleton<ApiIndices>()
                                                   .AddSingleton<ContentPreformatter>()
                                                   .AddSingleton<MarkdownFormatter>()
                                                   .AddSingleton<ArticleRenderer>()

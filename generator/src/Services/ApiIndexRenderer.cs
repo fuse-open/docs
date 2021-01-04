@@ -13,12 +13,12 @@ namespace Builder.Services
     {
         private static readonly Regex SubclassPattern = new Regex(@"\[subclass ([\w\.]+)\]", RegexOptions.IgnoreCase | RegexOptions.Compiled);
 
-        private readonly ApiIndicies _apiIndicies;
+        private readonly ApiIndices _apiIndicies;
         private readonly ApiTocRenderer _tocRenderer;
         private Dictionary<string, ApiReferenceIndex> _indexById = new Dictionary<string, ApiReferenceIndex>();
         private readonly ILogger<ApiIndexRenderer> _logger;
 
-        public ApiIndexRenderer(ApiIndicies apiIndicies, ApiTocRenderer tocRenderer, ILogger<ApiIndexRenderer> logger)
+        public ApiIndexRenderer(ApiIndices apiIndicies, ApiTocRenderer tocRenderer, ILogger<ApiIndexRenderer> logger)
         {
             _apiIndicies = apiIndicies;
             _tocRenderer = tocRenderer;
