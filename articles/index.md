@@ -1,4 +1,4 @@
-# What is Fuse Open?
+# What is Fuse?
 
 Fuse is a set of user experience development tools for Windows and macOS that unify design, prototyping and implementation of high quality mobile apps on iOS and Android.
 
