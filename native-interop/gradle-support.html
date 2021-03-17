@@ -60,10 +60,6 @@
       </header>
     </div>
 
-    <!-- <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap">
-      <a class="navbar-brand" href="https://fuseopen.com/docs/">Fuse Open Documentation</a>
-    </nav> -->
-
     <div class="container-fluid">
       <div class="row">
         <div class="col-12 col-md-3 col-xl-2 order-2 order-md-1 bg-light sidebar">
@@ -638,7 +634,7 @@
 <h2 id="specifying-gradle-and-sdk-version">Specifying Gradle and SDK version</h2>
 <p>You can specify the build tools version and target version for your project.</p>
 <p>For example:</p>
-<pre><code class="language-sh">fuse build -t=android -r --set:SDK.BuildToolsVersion=&quot;23.0.3&quot; --set:SDK.CompileVersion=&quot;23&quot; --set:SDK.TargetVersion=&quot;23&quot;`
+<pre><code class="language-sh">uno build android --run --set:SDK.BuildToolsVersion=&quot;23.0.3&quot; --set:SDK.CompileVersion=&quot;23&quot; --set:SDK.TargetVersion=&quot;23&quot;`
 </code></pre>
 <p>To find out which version of the tools you have installed run:</p>
 <pre><code class="language-sh">uno android
@@ -659,7 +655,7 @@
 <h2 id="a-note-on-android-studio">A note on Android Studio</h2>
 <p>While Fuse supports <code>Gradle</code>, it does not explicitly support <code>Android Studio</code>. By this we mean that, when we ship each release, we will make sure that to the best of our knowledge projects compile correctly with gradle, however we will not make the same claim about Android Studio.</p>
 <p>The reason for this is that Android Studio is simply changing too quickly to keep up with, breaking changes are common and it is hard to test these changes with our current release cadence.</p>
-<p>We do however enable you to open builds in <code>Android Studio</code> by using the <code>-d</code> build flag, just please be aware that you may have to jump through a hoop or two to get things working if there have been updates.</p>
+<p>We do however enable you to open builds in <code>Android Studio</code> by using the <code>--debug</code> build flag, just please be aware that you may have to jump through a hoop or two to get things working if there have been updates.</p>
 
         </div>
       </div>

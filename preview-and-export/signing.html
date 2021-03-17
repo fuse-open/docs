@@ -60,10 +60,6 @@
       </header>
     </div>
 
-    <!-- <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap">
-      <a class="navbar-brand" href="https://fuseopen.com/docs/">Fuse Open Documentation</a>
-    </nav> -->
-
     <div class="container-fluid">
       <div class="row">
         <div class="col-12 col-md-3 col-xl-2 order-2 order-md-1 bg-light sidebar">
@@ -654,10 +650,10 @@
     -alias application -keyalg RSA -keysize 2048 -validity 10000
 </code></pre>
 <p>The program will prompt you for an alias password and a store password, which should be the same as the respective values in the project file.</p>
-<p>Note that only release builds are signed using the specified key. Debug builds are automatically signed using a debug key. To do a release build, use <code>uno build --target=Android --configuration=Release</code>.</p>
+<p>Note that only release builds are signed using the specified key. Debug builds are automatically signed using a debug key. To do a release build, use <code>uno build android --configuration=Release</code>.</p>
 <h2 id="ios">iOS</h2>
 <p>Run the following command in your shell:</p>
-<pre><code class="language-sh">uno build --target=iOS --configuration=Release -adebug
+<pre><code class="language-sh">uno build ios --configuration=Release --debug
 </code></pre>
 <p>Then follow the regular procedure for <a href="https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/ConfiguringYourApp/ConfiguringYourApp.html#//apple_ref/doc/uid/TP40012582-CH28-SW1">adding your signing certificate</a> and <a href="https://developer.apple.com/library/ios/documentation/LanguagesUtilities/Conceptual/iTunesConnect_Guide/Chapters/SubmittingTheApp.html#//apple_ref/doc/uid/TP40011225-CH33">submitting your app to the App Store</a>.</p>
 <h3 id="xcode-development-team-ids">Xcode Development Team IDs</h3>
@@ -673,7 +669,7 @@
 }
 </code></pre>
 <p>It can also be set by passing the <code>--set:Project.iOS.DevelopmentTeam=&quot;YOURTEAMID&quot;</code> flag to <code>uno build</code>, e.g.</p>
-<pre><code class="language-sh">uno build iOS --set:Project.iOS.DevelopmentTeam=&quot;YOURTEAMID&quot;
+<pre><code class="language-sh">uno build ios --set:Project.iOS.DevelopmentTeam=&quot;YOURTEAMID&quot;
 
 </code></pre>
 <p>The Development Team ID can also be set user-wide by adding the following to ~/.unoconfig:</p>
@@ -681,7 +677,7 @@
 </code></pre>
 <p>The file can be created if it doesn't already exist.</p>
 <h3 id="troubleshooting">Troubleshooting</h3>
-<p>Error messages such as <code>No matching provisioning profiles found</code> are usually resolved automatically just by opening the generated Uno project in Xcode once by building with <code>-adebug</code>. Also make sure that the Development Team ID has been correctly set.</p>
+<p>Error messages such as <code>No matching provisioning profiles found</code> are usually resolved automatically just by opening the generated Uno project in Xcode once by building with <code>--debug</code>. Also make sure that the Development Team ID has been correctly set.</p>
 <p><a href="https://developer.apple.com/library/content/documentation/IDEs/Conceptual/AppDistributionGuide/Troubleshooting/Troubleshooting.html">This</a> page contains more information about troubleshooting certificate issues.</p>
 
         </div>
