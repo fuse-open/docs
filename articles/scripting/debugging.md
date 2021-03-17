@@ -71,7 +71,7 @@ which is available both for macOS and Windows.
   to preview the project in the current working directory locally or
 
   ```sh
-  uno build --target=Android --run -DDEBUG_V8
+  uno build android --run -DDEBUG_V8
   ```
 
     to build and run on Android.

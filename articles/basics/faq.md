@@ -163,7 +163,7 @@ When previewing your app, the "Oops! Something went wrong here" screen appears.
 
 If the console output contains `GL_VERSION: 1.1.0` and `GL_RENDERER: GDI Generic` the problem is most likely missing / outdated OpenGL drivers. Upgrade to the most recent drivers for your graphics adapter and try again.
 
-This problem can also be triggered by driver issues under Windows 10 specific to the Intel HD Graphics 2000 / 3000 / 4000 graphics adapters. In this case you will not be able to do local preview with instant updates, but we can still test your app on the PC by doing a regular build: `fuse build -t=dotnetexe --run`
+This problem can also be triggered by driver issues under Windows 10 specific to the Intel HD Graphics 2000 / 3000 / 4000 graphics adapters. In this case you will not be able to do local preview with instant updates, but we can still test your app on the PC by doing a regular build: `uno build --run`
 
 We can of course also still use [preview on Android and iOS devices](preview-and-export.md).
 
@@ -180,7 +180,7 @@ The more information we have on an issue, the easier it is for us to solve it. H
 5. See if your issue is triggered both in preview and when exporting a build:
     - Local preview - run `fuse preview`
 	- Device preview - run `fuse preview -tios` or `fuse preview -tandroid`
-	- Export build - run `fuse build -tios` or `fuse build -tandroid`
+	- Export build - run `uno build ios` or `uno build android`
 6. A link to a minimal reproduction project and instructions on how to trigger the bug (be specific).
     - If the repro case is quite small, you can paste your code in the issue description.
     - Try to make the project as small as possible; only include the code that is needed to make the issue manifest.
