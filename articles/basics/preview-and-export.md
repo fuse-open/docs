@@ -16,7 +16,7 @@ You can use the preview app as long as your project only contains UX markup, Jav
 If your project contains `.uno` files or custom / 3rd party packages then you must instead build your own [custom preview](./preview-and-export.md#export-and-custom-preview).
 
 ### Preview App Setup
-You can download the app [for Android from Google Play](https://play.google.com/store/apps/details?id=com.fusetools.fusepreview) and [for iOS from the Apple App Store](https://itunes.apple.com/no/app/fuse-preview/id1296280076?mt=8).
+You can download the app [for Android from Google Play](https://play.google.com/store/apps/details?id=com.fusetools.fusepreview) and [for iOS from the Apple App Store](https://apps.apple.com/no/app/fuse-x-preview/id1549637259).
 
 To run a preview *first make sure your test device and development computer are on the same wifi*.
 Then open your project in Fuse and click the *"Devices"* button in the upper right corner. This will open a window containing the necessary information for connecting the preview. Follow the instructions inside the app to _either_ scan the QR code _or_ manually enter the IP and code.
