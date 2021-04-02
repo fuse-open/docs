@@ -1,7 +1,7 @@
 # Supported platforms
 
 ## Operating system
-* macOS 10.10 (_Yosemite_) and newer, but macOS 10.12 (_Sierra_) is recommended.
+* macOS 10.10 (_Yosemite_) and newer, but macOS 11.x (_Big Sur_) is recommended.
 * Windows 7 and newer
 
 Please note that beta versions of both macOS and Windows are currently not officially supported.
@@ -15,4 +15,4 @@ Please note that some computers have multiple GPUs, and that [a problem with Win
 **Fuse currently exports to:**
 
  * Android 4.1 (_Jelly Bean_, API level 16) and newer.
- * iOS 8.0 and newer.
+ * iOS 9.0 and newer.
