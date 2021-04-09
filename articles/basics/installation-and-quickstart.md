@@ -51,7 +51,7 @@ We currently provide plugins for the following text editors:
     <tr>
       <td><a href="https://code.visualstudio.com/">Visual Studio Code</a></td>
       <td><a href="articles:basics/installation/visual-studio-code-plugin.md">link</a></td>
-      <td><a href="https://marketplace.visualstudio.com/items?itemName=iGN97.fuse-vscode">link</a></td>
+      <td><a href="https://marketplace.visualstudio.com/items?itemName=fuseopen.fuse-vscode">link</a></td>
     </tr>
     <tr>
       <td><a href="https://atom.io/">Atom</a></td>
