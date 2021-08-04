@@ -749,5 +749,5 @@ That being said, Uno does have some very neat features, which, if you envision y
 
 Congratulations on getting through the introduction to Fuse. We've covered a lot of the basics, but there is still a ton of things to learn. Going forward you have a few options.
 
-- The [Hikr tutorial](articles:tutorial/tutorial.md) goes through creating an app from scratch, covering everything from layout and animation, to navigation and app structure, while creating a real app prototype in the process.
+- The [Hikr tutorial](articles:tutorial-models/tutorial.md) goes through creating an app from scratch, covering everything from layout and animation, to navigation and app structure, while creating a real app prototype in the process.
 - If you like just exploring by yourself and learning by example, you should check out our [examples page](https://fuse-open.github.io/examples), which contains a bunch of interesting layout and animation examples. For more code oriented (as well as visual) examples, checkout the open source github repo [fuse-samples](https://www.github.com/fusetools/fuse-samples/).

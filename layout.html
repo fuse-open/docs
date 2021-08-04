@@ -8,7 +8,7 @@
     <title>##TITLE##</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="##BASE_URL##prism.css">
+    <link rel="stylesheet" href="##BASE_URL##prism-tomorrow.css">
     <link rel="stylesheet" href="##BASE_URL##site.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -27,35 +27,37 @@
     <meta name="theme-color" content="#ffffff">
     <link rel="manifest" href="/assets/icons/manifest.json">
     <link rel="icon" sizes="192x192" href="/assets/icons/favicon-192.png">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,500,600,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.css" />
   </head>
 
-  <body>
-    
+  <body data-spy="scroll" data-target="#toc" data-offset="115">
+
     <div id="defaultHeader">
       <header class="site-header sticky-top" role="banner">
         <nav class="navbar navbar-dark navbar-expand-md bg-faded justify-content-center">
-          <a class="navbar-brand" href="/"><img width="138px" src="##BASE_URL##white-logo.png"></a>   
+          <a class="navbar-brand" href="/"><img width="138px" src="##BASE_URL##white-logo.png"></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar3">
               <span class="navbar-toggler-icon"></span>
           </button>
           <div class="navbar-collapse collapse w-100" id="collapsingNavbar3">
             <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
-              
+
               <li class="nav-item"><a class="effect nav-link" href="/get-started/">Get Started</a></li>
-              
+
               <li class="nav-item"><a class="effect nav-link active" href="/docs/">Documentation</a></li>
-              
+
               <li class="nav-item"><a class="effect nav-link" href="/forums/">Forums</a></li>
-              
+
               <li class="nav-item"><a class="effect nav-link" href="/examples/">Examples</a></li>
-              
+
               <li class="nav-item"><a class="effect nav-link" href="/showcases/">Showcases</a></li>
-              
+
               <li class="nav-item"><a class="effect nav-link" href="/integrations/">Integrations</a></li>
-              
+
             </ul>
           </div>
-          
+
         </nav>
       </header>
     </div>
@@ -63,14 +65,25 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-12 col-md-3 col-xl-2 order-2 order-md-1 bg-light sidebar">
-          <form id="search">
-            <input type="search" class="form-control" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
-          </form>
-
-          ##NAVIGATION##
+          <div class="sticky">
+            <div class="sticky-search">
+              <form id="search">
+                <input type="search" class="form-control" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
+              </form>
+            </div>
+            ##NAVIGATION##
+          </div>
         </div>
-        <div role="main" class="col-12 col-md-9 col-xl-10 order-1 order-md-2 px-4 main-content">
-          ##BODY##
+        <div role="main" class="col-12 col-md-9 col-xl-10 order-1 order-md-2 px-4 main">
+          <div class="row">
+            <div class="col-12 col-sm-12 col-md-9 col-xl-9 main-content">
+              ##BODY##
+            </div>
+            <div class="d-none d-sm-block col-md-3 d-xl-3 toc-content">
+              <nav id="toc" data-toggle="toc">
+              </nav>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -80,6 +93,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script type="text/javascript" src="##BASE_URL##prism.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+    <script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script>
     <script type="text/javascript" src="##BASE_URL##site.js"></script>
   </body>
 </html>
