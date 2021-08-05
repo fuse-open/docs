@@ -66,17 +66,28 @@ namespace Builder.Services
 
             var title = parts[0].Trim();
             var link = parts[1].Trim();
+            var href = "";
 
             var indentation = GetIndentation(line, state);
             WriteDecoration(indentation, state);
-            VerifyHref(link, line, state);
-            var href = ParseHref(link, state);
-
-            if (state.SeenLinks.ContainsKey(href))
+            if (link.StartsWith("#"))
             {
-                throw new ArgumentException($"Duplicate link found in outline on line {state.LineNumber}: {href}. Previously seen on line {state.SeenLinks[href]}.");
+                href = link;
+                var idElement = link.Substring(1);
+                state.ElementID = $"id=\"{idElement}\"";
             }
-            state.SeenLinks.Add(href, state.LineNumber);
+            else
+            {
+                VerifyHref(link, line, state);
+                href = ParseHref(link, state);
+
+                if (state.SeenLinks.ContainsKey(href))
+                {
+                    throw new ArgumentException($"Duplicate link found in outline on line {state.LineNumber}: {href}. Previously seen on line {state.SeenLinks[href]}.");
+                }
+                state.SeenLinks.Add(href, state.LineNumber);
+                state.ElementID = "";
+            }
 
             // Hack: we've overridden the name of the api reference index page when deserializing the JSON,
             // so reflect that here.
@@ -91,8 +102,14 @@ namespace Builder.Services
             {
                 href = href.Substring(4);
             }
-
-            state.AppendString(indentation + 1, $"<a href=\"{_baseUrl}{EscapeHtml(href)}\">{EscapeHtml(title)}</a>");
+            
+            if (link.StartsWith("#"))
+                state.AppendString(indentation + 1, $"<a href=\"{EscapeHtml(href)}\" data-toggle=\"collapse\"><span>{EscapeHtml(title)}</span></a>");
+            else
+            {
+                var filename = Path.GetFileNameWithoutExtension(link);
+                state.AppendString(indentation + 1, $"<a href=\"{_baseUrl}{EscapeHtml(href)}\" data-menu=\"{filename}\"><span>{EscapeHtml(title)}</span></a>");
+            }
             state.PreviousIndentation = indentation;
         }
 
@@ -140,7 +157,11 @@ namespace Builder.Services
             {
                 for (var i = state.PreviousIndentation; i < indentation; i++)
                 {
-                    state.AppendString(i, $"<ul class=\"list-unstyled outline-nav outline-nav-level-{i}\">");
+                    // hack! apply collapse class only if indentation > 1
+                    var collapse = "";
+                    if (i > 1)
+                        collapse = "collapse";
+                    state.AppendString(i, $"<ul {state.ElementID} class=\"list-unstyled outline-nav {collapse} outline-nav-level-{i}\">");
                     state.AppendString(i + 1, "<li>");
                 }
             }
@@ -192,6 +213,7 @@ namespace Builder.Services
         {
             public int LineNumber { get; set; } = 0;
             public int PreviousIndentation { get; set; } = 0;
+            public string ElementID { get; set; }
             public Dictionary<string, int> SeenLinks { get; } = new Dictionary<string, int>();
             public StringBuilder Builder { get; } = new StringBuilder();
 

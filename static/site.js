@@ -29,4 +29,14 @@ $(document).ready(function() {
             inputSelector: '#search-input',
             debug: false // Set debug to true if you want to inspect the dropdown
             });
+
+    $("#search-input").on("input", function (event) {
+        $(".sticky").css({overflow: 'unset'})
+        $(".main-content").css({zIndex: '-1'})
+    })
+    $("#search-input").blur(function (event) {
+        $(".sticky").css({overflow: 'auto'})
+        $(".main-content").css({zIndex: 'unset'})
+    })
+
 });

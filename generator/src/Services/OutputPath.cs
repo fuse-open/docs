@@ -124,6 +124,7 @@ namespace Builder.Services
             var originalModificationTime = File.GetLastWriteTimeUtc(fullPath);
             var input = File.ReadAllText(fullPath);
 
+
             if (processor != null)
             {
                 input = await processor.Invoke(fullPath, input);
@@ -140,6 +141,7 @@ namespace Builder.Services
             doc = AddHeaderIds(doc);
             doc = CorrectLegacyLinks(doc);
             input = doc.DocumentNode.OuterHtml;
+            outline = SetupOutlineActive(fullPath, outline);
 
             input = _layout.Apply(input, outline, metadata.Title);
 
@@ -267,6 +269,26 @@ namespace Builder.Services
             }
 
             return input;
+        }
+
+        private string SetupOutlineActive(string fullPath, string outline)
+        {
+            var filename = Path.GetFileNameWithoutExtension(fullPath);
+            var doc = new HtmlDocument();
+            doc.LoadHtml(outline);
+            var node = doc.DocumentNode.SelectSingleNode($"//a[@data-menu='{filename}']");
+            if (node != null)
+            {
+                node.Attributes.Add("class", "active");
+                var ulNodes = node.Ancestors("ul");
+                foreach (var ulNode in ulNodes)
+                {
+                    var className = ulNode.Attributes["class"].Value;
+                    var newClassName = className + " show";
+                    ulNode.Attributes["class"].Value = newClassName;
+                }
+            }
+            return doc.DocumentNode.OuterHtml;
         }
 
         private class PostProcessorResult
