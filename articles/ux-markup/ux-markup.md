@@ -4,7 +4,7 @@ UX Markup is an XML based language for expressing user interfaces, layout, effec
 
 This chapter covers the meaning of the built-in syntaxes and attributes of the UX Markup language.
 
-> Use the menu to the left to navigate the different topcis in this chapter.
+> Use the menu to the left to navigate the different topics in this chapter.
 
 ## Overview
 
