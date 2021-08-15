@@ -8,7 +8,7 @@
     <title>Visual.InvalidateVisualComposition Method - Fuse Documentation</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/prism.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
     <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -27,35 +27,37 @@
     <meta name="theme-color" content="#ffffff">
     <link rel="manifest" href="/assets/icons/manifest.json">
     <link rel="icon" sizes="192x192" href="/assets/icons/favicon-192.png">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,500,600,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.css" />
   </head>
 
-  <body>
-    
+  <body data-spy="scroll" data-target="#toc" data-offset="115">
+
     <div id="defaultHeader">
       <header class="site-header sticky-top" role="banner">
         <nav class="navbar navbar-dark navbar-expand-md bg-faded justify-content-center">
-          <a class="navbar-brand" href="/"><img width="138px" src="https://fuseopen.com/docs/white-logo.png"></a>   
+          <a class="navbar-brand" href="/"><img width="138px" src="https://fuseopen.com/docs/white-logo.png"></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar3">
               <span class="navbar-toggler-icon"></span>
           </button>
           <div class="navbar-collapse collapse w-100" id="collapsingNavbar3">
             <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
-              
+
               <li class="nav-item"><a class="effect nav-link" href="/get-started/">Get Started</a></li>
-              
+
               <li class="nav-item"><a class="effect nav-link active" href="/docs/">Documentation</a></li>
-              
+
               <li class="nav-item"><a class="effect nav-link" href="/forums/">Forums</a></li>
-              
+
               <li class="nav-item"><a class="effect nav-link" href="/examples/">Examples</a></li>
-              
+
               <li class="nav-item"><a class="effect nav-link" href="/showcases/">Showcases</a></li>
-              
+
               <li class="nav-item"><a class="effect nav-link" href="/integrations/">Integrations</a></li>
-              
+
             </ul>
           </div>
-          
+
         </nav>
       </header>
     </div>
@@ -63,563 +65,609 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-12 col-md-3 col-xl-2 order-2 order-md-1 bg-light sidebar">
-          <form id="search">
-            <input type="search" class="form-control" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
-          </form>
-
-          <ul class="list-unstyled outline-nav outline-nav-level-0">
+          <div class="sticky">
+            <div class="sticky-search">
+              <form id="search">
+                <input type="search" class="form-control" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
+              </form>
+            </div>
+            <ul class="list-unstyled outline-nav  outline-nav-level-0">
 	<li>
-		<a href="https://fuseopen.com/docs/index.html">Fuse</a>
-	<ul class="list-unstyled outline-nav outline-nav-level-1">
+		<a href="https://fuseopen.com/docs/index.html" data-menu="index"><span>Fuse</span></a>
+	<ul class="list-unstyled outline-nav  outline-nav-level-1">
 		<li>
-			<a href="https://fuseopen.com/docs/basics/basics.html">Fuse Basics</a>
-		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<a href="#start" data-toggle="collapse"><span>Getting Started</span></a>
+		<ul id="start" class="list-unstyled outline-nav collapse outline-nav-level-2">
 			<li>
-				<a href="https://fuseopen.com/docs/basics/supported-platforms.html">Supported platforms</a>
+				<a href="https://fuseopen.com/docs/basics/supported-platforms.html" data-menu="supported-platforms"><span>Supported platforms</span></a>
 			</li>
 			<li>
-				<a href="https://fuseopen.com/docs/basics/installation-and-quickstart.html">Installation and quickstart</a>
+				<a href="https://fuseopen.com/docs/basics/installation-and-quickstart.html" data-menu="installation-and-quickstart"><span>Installation and quickstart</span></a>
 			</li>
 			<li>
-				<a href="https://fuseopen.com/docs/basics/introduction-to-fuse.html">Introduction to Fuse</a>
+				<a href="https://fuseopen.com/docs/basics/introduction-to-fuse.html" data-menu="introduction-to-fuse"><span>Introduction to Fuse</span></a>
 			</li>
 			<li>
-				<a href="https://fuseopen.com/docs/basics/preview-and-export.html">Preview and export</a>
+				<a href="https://fuseopen.com/docs/fuse-studio/fuse-studio.html" data-menu="fuse-studio"><span>Introduction to Fuse Studio</span></a>
 			</li>
 			<li>
-				<a href="https://fuseopen.com/docs/componentization.html">Componentization</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/layout/responsive-layout.html">Responsive Layout</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/layout/safe-layout.html">Safe Layout</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/declarative-animation.html">Declarative animation</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/fuse-for-designers.html">Fuse for designers</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/structuring-app-resources.html">Structuring app resources</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/basics/feature-overview.html">Feature overview</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/basics/faq.html">FAQ</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/packages.html">Community Packages</a>
+				<a href="https://fuseopen.com/docs/basics/feature-overview.html" data-menu="feature-overview"><span>Feature overview</span></a>
 			</li>
 		</ul>
 		</li>
 		<li>
-			<a href="https://fuseopen.com/docs/tutorial-models/tutorial.html">Tutorial (Using Models API)</a>
-		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<a href="#tutorial" data-toggle="collapse"><span>Tutorial</span></a>
+		<ul id="tutorial" class="list-unstyled outline-nav collapse outline-nav-level-2">
 			<li>
-				<a href="https://fuseopen.com/docs/tutorial-models/edit-hike-view.html">1. Edit Hike view</a>
+				<a href="https://fuseopen.com/docs/tutorial-models/tutorial.html" data-menu="tutorial"><span>Introduction</span></a>
 			</li>
 			<li>
-				<a href="https://fuseopen.com/docs/tutorial-models/multiple-hikes.html">2. Multiple hikes</a>
+				<a href="https://fuseopen.com/docs/tutorial-models/edit-hike-view.html" data-menu="edit-hike-view"><span>Step 1: Edit Hike view</span></a>
 			</li>
 			<li>
-				<a href="https://fuseopen.com/docs/tutorial-models/splitting-up-components.html">3. Splitting up components</a>
+				<a href="https://fuseopen.com/docs/tutorial-models/multiple-hikes.html" data-menu="multiple-hikes"><span>Step 2: Multiple hikes</span></a>
 			</li>
 			<li>
-				<a href="https://fuseopen.com/docs/tutorial-models/navigation-and-routing.html">4. Navigation and routing</a>
+				<a href="https://fuseopen.com/docs/tutorial-models/splitting-up-components.html" data-menu="splitting-up-components"><span>Step 3: Splitting up components</span></a>
 			</li>
 			<li>
-				<a href="https://fuseopen.com/docs/tutorial-models/mock-backend.html">5. Mocking our Backend</a>
+				<a href="https://fuseopen.com/docs/tutorial-models/navigation-and-routing.html" data-menu="navigation-and-routing"><span>Step 4: Navigation and routing</span></a>
 			</li>
 			<li>
-				<a href="https://fuseopen.com/docs/tutorial-models/look-and-feel.html">6. Tweaking the look/feel</a>
+				<a href="https://fuseopen.com/docs/tutorial-models/mock-backend.html" data-menu="mock-backend"><span>Step 5: Mocking our Backend</span></a>
 			</li>
 			<li>
-				<a href="https://fuseopen.com/docs/tutorial-models/splash-screen.html">7. Splash screen</a>
+				<a href="https://fuseopen.com/docs/tutorial-models/look-and-feel.html" data-menu="look-and-feel"><span>Step 6: Tweaking the look/feel</span></a>
 			</li>
 			<li>
-				<a href="https://fuseopen.com/docs/tutorial-models/final-thoughts.html">8. Final thoughts</a>
-			</li>
-		</ul>
-		</li>
-		<li>
-			<a href="https://fuseopen.com/docs/tutorial/tutorial.html">Tutorial (Using Observables API)</a>
-		<ul class="list-unstyled outline-nav outline-nav-level-2">
-			<li>
-				<a href="https://fuseopen.com/docs/tutorial/edit-hike-view.html">1. Edit Hike view</a>
+				<a href="https://fuseopen.com/docs/tutorial-models/splash-screen.html" data-menu="splash-screen"><span>Step 7: Splash screen</span></a>
 			</li>
 			<li>
-				<a href="https://fuseopen.com/docs/tutorial/multiple-hikes.html">2. Multiple hikes</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/tutorial/splitting-up-components.html">3. Splitting up components</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/tutorial/navigation-and-routing.html">4. Navigation and routing</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/tutorial/mock-backend.html">5. Mocking our Backend</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/tutorial/look-and-feel.html">6. Tweaking the look/feel</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/tutorial/splash-screen.html">7. Splash screen</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/tutorial/final-thoughts.html">8. Final thoughts</a>
+				<a href="https://fuseopen.com/docs/tutorial-models/final-thoughts.html" data-menu="final-thoughts"><span>Step 8: Final thoughts</span></a>
 			</li>
 		</ul>
 		</li>
 		<li>
-			<a href="https://fuseopen.com/docs/fuse-studio/fuse-studio.html">Fuse Studio</a>
-		</li>
-		<li>
-			<a href="https://fuseopen.com/docs/basics/uno-projects.html">Project Reference (.unoproj)</a>
-		</li>
-		<li>
-			<a href="https://fuseopen.com/docs/uno/ux/resource.html">Resources</a>
-		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<a href="#development" data-toggle="collapse"><span>Development</span></a>
+		<ul id="development" class="list-unstyled outline-nav collapse outline-nav-level-2">
 			<li>
-				<a href="https://fuseopen.com/docs/fuse/font.html">Fonts</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/fuse/resources/imagesource.html">Image sources</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/assets/bundle.html">Bundled files</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/assets/sketch-import.html">Import from Sketch</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/assets/sketch-symbol-import.html">Sketch symbols (Beta)</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/assets/iconfont-import.html">Import icon fonts</a>
-			</li>
-		</ul>
-		</li>
-		<li>
-			<a href="https://fuseopen.com/docs/fusejs-beta/fusejs.html">Models API (New)</a>
-		</li>
-		<li>
-			<a href="https://fuseopen.com/docs/fusejs/observable.html">Observables API</a>
-		<ul class="list-unstyled outline-nav outline-nav-level-2">
-			<li>
-				<a href="https://fuseopen.com/docs/fusejs/observable-api.html">Full API reference</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/fusejs/observable-patterns.html">Patterns</a>
-			</li>
-		</ul>
-		</li>
-		<li>
-			<a href="https://fuseopen.com/docs/fusejs/fusejs.html">FuseJS (JavaScript) APIs</a>
-		<ul class="list-unstyled outline-nav outline-nav-level-2">
-			<li>
-				<a href="https://fuseopen.com/docs/fusejs/polyfills.html">Polyfills</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/fusejs/eventemitter.html">EventEmitter</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/fuse/filesystem/filesystemmodule.html">FileSystem</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/fuse/storage/storagemodule.html">Storage</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/fusejs/bundle.html">Bundle</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/fusejs/lifecycle.html">Lifecycle</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/fuse/reactive/fusejs/interapp.html">InterApp</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/fuse/share/sharemodule.html">Share</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/fusejs/http.html">HTTP</a>
-			<ul class="list-unstyled outline-nav outline-nav-level-3">
+				<a href="#ux_markup" data-toggle="collapse"><span>UX Markup</span></a>
+			<ul id="ux_markup" class="list-unstyled outline-nav collapse outline-nav-level-3">
 				<li>
-					<a href="https://fuseopen.com/docs/backend/rest-apis.html">Working with REST APIs</a>
+					<a href="https://fuseopen.com/docs/ux-markup/ux-markup.html" data-menu="ux-markup"><span>Introduction</span></a>
+				</li>
+				<li>
+					<a href="https://fuseopen.com/docs/componentization.html" data-menu="componentization"><span>Componentization</span></a>
+				</li>
+				<li>
+					<a href="https://fuseopen.com/docs/layout/responsive-layout.html" data-menu="responsive-layout"><span>Responsive Layout</span></a>
+				</li>
+				<li>
+					<a href="https://fuseopen.com/docs/layout/safe-layout.html" data-menu="safe-layout"><span>Safe Layout</span></a>
+				</li>
+				<li>
+					<a href="https://fuseopen.com/docs/declarative-animation.html" data-menu="declarative-animation"><span>Declarative animation</span></a>
+				</li>
+				<li>
+					<a href="https://fuseopen.com/docs/fuse-for-designers.html" data-menu="fuse-for-designers"><span>Fuse for designers</span></a>
+				</li>
+				<li>
+					<a href="https://fuseopen.com/docs/structuring-app-resources.html" data-menu="structuring-app-resources"><span>Structuring app resources</span></a>
+				</li>
+				<li>
+					<a href="https://fuseopen.com/docs/basics/preview-and-export.html" data-menu="preview-and-export"><span>Preview and export</span></a>
+				</li>
+				<li>
+					<a href="https://fuseopen.com/docs/ux-markup/literals.html" data-menu="literals"><span>Literals</span></a>
+				</li>
+				<li>
+					<a href="https://fuseopen.com/docs/ux-markup/expressions.html" data-menu="expressions"><span>Expressions</span></a>
+				</li>
+				<li>
+					<a href="https://fuseopen.com/docs/ux-markup/names.html" data-menu="names"><span>Names (ux:Name)</span></a>
+				</li>
+				<li>
+					<a href="https://fuseopen.com/docs/ux-markup/classes.html" data-menu="classes"><span>Classes (ux:Class)</span></a>
+				</li>
+				<li>
+					<a href="https://fuseopen.com/docs/ux-markup/dependencies.html" data-menu="dependencies"><span>Dependencies (ux:Dependency)</span></a>
+				</li>
+				<li>
+					<a href="https://fuseopen.com/docs/ux-markup/properties.html" data-menu="properties"><span>Properties (ux:Property)</span></a>
+				</li>
+				<li>
+					<a href="https://fuseopen.com/docs/ux-markup/resources.html" data-menu="resources"><span>Resources (ux:Key)</span></a>
+				</li>
+				<li>
+					<a href="https://fuseopen.com/docs/ux-markup/globals.html" data-menu="globals"><span>Globals (ux:Global)</span></a>
+				</li>
+				<li>
+					<a href="https://fuseopen.com/docs/ux-markup/templates.html" data-menu="templates"><span>Templates (ux:Template)</span></a>
+				</li>
+				<li>
+					<a href="https://fuseopen.com/docs/ux-markup/binding-and-auto-bind.html" data-menu="binding-and-auto-bind"><span>Binding (ux:Binding &amp; ux:AutoBind)</span></a>
+				</li>
+				<li>
+					<a href="https://fuseopen.com/docs/testing/testing.html" data-menu="testing"><span>Testing (ux:Test)</span></a>
 				</li>
 			</ul>
 			</li>
 			<li>
-				<a href="https://fuseopen.com/docs/fusejs/environment.html">Environment</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/fuse/reactive/fusejs/phone.html">Phone</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/fuse/camera/camera.html">Camera</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/fuse/cameraroll/cameraroll.html">CameraRoll</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/fuse/vibration/vibrationmodule.html">Vibration</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/fuse/geolocation/geolocation.html">GeoLocation</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/fuse/pushnotifications/push.html">Push notifications</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/fuse/localnotifications/localnotify.html">Local notifications</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/fuse/sensor/sensormodule.html">Sensors</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/fusejs/base64.html">Base64</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/fuse/reactive/fusejs/timermodule.html">Timer</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/fuse/imagetools/imagetools.html">ImageTools</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/fusejs/third-party-modules.html">Third-party modules</a>
-			</li>
-		</ul>
-		</li>
-		<li>
-			<a href="https://fuseopen.com/docs/scripting/scripting.html">Scripting &amp; Data</a>
-		<ul class="list-unstyled outline-nav outline-nav-level-2">
-			<li>
-				<a href="https://fuseopen.com/docs/fuse/reactive/javascript.html">JavaScript</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/scripting/debugging.html">Debugging</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/fuse/reactive/databinding.html">DataBinding</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/fuse/reactive/each.html">Each</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/fuse/reactive/with.html">With</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/fuse/reactive/match.html">Match</a>
-			<ul class="list-unstyled outline-nav outline-nav-level-3">
+				<a href="#components" data-toggle="collapse"><span>Built-in Components</span></a>
+			<ul id="components" class="list-unstyled outline-nav collapse outline-nav-level-3">
 				<li>
-					<a href="https://fuseopen.com/docs/fuse/reactive/case.html">Case</a>
+					<a href="#primitives" data-toggle="collapse"><span>Primitives</span></a>
+				<ul id="primitives" class="list-unstyled outline-nav collapse outline-nav-level-4">
+					<li>
+						<a href="https://fuseopen.com/docs/primitives/primitives.html" data-menu="primitives"><span>Introduction</span></a>
+					</li>
+					<li>
+						<a href="https://fuseopen.com/docs/fuse/controls/text.html" data-menu="text"><span>Text</span></a>
+					</li>
+					<li>
+						<a href="https://fuseopen.com/docs/fuse/controls/rectangle.html" data-menu="rectangle"><span>Rectangle</span></a>
+					</li>
+					<li>
+						<a href="https://fuseopen.com/docs/fuse/controls/circle.html" data-menu="circle"><span>Circle</span></a>
+					</li>
+					<li>
+						<a href="https://fuseopen.com/docs/fuse/controls/curve.html" data-menu="curve"><span>Curve</span></a>
+					<ul class="list-unstyled outline-nav collapse outline-nav-level-5">
+						<li>
+							<a href="https://fuseopen.com/docs/fuse/controls/curvepoint.html" data-menu="curvepoint"><span>CurvePoint</span></a>
+						</li>
+					</ul>
+					</li>
+					<li>
+						<a href="https://fuseopen.com/docs/fuse/controls/path.html" data-menu="path"><span>Path</span></a>
+					</li>
+					<li>
+						<a href="https://fuseopen.com/docs/fuse/controls/image.html" data-menu="image"><span>Image</span></a>
+					</li>
+					<li>
+						<a href="https://fuseopen.com/docs/fuse/controls/video.html" data-menu="video"><span>Video</span></a>
+					</li>
+					<li>
+						<a href="https://fuseopen.com/docs/fuse/playsound.html" data-menu="playsound"><span>Sound</span></a>
+					</li>
+				</ul>
+				</li>
+				<li>
+					<a href="#controls" data-toggle="collapse"><span>Controls</span></a>
+				<ul id="controls" class="list-unstyled outline-nav collapse outline-nav-level-4">
+					<li>
+						<a href="https://fuseopen.com/docs/fuse/controls/control.html" data-menu="control"><span>Introduction</span></a>
+					</li>
+					<li>
+						<a href="https://fuseopen.com/docs/fuse/controls/button.html" data-menu="button"><span>Button</span></a>
+					</li>
+					<li>
+						<a href="https://fuseopen.com/docs/fuse/controls/textinput.html" data-menu="textinput"><span>TextInput</span></a>
+					</li>
+					<li>
+						<a href="https://fuseopen.com/docs/fuse/controls/textview.html" data-menu="textview"><span>TextView</span></a>
+					</li>
+					<li>
+						<a href="https://fuseopen.com/docs/fuse/controls/slider.html" data-menu="slider"><span>Slider</span></a>
+					</li>
+					<li>
+						<a href="https://fuseopen.com/docs/fuse/controls/switch.html" data-menu="switch"><span>Switch</span></a>
+					</li>
+					<li>
+						<a href="https://fuseopen.com/docs/fuse/controls/cameraviewbase.html" data-menu="cameraviewbase"><span>CameraView</span></a>
+					</li>
+					<li>
+						<a href="https://fuseopen.com/docs/fuse/controls/mapview.html" data-menu="mapview"><span>MapView</span></a>
+					</li>
+					<li>
+						<a href="https://fuseopen.com/docs/fuse/controls/webview.html" data-menu="webview"><span>WebView</span></a>
+					</li>
+					<li>
+						<a href="https://fuseopen.com/docs/fuse/controls/nativeviewhost.html" data-menu="nativeviewhost"><span>NativeViewHost</span></a>
+					</li>
+					<li>
+						<a href="https://fuseopen.com/docs/fuse/controls/graphicsview.html" data-menu="graphicsview"><span>GraphicsView</span></a>
+					</li>
+				</ul>
+				</li>
+				<li>
+					<a href="#layouts" data-toggle="collapse"><span>Layouts</span></a>
+				<ul id="layouts" class="list-unstyled outline-nav collapse outline-nav-level-4">
+					<li>
+						<a href="https://fuseopen.com/docs/layout/layout.html" data-menu="layout"><span>Introduction</span></a>
+					</li>
+					<li>
+						<a href="https://fuseopen.com/docs/fuse/elements/element.html" data-menu="element"><span>Element</span></a>
+					</li>
+					<li>
+						<a href="https://fuseopen.com/docs/fuse/controls/panel.html" data-menu="panel"><span>Panel</span></a>
+					</li>
+					<li>
+						<a href="https://fuseopen.com/docs/fuse/controls/stackpanel.html" data-menu="stackpanel"><span>StackPanel</span></a>
+					</li>
+					<li>
+						<a href="https://fuseopen.com/docs/fuse/controls/dockpanel.html" data-menu="dockpanel"><span>DockPanel</span></a>
+					</li>
+					<li>
+						<a href="https://fuseopen.com/docs/fuse/controls/grid.html" data-menu="grid"><span>Grid</span></a>
+					</li>
+					<li>
+						<a href="https://fuseopen.com/docs/fuse/controls/wrappanel.html" data-menu="wrappanel"><span>WrapPanel</span></a>
+					</li>
+					<li>
+						<a href="https://fuseopen.com/docs/fuse/layouts/columnlayout.html" data-menu="columnlayout"><span>ColumnLayout</span></a>
+					</li>
+					<li>
+						<a href="https://fuseopen.com/docs/fuse/layouts/circlelayout.html" data-menu="circlelayout"><span>CircleLayout</span></a>
+					</li>
+					<li>
+						<a href="https://fuseopen.com/docs/fuse/controls/scrollview.html" data-menu="scrollview"><span>ScrollView</span></a>
+					</li>
+				</ul>
+				</li>
+				<li>
+					<a href="#navigation" data-toggle="collapse"><span>Navigation</span></a>
+				<ul id="navigation" class="list-unstyled outline-nav collapse outline-nav-level-4">
+					<li>
+						<a href="https://fuseopen.com/docs/navigation/navigation.html" data-menu="navigation"><span>Introduction</span></a>
+					</li>
+					<li>
+						<a href="https://fuseopen.com/docs/fuse/controls/page.html" data-menu="page"><span>Page</span></a>
+					</li>
+					<li>
+						<a href="https://fuseopen.com/docs/fuse/controls/pagecontrol.html" data-menu="pagecontrol"><span>PageControl</span></a>
+					</li>
+					<li>
+						<a href="https://fuseopen.com/docs/fuse/navigation/router.html" data-menu="router"><span>Router</span></a>
+					</li>
+					<li>
+						<a href="https://fuseopen.com/docs/fuse/controls/navigator.html" data-menu="navigator"><span>Navigator</span></a>
+					</li>
+					<li>
+						<a href="https://fuseopen.com/docs/fuse/triggers/transition.html" data-menu="transition"><span>Transitions</span></a>
+					</li>
+				</ul>
+				</li>
+				<li>
+					<a href="#alive" data-toggle="collapse"><span>Alive UX Kit</span></a>
+				<ul id="alive" class="list-unstyled outline-nav collapse outline-nav-level-4">
+					<li>
+						<a href="https://fuseopen.com/docs/alive/alive.html" data-menu="alive"><span>Introduction</span></a>
+					</li>
+					<li>
+						<a href="https://fuseopen.com/docs/alive.html" data-menu="alive"><span>Components</span></a>
+					</li>
+					<li>
+						<a href="https://fuseopen.com/docs/alive/themes.html" data-menu="themes"><span>Themes</span></a>
+					</li>
+				</ul>
+				</li>
+				<li>
+					<a href="#charting" data-toggle="collapse"><span>Charting</span></a>
+				<ul id="charting" class="list-unstyled outline-nav collapse outline-nav-level-4">
+					<li>
+						<a href="https://fuseopen.com/docs/charting/charting.html" data-menu="charting"><span>Introduction</span></a>
+					</li>
+					<li>
+						<a href="https://fuseopen.com/docs/fuse/charting/plot.html" data-menu="plot"><span>Plot</span></a>
+					</li>
+					<li>
+						<a href="https://fuseopen.com/docs/fuse/charting/dataseries.html" data-menu="dataseries"><span>DataSeries</span></a>
+					</li>
+					<li>
+						<a href="https://fuseopen.com/docs/fuse/charting/plotaxis.html" data-menu="plotaxis"><span>PlotAxis</span></a>
+					</li>
+					<li>
+						<a href="https://fuseopen.com/docs/fuse/charting/plotdata.html" data-menu="plotdata"><span>PlotData</span></a>
+					</li>
+					<li>
+						<a href="https://fuseopen.com/docs/fuse/charting/plotpoint.html" data-menu="plotpoint"><span>PlotPoint</span></a>
+					</li>
+					<li>
+						<a href="https://fuseopen.com/docs/fuse/charting/plotbar.html" data-menu="plotbar"><span>PlotBar</span></a>
+					</li>
+					<li>
+						<a href="https://fuseopen.com/docs/fuse/charting/plotcurvepoint.html" data-menu="plotcurvepoint"><span>PlotCurvePoint</span></a>
+					</li>
+				</ul>
+				</li>
+			</ul>
+			</li>
+			<li>
+				<a href="#animation" data-toggle="collapse"><span>Triggers &amp; Animation</span></a>
+			<ul id="animation" class="list-unstyled outline-nav collapse outline-nav-level-3">
+				<li>
+					<a href="https://fuseopen.com/docs/fuse/triggers/trigger.html" data-menu="trigger"><span>Introduction</span></a>
+				</li>
+				<li>
+					<a href="https://fuseopen.com/docs/fuse/transform.html" data-menu="transform"><span>Transforms</span></a>
+				</li>
+				<li>
+					<a href="https://fuseopen.com/docs/fuse/gestures/transformgesture.html" data-menu="transformgesture"><span>Gestures</span></a>
+				</li>
+				<li>
+					<a href="https://fuseopen.com/docs/fuse/animations/animator.html" data-menu="animator"><span>Animators</span></a>
+				</li>
+				<li>
+					<a href="https://fuseopen.com/docs/fuse/triggers/timeline.html" data-menu="timeline"><span>Timeline</span></a>
+				</li>
+				<li>
+					<a href="https://fuseopen.com/docs/fuse/triggers/actions/triggeraction.html" data-menu="triggeraction"><span>Actions</span></a>
+				</li>
+				<li>
+					<a href="https://fuseopen.com/docs/fuse/selection/selection.html" data-menu="selection"><span>Selection</span></a>
+				</li>
+				<li>
+					<a href="https://fuseopen.com/docs/fuse/triggers/stategroup.html" data-menu="stategroup"><span>StateGroups</span></a>
+				</li>
+				<li>
+					<a href="https://fuseopen.com/docs/fuse/controls/multilayoutpanel.html" data-menu="multilayoutpanel"><span>MultiLayoutPanel</span></a>
+				</li>
+				<li>
+					<a href="https://fuseopen.com/docs/fuse/triggers/busy.html" data-menu="busy"><span>Busy</span></a>
+				</li>
+			</ul>
+			</li>
+			<li>
+				<a href="#effects" data-toggle="collapse"><span>Effects</span></a>
+			<ul id="effects" class="list-unstyled outline-nav collapse outline-nav-level-3">
+				<li>
+					<a href="https://fuseopen.com/docs/effects/effects.html" data-menu="effects"><span>Introduction</span></a>
+				</li>
+				<li>
+					<a href="https://fuseopen.com/docs/fuse/effects/dropshadow.html" data-menu="dropshadow"><span>DropShadow</span></a>
+				</li>
+				<li>
+					<a href="https://fuseopen.com/docs/fuse/effects/blur.html" data-menu="blur"><span>Blur</span></a>
+				</li>
+				<li>
+					<a href="https://fuseopen.com/docs/fuse/effects/halftone.html" data-menu="halftone"><span>Halftone</span></a>
+				</li>
+			</ul>
+			</li>
+			<li>
+				<a href="#resources" data-toggle="collapse"><span>Resources</span></a>
+			<ul id="resources" class="list-unstyled outline-nav collapse outline-nav-level-3">
+				<li>
+					<a href="https://fuseopen.com/docs/uno/ux/resource.html" data-menu="resource"><span>Introduction</span></a>
+				</li>
+				<li>
+					<a href="https://fuseopen.com/docs/fuse/font.html" data-menu="font"><span>Fonts</span></a>
+				</li>
+				<li>
+					<a href="https://fuseopen.com/docs/fuse/resources/imagesource.html" data-menu="imagesource"><span>Image sources</span></a>
+				</li>
+				<li>
+					<a href="https://fuseopen.com/docs/assets/bundle.html" data-menu="bundle"><span>Bundled files</span></a>
+				</li>
+				<li>
+					<a href="https://fuseopen.com/docs/assets/sketch-import.html" data-menu="sketch-import"><span>Import from Sketch</span></a>
+				</li>
+				<li>
+					<a href="https://fuseopen.com/docs/assets/sketch-symbol-import.html" data-menu="sketch-symbol-import"><span>Sketch symbols (Beta)</span></a>
+				</li>
+				<li>
+					<a href="https://fuseopen.com/docs/assets/iconfont-import.html" data-menu="iconfont-import"><span>Import icon fonts</span></a>
+				</li>
+			</ul>
+			</li>
+			<li>
+				<a href="#scripting" data-toggle="collapse"><span>Scripting &amp; Data Binding</span></a>
+			<ul id="scripting" class="list-unstyled outline-nav collapse outline-nav-level-3">
+				<li>
+					<a href="https://fuseopen.com/docs/scripting/scripting.html" data-menu="scripting"><span>Introduction</span></a>
+				</li>
+				<li>
+					<a href="https://fuseopen.com/docs/fuse/reactive/javascript.html" data-menu="javascript"><span>FuseJS</span></a>
+				</li>
+				<li>
+					<a href="https://fuseopen.com/docs/fusejs-beta/fusejs.html" data-menu="fusejs"><span>Model API</span></a>
+				</li>
+				<li>
+					<a href="#fusejs" data-toggle="collapse"><span>FuseJS (JavaScript) APIs</span></a>
+				<ul id="fusejs" class="list-unstyled outline-nav collapse outline-nav-level-4">
+					<li>
+						<a href="https://fuseopen.com/docs/fusejs/polyfills.html" data-menu="polyfills"><span>Polyfills</span></a>
+					</li>
+					<li>
+						<a href="https://fuseopen.com/docs/fusejs/eventemitter.html" data-menu="eventemitter"><span>EventEmitter</span></a>
+					</li>
+					<li>
+						<a href="https://fuseopen.com/docs/fuse/filesystem/filesystemmodule.html" data-menu="filesystemmodule"><span>FileSystem</span></a>
+					</li>
+					<li>
+						<a href="https://fuseopen.com/docs/fuse/storage/storagemodule.html" data-menu="storagemodule"><span>Storage</span></a>
+					</li>
+					<li>
+						<a href="https://fuseopen.com/docs/fusejs/bundle.html" data-menu="bundle"><span>Bundle</span></a>
+					</li>
+					<li>
+						<a href="https://fuseopen.com/docs/fusejs/lifecycle.html" data-menu="lifecycle"><span>Lifecycle</span></a>
+					</li>
+					<li>
+						<a href="https://fuseopen.com/docs/fuse/reactive/fusejs/interapp.html" data-menu="interapp"><span>InterApp</span></a>
+					</li>
+					<li>
+						<a href="https://fuseopen.com/docs/fuse/share/sharemodule.html" data-menu="sharemodule"><span>Share</span></a>
+					</li>
+					<li>
+						<a href="https://fuseopen.com/docs/fusejs/http.html" data-menu="http"><span>HTTP</span></a>
+					</li>
+					<li>
+						<a href="https://fuseopen.com/docs/backend/rest-apis.html" data-menu="rest-apis"><span>Working with REST APIs</span></a>
+					</li>
+					<li>
+						<a href="https://fuseopen.com/docs/fusejs/environment.html" data-menu="environment"><span>Environment</span></a>
+					</li>
+					<li>
+						<a href="https://fuseopen.com/docs/fuse/reactive/fusejs/phone.html" data-menu="phone"><span>Phone</span></a>
+					</li>
+					<li>
+						<a href="https://fuseopen.com/docs/fuse/camera/camera.html" data-menu="camera"><span>Camera</span></a>
+					</li>
+					<li>
+						<a href="https://fuseopen.com/docs/fuse/cameraroll/cameraroll.html" data-menu="cameraroll"><span>CameraRoll</span></a>
+					</li>
+					<li>
+						<a href="https://fuseopen.com/docs/fuse/vibration/vibrationmodule.html" data-menu="vibrationmodule"><span>Vibration</span></a>
+					</li>
+					<li>
+						<a href="https://fuseopen.com/docs/fuse/geolocation/geolocation.html" data-menu="geolocation"><span>GeoLocation</span></a>
+					</li>
+					<li>
+						<a href="https://fuseopen.com/docs/fuse/pushnotifications/push.html" data-menu="push"><span>Push notifications</span></a>
+					</li>
+					<li>
+						<a href="https://fuseopen.com/docs/fuse/localnotifications/localnotify.html" data-menu="localnotify"><span>Local notifications</span></a>
+					</li>
+					<li>
+						<a href="https://fuseopen.com/docs/fuse/sensor/sensormodule.html" data-menu="sensormodule"><span>Sensors</span></a>
+					</li>
+					<li>
+						<a href="https://fuseopen.com/docs/fusejs/base64.html" data-menu="base64"><span>Base64</span></a>
+					</li>
+					<li>
+						<a href="https://fuseopen.com/docs/fuse/reactive/fusejs/timermodule.html" data-menu="timermodule"><span>Timer</span></a>
+					</li>
+					<li>
+						<a href="https://fuseopen.com/docs/fuse/imagetools/imagetools.html" data-menu="imagetools"><span>ImageTools</span></a>
+					</li>
+					<li>
+						<a href="https://fuseopen.com/docs/fusejs/third-party-modules.html" data-menu="third-party-modules"><span>Third-party modules</span></a>
+					</li>
+				</ul>
+				</li>
+				<li>
+					<a href="#observable" data-toggle="collapse"><span>Observables API</span></a>
+				<ul id="observable" class="list-unstyled outline-nav collapse outline-nav-level-4">
+					<li>
+						<a href="https://fuseopen.com/docs/fusejs/observable.html" data-menu="observable"><span>Introduction</span></a>
+					</li>
+					<li>
+						<a href="https://fuseopen.com/docs/fusejs/observable-api.html" data-menu="observable-api"><span>Full API reference</span></a>
+					</li>
+					<li>
+						<a href="https://fuseopen.com/docs/fusejs/observable-patterns.html" data-menu="observable-patterns"><span>Patterns</span></a>
+					</li>
+				</ul>
+				</li>
+				<li>
+					<a href="https://fuseopen.com/docs/scripting/debugging.html" data-menu="debugging"><span>Debugging</span></a>
+				</li>
+				<li>
+					<a href="#databinding" data-toggle="collapse"><span>Data Binding</span></a>
+				<ul id="databinding" class="list-unstyled outline-nav collapse outline-nav-level-4">
+					<li>
+						<a href="https://fuseopen.com/docs/fuse/reactive/databinding.html" data-menu="databinding"><span>Introduction</span></a>
+					</li>
+					<li>
+						<a href="https://fuseopen.com/docs/fuse/reactive/each.html" data-menu="each"><span>Each</span></a>
+					</li>
+					<li>
+						<a href="https://fuseopen.com/docs/fuse/reactive/with.html" data-menu="with"><span>With</span></a>
+					</li>
+					<li>
+						<a href="https://fuseopen.com/docs/fuse/reactive/match.html" data-menu="match"><span>Match</span></a>
+					<ul class="list-unstyled outline-nav collapse outline-nav-level-5">
+						<li>
+							<a href="https://fuseopen.com/docs/fuse/reactive/case.html" data-menu="case"><span>Case</span></a>
+						</li>
+					</ul>
+					</li>
+				</ul>
 				</li>
 			</ul>
 			</li>
 		</ul>
 		</li>
 		<li>
-			<a href="https://fuseopen.com/docs/ux-markup/ux-markup.html">UX Markup</a>
-		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<a href="#integration" data-toggle="collapse"><span>Platform Integration</span></a>
+		<ul id="integration" class="list-unstyled outline-nav collapse outline-nav-level-2">
 			<li>
-				<a href="https://fuseopen.com/docs/ux-markup/literals.html">Literals</a>
+				<a href="https://fuseopen.com/docs/xcode-and-android-studio-integration/tutorial.html" data-menu="tutorial"><span>Add Fuse to existing App</span></a>
 			</li>
 			<li>
-				<a href="https://fuseopen.com/docs/ux-markup/expressions.html">Expressions</a>
+				<a href="https://fuseopen.com/docs/native-interop/native-interop.html" data-menu="native-interop"><span>Native interop (Uno)</span></a>
 			</li>
 			<li>
-				<a href="https://fuseopen.com/docs/ux-markup/names.html">Names (ux:Name)</a>
+				<a href="https://fuseopen.com/docs/native-interop/native-ux-components.html" data-menu="native-ux-components"><span>Native UX components</span></a>
 			</li>
 			<li>
-				<a href="https://fuseopen.com/docs/ux-markup/classes.html">Classes (ux:Class)</a>
+				<a href="https://fuseopen.com/docs/native-interop/native-js-modules.html" data-menu="native-js-modules"><span>Native JS modules</span></a>
 			</li>
 			<li>
-				<a href="https://fuseopen.com/docs/ux-markup/dependencies.html">Dependencies (ux:Dependency)</a>
+				<a href="https://fuseopen.com/docs/native-interop/foreign-code.html" data-menu="foreign-code"><span>Foreign code</span></a>
 			</li>
 			<li>
-				<a href="https://fuseopen.com/docs/ux-markup/properties.html">Properties (ux:Property)</a>
+				<a href="https://fuseopen.com/docs/native-interop/using-third-party-sdks.html" data-menu="using-third-party-sdks"><span>Using 3rd party SDKs</span></a>
 			</li>
 			<li>
-				<a href="https://fuseopen.com/docs/ux-markup/resources.html">Resources (ux:Key)</a>
+				<a href="https://fuseopen.com/docs/native-interop/facebook-login.html" data-menu="facebook-login"><span>Example Facebook login using foreign code</span></a>
 			</li>
 			<li>
-				<a href="https://fuseopen.com/docs/ux-markup/globals.html">Globals (ux:Global)</a>
+				<a href="https://fuseopen.com/docs/native-interop/build-settings.html" data-menu="build-settings"><span>Build settings</span></a>
 			</li>
 			<li>
-				<a href="https://fuseopen.com/docs/ux-markup/templates.html">Templates (ux:Template)</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/ux-markup/binding-and-auto-bind.html">Binding (ux:Binding &amp; ux:AutoBind)</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/testing/testing.html">Testing (ux:Test)</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/full-ux-class-reference.html">Full UX Class Reference</a>
-			</li>
-		</ul>
-		</li>
-		<li>
-			<a href="https://fuseopen.com/docs/primitives/primitives.html">Primitives</a>
-		<ul class="list-unstyled outline-nav outline-nav-level-2">
-			<li>
-				<a href="https://fuseopen.com/docs/fuse/controls/text.html">Text</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/fuse/controls/rectangle.html">Rectangle</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/fuse/controls/circle.html">Circle</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/fuse/controls/curve.html">Curve</a>
-			<ul class="list-unstyled outline-nav outline-nav-level-3">
+				<a href="#integration_android" data-toggle="collapse"><span>Android Specifics</span></a>
+			<ul id="integration_android" class="list-unstyled outline-nav collapse outline-nav-level-3">
 				<li>
-					<a href="https://fuseopen.com/docs/fuse/controls/curvepoint.html">CurvePoint</a>
+					<a href="https://fuseopen.com/docs/native-interop/gradle-support.html" data-menu="gradle-support"><span>Gradle Support</span></a>
+				</li>
+				<li>
+					<a href="https://fuseopen.com/docs/native-interop/android-permissions.html" data-menu="android-permissions"><span>Android permissions</span></a>
+				</li>
+				<li>
+					<a href="https://fuseopen.com/docs/unolibs/activity-utils.html" data-menu="activity-utils"><span>Activity utils</span></a>
+				</li>
+				<li>
+					<a href="https://fuseopen.com/docs/native-interop/android-start-activity.html" data-menu="android-start-activity"><span>Starting an Android Activity</span></a>
 				</li>
 			</ul>
 			</li>
 			<li>
-				<a href="https://fuseopen.com/docs/fuse/controls/path.html">Path</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/fuse/controls/image.html">Image</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/fuse/controls/video.html">Video</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/fuse/playsound.html">Sound</a>
+				<a href="#integration_ios" data-toggle="collapse"><span>IOS Specifics</span></a>
+			<ul id="integration_ios" class="list-unstyled outline-nav collapse outline-nav-level-3">
+				<li>
+					<a href="https://fuseopen.com/docs/native-interop/ios-capabilities.html" data-menu="ios-capabilities"><span>iOS Capabilities</span></a>
+				</li>
+			</ul>
 			</li>
 		</ul>
 		</li>
 		<li>
-			<a href="https://fuseopen.com/docs/layout/layout.html">Layout</a>
-		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<a href="#technical-corner" data-toggle="collapse"><span>Technical corner</span></a>
+		<ul id="technical-corner" class="list-unstyled outline-nav collapse outline-nav-level-2">
 			<li>
-				<a href="https://fuseopen.com/docs/fuse/elements/element.html">Element</a>
+				<a href="https://fuseopen.com/docs/technical-corner/technical-corner.html" data-menu="technical-corner"><span>Introduction</span></a>
 			</li>
 			<li>
-				<a href="https://fuseopen.com/docs/fuse/controls/panel.html">Panel</a>
+				<a href="https://fuseopen.com/docs/technical-corner/fuse-protocol.html" data-menu="fuse-protocol"><span>Fuse plugin API</span></a>
 			</li>
 			<li>
-				<a href="https://fuseopen.com/docs/fuse/controls/stackpanel.html">StackPanel</a>
+				<a href="https://fuseopen.com/docs/preview-and-export/preview-details.html" data-menu="preview-details"><span>How preview works</span></a>
 			</li>
 			<li>
-				<a href="https://fuseopen.com/docs/fuse/controls/dockpanel.html">DockPanel</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/fuse/controls/grid.html">Grid</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/fuse/controls/wrappanel.html">WrapPanel</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/fuse/layouts/columnlayout.html">ColumnLayout</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/fuse/layouts/circlelayout.html">CircleLayout</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/fuse/controls/scrollview.html">ScrollView</a>
+				<a href="https://fuseopen.com/docs/technical-corner/uxl-handbook.html" data-menu="uxl-handbook"><span>UXL handbook</span></a>
 			</li>
 		</ul>
 		</li>
 		<li>
-			<a href="https://fuseopen.com/docs/navigation/navigation.html">Navigation</a>
-		<ul class="list-unstyled outline-nav outline-nav-level-2">
+			<a href="#references" data-toggle="collapse"><span>References</span></a>
+		<ul id="references" class="list-unstyled outline-nav collapse outline-nav-level-2">
 			<li>
-				<a href="https://fuseopen.com/docs/fuse/controls/page.html">Page</a>
+				<a href="https://fuseopen.com/docs/basics/uno-projects.html" data-menu="uno-projects"><span>Project Reference (.unoproj file)</span></a>
 			</li>
 			<li>
-				<a href="https://fuseopen.com/docs/fuse/controls/pagecontrol.html">PageControl</a>
+				<a href="https://fuseopen.com/docs/full-ux-class-reference.html" data-menu="full-ux-class-reference"><span>Full UX Class Reference</span></a>
 			</li>
 			<li>
-				<a href="https://fuseopen.com/docs/fuse/navigation/router.html">Router</a>
+				<a href="https://fuseopen.com/docs/root-ns.html" data-menu="index"><span>Uno Class Reference</span></a>
 			</li>
 			<li>
-				<a href="https://fuseopen.com/docs/fuse/controls/navigator.html">Navigator</a>
+				<a href="https://fuseopen.com/docs/basics/faq.html" data-menu="faq"><span>FAQ</span></a>
 			</li>
 			<li>
-				<a href="https://fuseopen.com/docs/fuse/triggers/transition.html">Transitions</a>
-			</li>
-		</ul>
-		</li>
-		<li>
-			<a href="https://fuseopen.com/docs/fuse/controls/control.html">Controls</a>
-		<ul class="list-unstyled outline-nav outline-nav-level-2">
-			<li>
-				<a href="https://fuseopen.com/docs/fuse/controls/button.html">Button</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/fuse/controls/textinput.html">TextInput</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/fuse/controls/textview.html">TextView</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/fuse/controls/slider.html">Slider</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/fuse/controls/switch.html">Switch</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/fuse/controls/cameraviewbase.html">CameraView</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/fuse/controls/mapview.html">MapView</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/fuse/controls/webview.html">WebView</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/fuse/controls/nativeviewhost.html">NativeViewHost</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/fuse/controls/graphicsview.html">GraphicsView</a>
-			</li>
-		</ul>
-		</li>
-		<li>
-			<a href="https://fuseopen.com/docs/fuse/triggers/trigger.html">Triggers &amp; Animation</a>
-		<ul class="list-unstyled outline-nav outline-nav-level-2">
-			<li>
-				<a href="https://fuseopen.com/docs/fuse/transform.html">Transforms</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/fuse/gestures/transformgesture.html">Gestures</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/fuse/animations/animator.html">Animators</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/fuse/triggers/timeline.html">Timeline</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/fuse/triggers/actions/triggeraction.html">Actions</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/fuse/selection/selection.html">Selection</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/fuse/triggers/stategroup.html">StateGroups</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/fuse/controls/multilayoutpanel.html">MultiLayoutPanel</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/fuse/triggers/busy.html">Busy</a>
-			</li>
-		</ul>
-		</li>
-		<li>
-			<a href="https://fuseopen.com/docs/charting/charting.html">Charting</a>
-		<ul class="list-unstyled outline-nav outline-nav-level-2">
-			<li>
-				<a href="https://fuseopen.com/docs/fuse/charting/plot.html">Plot</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/fuse/charting/dataseries.html">DataSeries</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/fuse/charting/plotaxis.html">PlotAxis</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/fuse/charting/plotdata.html">PlotData</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/fuse/charting/plotpoint.html">PlotPoint</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/fuse/charting/plotbar.html">PlotBar</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/fuse/charting/plotcurvepoint.html">PlotCurvePoint</a>
-			</li>
-		</ul>
-		</li>
-		<li>
-			<a href="https://fuseopen.com/docs/alive/alive.html">Alive UX Kit</a>
-		<ul class="list-unstyled outline-nav outline-nav-level-2">
-			<li>
-				<a href="https://fuseopen.com/docs/alive.html">Components</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/alive/themes.html">Themes</a>
-			</li>
-		</ul>
-		</li>
-		<li>
-			<a href="https://fuseopen.com/docs/effects/effects.html">Effects</a>
-		<ul class="list-unstyled outline-nav outline-nav-level-2">
-			<li>
-				<a href="https://fuseopen.com/docs/fuse/effects/dropshadow.html">DropShadow</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/fuse/effects/blur.html">Blur</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/fuse/effects/halftone.html">Halftone</a>
-			</li>
-		</ul>
-		</li>
-		<li>
-			<a href="https://fuseopen.com/docs/xcode-and-android-studio-integration/tutorial.html">Fuse Views</a>
-		</li>
-		<li>
-			<a href="https://fuseopen.com/docs/native-interop/native-interop.html">Native interop (Uno)</a>
-		<ul class="list-unstyled outline-nav outline-nav-level-2">
-			<li>
-				<a href="https://fuseopen.com/docs/root-ns.html">Full Uno Class Reference</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/native-interop/native-ux-components.html">Native UX components</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/native-interop/native-js-modules.html">Native JS modules</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/native-interop/foreign-code.html">Foreign code</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/native-interop/using-third-party-sdks.html">Using 3rd party SDKs</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/unolibs/activity-utils.html">Activity utils</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/native-interop/facebook-login.html">Facebook login using foreign code</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/native-interop/gradle-support.html">Gradle Support</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/native-interop/build-settings.html">Build settings</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/native-interop/android-permissions.html">Android permissions</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/native-interop/android-start-activity.html">Starting an Android Activity</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/native-interop/ios-capabilities.html">iOS Capabilities</a>
-			</li>
-		</ul>
-		</li>
-		<li>
-			<a href="https://fuseopen.com/docs/technical-corner/technical-corner.html">Technical corner</a>
-		<ul class="list-unstyled outline-nav outline-nav-level-2">
-			<li>
-				<a href="https://fuseopen.com/docs/technical-corner/fuse-protocol.html">Fuse plugin API</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/preview-and-export/preview-details.html">How preview works</a>
-			</li>
-			<li>
-				<a href="https://fuseopen.com/docs/technical-corner/uxl-handbook.html">UXL handbook</a>
+				<a href="https://fuseopen.com/docs/packages.html" data-menu="packages"><span>Community Packages</span></a>
 			</li>
 		</ul>
 		</li>
@@ -627,9 +675,12 @@
 	</li>
 </ul>
 
+          </div>
         </div>
-        <div role="main" class="col-12 col-md-9 col-xl-10 order-1 order-md-2 px-4 main-content">
-          <header class="page-header">
+        <div role="main" class="col-12 col-md-9 col-xl-10 order-1 order-md-2 px-4 main">
+          <div class="row">
+            <div class="col-12 col-sm-12 col-md-9 col-xl-9 main-content">
+              <header class="page-header">
 <h2 id="section-introduction">
 Visual.InvalidateVisualComposition Method
 </h2>
@@ -651,6 +702,12 @@ Fuse
 </dl>
 </section>
 
+            </div>
+            <div class="d-none d-sm-block col-md-3 d-xl-3 toc-content">
+              <nav id="toc" data-toggle="toc">
+              </nav>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -660,6 +717,7 @@ Fuse
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://fuseopen.com/docs/prism.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+    <script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script>
     <script type="text/javascript" src="https://fuseopen.com/docs/site.js"></script>
   </body>
 </html>

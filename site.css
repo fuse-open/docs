@@ -3,6 +3,7 @@
  */
 body {
     color: #332f2f;
+    font-family: "Lato",sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -19,14 +20,15 @@ pre[class*="language-"] {
 }
 
 code:not([class]) {
-    background: #272822;
-    color: #f8f8f2;
-    padding: 0.2rem 0.4rem;
+    background: #ccc;
+    color: #666;
+    padding: 0.15rem 0.3rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
 }
 
 a {
     color: #9846EF;
-    text-decoration: underline;
 }
 
 a:hover {
@@ -34,10 +36,28 @@ a:hover {
 }
 
 .sidebar {
-    padding-top: 1rem;
+    padding-left: 0;
+    padding-right: 0;
+    border-right: 1px solid #ccc;
+}
+.main{
+    position: static;
 }
 .main-content {
+    overflow-x: hidden;
     padding-top: 2rem;
+    position: static;
+}
+.main-content > p > img {
+    max-width: 100%;
+    max-height: 100%;
+    vertical-align: middle;
+}
+.toc-content {
+    border-left: 1px solid #eee;
+}
+nav[data-toggle=toc] .nav .nav>li>a {
+    font-size:14px !important;
 }
 
 /*
@@ -53,6 +73,16 @@ a:hover {
     font-size: 1rem;
     text-decoration: none;
     padding-top: 0.5rem;
+}
+
+#toc {
+    position: sticky;
+    top: 115px;
+}
+
+#toc > .nav-link {
+    text-decoration: unset !important;
+
 }
 
 /*
@@ -106,6 +136,7 @@ h6.anchor-header .anchor-header-link {
     bottom: 0.25rem;
 }
 
+
 /*
  * Outline navigation styling
  */
@@ -128,27 +159,123 @@ h6.anchor-header .anchor-header-link {
 }
 
 .outline-nav-level-1 > li {
-    margin-top: 1.5rem;
+    margin-top: 1rem;
 }
 
 .outline-nav-level-1 > li > a {
     display: block;
     margin-bottom: 0.5rem;
-    font-size: 1.1rem;
-    color: #9846EF;
-    text-decoration: underline;
+    font-size: 1.05rem;
+    line-height: 2rem;
+    margin: 0 -10px;
+    padding: 0 10px;
 }
 
-.outline-nav-level-1 > li > a:hover {
+.outline-nav > li > a:hover {
     color: #7f3ac9;
-    text-decoration: underline;
+    background-color: rgb(0, 0, 0, 0.05);
+}
+
+.active {
+    color: #7f3ac9 !important;
+    background-color: rgb(0, 0, 0, 0.05);
+    font-weight: 500;
+}
+
+.outline-nav-level-1 > li > a::after {
+    position: absolute;
+    content: "\f078";
+    width: 1em;
+    line-height: 1em;
+    right: 20px;
+    font-family: 'FontAwesome' !important;
+    font-size: 0.7rem;
+    margin-top: 1em;
+    color: #999999;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    transition: all 0.2s;
+    -webkit-transition-delay: 0s;
+    -moz-transition-delay: 0s;
+    transition-delay: 0s;
+}
+
+.outline-nav-level-1 > li > a[aria-expanded="true"]::after {
+    transform: rotate(180deg)
 }
 
 .outline-nav-level-2 {
     margin-left: 0 !important;
 }
 
+.outline-nav-level-2 > li > a {
+    display: block;
+    font-size: 0.95rem;
+    line-height: 1.6rem;
+}
+
+
+.outline-nav-level-2 > li > a[data-toggle="collapse"] > span::before {
+    content: "\f054";
+    display: inline-block;
+    width: 1em;
+    margin-right: 5px;
+    font-family: 'FontAwesome' !important;
+    font-size: 0.7rem;
+    margin-top: 0.5em;
+    color: #999999;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    transition: all 0.2s;
+    -webkit-transition-delay: 0s;
+    -moz-transition-delay: 0s;
+    transition-delay: 0s;
+}
+
+.outline-nav-level-2 > li > a[aria-expanded="true"] > span::before {
+    transform: rotate(90deg)
+}
+
 .outline-nav-level-2 > li > a:hover {
+    color: #9846EF;
+}
+
+.outline-nav-level-3 > li > a {
+    display: block;
+    font-size: 0.95rem;
+}
+
+.outline-nav-level-3 > li > a:hover {
+    color: #9846EF;
+}
+
+.outline-nav-level-3 > li > a[data-toggle="collapse"] > span::before {
+    content: "\f054";
+    display: inline-block;
+    width: 1em;
+    margin-right: 5px;
+    font-family: 'FontAwesome' !important;
+    font-size: 0.7rem;
+    margin-top: 0.5em;
+    color: #999999;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    transition: all 0.2s;
+    -webkit-transition-delay: 0s;
+    -moz-transition-delay: 0s;
+    transition-delay: 0s;
+}
+
+.outline-nav-level-3 > li > a[aria-expanded="true"] > span::before {
+    transform: rotate(90deg)
+}
+
+.outline-nav-level-4 > li > a {
+    display: block;
+    font-size: 0.95rem;
+}
+
+.outline-nav-level-4 > li > a:hover {
     color: #9846EF;
 }
 
@@ -380,21 +507,33 @@ blockquote.callout-dark {
 }
 
 
-
 #defaultHeader {
-    background: #9846EF;
-    background: linear-gradient(to right, #9846EF 0%, #b978f5 50%, #b978f5 50%, #efa668 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=$violet, endColorstr=$orange, GradientType=1);
-}
-
-.sticky-top {
     position: sticky;
     top: 0;
     z-index: 1020;
+    background: #9846EF;
+    background: linear-gradient(to right, #9846EF 0%, #b978f5 50%, #b978f5 50%, #efa668 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=$violet, endColorstr=$orange, GradientType=1);
+
 }
 
-.justify-content-center {
-    justify-content: center !important;
+.sticky {
+    position: sticky;
+    top: 100px;
+    overflow-y: auto;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 16px;
+    height: calc(100vh - 99px);
+}
+
+.sticky-search {
+    margin: -16px;
+    padding: 16px;
+    position: sticky;
+    top: -16px;
+    z-index: 1;
+    background-color: #f8f9fa;
 }
 
 .navbar-brand a {
@@ -422,10 +561,3 @@ header .navbar a:link, header .navbar a:active, header .navbar a:visited, header
   text-decoration: underline;
   opacity: 1;
 }
-
-
-
-
-
-
-
