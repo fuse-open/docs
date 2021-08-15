@@ -699,7 +699,7 @@ Show advanced things
 <li class="nav-item"><a class="nav-link" href="#section-table-of-contents">Table of Contents</a></li>
 </ul>
 </section>
-<p>Vibrate the device for a duration</p>
+<p>Vibrate the device for a duration or by vibration type (only on iOS)</p>
 <p>You'll find this trigger action in the Fuse.Vibration package, which have to be referenced from your uno project.
 For example:</p>
 <pre><code>{
@@ -719,6 +719,29 @@ For example:</p>
     &lt;/Button&gt;
 &lt;/StackPanel&gt;
 </code></pre>
+<p>On iOS you can do vibration by leveraging Taptic Engine. There are 9 types of vibration :</p>
+<ul>
+<li>Soft</li>
+<li>Rigid</li>
+<li>Light</li>
+<li>Medium</li>
+<li>Heavy</li>
+<li>Success</li>
+<li>Warning</li>
+<li>Error</li>
+<li>Selection
+To activate it, just pass those value to <code>VibrationType</code> property</li>
+</ul>
+<p>##Example</p>
+<pre><code>&lt;StackPanel Margin=&quot;20&quot;&gt;
+    &lt;!-- Works on iOS using Taptic Engine --&gt;
+    &lt;Button Margin=&quot;10&quot; Text=&quot;Heavy Vibrate&quot;&gt;
+        &lt;Clicked&gt;
+            &lt;Vibrate VibrationType=&quot;Heavy&quot; /&gt;
+        &lt;/Clicked&gt;
+    &lt;/Button&gt;
+&lt;/StackPanel&gt;
+</code></pre>
 
 <section class="type-location">
 <h3 id="section-location">Location</h3>
@@ -730,7 +753,7 @@ Fuse.Vibration
 </a>
 </dd>
 <dt>Package</dt>
-<dd>Fuse.Vibration 1.11.2</dd>
+<dd>Fuse.Vibration 2.0.0-beta.9</dd>
 </dl>
 </section>
 <section class="table-of-contents">
@@ -765,6 +788,21 @@ Vibrate Constructor
 <p>Creates a new Vibrate</p>
 
 </div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxproperty fa fa-wrench" title="UxProperty"></span>
+<h5 id="vibrationtype-vibrationtype-ux">
+<a href="../../fuse/vibration/vibrate/vibrationtype.html">
+VibrationType
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../../fuse/vibration/vibrationtype.html">
+VibrationType
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
 </article>
 
 </section>

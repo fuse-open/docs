@@ -815,6 +815,192 @@ In a real app we should send our <code>registration ID</code> to our server when
 <li>Google limits to 4096 bytes</li>
 <li>Apple limits to 2048 bytes on iOS 8 and up but only 256 bytes on all earlier versions</li>
 </ul>
+<h4 id="additional-android-push-notification-features">Additional Android Push Notification Features</h4>
+<p>Since Android 8+ (Oreo or API 26), it is mandatory to define and assign a channel to every notification.</p>
+<p>We have defined a default channel (named &quot;App&quot;) to be assigned to notifications if they aren't already assigned a channel, so you don't need to define one but if you do want to customise it, read on.</p>
+<p>NB! Once a channel is created, you CANNOT change its properties later.</p>
+<p>Apart from the Notification Channel feature discussed above, here is a list of the other android features implemented thus far:</p>
+<ul>
+<li>Notification Sound</li>
+<li>Notification Color</li>
+<li>Notification Priority</li>
+<li>Notification Category</li>
+<li>Notification Lockscreen Visibility</li>
+</ul>
+<p>Android 8+</p>
+<ul>
+<li>Notification Channel</li>
+<li>Nofitication Channel Group</li>
+<li>Notification Channel Importance</li>
+<li>Notification Channel Lockscreen Visibility</li>
+<li>Notification Channel Light Color</li>
+<li>Notification Channel Sound</li>
+<li>Notification Channel Vibration</li>
+<li>Notification Channel Show Badge</li>
+<li>Notification Badge Number</li>
+<li>Notification Badge Icon Type</li>
+</ul>
+<p>We'll show you how to implement them here in fuse but read more about each feature <a href="https://developer.android.com/guide/topics/ui/notifiers/notifications">here</a>.</p>
+<h6 id="notification-sound-value-default">Notification Sound - Value - default</h6>
+<pre><code>'notification': {
+    alert: {
+        'title': 'Well would ya look at that!',
+        'body': 'Hello from the server',
+        'sound': 'default'
+    }
+},
+</code></pre>
+<h6 id="notification-color-values-rrggbb-aarrggbb">Notification Color - Values - #RRGGBB | #AARRGGBB</h6>
+<pre><code>'notification': {
+    alert: {
+        'title': 'Well would ya look at that!',
+        'body': 'Hello from the server',
+        'color': '#8811FF'
+    }
+},
+</code></pre>
+<h6 id="notification-priority-values-high-low-max-min">Notification Priority - Values - high | low | max | min</h6>
+<pre><code>'notification': {
+    alert: {
+        'title': 'Well would ya look at that!',
+        'body': 'Hello from the server',
+        'notificationPriority': 'high'
+    }
+},
+</code></pre>
+<h6 id="notification-category-values-alarm-reminder-event-call-message-email-promo-recommendation-social-error-progress-service-status-system-transport">Notification Category - Values - alarm | reminder | event | call | message | email | promo | recommendation | social | error | progress | service | status | system | transport</h6>
+<pre><code>'notification': {
+    alert: {
+        'title': 'Well would ya look at that!',
+        'body': 'Hello from the server',
+        'notificationCategory': 'social'
+    }
+},
+</code></pre>
+<h6 id="notification-lockscreen-visibility-values-public-secret-private">Notification Lockscreen Visibility - Values - public | secret | private</h6>
+<pre><code>'notification': {
+    alert: {
+        'title': 'Well would ya look at that!',
+        'body': 'Hello from the server',
+        'notificationLockscreenVisibility': 'secret'
+    }
+},
+</code></pre>
+<h6 id="notification-channel">Notification Channel</h6>
+<p>Notification Channel and a Notification Channel Group:</p>
+<pre><code>'notification': {
+    alert: {
+        'title': 'Well would ya look at that!',
+        'body': 'Hello from the server',
+        'notificationChannelGroupId': 'sports',
+        'notificationChannelGroupName': 'Sports',
+        'notificationChannelId': 'sports_football_highlights',
+        'notificationChannelName': 'Football Highlights',
+        'notificationChannelDescription': 'Video commentary once a week'
+    }
+},
+</code></pre>
+<p>Notification Channel Importance - Values - urgent | high | medium | low | none</p>
+<pre><code>'notification': {
+    alert: {
+        'title': 'Well would ya look at that!',
+        'body': 'Hello from the server',
+        'notificationChannelGroupId': 'sports',
+        'notificationChannelGroupName': 'Sports',
+        'notificationChannelId': 'sports_basketball_highlights',
+        'notificationChannelName': 'Basketball Highlights',
+        'notificationChannelDescription': 'Video commentary once a week',
+        'notificationChannelImportance': 'urgent',
+
+    }
+},
+</code></pre>
+<p>Notification Channel Lockscreen Visibility - Values - public | secret | private</p>
+<pre><code>'notification': {
+    alert: {
+        'title': 'Well would ya look at that!',
+        'body': 'Hello from the server',
+        'notificationChannelLockscreenVisibility': 'private'
+    }
+},
+</code></pre>
+<p>Notification Channel Light Color - Values - #RRGGBB</p>
+<pre><code>'notification': {
+    alert: {
+        'title': 'Well would ya look at that!',
+        'body': 'Hello from the server',
+        'notificationChannelLightColor': '#1188FF'
+    }
+},
+</code></pre>
+<p>Notification Channel Sound - Values - true | false</p>
+<pre><code>'notification': {
+    alert: {
+        'title': 'Well would ya look at that!',
+        'body': 'Hello from the server',
+        'notificationChannelIsSoundOn': 'true'
+    }
+},
+</code></pre>
+<p>Notification Channel Vibration - Values - true | false</p>
+<pre><code>'notification': {
+    alert: {
+        'title': 'Well would ya look at that!',
+        'body': 'Hello from the server',
+        'notificationChannelIsVibrationOn': 'true'
+    }
+},
+</code></pre>
+<p>Notification Channel Show Badge - Values - true | false</p>
+<pre><code>'notification': {
+    alert: {
+        'title': 'Well would ya look at that!',
+        'body': 'Hello from the server',
+        'notificationChannelIsShowBadgeOn': 'true'
+    }
+},
+</code></pre>
+<h6 id="notification-badge">Notification Badge</h6>
+<p>Notification Channel Badge Number</p>
+<pre><code>'notification': {
+    alert: {
+        'title': 'Well would ya look at that!',
+        'body': 'Hello from the server',
+        'notificationBadgeNumber': '23'
+    }
+},
+</code></pre>
+<p>Notification Channel Badge Icon Type - Values - none | small | large</p>
+<pre><code>'notification': {
+    alert: {
+        'title': 'Well would ya look at that!',
+        'body': 'Hello from the server',
+        'notificationBadgeIconType': 'small'
+    }
+},
+</code></pre>
+<h6 id="notification-uno-project-configurations">Notification Uno Project Configurations</h6>
+<p>The following notification settings can be set via the <code>.unoproj</code> settings:</p>
+<pre><code>&quot;Android&quot;: {
+    ...
+    &quot;Notification&quot;: {
+        &quot;DefaultChannelGroupId&quot;: &quot;default_group&quot;,
+        &quot;DefaultChannelGroupName&quot;: &quot;Categories&quot;,
+        &quot;DefaultChannelId&quot;: &quot;default_channel&quot;,
+        &quot;DefaultChannelName&quot;: &quot;App&quot;,
+        &quot;DefaultChannelDescription&quot;: &quot;&quot;,
+        &quot;DefaultChannelImportance&quot;: &quot;high&quot;,
+        &quot;DefaultChannelLightColor&quot;: &quot;#FF2C37&quot;,
+        &quot;NotificationChannelLockscreenVisibility&quot;: &quot;secret&quot;,
+        &quot;NotificationChannelIsSoundOn&quot;: true,
+        &quot;NotificationChannelIsShowBadgeOn&quot;: true,
+        &quot;NotificationChannelIsVibrationOn&quot;: true
+    }
+    ...
+},
+</code></pre>
+<p>Note: notification payload settings will always override the notification settings from <code>.unoproj</code>.
+NB! Once a channel is created, you CANNOT change its properties later.</p>
 <h4 id="remarks">Remarks</h4>
 <p>This module is an <a href="../../fusejs/eventemitter.html">EventEmitter</a>, so the methods from <a href="../../fusejs/eventemitter.html">EventEmitter</a> can be used to listen to events.</p>
 <p>You need to add a reference to <code>Fuse.PushNotifications</code> in your project file to use this feature.</p>
@@ -861,10 +1047,17 @@ However, it is recommended to set your own:</p>
 </code></pre>
 </li>
 <li>
-<p>After adding the Android app, you will be prompted to download a <code>google-services.json</code> file.
-This can be ignored, as it's not needed for push notifications and can always be downloaded later if needed.</p>
+<p>After adding the Android app, you will be prompted to download a <code>google-services.json</code> file. Download and copy it to the root of your project.</p>
+</li>
+<li>
+<p>Add the following file to tell fuse to copy google-services.json to your android app folder:</p>
 </li>
 </ul>
+<p>Android.uxl</p>
+<pre><code>&lt;Extensions Backend=&quot;CPlusPlus&quot; Condition=&quot;Android&quot;&gt;
+    &lt;CopyFile Condition=&quot;Android&quot; Name=&quot;google-services.json&quot; TargetName=&quot;app/google-services.json&quot; /&gt;
+&lt;/Extensions&gt;
+</code></pre>
 <h5 id="sending-notifications">Sending notifications</h5>
 <p>After rebuilding your project with the new settings, you should be ready to send and receive push notifications.</p>
 <blockquote>
@@ -951,7 +1144,7 @@ Fuse.PushNotifications
 </a>
 </dd>
 <dt>Package</dt>
-<dd>Fuse.PushNotifications 1.11.2</dd>
+<dd>Fuse.PushNotifications 2.0.0-beta.9</dd>
 </dl>
 </section>
 <section class="table-of-contents">
@@ -983,6 +1176,20 @@ clearBadgeNumber()
 </h5>
 <div class="table-of-contents-item-brief">
 <p>Clears the badge number shown on the iOS home screen. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../../fuse/pushnotifications/push/clearbadgenumber_bbef95e2.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-jsmethod fa fa-square-o" title="JsMethod"></span>
+<h5 id="isregisteredforremotenotifications-js">
+<a href="../../fuse/pushnotifications/push/isregisteredforremotenotifications_bbef95e2.html">
+isRegisteredForRemoteNotifications()
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-js">js</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Gets whether or not the user has enabled remote notifications</p>
 
 </div>
 </article>

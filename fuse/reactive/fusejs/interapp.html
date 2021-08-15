@@ -703,16 +703,108 @@ Show advanced things
 <p>This module is an <a href="../../../fusejs/eventemitter.html">EventEmitter</a>, so the methods from <a href="../../../fusejs/eventemitter.html">EventEmitter</a> can be used to listen to events.</p>
 <p>You need to add a reference to <code>&quot;Fuse.Launcher&quot;</code> in your project file to use this feature.</p>
 <h4 id="example">Example</h4>
-<pre><code>var InterApp = require(&quot;FuseJS/InterApp&quot;);
+<pre><code class="language-javascript">    var InterApp = require(&quot;FuseJS/InterApp&quot;);
 
-InterApp.on(&quot;receivedUri&quot;, function(uri) {
-    console.log(&quot;Launched with URI&quot;, uri);
-});
+    InterApp.on(&quot;receivedUri&quot;, function(uri) {
+        console.log(&quot;Launched with URI&quot;, uri);
+    });
 
-InterApp.launchUri(&quot;https://fuseopen.com/&quot;);
+    InterApp.launchUri(&quot;https://fuseopen.com/&quot;);
 </code></pre>
 <p>In the above example we're using the <a href="../../../fusejs/eventemitter.html">EventEmitter</a> <code>on</code> method to listen to the <code>&quot;receivedUri&quot;</code> event.</p>
 <p>For the <a href="../../../fuse/reactive/fusejs/interapp/onreceiveduri_968f99a6.html">receivedUri</a> event to be triggered, you need register a custom URI scheme for your app, as shown <a href="../../../basics/uno-projects.html#mobile-urischeme">here</a>.</p>
+<h4 id="deep-links-universal-and-app-links">Deep Links - Universal and App Links</h4>
+<p>You can receive the <code>receivedUri</code> event, mentioned above, for associated web urls that have been tapped on in other apps.</p>
+<p>Apple: <a href="https://developer.apple.com/ios/universal-links">https://developer.apple.com/ios/universal-links</a></p>
+<p>Android: <a href="https://developer.android.com/training/app-links">https://developer.android.com/training/app-links</a></p>
+<h4 id="apple-universal-links">Apple Universal Links</h4>
+<ol>
+<li>Add the associated domains in your <code>.unoproj</code></li>
+<li>Add the Apple App Site Association file to your website</li>
+</ol>
+<h5 id="1-add-associated-domains-to-your-unoproj">1. Add associated domains to your .unoproj</h5>
+<pre><code class="language-JSON">{
+    &quot;iOS&quot;: {
+        &quot;SystemCapabilities&quot;: {
+            &quot;AssociatedDomains&quot;: [&quot;applinks:example.com&quot;, &quot;applinks:sub.example.com&quot;]
+        }
+    }
+}
+</code></pre>
+<h5 id="2-add-the-apple-app-site-association-file-to-your-website">2. Add the Apple App Site Association file to your website</h5>
+<p>Apple-app-site-association file format</p>
+<pre><code class="language-JSON">{
+    &quot;applinks&quot;: {
+        &quot;apps&quot;: [],
+        &quot;details&quot;: [
+            {
+                &quot;appID&quot;: &quot;&lt;team identifier&gt;.&lt;bundle identifier&gt;&quot;,
+                &quot;paths&quot;: [&lt;paths&gt;]
+            }
+        ]
+    }
+}
+</code></pre>
+<p>Basic example, this allows all urls of the domain to be validated:</p>
+<pre><code class="language-JSON">{
+    &quot;applinks&quot;: {
+        &quot;apps&quot;: [],
+        &quot;details&quot;: [
+            {
+                &quot;appID&quot;: &quot;1234567890.com.mypackage.myapp&quot;,
+                &quot;paths&quot;: [&quot;*&quot;]
+            }
+        ]
+    }
+}
+</code></pre>
+<p>Place this file either in your site’s <code>.well-known</code> directory, or directly in its root directory. If you use the <code>.well-known</code> directory, the file’s URL should match the following format:</p>
+<pre><code>https://&lt;fully qualified domain&gt;/.well-known/apple-app-site-association
+</code></pre>
+<p>Tip: make sure you can access the file and view the JSON of the apple-app-site-association file from a browser.</p>
+<p>Full reference: <a href="https://developer.apple.com/documentation/uikit/inter-process_communication/allowing_apps_and_websites_to_link_to_your_content/enabling_universal_links?language=objc">https://developer.apple.com/documentation/uikit/inter-process_communication/allowing_apps_and_websites_to_link_to_your_content/enabling_universal_links?language=objc</a></p>
+<h4 id="android-app-links">Android App Links</h4>
+<ol>
+<li>Add the associated domains in your <code>.unoproj</code></li>
+<li>Add the asset links file to your website</li>
+</ol>
+<h5 id="1-add-associated-domains-to-your-unoproj">1. Add associated domains to your .unoproj</h5>
+<pre><code class="language-JSON">{
+    &quot;Android&quot;: {
+        &quot;AssociatedDomains&quot;: [&quot;example.com&quot;, &quot;sub.example.com&quot;]
+    }
+}
+</code></pre>
+<h5 id="2-add-the-asset-links-file-to-your-website">2. Add the asset links file to your website</h5>
+<p>Example:</p>
+<pre><code>[{
+  &quot;relation&quot;: [&quot;delegate_permission/common.handle_all_urls&quot;],
+    &quot;target&quot;: {
+      &quot;namespace&quot;: &quot;android_app&quot;,
+      &quot;package_name&quot;: &quot;com.example.puppies.app&quot;,
+      &quot;sha256_cert_fingerprints&quot;:
+      [&quot;14:6D:E9:83:C5:73:06:50:D8:EE:B9:95:2F:34:FC:64:16:A0:83:42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:44:E5&quot;]
+    }
+  },
+  {
+    &quot;relation&quot;: [&quot;delegate_permission/common.handle_all_urls&quot;],
+    &quot;target&quot;: {
+      &quot;namespace&quot;: &quot;android_app&quot;,
+      &quot;package_name&quot;: &quot;com.example.monkeys.app&quot;,
+      &quot;sha256_cert_fingerprints&quot;:
+      [&quot;14:6D:E9:83:C5:73:06:50:D8:EE:B9:95:2F:34:FC:64:16:A0:83:42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:44:E5&quot;]
+    }
+}]
+</code></pre>
+<p>Each group represents an app, you will likely need one for your development version and one for your release version of your app.</p>
+<p>To get the <code>sha256_cert_fingerprints</code>, use the following:</p>
+<pre><code>keytool -list -v -keystore my-release-key.keystore
+</code></pre>
+<p>To get the sha256 for the development version of exporting with fuse, use with <code>android</code> as the password:
+<code>keytool -list -v -keystore ~/.android/debug.keystore</code></p>
+<p>Place this file in your site’s <code>.well-known</code> directory. The file’s URL should match the following format:</p>
+<pre><code>https://domain.name/.well-known/assetlinks.json
+</code></pre>
 
 <section class="type-location">
 <h3 id="section-location">Location</h3>
@@ -724,7 +816,7 @@ Fuse.Reactive.FuseJS
 </a>
 </dd>
 <dt>Package</dt>
-<dd>Fuse.Launcher.InterApp 1.11.2</dd>
+<dd>Fuse.Launcher.InterApp 2.0.0-beta.9</dd>
 </dl>
 </section>
 <section class="table-of-contents">
@@ -740,6 +832,20 @@ InterApp Constructor
 </a>
 <span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
 </h5>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-jsmethod fa fa-square-o" title="JsMethod"></span>
+<h5 id="launchapp-uri-js">
+<a href="../../../fuse/reactive/fusejs/interapp/launchapp_bbef95e2.html">
+launchApp(uri)
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-js">js</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Requests the system to launch an app. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../../../fuse/reactive/fusejs/interapp/launchapp_bbef95e2.html"><i class="fa fa-ellipsis-h"></i></a></p>
+
+</div>
 </article>
 
 <article class="table-of-contents-item">

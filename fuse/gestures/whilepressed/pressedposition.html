@@ -685,13 +685,22 @@
 WhilePressed.PressedPosition Property
 </h2>
 </header>
-<p>Get x and y from args, from rectPlaced function, and assign them to Observables.</p>
-<p>#Example</p>
-<pre><code>&lt;WhilePressed ux:Name=&quot;wpressed&quot;&gt;
+<p>Holds the initiall press-down position of the pointer that activated the trigger (read-only).</p>
+<p>This can be used with a <code>{SnapshotProperty}</code> binding to place things in response to the pointer position. If the trigger
+isn't active at the time of reading, this property returns <code>(0,0)</code>;</p>
+<p>This property does not emit changed events, it is only intended for snapshotting.</p>
+<p>This property is read-only. Writing to it does nothing.</p>
+<h4 id="example">Example</h4>
+<pre><code>&lt;Panel Color=&quot;Red&quot;&gt;
+    &lt;WhilePressed ux:Name=&quot;wpGesture&quot;&gt;
+        &lt;Rectangle ux:Name=&quot;rect&quot; Alignment=&quot;TopLeft&quot; Offset=&quot;{SnapshotProperty wpGesture.PressedPosition}&quot; Width=&quot;20&quot; Height=&quot;20&quot; Color=&quot;White&quot;&gt;
+            &lt;RemovingAnimation&gt;
+                &lt;Change rect.Opacity=&quot;0&quot; Duration=&quot;1&quot; /&gt;
+            &lt;/RemovingAnimation&gt;
+        &lt;/Rectangle&gt;
+    &lt;/WhilePressed&gt;
+&lt;/Panel&gt;
 </code></pre>
-  <rectangle ux:name="rect" position="{SnapshotProperty wpressed.PressedPosition}" placed="{rectPlaced}" anchor="0%,0%" width="20" height="20" color="#8f10"></rectangle>
- <callback handler="{onPressed}"></callback>
-
 
 <section class="type-location type-location-leaf">
 <h3 id="section-location">Location</h3>
@@ -703,7 +712,7 @@ Fuse.Gestures
 </a>
 </dd>
 <dt>Package</dt>
-<dd>Fuse.Gestures 1.11.2</dd>
+<dd>Fuse.Gestures 2.0.0-beta.9</dd>
 </dl>
 </section>
 <section class="returns">

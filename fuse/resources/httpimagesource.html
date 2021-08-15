@@ -708,6 +708,7 @@ Show advanced things
     &lt;HttpImageSource Url=&quot;https://upload.wikimedia.org/wikipedia/commons/0/06/Kitten_in_Rizal_Park%2C_Manila.jpg&quot; /&gt;
 &lt;/Image&gt;
 </code></pre>
+<p>To cache the image to the disk, you can add <code>DiskCache</code> attribute and set it to <code>true</code> so that the next time we display an image it will no longer be downloaded from the network but use from disk instead.</p>
 
 <section class="type-location">
 <h3 id="section-location">Location</h3>
@@ -719,7 +720,7 @@ Fuse.Resources
 </a>
 </dd>
 <dt>Package</dt>
-<dd>Fuse.Elements 1.11.2</dd>
+<dd>Fuse.Elements 2.0.0-beta.9</dd>
 </dl>
 </section>
 <section class="table-of-contents">
@@ -727,6 +728,16 @@ Fuse.Resources
 Interface of HttpImageSource
 </h3>
 <section class="table-of-contents-section has-advanced-items">
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-method fa fa-square-o" title="Method"></span>
+<h5 id="clearcache-uno">
+<a href="../../fuse/resources/httpimagesource/clearcache.html">
+ClearCache
+</a>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
 <article class="table-of-contents-item is-advanced">
 <span class="table-of-contents-item-type table-of-contents-item-type-property fa fa-wrench" title="Property"></span>
 <h5 id="defaultpolicy-memorypolicy-uno">
@@ -759,6 +770,40 @@ float
 <p>Specifies the source's pixel density.</p>
 
 </div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxproperty fa fa-wrench" title="UxProperty"></span>
+<h5 id="diskcache-bool-ux">
+<a href="../../fuse/resources/httpimagesource/diskcache.html">
+DiskCache
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../../uno/bool.html">
+bool
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Determines whether we use the disk cache to store downloaded images so that the next time we display an image it will no longer be downloaded from the network. Default is false.</p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxproperty fa fa-wrench" title="UxProperty"></span>
+<h5 id="diskcachepolicy-cachepolicy-ux">
+<a href="../../fuse/resources/httpimagesource/diskcachepolicy.html">
+DiskCachePolicy
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../../fuse/resources/cachepolicy.html">
+CachePolicy
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
 </article>
 
 <article class="table-of-contents-item is-advanced">
@@ -796,6 +841,25 @@ MemoryPolicy
 </h5>
 <div class="table-of-contents-item-brief">
 <p>Specifies a hint for how the image should be managed in memory. See <a href="../../fuse/resources/memorypolicy.html">MemoryPolicy</a>.</p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxproperty fa fa-wrench" title="UxProperty"></span>
+<h5 id="targetsize-int2-ux">
+<a href="../../fuse/resources/httpimagesource/targetsize.html">
+TargetSize
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../../uno/int2.html">
+int2
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>The Target size of the image to resize.</p>
 
 </div>
 </article>
@@ -859,6 +923,21 @@ ImageSourceErrorHandler (object, ImageSourceErrorArgs)
 
 <article class="table-of-contents-item is-advanced">
 <span class="table-of-contents-item-type table-of-contents-item-type-method fa fa-square-o" title="Method"></span>
+<h5 id="getbytes-byte-uno">
+<a href="../../fuse/resources/imagesource/getbytes.html">
+GetBytes
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../../uno/byte.html">
+byte[]
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-method fa fa-square-o" title="Method"></span>
 <h5 id="gettexture-texture2d-uno">
 <a href="../../fuse/resources/imagesource/gettexture.html">
 GetTexture
@@ -883,6 +962,16 @@ IsPinned
 bool
 </a>
 </span>
+<span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
+</h5>
+</article>
+
+<article class="table-of-contents-item is-advanced">
+<span class="table-of-contents-item-type table-of-contents-item-type-method fa fa-square-o" title="Method"></span>
+<h5 id="load-uno">
+<a href="../../fuse/resources/imagesource/load.html">
+Load
+</a>
 <span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
 </h5>
 </article>

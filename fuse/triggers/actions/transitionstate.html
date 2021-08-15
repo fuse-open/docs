@@ -699,6 +699,25 @@ Show advanced things
 <li class="nav-item"><a class="nav-link" href="#section-table-of-contents">Table of Contents</a></li>
 </ul>
 </section>
+<p>An action that controls state of a <a href="../../../fuse/triggers/stategroup.html">StateGroup</a>.</p>
+<h4 id="example">Example</h4>
+<p>The following example displays a red panel that will turn its color in green when clicked.</p>
+<pre><code>&lt;Panel ux:Name=&quot;thePanel&quot; Width=&quot;100&quot; Height=&quot;100&quot;&gt;
+    &lt;StateGroup ux:Name=&quot;stateGroup&quot;&gt;
+        &lt;State ux:Name=&quot;redState&quot;&gt;
+            &lt;Change thePanel.Color=&quot;#f00&quot; Duration=&quot;0.2&quot;/&gt;
+        &lt;/State&gt;
+        &lt;State ux:Name=&quot;greenState&quot;&gt;
+            &lt;Change thePanel.Color=&quot;#0f0&quot; Duration=&quot;0.2&quot;/&gt;
+        &lt;/State&gt;
+    &lt;/StateGroup&gt;
+
+    &lt;Clicked&gt;
+        &lt;TransitionState Value=&quot;greenState&quot; Target=&quot;stateGroup&quot; /&gt;
+    &lt;/Clicked&gt;
+&lt;/Panel&gt;
+</code></pre>
+
 <section class="type-location">
 <h3 id="section-location">Location</h3>
 <dl>
@@ -709,7 +728,7 @@ Fuse.Triggers.Actions
 </a>
 </dd>
 <dt>Package</dt>
-<dd>Fuse.Triggers 1.11.2</dd>
+<dd>Fuse.Triggers 2.0.0-beta.9</dd>
 </dl>
 </section>
 <section class="table-of-contents">
@@ -730,6 +749,10 @@ StateGroup
 </span>
 <span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
 </h5>
+<div class="table-of-contents-item-brief">
+<p>StateGroup to be be transitioned *</p>
+
+</div>
 </article>
 
 <article class="table-of-contents-item is-advanced">
@@ -759,6 +782,25 @@ TransitionStateType
 </span>
 <span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
 </h5>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxproperty fa fa-wrench" title="UxProperty"></span>
+<h5 id="value-state-ux">
+<a href="../../../fuse/triggers/actions/transitionstate/value.html">
+Value
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../../../fuse/triggers/state.html">
+State
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Explicit target state to transition to  *</p>
+
+</div>
 </article>
 
 </section>
