@@ -23,7 +23,7 @@ The triggers/animator system is designed so that it reads almost like an English
 
 ## Animators
 
-As mentioned, we use animators to make changes and animate our UI. There is a bunch of [different animators](https://fuse-open.github.io/docs/fuse/animations/animator) to pick from, but you will find that most of your needs are covered by the three transform-animators, `Move`, `Scale` and `Rotate`, and the generic animator `Change`, which allows us to animate almost any property on any element (like `Color`, `Width`/`Height`, and `Opacity`). 
+As mentioned, we use animators to make changes and animate our UI. There is a bunch of [different animators](https://fuseopen.com/docs/fuse/animations/animator) to pick from, but you will find that most of your needs are covered by the three transform-animators, `Move`, `Scale` and `Rotate`, and the generic animator `Change`, which allows us to animate almost any property on any element (like `Color`, `Width`/`Height`, and `Opacity`). 
 
 A really neat thing about Fuse' declarative animation, is that it automatically knows how to undo its own effects. Say we for example change the color of a `Rectangle` to red using a change animator:
 
@@ -62,7 +62,7 @@ In the following example, we have a rectangle that, while pressed, rotates 180 d
 ### Easing
 
 Animations are linear by default. This means that while they interpolate between the original value and the target value, the value change happens at a constant rate. This can often lead to unrealistic and stiff animations.
-The solution to this problem is to change the easing curve using the `Easing` and `EasingBack` properties. For the cases when we need a truly custom easing curve, you can use the `CubicBezierEasing` class. You can find its reference documentation [here](https://fuse-open.github.io/docs/fuse/animations/cubicbeziereasing).
+The solution to this problem is to change the easing curve using the `Easing` and `EasingBack` properties. For the cases when we need a truly custom easing curve, you can use the `CubicBezierEasing` class. You can find its reference documentation [here](https://fuseopen.com/docs/fuse/animations/cubicbeziereasing).
 
 To get started, the `CubicInOut` easing tends to give a nice result for general use-cases.
 
@@ -123,7 +123,7 @@ The various triggers in Fuse can be roughly grouped in to three categories: whil
 
 ### "While" triggers
 
-"While" triggers have in common that they represent a certain state, which is either active or inactive. Some common example are `WhilePressed`, `WhileActive`, `WhileDragging` and `WhileTrue`. There are a bunch more, and they are all listed [here](https://fuse-open.github.io/docs/fuse/triggers/trigger).
+"While" triggers have in common that they represent a certain state, which is either active or inactive. Some common example are `WhilePressed`, `WhileActive`, `WhileDragging` and `WhileTrue`. There are a bunch more, and they are all listed [here](https://fuseopen.com/docs/fuse/triggers/trigger).
 
 ### Pulse triggers (one-off events)
 
@@ -143,7 +143,7 @@ Some triggers do not play back their animations based on a timer, but instead in
 
 ## Custom `Navigator` page transitions
 
-Using the `Transition` trigger, we can completely customize how pages enter and exit the screen when being navigated to and from using the `Navigator` class. You can read more about how it is used in the [transition reference docs](https://fuse-open.github.io/docs/fuse/triggers/transition).
+Using the `Transition` trigger, we can completely customize how pages enter and exit the screen when being navigated to and from using the `Navigator` class. You can read more about how it is used in the [transition reference docs](https://fuseopen.com/docs/fuse/triggers/transition).
 
 ## Custom `PageControl` page transitions
 

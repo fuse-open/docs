@@ -9,7 +9,7 @@ Internet access is required during installation.
 
 
 ## Fuse
-Download Fuse for Windows from [the downloads page](https://fuse-open.github.io/downloads) and run the installer.
+Download Fuse for Windows from [the downloads page](https://fuseopen.com/downloads) and run the installer.
 
 We can start the Fuse daemon simply by typing `fuse` on the command prompt. **Note: You may have to log out and in again (or simply reboot) to make sure the path for fuse is properly updated.**
 When Fuse is running we can see its tray icon in the task bar. Our dashboard should also pop up right after running `fuse` for the first time. The dashboard may always be started from the tray icon.

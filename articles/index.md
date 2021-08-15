@@ -16,11 +16,11 @@ Fuse values *brevity*, *reactive programming* and *expressiveness*. We strive to
 
 ## Fuse license
 
-The Fuse platform is free and [open source](https://fuse-open.github.io) (MIT license), with a large and passionate [online community](https://fusecommunity.slack.com). 
+The Fuse platform is free and [open source](https://fuseopen.com) (MIT license), with a large and passionate [online community](https://fusecommunity.slack.com). 
 
 ### Let's go!
 
-The best way to gain a quick, early overview is by [following our quickstart tutorial](basics/quickstart.md). There's also a wide range of ready-to-run examples [on our Examples-page](https://fuse-open.github.io/examples/), as well as a list of [tutorials on Youtube](https://www.youtube.com/playlist?list=PLdlqWm6b-XALJgM3fGa4q95Yipsgb8Q1o).
+The best way to gain a quick, early overview is by [following our quickstart tutorial](basics/quickstart.md). There's also a wide range of ready-to-run examples [on our Examples-page](https://fuseopen.com/examples/), as well as a list of [tutorials on Youtube](https://www.youtube.com/playlist?list=PLdlqWm6b-XALJgM3fGa4q95Yipsgb8Q1o).
 
 The side-menu covers most topics you'd need to learn Fuse, such as [setting up navigation](navigation/navigation.html), [working with layout](layout/layout.html), how you [animate elements](fuse/animations/animator.html) and a whole lot more.
 

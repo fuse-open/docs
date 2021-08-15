@@ -185,4 +185,4 @@ public static void SetState(Visual v, bool loading)
 ```
 
 
-For further details, please see the [change log](https://fuse-open.github.io/downloads).
+For further details, please see the [change log](https://fuseopen.com/downloads).

@@ -4,7 +4,7 @@ This is a step-by-step tutorial that takes you through setting up Fuse and creat
 
 ## Installation
 
-The latest version of Fuse can always be downloaded from the <a target="_blank" href="https://fuse-open.github.io/downloads">downloads page</a>. Download the installer for your operating system and open it to start the installation procedure.
+The latest version of Fuse can always be downloaded from the <a target="_blank" href="https://fuseopen.com/downloads">downloads page</a>. Download the installer for your operating system and open it to start the installation procedure.
 
 <blockquote class="callout-info">
 
@@ -121,4 +121,4 @@ If you ever need to include non-standard packages or Uno code in your project th
 
 ## What next?
 
-Now that you're all set up, it's time to get started learning the fundamentals of Fuse. A good next step is to take a look at the [Introduction to Fuse](https://fuse-open.github.io/docs/basics/introduction-to-fuse) module, which will take you through the fundamentals of Fuse. If you prefer learning by example, the [hikr tutorial](https://fuse-open.github.io/docs/tutorial/tutorial) will lead you through the creation of a simple hiking app, while explaining each step along the way. If you simply want to start digging into example code and play around on your own, there is a ton of content to look at on our [examples page](https://fuse-open.github.io/examples) as well as in the [fuse-samples github repo](https://www.github.com/fusetools/fuse-samples/).
+Now that you're all set up, it's time to get started learning the fundamentals of Fuse. A good next step is to take a look at the [Introduction to Fuse](https://fuseopen.com/docs/basics/introduction-to-fuse) module, which will take you through the fundamentals of Fuse. If you prefer learning by example, the [hikr tutorial](https://fuseopen.com/docs/tutorial/tutorial) will lead you through the creation of a simple hiking app, while explaining each step along the way. If you simply want to start digging into example code and play around on your own, there is a ton of content to look at on our [examples page](https://fuseopen.com/examples) as well as in the [fuse-samples github repo](https://github.com/fuse-open/fuse-samples/).

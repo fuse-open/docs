@@ -6,7 +6,7 @@ Depending on your background (experienced coder, rookie coder, experienced desig
 
 ## Setup
 
-Simply [download the latest version of Fuse](https://fuse-open.github.io/downloads/), install it and you're ready to go.
+Simply [download the latest version of Fuse](https://fuseopen.com/downloads/), install it and you're ready to go.
 
 Installation should be a breeze, but in case something iffy happens there are also detailed setup instructions for [macOS](installation/setup-install-osx.md) and [Windows](installation/setup-install-win.md), plus [uninstall instructions for macOS](https://gist.github.com/Tapped/daa78c08882f33b0c7c3) if you need them.
 
@@ -167,6 +167,6 @@ From the command line you do this by typing
 
 ### Okay, that was easy! What's next?
 
-Once you are comfortable with the basics above, we suggest you take a look at our [end-to-end tutorial](../tutorial-models/tutorial.md), where we'll build a hike-tracking app called hikr from scratch. You should also check out the [Example section](https://fuse-open.github.io/examples/)!
+Once you are comfortable with the basics above, we suggest you take a look at our [end-to-end tutorial](../tutorial-models/tutorial.md), where we'll build a hike-tracking app called hikr from scratch. You should also check out the [Example section](https://fuseopen.com/examples/)!
 
 We are also happy to answer all your questions in the [Forums](https://forums.fusetools.com/)

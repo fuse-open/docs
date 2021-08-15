@@ -702,7 +702,7 @@ var filteredItems = conditionObservable.flatMap(function(cond){
 });
 ```
 
-Take a look [here](https://github.com/fusetools/fuse-samples/tree/master/Samples/FilterOnObservableCondition) for a complete sample.
+Take a look [here](https://github.com/fuse-open/fuse-samples/tree/master/Samples/FilterOnObservableCondition) for a complete sample.
 
 This lets you create an Observable which pushes changes whenever the condition or the data changes.
 

@@ -7,7 +7,7 @@ This tutorial gives a high level overview of how Fuse's main navigation system w
 
 This example app show how to use the navigation system in Fuse:
 
-* [Cattr - A basic multi-view app example in Fuse.](https://github.com/fusetools/fuse-samples/tree/master/Samples/cattr)
+* [Cattr - A basic multi-view app example in Fuse.](https://github.com/fuse-open/fuse-samples/tree/master/Samples/cattr)
 
 ## Creating pages
 

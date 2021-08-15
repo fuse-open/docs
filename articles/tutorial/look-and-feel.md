@@ -206,7 +206,7 @@ For our pressing animation, we can specify the `QuadraticOut` easing, which is s
 
 Now when we try this, our selectors scale very naturally when pressed, just like we wanted. Awesome!
 
-> Note: For more information about triggers and animators, check out our [triggers and animation](https://fuse-open.github.io/docs/fuse/triggers/trigger) article and [video](https://www.youtube.com/watch?v=bT1npBvXEzw)!
+> Note: For more information about triggers and animators, check out our [triggers and animation](https://fuseopen.com/docs/fuse/triggers/trigger) article and [video](https://www.youtube.com/watch?v=bT1npBvXEzw)!
 
 Now that we've gotten our items up-to-spec, we've got one more thing to add to this page before it's complete, and that's the "Recent Hikes" title text. This should be pretty easy; we basically want some white text that's docked to the top of the screen with some margin etc. First, let's solve the docking part. We'll move the UX code for our items into a [DockPanel](api:fuse/controls/dockpanel):
 

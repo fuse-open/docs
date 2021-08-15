@@ -478,7 +478,7 @@ file that we used to add elements to the AndroidManifest:
 
 ## Get the full project
 
-The full project which works on both iOS and Android can be downloaded [here](https://github.com/fusetools/fuse-samples/tree/feature-NativeFacebookLogin/Samples/NativeFacebookLogin).
+The full project which works on both iOS and Android can be downloaded [here](https://github.com/fuse-open/fuse-samples/tree/feature-NativeFacebookLogin/Samples/NativeFacebookLogin).
 
 The full project also hooks up the login functionality in a
 [NativeModule](../native-interop/native-js-modules.md) such that the login

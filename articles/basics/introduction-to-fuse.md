@@ -270,7 +270,7 @@ The following figure shows how objects respond to a handful of the alignment opt
 
 ### Layout types
 
-Now it's time to learn about some layout types and how they can be combined to create almost any app layout you can think of. You'll be introduced to three layout types: `StackPanel`, `DockPanel` and `Grid`. Note however that these aren't the only layout types in Fuse. They are however by far the most commonly used ones, and cover most of the use-cases you'll run into. You'll see more of them listed in the outline of [the docs](https://fuse-open.github.io/docs).
+Now it's time to learn about some layout types and how they can be combined to create almost any app layout you can think of. You'll be introduced to three layout types: `StackPanel`, `DockPanel` and `Grid`. Note however that these aren't the only layout types in Fuse. They are however by far the most commonly used ones, and cover most of the use-cases you'll run into. You'll see more of them listed in the outline of [the docs](https://fuseopen.com/docs).
 
 <blockquote class="callout-info">
 
@@ -750,4 +750,4 @@ That being said, Uno does have some very neat features, which, if you envision y
 Congratulations on getting through the introduction to Fuse. We've covered a lot of the basics, but there is still a ton of things to learn. Going forward you have a few options.
 
 - The [Hikr tutorial](articles:tutorial-models/tutorial.md) goes through creating an app from scratch, covering everything from layout and animation, to navigation and app structure, while creating a real app prototype in the process.
-- If you like just exploring by yourself and learning by example, you should check out our [examples page](https://fuse-open.github.io/examples), which contains a bunch of interesting layout and animation examples. For more code oriented (as well as visual) examples, checkout the open source github repo [fuse-samples](https://www.github.com/fusetools/fuse-samples/).
+- If you like just exploring by yourself and learning by example, you should check out our [examples page](https://fuseopen.com/examples), which contains a bunch of interesting layout and animation examples. For more code oriented (as well as visual) examples, checkout the open source github repo [fuse-samples](https://github.com/fuse-open/fuse-samples/).
