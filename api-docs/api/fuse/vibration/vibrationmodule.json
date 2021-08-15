@@ -22,7 +22,7 @@
       "namespaceTitle": "Fuse.Vibration",
       "namespaceUri": "fuse/vibration",
       "packageName": "Fuse.Vibration",
-      "packageVersion": "1.11.2"
+      "packageVersion": "2.0.0-beta.9"
     },
     "inheritance": {
       "root": {
@@ -146,7 +146,7 @@
     },
     "comment": {
       "brief": "Allows you to use the device's vibration functionality.",
-      "full": "Allows you to use the device's vibration functionality.\n\nYou need to add a reference to `\"Fuse.Vibration\"` in your project file to use this feature.\n\n## Example\n\nThe following code vibrates the device for 0.8 seconds.\n\n    var vibration = require('FuseJS/Vibration');\n    vibration.vibrate(0.8);",
+      "full": "Allows you to use the device's vibration functionality.\n\nYou need to add a reference to `\"Fuse.Vibration\"` in your project file to use this feature.\n\n## Example\n\nThe following code vibrates the device for 0.8 seconds.\n\n    var vibration = require('FuseJS/Vibration');\n    vibration.vibrate(0.8);\n    // works on iOS using TapticEngine\n    vibration.vibrate('medium')",
       "attributes": {
         "scriptModule": "FuseJS/Vibration"
       }
@@ -318,6 +318,8 @@
         "items": [
           {
             "comment": {
+              "brief": "vibrationType (string) the type of vibration (works only on iOS using TapticEngine). Available vibrationType are : `soft`, `rigid`, `light`, `medium`, `heavy`, `success`, `warning`, `error`, `selection`",
+              "full": "vibrationType (string) the type of vibration (works only on iOS using TapticEngine). Available vibrationType are : `soft`, `rigid`, `light`, `medium`, `heavy`, `success`, `warning`, `error`, `selection`",
               "attributes": {
                 "scriptMethod": {
                   "name": "vibrate",
@@ -329,7 +331,7 @@
                   {
                     "name": "seconds",
                     "typeHint": "double",
-                    "description": "seconds the vibration should last. 1 = 10 seconds, 0.5 = 5 seconds"
+                    "description": "seconds the vibration should last. 1 = 10 seconds, 0.5 = 5 seconds or"
                   }
                 ]
               }

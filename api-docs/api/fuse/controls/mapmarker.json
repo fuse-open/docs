@@ -24,7 +24,7 @@
       "namespaceTitle": "Fuse.Controls",
       "namespaceUri": "fuse/controls",
       "packageName": "Fuse.Maps",
-      "packageVersion": "1.11.2"
+      "packageVersion": "2.0.0-beta.9"
     },
     "inheritance": {
       "root": {
@@ -210,7 +210,12 @@
     },
     "comment": {
       "brief": "Adds a map marker to a @MapView",
-      "full": "Adds a map marker to a @MapView\n\nTo annotate the map, you must decorate it with `MapMarker` nodes. `MapMarker` nodes are simple value objects that contain a `Latitude`, a `Longitude` and a `Label`\n\n```HTML\n<NativeViewHost>\n    <MapView>\n        <MapMarker Label=\"Fuse HQ\" Latitude=\"59.9115573\" Longitude=\"10.73888\" />\n    </MapView>\n</NativeViewHost>\n```\n\nIf you need to generate MapMarkers dynamically from JS, data binding and @(Each) are your friends. While we're scripting we might as well hook into the MapMarker's `Tapped` event to detect when the user has selected a marker.\n\n```HTML\n<JavaScript>\n    var Observable = require(\"FuseJS/Observable\");\n    module.exports = {\n        markers : Observable({latitude:30.282786, longitude:-97.741736, label:\"Austin, Texas\", hometown:true}),\n        onMarkerTapped : function(args) {\n            console.log(\"Marker tapped: \"+args.data.hometown);\n        }\n    }\n</JavaScript>\n\n<NativeViewHost>\n    <MapView>\n        <Each Items={markers}>\n            <MapMarker Latitude=\"{latitude}\" Longitude=\"{longitude}\" Label=\"{label}\" Tapped={onMarkerTapped} />\n        </Each>\n    </MapView>\n</NativeViewHost>\n```"
+      "full": "Adds a map marker to a @MapView\n\nTo annotate the map, you must decorate it with `MapMarker` nodes. `MapMarker` nodes are simple value objects that contain a `Latitude`, a `Longitude` and a `Label`\n\n```HTML\n<NativeViewHost>\n    <MapView>\n        <MapMarker Label=\"Fuse HQ\" Latitude=\"59.9115573\" Longitude=\"10.73888\" />\n    </MapView>\n</NativeViewHost>\n```\n\nIf you need to generate MapMarkers dynamically from JS, data binding and @(Each) are your friends. While we're scripting we might as well hook into the MapMarker's `Tapped` event to detect when the user has selected a marker.\n\n```HTML\n<JavaScript>\n    var Observable = require(\"FuseJS/Observable\");\n    module.exports = {\n        markers : Observable({latitude:30.282786, longitude:-97.741736, label:\"Austin, Texas\", hometown:true}),\n        onMarkerTapped : function(args) {\n            console.log(\"Marker tapped: \"+args.data.hometown);\n        }\n    }\n</JavaScript>\n\n<NativeViewHost>\n    <MapView>\n        <Each Items={markers}>\n            <MapMarker Latitude=\"{latitude}\" Longitude=\"{longitude}\" Label=\"{label}\" Tapped={onMarkerTapped} />\n        </Each>\n    </MapView>\n</NativeViewHost>\n```",
+      "attributes": {
+        "seeAlso": [
+          "Fuse.Controls.MapView"
+        ]
+      }
     }
   },
   "tableOfContents": {

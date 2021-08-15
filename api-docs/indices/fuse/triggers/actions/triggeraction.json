@@ -21,6 +21,28 @@
   "descendants": [
     {
       "comment": {
+        "brief": "This is trigger action for taking biometric authentication. Both iOS and Android is using Fingerprint/Touch ID or Face Recognition/Face ID sensor depending on what sensor are available on the device.\nYou need to add a reference to `\"Fuse.Auth\"` in your project file to use this feature.",
+        "full": "This is trigger action for taking biometric authentication. Both iOS and Android is using Fingerprint/Touch ID or Face Recognition/Face ID sensor depending on what sensor are available on the device.\nYou need to add a reference to `\"Fuse.Auth\"` in your project file to use this feature.\n\n## Example\n\n    The following example shows how to use it:\n\n        <JavaScript>\n            var Observable = require('FuseJS/Observable');\n            var status = Observable();\n            var statusMessage = Observable();\n\n            module.exports = {\n                status,\n                statusMessage\n                resultHandler: function(data) {\n                    status.value = data.result; // bool value indicating whether true value when it succeed or false value if it failed\n                    statusMessage.value = data.message;\n                }\n            };\n        </JavaScript>\n        <Panel>\n            <Button Text=\"Sign In\" Alignment=\"Center\">\n                <Clicked>\n                    <Authenticate PromptMessage=\"We need your biometric data for Sign In\" Handler=\"{resultHandler}\" />\n                </Clicked>\n            </Button>\n        </Panel>\n\nWhen Using FaceID on iOS, it is mandatory to add description about why you need authentication using FaceID. You can add the description by adding this config on your `unoproj` file\n\n        \"iOS\": {\n            \"PList\": {\n                \"NSFaceIDUsageDescription\": \"Require access to FaceID for authenticating\"\n            }\n        }"
+      },
+      "id": {
+        "id": "fuse/authenticate",
+        "parentId": "fuse",
+        "type": "UxClass",
+        "modifiers": [
+          "public"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/authenticate",
+        "href": "fuse/authenticate"
+      },
+      "titles": {
+        "indexTitle": "Authenticate",
+        "fullyQualifiedIndexTitle": "Fuse.Authenticate"
+      }
+    },
+    {
+      "comment": {
         "brief": "Scrolls a @ScrollView to a given position when triggered.",
         "full": "Scrolls a @ScrollView to a given position when triggered.\n\nNote that this action is deprecated, you should now use @ScrollTo instead."
       },
@@ -325,7 +347,7 @@
       "id": {
         "id": "fuse/navigation/routermodify",
         "parentId": "fuse/navigation",
-        "type": "UxClass",
+        "type": "Class",
         "modifiers": [
           "public"
         ]
@@ -337,6 +359,28 @@
       "titles": {
         "indexTitle": "RouterModify",
         "fullyQualifiedIndexTitle": "Fuse.Navigation.RouterModify"
+      }
+    },
+    {
+      "comment": {
+        "brief": "This is trigger action for taking Platform SignIn. Platform SignIn is a SignIn mechanism that use `Sign In With Apple` on iOS and `Google SignIn` on Android.",
+        "full": "This is trigger action for taking Platform SignIn. Platform SignIn is a SignIn mechanism that use `Sign In With Apple` on iOS and `Google SignIn` on Android.\n\nPlatform SignIn is only available on the mobile target platform (iOS and Android).\n\nYou need to add a reference to `\"Fuse.Auth\"` in your project file to use this feature.\n\n> For more information on what are the pre-request when implementing `Sign In With Apple` or `Google Sign In`, you can check the documentation on the apple developer website or android developer website\n> for iOS add \"SystemCapabilities\": { \"SignInWithApple\":true }  in the unoproj file.\n\n## Example\n\n    The following example shows how to use it:\n\n        ```XML\n            <App>\n                <JavaScript>\n                    var Observable = require('FuseJS/Observable');\n                    var status = Observable();\n                    var statusMessage = Observable();\n\n                    module.exports = {\n                        resultHandler: function(result) {\n                            console.dir(result);\n                            // result is json object containing these properties :\n                            // status -> boolean value indicating whether sign in action success or fail\n                            // email -> user email that has been sign in / sign up\n                            // firstName -> User firstname\n                            // lastName -> User Lastname\n                            // userId -> User uniqe Id\n                        }\n                    }\n                </JavaScript>\n                <Button Text=\"Sign In\">\n                    <Clicked>\n                        <PlatformSignIn Handler=\"{resultHandler}\" />\n                    </Clicked>\n                </Button>\n            </App\n        ```\n\n> When the callback handler is fired for the first time and the result object of `status` property is true, save those logged user information immediately to the server especially on iOS,\n>  because as stated in the documentation on the apple website, the Sign In With Apple will only send userId informataion the next time user do the authentication again"
+      },
+      "id": {
+        "id": "fuse/platformsignin",
+        "parentId": "fuse",
+        "type": "UxClass",
+        "modifiers": [
+          "public"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/platformsignin",
+        "href": "fuse/platformsignin"
+      },
+      "titles": {
+        "indexTitle": "PlatformSignIn",
+        "fullyQualifiedIndexTitle": "Fuse.PlatformSignIn"
       }
     },
     {
@@ -600,6 +644,24 @@
       }
     },
     {
+      "id": {
+        "id": "fuse/triggers/actions/launchapp",
+        "parentId": "fuse/triggers/actions",
+        "type": "UxClass",
+        "modifiers": [
+          "public"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/triggers/actions/launchapp",
+        "href": "fuse/triggers/actions/launchapp"
+      },
+      "titles": {
+        "indexTitle": "LaunchApp",
+        "fullyQualifiedIndexTitle": "Fuse.Triggers.Actions.LaunchApp"
+      }
+    },
+    {
       "comment": {
         "brief": "Launch the default email application with an optional template",
         "full": "Launch the default email application with an optional template\n\nYou'll find this trigger action in the Fuse.Launcher package, which have to be referenced from your uno project.\nFor example:\n\n    {\n        \"Packages\": [\n            \"Fuse\",\n            \"FuseJS\",\n            \"Fuse.Launcher\"\n        ]\n    }\n\n> Note it's expected that the 'To' parameter is set\n\n## Example\n\n    <StackPanel Margin=\"20\">\n        <Button Margin=\"10\" Text=\"Send email\">\n            <Clicked>\n                <LaunchEmail To=\"email@example.com\" Subject=\"Test\" CarbonCopy=\"\" BlindCarbonCopy=\"\" Message=\"Hello world!\" />\n            </Clicked>\n        </Button>\n    </StackPanel>"
@@ -646,7 +708,7 @@
     {
       "comment": {
         "brief": "Launch the default browser for an URL or open files with its corresponding default application",
-        "full": "Launch the default browser for an URL or open files with its corresponding default application\n\nYou'll find this trigger action in the Fuse.Launcher package, which have to be referenced from your uno project.\nFor example:\n\n    {\n        \"Packages\": [\n            \"Fuse\",\n            \"FuseJS\",\n            \"Fuse.Launcher\"\n        ]\n    }\n\n## Example\n\n    <StackPanel Margin=\"20\">\n        <Button Margin=\"10\" Text=\"Go to Fusetools\">\n            <Clicked>\n                <LaunchUri Uri=\"https://www.fusetools.com/\" />\n            </Clicked>\n        </Button>\n    </StackPanel>\n\nNote: you can pass any URI string to `LaunchUri`, but how it is handled will depend on the target platform and particular device settings.\n\nThere are several common URI schemes that you can use on both Android and iOS:\n    http://<website address>\n    https://<website address>\n    tel:<phone number>\n    sms:<phone number>\n\nOther platform-specific URI schemes are known to be working fine, for example `geo:<parameters>` launches Maps application on Android\nand `facetime:<parameters>` launches a Facetime video call on iOS.\nMore information on supported URI schemes: [on Android](https://developer.android.com/guide/components/intents-common.html) and [on iOS](https://developer.apple.com/library/content/featuredarticles/iPhoneURLScheme_Reference/Introduction/Introduction.html)."
+        "full": "Launch the default browser for an URL or open files with its corresponding default application\n\nYou'll find this trigger action in the Fuse.Launcher package, which have to be referenced from your uno project.\nFor example:\n```JSON\n    {\n        \"Packages\": [\n            \"Fuse\",\n            \"FuseJS\",\n            \"Fuse.Launcher\"\n        ]\n    }\n```\n\n## Example\n```XML\n    <StackPanel Margin=\"20\">\n        <Button Margin=\"10\" Text=\"Go to Fusetools\">\n            <Clicked>\n                <LaunchUri Uri=\"https://www.fusetools.com/\" />\n            </Clicked>\n        </Button>\n    </StackPanel>\n```\n\nNote: you can pass any URI string to `LaunchUri`, but how it is handled will depend on the target platform and particular device settings.\n\nThere are several common URI schemes that you can use on both Android and iOS:\n    http://<website address>\n    https://<website address>\n    tel:<phone number>\n    sms:<phone number>\n\nOther platform-specific URI schemes are known to be working fine, for example `geo:<parameters>` launches Maps application on Android\nand `facetime:<parameters>` launches a Facetime video call on iOS.\nMore information on supported URI schemes: [on Android](https://developer.android.com/guide/components/intents-common.html) and [on iOS](https://developer.apple.com/library/content/featuredarticles/iPhoneURLScheme_Reference/Introduction/Introduction.html)."
       },
       "id": {
         "id": "fuse/triggers/actions/launchuri",
@@ -686,6 +748,29 @@
       "titles": {
         "indexTitle": "LoadHtml",
         "fullyQualifiedIndexTitle": "Fuse.Triggers.Actions.LoadHtml"
+      }
+    },
+    {
+      "comment": {
+        "brief": "`LoadImage` is a trigger action to fetch the image data for the `ImageFill` or `Image`.\nThis Trigger action is useful when we set the `AutoLoad` property of the `Image` component or `ImageFill` brush to `false` to make it lazy load,\nand then using this trigger action to actually load it",
+        "full": "`LoadImage` is a trigger action to fetch the image data for the `ImageFill` or `Image`.\nThis Trigger action is useful when we set the `AutoLoad` property of the `Image` component or `ImageFill` brush to `false` to make it lazy load,\nand then using this trigger action to actually load it\n\n## Example\n\nThe following example shows how to use:\n\n    <StackPanel>\n        <Image ux:Name=\"img\" Url=\"https://picsum.photos/600/300\" AutoLoad=\"false\" Height=\"200\" />\n        <Button Text=\"Load Image\">\n            <Clicked>\n                <LoadImage Image=\"img\" />\n            </Clicked>\n        </Button>\n    </StackPanel>"
+      },
+      "id": {
+        "id": "fuse/triggers/actions/loadimage",
+        "parentId": "fuse/triggers/actions",
+        "type": "UxClass",
+        "modifiers": [
+          "public",
+          "sealed"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/triggers/actions/loadimage",
+        "href": "fuse/triggers/actions/loadimage"
+      },
+      "titles": {
+        "indexTitle": "LoadImage",
+        "fullyQualifiedIndexTitle": "Fuse.Triggers.Actions.LoadImage"
       }
     },
     {
@@ -773,29 +858,6 @@
       "titles": {
         "indexTitle": "PlaybackAction",
         "fullyQualifiedIndexTitle": "Fuse.Triggers.Actions.PlaybackAction"
-      }
-    },
-    {
-      "comment": {
-        "brief": "Play to a specific point in a timeline",
-        "full": "Play to a specific point in a timeline\n\n## Example\n\n    <StackPanel>\n        <Rectangle Width=\"150\" Height=\"150\" Margin=\"60\" ux:Name=\"rect\" CornerRadius=\"10\" >\n            <Stroke ux:Name=\"rectStroke\" Offset=\"10\" Width=\"3\" Color=\"#3579e6\" />\n\n            <Timeline  ux:Name=\"timeline\" TimeMultiplier=\"0.4\">\n                <Rotate>\n                    <Keyframe DegreesZ=\"360\" Time=\"1\" />\n                </Rotate>\n                <Change Target=\"rect.Color\">\n                    <Keyframe Value=\"#3579e6\" Time=\"1\" />\n                </Change>\n            </Timeline>\n        </Rectangle>\n\n        <Slider Width=\"250\" ux:Name=\"targetProgress\" Value=\"0.5\" Minimum=\"0\" Maximum=\"1\" />\n        <Button Text=\"Animate to\" Alignment=\"Bottom\">\n            <Clicked>\n                <PlayTo Target=\"timeline\" Progress=\"{ReadProperty targetProgress.Value}\" />\n            </Clicked>\n        </Button>\n\n        <Button ux:Name=\"resume\" Text=\"Resume\" Alignment=\"Bottom\">\n            <Clicked>\n                <Resume Target=\"timeline\" />\n            </Clicked>\n        </Button>\n\n        <Button Text=\"Pause\" Alignment=\"Bottom\">\n            <Clicked>\n                <Pause Target=\"timeline\" />\n            </Clicked>\n        </Button>\n\n        <Button Text=\"Stop\" Alignment=\"Bottom\">\n            <Clicked>\n                <Stop Target=\"timeline\" />\n            </Clicked>\n        </Button>\n    </StackPanel>"
-      },
-      "id": {
-        "id": "fuse/triggers/actions/playto",
-        "parentId": "fuse/triggers/actions",
-        "type": "UxClass",
-        "modifiers": [
-          "public",
-          "sealed"
-        ]
-      },
-      "uri": {
-        "idUri": "fuse/triggers/actions/playto",
-        "href": "fuse/triggers/actions/playto"
-      },
-      "titles": {
-        "indexTitle": "PlayTo",
-        "fullyQualifiedIndexTitle": "Fuse.Triggers.Actions.PlayTo"
       }
     },
     {
@@ -1015,6 +1077,50 @@
     },
     {
       "comment": {
+        "brief": "Set Status Bar UI",
+        "full": "Set Status Bar UI\n\n## Example\n\n    <Page>\n        <Activated>\n            <SetStatusBarUI Style=\"Dark\" Color=\"#FFF\" IsVisible=\"true\" />\n        </Activated>\n    </Page>"
+      },
+      "id": {
+        "id": "fuse/triggers/actions/setstatusbarui",
+        "parentId": "fuse/triggers/actions",
+        "type": "UxClass",
+        "modifiers": [
+          "public"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/triggers/actions/setstatusbarui",
+        "href": "fuse/triggers/actions/setstatusbarui"
+      },
+      "titles": {
+        "indexTitle": "SetStatusBarUI",
+        "fullyQualifiedIndexTitle": "Fuse.Triggers.Actions.SetStatusBarUI"
+      }
+    },
+    {
+      "comment": {
+        "brief": "Set Screen Orientation",
+        "full": "Set Screen Orientation\n\n## Example\n\n    <Page>\n        <Activated>\n            <SetWindowOrientation To=\"LandscapeLeft\" />\n        </Activated>\n    </Page>"
+      },
+      "id": {
+        "id": "fuse/triggers/actions/setwindoworientation",
+        "parentId": "fuse/triggers/actions",
+        "type": "UxClass",
+        "modifiers": [
+          "public"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/triggers/actions/setwindoworientation",
+        "href": "fuse/triggers/actions/setwindoworientation"
+      },
+      "titles": {
+        "indexTitle": "SetWindowOrientation",
+        "fullyQualifiedIndexTitle": "Fuse.Triggers.Actions.SetWindowOrientation"
+      }
+    },
+    {
+      "comment": {
         "brief": "Makes an @Element visible by setting `Visibility` to `Visible`.",
         "full": "Makes an @Element visible by setting `Visibility` to `Visible`.\n\n## Basic syntax\n\n    <Show TargetNode=\"myElement\" />\n\n## Example\n\n    <Grid RowCount=\"3\" ColumnCount=\"1\">\n        <Button Text=\"Show the elements\">\n            <Clicked>\n                <Show TargetNode=\"hiddenElement\" />\n                <Show TargetNode=\"collapsedElement\" />\n            </Clicked>\n        </Button>\n\n        <Panel ux:Name=\"hiddenElement\" Visibility=\"Hidden\" Background=\"Blue\" />\n        <Panel ux:Name=\"collapsedElement\" Visibility=\"Collapsed\" Background=\"Red\" />\n    </Grid>"
       },
@@ -1148,6 +1254,10 @@
       }
     },
     {
+      "comment": {
+        "brief": "An action that controls state of a @StateGroup.",
+        "full": "An action that controls state of a @StateGroup.\n\n## Example\nThe following example displays a red panel that will turn its color in green when clicked.\n\n    <Panel ux:Name=\"thePanel\" Width=\"100\" Height=\"100\">\n        <StateGroup ux:Name=\"stateGroup\">\n            <State ux:Name=\"redState\">\n                <Change thePanel.Color=\"#f00\" Duration=\"0.2\"/>\n            </State>\n            <State ux:Name=\"greenState\">\n                <Change thePanel.Color=\"#0f0\" Duration=\"0.2\"/>\n            </State>\n        </StateGroup>\n\n        <Clicked>\n            <TransitionState Value=\"greenState\" Target=\"stateGroup\" />\n        </Clicked>\n    </Panel>"
+      },
       "id": {
         "id": "fuse/triggers/actions/transitionstate",
         "parentId": "fuse/triggers/actions",
@@ -1186,8 +1296,8 @@
     },
     {
       "comment": {
-        "brief": "Vibrate the device for a duration",
-        "full": "Vibrate the device for a duration\n\nYou'll find this trigger action in the Fuse.Vibration package, which have to be referenced from your uno project.\nFor example:\n\n    {\n        \"Packages\": [\n            \"Fuse\",\n            \"FuseJS\",\n            \"Fuse.Vibration\"\n        ]\n      }\n\n## Example\n\n    <StackPanel Margin=\"20\">\n        <Button Margin=\"10\" Text=\"Vibrate\">\n            <Clicked>\n                <Vibrate Duration=\"5\" />\n            </Clicked>\n        </Button>\n    </StackPanel>"
+        "brief": "Vibrate the device for a duration or by vibration type (only on iOS)",
+        "full": "Vibrate the device for a duration or by vibration type (only on iOS)\n\nYou'll find this trigger action in the Fuse.Vibration package, which have to be referenced from your uno project.\nFor example:\n\n    {\n        \"Packages\": [\n            \"Fuse\",\n            \"FuseJS\",\n            \"Fuse.Vibration\"\n        ]\n      }\n\n## Example\n\n    <StackPanel Margin=\"20\">\n        <Button Margin=\"10\" Text=\"Vibrate\">\n            <Clicked>\n                <Vibrate Duration=\"5\" />\n            </Clicked>\n        </Button>\n    </StackPanel>\n\nOn iOS you can do vibration by leveraging Taptic Engine. There are 9 types of vibration :\n* Soft\n* Rigid\n* Light\n* Medium\n* Heavy\n* Success\n* Warning\n* Error\n* Selection\nTo activate it, just pass those value to `VibrationType` property\n\n##Example\n\n    <StackPanel Margin=\"20\">\n        <!-- Works on iOS using Taptic Engine -->\n        <Button Margin=\"10\" Text=\"Heavy Vibrate\">\n            <Clicked>\n                <Vibrate VibrationType=\"Heavy\" />\n            </Clicked>\n        </Button>\n    </StackPanel>"
       },
       "id": {
         "id": "fuse/vibration/vibrate",

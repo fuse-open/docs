@@ -50,6 +50,56 @@
               "indexTitle": "StorageModule",
               "fullyQualifiedIndexTitle": "Fuse.Storage.StorageModule"
             }
+          },
+          {
+            "comment": {
+              "brief": "`FuseJS/UserSettings` module provides key-value pairs mechanism to store and retrieve primitive data types (string, number, boolean) as well as an array and json object.\nYou can use this module to store information such as configuration data, application states etc.",
+              "full": "`FuseJS/UserSettings` module provides key-value pairs mechanism to store and retrieve primitive data types (string, number, boolean) as well as an array and json object.\nYou can use this module to store information such as configuration data, application states etc.\n\n> `UserSettings` module is implemented atop NSUserDefaults on iOS and Shared Preferences on Android\n\n## Example\n\n    <JavaScript>\n        var userSettings = require(\"FuseJS/UserSettings\")\n\n        userSettings.putString('email', 'john.appleseed@example.com');\n        userSettings.putString('password', 's3c1ReT');\n        userSettings.putString('api_token', '73awnljqurelcvxiy832a');\n        userSettings.putBoolean('logged', true);\n        userSettings.putNumber('state_num', 2);\n        userSettings.putArray('preferences', ['Technology', 'Cars', 'Foods']);\n        userSettings.putObject('profile', {\n            'first_name': 'John',\n            'last_name': 'Appleseed',\n            'gender': 'male',\n            'address': '5 avenue'\n            'age': 25,\n            'married': false\n        });\n\n        var username = userSettings.getString('username');\n        var password = userSettings.getString('password');\n        var api_token = userSettings.getString('api_token');\n        var logged = userSettings.getBoolean('logged');\n        var state_num = userSettings.getNumber('state_num');\n        var preferences = userSettings.getArray('preferences');\n        var profile = userSettings.getObject('profile');\n    </JavaScript>",
+              "attributes": {
+                "scriptModule": "FuseJS/UserSettings"
+              }
+            },
+            "id": {
+              "id": "fuse/storage/usersettingsmodule",
+              "parentId": "fuse/storage",
+              "type": "JsModule",
+              "modifiers": [
+                "public",
+                "sealed"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/storage/usersettingsmodule",
+              "href": "fuse/storage/usersettingsmodule"
+            },
+            "titles": {
+              "indexTitle": "UserSettingsModule",
+              "fullyQualifiedIndexTitle": "Fuse.Storage.UserSettingsModule"
+            }
+          }
+        ]
+      }
+    ],
+    "classes": [
+      {
+        "items": [
+          {
+            "id": {
+              "id": "fuse/storage/desktopusersettingsimpl",
+              "parentId": "fuse/storage",
+              "type": "Class",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/storage/desktopusersettingsimpl",
+              "href": "fuse/storage/desktopusersettingsimpl"
+            },
+            "titles": {
+              "indexTitle": "DesktopUserSettingsImpl",
+              "fullyQualifiedIndexTitle": "Fuse.Storage.DesktopUserSettingsImpl"
+            }
           }
         ]
       }

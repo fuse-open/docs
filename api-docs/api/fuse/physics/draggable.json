@@ -23,7 +23,7 @@
       "namespaceTitle": "Fuse.Physics",
       "namespaceUri": "fuse/physics",
       "packageName": "Fuse.Physics",
-      "packageVersion": "1.11.2"
+      "packageVersion": "2.0.0-beta.9"
     },
     "inheritance": {
       "root": {
@@ -85,6 +85,33 @@
         "titles": {
           "indexTitle": "IRule",
           "fullyQualifiedIndexTitle": "Fuse.Physics.IRule"
+        }
+      },
+      {
+        "comment": {
+          "brief": "Feedback to the gesture about pointer events as well as priority feedback to the gesture handler.",
+          "full": "Feedback to the gesture about pointer events as well as priority feedback to the gesture handler.",
+          "attributes": {
+            "advanced": true,
+            "experimental": true
+          }
+        },
+        "id": {
+          "id": "fuse/input/igesture",
+          "parentId": "fuse/input",
+          "type": "Interface",
+          "modifiers": [
+            "public",
+            "abstract"
+          ]
+        },
+        "uri": {
+          "idUri": "fuse/input/igesture",
+          "href": "fuse/input/igesture"
+        },
+        "titles": {
+          "indexTitle": "IGesture",
+          "fullyQualifiedIndexTitle": "Fuse.Input.IGesture"
         }
       },
       {
@@ -230,7 +257,7 @@
       "fullyQualifiedIndexTitle": "Fuse.Physics.Draggable"
     },
     "syntax": {
-      "uno": "public class Draggable : Fuse.Behavior, Fuse.Physics.IRule {}",
+      "uno": "public class Draggable : Fuse.Behavior, Fuse.Physics.IRule, Fuse.Input.IGesture {}",
       "ux": "<Physics.Draggable />"
     }
   },
@@ -304,6 +331,33 @@
             "titles": {
               "indexTitle": "Bounds",
               "fullyQualifiedIndexTitle": "Fuse.Physics.Draggable.Bounds"
+            }
+          },
+          {
+            "comment": {
+              "brief": "To track translation information when user drag the @Visual",
+              "full": "To track translation information when user drag the @Visual"
+            },
+            "returns": {
+              "href": "uno/float2",
+              "title": "float2",
+              "fullyQualifiedTitle": "float2"
+            },
+            "id": {
+              "id": "fuse/physics/draggable/translation",
+              "parentId": "fuse/physics/draggable",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/physics/draggable/translation",
+              "href": "fuse/physics/draggable/translation"
+            },
+            "titles": {
+              "indexTitle": "Translation",
+              "fullyQualifiedIndexTitle": "Fuse.Physics.Draggable.Translation"
             }
           }
         ]
@@ -708,6 +762,60 @@
       }
     ],
     "methods": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/physics/draggable",
+            "parentId": "fuse/physics",
+            "type": "UxClass",
+            "modifiers": [
+              "public"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/physics/draggable",
+            "href": "fuse/physics/draggable"
+          },
+          "titles": {
+            "indexTitle": "Draggable",
+            "fullyQualifiedIndexTitle": "Fuse.Physics.Draggable"
+          }
+        },
+        "items": [
+          {
+            "parameters": [
+              {
+                "name": "value",
+                "href": "uno/float2",
+                "title": "float2",
+                "fullyQualifiedTitle": "float2"
+              },
+              {
+                "name": "origin",
+                "href": "uno/ux/ipropertylistener",
+                "title": "IPropertyListener",
+                "fullyQualifiedTitle": "Uno.UX.IPropertyListener"
+              }
+            ],
+            "id": {
+              "id": "fuse/physics/draggable/settranslation_fa0714e7",
+              "parentId": "fuse/physics/draggable",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/physics/draggable/settranslation_fa0714e7",
+              "href": "fuse/physics/draggable/settranslation_fa0714e7"
+            },
+            "titles": {
+              "indexTitle": "SetTranslation(float2, IPropertyListener)",
+              "fullyQualifiedIndexTitle": "Fuse.Physics.Draggable.SetTranslation(float2, Uno.UX.IPropertyListener)"
+            }
+          }
+        ]
+      },
       {
         "declaredIn": {
           "id": {

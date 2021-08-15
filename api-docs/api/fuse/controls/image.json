@@ -23,7 +23,7 @@
       "namespaceTitle": "Fuse.Controls",
       "namespaceUri": "fuse/controls",
       "packageName": "Fuse.Controls.Primitives",
-      "packageVersion": "1.11.2"
+      "packageVersion": "2.0.0-beta.9"
     },
     "inheritance": {
       "root": {
@@ -492,6 +492,29 @@
           }
         },
         "items": [
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "id": {
+              "id": "fuse/controls/image/autoload",
+              "parentId": "fuse/controls/image",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/controls/image/autoload",
+              "href": "fuse/controls/image/autoload"
+            },
+            "titles": {
+              "indexTitle": "AutoLoad",
+              "fullyQualifiedIndexTitle": "Fuse.Controls.Image.AutoLoad"
+            }
+          },
           {
             "comment": {
               "brief": "Specifies a mask color used while drawing the image. This color is multiplied by the source color.",
@@ -3782,6 +3805,84 @@
         "items": [
           {
             "comment": {
+              "brief": "Clear the image cache from disk. only applicable if image source is from Url",
+              "full": "Clear the image cache from disk. only applicable if image source is from Url",
+              "attributes": {
+                "scriptMethod": {
+                  "name": "clearCache",
+                  "parameters": [
+                    ""
+                  ]
+                }
+              }
+            },
+            "parameters": [
+              {
+                "name": "img",
+                "href": "fuse/controls/image",
+                "title": "Image",
+                "fullyQualifiedTitle": "Fuse.Controls.Image"
+              }
+            ],
+            "id": {
+              "id": "fuse/controls/image/clearcache_79d7a7c2",
+              "parentId": "fuse/controls/image",
+              "type": "JsMethod",
+              "modifiers": [
+                "private",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/controls/image/clearcache_79d7a7c2",
+              "href": "fuse/controls/image/clearcache_79d7a7c2"
+            },
+            "titles": {
+              "indexTitle": "clearCache(Image)",
+              "fullyQualifiedIndexTitle": "Fuse.Controls.Image.clearCache(Fuse.Controls.Image)"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Reload the image source.",
+              "full": "Reload the image source.",
+              "attributes": {
+                "scriptMethod": {
+                  "name": "reload",
+                  "parameters": [
+                    ""
+                  ]
+                }
+              }
+            },
+            "parameters": [
+              {
+                "name": "img",
+                "href": "fuse/controls/image",
+                "title": "Image",
+                "fullyQualifiedTitle": "Fuse.Controls.Image"
+              }
+            ],
+            "id": {
+              "id": "fuse/controls/image/load_79d7a7c2",
+              "parentId": "fuse/controls/image",
+              "type": "JsMethod",
+              "modifiers": [
+                "private",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/controls/image/load_79d7a7c2",
+              "href": "fuse/controls/image/load_79d7a7c2"
+            },
+            "titles": {
+              "indexTitle": "load(Image)",
+              "fullyQualifiedIndexTitle": "Fuse.Controls.Image.load(Fuse.Controls.Image)"
+            }
+          },
+          {
+            "comment": {
               "brief": "Reload the image source.",
               "full": "Reload the image source.",
               "attributes": {
@@ -4026,6 +4127,56 @@
       }
     ],
     "properties": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/controls/image",
+            "parentId": "fuse/controls",
+            "type": "UxClass",
+            "modifiers": [
+              "public",
+              "partial"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/controls/image",
+            "href": "fuse/controls/image"
+          },
+          "titles": {
+            "indexTitle": "Image",
+            "fullyQualifiedIndexTitle": "Fuse.Controls.Image"
+          }
+        },
+        "items": [
+          {
+            "comment": {
+              "brief": "get the information of the image fetch status",
+              "full": "get the information of the image fetch status"
+            },
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "id": {
+              "id": "fuse/controls/image/isloaded",
+              "parentId": "fuse/controls/image",
+              "type": "Property",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/controls/image/isloaded",
+              "href": "fuse/controls/image/isloaded"
+            },
+            "titles": {
+              "indexTitle": "IsLoaded",
+              "fullyQualifiedIndexTitle": "Fuse.Controls.Image.IsLoaded"
+            }
+          }
+        ]
+      },
       {
         "declaredIn": {
           "id": {
@@ -4457,30 +4608,6 @@
           },
           {
             "returns": {
-              "href": "fuse/visual",
-              "title": "Visual",
-              "fullyQualifiedTitle": "Fuse.Visual"
-            },
-            "id": {
-              "id": "fuse/controls/image/firstvisualchild",
-              "parentId": "fuse/controls/image",
-              "type": "Property",
-              "modifiers": [
-                "public"
-              ]
-            },
-            "uri": {
-              "idUri": "fuse/controls/image/firstvisualchild",
-              "href": "fuse/visual/firstvisualchild",
-              "isVirtual": true
-            },
-            "titles": {
-              "indexTitle": "FirstVisualChild",
-              "fullyQualifiedIndexTitle": "Fuse.Visual.FirstVisualChild"
-            }
-          },
-          {
-            "returns": {
               "href": "uno/bool",
               "title": "bool",
               "fullyQualifiedTitle": "bool"
@@ -4737,30 +4864,6 @@
             "titles": {
               "indexTitle": "IsVisible",
               "fullyQualifiedIndexTitle": "Fuse.Visual.IsVisible"
-            }
-          },
-          {
-            "returns": {
-              "href": "fuse/visual",
-              "title": "Visual",
-              "fullyQualifiedTitle": "Fuse.Visual"
-            },
-            "id": {
-              "id": "fuse/controls/image/lastvisualchild",
-              "parentId": "fuse/controls/image",
-              "type": "Property",
-              "modifiers": [
-                "public"
-              ]
-            },
-            "uri": {
-              "idUri": "fuse/controls/image/lastvisualchild",
-              "href": "fuse/visual/lastvisualchild",
-              "isVirtual": true
-            },
-            "titles": {
-              "indexTitle": "LastVisualChild",
-              "fullyQualifiedIndexTitle": "Fuse.Visual.LastVisualChild"
             }
           },
           {
@@ -5081,30 +5184,6 @@
               "indexTitle": "WorldTransformInverse",
               "fullyQualifiedIndexTitle": "Fuse.Visual.WorldTransformInverse"
             }
-          },
-          {
-            "returns": {
-              "href": "uno/int",
-              "title": "int",
-              "fullyQualifiedTitle": "int"
-            },
-            "id": {
-              "id": "fuse/controls/image/zorderchildcount",
-              "parentId": "fuse/controls/image",
-              "type": "Property",
-              "modifiers": [
-                "public"
-              ]
-            },
-            "uri": {
-              "idUri": "fuse/controls/image/zorderchildcount",
-              "href": "fuse/visual/zorderchildcount",
-              "isVirtual": true
-            },
-            "titles": {
-              "indexTitle": "ZOrderChildCount",
-              "fullyQualifiedIndexTitle": "Fuse.Visual.ZOrderChildCount"
-            }
           }
         ]
       },
@@ -5274,6 +5353,73 @@
       }
     ],
     "methods": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/controls/image",
+            "parentId": "fuse/controls",
+            "type": "UxClass",
+            "modifiers": [
+              "public",
+              "partial"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/controls/image",
+            "href": "fuse/controls/image"
+          },
+          "titles": {
+            "indexTitle": "Image",
+            "fullyQualifiedIndexTitle": "Fuse.Controls.Image"
+          }
+        },
+        "items": [
+          {
+            "comment": {
+              "brief": "Load the image from Url or Disk",
+              "full": "Load the image from Url or Disk"
+            },
+            "id": {
+              "id": "fuse/controls/image/load",
+              "parentId": "fuse/controls/image",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/controls/image/load",
+              "href": "fuse/controls/image/load"
+            },
+            "titles": {
+              "indexTitle": "Load",
+              "fullyQualifiedIndexTitle": "Fuse.Controls.Image.Load"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Reload the image from Url or Disk",
+              "full": "Reload the image from Url or Disk"
+            },
+            "id": {
+              "id": "fuse/controls/image/reload",
+              "parentId": "fuse/controls/image",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/controls/image/reload",
+              "href": "fuse/controls/image/reload"
+            },
+            "titles": {
+              "indexTitle": "Reload",
+              "fullyQualifiedIndexTitle": "Fuse.Controls.Image.Reload"
+            }
+          }
+        ]
+      },
       {
         "declaredIn": {
           "id": {
@@ -6557,42 +6703,6 @@
             "titles": {
               "indexTitle": "GetTransformTo(Visual)",
               "fullyQualifiedIndexTitle": "Fuse.Visual.GetTransformTo(Fuse.Visual)"
-            }
-          },
-          {
-            "comment": {
-              "brief": "Returns the visual child with the given index.",
-              "full": "Returns the visual child with the given index.\n\nFor performance reasons, avoid using this function."
-            },
-            "returns": {
-              "href": "fuse/visual",
-              "title": "Visual",
-              "fullyQualifiedTitle": "Fuse.Visual"
-            },
-            "parameters": [
-              {
-                "name": "index",
-                "href": "uno/int",
-                "title": "int",
-                "fullyQualifiedTitle": "int"
-              }
-            ],
-            "id": {
-              "id": "fuse/controls/image/getvisualchild_56ad0a96",
-              "parentId": "fuse/controls/image",
-              "type": "Method",
-              "modifiers": [
-                "public"
-              ]
-            },
-            "uri": {
-              "idUri": "fuse/controls/image/getvisualchild_56ad0a96",
-              "href": "fuse/visual/getvisualchild_56ad0a96",
-              "isVirtual": true
-            },
-            "titles": {
-              "indexTitle": "GetVisualChild(int)",
-              "fullyQualifiedIndexTitle": "Fuse.Visual.GetVisualChild(int)"
             }
           },
           {

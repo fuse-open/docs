@@ -23,7 +23,7 @@
       "namespaceTitle": "Fuse.Charting",
       "namespaceUri": "fuse/charting",
       "packageName": "Fuse.Charting",
-      "packageVersion": "1.11.2"
+      "packageVersion": "2.0.0-beta.9"
     },
     "inheritance": {
       "root": {
@@ -478,10 +478,7 @@
     },
     "comment": {
       "brief": "A layout and enumeration for the axis steps of a @Plot, which is used to place labels on axes. Often used together with a @(GridLayout) for positioning.",
-      "full": "A layout and enumeration for the axis steps of a @Plot, which is used to place labels on axes. Often used together with a @(GridLayout) for positioning.\n\n# Example\n\nThe following example places labels on the y-axis of a bar chart.\n\n    <Panel xmlns:c=\"Fuse.Charting\" >\n        <JavaScript>\n            var Observable = require(\"FuseJS/Observable\");\n\n            function Item(val) {\n                this.value = val;\n            }\n            var data = Observable(new Item(3), new Item(4), new Item(6), new Item(3), new Item(4));\n\n            module.exports = {\n                data: data\n            }\n        </JavaScript>\n        <Panel BoxSizing=\"FillAspect\" Aspect=\"1\">\n            <c:Plot Margin=\"40\">\n                <GridLayout Rows=\"1*,40\" Columns=\"40,1*\"/>\n                <c:DataSeries Data=\"{data}\" />\n                <c:PlotAxis Row=\"0\" Column=\"0\" Axis=\"Y\">\n                    <Text ux:Template=\"Label\" Alignment=\"Center\" FontSize=\"14\" Color=\"#666\"\n                        Value=\"{Plot axis.value}\"/>\n                </c:PlotAxis>\n                <c:PlotData>\n                    <c:PlotBar Row=\"0\" Column=\"1\">\n                        <Rectangle Color=\"#F00\" Height=\"100%\" Margin=\"2\" Alignment=\"Bottom\"/>\n                    </c:PlotBar>\n                </c:PlotData>\n            </c:Plot>\n        </Panel>\n    </Panel>",
-      "attributes": {
-        "experimental": true
-      }
+      "full": "A layout and enumeration for the axis steps of a @Plot, which is used to place labels on axes. Often used together with a @(GridLayout) for positioning.\n\n# Example\n\nThe following example places labels on the y-axis of a bar chart.\n\n    <Panel xmlns:c=\"Fuse.Charting\" >\n        <JavaScript>\n            var Observable = require(\"FuseJS/Observable\");\n\n            function Item(val) {\n                this.value = val;\n            }\n            var data = Observable(new Item(3), new Item(4), new Item(6), new Item(3), new Item(4));\n\n            module.exports = {\n                data: data\n            }\n        </JavaScript>\n        <Panel BoxSizing=\"FillAspect\" Aspect=\"1\">\n            <c:Plot Margin=\"40\">\n                <GridLayout Rows=\"1*,40\" Columns=\"40,1*\"/>\n                <c:DataSeries Data=\"{data}\" />\n                <c:PlotAxis Row=\"0\" Column=\"0\" Axis=\"Y\">\n                    <Text ux:Template=\"Label\" Alignment=\"Center\" FontSize=\"14\" Color=\"#666\"\n                        Value=\"{Plot axis.value}\"/>\n                </c:PlotAxis>\n                <c:PlotData>\n                    <c:PlotBar Row=\"0\" Column=\"1\">\n                        <Rectangle Color=\"#F00\" Height=\"100%\" Margin=\"2\" Alignment=\"Bottom\"/>\n                    </c:PlotBar>\n                </c:PlotData>\n            </c:Plot>\n        </Panel>\n    </Panel>"
     }
   },
   "tableOfContents": {
@@ -4226,30 +4223,6 @@
           },
           {
             "returns": {
-              "href": "fuse/visual",
-              "title": "Visual",
-              "fullyQualifiedTitle": "Fuse.Visual"
-            },
-            "id": {
-              "id": "fuse/charting/plotaxis/firstvisualchild",
-              "parentId": "fuse/charting/plotaxis",
-              "type": "Property",
-              "modifiers": [
-                "public"
-              ]
-            },
-            "uri": {
-              "idUri": "fuse/charting/plotaxis/firstvisualchild",
-              "href": "fuse/visual/firstvisualchild",
-              "isVirtual": true
-            },
-            "titles": {
-              "indexTitle": "FirstVisualChild",
-              "fullyQualifiedIndexTitle": "Fuse.Visual.FirstVisualChild"
-            }
-          },
-          {
-            "returns": {
               "href": "uno/bool",
               "title": "bool",
               "fullyQualifiedTitle": "bool"
@@ -4506,30 +4479,6 @@
             "titles": {
               "indexTitle": "IsVisible",
               "fullyQualifiedIndexTitle": "Fuse.Visual.IsVisible"
-            }
-          },
-          {
-            "returns": {
-              "href": "fuse/visual",
-              "title": "Visual",
-              "fullyQualifiedTitle": "Fuse.Visual"
-            },
-            "id": {
-              "id": "fuse/charting/plotaxis/lastvisualchild",
-              "parentId": "fuse/charting/plotaxis",
-              "type": "Property",
-              "modifiers": [
-                "public"
-              ]
-            },
-            "uri": {
-              "idUri": "fuse/charting/plotaxis/lastvisualchild",
-              "href": "fuse/visual/lastvisualchild",
-              "isVirtual": true
-            },
-            "titles": {
-              "indexTitle": "LastVisualChild",
-              "fullyQualifiedIndexTitle": "Fuse.Visual.LastVisualChild"
             }
           },
           {
@@ -4849,30 +4798,6 @@
             "titles": {
               "indexTitle": "WorldTransformInverse",
               "fullyQualifiedIndexTitle": "Fuse.Visual.WorldTransformInverse"
-            }
-          },
-          {
-            "returns": {
-              "href": "uno/int",
-              "title": "int",
-              "fullyQualifiedTitle": "int"
-            },
-            "id": {
-              "id": "fuse/charting/plotaxis/zorderchildcount",
-              "parentId": "fuse/charting/plotaxis",
-              "type": "Property",
-              "modifiers": [
-                "public"
-              ]
-            },
-            "uri": {
-              "idUri": "fuse/charting/plotaxis/zorderchildcount",
-              "href": "fuse/visual/zorderchildcount",
-              "isVirtual": true
-            },
-            "titles": {
-              "indexTitle": "ZOrderChildCount",
-              "fullyQualifiedIndexTitle": "Fuse.Visual.ZOrderChildCount"
             }
           }
         ]
@@ -6382,42 +6307,6 @@
             "titles": {
               "indexTitle": "GetTransformTo(Visual)",
               "fullyQualifiedIndexTitle": "Fuse.Visual.GetTransformTo(Fuse.Visual)"
-            }
-          },
-          {
-            "comment": {
-              "brief": "Returns the visual child with the given index.",
-              "full": "Returns the visual child with the given index.\n\nFor performance reasons, avoid using this function."
-            },
-            "returns": {
-              "href": "fuse/visual",
-              "title": "Visual",
-              "fullyQualifiedTitle": "Fuse.Visual"
-            },
-            "parameters": [
-              {
-                "name": "index",
-                "href": "uno/int",
-                "title": "int",
-                "fullyQualifiedTitle": "int"
-              }
-            ],
-            "id": {
-              "id": "fuse/charting/plotaxis/getvisualchild_56ad0a96",
-              "parentId": "fuse/charting/plotaxis",
-              "type": "Method",
-              "modifiers": [
-                "public"
-              ]
-            },
-            "uri": {
-              "idUri": "fuse/charting/plotaxis/getvisualchild_56ad0a96",
-              "href": "fuse/visual/getvisualchild_56ad0a96",
-              "isVirtual": true
-            },
-            "titles": {
-              "indexTitle": "GetVisualChild(int)",
-              "fullyQualifiedIndexTitle": "Fuse.Visual.GetVisualChild(int)"
             }
           },
           {

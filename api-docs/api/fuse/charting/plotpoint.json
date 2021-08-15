@@ -23,7 +23,7 @@
       "namespaceTitle": "Fuse.Charting",
       "namespaceUri": "fuse/charting",
       "packageName": "Fuse.Charting",
-      "packageVersion": "1.11.2"
+      "packageVersion": "2.0.0-beta.9"
     },
     "inheritance": {
       "root": {
@@ -485,10 +485,7 @@
     },
     "comment": {
       "brief": "A `Panel` positioned on the data point for a chart. This is an easy way to position an object at the correct position for the current plot data.",
-      "full": "A `Panel` positioned on the data point for a chart. This is an easy way to position an object at the correct position for the current plot data.\n\nThis panel has a default of `Anchor=\"50%,50%\"`.  This can be changed with `PointAnchor`\n\nThis panel does not have any default size.",
-      "attributes": {
-        "experimental": true
-      }
+      "full": "A `Panel` positioned on the data point for a chart. This is an easy way to position an object at the correct position for the current plot data.\n\nThis panel has a default of `Anchor=\"50%,50%\"`.  This can be changed with `PointAnchor`\n\nThis panel does not have any default size."
     }
   },
   "tableOfContents": {
@@ -592,6 +589,60 @@
             "titles": {
               "indexTitle": "PointOffset",
               "fullyQualifiedIndexTitle": "Fuse.Charting.PlotPoint.PointOffset"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Specifies where on a circle to start drawing our points.",
+              "full": "Specifies where on a circle to start drawing our points.\n\nThe range is from 0 to 1, relative to the circumference of a full circle."
+            },
+            "returns": {
+              "href": "uno/float",
+              "title": "float",
+              "fullyQualifiedTitle": "float"
+            },
+            "id": {
+              "id": "fuse/charting/plotpoint/radialoffset",
+              "parentId": "fuse/charting/plotpoint",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/charting/plotpoint/radialoffset",
+              "href": "fuse/charting/plotpoint/radialoffset"
+            },
+            "titles": {
+              "indexTitle": "RadialOffset",
+              "fullyQualifiedIndexTitle": "Fuse.Charting.PlotPoint.RadialOffset"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Specifies how much of a circle our points will consume.",
+              "full": "Specifies how much of a circle our points will consume.\n\nThe range is from 0 to 1, relative to the circumference of a full circle."
+            },
+            "returns": {
+              "href": "uno/float",
+              "title": "float",
+              "fullyQualifiedTitle": "float"
+            },
+            "id": {
+              "id": "fuse/charting/plotpoint/radialscale",
+              "parentId": "fuse/charting/plotpoint",
+              "type": "UxProperty",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/charting/plotpoint/radialscale",
+              "href": "fuse/charting/plotpoint/radialscale"
+            },
+            "titles": {
+              "indexTitle": "RadialScale",
+              "fullyQualifiedIndexTitle": "Fuse.Charting.PlotPoint.RadialScale"
             }
           },
           {
@@ -4226,30 +4277,6 @@
           },
           {
             "returns": {
-              "href": "fuse/visual",
-              "title": "Visual",
-              "fullyQualifiedTitle": "Fuse.Visual"
-            },
-            "id": {
-              "id": "fuse/charting/plotpoint/firstvisualchild",
-              "parentId": "fuse/charting/plotpoint",
-              "type": "Property",
-              "modifiers": [
-                "public"
-              ]
-            },
-            "uri": {
-              "idUri": "fuse/charting/plotpoint/firstvisualchild",
-              "href": "fuse/visual/firstvisualchild",
-              "isVirtual": true
-            },
-            "titles": {
-              "indexTitle": "FirstVisualChild",
-              "fullyQualifiedIndexTitle": "Fuse.Visual.FirstVisualChild"
-            }
-          },
-          {
-            "returns": {
               "href": "uno/bool",
               "title": "bool",
               "fullyQualifiedTitle": "bool"
@@ -4506,30 +4533,6 @@
             "titles": {
               "indexTitle": "IsVisible",
               "fullyQualifiedIndexTitle": "Fuse.Visual.IsVisible"
-            }
-          },
-          {
-            "returns": {
-              "href": "fuse/visual",
-              "title": "Visual",
-              "fullyQualifiedTitle": "Fuse.Visual"
-            },
-            "id": {
-              "id": "fuse/charting/plotpoint/lastvisualchild",
-              "parentId": "fuse/charting/plotpoint",
-              "type": "Property",
-              "modifiers": [
-                "public"
-              ]
-            },
-            "uri": {
-              "idUri": "fuse/charting/plotpoint/lastvisualchild",
-              "href": "fuse/visual/lastvisualchild",
-              "isVirtual": true
-            },
-            "titles": {
-              "indexTitle": "LastVisualChild",
-              "fullyQualifiedIndexTitle": "Fuse.Visual.LastVisualChild"
             }
           },
           {
@@ -4849,30 +4852,6 @@
             "titles": {
               "indexTitle": "WorldTransformInverse",
               "fullyQualifiedIndexTitle": "Fuse.Visual.WorldTransformInverse"
-            }
-          },
-          {
-            "returns": {
-              "href": "uno/int",
-              "title": "int",
-              "fullyQualifiedTitle": "int"
-            },
-            "id": {
-              "id": "fuse/charting/plotpoint/zorderchildcount",
-              "parentId": "fuse/charting/plotpoint",
-              "type": "Property",
-              "modifiers": [
-                "public"
-              ]
-            },
-            "uri": {
-              "idUri": "fuse/charting/plotpoint/zorderchildcount",
-              "href": "fuse/visual/zorderchildcount",
-              "isVirtual": true
-            },
-            "titles": {
-              "indexTitle": "ZOrderChildCount",
-              "fullyQualifiedIndexTitle": "Fuse.Visual.ZOrderChildCount"
             }
           }
         ]
@@ -6382,42 +6361,6 @@
             "titles": {
               "indexTitle": "GetTransformTo(Visual)",
               "fullyQualifiedIndexTitle": "Fuse.Visual.GetTransformTo(Fuse.Visual)"
-            }
-          },
-          {
-            "comment": {
-              "brief": "Returns the visual child with the given index.",
-              "full": "Returns the visual child with the given index.\n\nFor performance reasons, avoid using this function."
-            },
-            "returns": {
-              "href": "fuse/visual",
-              "title": "Visual",
-              "fullyQualifiedTitle": "Fuse.Visual"
-            },
-            "parameters": [
-              {
-                "name": "index",
-                "href": "uno/int",
-                "title": "int",
-                "fullyQualifiedTitle": "int"
-              }
-            ],
-            "id": {
-              "id": "fuse/charting/plotpoint/getvisualchild_56ad0a96",
-              "parentId": "fuse/charting/plotpoint",
-              "type": "Method",
-              "modifiers": [
-                "public"
-              ]
-            },
-            "uri": {
-              "idUri": "fuse/charting/plotpoint/getvisualchild_56ad0a96",
-              "href": "fuse/visual/getvisualchild_56ad0a96",
-              "isVirtual": true
-            },
-            "titles": {
-              "indexTitle": "GetVisualChild(int)",
-              "fullyQualifiedIndexTitle": "Fuse.Visual.GetVisualChild(int)"
             }
           },
           {

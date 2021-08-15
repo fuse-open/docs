@@ -293,10 +293,7 @@
     {
       "comment": {
         "brief": "Iterator for visual plot data.",
-        "full": "Iterator for visual plot data.\n\nThis works like an @Each for the visible data points. Use a @PlotBar or  @PlotCurvePoint to add elements matching this data. Or use a `{Plot data.*}` to get at the variables for the data point.\n\n    <Panel>\n        <c:PlotData>\n            <c:PlotBar/>\n        </c:PlotData>\n    </Panel>\n\n    <Curve>\n        <c:PlotData>\n            <c:PlotCurvePoint/>\n        </c:PlotData>\n    </Curve>",
-        "attributes": {
-          "experimental": true
-        }
+        "full": "Iterator for visual plot data.\n\nThis works like an @Each for the visible data points. Use a @PlotBar or  @PlotCurvePoint to add elements matching this data. Or use a `{Plot data.*}` to get at the variables for the data point.\n\n    <Panel>\n        <c:PlotData>\n            <c:PlotBar/>\n        </c:PlotData>\n    </Panel>\n\n    <Curve>\n        <c:PlotData>\n            <c:PlotCurvePoint/>\n        </c:PlotData>\n    </Curve>"
       },
       "id": {
         "id": "fuse/charting/plotdata",
@@ -681,6 +678,28 @@
     },
     {
       "comment": {
+        "brief": "Applies a glass backdrop effect to an @Element.",
+        "full": "Applies a glass backdrop effect to an @Element.\n\nThe following example displays a glass effect.\n\n<ClientPanel>\n    <Panel Width=\"150\" Height=\"70\" Alignment=\"Center\">\n        <Glass Radius=\"10\" />\n    </Panel>\n    <Image ux:Name=\"image\" Alignment=\"Center\" Margin=\"20\" Background=\"Purple\" Url=\"https://fuseopen.com/assets/white-logo.png\" />\n</ClientPanel>\n\nWe need to set the `Background` property of the `Glass` behavior to the Element that will act as a background so it will get blurred out.\nIf we don't set it, The `Glass` behavior will try to find the background from the sibling element where `Glass` behavior is attached"
+      },
+      "id": {
+        "id": "fuse/effects/glass",
+        "parentId": "fuse/effects",
+        "type": "UxClass",
+        "modifiers": [
+          "public"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/effects/glass",
+        "href": "fuse/effects/glass"
+      },
+      "titles": {
+        "indexTitle": "Glass",
+        "fullyQualifiedIndexTitle": "Fuse.Effects.Glass"
+      }
+    },
+    {
+      "comment": {
         "brief": "Helper class for implementing circular @(RangeControl:RangeControls)",
         "full": "Helper class for implementing circular @(RangeControl:RangeControls)\n\nUsed to enable circual touch input on @RangeControl.\nTypically used when implementing circular range pickers,\nlike a clock timepicker or dials.\n\n## Example\n\n### Andgle-based circular range control\nThe following example shows a simple circular @(RangeControl) implemented using `CircularRangeBehavior`, where a visual is rotated as the @(RangeControl) is changed. The range is calculated from the angle between the mouse and the X-axis\n\n    <RangeControl Width=\"180\" Height=\"180\" Margin=\"2\">\n        <CircularRangeBehavior />\n        <Panel ux:Name=\"thumb\" Margin=\"4\">\n            <Rectangle Color=\"#fff\" Alignment=\"Right\" Height=\"18\" Width=\"48\" CornerRadius=\"4\" />\n        </Panel>\n        <ProgressAnimation>\n            <Rotate Target=\"thumb\" Degrees=\"360\" />\n        </ProgressAnimation>\n        <Circle Color=\"#aaa\" />\n    </RangeControl>\n\n### Angle and radius based circular range control\nWhen used with a @(RangeControl2D), you can get both the angle progress, and the radius progress. This effectively means that your range control allows the user to control two ranges at once.\n\n    <RangeControl2D Width=\"180\" Height=\"180\" Margin=\"2\" ux:Name=\"rangeControl\">\n        <CircularRangeBehavior/>\n        <Panel ux:Name=\"thumb\" Margin=\"4\">\n            <Rectangle Color=\"#fff\" Alignment=\"Right\" Height=\"18\" Width=\"48\" CornerRadius=\"4\" />\n        </Panel>\n        <RangeAnimation Minimum=\"0\" Maximum=\"100\" Value=\"{ReadProperty rangeControl.ValueX}\">\n            <Rotate Target=\"thumb\" Degrees=\"360\" />\n        </RangeAnimation>\n        <RangeAnimation Minimum=\"0\" Maximum=\"100\" Value=\"{ReadProperty rangeControl.ValueY}\">\n            <Change radiusCircle.Factor=\"1\" />\n        </RangeAnimation>\n        <Circle Color=\"#0FF\" Alignment=\"Center\" Width=\"180\" Height=\"180\">\n            <Scaling ux:Name=\"radiusCircle\" Factor=\"0\" />\n        </Circle>\n        <Circle Color=\"#aaa\" />\n    </RangeControl2D>"
       },
@@ -806,6 +825,28 @@
       "titles": {
         "indexTitle": "EdgeSwipeAnimation",
         "fullyQualifiedIndexTitle": "Fuse.Gestures.EdgeSwipeAnimation"
+      }
+    },
+    {
+      "comment": {
+        "brief": "Triggers when a pointer is pressed on a @Visual.",
+        "full": "Triggers when a pointer is pressed on a @Visual.\n\nThe `HoldPress` trigger is a repeating trigger that will continue to pulse as long as a @Visual is being held.\n\n# Example\nIn this example, a panel will scale and call a JS callback `pressed` for every 0.2 seconds, when pressed:\n\n    <Panel Background=\"#F00\">\n        <HoldPress First=\"true\" Handler=\"{pressed}\" Delay=\"0.5\" Repeat=\"0.2\">\n            <Scale Target=\"rect\" Vector=\"1.2\" Duration=\"0.2\" />\n        </HoldPress>\n    </Panel>"
+      },
+      "id": {
+        "id": "fuse/gestures/holdpress",
+        "parentId": "fuse/gestures",
+        "type": "UxClass",
+        "modifiers": [
+          "public"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/gestures/holdpress",
+        "href": "fuse/gestures/holdpress"
+      },
+      "titles": {
+        "indexTitle": "HoldPress",
+        "fullyQualifiedIndexTitle": "Fuse.Gestures.HoldPress"
       }
     },
     {
@@ -1035,7 +1076,7 @@
       "id": {
         "id": "fuse/gestures/scroller",
         "parentId": "fuse/gestures",
-        "type": "UxClass",
+        "type": "Class",
         "modifiers": [
           "public"
         ]
@@ -1074,7 +1115,7 @@
     {
       "comment": {
         "brief": "Recognizes a swipe (the movement of a pointer in a given direction).",
-        "full": "Recognizes a swipe (the movement of a pointer in a given direction).\n\n# Basic usage\n\nA SwipeGesture must be attached to an @Element, and will begin detecting swipes when the pointer is pressed\ndown on that element. Attaching a @SwipeGesture to an @Element is simply adding it as a child:\n\n\t<Panel>\n\t\t<SwipeGesture ux:Name=\"swipe\" Direction=\"Right\" Length=\"200\" />\n\t</Panel>\n\nThe snippet above will recognize swipe gestures moving from left to right,\nover a distance of 200 points.\n\nHowever, this isn't doing anything useful yet. Let's add a trigger!\n\n\t<Panel Width=\"100\" Height=\"100\" Background=\"Black\">\n\t\t<SwipeGesture ux:Name=\"swipe\" Direction=\"Right\" Length=\"200\" />\n\t\t<SwipingAnimation Source=\"swipe\">\n\t\t\t<Move X=\"200\" />\n\t\t</SwipingAnimation>\n\t</Panel>\n\t\nWe've now added a @SwipingAnimation, which will map the progress of our swipe gesture onto a series of\nanimations. In this case, we are moving the panel over the same distance as the `Length` of our\nSwipeGesture, resulting in the panel moving along with the pointer.\n\n> Note that we've referenced our SwipeGesture via the `Source` property of @SwipingAnimation.\n> This is because it is possible to have [multiple swipe gestures](#multiple-swipegestures) on a single element,\n> so it must be referenced explicitly. All swipe-related triggers share this property.\n\nWe also want to respond when the swipe has completed, which is achieved using the\n[Swiped](api:fuse/gestures/swiped) trigger. Let's extend our previous example a bit.\n\n\t<Panel Width=\"100\" Height=\"100\" Background=\"Black\">\n\t\t<SwipeGesture ux:Name=\"swipe\" Direction=\"Right\" Length=\"200\" />\n\t\t<SwipingAnimation Source=\"swipe\">\n\t\t\t<Move X=\"200\" />\n\t\t</SwipingAnimation>\n\t\t\n\t\t<Swiped>\n\t\t\t<DebugAction Message=\"Swiped!\" />\n\t\t</Swiped>\n\t</Panel>\n\nFor illustrative purposes, we are using @DebugAction to log a message\nto the console when the swipe has completed.\n\n# Swipe types\n\nSwipeGesture is designed to handle multiple scenarios,\nand can have one of three [types](api:fuse/gestures/swipetype), specified via the `Type` property.\n\nThe [type](api:fuse/gestures/swipetype) of a SwipeGesture determines its behavior, and below we'll explain each one.\n\n## [Simple](api:fuse/gestures/swipetype/simple)\n\n`Simple` is the default @SwipeType, and thus the one we have been using so far in this article.\n\nWhen using this type, swipes are treated as one-off events, and swipes will complete once the pointer is released.\n\n## [Auto](api:fuse/gestures/swipetype/auto)\n\n`Auto` is *almost* identical to `Simple`, however swipes complete once the user has swiped over the entire\ndistance of the SwipeGesture, without the user needing to release the pointer.\nThis allows multiple SwipeGestures to be triggered in sequence without releasing the pointer.\n\n<a id=\"swipetype-active-overview\"></a>\n\n## [Active](api:fuse/gestures/swipetype/active)\n\n`Type=\"Active\"` makes swipes toggle between an active/inactive state.\nSwiping in the @Direction of the SwipeGesture will transition to the *active* state,\nwhile swiping in the opposite direction will transition to the *inactive* state.\n\nWe can alter the state of an Active-type SwipeGesture using\n[SetSwipeActive](api:fuse/gestures/setswipeactive) and/or\n[ToggleSwipeActive](api:fuse/gestures/toggleswipeactive).\n\n### Reacting to state transitions\n\nWhen using the `Active` type, we can optionally configure the [Swiped](api:fuse/gestures/swiped) trigger\nto respond to only activation or only deactivation.\n\n\t<Swiped How=\"ToActive\">\n\t<Swiped How=\"ToInactive\">\n\nIn addition, the @WhileSwipeActive trigger will be active while its source @SwipeGesture is an Active-type\nSwipeGesture, and has been swiped to its active state.\n\n# Edge\n\nInstead of specifying a `Direction`, we may provide an `Edge`. This will make the SwipeGesture detect swipes\noriginating at a given edge of its parent element.\n\nWe can also customize the size of the edge area using the `HitSize` property.\nIt accepts a single number, which represents the maximum distance from the edge (in points) that swipes can\nbegin at.\n\n# Length based on element size\n\nInstead of specifying a fixed `Length` for the gesture,\nwe can supply an @Element to be measured via the `LengthNode` property.\n\nThis is a powerful feature, as it allows us to create swipe-based controls that work regardless of their size.\n\nBelow is an example of a size-independent switch control implemented using SwipeGesture.\n\n\t<Panel Height=\"50\">\n\t\t<Circle Width=\"50\" Height=\"50\" Color=\"#000\" Alignment=\"Left\">\n\t\t\t<SwipeGesture ux:Name=\"swipe\" LengthNode=\"track\" Direction=\"Right\" Type=\"Active\" />\n\t\t\t<SwipingAnimation Source=\"swipe\">\n\t\t\t\t<Move X=\"1\" RelativeTo=\"Size\" RelativeNode=\"track\" />\n\t\t\t</SwipingAnimation>\n\t\t</Circle>\n\t\t\n\t\t<Rectangle ux:Name=\"track\" Height=\"15\" Color=\"#0003\" Margin=\"25,0\" CornerRadius=\"15\" />\n\t</Panel>",
+        "full": "Recognizes a swipe (the movement of a pointer in a given direction).\n\n# Basic usage\n\nA SwipeGesture must be attached to an @Element, and will begin detecting swipes when the pointer is pressed\ndown on that element. Attaching a @SwipeGesture to an @Element is simply adding it as a child:\n\n\t<Panel>\n\t\t<SwipeGesture ux:Name=\"swipe\" Direction=\"Right\" Length=\"200\" />\n\t</Panel>\n\nThe snippet above will recognize swipe gestures moving from left to right,\nover a distance of 200 points.\n\nHowever, this isn't doing anything useful yet. Let's add a trigger!\n\n\t<Panel Width=\"100\" Height=\"100\" Background=\"Black\">\n\t\t<SwipeGesture ux:Name=\"swipe\" Direction=\"Right\" Length=\"200\" />\n\t\t<SwipingAnimation Source=\"swipe\">\n\t\t\t<Move X=\"200\" />\n\t\t</SwipingAnimation>\n\t</Panel>\n\nWe've now added a @SwipingAnimation, which will map the progress of our swipe gesture onto a series of\nanimations. In this case, we are moving the panel over the same distance as the `Length` of our\nSwipeGesture, resulting in the panel moving along with the pointer.\n\n> Note that we've referenced our SwipeGesture via the `Source` property of @SwipingAnimation.\n> This is because it is possible to have [multiple swipe gestures](#multiple-swipegestures) on a single element,\n> so it must be referenced explicitly. All swipe-related triggers share this property.\n\nWe also want to respond when the swipe has completed, which is achieved using the\n[Swiped](api:fuse/gestures/swiped) trigger. Let's extend our previous example a bit.\n\n\t<Panel Width=\"100\" Height=\"100\" Background=\"Black\">\n\t\t<SwipeGesture ux:Name=\"swipe\" Direction=\"Right\" Length=\"200\" />\n\t\t<SwipingAnimation Source=\"swipe\">\n\t\t\t<Move X=\"200\" />\n\t\t</SwipingAnimation>\n\n\t\t<Swiped>\n\t\t\t<DebugAction Message=\"Swiped!\" />\n\t\t</Swiped>\n\t</Panel>\n\nFor illustrative purposes, we are using @DebugAction to log a message\nto the console when the swipe has completed.\n\n# Swipe types\n\nSwipeGesture is designed to handle multiple scenarios,\nand can have one of three [types](api:fuse/gestures/swipetype), specified via the `Type` property.\n\nThe [type](api:fuse/gestures/swipetype) of a SwipeGesture determines its behavior, and below we'll explain each one.\n\n## [Simple](api:fuse/gestures/swipetype/simple)\n\n`Simple` is the default @SwipeType, and thus the one we have been using so far in this article.\n\nWhen using this type, swipes are treated as one-off events, and swipes will complete once the pointer is released.\n\n## [Auto](api:fuse/gestures/swipetype/auto)\n\n`Auto` is *almost* identical to `Simple`, however swipes complete once the user has swiped over the entire\ndistance of the SwipeGesture, without the user needing to release the pointer.\nThis allows multiple SwipeGestures to be triggered in sequence without releasing the pointer.\n\n<a id=\"swipetype-active-overview\"></a>\n\n## [Active](api:fuse/gestures/swipetype/active)\n\n`Type=\"Active\"` makes swipes toggle between an active/inactive state.\nSwiping in the @Direction of the SwipeGesture will transition to the *active* state,\nwhile swiping in the opposite direction will transition to the *inactive* state.\n\nWe can alter the state of an Active-type SwipeGesture using\n[SetSwipeActive](api:fuse/gestures/setswipeactive) and/or\n[ToggleSwipeActive](api:fuse/gestures/toggleswipeactive).\n\n### Reacting to state transitions\n\nWhen using the `Active` type, we can optionally configure the [Swiped](api:fuse/gestures/swiped) trigger\nto respond to only activation or only deactivation.\n\n\t<Swiped How=\"ToActive\">\n\t<Swiped How=\"ToInactive\">\n\nIn addition, the @WhileSwipeActive trigger will be active while its source @SwipeGesture is an Active-type\nSwipeGesture, and has been swiped to its active state.\n\n# Edge\n\nInstead of specifying a `Direction`, we may provide an `Edge`. This will make the SwipeGesture detect swipes\noriginating at a given edge of its parent element.\n\nWe can also customize the size of the edge area using the `HitSize` property.\nIt accepts a single number, which represents the maximum distance from the edge (in points) that swipes can\nbegin at.\n\n# Length based on element size\n\nInstead of specifying a fixed `Length` for the gesture,\nwe can supply an @Element to be measured via the `LengthNode` property.\n\nThis is a powerful feature, as it allows us to create swipe-based controls that work regardless of their size.\n\nBelow is an example of a size-independent switch control implemented using SwipeGesture.\n\n\t<Panel Height=\"50\">\n\t\t<Circle Width=\"50\" Height=\"50\" Color=\"#000\" Alignment=\"Left\">\n\t\t\t<SwipeGesture ux:Name=\"swipe\" LengthNode=\"track\" Direction=\"Right\" Type=\"Active\" />\n\t\t\t<SwipingAnimation Source=\"swipe\">\n\t\t\t\t<Move X=\"1\" RelativeTo=\"Size\" RelativeNode=\"track\" />\n\t\t\t</SwipingAnimation>\n\t\t</Circle>\n\n\t\t<Rectangle ux:Name=\"track\" Height=\"15\" Color=\"#0003\" Margin=\"25,0\" CornerRadius=\"15\" />\n\t</Panel>",
         "attributes": {
           "topic": "Swipe Gestures"
         }
@@ -1642,25 +1683,6 @@
     },
     {
       "id": {
-        "id": "fuse/navigation/pageresourcebinding_1",
-        "parentId": "fuse/navigation",
-        "type": "UxClass",
-        "modifiers": [
-          "public",
-          "sealed"
-        ]
-      },
-      "uri": {
-        "idUri": "fuse/navigation/pageresourcebinding_1",
-        "href": "fuse/navigation/pageresourcebinding_1"
-      },
-      "titles": {
-        "indexTitle": "PageResourceBinding<T>",
-        "fullyQualifiedIndexTitle": "Fuse.Navigation.PageResourceBinding<T>"
-      }
-    },
-    {
-      "id": {
         "id": "fuse/navigation/structurednavigation",
         "parentId": "fuse/navigation",
         "type": "Class",
@@ -1981,6 +2003,28 @@
       }
     },
     {
+      "comment": {
+        "brief": "a Trigger that pulse when drag has been ended by Draggable Element",
+        "full": "a Trigger that pulse when drag has been ended by Draggable Element"
+      },
+      "id": {
+        "id": "fuse/physics/dragended",
+        "parentId": "fuse/physics",
+        "type": "UxClass",
+        "modifiers": [
+          "public"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/physics/dragended",
+        "href": "fuse/physics/dragended"
+      },
+      "titles": {
+        "indexTitle": "DragEnded",
+        "fullyQualifiedIndexTitle": "Fuse.Physics.DragEnded"
+      }
+    },
+    {
       "id": {
         "id": "fuse/physics/draggable",
         "parentId": "fuse/physics",
@@ -1996,6 +2040,91 @@
       "titles": {
         "indexTitle": "Draggable",
         "fullyQualifiedIndexTitle": "Fuse.Physics.Draggable"
+      }
+    },
+    {
+      "id": {
+        "id": "fuse/physics/draggableeventtrigger",
+        "parentId": "fuse/physics",
+        "type": "Class",
+        "modifiers": [
+          "public",
+          "abstract"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/physics/draggableeventtrigger",
+        "href": "fuse/physics/draggableeventtrigger"
+      },
+      "titles": {
+        "indexTitle": "DraggableEventTrigger",
+        "fullyQualifiedIndexTitle": "Fuse.Physics.DraggableEventTrigger"
+      }
+    },
+    {
+      "id": {
+        "id": "fuse/physics/draggabletrigger",
+        "parentId": "fuse/physics",
+        "type": "Class",
+        "modifiers": [
+          "public",
+          "abstract"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/physics/draggabletrigger",
+        "href": "fuse/physics/draggabletrigger"
+      },
+      "titles": {
+        "indexTitle": "DraggableTrigger",
+        "fullyQualifiedIndexTitle": "Fuse.Physics.DraggableTrigger"
+      }
+    },
+    {
+      "comment": {
+        "brief": "a Trigger that pulse when drag has been started by Draggable Element",
+        "full": "a Trigger that pulse when drag has been started by Draggable Element"
+      },
+      "id": {
+        "id": "fuse/physics/dragstarted",
+        "parentId": "fuse/physics",
+        "type": "UxClass",
+        "modifiers": [
+          "public"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/physics/dragstarted",
+        "href": "fuse/physics/dragstarted"
+      },
+      "titles": {
+        "indexTitle": "DragStarted",
+        "fullyQualifiedIndexTitle": "Fuse.Physics.DragStarted"
+      }
+    },
+    {
+      "comment": {
+        "brief": "a Trigger that pulse when draggable element has been dropped to the target or target element has received draggable element",
+        "full": "a Trigger that pulse when draggable element has been dropped to the target or target element has received draggable element",
+        "attributes": {
+          "experimental": true
+        }
+      },
+      "id": {
+        "id": "fuse/physics/dropped",
+        "parentId": "fuse/physics",
+        "type": "UxClass",
+        "modifiers": [
+          "public"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/physics/dropped",
+        "href": "fuse/physics/dropped"
+      },
+      "titles": {
+        "indexTitle": "Dropped",
+        "fullyQualifiedIndexTitle": "Fuse.Physics.Dropped"
       }
     },
     {
@@ -2181,6 +2310,56 @@
     },
     {
       "comment": {
+        "brief": "a Trigger that activate when Draggable Element is intersected with the `Target` element",
+        "full": "a Trigger that activate when Draggable Element is intersected with the `Target` element\n\n#Example:\n\n```\n<App>\n    <JavaScript>\n        var Observable = require(\"FuseJS/Observable\");\n        var dataToTransfer = new Observable(\"Data to transfer\");\n        module.exports = { dataToTransfer, dataReceived: function (args) { console.dir(args.data); } }\n    </JavaScript>\n    <ClientPanel>\n        <Panel ux:Name=\"source\" X=\"40\" Y=\"80\" Size=\"80\">\n            <Rectangle Layer=\"Background\" Color=\"#afa\" ux:Name=\"bg\" />\n            <Draggable />\n            <Shadow Distance=\"0\" Size=\"0\" ux:Name=\"shadow\" />\n            <WhilePressed>\n                <Scale Vector=\"1.2\" Duration=\"0.2\" />\n                <Change shadow.Size=\"5\" Duration=\"0.2\" />\n                <Change shadow.Distance=\"3\" Duration=\"0.2\" />\n                <Change shadow.Color=\"#666\" Duration=\"0.1\" />\n            </WhilePressed>\n            <WhileDragging>\n                <Change shadow.Size=\"10\" Duration=\"0.1\" />\n                <Change shadow.Distance=\"6\" Duration=\"0.1\" />\n                <Change shadow.Color=\"#333\" Duration=\"0.1\" />\n            </WhileDragging>\n            <WhileDraggingOver Target=\"dropPanel\">\n                <Change bg.Color=\"#0f0\" />\n                <Change bg.StrokeWidth=\"2\" Duration=\"0.2\" />\n                <Change bg.StrokeColor=\"#f00\" Duration=\"0.2\" />\n            </WhileDraggingOver>\n            <Dropped To=\"dropPanel\" Data=\"{dataToTransfer}\">\n                <Set source.Size=\"50\" />\n            </Dropped>\n        </Panel>\n\n        <Panel Size=\"80\" X=\"80\" Y=\"500\" Color=\"#ccc\" ux:Name=\"dropPanel\">\n            <WhileDroppingBy Source=\"source\">\n                <Change dropPanel.Color=\"#0ff\" Duration=\"0.2\" />\n            </WhileDroppingBy>\n            <Dropped By=\"source\" Handler=\"{dataReceived}\">\n                <Scale Vector=\"1.2\" Duration=\"0.2\" />\n            </Dropped>\n        </Panel>\n    </ClientPanel>\n</App>\n```",
+        "attributes": {
+          "experimental": true
+        }
+      },
+      "id": {
+        "id": "fuse/physics/whiledraggingover",
+        "parentId": "fuse/physics",
+        "type": "UxClass",
+        "modifiers": [
+          "public"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/physics/whiledraggingover",
+        "href": "fuse/physics/whiledraggingover"
+      },
+      "titles": {
+        "indexTitle": "WhileDraggingOver",
+        "fullyQualifiedIndexTitle": "Fuse.Physics.WhileDraggingOver"
+      }
+    },
+    {
+      "comment": {
+        "brief": "a Trigger that activate when the element that has `WhileDroppedBy` trigger is intersected with `Source` element (Draggable Element)",
+        "full": "a Trigger that activate when the element that has `WhileDroppedBy` trigger is intersected with `Source` element (Draggable Element)\n\n#Example:\n\n```\n<App>\n    <JavaScript>\n        var Observable = require(\"FuseJS/Observable\");\n        var dataToTransfer = new Observable(\"Data to transfer\");\n        module.exports = { dataToTransfer, dataReceived: function (args) { console.dir(args.data); } }\n    </JavaScript>\n    <ClientPanel>\n        <Panel ux:Name=\"source\" X=\"40\" Y=\"80\" Size=\"80\">\n            <Rectangle Layer=\"Background\" Color=\"#afa\" ux:Name=\"bg\" />\n            <Draggable />\n            <Shadow Distance=\"0\" Size=\"0\" ux:Name=\"shadow\" />\n            <WhilePressed>\n                <Scale Vector=\"1.2\" Duration=\"0.2\" />\n                <Change shadow.Size=\"5\" Duration=\"0.2\" />\n                <Change shadow.Distance=\"3\" Duration=\"0.2\" />\n                <Change shadow.Color=\"#666\" Duration=\"0.1\" />\n            </WhilePressed>\n            <WhileDragging>\n                <Change shadow.Size=\"10\" Duration=\"0.1\" />\n                <Change shadow.Distance=\"6\" Duration=\"0.1\" />\n                <Change shadow.Color=\"#333\" Duration=\"0.1\" />\n            </WhileDragging>\n            <WhileDraggingOver Target=\"dropPanel\">\n                <Change bg.Color=\"#0f0\" />\n                <Change bg.StrokeWidth=\"2\" Duration=\"0.2\" />\n                <Change bg.StrokeColor=\"#f00\" Duration=\"0.2\" />\n            </WhileDraggingOver>\n            <Dropped To=\"dropPanel\" Data=\"{dataToTransfer}\">\n                <Set source.Size=\"50\" />\n            </Dropped>\n        </Panel>\n\n        <Panel Size=\"80\" X=\"80\" Y=\"500\" Color=\"#ccc\" ux:Name=\"dropPanel\">\n            <WhileDroppingBy Source=\"source\">\n                <Change dropPanel.Color=\"#0ff\" Duration=\"0.2\" />\n            </WhileDroppingBy>\n            <Dropped By=\"source\" Handler=\"{dataReceived}\">\n                <Scale Vector=\"1.2\" Duration=\"0.2\" />\n            </Dropped>\n        </Panel>\n    </ClientPanel>\n</App>",
+        "attributes": {
+          "experimental": true
+        }
+      },
+      "id": {
+        "id": "fuse/physics/whiledroppingby",
+        "parentId": "fuse/physics",
+        "type": "UxClass",
+        "modifiers": [
+          "public"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/physics/whiledroppingby",
+        "href": "fuse/physics/whiledroppingby"
+      },
+      "titles": {
+        "indexTitle": "WhileDroppingBy",
+        "fullyQualifiedIndexTitle": "Fuse.Physics.WhileDroppingBy"
+      }
+    },
+    {
+      "comment": {
         "brief": "Displays a collection of objects using the given template(s) for each item.",
         "full": "Displays a collection of objects using the given template(s) for each item.\n\nThe children of an `Each` tag represent a template that will be \"projected\" for each item in the collection\nspecified by the `Items` property. The projected item then becomes the data context for that instance, so\ndata-binding can be specified relative to the item itself rather than having to index the collection explicitly.\n\nNote that each subtree projected by `Each` lives in its own scope.\nThis means that the children of an `Each` cannot be accessed from outside it.\nYou can, however, access nodes declared outside the `Each` from the inside.\n\n## Example\n\n    <JavaScript>\n        module.exports = {\n            items: [\n                { name: \"Jake\", age: 24 },\n                { name: \"Julie\", age: 25 },\n                { name: \"Jerard\", age: 26 }\n            ]\n        };\n    </JavaScript>\n    <StackPanel>\n        <Each Items=\"{items}\">\n            <StackPanel>\n                <Text Value=\"{name}\" />\n                <Text Value=\"{age}\" />\n            </StackPanel>\n        </Each>\n    </StackPanel>\n\n# Using `Each` with `ux:Template`\n\nIf you are using `Each` in a custom made component, you can increase the cusomizability of that component by allowing it to take in custom template objects which it can use instead of the default template the `Each` is using. To do this, you need to do two things:\n\n * Give the `TemplateSource` property an element that can recieve templates (in the case of custom made components, that would be your custom component's class)\n * Specify the template name `Each` will be looking for, using the property `TemplateKey`\n\nIf a template isn't specified, the child element of `Each` will be used as a de-facto template.\n\n## Example\nThe following example demonstrates passing custom templates into a class for an `Each` to use:\n\n    <StackPanel ux:Class=\"CoolRepeater\" Background=\"#FAD\">\n        <Each TemplateSource=\"this\" TemplateKey=\"Item\" Count=\"20\">\n            <Text>No template is given</Text>\n        </Each>\n    </StackPanel>\n    <CoolRepeater>\n        <Text ux:Template=\"Item\">Hello, world!</Text>\n    </CoolRepeater>\n\nNotice that if you remove the \"Hello, world!\" text that is our custom template, the `Each` will fall back to using the child as the template.\n\nIf you want the ability to control the template on a per-item basis, the similar `MatchKey`-property can be used:\n\n    <JavaScript>\n        var Observable = require(\"FuseJS/Observable\");\n\n        module.exports.posts = Observable(\n            {postType: \"text\", body: \"Lorem ipsum\", title: \"Hello, world\"},\n            {postType: \"quote\", quote: \"Stuff\", title: \"A quote\"}\n        );\n    </JavaScript>\n\n    <ScrollView>\n        <StackPanel>\n            <Each Items=\"{posts}\" MatchKey=\"postType\">\n                <StackPanel ux:Template=\"text\" Height=\"100\" Color=\"#FFF\" Margin=\"10\" Padding=\"10\">\n                    <Shadow Distance=\"3\" />\n                    <Text FontSize=\"25\" Value=\"{title}\" />\n                    <Text FontSize=\"15\" Value=\"{body}\" TextWrapping=\"Wrap\" />\n                </StackPanel>\n                <DockPanel ux:Template=\"quote\" Height=\"200\" Color=\"#FFF\" Margin=\"10\" Padding=\"10\">\n                    <Shadow Distance=\"3\" />\n                    <Text FontSize=\"25\" Value=\"{title}\" Dock=\"Top\" />\n                    <Text FontSize=\"50\" Value=\"”\" Dock=\"Left\" />\n                    <Text FontSize=\"15\" Margin=\"10\" Value=\"{quote}\" />\n                </DockPanel>\n            </Each>\n        </StackPanel>\n    </ScrollView>\n\n`MatchKey` works by looking for a property in the data context of each item from `Items`.\nThe value of this property is then used to determine the template to use for the current item.\nIn the above example, we store the template we want to use in the property `postType`, which will appear in the data context of each item being iterated."
       },
@@ -2249,7 +2428,7 @@
     {
       "comment": {
         "brief": "The `JavaScript` tag is used to run JavaScript and assigns its `module.exports` as data context for the parent visual.",
-        "full": "The `JavaScript` tag is used to run JavaScript and assigns its `module.exports` as data context for the parent visual.\n\n**Note:** ECMAScript 5.1 is the only JavaScript version that is supported across all platforms.\nWhile newer JavaScript features might work on some devices, this can't be guaranteed (particularly for earlier iOS versions).\n\n## Getting started\n\nJavaScript can be used in UX markup through the `JavaScript` class, either by pointing to external JavaScript files, like this:\n\n\t<JavaScript File=\"SomeCode.js\" />\n\nOr by inlining the JavaScript code in the tag, like this:\n\n\t<JavaScript>\n\t\tconsole.log(\"Hello, FuseJS!\");\n\t</JavaScript>\n\n## About FuseJS \n\nFuseJS is a JavaScript framework for writing cross-platform mobile app business logic. It consists of a bunch of classes that covers\nthe basic functionality required for creating native mobile apps, as well as the @Observable class which lets you expose data to the UI in a functional reactive way.\n\n## Modules\n\nFuseJS implements the <a href=\"http://www.commonjs.org/\">CommonJS</a> module system. Each code file or inline snippet is a _module_.\n\nIn order to expose data and functions to other modules, one can add them to the `module.exports` object:\n\n\t<JavaScript>\n\t\tmodule.exports = {\n\t\t\texportedSymbol: \"Hello, rest of the world!\"\n\t\t};\n\t</JavaScript>\n\nFailing to export from modules will make it impossible to reach defined data inside the module:\n\n\t<JavaScript>\n\t\tvar data = [1, 2, 3];\n\t\tvar invisible = \"I'm invisible\";\n\n\t\tmodule.exports = {\n\t\t\tdata: data\n\t\t};\n\t</JavaScript>\n\nThis is good for hiding implementation details from other calling JavaScript modules and UX code.\n\n## Importing modules\n\nEach code file (or inline snippet) defines a module.\n\nYou can import JavaScript modules by their file name. To do this, make sure your JavaScript files are included in your .unoproj file as \"Bundle\" files:\n\n\t\"Includes\": [\n\t\t\"yourJavaScriptFile.js:Bundle\"\n\t\t..other files ..\n\t]\n\nor if you want to make all JavaScript files be includes as bundled files:\n\n\t\"Includes\": [\n\t\t\"**.js:Bundle\"\n\t]\n\nThen, you can require using the JavaScript file name:\n\n\tvar myModule = require('/someJavaScriptFile.js');\n\nNote that prefixing the file name with a \"/\" means that we are looking for the file relative to the project root directory. To name a file relative to the current file, prefix with \"./\". By omitting the prefixes, the file name is relative to the project root, or the global module it's in.\n\n\tvar relativeToProjectRoot = require('/SomeComponent');\n\tvar relativeFile = require('./MainView');\n\tvar relativeToRootOrGlobalModule = require('SomeOtherComponent.js');\n\n> Note that you may omit the .js file extension in the file name if you wish\n\n## Module instancing\n\nFuse's treatment of the `<JavaScript>` tag has some important differences from how modules work in the <a href=\"http://www.commonjs.org/\">CommonJS</a> module system.\n\nA module inside a `<JavaScript>` tag (or pointed to in an external file) will be instantiated once *for each time* the surrounding UX scope is instantiated. This means that if the `<JavaScript>` tag is part of a component, each instance of that component will initialise the code and have a separate set of the local variables and exports.\n\n### Cleaning up after modules\n\nIn Fuse, a JavaScript module can correspond to multiple module instances that get created and destroyed on the fly. If your module allocates resources that need manual cleanup, such as creating explicit `Observable` subscriptions, you can assign a handler to `module.disposed` and clean up after yourself there.\n\nExample:\n\n\tvar foo = getSomeGlobalObservable();\n\n\tfunction fooChanged() { ... }\n\t\n\tfoo.addSubscriber(fooChanged);\n\n\t...\n\n\tmodule.disposed = function () {\n\t\tfoo.removeSubscriber(fooChanged)\n\t}\n\n## Design and motivation\n\nThe key design goal of FuseJS is to keep your JavaScript code small, clean and only concerned with the practical functions of your application. Meanwhile\nall things related to UX, such as layout, data presentation, animation and gesture response, is left to declarative UX markup and native UI components.\n\nThe way Fuse separates JavaScript business logic from UX markup presentation has some clear benefits:\n\n* Performance - all the performance critical bits are handled in native code and based on native UI components.\n* Easy - declarative code is easy to read, write and understand even with limited programming knowledge\n* Less error prone - fewer states means fewer things can go wrong\n  * Visual tooling - UX markup can be edited by Fuse tools such as inspectors, timelines and generally cool drag & droppy stuff.\n\nNote that Fuse has tons of declarative APIs (designed for UX markup) that replace the need for controlling animation from JavaScript (i.e. imperatively).\n\nMany other JavaScript frameworks mix imperative UI code, animation and performance critical tasks into JavaScript, hence many people new to FuseJS tend to try\ndoing things this way in the beginning. While most of these things are technically possible in FuseJS, it is discouraged. We recommend taking some\ntime to study the Fuse examples to get a feel for the new way of doing things.\n\nPurifying your code by separating view and logic into UX markup and JavaScript can shrink your code base significantly, make it more maintainable, and allow\nmore effective collaboration between UX designers and developers.\n\nIf you need to write performance-critical business logic, we recommend doing that in native code or alternatively in Uno code instead of in JavaScript.",
+        "full": "The `JavaScript` tag is used to run JavaScript and assigns its `module.exports` as data context for the parent visual.\n\n**Note:** ECMAScript 5.1 is the only JavaScript version that is supported across all platforms.\nWhile newer JavaScript features might work on some devices, this can't be guaranteed (particularly for earlier iOS versions).\n\n## Getting started\n\nJavaScript can be used in UX markup through the `JavaScript` class, either by pointing to external JavaScript files, like this:\n\n\t<JavaScript File=\"SomeCode.js\" />\n\nOr by inlining the JavaScript code in the tag, like this:\n\n\t<JavaScript>\n\t\tconsole.log(\"Hello, FuseJS!\");\n\t</JavaScript>\n\n## About FuseJS\n\nFuseJS is a JavaScript framework for writing cross-platform mobile app business logic. It consists of a bunch of classes that covers\nthe basic functionality required for creating native mobile apps, as well as the @Observable class which lets you expose data to the UI in a functional reactive way.\n\n## Modules\n\nFuseJS implements the <a href=\"http://www.commonjs.org/\">CommonJS</a> module system. Each code file or inline snippet is a _module_.\n\nIn order to expose data and functions to other modules, one can add them to the `module.exports` object:\n\n\t<JavaScript>\n\t\tmodule.exports = {\n\t\t\texportedSymbol: \"Hello, rest of the world!\"\n\t\t};\n\t</JavaScript>\n\nFailing to export from modules will make it impossible to reach defined data inside the module:\n\n\t<JavaScript>\n\t\tvar data = [1, 2, 3];\n\t\tvar invisible = \"I'm invisible\";\n\n\t\tmodule.exports = {\n\t\t\tdata: data\n\t\t};\n\t</JavaScript>\n\nThis is good for hiding implementation details from other calling JavaScript modules and UX code.\n\n## Importing modules\n\nEach code file (or inline snippet) defines a module.\n\nYou can import JavaScript modules by their file name. To do this, make sure your JavaScript files are included in your .unoproj file as \"Bundle\" files:\n\n\t\"Includes\": [\n\t\t\"yourJavaScriptFile.js:Bundle\"\n\t\t..other files ..\n\t]\n\nor if you want to make all JavaScript files be includes as bundled files:\n\n\t\"Includes\": [\n\t\t\"**.js:Bundle\"\n\t]\n\nThen, you can require using the JavaScript file name:\n\n\tvar myModule = require('/someJavaScriptFile.js');\n\nNote that prefixing the file name with a \"/\" means that we are looking for the file relative to the project root directory. To name a file relative to the current file, prefix with \"./\". By omitting the prefixes, the file name is relative to the project root, or the global module it's in.\n\n\tvar relativeToProjectRoot = require('/SomeComponent');\n\tvar relativeFile = require('./MainView');\n\tvar relativeToRootOrGlobalModule = require('SomeOtherComponent.js');\n\n> Note that you may omit the .js file extension in the file name if you wish\n\n## Module instancing\n\nFuse's treatment of the `<JavaScript>` tag has some important differences from how modules work in the <a href=\"http://www.commonjs.org/\">CommonJS</a> module system.\n\nA module inside a `<JavaScript>` tag (or pointed to in an external file) will be instantiated once *for each time* the surrounding UX scope is instantiated. This means that if the `<JavaScript>` tag is part of a component, each instance of that component will initialise the code and have a separate set of the local variables and exports.\n\n### Cleaning up after modules\n\nIn Fuse, a JavaScript module can correspond to multiple module instances that get created and destroyed on the fly. If your module allocates resources that need manual cleanup, such as creating explicit `Observable` subscriptions, you can assign a handler to `module.disposed` and clean up after yourself there.\n\nExample:\n\n\tvar foo = getSomeGlobalObservable();\n\n\tfunction fooChanged() { ... }\n\n\tfoo.addSubscriber(fooChanged);\n\n\t...\n\n\tmodule.disposed = function () {\n\t\tfoo.removeSubscriber(fooChanged)\n\t}\n\n## Design and motivation\n\nThe key design goal of FuseJS is to keep your JavaScript code small, clean and only concerned with the practical functions of your application. Meanwhile\nall things related to UX, such as layout, data presentation, animation and gesture response, is left to declarative UX markup and native UI components.\n\nThe way Fuse separates JavaScript business logic from UX markup presentation has some clear benefits:\n\n* Performance - all the performance critical bits are handled in native code and based on native UI components.\n* Easy - declarative code is easy to read, write and understand even with limited programming knowledge\n* Less error prone - fewer states means fewer things can go wrong\n  * Visual tooling - UX markup can be edited by Fuse tools such as inspectors, timelines and generally cool drag & droppy stuff.\n\nNote that Fuse has tons of declarative APIs (designed for UX markup) that replace the need for controlling animation from JavaScript (i.e. imperatively).\n\nMany other JavaScript frameworks mix imperative UI code, animation and performance critical tasks into JavaScript, hence many people new to FuseJS tend to try\ndoing things this way in the beginning. While most of these things are technically possible in FuseJS, it is discouraged. We recommend taking some\ntime to study the Fuse examples to get a feel for the new way of doing things.\n\nPurifying your code by separating view and logic into UX markup and JavaScript can shrink your code base significantly, make it more maintainable, and allow\nmore effective collaboration between UX designers and developers.\n\nIf you need to write performance-critical business logic, we recommend doing that in native code or alternatively in Uno code instead of in JavaScript.",
         "attributes": {
           "topic": "JavaScript"
         }
@@ -2942,6 +3121,28 @@
       }
     },
     {
+      "comment": {
+        "brief": "Triggers if device has biometric sensor and user has already configure it",
+        "full": "Triggers if device has biometric sensor and user has already configure it\n\n## Example\n\n    <Panel>\n        <SupportBiometric>\n            <Button Text=\"Sign In With Biometric\">\n                <Clicked>\n                    <Authenticate />\n                </Clicked>\n            </Button>\n        </SupportBiometric>\n    </Panel>"
+      },
+      "id": {
+        "id": "fuse/supportbiometric",
+        "parentId": "fuse",
+        "type": "UxClass",
+        "modifiers": [
+          "public"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/supportbiometric",
+        "href": "fuse/supportbiometric"
+      },
+      "titles": {
+        "indexTitle": "SupportBiometric",
+        "fullyQualifiedIndexTitle": "Fuse.SupportBiometric"
+      }
+    },
+    {
       "id": {
         "id": "fuse/testing/javascripttest",
         "parentId": "fuse/testing",
@@ -3431,7 +3632,7 @@
     {
       "comment": {
         "brief": "StateGroup manages a set of @State triggers, making sure only a single @State is active at once.\nA @State is a regular @Trigger that is controlled by a @StateGroup.\nAnimators inside a @State define what should change while that state is active.",
-        "full": "StateGroup manages a set of @State triggers, making sure only a single @State is active at once.\nA @State is a regular @Trigger that is controlled by a @StateGroup.\nAnimators inside a @State define what should change while that state is active.\n\nThe basic structure of a StateGroup looks like this:\n\n```xml\n<StateGroup>\n\t<State ux:Name=\"firstState\" />\n\t<State ux:Name=\"secondState\" />\n</StateGroup>\n```\n\nNow, this setup does nothing at all. We need to add some animators to our @States, so that they actually do something.\nWe'll add a @Panel as well, so we have something to animate.\n\n```xml\n<Panel ux:Name=\"thePanel\" Width=\"100\" Height=\"100\" />\n\t<StateGroup>\n\t\t<State ux:Name=\"firstState\">\n\t\t\t<Change thePanel.Color=\"#f00\" />\n\t\t</State>\n\t\t<State ux:Name=\"secondState\">\n\t\t\t<Change thePanel.Color=\"#00f\" />\n\t\t</State>\t\n\t</StateGroup>\n</Panel>\n```\n\nSince the first @State in a StateGroup will be activated by default, the above example will display a red @Panel.\n\nAt this point, we'd like to switch to a different state somehow. This can be achieved in several ways, as seen below.\n\n## The `Active` property\n\nThe `Active` property can be used to activate a particular @State.\nThe below example displays a colored @Panel, along with three buttons that change its color.\n\n```xml\n<StackPanel>\n\t<Panel ux:Name=\"thePanel\" Width=\"100\" Height=\"100\" />\n\n\t<StateGroup ux:Name=\"stateGroup\">\n\t\t<State ux:Name=\"redState\">\n\t\t\t<Change thePanel.Color=\"#f00\" Duration=\"0.2\"/>\n\t\t</State>\n\t\t<State ux:Name=\"greenState\">\n\t\t\t<Change thePanel.Color=\"#0f0\" Duration=\"0.2\"/>\n\t\t</State>\n\t\t<State ux:Name=\"blueState\">\n\t\t\t<Change thePanel.Color=\"#00f\" Duration=\"0.2\"/>\n\t\t</State>\n\t</StateGroup>\n\n\t<Grid ColumnCount=\"3\">\n\t\t<Button Text=\"Red\">\n\t\t\t<Clicked>\n\t\t\t\t<Set stateGroup.Active=\"redState\"/>\n\t\t\t</Clicked>\n\t\t</Button>\n\t\t<Button Text=\"Green\">\n\t\t\t<Clicked>\n\t\t\t\t<Set stateGroup.Active=\"greenState\"/>\n\t\t\t</Clicked>\n\t\t</Button>\n\t\t<Button Text=\"Blue\">\n\t\t\t<Clicked>\n\t\t\t\t<Set stateGroup.Active=\"blueState\"/>\n\t\t\t</Clicked>\n\t\t</Button>\n\t</Grid>\n</StackPanel>\n```\n\n## TransitionState\n\nInstead of directly jumping to a particular state, the @TransitionState action can be used to advance to the next @State in a StateGroup, following the order in which they are declared.\nIf a @TransitionState is triggered while the last @State is active, it wraps around to activate the first @State.\n\nThe following example displays a panel that will cycle its color between red, green and blue when clicked.\n\n```xml\n<Panel ux:Name=\"thePanel\" Width=\"100\" Height=\"100\">\n\t<StateGroup ux:Name=\"stateGroup\">\n\t\t<State ux:Name=\"redState\">\n\t\t\t<Change thePanel.Color=\"#f00\" Duration=\"0.2\"/>\n\t\t</State>\n\t\t<State ux:Name=\"greenState\">\n\t\t\t<Change thePanel.Color=\"#0f0\" Duration=\"0.2\"/>\n\t\t</State>\n\t\t<State ux:Name=\"blueState\">\n\t\t\t<Change thePanel.Color=\"#00f\" Duration=\"0.2\"/>\n\t\t</State>\n\t</StateGroup>\n\n\t<Clicked>\n\t\t<TransitionState Type=\"Next\" Target=\"stateGroup\" />\n\t</Clicked>\n</Panel>\n```\n\n## Controlling StateGroup using JavaScript\n\nA `StateGroup` may be controlled via its JavaScript interface.\nThis is done either by calling the `goto(state)` or `gotoNext()` methods on the @StateGroup itself, or by calling the `goto()` method on a particular @State.\n\n```xml\n<JavaScript>\n\texports.gotoNextState = function()\n\t{\n\t\tstateGroup.gotoNext();\n\t}\n\n\texports.gotoSecondState = function()\n\t{\n\t\tstateGroup.goto(secondState);\n\t}\n\n\texports.gotoThirdState = function()\n\t{\n\t\tthirdState.goto();\n\t}\n</JavaScript>\n\n<StateGroup ux:Name=\"stateGroup\">\n\t<State ux:Name=\"firstState\">\n\t\t<!-- ... -->\t\n\t</State>\n\t<State ux:Name=\"secondState\">\n\t\t<!-- ... -->\n\t</State>\n\t<State ux:Name=\"thirdState\">\n\t\t<!-- ... -->\n\t</State>\n</StateGroup>\n\n<StackPanel>\n\t<Button Clicked=\"{gotoNextState}\" Text=\"Next state\" />\n\t<Button Clicked=\"{gotoSecondState}\" Text=\"Second state\" />\n\t<Button Clicked=\"{gotoThirdState}\" Text=\"Third state\" />\n</StackPanel>\n```\n\n## Transition\n\nWe can also specify the `Transition` property, which can be either `Exclusive` or `Parallel`.\n`Exclusive` means that each state will have to be fully deactivated before the next state becomes active.\n`Parallel` means that as one state deactivates, the next one will become active and whatever properties they animate will be interpolated between them."
+        "full": "StateGroup manages a set of @State triggers, making sure only a single @State is active at once.\nA @State is a regular @Trigger that is controlled by a @StateGroup.\nAnimators inside a @State define what should change while that state is active.\n\nThe basic structure of a StateGroup looks like this:\n\n```xml\n<StateGroup>\n\t<State ux:Name=\"firstState\" />\n\t<State ux:Name=\"secondState\" />\n</StateGroup>\n```\n\nNow, this setup does nothing at all. We need to add some animators to our @States, so that they actually do something.\nWe'll add a @Panel as well, so we have something to animate.\n\n```xml\n<Panel ux:Name=\"thePanel\" Width=\"100\" Height=\"100\" />\n\t<StateGroup>\n\t\t<State ux:Name=\"firstState\">\n\t\t\t<Change thePanel.Color=\"#f00\" />\n\t\t</State>\n\t\t<State ux:Name=\"secondState\">\n\t\t\t<Change thePanel.Color=\"#00f\" />\n\t\t</State>\n\t</StateGroup>\n</Panel>\n```\n\nSince the first @State in a StateGroup will be activated by default, the above example will display a red @Panel.\n\nAt this point, we'd like to switch to a different state somehow. This can be achieved in several ways, as seen below.\n\n## The `Active` property\n\nThe `Active` property can be used to activate a particular @State.\nThe below example displays a colored @Panel, along with three buttons that change its color.\n\n```xml\n<StackPanel>\n\t<Panel ux:Name=\"thePanel\" Width=\"100\" Height=\"100\" />\n\n\t<StateGroup ux:Name=\"stateGroup\">\n\t\t<State ux:Name=\"redState\">\n\t\t\t<Change thePanel.Color=\"#f00\" Duration=\"0.2\"/>\n\t\t</State>\n\t\t<State ux:Name=\"greenState\">\n\t\t\t<Change thePanel.Color=\"#0f0\" Duration=\"0.2\"/>\n\t\t</State>\n\t\t<State ux:Name=\"blueState\">\n\t\t\t<Change thePanel.Color=\"#00f\" Duration=\"0.2\"/>\n\t\t</State>\n\t</StateGroup>\n\n\t<Grid ColumnCount=\"3\">\n\t\t<Button Text=\"Red\">\n\t\t\t<Clicked>\n\t\t\t\t<Set stateGroup.Active=\"redState\"/>\n\t\t\t</Clicked>\n\t\t</Button>\n\t\t<Button Text=\"Green\">\n\t\t\t<Clicked>\n\t\t\t\t<Set stateGroup.Active=\"greenState\"/>\n\t\t\t</Clicked>\n\t\t</Button>\n\t\t<Button Text=\"Blue\">\n\t\t\t<Clicked>\n\t\t\t\t<Set stateGroup.Active=\"blueState\"/>\n\t\t\t</Clicked>\n\t\t</Button>\n\t</Grid>\n</StackPanel>\n```\n\n## TransitionState\n\nInstead of directly jumping to a particular state, the @TransitionState action can be used to advance to the next @State in a StateGroup, following the order in which they are declared.\nIf a @TransitionState is triggered while the last @State is active, it wraps around to activate the first @State.\n\nThe following example displays a panel that will cycle its color between red, green and blue when clicked.\n\n```xml\n<Panel ux:Name=\"thePanel\" Width=\"100\" Height=\"100\">\n\t<StateGroup ux:Name=\"stateGroup\">\n\t\t<State ux:Name=\"redState\">\n\t\t\t<Change thePanel.Color=\"#f00\" Duration=\"0.2\"/>\n\t\t</State>\n\t\t<State ux:Name=\"greenState\">\n\t\t\t<Change thePanel.Color=\"#0f0\" Duration=\"0.2\"/>\n\t\t</State>\n\t\t<State ux:Name=\"blueState\">\n\t\t\t<Change thePanel.Color=\"#00f\" Duration=\"0.2\"/>\n\t\t</State>\n\t</StateGroup>\n\n\t<Clicked>\n\t\t<TransitionState Type=\"Next\" Target=\"stateGroup\" />\n\t</Clicked>\n</Panel>\n```\n\n## Controlling StateGroup using JavaScript\n\nA `StateGroup` may be controlled via its JavaScript interface.\nThis is done either by calling the `goto(state)` or `gotoNext()` methods on the @StateGroup itself, or by calling the `goto()` method on a particular @State.\n\n```xml\n<JavaScript>\n\texports.gotoNextState = function()\n\t{\n\t\tstateGroup.gotoNext();\n\t}\n\n\texports.gotoSecondState = function()\n\t{\n\t\tstateGroup.goto(secondState);\n\t}\n\n\texports.gotoThirdState = function()\n\t{\n\t\tthirdState.goto();\n\t}\n</JavaScript>\n\n<StateGroup ux:Name=\"stateGroup\">\n\t<State ux:Name=\"firstState\">\n\t\t<!-- ... -->\n\t</State>\n\t<State ux:Name=\"secondState\">\n\t\t<!-- ... -->\n\t</State>\n\t<State ux:Name=\"thirdState\">\n\t\t<!-- ... -->\n\t</State>\n</StateGroup>\n\n<StackPanel>\n\t<Button Clicked=\"{gotoNextState}\" Text=\"Next state\" />\n\t<Button Clicked=\"{gotoSecondState}\" Text=\"Second state\" />\n\t<Button Clicked=\"{gotoThirdState}\" Text=\"Third state\" />\n</StackPanel>\n```\n\n## Transition\n\nWe can also specify the `Transition` property, which can be either `Exclusive` or `Parallel`.\n`Exclusive` means that each state will have to be fully deactivated before the next state becomes active.\n`Parallel` means that as one state deactivates, the next one will become active and whatever properties they animate will be interpolated between them."
       },
       "id": {
         "id": "fuse/triggers/stategroup",
@@ -3500,7 +3701,7 @@
     {
       "comment": {
         "brief": "Controls the animations for page-to-page transitions in a `Navigator`.",
-        "full": "Controls the animations for page-to-page transitions in a `Navigator`.\n\nUnlike the `EnteringAnimation` and `ExitingAnimation` triggers, `Transition` allows you to make different animations depending on which page is being navigating to, or away from.\n\n# Example\n\n\t<Page ux:Template=\"Main\">\n\t\t<Transition To=\"Contacts\">\n\t\t\t<Move X=\"-1\" RelativeTo=\"ParentSize\" Duration=\"1\"/>\n\t\t</Transition>\n\t\t<Transition>\n\t\t\t<Move Y=\"1\" RelativeTo=\"ParentSize\" Duration=\"1\"/>\n\t\t</Transition>\n\t</Page>\n\t\nThis page has a special transition if navigating to the `Contacts` page. In this case it will slide the page to the left. All other transitions away from this page will slide down.\n\n# To / From\n\nEvery navigation change defines a \"To\" and \"From\" page. In `Transition` these are always defined as the the forward ordering of the pages in the navigation. This ensures that when navigating backward (such as using `goBack`) the same transitions will be used, but done in reverse.\n\nFor example, a `<Transition To=\"Contacts\">` matches a forward transition to the `Contacts` page, as well as a backwards transition from the `Contacts` page to this one.\n\nSimilarly, a `<Transtion From=\"Main\">` matches a forward transition from the `Main` page, as well as a backwards transition from this page to the `Main` page.\n\n# Priority\n\nOnly one `Transition`, the one with the highest priority, will be selected for each page change. The priority ordering is:\n\n- A `Style` match on the operational style\n- `Interaction` match other than `Any`\n- `To` page name match\n- `From` page name match\n- `Direction` of `ToBack`, `FromBack`, `ToFront`, `FromFront`\n- `Direction` of `ToActive`, `ToInactive`\n- `Direction` of `InFront`, `Behind`\n- `Direction` `Any`\n\nIf no matching `Transition` is found then a default one will be created according to the [Navigator.Transition](api:fuse/controls/navigationcontrol/transition) property. If you don't want a default then specify a final fallback transition without properties `<Transition>`.\n\n# Play direction\n\nIf the page is becoming inactive the transition will be played forward. If the page is becoming active the transition will be played backward. This means the transition is always defining the animation towards the inactive state.\n\nWith certain combinations of properties this may at first seem odd, for example:\n\n\t<Transition Direction=\"ToActive\">\n\t\t<Move X=\"100\" Duration=\"1\"/>\n\t</Transition>\n\t\nThis `Transition` is only selected when the page is becoming the active one. The animation will start at `X=100` and move towards `X=0` over a duration of `1`.\n\nThe final state of any active page is always with all transitions deactivated.\n\n## Extended Example\n\nThe [Transition Example](https://github.com/fusetools/fuse-samples/tree/master/Samples/UIStructure/Transition) shows a variety of page transitions using `Transition`."
+        "full": "Controls the animations for page-to-page transitions in a `Navigator`.\n\nUnlike the `EnteringAnimation` and `ExitingAnimation` triggers, `Transition` allows you to make different animations depending on which page is being navigating to, or away from.\n\n# Example\n\n\t<Page ux:Template=\"Main\">\n\t\t<Transition To=\"Contacts\">\n\t\t\t<Move X=\"-1\" RelativeTo=\"ParentSize\" Duration=\"1\"/>\n\t\t</Transition>\n\t\t<Transition>\n\t\t\t<Move Y=\"1\" RelativeTo=\"ParentSize\" Duration=\"1\"/>\n\t\t</Transition>\n\t</Page>\n\nThis page has a special transition if navigating to the `Contacts` page. In this case it will slide the page to the left. All other transitions away from this page will slide down.\n\n# To / From\n\nEvery navigation change defines a \"To\" and \"From\" page. In `Transition` these are always defined as the the forward ordering of the pages in the navigation. This ensures that when navigating backward (such as using `goBack`) the same transitions will be used, but done in reverse.\n\nFor example, a `<Transition To=\"Contacts\">` matches a forward transition to the `Contacts` page, as well as a backwards transition from the `Contacts` page to this one.\n\nSimilarly, a `<Transtion From=\"Main\">` matches a forward transition from the `Main` page, as well as a backwards transition from this page to the `Main` page.\n\n# Priority\n\nOnly one `Transition`, the one with the highest priority, will be selected for each page change. The priority ordering is:\n\n- A `Style` match on the operational style\n- `Interaction` match other than `Any`\n- `To` page name match\n- `From` page name match\n- `Direction` of `ToBack`, `FromBack`, `ToFront`, `FromFront`\n- `Direction` of `ToActive`, `ToInactive`\n- `Direction` of `InFront`, `Behind`\n- `Direction` `Any`\n\nIf no matching `Transition` is found then a default one will be created according to the [Navigator.Transition](api:fuse/controls/navigationcontrol/transition) property. If you don't want a default then specify a final fallback transition without properties `<Transition>`.\n\n# Play direction\n\nIf the page is becoming inactive the transition will be played forward. If the page is becoming active the transition will be played backward. This means the transition is always defining the animation towards the inactive state.\n\nWith certain combinations of properties this may at first seem odd, for example:\n\n\t<Transition Direction=\"ToActive\">\n\t\t<Move X=\"100\" Duration=\"1\"/>\n\t</Transition>\n\nThis `Transition` is only selected when the page is becoming the active one. The animation will start at `X=100` and move towards `X=0` over a duration of `1`.\n\nThe final state of any active page is always with all transitions deactivated.\n\n## Extended Example\n\nThe [Transition Example](https://github.com/fusetools/fuse-samples/tree/master/Samples/UIStructure/Transition) shows a variety of page transitions using `Transition`."
       },
       "id": {
         "id": "fuse/triggers/transition",

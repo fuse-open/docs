@@ -477,25 +477,6 @@
             }
           },
           {
-            "id": {
-              "id": "fuse/navigation/pageresourcebinding_1",
-              "parentId": "fuse/navigation",
-              "type": "UxClass",
-              "modifiers": [
-                "public",
-                "sealed"
-              ]
-            },
-            "uri": {
-              "idUri": "fuse/navigation/pageresourcebinding_1",
-              "href": "fuse/navigation/pageresourcebinding_1"
-            },
-            "titles": {
-              "indexTitle": "PageResourceBinding<T>",
-              "fullyQualifiedIndexTitle": "Fuse.Navigation.PageResourceBinding<T>"
-            }
-          },
-          {
             "comment": {
               "brief": "Push a new route onto the router.",
               "full": "Push a new route onto the router.\n\nThis is the same as @RouterModify with `How=\"Push\"`"
@@ -583,28 +564,6 @@
             "titles": {
               "indexTitle": "RouterCancelNavigation",
               "fullyQualifiedIndexTitle": "Fuse.Navigation.RouterCancelNavigation"
-            }
-          },
-          {
-            "comment": {
-              "brief": "Performs a transition on the router with extended options.",
-              "full": "Performs a transition on the router with extended options.\n\n> Note: there is also a JavaScript interface for [Router.modify](api:fuse/navigation/router/modify_0f0d575d).\n\nBasic use requires setting the property `Bookmark` to specify the route to navigate to,\nand the `How` property to specify what navigation action will be used, most frequently `Push` or `Goto`.\n\n    <Router ux:Name=\"router\" />\n    ...\n    <JavaScript>\n        router.bookmark({\n            name: \"myBookmark\",\n            path: [\"myPage\", {}, \"mySubpage\", {}]\n        });\n    </JavaScript>\n    ...\n    <Panel>\n        <Clicked>\n            <RouterModify How=\"Push\" Bookmark=\"myBookmark\" />\n        </Clicked>\n        <Text Value=\"Open subpage\" />\n    </Panel>\n\nIf we only need to go back in navigation history, the `Bookmark` property can be omitted:\n\n    <RouterModify How=\"GoBack\" />\n\nWhen using `Navigator` or `PageControl`, the default transitions can be overriden by setting `Transition`\nand `Style` properties on `RouterModify`. This pushes another page without a transition:\n\n    <RouterModify How=\"Push\" Transition=\"Bypass\" Bookmark=\"myBookmark\" />\n\nWe can use the `Style` property to refer to specific `Transition` triggers on target pages, allowing us\nto trigger different transitions for separate use cases:\n\n    <Router ux:Name=\"router\" />\n    ...\n    <JavaScript>\n        router.bookmark({\n            name: \"myBookmark\",\n            path: [\"secondPage\", {}]\n        });\n    </JavaScript>\n    ...\n    <Navigator DefaultPath=\"firstPage\">\n        <StackPanel ux:Template=\"firstPage\">\n            <Panel>\n                <Clicked>\n                    <RouterModify How=\"Push\" Bookmark=\"myBookmark\" Style=\"fromTop\" />\n                </Clicked>\n                <Text Value=\"Transition from top\" />\n            </Panel>\n            <Panel>\n                <Clicked>\n                    <RouterModify How=\"Push\" Bookmark=\"myBookmark\" Style=\"fromBottom\" />\n                </Clicked>\n                <Text Value=\"Transition from bottom\" />\n            </Panel>\n        </StackPanel>\n\n        <Panel ux:Template=\"secondPage\">\n            <Transition Style=\"fromTop\">\n                <Move Y=\"-1\" RelativeTo=\"ParentSize\" Duration=\"0.4\" Easing=\"SinusoidalInOut\" />\n            </Transition>\n            <Transition Style=\"fromBottom\">\n                <Move Y=\"1\" RelativeTo=\"ParentSize\" Duration=\"0.4\" Easing=\"SinusoidalInOut\" />\n            </Transition>\n            <Clicked>\n                <RouterModify How=\"GoBack\" />\n            </Clicked>\n            <Text Value=\"Go back\" />\n        </Panel>\n    </Navigator>"
-            },
-            "id": {
-              "id": "fuse/navigation/routermodify",
-              "parentId": "fuse/navigation",
-              "type": "UxClass",
-              "modifiers": [
-                "public"
-              ]
-            },
-            "uri": {
-              "idUri": "fuse/navigation/routermodify",
-              "href": "fuse/navigation/routermodify"
-            },
-            "titles": {
-              "indexTitle": "RouterModify",
-              "fullyQualifiedIndexTitle": "Fuse.Navigation.RouterModify"
             }
           },
           {
@@ -949,31 +908,6 @@
           },
           {
             "comment": {
-              "brief": "Use this class to listen for changes on a page in a navigation. This takes cares of the various\noverrides on Page/Navigation and rooting order considerations.",
-              "full": "Use this class to listen for changes on a page in a navigation. This takes cares of the various\noverrides on Page/Navigation and rooting order considerations.\n\nCreate this object at rooting time and dispose of it while unrooting.\n\n@hide",
-              "attributes": {
-                "deprecated": true
-              }
-            },
-            "id": {
-              "id": "fuse/navigation/navigationpageproxy",
-              "parentId": "fuse/navigation",
-              "type": "Class",
-              "modifiers": [
-                "public"
-              ]
-            },
-            "uri": {
-              "idUri": "fuse/navigation/navigationpageproxy",
-              "href": "fuse/navigation/navigationpageproxy"
-            },
-            "titles": {
-              "indexTitle": "NavigationPageProxy",
-              "fullyQualifiedIndexTitle": "Fuse.Navigation.NavigationPageProxy"
-            }
-          },
-          {
-            "comment": {
               "brief": "@hide",
               "full": "@hide"
             },
@@ -1054,6 +988,28 @@
             "titles": {
               "indexTitle": "RouteModificationCommand",
               "fullyQualifiedIndexTitle": "Fuse.Navigation.RouteModificationCommand"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Performs a transition on the router with extended options.",
+              "full": "Performs a transition on the router with extended options.\n\n> Note: there is also a JavaScript interface for [Router.modify](api:fuse/navigation/router/modify_0f0d575d).\n\nBasic use requires setting the property `Bookmark` to specify the route to navigate to,\nand the `How` property to specify what navigation action will be used, most frequently `Push` or `Goto`.\n\n    <Router ux:Name=\"router\" />\n    ...\n    <JavaScript>\n        router.bookmark({\n            name: \"myBookmark\",\n            path: [\"myPage\", {}, \"mySubpage\", {}]\n        });\n    </JavaScript>\n    ...\n    <Panel>\n        <Clicked>\n            <RouterModify How=\"Push\" Bookmark=\"myBookmark\" />\n        </Clicked>\n        <Text Value=\"Open subpage\" />\n    </Panel>\n\nIf we only need to go back in navigation history, the `Bookmark` property can be omitted:\n\n    <RouterModify How=\"GoBack\" />\n\nWhen using `Navigator` or `PageControl`, the default transitions can be overriden by setting `Transition`\nand `Style` properties on `RouterModify`. This pushes another page without a transition:\n\n    <RouterModify How=\"Push\" Transition=\"Bypass\" Bookmark=\"myBookmark\" />\n\nWe can use the `Style` property to refer to specific `Transition` triggers on target pages, allowing us\nto trigger different transitions for separate use cases:\n\n    <Router ux:Name=\"router\" />\n    ...\n    <JavaScript>\n        router.bookmark({\n            name: \"myBookmark\",\n            path: [\"secondPage\", {}]\n        });\n    </JavaScript>\n    ...\n    <Navigator DefaultPath=\"firstPage\">\n        <StackPanel ux:Template=\"firstPage\">\n            <Panel>\n                <Clicked>\n                    <RouterModify How=\"Push\" Bookmark=\"myBookmark\" Style=\"fromTop\" />\n                </Clicked>\n                <Text Value=\"Transition from top\" />\n            </Panel>\n            <Panel>\n                <Clicked>\n                    <RouterModify How=\"Push\" Bookmark=\"myBookmark\" Style=\"fromBottom\" />\n                </Clicked>\n                <Text Value=\"Transition from bottom\" />\n            </Panel>\n        </StackPanel>\n\n        <Panel ux:Template=\"secondPage\">\n            <Transition Style=\"fromTop\">\n                <Move Y=\"-1\" RelativeTo=\"ParentSize\" Duration=\"0.4\" Easing=\"SinusoidalInOut\" />\n            </Transition>\n            <Transition Style=\"fromBottom\">\n                <Move Y=\"1\" RelativeTo=\"ParentSize\" Duration=\"0.4\" Easing=\"SinusoidalInOut\" />\n            </Transition>\n            <Clicked>\n                <RouterModify How=\"GoBack\" />\n            </Clicked>\n            <Text Value=\"Go back\" />\n        </Panel>\n    </Navigator>"
+            },
+            "id": {
+              "id": "fuse/navigation/routermodify",
+              "parentId": "fuse/navigation",
+              "type": "Class",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/navigation/routermodify",
+              "href": "fuse/navigation/routermodify"
+            },
+            "titles": {
+              "indexTitle": "RouterModify",
+              "fullyQualifiedIndexTitle": "Fuse.Navigation.RouterModify"
             }
           },
           {

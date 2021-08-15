@@ -22,7 +22,7 @@
       "namespaceTitle": "Fuse.FileSystem",
       "namespaceUri": "fuse/filesystem",
       "packageName": "Fuse.FileSystem",
-      "packageVersion": "1.11.2"
+      "packageVersion": "2.0.0-beta.9"
     },
     "inheritance": {
       "root": {
@@ -807,126 +807,6 @@
             "titles": {
               "indexTitle": "CreateDirectorySync(Context, object[])",
               "fullyQualifiedIndexTitle": "Fuse.FileSystem.FileSystemModule.CreateDirectorySync(Fuse.Scripting.Context, object[])"
-            }
-          },
-          {
-            "comment": {
-              "brief": "Asynchronously delete a file.",
-              "full": "Asynchronously delete a file.\n\n## Example\n\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    FileSystem.delete(\"myfile.txt\")\n        .then(function() {\n            console.log(\"Delete succeeded\");\n        }, function(error) {\n            console.log(\"Unable to delete file\");\n        });",
-              "attributes": {
-                "scriptMethod": {
-                  "name": "delete",
-                  "parameters": [
-                    "path"
-                  ]
-                },
-                "returns": {
-                  "typeHint": "Promise",
-                  "text": "A Promise of nothing"
-                },
-                "parameters": [
-                  {
-                    "name": "path",
-                    "typeHint": "String",
-                    "description": "Path to a file or directory"
-                  },
-                  {
-                    "name": "recursive",
-                    "typeHint": "Boolean",
-                    "description": "Delete directory recursively (ignored for files)"
-                  }
-                ]
-              }
-            },
-            "returns": {
-              "href": "uno/threading/future_1",
-              "title": "Future<Nothing>",
-              "fullyQualifiedTitle": "Uno.Threading.Future<Fuse.FileSystem.Nothing>"
-            },
-            "parameters": [
-              {
-                "name": "args",
-                "href": "uno/object",
-                "title": "object[]",
-                "fullyQualifiedTitle": "object[]"
-              }
-            ],
-            "id": {
-              "id": "fuse/filesystem/filesystemmodule/delete_95a738ba",
-              "parentId": "fuse/filesystem/filesystemmodule",
-              "type": "JsMethod",
-              "modifiers": [
-                "private"
-              ]
-            },
-            "uri": {
-              "idUri": "fuse/filesystem/filesystemmodule/delete_95a738ba",
-              "href": "fuse/filesystem/filesystemmodule/delete_95a738ba"
-            },
-            "titles": {
-              "indexTitle": "Delete(object[])",
-              "fullyQualifiedIndexTitle": "Fuse.FileSystem.FileSystemModule.Delete(object[])"
-            }
-          },
-          {
-            "comment": {
-              "brief": "Synchronously delete a file.",
-              "full": "Synchronously delete a file.\n\n## Example\n\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    FileSystem.deleteSync(\"myfile.txt\");",
-              "attributes": {
-                "scriptMethod": {
-                  "name": "deleteSync",
-                  "parameters": [
-                    "path"
-                  ]
-                },
-                "parameters": [
-                  {
-                    "name": "path",
-                    "typeHint": "String",
-                    "description": "Path to a file or directory"
-                  },
-                  {
-                    "name": "recursive",
-                    "typeHint": "Boolean",
-                    "description": "Delete directory recursively (ignored for files)"
-                  }
-                ]
-              }
-            },
-            "returns": {
-              "href": "uno/object",
-              "title": "object",
-              "fullyQualifiedTitle": "object"
-            },
-            "parameters": [
-              {
-                "name": "context",
-                "href": "fuse/scripting/context",
-                "title": "Context",
-                "fullyQualifiedTitle": "Fuse.Scripting.Context"
-              },
-              {
-                "name": "args",
-                "href": "uno/object",
-                "title": "object[]",
-                "fullyQualifiedTitle": "object[]"
-              }
-            ],
-            "id": {
-              "id": "fuse/filesystem/filesystemmodule/deletesync_bbef95e2",
-              "parentId": "fuse/filesystem/filesystemmodule",
-              "type": "JsMethod",
-              "modifiers": [
-                "private"
-              ]
-            },
-            "uri": {
-              "idUri": "fuse/filesystem/filesystemmodule/deletesync_bbef95e2",
-              "href": "fuse/filesystem/filesystemmodule/deletesync_bbef95e2"
-            },
-            "titles": {
-              "indexTitle": "DeleteSync(Context, object[])",
-              "fullyQualifiedIndexTitle": "Fuse.FileSystem.FileSystemModule.DeleteSync(Fuse.Scripting.Context, object[])"
             }
           },
           {
@@ -1960,6 +1840,126 @@
             "titles": {
               "indexTitle": "ReadTextFromFileSync(Context, object[])",
               "fullyQualifiedIndexTitle": "Fuse.FileSystem.FileSystemModule.ReadTextFromFileSync(Fuse.Scripting.Context, object[])"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Asynchronously delete a file.",
+              "full": "Asynchronously delete a file.\n\n## Example\n\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    FileSystem.remove(\"myfile.txt\")\n        .then(function() {\n            console.log(\"Delete succeeded\");\n        }, function(error) {\n            console.log(\"Unable to delete file\");\n        });",
+              "attributes": {
+                "scriptMethod": {
+                  "name": "remove",
+                  "parameters": [
+                    "path"
+                  ]
+                },
+                "returns": {
+                  "typeHint": "Promise",
+                  "text": "A Promise of nothing"
+                },
+                "parameters": [
+                  {
+                    "name": "path",
+                    "typeHint": "String",
+                    "description": "Path to a file or directory"
+                  },
+                  {
+                    "name": "recursive",
+                    "typeHint": "Boolean",
+                    "description": "Delete directory recursively (ignored for files)"
+                  }
+                ]
+              }
+            },
+            "returns": {
+              "href": "uno/threading/future_1",
+              "title": "Future<Nothing>",
+              "fullyQualifiedTitle": "Uno.Threading.Future<Fuse.FileSystem.Nothing>"
+            },
+            "parameters": [
+              {
+                "name": "args",
+                "href": "uno/object",
+                "title": "object[]",
+                "fullyQualifiedTitle": "object[]"
+              }
+            ],
+            "id": {
+              "id": "fuse/filesystem/filesystemmodule/remove_95a738ba",
+              "parentId": "fuse/filesystem/filesystemmodule",
+              "type": "JsMethod",
+              "modifiers": [
+                "private"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/filesystem/filesystemmodule/remove_95a738ba",
+              "href": "fuse/filesystem/filesystemmodule/remove_95a738ba"
+            },
+            "titles": {
+              "indexTitle": "Remove(object[])",
+              "fullyQualifiedIndexTitle": "Fuse.FileSystem.FileSystemModule.Remove(object[])"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Synchronously delete a file.",
+              "full": "Synchronously delete a file.\n\n## Example\n\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    FileSystem.removeSync(\"myfile.txt\");",
+              "attributes": {
+                "scriptMethod": {
+                  "name": "removeSync",
+                  "parameters": [
+                    "path"
+                  ]
+                },
+                "parameters": [
+                  {
+                    "name": "path",
+                    "typeHint": "String",
+                    "description": "Path to a file or directory"
+                  },
+                  {
+                    "name": "recursive",
+                    "typeHint": "Boolean",
+                    "description": "Delete directory recursively (ignored for files)"
+                  }
+                ]
+              }
+            },
+            "returns": {
+              "href": "uno/object",
+              "title": "object",
+              "fullyQualifiedTitle": "object"
+            },
+            "parameters": [
+              {
+                "name": "context",
+                "href": "fuse/scripting/context",
+                "title": "Context",
+                "fullyQualifiedTitle": "Fuse.Scripting.Context"
+              },
+              {
+                "name": "args",
+                "href": "uno/object",
+                "title": "object[]",
+                "fullyQualifiedTitle": "object[]"
+              }
+            ],
+            "id": {
+              "id": "fuse/filesystem/filesystemmodule/removesync_bbef95e2",
+              "parentId": "fuse/filesystem/filesystemmodule",
+              "type": "JsMethod",
+              "modifiers": [
+                "private"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/filesystem/filesystemmodule/removesync_bbef95e2",
+              "href": "fuse/filesystem/filesystemmodule/removesync_bbef95e2"
+            },
+            "titles": {
+              "indexTitle": "RemoveSync(Context, object[])",
+              "fullyQualifiedIndexTitle": "Fuse.FileSystem.FileSystemModule.RemoveSync(Fuse.Scripting.Context, object[])"
             }
           },
           {

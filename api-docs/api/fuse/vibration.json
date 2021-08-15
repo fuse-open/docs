@@ -28,7 +28,7 @@
           {
             "comment": {
               "brief": "Allows you to use the device's vibration functionality.",
-              "full": "Allows you to use the device's vibration functionality.\n\nYou need to add a reference to `\"Fuse.Vibration\"` in your project file to use this feature.\n\n## Example\n\nThe following code vibrates the device for 0.8 seconds.\n\n    var vibration = require('FuseJS/Vibration');\n    vibration.vibrate(0.8);",
+              "full": "Allows you to use the device's vibration functionality.\n\nYou need to add a reference to `\"Fuse.Vibration\"` in your project file to use this feature.\n\n## Example\n\nThe following code vibrates the device for 0.8 seconds.\n\n    var vibration = require('FuseJS/Vibration');\n    vibration.vibrate(0.8);\n    // works on iOS using TapticEngine\n    vibration.vibrate('medium')",
               "attributes": {
                 "scriptModule": "FuseJS/Vibration"
               }
@@ -59,8 +59,8 @@
         "items": [
           {
             "comment": {
-              "brief": "Vibrate the device for a duration",
-              "full": "Vibrate the device for a duration\n\nYou'll find this trigger action in the Fuse.Vibration package, which have to be referenced from your uno project.\nFor example:\n\n    {\n        \"Packages\": [\n            \"Fuse\",\n            \"FuseJS\",\n            \"Fuse.Vibration\"\n        ]\n      }\n\n## Example\n\n    <StackPanel Margin=\"20\">\n        <Button Margin=\"10\" Text=\"Vibrate\">\n            <Clicked>\n                <Vibrate Duration=\"5\" />\n            </Clicked>\n        </Button>\n    </StackPanel>"
+              "brief": "Vibrate the device for a duration or by vibration type (only on iOS)",
+              "full": "Vibrate the device for a duration or by vibration type (only on iOS)\n\nYou'll find this trigger action in the Fuse.Vibration package, which have to be referenced from your uno project.\nFor example:\n\n    {\n        \"Packages\": [\n            \"Fuse\",\n            \"FuseJS\",\n            \"Fuse.Vibration\"\n        ]\n      }\n\n## Example\n\n    <StackPanel Margin=\"20\">\n        <Button Margin=\"10\" Text=\"Vibrate\">\n            <Clicked>\n                <Vibrate Duration=\"5\" />\n            </Clicked>\n        </Button>\n    </StackPanel>\n\nOn iOS you can do vibration by leveraging Taptic Engine. There are 9 types of vibration :\n* Soft\n* Rigid\n* Light\n* Medium\n* Heavy\n* Success\n* Warning\n* Error\n* Selection\nTo activate it, just pass those value to `VibrationType` property\n\n##Example\n\n    <StackPanel Margin=\"20\">\n        <!-- Works on iOS using Taptic Engine -->\n        <Button Margin=\"10\" Text=\"Heavy Vibrate\">\n            <Clicked>\n                <Vibrate VibrationType=\"Heavy\" />\n            </Clicked>\n        </Button>\n    </StackPanel>"
             },
             "id": {
               "id": "fuse/vibration/vibrate",
@@ -102,6 +102,30 @@
             "titles": {
               "indexTitle": "Vibration",
               "fullyQualifiedIndexTitle": "Fuse.Vibration.Vibration"
+            }
+          }
+        ]
+      }
+    ],
+    "enums": [
+      {
+        "items": [
+          {
+            "id": {
+              "id": "fuse/vibration/vibrationtype",
+              "parentId": "fuse/vibration",
+              "type": "Enum",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/vibration/vibrationtype",
+              "href": "fuse/vibration/vibrationtype"
+            },
+            "titles": {
+              "indexTitle": "VibrationType",
+              "fullyQualifiedIndexTitle": "Fuse.Vibration.VibrationType"
             }
           }
         ]

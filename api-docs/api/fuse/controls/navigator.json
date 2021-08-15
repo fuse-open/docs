@@ -24,7 +24,7 @@
       "namespaceTitle": "Fuse.Controls",
       "namespaceUri": "fuse/controls",
       "packageName": "Fuse.Controls.Navigation",
-      "packageVersion": "1.11.2"
+      "packageVersion": "2.0.0-beta.9"
     },
     "inheritance": {
       "root": {
@@ -559,7 +559,7 @@
     },
     "comment": {
       "brief": "General-purpose navigation container with on-demand instantiation and recycling of pages.",
-      "full": "General-purpose navigation container with on-demand instantiation and recycling of pages.\n\n> Note: It is recommended that you first read the [Navigation guide](/docs/navigation/navigation) for a full overview of Fuse's navigation system.\n\n## Pages\n\n`Navigator` takes a collection of [templates](/docs/basics/creating-components#templates-ux-template) as its children.\nThis allows it to instantiate and recycle pages as it needs.\n\nYou can declare a node as a template by specifying the `ux:Template` attribute. The path of the route is matched to the `ux:Template` value to select a template.\n\n\t<Page ux:Template=\"matchPath\">\n\nYou can read more about templates [here](/docs/basics/creating-components#templates-ux-template).\n\nNon-template pages can also be used. The `Name` of the page will be used to match the path:\n\n\t<Page Name=\"matchPath\">\n\t\nThese pages always just have the one instance, will always be reused, and will never be removed. Otherwise they function the same as the template pages.\n\nHere are some general rules that will you help decide whether you want to use a template or non-template page:\n\n- If you need transitions between pages with the same path, but different parameter, then use a template.\n- If you have pages that impact performance even when inactive, or for other reasons should be removed when unused, then use a template.\n- If you have a page that should always exist to preserve state, or is very frequently navigated to, use a non-template.\n\nNote that templates and non-templates can be mixed within one `Navigator`.\n\n## Transitions\n\nNavigator comes with a set of default transitions that match the behavior of\n[`push()`](/docs/fuse/navigation/router/push_0f0d575d),\n[`goBack()`](/docs/fuse/navigation/router/goback_c0e37bee) and\n[`goto()`](/docs/fuse/navigation/router/goto_0f0d575d).\n\nTo have complete control over page transitions use the @PageView class. It works just like a `Navigator` but has no standard transitions or state changes.\n\nWhen using custom transitions be sure to add a @ReleasePage action. This instructs the `Navigator` and `PageView` on when it can reuse, discard, or add the page to its cache.\n\n## Example\n\t\nThe following example illustrates a basic navigation setup using a @Router and @Navigator.\nFor a complete introduction and proper examples of Fuse's navigation system, see the [Navigation guide](/docs/navigation/navigation).\n\t\n\t<JavaScript>\n\t\tmodule.exports = {\n\t\t\tgotoFirst: function() { router.goto(\"firstPage\"); },\n\t\t\tgotoSecond: function() { router.goto(\"secondPage\"); }\n\t\t};\n\t</JavaScript>\n\n\t<Router ux:Name=\"router\" />\n\n\t<DockPanel>\n\t\t<Navigator DefaultPath=\"firstPage\">\n\t\t\t<Page ux:Template=\"firstPage\">\n\t\t\t\t<Text Alignment=\"Center\">This is the first page.</Text>\n\t\t\t</Page>\n\t\t\t<Page ux:Template=\"secondPage\">\n\t\t\t\t<Text Alignment=\"Center\">This is the second page.</Text>\n\t\t\t</Page>\n\t\t</Navigator>\n\t\t\n\t\t<Grid Dock=\"Bottom\" Columns=\"1*,1*\">\n\t\t\t<Button Text=\"First page\" Padding=\"20\" Clicked=\"{gotoFirst}\" />\n\t\t\t<Button Text=\"Second page\" Padding=\"20\" Clicked=\"{gotoSecond}\" />\n\t\t</Grid>\n\t</DockPanel>\n\t\n## Navigation Order\n\nThe `Navigator` uses discrete page progress changes while navigating. The active page will have progress `0`. If a page is pushed it will start at `1` and be switched immediately to `0`. The previously active page will become `-1`. A \"back\" operation will reverse the transition.\n\nOnly progresses `-1`, `0`, and `1` are used. Further distance is not calculated, nor are partial values possible.\n\nSee [Navigation Order](articles:navigation/navigationorder.md)"
+      "full": "General-purpose navigation container with on-demand instantiation and recycling of pages.\n\n> Note: It is recommended that you first read the [Navigation guide](/docs/navigation/navigation) for a full overview of Fuse's navigation system.\n\n## Pages\n\n`Navigator` takes a collection of [templates](/docs/basics/creating-components#templates-ux-template) as its children.\nThis allows it to instantiate and recycle pages as it needs.\n\nYou can declare a node as a template by specifying the `ux:Template` attribute. The path of the route is matched to the `ux:Template` value to select a template.\n\n\t<Page ux:Template=\"matchPath\">\n\nYou can read more about templates [here](/docs/basics/creating-components#templates-ux-template).\n\nNon-template pages can also be used. The `Name` of the page will be used to match the path:\n\n\t<Page Name=\"matchPath\">\n\nThese pages always just have the one instance, will always be reused, and will never be removed. Otherwise they function the same as the template pages.\n\nHere are some general rules that will you help decide whether you want to use a template or non-template page:\n\n- If you need transitions between pages with the same path, but different parameter, then use a template.\n- If you have pages that impact performance even when inactive, or for other reasons should be removed when unused, then use a template.\n- If you have a page that should always exist to preserve state, or is very frequently navigated to, use a non-template.\n\nNote that templates and non-templates can be mixed within one `Navigator`.\n\n## Transitions\n\nNavigator comes with a set of default transitions that match the behavior of\n[`push()`](/docs/fuse/navigation/router/push_0f0d575d),\n[`goBack()`](/docs/fuse/navigation/router/goback_c0e37bee) and\n[`goto()`](/docs/fuse/navigation/router/goto_0f0d575d).\n\nTo have complete control over page transitions use the @PageView class. It works just like a `Navigator` but has no standard transitions or state changes.\n\nWhen using custom transitions be sure to add a @ReleasePage action. This instructs the `Navigator` and `PageView` on when it can reuse, discard, or add the page to its cache.\n\n## Example\n\nThe following example illustrates a basic navigation setup using a @Router and @Navigator.\nFor a complete introduction and proper examples of Fuse's navigation system, see the [Navigation guide](/docs/navigation/navigation).\n\n\t<JavaScript>\n\t\tmodule.exports = {\n\t\t\tgotoFirst: function() { router.goto(\"firstPage\"); },\n\t\t\tgotoSecond: function() { router.goto(\"secondPage\"); }\n\t\t};\n\t</JavaScript>\n\n\t<Router ux:Name=\"router\" />\n\n\t<DockPanel>\n\t\t<Navigator DefaultPath=\"firstPage\">\n\t\t\t<Page ux:Template=\"firstPage\">\n\t\t\t\t<Text Alignment=\"Center\">This is the first page.</Text>\n\t\t\t</Page>\n\t\t\t<Page ux:Template=\"secondPage\">\n\t\t\t\t<Text Alignment=\"Center\">This is the second page.</Text>\n\t\t\t</Page>\n\t\t</Navigator>\n\n\t\t<Grid Dock=\"Bottom\" Columns=\"1*,1*\">\n\t\t\t<Button Text=\"First page\" Padding=\"20\" Clicked=\"{gotoFirst}\" />\n\t\t\t<Button Text=\"Second page\" Padding=\"20\" Clicked=\"{gotoSecond}\" />\n\t\t</Grid>\n\t</DockPanel>\n\n## Navigation Order\n\nThe `Navigator` uses discrete page progress changes while navigating. The active page will have progress `0`. If a page is pushed it will start at `1` and be switched immediately to `0`. The previously active page will become `-1`. A \"back\" operation will reverse the transition.\n\nOnly progresses `-1`, `0`, and `1` are used. Further distance is not calculated, nor are partial values possible.\n\nSee [Navigation Order](articles:navigation/navigationorder.md)"
     }
   },
   "tableOfContents": {
@@ -5083,30 +5083,6 @@
           },
           {
             "returns": {
-              "href": "fuse/visual",
-              "title": "Visual",
-              "fullyQualifiedTitle": "Fuse.Visual"
-            },
-            "id": {
-              "id": "fuse/controls/navigator/firstvisualchild",
-              "parentId": "fuse/controls/navigator",
-              "type": "Property",
-              "modifiers": [
-                "public"
-              ]
-            },
-            "uri": {
-              "idUri": "fuse/controls/navigator/firstvisualchild",
-              "href": "fuse/visual/firstvisualchild",
-              "isVirtual": true
-            },
-            "titles": {
-              "indexTitle": "FirstVisualChild",
-              "fullyQualifiedIndexTitle": "Fuse.Visual.FirstVisualChild"
-            }
-          },
-          {
-            "returns": {
               "href": "uno/bool",
               "title": "bool",
               "fullyQualifiedTitle": "bool"
@@ -5363,30 +5339,6 @@
             "titles": {
               "indexTitle": "IsVisible",
               "fullyQualifiedIndexTitle": "Fuse.Visual.IsVisible"
-            }
-          },
-          {
-            "returns": {
-              "href": "fuse/visual",
-              "title": "Visual",
-              "fullyQualifiedTitle": "Fuse.Visual"
-            },
-            "id": {
-              "id": "fuse/controls/navigator/lastvisualchild",
-              "parentId": "fuse/controls/navigator",
-              "type": "Property",
-              "modifiers": [
-                "public"
-              ]
-            },
-            "uri": {
-              "idUri": "fuse/controls/navigator/lastvisualchild",
-              "href": "fuse/visual/lastvisualchild",
-              "isVirtual": true
-            },
-            "titles": {
-              "indexTitle": "LastVisualChild",
-              "fullyQualifiedIndexTitle": "Fuse.Visual.LastVisualChild"
             }
           },
           {
@@ -5706,30 +5658,6 @@
             "titles": {
               "indexTitle": "WorldTransformInverse",
               "fullyQualifiedIndexTitle": "Fuse.Visual.WorldTransformInverse"
-            }
-          },
-          {
-            "returns": {
-              "href": "uno/int",
-              "title": "int",
-              "fullyQualifiedTitle": "int"
-            },
-            "id": {
-              "id": "fuse/controls/navigator/zorderchildcount",
-              "parentId": "fuse/controls/navigator",
-              "type": "Property",
-              "modifiers": [
-                "public"
-              ]
-            },
-            "uri": {
-              "idUri": "fuse/controls/navigator/zorderchildcount",
-              "href": "fuse/visual/zorderchildcount",
-              "isVirtual": true
-            },
-            "titles": {
-              "indexTitle": "ZOrderChildCount",
-              "fullyQualifiedIndexTitle": "Fuse.Visual.ZOrderChildCount"
             }
           }
         ]
@@ -7813,42 +7741,6 @@
             "titles": {
               "indexTitle": "GetTransformTo(Visual)",
               "fullyQualifiedIndexTitle": "Fuse.Visual.GetTransformTo(Fuse.Visual)"
-            }
-          },
-          {
-            "comment": {
-              "brief": "Returns the visual child with the given index.",
-              "full": "Returns the visual child with the given index.\n\nFor performance reasons, avoid using this function."
-            },
-            "returns": {
-              "href": "fuse/visual",
-              "title": "Visual",
-              "fullyQualifiedTitle": "Fuse.Visual"
-            },
-            "parameters": [
-              {
-                "name": "index",
-                "href": "uno/int",
-                "title": "int",
-                "fullyQualifiedTitle": "int"
-              }
-            ],
-            "id": {
-              "id": "fuse/controls/navigator/getvisualchild_56ad0a96",
-              "parentId": "fuse/controls/navigator",
-              "type": "Method",
-              "modifiers": [
-                "public"
-              ]
-            },
-            "uri": {
-              "idUri": "fuse/controls/navigator/getvisualchild_56ad0a96",
-              "href": "fuse/visual/getvisualchild_56ad0a96",
-              "isVirtual": true
-            },
-            "titles": {
-              "indexTitle": "GetVisualChild(int)",
-              "fullyQualifiedIndexTitle": "Fuse.Visual.GetVisualChild(int)"
             }
           },
           {

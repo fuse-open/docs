@@ -23,7 +23,7 @@
       "namespaceTitle": "Fuse.Charting",
       "namespaceUri": "fuse/charting",
       "packageName": "Fuse.Charting",
-      "packageVersion": "1.11.2"
+      "packageVersion": "2.0.0-beta.9"
     },
     "inheritance": {
       "root": {
@@ -485,10 +485,7 @@
     },
     "comment": {
       "brief": "Positions a plot bar.",
-      "full": "Positions a plot bar.\n\nThis automatically sets the `X`,`Y`,`Width`,`Heigth` and `Anchor` properties on the element. The result is undefined if you override one of these values. Use a child element if you wish to make an element relative to the PlotBar placement.\n\n# Example\n\nThe following example draws a red bar chart using the `PlotBar` element and @Rectangle\n\n    <Panel xmlns:c=\"Fuse.Charting\" >\n        <JavaScript>\n            var Observable = require(\"FuseJS/Observable\");\n\n            function Item(val) {\n                this.value = val;\n            }\n            var data = Observable(new Item(3), new Item(4), new Item(6), new Item(3), new Item(4));\n\n            module.exports = {\n                data: data\n            }\n        </JavaScript>\n        <Panel BoxSizing=\"FillAspect\" Aspect=\"1\">\n            <c:Plot Margin=\"40\">\n                <c:DataSeries Data=\"{data}\" />\n                <c:PlotData>\n                    <c:PlotBar>\n                        <Rectangle Color=\"#F00\" Height=\"100%\" Margin=\"2\" Alignment=\"Bottom\"/>\n                    </c:PlotBar>\n                </c:PlotData>\n            </c:Plot>\n        </Panel>\n    </Panel>",
-      "attributes": {
-        "experimental": true
-      }
+      "full": "Positions a plot bar.\n\nThis automatically sets the `X`,`Y`,`Width`,`Heigth` and `Anchor` properties on the element. The result is undefined if you override one of these values. Use a child element if you wish to make an element relative to the PlotBar placement.\n\n# Example\n\nThe following example draws a red bar chart using the `PlotBar` element and @Rectangle\n\n    <Panel xmlns:c=\"Fuse.Charting\" >\n        <JavaScript>\n            var Observable = require(\"FuseJS/Observable\");\n\n            function Item(val) {\n                this.value = val;\n            }\n            var data = Observable(new Item(3), new Item(4), new Item(6), new Item(3), new Item(4));\n\n            module.exports = {\n                data: data\n            }\n        </JavaScript>\n        <Panel BoxSizing=\"FillAspect\" Aspect=\"1\">\n            <c:Plot Margin=\"40\">\n                <c:DataSeries Data=\"{data}\" />\n                <c:PlotData>\n                    <c:PlotBar>\n                        <Rectangle Color=\"#F00\" Height=\"100%\" Margin=\"2\" Alignment=\"Bottom\"/>\n                    </c:PlotBar>\n                </c:PlotData>\n            </c:Plot>\n        </Panel>\n    </Panel>"
     }
   },
   "tableOfContents": {
@@ -4173,30 +4170,6 @@
           },
           {
             "returns": {
-              "href": "fuse/visual",
-              "title": "Visual",
-              "fullyQualifiedTitle": "Fuse.Visual"
-            },
-            "id": {
-              "id": "fuse/charting/plotbar/firstvisualchild",
-              "parentId": "fuse/charting/plotbar",
-              "type": "Property",
-              "modifiers": [
-                "public"
-              ]
-            },
-            "uri": {
-              "idUri": "fuse/charting/plotbar/firstvisualchild",
-              "href": "fuse/visual/firstvisualchild",
-              "isVirtual": true
-            },
-            "titles": {
-              "indexTitle": "FirstVisualChild",
-              "fullyQualifiedIndexTitle": "Fuse.Visual.FirstVisualChild"
-            }
-          },
-          {
-            "returns": {
               "href": "uno/bool",
               "title": "bool",
               "fullyQualifiedTitle": "bool"
@@ -4453,30 +4426,6 @@
             "titles": {
               "indexTitle": "IsVisible",
               "fullyQualifiedIndexTitle": "Fuse.Visual.IsVisible"
-            }
-          },
-          {
-            "returns": {
-              "href": "fuse/visual",
-              "title": "Visual",
-              "fullyQualifiedTitle": "Fuse.Visual"
-            },
-            "id": {
-              "id": "fuse/charting/plotbar/lastvisualchild",
-              "parentId": "fuse/charting/plotbar",
-              "type": "Property",
-              "modifiers": [
-                "public"
-              ]
-            },
-            "uri": {
-              "idUri": "fuse/charting/plotbar/lastvisualchild",
-              "href": "fuse/visual/lastvisualchild",
-              "isVirtual": true
-            },
-            "titles": {
-              "indexTitle": "LastVisualChild",
-              "fullyQualifiedIndexTitle": "Fuse.Visual.LastVisualChild"
             }
           },
           {
@@ -4796,30 +4745,6 @@
             "titles": {
               "indexTitle": "WorldTransformInverse",
               "fullyQualifiedIndexTitle": "Fuse.Visual.WorldTransformInverse"
-            }
-          },
-          {
-            "returns": {
-              "href": "uno/int",
-              "title": "int",
-              "fullyQualifiedTitle": "int"
-            },
-            "id": {
-              "id": "fuse/charting/plotbar/zorderchildcount",
-              "parentId": "fuse/charting/plotbar",
-              "type": "Property",
-              "modifiers": [
-                "public"
-              ]
-            },
-            "uri": {
-              "idUri": "fuse/charting/plotbar/zorderchildcount",
-              "href": "fuse/visual/zorderchildcount",
-              "isVirtual": true
-            },
-            "titles": {
-              "indexTitle": "ZOrderChildCount",
-              "fullyQualifiedIndexTitle": "Fuse.Visual.ZOrderChildCount"
             }
           }
         ]
@@ -6329,42 +6254,6 @@
             "titles": {
               "indexTitle": "GetTransformTo(Visual)",
               "fullyQualifiedIndexTitle": "Fuse.Visual.GetTransformTo(Fuse.Visual)"
-            }
-          },
-          {
-            "comment": {
-              "brief": "Returns the visual child with the given index.",
-              "full": "Returns the visual child with the given index.\n\nFor performance reasons, avoid using this function."
-            },
-            "returns": {
-              "href": "fuse/visual",
-              "title": "Visual",
-              "fullyQualifiedTitle": "Fuse.Visual"
-            },
-            "parameters": [
-              {
-                "name": "index",
-                "href": "uno/int",
-                "title": "int",
-                "fullyQualifiedTitle": "int"
-              }
-            ],
-            "id": {
-              "id": "fuse/charting/plotbar/getvisualchild_56ad0a96",
-              "parentId": "fuse/charting/plotbar",
-              "type": "Method",
-              "modifiers": [
-                "public"
-              ]
-            },
-            "uri": {
-              "idUri": "fuse/charting/plotbar/getvisualchild_56ad0a96",
-              "href": "fuse/visual/getvisualchild_56ad0a96",
-              "isVirtual": true
-            },
-            "titles": {
-              "indexTitle": "GetVisualChild(int)",
-              "fullyQualifiedIndexTitle": "Fuse.Visual.GetVisualChild(int)"
             }
           },
           {

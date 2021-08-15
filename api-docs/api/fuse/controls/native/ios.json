@@ -22,6 +22,37 @@
     }
   },
   "tableOfContents": {
+    "jsModules": [
+      {
+        "items": [
+          {
+            "comment": {
+              "brief": "This module provides access to whether or not the current OS setting for Dark Mode is enabled and or changed.",
+              "full": "This module provides access to whether or not the current OS setting for Dark Mode is enabled and or changed.\n\n## Example\n\n```xml\n<App>\n    <JavaScript>\n\n        var DarkMode = require(\"FuseJS/DarkMode\");\n        var Observable = require(\"FuseJS/Observable\");\n\n        var isDarkMode = Observable(false);\n\n        DarkMode.on(\"changed\", function(val) {\n            console.log(\"DARKMODE CHANGED: \" + val);\n            switch(val) {\n                case 'light': isDarkMode.value = false;\n                    break;\n                case 'dark': isDarkMode.value = true;\n                    break;\n            }\n        });\n\n        module.exports = {\n            isDarkMode\n        }\n\n    </JavaScript>\n    <StackPanel Alignment=\"Center\">\n        <Text ux:Name=\"title\" Value=\"Hello World!\" />\n    </StackPanel>\n    <Rectangle ux:Name=\"bk\" Layer=\"Background\" Color=\"#FFF\" />\n\n    <WhileTrue Value=\"{isDarkMode}\">\n        <Change title.Value=\"Hello Dark World!\" />\n        <Change title.Color=\"#FFF\" />\n        <Change bk.Color=\"#000\" />\n    </WhileTrue>\n    <WhileFalse Value=\"{isDarkMode}\">\n        <Change title.Value=\"Hello World!\" />\n        <Change title.Color=\"#000\" />\n        <Change bk.Color=\"#FFF\" />\n    </WhileFalse>\n</App>\n```",
+              "attributes": {
+                "scriptModule": "FuseJS/DarkMode"
+              }
+            },
+            "id": {
+              "id": "fuse/controls/native/ios/darkmode",
+              "parentId": "fuse/controls/native/ios",
+              "type": "JsModule",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/controls/native/ios/darkmode",
+              "href": "fuse/controls/native/ios/darkmode"
+            },
+            "titles": {
+              "indexTitle": "DarkMode",
+              "fullyQualifiedIndexTitle": "Fuse.Controls.Native.iOS.DarkMode"
+            }
+          }
+        ]
+      }
+    ],
     "uxClasses": [
       {
         "items": [

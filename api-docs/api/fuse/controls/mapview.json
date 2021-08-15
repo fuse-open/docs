@@ -23,7 +23,7 @@
       "namespaceTitle": "Fuse.Controls",
       "namespaceUri": "fuse/controls",
       "packageName": "Fuse.Maps",
-      "packageVersion": "1.11.2"
+      "packageVersion": "2.0.0-beta.9"
     },
     "inheritance": {
       "root": {
@@ -480,7 +480,12 @@
     "comment": {
       "brief": "Displays a native map view.",
       "full": "Displays a native map view.\n\nThe `MapView` allows you to present annotated, interactive world-wide maps to the user using the mapping APIs native to the platform: Google Maps on Android and Apple Maps on iOS.\n\nThe `MapView` is a native control, and thus needs to be contained in a @NativeViewHost to be displayed. As with other native mobile controls, there currently isn't a `MapView` available for desktop targets.\n\n*Note:* You need to add a reference to `Fuse.Maps` in the `Packages` section of your `.unoproj`:\n\n```\n\"Packages\": [\n\t\"Fuse.Maps\",\n\t\"Fuse\",\n\t\"FuseJS\"\n]\n```\n\nGetting a `MapView` included in your app is straight forward: Simply include the node in your UX as you normally would with a native control:\n\n```XML\n<NativeViewHost>\n\t<MapView/>\n</NativeViewHost>\n```\n\nTo initialize and manipulate the map camera, use the [Latitude](api:fuse/controls/mapview/latitude), [Longitude](api:fuse/controls/mapview/longitude), [Zoom](api:fuse/controls/mapview/zoom), [Tilt](api:fuse/controls/mapview/tilt) and [Bearing](api:fuse/controls/mapview/bearing) properties, all of which are two-way bindable.\n`Zoom` follows Google's \"zoom levels\", which can be read about in detail [here](https://developers.google.com/maps/documentation/static-maps/intro#Zoomlevels).\n\nThe map can be further customized by setting the rendering style using the [Style](api:fuse/controls/mapview/style) property.\nOptions are `Normal`, `Satellite` and `Hybrid`.\n\nTo annotate the map with labelled markers, see @MapMarker\n\n## Maps on Android\n\nGoogle Maps requires a valid Google Maps API key. Follow [Google's documentation](https://developers.google.com/maps/documentation/android-api/signup) to get one set up. Once you have your key it must be added to your project file, as shown below\n\n```JSON\n\"Android\": {\n   \"Geo\": {\n        \"ApiKey\": \"your_key_here\"\n    }\n}\n```\n\nThis example displays a map with an average zoom level focused on Fuse's home in Oslo, Norway",
-      "ux": "```ux\n<App>\n\t<ClientPanel>\n\t\t<NativeViewHost>\n\t\t\t<MapView Latitude=\"59.911567\" Longitude=\"10.741030\" Zoom=\"10\">\n\t\t\t\t<MapMarker Latitude=\"59.911567\" Longitude=\"10.741030\" Label=\"Fuse HQ\"/>\n\t\t\t</MapView>\n\t\t</NativeViewHost>\n\t</ClientPanel>\n</App>\n\n```"
+      "ux": "```ux\n<App>\n\t<ClientPanel>\n\t\t<NativeViewHost>\n\t\t\t<MapView Latitude=\"59.911567\" Longitude=\"10.741030\" Zoom=\"10\">\n\t\t\t\t<MapMarker Latitude=\"59.911567\" Longitude=\"10.741030\" Label=\"Fuse HQ\"/>\n\t\t\t</MapView>\n\t\t</NativeViewHost>\n\t</ClientPanel>\n</App>\n\n```",
+      "attributes": {
+        "seeAlso": [
+          "Fuse.Controls.MapMarker"
+        ]
+      }
     }
   },
   "tableOfContents": {
@@ -4160,6 +4165,58 @@
           },
           {
             "comment": {
+              "brief": "Replaces the MapView's overlays.",
+              "full": "Replaces the MapView's overlays.\n\nThe following format is used for describing map markers:\n\n    {\n        lineWidth: 2,\n        strokeColor: '#348',\n        fillColor: '#348',\n        overlayType: 'polygon', // or polyline\n        startCap: 'round', // available round, butt, square\n        endCap: 'round,' // available round, butt, square\n        lineJoin: 'miter', // available round, bevel, miter\n        coordinates: [\n            { latitude: 59.911567, longitude: 10.741030 },\n            { latitude: 60.011567, longitude: 10.941030 },\n            { latitude: 60.111567, longitude: 11.001030 },\n        ]\n    }\n\n## Example\n\nThe following example places a map overlay\n\n    <NativeViewHost>\n        <MapView ux:Name=\"myMapView\" />\n    </NativeViewHost>\n\n    <JavaScript>\n        myMapView.setOverlays([\n            {\n                lineWidth: 2,\n                strokeColor: '#348',\n                fillColor: '#348',\n                overlayType: 'polygon',\n                coordinates: [\n                    { latitude: 59.911567, longitude: 10.741030 },\n                    { latitude: 60.011567, longitude: 10.941030 },\n                    { latitude: 60.111567, longitude: 11.001030 },\n                ]\n            }\n        ]);\n    </JavaScript>",
+              "attributes": {
+                "scriptMethod": {
+                  "name": "setOverlays",
+                  "parameters": [
+                    "overlays"
+                  ]
+                },
+                "parameters": [
+                  {
+                    "name": "overlays",
+                    "typeHint": "Object|Array",
+                    "description": "Either a single object describing a map overlay, or an array of them."
+                  }
+                ]
+              }
+            },
+            "parameters": [
+              {
+                "name": "view",
+                "href": "fuse/controls/mapview",
+                "title": "MapView",
+                "fullyQualifiedTitle": "Fuse.Controls.MapView"
+              },
+              {
+                "name": "args",
+                "href": "uno/object",
+                "title": "object[]",
+                "fullyQualifiedTitle": "object[]"
+              }
+            ],
+            "id": {
+              "id": "fuse/controls/mapview/setoverlays_f28de7ec",
+              "parentId": "fuse/controls/mapview",
+              "type": "JsMethod",
+              "modifiers": [
+                "private",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/controls/mapview/setoverlays_f28de7ec",
+              "href": "fuse/controls/mapview/setoverlays_f28de7ec"
+            },
+            "titles": {
+              "indexTitle": "setOverlays(MapView, object[])",
+              "fullyQualifiedIndexTitle": "Fuse.Controls.MapView.setOverlays(Fuse.Controls.MapView, object[])"
+            }
+          },
+          {
+            "comment": {
               "brief": "Sets the [Tilt](api:fuse/controls/mapview/tilt) angle of a MapView.",
               "full": "Sets the [Tilt](api:fuse/controls/mapview/tilt) angle of a MapView.",
               "attributes": {
@@ -4260,6 +4317,107 @@
             "titles": {
               "indexTitle": "setZoom(MapView, object[])",
               "fullyQualifiedIndexTitle": "Fuse.Controls.MapView.setZoom(Fuse.Controls.MapView, object[])"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Zoom to make all of markers in the MapView is shown.",
+              "full": "Zoom to make all of markers in the MapView is shown.",
+              "attributes": {
+                "scriptMethod": {
+                  "name": "showAllMarkers",
+                  "parameters": [
+                    ""
+                  ]
+                }
+              }
+            },
+            "parameters": [
+              {
+                "name": "view",
+                "href": "fuse/controls/mapview",
+                "title": "MapView",
+                "fullyQualifiedTitle": "Fuse.Controls.MapView"
+              },
+              {
+                "name": "args",
+                "href": "uno/object",
+                "title": "object[]",
+                "fullyQualifiedTitle": "object[]"
+              }
+            ],
+            "id": {
+              "id": "fuse/controls/mapview/showallmarkers_f28de7ec",
+              "parentId": "fuse/controls/mapview",
+              "type": "JsMethod",
+              "modifiers": [
+                "private",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/controls/mapview/showallmarkers_f28de7ec",
+              "href": "fuse/controls/mapview/showallmarkers_f28de7ec"
+            },
+            "titles": {
+              "indexTitle": "showAllMarkers(MapView, object[])",
+              "fullyQualifiedIndexTitle": "Fuse.Controls.MapView.showAllMarkers(Fuse.Controls.MapView, object[])"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Take a snapshot of MapView.",
+              "full": "Take a snapshot of MapView.\n\nuse this method to take a picture of the MapView, returning a promise with the path argument of where the picture is stored\n\nExamples:\n\n    <NativeViewHost>\n        <MapView ux:Name=\"MapView\" />\n    </NativeViewHost>\n    <JavaScript>\n        MapView.snapshot()\n            .then(function(path) {\n                console.log(path);\n            })\n            .catch(function(err) { });\n    </JavaScript>",
+              "attributes": {
+                "scriptMethod": {
+                  "name": "snapshot",
+                  "parameters": [
+                    ""
+                  ]
+                }
+              }
+            },
+            "returns": {
+              "href": "uno/threading/future_1",
+              "title": "Future<string>",
+              "fullyQualifiedTitle": "Uno.Threading.Future<string>"
+            },
+            "parameters": [
+              {
+                "name": "context",
+                "href": "fuse/scripting/context",
+                "title": "Context",
+                "fullyQualifiedTitle": "Fuse.Scripting.Context"
+              },
+              {
+                "name": "self",
+                "href": "fuse/controls/mapview",
+                "title": "MapView",
+                "fullyQualifiedTitle": "Fuse.Controls.MapView"
+              },
+              {
+                "name": "args",
+                "href": "uno/object",
+                "title": "object[]",
+                "fullyQualifiedTitle": "object[]"
+              }
+            ],
+            "id": {
+              "id": "fuse/controls/mapview/snapshot_3f078864",
+              "parentId": "fuse/controls/mapview",
+              "type": "JsMethod",
+              "modifiers": [
+                "private",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/controls/mapview/snapshot_3f078864",
+              "href": "fuse/controls/mapview/snapshot_3f078864"
+            },
+            "titles": {
+              "indexTitle": "snapshot(Context, MapView, object[])",
+              "fullyQualifiedIndexTitle": "Fuse.Controls.MapView.snapshot(Fuse.Scripting.Context, Fuse.Controls.MapView, object[])"
             }
           }
         ]
@@ -4467,6 +4625,29 @@
             "titles": {
               "indexTitle": "Markers",
               "fullyQualifiedIndexTitle": "Fuse.Controls.MapView.Markers"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/collections/observablelist_1",
+              "title": "ObservableList<MapOverlay>",
+              "fullyQualifiedTitle": "Uno.Collections.ObservableList<Fuse.Controls.MapOverlay>"
+            },
+            "id": {
+              "id": "fuse/controls/mapview/overlays",
+              "parentId": "fuse/controls/mapview",
+              "type": "Property",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/controls/mapview/overlays",
+              "href": "fuse/controls/mapview/overlays"
+            },
+            "titles": {
+              "indexTitle": "Overlays",
+              "fullyQualifiedIndexTitle": "Fuse.Controls.MapView.Overlays"
             }
           }
         ]
@@ -4902,30 +5083,6 @@
           },
           {
             "returns": {
-              "href": "fuse/visual",
-              "title": "Visual",
-              "fullyQualifiedTitle": "Fuse.Visual"
-            },
-            "id": {
-              "id": "fuse/controls/mapview/firstvisualchild",
-              "parentId": "fuse/controls/mapview",
-              "type": "Property",
-              "modifiers": [
-                "public"
-              ]
-            },
-            "uri": {
-              "idUri": "fuse/controls/mapview/firstvisualchild",
-              "href": "fuse/visual/firstvisualchild",
-              "isVirtual": true
-            },
-            "titles": {
-              "indexTitle": "FirstVisualChild",
-              "fullyQualifiedIndexTitle": "Fuse.Visual.FirstVisualChild"
-            }
-          },
-          {
-            "returns": {
               "href": "uno/bool",
               "title": "bool",
               "fullyQualifiedTitle": "bool"
@@ -5182,30 +5339,6 @@
             "titles": {
               "indexTitle": "IsVisible",
               "fullyQualifiedIndexTitle": "Fuse.Visual.IsVisible"
-            }
-          },
-          {
-            "returns": {
-              "href": "fuse/visual",
-              "title": "Visual",
-              "fullyQualifiedTitle": "Fuse.Visual"
-            },
-            "id": {
-              "id": "fuse/controls/mapview/lastvisualchild",
-              "parentId": "fuse/controls/mapview",
-              "type": "Property",
-              "modifiers": [
-                "public"
-              ]
-            },
-            "uri": {
-              "idUri": "fuse/controls/mapview/lastvisualchild",
-              "href": "fuse/visual/lastvisualchild",
-              "isVirtual": true
-            },
-            "titles": {
-              "indexTitle": "LastVisualChild",
-              "fullyQualifiedIndexTitle": "Fuse.Visual.LastVisualChild"
             }
           },
           {
@@ -5526,30 +5659,6 @@
               "indexTitle": "WorldTransformInverse",
               "fullyQualifiedIndexTitle": "Fuse.Visual.WorldTransformInverse"
             }
-          },
-          {
-            "returns": {
-              "href": "uno/int",
-              "title": "int",
-              "fullyQualifiedTitle": "int"
-            },
-            "id": {
-              "id": "fuse/controls/mapview/zorderchildcount",
-              "parentId": "fuse/controls/mapview",
-              "type": "Property",
-              "modifiers": [
-                "public"
-              ]
-            },
-            "uri": {
-              "idUri": "fuse/controls/mapview/zorderchildcount",
-              "href": "fuse/visual/zorderchildcount",
-              "isVirtual": true
-            },
-            "titles": {
-              "indexTitle": "ZOrderChildCount",
-              "fullyQualifiedIndexTitle": "Fuse.Visual.ZOrderChildCount"
-            }
           }
         ]
       },
@@ -5759,6 +5868,24 @@
             }
           },
           {
+            "id": {
+              "id": "fuse/controls/mapview/clearoverlays",
+              "parentId": "fuse/controls/mapview",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/controls/mapview/clearoverlays",
+              "href": "fuse/controls/mapview/clearoverlays"
+            },
+            "titles": {
+              "indexTitle": "ClearOverlays",
+              "fullyQualifiedIndexTitle": "Fuse.Controls.MapView.ClearOverlays"
+            }
+          },
+          {
             "parameters": [
               {
                 "name": "latitude",
@@ -5852,6 +5979,32 @@
             "titles": {
               "indexTitle": "HandleMarkerTapped(int, string)",
               "fullyQualifiedIndexTitle": "Fuse.Controls.MapView.HandleMarkerTapped(int, string)"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "id",
+                "href": "uno/int",
+                "title": "int",
+                "fullyQualifiedTitle": "int"
+              }
+            ],
+            "id": {
+              "id": "fuse/controls/mapview/handleoverlaytapped_56ad0a96",
+              "parentId": "fuse/controls/mapview",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/controls/mapview/handleoverlaytapped_56ad0a96",
+              "href": "fuse/controls/mapview/handleoverlaytapped_56ad0a96"
+            },
+            "titles": {
+              "indexTitle": "HandleOverlayTapped(int)",
+              "fullyQualifiedIndexTitle": "Fuse.Controls.MapView.HandleOverlayTapped(int)"
             }
           },
           {
@@ -7405,42 +7558,6 @@
             "titles": {
               "indexTitle": "GetTransformTo(Visual)",
               "fullyQualifiedIndexTitle": "Fuse.Visual.GetTransformTo(Fuse.Visual)"
-            }
-          },
-          {
-            "comment": {
-              "brief": "Returns the visual child with the given index.",
-              "full": "Returns the visual child with the given index.\n\nFor performance reasons, avoid using this function."
-            },
-            "returns": {
-              "href": "fuse/visual",
-              "title": "Visual",
-              "fullyQualifiedTitle": "Fuse.Visual"
-            },
-            "parameters": [
-              {
-                "name": "index",
-                "href": "uno/int",
-                "title": "int",
-                "fullyQualifiedTitle": "int"
-              }
-            ],
-            "id": {
-              "id": "fuse/controls/mapview/getvisualchild_56ad0a96",
-              "parentId": "fuse/controls/mapview",
-              "type": "Method",
-              "modifiers": [
-                "public"
-              ]
-            },
-            "uri": {
-              "idUri": "fuse/controls/mapview/getvisualchild_56ad0a96",
-              "href": "fuse/visual/getvisualchild_56ad0a96",
-              "isVirtual": true
-            },
-            "titles": {
-              "indexTitle": "GetVisualChild(int)",
-              "fullyQualifiedIndexTitle": "Fuse.Visual.GetVisualChild(int)"
             }
           },
           {

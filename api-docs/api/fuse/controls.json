@@ -339,6 +339,24 @@
             }
           },
           {
+            "id": {
+              "id": "fuse/controls/coordinate",
+              "parentId": "fuse/controls",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/controls/coordinate",
+              "href": "fuse/controls/coordinate"
+            },
+            "titles": {
+              "indexTitle": "Coordinate",
+              "fullyQualifiedIndexTitle": "Fuse.Controls.Coordinate"
+            }
+          },
+          {
             "comment": {
               "brief": "Draws a curve connecting several points, specified as @CurvePoint.",
               "full": "Draws a curve connecting several points, specified as @CurvePoint.\n\nThe points of the curve are relative to the size of the `Curve`; the values have the range `0..1`.\n\n## Example\n\n    Draws a simple line graph.\n\n    <Panel Alignment=\"Center\" Width=\"300\" Height=\"200\">\n        <Curve StrokeWidth=\"10\" StrokeColor=\"#ABC\">\n            <CurvePoint At=\"0.00,0.0\"/>\n            <CurvePoint At=\"0.25,0.4\"/>\n            <CurvePoint At=\"0.50,0.1\"/>\n            <CurvePoint At=\"0.75,0.9\"/>\n            <CurvePoint At=\"1.00,0.6\"/>\n        </Curve>\n    </Panel>"
@@ -632,6 +650,28 @@
           },
           {
             "comment": {
+              "brief": "Adds a map overlay to a @MapView",
+              "full": "Adds a map overlay to a @MapView\n\nTo overlay the map, you must decorate it with `MapOverlay` nodes. There are three type of overlay that supported Polyline, Polygon and Circle.\nIn order to draw Overlay, it needs to define position where overlay should be drawn on the map using `Coordinate` property. See the example below on how you can create map overlay\n\n```HTML\n<NativeViewHost>\n    <MapView Zoom=\"14\" Latitude=\"-6.914742\" Longitude=\"107.609820\">\n        <MapOverlay Type=\"Polyline\" StrokeColor=\"Blue\" LineWidth=\"5\">\n            <Coordinate Latitude=\"-6.914742\" Longitude=\"107.609820\" />\n            <Coordinate Latitude=\"-6.915850\" Longitude=\"107.609929\" />\n            <Coordinate Latitude=\"-6.916959\" Longitude=\"107.611009\" />\n        </MapOverlay>\n    </MapView>\n</NativeViewHost>\n```"
+            },
+            "id": {
+              "id": "fuse/controls/mapoverlay",
+              "parentId": "fuse/controls",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/controls/mapoverlay",
+              "href": "fuse/controls/mapoverlay"
+            },
+            "titles": {
+              "indexTitle": "MapOverlay",
+              "fullyQualifiedIndexTitle": "Fuse.Controls.MapOverlay"
+            }
+          },
+          {
+            "comment": {
               "brief": "Displays a native map view.",
               "full": "Displays a native map view.\n\nThe `MapView` allows you to present annotated, interactive world-wide maps to the user using the mapping APIs native to the platform: Google Maps on Android and Apple Maps on iOS.\n\nThe `MapView` is a native control, and thus needs to be contained in a @NativeViewHost to be displayed. As with other native mobile controls, there currently isn't a `MapView` available for desktop targets.\n\n*Note:* You need to add a reference to `Fuse.Maps` in the `Packages` section of your `.unoproj`:\n\n```\n\"Packages\": [\n\t\"Fuse.Maps\",\n\t\"Fuse\",\n\t\"FuseJS\"\n]\n```\n\nGetting a `MapView` included in your app is straight forward: Simply include the node in your UX as you normally would with a native control:\n\n```XML\n<NativeViewHost>\n\t<MapView/>\n</NativeViewHost>\n```\n\nTo initialize and manipulate the map camera, use the [Latitude](api:fuse/controls/mapview/latitude), [Longitude](api:fuse/controls/mapview/longitude), [Zoom](api:fuse/controls/mapview/zoom), [Tilt](api:fuse/controls/mapview/tilt) and [Bearing](api:fuse/controls/mapview/bearing) properties, all of which are two-way bindable.\n`Zoom` follows Google's \"zoom levels\", which can be read about in detail [here](https://developers.google.com/maps/documentation/static-maps/intro#Zoomlevels).\n\nThe map can be further customized by setting the rendering style using the [Style](api:fuse/controls/mapview/style) property.\nOptions are `Normal`, `Satellite` and `Hybrid`.\n\nTo annotate the map with labelled markers, see @MapMarker\n\n## Maps on Android\n\nGoogle Maps requires a valid Google Maps API key. Follow [Google's documentation](https://developers.google.com/maps/documentation/android-api/signup) to get one set up. Once you have your key it must be added to your project file, as shown below\n\n```JSON\n\"Android\": {\n   \"Geo\": {\n        \"ApiKey\": \"your_key_here\"\n    }\n}\n```\n\nThis example displays a map with an average zoom level focused on Fuse's home in Oslo, Norway"
             },
@@ -736,7 +776,7 @@
           {
             "comment": {
               "brief": "General-purpose navigation container with on-demand instantiation and recycling of pages.",
-              "full": "General-purpose navigation container with on-demand instantiation and recycling of pages.\n\n> Note: It is recommended that you first read the [Navigation guide](/docs/navigation/navigation) for a full overview of Fuse's navigation system.\n\n## Pages\n\n`Navigator` takes a collection of [templates](/docs/basics/creating-components#templates-ux-template) as its children.\nThis allows it to instantiate and recycle pages as it needs.\n\nYou can declare a node as a template by specifying the `ux:Template` attribute. The path of the route is matched to the `ux:Template` value to select a template.\n\n\t<Page ux:Template=\"matchPath\">\n\nYou can read more about templates [here](/docs/basics/creating-components#templates-ux-template).\n\nNon-template pages can also be used. The `Name` of the page will be used to match the path:\n\n\t<Page Name=\"matchPath\">\n\t\nThese pages always just have the one instance, will always be reused, and will never be removed. Otherwise they function the same as the template pages.\n\nHere are some general rules that will you help decide whether you want to use a template or non-template page:\n\n- If you need transitions between pages with the same path, but different parameter, then use a template.\n- If you have pages that impact performance even when inactive, or for other reasons should be removed when unused, then use a template.\n- If you have a page that should always exist to preserve state, or is very frequently navigated to, use a non-template.\n\nNote that templates and non-templates can be mixed within one `Navigator`.\n\n## Transitions\n\nNavigator comes with a set of default transitions that match the behavior of\n[`push()`](/docs/fuse/navigation/router/push_0f0d575d),\n[`goBack()`](/docs/fuse/navigation/router/goback_c0e37bee) and\n[`goto()`](/docs/fuse/navigation/router/goto_0f0d575d).\n\nTo have complete control over page transitions use the @PageView class. It works just like a `Navigator` but has no standard transitions or state changes.\n\nWhen using custom transitions be sure to add a @ReleasePage action. This instructs the `Navigator` and `PageView` on when it can reuse, discard, or add the page to its cache.\n\n## Example\n\t\nThe following example illustrates a basic navigation setup using a @Router and @Navigator.\nFor a complete introduction and proper examples of Fuse's navigation system, see the [Navigation guide](/docs/navigation/navigation).\n\t\n\t<JavaScript>\n\t\tmodule.exports = {\n\t\t\tgotoFirst: function() { router.goto(\"firstPage\"); },\n\t\t\tgotoSecond: function() { router.goto(\"secondPage\"); }\n\t\t};\n\t</JavaScript>\n\n\t<Router ux:Name=\"router\" />\n\n\t<DockPanel>\n\t\t<Navigator DefaultPath=\"firstPage\">\n\t\t\t<Page ux:Template=\"firstPage\">\n\t\t\t\t<Text Alignment=\"Center\">This is the first page.</Text>\n\t\t\t</Page>\n\t\t\t<Page ux:Template=\"secondPage\">\n\t\t\t\t<Text Alignment=\"Center\">This is the second page.</Text>\n\t\t\t</Page>\n\t\t</Navigator>\n\t\t\n\t\t<Grid Dock=\"Bottom\" Columns=\"1*,1*\">\n\t\t\t<Button Text=\"First page\" Padding=\"20\" Clicked=\"{gotoFirst}\" />\n\t\t\t<Button Text=\"Second page\" Padding=\"20\" Clicked=\"{gotoSecond}\" />\n\t\t</Grid>\n\t</DockPanel>\n\t\n## Navigation Order\n\nThe `Navigator` uses discrete page progress changes while navigating. The active page will have progress `0`. If a page is pushed it will start at `1` and be switched immediately to `0`. The previously active page will become `-1`. A \"back\" operation will reverse the transition.\n\nOnly progresses `-1`, `0`, and `1` are used. Further distance is not calculated, nor are partial values possible.\n\nSee [Navigation Order](articles:navigation/navigationorder.md)"
+              "full": "General-purpose navigation container with on-demand instantiation and recycling of pages.\n\n> Note: It is recommended that you first read the [Navigation guide](/docs/navigation/navigation) for a full overview of Fuse's navigation system.\n\n## Pages\n\n`Navigator` takes a collection of [templates](/docs/basics/creating-components#templates-ux-template) as its children.\nThis allows it to instantiate and recycle pages as it needs.\n\nYou can declare a node as a template by specifying the `ux:Template` attribute. The path of the route is matched to the `ux:Template` value to select a template.\n\n\t<Page ux:Template=\"matchPath\">\n\nYou can read more about templates [here](/docs/basics/creating-components#templates-ux-template).\n\nNon-template pages can also be used. The `Name` of the page will be used to match the path:\n\n\t<Page Name=\"matchPath\">\n\nThese pages always just have the one instance, will always be reused, and will never be removed. Otherwise they function the same as the template pages.\n\nHere are some general rules that will you help decide whether you want to use a template or non-template page:\n\n- If you need transitions between pages with the same path, but different parameter, then use a template.\n- If you have pages that impact performance even when inactive, or for other reasons should be removed when unused, then use a template.\n- If you have a page that should always exist to preserve state, or is very frequently navigated to, use a non-template.\n\nNote that templates and non-templates can be mixed within one `Navigator`.\n\n## Transitions\n\nNavigator comes with a set of default transitions that match the behavior of\n[`push()`](/docs/fuse/navigation/router/push_0f0d575d),\n[`goBack()`](/docs/fuse/navigation/router/goback_c0e37bee) and\n[`goto()`](/docs/fuse/navigation/router/goto_0f0d575d).\n\nTo have complete control over page transitions use the @PageView class. It works just like a `Navigator` but has no standard transitions or state changes.\n\nWhen using custom transitions be sure to add a @ReleasePage action. This instructs the `Navigator` and `PageView` on when it can reuse, discard, or add the page to its cache.\n\n## Example\n\nThe following example illustrates a basic navigation setup using a @Router and @Navigator.\nFor a complete introduction and proper examples of Fuse's navigation system, see the [Navigation guide](/docs/navigation/navigation).\n\n\t<JavaScript>\n\t\tmodule.exports = {\n\t\t\tgotoFirst: function() { router.goto(\"firstPage\"); },\n\t\t\tgotoSecond: function() { router.goto(\"secondPage\"); }\n\t\t};\n\t</JavaScript>\n\n\t<Router ux:Name=\"router\" />\n\n\t<DockPanel>\n\t\t<Navigator DefaultPath=\"firstPage\">\n\t\t\t<Page ux:Template=\"firstPage\">\n\t\t\t\t<Text Alignment=\"Center\">This is the first page.</Text>\n\t\t\t</Page>\n\t\t\t<Page ux:Template=\"secondPage\">\n\t\t\t\t<Text Alignment=\"Center\">This is the second page.</Text>\n\t\t\t</Page>\n\t\t</Navigator>\n\n\t\t<Grid Dock=\"Bottom\" Columns=\"1*,1*\">\n\t\t\t<Button Text=\"First page\" Padding=\"20\" Clicked=\"{gotoFirst}\" />\n\t\t\t<Button Text=\"Second page\" Padding=\"20\" Clicked=\"{gotoSecond}\" />\n\t\t</Grid>\n\t</DockPanel>\n\n## Navigation Order\n\nThe `Navigator` uses discrete page progress changes while navigating. The active page will have progress `0`. If a page is pushed it will start at `1` and be switched immediately to `0`. The previously active page will become `-1`. A \"back\" operation will reverse the transition.\n\nOnly progresses `-1`, `0`, and `1` are used. Further distance is not calculated, nor are partial values possible.\n\nSee [Navigation Order](articles:navigation/navigationorder.md)"
             },
             "id": {
               "id": "fuse/controls/navigator",
@@ -1180,30 +1220,6 @@
           },
           {
             "comment": {
-              "attributes": {
-                "deprecated": true
-              }
-            },
-            "id": {
-              "id": "fuse/controls/rightframebackground",
-              "parentId": "fuse/controls",
-              "type": "UxClass",
-              "modifiers": [
-                "public",
-                "sealed"
-              ]
-            },
-            "uri": {
-              "idUri": "fuse/controls/rightframebackground",
-              "href": "fuse/controls/rightframebackground"
-            },
-            "titles": {
-              "indexTitle": "RightFrameBackground",
-              "fullyQualifiedIndexTitle": "Fuse.Controls.RightFrameBackground"
-            }
-          },
-          {
-            "comment": {
               "brief": "`SafeEdgePanel` compensates for space taken up by the on-screen keyboard, status bar, and other OS-specific elements on the edges of the screen.  It should be used for any panel that touches any edge of the screen.",
               "full": "`SafeEdgePanel` compensates for space taken up by the on-screen keyboard, status bar, and other OS-specific elements on the edges of the screen.  It should be used for any panel that touches any edge of the screen.\n\nSee the article on [Safe Layout](articles:layout/safe-layout.md) for more details."
             },
@@ -1452,7 +1468,7 @@
           {
             "comment": {
               "brief": "Displays a block of text.",
-              "full": "Displays a block of text.\n\nThe `Text` UI-control renders read-only text.\n\nYou can import a @Font from ttf files containing TrueType fonts. Because a font is typically referred to throughout an application, it is best to simply create a global resource for it using `ux:Global`. This way of importing the font ensures that the font is available throughout the whole project, and is only loaded once.\n\n> **Note**\n>\n> When running desktop preview, neither fallback fonts, colored glyphs, nor Unicode characters outside the basic multilingual plane are supported.\n>\n> Because of this, **certain text features (e.g. emoji) are not supported when running local preview.**\n> Do not be surprised if desktop rendering doesn't match device rendering 100%. This is an issue that is being worked on.\n\n# Examples \n\n## Text properties\n\n```\n<Text Color=\"#999\">Left</Text>\n<Text TextAlignment=\"Center\">Center</Text>\n<Text FontSize=\"24\" TextAlignment=\"Right\">Right</Text>\n<Text LineSpacing=\"10\">\nMultiple\nLines\n</Text>\n```\n\nIn this example, the first text element will be left aligned as this is the default, and have its color set to a medium light grey. The second text will be center aligned. The third will be right aligned and have a larger font. The fourth will span two lines with 10 points of space inbetween.\n\n## Custom text-components\n\n\t<App>\n\t\t<Font File=\"Roboto-Medium.ttf\" ux:Global=\"Medium\" />\n\t\t<Font File=\"Roboto-Light.ttf\" ux:Global=\"Light\" />\n\n\t\t<Text ux:Class=\"Light\" Font=\"Light\" />\n\t\t<Text ux:Class=\"Medium\" Font=\"Medium\" TextWrapping=\"Wrap\" />\n\t\t<Text ux:Class=\"Warning\" \n\t\t\tFont=\"Medium\" \n\t\t\tFontSize=\"42\"\n\t\t\tTextAlignment=\"Center\"\n\t\t\tColor=\"#f00\" />\n\t\t\t\n\t\t<StackPanel>\n\t\t\t<Light>Just some text</Light>\n\t\t\t<Warning>The robots are coming!</Warning>\n\t\t\t<Medium>This is just some medium text, but it will happily wrap when the edges of the screen is reached.</Medium>\n\t\t</StackPanel>\n\t</App>\n\nIn this example we load two fonts and create three different semantic classes, `Light`, `Medium` and `Warning`, combining some of the available `Text` properties. In this example, the fonts are located in the same directory as the relevant UX file. \n\n# Remarks\n\n`Text` is the primary control for displaying read-only text in apps."
+              "full": "Displays a block of text.\n\nThe `Text` UI-control renders read-only text.\n\nYou can import a @Font from ttf files containing TrueType fonts. Because a font is typically referred to throughout an application, it is best to simply create a global resource for it using `ux:Global`. This way of importing the font ensures that the font is available throughout the whole project, and is only loaded once.\n\n> **Note**\n>\n> When running desktop preview, neither fallback fonts, colored glyphs, nor Unicode characters outside the basic multilingual plane are supported.\n>\n> Because of this, **certain text features (e.g. emoji) are not supported when running local preview.**\n> Do not be surprised if desktop rendering doesn't match device rendering 100%. This is an issue that is being worked on.\n\n# Examples\n\n## Text properties\n\n```\n<Text Color=\"#999\">Left</Text>\n<Text TextAlignment=\"Center\">Center</Text>\n<Text FontSize=\"24\" TextAlignment=\"Right\">Right</Text>\n<Text LineSpacing=\"10\">\nMultiple\nLines\n</Text>\n```\n\nIn this example, the first text element will be left aligned as this is the default, and have its color set to a medium light grey. The second text will be center aligned. The third will be right aligned and have a larger font. The fourth will span two lines with 10 points of space inbetween.\n\n## Custom text-components\n\n\t<App>\n\t\t<Font File=\"Roboto-Medium.ttf\" ux:Global=\"Medium\" />\n\t\t<Font File=\"Roboto-Light.ttf\" ux:Global=\"Light\" />\n\n\t\t<Text ux:Class=\"Light\" Font=\"Light\" />\n\t\t<Text ux:Class=\"Medium\" Font=\"Medium\" TextWrapping=\"Wrap\" />\n\t\t<Text ux:Class=\"Warning\"\n\t\t\tFont=\"Medium\"\n\t\t\tFontSize=\"42\"\n\t\t\tTextAlignment=\"Center\"\n\t\t\tColor=\"#f00\" />\n\n\t\t<StackPanel>\n\t\t\t<Light>Just some text</Light>\n\t\t\t<Warning>The robots are coming!</Warning>\n\t\t\t<Medium>This is just some medium text, but it will happily wrap when the edges of the screen is reached.</Medium>\n\t\t</StackPanel>\n\t</App>\n\nIn this example we load two fonts and create three different semantic classes, `Light`, `Medium` and `Warning`, combining some of the available `Text` properties. In this example, the fonts are located in the same directory as the relevant UX file.\n\n# Remarks\n\n`Text` is the primary control for displaying read-only text in apps."
             },
             "id": {
               "id": "fuse/controls/text",
@@ -2611,6 +2627,28 @@
           },
           {
             "comment": {
+              "brief": "Available DatePicker style",
+              "full": "Available DatePicker style"
+            },
+            "id": {
+              "id": "fuse/controls/datepickerstyle",
+              "parentId": "fuse/controls",
+              "type": "Enum",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/controls/datepickerstyle",
+              "href": "fuse/controls/datepickerstyle"
+            },
+            "titles": {
+              "indexTitle": "DatePickerStyle",
+              "fullyQualifiedIndexTitle": "Fuse.Controls.DatePickerStyle"
+            }
+          },
+          {
+            "comment": {
               "brief": "Determines how the bounds of a path are calculated for fitting into an element.",
               "full": "Determines how the bounds of a path are calculated for fitting into an element."
             },
@@ -2647,6 +2685,42 @@
             "titles": {
               "indexTitle": "FlashMode",
               "fullyQualifiedIndexTitle": "Fuse.Controls.FlashMode"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/controls/linecap",
+              "parentId": "fuse/controls",
+              "type": "Enum",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/controls/linecap",
+              "href": "fuse/controls/linecap"
+            },
+            "titles": {
+              "indexTitle": "LineCap",
+              "fullyQualifiedIndexTitle": "Fuse.Controls.LineCap"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/controls/linejoin",
+              "parentId": "fuse/controls",
+              "type": "Enum",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/controls/linejoin",
+              "href": "fuse/controls/linejoin"
+            },
+            "titles": {
+              "indexTitle": "LineJoin",
+              "fullyQualifiedIndexTitle": "Fuse.Controls.LineJoin"
             }
           },
           {
@@ -2803,6 +2877,24 @@
             "titles": {
               "indexTitle": "NavigatorSwipeHow",
               "fullyQualifiedIndexTitle": "Fuse.Controls.NavigatorSwipeHow"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/controls/overlaytype",
+              "parentId": "fuse/controls",
+              "type": "Enum",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/controls/overlaytype",
+              "href": "fuse/controls/overlaytype"
+            },
+            "titles": {
+              "indexTitle": "OverlayType",
+              "fullyQualifiedIndexTitle": "Fuse.Controls.OverlayType"
             }
           },
           {
@@ -3093,6 +3185,28 @@
             "titles": {
               "indexTitle": "TextWrapping",
               "fullyQualifiedIndexTitle": "Fuse.Controls.TextWrapping"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Available TimePicker style",
+              "full": "Available TimePicker style"
+            },
+            "id": {
+              "id": "fuse/controls/timepickerstyle",
+              "parentId": "fuse/controls",
+              "type": "Enum",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/controls/timepickerstyle",
+              "href": "fuse/controls/timepickerstyle"
+            },
+            "titles": {
+              "indexTitle": "TimePickerStyle",
+              "fullyQualifiedIndexTitle": "Fuse.Controls.TimePickerStyle"
             }
           }
         ]

@@ -1,0 +1,748 @@
+{
+  "entity": {
+    "base": {
+      "id": {
+        "id": "fuse/scripting/nativemodule",
+        "parentId": "fuse/scripting",
+        "type": "Class",
+        "modifiers": [
+          "public"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/scripting/nativemodule",
+        "href": "fuse/scripting/nativemodule"
+      },
+      "titles": {
+        "indexTitle": "NativeModule",
+        "fullyQualifiedIndexTitle": "Fuse.Scripting.NativeModule"
+      }
+    },
+    "location": {
+      "namespaceTitle": "Fuse",
+      "namespaceUri": "fuse",
+      "packageName": "Fuse.Auth",
+      "packageVersion": "2.0.0-beta.9"
+    },
+    "inheritance": {
+      "root": {
+        "uri": "uno/object",
+        "title": "object",
+        "children": [
+          {
+            "uri": "fuse/scripting/module",
+            "title": "Fuse.Scripting.Module",
+            "children": [
+              {
+                "uri": "fuse/scripting/nativemodule",
+                "title": "Fuse.Scripting.NativeModule",
+                "children": [
+                  {
+                    "uri": "fuse/biometricmodule",
+                    "title": "Fuse.BiometricModule",
+                    "children": [],
+                    "isCurrent": true
+                  }
+                ],
+                "isAncestor": true
+              }
+            ],
+            "isAncestor": true
+          }
+        ],
+        "isAncestor": true
+      },
+      "hasInheritance": true
+    },
+    "uxProperties": {
+      "uxNamespaceTitle": "Fuse",
+      "uxNamespaceUri": "fuse",
+      "uxName": "BiometricModule"
+    },
+    "implementedInterfaces": [
+      {
+        "id": {
+          "id": "fuse/scripting/imoduleprovider",
+          "parentId": "fuse/scripting",
+          "type": "Interface",
+          "modifiers": [
+            "public",
+            "abstract"
+          ]
+        },
+        "uri": {
+          "idUri": "fuse/scripting/imoduleprovider",
+          "href": "fuse/scripting/imoduleprovider"
+        },
+        "titles": {
+          "indexTitle": "IModuleProvider",
+          "fullyQualifiedIndexTitle": "Fuse.Scripting.IModuleProvider"
+        }
+      },
+      {
+        "id": {
+          "id": "uno/idisposable",
+          "parentId": "uno",
+          "type": "Interface",
+          "modifiers": [
+            "public",
+            "abstract"
+          ]
+        },
+        "uri": {
+          "idUri": "uno/idisposable",
+          "href": "uno/idisposable"
+        },
+        "titles": {
+          "indexTitle": "IDisposable",
+          "fullyQualifiedIndexTitle": "Uno.IDisposable"
+        }
+      }
+    ],
+    "attributes": [
+      {
+        "id": {
+          "id": "uno/ux/uxglobalmoduleattribute",
+          "parentId": "uno/ux",
+          "type": "Class",
+          "modifiers": [
+            "public",
+            "sealed"
+          ]
+        },
+        "uri": {
+          "idUri": "uno/ux/uxglobalmoduleattribute",
+          "href": "uno/ux/uxglobalmoduleattribute"
+        },
+        "titles": {
+          "indexTitle": "UXGlobalModuleAttribute",
+          "fullyQualifiedIndexTitle": "Uno.UX.UXGlobalModuleAttribute"
+        }
+      }
+    ],
+    "id": {
+      "id": "fuse/biometricmodule",
+      "parentId": "fuse",
+      "type": "UxClass",
+      "modifiers": [
+        "public"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/biometricmodule",
+      "href": "fuse/biometricmodule"
+    },
+    "titles": {
+      "pageTitle": "BiometricModule Class",
+      "navigationTitle": "BiometricModule Class",
+      "fullTitle": "Fuse.BiometricModule",
+      "indexTitle": "BiometricModule",
+      "fullyQualifiedIndexTitle": "Fuse.BiometricModule"
+    },
+    "syntax": {
+      "uno": "[Uno.UX.UXGlobalModule]\npublic class BiometricModule : Fuse.Scripting.NativeModule {}",
+      "ux": "<BiometricModule />"
+    },
+    "comment": {
+      "brief": "This is javacript module for taking biometric authentication. Both iOS and Android is using Fingerprint/Touch ID or Face Recognition/Face ID sensor depending on what sensor are available on the device.\nYou need to add a reference to `\"Fuse.Auth\"` in your project file to use this feature.",
+      "full": "This is javacript module for taking biometric authentication. Both iOS and Android is using Fingerprint/Touch ID or Face Recognition/Face ID sensor depending on what sensor are available on the device.\nYou need to add a reference to `\"Fuse.Auth\"` in your project file to use this feature.\n\n## Example\n\n    The following example shows how to use it:\n\n        <JavaScript>\n            var Auth = require('FuseJS/Biometric');\n\n            var authenticate = function(e) {\n                if (Auth.isBiometricSupported()) {\n                    Auth.authenticate(\"We need your biometric data to continue\").then(function(result) {\n                        if (result.status) {\n                            // auth success\n                        } else {\n                            console.log(result.message);\n                        }\n                    });\n                }\n            }\n            module.exports = {\n                authenticate\n            };\n        </JavaScript>\n        <Panel>\n            <Button Text=\"Sign In\" Alignment=\"Center\">\n                <Clicked Handler=\"{authenticate}\" />\n            </Button>\n        </Panel>\n\nWhen Using FaceID on iOS, it is mandatory to add description about why you need authentication using FaceID. You can add the description by adding this config on your `unoproj` file\n\n        \"iOS\": {\n            \"PList\": {\n                \"NSFaceIDUsageDescription\": \"Require access to FaceID for authenticating\"\n            }\n        }"
+    }
+  },
+  "tableOfContents": {
+    "attachedUxProperties": [
+      {
+        "items": [
+          {
+            "comment": {
+              "brief": "The `ux:Global` attribute creates a global resource that is accessible everywhere in UX markup.",
+              "full": "The `ux:Global` attribute creates a global resource that is accessible everywhere in UX markup.\n\nSee @Resources for more information.\n\nThe `ux:Global` attribute on an UX element creates a single object (singleton) that is globally available.\nUsing this attribute will prevent the object from being inserted by default the object at its defined location\nin the UX tree."
+            },
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "parameters": [
+              {
+                "name": "obj",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              },
+              {
+                "name": "key",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              }
+            ],
+            "id": {
+              "id": "fuse/biometricmodule/resource_globalkey_setglobalkey_4c3ac72d",
+              "parentId": "fuse/biometricmodule",
+              "type": "AttachedUxProperty",
+              "modifiers": []
+            },
+            "uri": {
+              "idUri": "fuse/biometricmodule/resource_globalkey_setglobalkey_4c3ac72d",
+              "href": "uno/ux/resource/setglobalkey_4c3ac72d",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Resource.GlobalKey",
+              "fullyQualifiedIndexTitle": "Resource.GlobalKey"
+            }
+          }
+        ]
+      }
+    ],
+    "uxEvents": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/scripting/nativemodule",
+            "parentId": "fuse/scripting",
+            "type": "Class",
+            "modifiers": [
+              "public"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/scripting/nativemodule",
+            "href": "fuse/scripting/nativemodule"
+          },
+          "titles": {
+            "indexTitle": "NativeModule",
+            "fullyQualifiedIndexTitle": "Fuse.Scripting.NativeModule"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/eventhandler",
+              "title": "EventHandler (object, EventArgs)",
+              "fullyQualifiedTitle": "Uno.EventHandler (object, Uno.EventArgs)"
+            },
+            "id": {
+              "id": "fuse/biometricmodule/reset",
+              "parentId": "fuse/biometricmodule",
+              "type": "UxEvent",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/biometricmodule/reset",
+              "href": "fuse/scripting/nativemodule/reset",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Reset",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.NativeModule.Reset"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/scripting/module",
+            "parentId": "fuse/scripting",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/scripting/module",
+            "href": "fuse/scripting/module"
+          },
+          "titles": {
+            "indexTitle": "Module",
+            "fullyQualifiedIndexTitle": "Fuse.Scripting.Module"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/eventhandler",
+              "title": "EventHandler (object, EventArgs)",
+              "fullyQualifiedTitle": "Uno.EventHandler (object, Uno.EventArgs)"
+            },
+            "id": {
+              "id": "fuse/biometricmodule/evaluated",
+              "parentId": "fuse/biometricmodule",
+              "type": "UxEvent",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/biometricmodule/evaluated",
+              "href": "fuse/scripting/module/evaluated",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Evaluated",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.Module.Evaluated"
+            }
+          }
+        ]
+      }
+    ],
+    "constructors": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/biometricmodule",
+            "parentId": "fuse",
+            "type": "UxClass",
+            "modifiers": [
+              "public"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/biometricmodule",
+            "href": "fuse/biometricmodule"
+          },
+          "titles": {
+            "indexTitle": "BiometricModule",
+            "fullyQualifiedIndexTitle": "Fuse.BiometricModule"
+          }
+        },
+        "items": [
+          {
+            "id": {
+              "id": "fuse/biometricmodule/_ctor",
+              "parentId": "fuse/biometricmodule",
+              "type": "Constructor",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/biometricmodule/_ctor",
+              "href": "fuse/biometricmodule/_ctor"
+            },
+            "titles": {
+              "indexTitle": "BiometricModule",
+              "fullyQualifiedIndexTitle": "Fuse.BiometricModule.BiometricModule"
+            }
+          }
+        ]
+      }
+    ],
+    "properties": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/scripting/module",
+            "parentId": "fuse/scripting",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/scripting/module",
+            "href": "fuse/scripting/module"
+          },
+          "titles": {
+            "indexTitle": "Module",
+            "fullyQualifiedIndexTitle": "Fuse.Scripting.Module"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "id": {
+              "id": "fuse/biometricmodule/isevaluated",
+              "parentId": "fuse/biometricmodule",
+              "type": "Property",
+              "modifiers": [
+                "protected"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/biometricmodule/isevaluated",
+              "href": "fuse/scripting/module/isevaluated",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "IsEvaluated",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.Module.IsEvaluated"
+            }
+          }
+        ]
+      }
+    ],
+    "methods": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/scripting/nativemodule",
+            "parentId": "fuse/scripting",
+            "type": "Class",
+            "modifiers": [
+              "public"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/scripting/nativemodule",
+            "href": "fuse/scripting/nativemodule"
+          },
+          "titles": {
+            "indexTitle": "NativeModule",
+            "fullyQualifiedIndexTitle": "Fuse.Scripting.NativeModule"
+          }
+        },
+        "items": [
+          {
+            "parameters": [
+              {
+                "name": "member",
+                "href": "fuse/scripting/nativemember",
+                "title": "NativeMember",
+                "fullyQualifiedTitle": "Fuse.Scripting.NativeMember"
+              }
+            ],
+            "id": {
+              "id": "fuse/biometricmodule/addmember_645dc1d4",
+              "parentId": "fuse/biometricmodule",
+              "type": "Method",
+              "modifiers": [
+                "protected"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/biometricmodule/addmember_645dc1d4",
+              "href": "fuse/scripting/nativemodule/addmember_645dc1d4",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "AddMember(NativeMember)",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.NativeModule.AddMember(Fuse.Scripting.NativeMember)"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/scripting/module",
+            "parentId": "fuse/scripting",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/scripting/module",
+            "href": "fuse/scripting/module"
+          },
+          "titles": {
+            "indexTitle": "Module",
+            "fullyQualifiedIndexTitle": "Fuse.Scripting.Module"
+          }
+        },
+        "items": [
+          {
+            "id": {
+              "id": "fuse/biometricmodule/dispose",
+              "parentId": "fuse/biometricmodule",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/biometricmodule/dispose",
+              "href": "fuse/scripting/module/dispose",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Dispose",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.Module.Dispose"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "c",
+                "href": "fuse/scripting/context",
+                "title": "Context",
+                "fullyQualifiedTitle": "Fuse.Scripting.Context"
+              },
+              {
+                "name": "result",
+                "href": "fuse/scripting/moduleresult",
+                "title": "ModuleResult",
+                "fullyQualifiedTitle": "Fuse.Scripting.ModuleResult"
+              }
+            ],
+            "id": {
+              "id": "fuse/biometricmodule/evaluate_0c699bd3",
+              "parentId": "fuse/biometricmodule",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/biometricmodule/evaluate_0c699bd3",
+              "href": "fuse/scripting/module/evaluate_0c699bd3",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Evaluate(Context, ModuleResult)",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.Module.Evaluate(Fuse.Scripting.Context, Fuse.Scripting.ModuleResult)"
+            }
+          },
+          {
+            "returns": {
+              "href": "fuse/scripting/moduleresult",
+              "title": "ModuleResult",
+              "fullyQualifiedTitle": "Fuse.Scripting.ModuleResult"
+            },
+            "parameters": [
+              {
+                "name": "c",
+                "href": "fuse/scripting/context",
+                "title": "Context",
+                "fullyQualifiedTitle": "Fuse.Scripting.Context"
+              },
+              {
+                "name": "id",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              }
+            ],
+            "id": {
+              "id": "fuse/biometricmodule/evaluate_8fde98fd",
+              "parentId": "fuse/biometricmodule",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/biometricmodule/evaluate_8fde98fd",
+              "href": "fuse/scripting/module/evaluate_8fde98fd",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Evaluate(Context, string)",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.Module.Evaluate(Fuse.Scripting.Context, string)"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/object",
+              "title": "object",
+              "fullyQualifiedTitle": "object"
+            },
+            "parameters": [
+              {
+                "name": "c",
+                "href": "fuse/scripting/context",
+                "title": "Context",
+                "fullyQualifiedTitle": "Fuse.Scripting.Context"
+              },
+              {
+                "name": "id",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              }
+            ],
+            "id": {
+              "id": "fuse/biometricmodule/evaluateexports_8fde98fd",
+              "parentId": "fuse/biometricmodule",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/biometricmodule/evaluateexports_8fde98fd",
+              "href": "fuse/scripting/module/evaluateexports_8fde98fd",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "EvaluateExports(Context, string)",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.Module.EvaluateExports(Fuse.Scripting.Context, string)"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Returns the file source that will be watched by the Context for changes in Fuse preview.\nOverride in subclasses and return correct file source to support live updates\nin Fuse preview.",
+              "full": "Returns the file source that will be watched by the Context for changes in Fuse preview.\nOverride in subclasses and return correct file source to support live updates\nin Fuse preview."
+            },
+            "returns": {
+              "href": "uno/ux/filesource",
+              "title": "FileSource",
+              "fullyQualifiedTitle": "Uno.UX.FileSource"
+            },
+            "id": {
+              "id": "fuse/biometricmodule/getfile",
+              "parentId": "fuse/biometricmodule",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/biometricmodule/getfile",
+              "href": "fuse/scripting/module/getfile",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetFile",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.Module.GetFile"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "uno/object",
+            "parentId": "uno",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "intrinsic"
+            ]
+          },
+          "uri": {
+            "idUri": "uno/object",
+            "href": "uno/object"
+          },
+          "titles": {
+            "indexTitle": "object",
+            "fullyQualifiedIndexTitle": "object"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "parameters": [
+              {
+                "name": "o",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              }
+            ],
+            "id": {
+              "id": "fuse/biometricmodule/equals_a09c80e3",
+              "parentId": "fuse/biometricmodule",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/biometricmodule/equals_a09c80e3",
+              "href": "uno/object/equals_a09c80e3",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Equals(object)",
+              "fullyQualifiedIndexTitle": "Uno.Object.Equals(object)"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/int",
+              "title": "int",
+              "fullyQualifiedTitle": "int"
+            },
+            "id": {
+              "id": "fuse/biometricmodule/gethashcode",
+              "parentId": "fuse/biometricmodule",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/biometricmodule/gethashcode",
+              "href": "uno/object/gethashcode",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetHashCode",
+              "fullyQualifiedIndexTitle": "Uno.Object.GetHashCode"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/type",
+              "title": "Type",
+              "fullyQualifiedTitle": "Uno.Type"
+            },
+            "id": {
+              "id": "fuse/biometricmodule/gettype",
+              "parentId": "fuse/biometricmodule",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/biometricmodule/gettype",
+              "href": "uno/object/gettype",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetType",
+              "fullyQualifiedIndexTitle": "Uno.Object.GetType"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "id": {
+              "id": "fuse/biometricmodule/tostring",
+              "parentId": "fuse/biometricmodule",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/biometricmodule/tostring",
+              "href": "uno/object/tostring",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "ToString",
+              "fullyQualifiedIndexTitle": "Uno.Object.ToString"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

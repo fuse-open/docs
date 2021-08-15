@@ -23,7 +23,7 @@
       "namespaceTitle": "Uno",
       "namespaceUri": "uno",
       "packageName": "UnoCore",
-      "packageVersion": "1.11.1"
+      "packageVersion": "2.0.0-beta.12"
     },
     "inheritance": {
       "root": {
@@ -41,6 +41,27 @@
       },
       "hasInheritance": true
     },
+    "implementedInterfaces": [
+      {
+        "id": {
+          "id": "uno/collections/ienumerable_1",
+          "parentId": "uno/collections",
+          "type": "Interface",
+          "modifiers": [
+            "public",
+            "abstract"
+          ]
+        },
+        "uri": {
+          "idUri": "uno/collections/ienumerable_1",
+          "href": "uno/collections/ienumerable_1"
+        },
+        "titles": {
+          "indexTitle": "IEnumerable<char>",
+          "fullyQualifiedIndexTitle": "Uno.Collections.IEnumerable<char>"
+        }
+      }
+    ],
     "id": {
       "id": "uno/string",
       "parentId": "uno",
@@ -63,7 +84,7 @@
       "fullyQualifiedIndexTitle": "string"
     },
     "syntax": {
-      "uno": "public intrinsic sealed class String {}"
+      "uno": "public intrinsic sealed class String : Uno.Collections.IEnumerable<char> {}"
     },
     "comment": {
       "brief": "Represents text as a sequence of UTF-16 code units.",
@@ -549,6 +570,29 @@
           },
           {
             "returns": {
+              "href": "uno/collections/ienumerator_1",
+              "title": "IEnumerator<char>",
+              "fullyQualifiedTitle": "Uno.Collections.IEnumerator<char>"
+            },
+            "id": {
+              "id": "uno/string/getenumerator",
+              "parentId": "uno/string",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "uno/string/getenumerator",
+              "href": "uno/string/getenumerator"
+            },
+            "titles": {
+              "indexTitle": "GetEnumerator",
+              "fullyQualifiedIndexTitle": "Uno.String.GetEnumerator"
+            }
+          },
+          {
+            "returns": {
               "href": "uno/int",
               "title": "int",
               "fullyQualifiedTitle": "int"
@@ -905,6 +949,44 @@
             "titles": {
               "indexTitle": "IsNullOrWhiteSpace(string)",
               "fullyQualifiedIndexTitle": "Uno.String.IsNullOrWhiteSpace(string)"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "parameters": [
+              {
+                "name": "separator",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              },
+              {
+                "name": "value",
+                "href": "uno/object",
+                "title": "object[]",
+                "fullyQualifiedTitle": "object[]"
+              }
+            ],
+            "id": {
+              "id": "uno/string/join_a2e97a1c",
+              "parentId": "uno/string",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "uno/string/join_a2e97a1c",
+              "href": "uno/string/join_a2e97a1c"
+            },
+            "titles": {
+              "indexTitle": "Join(string, object[])",
+              "fullyQualifiedIndexTitle": "Uno.String.Join(string, object[])"
             }
           },
           {

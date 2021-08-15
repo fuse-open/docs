@@ -28,10 +28,7 @@
           {
             "comment": {
               "brief": "Provides a source of data for plotting.",
-              "full": "Provides a source of data for plotting.",
-              "attributes": {
-                "experimental": true
-              }
+              "full": "Provides a source of data for plotting."
             },
             "id": {
               "id": "fuse/charting/dataseries",
@@ -53,10 +50,7 @@
           {
             "comment": {
               "brief": "A panel that contains a chart.",
-              "full": "A panel that contains a chart.",
-              "attributes": {
-                "experimental": true
-              }
+              "full": "A panel that contains a chart."
             },
             "id": {
               "id": "fuse/charting/plot",
@@ -101,10 +95,7 @@
           {
             "comment": {
               "brief": "A layout and enumeration for the axis steps of a @Plot, which is used to place labels on axes. Often used together with a @(GridLayout) for positioning.",
-              "full": "A layout and enumeration for the axis steps of a @Plot, which is used to place labels on axes. Often used together with a @(GridLayout) for positioning.\n\n# Example\n\nThe following example places labels on the y-axis of a bar chart.\n\n    <Panel xmlns:c=\"Fuse.Charting\" >\n        <JavaScript>\n            var Observable = require(\"FuseJS/Observable\");\n\n            function Item(val) {\n                this.value = val;\n            }\n            var data = Observable(new Item(3), new Item(4), new Item(6), new Item(3), new Item(4));\n\n            module.exports = {\n                data: data\n            }\n        </JavaScript>\n        <Panel BoxSizing=\"FillAspect\" Aspect=\"1\">\n            <c:Plot Margin=\"40\">\n                <GridLayout Rows=\"1*,40\" Columns=\"40,1*\"/>\n                <c:DataSeries Data=\"{data}\" />\n                <c:PlotAxis Row=\"0\" Column=\"0\" Axis=\"Y\">\n                    <Text ux:Template=\"Label\" Alignment=\"Center\" FontSize=\"14\" Color=\"#666\"\n                        Value=\"{Plot axis.value}\"/>\n                </c:PlotAxis>\n                <c:PlotData>\n                    <c:PlotBar Row=\"0\" Column=\"1\">\n                        <Rectangle Color=\"#F00\" Height=\"100%\" Margin=\"2\" Alignment=\"Bottom\"/>\n                    </c:PlotBar>\n                </c:PlotData>\n            </c:Plot>\n        </Panel>\n    </Panel>",
-              "attributes": {
-                "experimental": true
-              }
+              "full": "A layout and enumeration for the axis steps of a @Plot, which is used to place labels on axes. Often used together with a @(GridLayout) for positioning.\n\n# Example\n\nThe following example places labels on the y-axis of a bar chart.\n\n    <Panel xmlns:c=\"Fuse.Charting\" >\n        <JavaScript>\n            var Observable = require(\"FuseJS/Observable\");\n\n            function Item(val) {\n                this.value = val;\n            }\n            var data = Observable(new Item(3), new Item(4), new Item(6), new Item(3), new Item(4));\n\n            module.exports = {\n                data: data\n            }\n        </JavaScript>\n        <Panel BoxSizing=\"FillAspect\" Aspect=\"1\">\n            <c:Plot Margin=\"40\">\n                <GridLayout Rows=\"1*,40\" Columns=\"40,1*\"/>\n                <c:DataSeries Data=\"{data}\" />\n                <c:PlotAxis Row=\"0\" Column=\"0\" Axis=\"Y\">\n                    <Text ux:Template=\"Label\" Alignment=\"Center\" FontSize=\"14\" Color=\"#666\"\n                        Value=\"{Plot axis.value}\"/>\n                </c:PlotAxis>\n                <c:PlotData>\n                    <c:PlotBar Row=\"0\" Column=\"1\">\n                        <Rectangle Color=\"#F00\" Height=\"100%\" Margin=\"2\" Alignment=\"Bottom\"/>\n                    </c:PlotBar>\n                </c:PlotData>\n            </c:Plot>\n        </Panel>\n    </Panel>"
             },
             "id": {
               "id": "fuse/charting/plotaxis",
@@ -148,10 +139,7 @@
           {
             "comment": {
               "brief": "Positions a plot bar.",
-              "full": "Positions a plot bar.\n\nThis automatically sets the `X`,`Y`,`Width`,`Heigth` and `Anchor` properties on the element. The result is undefined if you override one of these values. Use a child element if you wish to make an element relative to the PlotBar placement.\n\n# Example\n\nThe following example draws a red bar chart using the `PlotBar` element and @Rectangle\n\n    <Panel xmlns:c=\"Fuse.Charting\" >\n        <JavaScript>\n            var Observable = require(\"FuseJS/Observable\");\n\n            function Item(val) {\n                this.value = val;\n            }\n            var data = Observable(new Item(3), new Item(4), new Item(6), new Item(3), new Item(4));\n\n            module.exports = {\n                data: data\n            }\n        </JavaScript>\n        <Panel BoxSizing=\"FillAspect\" Aspect=\"1\">\n            <c:Plot Margin=\"40\">\n                <c:DataSeries Data=\"{data}\" />\n                <c:PlotData>\n                    <c:PlotBar>\n                        <Rectangle Color=\"#F00\" Height=\"100%\" Margin=\"2\" Alignment=\"Bottom\"/>\n                    </c:PlotBar>\n                </c:PlotData>\n            </c:Plot>\n        </Panel>\n    </Panel>",
-              "attributes": {
-                "experimental": true
-              }
+              "full": "Positions a plot bar.\n\nThis automatically sets the `X`,`Y`,`Width`,`Heigth` and `Anchor` properties on the element. The result is undefined if you override one of these values. Use a child element if you wish to make an element relative to the PlotBar placement.\n\n# Example\n\nThe following example draws a red bar chart using the `PlotBar` element and @Rectangle\n\n    <Panel xmlns:c=\"Fuse.Charting\" >\n        <JavaScript>\n            var Observable = require(\"FuseJS/Observable\");\n\n            function Item(val) {\n                this.value = val;\n            }\n            var data = Observable(new Item(3), new Item(4), new Item(6), new Item(3), new Item(4));\n\n            module.exports = {\n                data: data\n            }\n        </JavaScript>\n        <Panel BoxSizing=\"FillAspect\" Aspect=\"1\">\n            <c:Plot Margin=\"40\">\n                <c:DataSeries Data=\"{data}\" />\n                <c:PlotData>\n                    <c:PlotBar>\n                        <Rectangle Color=\"#F00\" Height=\"100%\" Margin=\"2\" Alignment=\"Bottom\"/>\n                    </c:PlotBar>\n                </c:PlotData>\n            </c:Plot>\n        </Panel>\n    </Panel>"
             },
             "id": {
               "id": "fuse/charting/plotbar",
@@ -173,10 +161,7 @@
           {
             "comment": {
               "brief": "Convenience wrapper for platting CurvePoint's in a plot.",
-              "full": "Convenience wrapper for platting CurvePoint's in a plot.\n\nThis shares most of the functionality of `PlotPoint` except creates a `CurvePoint` suitable for a `Curve.\n\n# Example\n\nThis example demonstrates a simple line graph built using `PlotCurvePoint`\n\n    <Panel xmlns:c=\"Fuse.Charting\" >\n        <JavaScript>\n            var Observable = require(\"FuseJS/Observable\");\n\n            function Item(val) {\n                this.value = val;\n            }\n            var data = Observable(new Item(3), new Item(4), new Item(6), new Item(0), new Item(4));\n\n            module.exports = {\n                data: data\n            }\n        </JavaScript>\n        <Panel BoxSizing=\"FillAspect\" Aspect=\"1\" >\n            <c:Plot >\n                <c:DataSeries Data=\"{data}\" />\n                <Curve StrokeWidth=\"5\" StrokeColor=\"#008\" >\n                    <c:PlotData>\n                        <c:PlotCurvePoint/>\n                    </c:PlotData>\n                </Curve>\n            </c:Plot>\n        </Panel>\n    </Panel>",
-              "attributes": {
-                "experimental": true
-              }
+              "full": "Convenience wrapper for platting CurvePoint's in a plot.\n\nThis shares most of the functionality of `PlotPoint` except creates a `CurvePoint` suitable for a `Curve.\n\n# Example\n\nThis example demonstrates a simple line graph built using `PlotCurvePoint`\n\n    <Panel xmlns:c=\"Fuse.Charting\" >\n        <JavaScript>\n            var Observable = require(\"FuseJS/Observable\");\n\n            function Item(val) {\n                this.value = val;\n            }\n            var data = Observable(new Item(3), new Item(4), new Item(6), new Item(0), new Item(4));\n\n            module.exports = {\n                data: data\n            }\n        </JavaScript>\n        <Panel BoxSizing=\"FillAspect\" Aspect=\"1\" >\n            <c:Plot >\n                <c:DataSeries Data=\"{data}\" />\n                <Curve StrokeWidth=\"5\" StrokeColor=\"#008\" >\n                    <c:PlotData>\n                        <c:PlotCurvePoint/>\n                    </c:PlotData>\n                </Curve>\n            </c:Plot>\n        </Panel>\n    </Panel>"
             },
             "id": {
               "id": "fuse/charting/plotcurvepoint",
@@ -198,10 +183,7 @@
           {
             "comment": {
               "brief": "Iterator for visual plot data.",
-              "full": "Iterator for visual plot data.\n\nThis works like an @Each for the visible data points. Use a @PlotBar or  @PlotCurvePoint to add elements matching this data. Or use a `{Plot data.*}` to get at the variables for the data point.\n\n    <Panel>\n        <c:PlotData>\n            <c:PlotBar/>\n        </c:PlotData>\n    </Panel>\n\n    <Curve>\n        <c:PlotData>\n            <c:PlotCurvePoint/>\n        </c:PlotData>\n    </Curve>",
-              "attributes": {
-                "experimental": true
-              }
+              "full": "Iterator for visual plot data.\n\nThis works like an @Each for the visible data points. Use a @PlotBar or  @PlotCurvePoint to add elements matching this data. Or use a `{Plot data.*}` to get at the variables for the data point.\n\n    <Panel>\n        <c:PlotData>\n            <c:PlotBar/>\n        </c:PlotData>\n    </Panel>\n\n    <Curve>\n        <c:PlotData>\n            <c:PlotCurvePoint/>\n        </c:PlotData>\n    </Curve>"
             },
             "id": {
               "id": "fuse/charting/plotdata",
@@ -223,10 +205,7 @@
           {
             "comment": {
               "brief": "Used to access information about the plot.",
-              "full": "Used to access information about the plot.\n\nThe prefix `data.` is used within a @PlotData to access the values of the individual points on the plot.\n\nThe prefix `axis.` is used within a @PlotAxis to access the values of axis.\n\nUnprefixed values access values in the @Plot",
-              "attributes": {
-                "experimental": true
-              }
+              "full": "Used to access information about the plot.\n\nThe prefix `data.` is used within a @PlotData to access the values of the individual points on the plot.\n\nThe prefix `axis.` is used within a @PlotAxis to access the values of axis.\n\nUnprefixed values access values in the @Plot"
             },
             "id": {
               "id": "fuse/charting/plotexpression",
@@ -249,10 +228,7 @@
           {
             "comment": {
               "brief": "A `Panel` positioned on the data point for a chart. This is an easy way to position an object at the correct position for the current plot data.",
-              "full": "A `Panel` positioned on the data point for a chart. This is an easy way to position an object at the correct position for the current plot data.\n\nThis panel has a default of `Anchor=\"50%,50%\"`.  This can be changed with `PointAnchor`\n\nThis panel does not have any default size.",
-              "attributes": {
-                "experimental": true
-              }
+              "full": "A `Panel` positioned on the data point for a chart. This is an easy way to position an object at the correct position for the current plot data.\n\nThis panel has a default of `Anchor=\"50%,50%\"`.  This can be changed with `PointAnchor`\n\nThis panel does not have any default size."
             },
             "id": {
               "id": "fuse/charting/plotpoint",
@@ -274,10 +250,7 @@
           {
             "comment": {
               "brief": "Creates tick marks, usually for an axis. This is a @Shape, allowing `Stroke...` properties to be used for drawing the ticks.  The ticks that are drawn will line up with the labels of @PlotAxis provided they are the same element size (either `Width` or `Height` depending on the axis).",
-              "full": "Creates tick marks, usually for an axis. This is a @Shape, allowing `Stroke...` properties to be used for drawing the ticks.  The ticks that are drawn will line up with the labels of @PlotAxis provided they are the same element size (either `Width` or `Height` depending on the axis).\n\n# Example\n\nThe following example shows `PlotTicks` being used to draw lines on the x-axis of a bar chart.\n\n    <Panel xmlns:c=\"Fuse.Charting\" >\n        <JavaScript>\n            var Observable = require(\"FuseJS/Observable\");\n\n            function Item(val) {\n                this.value = val;\n            }\n            var data = Observable(new Item(3), new Item(4), new Item(6), new Item(3), new Item(4));\n\n            module.exports = {\n                data: data\n            }\n        </JavaScript>\n        <Panel BoxSizing=\"FillAspect\" Aspect=\"1\">\n            <c:Plot Margin=\"40\">\n                <GridLayout Rows=\"1*,40\" Columns=\"40,1*\"/>\n                <c:DataSeries Data=\"{data}\" />\n                <c:PlotData>\n                    <c:PlotBar Row=\"0\" Column=\"1\">\n                        <Rectangle Color=\"#F00\" Height=\"100%\" Margin=\"2\" Alignment=\"Bottom\"/>\n                    </c:PlotBar>\n                </c:PlotData>\n                <c:PlotTicks Axis=\"Y\" StrokeWidth=\"1\" StrokeColor=\"#555\" Row=\"0\" Column=\"1\" />\n            </c:Plot>\n        </Panel>\n    </Panel>\n\n`AxisLine` indicates a line across the entire access should be drawn at this offset. In this example it's the top of the ticks, making this suitable for the bottom of a chart.",
-              "attributes": {
-                "experimental": true
-              }
+              "full": "Creates tick marks, usually for an axis. This is a @Shape, allowing `Stroke...` properties to be used for drawing the ticks.  The ticks that are drawn will line up with the labels of @PlotAxis provided they are the same element size (either `Width` or `Height` depending on the axis).\n\n# Example\n\nThe following example shows `PlotTicks` being used to draw lines on the x-axis of a bar chart.\n\n    <Panel xmlns:c=\"Fuse.Charting\" >\n        <JavaScript>\n            var Observable = require(\"FuseJS/Observable\");\n\n            function Item(val) {\n                this.value = val;\n            }\n            var data = Observable(new Item(3), new Item(4), new Item(6), new Item(3), new Item(4));\n\n            module.exports = {\n                data: data\n            }\n        </JavaScript>\n        <Panel BoxSizing=\"FillAspect\" Aspect=\"1\">\n            <c:Plot Margin=\"40\">\n                <GridLayout Rows=\"1*,40\" Columns=\"40,1*\"/>\n                <c:DataSeries Data=\"{data}\" />\n                <c:PlotData>\n                    <c:PlotBar Row=\"0\" Column=\"1\">\n                        <Rectangle Color=\"#F00\" Height=\"100%\" Margin=\"2\" Alignment=\"Bottom\"/>\n                    </c:PlotBar>\n                </c:PlotData>\n                <c:PlotTicks Axis=\"Y\" StrokeWidth=\"1\" StrokeColor=\"#555\" Row=\"0\" Column=\"1\" />\n            </c:Plot>\n        </Panel>\n    </Panel>\n\n`AxisLine` indicates a line across the entire access should be drawn at this offset. In this example it's the top of the ticks, making this suitable for the bottom of a chart."
             },
             "id": {
               "id": "fuse/charting/plotticks",
@@ -327,10 +300,7 @@
           {
             "comment": {
               "brief": "Common base for plot positioned elements.",
-              "full": "Common base for plot positioned elements.",
-              "attributes": {
-                "experimental": true
-              }
+              "full": "Common base for plot positioned elements."
             },
             "id": {
               "id": "fuse/charting/plotelement",

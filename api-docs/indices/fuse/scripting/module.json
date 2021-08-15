@@ -21,6 +21,28 @@
   "descendants": [
     {
       "comment": {
+        "brief": "This is javacript module for taking biometric authentication. Both iOS and Android is using Fingerprint/Touch ID or Face Recognition/Face ID sensor depending on what sensor are available on the device.\nYou need to add a reference to `\"Fuse.Auth\"` in your project file to use this feature.",
+        "full": "This is javacript module for taking biometric authentication. Both iOS and Android is using Fingerprint/Touch ID or Face Recognition/Face ID sensor depending on what sensor are available on the device.\nYou need to add a reference to `\"Fuse.Auth\"` in your project file to use this feature.\n\n## Example\n\n    The following example shows how to use it:\n\n        <JavaScript>\n            var Auth = require('FuseJS/Biometric');\n\n            var authenticate = function(e) {\n                if (Auth.isBiometricSupported()) {\n                    Auth.authenticate(\"We need your biometric data to continue\").then(function(result) {\n                        if (result.status) {\n                            // auth success\n                        } else {\n                            console.log(result.message);\n                        }\n                    });\n                }\n            }\n            module.exports = {\n                authenticate\n            };\n        </JavaScript>\n        <Panel>\n            <Button Text=\"Sign In\" Alignment=\"Center\">\n                <Clicked Handler=\"{authenticate}\" />\n            </Button>\n        </Panel>\n\nWhen Using FaceID on iOS, it is mandatory to add description about why you need authentication using FaceID. You can add the description by adding this config on your `unoproj` file\n\n        \"iOS\": {\n            \"PList\": {\n                \"NSFaceIDUsageDescription\": \"Require access to FaceID for authenticating\"\n            }\n        }"
+      },
+      "id": {
+        "id": "fuse/biometricmodule",
+        "parentId": "fuse",
+        "type": "UxClass",
+        "modifiers": [
+          "public"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/biometricmodule",
+        "href": "fuse/biometricmodule"
+      },
+      "titles": {
+        "indexTitle": "BiometricModule",
+        "fullyQualifiedIndexTitle": "Fuse.BiometricModule"
+      }
+    },
+    {
+      "comment": {
         "brief": "An internal module providing the Uno callback for the `Diagnostics.js` module.",
         "full": "An internal module providing the Uno callback for the `Diagnostics.js` module."
       },
@@ -156,6 +178,28 @@
       "titles": {
         "indexTitle": "ScriptModule",
         "fullyQualifiedIndexTitle": "Fuse.Scripting.ScriptModule"
+      }
+    },
+    {
+      "comment": {
+        "brief": "Javascript Module for taking Platform SignIn. Platform SignIn is a SignIn mechanism that use `Sign In With Apple` on iOS and `Google SignIn` on Android.",
+        "full": "Javascript Module for taking Platform SignIn. Platform SignIn is a SignIn mechanism that use `Sign In With Apple` on iOS and `Google SignIn` on Android.\n\nPlatform SignIn is only available on the mobile target platform (iOS and Android).\n\nYou need to add a reference to `\"Fuse.Auth\"` in your project file to use this feature.\n\n> For more information on what are the pre-request when implementing `Sign In With Apple` or `Google Sign In`, you can check the documentation on the apple developer website or android developer website\n> for iOS add \"SystemCapabilities\": { \"SignInWithApple\":true }  in the unoproj file.\n\n## Example\n\n    The following example shows how to use it:\n\n        ```XML\n            <App>\n                <JavaScript>\n                    var Auth = require('useJS/Auth');\n\n                    function doSignIn() {\n                        Auth.signIn().then(function(result) {\n                            // result is json object containing these properties :\n                            // email -> user email that has been sign in / sign up\n                            // firstName -> User firstname\n                            // lastName -> User Lastname\n                            // userId -> User uniqe Id\n                        }, function (ex) {\n                            // failed login\n                        })\n                    }\n                    Auth.hasSignedIn().then(function (result) {\n                        if (result) {\n                            // user has already sign in\n                        }\n                    })\n\n                    module.exports = {\n                        doSignIn\n                    }\n\n                </JavaScript>\n                <Button Text=\"Sign In\">\n                    <Clicked>\n                        <Callback Handler=\"{doSignIn}\" />\n                    </Clicked>\n                </Button>\n            </App\n        ```\n\n> When the callback handler is fired for the first time and the result object of `status` property is true, save those logged user information immediately to the server especially on iOS,\n>  because as stated in the documentation on the apple website, the Sign In With Apple  will only send userId informataion the next time user do the authentication again"
+      },
+      "id": {
+        "id": "fuse/signinmodule",
+        "parentId": "fuse",
+        "type": "UxClass",
+        "modifiers": [
+          "public"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/signinmodule",
+        "href": "fuse/signinmodule"
+      },
+      "titles": {
+        "indexTitle": "SignInModule",
+        "fullyQualifiedIndexTitle": "Fuse.SignInModule"
       }
     },
     {

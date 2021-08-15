@@ -24,7 +24,7 @@
       "namespaceTitle": "Fuse.Elements",
       "namespaceUri": "fuse/elements",
       "packageName": "Fuse.Elements",
-      "packageVersion": "1.11.2"
+      "packageVersion": "2.0.0-beta.9"
     },
     "inheritance": {
       "root": {
@@ -422,7 +422,7 @@
     },
     "comment": {
       "brief": "Elements are visuals that cover a rectangular 2D region.",
-      "full": "Elements are visuals that cover a rectangular 2D region.\n\n# Common properties\n\n## HitTestMode\n\nWhen interacting with an element, it is sometimes desirable to be able to differentiate which elements can be interacted with and how. This is typically referred to as \"hit testing\". In Fuse, how elements interact with user input can be set using `HitTestMode`.\n\n### Example\nThis example will layout two `Rectangle`s and add `Clicked`-triggers to both of them. However, only the left one will output anything when clicked, as the hit testing has been explicitly disabled on the right rectangle:\n\n\t<Grid ColumnCount=\"2\">\n\t\t<Rectangle Width=\"100\" Height=\"100\" Fill=\"#808\" >\n\t\t\t<Clicked>\n\t\t\t\t<DebugAction Message=\"Clicked left\" />\n\t\t\t</Clicked>\n\t\t</Rectangle>\n\t\t<Rectangle Width=\"100\" Height=\"100\" Fill=\"#808\" HitTestMode=\"None\" >\n\t\t\t<Clicked>\n\t\t\t\t<DebugAction Message=\"Clicked right\" />\n\t\t\t</Clicked>\n\t\t</Rectangle>\n\t</Grid>\n\t\n This can be very helpful if you have visual elements obscuring elements below it, where you want the lower elements respond to input.\n\n## ClipToBounds\n\nNormally, when laying out an element inside the other, the inner element can freely live outside the parent element:\n\n\t<Panel Width=\"100\" Height=\"100\">\n\t\t\t<Image Margin=\"-100\" File=\"Pictures/Picture1.jpg\"\n\t\t\t\tStretchMode=\"UniformToFill\" />\n\t</Panel>\n\nThis `Image` will appear to be 300pt wide and tall, as the `Panel` doesn't clip children to its bounds.\n\nIf you intend to have the `Image` clip to its parent size, simply set `ClipToBounds=\"true\"` on the `Panel`:\n\n\t\t<Panel Width=\"100\" Height=\"100\" ClipToBounds=\"true\">\n\t\t\t<Image Margin=\"-100\" File=\"Pictures/Picture1.jpg\"\n\t\t\t\tStretchMode=\"UniformToFill\" />\n\t\t</Panel>\n\nNow, the `Image` will not overflow the bounds of the `Panel`.\n\n## Opacity\n\nYou can set the transparency of objects using the `Opacity`-property. When `Opacity=\"0\"`, the element is completely transparent.\n\n### Example\n\nIn this example, a panel's opacity is set to 0.5\n\n\t<Panel>\n\t\t<Opacity Value=\"0.5\" />\n\t</Panel>\n\n## Layers\n\nIt is often helpful to redefine what existing controls should look like. Elements that are added to containers can be assigned to different layers. If you want a button to appear with a red background, you can redefine its `Background` `Layer`:\n\n\t<Button Text=\"Hello!\">\n\t\t<Rectangle Fill=\"#931\" Layer=\"Background\" />\n\t</Button>\n\nThis will not change the layout or behavior of the @Button, but its appearance will change.\n\n# Available Element classes\n\n[subclass Fuse.Elements.Element]",
+      "full": "Elements are visuals that cover a rectangular 2D region.\n\n# Common properties\n\n## HitTestMode\n\nWhen interacting with an element, it is sometimes desirable to be able to differentiate which elements can be interacted with and how. This is typically referred to as \"hit testing\". In Fuse, how elements interact with user input can be set using `HitTestMode`.\n\n### Example\nThis example will layout two `Rectangle`s and add `Clicked`-triggers to both of them. However, only the left one will output anything when clicked, as the hit testing has been explicitly disabled on the right rectangle:\n\n\t<Grid ColumnCount=\"2\">\n\t\t<Rectangle Width=\"100\" Height=\"100\" Fill=\"#808\" >\n\t\t\t<Clicked>\n\t\t\t\t<DebugAction Message=\"Clicked left\" />\n\t\t\t</Clicked>\n\t\t</Rectangle>\n\t\t<Rectangle Width=\"100\" Height=\"100\" Fill=\"#808\" HitTestMode=\"None\" >\n\t\t\t<Clicked>\n\t\t\t\t<DebugAction Message=\"Clicked right\" />\n\t\t\t</Clicked>\n\t\t</Rectangle>\n\t</Grid>\n\n This can be very helpful if you have visual elements obscuring elements below it, where you want the lower elements respond to input.\n\n## ClipToBounds\n\nNormally, when laying out an element inside the other, the inner element can freely live outside the parent element:\n\n\t<Panel Width=\"100\" Height=\"100\">\n\t\t\t<Image Margin=\"-100\" File=\"Pictures/Picture1.jpg\"\n\t\t\t\tStretchMode=\"UniformToFill\" />\n\t</Panel>\n\nThis `Image` will appear to be 300pt wide and tall, as the `Panel` doesn't clip children to its bounds.\n\nIf you intend to have the `Image` clip to its parent size, simply set `ClipToBounds=\"true\"` on the `Panel`:\n\n\t\t<Panel Width=\"100\" Height=\"100\" ClipToBounds=\"true\">\n\t\t\t<Image Margin=\"-100\" File=\"Pictures/Picture1.jpg\"\n\t\t\t\tStretchMode=\"UniformToFill\" />\n\t\t</Panel>\n\nNow, the `Image` will not overflow the bounds of the `Panel`.\n\n## Opacity\n\nYou can set the transparency of objects using the `Opacity`-property. When `Opacity=\"0\"`, the element is completely transparent.\n\n### Example\n\nIn this example, a panel's opacity is set to 0.5\n\n\t<Panel>\n\t\t<Opacity Value=\"0.5\" />\n\t</Panel>\n\n## Layers\n\nIt is often helpful to redefine what existing controls should look like. Elements that are added to containers can be assigned to different layers. If you want a button to appear with a red background, you can redefine its `Background` `Layer`:\n\n\t<Button Text=\"Hello!\">\n\t\t<Rectangle Fill=\"#931\" Layer=\"Background\" />\n\t</Button>\n\nThis will not change the layout or behavior of the @Button, but its appearance will change.\n\n# Available Element classes\n\n[subclass Fuse.Elements.Element]",
       "attributes": {
         "topic": "Elements"
       }
@@ -2153,30 +2153,6 @@
           },
           {
             "returns": {
-              "href": "fuse/visual",
-              "title": "Visual",
-              "fullyQualifiedTitle": "Fuse.Visual"
-            },
-            "id": {
-              "id": "fuse/elements/element/firstvisualchild",
-              "parentId": "fuse/elements/element",
-              "type": "Property",
-              "modifiers": [
-                "public"
-              ]
-            },
-            "uri": {
-              "idUri": "fuse/elements/element/firstvisualchild",
-              "href": "fuse/visual/firstvisualchild",
-              "isVirtual": true
-            },
-            "titles": {
-              "indexTitle": "FirstVisualChild",
-              "fullyQualifiedIndexTitle": "Fuse.Visual.FirstVisualChild"
-            }
-          },
-          {
-            "returns": {
               "href": "uno/bool",
               "title": "bool",
               "fullyQualifiedTitle": "bool"
@@ -2433,30 +2409,6 @@
             "titles": {
               "indexTitle": "IsVisible",
               "fullyQualifiedIndexTitle": "Fuse.Visual.IsVisible"
-            }
-          },
-          {
-            "returns": {
-              "href": "fuse/visual",
-              "title": "Visual",
-              "fullyQualifiedTitle": "Fuse.Visual"
-            },
-            "id": {
-              "id": "fuse/elements/element/lastvisualchild",
-              "parentId": "fuse/elements/element",
-              "type": "Property",
-              "modifiers": [
-                "public"
-              ]
-            },
-            "uri": {
-              "idUri": "fuse/elements/element/lastvisualchild",
-              "href": "fuse/visual/lastvisualchild",
-              "isVirtual": true
-            },
-            "titles": {
-              "indexTitle": "LastVisualChild",
-              "fullyQualifiedIndexTitle": "Fuse.Visual.LastVisualChild"
             }
           },
           {
@@ -2776,30 +2728,6 @@
             "titles": {
               "indexTitle": "WorldTransformInverse",
               "fullyQualifiedIndexTitle": "Fuse.Visual.WorldTransformInverse"
-            }
-          },
-          {
-            "returns": {
-              "href": "uno/int",
-              "title": "int",
-              "fullyQualifiedTitle": "int"
-            },
-            "id": {
-              "id": "fuse/elements/element/zorderchildcount",
-              "parentId": "fuse/elements/element",
-              "type": "Property",
-              "modifiers": [
-                "public"
-              ]
-            },
-            "uri": {
-              "idUri": "fuse/elements/element/zorderchildcount",
-              "href": "fuse/visual/zorderchildcount",
-              "isVirtual": true
-            },
-            "titles": {
-              "indexTitle": "ZOrderChildCount",
-              "fullyQualifiedIndexTitle": "Fuse.Visual.ZOrderChildCount"
             }
           }
         ]
@@ -4104,42 +4032,6 @@
             "titles": {
               "indexTitle": "GetTransformTo(Visual)",
               "fullyQualifiedIndexTitle": "Fuse.Visual.GetTransformTo(Fuse.Visual)"
-            }
-          },
-          {
-            "comment": {
-              "brief": "Returns the visual child with the given index.",
-              "full": "Returns the visual child with the given index.\n\nFor performance reasons, avoid using this function."
-            },
-            "returns": {
-              "href": "fuse/visual",
-              "title": "Visual",
-              "fullyQualifiedTitle": "Fuse.Visual"
-            },
-            "parameters": [
-              {
-                "name": "index",
-                "href": "uno/int",
-                "title": "int",
-                "fullyQualifiedTitle": "int"
-              }
-            ],
-            "id": {
-              "id": "fuse/elements/element/getvisualchild_56ad0a96",
-              "parentId": "fuse/elements/element",
-              "type": "Method",
-              "modifiers": [
-                "public"
-              ]
-            },
-            "uri": {
-              "idUri": "fuse/elements/element/getvisualchild_56ad0a96",
-              "href": "fuse/visual/getvisualchild_56ad0a96",
-              "isVirtual": true
-            },
-            "titles": {
-              "indexTitle": "GetVisualChild(int)",
-              "fullyQualifiedIndexTitle": "Fuse.Visual.GetVisualChild(int)"
             }
           },
           {

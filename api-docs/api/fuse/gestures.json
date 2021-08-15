@@ -136,6 +136,28 @@
             }
           },
           {
+            "comment": {
+              "brief": "Triggers when a pointer is pressed on a @Visual.",
+              "full": "Triggers when a pointer is pressed on a @Visual.\n\nThe `HoldPress` trigger is a repeating trigger that will continue to pulse as long as a @Visual is being held.\n\n# Example\nIn this example, a panel will scale and call a JS callback `pressed` for every 0.2 seconds, when pressed:\n\n    <Panel Background=\"#F00\">\n        <HoldPress First=\"true\" Handler=\"{pressed}\" Delay=\"0.5\" Repeat=\"0.2\">\n            <Scale Target=\"rect\" Vector=\"1.2\" Duration=\"0.2\" />\n        </HoldPress>\n    </Panel>"
+            },
+            "id": {
+              "id": "fuse/gestures/holdpress",
+              "parentId": "fuse/gestures",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/gestures/holdpress",
+              "href": "fuse/gestures/holdpress"
+            },
+            "titles": {
+              "indexTitle": "HoldPress",
+              "fullyQualifiedIndexTitle": "Fuse.Gestures.HoldPress"
+            }
+          },
+          {
             "id": {
               "id": "fuse/gestures/keepfocusinview",
               "parentId": "fuse/gestures",
@@ -423,7 +445,7 @@
           {
             "comment": {
               "brief": "Recognizes a swipe (the movement of a pointer in a given direction).",
-              "full": "Recognizes a swipe (the movement of a pointer in a given direction).\n\n# Basic usage\n\nA SwipeGesture must be attached to an @Element, and will begin detecting swipes when the pointer is pressed\ndown on that element. Attaching a @SwipeGesture to an @Element is simply adding it as a child:\n\n\t<Panel>\n\t\t<SwipeGesture ux:Name=\"swipe\" Direction=\"Right\" Length=\"200\" />\n\t</Panel>\n\nThe snippet above will recognize swipe gestures moving from left to right,\nover a distance of 200 points.\n\nHowever, this isn't doing anything useful yet. Let's add a trigger!\n\n\t<Panel Width=\"100\" Height=\"100\" Background=\"Black\">\n\t\t<SwipeGesture ux:Name=\"swipe\" Direction=\"Right\" Length=\"200\" />\n\t\t<SwipingAnimation Source=\"swipe\">\n\t\t\t<Move X=\"200\" />\n\t\t</SwipingAnimation>\n\t</Panel>\n\t\nWe've now added a @SwipingAnimation, which will map the progress of our swipe gesture onto a series of\nanimations. In this case, we are moving the panel over the same distance as the `Length` of our\nSwipeGesture, resulting in the panel moving along with the pointer.\n\n> Note that we've referenced our SwipeGesture via the `Source` property of @SwipingAnimation.\n> This is because it is possible to have [multiple swipe gestures](#multiple-swipegestures) on a single element,\n> so it must be referenced explicitly. All swipe-related triggers share this property.\n\nWe also want to respond when the swipe has completed, which is achieved using the\n[Swiped](api:fuse/gestures/swiped) trigger. Let's extend our previous example a bit.\n\n\t<Panel Width=\"100\" Height=\"100\" Background=\"Black\">\n\t\t<SwipeGesture ux:Name=\"swipe\" Direction=\"Right\" Length=\"200\" />\n\t\t<SwipingAnimation Source=\"swipe\">\n\t\t\t<Move X=\"200\" />\n\t\t</SwipingAnimation>\n\t\t\n\t\t<Swiped>\n\t\t\t<DebugAction Message=\"Swiped!\" />\n\t\t</Swiped>\n\t</Panel>\n\nFor illustrative purposes, we are using @DebugAction to log a message\nto the console when the swipe has completed.\n\n# Swipe types\n\nSwipeGesture is designed to handle multiple scenarios,\nand can have one of three [types](api:fuse/gestures/swipetype), specified via the `Type` property.\n\nThe [type](api:fuse/gestures/swipetype) of a SwipeGesture determines its behavior, and below we'll explain each one.\n\n## [Simple](api:fuse/gestures/swipetype/simple)\n\n`Simple` is the default @SwipeType, and thus the one we have been using so far in this article.\n\nWhen using this type, swipes are treated as one-off events, and swipes will complete once the pointer is released.\n\n## [Auto](api:fuse/gestures/swipetype/auto)\n\n`Auto` is *almost* identical to `Simple`, however swipes complete once the user has swiped over the entire\ndistance of the SwipeGesture, without the user needing to release the pointer.\nThis allows multiple SwipeGestures to be triggered in sequence without releasing the pointer.\n\n<a id=\"swipetype-active-overview\"></a>\n\n## [Active](api:fuse/gestures/swipetype/active)\n\n`Type=\"Active\"` makes swipes toggle between an active/inactive state.\nSwiping in the @Direction of the SwipeGesture will transition to the *active* state,\nwhile swiping in the opposite direction will transition to the *inactive* state.\n\nWe can alter the state of an Active-type SwipeGesture using\n[SetSwipeActive](api:fuse/gestures/setswipeactive) and/or\n[ToggleSwipeActive](api:fuse/gestures/toggleswipeactive).\n\n### Reacting to state transitions\n\nWhen using the `Active` type, we can optionally configure the [Swiped](api:fuse/gestures/swiped) trigger\nto respond to only activation or only deactivation.\n\n\t<Swiped How=\"ToActive\">\n\t<Swiped How=\"ToInactive\">\n\nIn addition, the @WhileSwipeActive trigger will be active while its source @SwipeGesture is an Active-type\nSwipeGesture, and has been swiped to its active state.\n\n# Edge\n\nInstead of specifying a `Direction`, we may provide an `Edge`. This will make the SwipeGesture detect swipes\noriginating at a given edge of its parent element.\n\nWe can also customize the size of the edge area using the `HitSize` property.\nIt accepts a single number, which represents the maximum distance from the edge (in points) that swipes can\nbegin at.\n\n# Length based on element size\n\nInstead of specifying a fixed `Length` for the gesture,\nwe can supply an @Element to be measured via the `LengthNode` property.\n\nThis is a powerful feature, as it allows us to create swipe-based controls that work regardless of their size.\n\nBelow is an example of a size-independent switch control implemented using SwipeGesture.\n\n\t<Panel Height=\"50\">\n\t\t<Circle Width=\"50\" Height=\"50\" Color=\"#000\" Alignment=\"Left\">\n\t\t\t<SwipeGesture ux:Name=\"swipe\" LengthNode=\"track\" Direction=\"Right\" Type=\"Active\" />\n\t\t\t<SwipingAnimation Source=\"swipe\">\n\t\t\t\t<Move X=\"1\" RelativeTo=\"Size\" RelativeNode=\"track\" />\n\t\t\t</SwipingAnimation>\n\t\t</Circle>\n\t\t\n\t\t<Rectangle ux:Name=\"track\" Height=\"15\" Color=\"#0003\" Margin=\"25,0\" CornerRadius=\"15\" />\n\t</Panel>",
+              "full": "Recognizes a swipe (the movement of a pointer in a given direction).\n\n# Basic usage\n\nA SwipeGesture must be attached to an @Element, and will begin detecting swipes when the pointer is pressed\ndown on that element. Attaching a @SwipeGesture to an @Element is simply adding it as a child:\n\n\t<Panel>\n\t\t<SwipeGesture ux:Name=\"swipe\" Direction=\"Right\" Length=\"200\" />\n\t</Panel>\n\nThe snippet above will recognize swipe gestures moving from left to right,\nover a distance of 200 points.\n\nHowever, this isn't doing anything useful yet. Let's add a trigger!\n\n\t<Panel Width=\"100\" Height=\"100\" Background=\"Black\">\n\t\t<SwipeGesture ux:Name=\"swipe\" Direction=\"Right\" Length=\"200\" />\n\t\t<SwipingAnimation Source=\"swipe\">\n\t\t\t<Move X=\"200\" />\n\t\t</SwipingAnimation>\n\t</Panel>\n\nWe've now added a @SwipingAnimation, which will map the progress of our swipe gesture onto a series of\nanimations. In this case, we are moving the panel over the same distance as the `Length` of our\nSwipeGesture, resulting in the panel moving along with the pointer.\n\n> Note that we've referenced our SwipeGesture via the `Source` property of @SwipingAnimation.\n> This is because it is possible to have [multiple swipe gestures](#multiple-swipegestures) on a single element,\n> so it must be referenced explicitly. All swipe-related triggers share this property.\n\nWe also want to respond when the swipe has completed, which is achieved using the\n[Swiped](api:fuse/gestures/swiped) trigger. Let's extend our previous example a bit.\n\n\t<Panel Width=\"100\" Height=\"100\" Background=\"Black\">\n\t\t<SwipeGesture ux:Name=\"swipe\" Direction=\"Right\" Length=\"200\" />\n\t\t<SwipingAnimation Source=\"swipe\">\n\t\t\t<Move X=\"200\" />\n\t\t</SwipingAnimation>\n\n\t\t<Swiped>\n\t\t\t<DebugAction Message=\"Swiped!\" />\n\t\t</Swiped>\n\t</Panel>\n\nFor illustrative purposes, we are using @DebugAction to log a message\nto the console when the swipe has completed.\n\n# Swipe types\n\nSwipeGesture is designed to handle multiple scenarios,\nand can have one of three [types](api:fuse/gestures/swipetype), specified via the `Type` property.\n\nThe [type](api:fuse/gestures/swipetype) of a SwipeGesture determines its behavior, and below we'll explain each one.\n\n## [Simple](api:fuse/gestures/swipetype/simple)\n\n`Simple` is the default @SwipeType, and thus the one we have been using so far in this article.\n\nWhen using this type, swipes are treated as one-off events, and swipes will complete once the pointer is released.\n\n## [Auto](api:fuse/gestures/swipetype/auto)\n\n`Auto` is *almost* identical to `Simple`, however swipes complete once the user has swiped over the entire\ndistance of the SwipeGesture, without the user needing to release the pointer.\nThis allows multiple SwipeGestures to be triggered in sequence without releasing the pointer.\n\n<a id=\"swipetype-active-overview\"></a>\n\n## [Active](api:fuse/gestures/swipetype/active)\n\n`Type=\"Active\"` makes swipes toggle between an active/inactive state.\nSwiping in the @Direction of the SwipeGesture will transition to the *active* state,\nwhile swiping in the opposite direction will transition to the *inactive* state.\n\nWe can alter the state of an Active-type SwipeGesture using\n[SetSwipeActive](api:fuse/gestures/setswipeactive) and/or\n[ToggleSwipeActive](api:fuse/gestures/toggleswipeactive).\n\n### Reacting to state transitions\n\nWhen using the `Active` type, we can optionally configure the [Swiped](api:fuse/gestures/swiped) trigger\nto respond to only activation or only deactivation.\n\n\t<Swiped How=\"ToActive\">\n\t<Swiped How=\"ToInactive\">\n\nIn addition, the @WhileSwipeActive trigger will be active while its source @SwipeGesture is an Active-type\nSwipeGesture, and has been swiped to its active state.\n\n# Edge\n\nInstead of specifying a `Direction`, we may provide an `Edge`. This will make the SwipeGesture detect swipes\noriginating at a given edge of its parent element.\n\nWe can also customize the size of the edge area using the `HitSize` property.\nIt accepts a single number, which represents the maximum distance from the edge (in points) that swipes can\nbegin at.\n\n# Length based on element size\n\nInstead of specifying a fixed `Length` for the gesture,\nwe can supply an @Element to be measured via the `LengthNode` property.\n\nThis is a powerful feature, as it allows us to create swipe-based controls that work regardless of their size.\n\nBelow is an example of a size-independent switch control implemented using SwipeGesture.\n\n\t<Panel Height=\"50\">\n\t\t<Circle Width=\"50\" Height=\"50\" Color=\"#000\" Alignment=\"Left\">\n\t\t\t<SwipeGesture ux:Name=\"swipe\" LengthNode=\"track\" Direction=\"Right\" Type=\"Active\" />\n\t\t\t<SwipingAnimation Source=\"swipe\">\n\t\t\t\t<Move X=\"1\" RelativeTo=\"Size\" RelativeNode=\"track\" />\n\t\t\t</SwipingAnimation>\n\t\t</Circle>\n\n\t\t<Rectangle ux:Name=\"track\" Height=\"15\" Color=\"#0003\" Margin=\"25,0\" CornerRadius=\"15\" />\n\t</Panel>",
               "attributes": {
                 "topic": "Swipe Gestures"
               }
@@ -689,6 +711,24 @@
           },
           {
             "id": {
+              "id": "fuse/gestures/holdpressargs",
+              "parentId": "fuse/gestures",
+              "type": "Class",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/gestures/holdpressargs",
+              "href": "fuse/gestures/holdpressargs"
+            },
+            "titles": {
+              "indexTitle": "HoldPressArgs",
+              "fullyQualifiedIndexTitle": "Fuse.Gestures.HoldPressArgs"
+            }
+          },
+          {
+            "id": {
               "id": "fuse/gestures/keepinviewcommon",
               "parentId": "fuse/gestures",
               "type": "Class",
@@ -721,6 +761,32 @@
             "titles": {
               "indexTitle": "LongPressedArgs",
               "fullyQualifiedIndexTitle": "Fuse.Gestures.LongPressedArgs"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Implements the default scrolling functionality.",
+              "full": "Implements the default scrolling functionality.\n\nThere should be no reason to instantiate/reference this class directly. It will most likely be made internal an inaccessible in a future release.",
+              "attributes": {
+                "advanced": true,
+                "deprecated": true
+              }
+            },
+            "id": {
+              "id": "fuse/gestures/scroller",
+              "parentId": "fuse/gestures",
+              "type": "Class",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/gestures/scroller",
+              "href": "fuse/gestures/scroller"
+            },
+            "titles": {
+              "indexTitle": "Scroller",
+              "fullyQualifiedIndexTitle": "Fuse.Gestures.Scroller"
             }
           },
           {
@@ -854,6 +920,38 @@
             "titles": {
               "indexTitle": "DoubleTappedHandler (object, DoubleTappedArgs)",
               "fullyQualifiedIndexTitle": "Fuse.Gestures.DoubleTappedHandler (object, Fuse.Gestures.DoubleTappedArgs)"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "sender",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              },
+              {
+                "name": "args",
+                "href": "fuse/gestures/holdpressargs",
+                "title": "HoldPressArgs",
+                "fullyQualifiedTitle": "Fuse.Gestures.HoldPressArgs"
+              }
+            ],
+            "id": {
+              "id": "fuse/gestures/holdpresshandler",
+              "parentId": "fuse/gestures",
+              "type": "Delegate",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/gestures/holdpresshandler",
+              "href": "fuse/gestures/holdpresshandler"
+            },
+            "titles": {
+              "indexTitle": "HoldPressHandler (object, HoldPressArgs)",
+              "fullyQualifiedIndexTitle": "Fuse.Gestures.HoldPressHandler (object, Fuse.Gestures.HoldPressArgs)"
             }
           },
           {

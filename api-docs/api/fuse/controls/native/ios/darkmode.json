@@ -1,0 +1,1088 @@
+{
+  "entity": {
+    "base": {
+      "id": {
+        "id": "fuse/scripting/nativeeventemittermodule",
+        "parentId": "fuse/scripting",
+        "type": "Class",
+        "modifiers": [
+          "public"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/scripting/nativeeventemittermodule",
+        "href": "fuse/scripting/nativeeventemittermodule"
+      },
+      "titles": {
+        "indexTitle": "NativeEventEmitterModule",
+        "fullyQualifiedIndexTitle": "Fuse.Scripting.NativeEventEmitterModule"
+      }
+    },
+    "location": {
+      "namespaceTitle": "Fuse.Controls.Native.iOS",
+      "namespaceUri": "fuse/controls/native/ios",
+      "packageName": "Fuse.Controls.Native",
+      "packageVersion": "2.0.0-beta.9"
+    },
+    "inheritance": {
+      "root": {
+        "uri": "uno/object",
+        "title": "object",
+        "children": [
+          {
+            "uri": "fuse/scripting/module",
+            "title": "Fuse.Scripting.Module",
+            "children": [
+              {
+                "uri": "fuse/scripting/nativemodule",
+                "title": "Fuse.Scripting.NativeModule",
+                "children": [
+                  {
+                    "uri": "fuse/scripting/nativeeventemittermodule",
+                    "title": "Fuse.Scripting.NativeEventEmitterModule",
+                    "children": [
+                      {
+                        "uri": "fuse/controls/native/ios/darkmode",
+                        "title": "Fuse.Controls.Native.iOS.DarkMode",
+                        "children": [],
+                        "isCurrent": true
+                      }
+                    ],
+                    "isAncestor": true
+                  }
+                ],
+                "isAncestor": true
+              }
+            ],
+            "isAncestor": true
+          }
+        ],
+        "isAncestor": true
+      },
+      "hasInheritance": true
+    },
+    "uxProperties": {
+      "uxNamespaceTitle": "Fuse.Controls",
+      "uxNamespaceUri": "fuse/controls",
+      "uxName": "Native.iOS.DarkMode"
+    },
+    "implementedInterfaces": [
+      {
+        "id": {
+          "id": "fuse/scripting/imoduleprovider",
+          "parentId": "fuse/scripting",
+          "type": "Interface",
+          "modifiers": [
+            "public",
+            "abstract"
+          ]
+        },
+        "uri": {
+          "idUri": "fuse/scripting/imoduleprovider",
+          "href": "fuse/scripting/imoduleprovider"
+        },
+        "titles": {
+          "indexTitle": "IModuleProvider",
+          "fullyQualifiedIndexTitle": "Fuse.Scripting.IModuleProvider"
+        }
+      },
+      {
+        "id": {
+          "id": "uno/idisposable",
+          "parentId": "uno",
+          "type": "Interface",
+          "modifiers": [
+            "public",
+            "abstract"
+          ]
+        },
+        "uri": {
+          "idUri": "uno/idisposable",
+          "href": "uno/idisposable"
+        },
+        "titles": {
+          "indexTitle": "IDisposable",
+          "fullyQualifiedIndexTitle": "Uno.IDisposable"
+        }
+      }
+    ],
+    "attributes": [
+      {
+        "id": {
+          "id": "uno/ux/uxglobalmoduleattribute",
+          "parentId": "uno/ux",
+          "type": "Class",
+          "modifiers": [
+            "public",
+            "sealed"
+          ]
+        },
+        "uri": {
+          "idUri": "uno/ux/uxglobalmoduleattribute",
+          "href": "uno/ux/uxglobalmoduleattribute"
+        },
+        "titles": {
+          "indexTitle": "UXGlobalModuleAttribute",
+          "fullyQualifiedIndexTitle": "Uno.UX.UXGlobalModuleAttribute"
+        }
+      },
+      {
+        "parameters": [
+          "0",
+          "java.lang.Runnable",
+          "android.content.res.Configuration",
+          "android.app.Activity"
+        ],
+        "id": {
+          "id": "uno/compiler/exporttargetinterop/foreignincludeattribute",
+          "parentId": "uno/compiler/exporttargetinterop",
+          "type": "Class",
+          "modifiers": [
+            "public",
+            "sealed"
+          ]
+        },
+        "uri": {
+          "idUri": "uno/compiler/exporttargetinterop/foreignincludeattribute",
+          "href": "uno/compiler/exporttargetinterop/foreignincludeattribute"
+        },
+        "titles": {
+          "indexTitle": "ForeignIncludeAttribute",
+          "fullyQualifiedIndexTitle": "Uno.Compiler.ExportTargetInterop.ForeignIncludeAttribute"
+        }
+      }
+    ],
+    "id": {
+      "id": "fuse/controls/native/ios/darkmode",
+      "parentId": "fuse/controls/native/ios",
+      "type": "JsModule",
+      "modifiers": [
+        "public"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/controls/native/ios/darkmode",
+      "href": "fuse/controls/native/ios/darkmode"
+    },
+    "titles": {
+      "pageTitle": "DarkMode Class",
+      "navigationTitle": "DarkMode Class",
+      "fullTitle": "Fuse.Controls.Native.iOS.DarkMode",
+      "indexTitle": "DarkMode",
+      "fullyQualifiedIndexTitle": "Fuse.Controls.Native.iOS.DarkMode"
+    },
+    "syntax": {
+      "uno": "[Uno.UX.UXGlobalModule]\n\n[Uno.Compiler.ExportTargetInterop.ForeignInclude(language = 0, include0 = \"java.lang.Runnable\", include1 = \"android.content.res.Configuration\", include2 = \"android.app.Activity\")]\npublic class DarkMode : Fuse.Scripting.NativeEventEmitterModule {}",
+      "ux": "<Native.iOS.DarkMode />"
+    },
+    "comment": {
+      "brief": "This module provides access to whether or not the current OS setting for Dark Mode is enabled and or changed.",
+      "full": "This module provides access to whether or not the current OS setting for Dark Mode is enabled and or changed.\n\n## Example\n\n```xml\n<App>\n    <JavaScript>\n\n        var DarkMode = require(\"FuseJS/DarkMode\");\n        var Observable = require(\"FuseJS/Observable\");\n\n        var isDarkMode = Observable(false);\n\n        DarkMode.on(\"changed\", function(val) {\n            console.log(\"DARKMODE CHANGED: \" + val);\n            switch(val) {\n                case 'light': isDarkMode.value = false;\n                    break;\n                case 'dark': isDarkMode.value = true;\n                    break;\n            }\n        });\n\n        module.exports = {\n            isDarkMode\n        }\n\n    </JavaScript>\n    <StackPanel Alignment=\"Center\">\n        <Text ux:Name=\"title\" Value=\"Hello World!\" />\n    </StackPanel>\n    <Rectangle ux:Name=\"bk\" Layer=\"Background\" Color=\"#FFF\" />\n\n    <WhileTrue Value=\"{isDarkMode}\">\n        <Change title.Value=\"Hello Dark World!\" />\n        <Change title.Color=\"#FFF\" />\n        <Change bk.Color=\"#000\" />\n    </WhileTrue>\n    <WhileFalse Value=\"{isDarkMode}\">\n        <Change title.Value=\"Hello World!\" />\n        <Change title.Color=\"#000\" />\n        <Change bk.Color=\"#FFF\" />\n    </WhileFalse>\n</App>\n```",
+      "attributes": {
+        "scriptModule": "FuseJS/DarkMode"
+      }
+    }
+  },
+  "tableOfContents": {
+    "attachedUxProperties": [
+      {
+        "items": [
+          {
+            "comment": {
+              "brief": "The `ux:Global` attribute creates a global resource that is accessible everywhere in UX markup.",
+              "full": "The `ux:Global` attribute creates a global resource that is accessible everywhere in UX markup.\n\nSee @Resources for more information.\n\nThe `ux:Global` attribute on an UX element creates a single object (singleton) that is globally available.\nUsing this attribute will prevent the object from being inserted by default the object at its defined location\nin the UX tree."
+            },
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "parameters": [
+              {
+                "name": "obj",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              },
+              {
+                "name": "key",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              }
+            ],
+            "id": {
+              "id": "fuse/controls/native/ios/darkmode/resource_globalkey_setglobalkey_4c3ac72d",
+              "parentId": "fuse/controls/native/ios/darkmode",
+              "type": "AttachedUxProperty",
+              "modifiers": []
+            },
+            "uri": {
+              "idUri": "fuse/controls/native/ios/darkmode/resource_globalkey_setglobalkey_4c3ac72d",
+              "href": "uno/ux/resource/setglobalkey_4c3ac72d",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Resource.GlobalKey",
+              "fullyQualifiedIndexTitle": "Resource.GlobalKey"
+            }
+          }
+        ]
+      }
+    ],
+    "uxEvents": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/scripting/nativemodule",
+            "parentId": "fuse/scripting",
+            "type": "Class",
+            "modifiers": [
+              "public"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/scripting/nativemodule",
+            "href": "fuse/scripting/nativemodule"
+          },
+          "titles": {
+            "indexTitle": "NativeModule",
+            "fullyQualifiedIndexTitle": "Fuse.Scripting.NativeModule"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/eventhandler",
+              "title": "EventHandler (object, EventArgs)",
+              "fullyQualifiedTitle": "Uno.EventHandler (object, Uno.EventArgs)"
+            },
+            "id": {
+              "id": "fuse/controls/native/ios/darkmode/reset",
+              "parentId": "fuse/controls/native/ios/darkmode",
+              "type": "UxEvent",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/controls/native/ios/darkmode/reset",
+              "href": "fuse/scripting/nativemodule/reset",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Reset",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.NativeModule.Reset"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/scripting/module",
+            "parentId": "fuse/scripting",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/scripting/module",
+            "href": "fuse/scripting/module"
+          },
+          "titles": {
+            "indexTitle": "Module",
+            "fullyQualifiedIndexTitle": "Fuse.Scripting.Module"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/eventhandler",
+              "title": "EventHandler (object, EventArgs)",
+              "fullyQualifiedTitle": "Uno.EventHandler (object, Uno.EventArgs)"
+            },
+            "id": {
+              "id": "fuse/controls/native/ios/darkmode/evaluated",
+              "parentId": "fuse/controls/native/ios/darkmode",
+              "type": "UxEvent",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/controls/native/ios/darkmode/evaluated",
+              "href": "fuse/scripting/module/evaluated",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Evaluated",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.Module.Evaluated"
+            }
+          }
+        ]
+      }
+    ],
+    "constructors": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/controls/native/ios/darkmode",
+            "parentId": "fuse/controls/native/ios",
+            "type": "JsModule",
+            "modifiers": [
+              "public"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/controls/native/ios/darkmode",
+            "href": "fuse/controls/native/ios/darkmode"
+          },
+          "titles": {
+            "indexTitle": "DarkMode",
+            "fullyQualifiedIndexTitle": "Fuse.Controls.Native.iOS.DarkMode"
+          }
+        },
+        "items": [
+          {
+            "id": {
+              "id": "fuse/controls/native/ios/darkmode/_ctor",
+              "parentId": "fuse/controls/native/ios/darkmode",
+              "type": "Constructor",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/controls/native/ios/darkmode/_ctor",
+              "href": "fuse/controls/native/ios/darkmode/_ctor"
+            },
+            "titles": {
+              "indexTitle": "DarkMode",
+              "fullyQualifiedIndexTitle": "Fuse.Controls.Native.iOS.DarkMode.DarkMode"
+            }
+          }
+        ]
+      }
+    ],
+    "properties": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/scripting/module",
+            "parentId": "fuse/scripting",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/scripting/module",
+            "href": "fuse/scripting/module"
+          },
+          "titles": {
+            "indexTitle": "Module",
+            "fullyQualifiedIndexTitle": "Fuse.Scripting.Module"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "id": {
+              "id": "fuse/controls/native/ios/darkmode/isevaluated",
+              "parentId": "fuse/controls/native/ios/darkmode",
+              "type": "Property",
+              "modifiers": [
+                "protected"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/controls/native/ios/darkmode/isevaluated",
+              "href": "fuse/scripting/module/isevaluated",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "IsEvaluated",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.Module.IsEvaluated"
+            }
+          }
+        ]
+      }
+    ],
+    "methods": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/controls/native/ios/darkmode",
+            "parentId": "fuse/controls/native/ios",
+            "type": "JsModule",
+            "modifiers": [
+              "public"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/controls/native/ios/darkmode",
+            "href": "fuse/controls/native/ios/darkmode"
+          },
+          "titles": {
+            "indexTitle": "DarkMode",
+            "fullyQualifiedIndexTitle": "Fuse.Controls.Native.iOS.DarkMode"
+          }
+        },
+        "items": [
+          {
+            "parameters": [
+              {
+                "name": "modeValue",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              }
+            ],
+            "id": {
+              "id": "fuse/controls/native/ios/darkmode/receiveddarkmodechangedevent_968f99a6",
+              "parentId": "fuse/controls/native/ios/darkmode",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/controls/native/ios/darkmode/receiveddarkmodechangedevent_968f99a6",
+              "href": "fuse/controls/native/ios/darkmode/receiveddarkmodechangedevent_968f99a6"
+            },
+            "titles": {
+              "indexTitle": "receivedDarkModeChangedEvent(string)",
+              "fullyQualifiedIndexTitle": "Fuse.Controls.Native.iOS.DarkMode.receivedDarkModeChangedEvent(string)"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/scripting/nativeeventemittermodule",
+            "parentId": "fuse/scripting",
+            "type": "Class",
+            "modifiers": [
+              "public"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/scripting/nativeeventemittermodule",
+            "href": "fuse/scripting/nativeeventemittermodule"
+          },
+          "titles": {
+            "indexTitle": "NativeEventEmitterModule",
+            "fullyQualifiedIndexTitle": "Fuse.Scripting.NativeEventEmitterModule"
+          }
+        },
+        "items": [
+          {
+            "comment": {
+              "brief": "Call `emit` with the given arguments on the underlying JS EventEmitter.",
+              "full": "Call `emit` with the given arguments on the underlying JS EventEmitter.\n\nThe `emit` action is dispatched to the JS thread."
+            },
+            "parameters": [
+              {
+                "name": "args",
+                "href": "uno/object",
+                "title": "object[]",
+                "fullyQualifiedTitle": "object[]"
+              }
+            ],
+            "id": {
+              "id": "fuse/controls/native/ios/darkmode/emit_95a738ba",
+              "parentId": "fuse/controls/native/ios/darkmode",
+              "type": "Method",
+              "modifiers": [
+                "protected"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/controls/native/ios/darkmode/emit_95a738ba",
+              "href": "fuse/scripting/nativeeventemittermodule/emit_95a738ba",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Emit(object[])",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.NativeEventEmitterModule.Emit(object[])"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Call `emit(\"error\", reason)` on the underlying JS EventEmitter.",
+              "full": "Call `emit(\"error\", reason)` on the underlying JS EventEmitter."
+            },
+            "parameters": [
+              {
+                "name": "reason",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              }
+            ],
+            "id": {
+              "id": "fuse/controls/native/ios/darkmode/emiterror_968f99a6",
+              "parentId": "fuse/controls/native/ios/darkmode",
+              "type": "Method",
+              "modifiers": [
+                "protected"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/controls/native/ios/darkmode/emiterror_968f99a6",
+              "href": "fuse/scripting/nativeeventemittermodule/emiterror_968f99a6",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "EmitError(string)",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.NativeEventEmitterModule.EmitError(string)"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Call `emit(\"error\", new Error(reason))` on the underlying JS EventEmitter.",
+              "full": "Call `emit(\"error\", new Error(reason))` on the underlying JS EventEmitter."
+            },
+            "parameters": [
+              {
+                "name": "reason",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              }
+            ],
+            "id": {
+              "id": "fuse/controls/native/ios/darkmode/emiterrorobject_968f99a6",
+              "parentId": "fuse/controls/native/ios/darkmode",
+              "type": "Method",
+              "modifiers": [
+                "protected"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/controls/native/ios/darkmode/emiterrorobject_968f99a6",
+              "href": "fuse/scripting/nativeeventemittermodule/emiterrorobject_968f99a6",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "EmitErrorObject(string)",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.NativeEventEmitterModule.EmitErrorObject(string)"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Call `emit` on the underlying JS EventEmitter with factory-generated arguments.",
+              "full": "Call `emit` on the underlying JS EventEmitter with factory-generated arguments.\n\nThe `argsFactory` parameter will be called on the JS\nthread with a valid context, allowing us to use it to\ngenerate the arguments to `emit`."
+            },
+            "parameters": [
+              {
+                "name": "argsFactory",
+                "href": "uno/func_2",
+                "title": "Func<Context, object[]> (Context)",
+                "fullyQualifiedTitle": "Uno.Func<Fuse.Scripting.Context, object[]> (Fuse.Scripting.Context)"
+              }
+            ],
+            "id": {
+              "id": "fuse/controls/native/ios/darkmode/emitfactory_77c0158b",
+              "parentId": "fuse/controls/native/ios/darkmode",
+              "type": "Method",
+              "modifiers": [
+                "protected"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/controls/native/ios/darkmode/emitfactory_77c0158b",
+              "href": "fuse/scripting/nativeeventemittermodule/emitfactory_77c0158b",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "EmitFactory(Func<Context, object[]> (Context))",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.NativeEventEmitterModule.EmitFactory(Uno.Func<Fuse.Scripting.Context, object[]> (Fuse.Scripting.Context))"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Call `emit` on the underlying JS EventEmitter with factory-generated arguments.",
+              "full": "Call `emit` on the underlying JS EventEmitter with factory-generated arguments.\n\nThe `argsFactory` parameter will be called on the JS\nthread with a valid context, allowing us to use it to\ngenerate the arguments to `emit`."
+            },
+            "parameters": [
+              {
+                "name": "argsFactory",
+                "href": "uno/func_3",
+                "title": "Func<Context, T, object[]> (Context, T)",
+                "fullyQualifiedTitle": "Uno.Func<Fuse.Scripting.Context, T, object[]> (Fuse.Scripting.Context, T)"
+              },
+              {
+                "name": "t",
+                "isVirtual": true,
+                "title": "T",
+                "fullyQualifiedTitle": "Fuse.Scripting.T"
+              }
+            ],
+            "id": {
+              "id": "fuse/controls/native/ios/darkmode/emitfactory_1_964a64f9",
+              "parentId": "fuse/controls/native/ios/darkmode",
+              "type": "Method",
+              "modifiers": [
+                "protected"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/controls/native/ios/darkmode/emitfactory_1_964a64f9",
+              "href": "fuse/scripting/nativeeventemittermodule/emitfactory_1_964a64f9",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "EmitFactory<T>(Func<Context, T, object[]> (Context, T), T)",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.NativeEventEmitterModule.EmitFactory<T>(Uno.Func<Fuse.Scripting.Context, T, object[]> (Fuse.Scripting.Context, T), T)"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Connect a @Callback to an event.",
+              "full": "Connect a @Callback to an event.\n\nThe @Callback will be called whenever the event is triggered."
+            },
+            "parameters": [
+              {
+                "name": "eventName",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              },
+              {
+                "name": "listener",
+                "href": "fuse/scripting/callback",
+                "title": "Callback (Context, object[])",
+                "fullyQualifiedTitle": "Fuse.Scripting.Callback (Fuse.Scripting.Context, object[])"
+              }
+            ],
+            "id": {
+              "id": "fuse/controls/native/ios/darkmode/on_a22edd7d",
+              "parentId": "fuse/controls/native/ios/darkmode",
+              "type": "Method",
+              "modifiers": [
+                "protected"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/controls/native/ios/darkmode/on_a22edd7d",
+              "href": "fuse/scripting/nativeeventemittermodule/on_a22edd7d",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "On(object, Callback (Context, object[]))",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.NativeEventEmitterModule.On(object, Fuse.Scripting.Callback (Fuse.Scripting.Context, object[]))"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Connect a @NativeEvent to an event.",
+              "full": "Connect a @NativeEvent to an event.\n\nThe @NativeEvent will be triggered whenever the event is triggered."
+            },
+            "parameters": [
+              {
+                "name": "eventName",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              },
+              {
+                "name": "nativeEvent",
+                "href": "fuse/scripting/nativeevent",
+                "title": "NativeEvent",
+                "fullyQualifiedTitle": "Fuse.Scripting.NativeEvent"
+              }
+            ],
+            "id": {
+              "id": "fuse/controls/native/ios/darkmode/on_d9bc62ce",
+              "parentId": "fuse/controls/native/ios/darkmode",
+              "type": "Method",
+              "modifiers": [
+                "protected"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/controls/native/ios/darkmode/on_d9bc62ce",
+              "href": "fuse/scripting/nativeeventemittermodule/on_d9bc62ce",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "On(object, NativeEvent)",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.NativeEventEmitterModule.On(object, Fuse.Scripting.NativeEvent)"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/scripting/nativemodule",
+            "parentId": "fuse/scripting",
+            "type": "Class",
+            "modifiers": [
+              "public"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/scripting/nativemodule",
+            "href": "fuse/scripting/nativemodule"
+          },
+          "titles": {
+            "indexTitle": "NativeModule",
+            "fullyQualifiedIndexTitle": "Fuse.Scripting.NativeModule"
+          }
+        },
+        "items": [
+          {
+            "parameters": [
+              {
+                "name": "member",
+                "href": "fuse/scripting/nativemember",
+                "title": "NativeMember",
+                "fullyQualifiedTitle": "Fuse.Scripting.NativeMember"
+              }
+            ],
+            "id": {
+              "id": "fuse/controls/native/ios/darkmode/addmember_645dc1d4",
+              "parentId": "fuse/controls/native/ios/darkmode",
+              "type": "Method",
+              "modifiers": [
+                "protected"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/controls/native/ios/darkmode/addmember_645dc1d4",
+              "href": "fuse/scripting/nativemodule/addmember_645dc1d4",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "AddMember(NativeMember)",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.NativeModule.AddMember(Fuse.Scripting.NativeMember)"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/scripting/module",
+            "parentId": "fuse/scripting",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/scripting/module",
+            "href": "fuse/scripting/module"
+          },
+          "titles": {
+            "indexTitle": "Module",
+            "fullyQualifiedIndexTitle": "Fuse.Scripting.Module"
+          }
+        },
+        "items": [
+          {
+            "id": {
+              "id": "fuse/controls/native/ios/darkmode/dispose",
+              "parentId": "fuse/controls/native/ios/darkmode",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/controls/native/ios/darkmode/dispose",
+              "href": "fuse/scripting/module/dispose",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Dispose",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.Module.Dispose"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "c",
+                "href": "fuse/scripting/context",
+                "title": "Context",
+                "fullyQualifiedTitle": "Fuse.Scripting.Context"
+              },
+              {
+                "name": "result",
+                "href": "fuse/scripting/moduleresult",
+                "title": "ModuleResult",
+                "fullyQualifiedTitle": "Fuse.Scripting.ModuleResult"
+              }
+            ],
+            "id": {
+              "id": "fuse/controls/native/ios/darkmode/evaluate_0c699bd3",
+              "parentId": "fuse/controls/native/ios/darkmode",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/controls/native/ios/darkmode/evaluate_0c699bd3",
+              "href": "fuse/scripting/module/evaluate_0c699bd3",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Evaluate(Context, ModuleResult)",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.Module.Evaluate(Fuse.Scripting.Context, Fuse.Scripting.ModuleResult)"
+            }
+          },
+          {
+            "returns": {
+              "href": "fuse/scripting/moduleresult",
+              "title": "ModuleResult",
+              "fullyQualifiedTitle": "Fuse.Scripting.ModuleResult"
+            },
+            "parameters": [
+              {
+                "name": "c",
+                "href": "fuse/scripting/context",
+                "title": "Context",
+                "fullyQualifiedTitle": "Fuse.Scripting.Context"
+              },
+              {
+                "name": "id",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              }
+            ],
+            "id": {
+              "id": "fuse/controls/native/ios/darkmode/evaluate_8fde98fd",
+              "parentId": "fuse/controls/native/ios/darkmode",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/controls/native/ios/darkmode/evaluate_8fde98fd",
+              "href": "fuse/scripting/module/evaluate_8fde98fd",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Evaluate(Context, string)",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.Module.Evaluate(Fuse.Scripting.Context, string)"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/object",
+              "title": "object",
+              "fullyQualifiedTitle": "object"
+            },
+            "parameters": [
+              {
+                "name": "c",
+                "href": "fuse/scripting/context",
+                "title": "Context",
+                "fullyQualifiedTitle": "Fuse.Scripting.Context"
+              },
+              {
+                "name": "id",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              }
+            ],
+            "id": {
+              "id": "fuse/controls/native/ios/darkmode/evaluateexports_8fde98fd",
+              "parentId": "fuse/controls/native/ios/darkmode",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/controls/native/ios/darkmode/evaluateexports_8fde98fd",
+              "href": "fuse/scripting/module/evaluateexports_8fde98fd",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "EvaluateExports(Context, string)",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.Module.EvaluateExports(Fuse.Scripting.Context, string)"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Returns the file source that will be watched by the Context for changes in Fuse preview.\nOverride in subclasses and return correct file source to support live updates\nin Fuse preview.",
+              "full": "Returns the file source that will be watched by the Context for changes in Fuse preview.\nOverride in subclasses and return correct file source to support live updates\nin Fuse preview."
+            },
+            "returns": {
+              "href": "uno/ux/filesource",
+              "title": "FileSource",
+              "fullyQualifiedTitle": "Uno.UX.FileSource"
+            },
+            "id": {
+              "id": "fuse/controls/native/ios/darkmode/getfile",
+              "parentId": "fuse/controls/native/ios/darkmode",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/controls/native/ios/darkmode/getfile",
+              "href": "fuse/scripting/module/getfile",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetFile",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.Module.GetFile"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "uno/object",
+            "parentId": "uno",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "intrinsic"
+            ]
+          },
+          "uri": {
+            "idUri": "uno/object",
+            "href": "uno/object"
+          },
+          "titles": {
+            "indexTitle": "object",
+            "fullyQualifiedIndexTitle": "object"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "parameters": [
+              {
+                "name": "o",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              }
+            ],
+            "id": {
+              "id": "fuse/controls/native/ios/darkmode/equals_a09c80e3",
+              "parentId": "fuse/controls/native/ios/darkmode",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/controls/native/ios/darkmode/equals_a09c80e3",
+              "href": "uno/object/equals_a09c80e3",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Equals(object)",
+              "fullyQualifiedIndexTitle": "Uno.Object.Equals(object)"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/int",
+              "title": "int",
+              "fullyQualifiedTitle": "int"
+            },
+            "id": {
+              "id": "fuse/controls/native/ios/darkmode/gethashcode",
+              "parentId": "fuse/controls/native/ios/darkmode",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/controls/native/ios/darkmode/gethashcode",
+              "href": "uno/object/gethashcode",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetHashCode",
+              "fullyQualifiedIndexTitle": "Uno.Object.GetHashCode"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/type",
+              "title": "Type",
+              "fullyQualifiedTitle": "Uno.Type"
+            },
+            "id": {
+              "id": "fuse/controls/native/ios/darkmode/gettype",
+              "parentId": "fuse/controls/native/ios/darkmode",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/controls/native/ios/darkmode/gettype",
+              "href": "uno/object/gettype",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetType",
+              "fullyQualifiedIndexTitle": "Uno.Object.GetType"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "id": {
+              "id": "fuse/controls/native/ios/darkmode/tostring",
+              "parentId": "fuse/controls/native/ios/darkmode",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/controls/native/ios/darkmode/tostring",
+              "href": "uno/object/tostring",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "ToString",
+              "fullyQualifiedIndexTitle": "Uno.Object.ToString"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

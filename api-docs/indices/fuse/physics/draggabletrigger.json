@@ -1,0 +1,98 @@
+{
+  "root": {
+    "id": {
+      "id": "fuse/physics/draggabletrigger",
+      "parentId": "fuse/physics",
+      "type": "Class",
+      "modifiers": [
+        "public",
+        "abstract"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/physics/draggabletrigger",
+      "href": "fuse/physics/draggabletrigger"
+    },
+    "titles": {
+      "indexTitle": "DraggableTrigger",
+      "fullyQualifiedIndexTitle": "Fuse.Physics.DraggableTrigger"
+    }
+  },
+  "descendants": [
+    {
+      "comment": {
+        "brief": "a Trigger that pulse when draggable element has been dropped to the target or target element has received draggable element",
+        "full": "a Trigger that pulse when draggable element has been dropped to the target or target element has received draggable element",
+        "attributes": {
+          "experimental": true
+        }
+      },
+      "id": {
+        "id": "fuse/physics/dropped",
+        "parentId": "fuse/physics",
+        "type": "UxClass",
+        "modifiers": [
+          "public"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/physics/dropped",
+        "href": "fuse/physics/dropped"
+      },
+      "titles": {
+        "indexTitle": "Dropped",
+        "fullyQualifiedIndexTitle": "Fuse.Physics.Dropped"
+      }
+    },
+    {
+      "comment": {
+        "brief": "a Trigger that activate when Draggable Element is intersected with the `Target` element",
+        "full": "a Trigger that activate when Draggable Element is intersected with the `Target` element\n\n#Example:\n\n```\n<App>\n    <JavaScript>\n        var Observable = require(\"FuseJS/Observable\");\n        var dataToTransfer = new Observable(\"Data to transfer\");\n        module.exports = { dataToTransfer, dataReceived: function (args) { console.dir(args.data); } }\n    </JavaScript>\n    <ClientPanel>\n        <Panel ux:Name=\"source\" X=\"40\" Y=\"80\" Size=\"80\">\n            <Rectangle Layer=\"Background\" Color=\"#afa\" ux:Name=\"bg\" />\n            <Draggable />\n            <Shadow Distance=\"0\" Size=\"0\" ux:Name=\"shadow\" />\n            <WhilePressed>\n                <Scale Vector=\"1.2\" Duration=\"0.2\" />\n                <Change shadow.Size=\"5\" Duration=\"0.2\" />\n                <Change shadow.Distance=\"3\" Duration=\"0.2\" />\n                <Change shadow.Color=\"#666\" Duration=\"0.1\" />\n            </WhilePressed>\n            <WhileDragging>\n                <Change shadow.Size=\"10\" Duration=\"0.1\" />\n                <Change shadow.Distance=\"6\" Duration=\"0.1\" />\n                <Change shadow.Color=\"#333\" Duration=\"0.1\" />\n            </WhileDragging>\n            <WhileDraggingOver Target=\"dropPanel\">\n                <Change bg.Color=\"#0f0\" />\n                <Change bg.StrokeWidth=\"2\" Duration=\"0.2\" />\n                <Change bg.StrokeColor=\"#f00\" Duration=\"0.2\" />\n            </WhileDraggingOver>\n            <Dropped To=\"dropPanel\" Data=\"{dataToTransfer}\">\n                <Set source.Size=\"50\" />\n            </Dropped>\n        </Panel>\n\n        <Panel Size=\"80\" X=\"80\" Y=\"500\" Color=\"#ccc\" ux:Name=\"dropPanel\">\n            <WhileDroppingBy Source=\"source\">\n                <Change dropPanel.Color=\"#0ff\" Duration=\"0.2\" />\n            </WhileDroppingBy>\n            <Dropped By=\"source\" Handler=\"{dataReceived}\">\n                <Scale Vector=\"1.2\" Duration=\"0.2\" />\n            </Dropped>\n        </Panel>\n    </ClientPanel>\n</App>\n```",
+        "attributes": {
+          "experimental": true
+        }
+      },
+      "id": {
+        "id": "fuse/physics/whiledraggingover",
+        "parentId": "fuse/physics",
+        "type": "UxClass",
+        "modifiers": [
+          "public"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/physics/whiledraggingover",
+        "href": "fuse/physics/whiledraggingover"
+      },
+      "titles": {
+        "indexTitle": "WhileDraggingOver",
+        "fullyQualifiedIndexTitle": "Fuse.Physics.WhileDraggingOver"
+      }
+    },
+    {
+      "comment": {
+        "brief": "a Trigger that activate when the element that has `WhileDroppedBy` trigger is intersected with `Source` element (Draggable Element)",
+        "full": "a Trigger that activate when the element that has `WhileDroppedBy` trigger is intersected with `Source` element (Draggable Element)\n\n#Example:\n\n```\n<App>\n    <JavaScript>\n        var Observable = require(\"FuseJS/Observable\");\n        var dataToTransfer = new Observable(\"Data to transfer\");\n        module.exports = { dataToTransfer, dataReceived: function (args) { console.dir(args.data); } }\n    </JavaScript>\n    <ClientPanel>\n        <Panel ux:Name=\"source\" X=\"40\" Y=\"80\" Size=\"80\">\n            <Rectangle Layer=\"Background\" Color=\"#afa\" ux:Name=\"bg\" />\n            <Draggable />\n            <Shadow Distance=\"0\" Size=\"0\" ux:Name=\"shadow\" />\n            <WhilePressed>\n                <Scale Vector=\"1.2\" Duration=\"0.2\" />\n                <Change shadow.Size=\"5\" Duration=\"0.2\" />\n                <Change shadow.Distance=\"3\" Duration=\"0.2\" />\n                <Change shadow.Color=\"#666\" Duration=\"0.1\" />\n            </WhilePressed>\n            <WhileDragging>\n                <Change shadow.Size=\"10\" Duration=\"0.1\" />\n                <Change shadow.Distance=\"6\" Duration=\"0.1\" />\n                <Change shadow.Color=\"#333\" Duration=\"0.1\" />\n            </WhileDragging>\n            <WhileDraggingOver Target=\"dropPanel\">\n                <Change bg.Color=\"#0f0\" />\n                <Change bg.StrokeWidth=\"2\" Duration=\"0.2\" />\n                <Change bg.StrokeColor=\"#f00\" Duration=\"0.2\" />\n            </WhileDraggingOver>\n            <Dropped To=\"dropPanel\" Data=\"{dataToTransfer}\">\n                <Set source.Size=\"50\" />\n            </Dropped>\n        </Panel>\n\n        <Panel Size=\"80\" X=\"80\" Y=\"500\" Color=\"#ccc\" ux:Name=\"dropPanel\">\n            <WhileDroppingBy Source=\"source\">\n                <Change dropPanel.Color=\"#0ff\" Duration=\"0.2\" />\n            </WhileDroppingBy>\n            <Dropped By=\"source\" Handler=\"{dataReceived}\">\n                <Scale Vector=\"1.2\" Duration=\"0.2\" />\n            </Dropped>\n        </Panel>\n    </ClientPanel>\n</App>",
+        "attributes": {
+          "experimental": true
+        }
+      },
+      "id": {
+        "id": "fuse/physics/whiledroppingby",
+        "parentId": "fuse/physics",
+        "type": "UxClass",
+        "modifiers": [
+          "public"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/physics/whiledroppingby",
+        "href": "fuse/physics/whiledroppingby"
+      },
+      "titles": {
+        "indexTitle": "WhileDroppingBy",
+        "fullyQualifiedIndexTitle": "Fuse.Physics.WhileDroppingBy"
+      }
+    }
+  ]
+}

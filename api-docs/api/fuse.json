@@ -679,6 +679,50 @@
           },
           {
             "comment": {
+              "brief": "This is trigger action for taking biometric authentication. Both iOS and Android is using Fingerprint/Touch ID or Face Recognition/Face ID sensor depending on what sensor are available on the device.\nYou need to add a reference to `\"Fuse.Auth\"` in your project file to use this feature.",
+              "full": "This is trigger action for taking biometric authentication. Both iOS and Android is using Fingerprint/Touch ID or Face Recognition/Face ID sensor depending on what sensor are available on the device.\nYou need to add a reference to `\"Fuse.Auth\"` in your project file to use this feature.\n\n## Example\n\n    The following example shows how to use it:\n\n        <JavaScript>\n            var Observable = require('FuseJS/Observable');\n            var status = Observable();\n            var statusMessage = Observable();\n\n            module.exports = {\n                status,\n                statusMessage\n                resultHandler: function(data) {\n                    status.value = data.result; // bool value indicating whether true value when it succeed or false value if it failed\n                    statusMessage.value = data.message;\n                }\n            };\n        </JavaScript>\n        <Panel>\n            <Button Text=\"Sign In\" Alignment=\"Center\">\n                <Clicked>\n                    <Authenticate PromptMessage=\"We need your biometric data for Sign In\" Handler=\"{resultHandler}\" />\n                </Clicked>\n            </Button>\n        </Panel>\n\nWhen Using FaceID on iOS, it is mandatory to add description about why you need authentication using FaceID. You can add the description by adding this config on your `unoproj` file\n\n        \"iOS\": {\n            \"PList\": {\n                \"NSFaceIDUsageDescription\": \"Require access to FaceID for authenticating\"\n            }\n        }"
+            },
+            "id": {
+              "id": "fuse/authenticate",
+              "parentId": "fuse",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/authenticate",
+              "href": "fuse/authenticate"
+            },
+            "titles": {
+              "indexTitle": "Authenticate",
+              "fullyQualifiedIndexTitle": "Fuse.Authenticate"
+            }
+          },
+          {
+            "comment": {
+              "brief": "This is javacript module for taking biometric authentication. Both iOS and Android is using Fingerprint/Touch ID or Face Recognition/Face ID sensor depending on what sensor are available on the device.\nYou need to add a reference to `\"Fuse.Auth\"` in your project file to use this feature.",
+              "full": "This is javacript module for taking biometric authentication. Both iOS and Android is using Fingerprint/Touch ID or Face Recognition/Face ID sensor depending on what sensor are available on the device.\nYou need to add a reference to `\"Fuse.Auth\"` in your project file to use this feature.\n\n## Example\n\n    The following example shows how to use it:\n\n        <JavaScript>\n            var Auth = require('FuseJS/Biometric');\n\n            var authenticate = function(e) {\n                if (Auth.isBiometricSupported()) {\n                    Auth.authenticate(\"We need your biometric data to continue\").then(function(result) {\n                        if (result.status) {\n                            // auth success\n                        } else {\n                            console.log(result.message);\n                        }\n                    });\n                }\n            }\n            module.exports = {\n                authenticate\n            };\n        </JavaScript>\n        <Panel>\n            <Button Text=\"Sign In\" Alignment=\"Center\">\n                <Clicked Handler=\"{authenticate}\" />\n            </Button>\n        </Panel>\n\nWhen Using FaceID on iOS, it is mandatory to add description about why you need authentication using FaceID. You can add the description by adding this config on your `unoproj` file\n\n        \"iOS\": {\n            \"PList\": {\n                \"NSFaceIDUsageDescription\": \"Require access to FaceID for authenticating\"\n            }\n        }"
+            },
+            "id": {
+              "id": "fuse/biometricmodule",
+              "parentId": "fuse",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/biometricmodule",
+              "href": "fuse/biometricmodule"
+            },
+            "titles": {
+              "indexTitle": "BiometricModule",
+              "fullyQualifiedIndexTitle": "Fuse.BiometricModule"
+            }
+          },
+          {
+            "comment": {
               "brief": "Defers the creation of nodes to improve initialization time.",
               "full": "Defers the creation of nodes to improve initialization time.\n\n`Deferred` says that the content is not required immediately and may be created somewhat later. This allows the app to startup faster, or to create new pages faster. Without `Deferred` the nodes are initialized all in the same frame, which can lead to delays. With `Deferred` the node creation is staggered over several frames. This allows the app to start rendering and displaying prior to being completely initialized.\n\nA common use is with an @Each:\n\n    <Each Items=\"{items}\">\n        <Deferred>\n            <StackPanel Orientation=\"Horizontal\">\n                <Text Value=\"{name}\"/>\n                <Text Value=\"{address}\"/>\n                <Text Value=\"{phone}\"/>\n            </StackPanel>\n        </Deferred>\n    </Each>\n\nNote that the delay is measured in frames: deferred content will still be added quickly. Nonetheless it may result in some popping of the new elements and a change in layout.\n\nYou only need to use this feature when you are having initializaiton time problems at startup or on new pages. Wrapping the content of @Each in `Deferred` is a simple change that can help when you are using lists of items. The individual pages of a top-level @PageControl may also be suitable for `Deferred`.\n\nDo not use this on the pages of a @Navigator or other control that accepts templates. Templates are already created on demand and wrapping them in `Deferred` usually won't be helpful."
             },
@@ -803,6 +847,28 @@
           },
           {
             "comment": {
+              "brief": "This is trigger action for taking Platform SignIn. Platform SignIn is a SignIn mechanism that use `Sign In With Apple` on iOS and `Google SignIn` on Android.",
+              "full": "This is trigger action for taking Platform SignIn. Platform SignIn is a SignIn mechanism that use `Sign In With Apple` on iOS and `Google SignIn` on Android.\n\nPlatform SignIn is only available on the mobile target platform (iOS and Android).\n\nYou need to add a reference to `\"Fuse.Auth\"` in your project file to use this feature.\n\n> For more information on what are the pre-request when implementing `Sign In With Apple` or `Google Sign In`, you can check the documentation on the apple developer website or android developer website\n> for iOS add \"SystemCapabilities\": { \"SignInWithApple\":true }  in the unoproj file.\n\n## Example\n\n    The following example shows how to use it:\n\n        ```XML\n            <App>\n                <JavaScript>\n                    var Observable = require('FuseJS/Observable');\n                    var status = Observable();\n                    var statusMessage = Observable();\n\n                    module.exports = {\n                        resultHandler: function(result) {\n                            console.dir(result);\n                            // result is json object containing these properties :\n                            // status -> boolean value indicating whether sign in action success or fail\n                            // email -> user email that has been sign in / sign up\n                            // firstName -> User firstname\n                            // lastName -> User Lastname\n                            // userId -> User uniqe Id\n                        }\n                    }\n                </JavaScript>\n                <Button Text=\"Sign In\">\n                    <Clicked>\n                        <PlatformSignIn Handler=\"{resultHandler}\" />\n                    </Clicked>\n                </Button>\n            </App\n        ```\n\n> When the callback handler is fired for the first time and the result object of `status` property is true, save those logged user information immediately to the server especially on iOS,\n>  because as stated in the documentation on the apple website, the Sign In With Apple will only send userId informataion the next time user do the authentication again"
+            },
+            "id": {
+              "id": "fuse/platformsignin",
+              "parentId": "fuse",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/platformsignin",
+              "href": "fuse/platformsignin"
+            },
+            "titles": {
+              "indexTitle": "PlatformSignIn",
+              "fullyQualifiedIndexTitle": "Fuse.PlatformSignIn"
+            }
+          },
+          {
+            "comment": {
               "brief": "Play bundled .wav files",
               "full": "Play bundled .wav files\n\nThis is intended for playing the small one-shot sounds like button-clicks & notification chimes.\n\nYou'll find this trigger action in the Fuse.Audio package, which have to be referenced from your Uno project file.\nFor example:\n\n    {\n        \"Packages\": [\n            \"Fuse\",\n            \"FuseJS\",\n            \"Fuse.Audio\"\n        ]\n    }\n\n## Example\n\n    <StackPanel Margin=\"20\">\n        <Button Margin=\"10\" Text=\"Test Sound\">\n            <Clicked>\n                <PlaySound File=\"chime.wav\" />\n            </Clicked>\n        </Button>\n    </StackPanel>"
             },
@@ -909,6 +975,50 @@
             "titles": {
               "indexTitle": "Shear",
               "fullyQualifiedIndexTitle": "Fuse.Shear"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Javascript Module for taking Platform SignIn. Platform SignIn is a SignIn mechanism that use `Sign In With Apple` on iOS and `Google SignIn` on Android.",
+              "full": "Javascript Module for taking Platform SignIn. Platform SignIn is a SignIn mechanism that use `Sign In With Apple` on iOS and `Google SignIn` on Android.\n\nPlatform SignIn is only available on the mobile target platform (iOS and Android).\n\nYou need to add a reference to `\"Fuse.Auth\"` in your project file to use this feature.\n\n> For more information on what are the pre-request when implementing `Sign In With Apple` or `Google Sign In`, you can check the documentation on the apple developer website or android developer website\n> for iOS add \"SystemCapabilities\": { \"SignInWithApple\":true }  in the unoproj file.\n\n## Example\n\n    The following example shows how to use it:\n\n        ```XML\n            <App>\n                <JavaScript>\n                    var Auth = require('useJS/Auth');\n\n                    function doSignIn() {\n                        Auth.signIn().then(function(result) {\n                            // result is json object containing these properties :\n                            // email -> user email that has been sign in / sign up\n                            // firstName -> User firstname\n                            // lastName -> User Lastname\n                            // userId -> User uniqe Id\n                        }, function (ex) {\n                            // failed login\n                        })\n                    }\n                    Auth.hasSignedIn().then(function (result) {\n                        if (result) {\n                            // user has already sign in\n                        }\n                    })\n\n                    module.exports = {\n                        doSignIn\n                    }\n\n                </JavaScript>\n                <Button Text=\"Sign In\">\n                    <Clicked>\n                        <Callback Handler=\"{doSignIn}\" />\n                    </Clicked>\n                </Button>\n            </App\n        ```\n\n> When the callback handler is fired for the first time and the result object of `status` property is true, save those logged user information immediately to the server especially on iOS,\n>  because as stated in the documentation on the apple website, the Sign In With Apple  will only send userId informataion the next time user do the authentication again"
+            },
+            "id": {
+              "id": "fuse/signinmodule",
+              "parentId": "fuse",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/signinmodule",
+              "href": "fuse/signinmodule"
+            },
+            "titles": {
+              "indexTitle": "SignInModule",
+              "fullyQualifiedIndexTitle": "Fuse.SignInModule"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Triggers if device has biometric sensor and user has already configure it",
+              "full": "Triggers if device has biometric sensor and user has already configure it\n\n## Example\n\n    <Panel>\n        <SupportBiometric>\n            <Button Text=\"Sign In With Biometric\">\n                <Clicked>\n                    <Authenticate />\n                </Clicked>\n            </Button>\n        </SupportBiometric>\n    </Panel>"
+            },
+            "id": {
+              "id": "fuse/supportbiometric",
+              "parentId": "fuse",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/supportbiometric",
+              "href": "fuse/supportbiometric"
+            },
+            "titles": {
+              "indexTitle": "SupportBiometric",
+              "fullyQualifiedIndexTitle": "Fuse.SupportBiometric"
             }
           },
           {
@@ -1030,6 +1140,24 @@
             "titles": {
               "indexTitle": "AppBase",
               "fullyQualifiedIndexTitle": "Fuse.AppBase"
+            }
+          },
+          {
+            "id": {
+              "id": "fuse/authargs",
+              "parentId": "fuse",
+              "type": "Class",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/authargs",
+              "href": "fuse/authargs"
+            },
+            "titles": {
+              "indexTitle": "AuthArgs",
+              "fullyQualifiedIndexTitle": "Fuse.AuthArgs"
             }
           },
           {
@@ -1600,6 +1728,24 @@
             }
           },
           {
+            "id": {
+              "id": "fuse/signinargs",
+              "parentId": "fuse",
+              "type": "Class",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/signinargs",
+              "href": "fuse/signinargs"
+            },
+            "titles": {
+              "indexTitle": "SignInArgs",
+              "fullyQualifiedIndexTitle": "Fuse.SignInArgs"
+            }
+          },
+          {
             "comment": {
               "brief": "A global stopwatch timer that has time=0 when the app launched",
               "full": "A global stopwatch timer that has time=0 when the app launched"
@@ -1904,6 +2050,38 @@
           {
             "parameters": [
               {
+                "name": "sender",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              },
+              {
+                "name": "args",
+                "href": "fuse/authargs",
+                "title": "AuthArgs",
+                "fullyQualifiedTitle": "Fuse.AuthArgs"
+              }
+            ],
+            "id": {
+              "id": "fuse/autheventhandler",
+              "parentId": "fuse",
+              "type": "Delegate",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/autheventhandler",
+              "href": "fuse/autheventhandler"
+            },
+            "titles": {
+              "indexTitle": "AuthEventHandler (object, AuthArgs)",
+              "fullyQualifiedIndexTitle": "Fuse.AuthEventHandler (object, Fuse.AuthArgs)"
+            }
+          },
+          {
+            "parameters": [
+              {
                 "name": "d",
                 "href": "fuse/diagnostic",
                 "title": "Diagnostic",
@@ -2015,6 +2193,38 @@
             "titles": {
               "indexTitle": "RequestBringIntoViewHandler (object, RequestBringIntoViewArgs)",
               "fullyQualifiedIndexTitle": "Fuse.RequestBringIntoViewHandler (object, Fuse.RequestBringIntoViewArgs)"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "sender",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              },
+              {
+                "name": "args",
+                "href": "fuse/signinargs",
+                "title": "SignInArgs",
+                "fullyQualifiedTitle": "Fuse.SignInArgs"
+              }
+            ],
+            "id": {
+              "id": "fuse/signineventhandler",
+              "parentId": "fuse",
+              "type": "Delegate",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/signineventhandler",
+              "href": "fuse/signineventhandler"
+            },
+            "titles": {
+              "indexTitle": "SignInEventHandler (object, SignInArgs)",
+              "fullyQualifiedIndexTitle": "Fuse.SignInEventHandler (object, Fuse.SignInArgs)"
             }
           },
           {
@@ -2588,25 +2798,6 @@
             "titles": {
               "indexTitle": "IScalingMode",
               "fullyQualifiedIndexTitle": "Fuse.IScalingMode"
-            }
-          },
-          {
-            "id": {
-              "id": "fuse/iscriptexception",
-              "parentId": "fuse",
-              "type": "Interface",
-              "modifiers": [
-                "public",
-                "abstract"
-              ]
-            },
-            "uri": {
-              "idUri": "fuse/iscriptexception",
-              "href": "fuse/iscriptexception"
-            },
-            "titles": {
-              "indexTitle": "IScriptException",
-              "fullyQualifiedIndexTitle": "Fuse.IScriptException"
             }
           },
           {

@@ -22,7 +22,7 @@
       "namespaceTitle": "Fuse.Storage",
       "namespaceUri": "fuse/storage",
       "packageName": "Fuse.Storage",
-      "packageVersion": "1.11.2"
+      "packageVersion": "2.0.0-beta.9"
     },
     "inheritance": {
       "root": {
@@ -318,67 +318,6 @@
         "items": [
           {
             "comment": {
-              "brief": "Synchrounously deletes a file inside the application folder.",
-              "full": "Synchrounously deletes a file inside the application folder.\n\n    var Storage = require(\"FuseJS/Storage\");\n\n    var success = Storage.deleteSync(\"uselessFile.txt\");\n    if(success) {\n        console.log(\"Deleted file\");\n    }\n    else {\n        console.log(\"An error occured!\");\n    }\n\n> Warning: This call will block until the operation is finished.",
-              "attributes": {
-                "scriptMethod": {
-                  "name": "deleteSync",
-                  "parameters": [
-                    "filename"
-                  ]
-                },
-                "returns": {
-                  "typeHint": "boolean",
-                  "text": "`true` if the file was deleted, `false` otherwise."
-                },
-                "parameters": [
-                  {
-                    "name": "filename",
-                    "typeHint": "String",
-                    "description": "The file to delete"
-                  }
-                ]
-              }
-            },
-            "returns": {
-              "href": "uno/object",
-              "title": "object",
-              "fullyQualifiedTitle": "object"
-            },
-            "parameters": [
-              {
-                "name": "c",
-                "href": "fuse/scripting/context",
-                "title": "Context",
-                "fullyQualifiedTitle": "Fuse.Scripting.Context"
-              },
-              {
-                "name": "args",
-                "href": "uno/object",
-                "title": "object[]",
-                "fullyQualifiedTitle": "object[]"
-              }
-            ],
-            "id": {
-              "id": "fuse/storage/storagemodule/delete_bbef95e2",
-              "parentId": "fuse/storage/storagemodule",
-              "type": "JsMethod",
-              "modifiers": [
-                "private",
-                "static"
-              ]
-            },
-            "uri": {
-              "idUri": "fuse/storage/storagemodule/delete_bbef95e2",
-              "href": "fuse/storage/storagemodule/delete_bbef95e2"
-            },
-            "titles": {
-              "indexTitle": "Delete(Context, object[])",
-              "fullyQualifiedIndexTitle": "Fuse.Storage.StorageModule.Delete(Fuse.Scripting.Context, object[])"
-            }
-          },
-          {
-            "comment": {
               "brief": "Synchrounously reads data from a file inside the application folder.",
               "full": "Synchrounously reads data from a file inside the application folder.\n\n    var Storage = require(\"FuseJS/Storage\");\n\n    var contents = Storage.readSync(\"myfile.txt\");\n    console.log(contents);\n\n> Warning: This call will block until the operation is finished. Use read() if you are reading large amounts of data.",
               "attributes": {
@@ -491,6 +430,67 @@
             "titles": {
               "indexTitle": "ReadAsync(object[])",
               "fullyQualifiedIndexTitle": "Fuse.Storage.StorageModule.ReadAsync(object[])"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Synchrounously deletes a file inside the application folder.",
+              "full": "Synchrounously deletes a file inside the application folder.\n\n    var Storage = require(\"FuseJS/Storage\");\n\n    var success = Storage.removeSync(\"uselessFile.txt\");\n    if(success) {\n        console.log(\"Deleted file\");\n    }\n    else {\n        console.log(\"An error occured!\");\n    }\n\n> Warning: This call will block until the operation is finished.",
+              "attributes": {
+                "scriptMethod": {
+                  "name": "removeSync",
+                  "parameters": [
+                    "filename"
+                  ]
+                },
+                "returns": {
+                  "typeHint": "boolean",
+                  "text": "`true` if the file was deleted, `false` otherwise."
+                },
+                "parameters": [
+                  {
+                    "name": "filename",
+                    "typeHint": "String",
+                    "description": "The file to delete"
+                  }
+                ]
+              }
+            },
+            "returns": {
+              "href": "uno/object",
+              "title": "object",
+              "fullyQualifiedTitle": "object"
+            },
+            "parameters": [
+              {
+                "name": "c",
+                "href": "fuse/scripting/context",
+                "title": "Context",
+                "fullyQualifiedTitle": "Fuse.Scripting.Context"
+              },
+              {
+                "name": "args",
+                "href": "uno/object",
+                "title": "object[]",
+                "fullyQualifiedTitle": "object[]"
+              }
+            ],
+            "id": {
+              "id": "fuse/storage/storagemodule/remove_bbef95e2",
+              "parentId": "fuse/storage/storagemodule",
+              "type": "JsMethod",
+              "modifiers": [
+                "private",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/storage/storagemodule/remove_bbef95e2",
+              "href": "fuse/storage/storagemodule/remove_bbef95e2"
+            },
+            "titles": {
+              "indexTitle": "Remove(Context, object[])",
+              "fullyQualifiedIndexTitle": "Fuse.Storage.StorageModule.Remove(Fuse.Scripting.Context, object[])"
             }
           },
           {
