@@ -6,7 +6,7 @@ More specifically, what we'll do in this chapter is separate out our two views -
 
 Now, because this is a lot of ground to cover, this part of the tutorial will only go over how to split our view into separate components, _not_ how we'll fit them back together and develop the flow of our app.
 
-The final code for this chapter is available [here](https://github.com/fusetools/hikr/tree/models-chapter-3).
+The final code for this chapter is available [here](https://github.com/fuse-open/hikr/tree/models-chapter-3).
 
 ## Transforming the Edit Hike view into a component
 
@@ -380,4 +380,4 @@ export default class App {
 
 Now that we've got our two views separated into different components, it is time to take a closer look at how we do navigation in Fuse. In the [next chapter](navigation-and-routing.md) we'll start creating a propert _flow_ through our app, and learn how we can create separate models per page to make our app even more structured. So when you're ready, let's [move on](navigation-and-routing.md)!
 
-The final code for this chapter is available [here](https://github.com/fusetools/hikr/tree/models-chapter-3).
+The final code for this chapter is available [here](https://github.com/fuse-open/hikr/tree/models-chapter-3).

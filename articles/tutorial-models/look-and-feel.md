@@ -4,7 +4,7 @@ In the [last chapter](mock-backend.md), we implemented a mock backend and tied o
 
 In this chapter, we'll iteratively tweak the look and feel of our app to match our original design. To accomplish this, we'll take full advantage of Fuse's live reload functionality to make fast iterations, as well as create reusable components that describe how the more common of our app will look and behave. After this chapter, we'll be just one chapter away from completing the app, so let's get started!
 
-The final code for this chapter is available [here](https://github.com/fusetools/hikr/tree/models-chapter-6).
+The final code for this chapter is available [here](https://github.com/fuse-open/hikr/tree/models-chapter-6).
 
 ## Background color
 
@@ -836,4 +836,4 @@ Currently, our app looks like this:
 
 Now that the main parts of our app are functional and look great, it's time to tie everything together. In the [next chapter](splash-screen.md), we'll finish up our app by building a beautiful splash screen with a video background. Since we already have our app's architecture in place and a bunch of good-looking reusable components, this should be no problem. So let's [dig in](splash-screen.md)!
 
-The final code for this chapter is available [here](https://github.com/fusetools/hikr/tree/models-chapter-6).
+The final code for this chapter is available [here](https://github.com/fuse-open/hikr/tree/models-chapter-6).

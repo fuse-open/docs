@@ -16,7 +16,7 @@ Fuse values *brevity*, *reactive programming* and *expressiveness*. We strive to
 
 ## Fuse license
 
-The Fuse platform is free and [open source](https://fuseopen.com) (MIT license), with a large and passionate [online community](https://fusecommunity.slack.com). 
+The Fuse platform is free and [open source](https://github.com/fuse-open) (MIT license), with a large and passionate [online community](https://fusecommunity.slack.com).
 
 ### Let's go!
 

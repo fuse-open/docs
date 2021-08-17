@@ -4,7 +4,7 @@ Welcome to our end-to-end app tutorial!
 
 Picking up where our [quickstart](../basics/quickstart.md) left off, this tutorial takes us through the steps of creating a Fuse app from scratch. The app we'll put together is called "hikr", which is a basic hike tracking app where we can view a set of hikes we've been on and make changes to them by rating them, adding comments, etc.
 
-The full source code for the app is available [here](https://github.com/fusetools/hikr)!
+The full source code for the app is available [here](https://github.com/fuse-open/hikr)!
 
 hikr is a simple app, and intentionally so. We want to learn the concepts of Fuse by building an app with multiple pieces and see how they'll fit together without getting too tied down by details. hikr is designed specifically for this, and by making the app, we'll learn many of the core aspects of building a real-world app in Fuse.
 
@@ -67,4 +67,4 @@ And here's what the full app looks like in motion:
 
 Now that we've got a basic idea of what we're going for, we'll start by creating the Edit Hike view, along with a basic view model. So [let's get started](edit-hike-view.md)!
 
-The full source code for the app is available [here](https://github.com/fusetools/hikr).
+The full source code for the app is available [here](https://github.com/fuse-open/hikr).

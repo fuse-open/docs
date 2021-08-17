@@ -135,7 +135,7 @@ Packages can be all sorts of things; examples, libraries, plugins or tools. Inst
 </tr>
 <tr>
 <td style="text-align:left"><strong>uno-bash</strong><br>Simple bash auto-completion for Uno CLI<br><code>Tool</code> by <strong>Fuse</strong></td>
-<td style="text-align:right"><a href="https://github.com/fusetools/UnoBashCompletion">Go to page</a></td>
+<td style="text-align:right"><a href="https://github.com/fuse-open/UnoBashCompletion">Go to page</a></td>
 </tr>
 <tr>
 <td style="text-align:left"><strong>vscode</strong><br>VSCode plugin<br><code>Plugin</code> by <strong>hazealign</strong></td>

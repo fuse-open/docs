@@ -6,7 +6,7 @@ While @PageControl works great when you have a couple views that you want presen
 
 As it turns out, Fuse provides tools to handle all of this using the @Navigator class. In this chapter, we'll take a look at how we can use the @Navigator to make more complex navigation flows, and how we can tie that together with JavaScript to create individual page models to further componentize our app.
 
-The final code for this chapter is available [here](https://github.com/fusetools/hikr/tree/models-chapter-4).
+The final code for this chapter is available [here](https://github.com/fuse-open/hikr/tree/models-chapter-4).
 
 ## Migrating to @Navigator
 
@@ -339,4 +339,4 @@ export default class EditHikePage {
 
 Our components are working together, which is awesome! In the [next chapter](mock-backend.md), we'll work on mocking up a backend. This will help us nail down the architecture of our app to make it easier to add a real backend at some point in the future. So [let's dig in](mock-backend.md)!
 
-The final code for this chapter is available [here](https://github.com/fusetools/hikr/tree/models-chapter-4).
+The final code for this chapter is available [here](https://github.com/fuse-open/hikr/tree/models-chapter-4).

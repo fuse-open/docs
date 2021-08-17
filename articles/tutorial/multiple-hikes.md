@@ -4,7 +4,7 @@ In the [last chapter](edit-hike-view.md), we blocked out the first view in our a
 
 In this chapter, that's exactly what we're going to do. To make sure things will be easy to manage, we'll still be keeping everything in our `MainView.ux` file. We'll add "selector" at the top of the view that allows us to select which hike we want to edit, and then our edit hike view from the last chapter will be populated with this data. Changes will not be persistent yet - we'll simply be loading data from our model into our view model, but not going the other way. We'll solve that in [a later chapter about mocking our backend](mock-backend.md).
 
-The final code for this chapter is available [here](https://github.com/fusetools/hikr/tree/chapter-2).
+The final code for this chapter is available [here](https://github.com/fuse-open/hikr/tree/chapter-2).
 
 ## Creating our List of Hikes
 
@@ -304,4 +304,4 @@ Now we should be getting a feel for how data might flow through our Fuse app and
 
 While being able to select from our list of hikes is really helpful, we'll ideally want to separate the parts of this view into separate views entirely. In [the next chapter](splitting-up-components.md), that's exactly what we'll do - we'll separate our views, view models, and model into organized, isolated components. Let's [dig in](splitting-up-components.md)!
 
-The final code for this chapter is available [here](https://github.com/fusetools/hikr/tree/chapter-2).
+The final code for this chapter is available [here](https://github.com/fuse-open/hikr/tree/chapter-2).

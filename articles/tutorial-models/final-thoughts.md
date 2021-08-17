@@ -19,4 +19,4 @@ We'll also be working on a number of "tracks" that continue where we've left off
 
 Finally, thanks for checking out Fuse and following along with this tutorial. We hope you had fun building this app and learned a ton. We can't wait to see what you build with Fuse!
 
-The full source code for the app is available [here](https://github.com/fusetools/hikr).
+The full source code for the app is available [here](https://github.com/fuse-open/hikr).

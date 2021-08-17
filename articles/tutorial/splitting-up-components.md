@@ -6,7 +6,7 @@ More specifically, what we'll do in this chapter is separate out our two views -
 
 Now, because this is a lot of ground to cover, this part of the tutorial will only go over how to split our view into separate components, _not_ how we'll fit them back together and develop the flow of our app. This will mean that our view for editing a specific hike will no longer be populated with any data for a little bit, but that's ok. We want to take things one step at a time. Hooking our views back together and passing data between them will be covered in the next chapter, so don't worry!
 
-The final code for this chapter is available [here](https://github.com/fusetools/hikr/tree/chapter-3).
+The final code for this chapter is available [here](https://github.com/fuse-open/hikr/tree/chapter-3).
 
 ## Separating the hikes collection
 
@@ -755,4 +755,4 @@ module.exports = {
 
 Now that we've got our two views separated into different components, the next step on our journey will be to hook them back together so that our selector in `HomePage` will populate the editor `EditHikePage` and navigate to it as well. That's where we'll start developing the _flow_ of our app using Fuse's @Navigator and @Router components. This is what we'll cover in the [next chapter](navigation-and-routing.md), so when you're ready, let's [move on](navigation-and-routing.md)!
 
-The final code for this chapter is available [here](https://github.com/fusetools/hikr/tree/chapter-3).
+The final code for this chapter is available [here](https://github.com/fuse-open/hikr/tree/chapter-3).

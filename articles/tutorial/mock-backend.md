@@ -12,7 +12,7 @@ Additionally, we'll create a thin abstraction over the mock backend which our vi
 
 But before we start building anything, we need to consider what the _interface_ to a typical backend might look like. So let's dive in and take a look!
 
-The final code for this chapter is available [here](https://github.com/fusetools/hikr/tree/chapter-5).
+The final code for this chapter is available [here](https://github.com/fuse-open/hikr/tree/chapter-5).
 
 ## Typical backend interface
 
@@ -718,4 +718,4 @@ module.exports = {
 
 Now that all of the major parts of our app are in place, it's time to iteratively tweak the look and feel of our app to really make it pop. In the [next chapter](look-and-feel.md), we'll build various reusable components with a custom look/feel and sprinkle them all over our app to polish the app and make it look great. So [let's get to it](look-and-feel.md)!
 
-The final code for this chapter is available [here](https://github.com/fusetools/hikr/tree/chapter-5).
+The final code for this chapter is available [here](https://github.com/fuse-open/hikr/tree/chapter-5).

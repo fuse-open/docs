@@ -6,7 +6,7 @@ While @PageControl works great when you have a couple views that you want presen
 
 As it turns out, Fuse provides tools to handle all of this with its @Navigator and @Router classes, along with a handful of other simple concepts. In this chapter, we'll take a look at each of these things as we incorporate them into our app step by step. So let's get started!
 
-The final code for this chapter is available [here](https://github.com/fusetools/hikr/tree/chapter-4).
+The final code for this chapter is available [here](https://github.com/fuse-open/hikr/tree/chapter-4).
 
 ## Migrating to @Navigator
 
@@ -438,4 +438,4 @@ module.exports = {
 
 Our components are working together, which is awesome! However, we're still not able to make any actual changes to data in our model; we're only able to change some data in our view model. In the [next chapter](mock-backend.md), we'll work on mocking up a backend to get this sorted. This will help us nail down the architecture of our app to make it easier to add a real backend at some point in the future. So [let's dig in](mock-backend.md)!
 
-The final code for this chapter is available [here](https://github.com/fusetools/hikr/tree/chapter-4).
+The final code for this chapter is available [here](https://github.com/fuse-open/hikr/tree/chapter-4).

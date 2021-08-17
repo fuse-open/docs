@@ -2,7 +2,7 @@
 
 In this first part of the tutorial, we're going to start fleshing out the first view of our app; the Edit Hike view. This view will display and allow us to edit the data for a single hike. This means we'll be building both the _view_, which represents the visual components we'll interact with, and its _view model_, which represents the editable data that's presented by the view.
 
-The final code for this chapter is available [here](https://github.com/fusetools/hikr/tree/models-chapter-1).
+The final code for this chapter is available [here](https://github.com/fuse-open/hikr/tree/models-chapter-1).
 
 ## Creating our Project
 
@@ -307,4 +307,4 @@ So as we can see, it doesn't take much to get a view like this up and running. A
 
 Of course, this view only displays one hike, and what we're after is a list of hikes we can display/modify. In the [next chapter](multiple-hikes.md), we'll expand on what we've built so far by introducing multiple hikes and the ability to select one to display and edit. So when you're ready to go, [let's dive in](multiple-hikes.md)!
 
-The final code for this chapter is available [here](https://github.com/fusetools/hikr/tree/models-chapter-1).
+The final code for this chapter is available [here](https://github.com/fuse-open/hikr/tree/models-chapter-1).

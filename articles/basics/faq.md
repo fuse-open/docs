@@ -17,10 +17,7 @@ The full list of supported platforms for both Fuse and exports can be found [her
 When investigating issues it's often useful to check the logs written by Fuse and the editor plugins. These can be be found in:
 
 - macOS: `~/.fuse/logs`
-- Windows: `%localappdata%\Fusetools\Fuse\logs`
-
-### Installer logs
-If you need a log from the Windows installer, pass `-l <log file name>` to the installer executable. For instance: `fuse_win_1_4_0_14778 -l logfile.log`.
+- Windows: `%LOCALAPPDATA%\fuse X\logs` or `%LOCALAPPDATA%\Fusetools\Fuse\logs` (legacy)
 
 ---
 

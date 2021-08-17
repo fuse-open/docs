@@ -4,7 +4,7 @@ In the [previous chapter](look-and-feel.md), we focused on the look and feel of 
 
 In this chapter, we'll tie everything together and finish our app by adding the final screen - a splash page! This will set the mood for our app right away when the user opens it and is the last piece of the puzzle we need to match our design. And with all of the tools and techniques we learned in the previous chapters, it'll be a piece of cake. So let's get started!
 
-The full source code for the app is available [here](https://github.com/fusetools/hikr).
+The full source code for the app is available [here](https://github.com/fuse-open/hikr).
 
 ## Building our splash screen
 
@@ -225,13 +225,13 @@ With that done, we can save everything and test it out to make sure it works! No
 
 Now, it's time to add a video to the background of our `SplashPage`! The video we'll be using is called `nature.mp4` and can be found here:
 
-[nature.mp4 on Github](https://github.com/fusetools/hikr/blob/master/Assets/nature.mp4)
+[nature.mp4 on Github](https://github.com/fuse-open/hikr/blob/master/Assets/nature.mp4)
 
 Before we stick this in our app, it's important to note where this video came from. This video is a modified version of [Graham Uhelski](https://vimeo.com/mankindfilms)'s ["The Valley"](http://mazwai.com/#/videos/220), which is licensed under the [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/) license. This means we can share and adapt the content as we please, even in commercial purposes, as long as we provide _attribution_ to the original artist. This requires us to give appropriate credit to the original author, and indicate if changes were made. So, it's important that we do this once we get the video in the app.
 
 > Note: Always use content in your apps that you know you have the rights to. Never ignore content licenses, especially when they're this easy to follow!
 
-Let's go ahead and grab [the video file](https://github.com/fusetools/hikr/blob/master/Assets/nature.mp4) and place it in our `Assets` directory. Then, in our `SplashPage.ux` file, we can display the video using a [Video](api:fuse/controls/video) tag, and we'll set `Layer="Background"` on it just like we did with the [Image](api:fuse/controls/image) in our `hikr.Page` component in the [last chapter](look-and-feel.md):
+Let's go ahead and grab [the video file](https://github.com/fuse-open/hikr/blob/master/Assets/nature.mp4) and place it in our `Assets` directory. Then, in our `SplashPage.ux` file, we can display the video using a [Video](api:fuse/controls/video) tag, and we'll set `Layer="Background"` on it just like we did with the [Image](api:fuse/controls/image) in our `hikr.Page` component in the [last chapter](look-and-feel.md):
 
 ```xml
 	<JavaScript File="SplashPage.js" />
@@ -441,4 +441,4 @@ module.exports = {
 
 Now that our app is finished, we've already covered many of the core concepts of Fuse, but there's always more to learn. The [final chapter](final-thoughts.md) will be a quick wrap up about what we've learned and where we can go next to improve our Fuse skills. So let's [check it out](final-thoughts.md)!
 
-The full source code for the app is available [here](https://github.com/fusetools/hikr).
+The full source code for the app is available [here](https://github.com/fuse-open/hikr).

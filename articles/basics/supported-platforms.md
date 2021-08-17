@@ -2,7 +2,7 @@
 
 ## Operating system
 * macOS 10.10 (_Yosemite_) and newer, but macOS 11.x (_Big Sur_) is recommended.
-* Windows 7 and newer
+* Windows 7 and newer, but Windows 10 is recommended.
 
 Please note that beta versions of both macOS and Windows are currently not officially supported.
 
