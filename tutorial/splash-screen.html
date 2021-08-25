@@ -683,7 +683,7 @@
               <h2 id="introduction">Introduction</h2>
 <p>In the <a href="look-and-feel.html">previous chapter</a>, we focused on the look and feel of our app, and got it looking nice and coherent. In the process, we also learned how to leverage Fuse's <code>ux:Class</code> mechanism to build reusable components for styling our app.</p>
 <p>In this chapter, we'll tie everything together and finish our app by adding the final screen - a splash page! This will set the mood for our app right away when the user opens it and is the last piece of the puzzle we need to match our design. And with all of the tools and techniques we learned in the previous chapters, it'll be a piece of cake. So let's get started!</p>
-<p>The full source code for the app is available <a href="https://github.com/fusetools/hikr">here</a>.</p>
+<p>The full source code for the app is available <a href="https://github.com/fuse-open/hikr">here</a>.</p>
 <h2 id="building-our-splash-screen">Building our splash screen</h2>
 <p>The first thing we'll to do for our splash screen is to create a new <a href="../fuse/controls/page.html">Page</a>. In the <code>Pages</code> directory in our project, let's make a new file called <code>SplashPage.ux</code> with the following contents:</p>
 <pre><code class="language-xml">&lt;Page ux:Class=&quot;SplashPage&quot;&gt;
@@ -823,12 +823,12 @@ module.exports = {
 <p>With that done, we can save everything and test it out to make sure it works! Note, however, that we're using the <code>Router</code>'s <code>push</code> function here. Ideally, we would be using <code>goto</code>, as it doesn't make much sense for a user of our app to navigate back to the splash screen during normal use. However, to make things easier for us to test, we can use <code>push</code> for now so we can navigate back for the time being, and swap it out with a call to <code>goto</code> later.</p>
 <h2 id="adding-a-video-background">Adding a video background</h2>
 <p>Now, it's time to add a video to the background of our <code>SplashPage</code>! The video we'll be using is called <code>nature.mp4</code> and can be found here:</p>
-<p><a href="https://github.com/fusetools/hikr/blob/master/Assets/nature.mp4">nature.mp4 on Github</a></p>
+<p><a href="https://github.com/fuse-open/hikr/blob/master/Assets/nature.mp4">nature.mp4 on Github</a></p>
 <p>Before we stick this in our app, it's important to note where this video came from. This video is a modified version of <a href="https://vimeo.com/mankindfilms">Graham Uhelski</a>'s <a href="http://mazwai.com/#/videos/220">&quot;The Valley&quot;</a>, which is licensed under the <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a> license. This means we can share and adapt the content as we please, even in commercial purposes, as long as we provide <em>attribution</em> to the original artist. This requires us to give appropriate credit to the original author, and indicate if changes were made. So, it's important that we do this once we get the video in the app.</p>
 <blockquote>
 <p>Note: Always use content in your apps that you know you have the rights to. Never ignore content licenses, especially when they're this easy to follow!</p>
 </blockquote>
-<p>Let's go ahead and grab <a href="https://github.com/fusetools/hikr/blob/master/Assets/nature.mp4">the video file</a> and place it in our <code>Assets</code> directory. Then, in our <code>SplashPage.ux</code> file, we can display the video using a <a href="../fuse/controls/video.html">Video</a> tag, and we'll set <code>Layer=&quot;Background&quot;</code> on it just like we did with the <a href="../fuse/controls/image.html">Image</a> in our <code>hikr.Page</code> component in the <a href="look-and-feel.html">last chapter</a>:</p>
+<p>Let's go ahead and grab <a href="https://github.com/fuse-open/hikr/blob/master/Assets/nature.mp4">the video file</a> and place it in our <code>Assets</code> directory. Then, in our <code>SplashPage.ux</code> file, we can display the video using a <a href="../fuse/controls/video.html">Video</a> tag, and we'll set <code>Layer=&quot;Background&quot;</code> on it just like we did with the <a href="../fuse/controls/image.html">Image</a> in our <code>hikr.Page</code> component in the <a href="look-and-feel.html">last chapter</a>:</p>
 <pre><code class="language-xml">	&lt;JavaScript File=&quot;SplashPage.js&quot; /&gt;
 
 	&lt;Video Layer=&quot;Background&quot; File=&quot;../Assets/nature.mp4&quot; /&gt;
@@ -980,7 +980,7 @@ module.exports = {
 </code></pre>
 <h2 id="what-s-next">What's next</h2>
 <p>Now that our app is finished, we've already covered many of the core concepts of Fuse, but there's always more to learn. The <a href="final-thoughts.html">final chapter</a> will be a quick wrap up about what we've learned and where we can go next to improve our Fuse skills. So let's <a href="final-thoughts.html">check it out</a>!</p>
-<p>The full source code for the app is available <a href="https://github.com/fusetools/hikr">here</a>.</p>
+<p>The full source code for the app is available <a href="https://github.com/fuse-open/hikr">here</a>.</p>
 
             </div>
             <div class="d-none d-sm-block col-md-3 d-xl-3 toc-content">
