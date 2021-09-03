@@ -39,4 +39,17 @@ $(document).ready(function() {
         $(".main-content").css({zIndex: 'unset'})
     })
 
+    // default hide advance uno props and methods
+    $('.is-advanced').css('display', 'none');
+    $('.only-advanced-items').css('display', 'none');
+
+    $(".advance-items").change(function() {
+        let show = 'none';
+        if(this.checked) {
+            show = 'block';
+        }
+        $('.is-advanced').css('display', show);
+        $('.only-advanced-items').css('display', show);
+    });
+
 });
