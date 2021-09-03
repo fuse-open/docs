@@ -252,6 +252,7 @@ namespace Builder.Services
             }
 
             state.AppendString($"</dl>");
+            state.AppendString($"<input class=\"advance-items\" type=\"checkbox\"><span class=\"advance-items-label\">Show Uno properties and methods</span>");
             state.AppendString($"</section>");
         }
 
