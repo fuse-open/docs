@@ -252,7 +252,6 @@ namespace Builder.Services
             }
 
             state.AppendString($"</dl>");
-            state.AppendString($"<input class=\"advance-items\" type=\"checkbox\"><span class=\"advance-items-label\">Show Uno properties and methods</span>");
             state.AppendString($"</section>");
         }
 
@@ -383,6 +382,7 @@ namespace Builder.Services
             if (state.Document.TableOfContents.Count == 0) return;
 
             state.AppendString($"<section class=\"table-of-contents\">");
+            state.AppendString($"<input class=\"advance-items\" type=\"checkbox\"><span class=\"advance-items-label\">Show Uno properties and methods</span>");
 
             if (state.Document.Entity.Id.Type == "Namespace" || state.Document.Entity.Id.Type == "Root")
             {
