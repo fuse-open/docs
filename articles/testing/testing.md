@@ -27,7 +27,7 @@ Pure JavaScript tests are also possible using `JavaScriptTest`:
 
 To run your tests, open a command-line shell and execute the following:
 
-```sh
+```s
 uno test <path-to-unoproj>
 ```
 

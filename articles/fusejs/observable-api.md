@@ -18,13 +18,13 @@ When the `.value` property is set, all subscribers are notified.
 
 If we want to use the observable as a list of values, we manipulate it using methods like `.add(item)` and `.remove(item)`.
 We can also query the number of values in the list through the `.length` property:
-
+```js
 	var friends = Observable("Jake", "Jane", "Joe");
 	console.log(friends.length); // prints 3
 
 	friends.add("Gina");
 	console.log(friends.length); // prints 4
-
+```
 See the full list of members to see what's possible with observable lists.
 
 #### Data types with Observables

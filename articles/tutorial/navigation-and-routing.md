@@ -156,9 +156,9 @@ module.exports = {
 Finally, we'll update the reference to it in `HomePage.ux`:
 
 ```xml
-			<Each Items="{hikes}">
-				<Button Text="{name}" Clicked="{goToHike}" />
-			</Each>
+<Each Items="{hikes}">
+	<Button Text="{name}" Clicked="{goToHike}" />
+</Each>
 ```
 
 That's better! Now we can save these files, and we're ready to go back to `HomePage.js` and fill in our `goToHike` function!
@@ -209,9 +209,9 @@ First, we'll need to add a @Router dependency to `EditHikePage`, just like we di
 And in `MainView.ux`, we'll satisfy that dependency:
 
 ```xml
-		<Navigator DefaultPath="home">
-			<HomePage ux:Template="home" router="router" />
-			<EditHikePage ux:Template="editHike" router="router" />
+<Navigator DefaultPath="home">
+	<HomePage ux:Template="home" router="router" />
+	<EditHikePage ux:Template="editHike" router="router" />
 ```
 
 Easy enough! Let's save these files, and then we'll head back to `EditHikePage.ux` and create a simple back button at the bottom, like so:

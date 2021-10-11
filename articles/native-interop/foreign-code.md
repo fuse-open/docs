@@ -155,13 +155,13 @@ You may want to declare your objects some time in your class...
 
 For Objective-C:
 
-```
+```cs
 extern(iOS) ObjC.Object _objcObject;
 ```
 
 For Java:
 
-```
+```cs
 extern(Android) Java.Object _javaObject;
 ```
 
@@ -361,7 +361,7 @@ We can also pass Uno `Action`s to Java. Since Java delegates don't support primi
 
 The type conversions follow this pattern:
 
-```
+```cs
 Action -> com.foreign.Uno.Action
 Action<int> -> com.foreign.Uno.Action_int
 Action<int[],int> -> com.foreign.Uno.Action_IntArray_int

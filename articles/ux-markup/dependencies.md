@@ -27,7 +27,7 @@ We can declare a dependency in our component using the `ux:Dependency` attribute
 			}
 			
 			module.exports = { clicked: clicked };
-		<JavaScript>
+		</JavaScript>
 		
 		<Clicked>
 			<Callback Handler="{clicked}">

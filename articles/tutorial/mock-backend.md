@@ -85,7 +85,7 @@ All in all, using `Promise`s, we've arrived at a fairly good approximation of wh
 
 Before we start implementing our mock backend, we'll want to talk about how we'll organize our JavaScript moving forward. Currently, we only have one standalone JS module in our project (besides our view models of course), and that's our `hikes.js` file. Since we'll be adding some more modules, we'll want to make sure we keep our project nice and organized. Similar to our `Pages` folder, where we placed all of our files pertaining to the different pages in our app, let's create a `Modules` folder at the root of our project where we'll place all of our standalone JS modules:
 
-```sh
+```s
 .
 |- MainView.ux
 |- Modules
@@ -277,7 +277,7 @@ As I mentioned earler, we _could_ have our view models interact with our mock ba
 
 To create our `Context` module, we'll start by making a new file in our `Modules` directory called `Context.js`:
 
-```sh
+```s
 .
 |- MainView.ux
 |- Modules
@@ -394,11 +394,11 @@ We'll start with the `Save` button. This button will be almost identical to the 
 First, in `Pages/EditHikePage.ux`, we'll change both the text of our button and its clicked handler:
 
 ```xml
-			<Text>Comments:</Text>
-			<TextView Value="{comments}" TextWrapping="Wrap" />
+	<Text>Comments:</Text>
+	<TextView Value="{comments}" TextWrapping="Wrap" />
 
-			<Button Text="Save" Clicked="{save}" />
-		</StackPanel>
+	<Button Text="Save" Clicked="{save}" />
+</StackPanel>
 ```
 
 Next, in `Pages/EditHikePage.js`, we'll rename the `goBack` handler to `save`:
@@ -433,9 +433,9 @@ Great! Now our `Save` button should be all hooked up. Now, let's implement the `
 We'll first add the UX code for the button in `Pages/EditHikePage.ux` right beneath the code we just wrote for our `Save` button:
 
 ```xml
-			<Button Text="Save" Clicked="{save}" />
-			<Button Text="Cancel" Clicked="{cancel}" />
-		</StackPanel>
+	<Button Text="Save" Clicked="{save}" />
+	<Button Text="Cancel" Clicked="{cancel}" />
+</StackPanel>
 ```
 
 Next, we'll add an empty `cancel` function and export it in `Pages/EditHikePage.js`:
