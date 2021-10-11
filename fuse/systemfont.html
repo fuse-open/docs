@@ -705,20 +705,20 @@ By using this we can save space by not bundling fonts that are known to be avail
 <p>Returns the default font if no matching font is found.</p>
 <h4 id="example">Example</h4>
 <p>The following example shows how to use a bold font from the Baskerville font family:</p>
-<pre><code>&lt;SystemFont Family=&quot;Baskerville&quot; Style=&quot;Normal&quot; Weight=&quot;Bold&quot; ux:Global=&quot;BaskervilleBold&quot; /&gt;
-&lt;Text Font=&quot;BaskervilleBold&quot;&gt;Hello, world!&lt;/Text&gt;
+<pre><code class="language-xml">    &lt;SystemFont Family=&quot;Baskerville&quot; Style=&quot;Normal&quot; Weight=&quot;Bold&quot; ux:Global=&quot;BaskervilleBold&quot; /&gt;
+    &lt;Text Font=&quot;BaskervilleBold&quot;&gt;Hello, world!&lt;/Text&gt;
 </code></pre>
 <p>Android typically uses abstract font families (e.g. <code>sans-serif</code>),
 whereas iOS uses concrete (e.g. <code>Helvetica Neue</code>), so it is often the case that
 we want to specify different font families that are depending on the target. To do this,
 we can use local resources:</p>
-<pre><code>&lt;Android&gt;
-    &lt;SystemFont Family=&quot;monospace&quot; Style=&quot;Normal&quot; Weight=&quot;Normal&quot; ux:Key=&quot;Monospace&quot; /&gt;
-&lt;/Android&gt;
-&lt;iOS&gt;
-    &lt;SystemFont Family=&quot;Courier&quot; Style=&quot;Normal&quot; Weight=&quot;Normal&quot; ux:Key=&quot;Monospace&quot; /&gt;
-&lt;/iOS&gt;
-&lt;Text Font=&quot;{Resource Monospace}&quot;&gt;Hello, world!&lt;/Text&gt;
+<pre><code class="language-xml">    &lt;Android&gt;
+        &lt;SystemFont Family=&quot;monospace&quot; Style=&quot;Normal&quot; Weight=&quot;Normal&quot; ux:Key=&quot;Monospace&quot; /&gt;
+    &lt;/Android&gt;
+    &lt;iOS&gt;
+        &lt;SystemFont Family=&quot;Courier&quot; Style=&quot;Normal&quot; Weight=&quot;Normal&quot; ux:Key=&quot;Monospace&quot; /&gt;
+    &lt;/iOS&gt;
+    &lt;Text Font=&quot;{Resource Monospace}&quot;&gt;Hello, world!&lt;/Text&gt;
 </code></pre>
 <p>Note that this only works on iOS and Android, and that it is not guaranteed to
 be consistent across devices, OSes, or OS versions.</p>

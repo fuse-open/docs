@@ -706,32 +706,30 @@ Show advanced things
 <p>When interacting with an element, it is sometimes desirable to be able to differentiate which elements can be interacted with and how. This is typically referred to as &quot;hit testing&quot;. In Fuse, how elements interact with user input can be set using <code>HitTestMode</code>.</p>
 <h5 id="example">Example</h5>
 <p>This example will layout two <code>Rectangle</code>s and add <code>Clicked</code>-triggers to both of them. However, only the left one will output anything when clicked, as the hit testing has been explicitly disabled on the right rectangle:</p>
-<pre><code>&lt;Grid ColumnCount=&quot;2&quot;&gt;
-	&lt;Rectangle Width=&quot;100&quot; Height=&quot;100&quot; Fill=&quot;#808&quot; &gt;
-		&lt;Clicked&gt;
-			&lt;DebugAction Message=&quot;Clicked left&quot; /&gt;
-		&lt;/Clicked&gt;
-	&lt;/Rectangle&gt;
-	&lt;Rectangle Width=&quot;100&quot; Height=&quot;100&quot; Fill=&quot;#808&quot; HitTestMode=&quot;None&quot; &gt;
-		&lt;Clicked&gt;
-			&lt;DebugAction Message=&quot;Clicked right&quot; /&gt;
-		&lt;/Clicked&gt;
-	&lt;/Rectangle&gt;
-&lt;/Grid&gt;
+<pre><code class="language-xml">	&lt;Grid ColumnCount=&quot;2&quot;&gt;
+		&lt;Rectangle Width=&quot;100&quot; Height=&quot;100&quot; Fill=&quot;#808&quot; &gt;
+			&lt;Clicked&gt;
+				&lt;DebugAction Message=&quot;Clicked left&quot; /&gt;
+			&lt;/Clicked&gt;
+		&lt;/Rectangle&gt;
+		&lt;Rectangle Width=&quot;100&quot; Height=&quot;100&quot; Fill=&quot;#808&quot; HitTestMode=&quot;None&quot; &gt;
+			&lt;Clicked&gt;
+				&lt;DebugAction Message=&quot;Clicked right&quot; /&gt;
+			&lt;/Clicked&gt;
+		&lt;/Rectangle&gt;
+	&lt;/Grid&gt;
 </code></pre>
 <p>This can be very helpful if you have visual elements obscuring elements below it, where you want the lower elements respond to input.</p>
 <h4 id="cliptobounds">ClipToBounds</h4>
 <p>Normally, when laying out an element inside the other, the inner element can freely live outside the parent element:</p>
-<pre><code>&lt;Panel Width=&quot;100&quot; Height=&quot;100&quot;&gt;
-		&lt;Image Margin=&quot;-100&quot; File=&quot;Pictures/Picture1.jpg&quot;
-			StretchMode=&quot;UniformToFill&quot; /&gt;
-&lt;/Panel&gt;
+<pre><code class="language-xml">	&lt;Panel Width=&quot;100&quot; Height=&quot;100&quot;&gt;
+			&lt;Image Margin=&quot;-100&quot; File=&quot;Pictures/Picture1.jpg&quot; StretchMode=&quot;UniformToFill&quot; /&gt;
+	&lt;/Panel&gt;
 </code></pre>
 <p>This <code>Image</code> will appear to be 300pt wide and tall, as the <code>Panel</code> doesn't clip children to its bounds.</p>
 <p>If you intend to have the <code>Image</code> clip to its parent size, simply set <code>ClipToBounds=&quot;true&quot;</code> on the <code>Panel</code>:</p>
-<pre><code>	&lt;Panel Width=&quot;100&quot; Height=&quot;100&quot; ClipToBounds=&quot;true&quot;&gt;
-		&lt;Image Margin=&quot;-100&quot; File=&quot;Pictures/Picture1.jpg&quot;
-			StretchMode=&quot;UniformToFill&quot; /&gt;
+<pre><code class="language-xml">	&lt;Panel Width=&quot;100&quot; Height=&quot;100&quot; ClipToBounds=&quot;true&quot;&gt;
+		&lt;Image Margin=&quot;-100&quot; File=&quot;Pictures/Picture1.jpg&quot; StretchMode=&quot;UniformToFill&quot; /&gt;
 	&lt;/Panel&gt;
 </code></pre>
 <p>Now, the <code>Image</code> will not overflow the bounds of the <code>Panel</code>.</p>
@@ -739,15 +737,15 @@ Show advanced things
 <p>You can set the transparency of objects using the <code>Opacity</code>-property. When <code>Opacity=&quot;0&quot;</code>, the element is completely transparent.</p>
 <h5 id="example">Example</h5>
 <p>In this example, a panel's opacity is set to 0.5</p>
-<pre><code>&lt;Panel&gt;
-	&lt;Opacity Value=&quot;0.5&quot; /&gt;
-&lt;/Panel&gt;
+<pre><code class="language-xml">	&lt;Panel&gt;
+		&lt;Opacity Value=&quot;0.5&quot; /&gt;
+	&lt;/Panel&gt;
 </code></pre>
 <h4 id="layers">Layers</h4>
 <p>It is often helpful to redefine what existing controls should look like. Elements that are added to containers can be assigned to different layers. If you want a button to appear with a red background, you can redefine its <code>Background</code> <code>Layer</code>:</p>
-<pre><code>&lt;Button Text=&quot;Hello!&quot;&gt;
-	&lt;Rectangle Fill=&quot;#931&quot; Layer=&quot;Background&quot; /&gt;
-&lt;/Button&gt;
+<pre><code class="language-xml">	&lt;Button Text=&quot;Hello!&quot;&gt;
+		&lt;Rectangle Fill=&quot;#931&quot; Layer=&quot;Background&quot; /&gt;
+	&lt;/Button&gt;
 </code></pre>
 <p>This will not change the layout or behavior of the <a href="../../fuse/controls/button.html">Button</a>, but its appearance will change.</p>
 <h3 id="available-element-classes">Available Element classes</h3>
@@ -789,7 +787,9 @@ BackButton
 </h5>
 <div class="table-of-contents-item-brief">
 <p>A left-pointing arrow, used in navigation.
-<strong>Note:</strong> this component only provides visuals and does not actually perform navigation. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../../alive/backbutton.html"><i class="fa fa-ellipsis-h"></i></a></p>
+<strong>Note:</strong> this component only provides visuals and does not actually perform navigation.</p>
+<pre><code class="language-xml">    &lt;Router ux:Name=&quot;router&quot; /&gt; &lt;a href=&quot;../../alive/backbutton.html&quot; class=&quot;table-of-contents-item-has-more&quot; title=&quot;There is more information available for this entry&quot;&gt;&lt;i class=&quot;fa fa-ellipsis-h&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+</code></pre>
 
 </div>
 </article>
@@ -864,7 +864,20 @@ Bubble
 <span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
 </h5>
 <div class="table-of-contents-item-brief">
-<p>A bordered circle, generally used for profile images. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../../alive/bubble.html"><i class="fa fa-ellipsis-h"></i></a></p>
+<p>A bordered circle, generally used for profile images.</p>
+<pre><code class="language-xml">    &lt;Alive.Bubble&gt;
+        &lt;Alive.ImageFill File=&quot;Assets/image.jpg&quot; /&gt;
+    &lt;/Alive.Bubble&gt;
+</code></pre>
+<p><a href="../../alive/bubbles.html">Bubbles</a> displays a row of partially overlapping Bubbles.</p>
+<pre><code class="language-xml">    &lt;Alive.Bubbles&gt;
+        &lt;Each Items=&quot;{friends}&quot;&gt;
+            &lt;Alive.Bubble&gt;
+                &lt;Alive.ImageFill Url=&quot;{profileImageUrl}&quot; /&gt;
+            &lt;/Alive.Bubble&gt;
+        &lt;/Each&gt;
+    &lt;/Alive.Bubbles&gt;
+</code></pre>
 
 </div>
 </article>
@@ -877,7 +890,19 @@ Bubbles
 <span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
 </h5>
 <div class="table-of-contents-item-brief">
-<p>A row of partially overlapping <a href="../../alive/bubble.html">Bubbles</a>. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../../alive/bubbles.html"><i class="fa fa-ellipsis-h"></i></a></p>
+<p>A row of partially overlapping <a href="../../alive/bubble.html">Bubbles</a>.</p>
+<pre><code class="language-xml">    &lt;Alive.Bubbles&gt;
+        &lt;Alive.Bubble&gt;
+            &lt;Alive.ImageFill File=&quot;image1.jpg&quot; /&gt;
+        &lt;/Alive.Bubble&gt;
+        &lt;Alive.Bubble&gt;
+            &lt;Alive.ImageFill File=&quot;image2.jpg&quot; /&gt;
+        &lt;/Alive.Bubble&gt;
+        &lt;Alive.Bubble&gt;
+            &lt;Alive.ImageFill File=&quot;image3.jpg&quot; /&gt;
+        &lt;/Alive.Bubble&gt;
+    &lt;/Alive.Bubbles&gt;
+</code></pre>
 
 </div>
 </article>
@@ -934,7 +959,10 @@ CallToActionButton
 <span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
 </h5>
 <div class="table-of-contents-item-brief">
-<p>A call-to-action button that can optionally have a glowing outline. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../../alive/calltoactionbutton.html"><i class="fa fa-ellipsis-h"></i></a></p>
+<p>A call-to-action button that can optionally have a glowing outline.</p>
+<pre><code class="language-xml">    &lt;Alive.CallToActionButton Text=&quot;Buy now!&quot; /&gt;
+    &lt;Alive.CallToActionButton Text=&quot;Look at it glow!&quot; Glow=&quot;true&quot; /&gt;
+</code></pre>
 
 </div>
 </article>
@@ -957,7 +985,12 @@ Card
 </h5>
 <div class="table-of-contents-item-brief">
 <p>Cards are generally light. Thus, they have an implicit LightTheme by default.
-You can disable this behavior by using its base class, <a href="../../alive/themedcard.html">ThemedCard</a> instead. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../../alive/card.html"><i class="fa fa-ellipsis-h"></i></a></p>
+You can disable this behavior by using its base class, <a href="../../alive/themedcard.html">ThemedCard</a> instead.</p>
+<pre><code class="language-xml">    &lt;Alive.ThemedCard&gt;
+        &lt;Alive.DarkTheme /&gt;
+    &lt;/Alive.ThemedCard&gt;
+``` &lt;a href=&quot;../../alive/card.html&quot; class=&quot;table-of-contents-item-has-more&quot; title=&quot;There is more information available for this entry&quot;&gt;&lt;i class=&quot;fa fa-ellipsis-h&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+</code></pre>
 
 </div>
 </article>
@@ -970,7 +1003,14 @@ CardBody
 <span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
 </h5>
 <div class="table-of-contents-item-brief">
-<p>A <a href="../../fuse/controls/stackpanel.html">StackPanel</a> with the right margins and spacing for text content in a Card. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../../alive/cardbody.html"><i class="fa fa-ellipsis-h"></i></a></p>
+<p>A <a href="../../fuse/controls/stackpanel.html">StackPanel</a> with the right margins and spacing for text content in a Card.</p>
+<pre><code class="language-xml">    &lt;Alive.Card&gt;
+        &lt;Alive.CardBody&gt;
+            &lt;Alive.Title&gt;Lorem ipsum&lt;/Alive.Title&gt;
+            &lt;Alive.Body&gt;Lorem ipsum dolor sit amet...&lt;/Alive.Body&gt;
+        &lt;/Alive.CardBody&gt;
+    &lt;/Alive.Card&gt;
+</code></pre>
 
 </div>
 </article>
@@ -997,7 +1037,26 @@ Carousel
 <span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
 </h5>
 <div class="table-of-contents-item-brief">
-<p>A Carousel component with a depth-like effect. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../../alive/carousel.html"><i class="fa fa-ellipsis-h"></i></a></p>
+<p>A Carousel component with a depth-like effect.</p>
+<pre><code class="language-xml">    &lt;Alive.Carousel&gt;
+        &lt;Alive.CarouselPage&gt;
+            &lt;Alive.Card&gt;
+                &lt;Alive.ImageFill File=&quot;image11.jpg&quot; /&gt;
+            &lt;/Alive.Card&gt;
+        &lt;/Alive.CarouselPage&gt;
+        &lt;Alive.CarouselPage&gt;
+            &lt;Alive.Card&gt;
+                &lt;Alive.ImageFill File=&quot;image2.jpg&quot; /&gt;
+            &lt;/Alive.Card&gt;
+        &lt;/Alive.CarouselPage&gt;
+        &lt;Alive.CarouselPage&gt;
+            &lt;Alive.Card&gt;
+                &lt;Alive.ImageFill File=&quot;image3.jpg&quot; /&gt;
+            &lt;/Alive.Card&gt;
+        &lt;/Alive.CarouselPage&gt;
+    &lt;/Alive.Carousel&gt;
+``` &lt;a href=&quot;../../alive/carousel.html&quot; class=&quot;table-of-contents-item-has-more&quot; title=&quot;There is more information available for this entry&quot;&gt;&lt;i class=&quot;fa fa-ellipsis-h&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+</code></pre>
 
 </div>
 </article>
@@ -1011,7 +1070,25 @@ CarouselPage
 </h5>
 <div class="table-of-contents-item-brief">
 <p>A page in a <a href="../../alive/carousel.html">Carousel</a>.
-Provides no visuals, only animation. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../../alive/carouselpage.html"><i class="fa fa-ellipsis-h"></i></a></p>
+Provides no visuals, only animation.</p>
+<pre><code class="language-xml">    &lt;Alive.Carousel&gt;
+        &lt;Alive.CarouselPage&gt;
+            &lt;Alive.Card&gt;
+                &lt;Alive.ImageFill File=&quot;image11.jpg&quot; /&gt;
+            &lt;/Alive.Card&gt;
+        &lt;/Alive.CarouselPage&gt;
+        &lt;Alive.CarouselPage&gt;
+            &lt;Alive.Card&gt;
+                &lt;Alive.ImageFill File=&quot;image2.jpg&quot; /&gt;
+            &lt;/Alive.Card&gt;
+        &lt;/Alive.CarouselPage&gt;
+        &lt;Alive.CarouselPage&gt;
+            &lt;Alive.Card&gt;
+                &lt;Alive.ImageFill File=&quot;image3.jpg&quot; /&gt;
+            &lt;/Alive.Card&gt;
+        &lt;/Alive.CarouselPage&gt;
+    &lt;/Alive.Carousel&gt;
+</code></pre>
 
 </div>
 </article>
@@ -1051,7 +1128,10 @@ ColorBadge
 <span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
 </h5>
 <div class="table-of-contents-item-brief">
-<p>A horizontal rectangle, generally used to communicate category using color. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../../alive/colorbadge.html"><i class="fa fa-ellipsis-h"></i></a></p>
+<p>A horizontal rectangle, generally used to communicate category using color.</p>
+<pre><code class="language-xml">    &lt;Alive.ColorBadge Color=&quot;{Resource Alive.Blue}&quot; /&gt;
+</code></pre>
+<p>See also <a href="../../alive/donut.html">Donut</a>.</p>
 
 </div>
 </article>
@@ -1090,7 +1170,12 @@ ContentGradient
 <span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
 </h5>
 <div class="table-of-contents-item-brief">
-<p>A <a href="../../fuse/controls/rectangle.html">Rectangle</a> with a gradient fading out near the bottom of an element. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../../alive/contentgradient.html"><i class="fa fa-ellipsis-h"></i></a></p>
+<p>A <a href="../../fuse/controls/rectangle.html">Rectangle</a> with a gradient fading out near the bottom of an element.</p>
+<pre><code class="language-xml">    &lt;Panel&gt;
+        &lt;Alive.ContentGradient /&gt;
+        &lt;Image File=&quot;image.jpg&quot; /&gt;
+    &lt;/Panel&gt;
+</code></pre>
 
 </div>
 </article>
@@ -1142,7 +1227,10 @@ Donut
 <span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
 </h5>
 <div class="table-of-contents-item-brief">
-<p>A colored circle, generally used to communicate category. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../../alive/donut.html"><i class="fa fa-ellipsis-h"></i></a></p>
+<p>A colored circle, generally used to communicate category.</p>
+<pre><code class="language-xml">    &lt;Alive.Donut StrokeColor=&quot;{Resource Alive.Red}&quot; /&gt;
+</code></pre>
+<p>See also <a href="../../alive/colorbadge.html">ColorBadge</a></p>
 
 </div>
 </article>
@@ -1677,7 +1765,10 @@ RadarPlot
 <span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
 </h5>
 <div class="table-of-contents-item-brief">
-<p>A radar-style <a href="../../fuse/charting/plot.html">Plot</a> for a single data series of <em>exactly</em> six data points. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../../alive/radarplot.html"><i class="fa fa-ellipsis-h"></i></a></p>
+<p>A radar-style <a href="../../fuse/charting/plot.html">Plot</a> for a single data series of <em>exactly</em> six data points.</p>
+<pre><code class="language-xml">    &lt;JavaScript&gt;
+        var Observable = require(&quot;FuseJS/Observable&quot;); &lt;a href=&quot;../../alive/radarplot.html&quot; class=&quot;table-of-contents-item-has-more&quot; title=&quot;There is more information available for this entry&quot;&gt;&lt;i class=&quot;fa fa-ellipsis-h&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+</code></pre>
 
 </div>
 </article>
@@ -1972,7 +2063,19 @@ TabPageControl
 <span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
 </h5>
 <div class="table-of-contents-item-brief">
-<p>Combines a <a href="../../alive/tabbar.html">TabBar</a> and a <a href="../../fuse/controls/pagecontrol.html">PageControl</a>. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../../alive/tabpagecontrol.html"><i class="fa fa-ellipsis-h"></i></a></p>
+<p>Combines a <a href="../../alive/tabbar.html">TabBar</a> and a <a href="../../fuse/controls/pagecontrol.html">PageControl</a>.</p>
+<pre><code class="language-xml">    &lt;TabPageControl&gt;
+        &lt;Alive.TabPage Label=&quot;Page 1&quot;&gt;
+            &lt;!-- page content --&gt;
+        &lt;/Alive.TabPage&gt;
+        &lt;Alive.TabPage Label=&quot;Page 2&quot;&gt;
+            &lt;!-- page content --&gt;
+        &lt;/Alive.TabPage&gt;
+        &lt;Alive.TabPage Label=&quot;Page 3&quot;&gt;
+            &lt;!-- page content --&gt;
+        &lt;/Alive.TabPage&gt;
+    &lt;/TabPageControl&gt;
+</code></pre>
 
 </div>
 </article>
@@ -2125,7 +2228,11 @@ TitlePanel
 <span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
 </h5>
 <div class="table-of-contents-item-brief">
-<p>Displays a Title and SubTitle on top of the secondary background color. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../../alive/titlepanel.html"><i class="fa fa-ellipsis-h"></i></a></p>
+<p>Displays a Title and SubTitle on top of the secondary background color.</p>
+<pre><code class="language-xml">    &lt;Alive.TitlePanel
+        Title=&quot;Title&quot;
+        Subtitle=&quot;Subtitle&quot; /&gt;
+</code></pre>
 
 </div>
 </article>
@@ -2160,7 +2267,9 @@ UnderlineTitle
 <span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
 </h5>
 <div class="table-of-contents-item-brief">
-<p>A title with an underline that extends to the left. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../../alive/underlinetitle.html"><i class="fa fa-ellipsis-h"></i></a></p>
+<p>A title with an underline that extends to the left.</p>
+<pre><code class="language-xml">    &lt;Alive.UnderlineTitle Text=&quot;Hello, world&quot; /&gt;
+</code></pre>
 
 </div>
 </article>
@@ -2199,7 +2308,12 @@ Viewbox
 <span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
 </h5>
 <div class="table-of-contents-item-brief">
-<p>Forces the content (by scaling) to fit inside the available space. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../../fuse/controls/viewbox.html"><i class="fa fa-ellipsis-h"></i></a></p>
+<p>Forces the content (by scaling) to fit inside the available space.</p>
+<pre><code class="language-xml">    &lt;Viewbox&gt;
+        &lt;Rectangle Color=&quot;#808&quot; Width=&quot;200&quot; Height=&quot;100&quot; /&gt;
+    &lt;/Viewbox&gt;
+</code></pre>
+<p>This will maintain its aspect ratio of 2:1 while stretching the Rectangle to be the size of the Viewbox. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../../fuse/controls/viewbox.html"><i class="fa fa-ellipsis-h"></i></a></p>
 
 </div>
 </article>

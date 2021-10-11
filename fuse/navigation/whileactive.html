@@ -704,17 +704,17 @@ Show advanced things
 <p>The following example changes the value of a <a href="../../fuse/controls/text.html">Text</a> element to <code>Active</code> when the
 first page of a <a href="../../fuse/controls/pagecontrol.html">PageControl</a> is active. We set the <code>Threshold</code> high to make the
 change happen later when transitioning to the page.</p>
-<pre><code>&lt;PageControl&gt;
-    &lt;Page&gt;
-        &lt;Panel Alignment=&quot;Center&quot;&gt;
-            &lt;Text ux:Name=&quot;text&quot;&gt;Inactive&lt;/Text&gt;
-            &lt;WhileActive Threshold=&quot;0.9&quot;&gt;
-                &lt;Change text.Value=&quot;Active&quot; /&gt;
-            &lt;/WhileActive&gt;
-        &lt;/Panel&gt;
-    &lt;/Page&gt;
-    &lt;Page Background=&quot;Blue&quot; /&gt;
-&lt;/PageControl&gt;
+<pre><code class="language-xml">    &lt;PageControl&gt;
+        &lt;Page&gt;
+            &lt;Panel Alignment=&quot;Center&quot;&gt;
+                &lt;Text ux:Name=&quot;text&quot;&gt;Inactive&lt;/Text&gt;
+                &lt;WhileActive Threshold=&quot;0.9&quot;&gt;
+                    &lt;Change text.Value=&quot;Active&quot; /&gt;
+                &lt;/WhileActive&gt;
+            &lt;/Panel&gt;
+        &lt;/Page&gt;
+        &lt;Page Background=&quot;Blue&quot; /&gt;
+    &lt;/PageControl&gt;
 </code></pre>
 <p>The progress of this trigger for a page is calculated as <code>1 - distance_to_active</code>. So a page progress of 0 will map to <code>1</code> for this trigger, and anything more than <code>1</code> away from the active page will be <code>0</code>. For example, the <code>Threshold=&quot;0.9&quot;</code> in the above example means the trigger will become active when the page has been swiped 90% of the way to active, instead of waiting to 100%.</p>
 

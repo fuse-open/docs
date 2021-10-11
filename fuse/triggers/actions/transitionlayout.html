@@ -705,18 +705,18 @@ This can be used to do visual layout transitions without needing actual layout c
 The <a href="../../../fuse/triggers/layoutanimation.html">LayoutAnimation</a> will in turn be triggered by this action.</p>
 <h3 id="example">Example</h3>
 <p>This example demonstrates <code>TransitionLayout</code> in action when a button is clicked.</p>
-<pre><code>&lt;DockPanel&gt;
-    &lt;Panel Dock=&quot;Top&quot; Height=&quot;20&quot; ux:Name=&quot;originElement&quot; /&gt;
-    &lt;Button Height=&quot;100&quot; Dock=&quot;Bottom&quot; Text=&quot;Transition!&quot;&gt;
-        &lt;LayoutAnimation&gt;
-            &lt;Move X=&quot;1&quot; Y=&quot;1&quot; RelativeTo=&quot;WorldPositionChange&quot; Duration=&quot;1&quot; /&gt;
-            &lt;Resize X=&quot;1&quot; Y=&quot;1&quot; RelativeTo=&quot;SizeChange&quot; Duration=&quot;1&quot; /&gt;
-        &lt;/LayoutAnimation&gt;
-        &lt;Clicked&gt;
-            &lt;TransitionLayout From=&quot;originElement&quot; /&gt;
-        &lt;/Clicked&gt;
-    &lt;/Button&gt;
-&lt;/DockPanel&gt;
+<pre><code class="language-xml">    &lt;DockPanel&gt;
+        &lt;Panel Dock=&quot;Top&quot; Height=&quot;20&quot; ux:Name=&quot;originElement&quot; /&gt;
+        &lt;Button Height=&quot;100&quot; Dock=&quot;Bottom&quot; Text=&quot;Transition!&quot;&gt;
+            &lt;LayoutAnimation&gt;
+                &lt;Move X=&quot;1&quot; Y=&quot;1&quot; RelativeTo=&quot;WorldPositionChange&quot; Duration=&quot;1&quot; /&gt;
+                &lt;Resize X=&quot;1&quot; Y=&quot;1&quot; RelativeTo=&quot;SizeChange&quot; Duration=&quot;1&quot; /&gt;
+            &lt;/LayoutAnimation&gt;
+            &lt;Clicked&gt;
+                &lt;TransitionLayout From=&quot;originElement&quot; /&gt;
+            &lt;/Clicked&gt;
+        &lt;/Button&gt;
+    &lt;/DockPanel&gt;
 </code></pre>
 <p>When clicked, the <a href="../../../fuse/controls/button.html">Button</a> in this example will perform a transition over 1 second from the position and size of <code>originElement</code> (top edge of the <a href="../../../fuse/controls/dockpanel.html">DockPanel</a>) to its actual position and size (bottom edge of the <a href="../../../fuse/controls/dockpanel.html">DockPanel</a>).</p>
 

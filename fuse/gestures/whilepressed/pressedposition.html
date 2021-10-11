@@ -691,15 +691,15 @@ isn't active at the time of reading, this property returns <code>(0,0)</code>;</
 <p>This property does not emit changed events, it is only intended for snapshotting.</p>
 <p>This property is read-only. Writing to it does nothing.</p>
 <h4 id="example">Example</h4>
-<pre><code>&lt;Panel Color=&quot;Red&quot;&gt;
-    &lt;WhilePressed ux:Name=&quot;wpGesture&quot;&gt;
-        &lt;Rectangle ux:Name=&quot;rect&quot; Alignment=&quot;TopLeft&quot; Offset=&quot;{SnapshotProperty wpGesture.PressedPosition}&quot; Width=&quot;20&quot; Height=&quot;20&quot; Color=&quot;White&quot;&gt;
-            &lt;RemovingAnimation&gt;
-                &lt;Change rect.Opacity=&quot;0&quot; Duration=&quot;1&quot; /&gt;
-            &lt;/RemovingAnimation&gt;
-        &lt;/Rectangle&gt;
-    &lt;/WhilePressed&gt;
-&lt;/Panel&gt;
+<pre><code class="language-xml">    &lt;Panel Color=&quot;Red&quot;&gt;
+        &lt;WhilePressed ux:Name=&quot;wpGesture&quot;&gt;
+            &lt;Rectangle ux:Name=&quot;rect&quot; Alignment=&quot;TopLeft&quot; Offset=&quot;{SnapshotProperty wpGesture.PressedPosition}&quot; Width=&quot;20&quot; Height=&quot;20&quot; Color=&quot;White&quot;&gt;
+                &lt;RemovingAnimation&gt;
+                    &lt;Change rect.Opacity=&quot;0&quot; Duration=&quot;1&quot; /&gt;
+                &lt;/RemovingAnimation&gt;
+            &lt;/Rectangle&gt;
+        &lt;/WhilePressed&gt;
+    &lt;/Panel&gt;
 </code></pre>
 
 <section class="type-location type-location-leaf">

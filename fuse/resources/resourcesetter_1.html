@@ -702,14 +702,14 @@ Show advanced things
 </section>
 <p>Creates or overrides a resource with the given key.</p>
 <p>Note that static resources are better declared with <code>ux:Key</code>. The <code>ResourceSetter</code> types are to be used when a dynamic value is needed, or one that cannot be expressed with <code>ux:Key</code>.</p>
-<pre><code>&lt;Panel&gt;
-    &lt;string Value=&quot;Static Page Title&quot; ux:Key=&quot;Title&quot;/&gt;
-&lt;/Panel&gt;
-&lt;Each Items=&quot;{items}&quot;&gt;
-    &lt;Panel&gt;
-        &lt;ResourceString Key=&quot;Title&quot; Value=&quot;{pageTitle}&quot;/&gt;
+<pre><code class="language-xml">    &lt;Panel&gt;
+        &lt;string Value=&quot;Static Page Title&quot; ux:Key=&quot;Title&quot;/&gt;
     &lt;/Panel&gt;
-&lt;/Each&gt;
+    &lt;Each Items=&quot;{items}&quot;&gt;
+        &lt;Panel&gt;
+            &lt;ResourceString Key=&quot;Title&quot; Value=&quot;{pageTitle}&quot;/&gt;
+        &lt;/Panel&gt;
+    &lt;/Each&gt;
 </code></pre>
 <p>The resources created via <code>ResourceSetter</code> are local to where they are defined (this is also true of <code>ux:Key</code>). Bindings in this node, and its descendents, can bind to the them. Descendents may also provide a new resource with the same <code>Key</code>, which overrides it for that part of the UI tree.</p>
 

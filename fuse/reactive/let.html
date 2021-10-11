@@ -706,16 +706,16 @@ This entity is experimental and might be changed or removed in a future release.
 </section>
 <p>Binds an expression or value to a name in the data context. This simplifies repeated calculations and allows introduction of new variables.</p>
 <p>To introduce a new value:</p>
-<pre><code>&lt;Let ux:Name=&quot;a&quot; Value=&quot;5&quot;/&gt;
+<pre><code class="language-xml">    &lt;Let ux:Name=&quot;a&quot; Value=&quot;5&quot;/&gt;
 </code></pre>
 <p>The value is now part of the data context:</p>
-<pre><code>&lt;Slider Value=&quot;{a}&quot;/&gt;
+<pre><code class="language-xml">    &lt;Slider Value=&quot;{a}&quot;/&gt;
 </code></pre>
 <p>It can also be accessed directly outside of the context:</p>
-<pre><code>&lt;Slider Value=&quot;{Property a.Value}&quot;/&gt;
+<pre><code class="language-xml">    &lt;Slider Value=&quot;{Property a.Value}&quot;/&gt;
 </code></pre>
 <p>If you are using an expression it's recommended now to use <code>Expression</code> instead of <code>Value</code>:</p>
-<pre><code>&lt;Let ux:Name=&quot;p&quot; Expression=&quot;{pos} + 5&quot;/&gt;
+<pre><code class="language-xml">    &lt;Let ux:Name=&quot;p&quot; Expression=&quot;{pos} + 5&quot;/&gt;
 </code></pre>
 <p>This ensures proper propagation of undefined values.  (This is part of the reason this is an experimental API, since we don't really want to distinguish between Expression and Value, but have no choice at the moment).</p>
 <h4 id="lettype">LetType</h4>

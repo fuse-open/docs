@@ -707,42 +707,39 @@ Show advanced things
 for iOS add &quot;SystemCapabilities&quot;: { &quot;SignInWithApple&quot;:true }  in the unoproj file.</p>
 </blockquote>
 <h4 id="example">Example</h4>
-<pre><code>The following example shows how to use it:
+<p>The following example shows how to use it:</p>
+<pre><code class="language-javascript">    &lt;App&gt;
+        &lt;JavaScript&gt;
+            var Auth = require('useJS/Auth');
 
-    ```XML
-        &lt;App&gt;
-            &lt;JavaScript&gt;
-                var Auth = require('useJS/Auth');
-
-                function doSignIn() {
-                    Auth.signIn().then(function(result) {
-                        // result is json object containing these properties :
-                        // email -&gt; user email that has been sign in / sign up
-                        // firstName -&gt; User firstname
-                        // lastName -&gt; User Lastname
-                        // userId -&gt; User uniqe Id
-                    }, function (ex) {
-                        // failed login
-                    })
-                }
-                Auth.hasSignedIn().then(function (result) {
-                    if (result) {
-                        // user has already sign in
-                    }
+            function doSignIn() {
+                Auth.signIn().then(function(result) {
+                    // result is json object containing these properties :
+                    // email -&gt; user email that has been sign in / sign up
+                    // firstName -&gt; User firstname
+                    // lastName -&gt; User Lastname
+                    // userId -&gt; User uniqe Id
+                }, function (ex) {
+                    // failed login
                 })
-
-                module.exports = {
-                    doSignIn
+            }
+            Auth.hasSignedIn().then(function (result) {
+                if (result) {
+                    // user has already sign in
                 }
+            })
 
-            &lt;/JavaScript&gt;
-            &lt;Button Text=&quot;Sign In&quot;&gt;
-                &lt;Clicked&gt;
-                    &lt;Callback Handler=&quot;{doSignIn}&quot; /&gt;
-                &lt;/Clicked&gt;
-            &lt;/Button&gt;
-        &lt;/App
-    ```
+            module.exports = {
+                doSignIn
+            }
+
+        &lt;/JavaScript&gt;
+        &lt;Button Text=&quot;Sign In&quot;&gt;
+            &lt;Clicked&gt;
+                &lt;Callback Handler=&quot;{doSignIn}&quot; /&gt;
+            &lt;/Clicked&gt;
+        &lt;/Button&gt;
+    &lt;/App
 </code></pre>
 <blockquote>
 <p>When the callback handler is fired for the first time and the result object of <code>status</code> property is true, save those logged user information immediately to the server especially on iOS,

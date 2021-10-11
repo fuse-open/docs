@@ -702,17 +702,17 @@ Show advanced things
 <p>A trigger that is active while its parent <a href="../../fuse/controls/webview.html">WebView</a> is loading.</p>
 <h4 id="example">Example</h4>
 <p>The following example displays a loading indicator while the <a href="../../fuse/controls/webview.html">WebView</a> is loading a page.</p>
-<pre><code>&lt;NativeViewHost&gt;
-    &lt;Panel ux:Name=&quot;loadingIndicator&quot; Opacity=&quot;0&quot; Alignment=&quot;Bottom&quot; Color=&quot;#0006&quot;&gt;
-        &lt;Text Alignment=&quot;Center&quot; Margin=&quot;10&quot; Color=&quot;#fff&quot;&gt;Loading...&lt;/Text&gt;
-    &lt;/Panel&gt;
+<pre><code class="language-xml">    &lt;NativeViewHost&gt;
+        &lt;Panel ux:Name=&quot;loadingIndicator&quot; Opacity=&quot;0&quot; Alignment=&quot;Bottom&quot; Color=&quot;#0006&quot;&gt;
+            &lt;Text Alignment=&quot;Center&quot; Margin=&quot;10&quot; Color=&quot;#fff&quot;&gt;Loading...&lt;/Text&gt;
+        &lt;/Panel&gt;
 
-    &lt;WebView Url=&quot;https://example.com/&quot;&gt;
-        &lt;WhilePageLoading&gt;
-            &lt;Change loadingIndicator.Opacity=&quot;1&quot; Duration=&quot;0.2&quot; /&gt;
-        &lt;/WhilePageLoading&gt;
-    &lt;/WebView&gt;
-&lt;/NativeViewHost&gt;
+        &lt;WebView Url=&quot;https://example.com/&quot;&gt;
+            &lt;WhilePageLoading&gt;
+                &lt;Change loadingIndicator.Opacity=&quot;1&quot; Duration=&quot;0.2&quot; /&gt;
+            &lt;/WhilePageLoading&gt;
+        &lt;/WebView&gt;
+    &lt;/NativeViewHost&gt;
 </code></pre>
 
 <section class="type-location">

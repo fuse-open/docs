@@ -702,22 +702,22 @@ Show advanced things
 </section>
 <p>Binds to a resource with the key provided in a context variable. This allows selecting resources from <a href="../../fuse/reactive/javascript.html">JavaScript</a> by key name.</p>
 <p>In this example three different fonts are created as resources. The font is selected by name in the exported JavaScript items.</p>
-<pre><code>&lt;Font File=&quot;../../Assets/fonts/Roboto-Bold.ttf&quot; ux:Key=&quot;Bold&quot;/&gt;
-&lt;Font File=&quot;../../Assets/fonts/Roboto-Regular.ttf&quot; ux:Key=&quot;Regular&quot;/&gt;
-&lt;Font File=&quot;../../Assets/fonts/Roboto-Italic.ttf&quot; ux:Key=&quot;Italic&quot;/&gt;
+<pre><code class="language-xml">    &lt;Font File=&quot;../../Assets/fonts/Roboto-Bold.ttf&quot; ux:Key=&quot;Bold&quot;/&gt;
+    &lt;Font File=&quot;../../Assets/fonts/Roboto-Regular.ttf&quot; ux:Key=&quot;Regular&quot;/&gt;
+    &lt;Font File=&quot;../../Assets/fonts/Roboto-Italic.ttf&quot; ux:Key=&quot;Italic&quot;/&gt;
 
-&lt;JavaScript&gt;
-    exports.items = [
-        { font: &quot;Bold&quot; },
-        { font: &quot;Regular&quot; },
-        { font: &quot;Italic&quot; },
-    ]
-&lt;/JavaScript&gt;
-&lt;StackPanel&gt;
-    &lt;Each Items=&quot;{items}&quot;&gt;
-        &lt;Text Value=&quot;Sample Text&quot; Font=&quot;{DataToResource font}&quot;/&gt;
-    &lt;/Each&gt;
-&lt;/StackPanel&gt;
+    &lt;JavaScript&gt;
+        exports.items = [
+            { font: &quot;Bold&quot; },
+            { font: &quot;Regular&quot; },
+            { font: &quot;Italic&quot; },
+        ]
+    &lt;/JavaScript&gt;
+    &lt;StackPanel&gt;
+        &lt;Each Items=&quot;{items}&quot;&gt;
+            &lt;Text Value=&quot;Sample Text&quot; Font=&quot;{DataToResource font}&quot;/&gt;
+        &lt;/Each&gt;
+    &lt;/StackPanel&gt;
 </code></pre>
 <p><code>{DataToResource variableKey}</code> is similar to <code>{Resource key}</code>, except it allows a variable key name instead of a static one.</p>
 

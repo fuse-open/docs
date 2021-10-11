@@ -705,45 +705,40 @@ navigate to the bookmark specified by the <code>Bookmark</code> property in thei
 as it does not check if there is anything to go back to, meaning it can generate errors.</p>
 <p>In the following example, we demonstrate <code>NavigatorSwipe</code> being used on both a <code>Navigator</code>, and navigated pages. Some navigation rules are set up:</p>
 <ul>
-<li>
-<p>Swiping up while on the blue panel will go to a bookmark pointing to the indigo page.</p>
-</li>
-<li>
-<p>Swiping up while on the indigo page will navigate you to the red page.</p>
-</li>
-<li>
-<p>Swiping down on any page will go back to the previous page.</p>
- <panel>
-     <router ux:name="router"></router>
-<pre><code> &lt;JavaScript&gt;
-     router.bookmark({
-         name: &quot;indigo&quot;,
-         path: [ &quot;indigoPanel&quot;, { } ]
-     });
-     router.bookmark({
-         name: &quot;red&quot;,
-         path: [ &quot;redPanel&quot;, { } ]
-     });
- &lt;/JavaScript&gt;
-
- &lt;DockPanel ux:Class=&quot;NamedPanel&quot;&gt;
-     &lt;string ux:Property=&quot;Title&quot; /&gt;
-     &lt;Text Value=&quot;{Property Title}&quot; FontSize=&quot;30&quot; Alignment=&quot;TopCenter&quot; Margin=&quot;20&quot; /&gt;
- &lt;/DockPanel&gt;
- &lt;Navigator DefaultPath=&quot;bluePanel&quot;&gt;
-     &lt;NamedPanel Title=&quot;Blue panel&quot; ux:Template=&quot;bluePanel&quot; Color=&quot;#2196F3&quot;&gt;
-         &lt;NavigatorSwipe How=&quot;PushBookmark&quot; Bookmark=&quot;indigo&quot; Direction=&quot;Up&quot;/&gt;
-     &lt;/NamedPanel&gt;
-     &lt;NamedPanel Title=&quot;Red panel&quot; ux:Template=&quot;redPanel&quot; Color=&quot;#F44336&quot; /&gt;
-     &lt;NamedPanel Title=&quot;Indigo panel&quot; ux:Template=&quot;indigoPanel&quot; Color=&quot;#3F51B5&quot;&gt;
-         &lt;NavigatorSwipe How=&quot;PushBookmark&quot; Bookmark=&quot;red&quot; Direction=&quot;Up&quot;/&gt;
-     &lt;/NamedPanel&gt;
-     &lt;NavigatorSwipe How=&quot;Back&quot; Direction=&quot;Down&quot;/&gt;
- &lt;/Navigator&gt;
-</code></pre>
- </panel>
-</li>
+<li>Swiping up while on the blue panel will go to a bookmark pointing to the indigo page.</li>
+<li>Swiping up while on the indigo page will navigate you to the red page.</li>
+<li>Swiping down on any page will go back to the previous page.</li>
 </ul>
+<pre><code class="language-xml">    &lt;Panel&gt;
+        &lt;Router ux:Name=&quot;router&quot; /&gt;
+
+        &lt;JavaScript&gt;
+            router.bookmark({
+                name: &quot;indigo&quot;,
+                path: [ &quot;indigoPanel&quot;, { } ]
+            });
+            router.bookmark({
+                name: &quot;red&quot;,
+                path: [ &quot;redPanel&quot;, { } ]
+            });
+        &lt;/JavaScript&gt;
+
+        &lt;DockPanel ux:Class=&quot;NamedPanel&quot;&gt;
+            &lt;string ux:Property=&quot;Title&quot; /&gt;
+            &lt;Text Value=&quot;{Property Title}&quot; FontSize=&quot;30&quot; Alignment=&quot;TopCenter&quot; Margin=&quot;20&quot; /&gt;
+        &lt;/DockPanel&gt;
+        &lt;Navigator DefaultPath=&quot;bluePanel&quot;&gt;
+            &lt;NamedPanel Title=&quot;Blue panel&quot; ux:Template=&quot;bluePanel&quot; Color=&quot;#2196F3&quot;&gt;
+                &lt;NavigatorSwipe How=&quot;PushBookmark&quot; Bookmark=&quot;indigo&quot; Direction=&quot;Up&quot;/&gt;
+            &lt;/NamedPanel&gt;
+            &lt;NamedPanel Title=&quot;Red panel&quot; ux:Template=&quot;redPanel&quot; Color=&quot;#F44336&quot; /&gt;
+            &lt;NamedPanel Title=&quot;Indigo panel&quot; ux:Template=&quot;indigoPanel&quot; Color=&quot;#3F51B5&quot;&gt;
+                &lt;NavigatorSwipe How=&quot;PushBookmark&quot; Bookmark=&quot;red&quot; Direction=&quot;Up&quot;/&gt;
+            &lt;/NamedPanel&gt;
+            &lt;NavigatorSwipe How=&quot;Back&quot; Direction=&quot;Down&quot;/&gt;
+        &lt;/Navigator&gt;
+    &lt;/Panel&gt;
+</code></pre>
 
 <section class="type-location">
 <h3 id="section-location">Location</h3>

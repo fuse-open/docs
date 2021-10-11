@@ -705,27 +705,27 @@ Show advanced things
 This means that using <code>ZOffset</code> can still cause this <a href="../../../fuse/controls/graphics/visual.html">Visual</a> to be rendered on top of its siblings.</p>
 </blockquote>
 <h4 id="example">Example</h4>
-<pre><code>&lt;ScrollView&gt;
-    &lt;Grid Rows=&quot;400, 1*&quot; Margin=&quot;10&quot;&gt;
-        &lt;Panel&gt;
-            &lt;TextBlock ux:Name=&quot;textInFront&quot; Alignment=&quot;Center&quot; FontSize=&quot;20&quot; Color=&quot;#fff&quot;&gt;I'll be sent to the back!&lt;/TextBlock&gt;
-            &lt;Rectangle Margin=&quot;10&quot; CornerRadius=&quot;4&quot; ux:Name=&quot;topRect&quot;&gt;
-                &lt;LinearGradient&gt;
-                    &lt;GradientStop Offset=&quot;0&quot; Color=&quot;#a542db&quot; /&gt;
-                    &lt;GradientStop Offset=&quot;1&quot; Color=&quot;#3579e6&quot; /&gt;
-                &lt;/LinearGradient&gt;
+<pre><code class="language-xml">    &lt;ScrollView&gt;
+        &lt;Grid Rows=&quot;400, 1*&quot; Margin=&quot;10&quot;&gt;
+            &lt;Panel&gt;
+                &lt;TextBlock ux:Name=&quot;textInFront&quot; Alignment=&quot;Center&quot; FontSize=&quot;20&quot; Color=&quot;#fff&quot;&gt;I'll be sent to the back!&lt;/TextBlock&gt;
+                &lt;Rectangle Margin=&quot;10&quot; CornerRadius=&quot;4&quot; ux:Name=&quot;topRect&quot;&gt;
+                    &lt;LinearGradient&gt;
+                        &lt;GradientStop Offset=&quot;0&quot; Color=&quot;#a542db&quot; /&gt;
+                        &lt;GradientStop Offset=&quot;1&quot; Color=&quot;#3579e6&quot; /&gt;
+                    &lt;/LinearGradient&gt;
+                &lt;/Rectangle&gt;
+            &lt;/Panel&gt;
+            &lt;Rectangle Margin=&quot;10&quot;&gt;
+                &lt;Stroke Offset=&quot;4&quot; Width=&quot;1&quot; Color=&quot;#3579e6&quot; /&gt;
+                &lt;Button Text=&quot;Send element to back&quot; Alignment=&quot;Bottom&quot;&gt;
+                    &lt;Clicked&gt;
+                        &lt;SendToBack Target=&quot;textInFront&quot; /&gt;
+                    &lt;/Clicked&gt;
+                &lt;/Button&gt;
             &lt;/Rectangle&gt;
-        &lt;/Panel&gt;
-        &lt;Rectangle Margin=&quot;10&quot;&gt;
-            &lt;Stroke Offset=&quot;4&quot; Width=&quot;1&quot; Color=&quot;#3579e6&quot; /&gt;
-            &lt;Button Text=&quot;Send element to back&quot; Alignment=&quot;Bottom&quot;&gt;
-                &lt;Clicked&gt;
-                    &lt;SendToBack Target=&quot;textInFront&quot; /&gt;
-                &lt;/Clicked&gt;
-            &lt;/Button&gt;
-        &lt;/Rectangle&gt;
-    &lt;/Grid&gt;
-&lt;/ScrollView&gt;
+        &lt;/Grid&gt;
+    &lt;/ScrollView&gt;
 </code></pre>
 
 <section class="type-location">

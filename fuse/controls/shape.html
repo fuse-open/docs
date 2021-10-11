@@ -703,25 +703,25 @@ Show advanced things
 <p>Shape is the baseclass for all shapes in fuse. A shape can have Fills and Strokes.
 By default a shape does not have a size, fills or strokes. You must add some for it to be visible.</p>
 <h4 id="example">Example:</h4>
-<pre><code>&lt;Rectangle Width=&quot;200&quot; Height=&quot;100&quot; CornerRadius=&quot;16&quot;&gt;
-    &lt;LinearGradient&gt;
-        &lt;GradientStop Offset=&quot;0&quot; Color=&quot;#0ee&quot; /&gt;
-        &lt;GradientStop Offset=&quot;1&quot; Color=&quot;#e0e&quot; /&gt;
-    &lt;/LinearGradient&gt;
-    &lt;Stroke Width=&quot;2&quot;&gt;
-        &lt;SolidColor Color=&quot;#000&quot; /&gt;
-    &lt;/Stroke&gt;
-&lt;/Rectangle&gt;
+<pre><code class="language-xml">    &lt;Rectangle Width=&quot;200&quot; Height=&quot;100&quot; CornerRadius=&quot;16&quot;&gt;
+        &lt;LinearGradient&gt;
+            &lt;GradientStop Offset=&quot;0&quot; Color=&quot;#0ee&quot; /&gt;
+            &lt;GradientStop Offset=&quot;1&quot; Color=&quot;#e0e&quot; /&gt;
+        &lt;/LinearGradient&gt;
+        &lt;Stroke Width=&quot;2&quot;&gt;
+            &lt;SolidColor Color=&quot;#000&quot; /&gt;
+        &lt;/Stroke&gt;
+    &lt;/Rectangle&gt;
 
-&lt;Circle Width=&quot;200&quot; Height=&quot;100&quot; &gt;
-    &lt;LinearGradient&gt;
-        &lt;GradientStop Offset=&quot;0&quot; Color=&quot;#cf0&quot; /&gt;
-        &lt;GradientStop Offset=&quot;1&quot; Color=&quot;#f40&quot; /&gt;
-    &lt;/LinearGradient&gt;
-    &lt;Stroke Width=&quot;1&quot;&gt;
-        &lt;SolidColor Color=&quot;#000&quot; /&gt;
-    &lt;/Stroke&gt;
-&lt;/Circle&gt;
+    &lt;Circle Width=&quot;200&quot; Height=&quot;100&quot; &gt;
+        &lt;LinearGradient&gt;
+            &lt;GradientStop Offset=&quot;0&quot; Color=&quot;#cf0&quot; /&gt;
+            &lt;GradientStop Offset=&quot;1&quot; Color=&quot;#f40&quot; /&gt;
+        &lt;/LinearGradient&gt;
+        &lt;Stroke Width=&quot;1&quot;&gt;
+            &lt;SolidColor Color=&quot;#000&quot; /&gt;
+        &lt;/Stroke&gt;
+    &lt;/Circle&gt;
 </code></pre>
 <h4 id="available-shape-classes">Available Shape classes:</h4>
 <section class="table-of-contents">
@@ -748,7 +748,20 @@ Bubble
 <span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
 </h5>
 <div class="table-of-contents-item-brief">
-<p>A bordered circle, generally used for profile images. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../../alive/bubble.html"><i class="fa fa-ellipsis-h"></i></a></p>
+<p>A bordered circle, generally used for profile images.</p>
+<pre><code class="language-xml">    &lt;Alive.Bubble&gt;
+        &lt;Alive.ImageFill File=&quot;Assets/image.jpg&quot; /&gt;
+    &lt;/Alive.Bubble&gt;
+</code></pre>
+<p><a href="../../alive/bubbles.html">Bubbles</a> displays a row of partially overlapping Bubbles.</p>
+<pre><code class="language-xml">    &lt;Alive.Bubbles&gt;
+        &lt;Each Items=&quot;{friends}&quot;&gt;
+            &lt;Alive.Bubble&gt;
+                &lt;Alive.ImageFill Url=&quot;{profileImageUrl}&quot; /&gt;
+            &lt;/Alive.Bubble&gt;
+        &lt;/Each&gt;
+    &lt;/Alive.Bubbles&gt;
+</code></pre>
 
 </div>
 </article>
@@ -761,7 +774,10 @@ CallToActionButton
 <span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
 </h5>
 <div class="table-of-contents-item-brief">
-<p>A call-to-action button that can optionally have a glowing outline. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../../alive/calltoactionbutton.html"><i class="fa fa-ellipsis-h"></i></a></p>
+<p>A call-to-action button that can optionally have a glowing outline.</p>
+<pre><code class="language-xml">    &lt;Alive.CallToActionButton Text=&quot;Buy now!&quot; /&gt;
+    &lt;Alive.CallToActionButton Text=&quot;Look at it glow!&quot; Glow=&quot;true&quot; /&gt;
+</code></pre>
 
 </div>
 </article>
@@ -775,7 +791,12 @@ Card
 </h5>
 <div class="table-of-contents-item-brief">
 <p>Cards are generally light. Thus, they have an implicit LightTheme by default.
-You can disable this behavior by using its base class, <a href="../../alive/themedcard.html">ThemedCard</a> instead. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../../alive/card.html"><i class="fa fa-ellipsis-h"></i></a></p>
+You can disable this behavior by using its base class, <a href="../../alive/themedcard.html">ThemedCard</a> instead.</p>
+<pre><code class="language-xml">    &lt;Alive.ThemedCard&gt;
+        &lt;Alive.DarkTheme /&gt;
+    &lt;/Alive.ThemedCard&gt;
+``` &lt;a href=&quot;../../alive/card.html&quot; class=&quot;table-of-contents-item-has-more&quot; title=&quot;There is more information available for this entry&quot;&gt;&lt;i class=&quot;fa fa-ellipsis-h&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+</code></pre>
 
 </div>
 </article>
@@ -815,7 +836,10 @@ ColorBadge
 <span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
 </h5>
 <div class="table-of-contents-item-brief">
-<p>A horizontal rectangle, generally used to communicate category using color. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../../alive/colorbadge.html"><i class="fa fa-ellipsis-h"></i></a></p>
+<p>A horizontal rectangle, generally used to communicate category using color.</p>
+<pre><code class="language-xml">    &lt;Alive.ColorBadge Color=&quot;{Resource Alive.Blue}&quot; /&gt;
+</code></pre>
+<p>See also <a href="../../alive/donut.html">Donut</a>.</p>
 
 </div>
 </article>
@@ -828,7 +852,12 @@ ContentGradient
 <span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
 </h5>
 <div class="table-of-contents-item-brief">
-<p>A <a href="../../fuse/controls/rectangle.html">Rectangle</a> with a gradient fading out near the bottom of an element. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../../alive/contentgradient.html"><i class="fa fa-ellipsis-h"></i></a></p>
+<p>A <a href="../../fuse/controls/rectangle.html">Rectangle</a> with a gradient fading out near the bottom of an element.</p>
+<pre><code class="language-xml">    &lt;Panel&gt;
+        &lt;Alive.ContentGradient /&gt;
+        &lt;Image File=&quot;image.jpg&quot; /&gt;
+    &lt;/Panel&gt;
+</code></pre>
 
 </div>
 </article>
@@ -854,7 +883,10 @@ Donut
 <span class="table-of-contents-item-language table-of-contents-item-language-uno">uno</span>
 </h5>
 <div class="table-of-contents-item-brief">
-<p>A colored circle, generally used to communicate category. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../../alive/donut.html"><i class="fa fa-ellipsis-h"></i></a></p>
+<p>A colored circle, generally used to communicate category.</p>
+<pre><code class="language-xml">    &lt;Alive.Donut StrokeColor=&quot;{Resource Alive.Red}&quot; /&gt;
+</code></pre>
+<p>See also <a href="../../alive/colorbadge.html">ColorBadge</a></p>
 
 </div>
 </article>

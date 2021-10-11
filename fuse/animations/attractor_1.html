@@ -703,13 +703,15 @@ Show advanced things
 <p>Instead of animating a property directly, an attractors act as an intermediary between an animator
 and its target. It will continuously animate its target towards its <code>Value</code> using a simple form
 of physics simulation. We can combine this behavior with animation by animating the attractor's <code>Value</code> property.</p>
-   <panel ux:name="somePanel">
-       <translation ux:name="someTranslation"></translation>
-       <attractor ux:name="someAttractor" target="someTranslation.X"></attractor>
-       <whilepressed>
-           <change someattractor.value="100"></change>
-       </whilepressed>
-   </panel>
+<pre><code class="language-xml">   &lt;Panel ux:Name=&quot;somePanel&quot;&gt;
+       &lt;Translation ux:Name=&quot;someTranslation&quot;/&gt;
+       &lt;Attractor ux:Name=&quot;someAttractor&quot; Target=&quot;someTranslation.X&quot;/&gt;
+       &lt;WhilePressed&gt;
+           &lt;Change someAttractor.Value=&quot;100&quot;/&gt;
+       &lt;/WhilePressed&gt;
+
+   &lt;/Panel&gt;
+</code></pre>
 
 <section class="type-location">
 <h3 id="section-location">Location</h3>

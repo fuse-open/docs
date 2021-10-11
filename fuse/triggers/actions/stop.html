@@ -702,62 +702,62 @@ Show advanced things
 <p>Stop a video or timeline.</p>
 <p>The position is set to the beginning, and the playback is stopped.</p>
 <h4 id="video-example">Video Example</h4>
-<pre><code>&lt;Grid Rows=&quot;3*,1*&quot; &gt;
-    &lt;Video ux:Name=&quot;video&quot; Url=&quot;http://download.blender.org/peach/bigbuckbunny_movies/BigBuckBunny_320x180.mp4&quot; StretchMode=&quot;Uniform&quot; /&gt;
-    &lt;Grid Columns=&quot;1*,1*&quot;&gt;
-        &lt;Button Text=&quot;Start&quot;&gt;
-            &lt;Clicked&gt;
-                &lt;Resume Target=&quot;video&quot; /&gt;
-            &lt;/Clicked&gt;
-        &lt;/Button&gt;
-        &lt;Button Text=&quot;Stop&quot;&gt;
-            &lt;Clicked&gt;
-                &lt;Stop Target=&quot;video&quot; /&gt;
-            &lt;/Clicked&gt;
-        &lt;/Button&gt;
+<pre><code class="language-xml">    &lt;Grid Rows=&quot;3*,1*&quot; &gt;
+        &lt;Video ux:Name=&quot;video&quot; Url=&quot;http://download.blender.org/peach/bigbuckbunny_movies/BigBuckBunny_320x180.mp4&quot; StretchMode=&quot;Uniform&quot; /&gt;
+        &lt;Grid Columns=&quot;1*,1*&quot;&gt;
+            &lt;Button Text=&quot;Start&quot;&gt;
+                &lt;Clicked&gt;
+                    &lt;Resume Target=&quot;video&quot; /&gt;
+                &lt;/Clicked&gt;
+            &lt;/Button&gt;
+            &lt;Button Text=&quot;Stop&quot;&gt;
+                &lt;Clicked&gt;
+                    &lt;Stop Target=&quot;video&quot; /&gt;
+                &lt;/Clicked&gt;
+            &lt;/Button&gt;
+        &lt;/Grid&gt;
     &lt;/Grid&gt;
-&lt;/Grid&gt;
 </code></pre>
 <h4 id="timeline-example">Timeline Example</h4>
-<pre><code>&lt;StackPanel&gt;
-    &lt;Rectangle Width=&quot;150&quot; Height=&quot;150&quot; Margin=&quot;60&quot; ux:Name=&quot;rect&quot; CornerRadius=&quot;10&quot; &gt;
-        &lt;Stroke ux:Name=&quot;rectStroke&quot; Offset=&quot;10&quot; Width=&quot;3&quot; Color=&quot;#3579e6&quot; /&gt;
+<pre><code class="language-xml">    &lt;StackPanel&gt;
+        &lt;Rectangle Width=&quot;150&quot; Height=&quot;150&quot; Margin=&quot;60&quot; ux:Name=&quot;rect&quot; CornerRadius=&quot;10&quot; &gt;
+            &lt;Stroke ux:Name=&quot;rectStroke&quot; Offset=&quot;10&quot; Width=&quot;3&quot; Color=&quot;#3579e6&quot; /&gt;
 
-        &lt;Timeline  ux:Name=&quot;timeline&quot; TimeMultiplier=&quot;0.4&quot;&gt;
-            &lt;Rotate&gt;
-                &lt;Keyframe DegreesZ=&quot;360&quot; Time=&quot;1&quot; /&gt;
-            &lt;/Rotate&gt;
-            &lt;Change Target=&quot;rect.Color&quot;&gt;
-                &lt;Keyframe Value=&quot;#3579e6&quot; Time=&quot;1&quot; /&gt;
-            &lt;/Change&gt;
-        &lt;/Timeline&gt;
-    &lt;/Rectangle&gt;
+            &lt;Timeline  ux:Name=&quot;timeline&quot; TimeMultiplier=&quot;0.4&quot;&gt;
+                &lt;Rotate&gt;
+                    &lt;Keyframe DegreesZ=&quot;360&quot; Time=&quot;1&quot; /&gt;
+                &lt;/Rotate&gt;
+                &lt;Change Target=&quot;rect.Color&quot;&gt;
+                    &lt;Keyframe Value=&quot;#3579e6&quot; Time=&quot;1&quot; /&gt;
+                &lt;/Change&gt;
+            &lt;/Timeline&gt;
+        &lt;/Rectangle&gt;
 
-    &lt;Slider Width=&quot;250&quot; ux:Name=&quot;targetProgress&quot; Value=&quot;0.5&quot; Minimum=&quot;0&quot; Maximum=&quot;1&quot; /&gt;
-    &lt;Button Text=&quot;Animate to&quot; Alignment=&quot;Bottom&quot;&gt;
-        &lt;Clicked&gt;
-            &lt;PlayTo Target=&quot;timeline&quot; Progress=&quot;{ReadProperty targetProgress.Value}&quot; /&gt;
-        &lt;/Clicked&gt;
-    &lt;/Button&gt;
+        &lt;Slider Width=&quot;250&quot; ux:Name=&quot;targetProgress&quot; Value=&quot;0.5&quot; Minimum=&quot;0&quot; Maximum=&quot;1&quot; /&gt;
+        &lt;Button Text=&quot;Animate to&quot; Alignment=&quot;Bottom&quot;&gt;
+            &lt;Clicked&gt;
+                &lt;PlayTo Target=&quot;timeline&quot; Progress=&quot;{ReadProperty targetProgress.Value}&quot; /&gt;
+            &lt;/Clicked&gt;
+        &lt;/Button&gt;
 
-    &lt;Button ux:Name=&quot;resume&quot; Text=&quot;Resume&quot; Alignment=&quot;Bottom&quot;&gt;
-        &lt;Clicked&gt;
-            &lt;Resume Target=&quot;timeline&quot; /&gt;
-        &lt;/Clicked&gt;
-    &lt;/Button&gt;
+        &lt;Button ux:Name=&quot;resume&quot; Text=&quot;Resume&quot; Alignment=&quot;Bottom&quot;&gt;
+            &lt;Clicked&gt;
+                &lt;Resume Target=&quot;timeline&quot; /&gt;
+            &lt;/Clicked&gt;
+        &lt;/Button&gt;
 
-    &lt;Button Text=&quot;Pause&quot; Alignment=&quot;Bottom&quot;&gt;
-        &lt;Clicked&gt;
-            &lt;Pause Target=&quot;timeline&quot; /&gt;
-        &lt;/Clicked&gt;
-    &lt;/Button&gt;
+        &lt;Button Text=&quot;Pause&quot; Alignment=&quot;Bottom&quot;&gt;
+            &lt;Clicked&gt;
+                &lt;Pause Target=&quot;timeline&quot; /&gt;
+            &lt;/Clicked&gt;
+        &lt;/Button&gt;
 
-    &lt;Button Text=&quot;Stop&quot; Alignment=&quot;Bottom&quot;&gt;
-        &lt;Clicked&gt;
-            &lt;Stop Target=&quot;timeline&quot; /&gt;
-        &lt;/Clicked&gt;
-    &lt;/Button&gt;
-&lt;/StackPanel&gt;
+        &lt;Button Text=&quot;Stop&quot; Alignment=&quot;Bottom&quot;&gt;
+            &lt;Clicked&gt;
+                &lt;Stop Target=&quot;timeline&quot; /&gt;
+            &lt;/Clicked&gt;
+        &lt;/Button&gt;
+    &lt;/StackPanel&gt;
 </code></pre>
 
 <section class="type-location">

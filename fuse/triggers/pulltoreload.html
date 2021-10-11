@@ -719,46 +719,46 @@ In addition, you have a callback, <code>ReloadHandler</code>, which is called wh
 <p>Note that <code>PullToReload</code> inherits from <a href="../../fuse/triggers/scrollinganimation.html">ScrollingAnimation</a> and therefore can be tweaked further using its properties. Here is an example of how we can tweak it to be pulled from the bottom instead using the <code>Range</code> property from <code>ScrollingAnimation</code>:</p>
 </li>
 </ul>
-<pre><code>&lt;PullToReload Range=&quot;SnapMax&quot;&gt;
+<pre><code class="language-xml">&lt;PullToReload Range=&quot;SnapMax&quot;&gt;
     ...
 &lt;/PullToReload&gt;
 </code></pre>
 <p>See the <a href="https://examples.fusetools.com/pull-to-reload">Pull to reload</a>, for a complete example on how to use it.</p>
 <h3 id="example">Example</h3>
 <p>The following example flashes the app background in different colors as the different states of the <code>PullToReload</code> happen:</p>
-<pre><code>&lt;ScrollView&gt;
-    &lt;PullToReload&gt;
-        &lt;Timeline ux:Name=&quot;redFlash&quot;&gt;
-            &lt;Change color.Color=&quot;#F00&quot; Duration=&quot;1&quot;/&gt;
-        &lt;/Timeline&gt;
-        &lt;Timeline ux:Name=&quot;pinkFlash&quot;&gt;
-            &lt;Change color.Color=&quot;#FFC0DB&quot; Duration=&quot;1&quot;/&gt;
-        &lt;/Timeline&gt;
-        &lt;Timeline ux:Name=&quot;greenFlash&quot;&gt;
-            &lt;Change color.Color=&quot;#0F0&quot; Duration=&quot;1&quot;/&gt;
-        &lt;/Timeline&gt;
-        &lt;Timeline ux:Name=&quot;blueFlash&quot;&gt;
-            &lt;Change color.Color=&quot;#00F&quot; Duration=&quot;1&quot;/&gt;
-        &lt;/Timeline&gt;
-        &lt;State ux:Binding=&quot;Pulling&quot;&gt;
-            &lt;Cycle Target=&quot;redFlash.Progress&quot; Low=&quot;0&quot; High=&quot;1&quot; Frequency=&quot;1&quot; /&gt;
-        &lt;/State&gt;
-        &lt;State ux:Binding=&quot;PulledPastThreshold&quot;&gt;
-            &lt;Cycle Target=&quot;pinkFlash.Progress&quot; Low=&quot;0&quot; High=&quot;1&quot; Frequency=&quot;1&quot; /&gt;
-        &lt;/State&gt;
-        &lt;State ux:Binding=&quot;Loading&quot;&gt;
-            &lt;Cycle Target=&quot;greenFlash.Progress&quot; Low=&quot;0&quot; High=&quot;1&quot; Frequency=&quot;1&quot; /&gt;
-        &lt;/State&gt;
-        &lt;State ux:Binding=&quot;Rest&quot;&gt;
-            &lt;Cycle Target=&quot;blueFlash.Progress&quot; Low=&quot;0&quot; High=&quot;1&quot; Frequency=&quot;1&quot; /&gt;
-        &lt;/State&gt;
-    &lt;/PullToReload&gt;
-    &lt;StackPanel&gt;
-        &lt;Text Margin=&quot;20&quot;&gt;The quick brown fox&lt;/Text&gt;
-        &lt;Text Margin=&quot;20&quot;&gt;Jumps over the lazy dog&lt;/Text&gt;
-    &lt;/StackPanel&gt;
-    &lt;SolidColor ux:Name=&quot;color&quot; Color=&quot;#FFF&quot;/&gt;
-&lt;/ScrollView&gt;
+<pre><code class="language-xml">    &lt;ScrollView&gt;
+        &lt;PullToReload&gt;
+            &lt;Timeline ux:Name=&quot;redFlash&quot;&gt;
+                &lt;Change color.Color=&quot;#F00&quot; Duration=&quot;1&quot;/&gt;
+            &lt;/Timeline&gt;
+            &lt;Timeline ux:Name=&quot;pinkFlash&quot;&gt;
+                &lt;Change color.Color=&quot;#FFC0DB&quot; Duration=&quot;1&quot;/&gt;
+            &lt;/Timeline&gt;
+            &lt;Timeline ux:Name=&quot;greenFlash&quot;&gt;
+                &lt;Change color.Color=&quot;#0F0&quot; Duration=&quot;1&quot;/&gt;
+            &lt;/Timeline&gt;
+            &lt;Timeline ux:Name=&quot;blueFlash&quot;&gt;
+                &lt;Change color.Color=&quot;#00F&quot; Duration=&quot;1&quot;/&gt;
+            &lt;/Timeline&gt;
+            &lt;State ux:Binding=&quot;Pulling&quot;&gt;
+                &lt;Cycle Target=&quot;redFlash.Progress&quot; Low=&quot;0&quot; High=&quot;1&quot; Frequency=&quot;1&quot; /&gt;
+            &lt;/State&gt;
+            &lt;State ux:Binding=&quot;PulledPastThreshold&quot;&gt;
+                &lt;Cycle Target=&quot;pinkFlash.Progress&quot; Low=&quot;0&quot; High=&quot;1&quot; Frequency=&quot;1&quot; /&gt;
+            &lt;/State&gt;
+            &lt;State ux:Binding=&quot;Loading&quot;&gt;
+                &lt;Cycle Target=&quot;greenFlash.Progress&quot; Low=&quot;0&quot; High=&quot;1&quot; Frequency=&quot;1&quot; /&gt;
+            &lt;/State&gt;
+            &lt;State ux:Binding=&quot;Rest&quot;&gt;
+                &lt;Cycle Target=&quot;blueFlash.Progress&quot; Low=&quot;0&quot; High=&quot;1&quot; Frequency=&quot;1&quot; /&gt;
+            &lt;/State&gt;
+        &lt;/PullToReload&gt;
+        &lt;StackPanel&gt;
+            &lt;Text Margin=&quot;20&quot;&gt;The quick brown fox&lt;/Text&gt;
+            &lt;Text Margin=&quot;20&quot;&gt;Jumps over the lazy dog&lt;/Text&gt;
+        &lt;/StackPanel&gt;
+        &lt;SolidColor ux:Name=&quot;color&quot; Color=&quot;#FFF&quot;/&gt;
+    &lt;/ScrollView&gt;
 </code></pre>
 
 <section class="type-location">

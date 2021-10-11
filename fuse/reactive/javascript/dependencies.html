@@ -688,12 +688,12 @@ JavaScript.Dependencies Property
 <p>A list of named expressions that will be evaluated and injected as variables into the script.</p>
 <p>This property allows injecting dependencies defined as UX expressions into the script using the <code>dep:</code> XML namespace.</p>
 <p>Example:</p>
-<pre><code>&lt;JavaScript&gt;
-    exports.foo = 123
-&lt;/JavaScript&gt;
-&lt;JavaScript dep:foo=&quot;{foo}&quot;&gt;
-    foo // this is now 123
-&lt;/JavaScript&gt;
+<pre><code class="language-xml">    &lt;JavaScript&gt;
+        exports.foo = 123
+    &lt;/JavaScript&gt;
+    &lt;JavaScript dep:foo=&quot;{foo}&quot;&gt;
+        foo // this is now 123
+    &lt;/JavaScript&gt;
 </code></pre>
 <p>A script is not executed until all of its dependencies are available. If any of the dependencies change, the script is re-executed.</p>
 <p>This has multiple use-cases:</p>

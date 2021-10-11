@@ -699,13 +699,13 @@ active while the text is loading.</p>
 <p>The following code displays a green background while a piece of
 text is loading on the background thread, and fades in the text
 when it's available.</p>
-<pre><code>&lt;Panel ux:Name=&quot;_loading&quot; Background=&quot;#0F0&quot; Opacity=&quot;0.0&quot;/&gt;
-&lt;Text ux:Name=&quot;_text&quot; Value=&quot;Some text&quot; LoadAsync=&quot;true&quot; &gt;
-    &lt;WhileLoading&gt;
-        &lt;Change _loading.Opacity=&quot;1.0&quot; Duration=&quot;0.5&quot; /&gt;
-        &lt;Change _text.Opacity=&quot;0.0&quot;  Duration=&quot;0.5&quot; /&gt;
-    &lt;/WhileLoading&gt;
-&lt;/Text&gt;
+<pre><code class="language-xml">    &lt;Panel ux:Name=&quot;_loading&quot; Background=&quot;#0F0&quot; Opacity=&quot;0.0&quot;/&gt;
+    &lt;Text ux:Name=&quot;_text&quot; Value=&quot;Some text&quot; LoadAsync=&quot;true&quot; &gt;
+        &lt;WhileLoading&gt;
+            &lt;Change _loading.Opacity=&quot;1.0&quot; Duration=&quot;0.5&quot; /&gt;
+            &lt;Change _text.Opacity=&quot;0.0&quot;  Duration=&quot;0.5&quot; /&gt;
+        &lt;/WhileLoading&gt;
+    &lt;/Text&gt;
 </code></pre>
 <h4 id="remarks">Remarks</h4>
 <p>This property currently only works when running on an actual

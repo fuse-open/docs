@@ -705,39 +705,39 @@ Supports sharing of raw text, and files with associated <a href="http://www.iana
 <p>NB: on iPad, iOS design guidelines requires a point on screen as the origin for the share popover. You can do this by passing a reference to a UX element.</p>
 <p>You need to add a reference to &quot;Fuse.Share&quot; in your project file to use this feature.</p>
 <h4 id="example">Example</h4>
-<pre><code>&lt;JavaScript&gt;
-    var Share = require(&quot;FuseJS/Share&quot;)
-    var Camera = require(&quot;FuseJS/Camera&quot;)
-    module.exports = {
-        shareFile : function()
-        {
-            Camera.takePicture(320,240)
-            .then(function(image) {
-                Share.shareFile(image.path, &quot;image/*&quot;, &quot;Photo from Fuse&quot;);
-            });
-        },
-        shareText : function()
-        {
-            Share.shareText(&quot;https://www.fusetools.com/&quot;, &quot;The link to Fuse website&quot;);
-        }
-    }
-&lt;/JavaScript&gt;
-</code></pre>
-<h4 id="ipad-example">iPad example</h4>
-<pre><code>&lt;Panel&gt;
-    &lt;Button Text=&quot;Share&quot; Clicked=&quot;{shareText}&quot;/&gt;
-    &lt;Panel ux:Name=&quot;ShareOrigin&quot; Alignment=&quot;Center&quot; Width=&quot;1&quot; Height=&quot;1&quot; /&gt;
-    &lt;JavaScript&gt;
+<pre><code class="language-xml">    &lt;JavaScript&gt;
         var Share = require(&quot;FuseJS/Share&quot;)
+        var Camera = require(&quot;FuseJS/Camera&quot;)
         module.exports = {
+            shareFile : function()
+            {
+                Camera.takePicture(320,240)
+                .then(function(image) {
+                    Share.shareFile(image.path, &quot;image/*&quot;, &quot;Photo from Fuse&quot;);
+                });
+            },
             shareText : function()
             {
-                // The iOS popover will use the position of ShareOrigin as its spawn origin
-                Share.shareText(&quot;https://www.fusetools.com/&quot;, &quot;The link to Fuse website&quot;, ShareOrigin);
+                Share.shareText(&quot;https://www.fusetools.com/&quot;, &quot;The link to Fuse website&quot;);
             }
         }
     &lt;/JavaScript&gt;
-&lt;/Panel&gt;
+</code></pre>
+<h4 id="ipad-example">iPad example</h4>
+<pre><code class="language-xml">    &lt;Panel&gt;
+        &lt;Button Text=&quot;Share&quot; Clicked=&quot;{shareText}&quot;/&gt;
+        &lt;Panel ux:Name=&quot;ShareOrigin&quot; Alignment=&quot;Center&quot; Width=&quot;1&quot; Height=&quot;1&quot; /&gt;
+        &lt;JavaScript&gt;
+            var Share = require(&quot;FuseJS/Share&quot;)
+            module.exports = {
+                shareText : function()
+                {
+                    // The iOS popover will use the position of ShareOrigin as its spawn origin
+                    Share.shareText(&quot;https://www.fusetools.com/&quot;, &quot;The link to Fuse website&quot;, ShareOrigin);
+                }
+            }
+        &lt;/JavaScript&gt;
+    &lt;/Panel&gt;
 </code></pre>
 
 <section class="type-location">

@@ -722,153 +722,153 @@ Make sure to check &quot;error&quot; event for possible error that encounter.</p
 </blockquote>
 <h4 id="example">Example</h4>
 <p>The following example shows how to access accelerometer sensor:</p>
-<pre><code>&lt;JavaScript&gt;
-    var Observable = require(&quot;FuseJS/Observable&quot;);
-    var Sensor = require(&quot;FuseJS/Sensor&quot;);
-    var accelerometerData = Observable(&quot;&quot;)
-    var errorMessage = Observable(&quot;&quot;)
+<pre><code class="language-xml">    &lt;JavaScript&gt;
+        var Observable = require(&quot;FuseJS/Observable&quot;);
+        var Sensor = require(&quot;FuseJS/Sensor&quot;);
+        var accelerometerData = Observable(&quot;&quot;)
+        var errorMessage = Observable(&quot;&quot;)
 
-    Sensor.on(&quot;error&quot;, function(failMessage) {
-        errorMessage.value = failMessage;
-    });
+        Sensor.on(&quot;error&quot;, function(failMessage) {
+            errorMessage.value = failMessage;
+        });
 
-    Sensor.on(&quot;changed&quot;, function(data) {
-        if (data.type == Sensor.ACCELEROMETER) {
-            accelerometerData.value = &quot;X axis : &quot; + data.x + &quot; Y axis : &quot; + data.y + &quot; Z axis : &quot; + data.z;
+        Sensor.on(&quot;changed&quot;, function(data) {
+            if (data.type == Sensor.ACCELEROMETER) {
+                accelerometerData.value = &quot;X axis : &quot; + data.x + &quot; Y axis : &quot; + data.y + &quot; Z axis : &quot; + data.z;
+            }
+        });
+
+        function startAccelerometerContinuousListener() {
+            Sensor.startListening(Sensor.ACCELEROMETER);
         }
-    });
 
-    function startAccelerometerContinuousListener() {
-        Sensor.startListening(Sensor.ACCELEROMETER);
-    }
+        function stopAccelerometerContinuousListener() {
+            Sensor.stopListening(Sensor.ACCELEROMETER);
+        }
 
-    function stopAccelerometerContinuousListener() {
-        Sensor.stopListening(Sensor.ACCELEROMETER);
-    }
+        module.exports = {
+            startAccelerometerContinuousListener,
+            stopAccelerometerContinuousListener,
+            accelerometerData,
+            errorMessage
+        };
+    &lt;/JavaScript&gt;
 
-    module.exports = {
-        startAccelerometerContinuousListener,
-        stopAccelerometerContinuousListener,
-        accelerometerData,
-        errorMessage
-    };
-&lt;/JavaScript&gt;
+    &lt;StackPanel ItemSpacing=&quot;5&quot; Margin=&quot;0,30,0,0&quot;&gt;
+        &lt;Text&gt;Accelerometer data :&lt;/Text&gt;
+        &lt;Text Value=&quot;{accelerometerData}&quot; /&gt;
+        &lt;Text Value=&quot;{errorMessage}&quot; Color=&quot;Red&quot; /&gt;
 
-&lt;StackPanel ItemSpacing=&quot;5&quot; Margin=&quot;0,30,0,0&quot;&gt;
-    &lt;Text&gt;Accelerometer data :&lt;/Text&gt;
-    &lt;Text Value=&quot;{accelerometerData}&quot; /&gt;
-    &lt;Text Value=&quot;{errorMessage}&quot; Color=&quot;Red&quot; /&gt;
-
-    &lt;Button Text=&quot;Start continuous Accelerometer listener&quot; Clicked=&quot;{startAccelerometerContinuousListener}&quot; /&gt;
-    &lt;Button Text=&quot;Stop continuous Accelerometer listener&quot; Clicked=&quot;{stopAccelerometerContinuousListener}&quot; /&gt;
-&lt;/StackPanel&gt;
+        &lt;Button Text=&quot;Start continuous Accelerometer listener&quot; Clicked=&quot;{startAccelerometerContinuousListener}&quot; /&gt;
+        &lt;Button Text=&quot;Stop continuous Accelerometer listener&quot; Clicked=&quot;{stopAccelerometerContinuousListener}&quot; /&gt;
+    &lt;/StackPanel&gt;
 </code></pre>
 <p>In the above example we're using <code>&quot;changed&quot;</code> event. Data returned by this module are JavaScript objects of the following form:</p>
-<pre><code>{
-    type: sensor type (in this case is Sensor.ACCELEROMETER),
-    x: value of x axis,
-    y: value of y axis,
-    z: value of z axis,
-}
+<pre><code class="language-json">    {
+        type: sensor type (in this case is Sensor.ACCELEROMETER),
+        x: value of x axis,
+        y: value of y axis,
+        z: value of z axis,
+    }
 </code></pre>
 <h4 id="output">Output</h4>
 <p>Data returned on the &quot;changed&quot; event argument are JavaScript objects with always have <code>type</code> property.
 Value of <code>type</code> property determine what type sensor data it contains.</p>
 <p>Accelerometer, Gyroscope, Magnetometer, Gravity, User Acceleration and Rotation data all have same form of JavaScript object as desribed in the example below:</p>
-<pre><code>var Sensor = require(&quot;FuseJS/Sensor&quot;)
-Sensor.on('changed', function(data) {
-    switch (data.type) {
-        case Sensor.ACCELEROMETER:
-            console.log(&quot;X axis : &quot; + data.x + &quot; Y axis : &quot; + data.y + &quot; Z axis : &quot; + data.z);
-            break;
-        case Sensor.GYROSCOPE:
-            console.log(&quot;X axis : &quot; + data.x + &quot; Y axis : &quot; + data.y + &quot; Z axis : &quot; + data.z);
-            break;
-        case Sensor.MAGNETOMETER:
-            console.log(&quot;X axis : &quot; + data.x + &quot; Y axis : &quot; + data.y + &quot; Z axis : &quot; + data.z);
-            break;
-        case Sensor.GRAVITY:
-            console.log(&quot;X axis : &quot; + data.x + &quot; Y axis : &quot; + data.y + &quot; Z axis : &quot; + data.z);
-            break;
-        case Sensor.USER_ACCELERATION:
-            console.log(&quot;X axis : &quot; + data.x + &quot; Y axis : &quot; + data.y + &quot; Z axis : &quot; + data.z);
-            break;
-        case Sensor.ROTATION:
-            console.log(&quot;X axis : &quot; + data.x + &quot; Y axis : &quot; + data.y + &quot; Z axis : &quot; + data.z);
-            break;
+<pre><code class="language-js">    var Sensor = require(&quot;FuseJS/Sensor&quot;)
+    Sensor.on('changed', function(data) {
+        switch (data.type) {
+            case Sensor.ACCELEROMETER:
+                console.log(&quot;X axis : &quot; + data.x + &quot; Y axis : &quot; + data.y + &quot; Z axis : &quot; + data.z);
+                break;
+            case Sensor.GYROSCOPE:
+                console.log(&quot;X axis : &quot; + data.x + &quot; Y axis : &quot; + data.y + &quot; Z axis : &quot; + data.z);
+                break;
+            case Sensor.MAGNETOMETER:
+                console.log(&quot;X axis : &quot; + data.x + &quot; Y axis : &quot; + data.y + &quot; Z axis : &quot; + data.z);
+                break;
+            case Sensor.GRAVITY:
+                console.log(&quot;X axis : &quot; + data.x + &quot; Y axis : &quot; + data.y + &quot; Z axis : &quot; + data.z);
+                break;
+            case Sensor.USER_ACCELERATION:
+                console.log(&quot;X axis : &quot; + data.x + &quot; Y axis : &quot; + data.y + &quot; Z axis : &quot; + data.z);
+                break;
+            case Sensor.ROTATION:
+                console.log(&quot;X axis : &quot; + data.x + &quot; Y axis : &quot; + data.y + &quot; Z axis : &quot; + data.z);
+                break;
+        }
+    });
+
+    function startListeningSensor() {
+        Sensor.startListening(Sensor.ACCELEROMETER);
+        Sensor.startListening(Sensor.GYROSCOPE);
+        Sensor.startListening(Sensor.MAGNETOMETER);
+        Sensor.startListening(Sensor.GRAVITY);
+        Sensor.startListening(Sensor.USER_ACCELERATION);
+        Sensor.startListening(Sensor.ROTATION);
     }
-});
 
-function startListeningSensor() {
-    Sensor.startListening(Sensor.ACCELEROMETER);
-    Sensor.startListening(Sensor.GYROSCOPE);
-    Sensor.startListening(Sensor.MAGNETOMETER);
-    Sensor.startListening(Sensor.GRAVITY);
-    Sensor.startListening(Sensor.USER_ACCELERATION);
-    Sensor.startListening(Sensor.ROTATION);
-}
-
-function stopListeningSensor() {
-    Sensor.stopListening(Sensor.ACCELEROMETER);
-    Sensor.stopListening(Sensor.GYROSCOPE);
-    Sensor.stopListening(Sensor.MAGNETOMETER);
-    Sensor.stopListening(Sensor.GRAVITY);
-    Sensor.stopListening(Sensor.USER_ACCELERATION);
-    Sensor.stopListening(Sensor.ROTATION);
-}
+    function stopListeningSensor() {
+        Sensor.stopListening(Sensor.ACCELEROMETER);
+        Sensor.stopListening(Sensor.GYROSCOPE);
+        Sensor.stopListening(Sensor.MAGNETOMETER);
+        Sensor.stopListening(Sensor.GRAVITY);
+        Sensor.stopListening(Sensor.USER_ACCELERATION);
+        Sensor.stopListening(Sensor.ROTATION);
+    }
 </code></pre>
 <p>Step counter and pressure data has slightly different output JavaScript object as described in the example below:</p>
-<pre><code>var Sensor = require(&quot;FuseJS/Sensor&quot;)
-Sensor.on('changed', function(data) {
-    switch (data.type) {
-        case Sensor.STEP_COUNTER:
-            console.log(&quot;Num Steps taken : &quot; + data.x);
-            break;
-        case Sensor.PRESSURE:
-            console.log(&quot;Pressure in hPa / mbar : &quot; + data.x);
-            console.log(&quot;Relative Altitude (iOS only) in meters : &quot; + data.y);
-            break;
+<pre><code class="language-js">    var Sensor = require(&quot;FuseJS/Sensor&quot;)
+    Sensor.on('changed', function(data) {
+        switch (data.type) {
+            case Sensor.STEP_COUNTER:
+                console.log(&quot;Num Steps taken : &quot; + data.x);
+                break;
+            case Sensor.PRESSURE:
+                console.log(&quot;Pressure in hPa / mbar : &quot; + data.x);
+                console.log(&quot;Relative Altitude (iOS only) in meters : &quot; + data.y);
+                break;
+        }
+    });
+
+    function startListeningSensor() {
+        Sensor.startListening(Sensor.STEP_COUNTER);
+        Sensor.startListening(Sensor.PRESSURE);
     }
-});
 
-function startListeningSensor() {
-    Sensor.startListening(Sensor.STEP_COUNTER);
-    Sensor.startListening(Sensor.PRESSURE);
-}
-
-function stopListeningSensor() {
-    Sensor.stopListening(Sensor.STEP_COUNTER);
-    Sensor.stopListening(Sensor.PRESSURE);
-}
+    function stopListeningSensor() {
+        Sensor.stopListening(Sensor.STEP_COUNTER);
+        Sensor.stopListening(Sensor.PRESSURE);
+    }
 </code></pre>
 <p>Lastly, monitoring state changes of battery or network connectivity has output JavaScript object as follow:</p>
-<pre><code>var Sensor = require(&quot;FuseJS/Sensor&quot;)
-Sensor.on('changed', function(data) {
-    switch (data.type) {
-        case Sensor.BATTERY:
-            console.log(&quot;Battery level : &quot; + data.level);
-            console.log(&quot;Battery state : &quot; + data.state); // possible values : charging, unplug, full, not charging, unknown
-            break;
-        case Sensor.CONNECTION_STATE:
-            console.log(&quot;connection state : &quot; + data.state); // boolan value : true connected, false disconnected
-            console.log(&quot;connection state string : &quot; + data.stateString); // possible values : 'connected' or 'disconnected'
-            break;
+<pre><code class="language-js">    var Sensor = require(&quot;FuseJS/Sensor&quot;)
+    Sensor.on('changed', function(data) {
+        switch (data.type) {
+            case Sensor.BATTERY:
+                console.log(&quot;Battery level : &quot; + data.level);
+                console.log(&quot;Battery state : &quot; + data.state); // possible values : charging, unplug, full, not charging, unknown
+                break;
+            case Sensor.CONNECTION_STATE:
+                console.log(&quot;connection state : &quot; + data.state); // boolan value : true connected, false disconnected
+                console.log(&quot;connection state string : &quot; + data.stateString); // possible values : 'connected' or 'disconnected'
+                break;
+        }
+    });
+
+    function startMonitoringState() {
+        Sensor.startListening(Sensor.BATTERY);
+        Sensor.startListening(Sensor.CONNECTION_STATE);
     }
-});
 
-function startMonitoringState() {
-    Sensor.startListening(Sensor.BATTERY);
-    Sensor.startListening(Sensor.CONNECTION_STATE);
-}
-
-function stopMonitoringState() {
-    Sensor.stopListening(Sensor.BATTERY);
-    Sensor.stopListening(Sensor.CONNECTION_STATE);
-}
+    function stopMonitoringState() {
+        Sensor.stopListening(Sensor.BATTERY);
+        Sensor.stopListening(Sensor.CONNECTION_STATE);
+    }
 </code></pre>
 <p>To handle errors from Sensor we can listen to the <code>&quot;error&quot;</code> event, as follows:</p>
-<pre><code>var Sensor = require(&quot;FuseJS/Sensor&quot;)
-Sensor.on(&quot;error&quot;, function(err) { ... })
+<pre><code class="language-js">    var Sensor = require(&quot;FuseJS/Sensor&quot;)
+    Sensor.on(&quot;error&quot;, function(err) { ... })
 </code></pre>
 
 <section class="type-location">

@@ -704,17 +704,17 @@ Show advanced things
 <p>This trigger can be used inside a <a href="../../fuse/controls/video.html">Video</a>, <a href="../../fuse/controls/image.html">Image</a>, or <a href="../../fuse/controls/text.html">Text</a> element.</p>
 <h4 id="example">Example</h4>
 <p>The following example will display some text while an image resource is loading via URL:</p>
-<pre><code>&lt;StackPanel&gt;
-    &lt;Image Url=&quot;https://upload.wikimedia.org/wikipedia/commons/f/f1/Kitten_and_partial_reflection_in_mirror.jpg&quot;&gt;
-        &lt;WhileLoading&gt;
-            &lt;Change showLoadingText.Value=&quot;True&quot; /&gt;
-        &lt;/WhileLoading&gt;
-    &lt;/Image&gt;
+<pre><code class="language-xml">    &lt;StackPanel&gt;
+        &lt;Image Url=&quot;https://upload.wikimedia.org/wikipedia/commons/f/f1/Kitten_and_partial_reflection_in_mirror.jpg&quot;&gt;
+            &lt;WhileLoading&gt;
+                &lt;Change showLoadingText.Value=&quot;True&quot; /&gt;
+            &lt;/WhileLoading&gt;
+        &lt;/Image&gt;
 
-    &lt;WhileTrue ux:Name=&quot;showLoadingText&quot;&gt;
-        &lt;Text&gt;Image is loading...&lt;/Text&gt;
-    &lt;/WhileTrue&gt;
-&lt;/StackPanel&gt;
+        &lt;WhileTrue ux:Name=&quot;showLoadingText&quot;&gt;
+            &lt;Text&gt;Image is loading...&lt;/Text&gt;
+        &lt;/WhileTrue&gt;
+    &lt;/StackPanel&gt;
 </code></pre>
 <p><code>&lt;WhileLoading&gt;</code> is equivalent to <code>&lt;WhileBusy Activity=&quot;Loading&quot;&gt;</code>.</p>
 
@@ -788,7 +788,13 @@ bool
 <span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
 </h5>
 <div class="table-of-contents-item-brief">
-<p>If true then the busy status is blocked from reaching parent nodes. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../../fuse/triggers/whilebusy/ishandled.html"><i class="fa fa-ellipsis-h"></i></a></p>
+<p>If true then the busy status is blocked from reaching parent nodes.</p>
+<pre><code class="language-xml">    &lt;WhileBusy ux:Name=&quot;W1&quot;&gt;...&lt;/WhileBusy&gt;
+    &lt;Panel&gt;
+        &lt;WhileBusy ux:Name=&quot;W2&quot; IsHandled=&quot;true&quot;&gt;...&lt;/WhileBusy&gt;
+        &lt;Image Url=&quot;http://some.place/file.png&quot;/&gt;
+</code></pre>
+<p>In this arrangement the <code>W1</code> trigger will not be active while the <code>Image</code> is loading. The <code>IsHandled=&quot;true&quot;</code> in the <code>W2</code> trigger indicates it completely handles the busy status for this node and its descendants.</p>
 
 </div>
 </article>
@@ -2023,57 +2029,57 @@ IEnumerable&lt;Binding&gt;
 an overlay over the video when it is loading, paused, completed, or has failed.
 It also uses these triggers to display a play button and a pause button only at
 appropriate times.</p>
-<pre><code>&lt;StackPanel&gt;
-	&lt;Panel&gt;
-		&lt;Panel ux:Name=&quot;overlay&quot; Background=&quot;Black&quot; Opacity=&quot;0&quot;&gt;
-			&lt;Text ux:Name=&quot;overlayText&quot; Color=&quot;White&quot; Alignment=&quot;Center&quot; /&gt;
+<pre><code class="language-xml">	&lt;StackPanel&gt;
+		&lt;Panel&gt;
+			&lt;Panel ux:Name=&quot;overlay&quot; Background=&quot;Black&quot; Opacity=&quot;0&quot;&gt;
+				&lt;Text ux:Name=&quot;overlayText&quot; Color=&quot;White&quot; Alignment=&quot;Center&quot; /&gt;
+			&lt;/Panel&gt;
+
+			&lt;WhileTrue ux:Name=&quot;showOverlay&quot;&gt;
+				&lt;Change overlay.Opacity=&quot;0.5&quot; Duration=&quot;0.2&quot; /&gt;
+			&lt;/WhileTrue&gt;
+
+			&lt;Video ux:Name=&quot;video&quot; Url=&quot;http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4&quot; &gt;
+				&lt;WhilePlaying&gt;
+					&lt;Change playButton.Visibility=&quot;Hidden&quot; /&gt;
+					&lt;Change pauseButton.Visibility=&quot;Visible&quot; /&gt;
+				&lt;/WhilePlaying&gt;
+
+				&lt;WhileLoading&gt;
+					&lt;Change showOverlay.Value=&quot;True&quot; /&gt;
+					&lt;Change overlayText.Value=&quot;Loading...&quot; /&gt;
+				&lt;/WhileLoading&gt;
+
+				&lt;WhilePaused&gt;
+					&lt;Change showOverlay.Value=&quot;True&quot; /&gt;
+					&lt;Change overlayText.Value=&quot;Paused&quot; /&gt;
+				&lt;/WhilePaused&gt;
+
+				&lt;WhileCompleted&gt;
+					&lt;Change showOverlay.Value=&quot;True&quot; /&gt;
+					&lt;Change overlayText.Value=&quot;Completed&quot; /&gt;
+				&lt;/WhileCompleted&gt;
+
+				&lt;WhileFailed&gt;
+					&lt;Change showOverlay.Value=&quot;True&quot; /&gt;
+					&lt;Change overlayText.Value=&quot;Error&quot; /&gt;
+				&lt;/WhileFailed&gt;
+			&lt;/Video&gt;
 		&lt;/Panel&gt;
 
-		&lt;WhileTrue ux:Name=&quot;showOverlay&quot;&gt;
-			&lt;Change overlay.Opacity=&quot;0.5&quot; Duration=&quot;0.2&quot; /&gt;
-		&lt;/WhileTrue&gt;
-
-		&lt;Video ux:Name=&quot;video&quot; Url=&quot;http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4&quot; &gt;
-			&lt;WhilePlaying&gt;
-				&lt;Change playButton.Visibility=&quot;Hidden&quot; /&gt;
-				&lt;Change pauseButton.Visibility=&quot;Visible&quot; /&gt;
-			&lt;/WhilePlaying&gt;
-
-			&lt;WhileLoading&gt;
-				&lt;Change showOverlay.Value=&quot;True&quot; /&gt;
-				&lt;Change overlayText.Value=&quot;Loading...&quot; /&gt;
-			&lt;/WhileLoading&gt;
-
-			&lt;WhilePaused&gt;
-				&lt;Change showOverlay.Value=&quot;True&quot; /&gt;
-				&lt;Change overlayText.Value=&quot;Paused&quot; /&gt;
-			&lt;/WhilePaused&gt;
-
-			&lt;WhileCompleted&gt;
-				&lt;Change showOverlay.Value=&quot;True&quot; /&gt;
-				&lt;Change overlayText.Value=&quot;Completed&quot; /&gt;
-			&lt;/WhileCompleted&gt;
-
-			&lt;WhileFailed&gt;
-				&lt;Change showOverlay.Value=&quot;True&quot; /&gt;
-				&lt;Change overlayText.Value=&quot;Error&quot; /&gt;
-			&lt;/WhileFailed&gt;
-		&lt;/Video&gt;
-	&lt;/Panel&gt;
-
-	&lt;Grid ColumnCount=&quot;2&quot;&gt;
-		&lt;Button ux:Name=&quot;playButton&quot; Text=&quot;Play&quot;&gt;
-			&lt;Clicked&gt;
-				&lt;Resume Target=&quot;video&quot; /&gt;
-			&lt;/Clicked&gt;
-		&lt;/Button&gt;
-		&lt;Button ux:Name=&quot;pauseButton&quot; Text=&quot;Pause&quot; Visibility=&quot;Hidden&quot;&gt;
-			&lt;Clicked&gt;
-				&lt;Pause Target=&quot;video&quot; /&gt;
-			&lt;/Clicked&gt;
-		&lt;/Button&gt;
-	&lt;/Grid&gt;
-&lt;/StackPanel&gt;
+		&lt;Grid ColumnCount=&quot;2&quot;&gt;
+			&lt;Button ux:Name=&quot;playButton&quot; Text=&quot;Play&quot;&gt;
+				&lt;Clicked&gt;
+					&lt;Resume Target=&quot;video&quot; /&gt;
+				&lt;/Clicked&gt;
+			&lt;/Button&gt;
+			&lt;Button ux:Name=&quot;pauseButton&quot; Text=&quot;Pause&quot; Visibility=&quot;Hidden&quot;&gt;
+				&lt;Clicked&gt;
+					&lt;Pause Target=&quot;video&quot; /&gt;
+				&lt;/Clicked&gt;
+			&lt;/Button&gt;
+		&lt;/Grid&gt;
+	&lt;/StackPanel&gt;
 </code></pre>
 
 </section>

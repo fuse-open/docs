@@ -691,25 +691,25 @@ Keyframes
 interpolation between start and end values.</p>
 <p>For the cases where we want to specify several steps for an animation, we can specify keyframes.</p>
 <p>Example:</p>
-<pre><code>&lt;Move RelativeTo=&quot;ParentSize&quot;&gt;
-    &lt;Keyframe X=&quot;10&quot; Time=&quot;0.5&quot;/&gt;
-    &lt;Keyframe X=&quot;15&quot; Time=&quot;1&quot;/&gt;
-    &lt;Keyframe X=&quot;5&quot; Time=&quot;2&quot;/&gt;
-&lt;/Move&gt;
+<pre><code class="language-xml">    &lt;Move RelativeTo=&quot;ParentSize&quot;&gt;
+        &lt;Keyframe X=&quot;10&quot; Time=&quot;0.5&quot;/&gt;
+        &lt;Keyframe X=&quot;15&quot; Time=&quot;1&quot;/&gt;
+        &lt;Keyframe X=&quot;5&quot; Time=&quot;2&quot;/&gt;
+    &lt;/Move&gt;
 </code></pre>
 <p>This <a href="../../../fuse/animations/move.html">Move</a> animator will first animate X to 10 over 0.5 second, then from 10 to 15 over 0.5 second. Finally, it will go from an
 X of 15 to 5 over 1 second.    Here is an example of using <a href="../../../fuse/animations/trackanimator/keyframes.html">Keyframes</a> with a <a href="../../../fuse/animations/change_1.html">Change</a> animator:</p>
-<pre><code>&lt;Page&gt;
-    &lt;SolidColor ux:Name=&quot;background&quot; Color=&quot;#f00&quot;/&gt;
-    &lt;ActivatingAnimation&gt;
-        &lt;Change Target=&quot;background.Color&quot;&gt;
-            &lt;Keyframe Value=&quot;#0f0&quot; TimeDelta=&quot;0.25&quot;/&gt;
-            &lt;Keyframe Value=&quot;#f00&quot; TimeDelta=&quot;0.25&quot;/&gt;
-            &lt;Keyframe Value=&quot;#ff0&quot; TimeDelta=&quot;0.25&quot;/&gt;
-            &lt;Keyframe Value=&quot;#0ff&quot; TimeDelta=&quot;0.25&quot;/&gt;
-        &lt;/Change&gt;
-    &lt;/ActivatingAnimation&gt;
-&lt;/Page&gt;
+<pre><code class="language-xml">    &lt;Page&gt;
+        &lt;SolidColor ux:Name=&quot;background&quot; Color=&quot;#f00&quot;/&gt;
+        &lt;ActivatingAnimation&gt;
+            &lt;Change Target=&quot;background.Color&quot;&gt;
+                &lt;Keyframe Value=&quot;#0f0&quot; TimeDelta=&quot;0.25&quot;/&gt;
+                &lt;Keyframe Value=&quot;#f00&quot; TimeDelta=&quot;0.25&quot;/&gt;
+                &lt;Keyframe Value=&quot;#ff0&quot; TimeDelta=&quot;0.25&quot;/&gt;
+                &lt;Keyframe Value=&quot;#0ff&quot; TimeDelta=&quot;0.25&quot;/&gt;
+            &lt;/Change&gt;
+        &lt;/ActivatingAnimation&gt;
+    &lt;/Page&gt;
 </code></pre>
 <p>This time we use <code>TimeDelta</code> instead of time. With <code>TimeDelta</code> we can specify time as a relative term instead of absolute.
 This means that the order of the <a href="../../../fuse/animations/trackanimator/keyframes.html">Keyframes</a> matter, but it lets us reason about the keyframes in terms of

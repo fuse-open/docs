@@ -732,29 +732,29 @@ float
 <h4 id="noimplicitmax">NoImplicitMax</h4>
 <p>This works like <code>Standard</code> but removes the implied <code>MaxWidth</code> and <code>MaxHeight</code>.</p>
 <p>This is useful for elements that are generally larger than their parent. Usually this is for adding panels beside an element, or decorations near an element.</p>
-<pre><code>&lt;Panel Alignment=&quot;Center&quot;&gt;
-	&lt;Text Value=&quot;A Notice&quot;/&gt;
-	&lt;Image BoxSizing=&quot;NoImplicitMax&quot; File=&quot;star.png&quot; Alignment=&quot;TopLeft&quot; Anchor=&quot;50%,50%&quot;/&gt;
-&lt;/Panel&gt;
+<pre><code class="language-xml">	&lt;Panel Alignment=&quot;Center&quot;&gt;
+		&lt;Text Value=&quot;A Notice&quot;/&gt;
+		&lt;Image BoxSizing=&quot;NoImplicitMax&quot; File=&quot;star.png&quot; Alignment=&quot;TopLeft&quot; Anchor=&quot;50%,50%&quot;/&gt;
+	&lt;/Panel&gt;
 </code></pre>
 <p>This creates a text label with a star in the upper-left corner. The <code>BoxSizing=&quot;NoImplicitMax&quot;</code> ensures that the star is it's natural size even if the label is smaller than it.</p>
 <h4 id="limit">Limit</h4>
 <p><code>Limit</code> allows you to restrict the resulting size of an element without modifying the layout of the element itself. It's primary use-case is for drawers (panels that slide in/out).</p>
-<pre><code>&lt;Panel Alignment=&quot;Center&quot; Height=&quot;30&quot; Color=&quot;#AFF&quot;&gt;
-	&lt;StackPanel Alignment=&quot;TopLeft&quot; Anchor=&quot;0%,100%&quot; BoxSizing=&quot;Limit&quot; LimitHeight=&quot;0%&quot; ux:Name=&quot;theStack&quot; Color=&quot;#AFA&quot; ClipToBounds=&quot;true&quot;&gt;
-		&lt;Text Value=&quot;One&quot;/&gt;
-		&lt;Text Value=&quot;Two&quot;/&gt;
-		&lt;Text Value=&quot;Three&quot;/&gt;
-	&lt;/StackPanel&gt;
+<pre><code class="language-xml">	&lt;Panel Alignment=&quot;Center&quot; Height=&quot;30&quot; Color=&quot;#AFF&quot;&gt;
+		&lt;StackPanel Alignment=&quot;TopLeft&quot; Anchor=&quot;0%,100%&quot; BoxSizing=&quot;Limit&quot; LimitHeight=&quot;0%&quot; ux:Name=&quot;theStack&quot; Color=&quot;#AFA&quot; ClipToBounds=&quot;true&quot;&gt;
+			&lt;Text Value=&quot;One&quot;/&gt;
+			&lt;Text Value=&quot;Two&quot;/&gt;
+			&lt;Text Value=&quot;Three&quot;/&gt;
+		&lt;/StackPanel&gt;
 
-	&lt;WhileTrue ux:Name=&quot;showMenu&quot;&gt;
-		&lt;Change theStack.LimitHeight=&quot;100%&quot; Duration=&quot;0.5&quot;/&gt;
-	&lt;/WhileTrue&gt;
+		&lt;WhileTrue ux:Name=&quot;showMenu&quot;&gt;
+			&lt;Change theStack.LimitHeight=&quot;100%&quot; Duration=&quot;0.5&quot;/&gt;
+		&lt;/WhileTrue&gt;
 
-	&lt;Clicked&gt;
-		&lt;Toggle Target=&quot;showMenu&quot;/&gt;
-	&lt;/Clicked&gt;
-&lt;/Panel&gt;
+		&lt;Clicked&gt;
+			&lt;Toggle Target=&quot;showMenu&quot;/&gt;
+		&lt;/Clicked&gt;
+	&lt;/Panel&gt;
 </code></pre>
 <p>If you click on the box in the example a list of items will slide out from the top. This is done by starting with a <code>LimitHeight=&quot;0%&quot;</code> and animating to <code>100%</code>. The percentage here refers to the calculated size of the element based on the <code>Standard</code> model. The height of the parent does not influence the children however (the available size in the limited dimensions is erased).</p>
 <p>Notice the <code>ClipToBounds=&quot;true&quot;</code>. Though the size is limited it doesn't prevent an element from being oversized, thus we clip to hide to oversized part.</p>
@@ -763,7 +763,7 @@ float
 </blockquote>
 <h4 id="fillaspect">FillAspect</h4>
 <p>The size of the element is calculated to meet the specified <a href="../../../fuse/elements/element.html">Element</a>.Aspect ratio. This is based on the available space in the parent element, but also considers any explicit <code>Width</code> or <code>Height</code> properties.</p>
-<pre><code>&lt;Grid BoxSizing=&quot;FillAspect&quot; Aspect=&quot;2&quot; ColumnCount=&quot;4&quot; RowCount=&quot;2&quot;&gt;
+<pre><code class="language-xml">	&lt;Grid BoxSizing=&quot;FillAspect&quot; Aspect=&quot;2&quot; ColumnCount=&quot;4&quot; RowCount=&quot;2&quot;&gt;
 </code></pre>
 <p>This creates a 4x2 grid that fills the available space but enforces the aspect of <code>2</code>, which causes it to be twice as wide as tall. This results in the cells being square.</p>
 <p>Unlike the standard sizing model the content of the element, it's children, are not considered when calculating the size. It's strictly a calculation derived from the parent layout and the element's own layout properties.</p>

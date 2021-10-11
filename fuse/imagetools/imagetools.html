@@ -708,21 +708,21 @@ Once created or acquired, Images can be passed around to other APIs to use, fetc
 All images are temporary &quot;scratch images&quot; until storage has been specified either through publishing to the CameraRoll or other.</p>
 <p>On Android using this API will request the WRITE_EXTERNAL_STORAGE and READ_EXTERNAL_STORAGE permissions.</p>
 <h4 id="example">Example</h4>
-<pre><code>&lt;JavaScript&gt;
-    var ImageTools = require(&quot;FuseJS/ImageTools&quot;);
-    var Observable = require(&quot;FuseJS/Observable&quot;);
+<pre><code class="language-xml">    &lt;JavaScript&gt;
+        var ImageTools = require(&quot;FuseJS/ImageTools&quot;);
+        var Observable = require(&quot;FuseJS/Observable&quot;);
 
-    var imagePath = Observable();
-    var base64Image =    &quot;iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPAQMAAAABGAcJAAAABlBMVEX9//wAAQATpOzaAAAAH0l&quot; +
-                        &quot;EQVQI12MAAoMHIFLAAYSEwIiJgYGZASrI38AAAwBamgM5VF7xgwAAAABJRU5ErkJggg==&quot;;
-    ImageTools.getImageFromBase64(base64Image)
-    .then(function(image) {
-        imagePath.value = image.path;
-    });
+        var imagePath = Observable();
+        var base64Image =    &quot;iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPAQMAAAABGAcJAAAABlBMVEX9//wAAQATpOzaAAAAH0l&quot; +
+                            &quot;EQVQI12MAAoMHIFLAAYSEwIiJgYGZASrI38AAAwBamgM5VF7xgwAAAABJRU5ErkJggg==&quot;;
+        ImageTools.getImageFromBase64(base64Image)
+        .then(function(image) {
+            imagePath.value = image.path;
+        });
 
-    module.exports = { test: new Date().toString(), image: imagePath };
-&lt;/JavaScript&gt;
-&lt;Image File=&quot;{image}&quot; /&gt;
+        module.exports = { test: new Date().toString(), image: imagePath };
+    &lt;/JavaScript&gt;
+    &lt;Image File=&quot;{image}&quot; /&gt;
 </code></pre>
 
 <section class="type-location">

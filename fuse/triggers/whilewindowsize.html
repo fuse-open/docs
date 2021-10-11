@@ -707,25 +707,25 @@ representing the target width and height (in points) to match against.</p>
 <h4 id="examples">Examples</h4>
 <p>The following example changes the color of <code>myRect</code> if the size of the
 app's viewport exceeds 400x400 points.</p>
-<pre><code>&lt;Rectangle ux:Name=&quot;myRect&quot; Color=&quot;#f00&quot; /&gt;
-&lt;WhileWindowSize GreaterThan=&quot;400,400&quot;&gt;
-    &lt;Change myRect.Color=&quot;#00f&quot; Duration=&quot;.5&quot;/&gt;
-&lt;/WhileWindowSize&gt;
+<pre><code class="language-xml">    &lt;Rectangle ux:Name=&quot;myRect&quot; Color=&quot;#f00&quot; /&gt;
+    &lt;WhileWindowSize GreaterThan=&quot;400,400&quot;&gt;
+        &lt;Change myRect.Color=&quot;#00f&quot; Duration=&quot;.5&quot;/&gt;
+    &lt;/WhileWindowSize&gt;
 </code></pre>
 <p>If you want to match on a single axis only, you can provide a value for
 the other axis that is greater than zero, and that you can safely assume
 will always match.</p>
 <p>For instance, if you want to check if only the width of the viewport is
 greater than 400 points, you could do the following:</p>
-<pre><code>&lt;WhileWindowSize GreaterThan=&quot;400,1&quot;&gt;
+<pre><code class="language-xml">    &lt;WhileWindowSize GreaterThan=&quot;400,1&quot;&gt;
 </code></pre>
 <p>This also works for LessThan by providing a big value.</p>
-<pre><code>&lt;WhileWindowSize LessThan=&quot;400,99999&quot;&gt;
+<pre><code class="language-xml">    &lt;WhileWindowSize LessThan=&quot;400,99999&quot;&gt;
 </code></pre>
 <p>You can also specify multiple constraints on the same <code>WhileWindowSize</code>
 trigger. Note that all constraints that you specify must be satisfied in
 order for the trigger to activate.</p>
-<pre><code>&lt;WhileWindowSize GreaterThan=&quot;200,300&quot; LessThan=&quot;700,1000&quot;&gt;
+<pre><code class="language-xml">    &lt;WhileWindowSize GreaterThan=&quot;200,300&quot; LessThan=&quot;700,1000&quot;&gt;
 </code></pre>
 
 <section class="type-location">

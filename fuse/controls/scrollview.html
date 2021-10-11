@@ -702,14 +702,14 @@ Show advanced things
 <p>Used to navigate contents that are larger than the available size.</p>
 <h3 id="example">Example</h3>
 <p>This example demonstrates the use of <code>ScrollView</code> by having it contain a <code>Panel</code> that would normally be too big to be viewed.</p>
-<pre><code>&lt;ScrollView&gt;
-    &lt;Panel Width=&quot;2000&quot; Height=&quot;2000&quot; /&gt;
-&lt;/ScrollView&gt;
+<pre><code class="language-xml">    &lt;ScrollView&gt;
+        &lt;Panel Width=&quot;2000&quot; Height=&quot;2000&quot; /&gt;
+    &lt;/ScrollView&gt;
 </code></pre>
 <p>You may also constrain the directions the ScrollView is allowed to scroll in using the <code>AllowedScrollDirections</code> property.</p>
-<pre><code>&lt;ScrollView AllowedScrollDirections=&quot;Horizontal&quot;&gt;
-    &lt;!-- Contents --&gt;
-&lt;/ScrollView&gt;
+<pre><code class="language-xml">    &lt;ScrollView AllowedScrollDirections=&quot;Horizontal&quot;&gt;
+        &lt;!-- Contents --&gt;
+    &lt;/ScrollView&gt;
 </code></pre>
 <p>By default, ScrollView tries to take up the same amount of space as its content in the scrollable directions.
 However, when placed in a <a href="../../fuse/controls/panel.html">Panel</a> (or <a href="../../fuse/controls/dockpanel.html">DockPanel</a>, <a href="../../fuse/controls/grid.html">Grid</a>, etc.), the size of the ScrollView itself will be limited to the size of its parent.</p>
@@ -727,12 +727,12 @@ For example a <code>Bottom</code> aligned element will start with the bottom of 
 <h4 id="layoutmode">LayoutMode</h4>
 <p>By default a <code>ScrollView</code> keeps a consistent <code>ScrollPosition</code> when the layout changes. This may result in jumping when content is added/removed.</p>
 <p>An alternate mode <code>LayoutMode=&quot;PreserveVisual&quot;</code> instead attempts to maintain visual consistency when its children or parent layout is changed. It assumes it's immediate content is a container and looks at that container's children.  For example, a layout like this:</p>
-<pre><code>&lt;ScrollView&gt;
-    &lt;StackPanel&gt;
-        &lt;Panel/&gt;
-        &lt;Panel/&gt;
-    &lt;StackPanel&gt;
-&lt;/ScrollView&gt;
+<pre><code class="language-xml">    &lt;ScrollView&gt;
+        &lt;StackPanel&gt;
+            &lt;Panel/&gt;
+            &lt;Panel/&gt;
+        &lt;StackPanel&gt;
+    &lt;/ScrollView&gt;
 </code></pre>
 <p>Visuals without <code>LayoutRole=Standard</code> are not considered when retaining the visual consistency. The <code>LayoutMode</code> property can be used to adjust this behavior.</p>
 
@@ -995,7 +995,12 @@ MotionConfig
 <span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
 </h5>
 <div class="table-of-contents-item-brief">
-<p>The animation and scrolling behavior of a <code>ScrollView</code> can be configured using <a href="../../fuse/motion/scrollviewmotion.html">ScrollViewMotion</a>. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../../fuse/controls/scrollviewbase/motion.html"><i class="fa fa-ellipsis-h"></i></a></p>
+<p>The animation and scrolling behavior of a <code>ScrollView</code> can be configured using <a href="../../fuse/motion/scrollviewmotion.html">ScrollViewMotion</a>.</p>
+<pre><code class="language-xml">    &lt;ScrollView&gt;
+        &lt;ScrollViewMotion GotoEasing=&quot;Linear&quot; GotoDuration=&quot;0.5&quot;/&gt;
+        &lt;Panel&gt;...content...&lt;/Panel&gt;
+    &lt;/ScrollView&gt;
+</code></pre>
 
 </div>
 </article>

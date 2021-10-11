@@ -708,78 +708,78 @@ If you want to accept multiple lines of text, use <a href="../../fuse/controls/t
 </blockquote>
 <h4 id="examples">Examples</h4>
 <p>This example shows a basic TextInput with some style and a button to clear its contents.</p>
-<pre><code>&lt;Panel&gt;
-    &lt;Button Alignment=&quot;CenterRight&quot; Text=&quot;Clear&quot; Margin=&quot;5&quot;&gt;
-        &lt;Clicked&gt;
-            &lt;Set text.Value=&quot;&quot; /&gt;
-        &lt;/Clicked&gt;
-    &lt;/Button&gt;
-    &lt;TextInput ux:Name=&quot;text&quot; PlaceholderText=&quot;Text field&quot; PlaceholderColor=&quot;#ccc&quot; Height=&quot;50&quot; Padding=&quot;5&quot; &gt;
-        &lt;Rectangle Layer=&quot;Background&quot;&gt;
-            &lt;Stroke Width=&quot;2&quot; Brush=&quot;#BBB&quot; /&gt;
-        &lt;/Rectangle&gt;
-    &lt;/TextInput&gt;
-&lt;/Panel&gt;
+<pre><code class="language-xml">    &lt;Panel&gt;
+        &lt;Button Alignment=&quot;CenterRight&quot; Text=&quot;Clear&quot; Margin=&quot;5&quot;&gt;
+            &lt;Clicked&gt;
+                &lt;Set text.Value=&quot;&quot; /&gt;
+            &lt;/Clicked&gt;
+        &lt;/Button&gt;
+        &lt;TextInput ux:Name=&quot;text&quot; PlaceholderText=&quot;Text field&quot; PlaceholderColor=&quot;#ccc&quot; Height=&quot;50&quot; Padding=&quot;5&quot; &gt;
+            &lt;Rectangle Layer=&quot;Background&quot;&gt;
+                &lt;Stroke Width=&quot;2&quot; Brush=&quot;#BBB&quot; /&gt;
+            &lt;/Rectangle&gt;
+        &lt;/TextInput&gt;
+    &lt;/Panel&gt;
 </code></pre>
 <p>The following example illustrates how you can subclass TextInput to achieve a consistent look throughout your app.</p>
-<pre><code>&lt;!-- Subclassing TextInput --&gt;
-&lt;TextInput ux:Class=&quot;MyTextInput&quot; FontSize=&quot;20&quot; PlaceholderColor=&quot;#ccc&quot; Padding=&quot;5&quot;&gt;
-    &lt;Rectangle Layer=&quot;Background&quot; CornerRadius=&quot;3&quot;&gt;
-        &lt;Stroke Width=&quot;1&quot; Color=&quot;#ccc&quot; /&gt;
-        &lt;SolidColor Color=&quot;White&quot; /&gt;
-    &lt;/Rectangle&gt;
-&lt;/TextInput&gt;
+<pre><code class="language-xml">    &lt;!-- Subclassing TextInput --&gt;
+    &lt;TextInput ux:Class=&quot;MyTextInput&quot; FontSize=&quot;20&quot; PlaceholderColor=&quot;#ccc&quot; Padding=&quot;5&quot;&gt;
+        &lt;Rectangle Layer=&quot;Background&quot; CornerRadius=&quot;3&quot;&gt;
+            &lt;Stroke Width=&quot;1&quot; Color=&quot;#ccc&quot; /&gt;
+            &lt;SolidColor Color=&quot;White&quot; /&gt;
+        &lt;/Rectangle&gt;
+    &lt;/TextInput&gt;
 
-&lt;!-- Example usage --&gt;
-&lt;StackPanel Margin=&quot;10&quot; ItemSpacing=&quot;10&quot;&gt;
-    &lt;MyTextInput PlaceholderText=&quot;Username&quot; /&gt;
-    &lt;MyTextInput PlaceholderText=&quot;Password&quot; IsPassword=&quot;true&quot; /&gt;
-    &lt;MyTextInput PlaceholderText=&quot;Repeat password&quot; IsPassword=&quot;true&quot; /&gt;
-    &lt;MyTextInput /&gt;
-&lt;/StackPanel&gt;
+    &lt;!-- Example usage --&gt;
+    &lt;StackPanel Margin=&quot;10&quot; ItemSpacing=&quot;10&quot;&gt;
+        &lt;MyTextInput PlaceholderText=&quot;Username&quot; /&gt;
+        &lt;MyTextInput PlaceholderText=&quot;Password&quot; IsPassword=&quot;true&quot; /&gt;
+        &lt;MyTextInput PlaceholderText=&quot;Repeat password&quot; IsPassword=&quot;true&quot; /&gt;
+        &lt;MyTextInput /&gt;
+    &lt;/StackPanel&gt;
 </code></pre>
 <p>This example shows how you can configure the layout and behavior of the on-screen keyboard when the TextInput is in focus using the InputHint, AutoCorrectHint, AutoCapitalizationHint and <a href="../../fuse/triggers/actions/triggeraction.html">Action</a>Style properties.</p>
-<pre><code>&lt;TextInput PlaceholderText=&quot;Search...&quot; ActionStyle=&quot;Search&quot; AutoCapitalizationHint=&quot;None&quot; /&gt;
-&lt;TextInput PlaceholderText=&quot;Email&quot; InputHint=&quot;Email&quot; ActionStyle=&quot;Send&quot; AutoCorrectHint=&quot;Disabled&quot; AutoCapitalizationHint=&quot;None&quot; /&gt;
-&lt;TextInput PlaceholderText=&quot;http://&quot; InputHint=&quot;URL&quot; ActionStyle=&quot;Go&quot; AutoCorrectHint=&quot;Disabled&quot; AutoCapitalizationHint=&quot;None&quot; /&gt;
-&lt;TextInput PlaceholderText=&quot;+47 123 456 789&quot; InputHint=&quot;Phone&quot; /&gt;
-&lt;TextInput PlaceholderText=&quot;1234&quot; InputHint=&quot;Number&quot; /&gt;
-&lt;TextInput PlaceholderText=&quot;1.234&quot; InputHint=&quot;Decimal&quot; /&gt;
-&lt;TextInput PlaceholderText=&quot;1&quot; InputHint=&quot;Integer&quot; /&gt;
+<pre><code class="language-xml">    &lt;TextInput PlaceholderText=&quot;Search...&quot; ActionStyle=&quot;Search&quot; AutoCapitalizationHint=&quot;None&quot; /&gt;
+    &lt;TextInput PlaceholderText=&quot;Email&quot; InputHint=&quot;Email&quot; ActionStyle=&quot;Send&quot; AutoCorrectHint=&quot;Disabled&quot; AutoCapitalizationHint=&quot;None&quot; /&gt;
+    &lt;TextInput PlaceholderText=&quot;http://&quot; InputHint=&quot;URL&quot; ActionStyle=&quot;Go&quot; AutoCorrectHint=&quot;Disabled&quot; AutoCapitalizationHint=&quot;None&quot; /&gt;
+    &lt;TextInput PlaceholderText=&quot;+47 123 456 789&quot; InputHint=&quot;Phone&quot; /&gt;
+    &lt;TextInput PlaceholderText=&quot;1234&quot; InputHint=&quot;Number&quot; /&gt;
+    &lt;TextInput PlaceholderText=&quot;1.234&quot; InputHint=&quot;Decimal&quot; /&gt;
+    &lt;TextInput PlaceholderText=&quot;1&quot; InputHint=&quot;Integer&quot; /&gt;
 </code></pre>
 <p>A common use-case is to have the TextInput raise an event when the user presses the return/search key on their virtual/physical keyboard.
 The following example demonstrates using <code>ActionTriggered</code> to get an event when this happens:</p>
-<pre><code>&lt;StackPanel&gt;
-    &lt;JavaScript&gt;
-        var Observable = require(&quot;FuseJS/Observable&quot;);
+<pre><code class="language-xml">    &lt;StackPanel&gt;
+        &lt;JavaScript&gt;
+            var Observable = require(&quot;FuseJS/Observable&quot;);
 
-        var searchStr = Observable(&quot;Please enter a query...&quot;);
-        var entryStr = Observable(&quot;&quot;);
+            var searchStr = Observable(&quot;Please enter a query...&quot;);
+            var entryStr = Observable(&quot;&quot;);
 
-        function onSearch(args) {
-            searchStr.value = &quot;You entered: &quot; + entryStr.value;
-        }
+            function onSearch(args) {
+                searchStr.value = &quot;You entered: &quot; + entryStr.value;
+            }
 
-        module.exports = {
-            searchStr: searchStr,
-            onSearch: onSearch,
-            entryStr: entryStr
-        };
-    &lt;/JavaScript&gt;
-    &lt;Text FontSize=&quot;20&quot;&gt;Search&lt;/Text&gt;
-    &lt;TextInput Value=&quot;{entryStr}&quot; PlaceholderText=&quot;Enter your query....&quot; ActionTriggered=&quot;{onSearch}&quot; /&gt;
-    &lt;Text FontSize=&quot;20&quot; Value=&quot;{searchStr}&quot; /&gt;
-&lt;/StackPanel&gt;
+            module.exports = {
+                searchStr: searchStr,
+                onSearch: onSearch,
+                entryStr: entryStr
+            };
+        &lt;/JavaScript&gt;
+        &lt;Text FontSize=&quot;20&quot;&gt;Search&lt;/Text&gt;
+        &lt;TextInput Value=&quot;{entryStr}&quot; PlaceholderText=&quot;Enter your query....&quot; ActionTriggered=&quot;{onSearch}&quot; /&gt;
+        &lt;Text FontSize=&quot;20&quot; Value=&quot;{searchStr}&quot; /&gt;
+    &lt;/StackPanel&gt;
 </code></pre>
 <p>In some cases, it might be undesirable for the virtual keyboard to disappear when a certain other ux element is pressed.
 This can be done by passing a parent container to the <code>Focus.Delegate</code> property, causing the focus state to be delegated to the delegate target:</p>
-<pre><code>&lt;DockPanel ux:Name=&quot;dockpanel&quot; IsFocusable=&quot;true&quot; Color=&quot;#fff&quot;&gt;
-    &lt;TextInput Focus.Delegate=&quot;dockpanel&quot; /&gt;
-    &lt;Panel Dock=&quot;Right&quot;&gt;
-        &lt;Text Value=&quot;SEND&quot; Alignment=&quot;Center&quot; Margin=&quot;4,0&quot; Color=&quot;#fff&quot; /&gt;
-        &lt;Rectangle CornerRadius=&quot;4&quot; Color=&quot;#000&quot; /&gt;
-    &lt;/Panel&gt;
-&lt;/DockPanel&gt;
+<pre><code class="language-xml">    &lt;DockPanel ux:Name=&quot;dockpanel&quot; IsFocusable=&quot;true&quot; Color=&quot;#fff&quot;&gt;
+        &lt;TextInput Focus.Delegate=&quot;dockpanel&quot; /&gt;
+        &lt;Panel Dock=&quot;Right&quot;&gt;
+            &lt;Text Value=&quot;SEND&quot; Alignment=&quot;Center&quot; Margin=&quot;4,0&quot; Color=&quot;#fff&quot; /&gt;
+            &lt;Rectangle CornerRadius=&quot;4&quot; Color=&quot;#000&quot; /&gt;
+        &lt;/Panel&gt;
+    &lt;/DockPanel&gt;
 </code></pre>
 
 <section class="type-location">
