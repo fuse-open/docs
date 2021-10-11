@@ -464,7 +464,7 @@
           {
             "comment": {
               "brief": "The parameter data for this visual, encoded as JSON, provided by a router if this visual represents a navigation page.",
-              "full": "The parameter data for this visual, encoded as JSON, provided by a router if this visual represents a navigation page.\n\nWhen this value is set, the parameter can be accessed in JavaScript through the `.Parameter` property on this object.\n\nExample:\n\n    <JavaScript>\n        router.goto(\"profile\", { id: 3 });\n    </JavaScript>\n    ...\n    <Page ux:Name=\"profile\">\n        <JavaScript>\n            profile.Parameter.onValueChanged(module, function(param) {\n                // param holds the deserialized object { id: 3 }\n            });\n        </JavaScript>\n    </Page>"
+              "full": "The parameter data for this visual, encoded as JSON, provided by a router if this visual represents a navigation page.\n\nWhen this value is set, the parameter can be accessed in JavaScript through the `.Parameter` property on this object.\n\n## Example:\n```xml\n    <JavaScript>\n        router.goto(\"profile\", { id: 3 });\n    </JavaScript>\n    ...\n    <Page ux:Name=\"profile\">\n        <JavaScript>\n            profile.Parameter.onValueChanged(module, function(param) {\n                // param holds the deserialized object { id: 3 }\n            });\n        </JavaScript>\n    </Page>\n```"
             },
             "returns": {
               "href": "uno/string",
@@ -548,7 +548,7 @@
           {
             "comment": {
               "brief": "List of templates that will be used to populate this Visual.",
-              "full": "List of templates that will be used to populate this Visual.\n\nThis list allows you to place nodes with a `ux:Template=\"key\"` attribute inside a @Visual in UX Markup,\nwhere `key` is the match key to be used when selecting a template.\n\nThis list has many use cases. For example, when populating a view with data, the correct template can be\npicked based on a field    in the data source:\n\n    <StackPanel Items=\"{items}\" MatchKey=\"type\">\n        <SmallProfile ux:Template=\"small_profile\" />\n        <BigProfile ux:Template=\"big_profile\" />\n    </StackPanel>\n\nThe name of the template can also have a special significance in certain contexts, for example when dealing\nwith native control wrappers:\n\n    <Control ux:Class=\"MySlider\">\n        <MyWrappers.iOS.Slider ux:Template=\"iOSAppearance\" />\n        <MyWrappers.Android.Slider ux:Template=\"AndroidAppearance\" />\n        <MyWrappers.Graphics.Slider ux:Template=\"GraphicsAppearance\" />\n    </Control>"
+              "full": "List of templates that will be used to populate this Visual.\n\nThis list allows you to place nodes with a `ux:Template=\"key\"` attribute inside a @Visual in UX Markup,\nwhere `key` is the match key to be used when selecting a template.\n\nThis list has many use cases. For example, when populating a view with data, the correct template can be\npicked based on a field    in the data source:\n```xml\n    <StackPanel Items=\"{items}\" MatchKey=\"type\">\n        <SmallProfile ux:Template=\"small_profile\" />\n        <BigProfile ux:Template=\"big_profile\" />\n    </StackPanel>\n```\nThe name of the template can also have a special significance in certain contexts, for example when dealing\nwith native control wrappers:\n```xml\n    <Control ux:Class=\"MySlider\">\n        <MyWrappers.iOS.Slider ux:Template=\"iOSAppearance\" />\n        <MyWrappers.Android.Slider ux:Template=\"AndroidAppearance\" />\n        <MyWrappers.Graphics.Slider ux:Template=\"GraphicsAppearance\" />\n    </Control>\n```"
             },
             "returns": {
               "href": "uno/collections/ilist_1",
@@ -809,7 +809,7 @@
           {
             "comment": {
               "brief": "Registers a function to be called whenever the routing parameter is changed.",
-              "full": "Registers a function to be called whenever the routing parameter is changed.\n\nThis is typically used in conjunction with the @Router type that allows parameters to be\nspecified in the @Router.goto and @Router.push operations.\n\n## Example\n\nThis method is deprecated - use the following pattern instead:\n\n    <Panel ux:Name=\"channelView\">\n        <JavaScript>\n            channelView.Parameter.onValueChanged(module, function(param) {\n                // lookup channel with id \"param\"\n            })\n        </JavaScript>",
+              "full": "Registers a function to be called whenever the routing parameter is changed.\n\nThis is typically used in conjunction with the @Router type that allows parameters to be\nspecified in the @Router.goto and @Router.push operations.\n\n## Example\n\nThis method is deprecated - use the following pattern instead:\n```xml\n    <Panel ux:Name=\"channelView\">\n        <JavaScript>\n            channelView.Parameter.onValueChanged(module, function(param) {\n                // lookup channel with id \"param\"\n            })\n        </JavaScript>\n```",
               "attributes": {
                 "scriptMethod": {
                   "name": "onParameterChanged",

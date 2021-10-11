@@ -43,7 +43,7 @@
     },
     "comment": {
       "brief": "Asynchronously gets info about a file.",
-      "full": "Asynchronously gets info about a file.\n\nThe returned object has the following properties:\n\n* `size` –  size of file\n* `exists` –  a boolean value stating whether file exists\n* `lastWriteTime` –  A `Date` stating when file was last changed\n* `lastAccessTime` –  A `Date` stating when file was accessed\n\n## Example\n\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    FileSystem.writeTextToFileSync(\"some-file.txt\", \"hello there\");\n    FileSystem.getFileInfo(\"some-file.txt\")\n        .then(function(fileInfo) {\n            console.log(\"file was modified on \" + fileInfo.lastWriteTime);\n        })\n        .catch(function(error) {\n            \"failed stat \" + error\n        });",
+      "full": "Asynchronously gets info about a file.\n\nThe returned object has the following properties:\n\n* `size` –  size of file\n* `exists` –  a boolean value stating whether file exists\n* `lastWriteTime` –  A `Date` stating when file was last changed\n* `lastAccessTime` –  A `Date` stating when file was accessed\n\n## Example\n```js\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    FileSystem.writeTextToFileSync(\"some-file.txt\", \"hello there\");\n    FileSystem.getFileInfo(\"some-file.txt\")\n        .then(function(fileInfo) {\n            console.log(\"file was modified on \" + fileInfo.lastWriteTime);\n        })\n        .catch(function(error) {\n            \"failed stat \" + error\n        });\n```",
       "attributes": {
         "scriptMethod": {
           "name": "getFileInfo",

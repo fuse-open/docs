@@ -145,7 +145,7 @@
     },
     "comment": {
       "brief": "Utility methods for common Image manipulation.",
-      "full": "Utility methods for common Image manipulation.\n\n> To use this module, add `Fuse.ImageTools` to your package references in your `.unoproj`.\n\nFuse represents images as frozen JavaScript Image objects, consisting of a path, a filename, a width and a height.\nOnce created or acquired, Images can be passed around to other APIs to use, fetch or alter their underlying data.\nAll images are temporary \"scratch images\" until storage has been specified either through publishing to the CameraRoll or other.\n\nOn Android using this API will request the WRITE_EXTERNAL_STORAGE and READ_EXTERNAL_STORAGE permissions.\n\n## Example\n\n    <JavaScript>\n        var ImageTools = require(\"FuseJS/ImageTools\");\n        var Observable = require(\"FuseJS/Observable\");\n\n        var imagePath = Observable();\n        var base64Image =    \"iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPAQMAAAABGAcJAAAABlBMVEX9//wAAQATpOzaAAAAH0l\" +\n                            \"EQVQI12MAAoMHIFLAAYSEwIiJgYGZASrI38AAAwBamgM5VF7xgwAAAABJRU5ErkJggg==\";\n        ImageTools.getImageFromBase64(base64Image)\n        .then(function(image) {\n            imagePath.value = image.path;\n        });\n\n        module.exports = { test: new Date().toString(), image: imagePath };\n    </JavaScript>\n    <Image File=\"{image}\" />",
+      "full": "Utility methods for common Image manipulation.\n\n> To use this module, add `Fuse.ImageTools` to your package references in your `.unoproj`.\n\nFuse represents images as frozen JavaScript Image objects, consisting of a path, a filename, a width and a height.\nOnce created or acquired, Images can be passed around to other APIs to use, fetch or alter their underlying data.\nAll images are temporary \"scratch images\" until storage has been specified either through publishing to the CameraRoll or other.\n\nOn Android using this API will request the WRITE_EXTERNAL_STORAGE and READ_EXTERNAL_STORAGE permissions.\n\n## Example\n```xml\n    <JavaScript>\n        var ImageTools = require(\"FuseJS/ImageTools\");\n        var Observable = require(\"FuseJS/Observable\");\n\n        var imagePath = Observable();\n        var base64Image =    \"iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPAQMAAAABGAcJAAAABlBMVEX9//wAAQATpOzaAAAAH0l\" +\n                            \"EQVQI12MAAoMHIFLAAYSEwIiJgYGZASrI38AAAwBamgM5VF7xgwAAAABJRU5ErkJggg==\";\n        ImageTools.getImageFromBase64(base64Image)\n        .then(function(image) {\n            imagePath.value = image.path;\n        });\n\n        module.exports = { test: new Date().toString(), image: imagePath };\n    </JavaScript>\n    <Image File=\"{image}\" />\n```",
       "attributes": {
         "scriptModule": "FuseJS/ImageTools"
       }
@@ -317,7 +317,7 @@
           {
             "comment": {
               "brief": "Encodes the given image as a base64 string.",
-              "full": "Encodes the given image as a base64 string.\n\n## Example\n\n    // Here we assume that we have an existing `image` object\n    var ImageTools = require(\"FuseJS/ImageTools\");\n    ImageTools.getBase64FromImage(image)\n        .then(function(base64Image) { console.log(\"The base64 encoded image is \\\"\" + base64Image + \"\\\"\"); });",
+              "full": "Encodes the given image as a base64 string.\n\n## Example\n```js\n    // Here we assume that we have an existing `image` object\n    var ImageTools = require(\"FuseJS/ImageTools\");\n    ImageTools.getBase64FromImage(image)\n        .then(function(base64Image) { console.log(\"The base64 encoded image is \\\"\" + base64Image + \"\\\"\"); });\n```",
               "attributes": {
                 "scriptMethod": {
                   "name": "getBase64FromImage",
@@ -371,7 +371,7 @@
           {
             "comment": {
               "brief": "Retrieves the underlying image data for an image as an ArrayBuffer.",
-              "full": "Retrieves the underlying image data for an image as an ArrayBuffer.\n\n## Example\n\n    // Here image is expected to be an `Image` object\n    var ImageTools = require(\"FuseJS/ImageTools\");\n    ImageTools.getBufferFromImage(image)\n        .then(function(buf) { console.log(\"Image contains \" + buf.byteLength + \" bytes\"); });",
+              "full": "Retrieves the underlying image data for an image as an ArrayBuffer.\n\n## Example\n```js\n    // Here image is expected to be an `Image` object\n    var ImageTools = require(\"FuseJS/ImageTools\");\n    ImageTools.getBufferFromImage(image)\n        .then(function(buf) { console.log(\"Image contains \" + buf.byteLength + \" bytes\"); });\n```",
               "attributes": {
                 "scriptMethod": {
                   "name": "getBufferFromImage",
@@ -425,7 +425,7 @@
           {
             "comment": {
               "brief": "Crops the supplied `image`, and returns a Promise of the transformed Image.",
-              "full": "Crops the supplied `image`, and returns a Promise of the transformed Image.\n\nThe `options` parameter must be an object with one or more of the following properties defined:\n\n* `x` - X offset for cropped image, from left\n* `y` - Y offset for cropped image, from top\n* `width` - Width of cropped image\n* `height` - Height of cropped image\n* `performInPlace` - Boolean value determining whether the existing image will replaced\n\n## Example\n\n    // Here we assume that we have an existing image variable `originalImage`\n    var ImageTools = require(\"FuseJS/ImageTools\");\n\n    var options = {\n        width: 10, // Width of cropped image\n        height: 10 // Height of cropped image\n    };\n\n    ImageTools.crop(originalImage, options)\n        .then(function(newImage) { console.log(\"Path of cropped image is \" + newImage.path); });",
+              "full": "Crops the supplied `image`, and returns a Promise of the transformed Image.\n\nThe `options` parameter must be an object with one or more of the following properties defined:\n\n* `x` - X offset for cropped image, from left\n* `y` - Y offset for cropped image, from top\n* `width` - Width of cropped image\n* `height` - Height of cropped image\n* `performInPlace` - Boolean value determining whether the existing image will replaced\n\n## Example\n```js\n    // Here we assume that we have an existing image variable `originalImage`\n    var ImageTools = require(\"FuseJS/ImageTools\");\n\n    var options = {\n        width: 10, // Width of cropped image\n        height: 10 // Height of cropped image\n    };\n\n    ImageTools.crop(originalImage, options)\n        .then(function(newImage) { console.log(\"Path of cropped image is \" + newImage.path); });\n```",
               "attributes": {
                 "scriptMethod": {
                   "name": "crop",
@@ -485,7 +485,7 @@
           {
             "comment": {
               "brief": "Takes base64 string encoded image data and returns a Promise of an Image.",
-              "full": "Takes base64 string encoded image data and returns a Promise of an Image.\n\n## Example\n\n    // Here we assume that someBase64ImageString contains a base-64 encoded image\n    var ImageTools = require(\"FuseJS/ImageTools\");\n    ImageTools.getImageFromBase64(someBase64ImageString);\n        .then(function(image) {\n            console.log(\"Scratch path of image is \" + image.path);\n        });",
+              "full": "Takes base64 string encoded image data and returns a Promise of an Image.\n\n## Example\n```js\n    // Here we assume that someBase64ImageString contains a base-64 encoded image\n    var ImageTools = require(\"FuseJS/ImageTools\");\n    ImageTools.getImageFromBase64(someBase64ImageString);\n        .then(function(image) {\n            console.log(\"Scratch path of image is \" + image.path);\n        });\n```",
               "attributes": {
                 "scriptMethod": {
                   "name": "getImageFromBase64",
@@ -539,7 +539,7 @@
           {
             "comment": {
               "brief": "Creates a new temporary image file from an ArrayBuffer of image data.",
-              "full": "Creates a new temporary image file from an ArrayBuffer of image data.\n\n## Example\n\n    var ImageTools = require(\"FuseJS/ImageTools\");\n    ImageTools.getImageFromBuffer(imageData).\n        then(function (image) { console.log(\"Scratch image path is: \" + image.path); });",
+              "full": "Creates a new temporary image file from an ArrayBuffer of image data.\n\n## Example\n```js\n    var ImageTools = require(\"FuseJS/ImageTools\");\n    ImageTools.getImageFromBuffer(imageData).\n        then(function (image) { console.log(\"Scratch image path is: \" + image.path); });\n```",
               "attributes": {
                 "scriptMethod": {
                   "name": "getImageFromBuffer",
@@ -593,7 +593,7 @@
           {
             "comment": {
               "brief": "Resizes an image using the options provided, and returns a Promise of the transformed Image.",
-              "full": "Resizes an image using the options provided, and returns a Promise of the transformed Image.\n\nThe `options` parameter must be an object with one or more of the following properties defined:\n\n* `desiredWidth` - The new width in pixels\n* `desiredHeight` - The new height in pixels\n* `mode` - The resizing mode, which can be:\n  - `ImageTools.IGNORE_ASPECT` - The image is resized exactly to the desired width and height. This is the default.\n  - `ImageTools.KEEP_ASPECT`- The image is resized to within the closest size possible to the desired size while still maintaining the original aspect ratio.\n  - `ImageTools.SCALE_AND_CROP` - The image is first scaled and centered while maintaining aspect to the closest edge of the desired bounds, then cropped according to the Crop rule. This allows you to make an aspect correct square portrait out of a landscape shot, for instance.\n* `performInPlace` - Boolean value determining whether the existing image will replaced\n\n## Example\n\n    // Here we assume that we have an existing image variable `originalImage`\n    var ImageTools = require(\"FuseJS/ImageTools\");\n\n    var options = {\n        mode: ImageTools.IGNORE_ASPECT,\n        desiredWidth: 320, //The desired width in pixels\n        desiredHeight: 240 //The desired height in pixels\n    };\n\n    ImageTools.resize(originalImage, options)\n        .then(function(newImage) { console.log(\"Path of resized image is \" + newImage.path); });",
+              "full": "Resizes an image using the options provided, and returns a Promise of the transformed Image.\n\nThe `options` parameter must be an object with one or more of the following properties defined:\n\n* `desiredWidth` - The new width in pixels\n* `desiredHeight` - The new height in pixels\n* `mode` - The resizing mode, which can be:\n  - `ImageTools.IGNORE_ASPECT` - The image is resized exactly to the desired width and height. This is the default.\n  - `ImageTools.KEEP_ASPECT`- The image is resized to within the closest size possible to the desired size while still maintaining the original aspect ratio.\n  - `ImageTools.SCALE_AND_CROP` - The image is first scaled and centered while maintaining aspect to the closest edge of the desired bounds, then cropped according to the Crop rule. This allows you to make an aspect correct square portrait out of a landscape shot, for instance.\n* `performInPlace` - Boolean value determining whether the existing image will replaced\n\n## Example\n```js\n    // Here we assume that we have an existing image variable `originalImage`\n    var ImageTools = require(\"FuseJS/ImageTools\");\n\n    var options = {\n        mode: ImageTools.IGNORE_ASPECT,\n        desiredWidth: 320, //The desired width in pixels\n        desiredHeight: 240 //The desired height in pixels\n    };\n\n    ImageTools.resize(originalImage, options)\n        .then(function(newImage) { console.log(\"Path of resized image is \" + newImage.path); });\n```",
               "attributes": {
                 "scriptMethod": {
                   "name": "resize",

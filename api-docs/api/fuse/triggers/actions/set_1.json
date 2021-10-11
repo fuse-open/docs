@@ -135,7 +135,7 @@
     },
     "comment": {
       "brief": "Permanently changes the value of a property.",
-      "full": "Permanently changes the value of a property.\n\n> **Note:** If you wish to temporarily change the value of a property, use @Change instead.\n\nThe basic syntax of `Set` is as follows:\n\n    <Set myNode.MyProperty=\"MyValue\" />\n\nHowever, this is just syntactic sugar. The following is equivalent:\n\n    <Set Target=\"myNode.MyProperty\" Value=\"MyValue\" />\n\n## Example\n\nThe following example consists of a red @Rectangle that, once clicked, changes its color to blue.\n\n    <Rectangle ux:Name=\"myRectangle\" Color=\"Red\">\n        <Clicked>\n            <Set myRectangle.Color=\"Blue\" />\n        </Clicked>\n    </Rectangle>"
+      "full": "Permanently changes the value of a property.\n\n> **Note:** If you wish to temporarily change the value of a property, use @Change instead.\n\nThe basic syntax of `Set` is as follows:\n```xml\n    <Set myNode.MyProperty=\"MyValue\" />\n```\nHowever, this is just syntactic sugar. The following is equivalent:\n```xml\n    <Set Target=\"myNode.MyProperty\" Value=\"MyValue\" />\n```\n## Example\n\nThe following example consists of a red @Rectangle that, once clicked, changes its color to blue.\n```xml\n    <Rectangle ux:Name=\"myRectangle\" Color=\"Red\">\n        <Clicked>\n            <Set myRectangle.Color=\"Blue\" />\n        </Clicked>\n    </Rectangle>\n```"
     }
   },
   "tableOfContents": {
@@ -163,7 +163,7 @@
           {
             "comment": {
               "brief": "If specified, `Set` will increment the target property by the provided amount rather than overwriting it.",
-              "full": "If specified, `Set` will increment the target property by the provided amount rather than overwriting it.\n\n## Example\n\nThe following example consists of a red @Rectangle and a button that fades its color\na little step towards blue with each click.\n\n    <Button Text=\"Make background more blue\">\n        <Clicked>\n            <Set Target=\"background.Color\" Increment=\"-0.2, 0, 0.2, 0\" />\n        </Clicked>\n    </Button>\n    <Rectangle ux:Name=\"background\" Color=\"1, 0, 0, 1\" />"
+              "full": "If specified, `Set` will increment the target property by the provided amount rather than overwriting it.\n\n## Example\n\nThe following example consists of a red @Rectangle and a button that fades its color\na little step towards blue with each click.\n```xml\n    <Button Text=\"Make background more blue\">\n        <Clicked>\n            <Set Target=\"background.Color\" Increment=\"-0.2, 0, 0.2, 0\" />\n        </Clicked>\n    </Button>\n    <Rectangle ux:Name=\"background\" Color=\"1, 0, 0, 1\" />\n```"
             },
             "returns": {
               "isVirtual": true,
@@ -572,7 +572,7 @@
           {
             "comment": {
               "brief": "The property to assign to.",
-              "full": "The property to assign to.\n\n## Example\n\n    <Button Text=\"Make background blue\">\n        <Clicked>\n            <Set Target=\"background.Color\" Value=\"Blue\" />\n        </Clicked>\n    </Button>\n    <Rectangle ux:Name=\"background\" Color=\"Red\" />"
+              "full": "The property to assign to.\n\n## Example\n```xml\n    <Button Text=\"Make background blue\">\n        <Clicked>\n            <Set Target=\"background.Color\" Value=\"Blue\" />\n        </Clicked>\n    </Button>\n    <Rectangle ux:Name=\"background\" Color=\"Red\" />\n```"
             },
             "returns": {
               "href": "uno/ux/property_1",

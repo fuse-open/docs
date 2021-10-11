@@ -144,8 +144,8 @@
       "ux": "<FileSystem.FileSystemModule />"
     },
     "comment": {
-      "brief": "Provides an interface to the file system.",
-      "full": "Provides an interface to the file system.\n\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\nUsing the asynchronous Promise based functions is recommended to keep your UI responsive,\nalthough synchronous variants are also available if preferred.\n\nWhen saving files private to the application you can use the `dataDirectory` property\nas a base path.\n\n## Example\n\nThis example writes a text to a file, and then reads it back:\n\n    var FileSystem = require(\"FuseJS/FileSystem\");\n    var path = FileSystem.dataDirectory + \"/\" + \"testfile.tmp\";\n\n    FileSystem.writeTextToFile(path, \"hello world\")\n        .then(function() {\n            return FileSystem.readTextFromFile(path);\n        })\n        .then(function(text) {\n            console.log(\"The read file content was: \" + text);\n        })\n        .catch(function(error) {\n            console.log(\"Unable to read file due to error:\" + error);\n        });",
+      "brief": "Provides an interface to the file system.\n```js\n    var FileSystem = require(\"FuseJS/FileSystem\");\n```\nUsing the asynchronous Promise based functions is recommended to keep your UI responsive,\nalthough synchronous variants are also available if preferred.",
+      "full": "Provides an interface to the file system.\n```js\n    var FileSystem = require(\"FuseJS/FileSystem\");\n```\nUsing the asynchronous Promise based functions is recommended to keep your UI responsive,\nalthough synchronous variants are also available if preferred.\n\nWhen saving files private to the application you can use the `dataDirectory` property\nas a base path.\n\n## Example\n\nThis example writes a text to a file, and then reads it back:\n```js\n    var FileSystem = require(\"FuseJS/FileSystem\");\n    var path = FileSystem.dataDirectory + \"/\" + \"testfile.tmp\";\n\n    FileSystem.writeTextToFile(path, \"hello world\")\n        .then(function() {\n            return FileSystem.readTextFromFile(path);\n        })\n        .then(function(text) {\n            console.log(\"The read file content was: \" + text);\n        })\n        .catch(function(error) {\n            console.log(\"Unable to read file due to error:\" + error);\n        });\n```",
       "attributes": {
         "scriptModule": "FuseJS/FileSystem"
       }
@@ -461,7 +461,7 @@
           {
             "comment": {
               "brief": "Asynchronously appends a string to a UTF-8 encoded file.",
-              "full": "Asynchronously appends a string to a UTF-8 encoded file.\n\n## Example\n\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    FileSystem.appendTextToFile(FileSystem.dataDirectory + \"/\" + \"myfile.txt\", \"Hello buddy\")\n        .then(function() {\n            console.log(\"Successful append\");\n        }, function(error) {\n            console.log(error);\n        });",
+              "full": "Asynchronously appends a string to a UTF-8 encoded file.\n\n## Example\n```js\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    FileSystem.appendTextToFile(FileSystem.dataDirectory + \"/\" + \"myfile.txt\", \"Hello buddy\")\n        .then(function() {\n            console.log(\"Successful append\");\n        }, function(error) {\n            console.log(error);\n        });\n```",
               "attributes": {
                 "scriptMethod": {
                   "name": "appendTextToFile",
@@ -520,7 +520,7 @@
           {
             "comment": {
               "brief": "Synchronously appends a string to a UTF-8 encoded file.",
-              "full": "Synchronously appends a string to a UTF-8 encoded file.\n\n## Example\n\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    FileSystem.appendTextToFileSync(\"myfile.txt\", \"Hello buddy\");",
+              "full": "Synchronously appends a string to a UTF-8 encoded file.\n\n## Example\n```js\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    FileSystem.appendTextToFileSync(\"myfile.txt\", \"Hello buddy\");\n```",
               "attributes": {
                 "scriptMethod": {
                   "name": "appendTextToFileSync",
@@ -581,7 +581,7 @@
           {
             "comment": {
               "brief": "Asynchronously copies a file or directory recursively from source to destination path",
-              "full": "Asynchronously copies a file or directory recursively from source to destination path\n\n## Example\n\n    FileSystem = require(\"FuseJS/FileSystem\");\n\n    FileSystem.writeTextToFile(\"to-be-copied.txt\", \"hello world\")\n        .then(function() {\n            return FileSystem.copy(\"to-be-copied.txt\", \"destination-reached.txt\");\n        })\n        .catch(function(err) {\n            console.log(\"Unable to copy file\");\n        });",
+              "full": "Asynchronously copies a file or directory recursively from source to destination path\n\n## Example\n```js\n    FileSystem = require(\"FuseJS/FileSystem\");\n\n    FileSystem.writeTextToFile(\"to-be-copied.txt\", \"hello world\")\n        .then(function() {\n            return FileSystem.copy(\"to-be-copied.txt\", \"destination-reached.txt\");\n        })\n        .catch(function(err) {\n            console.log(\"Unable to copy file\");\n        });\n```",
               "attributes": {
                 "scriptMethod": {
                   "name": "copy",
@@ -640,7 +640,7 @@
           {
             "comment": {
               "brief": "Synchronously copies a file or directory recursively from source to destination path",
-              "full": "Synchronously copies a file or directory recursively from source to destination path\n\n## Example\n\n    FileSystem = require(\"FuseJS/FileSystem\");\n\n    FileSystem.writeTextToFileSync(\"to-be-copied.txt\", \"hello world\");\n    FileSystem.copySync(\"to-be-copied.txt\", \"destination-reached.txt\");",
+              "full": "Synchronously copies a file or directory recursively from source to destination path\n\n## Example\n```js\n    FileSystem = require(\"FuseJS/FileSystem\");\n\n    FileSystem.writeTextToFileSync(\"to-be-copied.txt\", \"hello world\");\n    FileSystem.copySync(\"to-be-copied.txt\", \"destination-reached.txt\");\n```",
               "attributes": {
                 "scriptMethod": {
                   "name": "copySync",
@@ -702,7 +702,7 @@
           {
             "comment": {
               "brief": "Asynchronously creates a directory.",
-              "full": "Asynchronously creates a directory.\n\n## Example\n\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    FileSystem.createDirectory(FileSystem.dataDirectory + \"/\" + \"new-directory\")\n        .then(function() {\n            console.log(\"Directory created!\");\n        }, function(error) {\n            console.log(\"Error trying to create directory.\");\n        });",
+              "full": "Asynchronously creates a directory.\n\n## Example\n```js\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    FileSystem.createDirectory(FileSystem.dataDirectory + \"/\" + \"new-directory\")\n        .then(function() {\n            console.log(\"Directory created!\");\n        }, function(error) {\n            console.log(\"Error trying to create directory.\");\n        });\n```",
               "attributes": {
                 "scriptMethod": {
                   "name": "createDirectory",
@@ -756,7 +756,7 @@
           {
             "comment": {
               "brief": "Synchronously creates a directory.",
-              "full": "Synchronously creates a directory.\n\n## Example\n\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    FileSystem.createDirectory(FileSystem.dataDirectory + \"/\" + \"new-directory\");",
+              "full": "Synchronously creates a directory.\n\n## Example\n```js\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    FileSystem.createDirectory(FileSystem.dataDirectory + \"/\" + \"new-directory\");\n```",
               "attributes": {
                 "scriptMethod": {
                   "name": "createDirectorySync",
@@ -812,7 +812,7 @@
           {
             "comment": {
               "brief": "Asynchronously check if a file exists.",
-              "full": "Asynchronously check if a file exists.\n\n## Example\n\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    FileSystem.exists(\"myfile.txt\")\n        .then(function(x) {\n            console.log(x ? \"it's there! =)\" : \"it's missing :/\");\n        }, function(error) {\n            console.log(\"Unable to check if file exists\");\n        });",
+              "full": "Asynchronously check if a file exists.\n\n## Example\n```js\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    FileSystem.exists(\"myfile.txt\")\n        .then(function(x) {\n            console.log(x ? \"it's there! =)\" : \"it's missing :/\");\n        }, function(error) {\n            console.log(\"Unable to check if file exists\");\n        });\n```",
               "attributes": {
                 "scriptMethod": {
                   "name": "exists",
@@ -866,7 +866,7 @@
           {
             "comment": {
               "brief": "Synchronously check if a file exists.",
-              "full": "Synchronously check if a file exists.\n\n## Example\n\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    console.log(FileSystem.existsSync(\"myfile.txt\") ? \"It's there!\" : \"It's missing :/\");",
+              "full": "Synchronously check if a file exists.\n\n## Example\n```js\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    console.log(FileSystem.existsSync(\"myfile.txt\") ? \"It's there!\" : \"It's missing :/\");\n```",
               "attributes": {
                 "scriptMethod": {
                   "name": "existsSync",
@@ -926,7 +926,7 @@
           {
             "comment": {
               "brief": "Asynchronously gets info about a directory.",
-              "full": "Asynchronously gets info about a directory.\n\nThe returned object has the following properties:\n\n* `exists` –  a boolean value stating whether the directory exists or not.\n* `lastWriteTime` –  A `Date` stating when directory was last changed\n* `lastAccessTime` –  A `Date` stating when directory was accessed\n\n## Example\n\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    FileSystem.createDirectorySync(\"some-dir\");\n    FileSystem.getDirectoryInfo(\"some-dir\")\n        .then(function(dirInfo) {\n            console.log(\"Directory was modified on \" + dirInfo.lastWriteTime);\n        })\n        .catch(function(error) {\n            console.log(\"Failed to get directory info \" + error);\n        });",
+              "full": "Asynchronously gets info about a directory.\n\nThe returned object has the following properties:\n\n* `exists` –  a boolean value stating whether the directory exists or not.\n* `lastWriteTime` –  A `Date` stating when directory was last changed\n* `lastAccessTime` –  A `Date` stating when directory was accessed\n\n## Example\n```js\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    FileSystem.createDirectorySync(\"some-dir\");\n    FileSystem.getDirectoryInfo(\"some-dir\")\n        .then(function(dirInfo) {\n            console.log(\"Directory was modified on \" + dirInfo.lastWriteTime);\n        })\n        .catch(function(error) {\n            console.log(\"Failed to get directory info \" + error);\n        });\n```",
               "attributes": {
                 "scriptMethod": {
                   "name": "getDirectoryInfo",
@@ -980,7 +980,7 @@
           {
             "comment": {
               "brief": "Synchronously gets info about a directory.",
-              "full": "Synchronously gets info about a directory.\n\nThe returned object has the following properties:\n\n* `exists` -  A boolean value stating whether the directory exists\n* `lastWriteTime` -  A `Date` stating when directory was last changed\n* `lastAccessTime` -  A `Date` stating when directory was accessed\n\n## Example\n\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    FileSystem.createDirectorySync(\"some-dir\");\n    var dirInfo = FileSystem.getDirectoryInfoSync(\"some-dir\");\n    console.log(\"file was modified on \" + dirInfo.lastWriteTime);",
+              "full": "Synchronously gets info about a directory.\n\nThe returned object has the following properties:\n\n* `exists` -  A boolean value stating whether the directory exists\n* `lastWriteTime` -  A `Date` stating when directory was last changed\n* `lastAccessTime` -  A `Date` stating when directory was accessed\n\n## Example\n```js\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    FileSystem.createDirectorySync(\"some-dir\");\n    var dirInfo = FileSystem.getDirectoryInfoSync(\"some-dir\");\n    console.log(\"file was modified on \" + dirInfo.lastWriteTime);\n```",
               "attributes": {
                 "scriptMethod": {
                   "name": "getDirectoryInfoSync",
@@ -1040,7 +1040,7 @@
           {
             "comment": {
               "brief": "Asynchronously gets info about a file.",
-              "full": "Asynchronously gets info about a file.\n\nThe returned object has the following properties:\n\n* `size` –  size of file\n* `exists` –  a boolean value stating whether file exists\n* `lastWriteTime` –  A `Date` stating when file was last changed\n* `lastAccessTime` –  A `Date` stating when file was accessed\n\n## Example\n\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    FileSystem.writeTextToFileSync(\"some-file.txt\", \"hello there\");\n    FileSystem.getFileInfo(\"some-file.txt\")\n        .then(function(fileInfo) {\n            console.log(\"file was modified on \" + fileInfo.lastWriteTime);\n        })\n        .catch(function(error) {\n            \"failed stat \" + error\n        });",
+              "full": "Asynchronously gets info about a file.\n\nThe returned object has the following properties:\n\n* `size` –  size of file\n* `exists` –  a boolean value stating whether file exists\n* `lastWriteTime` –  A `Date` stating when file was last changed\n* `lastAccessTime` –  A `Date` stating when file was accessed\n\n## Example\n```js\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    FileSystem.writeTextToFileSync(\"some-file.txt\", \"hello there\");\n    FileSystem.getFileInfo(\"some-file.txt\")\n        .then(function(fileInfo) {\n            console.log(\"file was modified on \" + fileInfo.lastWriteTime);\n        })\n        .catch(function(error) {\n            \"failed stat \" + error\n        });\n```",
               "attributes": {
                 "scriptMethod": {
                   "name": "getFileInfo",
@@ -1094,7 +1094,7 @@
           {
             "comment": {
               "brief": "Synchronously gets info about a file.",
-              "full": "Synchronously gets info about a file.\n\nThe returned object has the following properties:\n\n* `exists` –  a boolean value stating whether file exists\n* `lastWriteTime` –  A `Date` stating when file was last changed\n* `lastAccessTime` –  A `Date` stating when file was accessed\n\n## Example\n\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    FileSystem.writeTextToFileSync(\"some-file.txt\", \"hello there\");\n    var fileInfo = FileSystem.getFileInfoSync(\"some-file.txt\");\n    console.log(\"file was modified on \" + fileInfo.lastWriteTime);",
+              "full": "Synchronously gets info about a file.\n\nThe returned object has the following properties:\n\n* `exists` –  a boolean value stating whether file exists\n* `lastWriteTime` –  A `Date` stating when file was last changed\n* `lastAccessTime` –  A `Date` stating when file was accessed\n\n## Example\n```js\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    FileSystem.writeTextToFileSync(\"some-file.txt\", \"hello there\");\n    var fileInfo = FileSystem.getFileInfoSync(\"some-file.txt\");\n    console.log(\"file was modified on \" + fileInfo.lastWriteTime);\n```",
               "attributes": {
                 "scriptMethod": {
                   "name": "getFileInfoSync",
@@ -1154,7 +1154,7 @@
           {
             "comment": {
               "brief": "Asynchronously list subdirectories in a directory.",
-              "full": "Asynchronously list subdirectories in a directory.\n\n## Example\n\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    FileSystem.listDirectories(FileSystem.dataDirectory)\n        .then(function(directories) {\n            console.log(\"There are \" + directories.length + \" subdirectories in directory\")\n        }, function(error) {\n            console.log(\"Unable to list subdirectories of directory: \" + error);\n        });",
+              "full": "Asynchronously list subdirectories in a directory.\n\n## Example\n```js\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    FileSystem.listDirectories(FileSystem.dataDirectory)\n        .then(function(directories) {\n            console.log(\"There are \" + directories.length + \" subdirectories in directory\")\n        }, function(error) {\n            console.log(\"Unable to list subdirectories of directory: \" + error);\n        });\n```",
               "attributes": {
                 "scriptMethod": {
                   "name": "listDirectories",
@@ -1208,7 +1208,7 @@
           {
             "comment": {
               "brief": "Synchronously list subdirectories in a directory.",
-              "full": "Synchronously list subdirectories in a directory.\n\n## Example\n\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    var directories = FileSystem.listDirectoriesSync(FileSystem.dataDirectory);\n    console.log(\"There are \" + directories.length + \" subdirectories in directory\");",
+              "full": "Synchronously list subdirectories in a directory.\n\n## Example\n```js\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    var directories = FileSystem.listDirectoriesSync(FileSystem.dataDirectory);\n    console.log(\"There are \" + directories.length + \" subdirectories in directory\");\n```",
               "attributes": {
                 "scriptMethod": {
                   "name": "listDirectoriesSync",
@@ -1268,7 +1268,7 @@
           {
             "comment": {
               "brief": "Asynchronously lists both files and subdirectories in a directory.",
-              "full": "Asynchronously lists both files and subdirectories in a directory.\n\n## Example\n\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    FileSystem.listEntries(FileSystem.dataDirectory)\n        .then(function(entries) {\n            console.log(\"There are \" + entries.length + \" entries in directory\")\n        }, function(error) {\n            console.log(\"Unable to list entries in directory due to error \" + error);\n        });",
+              "full": "Asynchronously lists both files and subdirectories in a directory.\n\n## Example\n```js\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    FileSystem.listEntries(FileSystem.dataDirectory)\n        .then(function(entries) {\n            console.log(\"There are \" + entries.length + \" entries in directory\")\n        }, function(error) {\n            console.log(\"Unable to list entries in directory due to error \" + error);\n        });\n```",
               "attributes": {
                 "scriptMethod": {
                   "name": "listEntries",
@@ -1322,7 +1322,7 @@
           {
             "comment": {
               "brief": "Synchronously lists both files and subdirectories in a directory.",
-              "full": "Synchronously lists both files and subdirectories in a directory.\n\n## Example\n\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    var entries = FileSystem.listEntriesSync(FileSystem.dataDirectory);\n    console.log(\"There are \" + entries.length + \" entries in directory\");",
+              "full": "Synchronously lists both files and subdirectories in a directory.\n\n## Example\n```js\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    var entries = FileSystem.listEntriesSync(FileSystem.dataDirectory);\n    console.log(\"There are \" + entries.length + \" entries in directory\");\n```",
               "attributes": {
                 "scriptMethod": {
                   "name": "listEntriesSync",
@@ -1382,7 +1382,7 @@
           {
             "comment": {
               "brief": "Asynchronously list files in directory.",
-              "full": "Asynchronously list files in directory.\n\n## Example\n\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    FileSystem.listFiles(FileSystem.dataDirectory)\n        .then(function(files) {\n            console.log(\"There are \" + files.length + \" files in directory\")\n        }, function(error) {\n            console.log(\"Unable to list files in directory due to error \" + error);\n        });",
+              "full": "Asynchronously list files in directory.\n\n## Example\n```js\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    FileSystem.listFiles(FileSystem.dataDirectory)\n        .then(function(files) {\n            console.log(\"There are \" + files.length + \" files in directory\")\n        }, function(error) {\n            console.log(\"Unable to list files in directory due to error \" + error);\n        });\n```",
               "attributes": {
                 "scriptMethod": {
                   "name": "listFiles",
@@ -1436,7 +1436,7 @@
           {
             "comment": {
               "brief": "Synchronously list files in directory.",
-              "full": "Synchronously list files in directory.\n\n## Example\n\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    var files = FileSystem.listFilesSync(FileSystem.dataDirectory);\n    console.log(\"There are \" + files.length + \" files in directory\");",
+              "full": "Synchronously list files in directory.\n\n## Example\n```js\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    var files = FileSystem.listFilesSync(FileSystem.dataDirectory);\n    console.log(\"There are \" + files.length + \" files in directory\");\n```",
               "attributes": {
                 "scriptMethod": {
                   "name": "listFilesSync",
@@ -1496,7 +1496,7 @@
           {
             "comment": {
               "brief": "Asynchronously moves a file or directory from source to destination path",
-              "full": "Asynchronously moves a file or directory from source to destination path\n\n## Example\n\n    FileSystem = require(\"FuseJS/FileSystem\");\n\n    FileSystem.writeTextToFile(\"to-be-moved.txt\", \"hello world\")\n        .then(function() {\n            return FileSystem.move(\"to-be-moved.txt\", \"destination-reached.txt\");\n        })\n        .catch(function(err) {\n            console.log(\"Unable to move file\");\n        });",
+              "full": "Asynchronously moves a file or directory from source to destination path\n\n## Example\n```js\n    FileSystem = require(\"FuseJS/FileSystem\");\n\n    FileSystem.writeTextToFile(\"to-be-moved.txt\", \"hello world\")\n        .then(function() {\n            return FileSystem.move(\"to-be-moved.txt\", \"destination-reached.txt\");\n        })\n        .catch(function(err) {\n            console.log(\"Unable to move file\");\n        });\n```",
               "attributes": {
                 "scriptMethod": {
                   "name": "move",
@@ -1555,7 +1555,7 @@
           {
             "comment": {
               "brief": "Synchronously moves a file or directory from source to destination path",
-              "full": "Synchronously moves a file or directory from source to destination path\n\n## Example\n\n    FileSystem = require(\"FuseJS/FileSystem\");\n\n    FileSystem.writeTextToFileSync(\"to-be-moved.txt\", \"hello world\");\n    FileSystem.moveSync(\"to-be-moved.txt\", \"destination-reached.txt\");",
+              "full": "Synchronously moves a file or directory from source to destination path\n\n## Example\n```js\n    FileSystem = require(\"FuseJS/FileSystem\");\n\n    FileSystem.writeTextToFileSync(\"to-be-moved.txt\", \"hello world\");\n    FileSystem.moveSync(\"to-be-moved.txt\", \"destination-reached.txt\");\n```",
               "attributes": {
                 "scriptMethod": {
                   "name": "moveSync",
@@ -1617,7 +1617,7 @@
           {
             "comment": {
               "brief": "Asynchronously reads a file and returns a Promise of an ArrayBuffer with its contents.",
-              "full": "Asynchronously reads a file and returns a Promise of an ArrayBuffer with its contents.\n\n## Example\n\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    FileSystem.readBufferFromFile(\"myfile.txt\")\n        .then(function(contents) {\n            console.log(contents);\n        }, function(error) {\n            console.log(error);\n        });",
+              "full": "Asynchronously reads a file and returns a Promise of an ArrayBuffer with its contents.\n\n## Example\n```js\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    FileSystem.readBufferFromFile(\"myfile.txt\")\n        .then(function(contents) {\n            console.log(contents);\n        }, function(error) {\n            console.log(error);\n        });\n```",
               "attributes": {
                 "scriptMethod": {
                   "name": "readBufferFromFile",
@@ -1671,7 +1671,7 @@
           {
             "comment": {
               "brief": "Synchronously reads a file and returns an ArrayBuffer with its contents.",
-              "full": "Synchronously reads a file and returns an ArrayBuffer with its contents.\n\n## Example\n\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    var data = FileSystem.readBufferFromFileSync(\"myfile.txt\");",
+              "full": "Synchronously reads a file and returns an ArrayBuffer with its contents.\n\n## Example\n```js\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    var data = FileSystem.readBufferFromFileSync(\"myfile.txt\");\n```",
               "attributes": {
                 "scriptMethod": {
                   "name": "readBufferFromFileSync",
@@ -1731,7 +1731,7 @@
           {
             "comment": {
               "brief": "Asynchronously reads a file and returns a Promise of its contents.",
-              "full": "Asynchronously reads a file and returns a Promise of its contents.\n\n## Example\n\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    FileSystem.readTextFromFile(\"myfile.txt\")\n        .then(function(contents) {\n            console.log(contents);\n        }, function(error) {\n            console.log(error);\n        });",
+              "full": "Asynchronously reads a file and returns a Promise of its contents.\n\n## Example\n```js\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    FileSystem.readTextFromFile(\"myfile.txt\")\n        .then(function(contents) {\n            console.log(contents);\n        }, function(error) {\n            console.log(error);\n        });\n```",
               "attributes": {
                 "scriptMethod": {
                   "name": "readTextFromFile",
@@ -1785,7 +1785,7 @@
           {
             "comment": {
               "brief": "Synchronously reads a file and returns its contents as a string.",
-              "full": "Synchronously reads a file and returns its contents as a string.\n\n## Example\n\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    var content =  FileSystem.readTextFromFileSync(FileSystem.dataDirectory + \"/\" + \"myfile.txt\");\n    console.log(\"The file contains \" + content));",
+              "full": "Synchronously reads a file and returns its contents as a string.\n\n## Example\n```js\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    var content =  FileSystem.readTextFromFileSync(FileSystem.dataDirectory + \"/\" + \"myfile.txt\");\n    console.log(\"The file contains \" + content));\n```",
               "attributes": {
                 "scriptMethod": {
                   "name": "readTextFromFileSync",
@@ -1845,7 +1845,7 @@
           {
             "comment": {
               "brief": "Asynchronously delete a file.",
-              "full": "Asynchronously delete a file.\n\n## Example\n\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    FileSystem.remove(\"myfile.txt\")\n        .then(function() {\n            console.log(\"Delete succeeded\");\n        }, function(error) {\n            console.log(\"Unable to delete file\");\n        });",
+              "full": "Asynchronously delete a file.\n\n## Example\n```js\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    FileSystem.remove(\"myfile.txt\")\n        .then(function() {\n            console.log(\"Delete succeeded\");\n        }, function(error) {\n            console.log(\"Unable to delete file\");\n        });\n```",
               "attributes": {
                 "scriptMethod": {
                   "name": "remove",
@@ -1904,7 +1904,7 @@
           {
             "comment": {
               "brief": "Synchronously delete a file.",
-              "full": "Synchronously delete a file.\n\n## Example\n\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    FileSystem.removeSync(\"myfile.txt\");",
+              "full": "Synchronously delete a file.\n\n## Example\n```js\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    FileSystem.removeSync(\"myfile.txt\");\n```",
               "attributes": {
                 "scriptMethod": {
                   "name": "removeSync",
@@ -1965,7 +1965,7 @@
           {
             "comment": {
               "brief": "Asynchronously writes an `ArrayBuffer` to a file.",
-              "full": "Asynchronously writes an `ArrayBuffer` to a file.\n\n## Example\n\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    var data = new ArrayBuffer(4);\n    var view = new Int32Array(data);\n    view[0] = 0x1337;\n\n    FileSystem.writeBufferToFile(FileSystem.dataDirectory + \"/\" + \"myfile.txt\", data)\n        .then(function() {\n            console.log(\"Successful write\");\n        }, function(error) {\n            console.log(error);\n        });",
+              "full": "Asynchronously writes an `ArrayBuffer` to a file.\n\n## Example\n```js\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    var data = new ArrayBuffer(4);\n    var view = new Int32Array(data);\n    view[0] = 0x1337;\n\n    FileSystem.writeBufferToFile(FileSystem.dataDirectory + \"/\" + \"myfile.txt\", data)\n        .then(function() {\n            console.log(\"Successful write\");\n        }, function(error) {\n            console.log(error);\n        });\n```",
               "attributes": {
                 "scriptMethod": {
                   "name": "writeBufferToFile",
@@ -2025,7 +2025,7 @@
           {
             "comment": {
               "brief": "Synchronously writes an `ArrayBuffer` to a file.",
-              "full": "Synchronously writes an `ArrayBuffer` to a file.\n\n## Example\n\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    var data = new ArrayBuffer(4);\n    var view = new Int32Array(data);\n    view[0] = 0x1337;\n\n    FileSystem.writeBufferToFileSync(FileSystem.dataDirectory + \"/\" + \"myfile.txt\", data);",
+              "full": "Synchronously writes an `ArrayBuffer` to a file.\n\n## Example\n```js\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    var data = new ArrayBuffer(4);\n    var view = new Int32Array(data);\n    view[0] = 0x1337;\n\n    FileSystem.writeBufferToFileSync(FileSystem.dataDirectory + \"/\" + \"myfile.txt\", data);\n```",
               "attributes": {
                 "scriptMethod": {
                   "name": "writeBufferToFileSync",
@@ -2087,7 +2087,7 @@
           {
             "comment": {
               "brief": "Asynchronously writes a string to a UTF-8 encoded file.",
-              "full": "Asynchronously writes a string to a UTF-8 encoded file.\n\n## Example\n\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    FileSystem.writeTextToFile(FileSystem.dataDirectory + \"/\" + \"myfile.txt\", \"Hello buddy\")\n        .then(function() {\n            console.log(\"Successful write\");\n        }, function(error) {\n            console.log(error);\n        });",
+              "full": "Asynchronously writes a string to a UTF-8 encoded file.\n\n## Example\n```js\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    FileSystem.writeTextToFile(FileSystem.dataDirectory + \"/\" + \"myfile.txt\", \"Hello buddy\")\n        .then(function() {\n            console.log(\"Successful write\");\n        }, function(error) {\n            console.log(error);\n        });\n```",
               "attributes": {
                 "scriptMethod": {
                   "name": "writeTextToFile",
@@ -2147,7 +2147,7 @@
           {
             "comment": {
               "brief": "Synchronously writes a string to a UTF-8 encoded file.",
-              "full": "Synchronously writes a string to a UTF-8 encoded file.\n\n## Example\n\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    FileSystem.writeTextToFileSync(\"myfile.txt\", \"Hello buddy\");",
+              "full": "Synchronously writes a string to a UTF-8 encoded file.\n\n## Example\n```js\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    FileSystem.writeTextToFileSync(\"myfile.txt\", \"Hello buddy\");\n```",
               "attributes": {
                 "scriptMethod": {
                   "name": "writeTextToFileSync",

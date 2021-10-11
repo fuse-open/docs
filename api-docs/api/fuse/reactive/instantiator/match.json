@@ -37,7 +37,7 @@
     },
     "comment": {
       "brief": "The template which should be instantiated.",
-      "full": "The template which should be instantiated.\n\nUnset by default, meaning all templates will be instantiated (assuming MatchKey, and TemplateKey are also unset).\n\nIf you intend on using a binding, or expression, for this value it is recommend to set `Defaults` as well. This avoids an momentary creation of the defaults while the binding has not yet resolved.\n\n    <Instance Match=\"{type}\" Defaults=\"None\">\n        <Panel ux:Template=\"side\"/>\n        <Panel ux:Template=\"fore\"/>\n    </Instance>\n\n`{type}` may resolve to an async JavaScript variable, meaning it won't produce an immediate value. This will result in `Match` not yet having a value, thus all templates would be instantiated by default. `Defaults=\"None\"` prevents this behaviour."
+      "full": "The template which should be instantiated.\n\nUnset by default, meaning all templates will be instantiated (assuming MatchKey, and TemplateKey are also unset).\n\nIf you intend on using a binding, or expression, for this value it is recommend to set `Defaults` as well. This avoids an momentary creation of the defaults while the binding has not yet resolved.\n```xml\n    <Instance Match=\"{type}\" Defaults=\"None\">\n        <Panel ux:Template=\"side\"/>\n        <Panel ux:Template=\"fore\"/>\n    </Instance>\n```\n`{type}` may resolve to an async JavaScript variable, meaning it won't produce an immediate value. This will result in `Match` not yet having a value, thus all templates would be instantiated by default. `Defaults=\"None\"` prevents this behaviour."
     }
   },
   "tableOfContents": {}

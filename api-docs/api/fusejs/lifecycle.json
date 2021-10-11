@@ -147,7 +147,7 @@
     },
     "comment": {
       "brief": "Monitor the application lifecycle from JS",
-      "full": "Monitor the application lifecycle from JS\n\nThe lifecycle of an app is the time from when your app starts to the time it terminates.\nDuring this time the app will go through a number of states.\n\nThe Lifecycle module allows you query the current state and also be alerted when the\napp changes state.\n\n## The States\n\n- Starting\n- Background\n- Foreground\n- Interactive\n\n### Starting\nYour app start event is implicit, as this is when your JavaScript is first evaluated.\n\n### Background\nYour app is not the app the user is interactive with right now and so the operating system\nhas put it into a 'sleep' state.\n\nWhilst your app is in this state is is not allowed to run code, but you don't have to worry\nabout this as Fuse will ensure your JS/UX is not doing something when it shouldn't.\n\n### Foreground\nYour app is front and center on the user's device but they cannot yet interact with it. The\nmain reason to be in this state is that the user has opened the notification bar on iOS or\nAndroid.\n\n### Interactive\nYour app is now in the foreground and is accepting input from the user.\n\n## Changing States\nIt would be hard to work with app lifecycle if your app could just jump around the states\nrandomly. Instead we guarentee the following flow through the states:\n\nStarting\n   ↓\nBackground ⟷ Foreground ⟷ Interactive\n   ↓\nTerminating\n\n## No `terminating` event\nYou may be wondering why there is no `terminating` event. The reason is that on mobile\nplatforms the OS doesn't promise to call you when terminating your app. It may, but in\ncertain circumstances (low memory, emergency phone call, etc) it won't.\n\nBecause of this the guides for mobile platforms strongly advise against using the `terminating`\nevent as a cue that the app is shutting down, instead you should be regularly 'checkpointing'\nyour app so you can recover from any kind of shutdown.\n\nGiven that we are not meant to use it, we have opted not to expose the event.\n\nThis module is an @EventEmitter, so the methods from @EventEmitter can be used to listen to events.\n\n## Example\n\n    <JavaScript>\n        var Lifecycle = require('FuseJS/Lifecycle');\n\n        Lifecycle.on(\"enteringForeground\", function() {\n            console.log(\"on enteringForeground\");\n        });\n        Lifecycle.on(\"enteringInteractive\", function() {\n            console.log(\"on enteringInteractive\");\n        });\n        Lifecycle.on(\"exitedInteractive\", function() {\n            console.log(\"on exitedInteractive\");\n        });\n        Lifecycle.on(\"enteringBackground\", function() {\n            console.log(\"on enteringBackground\");\n        });\n        Lifecycle.on(\"stateChanged\", function(newState) {\n            console.log(\"on stateChanged \" + newState);\n        });\n        module.exports = { lifecycleState: Lifecycle.observe(\"stateChanged\") }\n    </JavaScript>\n    <StackPanel>\n        <Text TextWrapping=\"Wrap\">Open the Fuse Monitor to see the logs</Text>\n        <Text>Current lifecycle state:</Text>\n        <Text Value=\"{lifecycleState}\" />\n    </StackPanel>\n\nIn the above example we're using the @EventEmitter `on` method to listen to the different events.\nWe're also using the @EventEmitter `observe` method on the `\"stateChanged\"` event to get an @Observable containing the current state.",
+      "full": "Monitor the application lifecycle from JS\n\nThe lifecycle of an app is the time from when your app starts to the time it terminates.\nDuring this time the app will go through a number of states.\n\nThe Lifecycle module allows you query the current state and also be alerted when the\napp changes state.\n\n## The States\n\n- Starting\n- Background\n- Foreground\n- Interactive\n\n### Starting\nYour app start event is implicit, as this is when your JavaScript is first evaluated.\n\n### Background\nYour app is not the app the user is interactive with right now and so the operating system\nhas put it into a 'sleep' state.\n\nWhilst your app is in this state is is not allowed to run code, but you don't have to worry\nabout this as Fuse will ensure your JS/UX is not doing something when it shouldn't.\n\n### Foreground\nYour app is front and center on the user's device but they cannot yet interact with it. The\nmain reason to be in this state is that the user has opened the notification bar on iOS or\nAndroid.\n\n### Interactive\nYour app is now in the foreground and is accepting input from the user.\n\n## Changing States\nIt would be hard to work with app lifecycle if your app could just jump around the states\nrandomly. Instead we guarentee the following flow through the states:\n\nStarting\n   ↓\nBackground ⟷ Foreground ⟷ Interactive\n   ↓\nTerminating\n\n## No `terminating` event\nYou may be wondering why there is no `terminating` event. The reason is that on mobile\nplatforms the OS doesn't promise to call you when terminating your app. It may, but in\ncertain circumstances (low memory, emergency phone call, etc) it won't.\n\nBecause of this the guides for mobile platforms strongly advise against using the `terminating`\nevent as a cue that the app is shutting down, instead you should be regularly 'checkpointing'\nyour app so you can recover from any kind of shutdown.\n\nGiven that we are not meant to use it, we have opted not to expose the event.\n\nThis module is an @EventEmitter, so the methods from @EventEmitter can be used to listen to events.\n\n## Example\n```xml\n    <JavaScript>\n        var Lifecycle = require('FuseJS/Lifecycle');\n\n        Lifecycle.on(\"enteringForeground\", function() {\n            console.log(\"on enteringForeground\");\n        });\n        Lifecycle.on(\"enteringInteractive\", function() {\n            console.log(\"on enteringInteractive\");\n        });\n        Lifecycle.on(\"exitedInteractive\", function() {\n            console.log(\"on exitedInteractive\");\n        });\n        Lifecycle.on(\"enteringBackground\", function() {\n            console.log(\"on enteringBackground\");\n        });\n        Lifecycle.on(\"stateChanged\", function(newState) {\n            console.log(\"on stateChanged \" + newState);\n        });\n        module.exports = { lifecycleState: Lifecycle.observe(\"stateChanged\") }\n    </JavaScript>\n    <StackPanel>\n        <Text TextWrapping=\"Wrap\">Open the Fuse Monitor to see the logs</Text>\n        <Text>Current lifecycle state:</Text>\n        <Text Value=\"{lifecycleState}\" />\n    </StackPanel>\n```\nIn the above example we're using the @EventEmitter `on` method to listen to the different events.\nWe're also using the @EventEmitter `observe` method on the `\"stateChanged\"` event to get an @Observable containing the current state.",
       "attributes": {
         "scriptModule": "Lifecycle"
       }
@@ -273,8 +273,8 @@
         "items": [
           {
             "comment": {
-              "brief": "Triggered when the app is leaving the running state and is about to be suspended.",
-              "full": "Triggered when the app is leaving the running state and is about to be suspended.\n\n    var Lifecycle = require(\"FuseJS/Lifecycle\");\n\n    Lifecycle.on(\"enteringBackground\", function() {\n        console.log(\"Entering background\");\n    });",
+              "brief": "Triggered when the app is leaving the running state and is about to be suspended.\n```js\n    var Lifecycle = require(\"FuseJS/Lifecycle\");",
+              "full": "Triggered when the app is leaving the running state and is about to be suspended.\n```js\n    var Lifecycle = require(\"FuseJS/Lifecycle\");\n\n    Lifecycle.on(\"enteringBackground\", function() {\n        console.log(\"Entering background\");\n    });\n```",
               "attributes": {
                 "scriptEvent": "enteringBackground"
               }
@@ -306,8 +306,8 @@
           },
           {
             "comment": {
-              "brief": "Triggered when the app has left the suspended state and now is running.\nYou will receive this event when the app starts.",
-              "full": "Triggered when the app has left the suspended state and now is running.\nYou will receive this event when the app starts.\n\n    var Lifecycle = require(\"FuseJS/Lifecycle\");\n\n    Lifecycle.on(\"enteringForeground\", function() {\n        console.log(\"Entering foreground\");\n    });",
+              "brief": "Triggered when the app has left the suspended state and now is running.\nYou will receive this event when the app starts.\n```js\n    var Lifecycle = require(\"FuseJS/Lifecycle\");",
+              "full": "Triggered when the app has left the suspended state and now is running.\nYou will receive this event when the app starts.\n```js\n    var Lifecycle = require(\"FuseJS/Lifecycle\");\n\n    Lifecycle.on(\"enteringForeground\", function() {\n        console.log(\"Entering foreground\");\n    });\n```",
               "attributes": {
                 "scriptEvent": "enteringForeground"
               }
@@ -339,8 +339,8 @@
           },
           {
             "comment": {
-              "brief": "Triggered when the app is entering a state where it is fully focused and receiving events.",
-              "full": "Triggered when the app is entering a state where it is fully focused and receiving events.\n\n    var Lifecycle = require(\"FuseJS/Lifecycle\");\n\n    Lifecycle.on(\"enteringInteractive\", function() {\n        console.log(\"The app is gaining focus\");\n    });",
+              "brief": "Triggered when the app is entering a state where it is fully focused and receiving events.\n```js\n    var Lifecycle = require(\"FuseJS/Lifecycle\");",
+              "full": "Triggered when the app is entering a state where it is fully focused and receiving events.\n```js\n    var Lifecycle = require(\"FuseJS/Lifecycle\");\n\n    Lifecycle.on(\"enteringInteractive\", function() {\n        console.log(\"The app is gaining focus\");\n    });\n```",
               "attributes": {
                 "scriptEvent": "enteringInteractive"
               }
@@ -372,8 +372,8 @@
           },
           {
             "comment": {
-              "brief": "Triggered when the app is partially obscured or is no longer the focus (e.g. when you drag open the notification bar)",
-              "full": "Triggered when the app is partially obscured or is no longer the focus (e.g. when you drag open the notification bar)\n\n    var Lifecycle = require(\"FuseJS/Lifecycle\");\n\n    Lifecycle.on(\"exitedInteractive\", function() {\n        console.log(\"The app is no longer in focus\");\n    });",
+              "brief": "Triggered when the app is partially obscured or is no longer the focus (e.g. when you drag open the notification bar)\n```js\n    var Lifecycle = require(\"FuseJS/Lifecycle\");",
+              "full": "Triggered when the app is partially obscured or is no longer the focus (e.g. when you drag open the notification bar)\n```js\n    var Lifecycle = require(\"FuseJS/Lifecycle\");\n\n    Lifecycle.on(\"exitedInteractive\", function() {\n        console.log(\"The app is no longer in focus\");\n    });\n```",
               "attributes": {
                 "scriptEvent": "exitedInteractive"
               }
@@ -405,8 +405,8 @@
           },
           {
             "comment": {
-              "brief": "Triggered when the app's lifecycle state has changed.",
-              "full": "Triggered when the app's lifecycle state has changed.\n\n    var Lifecycle = require(\"FuseJS/Lifecycle\");\n\n    Lifecycle.on(\"stateChanged\", function(newState) {\n        console.log(\"The lifecycle state changed \" + newState);\n    });",
+              "brief": "Triggered when the app's lifecycle state has changed.\n```js\n    var Lifecycle = require(\"FuseJS/Lifecycle\");",
+              "full": "Triggered when the app's lifecycle state has changed.\n```js\n    var Lifecycle = require(\"FuseJS/Lifecycle\");\n\n    Lifecycle.on(\"stateChanged\", function(newState) {\n        console.log(\"The lifecycle state changed \" + newState);\n    });\n```",
               "attributes": {
                 "scriptEvent": "stateChanged",
                 "parameters": [
@@ -557,8 +557,8 @@
           },
           {
             "comment": {
-              "brief": "Will give you the current state as an integer",
-              "full": "Will give you the current state as an integer\n\n    var Lifecycle = require(\"FuseJS/Lifecycle\");\n\n    console.log(Lifecycle.state === Lifecycle.BACKGROUND);\n    console.log(Lifecycle.state === Lifecycle.FOREGROUND);\n    console.log(Lifecycle.state === Lifecycle.INTERACTIVE);",
+              "brief": "Will give you the current state as an integer\n```js\n    var Lifecycle = require(\"FuseJS/Lifecycle\");",
+              "full": "Will give you the current state as an integer\n```js\n    var Lifecycle = require(\"FuseJS/Lifecycle\");\n\n    console.log(Lifecycle.state === Lifecycle.BACKGROUND);\n    console.log(Lifecycle.state === Lifecycle.FOREGROUND);\n    console.log(Lifecycle.state === Lifecycle.INTERACTIVE);\n```",
               "attributes": {
                 "scriptProperty": "state"
               }
