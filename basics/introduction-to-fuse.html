@@ -768,15 +768,15 @@
 <p>We have a <code>StackPanel</code> <code>Object</code> which contains 2 <code>Text</code> <code>Object</code>s.</p>
 </blockquote>
 <p>We could also get super technical and point out some details:</p>
-<pre><code>        ------------------------------------ Opening tag
+<pre><code class="language-xml">       ____________________________________ Opening tag
       /
      v
  &lt;StackPanel Orientation=&quot;Horizontal&quot;&gt;
-    &lt;Text Value=&quot;Hello&quot; /&gt; &lt;--------------- self closing tag
+    &lt;Text Value=&quot;Hello&quot; /&gt; &lt;--------------- self closing tag 
     &lt;Text Value=&quot;World&quot; /&gt;  &lt;--------------- self closing tag
  &lt;/StackPanel&gt;
        ^
-        ------------------------------------ Closing tag
+        \___________________________________ Closing tag
 </code></pre>
 <p>But you may be looking at those opening and self closing tags above and wondering why they have extra stuff in them. If you are then well spotted! Those are called <code>Properties</code>.</p>
 <p>If we have an apple in real life and you were asked about its properties, you might say &quot;it's round&quot; or &quot;it's ripe&quot; or something like that. Properties in this case gives us extra information about the nature of the apple. The exact same it true for Properties in UX.</p>
@@ -786,7 +786,7 @@
 <p>The <code>Text</code> <em>object</em> is what we use to show text in our App and the <code>Value</code> Property tells Fuse you want the text to be &quot;Hello Jim&quot;.</p>
 <p>Just like how an apple and a truck have different properties in real life, different <em>objects</em> in UX have different properties too. To find what properties you can put on each <em>object</em> type, we have lots of <a href="../full-ux-class-reference.html">documentation</a> to help.</p>
 <p>One last note on properties: when we have an <em>object</em> with <em>opening</em> &amp; <em>closing</em> tags we only add the properties to the <em>opening</em> tag, so:</p>
-<pre><code>      / Only need properties on this one.
+<pre><code class="language-xml">      / Only need properties on this one.
      v
  &lt;StackPanel Orientation=&quot;Horizontal&quot;&gt;
  &lt;/StackPanel&gt;
@@ -795,8 +795,8 @@
 </code></pre>
 <p>And given that we are talking about small details: <em>objects</em> that are inside other <em>objects</em> are called <em>children</em>. The <em>object</em> that contains them is called the <em>parent object</em>.</p>
 <p>Before we wrap up this part lets annotate our UX again with what we have learned</p>
-<pre><code>	   ------------------------------------ Opening tag (named StackPanel). Parent to two objects.
-	  /            ------------------------ Has an Orientation Property
+<pre><code class="language-xml">	   _______________ Opening tag (named StackPanel). Parent to two objects.
+	  /            ___________________ Has an Orientation Property
 	 /            /
 	v            v
 &lt;StackPanel Orientation=&quot;Horizontal&quot;&gt;
@@ -804,7 +804,7 @@
    &lt;Text Value=&quot;World&quot; /&gt;  &lt;--------------- Another child / self closing tag / Has a Value Property
 &lt;/StackPanel&gt;
 	  ^
-	   ------------------------------------ Closing tag
+	   \__________________ Closing tag
 </code></pre>
 <h3 id="classes">Classes</h3>
 <p>A class defines a <em>recipe</em> for an <em>object</em>. Fuse has lots of useful objects defined for you but very soon you will want to define your own.</p>
@@ -1109,7 +1109,7 @@ observableList.removeAt(0);
 &lt;/Panel&gt;
 </code></pre>
 <p>We can then run our tests using the following command from the terminal (on macOS) or command prompt (on Windows) while in your project directory:</p>
-<pre><code>uno test ProjectName.unoproj
+<pre><code class="language-s">uno test ProjectName.unoproj
 </code></pre>
 <p>If a test throws an error, it will be regarded as failing. If nothing is thrown, the test passes. Pretty simple! Check out the <a href="../testing/testing.html">ux:Test documentation</a> for more details.</p>
 <blockquote class="callout-info">

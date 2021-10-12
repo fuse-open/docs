@@ -692,7 +692,7 @@
 </blockquote>
 <p>However, in the case of our <code>hikes</code> array, we're not going to tie the module to a specific UX file. Instead, we'll just place the data into its own separate .js file, and tell Fuse to bundle this module with our app. Then, we'll <em>import</em> this module into each of our views' modules.</p>
 <p>To do this, we'll first create a new (empty) file in our project called <code>hikes.js</code>. We'll place this in the root of our project directory, so our directory should look something like this:</p>
-<pre><code class="language-sh">$ tree
+<pre><code class="language-s">$ tree
 .
 |- MainView.ux
 |- hikes.js
@@ -730,33 +730,33 @@
 </code></pre>
 <p>All we've done here is placed a comma after the <code>&quot;*&quot;</code> entry, and added a <code>&quot;hikes.js:Bundle&quot;</code> entry after it. This is just saying &quot;Hey, Fuse, you know that hikes.js file? Go ahead and bundle that with my app.&quot; Nice and simple! Now we can save this file, and we're all set.</p>
 <p>At this point, we'll need to actually move our <code>hikes</code> array from inside <code>MainView.ux</code> into our <code>hikes.js</code> file. First, we'll copy it from our <code>MainView.ux</code> file, and then remove it:</p>
-<pre><code class="language-xml">		&lt;JavaScript&gt;
-			var Observable = require(&quot;FuseJS/Observable&quot;);
+<pre><code class="language-xml">&lt;JavaScript&gt;
+	var Observable = require(&quot;FuseJS/Observable&quot;);
 
-			var hike = Observable();
+	var hike = Observable();
 
-			var name = hike.map(function(x) { return x.name; });
-			var location = hike.map(function(x) { return x.location; });
-			var distance = hike.map(function(x) { return x.distance; });
-			var rating = hike.map(function(x) { return x.rating; });
-			var comments = hike.map(function(x) { return x.comments; });
+	var name = hike.map(function(x) { return x.name; });
+	var location = hike.map(function(x) { return x.location; });
+	var distance = hike.map(function(x) { return x.distance; });
+	var rating = hike.map(function(x) { return x.rating; });
+	var comments = hike.map(function(x) { return x.comments; });
 
-			function chooseHike(arg) {
-				hike.value = arg.data;
-			}
+	function chooseHike(arg) {
+		hike.value = arg.data;
+	}
 
-			module.exports = {
-				hikes: hikes,
+	module.exports = {
+		hikes: hikes,
 
-				name: name,
-				location: location,
-				distance: distance,
-				rating: rating,
-				comments: comments,
+		name: name,
+		location: location,
+		distance: distance,
+		rating: rating,
+		comments: comments,
 
-				chooseHike: chooseHike
-			};
-		&lt;/JavaScript&gt;
+		chooseHike: chooseHike
+	};
+&lt;/JavaScript&gt;
 </code></pre>
 <p>Notice how we left the reference to <code>hikes</code> in <code>module.exports</code>. This will cause an error if we save the file, but don't worry - we'll fix this up in a minute.</p>
 <p>But first, we'll place the array inside <code>hikes.js</code>:</p>
@@ -808,13 +808,13 @@
 </code></pre>
 <p>And that's it! Now we can save this file, and our new module is ready to go.</p>
 <p>Now, back to our view code. Since we've moved our <code>hikes</code> array out of this file, we need to <em>import</em> it from our new module. This is actually super easy to do. Remember the <code>var Observable = require(&quot;FuseJS/Observable&quot;);</code> line in <code>MainView.ux</code>? This tells Fuse to import FuseJS' <a href="../fusejs/observable.html">Observable</a> module, and bind it to the name <code>Observable</code>. For our new <code>hikes</code> module, we'll do almost exactly the same thing:</p>
-<pre><code class="language-js">			var Observable = require(&quot;FuseJS/Observable&quot;);
-			var hikes = require(&quot;hikes&quot;);
+<pre><code class="language-js">var Observable = require(&quot;FuseJS/Observable&quot;);
+var hikes = require(&quot;hikes&quot;);
 </code></pre>
 <p>In this case, Fuse will import a module called <code>hikes</code>, which corresponds to our <code>hikes.js</code> file. It will also bind the module's <code>module.exports</code> object to the name <code>hikes</code>, which, in <code>hikes.js</code>, was our <code>hikes</code> array. Cool! That's actually all we need to do to use our newly-created, reusable JavaScript module. If we save <code>MainView.ux</code>, our live preview will reload. It may not look any different on the outside, but on the inside we're well on our way to a very clean and manageable project structure!</p>
 <h2 id="transforming-the-edit-hike-view-into-a-component">Transforming the Edit Hike view into a component</h2>
 <p>Now that we've separated out our <code>hikes</code> array, the next thing we'll want to do is create a new component out of our view code. We'll do this in small steps as well. First, we'll want to create a new folder in our project called <code>Pages</code>:</p>
-<pre><code class="language-sh">$ tree
+<pre><code class="language-s">$ tree
 .
 |- MainView.ux
 |- hikes.js
@@ -825,7 +825,7 @@
 <pre><code class="language-xml">&lt;Page ux:Class=&quot;EditHikePage&quot;&gt;&lt;/Page&gt;
 </code></pre>
 <p>Our directory tree should now look a bit like this:</p>
-<pre><code class="language-sh">$ tree
+<pre><code class="language-s">$ tree
 .
 |- MainView.ux
 |- hikes.js
@@ -975,7 +975,7 @@
 </code></pre>
 <p>Notice how this looks just like we had used any other class that comes standard in Fuse - but this time, it's a class we've created ourselves! If we save <code>MainView.ux</code>, we'll see that our view shows up again in preview. Awesome!</p>
 <p>Now, before we move on, we'll want to do one more thing with our new component, and that's to split out its JavaScript code into its own file. This is very easy to do. First, we'll create a new file called <code>EditHikePage.js</code>, right next to our <code>EditHikePage.ux</code> file in the <code>Pages</code> folder of our project:</p>
-<pre><code class="language-sh">$ tree
+<pre><code class="language-s">$ tree
 .
 |- MainView.ux
 |- hikes.js
