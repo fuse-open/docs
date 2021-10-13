@@ -10,17 +10,17 @@ To include Alive in our project, we need to add a package reference to `Fuse.UXK
 It should look something like the following.
 
 ```json
-	{
-		"Packages": [
-			"Fuse",
-			"FuseJS",
-			"Fuse.Charting",
-			"Fuse.UXKits.Alive"
-		],
-		"Includes": [
-			"*"
-		]
-	}
+{
+	"Packages": [
+		"Fuse",
+		"FuseJS",
+		"Fuse.Charting",
+		"Fuse.UXKits.Alive"
+	],
+	"Includes": [
+		"*"
+	]
+}
 ```
 
 Now, there is a small bit of setup that is required for themes to work properly.
@@ -30,15 +30,15 @@ We'll add a [Alive.FallbackTheme](api:alive/fallbacktheme) inside a panel at the
 This sets up default theme colors and makes sure we always have one of the themes enabled at any point in the UX tree.
 
 ```xml
-	<App>
-		<Panel>
-			<Alive.FallbackTheme />
+<App>
+	<Panel>
+		<Alive.FallbackTheme />
 
-			<Panel>
-				<!-- app content -->
-			</Panel>
+		<Panel>
+			<!-- app content -->
 		</Panel>
-	</App>
+	</Panel>
+</App>
 ```
 
 **Note:** Alive.FallbackTheme is explicitly a [LightTheme](api:alive/lighttheme).
