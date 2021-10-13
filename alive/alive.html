@@ -686,31 +686,31 @@
 <h2 id="getting-started">Getting started</h2>
 <p>To include Alive in our project, we need to add a package reference to <code>Fuse.UXKits.Alive</code> and <code>Fuse.Charting</code> in our <code>.unoproj</code>.
 It should look something like the following.</p>
-<pre><code class="language-json">	{
-		&quot;Packages&quot;: [
-			&quot;Fuse&quot;,
-			&quot;FuseJS&quot;,
-			&quot;Fuse.Charting&quot;,
-			&quot;Fuse.UXKits.Alive&quot;
-		],
-		&quot;Includes&quot;: [
-			&quot;*&quot;
-		]
-	}
+<pre><code class="language-json">{
+	&quot;Packages&quot;: [
+		&quot;Fuse&quot;,
+		&quot;FuseJS&quot;,
+		&quot;Fuse.Charting&quot;,
+		&quot;Fuse.UXKits.Alive&quot;
+	],
+	&quot;Includes&quot;: [
+		&quot;*&quot;
+	]
+}
 </code></pre>
 <p>Now, there is a small bit of setup that is required for themes to work properly.
 Alive provides both a <a href="../alive/lighttheme.html">LightTheme</a> and a <a href="../alive/darktheme.html">DarkTheme</a>.</p>
 <p>We'll add a <a href="../alive/fallbacktheme.html">Alive.FallbackTheme</a> inside a panel at the root of our App.
 This sets up default theme colors and makes sure we always have one of the themes enabled at any point in the UX tree.</p>
-<pre><code class="language-xml">	&lt;App&gt;
-		&lt;Panel&gt;
-			&lt;Alive.FallbackTheme /&gt;
+<pre><code class="language-xml">&lt;App&gt;
+	&lt;Panel&gt;
+		&lt;Alive.FallbackTheme /&gt;
 
-			&lt;Panel&gt;
-				&lt;!-- app content --&gt;
-			&lt;/Panel&gt;
+		&lt;Panel&gt;
+			&lt;!-- app content --&gt;
 		&lt;/Panel&gt;
-	&lt;/App&gt;
+	&lt;/Panel&gt;
+&lt;/App&gt;
 </code></pre>
 <p><strong>Note:</strong> Alive.FallbackTheme is explicitly a <a href="../alive/lighttheme.html">LightTheme</a>.
 To make the entire app be <a href="../alive/darktheme.html">DarkTheme</a>, enclose it within a <a href="../fuse/controls/panel.html">Panel</a> together with the rest of the app's content.</p>
