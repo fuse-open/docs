@@ -17,8 +17,9 @@ function getCookie(name) {
 
 function setCookie(name, value) {
     var cookieText = encodeURIComponent(name) + "=" + encodeURIComponent(value);
-    cookieText += "; expires=" + new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toGMTString();
-    cookieText += "; domain=" + window.location.hostname;
+    cookieText += ";expires=" + new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toGMTString();
+    cookieText += ";domain=" + encodeURIComponent(window.location.hostname);
+    cookieText += ";path=/"
     document.cookie = cookieText;
 }
 
