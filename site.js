@@ -66,6 +66,7 @@ $(document).ready(function() {
     var persistedShow = getCookie("advanced-items");
     $('.is-advanced').css('display', persistedShow);
     $('.only-advanced-items').css('display', persistedShow);
+    $(".advance-items").prop('checked', persistedShow != 'none');
 
     $(".advance-items").change(function() {
         var show = 'none';
