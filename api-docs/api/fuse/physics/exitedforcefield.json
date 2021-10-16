@@ -23,7 +23,7 @@
       "namespaceTitle": "Fuse.Physics",
       "namespaceUri": "fuse/physics",
       "packageName": "Fuse.Physics",
-      "packageVersion": "2.0.0-beta.9"
+      "packageVersion": "2.0.0"
     },
     "inheritance": {
       "root": {
@@ -244,7 +244,7 @@
     },
     "comment": {
       "brief": "Triggers as a draggable element leaves the force field.",
-      "full": "Triggers as a draggable element leaves the force field.\n\nAs it is a pulse trigger, the forward animation will play in one continous run when the trigger is activated, and play the backwards animation continously when deactivated.\n\n## Example\nIn the following example, a circle with a `PointAttractor` in the middle of the screen flashes green if a smaller, blue circle, is removed from the forcefield.\n```xml\n    <Panel>\n        <Panel Width=\"60\" Height=\"60\" Alignment=\"Center\">\n            <Circle Color=\"#42A5F5\" />\n            <Draggable />\n            <ExitedForceField ForceField=\"centerAttract\">\n                <Change centerCircle.Color=\"#66BB6A\" Duration=\".5\"/>\n            </ExitedForceField>\n        </Panel>\n        <Panel Width=\"200\" Height=\"200\" Alignment=\"Center\" >\n            <Circle ux:Name=\"centerCircle\" Color=\"#EF5350\" />\n            <PointAttractor ux:Name=\"centerAttract\" Radius=\"150\" Strength=\"250\" />\n        </Panel>\n    </Panel>\n```"
+      "full": "Triggers as a draggable element leaves the force field.\n\nAs it is a pulse trigger, the forward animation will play in one continous run when the trigger is activated, and play the backwards animation continously when deactivated.\n\n## Example\nIn the following example, a circle with a `PointAttractor` in the middle of the screen flashes green if a smaller, blue circle, is removed from the forcefield.\n\n    <Panel>\n        <Panel Width=\"60\" Height=\"60\" Alignment=\"Center\">\n            <Circle Color=\"#42A5F5\" />\n            <Draggable />\n            <ExitedForceField ForceField=\"centerAttract\">\n                <Change centerCircle.Color=\"#66BB6A\" Duration=\".5\"/>\n            </ExitedForceField>\n        </Panel>\n        <Panel Width=\"200\" Height=\"200\" Alignment=\"Center\" >\n            <Circle ux:Name=\"centerCircle\" Color=\"#EF5350\" />\n            <PointAttractor ux:Name=\"centerAttract\" Radius=\"150\" Strength=\"250\" />\n        </Panel>\n    </Panel>"
     }
   },
   "tableOfContents": {
@@ -423,7 +423,7 @@
           {
             "comment": {
               "brief": "Specifies an explicit backward animation instead of using the implied backward animation\nof the animators involved. Be aware that actions are not part of the animation.",
-              "full": "Specifies an explicit backward animation instead of using the implied backward animation\nof the animators involved. Be aware that actions are not part of the animation.\n\nTriggers normally use the same animators when deactivating as they do when they activate. There are however\nanimations that require a different set of animators when animating back from the active state. For this purpose\none can bind a new set of animators to the `BackwardAnimation` property like so:\n```xml\n    <Panel Width=\"100\" Height=\"100\" Color=\"#00b2ee\">\n        <WhilePressed>\n            <Rotate Degrees=\"90\" Duration=\"0.5\" />\n            <Scale Factor=\"1.5\" Duration=\"1\" Easing=\"QuadraticInOut\" />\n            <TriggerAnimation ux:Binding=\"BackwardAnimation\">\n                <Scale Factor=\"1.5\" Duration=\"1\" Easing=\"QuadraticInOut\" />\n            </TriggerAnimation>\n        </WhilePressed>\n    </Panel>\n```xml\nIn this example, the @Panel only rotates when pressed. When the pointer is released, it does not animate back.\nNote that the effect of the animators are still reversed. The only difference is that they loose their duration."
+              "full": "Specifies an explicit backward animation instead of using the implied backward animation\nof the animators involved. Be aware that actions are not part of the animation.\n\nTriggers normally use the same animators when deactivating as they do when they activate. There are however\nanimations that require a different set of animators when animating back from the active state. For this purpose\none can bind a new set of animators to the `BackwardAnimation` property like so:\n\n    <Panel Width=\"100\" Height=\"100\" Color=\"#00b2ee\">\n        <WhilePressed>\n            <Rotate Degrees=\"90\" Duration=\"0.5\" />\n            <Scale Factor=\"1.5\" Duration=\"1\" Easing=\"QuadraticInOut\" />\n            <TriggerAnimation ux:Binding=\"BackwardAnimation\">\n                <Scale Factor=\"1.5\" Duration=\"1\" Easing=\"QuadraticInOut\" />\n            </TriggerAnimation>\n        </WhilePressed>\n    </Panel>\n\nIn this example, the @Panel only rotates when pressed. When the pointer is released, it does not animate back.\nNote that the effect of the animators are still reversed. The only difference is that they loose their duration."
             },
             "returns": {
               "href": "fuse/animations/triggeranimation",

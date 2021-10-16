@@ -23,7 +23,7 @@
       "namespaceTitle": "Fuse.Triggers",
       "namespaceUri": "fuse/triggers",
       "packageName": "Fuse.Triggers",
-      "packageVersion": "2.0.0-beta.9"
+      "packageVersion": "2.0.0"
     },
     "inheritance": {
       "root": {
@@ -238,7 +238,7 @@
     },
     "comment": {
       "brief": "Pulses when the busy status of a node is cleared.",
-      "full": "Pulses when the busy status of a node is cleared.\n\n`Completed` is used to respond to the completion of a preparation, loading, or other busy task.\n\nThis example draws attention to an `Image` when it has completed loading:\n```xml\n    <Image Url=\"some_big_image\">\n        <Completed>\n            <Scale Factor=\"0.8\" Duration=\"0.4\"/>\n        </Completed>\n    </Image>\n```\n`Completed` always fires, even if the node wasn't busy before. This makes it suitable for things that should always run. It also makes it useful in combination with other triggers. For example, the below scales the image when the navigation page is both active and completed.\n```xml\n    <Page>\n        <Image Alignment=\"Center\" Url=\"some_image\" ux:Name=\"theImage\"/>\n        <WhileActive>\n            <Completed>\n                <Scale Target=\"theImage\" Factor=\"1.5\" Duration=\"0.3\"/>\n            </Completed>\n        </WhileActive>\n    </Page>\n```"
+      "full": "Pulses when the busy status of a node is cleared.\n\n`Completed` is used to respond to the completion of a preparation, loading, or other busy task.\n\nThis example draws attention to an `Image` when it has completed loading:\n\n    <Image Url=\"some_big_image\">\n        <Completed>\n            <Scale Factor=\"0.8\" Duration=\"0.4\"/>\n        </Completed>\n    </Image>\n\n`Completed` always fires, even if the node wasn't busy before. This makes it suitable for things that should always run. It also makes it useful in combination with other triggers. For example, the below scales the image when the navigation page is both active and completed.\n\n    <Page>\n        <Image Alignment=\"Center\" Url=\"some_image\" ux:Name=\"theImage\"/>\n        <WhileActive>\n            <Completed>\n                <Scale Target=\"theImage\" Factor=\"1.5\" Duration=\"0.3\"/>\n            </Completed>\n        </WhileActive>\n    </Page>"
     }
   },
   "tableOfContents": {
@@ -429,7 +429,7 @@
           {
             "comment": {
               "brief": "Specifies an explicit backward animation instead of using the implied backward animation\nof the animators involved. Be aware that actions are not part of the animation.",
-              "full": "Specifies an explicit backward animation instead of using the implied backward animation\nof the animators involved. Be aware that actions are not part of the animation.\n\nTriggers normally use the same animators when deactivating as they do when they activate. There are however\nanimations that require a different set of animators when animating back from the active state. For this purpose\none can bind a new set of animators to the `BackwardAnimation` property like so:\n```xml\n    <Panel Width=\"100\" Height=\"100\" Color=\"#00b2ee\">\n        <WhilePressed>\n            <Rotate Degrees=\"90\" Duration=\"0.5\" />\n            <Scale Factor=\"1.5\" Duration=\"1\" Easing=\"QuadraticInOut\" />\n            <TriggerAnimation ux:Binding=\"BackwardAnimation\">\n                <Scale Factor=\"1.5\" Duration=\"1\" Easing=\"QuadraticInOut\" />\n            </TriggerAnimation>\n        </WhilePressed>\n    </Panel>\n```xml\nIn this example, the @Panel only rotates when pressed. When the pointer is released, it does not animate back.\nNote that the effect of the animators are still reversed. The only difference is that they loose their duration."
+              "full": "Specifies an explicit backward animation instead of using the implied backward animation\nof the animators involved. Be aware that actions are not part of the animation.\n\nTriggers normally use the same animators when deactivating as they do when they activate. There are however\nanimations that require a different set of animators when animating back from the active state. For this purpose\none can bind a new set of animators to the `BackwardAnimation` property like so:\n\n    <Panel Width=\"100\" Height=\"100\" Color=\"#00b2ee\">\n        <WhilePressed>\n            <Rotate Degrees=\"90\" Duration=\"0.5\" />\n            <Scale Factor=\"1.5\" Duration=\"1\" Easing=\"QuadraticInOut\" />\n            <TriggerAnimation ux:Binding=\"BackwardAnimation\">\n                <Scale Factor=\"1.5\" Duration=\"1\" Easing=\"QuadraticInOut\" />\n            </TriggerAnimation>\n        </WhilePressed>\n    </Panel>\n\nIn this example, the @Panel only rotates when pressed. When the pointer is released, it does not animate back.\nNote that the effect of the animators are still reversed. The only difference is that they loose their duration."
             },
             "returns": {
               "href": "fuse/animations/triggeranimation",

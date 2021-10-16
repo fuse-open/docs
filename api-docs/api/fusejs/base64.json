@@ -22,7 +22,7 @@
       "namespaceTitle": "FuseJS",
       "namespaceUri": "fusejs",
       "packageName": "FuseJS",
-      "packageVersion": "2.0.0-beta.9"
+      "packageVersion": "2.0.0"
     },
     "inheritance": {
       "root": {
@@ -140,7 +140,7 @@
     },
     "comment": {
       "brief": "Allows you to encode and decode strings from Base64.",
-      "full": "Allows you to encode and decode strings from Base64.\n\nThis is useful when passing string to places where some characters are not allowed.\n\nThis example demonstrates simple use of the `Base64` module. The code prints the input string, and the computed Base64 string.\n```js\n    var Base64 = require(\"FuseJS/Base64\");\n    var string = \"Hello, world!\";\n    console.log(string); //LOG: Hello, world!\n    console.log(Base64.encodeAscii(string)); //LOG: SGVsbG8sIHdvcmxkIQ==\n```",
+      "full": "Allows you to encode and decode strings from Base64.\n\nThis is useful when passing string to places where some characters are not allowed.\n\nThis example demonstrates simple use of the `Base64` module. The code prints the input string, and the computed Base64 string.\n\n    var Base64 = require(\"FuseJS/Base64\");\n    var string = \"Hello, world!\";\n    console.log(string); //LOG: Hello, world!\n    console.log(Base64.encodeAscii(string)); //LOG: SGVsbG8sIHdvcmxkIQ==",
       "attributes": {
         "scriptModule": "FuseJS/Base64"
       }
@@ -266,8 +266,8 @@
         "items": [
           {
             "comment": {
-              "brief": "Decodes the given base64 value to an ASCII string representation\n```js\n    var Base64 = require(\"FuseJS/Base64\");\n    console.log(Base64.decodeAscii(\"SGVsbG8sIHdvcmxkIQ==\")); //LOG: Hello, world!\n```",
-              "full": "Decodes the given base64 value to an ASCII string representation\n```js\n    var Base64 = require(\"FuseJS/Base64\");\n    console.log(Base64.decodeAscii(\"SGVsbG8sIHdvcmxkIQ==\")); //LOG: Hello, world!\n```",
+              "brief": "Decodes the given base64 value to an ASCII string representation",
+              "full": "Decodes the given base64 value to an ASCII string representation\n\n    var Base64 = require(\"FuseJS/Base64\");\n    console.log(Base64.decodeAscii(\"SGVsbG8sIHdvcmxkIQ==\")); //LOG: Hello, world!",
               "attributes": {
                 "scriptMethod": {
                   "name": "decodeAscii",
@@ -326,8 +326,8 @@
           },
           {
             "comment": {
-              "brief": "Decodes the given base64 string to an ArrayBuffer.\n```js\n    var Base64 = require(\"FuseJS/Base64\");\n    var buf = Base64.decodeBuffer(\"NxMAAA==\");\n    var view = new Int32Array(data);\n    // Should print 0x1337\n    console.log(\"0x\" + view[0].toString(16));\n```\n*",
-              "full": "Decodes the given base64 string to an ArrayBuffer.\n```js\n    var Base64 = require(\"FuseJS/Base64\");\n    var buf = Base64.decodeBuffer(\"NxMAAA==\");\n    var view = new Int32Array(data);\n    // Should print 0x1337\n    console.log(\"0x\" + view[0].toString(16));\n```\n*",
+              "brief": "Decodes the given base64 string to an ArrayBuffer.",
+              "full": "Decodes the given base64 string to an ArrayBuffer.\n\n    var Base64 = require(\"FuseJS/Base64\");\n    var buf = Base64.decodeBuffer(\"NxMAAA==\");\n    var view = new Int32Array(data);\n    // Should print 0x1337\n    console.log(\"0x\" + view[0].toString(16));\n\n*",
               "attributes": {
                 "scriptMethod": {
                   "name": "decodeBuffer",
@@ -386,8 +386,8 @@
           },
           {
             "comment": {
-              "brief": "Decodes the given base64 Latin-1 encoded bytes to a string.\n```js\n    var Base64 = require(\"FuseJS/Base64\");\n    // Prints \"hello world\"\n    console.log(Base64.decodeLatin1(\"aGVsbG8gd29ybGQ=\"));\n```\n*",
-              "full": "Decodes the given base64 Latin-1 encoded bytes to a string.\n```js\n    var Base64 = require(\"FuseJS/Base64\");\n    // Prints \"hello world\"\n    console.log(Base64.decodeLatin1(\"aGVsbG8gd29ybGQ=\"));\n```\n*",
+              "brief": "Decodes the given base64 Latin-1 encoded bytes to a string.",
+              "full": "Decodes the given base64 Latin-1 encoded bytes to a string.\n\n    var Base64 = require(\"FuseJS/Base64\");\n    // Prints \"hello world\"\n    console.log(Base64.decodeLatin1(\"aGVsbG8gd29ybGQ=\"));\n\n*",
               "attributes": {
                 "scriptMethod": {
                   "name": "decodeLatin1",
@@ -446,8 +446,8 @@
           },
           {
             "comment": {
-              "brief": "Decodes the given base64 value to an UTF8 string representation\n```js\n    var Base64 = require(\"FuseJS/Base64\");\n    console.log(Base64.encodeUtf8(\"Rm9vIMKpIGJhcg==\")); //LOG: Foo © bar\n```",
-              "full": "Decodes the given base64 value to an UTF8 string representation\n```js\n    var Base64 = require(\"FuseJS/Base64\");\n    console.log(Base64.encodeUtf8(\"Rm9vIMKpIGJhcg==\")); //LOG: Foo © bar\n```",
+              "brief": "Decodes the given base64 value to an UTF8 string representation",
+              "full": "Decodes the given base64 value to an UTF8 string representation\n\n    var Base64 = require(\"FuseJS/Base64\");\n    console.log(Base64.encodeUtf8(\"Rm9vIMKpIGJhcg==\")); //LOG: Foo © bar",
               "attributes": {
                 "scriptMethod": {
                   "name": "decodeUtf8",
@@ -506,8 +506,8 @@
           },
           {
             "comment": {
-              "brief": "Encodes the given ASCII value to base64 string representation\n```js\n    var Base64 = require(\"FuseJS/Base64\");\n    console.log(Base64.encodeAscii(\"Hello, world!\")); //LOG: SGVsbG8sIHdvcmxkIQ==\n```",
-              "full": "Encodes the given ASCII value to base64 string representation\n```js\n    var Base64 = require(\"FuseJS/Base64\");\n    console.log(Base64.encodeAscii(\"Hello, world!\")); //LOG: SGVsbG8sIHdvcmxkIQ==\n```",
+              "brief": "Encodes the given ASCII value to base64 string representation",
+              "full": "Encodes the given ASCII value to base64 string representation\n\n    var Base64 = require(\"FuseJS/Base64\");\n    console.log(Base64.encodeAscii(\"Hello, world!\")); //LOG: SGVsbG8sIHdvcmxkIQ==",
               "attributes": {
                 "scriptMethod": {
                   "name": "encodeAscii",
@@ -566,8 +566,8 @@
           },
           {
             "comment": {
-              "brief": "Encodes given array buffer to base64.\n```js\n    var Base64 = require(\"FuseJS/Base64\");",
-              "full": "Encodes given array buffer to base64.\n```js\n    var Base64 = require(\"FuseJS/Base64\");\n\n    var data = new ArrayBuffer(4);\n    var view = new Int32Array(data);\n    view[0] = 0x1337;\n\n    console.log(Base64.encodeBuffer(data));\n```\n*",
+              "brief": "Encodes given array buffer to base64.",
+              "full": "Encodes given array buffer to base64.\n\n    var Base64 = require(\"FuseJS/Base64\");\n\n    var data = new ArrayBuffer(4);\n    var view = new Int32Array(data);\n    view[0] = 0x1337;\n\n    console.log(Base64.encodeBuffer(data));\n\n*",
               "attributes": {
                 "scriptMethod": {
                   "name": "encodeBuffer",
@@ -626,8 +626,8 @@
           },
           {
             "comment": {
-              "brief": "Encodes the given string to a Latin-1 base64 string.\n```js\n    var Base64 = require(\"FuseJS/Base64\");\n    // Prints \"aGVsbG8gd29ybGQ=\"\n    console.log(Base64.encodeLatin1(\"hello world\"));\n```\n*",
-              "full": "Encodes the given string to a Latin-1 base64 string.\n```js\n    var Base64 = require(\"FuseJS/Base64\");\n    // Prints \"aGVsbG8gd29ybGQ=\"\n    console.log(Base64.encodeLatin1(\"hello world\"));\n```\n*",
+              "brief": "Encodes the given string to a Latin-1 base64 string.",
+              "full": "Encodes the given string to a Latin-1 base64 string.\n\n    var Base64 = require(\"FuseJS/Base64\");\n    // Prints \"aGVsbG8gd29ybGQ=\"\n    console.log(Base64.encodeLatin1(\"hello world\"));\n\n*",
               "attributes": {
                 "scriptMethod": {
                   "name": "encodeLatin1",
@@ -686,8 +686,8 @@
           },
           {
             "comment": {
-              "brief": "Encodes the given UTF8 value to a base64 string representation\n```js\n    var Base64 = require(\"FuseJS/Base64\");\n    console.log(Base64.encodeUtf8(\"Foo © bar\")); //LOG: Rm9vIMKpIGJhcg==\n```",
-              "full": "Encodes the given UTF8 value to a base64 string representation\n```js\n    var Base64 = require(\"FuseJS/Base64\");\n    console.log(Base64.encodeUtf8(\"Foo © bar\")); //LOG: Rm9vIMKpIGJhcg==\n```",
+              "brief": "Encodes the given UTF8 value to a base64 string representation",
+              "full": "Encodes the given UTF8 value to a base64 string representation\n\n    var Base64 = require(\"FuseJS/Base64\");\n    console.log(Base64.encodeUtf8(\"Foo © bar\")); //LOG: Rm9vIMKpIGJhcg==",
               "attributes": {
                 "scriptMethod": {
                   "name": "encodeUtf8",

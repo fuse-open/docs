@@ -4,7 +4,7 @@
       "namespaceTitle": "Fuse.Reactive",
       "namespaceUri": "fuse/reactive",
       "packageName": "Fuse.Scripting.JavaScript",
-      "packageVersion": "2.0.0-beta.9"
+      "packageVersion": "2.0.0"
     },
     "parameters": [],
     "returns": {
@@ -37,7 +37,7 @@
     },
     "comment": {
       "brief": "A list of named expressions that will be evaluated and injected as variables into the script.",
-      "full": "A list of named expressions that will be evaluated and injected as variables into the script.\n\nThis property allows injecting dependencies defined as UX expressions into the script using the `dep:` XML namespace.\n\nExample:\n```xml\n    <JavaScript>\n        exports.foo = 123\n    </JavaScript>\n    <JavaScript dep:foo=\"{foo}\">\n        foo // this is now 123\n    </JavaScript>\n```\nA script is not executed until all of its dependencies are available. If any of the dependencies change, the script is re-executed.\n\nThis has multiple use-cases:\n* Accessing data from data context `dep:foo=\"{foo}\"`\n* Accessing properties synchronously `dep:SomeProp=\"{Property SomeProp}\"`"
+      "full": "A list of named expressions that will be evaluated and injected as variables into the script.\n\nThis property allows injecting dependencies defined as UX expressions into the script using the `dep:` XML namespace.\n\nExample:\n\n    <JavaScript>\n        exports.foo = 123\n    </JavaScript>\n    <JavaScript dep:foo=\"{foo}\">\n        foo // this is now 123\n    </JavaScript>\n\nA script is not executed until all of its dependencies are available. If any of the dependencies change, the script is re-executed.\n\nThis has multiple use-cases:\n* Accessing data from data context `dep:foo=\"{foo}\"`\n* Accessing properties synchronously `dep:SomeProp=\"{Property SomeProp}\"`"
     }
   },
   "tableOfContents": {}

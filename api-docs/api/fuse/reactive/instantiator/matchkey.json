@@ -4,7 +4,7 @@
       "namespaceTitle": "Fuse.Reactive",
       "namespaceUri": "fuse/reactive",
       "packageName": "Fuse.Reactive.Bindings",
-      "packageVersion": "2.0.0-beta.9"
+      "packageVersion": "2.0.0"
     },
     "parameters": [],
     "returns": {
@@ -37,7 +37,7 @@
     },
     "comment": {
       "brief": "Name of the field on each data object which selects templates for the data objects.",
-      "full": "Name of the field on each data object which selects templates for the data objects.\n\nIf set, the `Each` will instantiate the template with a name matching the `MatchKey`. If no\nmatch is found then the default template will be used, or no template if there is no default.\nThe default template is the one explicitly marked with `ux:DefaultTemplate=\"true\"`.\n\n## Example\n\nMatchKey can be used together with `ux:Template` to select the correct template based on\na string field in the data source.\n\nInstead of:\n```xml\n    <Each Items=\"{listData}\">\n    <Deferred>\n        <Match Value=\"{type}\">\n            <Case String=\"month\">\n                <Panel ...\n```\nDo:\n```xml\n    <Each Items=\"{listData}\" MatchKey=\"type\">\n        <Deferred ux:Template=\"month\">\n            <Panel ...\n```"
+      "full": "Name of the field on each data object which selects templates for the data objects.\n\nIf set, the `Each` will instantiate the template with a name matching the `MatchKey`. If no\nmatch is found then the default template will be used, or no template if there is no default.\nThe default template is the one explicitly marked with `ux:DefaultTemplate=\"true\"`.\n\n## Example\n\nMatchKey can be used together with `ux:Template` to select the correct template based on\na string field in the data source.\n\nInstead of:\n\n    <Each Items=\"{listData}\">\n    <Deferred>\n        <Match Value=\"{type}\">\n            <Case String=\"month\">\n                <Panel ...\nDo:\n\n    <Each Items=\"{listData}\" MatchKey=\"type\">\n        <Deferred ux:Template=\"month\">\n            <Panel ..."
     }
   },
   "tableOfContents": {}
