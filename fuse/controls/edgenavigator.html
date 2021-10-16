@@ -704,37 +704,32 @@ Show advanced things
 <p>Use a <code>GoBack</code> inside this navigation to dismiss side-panels from UX, or use the <code>dismiss</code> method from JavaScript.</p>
 <h4 id="model">Model</h4>
 <p>The EdgeNavigator can be bound to a model with the <code>Pages</code> property. For example:</p>
-<pre><code class="language-xml">   &lt;EdgeNavigator Pages=&quot;{pages}&quot;&gt;
-       &lt;Panel Edge=&quot;Left&quot; ux:Template=&quot;left&quot;/&gt;
-       &lt;Panel Edge=&quot;Right&quot; ux:Template=&quot;right&quot;/&gt;
-       &lt;Panel ux:Template=&quot;main&quot;/&gt;
-   &lt;/EdgeNavigator&gt;
-</code></pre>
+   <edgenavigator pages="{pages}">
+       <panel edge="Left" ux:template="left"></panel>
+       <panel edge="Right" ux:template="right"></panel>
+       <panel ux:template="main"></panel>
+   </edgenavigator>
 <p>Then in your main model state you define <code>pages</code></p>
-<pre><code class="language-js">   export default class MainState {
-       constructor() {
-           this.pages = [ new LeftPage(), new RightPage(), new MainPage() ]
-       }
-   }
-
-   class LeftPage {
-       constructor() {
-           this.$path = &quot;left&quot;
-       }
-   }
-
-   class RightPage {
-       constructor() {
-           this.$path = &quot;right&quot;
-       }
-   }
-
-   class MainPage {
-       constructor() {
-           this.$path = &quot;main&quot;
-       }
-   }
-</code></pre>
+<p>export default class MainState {
+constructor() {
+this.pages = [ new LeftPage(), new RightPage(), new MainPage() ]
+}
+}</p>
+<p>class LeftPage {
+constructor() {
+this.$path = &quot;left&quot;
+}
+}</p>
+<p>class RightPage {
+constructor() {
+this.$path = &quot;right&quot;
+}
+}</p>
+<p>class MainPage {
+constructor() {
+this.$path = &quot;main&quot;
+}
+}</p>
 
 <section class="type-location">
 <h3 id="section-location">Location</h3>

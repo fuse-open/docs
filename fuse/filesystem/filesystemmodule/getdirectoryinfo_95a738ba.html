@@ -693,16 +693,16 @@ FileSystemModule.getDirectoryInfo(path) Method (JS)
 <li><code>lastAccessTime</code> –  A <code>Date</code> stating when directory was accessed</li>
 </ul>
 <h4 id="example">Example</h4>
-<pre><code class="language-js">    var FileSystem = require(&quot;FuseJS/FileSystem&quot;);
+<pre><code>var FileSystem = require(&quot;FuseJS/FileSystem&quot;);
 
-    FileSystem.createDirectorySync(&quot;some-dir&quot;);
-    FileSystem.getDirectoryInfo(&quot;some-dir&quot;)
-        .then(function(dirInfo) {
-            console.log(&quot;Directory was modified on &quot; + dirInfo.lastWriteTime);
-        })
-        .catch(function(error) {
-            console.log(&quot;Failed to get directory info &quot; + error);
-        });
+FileSystem.createDirectorySync(&quot;some-dir&quot;);
+FileSystem.getDirectoryInfo(&quot;some-dir&quot;)
+    .then(function(dirInfo) {
+        console.log(&quot;Directory was modified on &quot; + dirInfo.lastWriteTime);
+    })
+    .catch(function(error) {
+        console.log(&quot;Failed to get directory info &quot; + error);
+    });
 </code></pre>
 
 <section class="type-location type-location-leaf">

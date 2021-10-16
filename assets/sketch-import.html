@@ -705,7 +705,7 @@
 Extract the zip and run the install script.</p>
 <p>To import a sketch document, say <code>MyDesign.sketch</code>, first copy the file into your Fuse project folder.</p>
 <p>Then using a terminal type:</p>
-<pre><code>	fuse import MyDesign.sketch
+<pre><code>fuse import MyDesign.sketch
 </code></pre>
 <p>Import may take a while, depending on the amount of assets in your document.</p>
 <h2 id="using-drag-and-drop-to-import">Using drag-and-drop to import</h2>
@@ -717,30 +717,30 @@ Extract the zip and run the install script.</p>
 <h2 id="fonts">Fonts</h2>
 <p>Fuse will automatically extract the fonts needed from your system and put them in the <code>-assets/</code> folder next to your <code>.sketch</code> file. It will also declare them as global resources in your resource library.</p>
 <p>In the resource library they will look like this:</p>
-<pre><code class="language-xml">	&lt;Font File=&quot;MyDesign.sketch-assets/HelveticaNeue.ttf&quot; ux:Global=&quot;HelveticaNeue&quot; /&gt;
+<pre><code>&lt;Font File=&quot;MyDesign.sketch-assets/HelveticaNeue.ttf&quot; ux:Global=&quot;HelveticaNeue&quot; /&gt;
 </code></pre>
 <p>Which means we can use them like this:</p>
-<pre><code class="language-xml">	&lt;Text Font=&quot;HelveticaNeue&quot;&gt;Hello, world!&lt;/Text&gt;
+<pre><code>&lt;Text Font=&quot;HelveticaNeue&quot;&gt;Hello, world!&lt;/Text&gt;
 </code></pre>
 <h2 id="images">Images</h2>
 <p>Images from the sketch document will be represented as classes (<code>ux:Class</code>) which extend <a href="../fuse/controls/image.html">Image</a>, and point to the rendered assets with a <a href="../fuse/resources/multidensityimagesource.html">MultiDensityImageSource</a>.</p>
 <p>The names of the classes correspond to the layer names in Sketch. If your file was called <code>MyDesign.sketch</code>, and it contains an artboard called <code>Screen1</code>, which contains a layer group called <code>SomeGroup</code> and a layer called <code>SomeLayer</code>, we can create in instance of this image like this:</p>
-<pre><code class="language-xml">	&lt;MyDesign.Screen1.SomeGroup.SomeLayer /&gt;
+<pre><code>&lt;MyDesign.Screen1.SomeGroup.SomeLayer /&gt;
 </code></pre>
 <p>This tag is an <a href="../fuse/controls/image.html">Image</a>, so it supports the same attributes as <a href="../fuse/controls/image.html">Image</a>, e.g. <a href="../fuse/elements/element/alignment.html">Alignment</a>, <a href="../fuse/elements/element/margin.html">Margin</a>, StretchMode and Scale9Margin.</p>
 <p>This is all possible because in the resource library file (<code>.sketch.ux</code>), you'll now have a generated class that looks something like:</p>
-<pre><code class="language-xml">	&lt;Image ux:Class=&quot;MyDesign.Screen1.SomeGroup.SomeLayer&quot;&gt;
-	  &lt;MultiDensityImageSource&gt;
-	   &lt;FileImageSource File=&quot;MyDesign.sketch-assets/MyDesign.Screen1.SomeGroup.SomeLayer@1x.png&quot; Density=&quot;1.0&quot; /&gt;
-	   &lt;FileImageSource File=&quot;MyDesign.sketch-assets/MyDesign.Screen1.SomeGroup.SomeLayer@2x.png&quot; Density=&quot;2.0&quot; /&gt;
-	  &lt;/MultiDensityImageSource&gt;
-	&lt;/Image&gt;
+<pre><code>&lt;Image ux:Class=&quot;MyDesign.Screen1.SomeGroup.SomeLayer&quot;&gt;
+  &lt;MultiDensityImageSource&gt;
+   &lt;FileImageSource File=&quot;MyDesign.sketch-assets/MyDesign.Screen1.SomeGroup.SomeLayer@1x.png&quot; Density=&quot;1.0&quot; /&gt;
+   &lt;FileImageSource File=&quot;MyDesign.sketch-assets/MyDesign.Screen1.SomeGroup.SomeLayer@2x.png&quot; Density=&quot;2.0&quot; /&gt;
+  &lt;/MultiDensityImageSource&gt;
+&lt;/Image&gt;
 </code></pre>
 <p>The image files is placed in the <code>MyDesign.sketch-assets/</code> folder next to the <code>.sketch</code> file.</p>
 <h2 id="auto-generated-app-layout">Auto-generated app layout</h2>
 <p>Fuse can also generate a app layout based on the imported resource library, so you get proper Fuse screens that look exactly like your sketch design. This includes <a href="../fuse/controls/text.html">Text</a> elements in addition to shapes and images, and can be a good starting point for creating a responsive app layout.</p>
 <p>You do this by specifying the <code>--app</code> or (<code>--overwrite-app</code>) options to <code>fuse import</code>. Example:</p>
-<pre><code>	fuse import MyDesign.sketch --app MyDesign.ux
+<pre><code>fuse import MyDesign.sketch --app MyDesign.ux
 </code></pre>
 <p>This will generate <code>MyDesign.ux</code> which will contain an <a href="../fuse/app.html">App</a> tag, with a <a href="../fuse/controls/pagecontrol.html">PageControl</a>, and one <a href="../fuse/controls/page.html">Page</a> for each <em>artboard</em> in your sketch file.</p>
 <p>Fuse will as accurately as possible reproduce the layout from your sketch file. This currently means absolute positioning all elements to match the sketch file precisely.</p>
@@ -752,30 +752,30 @@ Extract the zip and run the install script.</p>
 <p>The names of the classes remain the same, as long as Sketch layers have not been renamed.</p>
 <h2 id="image-densities">Image densities</h2>
 <p>We can control the image densities Fuse generates when importing the Sketch document by passing options to the import command. For example:</p>
-<pre><code>	fuse import MyDesign.sketch --1x --1.5x --2x
+<pre><code>fuse import MyDesign.sketch --1x --1.5x --2x
 </code></pre>
 <p>Will import all image assets in 1.0, 1.5 and 2.0 density, respectively. If you don't specify anything, Fuse defaults to rendering 1.0 and 2.0 densities.</p>
 <h3 id="asset-aliasing">Asset aliasing</h3>
 <p>Sometimes when you import <code>.sketch</code> files you may get a lot of long, impractical names for your assets. This is simply because noone considered that the document would be imported to Fuse when it was made and thus didn't name the layers properly.</p>
 <p>You would typically get things like :</p>
-<pre><code class="language-xml">	&lt;Image ux:Class=&quot;activity.Activity___6.Rectangle_91___Bitmap_2&quot;&gt;
-		&lt;MultiDensityImageSource&gt;
-			&lt;FileImageSource File=&quot;activity.sketch-assets/Activity___6.Rectangle_91___Bitmap_2@1x.png&quot; Density=&quot;1&quot; /&gt;
-			&lt;FileImageSource File=&quot;activity.sketch-assets/Activity___6.Rectangle_91___Bitmap_2@2x.png&quot; Density=&quot;2&quot; /&gt;
-		&lt;/MultiDensityImageSource&gt;
-	&lt;/Image&gt;
+<pre><code>&lt;Image ux:Class=&quot;activity.Activity___6.Rectangle_91___Bitmap_2&quot;&gt;
+	&lt;MultiDensityImageSource&gt;
+		&lt;FileImageSource File=&quot;activity.sketch-assets/Activity___6.Rectangle_91___Bitmap_2@1x.png&quot; Density=&quot;1&quot; /&gt;
+		&lt;FileImageSource File=&quot;activity.sketch-assets/Activity___6.Rectangle_91___Bitmap_2@2x.png&quot; Density=&quot;2&quot; /&gt;
+	&lt;/MultiDensityImageSource&gt;
+&lt;/Image&gt;
 </code></pre>
 <p>This will make your UX code look not-so-nice when you start using these. At the same time, we don't want to rename the classes, because then we lose the link to the <code>.sketch</code> file and can no longer get <a href="#live-update-of-assets">live updates</a>.</p>
 <p>To deal with this, make yourself an extra UX file, for example called <code>AssetAliases.ux</code>. We can for instance use a <code>Panel</code> as the root tag.</p>
 <p>In the above example we know that this bitmap is actually the background for the entire screen. We can therefore give it a more reasonable name, like <code>ActivityBackground</code>.</p>
 <p>In <code>AssetAliases.ux</code> do:</p>
-<pre><code class="language-xml">	&lt;Panel&gt;
-		&lt;activity.Activity___6.Rectangle_91___Bitmap_2 ux:Class=&quot;ActivityBackground&quot; /&gt;
-	&lt;/Panel&gt;
+<pre><code>&lt;Panel&gt;
+	&lt;activity.Activity___6.Rectangle_91___Bitmap_2 ux:Class=&quot;ActivityBackground&quot; /&gt;
+&lt;/Panel&gt;
 </code></pre>
 <p>All other assets you want to alias can just be added to this list.</p>
 <p>Then we can use this much nicer tag in your actual app code:</p>
-<pre><code class="language-xml">	&lt;ActivityBackground /&gt;
+<pre><code>&lt;ActivityBackground /&gt;
 </code></pre>
 
             </div>

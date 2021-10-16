@@ -702,22 +702,22 @@ Show advanced things
 <p>Navigates forward in a <a href="../../fuse/navigation/navigation.html">Navigation</a>, <a href="../../fuse/controls/pagecontrol.html">PageControl</a>, or <a href="../../fuse/controls/webview.html">WebView</a>.</p>
 <h3 id="example">Example</h3>
 <p>In this example, <code>GoForward</code> will be used to navigate back to the first page of a <code>PageControl</code>. This is because &quot;Forward&quot; means &quot;towards the first page&quot; when used in linear navigation.</p>
-<pre><code class="language-xml">    &lt;PageControl&gt;
-        &lt;Panel Background=&quot;#F00&quot; ux:Name=&quot;page1&quot;&gt;
-            &lt;Button Alignment=&quot;Center&quot; Text=&quot;Go to page 2&quot;&gt;
-                &lt;Clicked&gt;
-                    &lt;NavigateTo Target=&quot;page2&quot; /&gt;
-                &lt;/Clicked&gt;
-            &lt;/Button&gt;
-        &lt;/Panel&gt;
-        &lt;Panel Background=&quot;#0F0&quot; ux:Name=&quot;page2&quot;&gt;
-            &lt;Button Text=&quot;Go back&quot; Alignment=&quot;Center&quot; Margin=&quot;10&quot;&gt;
-                &lt;Clicked&gt;
-                    &lt;GoForward /&gt;
-                &lt;/Clicked&gt;
-            &lt;/Button&gt;
-        &lt;/Panel&gt;
-    &lt;/PageControl&gt;
+<pre><code>&lt;PageControl&gt;
+    &lt;Panel Background=&quot;#F00&quot; ux:Name=&quot;page1&quot;&gt;
+        &lt;Button Alignment=&quot;Center&quot; Text=&quot;Go to page 2&quot;&gt;
+            &lt;Clicked&gt;
+                &lt;NavigateTo Target=&quot;page2&quot; /&gt;
+            &lt;/Clicked&gt;
+        &lt;/Button&gt;
+    &lt;/Panel&gt;
+    &lt;Panel Background=&quot;#0F0&quot; ux:Name=&quot;page2&quot;&gt;
+        &lt;Button Text=&quot;Go back&quot; Alignment=&quot;Center&quot; Margin=&quot;10&quot;&gt;
+            &lt;Clicked&gt;
+                &lt;GoForward /&gt;
+            &lt;/Clicked&gt;
+        &lt;/Button&gt;
+    &lt;/Panel&gt;
+&lt;/PageControl&gt;
 </code></pre>
 <p>Forward refers to pages that are in front of the active one in navigation order.  This trigger is not suitable for navigation that does not have a history or sequence of pages.</p>
 <p>See <a href="../../navigation/navigationorder.html">Navigation Order</a></p>

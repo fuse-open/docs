@@ -687,14 +687,14 @@ FileSystemModule.listDirectories(path) Method (JS)
 </header>
 <p>Asynchronously list subdirectories in a directory.</p>
 <h4 id="example">Example</h4>
-<pre><code class="language-js">    var FileSystem = require(&quot;FuseJS/FileSystem&quot;);
+<pre><code>var FileSystem = require(&quot;FuseJS/FileSystem&quot;);
 
-    FileSystem.listDirectories(FileSystem.dataDirectory)
-        .then(function(directories) {
-            console.log(&quot;There are &quot; + directories.length + &quot; subdirectories in directory&quot;)
-        }, function(error) {
-            console.log(&quot;Unable to list subdirectories of directory: &quot; + error);
-        });
+FileSystem.listDirectories(FileSystem.dataDirectory)
+    .then(function(directories) {
+        console.log(&quot;There are &quot; + directories.length + &quot; subdirectories in directory&quot;)
+    }, function(error) {
+        console.log(&quot;Unable to list subdirectories of directory: &quot; + error);
+    });
 </code></pre>
 
 <section class="type-location type-location-leaf">

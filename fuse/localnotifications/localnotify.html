@@ -704,78 +704,89 @@ Show advanced things
 <p>As with many of our bindings over OS features we like to start with a light API and build up. We are very interested in comments &amp; requests, so do drop by the forums and let us know.</p>
 <h4 id="getting-set-up">Getting Set Up</h4>
 <p>Include the Fuse local notification library by adding the following to your <code>.unoproj</code> file</p>
-<pre><code class="language-json">    &quot;Packages&quot;: [
-        ...
-        &quot;Fuse.LocalNotifications&quot;,
-        ...
-    ],
+<pre><code>&quot;Packages&quot;: [
+    ...
+    &quot;Fuse.LocalNotifications&quot;,
+    ...
+],
 </code></pre>
 <p>This is enough to start using this feature in your apps. Let's look at that now.</p>
 <h4 id="app-example">App Example</h4>
 <p>This is a full Fuse app that uses Local Notifications:</p>
-<pre><code class="language-xml">    &lt;App&gt;
-        &lt;JavaScript&gt;
-            var LocalNotify = require(&quot;FuseJS/LocalNotifications&quot;);
+<pre><code>&lt;App&gt;
+    &lt;JavaScript&gt;
+        var LocalNotify = require(&quot;FuseJS/LocalNotifications&quot;);
 
-            LocalNotify.on(&quot;receivedMessage&quot;, function(payload) {
-                console.log(&quot;Received Local Notification: &quot; + payload);
-                LocalNotify.clearAllNotifications();
-            });
+        LocalNotify.on(&quot;receivedMessage&quot;, function(payload) {
+            console.log(&quot;Received Local Notification: &quot; + payload);
+            LocalNotify.clearAllNotifications();
+        });
 
-            function sendLater() {
-                LocalNotify.later(4, &quot;Finally!&quot;, &quot;4 seconds is a long time&quot;, &quot;hmm?&quot;, true);
-            }
+        function sendLater() {
+            LocalNotify.later(4, &quot;Finally!&quot;, &quot;4 seconds is a long time&quot;, &quot;hmm?&quot;, true);
+        }
 
-            function sendNow() {
-                LocalNotify.now(&quot;Boom!&quot;, &quot;Just like that&quot;, &quot;payload&quot;, true);
-            }
+        function sendNow() {
+            LocalNotify.now(&quot;Boom!&quot;, &quot;Just like that&quot;, &quot;payload&quot;, true);
+        }
 
-            module.exports = {
-                sendNow: sendNow,
-                sendLater: sendLater
-            };
-        &lt;/JavaScript&gt;
-        &lt;DockPanel&gt;
-            &lt;TopFrameBackground DockPanel.Dock=&quot;Top&quot; /&gt;
-            &lt;ScrollView&gt;
-                &lt;StackPanel&gt;
-                    &lt;Button Clicked=&quot;{sendNow}&quot; Text=&quot;Send notification now&quot; Height=&quot;60&quot;/&gt;
-                    &lt;Button Clicked=&quot;{sendLater}&quot; Text=&quot;Send notification in 4 seconds&quot; Height=&quot;60&quot;/&gt;
-                &lt;/StackPanel&gt;
-            &lt;/ScrollView&gt;
-            &lt;BottomBarBackground DockPanel.Dock=&quot;Bottom&quot; /&gt;
-        &lt;/DockPanel&gt;
-    &lt;/App&gt;
+        module.exports = {
+            sendNow: sendNow,
+            sendLater: sendLater
+        };
+    &lt;/JavaScript&gt;
+    &lt;DockPanel&gt;
+        &lt;TopFrameBackground DockPanel.Dock=&quot;Top&quot; /&gt;
+        &lt;ScrollView&gt;
+            &lt;StackPanel&gt;
+                &lt;Button Clicked=&quot;{sendNow}&quot; Text=&quot;Send notification now&quot; Height=&quot;60&quot;/&gt;
+                &lt;Button Clicked=&quot;{sendLater}&quot; Text=&quot;Send notification in 4 seconds&quot; Height=&quot;60&quot;/&gt;
+            &lt;/StackPanel&gt;
+        &lt;/ScrollView&gt;
+        &lt;BottomBarBackground DockPanel.Dock=&quot;Bottom&quot; /&gt;
+    &lt;/DockPanel&gt;
+&lt;/App&gt;
 </code></pre>
 <p>Let's break down what is happening here.</p>
 <h4 id="how-it-works">How it works</h4>
 <p>We will skip the <code>module.exports</code> and stuff inside the <code>DockPanel</code>, as that is better explained in other guides. Let's instead go through the JS.</p>
 <p>After <code>require</code>ing our module like normal, we set up a function which will deliver a notification 4 seconds in the future.</p>
-<pre><code class="language-js">    function sendLater() {
-        LocalNotify.later(4, &quot;Finally!&quot;, &quot;4 seconds is a long time&quot;, &quot;hmm?&quot;, true);
-    }
+<pre><code>function sendLater() {
+    LocalNotify.later(4, &quot;Finally!&quot;, &quot;4 seconds is a long time&quot;, &quot;hmm?&quot;, true);
+}
 </code></pre>
 <p>The <code>later</code> function take the following parameters:</p>
 <ul>
-<li><code>secondsFromNow</code>: How long in seconds until the notification fires</li>
-<li><code>title</code>: the <code>string</code> which will be the title in the notification when it shows in the device's notification bar</li>
-<li><code>body</code>: the <code>string</code> which will be the body of the notification when it shows in the device's notification bar</li>
-<li><code>payload</code>: a string which is not shown in the notification itself, but will be present in the callback.</li>
-<li><code>sound</code>: a <code>bool</code> specifying whether or not the device should make the default notification sound when it is shown in the notification bar</li>
-<li><code>badgeNumber</code>: An optional parameter that is only used on iOS, which puts a badge number against the apps icon. This is often used for showing the quantity of 'things' that need the user's attention. For example an email app could show the number of unread emails.</li>
+<li>
+<p><code>secondsFromNow</code>: How long in seconds until the notification fires</p>
+</li>
+<li>
+<p><code>title</code>: the <code>string</code> which will be the title in the notification when it shows in the device's notification bar</p>
+</li>
+<li>
+<p><code>body</code>: the <code>string</code> which will be the body of the notification when it shows in the device's notification bar</p>
+</li>
+<li>
+<p><code>payload</code>: a string which is not shown in the notification itself, but will be present in the callback.</p>
+</li>
+<li>
+<p><code>sound</code>: a <code>bool</code> specifying whether or not the device should make the default notification sound when it is shown in the notification bar</p>
+</li>
+<li>
+<p><code>badgeNumber</code>: An optional parameter that is only used on iOS, which puts a badge number against the apps icon. This is often used for showing the quantity of 'things' that need the user's attention. For example an email app could show the number of unread emails.</p>
+<p>function sendNow() {
+LocalNotify.now(&quot;Boom!&quot;, &quot;Just like that&quot;, &quot;payload&quot;, true);
+}</p>
+</li>
 </ul>
-<pre><code class="language-js">    function sendNow() {
-        LocalNotify.now(&quot;Boom!&quot;, &quot;Just like that&quot;, &quot;payload&quot;, true);
-    }
-</code></pre>
 <p>The <code>now</code> function is almost identical to the <code>later</code> function, except that it doesnt have the <code>secondsFromNow</code> parameter.</p>
 <p>One last thing to note about both <code>now</code> and <code>later</code>, is that they will not deliver a notification to the user if the app is open. Instead, they will trigger the <code>receivedMessage</code> event silently.</p>
 <p>Finally, we set up the function that will be called whenever we get a notification, by using the <a href="../../fusejs/eventemitter.html">EventEmitter</a> <code>on</code> method to register it.</p>
-<pre><code class="language-js">    LocalNotify.on(&quot;receivedMessage&quot;, function(payload) {
-        console.log(&quot;Received Local Notification: &quot; + payload);
-        LocalNotify.clearAllNotifications();
-        LocalNotify.clearBadgeNumber();
-    });
+<pre><code>LocalNotify.on(&quot;receivedMessage&quot;, function(payload) {
+    console.log(&quot;Received Local Notification: &quot; + payload);
+    LocalNotify.clearAllNotifications();
+    LocalNotify.clearBadgeNumber();
+});
 </code></pre>
 <p>This function is called whenever a notification is delivered while the app is open, or when the app is started from a notification the user has selected.</p>
 <p>The <code>payload</code> will be a string in JSON format containing the following keys:</p>

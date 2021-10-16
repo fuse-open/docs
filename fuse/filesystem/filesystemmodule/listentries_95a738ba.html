@@ -687,14 +687,14 @@ FileSystemModule.listEntries(path) Method (JS)
 </header>
 <p>Asynchronously lists both files and subdirectories in a directory.</p>
 <h4 id="example">Example</h4>
-<pre><code class="language-js">    var FileSystem = require(&quot;FuseJS/FileSystem&quot;);
+<pre><code>var FileSystem = require(&quot;FuseJS/FileSystem&quot;);
 
-    FileSystem.listEntries(FileSystem.dataDirectory)
-        .then(function(entries) {
-            console.log(&quot;There are &quot; + entries.length + &quot; entries in directory&quot;)
-        }, function(error) {
-            console.log(&quot;Unable to list entries in directory due to error &quot; + error);
-        });
+FileSystem.listEntries(FileSystem.dataDirectory)
+    .then(function(entries) {
+        console.log(&quot;There are &quot; + entries.length + &quot; entries in directory&quot;)
+    }, function(error) {
+        console.log(&quot;Unable to list entries in directory due to error &quot; + error);
+    });
 </code></pre>
 
 <section class="type-location type-location-leaf">

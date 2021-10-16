@@ -717,31 +717,31 @@ have been truncated.</p>
 have some issues on some Android devices (particularly ones which use the new <code>clock</code> appearance prior to Android 7).</p>
 <h4 id="example">Example</h4>
 <p>The following example shows how to set up a <code>TimePicker</code> object and set the value from JS using a <code>Date</code> object:</p>
-<pre><code class="language-xml">    &lt;StackPanel&gt;
-        &lt;JavaScript&gt;
-            var Observable = require(&quot;FuseJS/Observable&quot;);
+<pre><code>&lt;StackPanel&gt;
+    &lt;JavaScript&gt;
+        var Observable = require(&quot;FuseJS/Observable&quot;);
 
-            var someTime = Observable(new Date(Date.parse(&quot;2007-02-14T12:34:56.000Z&quot;)));
+        var someTime = Observable(new Date(Date.parse(&quot;2007-02-14T12:34:56.000Z&quot;)));
 
-            someTime.onValueChanged(module, function(date) {
-                console.log(&quot;someTime changed: &quot; + JSON.stringify(date));
-            });
+        someTime.onValueChanged(module, function(date) {
+            console.log(&quot;someTime changed: &quot; + JSON.stringify(date));
+        });
 
-            module.exports = {
-                someTime: someTime,
+        module.exports = {
+            someTime: someTime,
 
-                timeToGetCracking: function() {
-                    someTime.value = new Date(Date.parse(&quot;1970-01-01T13:37:00.000Z&quot;));
-                }
-            };
-        &lt;/JavaScript&gt;
+            timeToGetCracking: function() {
+                someTime.value = new Date(Date.parse(&quot;1970-01-01T13:37:00.000Z&quot;));
+            }
+        };
+    &lt;/JavaScript&gt;
 
-        &lt;NativeViewHost&gt;
-            &lt;TimePicker Value=&quot;{someTime}&quot; Is24HourView=&quot;true&quot; /&gt;
-        &lt;/NativeViewHost&gt;
+    &lt;NativeViewHost&gt;
+        &lt;TimePicker Value=&quot;{someTime}&quot; Is24HourView=&quot;true&quot; /&gt;
+    &lt;/NativeViewHost&gt;
 
-        &lt;Button Text=&quot;Time to get cracking!&quot; Clicked=&quot;{timeToGetCracking}&quot; Margin=&quot;5&quot; /&gt;
-    &lt;/StackPanel&gt;
+    &lt;Button Text=&quot;Time to get cracking!&quot; Clicked=&quot;{timeToGetCracking}&quot; Margin=&quot;5&quot; /&gt;
+&lt;/StackPanel&gt;
 </code></pre>
 
 <section class="type-location">

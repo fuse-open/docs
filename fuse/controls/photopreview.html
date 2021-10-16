@@ -708,25 +708,24 @@ immediately. The <code>PhotoPreview</code> can also be connected to a
 <code>CameraView.PhotoLoaded</code> trigger which can be used to respond
 when the photo is ready.</p>
 <p>Example:</p>
-<pre><code class="language-xml">    &lt;NativeViewHost&gt;
-        &lt;Panel ux:Name=&quot;previewPanel&quot; Visibility=&quot;Hidden&quot;&gt;
-            &lt;Button Text=&quot;DISMISS&quot; Alignment=&quot;Bottom&quot; Margin=&quot;10&quot;&gt;
-                &lt;Clicked&gt;
-                    &lt;Set previewPanel.Visibility=&quot;Hidden&quot; /&gt;
-                    &lt;Set cameraPanel.Visibility=&quot;Visible&quot; /&gt;
-                &lt;/Clicked&gt;
-            &lt;/Button&gt;
-            &lt;PhotoPreview ux:Name=&quot;photoPreview&quot; CameraView=&quot;cameraView&quot; PreviewStretchMode=&quot;UniformToFill&quot; /&gt;
-        &lt;/Panel&gt;
-        &lt;Panel ux:Name=&quot;cameraPanel&quot;&gt;
-            &lt;CameraView ux:Name=&quot;cameraView&quot; PreviewStretchMode=&quot;UniformToFill&quot; ClipToBounds=&quot;true&quot; /&gt;
-        &lt;/Panel&gt;
-        &lt;CameraView.PhotoLoaded PhotoPreview=&quot;photoPreview&quot;&gt;
-            &lt;Set previewPanel.Visibility=&quot;Visible&quot; /&gt;
-            &lt;Set cameraPanel.Visibility=&quot;Hidden&quot; /&gt;
-        &lt;/CameraView.PhotoLoaded&gt;
-    &lt;/NativeViewHost&gt;
-```xml
+<pre><code>&lt;NativeViewHost&gt;
+    &lt;Panel ux:Name=&quot;previewPanel&quot; Visibility=&quot;Hidden&quot;&gt;
+        &lt;Button Text=&quot;DISMISS&quot; Alignment=&quot;Bottom&quot; Margin=&quot;10&quot;&gt;
+            &lt;Clicked&gt;
+                &lt;Set previewPanel.Visibility=&quot;Hidden&quot; /&gt;
+                &lt;Set cameraPanel.Visibility=&quot;Visible&quot; /&gt;
+            &lt;/Clicked&gt;
+        &lt;/Button&gt;
+        &lt;PhotoPreview ux:Name=&quot;photoPreview&quot; CameraView=&quot;cameraView&quot; PreviewStretchMode=&quot;UniformToFill&quot; /&gt;
+    &lt;/Panel&gt;
+    &lt;Panel ux:Name=&quot;cameraPanel&quot;&gt;
+        &lt;CameraView ux:Name=&quot;cameraView&quot; PreviewStretchMode=&quot;UniformToFill&quot; ClipToBounds=&quot;true&quot; /&gt;
+    &lt;/Panel&gt;
+    &lt;CameraView.PhotoLoaded PhotoPreview=&quot;photoPreview&quot;&gt;
+        &lt;Set previewPanel.Visibility=&quot;Visible&quot; /&gt;
+        &lt;Set cameraPanel.Visibility=&quot;Hidden&quot; /&gt;
+    &lt;/CameraView.PhotoLoaded&gt;
+&lt;/NativeViewHost&gt;
 </code></pre>
 
 <section class="type-location">

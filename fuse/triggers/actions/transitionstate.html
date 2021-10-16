@@ -702,20 +702,20 @@ Show advanced things
 <p>An action that controls state of a <a href="../../../fuse/triggers/stategroup.html">StateGroup</a>.</p>
 <h4 id="example">Example</h4>
 <p>The following example displays a red panel that will turn its color in green when clicked.</p>
-<pre><code class="language-xml">    &lt;Panel ux:Name=&quot;thePanel&quot; Width=&quot;100&quot; Height=&quot;100&quot;&gt;
-        &lt;StateGroup ux:Name=&quot;stateGroup&quot;&gt;
-            &lt;State ux:Name=&quot;redState&quot;&gt;
-                &lt;Change thePanel.Color=&quot;#f00&quot; Duration=&quot;0.2&quot;/&gt;
-            &lt;/State&gt;
-            &lt;State ux:Name=&quot;greenState&quot;&gt;
-                &lt;Change thePanel.Color=&quot;#0f0&quot; Duration=&quot;0.2&quot;/&gt;
-            &lt;/State&gt;
-        &lt;/StateGroup&gt;
+<pre><code>&lt;Panel ux:Name=&quot;thePanel&quot; Width=&quot;100&quot; Height=&quot;100&quot;&gt;
+    &lt;StateGroup ux:Name=&quot;stateGroup&quot;&gt;
+        &lt;State ux:Name=&quot;redState&quot;&gt;
+            &lt;Change thePanel.Color=&quot;#f00&quot; Duration=&quot;0.2&quot;/&gt;
+        &lt;/State&gt;
+        &lt;State ux:Name=&quot;greenState&quot;&gt;
+            &lt;Change thePanel.Color=&quot;#0f0&quot; Duration=&quot;0.2&quot;/&gt;
+        &lt;/State&gt;
+    &lt;/StateGroup&gt;
 
-        &lt;Clicked&gt;
-            &lt;TransitionState Value=&quot;greenState&quot; Target=&quot;stateGroup&quot; /&gt;
-        &lt;/Clicked&gt;
-    &lt;/Panel&gt;
+    &lt;Clicked&gt;
+        &lt;TransitionState Value=&quot;greenState&quot; Target=&quot;stateGroup&quot; /&gt;
+    &lt;/Clicked&gt;
+&lt;/Panel&gt;
 </code></pre>
 
 <section class="type-location">

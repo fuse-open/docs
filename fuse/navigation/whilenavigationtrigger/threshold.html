@@ -688,16 +688,16 @@ WhileNavigationTrigger.Threshold Property
 <p>At which progress should this trigger become active.</p>
 <p>The default is <code>1</code>, meaning the trigger will only become active when the page is fully reaches the matching state; partial page progress will be ignored.</p>
 <p>Using the threshold we can lower the point at which the trigger is activated.</p>
-<pre><code class="language-xml">    &lt;Page ux:Class=&quot;MyPage&quot; Color=&quot;#FAA&quot;&gt;
-        &lt;WhileActive Threshold=&quot;0.5&quot;&gt;
-            &lt;Change this.Color=&quot;#AFA&quot;/&gt;
-        &lt;/WhileActive&gt;
-    &lt;/Page&gt;
-    &lt;PageControl Active=&quot;B&quot;&gt;
-        &lt;MyPage ux:Name=&quot;A&quot;/&gt;
-        &lt;MyPage ux:Name=&quot;B&quot;/&gt;
-        &lt;MyPage ux:Name=&quot;C&quot;/&gt;
-    &lt;/PageControl&gt;
+<pre><code>&lt;Page ux:Class=&quot;MyPage&quot; Color=&quot;#FAA&quot;&gt;
+    &lt;WhileActive Threshold=&quot;0.5&quot;&gt;
+        &lt;Change this.Color=&quot;#AFA&quot;/&gt;
+    &lt;/WhileActive&gt;
+&lt;/Page&gt;
+&lt;PageControl Active=&quot;B&quot;&gt;
+    &lt;MyPage ux:Name=&quot;A&quot;/&gt;
+    &lt;MyPage ux:Name=&quot;B&quot;/&gt;
+    &lt;MyPage ux:Name=&quot;C&quot;/&gt;
+&lt;/PageControl&gt;
 </code></pre>
 <p>As the user swipes from B to C the progress of B will reduce from 1 towards 0 and the progress of C increases from 0 towards 1. The <code>Threadhold=&quot;0.5&quot;</code> here causes the trigger swtich at the mid-way point of the transition. In this setup this means that one page is green and the rest are red -- the one closest to active is green.</p>
 

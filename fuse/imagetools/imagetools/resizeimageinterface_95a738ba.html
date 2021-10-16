@@ -700,17 +700,17 @@ ImageTools.resize(image, options) Method (JS)
 <li><code>performInPlace</code> - Boolean value determining whether the existing image will replaced</li>
 </ul>
 <h4 id="example">Example</h4>
-<pre><code class="language-js">    // Here we assume that we have an existing image variable `originalImage`
-    var ImageTools = require(&quot;FuseJS/ImageTools&quot;);
+<pre><code>// Here we assume that we have an existing image variable `originalImage`
+var ImageTools = require(&quot;FuseJS/ImageTools&quot;);
 
-    var options = {
-        mode: ImageTools.IGNORE_ASPECT,
-        desiredWidth: 320, //The desired width in pixels
-        desiredHeight: 240 //The desired height in pixels
-    };
+var options = {
+    mode: ImageTools.IGNORE_ASPECT,
+    desiredWidth: 320, //The desired width in pixels
+    desiredHeight: 240 //The desired height in pixels
+};
 
-    ImageTools.resize(originalImage, options)
-        .then(function(newImage) { console.log(&quot;Path of resized image is &quot; + newImage.path); });
+ImageTools.resize(originalImage, options)
+    .then(function(newImage) { console.log(&quot;Path of resized image is &quot; + newImage.path); });
 </code></pre>
 
 <section class="type-location type-location-leaf">

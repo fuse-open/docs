@@ -686,15 +686,15 @@ StorageModule.writeSync(filename, contents) Method (JS)
 </h2>
 </header>
 <p>Synchrounously writes data to a file inside the application folder.</p>
-<pre><code class="language-js">    var Storage = require(&quot;FuseJS/Storage&quot;);
+<pre><code>var Storage = require(&quot;FuseJS/Storage&quot;);
 
-    var success = Storage.writeSync(&quot;myfile.txt&quot;, &quot;Hello from Fuse!&quot;);
-    if(success) {
-        console.log(&quot;Successfully wrote to file&quot;);
-    }
-    else {
-        console.log(&quot;An error occured!&quot;);
-    }
+var success = Storage.writeSync(&quot;myfile.txt&quot;, &quot;Hello from Fuse!&quot;);
+if(success) {
+    console.log(&quot;Successfully wrote to file&quot;);
+}
+else {
+    console.log(&quot;An error occured!&quot;);
+}
 </code></pre>
 <blockquote>
 <p>Warning: This call will block until the operation is finished. Use write() if you are writing large amounts of data.</p>

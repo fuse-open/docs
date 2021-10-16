@@ -784,9 +784,9 @@
 };
 </code></pre>
 <p>Finally, we'll update the reference to it in <code>HomePage.ux</code>:</p>
-<pre><code class="language-xml">&lt;Each Items=&quot;{hikes}&quot;&gt;
-	&lt;Button Text=&quot;{name}&quot; Clicked=&quot;{goToHike}&quot; /&gt;
-&lt;/Each&gt;
+<pre><code class="language-xml">			&lt;Each Items=&quot;{hikes}&quot;&gt;
+				&lt;Button Text=&quot;{name}&quot; Clicked=&quot;{goToHike}&quot; /&gt;
+			&lt;/Each&gt;
 </code></pre>
 <p>That's better! Now we can save these files, and we're ready to go back to <code>HomePage.js</code> and fill in our <code>goToHike</code> function!</p>
 <p>The first thing we'll need to do is grab the hike object from the function's argument. We'll do this exactly like we did in <a href="multiple-hikes.html">chapter 2</a>, which looks like this:</p>
@@ -817,9 +817,9 @@
 	...
 </code></pre>
 <p>And in <code>MainView.ux</code>, we'll satisfy that dependency:</p>
-<pre><code class="language-xml">&lt;Navigator DefaultPath=&quot;home&quot;&gt;
-	&lt;HomePage ux:Template=&quot;home&quot; router=&quot;router&quot; /&gt;
-	&lt;EditHikePage ux:Template=&quot;editHike&quot; router=&quot;router&quot; /&gt;
+<pre><code class="language-xml">		&lt;Navigator DefaultPath=&quot;home&quot;&gt;
+			&lt;HomePage ux:Template=&quot;home&quot; router=&quot;router&quot; /&gt;
+			&lt;EditHikePage ux:Template=&quot;editHike&quot; router=&quot;router&quot; /&gt;
 </code></pre>
 <p>Easy enough! Let's save these files, and then we'll head back to <code>EditHikePage.ux</code> and create a simple back button at the bottom, like so:</p>
 <pre><code class="language-xml">			...

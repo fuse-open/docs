@@ -703,30 +703,30 @@ Show advanced things
 <p>This automatically sets the <code>X</code>,<code>Y</code>,<code>Width</code>,<code>Heigth</code> and <code>Anchor</code> properties on the element. The result is undefined if you override one of these values. Use a child element if you wish to make an element relative to the PlotBar placement.</p>
 <h3 id="example">Example</h3>
 <p>The following example draws a red bar chart using the <code>PlotBar</code> element and <a href="../../fuse/controls/rectangle.html">Rectangle</a></p>
-<pre><code class="language-javascript">    &lt;Panel xmlns:c=&quot;Fuse.Charting&quot; &gt;
-        &lt;JavaScript&gt;
-            var Observable = require(&quot;FuseJS/Observable&quot;);
+<pre><code>&lt;Panel xmlns:c=&quot;Fuse.Charting&quot; &gt;
+    &lt;JavaScript&gt;
+        var Observable = require(&quot;FuseJS/Observable&quot;);
 
-            function Item(val) {
-                this.value = val;
-            }
-            var data = Observable(new Item(3), new Item(4), new Item(6), new Item(3), new Item(4));
+        function Item(val) {
+            this.value = val;
+        }
+        var data = Observable(new Item(3), new Item(4), new Item(6), new Item(3), new Item(4));
 
-            module.exports = {
-                data: data
-            }
-        &lt;/JavaScript&gt;
-        &lt;Panel BoxSizing=&quot;FillAspect&quot; Aspect=&quot;1&quot;&gt;
-            &lt;c:Plot Margin=&quot;40&quot;&gt;
-                &lt;c:DataSeries Data=&quot;{data}&quot; /&gt;
-                &lt;c:PlotData&gt;
-                    &lt;c:PlotBar&gt;
-                        &lt;Rectangle Color=&quot;#F00&quot; Height=&quot;100%&quot; Margin=&quot;2&quot; Alignment=&quot;Bottom&quot;/&gt;
-                    &lt;/c:PlotBar&gt;
-                &lt;/c:PlotData&gt;
-            &lt;/c:Plot&gt;
-        &lt;/Panel&gt;
+        module.exports = {
+            data: data
+        }
+    &lt;/JavaScript&gt;
+    &lt;Panel BoxSizing=&quot;FillAspect&quot; Aspect=&quot;1&quot;&gt;
+        &lt;c:Plot Margin=&quot;40&quot;&gt;
+            &lt;c:DataSeries Data=&quot;{data}&quot; /&gt;
+            &lt;c:PlotData&gt;
+                &lt;c:PlotBar&gt;
+                    &lt;Rectangle Color=&quot;#F00&quot; Height=&quot;100%&quot; Margin=&quot;2&quot; Alignment=&quot;Bottom&quot;/&gt;
+                &lt;/c:PlotBar&gt;
+            &lt;/c:PlotData&gt;
+        &lt;/c:Plot&gt;
     &lt;/Panel&gt;
+&lt;/Panel&gt;
 </code></pre>
 
 <section class="type-location">

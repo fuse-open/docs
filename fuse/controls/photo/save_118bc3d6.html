@@ -687,20 +687,20 @@ Photo.save() Method (JS)
 </header>
 <p>Save the photo to disk</p>
 <p>Returns a Promise that resolves to a string containing the filepath to the photo.</p>
-<pre><code class="language-xml">    &lt;CameraView ux:Name=&quot;Camera&quot; /&gt;
-    &lt;JavaScript&gt;
-        Camera.capturePhoto()
-            .then(function(photo) {
-                photo.save()
-                    .then(function(filePath) {
-                        photo.release();
-                    })
-                    .catch(function(err) {
-                        photo.release();
-                    })
-            })
-            .catch(function(err) { });
-    &lt;/JavaScript&gt;
+<pre><code>&lt;CameraView ux:Name=&quot;Camera&quot; /&gt;
+&lt;JavaScript&gt;
+    Camera.capturePhoto()
+        .then(function(photo) {
+            photo.save()
+                .then(function(filePath) {
+                    photo.release();
+                })
+                .catch(function(err) {
+                    photo.release();
+                })
+        })
+        .catch(function(err) { });
+&lt;/JavaScript&gt;
 </code></pre>
 
 <section class="type-location type-location-leaf">

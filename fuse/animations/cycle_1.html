@@ -703,19 +703,19 @@ Show advanced things
 <p>The cycling of the animation continues even when the <code>Trigger.Progress</code> reaches 1. When a trigger is deactivated the cycling will play backwards, possibly beyond reaching Progress=1, until it finds a suitable rest state. This ensure that <code>Cycle</code> does not produce any jarring switches when the triggers are activated and deactivated.</p>
 <h4 id="example">Example</h4>
 <p>The below example creates a simple pulsing effect on the panel while it is pressed.</p>
-<pre><code class="language-xml">    &lt;Panel Color=&quot;Blue&quot; ux:Name=&quot;panel1&quot; Width=&quot;100&quot; Height=&quot;100&quot;&gt;
-        &lt;WhilePressed&gt;
-            &lt;Cycle Target=&quot;panel1.Width&quot; Low=&quot;80&quot; High=&quot;120&quot; Frequency=&quot;0.5&quot;/&gt;
-        &lt;/WhilePressed&gt;
-    &lt;/Panel&gt;
+<pre><code>&lt;Panel Color=&quot;Blue&quot; ux:Name=&quot;panel1&quot; Width=&quot;100&quot; Height=&quot;100&quot;&gt;
+    &lt;WhilePressed&gt;
+        &lt;Cycle Target=&quot;panel1.Width&quot; Low=&quot;80&quot; High=&quot;120&quot; Frequency=&quot;0.5&quot;/&gt;
+    &lt;/WhilePressed&gt;
+&lt;/Panel&gt;
 </code></pre>
 <p>By adjusting the <code>Waveform</code> you can creates animations that wrap-around instead of bouncing back and forth.</p>
-<pre><code class="language-xml">    &lt;Cycle Target=&quot;panel.X&quot; Low=&quot;-100&quot; High=&quot;100&quot; Waveform=&quot;Triangle&quot;/&gt;
+<pre><code>&lt;Cycle Target=&quot;panel.X&quot; Low=&quot;-100&quot; High=&quot;100&quot; Waveform=&quot;Triangle&quot;/&gt;
 </code></pre>
 <p>The &quot;wrap-around&quot; here is simply the nature of the triangular waveform -- the default waveform is sinusoidal.</p>
 <h4 id="formula">Formula</h4>
 <p>The properties are defined to be a simple interface, but it may be easier to understand see how they all relate in an expression. Given a current time offset the value of the <code>Target</code> is defined roughly as:</p>
-<pre><code class="language-csharp">    Target.Value = Lerp( Low, High, Easing( Waveform(Time) ) ) * Base + Offset
+<pre><code>Target.Value = Lerp( Low, High, Easing( Waveform(Time) ) ) * Base + Offset
 </code></pre>
 <p><code>Low</code> and <code>High</code> can only be scalar values. <code>Cycle</code> checks whether these values cross zero, or one. If they do, it will start at that value, and return to that value when done (this is the default value for <code>ProgressOffset</code>). This allows a smooth return to rest state in animation.</p>
 <p>Modifying <code>Base</code> and <code>Offset</code> allows you to use <code>Cycle</code> with non-scalar values. Though be aware not all combinations of value can provide for a smooth return to the rest state.</p>

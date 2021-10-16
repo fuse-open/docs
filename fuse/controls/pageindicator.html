@@ -704,26 +704,26 @@ as well as providing a <a href="../../fuse/controls/pagecontrol.html">PageContro
 <p>The ActivatingAnimation animator can be used to animate a <code>Dot</code> when its corresponding page is active.</p>
 <h3 id="example">Example</h3>
 <p>The following example shows the use of <code>PageIndicator</code> to indicate the current progress in a <a href="../../fuse/controls/pagecontrol.html">PageControl</a> navigation, by scaling the rectangle indicator representing the current page by a <code>Factor</code> of 1.3.</p>
-<pre><code class="language-xml">    &lt;DockPanel&gt;
-        &lt;JavaScript&gt;
-            var Observable = require(&quot;FuseJS/Observable&quot;);
-            module.exports.pages = Observable(&quot;#FF0000&quot;, &quot;#00FF00&quot;, &quot;#0000FF&quot;);
-        &lt;/JavaScript&gt;
-        &lt;PageControl ux:Name=&quot;nav&quot;&gt;
-            &lt;Each Items=&quot;{pages}&quot;&gt;
-                &lt;Page Color=&quot;data()&quot;&gt;
+<pre><code>&lt;DockPanel&gt;
+    &lt;JavaScript&gt;
+        var Observable = require(&quot;FuseJS/Observable&quot;);
+        module.exports.pages = Observable(&quot;#FF0000&quot;, &quot;#00FF00&quot;, &quot;#0000FF&quot;);
+    &lt;/JavaScript&gt;
+    &lt;PageControl ux:Name=&quot;nav&quot;&gt;
+        &lt;Each Items=&quot;{pages}&quot;&gt;
+            &lt;Page Color=&quot;data()&quot;&gt;
 
-                &lt;/Page&gt;
-            &lt;/Each&gt;
-        &lt;/PageControl&gt;
-        &lt;PageIndicator Dock=&quot;Bottom&quot; Navigation=&quot;nav&quot; Alignment=&quot;Center&quot;&gt;
-            &lt;Rectangle ux:Template=&quot;Dot&quot; Width=&quot;30&quot; Height=&quot;30&quot; Margin=&quot;10&quot; Color=&quot;#555&quot;&gt;
-                &lt;ActivatingAnimation&gt;
-                    &lt;Scale Factor=&quot;1.3&quot; /&gt;
-                &lt;/ActivatingAnimation&gt;
-            &lt;/Rectangle&gt;
-        &lt;/PageIndicator&gt;
-    &lt;/DockPanel&gt;
+            &lt;/Page&gt;
+        &lt;/Each&gt;
+    &lt;/PageControl&gt;
+    &lt;PageIndicator Dock=&quot;Bottom&quot; Navigation=&quot;nav&quot; Alignment=&quot;Center&quot;&gt;
+        &lt;Rectangle ux:Template=&quot;Dot&quot; Width=&quot;30&quot; Height=&quot;30&quot; Margin=&quot;10&quot; Color=&quot;#555&quot;&gt;
+            &lt;ActivatingAnimation&gt;
+                &lt;Scale Factor=&quot;1.3&quot; /&gt;
+            &lt;/ActivatingAnimation&gt;
+        &lt;/Rectangle&gt;
+    &lt;/PageIndicator&gt;
+&lt;/DockPanel&gt;
 </code></pre>
 
 <section class="type-location">

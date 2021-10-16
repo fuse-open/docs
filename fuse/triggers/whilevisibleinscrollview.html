@@ -700,21 +700,21 @@ Show advanced things
 </ul>
 </section>
 <p>Active while an element is positioned within the visible area of the <a href="../../fuse/controls/scrollview.html">ScrollView</a>.</p>
-<pre><code class="language-xml">    &lt;ScrollView&gt;
-        &lt;StackPanel&gt;
-            &lt;Each Items=&quot;{images}&quot;&gt;
-                &lt;DockPanel Height=&quot;100&quot;&gt;
-                    &lt;Image Url=&quot;{source}&quot; MemoryPolicy=&quot;UnloadUnused&quot; Dock=&quot;Left&quot;
-                        Visibility=&quot;Hidden&quot; ux:Name=&quot;theImage&quot;/&gt;
-                    &lt;Text Value=&quot;{description}&quot; TextWrapping=&quot;Wrap&quot;/&gt;
+<pre><code>&lt;ScrollView&gt;
+    &lt;StackPanel&gt;
+        &lt;Each Items=&quot;{images}&quot;&gt;
+            &lt;DockPanel Height=&quot;100&quot;&gt;
+                &lt;Image Url=&quot;{source}&quot; MemoryPolicy=&quot;UnloadUnused&quot; Dock=&quot;Left&quot;
+                    Visibility=&quot;Hidden&quot; ux:Name=&quot;theImage&quot;/&gt;
+                &lt;Text Value=&quot;{description}&quot; TextWrapping=&quot;Wrap&quot;/&gt;
 
-                    &lt;WhileVisibleInScrollView&gt;
-                        &lt;Change theImage.Visibility=&quot;Visible&quot;/&gt;
-                    &lt;/WhileVisibleInScrollView&gt;
-                &lt;/DockPanel&gt;
-            &lt;/Each&gt;
-        &lt;/StackPanel&gt;
-    &lt;/ScrollView&gt;
+                &lt;WhileVisibleInScrollView&gt;
+                    &lt;Change theImage.Visibility=&quot;Visible&quot;/&gt;
+                &lt;/WhileVisibleInScrollView&gt;
+            &lt;/DockPanel&gt;
+        &lt;/Each&gt;
+    &lt;/StackPanel&gt;
+&lt;/ScrollView&gt;
 </code></pre>
 <p>This example will show the images only when they are actually in the visible area. Combined with the <code>UnloadUnused</code> memory policy this will allow the memory to be freed when they aren't visible to the user.</p>
 <p>If the panel has a fixed height, as in this example, you could also collapse the text to save the calculation and rendering time.</p>

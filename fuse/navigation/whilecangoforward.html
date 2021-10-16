@@ -1979,34 +1979,34 @@ IEnumerable&lt;Binding&gt;
 <p>This example shows how we can use the <code>WhileCanGoBack</code> and <code>WhileCanGoForward</code>
 triggers to hide two navigation buttons depending on the page the user is
 on:</p>
-<pre><code class="language-xml">	&lt;StackPanel Navigation=&quot;pageControl&quot;&gt;
-		&lt;DockPanel&gt;
-			&lt;Button Text=&quot;Go back&quot; ux:Name=&quot;backButton&quot; Visibility=&quot;Hidden&quot; Dock=&quot;Left&quot;&gt;
-				&lt;Clicked&gt;
-					&lt;GoForward /&gt;
-				&lt;/Clicked&gt;
-			&lt;/Button&gt;
-			&lt;Button Text=&quot;Go forward&quot; ux:Name=&quot;forwardButton&quot; Visibility=&quot;Hidden&quot; Dock=&quot;Right&quot;&gt;
-				&lt;Clicked&gt;
-					&lt;GoBack /&gt;
-				&lt;/Clicked&gt;
-			&lt;/Button&gt;
-		&lt;/DockPanel&gt;
+<pre><code>&lt;StackPanel Navigation=&quot;pageControl&quot;&gt;
+	&lt;DockPanel&gt;
+		&lt;Button Text=&quot;Go back&quot; ux:Name=&quot;backButton&quot; Visibility=&quot;Hidden&quot; Dock=&quot;Left&quot;&gt;
+			&lt;Clicked&gt;
+				&lt;GoForward /&gt;
+			&lt;/Clicked&gt;
+		&lt;/Button&gt;
+		&lt;Button Text=&quot;Go forward&quot; ux:Name=&quot;forwardButton&quot; Visibility=&quot;Hidden&quot; Dock=&quot;Right&quot;&gt;
+			&lt;Clicked&gt;
+				&lt;GoBack /&gt;
+			&lt;/Clicked&gt;
+		&lt;/Button&gt;
+	&lt;/DockPanel&gt;
 
-		&lt;WhileCanGoBack&gt;
-			&lt;Change forwardButton.Visibility=&quot;Visible&quot; /&gt;
-		&lt;/WhileCanGoBack&gt;
+	&lt;WhileCanGoBack&gt;
+		&lt;Change forwardButton.Visibility=&quot;Visible&quot; /&gt;
+	&lt;/WhileCanGoBack&gt;
 
-		&lt;WhileCanGoForward&gt;
-			&lt;Change backButton.Visibility=&quot;Visible&quot; /&gt;
-		&lt;/WhileCanGoForward&gt;
+	&lt;WhileCanGoForward&gt;
+		&lt;Change backButton.Visibility=&quot;Visible&quot; /&gt;
+	&lt;/WhileCanGoForward&gt;
 
-		&lt;PageControl ux:Name=&quot;pageControl&quot; Height=&quot;1000&quot;&gt;
-			&lt;Page Color=&quot;Red&quot; /&gt;
-			&lt;Page Color=&quot;Green&quot; /&gt;
-			&lt;Page Color=&quot;Blue&quot; /&gt;
-		&lt;/PageControl&gt;
-	&lt;/StackPanel&gt;
+	&lt;PageControl ux:Name=&quot;pageControl&quot; Height=&quot;1000&quot;&gt;
+		&lt;Page Color=&quot;Red&quot; /&gt;
+		&lt;Page Color=&quot;Green&quot; /&gt;
+		&lt;Page Color=&quot;Blue&quot; /&gt;
+	&lt;/PageControl&gt;
+&lt;/StackPanel&gt;
 </code></pre>
 
 </section>

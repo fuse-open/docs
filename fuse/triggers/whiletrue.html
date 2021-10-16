@@ -702,57 +702,57 @@ Show advanced things
 <p>A trigger that is active while its <code>Value</code> property is <code>true</code>.</p>
 <h4 id="examples">Examples</h4>
 <p>By default, the value of a <code>WhileTrue</code> is <code>false</code>.</p>
-<pre><code class="language-xml">    &lt;WhileTrue&gt;
-        &lt;!-- Any actions/animators placed here will never be triggered --&gt;
-    &lt;/WhileTrue&gt;
+<pre><code>&lt;WhileTrue&gt;
+    &lt;!-- Any actions/animators placed here will never be triggered --&gt;
+&lt;/WhileTrue&gt;
 </code></pre>
 <p>You can, however, use <a href="../../fuse/triggers/actions/set_1.html">Set</a> to change its value.</p>
-<pre><code class="language-xml">    &lt;Panel Width=&quot;200&quot; Height=&quot;200&quot; Background=&quot;#000&quot;&gt;
-        &lt;Clicked&gt;
-            &lt;Set moveToTheRight.Value=&quot;true&quot; /&gt;
-        &lt;/Clicked&gt;
+<pre><code>&lt;Panel Width=&quot;200&quot; Height=&quot;200&quot; Background=&quot;#000&quot;&gt;
+    &lt;Clicked&gt;
+        &lt;Set moveToTheRight.Value=&quot;true&quot; /&gt;
+    &lt;/Clicked&gt;
 
-        &lt;WhileTrue ux:Name=&quot;moveToTheRight&quot;&gt;
-            &lt;Move X=&quot;200&quot; Duration=&quot;0.4&quot; /&gt;
-        &lt;/WhileTrue&gt;
-    &lt;/Panel&gt;
+    &lt;WhileTrue ux:Name=&quot;moveToTheRight&quot;&gt;
+        &lt;Move X=&quot;200&quot; Duration=&quot;0.4&quot; /&gt;
+    &lt;/WhileTrue&gt;
+&lt;/Panel&gt;
 </code></pre>
 <p>Its value can also be toggled on and off using <a href="../../fuse/controls/togglecontrol.html">Toggle</a>.</p>
-<pre><code class="language-xml">    &lt;Panel Width=&quot;200&quot; Height=&quot;200&quot; Background=&quot;#000&quot;&gt;
-        &lt;WhileTrue ux:Name=&quot;moveToTheRight&quot;&gt;
-            &lt;Move X=&quot;200&quot; Duration=&quot;0.4&quot; /&gt;
-        &lt;/WhileTrue&gt;
+<pre><code>&lt;Panel Width=&quot;200&quot; Height=&quot;200&quot; Background=&quot;#000&quot;&gt;
+    &lt;WhileTrue ux:Name=&quot;moveToTheRight&quot;&gt;
+        &lt;Move X=&quot;200&quot; Duration=&quot;0.4&quot; /&gt;
+    &lt;/WhileTrue&gt;
 
-        &lt;Clicked&gt;
-            &lt;Toggle Target=&quot;moveToTheRight&quot; /&gt;
-        &lt;/Clicked&gt;
-    &lt;/Panel&gt;
+    &lt;Clicked&gt;
+        &lt;Toggle Target=&quot;moveToTheRight&quot; /&gt;
+    &lt;/Clicked&gt;
+&lt;/Panel&gt;
 </code></pre>
 <p>It is also particularly useful to data-bind <code>Value</code> to an <a href="../../fusejs/observable.html">Observable</a>.</p>
 <p>The following example consists of a <a href="../../fuse/controls/textbox.html">TextBox</a>, as well as a <a href="../../fuse/controls/button.html">Button</a> that fades to full transparency while
 the user has entered less than 6 characters into the <a href="../../fuse/controls/textbox.html">TextBox</a>.</p>
-<pre><code class="language-xml">    &lt;JavaScript&gt;
-        var Observable = require(&quot;FuseJS/Observable&quot;);
+<pre><code>&lt;JavaScript&gt;
+    var Observable = require(&quot;FuseJS/Observable&quot;);
 
-        var password = Observable(&quot;&quot;);
-        var isPasswordInvalid = password.map(function(value) {
-            return value.length &lt; 6;
-        });
+    var password = Observable(&quot;&quot;);
+    var isPasswordInvalid = password.map(function(value) {
+        return value.length &lt; 6;
+    });
 
-        module.exports = {
-            password: password,
-            isPasswordInvalid: isPasswordInvalid
-        };
-    &lt;/JavaScript&gt;
+    module.exports = {
+        password: password,
+        isPasswordInvalid: isPasswordInvalid
+    };
+&lt;/JavaScript&gt;
 
-    &lt;StackPanel Alignment=&quot;VerticalCenter&quot; ItemSpacing=&quot;50&quot; Margin=&quot;50&quot;&gt;
-        &lt;TextBox Value=&quot;{password}&quot; IsPassword=&quot;true&quot; /&gt;
-        &lt;Button Text=&quot;Log in&quot; ux:Name=&quot;loginButton&quot; /&gt;
+&lt;StackPanel Alignment=&quot;VerticalCenter&quot; ItemSpacing=&quot;50&quot; Margin=&quot;50&quot;&gt;
+    &lt;TextBox Value=&quot;{password}&quot; IsPassword=&quot;true&quot; /&gt;
+    &lt;Button Text=&quot;Log in&quot; ux:Name=&quot;loginButton&quot; /&gt;
 
-        &lt;WhileTrue Value=&quot;{isPasswordInvalid}&quot;&gt;
-            &lt;Change loginButton.Opacity=&quot;0&quot; Duration=&quot;0.3&quot; /&gt;
-        &lt;/WhileTrue&gt;
-    &lt;/StackPanel&gt;
+    &lt;WhileTrue Value=&quot;{isPasswordInvalid}&quot;&gt;
+        &lt;Change loginButton.Opacity=&quot;0&quot; Duration=&quot;0.3&quot; /&gt;
+    &lt;/WhileTrue&gt;
+&lt;/StackPanel&gt;
 </code></pre>
 <h4 id="instance">Instance</h4>
 <p>The children of <code>WhileTrue</code> are created whether the <code>Value</code> is true or false; this is the standard behavior of all triggers. If you need to prevent item creation when the value is false, consider using an <code>Instance</code> instead and bind to the <code>IsEnabled</code> property.</p>

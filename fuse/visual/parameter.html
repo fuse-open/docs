@@ -687,18 +687,18 @@ Visual.Parameter Property
 </header>
 <p>The parameter data for this visual, encoded as JSON, provided by a router if this visual represents a navigation page.</p>
 <p>When this value is set, the parameter can be accessed in JavaScript through the <code>.Parameter</code> property on this object.</p>
-<h4 id="example">Example:</h4>
-<pre><code class="language-xml">    &lt;JavaScript&gt;
-        router.goto(&quot;profile&quot;, { id: 3 });
+<p>Example:</p>
+<pre><code>&lt;JavaScript&gt;
+    router.goto(&quot;profile&quot;, { id: 3 });
+&lt;/JavaScript&gt;
+...
+&lt;Page ux:Name=&quot;profile&quot;&gt;
+    &lt;JavaScript&gt;
+        profile.Parameter.onValueChanged(module, function(param) {
+            // param holds the deserialized object { id: 3 }
+        });
     &lt;/JavaScript&gt;
-    ...
-    &lt;Page ux:Name=&quot;profile&quot;&gt;
-        &lt;JavaScript&gt;
-            profile.Parameter.onValueChanged(module, function(param) {
-                // param holds the deserialized object { id: 3 }
-            });
-        &lt;/JavaScript&gt;
-    &lt;/Page&gt;
+&lt;/Page&gt;
 </code></pre>
 
 <section class="type-location type-location-leaf">

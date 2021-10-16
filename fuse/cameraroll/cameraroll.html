@@ -709,28 +709,28 @@ All images are temporary &quot;scratch images&quot; until storage has been speci
 </blockquote>
 <h4 id="examples">Examples</h4>
 <p>Requesting an image from the camera roll:</p>
-<pre><code class="language-javascript">    var cameraRoll = require(&quot;FuseJS/CameraRoll&quot;);
+<pre><code>var cameraRoll = require(&quot;FuseJS/CameraRoll&quot;);
 
-    cameraRoll.getImage()
-        .then(function(image) {
-            // Will be called if the user successfully selected an image.
-        }, function(error) {
-            // Will be called if the user aborted the selection or if an error occurred.
-        });
+cameraRoll.getImage()
+    .then(function(image) {
+        // Will be called if the user successfully selected an image.
+    }, function(error) {
+        // Will be called if the user aborted the selection or if an error occurred.
+    });
 </code></pre>
 <p>Taking a picture with the camera and adding it to the camera roll:</p>
-<pre><code class="language-javascript">    var cameraRoll = require(&quot;FuseJS/CameraRoll&quot;);
-    var camera = require(&quot;FuseJS/Camera&quot;);
+<pre><code>var cameraRoll = require(&quot;FuseJS/CameraRoll&quot;);
+var camera = require(&quot;FuseJS/Camera&quot;);
 
-    camera.takePicture(640, 480)
-        .then(function(image) {
-            return cameraRoll.publishImage(image);
-        })
-        .then(function() {
-            // Will be called if the image was successfully added to the camera roll.
-        }, function(error) {
-            // Will called if an error occurred.
-        });
+camera.takePicture(640, 480)
+    .then(function(image) {
+        return cameraRoll.publishImage(image);
+    })
+    .then(function() {
+        // Will be called if the image was successfully added to the camera roll.
+    }, function(error) {
+        // Will called if an error occurred.
+    });
 </code></pre>
 <blockquote>
 <p><strong>Note</strong>: You also need to add a package reference to <code>Fuse.Camera</code> for the above example to work.</p>

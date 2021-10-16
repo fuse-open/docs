@@ -702,22 +702,22 @@ Show advanced things
 <p>Navigates backward in the navigation stack/z-order of a <a href="../../fuse/navigation/navigation.html">Navigation</a>, <a href="../../fuse/controls/pagecontrol.html">PageControl</a>, or <a href="../../fuse/controls/webview.html">WebView</a>.</p>
 <h3 id="example">Example</h3>
 <p>In this example, <code>GoBack</code> will be used to navigate away from the first page of a <code>PageControl</code>.</p>
-<pre><code class="language-xml">    &lt;PageControl&gt;
-        &lt;Panel Background=&quot;#0F0&quot; ux:Name=&quot;firstPage&quot;&gt;
-            &lt;Button Text=&quot;GoBack&quot; Alignment=&quot;Center&quot; Margin=&quot;10&quot;&gt;
-                &lt;Clicked&gt;
-                    &lt;GoBack /&gt;
-                &lt;/Clicked&gt;
-            &lt;/Button&gt;
-        &lt;/Panel&gt;
-        &lt;Panel Background=&quot;#F00&quot; ux:Name=&quot;secondPage&quot;&gt;
-            &lt;Button Alignment=&quot;Center&quot; Text=&quot;Go to page 1&quot;&gt;
-                &lt;Clicked&gt;
-                    &lt;NavigateTo Target=&quot;firstPage&quot; /&gt;
-                &lt;/Clicked&gt;
-            &lt;/Button&gt;
-        &lt;/Panel&gt;
-    &lt;/PageControl&gt;
+<pre><code>&lt;PageControl&gt;
+    &lt;Panel Background=&quot;#0F0&quot; ux:Name=&quot;firstPage&quot;&gt;
+        &lt;Button Text=&quot;GoBack&quot; Alignment=&quot;Center&quot; Margin=&quot;10&quot;&gt;
+            &lt;Clicked&gt;
+                &lt;GoBack /&gt;
+            &lt;/Clicked&gt;
+        &lt;/Button&gt;
+    &lt;/Panel&gt;
+    &lt;Panel Background=&quot;#F00&quot; ux:Name=&quot;secondPage&quot;&gt;
+        &lt;Button Alignment=&quot;Center&quot; Text=&quot;Go to page 1&quot;&gt;
+            &lt;Clicked&gt;
+                &lt;NavigateTo Target=&quot;firstPage&quot; /&gt;
+            &lt;/Clicked&gt;
+        &lt;/Button&gt;
+    &lt;/Panel&gt;
+&lt;/PageControl&gt;
 </code></pre>
 <p>Backward refers to pages that are behind the active one in navigation order. This trigger is not suitable for navigation that does not have a history or sequence of pages.</p>
 <p>See <a href="../../navigation/navigationorder.html">Navigation Order</a></p>

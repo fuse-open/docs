@@ -704,15 +704,15 @@ Show advanced things
 <p>The <code>Value</code> property is used by the <a href="../../fuse/selection/selection.html">Selection</a> to track what is selected. It is a string value to make it easy to work with from JavaScript.</p>
 <h4 id="changing-the-selected-state">Changing the selected state</h4>
 <p>There is no default behavior that changes a visuals selected state. In order to select a <a href="../../fuse/selection/selectable.html">selectable</a>, you need to use <a href="../../fuse/selection/toggleselection.html">ToggleSelection</a>. A normal use of this would be inside a <a href="../../fuse/gestures/clicked.html">Clicked</a> trigger, like this:</p>
-<pre><code class="language-xml">    &lt;Panel&gt;
-        &lt;Selection /&gt;
-        &lt;Panel&gt;
-            &lt;Selectable /&gt;
-            &lt;Clicked&gt;
-                &lt;ToggleSelection /&gt;
-            &lt;/Clicked&gt;
-        &lt;/Panel&gt;
+<pre><code>&lt;Panel&gt;
+    &lt;Selection /&gt;
+    &lt;Panel&gt;
+        &lt;Selectable /&gt;
+        &lt;Clicked&gt;
+            &lt;ToggleSelection /&gt;
+        &lt;/Clicked&gt;
     &lt;/Panel&gt;
+&lt;/Panel&gt;
 </code></pre>
 <h4 id="reacting-to-a-change-in-selected-state">Reacting to a change in selected state</h4>
 <p>You can react to changes in the state of a <a href="../../fuse/selection/selectable.html">Selectable</a> element using <a href="../../fuse/selection/selected.html">Selected</a>, which pulses when the element is selected, or <a href="../../fuse/selection/whileselected.html">WhileSelected</a>, which is true as long as the element is selected.</p>
@@ -1427,47 +1427,47 @@ IEnumerable&lt;Binding&gt;
 <section class="documentation-examples">
 <h3 id="section-examples">Examples</h3>
 <p>The following example uses <a href="../../fuse/selection/selection.html">Selection</a> to create a simple list of options. Tap the items to toggle their selection. <code>Values</code> is bound to a JavaScript <code>Observable</code> in order to track the currently selected items.</p>
-<pre><code class="language-xml">	&lt;Panel ux:Class=&quot;MyItem&quot; Color=&quot;#aaa&quot;&gt;
-		&lt;string ux:Property=&quot;Label&quot; /&gt;
-		&lt;string ux:Property=&quot;Value&quot; /&gt;
+<pre><code>&lt;Panel ux:Class=&quot;MyItem&quot; Color=&quot;#aaa&quot;&gt;
+	&lt;string ux:Property=&quot;Label&quot; /&gt;
+	&lt;string ux:Property=&quot;Value&quot; /&gt;
 
-		&lt;Selectable Value=&quot;{ReadProperty this.Value}&quot; /&gt;
-		&lt;Text Value=&quot;{ReadProperty this.Label}&quot; /&gt;
+	&lt;Selectable Value=&quot;{ReadProperty this.Value}&quot; /&gt;
+	&lt;Text Value=&quot;{ReadProperty this.Label}&quot; /&gt;
 
-		&lt;WhileSelected&gt;
-			&lt;Change this.Color=&quot;#ffc&quot; /&gt;
-		&lt;/WhileSelected&gt;
-		&lt;Tapped&gt;
-			&lt;ToggleSelection /&gt;
-		&lt;/Tapped&gt;
-	&lt;/Panel&gt;
+	&lt;WhileSelected&gt;
+		&lt;Change this.Color=&quot;#ffc&quot; /&gt;
+	&lt;/WhileSelected&gt;
+	&lt;Tapped&gt;
+		&lt;ToggleSelection /&gt;
+	&lt;/Tapped&gt;
+&lt;/Panel&gt;
 
-	&lt;JavaScript&gt;
-		var Observable = require(&quot;FuseJS/Observable&quot;);
+&lt;JavaScript&gt;
+	var Observable = require(&quot;FuseJS/Observable&quot;);
 
-		var values = Observable();
-		var list = Observable(function() {
-			return values.toArray().join(&quot;,&quot;);
-		});
+	var values = Observable();
+	var list = Observable(function() {
+		return values.toArray().join(&quot;,&quot;);
+	});
 
-		module.exports = {
-			values: values,
-			list: list
-		};
-	&lt;/JavaScript&gt;
+	module.exports = {
+		values: values,
+		list: list
+	};
+&lt;/JavaScript&gt;
 
-	&lt;StackPanel&gt;
-		&lt;Selection Values=&quot;{values}&quot; /&gt;
+&lt;StackPanel&gt;
+	&lt;Selection Values=&quot;{values}&quot; /&gt;
 
-		&lt;MyItem Label=&quot;Big Red One&quot; Value=&quot;sku-01&quot; /&gt;
-		&lt;MyItem Label=&quot;Small Green Two&quot; Value=&quot;sku-02&quot; /&gt;
-		&lt;MyItem Label=&quot;Third Last One&quot; Value=&quot;sku-03&quot; /&gt;
-		&lt;MyItem Label=&quot;Four Fore For&quot; Value=&quot;sku-04&quot; /&gt;
-		&lt;MyItem Label=&quot;Point Oh-Five&quot; Value=&quot;sku-05&quot; /&gt;
+	&lt;MyItem Label=&quot;Big Red One&quot; Value=&quot;sku-01&quot; /&gt;
+	&lt;MyItem Label=&quot;Small Green Two&quot; Value=&quot;sku-02&quot; /&gt;
+	&lt;MyItem Label=&quot;Third Last One&quot; Value=&quot;sku-03&quot; /&gt;
+	&lt;MyItem Label=&quot;Four Fore For&quot; Value=&quot;sku-04&quot; /&gt;
+	&lt;MyItem Label=&quot;Point Oh-Five&quot; Value=&quot;sku-05&quot; /&gt;
 
-		&lt;Text Value=&quot;Selected:&quot; Margin=&quot;0,10,0,0&quot; /&gt;
-		&lt;Text Value=&quot;{list}&quot; /&gt;
-	&lt;/StackPanel&gt;
+	&lt;Text Value=&quot;Selected:&quot; Margin=&quot;0,10,0,0&quot; /&gt;
+	&lt;Text Value=&quot;{list}&quot; /&gt;
+&lt;/StackPanel&gt;
 </code></pre>
 
 </section>

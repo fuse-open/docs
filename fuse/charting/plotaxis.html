@@ -702,35 +702,35 @@ Show advanced things
 <p>A layout and enumeration for the axis steps of a Plot, which is used to place labels on axes. Often used together with a GridLayout for positioning.</p>
 <h3 id="example">Example</h3>
 <p>The following example places labels on the y-axis of a bar chart.</p>
-<pre><code class="language-javascript">    &lt;Panel xmlns:c=&quot;Fuse.Charting&quot; &gt;
-        &lt;JavaScript&gt;
-            var Observable = require(&quot;FuseJS/Observable&quot;);
+<pre><code>&lt;Panel xmlns:c=&quot;Fuse.Charting&quot; &gt;
+    &lt;JavaScript&gt;
+        var Observable = require(&quot;FuseJS/Observable&quot;);
 
-            function Item(val) {
-                this.value = val;
-            }
-            var data = Observable(new Item(3), new Item(4), new Item(6), new Item(3), new Item(4));
+        function Item(val) {
+            this.value = val;
+        }
+        var data = Observable(new Item(3), new Item(4), new Item(6), new Item(3), new Item(4));
 
-            module.exports = {
-                data: data
-            }
-        &lt;/JavaScript&gt;
-        &lt;Panel BoxSizing=&quot;FillAspect&quot; Aspect=&quot;1&quot;&gt;
-            &lt;c:Plot Margin=&quot;40&quot;&gt;
-                &lt;GridLayout Rows=&quot;1*,40&quot; Columns=&quot;40,1*&quot;/&gt;
-                &lt;c:DataSeries Data=&quot;{data}&quot; /&gt;
-                &lt;c:PlotAxis Row=&quot;0&quot; Column=&quot;0&quot; Axis=&quot;Y&quot;&gt;
-                    &lt;Text ux:Template=&quot;Label&quot; Alignment=&quot;Center&quot; FontSize=&quot;14&quot; Color=&quot;#666&quot;
-                        Value=&quot;{Plot axis.value}&quot;/&gt;
-                &lt;/c:PlotAxis&gt;
-                &lt;c:PlotData&gt;
-                    &lt;c:PlotBar Row=&quot;0&quot; Column=&quot;1&quot;&gt;
-                        &lt;Rectangle Color=&quot;#F00&quot; Height=&quot;100%&quot; Margin=&quot;2&quot; Alignment=&quot;Bottom&quot;/&gt;
-                    &lt;/c:PlotBar&gt;
-                &lt;/c:PlotData&gt;
-            &lt;/c:Plot&gt;
-        &lt;/Panel&gt;
+        module.exports = {
+            data: data
+        }
+    &lt;/JavaScript&gt;
+    &lt;Panel BoxSizing=&quot;FillAspect&quot; Aspect=&quot;1&quot;&gt;
+        &lt;c:Plot Margin=&quot;40&quot;&gt;
+            &lt;GridLayout Rows=&quot;1*,40&quot; Columns=&quot;40,1*&quot;/&gt;
+            &lt;c:DataSeries Data=&quot;{data}&quot; /&gt;
+            &lt;c:PlotAxis Row=&quot;0&quot; Column=&quot;0&quot; Axis=&quot;Y&quot;&gt;
+                &lt;Text ux:Template=&quot;Label&quot; Alignment=&quot;Center&quot; FontSize=&quot;14&quot; Color=&quot;#666&quot;
+                    Value=&quot;{Plot axis.value}&quot;/&gt;
+            &lt;/c:PlotAxis&gt;
+            &lt;c:PlotData&gt;
+                &lt;c:PlotBar Row=&quot;0&quot; Column=&quot;1&quot;&gt;
+                    &lt;Rectangle Color=&quot;#F00&quot; Height=&quot;100%&quot; Margin=&quot;2&quot; Alignment=&quot;Bottom&quot;/&gt;
+                &lt;/c:PlotBar&gt;
+            &lt;/c:PlotData&gt;
+        &lt;/c:Plot&gt;
     &lt;/Panel&gt;
+&lt;/Panel&gt;
 </code></pre>
 
 <section class="type-location">

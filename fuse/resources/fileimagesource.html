@@ -703,29 +703,29 @@ Show advanced things
 <p>The file pointed to by the <code>File</code> property will be added to the app as a bundle file automatically.</p>
 <h4 id="example">Example</h4>
 <p>This example displays an image from the file <code>kitten.jpg</code>:</p>
-<pre><code class="language-xml">    &lt;Image&gt;
-        &lt;FileImageSource File=&quot;kitten.jpg&quot; /&gt;
-    &lt;/Image&gt;
+<pre><code>&lt;Image&gt;
+    &lt;FileImageSource File=&quot;kitten.jpg&quot; /&gt;
+&lt;/Image&gt;
 </code></pre>
 <h4 id="referencing-from-javascript">Referencing from JavaScript</h4>
 <p>When building your project, Fuse needs to know which files to bundle with the app.
 Since UX is statically compiled, it will automatically bundle files whose path is hard-coded in one of the UX files in your project.</p>
 <p>However, if the path comes from JavaScript or some other dynamic data source, it cannot automatically be inferred by the compiler.
 Thus, we need to explicitly specify it as a <a href="../../assets/bundle.html">bundle file</a> in our <code>.unoproj</code>:</p>
-<pre><code class="language-json">    &quot;Includes&quot;: [
-        &quot;assets/kitten.jpg:Bundle&quot;
-    ]
+<pre><code>&quot;Includes&quot;: [
+    &quot;assets/kitten.jpg:Bundle&quot;
+]
 </code></pre>
 <p>We can now use JavaScript to specify the path to the image:</p>
-<pre><code class="language-xml">    &lt;JavaScript&gt;
-        module.exports = {
-            image: &quot;assets/kitten.jpg&quot;
-        }
-    &lt;/JavaScript&gt;
+<pre><code>&lt;JavaScript&gt;
+    module.exports = {
+        image: &quot;assets/kitten.jpg&quot;
+    }
+&lt;/JavaScript&gt;
 
-    &lt;Image&gt;
-        &lt;FileImageSource File=&quot;{image}&quot; /&gt;
-    &lt;/Image&gt;
+&lt;Image&gt;
+    &lt;FileImageSource File=&quot;{image}&quot; /&gt;
+&lt;/Image&gt;
 </code></pre>
 
 <section class="type-location">

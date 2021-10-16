@@ -691,25 +691,25 @@ be passed with a size hint. The thumbnail will try to fit the provided size hint
 its aspect ratio.</p>
 <p>Its good practice to provide a sizehint if you know what size the thumbnail should be.
 The sizehint will be interpreted as points.</p>
-<pre><code class="language-xml">    &lt;CameraView ux:Name=&quot;Camera&quot; /&gt;
-    &lt;JavaScript&gt;
-        Camera.capturePhoto()
-            .then(function(photo) {
-                var sizehint = {
-                    width: 128,
-                    height: 128
-                };
-                photo.saveThumbnail(sizehint)
-                    .then(function(outputFilePath) {
-                        console.log(&quot;Thumbnail saved to: &quot; + outputFilePath);
-                        photo.release();
-                    })
-                    .catch(function(err) {
-                        photo.release();
-                    })
-            })
-            .catch(function(err) { });
-    &lt;/JavaScript&gt;
+<pre><code>&lt;CameraView ux:Name=&quot;Camera&quot; /&gt;
+&lt;JavaScript&gt;
+    Camera.capturePhoto()
+        .then(function(photo) {
+            var sizehint = {
+                width: 128,
+                height: 128
+            };
+            photo.saveThumbnail(sizehint)
+                .then(function(outputFilePath) {
+                    console.log(&quot;Thumbnail saved to: &quot; + outputFilePath);
+                    photo.release();
+                })
+                .catch(function(err) {
+                    photo.release();
+                })
+        })
+        .catch(function(err) { });
+&lt;/JavaScript&gt;
 </code></pre>
 
 <section class="type-location type-location-leaf">

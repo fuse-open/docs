@@ -687,15 +687,15 @@ FileSystemModule.move(source, destination) Method (JS)
 </header>
 <p>Asynchronously moves a file or directory from source to destination path</p>
 <h4 id="example">Example</h4>
-<pre><code class="language-js">    FileSystem = require(&quot;FuseJS/FileSystem&quot;);
+<pre><code>FileSystem = require(&quot;FuseJS/FileSystem&quot;);
 
-    FileSystem.writeTextToFile(&quot;to-be-moved.txt&quot;, &quot;hello world&quot;)
-        .then(function() {
-            return FileSystem.move(&quot;to-be-moved.txt&quot;, &quot;destination-reached.txt&quot;);
-        })
-        .catch(function(err) {
-            console.log(&quot;Unable to move file&quot;);
-        });
+FileSystem.writeTextToFile(&quot;to-be-moved.txt&quot;, &quot;hello world&quot;)
+    .then(function() {
+        return FileSystem.move(&quot;to-be-moved.txt&quot;, &quot;destination-reached.txt&quot;);
+    })
+    .catch(function(err) {
+        console.log(&quot;Unable to move file&quot;);
+    });
 </code></pre>
 
 <section class="type-location type-location-leaf">

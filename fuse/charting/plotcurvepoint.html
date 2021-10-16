@@ -703,30 +703,30 @@ Show advanced things
 <p>This shares most of the functionality of <code>PlotPoint</code> except creates a <code>CurvePoint</code> suitable for a `Curve.</p>
 <h3 id="example">Example</h3>
 <p>This example demonstrates a simple line graph built using <code>PlotCurvePoint</code></p>
-<pre><code class="language-javascript">    &lt;Panel xmlns:c=&quot;Fuse.Charting&quot; &gt;
-        &lt;JavaScript&gt;
-            var Observable = require(&quot;FuseJS/Observable&quot;);
+<pre><code>&lt;Panel xmlns:c=&quot;Fuse.Charting&quot; &gt;
+    &lt;JavaScript&gt;
+        var Observable = require(&quot;FuseJS/Observable&quot;);
 
-            function Item(val) {
-                this.value = val;
-            }
-            var data = Observable(new Item(3), new Item(4), new Item(6), new Item(0), new Item(4));
+        function Item(val) {
+            this.value = val;
+        }
+        var data = Observable(new Item(3), new Item(4), new Item(6), new Item(0), new Item(4));
 
-            module.exports = {
-                data: data
-            }
-        &lt;/JavaScript&gt;
-        &lt;Panel BoxSizing=&quot;FillAspect&quot; Aspect=&quot;1&quot; &gt;
-            &lt;c:Plot &gt;
-                &lt;c:DataSeries Data=&quot;{data}&quot; /&gt;
-                &lt;Curve StrokeWidth=&quot;5&quot; StrokeColor=&quot;#008&quot; &gt;
-                    &lt;c:PlotData&gt;
-                        &lt;c:PlotCurvePoint/&gt;
-                    &lt;/c:PlotData&gt;
-                &lt;/Curve&gt;
-            &lt;/c:Plot&gt;
-        &lt;/Panel&gt;
+        module.exports = {
+            data: data
+        }
+    &lt;/JavaScript&gt;
+    &lt;Panel BoxSizing=&quot;FillAspect&quot; Aspect=&quot;1&quot; &gt;
+        &lt;c:Plot &gt;
+            &lt;c:DataSeries Data=&quot;{data}&quot; /&gt;
+            &lt;Curve StrokeWidth=&quot;5&quot; StrokeColor=&quot;#008&quot; &gt;
+                &lt;c:PlotData&gt;
+                    &lt;c:PlotCurvePoint/&gt;
+                &lt;/c:PlotData&gt;
+            &lt;/Curve&gt;
+        &lt;/c:Plot&gt;
     &lt;/Panel&gt;
+&lt;/Panel&gt;
 </code></pre>
 
 <section class="type-location">

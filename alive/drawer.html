@@ -702,77 +702,77 @@ Show advanced things
 <p>Provides sidebar navigation toggleable by a floating button.</p>
 <p>A menu element must be provided using the <code>Menu</code> dependency.</p>
 <p>In most cases, the Drawer sits at the root of the app, enclosing the root Navigator.</p>
-<pre><code class="language-xml">    &lt;App&gt;
-        &lt;JavaScript&gt;
-            exports.goToPage1 = function() {
-                router.goto(&quot;page1&quot;);
-                drawer.close();
-            }
-
-            exports.goToPage2 = function() {
-                router.goto(&quot;page2&quot;);
-                drawer.close();
-            }
-        &lt;/JavaScript&gt;
-
-        &lt;Router ux:Name=&quot;router&quot; /&gt;
-        &lt;Alive.Drawer&gt;
-            &lt;StackPanel ux:Binding=&quot;Menu&quot; ItemSpacing=&quot;10&quot;&gt;
-                &lt;Alive.Body Value=&quot;Page 1&quot; Clicked=&quot;{goToPage1}&quot; /&gt;
-                &lt;Alive.Body Value=&quot;Page 2&quot; Clicked=&quot;{goToPage2}&quot; /&gt;
-            &lt;/StackPanel&gt;
-            &lt;Navigator DefaultPath=&quot;page1&quot;&gt;
-                &lt;Page ux:Name=&quot;page1&quot; /&gt;
-                &lt;Page ux:Name=&quot;page2&quot; /&gt;
-            &lt;/Navigator&gt;
-        &lt;/Alive.Drawer&gt;
-    &lt;/App&gt;
-</code></pre>
-<p>Drawer can be opened and closed from JavaScript using the <code>open()</code> and <code>close()</code> methods.</p>
-<pre><code class="language-xml">    &lt;JavaScript&gt;
-        exports.openDrawer = function() {
-            drawer.open();
+<pre><code>&lt;App&gt;
+    &lt;JavaScript&gt;
+        exports.goToPage1 = function() {
+            router.goto(&quot;page1&quot;);
+            drawer.close();
         }
 
-        exports.closeDrawer = function() {
+        exports.goToPage2 = function() {
+            router.goto(&quot;page2&quot;);
             drawer.close();
         }
     &lt;/JavaScript&gt;
 
-    &lt;Alive.Drawer ux:Name=&quot;drawer&quot;&gt;
-        &lt;Panel ux:Binding=&quot;Menu&quot; /&gt;
+    &lt;Router ux:Name=&quot;router&quot; /&gt;
+    &lt;Alive.Drawer&gt;
+        &lt;StackPanel ux:Binding=&quot;Menu&quot; ItemSpacing=&quot;10&quot;&gt;
+            &lt;Alive.Body Value=&quot;Page 1&quot; Clicked=&quot;{goToPage1}&quot; /&gt;
+            &lt;Alive.Body Value=&quot;Page 2&quot; Clicked=&quot;{goToPage2}&quot; /&gt;
+        &lt;/StackPanel&gt;
+        &lt;Navigator DefaultPath=&quot;page1&quot;&gt;
+            &lt;Page ux:Name=&quot;page1&quot; /&gt;
+            &lt;Page ux:Name=&quot;page2&quot; /&gt;
+        &lt;/Navigator&gt;
     &lt;/Alive.Drawer&gt;
+&lt;/App&gt;
+</code></pre>
+<p>Drawer can be opened and closed from JavaScript using the <code>open()</code> and <code>close()</code> methods.</p>
+<pre><code>&lt;JavaScript&gt;
+    exports.openDrawer = function() {
+        drawer.open();
+    }
+
+    exports.closeDrawer = function() {
+        drawer.close();
+    }
+&lt;/JavaScript&gt;
+
+&lt;Alive.Drawer ux:Name=&quot;drawer&quot;&gt;
+    &lt;Panel ux:Binding=&quot;Menu&quot; /&gt;
+&lt;/Alive.Drawer&gt;
 </code></pre>
 <p>Drawer displays a floating button above its content that opens the Drawer.
 This can be disabled using the <code>HideButton</code> property.</p>
-<pre><code class="language-xml">    &lt;Alive.Drawer HideButton=&quot;true&quot;&gt;
-        &lt;Panel ux:Binding=&quot;Menu&quot; /&gt;
-    &lt;/Alive.Drawer /&gt;
+<pre><code>&lt;Alive.Drawer HideButton=&quot;true&quot;&gt;
+    &lt;Panel ux:Binding=&quot;Menu&quot; /&gt;
+&lt;/Alive.Drawer /&gt;
 </code></pre>
 <p>You can combine this property with <code>WhileActive</code> to hide the button for certain pages.
 In the example below, the button is hidden while inside <code>SecondPage</code>.</p>
-<pre><code class="language-xml">    &lt;App&gt;
-        &lt;Router ux:Name=&quot;router&quot; /&gt;
-        &lt;Alive.Drawer ux:Name=&quot;drawer&quot;&gt;
-            &lt;StackPanel ux:Binding=&quot;Menu&quot; ItemSpacing=&quot;10&quot;&gt;
-                &lt;!-- menu content --&gt;
-            &lt;/StackPanel&gt;
-            &lt;Navigator&gt;
-                &lt;FirstPage ux:Template=&quot;page1&quot; /&gt;
-                &lt;SecondPage ux:Template=&quot;page2&quot; drawer=&quot;drawer&quot; /&gt;
-            &lt;/Navigator&gt;
-        &lt;/Alive.Drawer&gt;
+<pre><code>&lt;App&gt;
+    &lt;Router ux:Name=&quot;router&quot; /&gt;
+    &lt;Alive.Drawer ux:Name=&quot;drawer&quot;&gt;
+        &lt;StackPanel ux:Binding=&quot;Menu&quot; ItemSpacing=&quot;10&quot;&gt;
+            &lt;!-- menu content --&gt;
+        &lt;/StackPanel&gt;
+        &lt;Navigator&gt;
+            &lt;FirstPage ux:Template=&quot;page1&quot; /&gt;
+            &lt;SecondPage ux:Template=&quot;page2&quot; drawer=&quot;drawer&quot; /&gt;
+        &lt;/Navigator&gt;
+    &lt;/Alive.Drawer&gt;
 
-        &lt;Page ux:Class=&quot;FirstPage&quot; /&gt;
+    &lt;Page ux:Class=&quot;FirstPage&quot; /&gt;
 
-        &lt;Page ux:Class=&quot;SecondPage&quot;&gt;
-            &lt;Alive.Drawer ux:Dependency=&quot;drawer&quot; /&gt;
+    &lt;Page ux:Class=&quot;SecondPage&quot;&gt;
+        &lt;Alive.Drawer ux:Dependency=&quot;drawer&quot; /&gt;
 
-            &lt;WhileActive&gt;
-                &lt;Change drawer.HideButton=&quot;true&quot; /&gt;
-            &lt;/WhileActive&gt;
-        &lt;/Page&gt;
-    &lt;/App&gt;
+        &lt;WhileActive&gt;
+            &lt;Change drawer.HideButton=&quot;true&quot; /&gt;
+        &lt;/WhileActive&gt;
+    &lt;/Page&gt;
+&lt;/App&gt;
 </code></pre>
 
 <section class="type-location">

@@ -694,13 +694,13 @@ like Angular 2, where components do not have direct access to UX objects
 through    injected UX    names. Instead, components can listen to this event
 to get access to all the names in the scope of the closure.</p>
 <p>Example with NGUX syntax:</p>
-<pre><code class="language-xml">    &lt;Panel ux:Name=&quot;foo&quot; /&gt;
-    &lt;Closure (Ready)=&quot;nodeReady($event)&quot; /&gt;
+<pre><code>&lt;Panel ux:Name=&quot;foo&quot; /&gt;
+&lt;Closure (Ready)=&quot;nodeReady($event)&quot; /&gt;
 </code></pre>
 <p>And then in the TypeScript component:</p>
-<pre><code class="language-js">    nodeReady(e) {
-        e.foo // holds a reference to the Panel above
-    }
+<pre><code>nodeReady(e) {
+    e.foo // holds a reference to the Panel above
+}
 </code></pre>
 
 <section class="type-location type-location-leaf">

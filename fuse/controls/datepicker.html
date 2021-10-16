@@ -721,34 +721,34 @@ behavior is consistent for all dates since at least 1900 including all represent
 <h4 id="example">Example</h4>
 <p>The following example shows how to set up a <code>DatePicker</code> object with a specific minimum and maximum value, and set the
 value from JS using a <code>Date</code> object:</p>
-<pre><code class="language-xml">    &lt;StackPanel&gt;
-        &lt;JavaScript&gt;
-            var Observable = require(&quot;FuseJS/Observable&quot;);
+<pre><code>&lt;StackPanel&gt;
+    &lt;JavaScript&gt;
+        var Observable = require(&quot;FuseJS/Observable&quot;);
 
-            var someDate = Observable(new Date(Date.parse(&quot;2007-02-14T00:00:00.000Z&quot;)));
+        var someDate = Observable(new Date(Date.parse(&quot;2007-02-14T00:00:00.000Z&quot;)));
 
-            someDate.onValueChanged(module, function(date) {
-                console.log(&quot;someDate changed: &quot; + JSON.stringify(date));
-            });
+        someDate.onValueChanged(module, function(date) {
+            console.log(&quot;someDate changed: &quot; + JSON.stringify(date));
+        });
 
-            module.exports = {
-                someDate: someDate,
+        module.exports = {
+            someDate: someDate,
 
-                minDate: new Date(Date.parse(&quot;1950-01-01T00:00:00.000Z&quot;)),
-                maxDate: new Date(Date.parse(&quot;2050-01-01T00:00:00.000Z&quot;)),
+            minDate: new Date(Date.parse(&quot;1950-01-01T00:00:00.000Z&quot;)),
+            maxDate: new Date(Date.parse(&quot;2050-01-01T00:00:00.000Z&quot;)),
 
-                whoYouGonnaCall: function() {
-                    someDate.value = new Date(Date.parse(&quot;1984-06-08T00:00:00.000Z&quot;));
-                }
-            };
-        &lt;/JavaScript&gt;
+            whoYouGonnaCall: function() {
+                someDate.value = new Date(Date.parse(&quot;1984-06-08T00:00:00.000Z&quot;));
+            }
+        };
+    &lt;/JavaScript&gt;
 
-        &lt;NativeViewHost&gt;
-            &lt;DatePicker Value=&quot;{someDate}&quot; MinValue=&quot;{minDate}&quot; MaxValue=&quot;{maxDate}&quot; /&gt;
-        &lt;/NativeViewHost&gt;
+    &lt;NativeViewHost&gt;
+        &lt;DatePicker Value=&quot;{someDate}&quot; MinValue=&quot;{minDate}&quot; MaxValue=&quot;{maxDate}&quot; /&gt;
+    &lt;/NativeViewHost&gt;
 
-        &lt;Button Text=&quot;Who you gonna call?&quot; Clicked=&quot;{whoYouGonnaCall}&quot; Margin=&quot;5&quot; /&gt;
-    &lt;/StackPanel&gt;
+    &lt;Button Text=&quot;Who you gonna call?&quot; Clicked=&quot;{whoYouGonnaCall}&quot; Margin=&quot;5&quot; /&gt;
+&lt;/StackPanel&gt;
 </code></pre>
 
 <section class="type-location">

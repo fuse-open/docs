@@ -687,13 +687,13 @@ FileSystemModule.writeBufferToFileSync(filename, data) Method (JS)
 </header>
 <p>Synchronously writes an <code>ArrayBuffer</code> to a file.</p>
 <h4 id="example">Example</h4>
-<pre><code class="language-js">    var FileSystem = require(&quot;FuseJS/FileSystem&quot;);
+<pre><code>var FileSystem = require(&quot;FuseJS/FileSystem&quot;);
 
-    var data = new ArrayBuffer(4);
-    var view = new Int32Array(data);
-    view[0] = 0x1337;
+var data = new ArrayBuffer(4);
+var view = new Int32Array(data);
+view[0] = 0x1337;
 
-    FileSystem.writeBufferToFileSync(FileSystem.dataDirectory + &quot;/&quot; + &quot;myfile.txt&quot;, data);
+FileSystem.writeBufferToFileSync(FileSystem.dataDirectory + &quot;/&quot; + &quot;myfile.txt&quot;, data);
 </code></pre>
 
 <section class="type-location type-location-leaf">

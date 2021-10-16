@@ -702,50 +702,50 @@ Show advanced things
 <p>Provides standard transitions, user interaction, and page handling for a basic linear navigation.</p>
 <h3 id="examples">Examples</h3>
 <p>The following example illustrates the default behavior of <code>PageControl</code>, which is to slide the pages in response to swipe gestures:</p>
-<pre><code class="language-xml">    &lt;PageControl&gt;
-        &lt;Panel Background=&quot;Red&quot;/&gt;
-        &lt;Panel Background=&quot;Blue&quot;/&gt;
-    &lt;/PageControl&gt;
+<pre><code>&lt;PageControl&gt;
+    &lt;Panel Background=&quot;Red&quot;/&gt;
+    &lt;Panel Background=&quot;Blue&quot;/&gt;
+&lt;/PageControl&gt;
 </code></pre>
 <p><code>PageControl</code> is a router outlet, meaning that it can be controlled by a <a href="../../fuse/navigation/router.html">Router</a>.
 You can disable this behavior by setting the IsRouterOutlet property to <code>false</code>.</p>
-<pre><code class="language-xml">    &lt;JavaScript&gt;
-        module.exports = {
-            gotoPage1: function() { router.goto(&quot;page1&quot;); },
-            gotoPage2: function() { router.goto(&quot;page2&quot;); },
-            gotoPage3: function() { router.goto(&quot;page3&quot;); }
-        };
-    &lt;/JavaScript&gt;
+<pre><code>&lt;JavaScript&gt;
+    module.exports = {
+        gotoPage1: function() { router.goto(&quot;page1&quot;); },
+        gotoPage2: function() { router.goto(&quot;page2&quot;); },
+        gotoPage3: function() { router.goto(&quot;page3&quot;); }
+    };
+&lt;/JavaScript&gt;
 
-    &lt;Router ux:Name=&quot;router&quot; /&gt;
+&lt;Router ux:Name=&quot;router&quot; /&gt;
 
-    &lt;PageControl&gt;
-        &lt;Panel ux:Name=&quot;page1&quot; Color=&quot;#e74c3c&quot; Clicked=&quot;{gotoPage2}&quot; /&gt;
-        &lt;Panel ux:Name=&quot;page2&quot; Color=&quot;#2ecc71&quot; Clicked=&quot;{gotoPage3}&quot; /&gt;
-        &lt;Panel ux:Name=&quot;page3&quot; Color=&quot;#3498db&quot; Clicked=&quot;{gotoPage1}&quot; /&gt;
-    &lt;/PageControl&gt;
+&lt;PageControl&gt;
+    &lt;Panel ux:Name=&quot;page1&quot; Color=&quot;#e74c3c&quot; Clicked=&quot;{gotoPage2}&quot; /&gt;
+    &lt;Panel ux:Name=&quot;page2&quot; Color=&quot;#2ecc71&quot; Clicked=&quot;{gotoPage3}&quot; /&gt;
+    &lt;Panel ux:Name=&quot;page3&quot; Color=&quot;#3498db&quot; Clicked=&quot;{gotoPage1}&quot; /&gt;
+&lt;/PageControl&gt;
 </code></pre>
 <p>By using data binding, you can set the currently active page by <code>Name</code> using the <code>Active</code> property.
 In the following example, We have three pages and a button that returns the user to the first page.</p>
-<pre><code class="language-xml">    &lt;DockPanel&gt;
-        &lt;JavaScript&gt;
-            var Observable = require(&quot;FuseJS/Observable&quot;);
-            var currentPage = Observable(&quot;page1&quot;);
-            function clickHandler() {
-                currentPage.value = &quot;page1&quot;;
-            }
-            module.exports = {
-                clickHandler: clickHandler,
-                currentPage: currentPage
-            };
-        &lt;/JavaScript&gt;
-        &lt;PageControl Active=&quot;{currentPage}&quot;&gt;
-            &lt;Panel Name=&quot;page1&quot; Background=&quot;Red&quot;/&gt;
-            &lt;Panel Name=&quot;page2&quot; Background=&quot;Green&quot;/&gt;
-            &lt;Panel Name=&quot;page3&quot; Background=&quot;Blue&quot;/&gt;
-        &lt;/PageControl&gt;
-        &lt;Button Text=&quot;Home&quot; Clicked=&quot;{clickHandler}&quot; Dock=&quot;Bottom&quot;/&gt;
-    &lt;/DockPanel&gt;
+<pre><code>&lt;DockPanel&gt;
+    &lt;JavaScript&gt;
+        var Observable = require(&quot;FuseJS/Observable&quot;);
+        var currentPage = Observable(&quot;page1&quot;);
+        function clickHandler() {
+            currentPage.value = &quot;page1&quot;;
+        }
+        module.exports = {
+            clickHandler: clickHandler,
+            currentPage: currentPage
+        };
+    &lt;/JavaScript&gt;
+    &lt;PageControl Active=&quot;{currentPage}&quot;&gt;
+        &lt;Panel Name=&quot;page1&quot; Background=&quot;Red&quot;/&gt;
+        &lt;Panel Name=&quot;page2&quot; Background=&quot;Green&quot;/&gt;
+        &lt;Panel Name=&quot;page3&quot; Background=&quot;Blue&quot;/&gt;
+    &lt;/PageControl&gt;
+    &lt;Button Text=&quot;Home&quot; Clicked=&quot;{clickHandler}&quot; Dock=&quot;Bottom&quot;/&gt;
+&lt;/DockPanel&gt;
 </code></pre>
 <p>Take a look at the <a href="https://examples.fusetools.com/page-control">Slides</a> example to see how this can be used in practice.</p>
 <h4 id="navigation-order">Navigation Order</h4>

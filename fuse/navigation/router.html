@@ -716,30 +716,30 @@ kept for part of the app.</p>
 <h4 id="example">Example</h4>
 <p>The following example illustrates a basic navigation setup using a <a href="../../fuse/navigation/router.html">Router</a> and <a href="../../fuse/controls/navigator.html">Navigator</a>.
 For a complete introduction and proper examples of Fuse's navigation system, see the <a href="/docs/navigation/navigation">Navigation guide</a>.</p>
-<pre><code class="language-xml">    &lt;JavaScript&gt;
-        module.exports = {
-            gotoFirst: function() { router.goto(&quot;firstPage&quot;); },
-            gotoSecond: function() { router.goto(&quot;secondPage&quot;); }
-        };
-    &lt;/JavaScript&gt;
+<pre><code>&lt;JavaScript&gt;
+    module.exports = {
+        gotoFirst: function() { router.goto(&quot;firstPage&quot;); },
+        gotoSecond: function() { router.goto(&quot;secondPage&quot;); }
+    };
+&lt;/JavaScript&gt;
 
-    &lt;Router ux:Name=&quot;router&quot; /&gt;
+&lt;Router ux:Name=&quot;router&quot; /&gt;
 
-    &lt;DockPanel&gt;
-        &lt;Navigator DefaultTemplate=&quot;firstPage&quot;&gt;
-            &lt;Page ux:Template=&quot;firstPage&quot;&gt;
-                &lt;Text Alignment=&quot;Center&quot;&gt;This is the first page.&lt;/Text&gt;
-            &lt;/Page&gt;
-            &lt;Page ux:Template=&quot;secondPage&quot;&gt;
-                &lt;Text Alignment=&quot;Center&quot;&gt;This is the second page.&lt;/Text&gt;
-            &lt;/Page&gt;
-        &lt;/Navigator&gt;
+&lt;DockPanel&gt;
+    &lt;Navigator DefaultTemplate=&quot;firstPage&quot;&gt;
+        &lt;Page ux:Template=&quot;firstPage&quot;&gt;
+            &lt;Text Alignment=&quot;Center&quot;&gt;This is the first page.&lt;/Text&gt;
+        &lt;/Page&gt;
+        &lt;Page ux:Template=&quot;secondPage&quot;&gt;
+            &lt;Text Alignment=&quot;Center&quot;&gt;This is the second page.&lt;/Text&gt;
+        &lt;/Page&gt;
+    &lt;/Navigator&gt;
 
-        &lt;Grid Dock=&quot;Bottom&quot; Columns=&quot;1*,1*&quot;&gt;
-            &lt;Button Text=&quot;First page&quot; Padding=&quot;20&quot; Clicked=&quot;{gotoFirst}&quot; /&gt;
-            &lt;Button Text=&quot;Second page&quot; Padding=&quot;20&quot; Clicked=&quot;{gotoSecond}&quot; /&gt;
-        &lt;/Grid&gt;
-    &lt;/DockPanel&gt;
+    &lt;Grid Dock=&quot;Bottom&quot; Columns=&quot;1*,1*&quot;&gt;
+        &lt;Button Text=&quot;First page&quot; Padding=&quot;20&quot; Clicked=&quot;{gotoFirst}&quot; /&gt;
+        &lt;Button Text=&quot;Second page&quot; Padding=&quot;20&quot; Clicked=&quot;{gotoSecond}&quot; /&gt;
+    &lt;/Grid&gt;
+&lt;/DockPanel&gt;
 </code></pre>
 <h4 id="page-navigation-order">Page Navigation Order</h4>
 <p>The history of the router follows the standard history ordering, newest routes are at the front of the history, older routes at the back.</p>

@@ -703,11 +703,11 @@ Show advanced things
 <p>Active while the <code>IsEnabled</code> property of its containing element is <code>True</code>.</p>
 <h3 id="example">Example</h3>
 <p>This example shows a panel that is rotated 45 degrees. It will always be rotated 45 degrees, as <code>IsEnabled</code> is <code>true</code> by default.</p>
-<pre><code class="language-xml">    &lt;Panel  Width=&quot;50&quot; Height=&quot;50&quot; Background=&quot;Red&quot; &gt;
-        &lt;WhileEnabled&gt;
-            &lt;Rotate Degrees=&quot;45&quot; Duration=&quot;0.5&quot;/&gt;
-        &lt;/WhileEnabled&gt;
-    &lt;/Panel&gt;
+<pre><code>&lt;Panel  Width=&quot;50&quot; Height=&quot;50&quot; Background=&quot;Red&quot; &gt;
+    &lt;WhileEnabled&gt;
+        &lt;Rotate Degrees=&quot;45&quot; Duration=&quot;0.5&quot;/&gt;
+    &lt;/WhileEnabled&gt;
+&lt;/Panel&gt;
 </code></pre>
 
 <section class="type-location">
@@ -1969,25 +1969,25 @@ IEnumerable&lt;Binding&gt;
 <h3 id="section-examples">Examples</h3>
 <p>This example shows how we can use <a href="../../fuse/triggers/whileenabled.html">WhileEnabled</a> and <a href="../../fuse/triggers/whiledisabled.html">WhileDisabled</a> inside a
 panel to react to its state:</p>
-<pre><code class="language-xml">	&lt;StackPanel&gt;
-		&lt;Panel ux:Name=&quot;panel&quot; Width=&quot;50&quot; Height=&quot;50&quot; Background=&quot;Red&quot; &gt;
-			&lt;WhileEnabled&gt;
-				&lt;Rotate Degrees=&quot;45&quot; Duration=&quot;0.5&quot;/&gt;
-			&lt;/WhileEnabled&gt;
-			&lt;WhileDisabled&gt;
-				&lt;Change text.Value=&quot;Disabled&quot; /&gt;
-			&lt;/WhileDisabled&gt;
-		&lt;/Panel&gt;
-		&lt;Text ux:Name=&quot;text&quot;&gt;Enabled&lt;/Text&gt;
-		&lt;WhileFalse ux:Name=&quot;isEnabled&quot;&gt;
-			&lt;Change panel.IsEnabled=&quot;False&quot; /&gt;
-		&lt;/WhileFalse&gt;
-		&lt;Button Text=&quot;Toggle&quot;&gt;
-			&lt;Clicked&gt;
-				&lt;Toggle Target=&quot;isEnabled&quot; /&gt;
-			&lt;/Clicked&gt;
-		&lt;/Button&gt;
-	&lt;/StackPanel&gt;
+<pre><code>&lt;StackPanel&gt;
+	&lt;Panel ux:Name=&quot;panel&quot; Width=&quot;50&quot; Height=&quot;50&quot; Background=&quot;Red&quot; &gt;
+		&lt;WhileEnabled&gt;
+			&lt;Rotate Degrees=&quot;45&quot; Duration=&quot;0.5&quot;/&gt;
+		&lt;/WhileEnabled&gt;
+		&lt;WhileDisabled&gt;
+			&lt;Change text.Value=&quot;Disabled&quot; /&gt;
+		&lt;/WhileDisabled&gt;
+	&lt;/Panel&gt;
+	&lt;Text ux:Name=&quot;text&quot;&gt;Enabled&lt;/Text&gt;
+	&lt;WhileFalse ux:Name=&quot;isEnabled&quot;&gt;
+		&lt;Change panel.IsEnabled=&quot;False&quot; /&gt;
+	&lt;/WhileFalse&gt;
+	&lt;Button Text=&quot;Toggle&quot;&gt;
+		&lt;Clicked&gt;
+			&lt;Toggle Target=&quot;isEnabled&quot; /&gt;
+		&lt;/Clicked&gt;
+	&lt;/Button&gt;
+&lt;/StackPanel&gt;
 </code></pre>
 
 </section>

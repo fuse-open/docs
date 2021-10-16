@@ -707,50 +707,50 @@ which might need additional styling to make it visible. For example, on iOS the 
 button is blue text on white.</p>
 <h4 id="examples">Examples</h4>
 <p>By default, <code>Button</code> is drawn as blue text over a transparent background.</p>
-<pre><code class="language-xml">    &lt;Button Text=&quot;Click me&quot; /&gt;
+<pre><code>&lt;Button Text=&quot;Click me&quot; /&gt;
 </code></pre>
 <p>However, Button can also be used to render the <em>platform native</em> button control whenever possible.
 This is done by wrapping the Button in a <a href="../../fuse/controls/nativeviewhost.html">NativeViewHost</a>, as shown below.</p>
-<pre><code class="language-xml">    &lt;NativeViewHost&gt;
-        &lt;Button Text=&quot;Native button&quot; /&gt;
-    &lt;/NativeViewHost&gt;
+<pre><code>&lt;NativeViewHost&gt;
+    &lt;Button Text=&quot;Native button&quot; /&gt;
+&lt;/NativeViewHost&gt;
 </code></pre>
 <p>However, we usually want a button with our own look and feel.
 In this case, it is recommended to subclass <a href="../../fuse/controls/panel.html">Panel</a> rather than Button.
 Since you can attach a <code>Clicked</code> handler to any element, using a <a href="../../fuse/controls/panel.html">Panel</a> as the base class offers a
 great deal of flexibility, while removing a lot of the unnecessary complexity of the actual Button class.</p>
 <p>Below is an example of creating your own button control with <a href="../../fuse/controls/panel.html">Panel</a>:</p>
-<pre><code class="language-xml">    &lt;Panel ux:Class=&quot;MyButton&quot; HitTestMode=&quot;LocalBounds&quot; Margin=&quot;4&quot; Color=&quot;#25a&quot;&gt;
-        &lt;string ux:Property=&quot;Text&quot; /&gt;
-        &lt;Text Value=&quot;{ReadProperty Text}&quot; Color=&quot;#fff&quot; Alignment=&quot;Center&quot; Margin=&quot;30,15&quot; /&gt;
+<pre><code>&lt;Panel ux:Class=&quot;MyButton&quot; HitTestMode=&quot;LocalBounds&quot; Margin=&quot;4&quot; Color=&quot;#25a&quot;&gt;
+    &lt;string ux:Property=&quot;Text&quot; /&gt;
+    &lt;Text Value=&quot;{ReadProperty Text}&quot; Color=&quot;#fff&quot; Alignment=&quot;Center&quot; Margin=&quot;30,15&quot; /&gt;
 
-        &lt;WhilePressed&gt;
-            &lt;Change this.Color=&quot;#138&quot; Duration=&quot;0.05&quot; DurationBack=&quot;.2&quot; /&gt;
-        &lt;/WhilePressed&gt;
-    &lt;/Panel&gt;
+    &lt;WhilePressed&gt;
+        &lt;Change this.Color=&quot;#138&quot; Duration=&quot;0.05&quot; DurationBack=&quot;.2&quot; /&gt;
+    &lt;/WhilePressed&gt;
+&lt;/Panel&gt;
 
-    &lt;MyButton Text=&quot;Click me&quot; /&gt;
+&lt;MyButton Text=&quot;Click me&quot; /&gt;
 </code></pre>
 <p>However, if you want a <em>platform native button</em> that falls back to a custom look on non-mobile devices,
 you have to subclass <code>Button</code>.</p>
-<pre><code class="language-xml">    &lt;Button ux:Class=&quot;MyNativeButtonWithFallback&quot; Margin=&quot;2&quot;&gt;
-        &lt;Panel ux:Template=&quot;GraphicsAppearance&quot; HitTestMode=&quot;LocalBounds&quot;&gt;
-            &lt;Text Value=&quot;{ReadProperty Text}&quot; Color=&quot;#fff&quot; Alignment=&quot;Center&quot; TextAlignment=&quot;Center&quot; Margin=&quot;10&quot; /&gt;
-            &lt;Rectangle CornerRadius=&quot;4&quot; Layer=&quot;Background&quot; Color=&quot;#25a&quot; /&gt;
-        &lt;/Panel&gt;
-    &lt;/Button&gt;
+<pre><code>&lt;Button ux:Class=&quot;MyNativeButtonWithFallback&quot; Margin=&quot;2&quot;&gt;
+    &lt;Panel ux:Template=&quot;GraphicsAppearance&quot; HitTestMode=&quot;LocalBounds&quot;&gt;
+        &lt;Text Value=&quot;{ReadProperty Text}&quot; Color=&quot;#fff&quot; Alignment=&quot;Center&quot; TextAlignment=&quot;Center&quot; Margin=&quot;10&quot; /&gt;
+        &lt;Rectangle CornerRadius=&quot;4&quot; Layer=&quot;Background&quot; Color=&quot;#25a&quot; /&gt;
+    &lt;/Panel&gt;
+&lt;/Button&gt;
 </code></pre>
 <p>When placed in a <a href="../../fuse/controls/nativeviewhost.html">NativeViewHost</a>, the Button will attempt to initialize a <em>native</em> button control.
 If this is not possible (e.g. if it's running on desktop), it will fall back to the template specified
 by <code>ux:Template=&quot;GraphicsAppearance&quot;</code>.`</p>
-<pre><code class="language-xml">    &lt;NativeViewHost&gt;
-        &lt;!-- Will be native if possible --&gt;
-        &lt;MyNativeButtonWithFallback Text=&quot;Some button&quot; /&gt;
-    &lt;/NativeViewHost&gt;
+<pre><code>&lt;NativeViewHost&gt;
+    &lt;!-- Will be native if possible --&gt;
+    &lt;MyNativeButtonWithFallback Text=&quot;Some button&quot; /&gt;
+&lt;/NativeViewHost&gt;
 </code></pre>
 <p>If we <em>don't</em> place the Button inside a <a href="../../fuse/controls/nativeviewhost.html">NativeViewHost</a>,
 the <code>GraphicsAppearance</code> template will always be used to draw the button.</p>
-<pre><code class="language-xml">    &lt;MyNativeButtonWithFallback /&gt;
+<pre><code>&lt;MyNativeButtonWithFallback /&gt;
 </code></pre>
 
 <section class="type-location">

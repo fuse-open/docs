@@ -702,15 +702,15 @@ Show advanced things
 <p>Momentarily triggers a <a href="../../../fuse/triggers/whiletrue.html">WhileTrue</a>, <a href="../../../fuse/triggers/whilefalse.html">WhileFalse</a> or <a href="../../../fuse/triggers/timeline.html">Timeline</a>.</p>
 <h3 id="example">Example</h3>
 <p>In this example, a pulse activated by pressing a <code>Button</code> scales the button by 1.5 over 0.2 seconds, then scales it back to 1 over the same duration.</p>
-<pre><code class="language-xml">    &lt;Button Text=&quot;Pulse&quot;&gt;
-        &lt;WhileTrue ux:Name=&quot;pulseMe&quot; Value=&quot;false&quot;&gt;
-            &lt;Scale Factor=&quot;1.5&quot; Duration=&quot;0.2&quot; /&gt;
-        &lt;/WhileTrue&gt;
+<pre><code>&lt;Button Text=&quot;Pulse&quot;&gt;
+    &lt;WhileTrue ux:Name=&quot;pulseMe&quot; Value=&quot;false&quot;&gt;
+        &lt;Scale Factor=&quot;1.5&quot; Duration=&quot;0.2&quot; /&gt;
+    &lt;/WhileTrue&gt;
 
-        &lt;Clicked&gt;
-            &lt;Pulse Target=&quot;pulseMe&quot; /&gt;
-        &lt;/Clicked&gt;
-    &lt;/Button&gt;
+    &lt;Clicked&gt;
+        &lt;Pulse Target=&quot;pulseMe&quot; /&gt;
+    &lt;/Clicked&gt;
+&lt;/Button&gt;
 </code></pre>
 
 <section class="type-location">

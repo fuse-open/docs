@@ -706,13 +706,13 @@ Show advanced things
 <p><strong>Note:</strong> <code>Timeline</code> itself is <em>not</em> intended for grouping multiple animators to create keyframe animations.
 To achieve this, you can add <a href="../../fuse/animations/trackanimator/keyframes.html">Keyframes</a> to the animators themselves.</p>
 <p><em>Incorrect:</em></p>
-<pre><code class="language-xml">&lt;Timeline&gt;
+<pre><code>&lt;Timeline&gt;
     &lt;Change rect.Opacity=&quot;1&quot; Delay=&quot;0.0&quot; Duration=&quot;0.5&quot; /&gt;
     &lt;Change rect.Opacity=&quot;0&quot; Delay=&quot;0.5&quot; Duration=&quot;0.5&quot; /&gt;
 &lt;/Timeline&gt;
 </code></pre>
 <p><em>Correct:</em></p>
-<pre><code class="language-xml">&lt;Timeline&gt;
+<pre><code>&lt;Timeline&gt;
     &lt;Change Target=&quot;rect.Opacity&quot;&gt;
         &lt;Keyframe Value=&quot;1&quot; Time=&quot;0.5&quot; /&gt;
         &lt;Keyframe Value=&quot;0&quot; Time=&quot;1.0&quot; /&gt;
@@ -722,31 +722,31 @@ To achieve this, you can add <a href="../../fuse/animations/trackanimator/keyfra
 </blockquote>
 <h4 id="example">Example</h4>
 <p>Here is an example of how we can use a timeline to animate several properties on a rectangle (its width and color), and then play between the start and end of this <code>Timeline</code> by clicking two buttons.</p>
-<pre><code class="language-xml">    &lt;StackPanel&gt;
-        &lt;Rectangle ux:Name=&quot;rect&quot; Height=&quot;40&quot; Width=&quot;100%&quot;&gt;
-            &lt;SolidColor ux:Name=&quot;color&quot; Color=&quot;#f00&quot; /&gt;
-        &lt;/Rectangle&gt;
-        &lt;Grid ColumnCount=&quot;2&quot;&gt;
-            &lt;Button Text=&quot;Red&quot;&gt;
-                &lt;Clicked&gt;
-                    &lt;Set timeline.TargetProgress=&quot;0&quot; /&gt;
-                &lt;/Clicked&gt;
-            &lt;/Button&gt;
-            &lt;Button Text=&quot;Green&quot;&gt;
-                &lt;Clicked&gt;
-                    &lt;Set timeline.TargetProgress=&quot;1&quot; /&gt;
-                &lt;/Clicked&gt;
-            &lt;/Button&gt;
-        &lt;/Grid&gt;
+<pre><code>&lt;StackPanel&gt;
+    &lt;Rectangle ux:Name=&quot;rect&quot; Height=&quot;40&quot; Width=&quot;100%&quot;&gt;
+        &lt;SolidColor ux:Name=&quot;color&quot; Color=&quot;#f00&quot; /&gt;
+    &lt;/Rectangle&gt;
+    &lt;Grid ColumnCount=&quot;2&quot;&gt;
+        &lt;Button Text=&quot;Red&quot;&gt;
+            &lt;Clicked&gt;
+                &lt;Set timeline.TargetProgress=&quot;0&quot; /&gt;
+            &lt;/Clicked&gt;
+        &lt;/Button&gt;
+        &lt;Button Text=&quot;Green&quot;&gt;
+            &lt;Clicked&gt;
+                &lt;Set timeline.TargetProgress=&quot;1&quot; /&gt;
+            &lt;/Clicked&gt;
+        &lt;/Button&gt;
+    &lt;/Grid&gt;
 
-        &lt;Timeline ux:Name=&quot;timeline&quot;&gt;
-            &lt;Change Target=&quot;rect.Width&quot;&gt;
-                &lt;Keyframe Value=&quot;10&quot; Time=&quot;0.3&quot;/&gt;
-                &lt;Keyframe Value=&quot;100&quot; Time=&quot;0.6&quot;/&gt;
-            &lt;/Change&gt;
-            &lt;Change color.Color=&quot;#0f0&quot; Duration=&quot;0.3&quot; Delay=&quot;0.3&quot;/&gt;
-        &lt;/Timeline&gt;
-    &lt;/StackPanel&gt;
+    &lt;Timeline ux:Name=&quot;timeline&quot;&gt;
+        &lt;Change Target=&quot;rect.Width&quot;&gt;
+            &lt;Keyframe Value=&quot;10&quot; Time=&quot;0.3&quot;/&gt;
+            &lt;Keyframe Value=&quot;100&quot; Time=&quot;0.6&quot;/&gt;
+        &lt;/Change&gt;
+        &lt;Change color.Color=&quot;#0f0&quot; Duration=&quot;0.3&quot; Delay=&quot;0.3&quot;/&gt;
+    &lt;/Timeline&gt;
+&lt;/StackPanel&gt;
 </code></pre>
 
 <section class="type-location">

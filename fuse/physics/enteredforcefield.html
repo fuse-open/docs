@@ -703,22 +703,22 @@ Show advanced things
 <p>As it is a pulse trigger, the forward animation will play in one continous run when the trigger is activated, and play the backwards animation continously when deactivated.</p>
 <h4 id="example">Example</h4>
 <p>In the following example, a circle in the middle of the screen flashes green if a smaller, blue circle, is moved into its force field:</p>
-<pre><code class="language-xml">    &lt;Panel&gt;
-        &lt;Panel Width=&quot;60&quot; Height=&quot;60&quot; Alignment=&quot;BottomLeft&quot;&gt;
-            &lt;Circle Color=&quot;#42A5F5&quot; /&gt;
-            &lt;Draggable /&gt;
-            &lt;EnteredForceField ForceField=&quot;centerAttract&quot;&gt;
-                &lt;Change centerCircle.Color=&quot;#66BB6A&quot; Duration=&quot;.5&quot;/&gt;
-            &lt;/EnteredForceField&gt;
-        &lt;/Panel&gt;
-        &lt;Panel Width=&quot;200&quot; Height=&quot;200&quot; Alignment=&quot;Center&quot; &gt;
-            &lt;Circle ux:Name=&quot;centerCircle&quot; Color=&quot;#EF5350&quot; /&gt;
-            &lt;PointAttractor ux:Name=&quot;centerAttract&quot; Radius=&quot;150&quot; Strength=&quot;250&quot; /&gt;
-        &lt;/Panel&gt;
+<pre><code>&lt;Panel&gt;
+    &lt;Panel Width=&quot;60&quot; Height=&quot;60&quot; Alignment=&quot;BottomLeft&quot;&gt;
+        &lt;Circle Color=&quot;#42A5F5&quot; /&gt;
+        &lt;Draggable /&gt;
+        &lt;EnteredForceField ForceField=&quot;centerAttract&quot;&gt;
+            &lt;Change centerCircle.Color=&quot;#66BB6A&quot; Duration=&quot;.5&quot;/&gt;
+        &lt;/EnteredForceField&gt;
     &lt;/Panel&gt;
-    &lt;Panel Alignment=&quot;BottomLeft&quot; Width=&quot;100&quot; Height=&quot;100&quot;&gt;
-        &lt;PointAttractor Radius=&quot;500&quot; Strength=&quot;100&quot; Offset=&quot;0,0,0&quot;/&gt;
+    &lt;Panel Width=&quot;200&quot; Height=&quot;200&quot; Alignment=&quot;Center&quot; &gt;
+        &lt;Circle ux:Name=&quot;centerCircle&quot; Color=&quot;#EF5350&quot; /&gt;
+        &lt;PointAttractor ux:Name=&quot;centerAttract&quot; Radius=&quot;150&quot; Strength=&quot;250&quot; /&gt;
     &lt;/Panel&gt;
+&lt;/Panel&gt;
+&lt;Panel Alignment=&quot;BottomLeft&quot; Width=&quot;100&quot; Height=&quot;100&quot;&gt;
+    &lt;PointAttractor Radius=&quot;500&quot; Strength=&quot;100&quot; Offset=&quot;0,0,0&quot;/&gt;
+&lt;/Panel&gt;
 </code></pre>
 
 <section class="type-location">

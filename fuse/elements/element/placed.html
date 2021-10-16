@@ -695,16 +695,16 @@ there is no guarantee of exactly <em>when</em> an event handler will fire. For t
 as doing so can lead to flickering and other artifacts.</p>
 </blockquote>
 <h4 id="example">Example</h4>
-<pre><code class="language-xml">    &lt;JavaScript&gt;
-        function panelPlaced(args) {
-            console.dir(&quot;New position:&quot;, [args.x, args.y]);
-            console.dir(&quot;New size:&quot;, [args.width, args.height]);
-        }
+<pre><code>&lt;JavaScript&gt;
+    function panelPlaced(args) {
+        console.dir(&quot;New position:&quot;, [args.x, args.y]);
+        console.dir(&quot;New size:&quot;, [args.width, args.height]);
+    }
 
-        module.exports = { panelPlaced: panelPlaced };
-    &lt;/JavaScript&gt;
+    module.exports = { panelPlaced: panelPlaced };
+&lt;/JavaScript&gt;
 
-    &lt;Panel Placed=&quot;{panelPlaced}&quot;/&gt;
+&lt;Panel Placed=&quot;{panelPlaced}&quot;/&gt;
 </code></pre>
 
 <section class="type-location type-location-leaf">

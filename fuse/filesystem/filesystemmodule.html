@@ -700,7 +700,7 @@ Show advanced things
 </ul>
 </section>
 <p>Provides an interface to the file system.</p>
-<pre><code class="language-js">    var FileSystem = require(&quot;FuseJS/FileSystem&quot;);
+<pre><code>var FileSystem = require(&quot;FuseJS/FileSystem&quot;);
 </code></pre>
 <p>Using the asynchronous Promise based functions is recommended to keep your UI responsive,
 although synchronous variants are also available if preferred.</p>
@@ -708,19 +708,19 @@ although synchronous variants are also available if preferred.</p>
 as a base path.</p>
 <h4 id="example">Example</h4>
 <p>This example writes a text to a file, and then reads it back:</p>
-<pre><code class="language-js">    var FileSystem = require(&quot;FuseJS/FileSystem&quot;);
-    var path = FileSystem.dataDirectory + &quot;/&quot; + &quot;testfile.tmp&quot;;
+<pre><code>var FileSystem = require(&quot;FuseJS/FileSystem&quot;);
+var path = FileSystem.dataDirectory + &quot;/&quot; + &quot;testfile.tmp&quot;;
 
-    FileSystem.writeTextToFile(path, &quot;hello world&quot;)
-        .then(function() {
-            return FileSystem.readTextFromFile(path);
-        })
-        .then(function(text) {
-            console.log(&quot;The read file content was: &quot; + text);
-        })
-        .catch(function(error) {
-            console.log(&quot;Unable to read file due to error:&quot; + error);
-        });
+FileSystem.writeTextToFile(path, &quot;hello world&quot;)
+    .then(function() {
+        return FileSystem.readTextFromFile(path);
+    })
+    .then(function(text) {
+        console.log(&quot;The read file content was: &quot; + text);
+    })
+    .catch(function(error) {
+        console.log(&quot;Unable to read file due to error:&quot; + error);
+    });
 </code></pre>
 
 <section class="type-location">

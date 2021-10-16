@@ -707,17 +707,17 @@ This entity is experimental and might be changed or removed in a future release.
 <p>Paging and loading manager for a list of items. Allows a large, or infinite list, to be displayed in a <code>ScrollView</code>.</p>
 <p>This controls the <code>Offset</code> and <code>Limit</code> properties of an <code>Each</code> inside a <code>ScrollView</code>. It limits the number of items displayed to improve performance.</p>
 <p>The setup that works now is with a <code>StackPanel</code> (Horizontal or Vertical)</p>
-<pre><code class="language-xml">    &lt;ScrollView LayoutMode=&quot;PreserveVisual&quot;&gt;
-        &lt;StackPanel&gt;
-            &lt;Each Items=&quot;{items}&quot; Reuse=&quot;Frame&quot; ux:Name=&quot;theEach&quot;&gt;
-                &lt;Panel Color=&quot;#AAA&quot;&gt;
-                    &lt;Text Value=&quot;{title}&quot;/&gt;
-                &lt;/Panel&gt;
-            &lt;/Each&gt;
-        &lt;/StackPanel&gt;
+<pre><code>&lt;ScrollView LayoutMode=&quot;PreserveVisual&quot;&gt;
+    &lt;StackPanel&gt;
+        &lt;Each Items=&quot;{items}&quot; Reuse=&quot;Frame&quot; ux:Name=&quot;theEach&quot;&gt;
+            &lt;Panel Color=&quot;#AAA&quot;&gt;
+                &lt;Text Value=&quot;{title}&quot;/&gt;
+            &lt;/Panel&gt;
+        &lt;/Each&gt;
+    &lt;/StackPanel&gt;
 
-        &lt;ScrollViewPager Each=&quot;theEach&quot; ReachedEnd=&quot;{loadMore}&quot;/&gt;
-    &lt;/ScrollView&gt;
+    &lt;ScrollViewPager Each=&quot;theEach&quot; ReachedEnd=&quot;{loadMore}&quot;/&gt;
+&lt;/ScrollView&gt;
 </code></pre>
 <p>It's required to use <code>LayoutMode=&quot;PreserveVisual&quot;</code>, otherwise the scrolling will not function correctly. <code>Reuse=&quot;Frame&quot;</code> is optional but recommended: it improves performance by reusing objects.</p>
 <p><code>ReachedEnd</code> is called when the true end of the list is reached and more data is required. It's actually called somewhat before the end is reached, thus allowing the loading process to start before the user reaches the end. There is also a <code>RechedStart</code> to allow loading when scrolling the opposite direction.  Neither of these callbacks are mandatory; <code>ScrollViewPager</code> is also helpful for displaying large static lists.</p>

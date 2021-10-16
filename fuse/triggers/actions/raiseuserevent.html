@@ -708,25 +708,25 @@ for a more complete explanation of user events.</p>
 <h3 id="examples">Examples</h3>
 <p>The following example shows a button which raises a <a href="../../../fuse/userevent.html">UserEvent</a> when
 clicked.</p>
-<pre><code class="language-xml">    &lt;UserEvent ux:Name=&quot;myEvent&quot; /&gt;
-    &lt;Button&gt;
-        &lt;Clicked&gt;
-            &lt;RaiseUserEvent EventName=&quot;myEvent&quot; /&gt;
-        &lt;/Clicked&gt;
-    &lt;/Button&gt;
+<pre><code>&lt;UserEvent ux:Name=&quot;myEvent&quot; /&gt;
+&lt;Button&gt;
+    &lt;Clicked&gt;
+        &lt;RaiseUserEvent EventName=&quot;myEvent&quot; /&gt;
+    &lt;/Clicked&gt;
+&lt;/Button&gt;
 </code></pre>
 <p>You can also pass arguments using <a href="../../../fuse/triggers/actions/usereventarg.html">UserEventArg</a>.
 When using a JavaScript function to handle the event, the arguments will
 be passed to that function.</p>
-<pre><code class="language-xml">    &lt;UserEvent ux:Name=&quot;myEvent&quot; /&gt;
-    &lt;Button&gt;
-        &lt;Clicked&gt;
-            &lt;RaiseUserEvent EventName=&quot;myEvent&quot;&gt;
-                &lt;UserEventArg Name=&quot;name&quot; StringValue=&quot;james&quot; /&gt;
-                &lt;UserEventArg Name=&quot;isAdmin&quot; BoolValue=&quot;false&quot; /&gt;
-            &lt;/RaiseUserEvent&gt;
-        &lt;/Clicked&gt;
-    &lt;/Button&gt;
+<pre><code>&lt;UserEvent ux:Name=&quot;myEvent&quot; /&gt;
+&lt;Button&gt;
+    &lt;Clicked&gt;
+        &lt;RaiseUserEvent EventName=&quot;myEvent&quot;&gt;
+            &lt;UserEventArg Name=&quot;name&quot; StringValue=&quot;james&quot; /&gt;
+            &lt;UserEventArg Name=&quot;isAdmin&quot; BoolValue=&quot;false&quot; /&gt;
+        &lt;/RaiseUserEvent&gt;
+    &lt;/Clicked&gt;
+&lt;/Button&gt;
 </code></pre>
 
 <section class="type-location">

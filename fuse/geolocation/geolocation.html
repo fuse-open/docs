@@ -710,75 +710,73 @@ or <a href="../../fuse/geolocation/geolocation/getlocationasync_95a738ba.html">g
 <p>This module is an <a href="../../fusejs/eventemitter.html">EventEmitter</a>, so the methods from <a href="../../fusejs/eventemitter.html">EventEmitter</a> can be used to listen to events.</p>
 <h4 id="example">Example</h4>
 <p>The following example shows how the different modes of operation can be used:</p>
-<pre><code class="language-xml">    &lt;JavaScript&gt;
-        var Observable = require(&quot;FuseJS/Observable&quot;);
-        var GeoLocation = require(&quot;FuseJS/GeoLocation&quot;);
+<pre><code>&lt;JavaScript&gt;
+    var Observable = require(&quot;FuseJS/Observable&quot;);
+    var GeoLocation = require(&quot;FuseJS/GeoLocation&quot;);
 
-        // Immediate
-        var immediateLocation = JSON.stringify(GeoLocation.location);
+    // Immediate
+    var immediateLocation = JSON.stringify(GeoLocation.location);
 
-        // Timeout
-        var timeoutLocation = Observable(&quot;&quot;);
-        var timeoutMs = 5000;
-        GeoLocation.getLocation(timeoutMs).then(function(location) {
-            timeoutLocation.value = JSON.stringify(location);
-        }).catch(function(fail) {
-            console.log(&quot;getLocation fail &quot; + fail);
-        });
+    // Timeout
+    var timeoutLocation = Observable(&quot;&quot;);
+    var timeoutMs = 5000;
+    GeoLocation.getLocation(timeoutMs).then(function(location) {
+        timeoutLocation.value = JSON.stringify(location);
+    }).catch(function(fail) {
+        console.log(&quot;getLocation fail &quot; + fail);
+    });
 
-        // Continuous
-        var continuousLocation = GeoLocation.observe(&quot;changed&quot;).map(JSON.stringify);
+    // Continuous
+    var continuousLocation = GeoLocation.observe(&quot;changed&quot;).map(JSON.stringify);
 
-        GeoLocation.on(&quot;error&quot;, function(fail) {
-            console.log(&quot;GeoLocation error &quot; + fail);
-        });
+    GeoLocation.on(&quot;error&quot;, function(fail) {
+        console.log(&quot;GeoLocation error &quot; + fail);
+    });
 
-        function startContinuousListener() {
-            var intervalMs = 1000;
-            var desiredAccuracyInMeters = 10;
-            GeoLocation.startListening(intervalMs, desiredAccuracyInMeters);
-        }
-
-        function stopContinuousListener() {
-            GeoLocation.stopListening();
-        }
-
-        module.exports = {
-            immediateLocation: immediateLocation,
-            timeoutLocation: timeoutLocation,
-            continuousLocation: continuousLocation,
-
-            startContinuousListener: startContinuousListener,
-            stopContinuousListener: stopContinuousListener
-        };
-    &lt;/JavaScript&gt;
-
-    &lt;StackPanel&gt;
-        &lt;Text&gt;Immediate:&lt;/Text&gt;
-        &lt;Text Value=&quot;{immediateLocation}&quot; /&gt;
-
-        &lt;Text&gt;Timeout:&lt;/Text&gt;
-        &lt;Text Value=&quot;{timeoutLocation}&quot; /&gt;
-
-        &lt;Text&gt;Continuous:&lt;/Text&gt;
-        &lt;Text Value=&quot;{continuousLocation}&quot; /&gt;
-
-        &lt;Button Text=&quot;Start continuous listener&quot; Clicked=&quot;{startContinuousListener}&quot; /&gt;
-        &lt;Button Text=&quot;Stop continuous listener&quot; Clicked=&quot;{stopContinuousListener}&quot; /&gt;
-    &lt;/StackPanel&gt;
-```xml
-In the above example we're using the @EventEmitter `observe` method to create an @Observable from the
-`&quot;changed&quot;` event. We can also listen to changes by using the `on` method, as follows:
-
-    GeoLocation.on(&quot;changed&quot;, function(location) { ... })
-
-Locations returned by this module are JavaScript objects of the following form:
-```json
-    {
-        latitude: a number measured in decimal degrees,
-        longitude: a number measured in decimal degrees,
-        accuracy: a number measured in meters
+    function startContinuousListener() {
+        var intervalMs = 1000;
+        var desiredAccuracyInMeters = 10;
+        GeoLocation.startListening(intervalMs, desiredAccuracyInMeters);
     }
+
+    function stopContinuousListener() {
+        GeoLocation.stopListening();
+    }
+
+    module.exports = {
+        immediateLocation: immediateLocation,
+        timeoutLocation: timeoutLocation,
+        continuousLocation: continuousLocation,
+
+        startContinuousListener: startContinuousListener,
+        stopContinuousListener: stopContinuousListener
+    };
+&lt;/JavaScript&gt;
+
+&lt;StackPanel&gt;
+    &lt;Text&gt;Immediate:&lt;/Text&gt;
+    &lt;Text Value=&quot;{immediateLocation}&quot; /&gt;
+
+    &lt;Text&gt;Timeout:&lt;/Text&gt;
+    &lt;Text Value=&quot;{timeoutLocation}&quot; /&gt;
+
+    &lt;Text&gt;Continuous:&lt;/Text&gt;
+    &lt;Text Value=&quot;{continuousLocation}&quot; /&gt;
+
+    &lt;Button Text=&quot;Start continuous listener&quot; Clicked=&quot;{startContinuousListener}&quot; /&gt;
+    &lt;Button Text=&quot;Stop continuous listener&quot; Clicked=&quot;{stopContinuousListener}&quot; /&gt;
+&lt;/StackPanel&gt;
+</code></pre>
+<p>In the above example we're using the <a href="../../fusejs/eventemitter.html">EventEmitter</a> <code>observe</code> method to create an <a href="../../fusejs/observable.html">Observable</a> from the
+<code>&quot;changed&quot;</code> event. We can also listen to changes by using the <code>on</code> method, as follows:</p>
+<pre><code>GeoLocation.on(&quot;changed&quot;, function(location) { ... })
+</code></pre>
+<p>Locations returned by this module are JavaScript objects of the following form:</p>
+<pre><code>{
+    latitude: a number measured in decimal degrees,
+    longitude: a number measured in decimal degrees,
+    accuracy: a number measured in meters
+}
 </code></pre>
 <p>To handle errors from GeoLocation we can listen to the <code>&quot;error&quot;</code> event, as follows:</p>
 <pre><code>GeoLocation.on(&quot;error&quot;, function(err) { ... })

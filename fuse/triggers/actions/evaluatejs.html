@@ -734,29 +734,29 @@ What this means is that any return value passed from the evaluated script must b
 </code></pre>
 <p>Note that of course return is optional. If you don't return anything from your evaluated JS the return value of the expression will simply be &quot;null&quot;.</p>
 <h4 id="example">Example</h4>
-<pre><code class="language-xml">    &lt;Grid Rows=&quot;0.15*, 1*&quot;&gt;
-        &lt;JavaScript&gt;
-            var Observable = require('FuseJS/Observable');
-            var webViewTitle = Observable(&quot;&lt;Unknown&gt;&quot;);
+<pre><code>&lt;Grid Rows=&quot;0.15*, 1*&quot;&gt;
+    &lt;JavaScript&gt;
+        var Observable = require('FuseJS/Observable');
+        var webViewTitle = Observable(&quot;&lt;Unknown&gt;&quot;);
 
-            function updateTitle(args) {
-                webViewTitle.value = JSON.parse(args.json);
-            };
+        function updateTitle(args) {
+            webViewTitle.value = JSON.parse(args.json);
+        };
 
-            module.exports = {
-                webViewTitle: webViewTitle.map(function(title) { return &quot;HTML Title: &quot; + title; }),
-                updateTitle: updateTitle
-            }
-        &lt;/JavaScript&gt;
-        &lt;Text Value=&quot;{webViewTitle}&quot; Alignment=&quot;Center&quot; /&gt;
-        &lt;NativeViewHost&gt;
-            &lt;WebView Url=&quot;https://www.fusetools.com&quot;&gt;
-                &lt;PageLoaded&gt;
-                    &lt;EvaluateJS JavaScript=&quot;return window.document.title;&quot; Handler=&quot;{updateTitle}&quot; /&gt;
-                &lt;/PageLoaded&gt;
-            &lt;/WebView&gt;
-        &lt;/NativeViewHost&gt;
-    &lt;/Grid&gt;
+        module.exports = {
+            webViewTitle: webViewTitle.map(function(title) { return &quot;HTML Title: &quot; + title; }),
+            updateTitle: updateTitle
+        }
+    &lt;/JavaScript&gt;
+    &lt;Text Value=&quot;{webViewTitle}&quot; Alignment=&quot;Center&quot; /&gt;
+    &lt;NativeViewHost&gt;
+        &lt;WebView Url=&quot;https://www.fusetools.com&quot;&gt;
+            &lt;PageLoaded&gt;
+                &lt;EvaluateJS JavaScript=&quot;return window.document.title;&quot; Handler=&quot;{updateTitle}&quot; /&gt;
+            &lt;/PageLoaded&gt;
+        &lt;/WebView&gt;
+    &lt;/NativeViewHost&gt;
+&lt;/Grid&gt;
 </code></pre>
 
 <section class="type-location">

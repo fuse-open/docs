@@ -702,19 +702,19 @@ Show advanced things
 <p>A panel that places children in a dedicated <code>Subtree</code> visual, allowing you to create custom container.</p>
 <h4 id="usage-example">Usage example</h4>
 <p>We use the <code>Subtree</code> property to identify the inner visual that will receive the children.</p>
-<pre><code class="language-xml">    &lt;Container ux:Class=&quot;MyContainer&quot; Subtree=&quot;innerPanel&quot;&gt;
-        &lt;Rectangle ux:Binding=&quot;Children&quot; CornerRadius=&quot;10&quot; Margin=&quot;10&quot;&gt;
-            &lt;Stroke Color=&quot;Red&quot; Width=&quot;2&quot; /&gt;
-            &lt;Panel Margin=&quot;10&quot; ux:Name=&quot;innerPanel&quot; /&gt;
-        &lt;/Rectangle&gt;
-    &lt;/Container&gt;
+<pre><code>&lt;Container ux:Class=&quot;MyContainer&quot; Subtree=&quot;innerPanel&quot;&gt;
+    &lt;Rectangle ux:Binding=&quot;Children&quot; CornerRadius=&quot;10&quot; Margin=&quot;10&quot;&gt;
+        &lt;Stroke Color=&quot;Red&quot; Width=&quot;2&quot; /&gt;
+        &lt;Panel Margin=&quot;10&quot; ux:Name=&quot;innerPanel&quot; /&gt;
+    &lt;/Rectangle&gt;
+&lt;/Container&gt;
 </code></pre>
 <p>Note that to add nodes that make up the container itself (e.g. decoration), we need to explicitly mark them
 with <code>ux:Binding=&quot;Children&quot;</code>, otherwise these nodes will be added to <code>innerPanel</code>.</p>
 <p>To use the container, we can simply do:</p>
-<pre><code class="language-xml">    &lt;MyContainer&gt;
-        &lt;Panel Color=&quot;Blue&quot; /&gt;
-    &lt;/MyContainer&gt;
+<pre><code>&lt;MyContainer&gt;
+    &lt;Panel Color=&quot;Blue&quot; /&gt;
+&lt;/MyContainer&gt;
 </code></pre>
 <p>Here, the blue panel will be placed as a child of <code>innerPanel</code>, instead of as a direct child of the
 container.</p>

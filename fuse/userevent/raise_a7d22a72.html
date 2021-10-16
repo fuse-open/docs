@@ -689,35 +689,35 @@ UserEvent.raise(args) Method (JS)
 <h4 id="example">Example</h4>
 <p>Here is a very basic example showing how you can raise a UserEvent
 from JavaScript.</p>
-<pre><code class="language-xml">    &lt;UserEvent ux:Name=&quot;myEvent&quot; /&gt;
+<pre><code>&lt;UserEvent ux:Name=&quot;myEvent&quot; /&gt;
 
-    &lt;JavaScript&gt;
-        myEvent.raise();
-    &lt;/JavaScript&gt;
+&lt;JavaScript&gt;
+    myEvent.raise();
+&lt;/JavaScript&gt;
 </code></pre>
 <p>The following example raises an event with some arguments 5 seconds
 after JavaScript has started executing, and logs its arguments in
 the event handler.</p>
-<pre><code class="language-xml">    &lt;UserEvent ux:Name=&quot;myEvent&quot; /&gt;
-    &lt;OnUserEvent EventName=&quot;myEvent&quot; Handler=&quot;{eventHandler}&quot; /&gt;
+<pre><code>&lt;UserEvent ux:Name=&quot;myEvent&quot; /&gt;
+&lt;OnUserEvent EventName=&quot;myEvent&quot; Handler=&quot;{eventHandler}&quot; /&gt;
 
-    &lt;JavaScript&gt;
-        setTimeout(function() {
+&lt;JavaScript&gt;
+    setTimeout(function() {
 
-            myEvent.raise({
-                userName: &quot;james&quot;,
-                isAdmin: false
-            });
+        myEvent.raise({
+            userName: &quot;james&quot;,
+            isAdmin: false
+        });
 
-        }, 5000);
+    }, 5000);
 
-        function eventHandler(args) {
-            console.log(&quot;User name: &quot; + args.userName);
-            console.log(&quot;Is admin: &quot; + args.isAdmin);
-        }
+    function eventHandler(args) {
+        console.log(&quot;User name: &quot; + args.userName);
+        console.log(&quot;Is admin: &quot; + args.isAdmin);
+    }
 
-        module.exports = { eventHandler: eventHandler };
-    &lt;/JavaScript&gt;
+    module.exports = { eventHandler: eventHandler };
+&lt;/JavaScript&gt;
 </code></pre>
 <ul>
 <li></li>

@@ -702,14 +702,14 @@ Show advanced things
 <p>Controls the animations for page-to-page transitions in a <code>Navigator</code>.</p>
 <p>Unlike the <code>EnteringAnimation</code> and <code>ExitingAnimation</code> triggers, <code>Transition</code> allows you to make different animations depending on which page is being navigating to, or away from.</p>
 <h3 id="example">Example</h3>
-<pre><code class="language-xml">	&lt;Page ux:Template=&quot;Main&quot;&gt;
-		&lt;Transition To=&quot;Contacts&quot;&gt;
-			&lt;Move X=&quot;-1&quot; RelativeTo=&quot;ParentSize&quot; Duration=&quot;1&quot;/&gt;
-		&lt;/Transition&gt;
-		&lt;Transition&gt;
-			&lt;Move Y=&quot;1&quot; RelativeTo=&quot;ParentSize&quot; Duration=&quot;1&quot;/&gt;
-		&lt;/Transition&gt;
-	&lt;/Page&gt;
+<pre><code>&lt;Page ux:Template=&quot;Main&quot;&gt;
+	&lt;Transition To=&quot;Contacts&quot;&gt;
+		&lt;Move X=&quot;-1&quot; RelativeTo=&quot;ParentSize&quot; Duration=&quot;1&quot;/&gt;
+	&lt;/Transition&gt;
+	&lt;Transition&gt;
+		&lt;Move Y=&quot;1&quot; RelativeTo=&quot;ParentSize&quot; Duration=&quot;1&quot;/&gt;
+	&lt;/Transition&gt;
+&lt;/Page&gt;
 </code></pre>
 <p>This page has a special transition if navigating to the <code>Contacts</code> page. In this case it will slide the page to the left. All other transitions away from this page will slide down.</p>
 <h3 id="to-from">To / From</h3>
@@ -732,9 +732,9 @@ Show advanced things
 <h3 id="play-direction">Play direction</h3>
 <p>If the page is becoming inactive the transition will be played forward. If the page is becoming active the transition will be played backward. This means the transition is always defining the animation towards the inactive state.</p>
 <p>With certain combinations of properties this may at first seem odd, for example:</p>
-<pre><code class="language-xml">	&lt;Transition Direction=&quot;ToActive&quot;&gt;
-		&lt;Move X=&quot;100&quot; Duration=&quot;1&quot;/&gt;
-	&lt;/Transition&gt;
+<pre><code>&lt;Transition Direction=&quot;ToActive&quot;&gt;
+	&lt;Move X=&quot;100&quot; Duration=&quot;1&quot;/&gt;
+&lt;/Transition&gt;
 </code></pre>
 <p>This <code>Transition</code> is only selected when the page is becoming the active one. The animation will start at <code>X=100</code> and move towards <code>X=0</code> over a duration of <code>1</code>.</p>
 <p>The final state of any active page is always with all transitions deactivated.</p>

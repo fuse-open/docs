@@ -702,14 +702,14 @@ Show advanced things
 </section>
 <p>A <code>TransformGesture</code> interprets pointer gestures and modifies an <code>InteractiveTransform</code> in response.</p>
 <p>Note that the <code>TransformGesture</code> on its own has no visual impact, it only modifies the <code>InteractiveTransform</code>, which provides the actual visual transformation.  For example here is a simple image viewing setup:</p>
-<pre><code class="language-xml">    &lt;Panel HitTestMode=&quot;LocalBounds&quot;&gt;
-        &lt;Image File=&quot;my_image.jpg&quot;&gt;
-            &lt;InteractiveTransform ux:Name=&quot;ImageTrans&quot;/&gt;
-        &lt;/Image&gt;
-        &lt;ZoomGesture Target=&quot;ImageTrans&quot;/&gt;
-        &lt;PanGesture Target=&quot;ImageTrans&quot;/&gt;
-        &lt;RotateGesture Target=&quot;ImageTrans&quot;/&gt;
-    &lt;/Panel&gt;
+<pre><code>&lt;Panel HitTestMode=&quot;LocalBounds&quot;&gt;
+    &lt;Image File=&quot;my_image.jpg&quot;&gt;
+        &lt;InteractiveTransform ux:Name=&quot;ImageTrans&quot;/&gt;
+    &lt;/Image&gt;
+    &lt;ZoomGesture Target=&quot;ImageTrans&quot;/&gt;
+    &lt;PanGesture Target=&quot;ImageTrans&quot;/&gt;
+    &lt;RotateGesture Target=&quot;ImageTrans&quot;/&gt;
+&lt;/Panel&gt;
 </code></pre>
 <p>One <code>InteractiveTransform</code> can be the target of multiple gestures. They will coorindate correctly with each other to provide a unified experience. The <code>InteractiveTransform</code> will contain values that represent the total transformation.</p>
 <p>For a complete list of single-finger gestures such as <a href="../../fuse/gestures/tapped.html">Tapped</a>, LongPress etc., see <a href="../../fuse/triggers/trigger.html">Triggers</a>.</p>

@@ -707,23 +707,23 @@ data-binding can be specified relative to the item itself rather than having to 
 This means that the children of an <code>Each</code> cannot be accessed from outside it.
 You can, however, access nodes declared outside the <code>Each</code> from the inside.</p>
 <h4 id="example">Example</h4>
-<pre><code class="language-xml">    &lt;JavaScript&gt;
-        module.exports = {
-            items: [
-                { name: &quot;Jake&quot;, age: 24 },
-                { name: &quot;Julie&quot;, age: 25 },
-                { name: &quot;Jerard&quot;, age: 26 }
-            ]
-        };
-    &lt;/JavaScript&gt;
-    &lt;StackPanel&gt;
-        &lt;Each Items=&quot;{items}&quot;&gt;
-            &lt;StackPanel&gt;
-                &lt;Text Value=&quot;{name}&quot; /&gt;
-                &lt;Text Value=&quot;{age}&quot; /&gt;
-            &lt;/StackPanel&gt;
-        &lt;/Each&gt;
-    &lt;/StackPanel&gt;
+<pre><code>&lt;JavaScript&gt;
+    module.exports = {
+        items: [
+            { name: &quot;Jake&quot;, age: 24 },
+            { name: &quot;Julie&quot;, age: 25 },
+            { name: &quot;Jerard&quot;, age: 26 }
+        ]
+    };
+&lt;/JavaScript&gt;
+&lt;StackPanel&gt;
+    &lt;Each Items=&quot;{items}&quot;&gt;
+        &lt;StackPanel&gt;
+            &lt;Text Value=&quot;{name}&quot; /&gt;
+            &lt;Text Value=&quot;{age}&quot; /&gt;
+        &lt;/StackPanel&gt;
+    &lt;/Each&gt;
+&lt;/StackPanel&gt;
 </code></pre>
 <h3 id="using-each-with-ux-template">Using <code>Each</code> with <code>ux:Template</code></h3>
 <p>If you are using <code>Each</code> in a custom made component, you can increase the cusomizability of that component by allowing it to take in custom template objects which it can use instead of the default template the <code>Each</code> is using. To do this, you need to do two things:</p>
@@ -734,43 +734,43 @@ You can, however, access nodes declared outside the <code>Each</code> from the i
 <p>If a template isn't specified, the child element of <code>Each</code> will be used as a de-facto template.</p>
 <h4 id="example">Example</h4>
 <p>The following example demonstrates passing custom templates into a class for an <code>Each</code> to use:</p>
-<pre><code class="language-xml">    &lt;StackPanel ux:Class=&quot;CoolRepeater&quot; Background=&quot;#FAD&quot;&gt;
-        &lt;Each TemplateSource=&quot;this&quot; TemplateKey=&quot;Item&quot; Count=&quot;20&quot;&gt;
-            &lt;Text&gt;No template is given&lt;/Text&gt;
-        &lt;/Each&gt;
-    &lt;/StackPanel&gt;
-    &lt;CoolRepeater&gt;
-        &lt;Text ux:Template=&quot;Item&quot;&gt;Hello, world!&lt;/Text&gt;
-    &lt;/CoolRepeater&gt;
+<pre><code>&lt;StackPanel ux:Class=&quot;CoolRepeater&quot; Background=&quot;#FAD&quot;&gt;
+    &lt;Each TemplateSource=&quot;this&quot; TemplateKey=&quot;Item&quot; Count=&quot;20&quot;&gt;
+        &lt;Text&gt;No template is given&lt;/Text&gt;
+    &lt;/Each&gt;
+&lt;/StackPanel&gt;
+&lt;CoolRepeater&gt;
+    &lt;Text ux:Template=&quot;Item&quot;&gt;Hello, world!&lt;/Text&gt;
+&lt;/CoolRepeater&gt;
 </code></pre>
 <p>Notice that if you remove the &quot;Hello, world!&quot; text that is our custom template, the <code>Each</code> will fall back to using the child as the template.</p>
 <p>If you want the ability to control the template on a per-item basis, the similar <code>MatchKey</code>-property can be used:</p>
-<pre><code class="language-xml">    &lt;JavaScript&gt;
-        var Observable = require(&quot;FuseJS/Observable&quot;);
+<pre><code>&lt;JavaScript&gt;
+    var Observable = require(&quot;FuseJS/Observable&quot;);
 
-        module.exports.posts = Observable(
-            {postType: &quot;text&quot;, body: &quot;Lorem ipsum&quot;, title: &quot;Hello, world&quot;},
-            {postType: &quot;quote&quot;, quote: &quot;Stuff&quot;, title: &quot;A quote&quot;}
-        );
-    &lt;/JavaScript&gt;
+    module.exports.posts = Observable(
+        {postType: &quot;text&quot;, body: &quot;Lorem ipsum&quot;, title: &quot;Hello, world&quot;},
+        {postType: &quot;quote&quot;, quote: &quot;Stuff&quot;, title: &quot;A quote&quot;}
+    );
+&lt;/JavaScript&gt;
 
-    &lt;ScrollView&gt;
-        &lt;StackPanel&gt;
-            &lt;Each Items=&quot;{posts}&quot; MatchKey=&quot;postType&quot;&gt;
-                &lt;StackPanel ux:Template=&quot;text&quot; Height=&quot;100&quot; Color=&quot;#FFF&quot; Margin=&quot;10&quot; Padding=&quot;10&quot;&gt;
-                    &lt;Shadow Distance=&quot;3&quot; /&gt;
-                    &lt;Text FontSize=&quot;25&quot; Value=&quot;{title}&quot; /&gt;
-                    &lt;Text FontSize=&quot;15&quot; Value=&quot;{body}&quot; TextWrapping=&quot;Wrap&quot; /&gt;
-                &lt;/StackPanel&gt;
-                &lt;DockPanel ux:Template=&quot;quote&quot; Height=&quot;200&quot; Color=&quot;#FFF&quot; Margin=&quot;10&quot; Padding=&quot;10&quot;&gt;
-                    &lt;Shadow Distance=&quot;3&quot; /&gt;
-                    &lt;Text FontSize=&quot;25&quot; Value=&quot;{title}&quot; Dock=&quot;Top&quot; /&gt;
-                    &lt;Text FontSize=&quot;50&quot; Value=&quot;”&quot; Dock=&quot;Left&quot; /&gt;
-                    &lt;Text FontSize=&quot;15&quot; Margin=&quot;10&quot; Value=&quot;{quote}&quot; /&gt;
-                &lt;/DockPanel&gt;
-            &lt;/Each&gt;
-        &lt;/StackPanel&gt;
-    &lt;/ScrollView&gt;
+&lt;ScrollView&gt;
+    &lt;StackPanel&gt;
+        &lt;Each Items=&quot;{posts}&quot; MatchKey=&quot;postType&quot;&gt;
+            &lt;StackPanel ux:Template=&quot;text&quot; Height=&quot;100&quot; Color=&quot;#FFF&quot; Margin=&quot;10&quot; Padding=&quot;10&quot;&gt;
+                &lt;Shadow Distance=&quot;3&quot; /&gt;
+                &lt;Text FontSize=&quot;25&quot; Value=&quot;{title}&quot; /&gt;
+                &lt;Text FontSize=&quot;15&quot; Value=&quot;{body}&quot; TextWrapping=&quot;Wrap&quot; /&gt;
+            &lt;/StackPanel&gt;
+            &lt;DockPanel ux:Template=&quot;quote&quot; Height=&quot;200&quot; Color=&quot;#FFF&quot; Margin=&quot;10&quot; Padding=&quot;10&quot;&gt;
+                &lt;Shadow Distance=&quot;3&quot; /&gt;
+                &lt;Text FontSize=&quot;25&quot; Value=&quot;{title}&quot; Dock=&quot;Top&quot; /&gt;
+                &lt;Text FontSize=&quot;50&quot; Value=&quot;”&quot; Dock=&quot;Left&quot; /&gt;
+                &lt;Text FontSize=&quot;15&quot; Margin=&quot;10&quot; Value=&quot;{quote}&quot; /&gt;
+            &lt;/DockPanel&gt;
+        &lt;/Each&gt;
+    &lt;/StackPanel&gt;
+&lt;/ScrollView&gt;
 </code></pre>
 <p><code>MatchKey</code> works by looking for a property in the data context of each item from <code>Items</code>.
 The value of this property is then used to determine the template to use for the current item.

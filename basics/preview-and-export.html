@@ -700,7 +700,7 @@ Then open your project in Fuse and click the <em>&quot;Devices&quot;</em> button
 <h3 id="android-setup">Android setup</h3>
 <p>To be able to preview or export to Android, you need to install the required SDK components.
 Pull up your terminal and run the following:</p>
-<pre><code class="language-s">fuse install android
+<pre><code class="language-sh">fuse install android
 </code></pre>
 <p>(You do not need <code>sudo</code> on macOS)</p>
 <p>This will attempt to locate existing Android SDK components, and install them if necessary.</p>
@@ -732,7 +732,7 @@ From there, press the &quot;play&quot; button to run the preview session.</p>
 <p><img src="../media/preview-and-export-device-preview-atom-command-palette.png" alt="Atom preview from command palette"></p>
 <h3 id="preview-from-command-line">Preview from command line</h3>
 <p>In your terminal, <code>cd</code> to the your project's directory, and run the command that corresponds to your build target.</p>
-<pre><code class="language-s">fuse preview -t=Android
+<pre><code class="language-sh">fuse preview -t=Android
 fuse preview -t=iOS
 fuse preview -t=Local   # The -t=Local flag is optional in this case
 </code></pre>
@@ -742,20 +742,20 @@ fuse preview -t=Local   # The -t=Local flag is optional in this case
 <p>The simplest way to export is to use the &quot;Export&quot; menu in Fuse. However, the command line provides more options.</p>
 <h3 id="android">Android</h3>
 <p>In the project root, run the following command in your shell:</p>
-<pre><code class="language-s">uno build android --run
+<pre><code class="language-sh">uno build android --run
 </code></pre>
 <p>This will deploy and start the project on your connected Android device.</p>
 <p>To make a <strong>release build</strong>, run:</p>
-<pre><code class="language-s">uno build android --configuration=Release
+<pre><code class="language-sh">uno build android --configuration=Release
 </code></pre>
 <p><em>Note:</em> to export your app to the Google Play Store, you need to <a href="../preview-and-export/signing.html">sign it first</a>.</p>
 <h3 id="ios">iOS</h3>
 <p>In the project root, run the following command in your shell:</p>
-<pre><code class="language-s">uno build ios --run
+<pre><code class="language-sh">uno build ios --run
 </code></pre>
 <p>If you instead want to open the generated project in Xcode, run <code>uno build ios --debug</code></p>
 <p>To make a <strong>release build</strong>, run:</p>
-<pre><code class="language-s">uno build ios --configuration=Release
+<pre><code class="language-sh">uno build ios --configuration=Release
 </code></pre>
 <p><em>Note:</em> to export your app to the App Store, you need to <a href="../preview-and-export/signing.html">sign it first</a>.</p>
 <h2 id="signing">Signing</h2>

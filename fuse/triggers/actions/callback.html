@@ -702,18 +702,18 @@ Show advanced things
 <p>Calls a JavaScript function when a trigger is activated.</p>
 <h4 id="example">Example</h4>
 <p>This example calls the JavaScript function <code>someJSFunction</code> when a <a href="../../../fuse/controls/button.html">Button</a> is <a href="../../../fuse/gestures/clicked.html">Clicked</a>.</p>
-<pre><code class="language-xml">    &lt;JavaScript&gt;
-        var someJSFunction = function () {
-            console.log(&quot;some function called&quot;);
-        }
-        module.exports = { someJSFunction: someJSFunction };
-    &lt;/JavaScript&gt;
+<pre><code>&lt;JavaScript&gt;
+    var someJSFunction = function () {
+        console.log(&quot;some function called&quot;);
+    }
+    module.exports = { someJSFunction: someJSFunction };
+&lt;/JavaScript&gt;
 
-    &lt;Button Text=&quot;Do something&quot;&gt;
-        &lt;Clicked&gt;
-            &lt;Callback Handler=&quot;{someJSFunction}&quot;/&gt;
-        &lt;/Clicked&gt;
-    &lt;/Button&gt;
+&lt;Button Text=&quot;Do something&quot;&gt;
+    &lt;Clicked&gt;
+        &lt;Callback Handler=&quot;{someJSFunction}&quot;/&gt;
+    &lt;/Clicked&gt;
+&lt;/Button&gt;
 </code></pre>
 
 <section class="type-location">

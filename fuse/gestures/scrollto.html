@@ -703,7 +703,7 @@ Show advanced things
 <h5 id="absolute-position">Absolute position</h5>
 <p>To scroll to an absolute position, provide a value to the <code>Position</code> property.
 This property accepts a pair of numbers, representing X and Y coordinates.</p>
-<pre><code class="language-xml">    &lt;ScrollTo Target=&quot;myScrollView&quot; Position=&quot;0, 50&quot; /&gt;
+<pre><code>&lt;ScrollTo Target=&quot;myScrollView&quot; Position=&quot;0, 50&quot; /&gt;
 </code></pre>
 <h5 id="relative-position">Relative position</h5>
 <p>Alternatively, you can scroll to a relative position using the <code>RelativePosition</code> property.</p>
@@ -711,26 +711,26 @@ This property accepts a pair of numbers, representing X and Y coordinates.</p>
 Each coordinate should be in the range <code>0..1</code>, where <code>1</code> represents the largest distance
 the user can scroll in that direction.
 For instance, a <code>RelativePosition</code> of <code>1, 1</code> will scroll to the bottom-right corner.</p>
-<pre><code class="language-xml">    &lt;ScrollTo Target=&quot;myScrollView&quot; RelativePosition=&quot;0, 0.5&quot; /&gt;
+<pre><code>&lt;ScrollTo Target=&quot;myScrollView&quot; RelativePosition=&quot;0, 0.5&quot; /&gt;
 </code></pre>
 <p>When triggered, the above will scroll <code>myScrollView</code> to the vertical center of its scrollable area.</p>
 <h4 id="example">Example</h4>
-<pre><code class="language-xml">    &lt;DockPanel&gt;
-        &lt;Button Dock=&quot;Top&quot; Text=&quot;Scroll to top&quot; Margin=&quot;20&quot;&gt;
-            &lt;Clicked&gt;
-                &lt;ScrollTo Target=&quot;myScrollView&quot; Position=&quot;0,0&quot; /&gt;
-            &lt;/Clicked&gt;
-        &lt;/Button&gt;
+<pre><code>&lt;DockPanel&gt;
+    &lt;Button Dock=&quot;Top&quot; Text=&quot;Scroll to top&quot; Margin=&quot;20&quot;&gt;
+        &lt;Clicked&gt;
+            &lt;ScrollTo Target=&quot;myScrollView&quot; Position=&quot;0,0&quot; /&gt;
+        &lt;/Clicked&gt;
+    &lt;/Button&gt;
 
-        &lt;ScrollView ux:Name=&quot;myScrollView&quot;&gt;
-            &lt;Rectangle Height=&quot;2000&quot;&gt;
-                &lt;LinearGradient&gt;
-                    &lt;GradientStop Offset=&quot;0&quot; Color=&quot;Red&quot; /&gt;
-                    &lt;GradientStop Offset=&quot;1&quot; Color=&quot;Blue&quot; /&gt;
-                &lt;/LinearGradient&gt;
-            &lt;/Rectangle&gt;
-        &lt;/ScrollView&gt;
-    &lt;/DockPanel&gt;
+    &lt;ScrollView ux:Name=&quot;myScrollView&quot;&gt;
+        &lt;Rectangle Height=&quot;2000&quot;&gt;
+            &lt;LinearGradient&gt;
+                &lt;GradientStop Offset=&quot;0&quot; Color=&quot;Red&quot; /&gt;
+                &lt;GradientStop Offset=&quot;1&quot; Color=&quot;Blue&quot; /&gt;
+            &lt;/LinearGradient&gt;
+        &lt;/Rectangle&gt;
+    &lt;/ScrollView&gt;
+&lt;/DockPanel&gt;
 </code></pre>
 
 <section class="type-location">

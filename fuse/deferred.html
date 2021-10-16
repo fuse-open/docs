@@ -702,15 +702,15 @@ Show advanced things
 <p>Defers the creation of nodes to improve initialization time.</p>
 <p><code>Deferred</code> says that the content is not required immediately and may be created somewhat later. This allows the app to startup faster, or to create new pages faster. Without <code>Deferred</code> the nodes are initialized all in the same frame, which can lead to delays. With <code>Deferred</code> the node creation is staggered over several frames. This allows the app to start rendering and displaying prior to being completely initialized.</p>
 <p>A common use is with an <a href="../fuse/reactive/each.html">Each</a>:</p>
-<pre><code class="language-xml">    &lt;Each Items=&quot;{items}&quot;&gt;
-        &lt;Deferred&gt;
-            &lt;StackPanel Orientation=&quot;Horizontal&quot;&gt;
-                &lt;Text Value=&quot;{name}&quot;/&gt;
-                &lt;Text Value=&quot;{address}&quot;/&gt;
-                &lt;Text Value=&quot;{phone}&quot;/&gt;
-            &lt;/StackPanel&gt;
-        &lt;/Deferred&gt;
-    &lt;/Each&gt;
+<pre><code>&lt;Each Items=&quot;{items}&quot;&gt;
+    &lt;Deferred&gt;
+        &lt;StackPanel Orientation=&quot;Horizontal&quot;&gt;
+            &lt;Text Value=&quot;{name}&quot;/&gt;
+            &lt;Text Value=&quot;{address}&quot;/&gt;
+            &lt;Text Value=&quot;{phone}&quot;/&gt;
+        &lt;/StackPanel&gt;
+    &lt;/Deferred&gt;
+&lt;/Each&gt;
 </code></pre>
 <p>Note that the delay is measured in frames: deferred content will still be added quickly. Nonetheless it may result in some popping of the new elements and a change in layout.</p>
 <p>You only need to use this feature when you are having initializaiton time problems at startup or on new pages. Wrapping the content of <a href="../fuse/reactive/each.html">Each</a> in <code>Deferred</code> is a simple change that can help when you are using lists of items. The individual pages of a top-level <a href="../fuse/controls/pagecontrol.html">PageControl</a> may also be suitable for <code>Deferred</code>.</p>

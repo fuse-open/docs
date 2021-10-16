@@ -702,25 +702,25 @@ Show advanced things
 <p>Allows placing a node in a different place in the UX tree than the location of this
 behavior, while keeping the data context from this behavior.</p>
 <h4 id="example">Example</h4>
-<pre><code class="language-xml">    &lt;Panel ux:Class=&quot;MyPage&quot;&gt;
-        &lt;Visual ux:Dependency=&quot;navBar&quot; /&gt;
-        &lt;string ux:Property=&quot;Content&quot; /&gt;
-        &lt;float4 ux:Property=&quot;Highlight&quot; /&gt;
-        &lt;Text Alignment=&quot;Center&quot; Value=&quot;{ReadProperty Content}&quot; /&gt;
-        &lt;WhileActive&gt;
-            &lt;AlternateRoot ParentNode=&quot;navBar&quot;&gt;
-                &lt;Rectangle Color=&quot;{ReadProperty Highlight}&quot; /&gt;
-            &lt;/AlternateRoot&gt;
-        &lt;/WhileActive&gt;
-    &lt;/Panel&gt;
+<pre><code>&lt;Panel ux:Class=&quot;MyPage&quot;&gt;
+    &lt;Visual ux:Dependency=&quot;navBar&quot; /&gt;
+    &lt;string ux:Property=&quot;Content&quot; /&gt;
+    &lt;float4 ux:Property=&quot;Highlight&quot; /&gt;
+    &lt;Text Alignment=&quot;Center&quot; Value=&quot;{ReadProperty Content}&quot; /&gt;
+    &lt;WhileActive&gt;
+        &lt;AlternateRoot ParentNode=&quot;navBar&quot;&gt;
+            &lt;Rectangle Color=&quot;{ReadProperty Highlight}&quot; /&gt;
+        &lt;/AlternateRoot&gt;
+    &lt;/WhileActive&gt;
+&lt;/Panel&gt;
 
-    &lt;ClientPanel&gt;
-        &lt;Panel ux:Name=&quot;navBar&quot; Dock=&quot;Top&quot; Height=&quot;56&quot; /&gt;
-        &lt;PageControl&gt;
-            &lt;MyPage Content=&quot;Page 1&quot; Highlight=&quot;#18f&quot; navBar=&quot;navBar&quot; /&gt;
-            &lt;MyPage Content=&quot;Page 2&quot; Highlight=&quot;#1f8&quot; navBar=&quot;navBar&quot; /&gt;
-        &lt;/PageControl&gt;
-    &lt;/ClientPanel&gt;
+&lt;ClientPanel&gt;
+    &lt;Panel ux:Name=&quot;navBar&quot; Dock=&quot;Top&quot; Height=&quot;56&quot; /&gt;
+    &lt;PageControl&gt;
+        &lt;MyPage Content=&quot;Page 1&quot; Highlight=&quot;#18f&quot; navBar=&quot;navBar&quot; /&gt;
+        &lt;MyPage Content=&quot;Page 2&quot; Highlight=&quot;#1f8&quot; navBar=&quot;navBar&quot; /&gt;
+    &lt;/PageControl&gt;
+&lt;/ClientPanel&gt;
 </code></pre>
 
 <section class="type-location">
