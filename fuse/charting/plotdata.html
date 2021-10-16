@@ -701,17 +701,17 @@ Show advanced things
 </section>
 <p>Iterator for visual plot data.</p>
 <p>This works like an <a href="../../fuse/reactive/each.html">Each</a> for the visible data points. Use a PlotBar or  PlotCurvePoint to add elements matching this data. Or use a <code>{Plot data.*}</code> to get at the variables for the data point.</p>
-<pre><code>&lt;Panel&gt;
-    &lt;c:PlotData&gt;
-        &lt;c:PlotBar/&gt;
-    &lt;/c:PlotData&gt;
-&lt;/Panel&gt;
+<pre><code class="language-xml">    &lt;Panel&gt;
+        &lt;c:PlotData&gt;
+            &lt;c:PlotBar/&gt;
+        &lt;/c:PlotData&gt;
+    &lt;/Panel&gt;
 
-&lt;Curve&gt;
-    &lt;c:PlotData&gt;
-        &lt;c:PlotCurvePoint/&gt;
-    &lt;/c:PlotData&gt;
-&lt;/Curve&gt;
+    &lt;Curve&gt;
+        &lt;c:PlotData&gt;
+            &lt;c:PlotCurvePoint/&gt;
+        &lt;/c:PlotData&gt;
+    &lt;/Curve&gt;
 </code></pre>
 
 <section class="type-location">
@@ -772,7 +772,11 @@ DataSeries
 <span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
 </h5>
 <div class="table-of-contents-item-brief">
-<p>Iterate data from this DataSeries. Use a <code>ux:Name</code> on the DataSeries. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../../fuse/charting/plotdata/series.html"><i class="fa fa-ellipsis-h"></i></a></p>
+<p>Iterate data from this DataSeries. Use a <code>ux:Name</code> on the DataSeries.</p>
+<pre><code class="language-xml">    &lt;Plot&gt;
+        &lt;DataSeries Source=&quot;{values0}&quot; ux:Name=&quot;seriesOne&quot;/&gt;
+        &lt;DataSeries Source=&quot;{values1}&quot; ux:Name=&quot;seriesTwo&quot;/&gt; &lt;a href=&quot;../../fuse/charting/plotdata/series.html&quot; class=&quot;table-of-contents-item-has-more&quot; title=&quot;There is more information available for this entry&quot;&gt;&lt;i class=&quot;fa fa-ellipsis-h&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+</code></pre>
 
 </div>
 </article>
@@ -791,7 +795,11 @@ int
 <span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
 </h5>
 <div class="table-of-contents-item-brief">
-<p>Iterate data from this DataSeries, by index. The index is based on the order the <code>DataSeries</code> are added to the Plot. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../../fuse/charting/plotdata/seriesindex.html"><i class="fa fa-ellipsis-h"></i></a></p>
+<p>Iterate data from this DataSeries, by index. The index is based on the order the <code>DataSeries</code> are added to the Plot.</p>
+<pre><code class="language-xml">    &lt;Plot&gt;
+        &lt;DataSeries Source=&quot;{values0}&quot; ux:Name=&quot;seriesOne&quot;/&gt;&lt;!-- SeriesIndex=&quot;0&quot; --&gt;
+        &lt;DataSeries Source=&quot;{values1}&quot; ux:Name=&quot;seriesTwo&quot;/&gt;&lt;!-- SeriesIndex=&quot;1&quot; --&gt;
+</code></pre>
 
 </div>
 </article>

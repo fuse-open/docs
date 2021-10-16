@@ -690,18 +690,19 @@ of the animators involved. Be aware that actions are not part of the animation.<
 <p>Triggers normally use the same animators when deactivating as they do when they activate. There are however
 animations that require a different set of animators when animating back from the active state. For this purpose
 one can bind a new set of animators to the <code>BackwardAnimation</code> property like so:</p>
-<pre><code>&lt;Panel Width=&quot;100&quot; Height=&quot;100&quot; Color=&quot;#00b2ee&quot;&gt;
-    &lt;WhilePressed&gt;
-        &lt;Rotate Degrees=&quot;90&quot; Duration=&quot;0.5&quot; /&gt;
-        &lt;Scale Factor=&quot;1.5&quot; Duration=&quot;1&quot; Easing=&quot;QuadraticInOut&quot; /&gt;
-        &lt;TriggerAnimation ux:Binding=&quot;BackwardAnimation&quot;&gt;
+<pre><code class="language-xml">    &lt;Panel Width=&quot;100&quot; Height=&quot;100&quot; Color=&quot;#00b2ee&quot;&gt;
+        &lt;WhilePressed&gt;
+            &lt;Rotate Degrees=&quot;90&quot; Duration=&quot;0.5&quot; /&gt;
             &lt;Scale Factor=&quot;1.5&quot; Duration=&quot;1&quot; Easing=&quot;QuadraticInOut&quot; /&gt;
-        &lt;/TriggerAnimation&gt;
-    &lt;/WhilePressed&gt;
-&lt;/Panel&gt;
+            &lt;TriggerAnimation ux:Binding=&quot;BackwardAnimation&quot;&gt;
+                &lt;Scale Factor=&quot;1.5&quot; Duration=&quot;1&quot; Easing=&quot;QuadraticInOut&quot; /&gt;
+            &lt;/TriggerAnimation&gt;
+        &lt;/WhilePressed&gt;
+    &lt;/Panel&gt;
+```xml
+In this example, the @Panel only rotates when pressed. When the pointer is released, it does not animate back.
+Note that the effect of the animators are still reversed. The only difference is that they loose their duration.
 </code></pre>
-<p>In this example, the <a href="../../../fuse/controls/panel.html">Panel</a> only rotates when pressed. When the pointer is released, it does not animate back.
-Note that the effect of the animators are still reversed. The only difference is that they loose their duration.</p>
 
 <section class="type-location type-location-leaf">
 <h3 id="section-location">Location</h3>

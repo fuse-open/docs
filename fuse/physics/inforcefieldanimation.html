@@ -703,24 +703,24 @@ Show advanced things
 <p>The animation will animate from 0(outside the forcefield radius), to 1(at the center of the forcefield), unless <code>From</code> and <code>To</code> are used to specify a custom range. This is the same as using a <code>RangeAdapter</code>.</p>
 <h3 id="example">Example</h3>
 <p>In the following example, a red circle will get smaller as a blue, filled circle nears the center <code>PointAttract</code>, <code>centerAttract</code>. Because <code>To</code> is set to <code>1.3</code> on the <code>InForceFieldAnimation</code>, the animation will never animate further than <code>0.77</code>.</p>
-<pre><code>&lt;Panel&gt;
-    &lt;Panel Width=&quot;60&quot; Height=&quot;60&quot; Alignment=&quot;BottomLeft&quot;&gt;
-        &lt;Circle Color=&quot;#42A5F5&quot; /&gt;
-        &lt;Draggable /&gt;
-        &lt;InForceFieldAnimation  ForceField=&quot;centerAttract&quot; From=&quot;0&quot; To=&quot;1.3&quot;&gt;
-            &lt;Scale Target=&quot;centerCircle&quot; Factor=&quot;.0&quot; /&gt;
-        &lt;/InForceFieldAnimation&gt;
+<pre><code class="language-xml">    &lt;Panel&gt;
+        &lt;Panel Width=&quot;60&quot; Height=&quot;60&quot; Alignment=&quot;BottomLeft&quot;&gt;
+            &lt;Circle Color=&quot;#42A5F5&quot; /&gt;
+            &lt;Draggable /&gt;
+            &lt;InForceFieldAnimation  ForceField=&quot;centerAttract&quot; From=&quot;0&quot; To=&quot;1.3&quot;&gt;
+                &lt;Scale Target=&quot;centerCircle&quot; Factor=&quot;.0&quot; /&gt;
+            &lt;/InForceFieldAnimation&gt;
+        &lt;/Panel&gt;
+        &lt;Panel Width=&quot;300&quot; Height=&quot;300&quot; Alignment=&quot;Center&quot; &gt;
+            &lt;Circle ux:Name=&quot;centerCircle&quot; &gt;
+                &lt;Stroke Color=&quot;#F00&quot; Width=&quot;4&quot;/&gt;
+            &lt;/Circle&gt;
+            &lt;PointAttractor ux:Name=&quot;centerAttract&quot; Radius=&quot;150&quot; Strength=&quot;250&quot; /&gt;
+        &lt;/Panel&gt;
     &lt;/Panel&gt;
-    &lt;Panel Width=&quot;300&quot; Height=&quot;300&quot; Alignment=&quot;Center&quot; &gt;
-        &lt;Circle ux:Name=&quot;centerCircle&quot; &gt;
-            &lt;Stroke Color=&quot;#F00&quot; Width=&quot;4&quot;/&gt;
-        &lt;/Circle&gt;
-        &lt;PointAttractor ux:Name=&quot;centerAttract&quot; Radius=&quot;150&quot; Strength=&quot;250&quot; /&gt;
+    &lt;Panel Alignment=&quot;BottomLeft&quot; Width=&quot;100&quot; Height=&quot;100&quot;&gt;
+        &lt;PointAttractor Radius=&quot;300&quot; Strength=&quot;150&quot; Offset=&quot;0,0,0&quot;/&gt;
     &lt;/Panel&gt;
-&lt;/Panel&gt;
-&lt;Panel Alignment=&quot;BottomLeft&quot; Width=&quot;100&quot; Height=&quot;100&quot;&gt;
-    &lt;PointAttractor Radius=&quot;300&quot; Strength=&quot;150&quot; Offset=&quot;0,0,0&quot;/&gt;
-&lt;/Panel&gt;
 </code></pre>
 
 <section class="type-location">

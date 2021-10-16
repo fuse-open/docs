@@ -703,19 +703,19 @@ Show advanced things
 <p><code>With</code> is useful when you have a complex data context and you'd like to simplify data-binding. This is
 particularly useful for &quot;viewing&quot; part of a deeply-nested object graph.</p>
 <h4 id="example">Example</h4>
-<pre><code>&lt;JavaScript&gt;
-    module.exports = {
-        complex: {
-            item1: {
-                subitem1: { name: &quot;Spongebob&quot;, age: 32 }
+<pre><code class="language-xml">    &lt;JavaScript&gt;
+        module.exports = {
+            complex: {
+                item1: {
+                    subitem1: { name: &quot;Spongebob&quot;, age: 32 }
+                }
             }
-        }
-    };
-&lt;/JavaScript&gt;
-&lt;With Data=&quot;{complex.item1.subitem1}&quot;&gt;
-    &lt;Text Value=&quot;{name}&quot; /&gt;
-    &lt;Text Value=&quot;{age}&quot; /&gt;
-&lt;/With&gt;
+        };
+    &lt;/JavaScript&gt;
+    &lt;With Data=&quot;{complex.item1.subitem1}&quot;&gt;
+        &lt;Text Value=&quot;{name}&quot; /&gt;
+        &lt;Text Value=&quot;{age}&quot; /&gt;
+    &lt;/With&gt;
 </code></pre>
 
 <section class="type-location">

@@ -693,16 +693,16 @@ The default template is the one explicitly marked with <code>ux:DefaultTemplate=
 <p>MatchKey can be used together with <code>ux:Template</code> to select the correct template based on
 a string field in the data source.</p>
 <p>Instead of:</p>
-<pre><code>&lt;Each Items=&quot;{listData}&quot;&gt;
-&lt;Deferred&gt;
-    &lt;Match Value=&quot;{type}&quot;&gt;
-        &lt;Case String=&quot;month&quot;&gt;
-            &lt;Panel ...
+<pre><code class="language-xml">    &lt;Each Items=&quot;{listData}&quot;&gt;
+    &lt;Deferred&gt;
+        &lt;Match Value=&quot;{type}&quot;&gt;
+            &lt;Case String=&quot;month&quot;&gt;
+                &lt;Panel ...
 </code></pre>
 <p>Do:</p>
-<pre><code>&lt;Each Items=&quot;{listData}&quot; MatchKey=&quot;type&quot;&gt;
-    &lt;Deferred ux:Template=&quot;month&quot;&gt;
-        &lt;Panel ...
+<pre><code class="language-xml">    &lt;Each Items=&quot;{listData}&quot; MatchKey=&quot;type&quot;&gt;
+        &lt;Deferred ux:Template=&quot;month&quot;&gt;
+            &lt;Panel ...
 </code></pre>
 
 <section class="type-location type-location-leaf">

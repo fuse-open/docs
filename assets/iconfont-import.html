@@ -684,30 +684,30 @@
 <p>Icon fonts, like <a href="http://fontawesome.io/">FontAwesome</a>, are special fonts that contain vector icons instead of characters. These provide crisp icons in your app without having to use <a href="../fuse/resources/multidensityimagesource.html">MultiDensityImageSource</a>.</p>
 <h2 id="importing-an-icon-font">Importing an Icon font</h2>
 <p>Icon fonts work just like any other font. To use one, you need to create a <a href="../fuse/font.html">Font</a> element, like this:</p>
-<pre><code>&lt;Font File=&quot;assets/fontawesome-webfont.ttf&quot; ux:Global=&quot;FontAwesome&quot; /&gt;
+<pre><code class="language-xml">	&lt;Font File=&quot;assets/fontawesome-webfont.ttf&quot; ux:Global=&quot;FontAwesome&quot; /&gt;
 </code></pre>
 <p>With this done, we can use the font from any component by setting <code>Font</code> to whatever the global name of the <code>Font</code> is. In our case, this would be <code>FontAwesome</code>.</p>
 <h2 id="using-an-icon-font">Using an icon font</h2>
 <p>As the icon font uses special unicode characters, you need to use escaped character literals. These are escaped differently in JavaScript and UX.</p>
 <h3 id="ux">UX</h3>
 <p>In UX, you escape the unicode literals as you normally would in xml. This example shows a <a href="../fuse/controls/text.html">Text</a> containing the <a href="http://fontawesome.io/icon/cog/">cog icon</a> from FontAwesome:</p>
-<pre><code>&lt;Text Font=&quot;FontAwesome&quot;&gt;&amp;#xf013;&lt;/Text&gt;
+<pre><code class="language-xml">	&lt;Text Font=&quot;FontAwesome&quot;&gt;&amp;#xf013;&lt;/Text&gt;
 </code></pre>
 <p>Note that this relies on <code>FontAwesome</code> being the global name for the font.</p>
 <h3 id="javascript">JavaScript</h3>
 <p>In JavaScript, there are two cases. If the character code you want to use is below 65536 (or, is able to be written with 4 hexadecimal digits), we can escape it like this:</p>
-<pre><code>var cog = '\uF013';
+<pre><code class="language-js">	var cog = '\uF013';
 </code></pre>
 <p>However, if the character code is higher than 65535, you have to do a bit of a workaround due to JavaScript using UCS-2 encoding for its characters, meaning each character is 16 bits wide. The trick to handle these cases are <em>surrogate pairs</em>. We can read more on surrogate pairs, including how to convert to them <a href="https://mathiasbynens.be/notes/javascript-encoding">here</a>.</p>
 <p>Once you have managed to escape your character as a string on the JavaScript side, we can use it in UX as you normally would with databinding:</p>
-<pre><code>&lt;JavaScript&gt;
-	var Observable = require(&quot;FuseJS/Observable&quot;)
-	var cog = Observable('\uF013');
-	module.exports = {
-		cog: cog
-	};
-&lt;/JavaScript&gt;
-&lt;Text Value=&quot;{cog}&quot; Font=&quot;FontAwesome&quot; /&gt;
+<pre><code class="language-xml">	&lt;JavaScript&gt;
+		var Observable = require(&quot;FuseJS/Observable&quot;)
+		var cog = Observable('\uF013');
+		module.exports = {
+			cog: cog
+		};
+	&lt;/JavaScript&gt;
+	&lt;Text Value=&quot;{cog}&quot; Font=&quot;FontAwesome&quot; /&gt;
 </code></pre>
 
             </div>

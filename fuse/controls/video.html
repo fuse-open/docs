@@ -711,19 +711,19 @@ It is similar to Image; they share the properties <code>StretchMode</code>, <cod
 <li><code>IsLooping</code>: a bool specifying if the video should loop or not, default is false</li>
 </ul>
 <h4 id="useful-triggers-that-can-be-used-with-video">Useful triggers that can be used with <code>Video</code></h4>
-<pre><code>&lt;Video&gt;
-    &lt;WhilePlaying /&gt;    &lt;!-- Active while the video is playing --&gt;
-    &lt;WhilePaused /&gt;     &lt;!-- Active while the video is paused --&gt;
-    &lt;WhileCompleted /&gt;  &lt;!-- Active while the video is done playing --&gt;
-    &lt;WhileLoading /&gt;    &lt;!-- Active while the video is loading --&gt;
-    &lt;WhileFailed /&gt;     &lt;!-- Active if the video failed to load or an error occured --&gt;
-&lt;/Video&gt;
+<pre><code class="language-xml">    &lt;Video&gt;
+        &lt;WhilePlaying /&gt;    &lt;!-- Active while the video is playing --&gt;
+        &lt;WhilePaused /&gt;     &lt;!-- Active while the video is paused --&gt;
+        &lt;WhileCompleted /&gt;  &lt;!-- Active while the video is done playing --&gt;
+        &lt;WhileLoading /&gt;    &lt;!-- Active while the video is loading --&gt;
+        &lt;WhileFailed /&gt;     &lt;!-- Active if the video failed to load or an error occured --&gt;
+    &lt;/Video&gt;
 </code></pre>
 <h4 id="useful-actions-that-can-be-used-to-control-video">Useful actions that can be used to control <code>Video</code></h4>
 <p>Fuse comes with a set of actions that can be used to control video playback. They all have a common <code>Target</code> property that specifies which <code>Video</code> element they control.</p>
-<pre><code>&lt;Pause /&gt;                   &lt;!-- Pauses playback, leaving the current position as-is --&gt;
-&lt;Stop /&gt;                    &lt;!-- Stops playback and returns to the beginning of the video --&gt;
-&lt;Resume /&gt;                  &lt;!-- Resumes playback from the current position --&gt;
+<pre><code class="language-xml">    &lt;Pause /&gt;                   &lt;!-- Pauses playback, leaving the current position as-is --&gt;
+    &lt;Stop /&gt;                    &lt;!-- Stops playback and returns to the beginning of the video --&gt;
+    &lt;Resume /&gt;                  &lt;!-- Resumes playback from the current position --&gt;
 </code></pre>
 <h4 id="supported-formats">Supported formats</h4>
 <p><code>Video</code> is implemented by using the videodecoder provided by the export target and therefore supports whatever the platform supports. Be aware that Windows, OS X, Android and iOS might not share support for some formats</p>
@@ -734,31 +734,31 @@ It is similar to Image; they share the properties <code>StretchMode</code>, <cod
 </ul>
 <h4 id="playing-from-the-local-file-system">Playing from the local file system</h4>
 <p>Videos can also be played from the local file system of the device the app is running on. This can be done by prepending <code>file://</code> to the absolute path of the video:</p>
-<pre><code>&lt;Video File=&quot;file:///data/data/com.fuse.app/video.mp4&quot; /&gt;
+<pre><code class="language-xml">    &lt;Video File=&quot;file:///data/data/com.fuse.app/video.mp4&quot; /&gt;
 </code></pre>
 <p>Notice the three slashes at the start. This is due to unix file system paths always beginning with a <code>/</code></p>
 <h4 id="example">Example</h4>
 <p>The following example shows how to play a video, display its playback progress using <a href="../../fuse/triggers/progressanimation.html">ProgressAnimation</a>, and pause/resume the video using the <a href="../../fuse/triggers/actions/pause.html">Pause</a> and <a href="../../fuse/triggers/actions/resume.html">Resume</a> animators.</p>
-<pre><code>&lt;DockPanel&gt;
-    &lt;Video ux:Name=&quot;video&quot; Dock=&quot;Fill&quot; File=&quot;fuse_video.mp4&quot; IsLooping=&quot;true&quot; StretchMode=&quot;UniformToFill&quot;&gt;
-        &lt;ProgressAnimation&gt;
-            &lt;Change progressBar.Width=&quot;100&quot; /&gt;
-        &lt;/ProgressAnimation&gt;
-    &lt;/Video&gt;
-    &lt;Rectangle ux:Name=&quot;progressBar&quot; Dock=&quot;Bottom&quot; Fill=&quot;#f00&quot; Width=&quot;0%&quot; Height=&quot;10&quot; /&gt;
-    &lt;Grid Dock=&quot;Bottom&quot; ColumnCount=&quot;2&quot; RowCount=&quot;1&quot;&gt;
-        &lt;Button Text=&quot;Play&quot;&gt;
-            &lt;Clicked&gt;
-                &lt;Resume Target=&quot;video&quot; /&gt;
-            &lt;/Clicked&gt;
-        &lt;/Button&gt;
-        &lt;Button Text=&quot;Pause&quot;&gt;
-            &lt;Clicked&gt;
-                &lt;Pause Target=&quot;video&quot; /&gt;
-            &lt;/Clicked&gt;
-        &lt;/Button&gt;
-    &lt;/Grid&gt;
-&lt;/DockPanel&gt;
+<pre><code class="language-xml">    &lt;DockPanel&gt;
+        &lt;Video ux:Name=&quot;video&quot; Dock=&quot;Fill&quot; File=&quot;fuse_video.mp4&quot; IsLooping=&quot;true&quot; StretchMode=&quot;UniformToFill&quot;&gt;
+            &lt;ProgressAnimation&gt;
+                &lt;Change progressBar.Width=&quot;100&quot; /&gt;
+            &lt;/ProgressAnimation&gt;
+        &lt;/Video&gt;
+        &lt;Rectangle ux:Name=&quot;progressBar&quot; Dock=&quot;Bottom&quot; Fill=&quot;#f00&quot; Width=&quot;0%&quot; Height=&quot;10&quot; /&gt;
+        &lt;Grid Dock=&quot;Bottom&quot; ColumnCount=&quot;2&quot; RowCount=&quot;1&quot;&gt;
+            &lt;Button Text=&quot;Play&quot;&gt;
+                &lt;Clicked&gt;
+                    &lt;Resume Target=&quot;video&quot; /&gt;
+                &lt;/Clicked&gt;
+            &lt;/Button&gt;
+            &lt;Button Text=&quot;Pause&quot;&gt;
+                &lt;Clicked&gt;
+                    &lt;Pause Target=&quot;video&quot; /&gt;
+                &lt;/Clicked&gt;
+            &lt;/Button&gt;
+        &lt;/Grid&gt;
+    &lt;/DockPanel&gt;
 </code></pre>
 
 <section class="type-location">

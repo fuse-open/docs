@@ -702,14 +702,14 @@ Show advanced things
 </section>
 <p>Event bindings allows binding events to to JavaScript functions.</p>
 <p>You can hook up event handlers to call JavaScript functions with similar syntax to data bindings:</p>
-<pre><code>&lt;JavaScript&gt;
-    module.exports = {
-        clickHandler: function (args) {
-            console.log(&quot;I was clicked: &quot; + JSON.stringify(args));
-        }
-    };
-&lt;/JavaScript&gt;
-&lt;Button Clicked=&quot;{clickHandler}&quot; Text=&quot;Click me!&quot; /&gt;
+<pre><code class="language-xml">    &lt;JavaScript&gt;
+        module.exports = {
+            clickHandler: function (args) {
+                console.log(&quot;I was clicked: &quot; + JSON.stringify(args));
+            }
+        };
+    &lt;/JavaScript&gt;
+    &lt;Button Clicked=&quot;{clickHandler}&quot; Text=&quot;Click me!&quot; /&gt;
 </code></pre>
 <p>For more information, see <a href="../../fuse/reactive/databinding.html">DataBinding</a>.</p>
 

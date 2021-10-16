@@ -702,25 +702,25 @@ Show advanced things
 <p>A striped list of items, with optional Adding/Removing/LayoutAnimations.</p>
 <p>ListView takes its items directly as a property.</p>
 <p><strong>Note:</strong> <code>Items</code> must be an <a href="../fusejs/observable.html">Observable</a>.</p>
-<pre><code>&lt;JavaScript&gt;
-    var Observable = require(&quot;FuseJS/Observable&quot;);
+<pre><code class="language-xml">    &lt;JavaScript&gt;
+        var Observable = require(&quot;FuseJS/Observable&quot;);
 
-    exports.tasks = Observable(
-        { task: &quot;Groceries&quot; },
-        { task: &quot;Finish TPS report&quot; },
-        { task: &quot;Purchase boat&quot; }
-    );
-&lt;/JavaScript&gt;
+        exports.tasks = Observable(
+            { task: &quot;Groceries&quot; },
+            { task: &quot;Finish TPS report&quot; },
+            { task: &quot;Purchase boat&quot; }
+        );
+    &lt;/JavaScript&gt;
 
-&lt;Alive.ListView Items=&quot;{tasks}&quot;&gt;
-    &lt;Panel Height=&quot;80&quot;&gt;
-        &lt;Alive.Body Value=&quot;{task}&quot; Alignment=&quot;Center&quot; /&gt;
-    &lt;/Panel&gt;
-&lt;/Alive.ListView&gt;
+    &lt;Alive.ListView Items=&quot;{tasks}&quot;&gt;
+        &lt;Panel Height=&quot;80&quot;&gt;
+            &lt;Alive.Body Value=&quot;{task}&quot; Alignment=&quot;Center&quot; /&gt;
+        &lt;/Panel&gt;
+    &lt;/Alive.ListView&gt;
 </code></pre>
 <p>ListView applies <a href="../fuse/triggers/addinganimation.html">AddingAnimation</a>, <a href="../fuse/triggers/removinganimation.html">RemovingAnimation</a> and <a href="../fuse/triggers/layoutanimation.html">LayoutAnimation</a> to each element by default.
 This behavior can be disabled using the <code>IsAnimated</code> property.</p>
-<pre><code>&lt;Alive.ListView IsAnimated=&quot;false&quot; Items=&quot;{data}&quot;&gt;
+<pre><code class="language-xml">    &lt;Alive.ListView IsAnimated=&quot;false&quot; Items=&quot;{data}&quot;&gt;
 </code></pre>
 
 <section class="type-location">

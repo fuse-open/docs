@@ -703,31 +703,31 @@ Show advanced things
 <p>This is very commonly used together with lists of items.</p>
 <p>#Example
 The following example contains a list, where every item plays a <code>RemovingAnimation</code> as they are removed:</p>
-<pre><code>&lt;JavaScript&gt;
-    var Observable = require('FuseJS/Observable');
-    var list = Observable(&quot;Dog&quot;, &quot;Cat&quot;, &quot;Horse&quot;);
-    function rm(data) {
-        list.remove(data.data);
-    }
-    module.exports = {
-        data: list,
-        rm: rm
-    };
-&lt;/JavaScript&gt;
-&lt;StackPanel&gt;
-    &lt;Each Items=&quot;{data}&quot; &gt;
-        &lt;Panel&gt;
-            &lt;Button Margin=&quot;10&quot; Alignment=&quot;CenterRight&quot; Text=&quot;Delete&quot; Clicked=&quot;{rm}&quot;/&gt;
-            &lt;Rectangle Height=&quot;1&quot; Alignment=&quot;Bottom&quot;&gt;
-                &lt;Stroke Color=&quot;#DDD&quot; /&gt;
-            &lt;/Rectangle&gt;
-            &lt;Text Margin=&quot;10&quot; Value=&quot;data()&quot; /&gt;
-            &lt;RemovingAnimation&gt;
-                &lt;Move RelativeTo=&quot;Size&quot; X=&quot;-1&quot; Duration=&quot;0.4&quot; Easing=&quot;CircularOut&quot; /&gt;
-            &lt;/RemovingAnimation&gt;
-        &lt;/Panel&gt;
-    &lt;/Each&gt;
-&lt;/StackPanel&gt;
+<pre><code class="language-xml">    &lt;JavaScript&gt;
+        var Observable = require('FuseJS/Observable');
+        var list = Observable(&quot;Dog&quot;, &quot;Cat&quot;, &quot;Horse&quot;);
+        function rm(data) {
+            list.remove(data.data);
+        }
+        module.exports = {
+            data: list,
+            rm: rm
+        };
+    &lt;/JavaScript&gt;
+    &lt;StackPanel&gt;
+        &lt;Each Items=&quot;{data}&quot; &gt;
+            &lt;Panel&gt;
+                &lt;Button Margin=&quot;10&quot; Alignment=&quot;CenterRight&quot; Text=&quot;Delete&quot; Clicked=&quot;{rm}&quot;/&gt;
+                &lt;Rectangle Height=&quot;1&quot; Alignment=&quot;Bottom&quot;&gt;
+                    &lt;Stroke Color=&quot;#DDD&quot; /&gt;
+                &lt;/Rectangle&gt;
+                &lt;Text Margin=&quot;10&quot; Value=&quot;data()&quot; /&gt;
+                &lt;RemovingAnimation&gt;
+                    &lt;Move RelativeTo=&quot;Size&quot; X=&quot;-1&quot; Duration=&quot;0.4&quot; Easing=&quot;CircularOut&quot; /&gt;
+                &lt;/RemovingAnimation&gt;
+            &lt;/Panel&gt;
+        &lt;/Each&gt;
+    &lt;/StackPanel&gt;
 </code></pre>
 
 <section class="type-location">

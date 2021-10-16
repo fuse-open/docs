@@ -702,54 +702,54 @@ Show advanced things
 <p>Displays an Image</p>
 <p>Image provides several features for working with images in fuse, we will go through them in some short examples.</p>
 <p>Displaying an image from a file or an url:</p>
-<pre><code>&lt;StackPanel&gt;
-    &lt;Image File=&quot;some_file.png&quot; /&gt;
-    &lt;Image Url=&quot;some_url&quot; /&gt;
-&lt;/StackPanel&gt;
+<pre><code class="language-xml">    &lt;StackPanel&gt;
+        &lt;Image File=&quot;some_file.png&quot; /&gt;
+        &lt;Image Url=&quot;some_url&quot; /&gt;
+    &lt;/StackPanel&gt;
 </code></pre>
 <h4 id="displaying-a-multi-density-image-from-files">Displaying a multi-density image from files:</h4>
-<pre><code>&lt;StackPanel&gt;
-    &lt;Image Files=&quot;logo.png, logo@2x.png, logo@4x.png&quot; /&gt;
-    &lt;Image&gt;
-        &lt;MultiDensityImageSource&gt;
-            &lt;FileImageSource Density=&quot;1&quot; File=&quot;logo.png&quot; /&gt;
-            &lt;FileImageSource Density=&quot;2&quot; File=&quot;logo@2x.png&quot; /&gt;
-            &lt;FileImageSource Density=&quot;3&quot; File=&quot;logo@4x.png&quot; /&gt;
-        &lt;/MultiDensityImageSource&gt;
-    &lt;/Image&gt;
-&lt;/StackPanel/&gt;
+<pre><code class="language-xml">    &lt;StackPanel&gt;
+        &lt;Image Files=&quot;logo.png, logo@2x.png, logo@4x.png&quot; /&gt;
+        &lt;Image&gt;
+            &lt;MultiDensityImageSource&gt;
+                &lt;FileImageSource Density=&quot;1&quot; File=&quot;logo.png&quot; /&gt;
+                &lt;FileImageSource Density=&quot;2&quot; File=&quot;logo@2x.png&quot; /&gt;
+                &lt;FileImageSource Density=&quot;3&quot; File=&quot;logo@4x.png&quot; /&gt;
+            &lt;/MultiDensityImageSource&gt;
+        &lt;/Image&gt;
+    &lt;/StackPanel/&gt;
 </code></pre>
 <h4 id="displaying-a-multi-density-image-from-urls">Displaying a multi-density image from urls:</h4>
-<pre><code>&lt;StackPanel&gt;
-    &lt;Image&gt;
-        &lt;MultiDensityImageSource&gt;
-            &lt;HttpImageSource Density=&quot;1&quot; Url=&quot;...&quot; /&gt;
-            &lt;HttpImageSource Density=&quot;2&quot; Url=&quot;...@2x&quot; /&gt;
-            &lt;HttpImageSource Density=&quot;3&quot; Url=&quot;...@4x&quot; /&gt;
-        &lt;/MultiDensityImageSource&gt;
-    &lt;/Image&gt;
-&lt;/StackPanel&gt;
+<pre><code class="language-xml">    &lt;StackPanel&gt;
+        &lt;Image&gt;
+            &lt;MultiDensityImageSource&gt;
+                &lt;HttpImageSource Density=&quot;1&quot; Url=&quot;...&quot; /&gt;
+                &lt;HttpImageSource Density=&quot;2&quot; Url=&quot;...@2x&quot; /&gt;
+                &lt;HttpImageSource Density=&quot;3&quot; Url=&quot;...@4x&quot; /&gt;
+            &lt;/MultiDensityImageSource&gt;
+        &lt;/Image&gt;
+    &lt;/StackPanel&gt;
 </code></pre>
 <h4 id="displaying-an-image-from-a-file-specified-from-javascript">Displaying an image from a file specified from JavaScript</h4>
 <p>Uno cannot automatically bundle images when their path is defined in JavaScript. Because of this, you have to manually bundle those by manually importing them in your unproj file. You can either bundle one file like this:</p>
-<pre><code>&quot;Includes&quot;: [
-    &quot;*&quot;,
-    &quot;image.jpg:Bundle&quot;
-]
+<pre><code class="language-json">    &quot;Includes&quot;: [
+        &quot;*&quot;,
+        &quot;image.jpg:Bundle&quot;
+    ]
 </code></pre>
 <p>Or bundle an entire folder, or all files of a specific type, using wildcards:</p>
-<pre><code>&quot;Includes&quot;: [
-    &quot;*.jpg:Bundle&quot;
-]
+<pre><code class="language-json">    &quot;Includes&quot;: [
+        &quot;*.jpg:Bundle&quot;
+    ]
 </code></pre>
 <p>You can read more on bundling files with your project <a href="/docs/assets/bundle">here.</a>.</p>
 <p>When you have bundled your image files, you can refer to them from javascript like this:</p>
-<pre><code>&lt;JavaScript&gt;
-    module.exports = {
-        image: &quot;image.jpg&quot;
-    };
-&lt;/JavaScript&gt;
-&lt;Image File=&quot;{image}&quot; /&gt;
+<pre><code class="language-xml">    &lt;JavaScript&gt;
+        module.exports = {
+            image: &quot;image.jpg&quot;
+        };
+    &lt;/JavaScript&gt;
+    &lt;Image File=&quot;{image}&quot; /&gt;
 </code></pre>
 
 <section class="type-location">

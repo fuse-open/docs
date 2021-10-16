@@ -741,7 +741,7 @@ updateItem(...)
 <p>Note: Keep in mind that we'll be moving things around a bit in our project, so we won't be able to compile and/or preview for a while, but we'll be back up and running by the end of the chapter.</p>
 </blockquote>
 <p>Before we start implementing our mock backend, we'll want to talk about how we'll organize our JavaScript moving forward. Currently, we only have one standalone JS module in our project (besides our view models of course), and that's our <code>hikes.js</code> file. Since we'll be adding some more modules, we'll want to make sure we keep our project nice and organized. Similar to our <code>Pages</code> folder, where we placed all of our files pertaining to the different pages in our app, let's create a <code>Modules</code> folder at the root of our project where we'll place all of our standalone JS modules:</p>
-<pre><code class="language-sh">.
+<pre><code class="language-s">.
 |- MainView.ux
 |- Modules
 |- Pages
@@ -881,7 +881,7 @@ function updateHike(...) { ... }
 <h2 id="our-context-abstraction">Our <code>Context</code> abstraction</h2>
 <p>As I mentioned earler, we <em>could</em> have our view models interact with our mock backend directly. While there's technically nothing wrong with that, it tends to be beneficial to build a small abstraction layer over the backend that our view models interact with instead. This helps us provide a more consistent interface to our model, and also allows us to implement things like caching to help reduce the amount of bandwidth and battery our app uses. So, the next thing we'll do is build this abstraction, which we'll call the <code>Context</code>.</p>
 <p>To create our <code>Context</code> module, we'll start by making a new file in our <code>Modules</code> directory called <code>Context.js</code>:</p>
-<pre><code class="language-sh">.
+<pre><code class="language-s">.
 |- MainView.ux
 |- Modules
 |  |- Backend.js
@@ -960,11 +960,11 @@ Backend.getHikes()
 <p><img src="../media/hikr/tutorial/app-flow.png" alt="Flow Diagram"></p>
 <p>We'll start with the <code>Save</code> button. This button will be almost identical to the <code>Back</code> button we made previously, except that it will also commit the changes made in the editor to our data model in addition to going back to the previous page. So, let's start by simply renaming the existing <code>Back</code> button to <code>Save</code>.</p>
 <p>First, in <code>Pages/EditHikePage.ux</code>, we'll change both the text of our button and its clicked handler:</p>
-<pre><code class="language-xml">			&lt;Text&gt;Comments:&lt;/Text&gt;
-			&lt;TextView Value=&quot;{comments}&quot; TextWrapping=&quot;Wrap&quot; /&gt;
+<pre><code class="language-xml">	&lt;Text&gt;Comments:&lt;/Text&gt;
+	&lt;TextView Value=&quot;{comments}&quot; TextWrapping=&quot;Wrap&quot; /&gt;
 
-			&lt;Button Text=&quot;Save&quot; Clicked=&quot;{save}&quot; /&gt;
-		&lt;/StackPanel&gt;
+	&lt;Button Text=&quot;Save&quot; Clicked=&quot;{save}&quot; /&gt;
+&lt;/StackPanel&gt;
 </code></pre>
 <p>Next, in <code>Pages/EditHikePage.js</code>, we'll rename the <code>goBack</code> handler to <code>save</code>:</p>
 <pre><code class="language-js">function save() {
@@ -986,9 +986,9 @@ Backend.getHikes()
 </code></pre>
 <p>Great! Now our <code>Save</code> button should be all hooked up. Now, let's implement the <code>Cancel</code> button as well. The <code>Cancel</code> button will be very similar to our <code>Save</code> button, except we'll have to cancel the changes we've made in the editor somehow. But before we worry about that detail, let's go ahead and make our <code>Cancel</code> button, along with a corresponding <code>cancel</code> handler for it.</p>
 <p>We'll first add the UX code for the button in <code>Pages/EditHikePage.ux</code> right beneath the code we just wrote for our <code>Save</code> button:</p>
-<pre><code class="language-xml">			&lt;Button Text=&quot;Save&quot; Clicked=&quot;{save}&quot; /&gt;
-			&lt;Button Text=&quot;Cancel&quot; Clicked=&quot;{cancel}&quot; /&gt;
-		&lt;/StackPanel&gt;
+<pre><code class="language-xml">	&lt;Button Text=&quot;Save&quot; Clicked=&quot;{save}&quot; /&gt;
+	&lt;Button Text=&quot;Cancel&quot; Clicked=&quot;{cancel}&quot; /&gt;
+&lt;/StackPanel&gt;
 </code></pre>
 <p>Next, we'll add an empty <code>cancel</code> function and export it in <code>Pages/EditHikePage.js</code>:</p>
 <pre><code class="language-js">function cancel() {

@@ -704,12 +704,12 @@ Show advanced things
 There are three pairs of properties which are important for controlling the exact result of an animation.</p>
 <h4 id="example">Example</h4>
 <p>Examples of animator types are <a href="../../fuse/animations/change_1.html">Change</a> and <a href="../../fuse/animations/move.html">Move</a>, as used in this example:</p>
-<pre><code>&lt;Panel ux:Name=&quot;panel1&quot; Color=&quot;Blue&quot;&gt;
-    &lt;WhilePressed&gt;
-        &lt;Change panel1.Color=&quot;#0f0&quot; Duration=&quot;1&quot; /&gt;
-        &lt;Move X=&quot;100&quot; Delay=&quot;1&quot; Duration=&quot;1&quot; /&gt;
-    &lt;/WhilePressed&gt;
-&lt;/Panel&gt;
+<pre><code class="language-xml">    &lt;Panel ux:Name=&quot;panel1&quot; Color=&quot;Blue&quot;&gt;
+        &lt;WhilePressed&gt;
+            &lt;Change panel1.Color=&quot;#0f0&quot; Duration=&quot;1&quot; /&gt;
+            &lt;Move X=&quot;100&quot; Delay=&quot;1&quot; Duration=&quot;1&quot; /&gt;
+        &lt;/WhilePressed&gt;
+    &lt;/Panel&gt;
 </code></pre>
 <p>When the <a href="../../fuse/gestures/whilepressed.html">WhilePressed</a> trigger above is activated when a pointer is pressed on the panel,
 the animators are played according to their <code>Delays</code> and other properties.</p>
@@ -717,11 +717,11 @@ the animators are played according to their <code>Delays</code> and other proper
 <p>Animators are used to animate elements and properties in response to triggers being activated. There are many animators to choose from, all with different purposes. Common animators include <a href="../../fuse/animations/move.html">Move</a>, <a href="../../fuse/animations/rotate.html">Rotate</a>, <a href="../../fuse/animations.html">Scale</a> and <a href="../../fuse/animations/change_1.html">Change</a>. While these animators animate forward on activation and backward on deactivation, some animators, such as <a href="../../fuse/animations/spin.html">Spin</a> and <a href="../../fuse/animations/cycle_1.html">Cycle</a> create a continuous looping animation while active.</p>
 <h4 id="delay-delayback">Delay/DelayBack</h4>
 <p>Setting the <code>Delay</code> property results in the actual animation being delayed by that amount of seconds. <code>DelayBack</code> is used to set a different delay on the backward animation. The total duration of the animation becomes the delay + the duration. The following <a href="../../fuse/animations/change_1.html">Change</a> animator has a total duration of 7 seconds. It waits 5 seconds after being activated and then animates its target element over 2 seconds.</p>
-<pre><code>&lt;Change Delay=&quot;5&quot; Duration=&quot;2&quot; someElement.Height=&quot;100&quot;/&gt;
+<pre><code class="language-xml">&lt;Change Delay=&quot;5&quot; Duration=&quot;2&quot; someElement.Height=&quot;100&quot;/&gt;
 </code></pre>
 <h4 id="easing-easingback">Easing/EasingBack</h4>
 <p>Fuse comes with a standard set of predefined easing curves. Easing curves are used to control how an animation progresses over time. The default easing is set to <code>Linear</code>. With linear easing, the animation progresses at the same speed over its entire duration. This usually appears quite unnatural and fake. To gain a more natural feel, we can change the easing to <code>QuadraticInOut</code>, like so:</p>
-<pre><code>&lt;Change Easing=&quot;QuadraticInOut&quot; Duration=&quot;2&quot; someElement.Property=&quot;SomeValue&quot;/&gt;
+<pre><code class="language-xml">&lt;Change Easing=&quot;QuadraticInOut&quot; Duration=&quot;2&quot; someElement.Property=&quot;SomeValue&quot;/&gt;
 </code></pre>
 <p>This animator will progress slowly in the beginning, faster in the middle, and then slow again in the end.</p>
 <h4 id="track-animators">Track animators</h4>
@@ -849,7 +849,14 @@ Spin
 <span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
 </h5>
 <div class="table-of-contents-item-brief">
-<p>Continuously rotates an element, given a <code>Frequency</code> measured in full rotations per second. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../../fuse/animations/spin.html"><i class="fa fa-ellipsis-h"></i></a></p>
+<p>Continuously rotates an element, given a <code>Frequency</code> measured in full rotations per second.</p>
+<pre><code class="language-xml">    &lt;Panel&gt;
+        &lt;WhilePressed&gt;
+            &lt;Spin Frequency=&quot;2&quot; /&gt;
+        &lt;/WhilePressed&gt;
+    &lt;/Panel&gt;
+</code></pre>
+<p>As with <a href="../../fuse/animations/cycle_1.html">Cycle</a>, you may also specify a <code>Duration</code> to control the length of the animation.</p>
 
 </div>
 </article>

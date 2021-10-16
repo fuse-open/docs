@@ -688,13 +688,13 @@ PanGesture.Constraint Property
 <p>Constrains the gesture so the resulting scaled and translated item will remain visible. Unlike ConstrainElement this works only with items exposing an ISizeConstraint, such as <a href="../../../fuse/controls/image.html">Image</a>, but provides stricter bounds calculations (based on the actual visual content, not just the element bounds).</p>
 <h4 id="example">Example</h4>
 <p>The zoomed image cannot be panned outside the extents of the control.</p>
-<pre><code>&lt;Panel HitTestMode=&quot;LocalBounds&quot; Width=&quot;400&quot; Height=&quot;400&quot; Color=&quot;#aaa&quot; ClipToBounds=&quot;true&quot;&gt;
-    &lt;Image File=&quot;../../Assets/large_troll.jpg&quot; ux:Name=&quot;TheImage&quot;&gt;
-        &lt;InteractiveTransform ux:Name=&quot;ImageTrans&quot;/&gt;
-    &lt;/Image&gt;
-    &lt;ZoomGesture Target=&quot;ImageTrans&quot;/&gt;
-    &lt;PanGesture Target=&quot;ImageTrans&quot; Constraint=&quot;TheImage&quot;/&gt;
-&lt;/Panel&gt;
+<pre><code class="language-xml">    &lt;Panel HitTestMode=&quot;LocalBounds&quot; Width=&quot;400&quot; Height=&quot;400&quot; Color=&quot;#aaa&quot; ClipToBounds=&quot;true&quot;&gt;
+        &lt;Image File=&quot;../../Assets/large_troll.jpg&quot; ux:Name=&quot;TheImage&quot;&gt;
+            &lt;InteractiveTransform ux:Name=&quot;ImageTrans&quot;/&gt;
+        &lt;/Image&gt;
+        &lt;ZoomGesture Target=&quot;ImageTrans&quot;/&gt;
+        &lt;PanGesture Target=&quot;ImageTrans&quot; Constraint=&quot;TheImage&quot;/&gt;
+    &lt;/Panel&gt;
 </code></pre>
 
 <section class="type-location type-location-leaf">

@@ -697,14 +697,14 @@
 </code></pre>
 <p>A file named <code>release.keystore</code> is expected to be found in the same folder as the project.</p>
 <p>This file can be created by running the following command in your shell (<code>keytool</code> is part of the JDK):</p>
-<pre><code class="language-sh">keytool -genkey -v -keystore release.keystore \
+<pre><code class="language-s">keytool -genkey -v -keystore release.keystore \
     -alias application -keyalg RSA -keysize 2048 -validity 10000
 </code></pre>
 <p>The program will prompt you for an alias password and a store password, which should be the same as the respective values in the project file.</p>
 <p>Note that only release builds are signed using the specified key. Debug builds are automatically signed using a debug key. To do a release build, use <code>uno build android --configuration=Release</code>.</p>
 <h2 id="ios">iOS</h2>
 <p>Run the following command in your shell:</p>
-<pre><code class="language-sh">uno build ios --configuration=Release --debug
+<pre><code class="language-s">uno build ios --configuration=Release --debug
 </code></pre>
 <p>Then follow the regular procedure for <a href="https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/ConfiguringYourApp/ConfiguringYourApp.html#//apple_ref/doc/uid/TP40012582-CH28-SW1">adding your signing certificate</a> and <a href="https://developer.apple.com/library/ios/documentation/LanguagesUtilities/Conceptual/iTunesConnect_Guide/Chapters/SubmittingTheApp.html#//apple_ref/doc/uid/TP40011225-CH33">submitting your app to the App Store</a>.</p>
 <h3 id="xcode-development-team-ids">Xcode Development Team IDs</h3>
@@ -720,7 +720,7 @@
 }
 </code></pre>
 <p>It can also be set by passing the <code>--set:Project.iOS.DevelopmentTeam=&quot;YOURTEAMID&quot;</code> flag to <code>uno build</code>, e.g.</p>
-<pre><code class="language-sh">uno build ios --set:Project.iOS.DevelopmentTeam=&quot;YOURTEAMID&quot;
+<pre><code class="language-s">uno build ios --set:Project.iOS.DevelopmentTeam=&quot;YOURTEAMID&quot;
 
 </code></pre>
 <p>The Development Team ID can also be set user-wide by adding the following to ~/.unoconfig:</p>

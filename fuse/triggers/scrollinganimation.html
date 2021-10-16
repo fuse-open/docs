@@ -702,22 +702,22 @@ Show advanced things
 <p>Animates over a given scroll range.</p>
 <p>This trigger allows you to animate properties based on the absolute position of a <a href="../../fuse/controls/scrollview.html">ScrollView</a>.</p>
 <p>In this example, we remove a top ledge as a ScrollView scrolls down:</p>
-<pre><code>&lt;Panel&gt;
-    &lt;Panel Alignment=&quot;Top&quot; Height=&quot;50&quot; ux:Name=&quot;ledge&quot;&gt;
-        &lt;Text Alignment=&quot;Center&quot; TextAlignment=&quot;Center&quot; Color=&quot;#fff&quot; Value=&quot;TopLedge&quot; /&gt;
-        &lt;Rectangle  Fill=&quot;#000&quot; /&gt;
+<pre><code class="language-xml">    &lt;Panel&gt;
+        &lt;Panel Alignment=&quot;Top&quot; Height=&quot;50&quot; ux:Name=&quot;ledge&quot;&gt;
+            &lt;Text Alignment=&quot;Center&quot; TextAlignment=&quot;Center&quot; Color=&quot;#fff&quot; Value=&quot;TopLedge&quot; /&gt;
+            &lt;Rectangle  Fill=&quot;#000&quot; /&gt;
+        &lt;/Panel&gt;
+        &lt;ScrollView&gt;
+            &lt;ScrollingAnimation From=&quot;0&quot; To=&quot;50&quot;&gt;
+                &lt;Change ledge.Opacity=&quot;0&quot; /&gt;
+            &lt;/ScrollingAnimation&gt;
+            &lt;StackPanel&gt;
+                &lt;!-- Block out the top ledge in the scrollview --&gt;
+                &lt;Panel Height=&quot;50&quot; /&gt;
+                &lt;!-- ... Content ... --&gt;
+            &lt;/StackPanel&gt;
+        &lt;/ScrollView&gt;
     &lt;/Panel&gt;
-    &lt;ScrollView&gt;
-        &lt;ScrollingAnimation From=&quot;0&quot; To=&quot;50&quot;&gt;
-            &lt;Change ledge.Opacity=&quot;0&quot; /&gt;
-        &lt;/ScrollingAnimation&gt;
-        &lt;StackPanel&gt;
-            &lt;!-- Block out the top ledge in the scrollview --&gt;
-            &lt;Panel Height=&quot;50&quot; /&gt;
-            &lt;!-- ... Content ... --&gt;
-        &lt;/StackPanel&gt;
-    &lt;/ScrollView&gt;
-&lt;/Panel&gt;
 </code></pre>
 
 <section class="type-location">

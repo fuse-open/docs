@@ -694,16 +694,16 @@ FileSystemModule.getFileInfo(path) Method (JS)
 <li><code>lastAccessTime</code> –  A <code>Date</code> stating when file was accessed</li>
 </ul>
 <h4 id="example">Example</h4>
-<pre><code>var FileSystem = require(&quot;FuseJS/FileSystem&quot;);
+<pre><code class="language-js">    var FileSystem = require(&quot;FuseJS/FileSystem&quot;);
 
-FileSystem.writeTextToFileSync(&quot;some-file.txt&quot;, &quot;hello there&quot;);
-FileSystem.getFileInfo(&quot;some-file.txt&quot;)
-    .then(function(fileInfo) {
-        console.log(&quot;file was modified on &quot; + fileInfo.lastWriteTime);
-    })
-    .catch(function(error) {
-        &quot;failed stat &quot; + error
-    });
+    FileSystem.writeTextToFileSync(&quot;some-file.txt&quot;, &quot;hello there&quot;);
+    FileSystem.getFileInfo(&quot;some-file.txt&quot;)
+        .then(function(fileInfo) {
+            console.log(&quot;file was modified on &quot; + fileInfo.lastWriteTime);
+        })
+        .catch(function(error) {
+            &quot;failed stat &quot; + error
+        });
 </code></pre>
 
 <section class="type-location type-location-leaf">

@@ -2094,7 +2094,15 @@ WhileVisibleInScrollView
 <span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
 </h5>
 <div class="table-of-contents-item-brief">
-<p>Active while an element is positioned within the visible area of the <a href="../../fuse/controls/scrollview.html">ScrollView</a>. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../../fuse/triggers/whilevisibleinscrollview.html"><i class="fa fa-ellipsis-h"></i></a></p>
+<p>Active while an element is positioned within the visible area of the <a href="../../fuse/controls/scrollview.html">ScrollView</a>.</p>
+<pre><code class="language-xml">    &lt;ScrollView&gt;
+        &lt;StackPanel&gt;
+            &lt;Each Items=&quot;{images}&quot;&gt;
+                &lt;DockPanel Height=&quot;100&quot;&gt;
+                    &lt;Image Url=&quot;{source}&quot; MemoryPolicy=&quot;UnloadUnused&quot; Dock=&quot;Left&quot;
+                        Visibility=&quot;Hidden&quot; ux:Name=&quot;theImage&quot;/&gt;
+                    &lt;Text Value=&quot;{description}&quot; TextWrapping=&quot;Wrap&quot;/&gt; &lt;a href=&quot;../../fuse/triggers/whilevisibleinscrollview.html&quot; class=&quot;table-of-contents-item-has-more&quot; title=&quot;There is more information available for this entry&quot;&gt;&lt;i class=&quot;fa fa-ellipsis-h&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+</code></pre>
 
 </div>
 </article>
@@ -3311,23 +3319,23 @@ animation on multiple devices, screen sizes, with real data and real user input.
 <h4 id="pulse-triggers">Pulse triggers</h4>
 <p>Pulse triggers detect one-off events such as <a href="../../fuse/gestures/clicked.html">Clicked</a> or <a href="../../fuse/gestures/tapped.html">Tapped</a>, and play their timeline once. A typical
 use case is to do a <a href="../../fuse/triggers/actions/callback.html">Callback</a> to JavaScript:</p>
-<pre><code>&lt;Panel Color=&quot;Blue&quot;&gt;
-	&lt;Tapped&gt;
-		&lt;Callback Handler=&quot;{panelTapped}&quot; /&gt;
-	&lt;/Tapped&gt;
-&lt;/Panel&gt;
+<pre><code class="language-xml">	&lt;Panel Color=&quot;Blue&quot;&gt;
+		&lt;Tapped&gt;
+			&lt;Callback Handler=&quot;{panelTapped}&quot; /&gt;
+		&lt;/Tapped&gt;
+	&lt;/Panel&gt;
 </code></pre>
 <p>Pulse triggers typically have names that are past-tense verbs.</p>
 <h4 id="while-triggers">While-triggers</h4>
 <p>Triggers with names starting with <code>While...</code> are sustained triggers that activate under certain conditions, and remain active until that
 condition goes away.</p>
 <p>For example <a href="../../fuse/gestures/whilepressed.html">WhilePressed</a> activates while the containing visual is pressed by a pointer, and deactivates when the pointer is released.</p>
-<pre><code>&lt;Panel Color=&quot;Red&quot; ux:Name=&quot;panel&quot;&gt;
-	&lt;WhilePressed&gt;
-		&lt;Scale Factor=&quot;0.9&quot; Duration=&quot;0.2&quot; Easing=&quot;BackOut&quot; /&gt;
-		&lt;Change panel.Color=&quot;Blue&quot; Delay=&quot;0.2&quot; Duration=&quot;0.2&quot; Easing=&quot;CubicOut&quot; /&gt;
-	&lt;/WhilePressed&gt;
-&lt;/Panel&gt;
+<pre><code class="language-xml">	&lt;Panel Color=&quot;Red&quot; ux:Name=&quot;panel&quot;&gt;
+		&lt;WhilePressed&gt;
+			&lt;Scale Factor=&quot;0.9&quot; Duration=&quot;0.2&quot; Easing=&quot;BackOut&quot; /&gt;
+			&lt;Change panel.Color=&quot;Blue&quot; Delay=&quot;0.2&quot; Duration=&quot;0.2&quot; Easing=&quot;CubicOut&quot; /&gt;
+		&lt;/WhilePressed&gt;
+	&lt;/Panel&gt;
 </code></pre>
 <p>The containing timeline starts plaing from the beginning when a pointer is pressed, and sustains the end state of the animation while the
 pointer remains pressed. If the pointer is released in the middle of the animation, the progress is cancelled and recedes naturally from

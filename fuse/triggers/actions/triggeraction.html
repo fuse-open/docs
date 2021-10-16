@@ -1142,7 +1142,13 @@ ReleasePage
 </h5>
 <div class="table-of-contents-item-brief">
 <p>For navigation this indicates the page (Visual) is no longer required and can be reused, or discarded,
-by the container. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../../../fuse/triggers/actions/releasepage.html"><i class="fa fa-ellipsis-h"></i></a></p>
+by the container.</p>
+<pre><code class="language-xml">    &lt;ExitingAnimation&gt;
+        &lt;Move X=&quot;1&quot; RelativeTo=&quot;Size&quot; Duration=&quot;0.3&quot;/&gt;
+        &lt;ReleasePage AtProgress=&quot;1&quot;/&gt;
+    &lt;/ExitingAnimation&gt;
+</code></pre>
+<p>This is currently only necessary in a <code>Navigator</code> and <code>PageView</code>. You can safely call it on transitions used potentially also in a <code>PageControl</code>.</p>
 
 </div>
 </article>

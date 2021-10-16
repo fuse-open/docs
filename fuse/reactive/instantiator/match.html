@@ -688,10 +688,10 @@ Instantiator.Match Property
 <p>The template which should be instantiated.</p>
 <p>Unset by default, meaning all templates will be instantiated (assuming MatchKey, and TemplateKey are also unset).</p>
 <p>If you intend on using a binding, or expression, for this value it is recommend to set <code>Defaults</code> as well. This avoids an momentary creation of the defaults while the binding has not yet resolved.</p>
-<pre><code>&lt;Instance Match=&quot;{type}&quot; Defaults=&quot;None&quot;&gt;
-    &lt;Panel ux:Template=&quot;side&quot;/&gt;
-    &lt;Panel ux:Template=&quot;fore&quot;/&gt;
-&lt;/Instance&gt;
+<pre><code class="language-xml">    &lt;Instance Match=&quot;{type}&quot; Defaults=&quot;None&quot;&gt;
+        &lt;Panel ux:Template=&quot;side&quot;/&gt;
+        &lt;Panel ux:Template=&quot;fore&quot;/&gt;
+    &lt;/Instance&gt;
 </code></pre>
 <p><code>{type}</code> may resolve to an async JavaScript variable, meaning it won't produce an immediate value. This will result in <code>Match</code> not yet having a value, thus all templates would be instantiated by default. <code>Defaults=&quot;None&quot;</code> prevents this behaviour.</p>
 

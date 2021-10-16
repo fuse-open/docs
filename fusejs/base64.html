@@ -702,10 +702,10 @@ Show advanced things
 <p>Allows you to encode and decode strings from Base64.</p>
 <p>This is useful when passing string to places where some characters are not allowed.</p>
 <p>This example demonstrates simple use of the <code>Base64</code> module. The code prints the input string, and the computed Base64 string.</p>
-<pre><code>var Base64 = require(&quot;FuseJS/Base64&quot;);
-var string = &quot;Hello, world!&quot;;
-console.log(string); //LOG: Hello, world!
-console.log(Base64.encodeAscii(string)); //LOG: SGVsbG8sIHdvcmxkIQ==
+<pre><code class="language-js">    var Base64 = require(&quot;FuseJS/Base64&quot;);
+    var string = &quot;Hello, world!&quot;;
+    console.log(string); //LOG: Hello, world!
+    console.log(Base64.encodeAscii(string)); //LOG: SGVsbG8sIHdvcmxkIQ==
 </code></pre>
 
 <section class="type-location">
@@ -746,7 +746,10 @@ decodeAscii(value)
 <span class="table-of-contents-item-language table-of-contents-item-language-js">js</span>
 </h5>
 <div class="table-of-contents-item-brief">
-<p>Decodes the given base64 value to an ASCII string representation <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fusejs/base64/decodeascii_bbef95e2.html"><i class="fa fa-ellipsis-h"></i></a></p>
+<p>Decodes the given base64 value to an ASCII string representation</p>
+<pre><code class="language-js">    var Base64 = require(&quot;FuseJS/Base64&quot;);
+    console.log(Base64.decodeAscii(&quot;SGVsbG8sIHdvcmxkIQ==&quot;)); //LOG: Hello, world!
+</code></pre>
 
 </div>
 </article>
@@ -760,7 +763,16 @@ decodeBuffer(base64String)
 <span class="table-of-contents-item-language table-of-contents-item-language-js">js</span>
 </h5>
 <div class="table-of-contents-item-brief">
-<p>Decodes the given base64 string to an ArrayBuffer. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fusejs/base64/decodebuffer_bbef95e2.html"><i class="fa fa-ellipsis-h"></i></a></p>
+<p>Decodes the given base64 string to an ArrayBuffer.</p>
+<pre><code class="language-js">    var Base64 = require(&quot;FuseJS/Base64&quot;);
+    var buf = Base64.decodeBuffer(&quot;NxMAAA==&quot;);
+    var view = new Int32Array(data);
+    // Should print 0x1337
+    console.log(&quot;0x&quot; + view[0].toString(16));
+</code></pre>
+<ul>
+<li></li>
+</ul>
 
 </div>
 </article>
@@ -774,7 +786,14 @@ decodeLatin1(stringToDecode)
 <span class="table-of-contents-item-language table-of-contents-item-language-js">js</span>
 </h5>
 <div class="table-of-contents-item-brief">
-<p>Decodes the given base64 Latin-1 encoded bytes to a string. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fusejs/base64/decodelatin1_bbef95e2.html"><i class="fa fa-ellipsis-h"></i></a></p>
+<p>Decodes the given base64 Latin-1 encoded bytes to a string.</p>
+<pre><code class="language-js">    var Base64 = require(&quot;FuseJS/Base64&quot;);
+    // Prints &quot;hello world&quot;
+    console.log(Base64.decodeLatin1(&quot;aGVsbG8gd29ybGQ=&quot;));
+</code></pre>
+<ul>
+<li></li>
+</ul>
 
 </div>
 </article>
@@ -788,7 +807,10 @@ decodeUtf8(value)
 <span class="table-of-contents-item-language table-of-contents-item-language-js">js</span>
 </h5>
 <div class="table-of-contents-item-brief">
-<p>Decodes the given base64 value to an UTF8 string representation <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fusejs/base64/decodeutf8_bbef95e2.html"><i class="fa fa-ellipsis-h"></i></a></p>
+<p>Decodes the given base64 value to an UTF8 string representation</p>
+<pre><code class="language-js">    var Base64 = require(&quot;FuseJS/Base64&quot;);
+    console.log(Base64.encodeUtf8(&quot;Rm9vIMKpIGJhcg==&quot;)); //LOG: Foo © bar
+</code></pre>
 
 </div>
 </article>
@@ -802,7 +824,10 @@ encodeAscii(value)
 <span class="table-of-contents-item-language table-of-contents-item-language-js">js</span>
 </h5>
 <div class="table-of-contents-item-brief">
-<p>Encodes the given ASCII value to base64 string representation <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fusejs/base64/encodeascii_bbef95e2.html"><i class="fa fa-ellipsis-h"></i></a></p>
+<p>Encodes the given ASCII value to base64 string representation</p>
+<pre><code class="language-js">    var Base64 = require(&quot;FuseJS/Base64&quot;);
+    console.log(Base64.encodeAscii(&quot;Hello, world!&quot;)); //LOG: SGVsbG8sIHdvcmxkIQ==
+</code></pre>
 
 </div>
 </article>
@@ -816,7 +841,9 @@ encodeBuffer(arrayBuffer)
 <span class="table-of-contents-item-language table-of-contents-item-language-js">js</span>
 </h5>
 <div class="table-of-contents-item-brief">
-<p>Encodes given array buffer to base64. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fusejs/base64/encodebuffer_bbef95e2.html"><i class="fa fa-ellipsis-h"></i></a></p>
+<p>Encodes given array buffer to base64.</p>
+<pre><code class="language-js">    var Base64 = require(&quot;FuseJS/Base64&quot;); &lt;a href=&quot;../fusejs/base64/encodebuffer_bbef95e2.html&quot; class=&quot;table-of-contents-item-has-more&quot; title=&quot;There is more information available for this entry&quot;&gt;&lt;i class=&quot;fa fa-ellipsis-h&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+</code></pre>
 
 </div>
 </article>
@@ -830,7 +857,14 @@ encodeLatin1(stringToEncode)
 <span class="table-of-contents-item-language table-of-contents-item-language-js">js</span>
 </h5>
 <div class="table-of-contents-item-brief">
-<p>Encodes the given string to a Latin-1 base64 string. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fusejs/base64/encodelatin1_bbef95e2.html"><i class="fa fa-ellipsis-h"></i></a></p>
+<p>Encodes the given string to a Latin-1 base64 string.</p>
+<pre><code class="language-js">    var Base64 = require(&quot;FuseJS/Base64&quot;);
+    // Prints &quot;aGVsbG8gd29ybGQ=&quot;
+    console.log(Base64.encodeLatin1(&quot;hello world&quot;));
+</code></pre>
+<ul>
+<li></li>
+</ul>
 
 </div>
 </article>
@@ -844,7 +878,10 @@ encodeUtf8(value)
 <span class="table-of-contents-item-language table-of-contents-item-language-js">js</span>
 </h5>
 <div class="table-of-contents-item-brief">
-<p>Encodes the given UTF8 value to a base64 string representation <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../fusejs/base64/encodeutf8_bbef95e2.html"><i class="fa fa-ellipsis-h"></i></a></p>
+<p>Encodes the given UTF8 value to a base64 string representation</p>
+<pre><code class="language-js">    var Base64 = require(&quot;FuseJS/Base64&quot;);
+    console.log(Base64.encodeUtf8(&quot;Foo © bar&quot;)); //LOG: Rm9vIMKpIGJhcg==
+</code></pre>
 
 </div>
 </article>
