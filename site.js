@@ -12,7 +12,7 @@ function getCookie(name) {
         value = decodeURIComponent(cookie.substring(startIndex + name.length, endIndex));
     }
 
-    return value;
+    return value.substring(1);
 }
 
 function setCookie(name, value) {
