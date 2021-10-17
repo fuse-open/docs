@@ -1,3 +1,29 @@
+function getCookie(name) {
+    var cookieName = encodeURIComponent(name) + "=";
+    var cookie = document.cookie;
+    var value = null;
+
+    var startIndex = cookie.indexOf(cookieName);
+    if (startIndex > -1) {
+        startIndex = startIndex + name.length + 1;
+        var endIndex = cookie.indexOf(';', startIndex);
+        if (endIndex == -1) {
+            endIndex = cookie.length;
+        }
+        value = decodeURIComponent(cookie.substr(startIndex, endIndex - startIndex));
+    }
+
+    return value;
+}
+
+function setCookie(name, value) {
+    var cookieText = encodeURIComponent(name) + "=" + encodeURIComponent(value);
+    cookieText += ";expires=" + new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toGMTString();
+    cookieText += ";domain=" + encodeURIComponent(window.location.hostname);
+    cookieText += ";path=/"
+    document.cookie = cookieText;
+}
+
 $(document).ready(function() {
 
     // Add language-none class to code blocks with no language specified.
@@ -39,17 +65,21 @@ $(document).ready(function() {
         $(".main-content").css({zIndex: 'unset'})
     })
 
-    // default hide advance uno props and methods
-    $('.is-advanced').css('display', 'none');
-    $('.only-advanced-items').css('display', 'none');
+    var persistedShow = getCookie("advanced-items");
+    if (!persistedShow || !persistedShow.length)
+        persistedShow = 'block';
+
+    $('.is-advanced').css('display', persistedShow);
+    $('.only-advanced-items').css('display', persistedShow);
+    $(".advance-items").prop('checked', persistedShow != 'none' ? 'checked' : undefined);
 
     $(".advance-items").change(function() {
-        let show = 'none';
-        if(this.checked) {
+        var show = 'none';
+        if (this.checked) {
             show = 'block';
         }
         $('.is-advanced').css('display', show);
         $('.only-advanced-items').css('display', show);
+        setCookie("advanced-items", show);
     });
-
 });
