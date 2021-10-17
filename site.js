@@ -5,14 +5,15 @@ function getCookie(name) {
 
     var startIndex = cookie.indexOf(cookieName);
     if (startIndex > -1) {
+        startIndex = startIndex + name.length + 1;
         var endIndex = cookie.indexOf(';', startIndex);
-        if (cookie == -1) {
+        if (endIndex == -1) {
             endIndex = cookie.length;
         }
-        value = decodeURIComponent(cookie.substring(startIndex + name.length, endIndex));
+        value = decodeURIComponent(cookie.substr(startIndex, endIndex - startIndex));
     }
 
-    return value.substring(1);
+    return value;
 }
 
 function setCookie(name, value) {
@@ -65,9 +66,12 @@ $(document).ready(function() {
     })
 
     var persistedShow = getCookie("advanced-items");
+    if (!persistedShow || !persistedShow.length)
+        persistedShow = 'block';
+
     $('.is-advanced').css('display', persistedShow);
     $('.only-advanced-items').css('display', persistedShow);
-    $(".advance-items").prop('checked', persistedShow != 'none');
+    $(".advance-items").prop('checked', persistedShow != 'none' ? 'checked' : undefined);
 
     $(".advance-items").change(function() {
         var show = 'none';
