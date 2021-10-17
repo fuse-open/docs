@@ -8,6 +8,25 @@ The documentation is hosted on GitHub Pages, from the [gh-pages branch](https://
 
 ## Running locally
 
+```shell
+npm install
+npm start
+```
+
+This will build HTML pages based on documentation files and start a webserver at http://localhost:8080/.
+
+Some system dependencies are required to process files. On macOS they can be installed by running the following command.
+
+```shell
+brew install imagemagick pngquant optipng
+```
+
+> On Windows image processing is disabled so there we don't need to install the dependencies, but [Git for Windows](https://github.com/git-for-windows/git/releases) is nice to have for running scripts.
+
+### Legacy instructions
+
+***These steps can be ignored if you're using `npm start`.***
+
 1. Run `dotnet run -p generator/src/generator.csproj -- . "http://localhost:8000/" _site` to build the HTML files.
 2. Run `./copy-assets.bash _site` to copy assets into the target directory.
 3. Run `find _site/media -type f \( -iname "*.png" -or -iname "*.jpg" \) -exec mogrify -strip -resize 450x450\> {} \;` to resize images to the appropriate sizes.
