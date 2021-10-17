@@ -25,7 +25,11 @@ fi
 
 if [ "$ASSETS" != 0 ]; then
     ./copy-assets.bash _site
-    find _site/media -type f \( -iname "*.png" -or -iname "*.jpg" \) -exec mogrify -strip -resize 850x850\> {} \;
-    find _site/media -type f -iname "*.png" -exec pngquant {} \; -exec optipng -silent {} \;
+
+    if [[ "$OSTYPE" != msys* ]]; then
+        find _site/media -type f \( -iname "*.png" -or -iname "*.jpg" \) -exec mogrify -strip -resize 850x850\> {} \;
+        find _site/media -type f -iname "*.png" -exec pngquant {} \; -exec optipng -silent {} \;
+    fi
+
     touch _site/.nojekyll
 fi

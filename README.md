@@ -21,6 +21,8 @@ Some system dependencies are required to process files. On macOS they can be ins
 brew install imagemagick pngquant optipng
 ```
 
+> On Windows image processing is disabled so there we don't need to install the dependencies, but [Git for Windows](https://github.com/git-for-windows/git/releases) is nice to have for running scripts.
+
 ### Legacy instructions
 
 ***These steps can be ignored if you're using `npm start`.***
