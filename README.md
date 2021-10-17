@@ -23,16 +23,6 @@ brew install imagemagick pngquant optipng
 
 > On Windows image processing is disabled so there we don't need to install the dependencies, but [Git for Windows](https://github.com/git-for-windows/git/releases) is nice to have for running scripts.
 
-### Legacy instructions
-
-***These steps can be ignored if you're using `npm start`.***
-
-1. Run `dotnet run -p generator/src/generator.csproj -- . "http://localhost:8000/" _site` to build the HTML files.
-2. Run `./copy-assets.bash _site` to copy assets into the target directory.
-3. Run `find _site/media -type f \( -iname "*.png" -or -iname "*.jpg" \) -exec mogrify -strip -resize 450x450\> {} \;` to resize images to the appropriate sizes.
-4. Run `python3 -m http.server 8000 --directory _site/` (or whatever your favorite static http server is) to serve the website at port 8000.
-5. Open `http://localhost/:8000` in your web browser to view the result.
-
 ## Updating `api-docs`
 
 1. Run `cd doc-export` to enter the project used to make doc-files.
