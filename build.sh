@@ -29,11 +29,11 @@ if [ "$ASSETS" != 0 ]; then
     cp -r static/* "$DST"/
 
     if [[ "$OSTYPE" != msys* ]]; then
-        find _site/media -type f \( -iname "*.png" -or -iname "*.jpg" \) -exec mogrify -strip -resize 850x850\> {} \;
-        find _site/media -type f -iname "*.png" -exec pngquant {} \; -exec optipng -silent {} \;
+        find "$DST"/media -type f \( -iname "*.png" -or -iname "*.jpg" \) -exec mogrify -strip -resize 850x850\> {} \;
+        find "$DST"/media -type f -iname "*.png" -exec pngquant {} \; -exec optipng -silent {} \;
     fi
 fi
 
-if [ ! -f _site/.nojekyll ]; then
-    touch _site/.nojekyll
+if [ ! -f "$DST"/.nojekyll ]; then
+    touch "$DST"/.nojekyll
 fi
