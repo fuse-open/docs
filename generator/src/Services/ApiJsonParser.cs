@@ -66,7 +66,7 @@ namespace Builder.Services
                 model.SourceFileLastModifiedAt = File.GetLastWriteTimeUtc(path);
                 return NormalizeModel(model);
             }
-            catch (JsonReaderException e)
+            catch (JsonReaderException)
             {
                 _logger.LogError($"Failed to parse '{path}'");
                 throw;
