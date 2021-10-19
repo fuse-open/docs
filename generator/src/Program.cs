@@ -31,13 +31,14 @@ namespace Builder
             var baseUrl = args[1];
 
             var outputPath = Path.Combine(rootPath, "generated");
-            if (args.Length == 3)
+            if (args.Length >= 3)
                 outputPath = args[2];
 
             var settings = new BuilderSettings(rootPath: rootPath,
                                                outputPath: outputPath,
                                                generateReport: args.Any(e => e == "--report"),
-                                               baseUrl: baseUrl);
+                                               baseUrl: baseUrl,
+                                               fastMode: args.Any(e => e == "--fast"));
 
             // Set up DI
             var services = new ServiceCollection().AddLogging()

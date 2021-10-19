@@ -4,15 +4,20 @@
   "private": true,
   "devDependencies": {
     "fuse-sdk": "^2.0.0",
-    "http-server": "^13.0.2",
+    "http-server": "^14.0.0",
+    "rimraf": "^3.0.2",
     "xbash": "^1.6.0"
   },
   "scripts": {
     "api-docs": "uno build docs doc-export --output-dir api-docs -f",
     "build": "bash build.sh",
+    "clean": "rimraf _site",
     "deploy": "bash deploy.sh",
-    "http-server": "http-server _site",
-    "start": "bash build.sh --local && http-server _site"
+    "local": "bash build.sh --local --fast",
+    "local-slow": "bash build.sh --local",
+    "http-server": "http-server -p 8080 _site",
+    "start": "bash build.sh --local --fast && http-server -p 8080 _site",
+    "start-slow": "bash build.sh --local && http-server -p 8080 _site"
   },
   "repository": {
     "type": "git",

@@ -17,6 +17,7 @@ namespace Builder.Services
             ContractResolver = new CamelCasePropertyNamesContractResolver()
         };
 
+        private readonly bool _fastMode;
         private readonly string _sourcePath;
         private readonly ILogger<ApiJsonParser<T>> _logger;
 
@@ -25,10 +26,11 @@ namespace Builder.Services
 
         protected ApiJsonParser(BuilderSettings settings, ILogger<ApiJsonParser<T>> logger)
         {
+            _fastMode = settings.FastMode;
             _sourcePath = Path.Combine(settings.RootPath, "api-docs", SourceDirectoryName);
             _logger = logger;
 
-            if (!Directory.Exists(_sourcePath))
+            if (!_fastMode && !Directory.Exists(_sourcePath))
             {
                 throw new DirectoryNotFoundException($"API {SourceDirectoryDisplayName} directory '{_sourcePath}' not found");
             }
@@ -41,6 +43,12 @@ namespace Builder.Services
 
         public Task<List<T>> ReadAsync()
         {
+            if (_fastMode)
+            {
+                _logger.LogInformation("Skipping ApiJsonParser.ReadAsync() in Fast Mode");
+                return Task.FromResult(new List<T>());
+            }
+
             var sw = Stopwatch.StartNew();
             var result = new List<T>();
             
