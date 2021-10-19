@@ -1,10 +1,10 @@
-# Windows Installation
+# macOS Installation
 
 This is a step-by-step tutorial that takes you through setting up Fuse X and creating your first project. Should you happen to run into problems during installation, please [let us know](https://fuse-x.com/issues)!
 
 <blockquote class="callout-info">
 
-<a href="https://nodejs.org/en/download/" target="_blank">Node.js</a> is required to install this software.
+<a href="https://www.mono-project.com/download/stable/" target="_blank">Mono</a> and <a href="https://nodejs.org/en/download/" target="_blank">Node.js</a> are required to install this software.
 
 </blockquote>
 
@@ -16,15 +16,17 @@ A working internet connection is required to install this software.
 
 ## Requirements
 
-- Windows 7 or newer
-- Windows 10 is recommended
+- OS X 10.10 Yosemite or newer
+- macOS 11.2 Big Sur (or latest) is recommended
+- Intel processor (M1 support is planned)
+- <a href="https://www.mono-project.com/download/stable/" target="_blank">Mono</a> 6.10 or newer
 - <a href="https://nodejs.org/en/download/" target="_blank">Node.js</a> 12 or newer
 
 ## Running the installer
 
-The latest version of Fuse X can always be downloaded from the <a href="https://fuse-x.com/download">download page</a>. Download the **Windows installer (.exe)**.
+The latest version of Fuse X can always be downloaded from the <a href="https://fuse-x.com/download">download page</a>. Download the **macOS installer (.dmg)**.
 
-You should have downloaded a file called `fuse-x-2.0.0-win.exe` or similar. Open it and follow the installation procedure.
+You should have downloaded a file called `fuse-x-2.0.0-mac.dmg` or similar. Open it and follow the installation procedure.
 
 This chapter will guide you through it.
 
@@ -36,63 +38,92 @@ You can [skip this chapter](#starting-fuse-x) if you already know how to do this
 
 ### Prerequisites
 
-Make sure you have an up-to-date <a href="https://nodejs.org/en/download/" target="_blank">Node.js</a> installation on your system.
+Make sure you have up-to-date <a href="https://www.mono-project.com/download/stable/" target="_blank">Mono</a> and <a href="https://nodejs.org/en/download/" target="_blank">Node.js</a> installations on your system.
+
+This can be verified by running the following commands.
+
+```s
+$ mono --version
+
+Mono JIT compiler version 6.10.0.0 (or newer)
+...
+```
+
+```s
+$ node --version
+
+v12.0.0 (or newer)
+```
 
 ### Opening the installer
 
-![security-warning](../../../media/setup/win/security-warning.png)
+![dmg](../../../media/setup/mac/dmg.png)
 
-> You might see a security warning from Windows when starting the installer. This is fine.
+> This is how the DMG looks when it is opened.
 
-Click **Yes** to continue.
+Run **Install fuse X.pkg** to continue.
 
 ### Installation process
 
-![setup1](../../../media/setup/win/setup1.png)
+![setup1](../../../media/setup/mac/setup1.png)
 
-> Select your preferred language, if any.
+> Hi, and welcome to our cool installer!
 
-Click **Next** to continue.
+Click **Continue** to continue.
 
-![setup2](../../../media/setup/win/setup2.png)
+![setup2](../../../media/setup/mac/setup2.png)
 
 > Please read the License Agreement carefully.
 
-Click **I Agree** to continue.
+Click **Continue** to continue.
 
-![setup3](../../../media/setup/win/setup3.png)
+![setup2b](../../../media/setup/mac/setup2b.png)
 
-> *Optional:* Select your Text Editor Plugins and whether you want Android Support. This can be [installed later](#finding-a-text-editor) also.
+> Confirm that you have read the License Agreement.
+
+Click **Agree** to continue.
+
+![setup3](../../../media/setup/mac/setup3.png)
+
+> *Optional:* Sometimes this screen is shown. **Install for all users of this computer** should be selected.
+
+Click **Continue** to continue.
+
+![setup4](../../../media/setup/mac/setup4.png)
+
+> The installation will actually take a bit more space due to dependencies being downloading while installing.
 
 Click **Install** to continue.
 
-![setup4](../../../media/setup/win/setup4.png)
+![setup5](../../../media/setup/mac/setup5.png)
+
+> The installer needs to run as Administrator in order to complete.
+
+Enter your password and click **Install Software** to continue.
+
+![setup6](../../../media/setup/mac/setup6.png)
 
 > Time for a quick coffee ☕
 
 Please wait a few minutes...
 
-![setup5](../../../media/setup/win/setup5.png)
+![setup7](../../../media/setup/mac/setup7.png)
 
 > Done and done. Good job!
 
-Click **Finish** to exit.
+Click **Close** to exit.
 
 ## Starting Fuse X
 
-Fuse X can be started in three different ways.
+Fuse X can be started in four different ways.
 
 > **1.** From *Installer*: **fuse X** was started when finishing the installer.
 
-> **2.** From *Start Menu*: Find and click the **fuse X** icon.
+> **2.** From *Finder*: Go to **Applications** and start the **fuse X** app.
 
-> **3.** From *Command Prompt*: Type `fuse` and hit <kbd>Enter</kbd>.
+> **3.** From *Spotlight*: Search for `fuse X` and hit <kbd>Enter</kbd>.
 
-<blockquote class="callout-info">
-
-You may have to log out and in again (or simply reboot) to make sure paths for `fuse` and `node` are properly updated.
-
-</blockquote>
+> **4.** From *Terminal*: Type `fuse` and hit <kbd>Enter</kbd>.
 
 ## Finding a text editor
 
@@ -131,11 +162,11 @@ We currently provide plugins for the following text editors:
 
 When opening Fuse X, the first thing you'll see is the dashboard:
 
-![image of dashboard](../../../media/setup/win/dashboard.png)
+![image of dashboard](../../../media/setup/mac/dashboard.png)
 
 To start a new project, we first have to pick a template. Fuse X comes with a few templates which provide a good starting point when starting from scratch. For the purpose of this guide, we want to choose the "New fuse X project" template. This template gives a project with one file in which we can easily start building our app. Choose this template by clicking the box with its name, and then click the "create" button. You will then have to pick a name and a directory for your project.
 
-![create project](../../../media/setup/win/new.png)
+![create project](../../../media/setup/mac/new.png)
 
 After clicking the "create" button, Fuse X starts a local preview viewport. You'll notice that this process take some time, as Fuse X has to download the packages containing the [framework code](http://github.com/fuse-open/fuselibs) used to create apps with Fuse X. This only happens the first time Fuse X is run after installation. You can see the download progress in the "Log" panel at the bottom of the window.
 
@@ -171,6 +202,14 @@ Fuse X can do live preview on both Android and iOS devices, even at the same tim
 The simplest way to get started is with the [Fuse X Preview app](../preview-and-export.md#fuse-x-preview-app) so you should definitely try that one out first.
 
 If you ever need to include non-standard packages or Uno code in your project then you can instead build your own [custom preview](../preview-and-export.md#custom-preview), but you can make that switch whenever you want to so there's no harm in starting out with the Fuse X Preview app.
+
+## Uninstall
+
+If for any reason we need to remove all of the Fuse X components, we can use [this uninstall script](https://github.com/fuse-x/studio/blob/master/uninstall.sh).
+
+## Xcode
+
+In order to do iOS *app exports* and custom previews you will need the latest version of Xcode. Follow [these instructions](https://developer.apple.com/xcode/downloads/), or search for it in the Mac App Store.
 
 ## What next?
 

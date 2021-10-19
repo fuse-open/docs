@@ -1,41 +1,55 @@
 # Installation and Quickstart
 
-This is a step-by-step tutorial that takes you through setting up Fuse and creating your first project. Should you happen to run into problems during installation, please [let us know](https://forums.fusetools.com/c/bug-reports)!
+This is a step-by-step tutorial that takes you through setting up Fuse X and creating your first project. Should you happen to run into problems during installation, please [let us know](https://fuse-x.com/issues)!
 
 ## Installation
 
-The latest version of Fuse can always be downloaded from the <a target="_blank" href="https://fuseopen.com/downloads">downloads page</a>. Download the installer for your operating system and open it to start the installation procedure.
+The latest version of Fuse X can always be downloaded from the <a href="https://fuse-x.com/download">downloads page</a>. Download the installer for your operating system and open it to start the installation procedure.
 
 <blockquote class="callout-info">
 
-Both the Windows and macOS installers require an internet connection in order to complete.
+<a href="https://nodejs.org/en/download/" target="_blank">Node.js</a> is required to install this software.
 
 </blockquote>
 
 <blockquote class="callout-info">
 
-__Windows:__ You may have to log out and in again (or simply reboot) to make sure the path for fuse is properly updated.
-
-</blockquote>
-
-<blockquote class="callout-info">
-
-__macOS:__ If for any reason you need to remove all of the Fuse components, you can use [this uninstall script](https://gist.github.com/Tapped/daa78c08882f33b0c7c3).
+The installers require a working internet connection in order to complete.
 
 </blockquote>
 
 ### macOS Requirements
 
-- A modern Mac running macOS Yosemite or later
+- OS X 10.10 Yosemite or newer
+- macOS 11.2 Big Sur (or latest) is recommended
+- Intel processor (M1 support is planned)
+- <a href="https://www.mono-project.com/download/stable/" target="_blank">Mono</a> 6.10 or newer
+- <a href="https://nodejs.org/en/download/" target="_blank">Node.js</a> 12 or newer
+
+> Read the [step-by-step guide for macOS](installation/setup-install-mac.md).
 
 ### Windows Requirements
 
-- Window 7 or newer
-- OpenGL 2.1-capable GPU (Very basic on-board/shared resource GPUs such as the Intel GMA-series are not sufficient!!).
+- Windows 7 or newer
+- Windows 10 is recommended
+- <a href="https://nodejs.org/en/download/" target="_blank">Node.js</a> 12 or newer
+
+> Read the [step-by-step guide for Windows](installation/setup-install-win.md).
+
+### Linux Requirements
+
+- <a href="https://www.mono-project.com/download/stable/" target="_blank">Mono</a> 6.0 or newer
+- <a href="https://nodejs.org/en/download/" target="_blank">Node.js</a> 12 or newer
+
+<blockquote class="callout-info">
+
+Linux users can use the <a href="https://www.npmjs.com/package/fuse-sdk" target="_blank">Fuse SDK</a>. Fuse X is not available for Linux.
+
+</blockquote>
 
 ## Finding a text editor
 
-Fuse requires an external text editor in order to make changes to the UX markup in our app. To streamline your experience with Fuse, we provide plugins for some of the more popular text editors which provide code completion, error lists, output logs and the ability to launch Fuse apps from within the text editor.
+Fuse X requires an external text editor in order to make changes to the UX markup in our app. To streamline your experience with Fuse X, we provide plugins for some of the more popular text editors which provide code completion, error lists, output logs and the ability to launch Fuse apps from within the text editor.
 
 We currently provide plugins for the following text editors:
 
@@ -68,15 +82,15 @@ We currently provide plugins for the following text editors:
 
 ## Starting a new project
 
-To open Fuse, double click the the Fuse icon. On macOS it is located in the "Applications" folder. If you are on Windows, it can be located in the start menu.
+To open Fuse X, double click the the **fuse X** icon. On macOS it is located in the *Applications* folder. If you are on Windows, it can be located in the *Start Menu*.
 
 <blockquote class="callout-info">
 
-You can also start Fuse by running `fuse` from terminal on macOS or command prompt on Windows.
+You can also start Fuse X by running `fuse` from terminal on macOS or command prompt on Windows.
 
 </blockquote>
 
-When opening Fuse, the first thing you'll see is the dashboard:
+When opening Fuse X, the first thing you'll see is the dashboard:
 
 ![image of dashboard](../../media/installation_quickstart/fusedashboard.png)
 
@@ -84,11 +98,11 @@ To start a new project, we first have to pick a template. Fuse comes with a few 
 
 ![create project](../../media/installation_quickstart/createprojectname.png)
 
-After clicking the "create" button, Fuse starts a local preview viewport. You'll notice that this process take some time, as Fuse has to download the packages containing the [framework code](http://github.com/fuse-open/fuselibs) used to create apps with Fuse. This only happens the first time Fuse is run after installation. You can see the download progress in the "Log" panel at the bottom of the window.
+After clicking the "create" button, Fuse X starts a local preview viewport. You'll notice that this process take some time, as Fuse X has to download the packages containing the [framework code](http://github.com/fuse-open/fuselibs) used to create apps with Fuse X. This only happens the first time Fuse X is run after installation. You can see the download progress in the "Log" panel at the bottom of the window.
 
 ![preview](../../media/installation_quickstart/preview.png)
 
-After Fuse is done downloading all the required packages, the preview viewport is started, and you'll notice that all we have to start with is a white background.
+After Fuse X is done downloading all the required packages, the preview viewport is started, and you'll notice that all we have to start with is a white background.
 
 ### Making some changes
 
@@ -113,11 +127,11 @@ As soon as you save the document, you should notice the preview viewport update 
 
 ## Running preview on device
 
-Fuse can do live preview on both Android and iOS devices, even at the same time!
+Fuse X can do live preview on both Android and iOS devices, even at the same time!
 
-The simplest way to get started is with the [Fuse Preview app](./preview-and-export.md#fuse-preview-app) so you should definitely try that one out first.
+The simplest way to get started is with the [Fuse X Preview app](./preview-and-export.md#fuse-x-preview-app) so you should definitely try that one out first.
 
-If you ever need to include non-standard packages or Uno code in your project then you can instead build your own [custom preview](./preview-and-export.md#custom-preview), but you can make that switch whenever you want to so there's no harm in starting out with the Fuse Preview app.
+If you ever need to include non-standard packages or Uno code in your project then you can instead build your own [custom preview](./preview-and-export.md#custom-preview), but you can make that switch whenever you want to so there's no harm in starting out with the Fuse X Preview app.
 
 ## What next?
 

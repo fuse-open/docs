@@ -1,15 +1,15 @@
-# Fuse Studio
+# Fuse X
 
-Take UX authoring to the next level with Fuse Studio.
+Take UX authoring to the next level with Fuse X.
 - A hierarchical overview of your app that makes layout and project structuring even more intuitive.
 - Easily add and tweak elements in your app using visual tools.
 - Preview different states & pages in at the same time to see how your changes affect the whole app.
 
-![Fuse Studio](../../media/fuse-studio/overview.png)
+![Fuse X](../../media/fuse-studio/overview.png)
 
 ## Panes
 
-A quick introduction to the various panes and views you'll interact with in Fuse Studio.
+A quick introduction to the various panes and views you'll interact with in Fuse X.
 
 ### Dashboard
 

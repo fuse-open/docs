@@ -143,8 +143,8 @@ We could also get super technical and point out some details:
       /
      v
  <StackPanel Orientation="Horizontal">
-    <Text Value="Hello" /> <--------------- self closing tag 
-    <Text Value="World" />  <--------------- self closing tag
+    <Text Value="Hello" /> <--------------- self closing tag (/)
+    <Text Value="World" />  <--------------- self closing tag (/)
  </StackPanel>
        ^
         \___________________________________ Closing tag

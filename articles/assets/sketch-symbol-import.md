@@ -22,7 +22,7 @@ This workflow enables testing and iterating on by quickly creating prototypes. O
 
 In order to make the integration work, there are a few steps to follow:
 
-#### From Fuse Studio
+#### From Fuse X
 1. Select `Sketch import` from the `Project`-menu
 1. Add the path(s) to the Sketch-file(s) you would like to convert Sketch Symbols from. Use the browse button or type the path in directly and press the `+`-button.
 1. Click `Ok`-button to save the list of Sketch files to watch.
@@ -43,7 +43,7 @@ You can also manually create/edit this file
 1. Inside this file you need to specify a list of paths to Sketch files you want to import. The file paths can be relative or absolute so you can link to a Sketch file anywhere on your system. Here is an example: 
  
 
-Starting Fuse will import all the Symbols in the specified Sketch files into your project. The imported Classes have the naming convention `Sketch.ClassName.ux` to distinguish them from other `ux:Classes`. You will see them if you open Fuse Studio, under the Classes tab, or in the `SketchSymbols` folder that has been created in your project. You can include them in your app the same way you would any other class: `<Sketch.ClassName/>`
+Starting Fuse will import all the Symbols in the specified Sketch files into your project. The imported Classes have the naming convention `Sketch.ClassName.ux` to distinguish them from other `ux:Classes`. You will see them if you open Fuse X, under the Classes tab, or in the `SketchSymbols` folder that has been created in your project. You can include them in your app the same way you would any other class: `<Sketch.ClassName/>`
 
 All changes saved to those Sketch files will reflect in Fuse.
 
