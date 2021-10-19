@@ -7,6 +7,7 @@ using Builder.Models;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using CommonMark;
+using System.Text;
 
 namespace Builder.Services
 {
@@ -43,7 +44,8 @@ namespace Builder.Services
             _logger.LogDebug($"Successfully rendered {queue.Count} markdown fragments in {sw.Elapsed.TotalMilliseconds} ms");
         }
 
-        private async Task ParseMarkdown(Guid id, string markdown) {
+        private async Task ParseMarkdown(Guid id, string markdown)
+        {
             var html = CommonMarkConverter.Convert(markdown);
             await UpdateDeferredResultAsync(id, html);
         }
@@ -58,7 +60,7 @@ namespace Builder.Services
             {
                 html = await existing.PostProcessor.ProcessAsync(html);
             }
-            existing.Html = html;
+            existing.Html = NormalizeCodeLanguageAndIndentation(html);
         }
 
         public Task<DeferredMarkdownUpdateResult> ApplyDeferredAsync(string input, params Guid[] ids)
@@ -97,6 +99,79 @@ namespace Builder.Services
                 Markdown = markdown;
                 PostProcessor = postProcessor;
             }
+        }
+
+        private static string NormalizeCodeLanguageAndIndentation(string html)
+        {
+            // Replace uno/ux languages with csharp/xml
+            html = html.Replace("<code class=\"language-uno\"", "<code class=\"language-csharp\"")
+                       .Replace("<code class=\"language-ux\"", "<code class=\"language-xml\"");
+
+            // Normalize indentation inside <code> tags
+            return NormalizeCodeIndentation(html);
+        }
+
+        private static string NormalizeCodeIndentation(string html, int startIndex = 0)
+        {
+            // Find start tag
+            startIndex = html.IndexOf("<code ", startIndex);
+            if (startIndex == -1)
+                return html;
+
+            startIndex = html.IndexOf('>', startIndex + 6);
+            if (startIndex == -1)
+                return html;
+
+            startIndex += 1; // Move past '>'
+
+            // Find end tag
+            var endIndex = html.IndexOf("</code>", startIndex);
+            if (endIndex == -1)
+                return html;
+
+            // Extract code
+            var original = html.Substring(startIndex, endIndex - startIndex);
+
+            // Normalize spaces and line endings
+            var code = original.Replace("\t", "    ")
+                               .Replace("\r", "")
+                               .TrimEnd();
+
+            // Unindent while there's more left
+            while (AllLinesStartsWith(code, "    "))
+                code = code.Substring(4).Replace("\n    ", "\n");
+            while (AllLinesStartsWith(code, "  "))
+                code = code.Substring(2).Replace("\n  ", "\n");
+            while (AllLinesStartsWith(code, " "))
+                code = code.Substring(1).Replace("\n ", "\n");
+
+            // Build new HTML if something changed
+            if (code != original)
+            {
+                var sb = new StringBuilder();
+                sb.Append(html, 0, startIndex);
+                sb.Append(code);
+                sb.Append(html, endIndex, html.Length - endIndex);
+
+                // Update endIndex and html
+                endIndex = startIndex + code.Length;
+                html = sb.ToString();
+            }
+
+            // Continue searching (recursion)
+            return NormalizeCodeIndentation(html, endIndex + 7);
+        }
+
+        private static bool AllLinesStartsWith(string code, string value)
+        {
+            if (code.IndexOf('\n') == -1)
+                return code.StartsWith(value);
+
+            foreach (var line in code.Split('\n'))
+                if (!line.StartsWith(value) && line.Trim().Length > 0)
+                    return false;
+
+            return true;
         }
     }
 }
