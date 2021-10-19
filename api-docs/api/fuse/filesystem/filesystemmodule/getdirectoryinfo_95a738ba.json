@@ -4,7 +4,7 @@
       "namespaceTitle": "Fuse.FileSystem",
       "namespaceUri": "fuse/filesystem",
       "packageName": "Fuse.FileSystem",
-      "packageVersion": "2.0.0-beta.9"
+      "packageVersion": "2.0.0"
     },
     "parameters": [
       {
@@ -43,7 +43,7 @@
     },
     "comment": {
       "brief": "Asynchronously gets info about a directory.",
-      "full": "Asynchronously gets info about a directory.\n\nThe returned object has the following properties:\n\n* `exists` –  a boolean value stating whether the directory exists or not.\n* `lastWriteTime` –  A `Date` stating when directory was last changed\n* `lastAccessTime` –  A `Date` stating when directory was accessed\n\n## Example\n```js\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    FileSystem.createDirectorySync(\"some-dir\");\n    FileSystem.getDirectoryInfo(\"some-dir\")\n        .then(function(dirInfo) {\n            console.log(\"Directory was modified on \" + dirInfo.lastWriteTime);\n        })\n        .catch(function(error) {\n            console.log(\"Failed to get directory info \" + error);\n        });\n```",
+      "full": "Asynchronously gets info about a directory.\n\nThe returned object has the following properties:\n\n* `exists` –  a boolean value stating whether the directory exists or not.\n* `lastWriteTime` –  A `Date` stating when directory was last changed\n* `lastAccessTime` –  A `Date` stating when directory was accessed\n\n## Example\n\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    FileSystem.createDirectorySync(\"some-dir\");\n    FileSystem.getDirectoryInfo(\"some-dir\")\n        .then(function(dirInfo) {\n            console.log(\"Directory was modified on \" + dirInfo.lastWriteTime);\n        })\n        .catch(function(error) {\n            console.log(\"Failed to get directory info \" + error);\n        });",
       "attributes": {
         "scriptMethod": {
           "name": "getDirectoryInfo",

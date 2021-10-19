@@ -23,7 +23,7 @@
       "namespaceTitle": "Fuse.Gestures",
       "namespaceUri": "fuse/gestures",
       "packageName": "Fuse.Gestures",
-      "packageVersion": "2.0.0-beta.9"
+      "packageVersion": "2.0.0"
     },
     "inheritance": {
       "root": {
@@ -237,7 +237,7 @@
     },
     "comment": {
       "brief": "Triggers when a pointer is clicked on a @Visual.",
-      "full": "Triggers when a pointer is clicked on a @Visual.\n\nThe `Clicked` trigger is quite similar to the @(Tapped) trigger, but these two triggers differ slightly in the interactions they handle.\nWhile a click represents a pointer being pressed and then released on an element, a tap represents a pointer being both pressed and released within a certain period of time.\n\n# Example\nIn this example, a panel will rotate for 0.4 seconds, then rotate back, when clicked:\n```xml\n    <Panel Background=\"#F00\">\n        <Clicked>\n            <Rotate Degrees=\"90\" Duration=\".4\" DurationBack=\".2\" />\n        </Clicked>\n    </Panel>\n```",
+      "full": "Triggers when a pointer is clicked on a @Visual.\n\nThe `Clicked` trigger is quite similar to the @(Tapped) trigger, but these two triggers differ slightly in the interactions they handle.\nWhile a click represents a pointer being pressed and then released on an element, a tap represents a pointer being both pressed and released within a certain period of time.\n\n# Example\nIn this example, a panel will rotate for 0.4 seconds, then rotate back, when clicked:\n\n    <Panel Background=\"#F00\">\n        <Clicked>\n            <Rotate Degrees=\"90\" Duration=\".4\" DurationBack=\".2\" />\n        </Clicked>\n    </Panel>",
       "attributes": {
         "seeAlso": [
           "Tapped"
@@ -404,7 +404,7 @@
           {
             "comment": {
               "brief": "Specifies an explicit backward animation instead of using the implied backward animation\nof the animators involved. Be aware that actions are not part of the animation.",
-              "full": "Specifies an explicit backward animation instead of using the implied backward animation\nof the animators involved. Be aware that actions are not part of the animation.\n\nTriggers normally use the same animators when deactivating as they do when they activate. There are however\nanimations that require a different set of animators when animating back from the active state. For this purpose\none can bind a new set of animators to the `BackwardAnimation` property like so:\n```xml\n    <Panel Width=\"100\" Height=\"100\" Color=\"#00b2ee\">\n        <WhilePressed>\n            <Rotate Degrees=\"90\" Duration=\"0.5\" />\n            <Scale Factor=\"1.5\" Duration=\"1\" Easing=\"QuadraticInOut\" />\n            <TriggerAnimation ux:Binding=\"BackwardAnimation\">\n                <Scale Factor=\"1.5\" Duration=\"1\" Easing=\"QuadraticInOut\" />\n            </TriggerAnimation>\n        </WhilePressed>\n    </Panel>\n```xml\nIn this example, the @Panel only rotates when pressed. When the pointer is released, it does not animate back.\nNote that the effect of the animators are still reversed. The only difference is that they loose their duration."
+              "full": "Specifies an explicit backward animation instead of using the implied backward animation\nof the animators involved. Be aware that actions are not part of the animation.\n\nTriggers normally use the same animators when deactivating as they do when they activate. There are however\nanimations that require a different set of animators when animating back from the active state. For this purpose\none can bind a new set of animators to the `BackwardAnimation` property like so:\n\n    <Panel Width=\"100\" Height=\"100\" Color=\"#00b2ee\">\n        <WhilePressed>\n            <Rotate Degrees=\"90\" Duration=\"0.5\" />\n            <Scale Factor=\"1.5\" Duration=\"1\" Easing=\"QuadraticInOut\" />\n            <TriggerAnimation ux:Binding=\"BackwardAnimation\">\n                <Scale Factor=\"1.5\" Duration=\"1\" Easing=\"QuadraticInOut\" />\n            </TriggerAnimation>\n        </WhilePressed>\n    </Panel>\n\nIn this example, the @Panel only rotates when pressed. When the pointer is released, it does not animate back.\nNote that the effect of the animators are still reversed. The only difference is that they loose their duration."
             },
             "returns": {
               "href": "fuse/animations/triggeranimation",

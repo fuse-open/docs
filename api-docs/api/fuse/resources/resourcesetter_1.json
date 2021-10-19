@@ -23,7 +23,7 @@
       "namespaceTitle": "Fuse.Resources",
       "namespaceUri": "fuse/resources",
       "packageName": "Fuse.Nodes",
-      "packageVersion": "2.0.0-beta.9"
+      "packageVersion": "2.0.0"
     },
     "inheritance": {
       "root": {
@@ -236,7 +236,7 @@
     },
     "comment": {
       "brief": "Creates or overrides a resource with the given key.",
-      "full": "Creates or overrides a resource with the given key.\n\nNote that static resources are better declared with `ux:Key`. The `ResourceSetter` types are to be used when a dynamic value is needed, or one that cannot be expressed with `ux:Key`.\n```xml\n    <Panel>\n        <string Value=\"Static Page Title\" ux:Key=\"Title\"/>\n    </Panel>\n    <Each Items=\"{items}\">\n        <Panel>\n            <ResourceString Key=\"Title\" Value=\"{pageTitle}\"/>\n        </Panel>\n    </Each>\n```\nThe resources created via `ResourceSetter` are local to where they are defined (this is also true of `ux:Key`). Bindings in this node, and its descendents, can bind to the them. Descendents may also provide a new resource with the same `Key`, which overrides it for that part of the UI tree.",
+      "full": "Creates or overrides a resource with the given key.\n\nNote that static resources are better declared with `ux:Key`. The `ResourceSetter` types are to be used when a dynamic value is needed, or one that cannot be expressed with `ux:Key`.\n\n    <Panel>\n        <string Value=\"Static Page Title\" ux:Key=\"Title\"/>\n    </Panel>\n    <Each Items=\"{items}\">\n        <Panel>\n            <ResourceString Key=\"Title\" Value=\"{pageTitle}\"/>\n        </Panel>\n    </Each>\n\nThe resources created via `ResourceSetter` are local to where they are defined (this is also true of `ux:Key`). Bindings in this node, and its descendents, can bind to the them. Descendents may also provide a new resource with the same `Key`, which overrides it for that part of the UI tree.",
       "attributes": {
         "seeAlso": [
           "@Fuse.Resources.ResourceBinding",

@@ -22,7 +22,7 @@
       "namespaceTitle": "Fuse.Storage",
       "namespaceUri": "fuse/storage",
       "packageName": "Fuse.Storage",
-      "packageVersion": "2.0.0-beta.9"
+      "packageVersion": "2.0.0"
     },
     "inheritance": {
       "root": {
@@ -145,8 +145,8 @@
       "ux": "<Storage.StorageModule />"
     },
     "comment": {
-      "brief": "The storage API allows you to read from and write to files in the application directory.\n```js\n    var Storage = require(\"FuseJS/Storage\");\n```\nCheck out the individual functions for documentation on how to use them.",
-      "full": "The storage API allows you to read from and write to files in the application directory.\n```js\n    var Storage = require(\"FuseJS/Storage\");\n```\nCheck out the individual functions for documentation on how to use them.",
+      "brief": "The storage API allows you to read from and write to files in the application directory.",
+      "full": "The storage API allows you to read from and write to files in the application directory.\n\n    var Storage = require(\"FuseJS/Storage\");\n\nCheck out the individual functions for documentation on how to use them.",
       "attributes": {
         "scriptModule": "FuseJS/Storage"
       }
@@ -318,8 +318,8 @@
         "items": [
           {
             "comment": {
-              "brief": "Synchrounously reads data from a file inside the application folder.\n```js\n    var Storage = require(\"FuseJS/Storage\");",
-              "full": "Synchrounously reads data from a file inside the application folder.\n```js\n    var Storage = require(\"FuseJS/Storage\");\n\n    var contents = Storage.readSync(\"myfile.txt\");\n    console.log(contents);\n```\n> Warning: This call will block until the operation is finished. Use read() if you are reading large amounts of data.",
+              "brief": "Synchrounously reads data from a file inside the application folder.",
+              "full": "Synchrounously reads data from a file inside the application folder.\n\n    var Storage = require(\"FuseJS/Storage\");\n\n    var contents = Storage.readSync(\"myfile.txt\");\n    console.log(contents);\n\n> Warning: This call will block until the operation is finished. Use read() if you are reading large amounts of data.",
               "attributes": {
                 "scriptMethod": {
                   "name": "readSync",
@@ -379,8 +379,8 @@
           },
           {
             "comment": {
-              "brief": "Asynchronously reads a file and returns a promise of its contents.\n```js\n    var Storage = require(\"FuseJS/Storage\");",
-              "full": "Asynchronously reads a file and returns a promise of its contents.\n```js\n    var Storage = require(\"FuseJS/Storage\");\n\n    Storage.read(\"myfile.txt\")\n        .then(function(contents) {\n            console.log(contents);\n        }, function(error) {\n            console.log(error);\n        });\n```",
+              "brief": "Asynchronously reads a file and returns a promise of its contents.",
+              "full": "Asynchronously reads a file and returns a promise of its contents.\n\n    var Storage = require(\"FuseJS/Storage\");\n\n    Storage.read(\"myfile.txt\")\n        .then(function(contents) {\n            console.log(contents);\n        }, function(error) {\n            console.log(error);\n        });",
               "attributes": {
                 "scriptMethod": {
                   "name": "read",
@@ -434,8 +434,8 @@
           },
           {
             "comment": {
-              "brief": "Synchrounously deletes a file inside the application folder.\n```js\n    var Storage = require(\"FuseJS/Storage\");",
-              "full": "Synchrounously deletes a file inside the application folder.\n```js\n    var Storage = require(\"FuseJS/Storage\");\n\n    var success = Storage.removeSync(\"uselessFile.txt\");\n    if(success) {\n        console.log(\"Deleted file\");\n    }\n    else {\n        console.log(\"An error occured!\");\n    }\n```\n> Warning: This call will block until the operation is finished.",
+              "brief": "Synchrounously deletes a file inside the application folder.",
+              "full": "Synchrounously deletes a file inside the application folder.\n\n    var Storage = require(\"FuseJS/Storage\");\n\n    var success = Storage.removeSync(\"uselessFile.txt\");\n    if(success) {\n        console.log(\"Deleted file\");\n    }\n    else {\n        console.log(\"An error occured!\");\n    }\n\n> Warning: This call will block until the operation is finished.",
               "attributes": {
                 "scriptMethod": {
                   "name": "removeSync",
@@ -495,8 +495,8 @@
           },
           {
             "comment": {
-              "brief": "Synchrounously writes data to a file inside the application folder.\n```js\n    var Storage = require(\"FuseJS/Storage\");",
-              "full": "Synchrounously writes data to a file inside the application folder.\n```js\n    var Storage = require(\"FuseJS/Storage\");\n\n    var success = Storage.writeSync(\"myfile.txt\", \"Hello from Fuse!\");\n    if(success) {\n        console.log(\"Successfully wrote to file\");\n    }\n    else {\n        console.log(\"An error occured!\");\n    }\n```\n> Warning: This call will block until the operation is finished. Use write() if you are writing large amounts of data.",
+              "brief": "Synchrounously writes data to a file inside the application folder.",
+              "full": "Synchrounously writes data to a file inside the application folder.\n\n    var Storage = require(\"FuseJS/Storage\");\n\n    var success = Storage.writeSync(\"myfile.txt\", \"Hello from Fuse!\");\n    if(success) {\n        console.log(\"Successfully wrote to file\");\n    }\n    else {\n        console.log(\"An error occured!\");\n    }\n\n> Warning: This call will block until the operation is finished. Use write() if you are writing large amounts of data.",
               "attributes": {
                 "scriptMethod": {
                   "name": "writeSync",
@@ -557,8 +557,8 @@
           },
           {
             "comment": {
-              "brief": "Asynchronously writes to a file.\n```js\n    var Storage = require(\"FuseJS/Storage\");",
-              "full": "Asynchronously writes to a file.\n```js\n    var Storage = require(\"FuseJS/Storage\");\n\n    Storage.write(\"myfile.txt\", \"Hello from Fuse!\")\n        .then(function(succeeded) {\n            if(succeeded) {\n                console.log(\"Successfully wrote to file\");\n            }\n            else {\n                console.log(\"Couldn't write to file.\");\n            }\n        });\n```",
+              "brief": "Asynchronously writes to a file.",
+              "full": "Asynchronously writes to a file.\n\n    var Storage = require(\"FuseJS/Storage\");\n\n    Storage.write(\"myfile.txt\", \"Hello from Fuse!\")\n        .then(function(succeeded) {\n            if(succeeded) {\n                console.log(\"Successfully wrote to file\");\n            }\n            else {\n                console.log(\"Couldn't write to file.\");\n            }\n        });",
               "attributes": {
                 "scriptMethod": {
                   "name": "write",

@@ -79,7 +79,7 @@
     {
       "comment": {
         "brief": "Animates the change in a value.",
-        "full": "Animates the change in a value.\n\nThe syntax is `attract( value, config )`\n\nThis requires an @AttractorConfig that defines the style of the animation.\n\n# Example\n```xml\n    <AttractorConfig Unit=\"Points\" Easing=\"SinusoidalInOut\" Duration=\"0.3\" ux:Global=\"asPoints\"/>\n\n    <Panel>\n        <Translation X=\"attract({xOffset}, asPoints)\"/>\n    </Panel>\n```\nWhere `xOffset` is a context variable."
+        "full": "Animates the change in a value.\n\nThe syntax is `attract( value, config )`\n\nThis requires an @AttractorConfig that defines the style of the animation.\n\n# Example\n\n    <AttractorConfig Unit=\"Points\" Easing=\"SinusoidalInOut\" Duration=\"0.3\" ux:Global=\"asPoints\"/>\n\n    <Panel>\n        <Translation X=\"attract({xOffset}, asPoints)\"/>\n    </Panel>\n\nWhere `xOffset` is a context variable."
       },
       "id": {
         "id": "fuse/animations/attract",
@@ -426,7 +426,7 @@
     {
       "comment": {
         "brief": "Finds a router from the current location.",
-        "full": "Finds a router from the current location.\n\nThis can be used to get access to a router in JavaScript. This assume that a @Router has been\ndeclared somewhere higher in the UX tree (it need not be in the same file).\n```xml\n    <Page>\n        <JavaScript dep:router=\"findRouter()\">\n            exports.go = function() {\n                router.goto( \"anotherPageName\" )\n            }\n        </JavaScript>\n\n        <Button Alignment=\"Center\" Clicked=\"{go}\"/>\n    </Page>\n```"
+        "full": "Finds a router from the current location.\n\nThis can be used to get access to a router in JavaScript. This assume that a @Router has been\ndeclared somewhere higher in the UX tree (it need not be in the same file).\n\n    <Page>\n        <JavaScript dep:router=\"findRouter()\">\n            exports.go = function() {\n                router.goto( \"anotherPageName\" )\n            }\n        </JavaScript>\n\n        <Button Alignment=\"Center\" Clicked=\"{go}\"/>\n    </Page>"
       },
       "id": {
         "id": "fuse/navigation/findrouter",
@@ -708,8 +708,8 @@
     },
     {
       "comment": {
-        "brief": "The invserse trigonometric tangent of the input components\n```uno\n    atan2(y, x)\n```",
-        "full": "The invserse trigonometric tangent of the input components\n```uno\n    atan2(y, x)\n```"
+        "brief": "The invserse trigonometric tangent of the input components",
+        "full": "The invserse trigonometric tangent of the input components\n\n    atan2(y, x)"
       },
       "id": {
         "id": "fuse/reactive/atan2",
@@ -731,8 +731,8 @@
     },
     {
       "comment": {
-        "brief": "The inverse trigonometric tangent of the input components. Like `atan2` but uses the input vector for the X and Y values.\n```uno\n    atanVector( v ) == atan2( v.Y, v.X )\n```",
-        "full": "The inverse trigonometric tangent of the input components. Like `atan2` but uses the input vector for the X and Y values.\n```uno\n    atanVector( v ) == atan2( v.Y, v.X )\n```"
+        "brief": "The inverse trigonometric tangent of the input components. Like `atan2` but uses the input vector for the X and Y values.",
+        "full": "The inverse trigonometric tangent of the input components. Like `atan2` but uses the input vector for the X and Y values.\n\n    atanVector( v ) == atan2( v.Y, v.X )"
       },
       "id": {
         "id": "fuse/reactive/atanvector",
@@ -842,8 +842,8 @@
     },
     {
       "comment": {
-        "brief": "Restricts the range of a value to between two numbers.\n```uno\n    clamp( value, min, max)\n```\nReturns\n- `min` when `value < min`\n- `max` when `value > max`\n- `value` otherwise",
-        "full": "Restricts the range of a value to between two numbers.\n```uno\n    clamp( value, min, max)\n```\nReturns\n- `min` when `value < min`\n- `max` when `value > max`\n- `value` otherwise\n\nValue may be a 1-4 component value. `min` and `max` must both be a single value."
+        "brief": "Restricts the range of a value to between two numbers.",
+        "full": "Restricts the range of a value to between two numbers.\n\n    clamp( value, min, max)\n\nReturns\n- `min` when `value < min`\n- `max` when `value > max`\n- `value` otherwise\n\nValue may be a 1-4 component value. `min` and `max` must both be a single value."
       },
       "id": {
         "id": "fuse/reactive/clamp",
@@ -1030,7 +1030,7 @@
     {
       "comment": {
         "brief": "Binds to the prime context data of this node.",
-        "full": "Binds to the prime context data of this node.\n\nBehaviors like @With, @Each, and @Instance introduce a prime data context for their children.  @JavaScript and the `Model` tag do not introduce a prime data context.\n\nUse `data()` when you wish to bind directly to the prime data context. This is for when your data contains a simple value rather than a data structure.\n```xml\n    <JavaScript>\n        exports.items = Observable(1,2,3)\n    </JavaScript>\n    <Each Items=\"{items}\">\n        <Text Value=\"{= data() }\"/>\n    </Each>\n```"
+        "full": "Binds to the prime context data of this node.\n\nBehaviors like @With, @Each, and @Instance introduce a prime data context for their children.  @JavaScript and the `Model` tag do not introduce a prime data context.\n\nUse `data()` when you wish to bind directly to the prime data context. This is for when your data contains a simple value rather than a data structure.\n\n    <JavaScript>\n        exports.items = Observable(1,2,3)\n    </JavaScript>\n    <Each Items=\"{items}\">\n        <Text Value=\"{= data() }\"/>\n    </Each>"
       },
       "id": {
         "id": "fuse/reactive/datafunction",
@@ -1052,7 +1052,7 @@
     {
       "comment": {
         "brief": "Binds to a resource with the key provided in a context variable. This allows selecting resources from @JavaScript by key name.",
-        "full": "Binds to a resource with the key provided in a context variable. This allows selecting resources from @JavaScript by key name.\n\nIn this example three different fonts are created as resources. The font is selected by name in the exported JavaScript items.\n```xml\n    <Font File=\"../../Assets/fonts/Roboto-Bold.ttf\" ux:Key=\"Bold\"/>\n    <Font File=\"../../Assets/fonts/Roboto-Regular.ttf\" ux:Key=\"Regular\"/>\n    <Font File=\"../../Assets/fonts/Roboto-Italic.ttf\" ux:Key=\"Italic\"/>\n\n    <JavaScript>\n        exports.items = [\n            { font: \"Bold\" },\n            { font: \"Regular\" },\n            { font: \"Italic\" },\n        ]\n    </JavaScript>\n    <StackPanel>\n        <Each Items=\"{items}\">\n            <Text Value=\"Sample Text\" Font=\"{DataToResource font}\"/>\n        </Each>\n    </StackPanel>\n```\n`{DataToResource variableKey}` is similar to `{Resource key}`, except it allows a variable key name instead of a static one."
+        "full": "Binds to a resource with the key provided in a context variable. This allows selecting resources from @JavaScript by key name.\n\nIn this example three different fonts are created as resources. The font is selected by name in the exported JavaScript items.\n\n    <Font File=\"../../Assets/fonts/Roboto-Bold.ttf\" ux:Key=\"Bold\"/>\n    <Font File=\"../../Assets/fonts/Roboto-Regular.ttf\" ux:Key=\"Regular\"/>\n    <Font File=\"../../Assets/fonts/Roboto-Italic.ttf\" ux:Key=\"Italic\"/>\n\n    <JavaScript>\n        exports.items = [\n            { font: \"Bold\" },\n            { font: \"Regular\" },\n            { font: \"Italic\" },\n        ]\n    </JavaScript>\n    <StackPanel>\n        <Each Items=\"{items}\">\n            <Text Value=\"Sample Text\" Font=\"{DataToResource font}\"/>\n        </Each>\n    </StackPanel>\n\n`{DataToResource variableKey}` is similar to `{Resource key}`, except it allows a variable key name instead of a static one."
       },
       "id": {
         "id": "fuse/reactive/datatoresource",
@@ -1590,7 +1590,7 @@
     {
       "comment": {
         "brief": "Returns false if the value exists and is non-null, true otherwise.",
-        "full": "Returns false if the value exists and is non-null, true otherwise.\n\nThis is the same condition used in the NullCoalesce operator:\n```uno\n    expr ?? res\n```\nIs the same as:\n```uno\n    isNull(expr) ? res : expr\n```"
+        "full": "Returns false if the value exists and is non-null, true otherwise.\n\nThis is the same condition used in the NullCoalesce operator:\n\n    expr ?? res\n\nIs the same as:\n\n    isNull(expr) ? res : expr"
       },
       "id": {
         "id": "fuse/reactive/isnull",
@@ -1675,8 +1675,8 @@
     },
     {
       "comment": {
-        "brief": "Calculates the linear interpolation between two values.\n```uno\n    lerp( from, to, step )\n```\nWhen step==0 the result is `from`, when step==1 the result is `to`. Partial values are linearly interpolated. Step values <0 and >1 are also supported.",
-        "full": "Calculates the linear interpolation between two values.\n```uno\n    lerp( from, to, step )\n```\nWhen step==0 the result is `from`, when step==1 the result is `to`. Partial values are linearly interpolated. Step values <0 and >1 are also supported.\n\nThe input supports a 1-4 component value for `from` and `to`. The result will be same size.\n`step` must always be a single value."
+        "brief": "Calculates the linear interpolation between two values.",
+        "full": "Calculates the linear interpolation between two values.\n\n    lerp( from, to, step )\n\nWhen step==0 the result is `from`, when step==1 the result is `to`. Partial values are linearly interpolated. Step values <0 and >1 are also supported.\n\nThe input supports a 1-4 component value for `from` and `to`. The result will be same size.\n`step` must always be a single value."
       },
       "id": {
         "id": "fuse/reactive/lerp",
@@ -2164,7 +2164,7 @@
     {
       "comment": {
         "brief": "Returns the parameter of the given page (visual), parsed from a JSON string.",
-        "full": "Returns the parameter of the given page (visual), parsed from a JSON string.\n\nUsage:\n```xml\n    <Text Value=\"parameter(this).title\" />\n```\nThe parameter can be ommited"
+        "full": "Returns the parameter of the given page (visual), parsed from a JSON string.\n\nUsage:\n\n    <Text Value=\"parameter(this).title\" />\n\nThe parameter can be ommited"
       },
       "id": {
         "id": "fuse/reactive/parameter",
@@ -2731,7 +2731,7 @@
     {
       "comment": {
         "brief": "Forces conversion to a Size or Size2 depending on input size.",
-        "full": "Forces conversion to a Size or Size2 depending on input size.\n\nThis is useful when using operators that may not be able to infer the desired types. For example:\n```xml\n    <JavaScript>\n        exports.jsArray = [0.2, 0.4]\n    </JavaScript>\n    <Panel Offset=\"size({jsArray}) * 100%\"/>\n```\nThis function follows the conversion rules as though the operand was being converted directly to a `Size` or `Size2` property type. If the input is a `float2`, array, or already a Size2, then it will be converted to a `Size2`, otherwise a `Size` type."
+        "full": "Forces conversion to a Size or Size2 depending on input size.\n\nThis is useful when using operators that may not be able to infer the desired types. For example:\n\n    <JavaScript>\n        exports.jsArray = [0.2, 0.4]\n    </JavaScript>\n    <Panel Offset=\"size({jsArray}) * 100%\"/>\n\nThis function follows the conversion rules as though the operand was being converted directly to a `Size` or `Size2` property type. If the input is a `float2`, array, or already a Size2, then it will be converted to a `Size2`, otherwise a `Size` type."
       },
       "id": {
         "id": "fuse/reactive/tosize",

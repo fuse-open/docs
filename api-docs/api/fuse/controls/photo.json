@@ -23,7 +23,7 @@
       "namespaceTitle": "Fuse.Controls",
       "namespaceUri": "fuse/controls",
       "packageName": "Fuse.Controls.CameraView",
-      "packageVersion": "2.0.0-beta.9"
+      "packageVersion": "2.0.0"
     },
     "inheritance": {
       "root": {
@@ -136,7 +136,7 @@
           {
             "comment": {
               "brief": "Save the photo to disk",
-              "full": "Save the photo to disk\n\nReturns a Promise that resolves to a string containing the filepath to the photo.\n```xml\n    <CameraView ux:Name=\"Camera\" />\n    <JavaScript>\n        Camera.capturePhoto()\n            .then(function(photo) {\n                photo.save()\n                    .then(function(filePath) {\n                        photo.release();\n                    })\n                    .catch(function(err) {\n                        photo.release();\n                    })\n            })\n            .catch(function(err) { });\n    </JavaScript>\n```",
+              "full": "Save the photo to disk\n\nReturns a Promise that resolves to a string containing the filepath to the photo.\n\n    <CameraView ux:Name=\"Camera\" />\n    <JavaScript>\n        Camera.capturePhoto()\n            .then(function(photo) {\n                photo.save()\n                    .then(function(filePath) {\n                        photo.release();\n                    })\n                    .catch(function(err) {\n                        photo.release();\n                    })\n            })\n            .catch(function(err) { });\n    </JavaScript>",
               "attributes": {
                 "scriptMethod": {
                   "name": "save",
@@ -192,7 +192,7 @@
           {
             "comment": {
               "brief": "Save a downscaled version of the photo",
-              "full": "Save a downscaled version of the photo\n\nUse this method if you need a downscaled versions of the photo. An optional argument can\nbe passed with a size hint. The thumbnail will try to fit the provided size hint and maintain\nits aspect ratio.\n\nIts good practice to provide a sizehint if you know what size the thumbnail should be.\nThe sizehint will be interpreted as points.\n```xml\n    <CameraView ux:Name=\"Camera\" />\n    <JavaScript>\n        Camera.capturePhoto()\n            .then(function(photo) {\n                var sizehint = {\n                    width: 128,\n                    height: 128\n                };\n                photo.saveThumbnail(sizehint)\n                    .then(function(outputFilePath) {\n                        console.log(\"Thumbnail saved to: \" + outputFilePath);\n                        photo.release();\n                    })\n                    .catch(function(err) {\n                        photo.release();\n                    })\n            })\n            .catch(function(err) { });\n    </JavaScript>\n```",
+              "full": "Save a downscaled version of the photo\n\nUse this method if you need a downscaled versions of the photo. An optional argument can\nbe passed with a size hint. The thumbnail will try to fit the provided size hint and maintain\nits aspect ratio.\n\nIts good practice to provide a sizehint if you know what size the thumbnail should be.\nThe sizehint will be interpreted as points.\n\n    <CameraView ux:Name=\"Camera\" />\n    <JavaScript>\n        Camera.capturePhoto()\n            .then(function(photo) {\n                var sizehint = {\n                    width: 128,\n                    height: 128\n                };\n                photo.saveThumbnail(sizehint)\n                    .then(function(outputFilePath) {\n                        console.log(\"Thumbnail saved to: \" + outputFilePath);\n                        photo.release();\n                    })\n                    .catch(function(err) {\n                        photo.release();\n                    })\n            })\n            .catch(function(err) { });\n    </JavaScript>",
               "attributes": {
                 "scriptMethod": {
                   "name": "saveThumbnail",

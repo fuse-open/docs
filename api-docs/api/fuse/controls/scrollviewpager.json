@@ -23,7 +23,7 @@
       "namespaceTitle": "Fuse.Controls",
       "namespaceUri": "fuse/controls",
       "packageName": "Fuse.Controls.ScrollView",
-      "packageVersion": "2.0.0-beta.9"
+      "packageVersion": "2.0.0"
     },
     "inheritance": {
       "root": {
@@ -236,7 +236,7 @@
     },
     "comment": {
       "brief": "Paging and loading manager for a list of items. Allows a large, or infinite list, to be displayed in a `ScrollView`.",
-      "full": "Paging and loading manager for a list of items. Allows a large, or infinite list, to be displayed in a `ScrollView`.\n\nThis controls the `Offset` and `Limit` properties of an `Each` inside a `ScrollView`. It limits the number of items displayed to improve performance.\n\nThe setup that works now is with a `StackPanel` (Horizontal or Vertical)\n```xml\n    <ScrollView LayoutMode=\"PreserveVisual\">\n        <StackPanel>\n            <Each Items=\"{items}\" Reuse=\"Frame\" ux:Name=\"theEach\">\n                <Panel Color=\"#AAA\">\n                    <Text Value=\"{title}\"/>\n                </Panel>\n            </Each>\n        </StackPanel>\n\n        <ScrollViewPager Each=\"theEach\" ReachedEnd=\"{loadMore}\"/>\n    </ScrollView>\n```\nIt's required to use `LayoutMode=\"PreserveVisual\"`, otherwise the scrolling will not function correctly. `Reuse=\"Frame\"` is optional but recommended: it improves performance by reusing objects.\n\n`ReachedEnd` is called when the true end of the list is reached and more data is required. It's actually called somewhat before the end is reached, thus allowing the loading process to start before the user reaches the end. There is also a `RechedStart` to allow loading when scrolling the opposite direction.  Neither of these callbacks are mandatory; `ScrollViewPager` is also helpful for displaying large static lists.",
+      "full": "Paging and loading manager for a list of items. Allows a large, or infinite list, to be displayed in a `ScrollView`.\n\nThis controls the `Offset` and `Limit` properties of an `Each` inside a `ScrollView`. It limits the number of items displayed to improve performance.\n\nThe setup that works now is with a `StackPanel` (Horizontal or Vertical)\n\n    <ScrollView LayoutMode=\"PreserveVisual\">\n        <StackPanel>\n            <Each Items=\"{items}\" Reuse=\"Frame\" ux:Name=\"theEach\">\n                <Panel Color=\"#AAA\">\n                    <Text Value=\"{title}\"/>\n                </Panel>\n            </Each>\n        </StackPanel>\n\n        <ScrollViewPager Each=\"theEach\" ReachedEnd=\"{loadMore}\"/>\n    </ScrollView>\n\nIt's required to use `LayoutMode=\"PreserveVisual\"`, otherwise the scrolling will not function correctly. `Reuse=\"Frame\"` is optional but recommended: it improves performance by reusing objects.\n\n`ReachedEnd` is called when the true end of the list is reached and more data is required. It's actually called somewhat before the end is reached, thus allowing the loading process to start before the user reaches the end. There is also a `RechedStart` to allow loading when scrolling the opposite direction.  Neither of these callbacks are mandatory; `ScrollViewPager` is also helpful for displaying large static lists.",
       "attributes": {
         "experimental": true
       }
