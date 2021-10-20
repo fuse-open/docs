@@ -5,6 +5,11 @@
     <TargetFramework>netcoreapp3.0</TargetFramework>
   </PropertyGroup>
 
+  <!-- We're aware it's out of support, silence the warnings -->
+  <PropertyGroup Condition="'$(TargetFramework)' == 'netcoreapp3.0'">
+    <CheckEolTargetFramework>false</CheckEolTargetFramework>
+  </PropertyGroup>
+
   <ItemGroup>
       <PackageReference Include="System.Text.Encodings.Web" Version="4.5.1" />
       <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
