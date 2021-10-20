@@ -360,7 +360,7 @@ Lets combine what we've learned so far to create something a bit more complex th
 				<Text Alignment="HorizontalCenter" FontSize="35">This is</Text>
 				<Text Alignment="HorizontalCenter">our</Text>
 				<Text Alignment="HorizontalCenter" FontSize="25">first</Text>
-				<Image Url="https://www.fusetools.com/assets/dist/images/logo-white-header.png"
+				<Image Url="https://fuseopen.com/assets/white-logo.png"
 					   Color="#333"
 					   StretchMode="PixelPrecise" />
 				<Text Alignment="HorizontalCenter" FontSize="30">App</Text>
@@ -524,7 +524,7 @@ Since componentization is such an important part of Fuse, we've spent a lot of o
 				<Text Alignment="HorizontalCenter" FontSize="35">This is</Text>
 				<Text Alignment="HorizontalCenter">our</Text>
 				<Text Alignment="HorizontalCenter" FontSize="25">first</Text>
-				<Image Url="https://www.fusetools.com/assets/dist/images/logo-white-header.png"
+				<Image Url="https://fuseopen.com/assets/white-logo.png"
 					   Color="#333"
 					   StretchMode="PixelPrecise" />
 				<Text Alignment="HorizontalCenter" FontSize="30">App</Text>
@@ -569,7 +569,7 @@ __Card.ux:__
 		<Text Alignment="HorizontalCenter" FontSize="35">This is</Text>
 		<Text Alignment="HorizontalCenter">our</Text>
 		<Text Alignment="HorizontalCenter" FontSize="25">first</Text>
-		<Image Url="https://www.fusetools.com/assets/dist/images/logo-white-header.png"
+		<Image Url="https://fuseopen.com/assets/white-logo.png"
 			   Color="#333"
 			   StretchMode="PixelPrecise" />
 		<Text Alignment="HorizontalCenter" FontSize="30">App</Text>
