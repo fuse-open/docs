@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -688,8 +688,7 @@
 </ol>
 <pre><code class="language-csharp">int Foo: 10; 
 Foo: prev * 2;    // Sets Foo to 20
-Foo: prev * 3;  // Sets Foo to 60
-</code></pre>
+Foo: prev * 3;  // Sets Foo to 60</code></pre>
 <ol start="2">
 <li>If used as an operator in front of a meta property name, prev refers to the previous definition of that meta property. Putting multiple prev keywords in front of each other refers to an even earlier definition. Examples:</li>
 </ol>
@@ -707,13 +706,11 @@ int Bar3: prev Foo; // Sets Bar3 to 40
 
 int Bar4: prev prev Foo; // Sets Bar4 to 20 - note the use of double 'prev'
 
-int Bar5: prev prev prev Foo; // Sets Bar5 to 10 - note the use of triple 'prev'
-</code></pre>
+int Bar5: prev prev prev Foo; // Sets Bar5 to 10 - note the use of triple 'prev'</code></pre>
 <p>Note that prev searches upward the draw path from the current meta property, regardless of how many times the meta property in question is defined later.</p>
 <p>Using prev is useful in order to avoid circular meta property references. The following would cause a circular reference and compile time error:</p>
 <pre><code class="language-csharp">int Foo: 10;
-Foo: Foo * 2;   // Circular reference - this is not allowed 
-</code></pre>
+Foo: Foo * 2;   // Circular reference - this is not allowed</code></pre>
 
             </div>
             <div class="d-none d-sm-block col-md-3 d-xl-3 toc-content">

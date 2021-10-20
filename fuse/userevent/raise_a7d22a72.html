@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -689,36 +689,34 @@ UserEvent.raise(args) Method (JS)
 <h4 id="example">Example</h4>
 <p>Here is a very basic example showing how you can raise a UserEvent
 from JavaScript.</p>
-<pre><code class="language-xml">    &lt;UserEvent ux:Name=&quot;myEvent&quot; /&gt;
+<pre><code class="language-xml">&lt;UserEvent ux:Name=&quot;myEvent&quot; /&gt;
 
-    &lt;JavaScript&gt;
-        myEvent.raise();
-    &lt;/JavaScript&gt;
-</code></pre>
+&lt;JavaScript&gt;
+    myEvent.raise();
+&lt;/JavaScript&gt;</code></pre>
 <p>The following example raises an event with some arguments 5 seconds
 after JavaScript has started executing, and logs its arguments in
 the event handler.</p>
-<pre><code class="language-xml">    &lt;UserEvent ux:Name=&quot;myEvent&quot; /&gt;
-    &lt;OnUserEvent EventName=&quot;myEvent&quot; Handler=&quot;{eventHandler}&quot; /&gt;
+<pre><code class="language-xml">&lt;UserEvent ux:Name=&quot;myEvent&quot; /&gt;
+&lt;OnUserEvent EventName=&quot;myEvent&quot; Handler=&quot;{eventHandler}&quot; /&gt;
 
-    &lt;JavaScript&gt;
-        setTimeout(function() {
+&lt;JavaScript&gt;
+    setTimeout(function() {
 
-            myEvent.raise({
-                userName: &quot;james&quot;,
-                isAdmin: false
-            });
+        myEvent.raise({
+            userName: &quot;james&quot;,
+            isAdmin: false
+        });
 
-        }, 5000);
+    }, 5000);
 
-        function eventHandler(args) {
-            console.log(&quot;User name: &quot; + args.userName);
-            console.log(&quot;Is admin: &quot; + args.isAdmin);
-        }
+    function eventHandler(args) {
+        console.log(&quot;User name: &quot; + args.userName);
+        console.log(&quot;Is admin: &quot; + args.isAdmin);
+    }
 
-        module.exports = { eventHandler: eventHandler };
-    &lt;/JavaScript&gt;
-</code></pre>
+    module.exports = { eventHandler: eventHandler };
+&lt;/JavaScript&gt;</code></pre>
 <ul>
 <li></li>
 </ul>

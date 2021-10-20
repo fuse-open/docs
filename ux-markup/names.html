@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -683,19 +683,15 @@
               <h1 id="local-names-ux-name">Local names (ux:Name)</h1>
 <p>The <code>ux:Name</code> attribute in UX Markup is used to provide a local name to a UX object.</p>
 <h2 id="syntax">Syntax</h2>
-<pre><code class="language-xml">	&lt;type ux:Name=&quot;node_name&quot; /&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;type ux:Name=&quot;node_name&quot; /&gt;</code></pre>
 <p>Where <code>type</code> is any type accessible in UX Markup, and <code>node_name</code> is a valid Uno identifier.</p>
 <h2 id="remarks">Remarks</h2>
 <p>Any object (XML element) in UX markup can be given a <code>ux:Name</code> attribute to assign a local name to it.</p>
-<pre><code class="language-xml">	&lt;Panel ux:Name=&quot;panel1&quot; /&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Panel ux:Name=&quot;panel1&quot; /&gt;</code></pre>
 <p>Once a name is given, the object can be referenced by that name within the same <em>scope</em>. Any UX expression can then refer to this object by it's plain name. Local names take precedence over global resources with the same name.</p>
-<pre><code class="language-xml">	&lt;Rectangle LayoutMaster=&quot;panel1&quot; /&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Rectangle LayoutMaster=&quot;panel1&quot; /&gt;</code></pre>
 <p>Names can be used direclty in UX Expressions, for example like this:</p>
-<pre><code class="language-xml">	&lt;Rectangle Width=&quot;width(panel1) / 2&quot; /&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Rectangle Width=&quot;width(panel1) / 2&quot; /&gt;</code></pre>
 <blockquote>
 <p>Note that ux:Name can not be data-bound as it is a compile-time attribute. Data-binding happens at run-time.</p>
 </blockquote>

@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -704,24 +704,22 @@ Show advanced things
 and will move towards <code>1</code> as the pointer is dragged towards the <code>Length</code> of the <a href="../../fuse/gestures/swipegesture.html">SwipeGesture</a>.</p>
 <h3 id="examples">Examples</h3>
 <p>In this example, a panel moves 200 points to the right when swiped over a distance of 200 points.</p>
-<pre><code class="language-xml">    &lt;Panel Width=&quot;100&quot; Height=&quot;100&quot; Background=&quot;#000&quot;&gt;
-        &lt;SwipeGesture ux:Name=&quot;swipe&quot; Direction=&quot;Right&quot; Length=&quot;200&quot; /&gt;
-        &lt;SwipingAnimation Source=&quot;swipe&quot;&gt;
-            &lt;Move X=&quot;200&quot; /&gt;
-        &lt;/SwipingAnimation&gt;
-    &lt;/Panel&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Panel Width=&quot;100&quot; Height=&quot;100&quot; Background=&quot;#000&quot;&gt;
+    &lt;SwipeGesture ux:Name=&quot;swipe&quot; Direction=&quot;Right&quot; Length=&quot;200&quot; /&gt;
+    &lt;SwipingAnimation Source=&quot;swipe&quot;&gt;
+        &lt;Move X=&quot;200&quot; /&gt;
+    &lt;/SwipingAnimation&gt;
+&lt;/Panel&gt;</code></pre>
 <p>In this example, we demonstrate using the <code>LengthNode</code> property of <a href="../../fuse/gestures/swipegesture.html">SwipeGesture</a>,
 and the <code>RelativeNode</code> property of <a href="../../fuse/animations/move.html">Move</a>, to determine the swipe length based on the width of the panel.</p>
-<pre><code class="language-xml">    &lt;Panel ux:Name=&quot;parentContainer&quot; Margin=&quot;40&quot;&gt;
-        &lt;Panel Width=&quot;60&quot; Height=&quot;60&quot; Background=&quot;#000&quot; Alignment=&quot;Left&quot;&gt;
-            &lt;SwipeGesture ux:Name=&quot;swipe&quot; Direction=&quot;Right&quot; Type=&quot;Active&quot; LengthNode=&quot;parentContainer&quot; /&gt;
-            &lt;SwipingAnimation Source=&quot;swipe&quot;&gt;
-                &lt;Move X=&quot;1&quot; RelativeTo=&quot;Size&quot; RelativeNode=&quot;parentContainer&quot; /&gt;
-            &lt;/SwipingAnimation&gt;
-        &lt;/Panel&gt;
+<pre><code class="language-xml">&lt;Panel ux:Name=&quot;parentContainer&quot; Margin=&quot;40&quot;&gt;
+    &lt;Panel Width=&quot;60&quot; Height=&quot;60&quot; Background=&quot;#000&quot; Alignment=&quot;Left&quot;&gt;
+        &lt;SwipeGesture ux:Name=&quot;swipe&quot; Direction=&quot;Right&quot; Type=&quot;Active&quot; LengthNode=&quot;parentContainer&quot; /&gt;
+        &lt;SwipingAnimation Source=&quot;swipe&quot;&gt;
+            &lt;Move X=&quot;1&quot; RelativeTo=&quot;Size&quot; RelativeNode=&quot;parentContainer&quot; /&gt;
+        &lt;/SwipingAnimation&gt;
     &lt;/Panel&gt;
-</code></pre>
+&lt;/Panel&gt;</code></pre>
 
 <section class="type-location">
 <h3 id="section-location">Location</h3>

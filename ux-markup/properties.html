@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -688,39 +688,34 @@
 <p>When creating a class (component) in UX Markup, it automatically inherits all properties from the base class.</p>
 </blockquote>
 <h2 id="syntax">Syntax</h2>
-<pre><code class="language-xml">	&lt;type ux:Property=&quot;property_name&quot; /&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;type ux:Property=&quot;property_name&quot; /&gt;</code></pre>
 <p>Where <code>type</code> is the name of an Uno type (such as <code>Panel</code> or <code>string</code>), and <code>property_name</code> is a valid Uno identifier.</p>
 <h2 id="default-values">Default values</h2>
 <p>The defaul value for a property can be specified as a regular property on the containing <code>ux:Class</code>.</p>
 <p>Example:</p>
-<pre><code class="language-xml">	&lt;Panel ux:Class=&quot;MyComponent&quot; NumberOfThings=&quot;13&quot;&gt;
-		&lt;int ux:Property=&quot;NumberOfThings&quot; /&gt;
-		...
-	&lt;/Panel&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Panel ux:Class=&quot;MyComponent&quot; NumberOfThings=&quot;13&quot;&gt;
+    &lt;int ux:Property=&quot;NumberOfThings&quot; /&gt;
+    ...
+&lt;/Panel&gt;</code></pre>
 <h2 id="remarks">Remarks</h2>
 <h3 id="property-bindings">Property bindings</h3>
 <p>Properties can be refered to within UX Markup using <em>property bindings</em>, on the form <code>{Property PropertyName}</code> or <code>{Property objectName.PropertyName}</code>.</p>
 <p>Property bindings can be <em>two-way</em> (default), <em>read-only</em> (<code>{ReadProperty ...}</code>) or <em>write-only</em> (<code>{WriteProperty ...}</code>).</p>
 <h3 id="example">Example</h3>
 <p>In the following example, the control defines a new property called <code>BackgroundColor</code>, with a default value (set on the root node) of <code>#f00</code>. This color is then property-bound to the <code>Color</code> property of a background rectangle with rounded corners.</p>
-<pre><code class="language-xml">	&lt;Panel ux:Class=&quot;MyButton&quot; BackgroundColor=&quot;#f00&quot;&gt;
-		&lt;float4 ux:Property=&quot;BackgroundColor&quot; /&gt;
-		&lt;Text&gt;SUBMIT&lt;/Text&gt;
-		&lt;Rectangle Layer=&quot;Background&quot; Color=&quot;{Property BackgroundColor}&quot; CornerRadius=&quot;10&quot; /&gt;
-	&lt;/Panel&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Panel ux:Class=&quot;MyButton&quot; BackgroundColor=&quot;#f00&quot;&gt;
+    &lt;float4 ux:Property=&quot;BackgroundColor&quot; /&gt;
+    &lt;Text&gt;SUBMIT&lt;/Text&gt;
+    &lt;Rectangle Layer=&quot;Background&quot; Color=&quot;{Property BackgroundColor}&quot; CornerRadius=&quot;10&quot; /&gt;
+&lt;/Panel&gt;</code></pre>
 <p>When the component is instantiated, the user can either leave the default <code>BackgroundColor</code>, or set a new one.</p>
-<pre><code class="language-xml">	&lt;MyButton /&gt;  &lt;!-- this one will keep the default color --&gt;
-	&lt;MyButton BackgroundColor=&quot;#0f0&quot; /&gt; &lt;!-- this one will use green instead --&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;MyButton /&gt;  &lt;!-- this one will keep the default color --&gt;
+&lt;MyButton BackgroundColor=&quot;#0f0&quot; /&gt; &lt;!-- this one will use green instead --&gt;</code></pre>
 <p>Properties can also be animated using a <code>&lt;Change&gt;</code> animator:</p>
-<pre><code class="language-xml">	&lt;MyButton ux:Name=&quot;mb1&quot; /&gt;
-	&lt;WhilePressed&gt;
-		&lt;Change mb1.BackgroundColor=&quot;#00f&quot; Duration=&quot;1&quot; /&gt;
-	&lt;/WhilePressed&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;MyButton ux:Name=&quot;mb1&quot; /&gt;
+&lt;WhilePressed&gt;
+    &lt;Change mb1.BackgroundColor=&quot;#00f&quot; Duration=&quot;1&quot; /&gt;
+&lt;/WhilePressed&gt;</code></pre>
 <h3 id="choosing-the-right-type-for-a-property">Choosing the right type for a property</h3>
 <p>Properties are <em>strong typed</em>, and must be qualified with an Uno type name. Any Uno type can be used, including all regular UX tag names.</p>
 <p>Often properties will have <em>value types</em>, such as numbers, text, colors, sizes (potentially with units such as <code>%</code> or `px&quot;), or vectors. It is important to pick the property type that best captures the intended range of valid values for the properties.</p>
@@ -744,40 +739,38 @@
 <h2 id="using-properties-in-javascript">Using Properties in JavaScript.</h2>
 <p>All user-defined properties (defined through <code>ux:Property</code>) are automatically reflected as <code>Observable</code> objects in <code>JavaScript</code> modules in the scope of the property.</p>
 <p>Here is an example of how to respond to property changes in JavaScript:</p>
-<pre><code class="language-xml">	&lt;Panel ux:Class=&quot;RgbDisplayer&quot; RGB=&quot;#A00&quot;&gt;
-		&lt;float4 ux:Property=&quot;RGB&quot; /&gt;
-		&lt;JavaScript&gt;
-			var Observable = require(&quot;FuseJS/Observable&quot;);
-			var rgbString = this.RGB.map(function(val) {
-				return  &quot;R: &quot; + (val[0]*255).toFixed(1) + 
-					&quot; G: &quot; + (val[1]*255).toFixed(1) + 
-					&quot; B: &quot; + (val[2]*255).toFixed(1);
-			});
-			module.exports = { rgbString: rgbString };
-		&lt;/JavaScript&gt;
-		&lt;Text Value=&quot;{rgbString}&quot; /&gt;
-	&lt;/Panel&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Panel ux:Class=&quot;RgbDisplayer&quot; RGB=&quot;#A00&quot;&gt;
+    &lt;float4 ux:Property=&quot;RGB&quot; /&gt;
+    &lt;JavaScript&gt;
+        var Observable = require(&quot;FuseJS/Observable&quot;);
+        var rgbString = this.RGB.map(function(val) {
+            return  &quot;R: &quot; + (val[0]*255).toFixed(1) + 
+                &quot; G: &quot; + (val[1]*255).toFixed(1) + 
+                &quot; B: &quot; + (val[2]*255).toFixed(1);
+        });
+        module.exports = { rgbString: rgbString };
+    &lt;/JavaScript&gt;
+    &lt;Text Value=&quot;{rgbString}&quot; /&gt;
+&lt;/Panel&gt;</code></pre>
 <h3 id="important-to-understand-about-properties-in-javascript">Important to understand about Properties in JavaScript</h3>
 <p>Note that all UX objects and properties reside on the UI thread, while JavaScript runs in the background. This means that <strong>the value of the property is not neccessarily up-to-date at the time your JavaScript code runs</strong>. This is a common cause of confusion.</p>
 <p>Instead of reading the observable's <code>.value</code> property, use reactive operators like <code>.map()</code> or <code>.onValueChanged()</code>. This also ensures that your component updates as it should when the value of the property changes or is animated.</p>
 <p>If you need the value of the property available immediately when your module executes, consider using <code>ux:Dependency</code> instead.</p>
 <h3 id="passing-observables-through-properties">Passing observables through properties</h3>
 <p>Observables can also be passed into custom made components using Properties. We can add a property which accepts Observables by making an <code>object</code> property:</p>
-<pre><code class="language-xml">	&lt;Panel ux:Class=&quot;CoolPanel&quot;&gt;
-		&lt;object ux:Property=&quot;ObservableProperty&quot; /&gt;
-		&lt;JavaScript&gt;
-			var passedInObservable = this.ObservableProperty.inner();
-		&lt;/JavaScript&gt;
-	&lt;/Panel&gt;
-	&lt;JavaScript&gt;
-		var Observable = require(&quot;FuseJS/Observable&quot;);
-		module.exports = {
-			valueToPass: Observable(&quot;123&quot;)
-		};
-	&lt;/JavaScript&gt;
-	&lt;CoolPanel ObservableProperty=&quot;{valueToPass}&quot; /&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Panel ux:Class=&quot;CoolPanel&quot;&gt;
+    &lt;object ux:Property=&quot;ObservableProperty&quot; /&gt;
+    &lt;JavaScript&gt;
+        var passedInObservable = this.ObservableProperty.inner();
+    &lt;/JavaScript&gt;
+&lt;/Panel&gt;
+&lt;JavaScript&gt;
+    var Observable = require(&quot;FuseJS/Observable&quot;);
+    module.exports = {
+        valueToPass: Observable(&quot;123&quot;)
+    };
+&lt;/JavaScript&gt;
+&lt;CoolPanel ObservableProperty=&quot;{valueToPass}&quot; /&gt;</code></pre>
 <p>You are almost always interested in using <code>inner()</code> when fetching an observable passed in through properties. This is because the javascript value <code>this.PropertyName</code> is an observable with whatever <code>PropertyName</code> contains. If we pass an Observable in, <code>this.PropertyName</code> will contain an observable with the observable we passed through.</p>
 
             </div>

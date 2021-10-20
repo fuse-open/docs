@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -708,39 +708,38 @@ for iOS add &quot;SystemCapabilities&quot;: { &quot;SignInWithApple&quot;:true }
 </blockquote>
 <h4 id="example">Example</h4>
 <p>The following example shows how to use it:</p>
-<pre><code class="language-javascript">    &lt;App&gt;
-        &lt;JavaScript&gt;
-            var Auth = require('useJS/Auth');
+<pre><code class="language-javascript">&lt;App&gt;
+    &lt;JavaScript&gt;
+        var Auth = require('useJS/Auth');
 
-            function doSignIn() {
-                Auth.signIn().then(function(result) {
-                    // result is json object containing these properties :
-                    // email -&gt; user email that has been sign in / sign up
-                    // firstName -&gt; User firstname
-                    // lastName -&gt; User Lastname
-                    // userId -&gt; User uniqe Id
-                }, function (ex) {
-                    // failed login
-                })
-            }
-            Auth.hasSignedIn().then(function (result) {
-                if (result) {
-                    // user has already sign in
-                }
+        function doSignIn() {
+            Auth.signIn().then(function(result) {
+                // result is json object containing these properties :
+                // email -&gt; user email that has been sign in / sign up
+                // firstName -&gt; User firstname
+                // lastName -&gt; User Lastname
+                // userId -&gt; User uniqe Id
+            }, function (ex) {
+                // failed login
             })
-
-            module.exports = {
-                doSignIn
+        }
+        Auth.hasSignedIn().then(function (result) {
+            if (result) {
+                // user has already sign in
             }
+        })
 
-        &lt;/JavaScript&gt;
-        &lt;Button Text=&quot;Sign In&quot;&gt;
-            &lt;Clicked&gt;
-                &lt;Callback Handler=&quot;{doSignIn}&quot; /&gt;
-            &lt;/Clicked&gt;
-        &lt;/Button&gt;
-    &lt;/App
-</code></pre>
+        module.exports = {
+            doSignIn
+        }
+
+    &lt;/JavaScript&gt;
+    &lt;Button Text=&quot;Sign In&quot;&gt;
+        &lt;Clicked&gt;
+            &lt;Callback Handler=&quot;{doSignIn}&quot; /&gt;
+        &lt;/Clicked&gt;
+    &lt;/Button&gt;
+&lt;/App</code></pre>
 <blockquote>
 <p>When the callback handler is fired for the first time and the result object of <code>status</code> property is true, save those logged user information immediately to the server especially on iOS,
 because as stated in the documentation on the apple website, the Sign In With Apple  will only send userId informataion the next time user do the authentication again</p>

@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -700,8 +700,23 @@ Show advanced things
 </ul>
 </section>
 <p>A colored circle, generally used to communicate category.</p>
-<pre><code class="language-xml">    &lt;Alive.Donut StrokeColor=&quot;{Resource Alive.Red}&quot; /&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Alive.Donut StrokeColor=&quot;{Resource Alive.Red}&quot; /&gt;</code></pre>
+<p>Possible usage</p>
+<pre><code class="language-xml">&lt;App&gt;
+    &lt;Alive.FallbackTheme /&gt;
+    &lt;ClientPanel&gt;
+        &lt;StackPanel ItemSpacing=&quot;10&quot; Alignment=&quot;Center&quot;&gt;
+            &lt;Text Value=&quot;Categories list:&quot; Color=&quot;White&quot;/&gt;
+            &lt;Each Count=&quot;5&quot;&gt;
+                &lt;StackPanel Orientation=&quot;Horizontal&quot; ItemSpacing=&quot;10&quot; Margin=&quot;25,0&quot;&gt;
+                    &lt;Alive.Donut StrokeColor=&quot;{Resource Alive.Red}&quot; /&gt;
+                    &lt;Text Value=&quot;Catigory - {index()}&quot; Color=&quot;White&quot;/&gt;
+                &lt;/StackPanel&gt;
+            &lt;/Each&gt;
+        &lt;/StackPanel&gt;
+    &lt;/ClientPanel&gt;
+&lt;/App&gt;</code></pre>
+<p><img src="../../../media/alive/donut.png" alt="actionButton"></p>
 <p>See also <a href="../alive/colorbadge.html">ColorBadge</a></p>
 
 <section class="type-location">

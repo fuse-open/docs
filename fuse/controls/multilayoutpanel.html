@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -704,40 +704,39 @@ Show advanced things
 <p><strong>Note:</strong> <code>MultiLayoutPanel</code> is a good option for when you want to have different layouts based on on the value of certain data. In the cases where you are mostly interested in using different layouts as a means of creating animations, using the <a href="../../fuse/controls/layoutcontrol/setlayoutmaster_084fadc8.html">Element.LayoutMaster</a> property might be a better choice.</p>
 <h3 id="example">Example</h3>
 <p>This example shows a simple 3-choice Selection which uses a <code>MultiLayoutPanel</code> together with <code>LayoutAnimation</code> to animate an indicator for the selected option:</p>
-<pre><code class="language-xml">    &lt;Panel Alignment=&quot;Center&quot; Width=&quot;200&quot; Height=&quot;50&quot; &gt;
-        &lt;MultiLayoutPanel ux:Name=&quot;multiLayout&quot;&gt;
-            &lt;Grid ColumnCount=&quot;3&quot;&gt;
-                &lt;Panel ux:Name=&quot;offPanel&quot;&gt;
-                    &lt;Placeholder&gt;
-                        &lt;Panel ux:Name=&quot;pointer&quot; Color=&quot;#2196F3&quot; Width=&quot;50&quot; Height=&quot;2&quot;&gt;
-                            &lt;LayoutAnimation&gt;
-                                &lt;Move X=&quot;1&quot; Y=&quot;1&quot; RelativeTo=&quot;LayoutChange&quot; Duration=&quot;.4&quot; Easing=&quot;QuadraticInOut&quot; /&gt;
-                            &lt;/LayoutAnimation&gt;
-                        &lt;/Panel&gt;
-                    &lt;/Placeholder&gt;
-                    &lt;Text TextAlignment=&quot;Center&quot;&gt;Off&lt;/Text&gt;
-                    &lt;Clicked&gt;
-                    &lt;Set multiLayout.LayoutElement=&quot;offPanel&quot; /&gt;
-                    &lt;/Clicked&gt;
-                &lt;/Panel&gt;
-                &lt;Panel ux:Name=&quot;standbyPanel&quot;&gt;
-                    &lt;Placeholder Target=&quot;pointer&quot; /&gt;
-                    &lt;Text TextAlignment=&quot;Center&quot;&gt;Standby&lt;/Text&gt;
-                    &lt;Clicked&gt;
-                        &lt;Set multiLayout.LayoutElement=&quot;standbyPanel&quot; /&gt;
-                    &lt;/Clicked&gt;
-                &lt;/Panel&gt;
-                &lt;Panel ux:Name=&quot;onPanel&quot;&gt;
-                    &lt;Placeholder Target=&quot;pointer&quot; /&gt;
-                    &lt;Text TextAlignment=&quot;Center&quot;&gt;On&lt;/Text&gt;
-                    &lt;Clicked&gt;
-                        &lt;Set multiLayout.LayoutElement=&quot;onPanel&quot; /&gt;
-                    &lt;/Clicked&gt;
-                &lt;/Panel&gt;
-            &lt;/Grid&gt;
-        &lt;/MultiLayoutPanel&gt;
-    &lt;/Panel&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Panel Alignment=&quot;Center&quot; Width=&quot;200&quot; Height=&quot;50&quot; &gt;
+    &lt;MultiLayoutPanel ux:Name=&quot;multiLayout&quot;&gt;
+        &lt;Grid ColumnCount=&quot;3&quot;&gt;
+            &lt;Panel ux:Name=&quot;offPanel&quot;&gt;
+                &lt;Placeholder&gt;
+                    &lt;Panel ux:Name=&quot;pointer&quot; Color=&quot;#2196F3&quot; Width=&quot;50&quot; Height=&quot;2&quot;&gt;
+                        &lt;LayoutAnimation&gt;
+                            &lt;Move X=&quot;1&quot; Y=&quot;1&quot; RelativeTo=&quot;LayoutChange&quot; Duration=&quot;.4&quot; Easing=&quot;QuadraticInOut&quot; /&gt;
+                        &lt;/LayoutAnimation&gt;
+                    &lt;/Panel&gt;
+                &lt;/Placeholder&gt;
+                &lt;Text TextAlignment=&quot;Center&quot;&gt;Off&lt;/Text&gt;
+                &lt;Clicked&gt;
+                &lt;Set multiLayout.LayoutElement=&quot;offPanel&quot; /&gt;
+                &lt;/Clicked&gt;
+            &lt;/Panel&gt;
+            &lt;Panel ux:Name=&quot;standbyPanel&quot;&gt;
+                &lt;Placeholder Target=&quot;pointer&quot; /&gt;
+                &lt;Text TextAlignment=&quot;Center&quot;&gt;Standby&lt;/Text&gt;
+                &lt;Clicked&gt;
+                    &lt;Set multiLayout.LayoutElement=&quot;standbyPanel&quot; /&gt;
+                &lt;/Clicked&gt;
+            &lt;/Panel&gt;
+            &lt;Panel ux:Name=&quot;onPanel&quot;&gt;
+                &lt;Placeholder Target=&quot;pointer&quot; /&gt;
+                &lt;Text TextAlignment=&quot;Center&quot;&gt;On&lt;/Text&gt;
+                &lt;Clicked&gt;
+                    &lt;Set multiLayout.LayoutElement=&quot;onPanel&quot; /&gt;
+                &lt;/Clicked&gt;
+            &lt;/Panel&gt;
+        &lt;/Grid&gt;
+    &lt;/MultiLayoutPanel&gt;
+&lt;/Panel&gt;</code></pre>
 
 <section class="type-location">
 <h3 id="section-location">Location</h3>

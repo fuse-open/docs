@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -705,57 +705,49 @@ Show advanced things
 While newer JavaScript features might work on some devices, this can't be guaranteed (particularly for earlier iOS versions).</p>
 <h4 id="getting-started">Getting started</h4>
 <p>JavaScript can be used in UX markup through the <code>JavaScript</code> class, either by pointing to external JavaScript files, like this:</p>
-<pre><code class="language-xml">	&lt;JavaScript File=&quot;SomeCode.js&quot; /&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;JavaScript File=&quot;SomeCode.js&quot; /&gt;</code></pre>
 <p>Or by inlining the JavaScript code in the tag, like this:</p>
-<pre><code class="language-xml">	&lt;JavaScript&gt;
-		console.log(&quot;Hello, FuseJS!&quot;);
-	&lt;/JavaScript&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;JavaScript&gt;
+    console.log(&quot;Hello, FuseJS!&quot;);
+&lt;/JavaScript&gt;</code></pre>
 <h4 id="about-fusejs">About FuseJS</h4>
 <p>FuseJS is a JavaScript framework for writing cross-platform mobile app business logic. It consists of a bunch of classes that covers
 the basic functionality required for creating native mobile apps, as well as the <a href="../../fusejs/observable.html">Observable</a> class which lets you expose data to the UI in a functional reactive way.</p>
 <h4 id="modules">Modules</h4>
 <p>FuseJS implements the <a href="http://www.commonjs.org/">CommonJS</a> module system. Each code file or inline snippet is a <em>module</em>.</p>
 <p>In order to expose data and functions to other modules, one can add them to the <code>module.exports</code> object:</p>
-<pre><code class="language-xml">	&lt;JavaScript&gt;
-		module.exports = {
-			exportedSymbol: &quot;Hello, rest of the world!&quot;
-		};
-	&lt;/JavaScript&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;JavaScript&gt;
+    module.exports = {
+        exportedSymbol: &quot;Hello, rest of the world!&quot;
+    };
+&lt;/JavaScript&gt;</code></pre>
 <p>Failing to export from modules will make it impossible to reach defined data inside the module:</p>
-<pre><code class="language-xml">	&lt;JavaScript&gt;
-		var data = [1, 2, 3];
-		var invisible = &quot;I'm invisible&quot;;
+<pre><code class="language-xml">&lt;JavaScript&gt;
+    var data = [1, 2, 3];
+    var invisible = &quot;I'm invisible&quot;;
 
-		module.exports = {
-			data: data
-		};
-	&lt;/JavaScript&gt;
-</code></pre>
+    module.exports = {
+        data: data
+    };
+&lt;/JavaScript&gt;</code></pre>
 <p>This is good for hiding implementation details from other calling JavaScript modules and UX code.</p>
 <h4 id="importing-modules">Importing modules</h4>
 <p>Each code file (or inline snippet) defines a module.</p>
 <p>You can import JavaScript modules by their file name. To do this, make sure your JavaScript files are included in your .unoproj file as &quot;Bundle&quot; files:</p>
-<pre><code class="language-json">	&quot;Includes&quot;: [
-		&quot;yourJavaScriptFile.js:Bundle&quot;
-		..other files ..
-	]
-</code></pre>
+<pre><code class="language-js">&quot;Includes&quot;: [
+    &quot;yourJavaScriptFile.js:Bundle&quot;
+    ..other files ..
+]</code></pre>
 <p>or if you want to make all JavaScript files be includes as bundled files:</p>
-<pre><code class="language-json">	&quot;Includes&quot;: [
-		&quot;**.js:Bundle&quot;
-	]
-</code></pre>
+<pre><code class="language-js">&quot;Includes&quot;: [
+    &quot;**.js:Bundle&quot;
+]</code></pre>
 <p>Then, you can require using the JavaScript file name:</p>
-<pre><code class="language-js">	var myModule = require('/someJavaScriptFile.js');
-</code></pre>
+<pre><code class="language-js">var myModule = require('/someJavaScriptFile.js');</code></pre>
 <p>Note that prefixing the file name with a &quot;/&quot; means that we are looking for the file relative to the project root directory. To name a file relative to the current file, prefix with &quot;./&quot;. By omitting the prefixes, the file name is relative to the project root, or the global module it's in.</p>
-<pre><code class="language-js">	var relativeToProjectRoot = require('/SomeComponent');
-	var relativeFile = require('./MainView');
-	var relativeToRootOrGlobalModule = require('SomeOtherComponent.js');
-</code></pre>
+<pre><code class="language-js">var relativeToProjectRoot = require('/SomeComponent');
+var relativeFile = require('./MainView');
+var relativeToRootOrGlobalModule = require('SomeOtherComponent.js');</code></pre>
 <blockquote>
 <p>Note that you may omit the .js file extension in the file name if you wish</p>
 </blockquote>
@@ -765,18 +757,17 @@ the basic functionality required for creating native mobile apps, as well as the
 <h5 id="cleaning-up-after-modules">Cleaning up after modules</h5>
 <p>In Fuse, a JavaScript module can correspond to multiple module instances that get created and destroyed on the fly. If your module allocates resources that need manual cleanup, such as creating explicit <code>Observable</code> subscriptions, you can assign a handler to <code>module.disposed</code> and clean up after yourself there.</p>
 <p>Example:</p>
-<pre><code class="language-js">	var foo = getSomeGlobalObservable();
+<pre><code class="language-js">var foo = getSomeGlobalObservable();
 
-	function fooChanged() { ... }
+function fooChanged() { ... }
 
-	foo.addSubscriber(fooChanged);
+foo.addSubscriber(fooChanged);
 
-	...
+...
 
-	module.disposed = function () {
-		foo.removeSubscriber(fooChanged)
-	}
-</code></pre>
+module.disposed = function () {
+    foo.removeSubscriber(fooChanged)
+}</code></pre>
 <h4 id="design-and-motivation">Design and motivation</h4>
 <p>The key design goal of FuseJS is to keep your JavaScript code small, clean and only concerned with the practical functions of your application. Meanwhile
 all things related to UX, such as layout, data presentation, animation and gesture response, is left to declarative UX markup and native UI components.</p>

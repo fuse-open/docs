@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -708,22 +708,21 @@ Once created or acquired, Images can be passed around to other APIs to use, fetc
 All images are temporary &quot;scratch images&quot; until storage has been specified either through publishing to the CameraRoll or other.</p>
 <p>On Android using this API will request the WRITE_EXTERNAL_STORAGE and READ_EXTERNAL_STORAGE permissions.</p>
 <h4 id="example">Example</h4>
-<pre><code class="language-xml">    &lt;JavaScript&gt;
-        var ImageTools = require(&quot;FuseJS/ImageTools&quot;);
-        var Observable = require(&quot;FuseJS/Observable&quot;);
+<pre><code class="language-xml">&lt;JavaScript&gt;
+    var ImageTools = require(&quot;FuseJS/ImageTools&quot;);
+    var Observable = require(&quot;FuseJS/Observable&quot;);
 
-        var imagePath = Observable();
-        var base64Image =    &quot;iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPAQMAAAABGAcJAAAABlBMVEX9//wAAQATpOzaAAAAH0l&quot; +
-                            &quot;EQVQI12MAAoMHIFLAAYSEwIiJgYGZASrI38AAAwBamgM5VF7xgwAAAABJRU5ErkJggg==&quot;;
-        ImageTools.getImageFromBase64(base64Image)
-        .then(function(image) {
-            imagePath.value = image.path;
-        });
+    var imagePath = Observable();
+    var base64Image =    &quot;iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPAQMAAAABGAcJAAAABlBMVEX9//wAAQATpOzaAAAAH0l&quot; +
+                        &quot;EQVQI12MAAoMHIFLAAYSEwIiJgYGZASrI38AAAwBamgM5VF7xgwAAAABJRU5ErkJggg==&quot;;
+    ImageTools.getImageFromBase64(base64Image)
+    .then(function(image) {
+        imagePath.value = image.path;
+    });
 
-        module.exports = { test: new Date().toString(), image: imagePath };
-    &lt;/JavaScript&gt;
-    &lt;Image File=&quot;{image}&quot; /&gt;
-</code></pre>
+    module.exports = { test: new Date().toString(), image: imagePath };
+&lt;/JavaScript&gt;
+&lt;Image File=&quot;{image}&quot; /&gt;</code></pre>
 
 <section class="type-location">
 <h3 id="section-location">Location</h3>

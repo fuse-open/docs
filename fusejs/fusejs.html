@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -684,60 +684,51 @@
 <p>FuseJS is a JavaScript framework for writing cross-platform mobile app business logic.</p>
 <h2 id="getting-started">Getting started</h2>
 <p>FuseJS can be used in @(UX Markup) through the <code>&lt;JavaScript&gt;</code> tag, either by pointing to external JavaScript files, like this:</p>
-<pre><code class="language-xml">	&lt;JavaScript File=&quot;SomeCode.js&quot; /&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;JavaScript File=&quot;SomeCode.js&quot; /&gt;</code></pre>
 <p>Or by inlining the JavaScript code in the tag, like this:</p>
-<pre><code class="language-xml">	&lt;JavaScript&gt;
-		console.log(&quot;Hello, FuseJS!&quot;);
-	&lt;/JavaScript&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;JavaScript&gt;
+    console.log(&quot;Hello, FuseJS!&quot;);
+&lt;/JavaScript&gt;</code></pre>
 <h2 id="modules">Modules</h2>
 <p>FuseJS implements the <a href="http://www.commonjs.org/">CommonJS</a> module system. Each code file or inline snippet is a <em>module</em>.</p>
 <p>For things inside the module to be visible on the outside, we use the <code>module.exports</code>-construct:</p>
-<pre><code class="language-xml">	&lt;JavaScript&gt;
-		module.exports = {
-			exportedSymbol: &quot;Hello, rest of the world!&quot;
-		};
-	&lt;/JavaScript&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;JavaScript&gt;
+    module.exports = {
+        exportedSymbol: &quot;Hello, rest of the world!&quot;
+    };
+&lt;/JavaScript&gt;</code></pre>
 <p>Failing to export from modules will make it impossible to reach defined data inside the module:</p>
-<pre><code class="language-xml">	&lt;JavaScript&gt;
-		var data = [1, 2, 3];
-		var invisible = &quot;I'm invisible&quot;;
+<pre><code class="language-xml">&lt;JavaScript&gt;
+    var data = [1, 2, 3];
+    var invisible = &quot;I'm invisible&quot;;
 
-		module.exports = {
-			data: data
-		};
-	&lt;/JavaScript&gt;
-</code></pre>
+    module.exports = {
+        data: data
+    };
+&lt;/JavaScript&gt;</code></pre>
 <p>This is good for hiding implementation details from other calling JavaScript modules and UX code.</p>
 <h3 id="importing-modules">Importing modules</h3>
 <p>Each code file (or inline snippet) is a module.</p>
 <p>To make a module available to other modules through <code>require</code>, you have to place it in a separate <code>.js</code> file make sure it is included in the <code>:Bundle</code> in your <code>.unoproj</code>, for example like this:</p>
-<pre><code class="language-json">	&quot;Includes&quot;: [
-		&quot;MyLibrary/SomeModule.js:Bundle&quot;,
-		...
-</code></pre>
+<pre><code class="language-js">&quot;Includes&quot;: [
+    &quot;MyLibrary/SomeModule.js:Bundle&quot;,
+    ...</code></pre>
 <p>We can then access this module in any other module in the same project like this:</p>
-<pre><code class="language-js">	var myModule = require('MyLibrary/SomeModule');
-</code></pre>
+<pre><code class="language-js">var myModule = require('MyLibrary/SomeModule');</code></pre>
 <blockquote>
 <p>Including the <code>.js</code> extension in the <code>require()</code> string is optional.</p>
 </blockquote>
 <p>You can also use globs to auto-bundle entire folders, e.g. <code>&quot;MyLibrary/*.js:Bundle&quot;</code>.</p>
 <p>If you want to make all JavaScript files in your project be includes as bundled files, do:</p>
-<pre><code class="language-json">	&quot;Includes&quot;: [
-		&quot;**.js:Bundle&quot;
-	]
-</code></pre>
+<pre><code class="language-js">&quot;Includes&quot;: [
+    &quot;**.js:Bundle&quot;
+]</code></pre>
 <p>We can then require any JavaScript file by name:</p>
-<pre><code class="language-js">	var myModule = require('/yourJavaScriptFile.js');
-</code></pre>
+<pre><code class="language-js">var myModule = require('/yourJavaScriptFile.js');</code></pre>
 <p>Note that prefixing the file name with a &quot;/&quot; means that we are looking for the file relative to the project root directory. To name a file relative to the current file, prefix with &quot;./&quot;. By omitting the prefixes, the file name is relative to the project root, or the global module it's in.</p>
-<pre><code class="language-js">	var relativeToProjectRoot = require('/SomeComponent.js');
-	var relativeFile = require('./MainView.js');
-	var relativeToRootOrGlobalModule = require('SomeOtherComponent.js');
-</code></pre>
+<pre><code class="language-js">var relativeToProjectRoot = require('/SomeComponent.js');
+var relativeFile = require('./MainView.js');
+var relativeToRootOrGlobalModule = require('SomeOtherComponent.js');</code></pre>
 <h2 id="design-and-motivation">Design and motivation</h2>
 <p>The key design goal of FuseJS is to keep your JS code small, clean and only concerned with the practical functions of your application. Meanwhile
 all things UX-oriented such as layout, data presentation, animation and gesture response is left to declarative UX markup and native UI components.</p>

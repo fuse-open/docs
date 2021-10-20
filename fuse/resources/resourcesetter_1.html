@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -702,15 +702,14 @@ Show advanced things
 </section>
 <p>Creates or overrides a resource with the given key.</p>
 <p>Note that static resources are better declared with <code>ux:Key</code>. The <code>ResourceSetter</code> types are to be used when a dynamic value is needed, or one that cannot be expressed with <code>ux:Key</code>.</p>
-<pre><code class="language-xml">    &lt;Panel&gt;
-        &lt;string Value=&quot;Static Page Title&quot; ux:Key=&quot;Title&quot;/&gt;
+<pre><code class="language-xml">&lt;Panel&gt;
+    &lt;string Value=&quot;Static Page Title&quot; ux:Key=&quot;Title&quot;/&gt;
+&lt;/Panel&gt;
+&lt;Each Items=&quot;{items}&quot;&gt;
+    &lt;Panel&gt;
+        &lt;ResourceString Key=&quot;Title&quot; Value=&quot;{pageTitle}&quot;/&gt;
     &lt;/Panel&gt;
-    &lt;Each Items=&quot;{items}&quot;&gt;
-        &lt;Panel&gt;
-            &lt;ResourceString Key=&quot;Title&quot; Value=&quot;{pageTitle}&quot;/&gt;
-        &lt;/Panel&gt;
-    &lt;/Each&gt;
-</code></pre>
+&lt;/Each&gt;</code></pre>
 <p>The resources created via <code>ResourceSetter</code> are local to where they are defined (this is also true of <code>ux:Key</code>). Bindings in this node, and its descendents, can bind to the them. Descendents may also provide a new resource with the same <code>Key</code>, which overrides it for that part of the UI tree.</p>
 
 <section class="type-location">

@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -684,11 +684,9 @@
 <p>The pixel is on operator that can be used in meta property expressions to force the result of the expression into the pixel/fragment shader.</p>
 <h2 id="example">Example</h2>
 <p>In the following code, if both LightDirection and Normal can be evaluated in the vertex shader. The compiler will always prefer to do calculations in the vertex shader instead of the pixel shader to save pixel shader fill rate.</p>
-<pre><code class="language-csharp">DiffuseLight: Vector.Dot(LightDirection, -Vector.Normalize(Normal));
-</code></pre>
+<pre><code class="language-csharp">DiffuseLight: Vector.Dot(LightDirection, -Vector.Normalize(Normal));</code></pre>
 <p>This will however give per-vertex lighting, which in some cases gives too poor visual quality. To improve quality, we can use the pixel keyword in front of an operand to force subsequent calculations into the pixel shader, improving quality at the cost of fill rate.</p>
-<pre><code class="language-csharp">DiffuseLight: Vector.Dot(LightDirection, -Vector.Normalize(pixel Normal));
-</code></pre>
+<pre><code class="language-csharp">DiffuseLight: Vector.Dot(LightDirection, -Vector.Normalize(pixel Normal));</code></pre>
 <p>Here, the Normal value will be forced into the pixel shader before the Vector.Normalize is performed, resulting in per-pixel normalized vectors and much prettier lighting.</p>
 
             </div>

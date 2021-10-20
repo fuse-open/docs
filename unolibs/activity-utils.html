@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -689,17 +689,16 @@
 </ul>
 <h2 id="using-the-library">Using the library</h2>
 <p>Simply include <code>Android.ActivityUtils</code> in the <code>Packages</code> list in your <code>unoproj</code> file. Something like:</p>
-<pre><code class="language-json">{
-	&quot;Packages&quot;: [
-		&quot;Fuse&quot;,
-		&quot;FuseJS&quot;,
-		&quot;Android.ActivityUtils&quot;,
-	],
-	&quot;Includes&quot;: [
-		&quot;*&quot;
-	],
-}
-</code></pre>
+<pre><code class="language-js">{
+    &quot;Packages&quot;: [
+        &quot;Fuse&quot;,
+        &quot;FuseJS&quot;,
+        &quot;Android.ActivityUtils&quot;,
+    ],
+    &quot;Includes&quot;: [
+        &quot;*&quot;
+    ],
+}</code></pre>
 <h2 id="retrieving-the-root-activity">Retrieving the root Activity</h2>
 <p>Simply call <code>ActivityUtils.GetRootActivity()</code>. This will return the root <code>Activity</code> object as a <code>Java.Object</code>.</p>
 <p>Naturally this will not work on non-android builds where it will instead return <code>null</code>.</p>
@@ -717,9 +716,8 @@
 <p>Here is an example of a valid callback method in Uno</p>
 <pre><code class="language-csharp">extern(android) void OnResult(int resultCode, Java.Object intent, object info)
 {
-	debug_log &quot;\nblam!: &quot;+resultCode+&quot; - &quot;+intent + &quot;\n&quot;;
-}
-</code></pre>
+    debug_log &quot;\nblam!: &quot;+resultCode+&quot; - &quot;+intent + &quot;\n&quot;;
+}</code></pre>
 <p>If you used the second overload of <code>StartActivity</code> (the one without the <code>info</code> object) then <code>info</code> in the callback will be <code>null</code>.</p>
 
             </div>

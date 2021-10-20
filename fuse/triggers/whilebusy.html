@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -708,28 +708,26 @@ We can use WhileBusy to react to this, as it will be activated while a sibling o
 </blockquote>
 <h4 id="example">Example</h4>
 <p>The following example displays an <a href="../../fuse/controls/image.html">Image</a> from a URL, and a text while it's loading.</p>
-<pre><code class="language-xml">    &lt;Image Url=&quot;SOME_IMAGE_URL&quot;&gt;
-        &lt;WhileBusy&gt;
-            &lt;Text Value=&quot;Loading...&quot; /&gt;
-        &lt;/WhileBusy&gt;
-    &lt;/Image&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Image Url=&quot;SOME_IMAGE_URL&quot;&gt;
+    &lt;WhileBusy&gt;
+        &lt;Text Value=&quot;Loading...&quot; /&gt;
+    &lt;/WhileBusy&gt;
+&lt;/Image&gt;</code></pre>
 <p>When a node is marked as busy, its ancestors are also considered busy.
 This lets us react to multiple busy nodes in the same trigger.
 In the following example we have two <a href="../../fuse/controls/image.html">Image</a>s loaded via HTTP, and a &quot;Loading...&quot; indicator that fades to transparency after both images have downloaded.</p>
-<pre><code class="language-xml">    &lt;Panel&gt;
-        &lt;Panel ux:Name=&quot;loadingPanel&quot; Opacity=&quot;0&quot; Alignment=&quot;Top&quot;&gt;
-            &lt;Text&gt;Loading...&lt;/Text&gt;
-        &lt;/Panel&gt;
-        &lt;WhileBusy&gt;
-            &lt;Change loadingPanel.Opacity=&quot;1&quot; Duration=&quot;0.5&quot; /&gt;
-        &lt;/WhileBusy&gt;
-        &lt;StackPanel&gt;
-            &lt;Image Url=&quot;SOME_IMAGE_URL&quot; /&gt;
-            &lt;Image Url=&quot;SOME_OTHER_IMAGE_URL&quot; /&gt;
-        &lt;/StackPanel&gt;
+<pre><code class="language-xml">&lt;Panel&gt;
+    &lt;Panel ux:Name=&quot;loadingPanel&quot; Opacity=&quot;0&quot; Alignment=&quot;Top&quot;&gt;
+        &lt;Text&gt;Loading...&lt;/Text&gt;
     &lt;/Panel&gt;
-</code></pre>
+    &lt;WhileBusy&gt;
+        &lt;Change loadingPanel.Opacity=&quot;1&quot; Duration=&quot;0.5&quot; /&gt;
+    &lt;/WhileBusy&gt;
+    &lt;StackPanel&gt;
+        &lt;Image Url=&quot;SOME_IMAGE_URL&quot; /&gt;
+        &lt;Image Url=&quot;SOME_OTHER_IMAGE_URL&quot; /&gt;
+    &lt;/StackPanel&gt;
+&lt;/Panel&gt;</code></pre>
 
 <section class="type-location">
 <h3 id="section-location">Location</h3>
@@ -784,11 +782,10 @@ bool
 </h5>
 <div class="table-of-contents-item-brief">
 <p>If true then the busy status is blocked from reaching parent nodes.</p>
-<pre><code class="language-xml">    &lt;WhileBusy ux:Name=&quot;W1&quot;&gt;...&lt;/WhileBusy&gt;
-    &lt;Panel&gt;
-        &lt;WhileBusy ux:Name=&quot;W2&quot; IsHandled=&quot;true&quot;&gt;...&lt;/WhileBusy&gt;
-        &lt;Image Url=&quot;http://some.place/file.png&quot;/&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;WhileBusy ux:Name=&quot;W1&quot;&gt;...&lt;/WhileBusy&gt;
+&lt;Panel&gt;
+    &lt;WhileBusy ux:Name=&quot;W2&quot; IsHandled=&quot;true&quot;&gt;...&lt;/WhileBusy&gt;
+    &lt;Image Url=&quot;http://some.place/file.png&quot;/&gt;</code></pre>
 <p>In this arrangement the <code>W1</code> trigger will not be active while the <code>Image</code> is loading. The <code>IsHandled=&quot;true&quot;</code> in the <code>W2</code> trigger indicates it completely handles the busy status for this node and its descendants.</p>
 
 </div>

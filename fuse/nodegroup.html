@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -700,54 +700,52 @@ Show advanced things
 </ul>
 </section>
 <p>Allows creating a class that contains several nodes and resources that are added directly to their Parent, as though included directly.</p>
-<pre><code class="language-xml">    &lt;NodeGroup ux:Class=&quot;GridLine&quot;&gt;
-        &lt;float4 ux:Property=&quot;Color&quot;/&gt;
-        &lt;string ux:Property=&quot;Title&quot;/&gt;
-        &lt;string ux:Property=&quot;Emoji&quot;/&gt;
+<pre><code class="language-xml">&lt;NodeGroup ux:Class=&quot;GridLine&quot;&gt;
+    &lt;float4 ux:Property=&quot;Color&quot;/&gt;
+    &lt;string ux:Property=&quot;Title&quot;/&gt;
+    &lt;string ux:Property=&quot;Emoji&quot;/&gt;
 
-        &lt;Rectangle Color=&quot;{Property this.Color}&quot;/&gt;
-        &lt;Text Value=&quot;{Property this.Title}&quot;/&gt;
-        &lt;Text Value=&quot;{Property this.Emoji}&quot;/&gt;
-    &lt;/NodeGroup&gt;
+    &lt;Rectangle Color=&quot;{Property this.Color}&quot;/&gt;
+    &lt;Text Value=&quot;{Property this.Title}&quot;/&gt;
+    &lt;Text Value=&quot;{Property this.Emoji}&quot;/&gt;
+&lt;/NodeGroup&gt;
 
-    &lt;Grid Columns=&quot;50,1*,auto&quot; DefaultRow=&quot;auto&quot;&gt;
-        &lt;GridLine Color=&quot;#AFA&quot; Title=&quot;Happy One&quot; Emoji=&quot;😀&quot;/&gt;
-        &lt;GridLine Color=&quot;#FFA&quot; Title=&quot;Cry Baby&quot; Emoji=&quot;😭&quot;/&gt;
-        &lt;GridLine Color=&quot;#FAA&quot; Title=&quot;Mr. Angry&quot; Emoji=&quot;😠&quot;/&gt;
-    &lt;/Grid&gt;
-</code></pre>
+&lt;Grid Columns=&quot;50,1*,auto&quot; DefaultRow=&quot;auto&quot;&gt;
+    &lt;GridLine Color=&quot;#AFA&quot; Title=&quot;Happy One&quot; Emoji=&quot;😀&quot;/&gt;
+    &lt;GridLine Color=&quot;#FFA&quot; Title=&quot;Cry Baby&quot; Emoji=&quot;😭&quot;/&gt;
+    &lt;GridLine Color=&quot;#FAA&quot; Title=&quot;Mr. Angry&quot; Emoji=&quot;😠&quot;/&gt;
+&lt;/Grid&gt;</code></pre>
 <p>A <code>NodeGroup</code> may be used as a target for <code>Each.TemplateSource</code> or <code>Instance.TemplateSource</code>. This can be used to create classes that position templated items.</p>
-<pre><code class="language-xml">    &lt;NodeGroup ux:Class=&quot;TitleBar&quot;&gt;
-        &lt;Grid Columns=&quot;40,1*,40&quot; Alignment=&quot;Top&quot;&gt;
-            &lt;Panel&gt;
-                &lt;Instance TemplateSource=&quot;this&quot; TemplateKey=&quot;leftOption&quot;&gt;
-                    &lt;MyMenuButton/&gt;
-                &lt;/Instance&gt;
-            &lt;/Panel&gt;
-            &lt;Panel&gt;
-                &lt;Instance TemplateSource=&quot;this&quot; TemplateKey=&quot;title&quot;&gt;
-                    &lt;Text Value=&quot;{Page Title}&quot;/&gt;
-                &lt;/Instance&gt;
-            &lt;/Panel&gt;
-            &lt;Panel TemplateSource=&quot;this&quot; TemplateKey=&quot;contextMenu&quot;/&gt;
-        &lt;/Grid&gt;
-    &lt;/NodeGroup&gt;
+<pre><code class="language-xml">&lt;NodeGroup ux:Class=&quot;TitleBar&quot;&gt;
+    &lt;Grid Columns=&quot;40,1*,40&quot; Alignment=&quot;Top&quot;&gt;
+        &lt;Panel&gt;
+            &lt;Instance TemplateSource=&quot;this&quot; TemplateKey=&quot;leftOption&quot;&gt;
+                &lt;MyMenuButton/&gt;
+            &lt;/Instance&gt;
+        &lt;/Panel&gt;
+        &lt;Panel&gt;
+            &lt;Instance TemplateSource=&quot;this&quot; TemplateKey=&quot;title&quot;&gt;
+                &lt;Text Value=&quot;{Page Title}&quot;/&gt;
+            &lt;/Instance&gt;
+        &lt;/Panel&gt;
+        &lt;Panel TemplateSource=&quot;this&quot; TemplateKey=&quot;contextMenu&quot;/&gt;
+    &lt;/Grid&gt;
+&lt;/NodeGroup&gt;
 
-    &lt;Page&gt;
-        &lt;TitleBar&gt;
-            &lt;Panel ux:Template=&quot;contextMenu&quot;&gt;
-                &lt;MyShareButton/&gt;
-            &lt;/Panel&gt;
-        &lt;/TitleBar&gt;
-    &lt;/Page&gt;
+&lt;Page&gt;
+    &lt;TitleBar&gt;
+        &lt;Panel ux:Template=&quot;contextMenu&quot;&gt;
+            &lt;MyShareButton/&gt;
+        &lt;/Panel&gt;
+    &lt;/TitleBar&gt;
+&lt;/Page&gt;
 
-    &lt;Page&gt;
-        &lt;TitleBar&gt;
-            &lt;Panel ux:Template=&quot;leftOption&quot;/&gt;&lt;!-- leave empty --&gt;
-            &lt;Image File=&quot;pageTitle.png&quot; ux:Template=&quot;title&quot;/&gt;
-        &lt;/TitleBar&gt;
-    &lt;/Page&gt;
-</code></pre>
+&lt;Page&gt;
+    &lt;TitleBar&gt;
+        &lt;Panel ux:Template=&quot;leftOption&quot;/&gt;&lt;!-- leave empty --&gt;
+        &lt;Image File=&quot;pageTitle.png&quot; ux:Template=&quot;title&quot;/&gt;
+    &lt;/TitleBar&gt;
+&lt;/Page&gt;</code></pre>
 
 <section class="type-location">
 <h3 id="section-location">Location</h3>

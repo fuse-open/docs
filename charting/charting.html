@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -685,21 +685,19 @@
 <h2 id="setting-it-up">Setting it up</h2>
 <p>To include Fuse.Charting in our project, we need to add a package reference to <code>Fuse.Charting</code> in our <code>.unoproj</code>.
 It should look something like the following.</p>
-<pre><code class="language-json">	{
-		&quot;Packages&quot;: [
-			&quot;Fuse&quot;,
-			&quot;FuseJS&quot;,
-			&quot;Fuse.Charting&quot;
-		],
-		&quot;Includes&quot;: [
-			&quot;*&quot;
-		]
-	}
-</code></pre>
+<pre><code class="language-js">{
+    &quot;Packages&quot;: [
+        &quot;Fuse&quot;,
+        &quot;FuseJS&quot;,
+        &quot;Fuse.Charting&quot;
+    ],
+    &quot;Includes&quot;: [
+        &quot;*&quot;
+    ]
+}</code></pre>
 <p>To use charting in your UX you'll need to import the namespace.
 You can do this at the top of each UX file as part of your <code>App</code> tag or <code>ux:Class</code> declaration.</p>
-<pre><code class="language-xml">	&lt;Panel ux:Class=&quot;MyChart&quot; xmlns:c=&quot;Fuse.Charting&quot;&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Panel ux:Class=&quot;MyChart&quot; xmlns:c=&quot;Fuse.Charting&quot;&gt;</code></pre>
 <p>The <code>xmlns:c=&quot;Fuse.Charting&quot;</code> declares <code>c</code> to refer to the charting API, allowing for example <code>c:Plot</code> and <code>c:PlotBar</code>.
 Note, this namespace is valid only for this one file. You'll need to add the same declaration to each file you wish to use the charting API.
 The examples here will assume the use of <code>c</code> as a prefix.</p>
@@ -713,23 +711,21 @@ The API is a series of components that are used to build the chart.</p>
 </ul>
 <p>Following is a minimal example of a bar chart.</p>
 <pre><code class="language-xml">&lt;App xmlns:c=&quot;Fuse.Charting&quot;&gt;
-	&lt;JavaScript&gt;
-		var Observable = require(&quot;FuseJS/Observable&quot;);
-		exports.data = Observable({ y: 4 }, { y: 1 }, { y: 2 });
-	&lt;/JavaScript&gt;
-	&lt;c:Plot&gt;
-		&lt;c:DataSeries Data=&quot;{data}&quot; /&gt;
-		&lt;c:PlotData&gt;
-			&lt;c:PlotBar Color=&quot;#000&quot; /&gt;
-		&lt;/c:PlotData&gt;
-	&lt;/c:Plot&gt;
-&lt;/App&gt;
-</code></pre>
+    &lt;JavaScript&gt;
+        var Observable = require(&quot;FuseJS/Observable&quot;);
+        exports.data = Observable({ y: 4 }, { y: 1 }, { y: 2 });
+    &lt;/JavaScript&gt;
+    &lt;c:Plot&gt;
+        &lt;c:DataSeries Data=&quot;{data}&quot; /&gt;
+        &lt;c:PlotData&gt;
+            &lt;c:PlotBar Color=&quot;#000&quot; /&gt;
+        &lt;/c:PlotData&gt;
+    &lt;/c:Plot&gt;
+&lt;/App&gt;</code></pre>
 <h2 id="dataseries">DataSeries</h2>
 <p>DataSeries define the data for a Plot. At least one DataSeries is required for every Plot.</p>
 <pre><code class="language-XML">&lt;c:Plot&gt;
-	&lt;c:DataSeries Data=&quot;{data}&quot;&gt;
-</code></pre>
+    &lt;c:DataSeries Data=&quot;{data}&quot;&gt;</code></pre>
 <p>Where <code>data</code> is an <a href="../fusejs/observable.html">Observable</a> containing the data expressed as a list of objects. For data with multiple dimensions the <code>x</code>, <code>y</code>, <code>z</code>, and <code>w</code> properties can be used. For the simplest data sets only the <code>value</code> property is needed.</p>
 <blockquote>
 <p><code>value</code> maps to the <code>y</code> property, if defined, and vice versa. Setting both <code>y</code> and <code>value</code> to different values may produce unexpected results. For instance, <code>{x:0, y:1}</code> is the same as <code>{x:0, value:1}</code>.</p>
@@ -738,28 +734,25 @@ The API is a series of components that are used to build the chart.</p>
 <h3 id="multiple-dataseries">Multiple DataSeries</h3>
 <p><img src="../media/charting/chart_example2.png" alt=""></p>
 <p>You can use multiple <code>DataSeries</code> in one <code>Plot</code>. It's helpful to give them names for later reference:</p>
-<pre><code class="language-XML">	&lt;c:DataSeries Data=&quot;{dataA}&quot; ux:Name=&quot;seriesA&quot; /&gt;
-	&lt;c:DataSeries Data=&quot;{dataB}&quot; ux:Name=&quot;seriesB&quot; /&gt;
-	&lt;c:DataSeries Data=&quot;{dataC}&quot; ux:Name=&quot;seriesC&quot; /&gt;
-</code></pre>
+<pre><code class="language-XML">&lt;c:DataSeries Data=&quot;{dataA}&quot; ux:Name=&quot;seriesA&quot; /&gt;
+&lt;c:DataSeries Data=&quot;{dataB}&quot; ux:Name=&quot;seriesB&quot; /&gt;
+&lt;c:DataSeries Data=&quot;{dataC}&quot; ux:Name=&quot;seriesC&quot; /&gt;</code></pre>
 <p>The <code>Plot</code> will calculate its ranges based on the values in all of its <code>DataSeries</code>. Each series still has its own data, but the calculated values are relative to the combination of all the sets.</p>
 <h2 id="plotdata">PlotData</h2>
 <p>PlotData is how the plot data is enumerated for displaying in the chart. This is used in combination with a layout helper to plot the actual data.</p>
 <pre><code class="language-XML">&lt;Curve StrokeWidth=&quot;5&quot; StrokeColor=&quot;#008&quot;&gt;
-	&lt;c:PlotData&gt;
-		&lt;c:PlotCurvePoint/&gt;
-	&lt;/c:PlotData&gt;
-&lt;/Curve&gt;
-</code></pre>
+    &lt;c:PlotData&gt;
+        &lt;c:PlotCurvePoint/&gt;
+    &lt;/c:PlotData&gt;
+&lt;/Curve&gt;</code></pre>
 <p>The above use of <code>PlotData</code> creates the points for a <code>Curve</code>.</p>
 <pre><code class="language-XML">&lt;Panel&gt;
-	&lt;c:PlotData&gt;
-		&lt;c:PlotBar&gt;
-			&lt;Rectangle Color=&quot;#0808&quot; Height=&quot;80%&quot; Alignment=&quot;VerticalCenter&quot; /&gt;
-		&lt;/c:PlotBar&gt;
-	&lt;/c:PlotData&gt;
-&lt;/Panel&gt;
-</code></pre>
+    &lt;c:PlotData&gt;
+        &lt;c:PlotBar&gt;
+            &lt;Rectangle Color=&quot;#0808&quot; Height=&quot;80%&quot; Alignment=&quot;VerticalCenter&quot; /&gt;
+        &lt;/c:PlotBar&gt;
+    &lt;/c:PlotData&gt;
+&lt;/Panel&gt;</code></pre>
 <p>Here we create rectangles for each data entry.</p>
 <p>The layout helpers are:</p>
 <ul>
@@ -797,8 +790,7 @@ The API is a series of components that are used to build the chart.</p>
 <p><code>DataSeries</code> also supports the ability to create automatic ranges. Add a <code>Metric=&quot;Add&quot;</code> property to the second, and further, <code>DataSeries</code>. This will then add the <code>y</code> value to the cumulative total, and set <code>z</code> to the previous total. This creates a range of values suitable for creating a stacked bar chart.</p>
 <h2 id="gridlayout">GridLayout</h2>
 <p>A Plot doesn't have any default layout. A common approach is to use a <code>GridLayout</code> to add the labels, ticks, and plot data.</p>
-<pre><code class="language-XML">&lt;GridLayout Columns=&quot;50,10,1*&quot; Rows=&quot;1*,10,20&quot; /&gt;
-</code></pre>
+<pre><code class="language-XML">&lt;GridLayout Columns=&quot;50,10,1*&quot; Rows=&quot;1*,10,20&quot; /&gt;</code></pre>
 <p>This is a basic layout that allocates 50 points for the Y-axis labels, 20 points for the X-axis labels, 10 points for both X/Y tick marks, and the rest for the plot.</p>
 <blockquote>
 <p>Be aware that you can't have <code>auto</code> in both the <code>Columns</code> and <code>Rows</code> property. This is a sizing mode that <code>GridLayout</code> does not support. You'll need to use a fixed size for one of the axes, typically the X-labels, as their height is not typically variable.</p>
@@ -807,9 +799,8 @@ The API is a series of components that are used to build the chart.</p>
 <p><img src="../media/charting/chart_example3.png" alt=""></p>
 <p>PlotAxis create labels on an axis. You must specify the <code>Axis</code> source for the data and provide a <code>Label</code> template that is used for each label.</p>
 <pre><code class="language-XML">&lt;c:PlotAxis&gt;
-	&lt;Text ux:Template=&quot;Label&quot; Value=&quot;{Plot axis.label}&quot; /&gt;
-&lt;/c:PlotAxis&gt;
-</code></pre>
+    &lt;Text ux:Template=&quot;Label&quot; Value=&quot;{Plot axis.label}&quot; /&gt;
+&lt;/c:PlotAxis&gt;</code></pre>
 <blockquote>
 <p><code>PlotAxis</code> has numerous options for controlling which labels get shown and how they are grouped. Review the API reference for more details.</p>
 </blockquote>
@@ -817,16 +808,15 @@ The API is a series of components that are used to build the chart.</p>
 <p><code>PlotAxisData</code> enumerates the axis information. This is useful for scenarios where neither <code>PlotAxis</code> nor <code>PlotTicks</code> achieve what you want.</p>
 <p>This example positions angled labels along the X axis in a GridLayout. (NOTE: This simple example could actually be done using <code>PlotAxis</code>, but it nonetheless demonstrates the concept.)</p>
 <pre><code class="language-XML">&lt;Panel Row=&quot;2&quot; Column=&quot;2&quot; HitTestMode=&quot;None&quot;&gt;
-	&lt;c:PlotAxisData Axis=&quot;X&quot;&gt;
-		&lt;Panel&gt;
-			&lt;Text X=&quot;{Plot axis.position} * 100%&quot; Y=&quot;0&quot; FontSize=&quot;18&quot; Color=&quot;#000&quot; 
-				Value=&quot;{Plot axis.label}&quot; Anchor=&quot;105%,45%&quot; TransformOrigin=&quot;Anchor&quot; ux:Name=&quot;t&quot;&gt;
-				&lt;Rotation Degrees=&quot;-60&quot; /&gt;
-			&lt;/Text&gt;
-		&lt;/Panel&gt;
-	&lt;/c:PlotAxisData&gt;
-&lt;/Panel&gt;
-</code></pre>
+    &lt;c:PlotAxisData Axis=&quot;X&quot;&gt;
+        &lt;Panel&gt;
+            &lt;Text X=&quot;{Plot axis.position} * 100%&quot; Y=&quot;0&quot; FontSize=&quot;18&quot; Color=&quot;#000&quot; 
+                Value=&quot;{Plot axis.label}&quot; Anchor=&quot;105%,45%&quot; TransformOrigin=&quot;Anchor&quot; ux:Name=&quot;t&quot;&gt;
+                &lt;Rotation Degrees=&quot;-60&quot; /&gt;
+            &lt;/Text&gt;
+        &lt;/Panel&gt;
+    &lt;/c:PlotAxisData&gt;
+&lt;/Panel&gt;</code></pre>
 <p>As shown you'll need to position the items yourself when using <code>PlotAxisData</code>, it contains no inherent layout like <code>PlotAxis</code>.</p>
 <h3 id="-plot-axis">{Plot axis.*}</h3>
 <p>The <code>{Plot axis.*}</code> data contains variables used to construct an axis:</p>
@@ -839,8 +829,7 @@ The API is a series of components that are used to build the chart.</p>
 </ul>
 <h2 id="plotticks">PlotTicks</h2>
 <p>PlotTicks create tick marks, usually for an axis. This is a Shape, allowing <code>Stroke...</code> properties to be used for drawing the ticks.  The ticks that are drawn will line up with the labels of PlotAxis provided they are the same element size (either <code>Width</code> or <code>Height</code> depending on the axis).</p>
-<pre><code class="language-XML">&lt;c:PlotTicks Axis=&quot;X&quot; AxisLine=&quot;0&quot; StrokeWidth=&quot;1&quot; StrokeColor=&quot;#000&quot; /&gt;
-</code></pre>
+<pre><code class="language-XML">&lt;c:PlotTicks Axis=&quot;X&quot; AxisLine=&quot;0&quot; StrokeWidth=&quot;1&quot; StrokeColor=&quot;#000&quot; /&gt;</code></pre>
 <p><code>AxisLine</code> indicates a line across the entire access should be drawn at this offset. In this example it's the top of the ticks, making this suitable for the bottom of a chart.</p>
 <h2 id="-plot">{Plot *}</h2>
 <p>Within a Plot the <code>{Plot variable}</code> expression can be used to access several useful values from the Plot. These are:</p>
@@ -857,30 +846,27 @@ The API is a series of components that are used to build the chart.</p>
 <p>For basic charts the input data is the same. The difference is that you work with weights and accumulated values.</p>
 <p>The <code>PlotWedge</code> is a convenience element provided to draw elements of a simple pie chart.</p>
 <pre><code class="language-XML">&lt;VectorLayer HitTestMode=&quot;None&quot;&gt;
-	&lt;c:PlotData&gt;
-		&lt;c:PlotWedge Color=&quot;{Plot data.object}.color&quot; StrokeColor=&quot;#488&quot; StrokeWidth=&quot;1&quot; /&gt;
-	&lt;/c:PlotData&gt;
-&lt;/VectorLayer&gt;
-</code></pre>
+    &lt;c:PlotData&gt;
+        &lt;c:PlotWedge Color=&quot;{Plot data.object}.color&quot; StrokeColor=&quot;#488&quot; StrokeWidth=&quot;1&quot; /&gt;
+    &lt;/c:PlotData&gt;
+&lt;/VectorLayer&gt;</code></pre>
 <p>In this example we've added a <code>color</code> property to our input data to color each pie wedge differently.</p>
 <blockquote>
 <p>We're using <code>VectorLayer</code> here as an optimization for drawing pie wedges. Unlike Rectangles these are a bit slower to draw, as they use the native vector API of the target platform.  This <code>VectorLayer</code> will group several vector items together, significantly improving performance.</p>
 </blockquote>
 <p>You can add labels to this chart using <code>c:PlotPoint</code>.</p>
 <pre><code class="language-XML">&lt;c:PlotData&gt;
-	&lt;c:PlotPoint Style=&quot;Radial&quot; PointOffset=&quot;0.05&quot; Attractor=&quot;pieAttract&quot;&gt;
-		&lt;Text Value=&quot;{Plot data.label}&quot; /&gt;
-	&lt;/c:PlotPoint&gt;
-&lt;/c:PlotData&gt;
-</code></pre>
+    &lt;c:PlotPoint Style=&quot;Radial&quot; PointOffset=&quot;0.05&quot; Attractor=&quot;pieAttract&quot;&gt;
+        &lt;Text Value=&quot;{Plot data.label}&quot; /&gt;
+    &lt;/c:PlotPoint&gt;
+&lt;/c:PlotData&gt;</code></pre>
 <p>If you don't wish to use <code>PlotWedge</code> you can calculate the ranges for a plot yourself. This example creates arcs instead of wedges.</p>
 <pre><code class="language-XML">&lt;c:PlotData&gt;
-	&lt;Arc
-		StartAngleDegrees=&quot;{Plot data.accumulatedWeight.y}*360&quot; 
-		EndAngleDegrees=&quot;{Plot data.cumulativeWeight.y}*360&quot; 
-		StrokeColor=&quot;#488&quot; StrokeWidth=&quot;2&quot; /&gt;
-&lt;/c:PlotData&gt;
-</code></pre>
+    &lt;Arc
+        StartAngleDegrees=&quot;{Plot data.accumulatedWeight.y}*360&quot; 
+        EndAngleDegrees=&quot;{Plot data.cumulativeWeight.y}*360&quot; 
+        StrokeColor=&quot;#488&quot; StrokeWidth=&quot;2&quot; /&gt;
+&lt;/c:PlotData&gt;</code></pre>
 
             </div>
             <div class="d-none d-sm-block col-md-3 d-xl-3 toc-content">

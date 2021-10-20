@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -717,29 +717,27 @@ Do not be surprised if desktop rendering doesn't match device rendering 100%. Th
 &lt;Text LineSpacing=&quot;10&quot;&gt;
 Multiple
 Lines
-&lt;/Text&gt;
-</code></pre>
+&lt;/Text&gt;</code></pre>
 <p>In this example, the first text element will be left aligned as this is the default, and have its color set to a medium light grey. The second text will be center aligned. The third will be right aligned and have a larger font. The fourth will span two lines with 10 points of space inbetween.</p>
 <h4 id="custom-text-components">Custom text-components</h4>
-<pre><code class="language-xml">	&lt;App&gt;
-		&lt;Font File=&quot;Roboto-Medium.ttf&quot; ux:Global=&quot;Medium&quot; /&gt;
-		&lt;Font File=&quot;Roboto-Light.ttf&quot; ux:Global=&quot;Light&quot; /&gt;
+<pre><code class="language-xml">&lt;App&gt;
+    &lt;Font File=&quot;Roboto-Medium.ttf&quot; ux:Global=&quot;Medium&quot; /&gt;
+    &lt;Font File=&quot;Roboto-Light.ttf&quot; ux:Global=&quot;Light&quot; /&gt;
 
-		&lt;Text ux:Class=&quot;Light&quot; Font=&quot;Light&quot; /&gt;
-		&lt;Text ux:Class=&quot;Medium&quot; Font=&quot;Medium&quot; TextWrapping=&quot;Wrap&quot; /&gt;
-		&lt;Text ux:Class=&quot;Warning&quot;
-			Font=&quot;Medium&quot;
-			FontSize=&quot;42&quot;
-			TextAlignment=&quot;Center&quot;
-			Color=&quot;#f00&quot; /&gt;
+    &lt;Text ux:Class=&quot;Light&quot; Font=&quot;Light&quot; /&gt;
+    &lt;Text ux:Class=&quot;Medium&quot; Font=&quot;Medium&quot; TextWrapping=&quot;Wrap&quot; /&gt;
+    &lt;Text ux:Class=&quot;Warning&quot;
+        Font=&quot;Medium&quot;
+        FontSize=&quot;42&quot;
+        TextAlignment=&quot;Center&quot;
+        Color=&quot;#f00&quot; /&gt;
 
-		&lt;StackPanel&gt;
-			&lt;Light&gt;Just some text&lt;/Light&gt;
-			&lt;Warning&gt;The robots are coming!&lt;/Warning&gt;
-			&lt;Medium&gt;This is just some medium text, but it will happily wrap when the edges of the screen is reached.&lt;/Medium&gt;
-		&lt;/StackPanel&gt;
-	&lt;/App&gt;
-</code></pre>
+    &lt;StackPanel&gt;
+        &lt;Light&gt;Just some text&lt;/Light&gt;
+        &lt;Warning&gt;The robots are coming!&lt;/Warning&gt;
+        &lt;Medium&gt;This is just some medium text, but it will happily wrap when the edges of the screen is reached.&lt;/Medium&gt;
+    &lt;/StackPanel&gt;
+&lt;/App&gt;</code></pre>
 <p>In this example we load two fonts and create three different semantic classes, <code>Light</code>, <code>Medium</code> and <code>Warning</code>, combining some of the available <code>Text</code> properties. In this example, the fonts are located in the same directory as the relevant UX file.</p>
 <h3 id="remarks">Remarks</h3>
 <p><code>Text</code> is the primary control for displaying read-only text in apps.</p>

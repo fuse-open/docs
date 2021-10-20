@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -709,36 +709,35 @@ as it does not check if there is anything to go back to, meaning it can generate
 <li>Swiping up while on the indigo page will navigate you to the red page.</li>
 <li>Swiping down on any page will go back to the previous page.</li>
 </ul>
-<pre><code class="language-xml">    &lt;Panel&gt;
-        &lt;Router ux:Name=&quot;router&quot; /&gt;
+<pre><code class="language-xml">&lt;Panel&gt;
+    &lt;Router ux:Name=&quot;router&quot; /&gt;
 
-        &lt;JavaScript&gt;
-            router.bookmark({
-                name: &quot;indigo&quot;,
-                path: [ &quot;indigoPanel&quot;, { } ]
-            });
-            router.bookmark({
-                name: &quot;red&quot;,
-                path: [ &quot;redPanel&quot;, { } ]
-            });
-        &lt;/JavaScript&gt;
+    &lt;JavaScript&gt;
+        router.bookmark({
+            name: &quot;indigo&quot;,
+            path: [ &quot;indigoPanel&quot;, { } ]
+        });
+        router.bookmark({
+            name: &quot;red&quot;,
+            path: [ &quot;redPanel&quot;, { } ]
+        });
+    &lt;/JavaScript&gt;
 
-        &lt;DockPanel ux:Class=&quot;NamedPanel&quot;&gt;
-            &lt;string ux:Property=&quot;Title&quot; /&gt;
-            &lt;Text Value=&quot;{Property Title}&quot; FontSize=&quot;30&quot; Alignment=&quot;TopCenter&quot; Margin=&quot;20&quot; /&gt;
-        &lt;/DockPanel&gt;
-        &lt;Navigator DefaultPath=&quot;bluePanel&quot;&gt;
-            &lt;NamedPanel Title=&quot;Blue panel&quot; ux:Template=&quot;bluePanel&quot; Color=&quot;#2196F3&quot;&gt;
-                &lt;NavigatorSwipe How=&quot;PushBookmark&quot; Bookmark=&quot;indigo&quot; Direction=&quot;Up&quot;/&gt;
-            &lt;/NamedPanel&gt;
-            &lt;NamedPanel Title=&quot;Red panel&quot; ux:Template=&quot;redPanel&quot; Color=&quot;#F44336&quot; /&gt;
-            &lt;NamedPanel Title=&quot;Indigo panel&quot; ux:Template=&quot;indigoPanel&quot; Color=&quot;#3F51B5&quot;&gt;
-                &lt;NavigatorSwipe How=&quot;PushBookmark&quot; Bookmark=&quot;red&quot; Direction=&quot;Up&quot;/&gt;
-            &lt;/NamedPanel&gt;
-            &lt;NavigatorSwipe How=&quot;Back&quot; Direction=&quot;Down&quot;/&gt;
-        &lt;/Navigator&gt;
-    &lt;/Panel&gt;
-</code></pre>
+    &lt;DockPanel ux:Class=&quot;NamedPanel&quot;&gt;
+        &lt;string ux:Property=&quot;Title&quot; /&gt;
+        &lt;Text Value=&quot;{Property Title}&quot; FontSize=&quot;30&quot; Alignment=&quot;TopCenter&quot; Margin=&quot;20&quot; /&gt;
+    &lt;/DockPanel&gt;
+    &lt;Navigator DefaultPath=&quot;bluePanel&quot;&gt;
+        &lt;NamedPanel Title=&quot;Blue panel&quot; ux:Template=&quot;bluePanel&quot; Color=&quot;#2196F3&quot;&gt;
+            &lt;NavigatorSwipe How=&quot;PushBookmark&quot; Bookmark=&quot;indigo&quot; Direction=&quot;Up&quot;/&gt;
+        &lt;/NamedPanel&gt;
+        &lt;NamedPanel Title=&quot;Red panel&quot; ux:Template=&quot;redPanel&quot; Color=&quot;#F44336&quot; /&gt;
+        &lt;NamedPanel Title=&quot;Indigo panel&quot; ux:Template=&quot;indigoPanel&quot; Color=&quot;#3F51B5&quot;&gt;
+            &lt;NavigatorSwipe How=&quot;PushBookmark&quot; Bookmark=&quot;red&quot; Direction=&quot;Up&quot;/&gt;
+        &lt;/NamedPanel&gt;
+        &lt;NavigatorSwipe How=&quot;Back&quot; Direction=&quot;Down&quot;/&gt;
+    &lt;/Navigator&gt;
+&lt;/Panel&gt;</code></pre>
 
 <section class="type-location">
 <h3 id="section-location">Location</h3>

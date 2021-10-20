@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -693,13 +693,11 @@
 <p>The vertex_attrib operator takes a vertex array, and optionally an index array, as arguments, and returns a single element from the vertex array. Subsequent operations on the returned value happens in parallell for all vertices, when the meta property is involved in a draw operation. When an index array is used, the indices in the index array is used to fetch vertices from the vertex array, allowing re-use of vertices.</p>
 <h3 id="non-indexed-fetch">Non-indexed fetch</h3>
 <p>This method will convert the array provided to a vertex buffer, on initialization if possible, and fetch an element from that buffer using the array's data type. The syntax for this method is:</p>
-<pre><code class="language-csharp">vertex_attrib(vertexArray)
-</code></pre>
+<pre><code class="language-csharp">vertex_attrib(vertexArray)</code></pre>
 <h4 id="example">Example:</h4>
 <pre><code class="language-csharp">float4[] verts = new [] { float4(0), float4(1), float4(2) };
 
-float4 v: vertex_attrib(verts);
-</code></pre>
+float4 v: vertex_attrib(verts);</code></pre>
 <h3 id="indexed-fetch">Indexed fetch</h3>
 <p>This method will convert the provided arrays into a vertex and index buffer respectively, on initialization if possible, and fetch an element from the vertex buffer using an index from the index buffer. The syntax for this method is:</p>
 <pre><code>vertex_attrib(vertexArray, indexArray)
@@ -708,8 +706,7 @@ float4 v: vertex_attrib(verts);
 <pre><code class="language-csharp">float4[] verts = new [] { float4(0), float4(1), float4(2), float4(3) };
 ushort[] indices = new ushort[] { 0,1,2, 0,2,3 };
 
-float4 v: vertex_attrib(verts, indices);
-</code></pre>
+float4 v: vertex_attrib(verts, indices);</code></pre>
 <p>When using multiple vertex attributes, the index array argument must be the same for all vertex_attrib operators involved in the same draw operation, otherwise a compile error will be generated.</p>
 <h3 id="performance-considerations">Performance considerations</h3>
 <p>Note that if the vertex or index buffer expression can't be evaluated to constant buffers, the compiler will in most cases have to re-upload the data to the buffers every frame. This may in turn lead to suboptimal peformance. Consider using a vertex buffer and index buffer instead where we can control upload of data manually.</p>
@@ -717,8 +714,7 @@ float4 v: vertex_attrib(verts, indices);
 <h2 id="fetching-from-managed-buffers">Fetching from managed buffers</h2>
 <p>The vertex_attrib operator can also be used to fetch data from manually managed vertex and index buffers, allowing more fine-tuned control over when data is uploaded to the GPU. This method also allows multiple vertex attributes to be interleaved in the samme buffer.</p>
 <p>The syntax for this method is:</p>
-<pre><code class="language-csharp">vertex_attrib&lt;T&gt;(vertexAttributeType, vertexBuffer, stride, offset [, indexType, indexBuffer])
-</code></pre>
+<pre><code class="language-csharp">vertex_attrib&lt;T&gt;(vertexAttributeType, vertexBuffer, stride, offset [, indexType, indexBuffer])</code></pre>
 <p>Where:</p>
 <ul>
 <li>T is the data type the loaded vertex attribute should be converted to, for example float4.</li>
@@ -737,8 +733,7 @@ float4 v: vertex_attrib(verts, indices);
 <pre><code class="language-csharp">draw 
 {
     VertexPosition: vertex_attrib&lt;float4&gt;(VertexAttributeType.SByte4Normalized, buffer, 4, 0);
-};
-</code></pre>
+};</code></pre>
 
             </div>
             <div class="d-none d-sm-block col-md-3 d-xl-3 toc-content">

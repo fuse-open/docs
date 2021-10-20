@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -686,62 +686,61 @@
 <h2 id="implementing-leafview">Implementing <code>LeafView</code></h2>
 <p>There are two types of views we can implement. <code>ParentView</code> allows you to wrap a view that contains other views (i.e. panels), while <code>LeafView</code> wraps a view that does not contain other views (e.g. buttons, switches, pickers). In this example, we'll focus on <code>LeafView</code> as this is what you'll most commonly need.</p>
 <p>We start out by creating a class which defines our slider with some boilerplate code for handling properties. We also declare a pair of interfaces that we will use to communicate between native and our slider class.</p>
-<pre><code class="language-csharp">	namespace Native
-	{
-		using Uno;
-		using Uno.UX;
+<pre><code class="language-csharp">namespace Native
+{
+    using Uno;
+    using Uno.UX;
 
-		using Fuse.Controls;
+    using Fuse.Controls;
 
-		public interface ISliderHost
-		{
-			void OnValueChanged(float newValue);
-		}
+    public interface ISliderHost
+    {
+        void OnValueChanged(float newValue);
+    }
 
-		public interface ISlider
-		{
-			float Value { set; }
-		}
+    public interface ISlider
+    {
+        float Value { set; }
+    }
 
-		public class MySlider : Control, ISliderHost
-		{
-			float _value;
-			[UXOriginSetter(&quot;SetValue&quot;)]
-			public float Value
-			{
-				get { return _value; }
-				set { SetValue(value, this); }
-			}
+    public class MySlider : Control, ISliderHost
+    {
+        float _value;
+        [UXOriginSetter(&quot;SetValue&quot;)]
+        public float Value
+        {
+            get { return _value; }
+            set { SetValue(value, this); }
+        }
 
-			static readonly Selector _valueName = &quot;Value&quot;;
-			public void SetValue(float newValue, IPropertyListener origin)
-			{
-				if (_value != newValue)
-				{
-					_value = newValue;
-					OnPropertyChanged(_valueName, origin);
-				}
-				if (origin != null)
-				{
-					var ns = NativeSlider;
-					if (ns != null)
-						ns.Value = newValue;
-				}
-			}
+        static readonly Selector _valueName = &quot;Value&quot;;
+        public void SetValue(float newValue, IPropertyListener origin)
+        {
+            if (_value != newValue)
+            {
+                _value = newValue;
+                OnPropertyChanged(_valueName, origin);
+            }
+            if (origin != null)
+            {
+                var ns = NativeSlider;
+                if (ns != null)
+                    ns.Value = newValue;
+            }
+        }
 
-			void ISliderHost.OnValueChanged(float newValue)
-			{
-				SetValue(newValue, null);
-			}
+        void ISliderHost.OnValueChanged(float newValue)
+        {
+            SetValue(newValue, null);
+        }
 
-			ISlider NativeSlider
-			{
-				get { return NativeView as ISlider; }
-			}
-		}
+        ISlider NativeSlider
+        {
+            get { return NativeView as ISlider; }
+        }
+    }
 
-	}
-</code></pre>
+}</code></pre>
 <p>We move on to creating a wrapper for the native view, by extending the <code>LeafView</code> class(es). We need to make separate versions for iOS and Android, preferably in separate files. If you only want to support one platform, that's fine. We can then simply skip the steps for the other platform.</p>
 <p>There are two versions of the <code>LeafView</code> class for iOS and Android respectively, in the namespaces <code>Fuse.Controls.Native.iOS</code> and <code>Fuse.Controls.Native.Android</code>.</p>
 <blockquote>
@@ -749,56 +748,55 @@
 </blockquote>
 <h2 id="implementing-leafview-for-ios">Implementing <code>LeafView</code> for iOS</h2>
 <p>We create our <code>LeafView</code> class in Uno with foreign Objective-C code:</p>
-<pre><code class="language-csharp">	namespace Native.iOS
-	{
-		using Uno;
-		using Uno.UX;
-		using Uno.Compiler.ExportTargetInterop;
+<pre><code class="language-csharp">namespace Native.iOS
+{
+    using Uno;
+    using Uno.UX;
+    using Uno.Compiler.ExportTargetInterop;
 
-		using Fuse.Controls.Native.iOS;
+    using Fuse.Controls.Native.iOS;
 
-		[Require(&quot;Source.Include&quot;, &quot;UIKit/UIKit.h&quot;)]
-		extern(iOS) public class MySlider: LeafView, ISlider
-		{
-			[UXConstructor]
-			public MySlider([UXParameter(&quot;Host&quot;)]ISliderHost host) : base(Create()) { }
+    [Require(&quot;Source.Include&quot;, &quot;UIKit/UIKit.h&quot;)]
+    extern(iOS) public class MySlider: LeafView, ISlider
+    {
+        [UXConstructor]
+        public MySlider([UXParameter(&quot;Host&quot;)]ISliderHost host) : base(Create()) { }
 
-			[Foreign(Language.ObjC)]
-			static ObjC.Object Create()
-			@{
-				::UISlider* slider = [[::UISlider alloc] init];
-				[slider setMinimumValue:   0.0f];
-				[slider setMaximumValue: 100.0f];
-				return slider;
-			@}
+        [Foreign(Language.ObjC)]
+        static ObjC.Object Create()
+        @{
+            ::UISlider* slider = [[::UISlider alloc] init];
+            [slider setMinimumValue:   0.0f];
+            [slider setMaximumValue: 100.0f];
+            return slider;
+        @}
 
-			public float Value
-			{
-				get { return GetValue(Handle); }
-				set { SetValue(Handle, value); }
-			}
+        public float Value
+        {
+            get { return GetValue(Handle); }
+            set { SetValue(Handle, value); }
+        }
 
-			[Foreign(Language.ObjC)]
-			static float GetValue(ObjC.Object handle)
-			@{
-				::UISlider* slider = (::UISlider*)handle;
-				return [slider value];
-			@}
+        [Foreign(Language.ObjC)]
+        static float GetValue(ObjC.Object handle)
+        @{
+            ::UISlider* slider = (::UISlider*)handle;
+            return [slider value];
+        @}
 
-			[Foreign(Language.ObjC)]
-			static void SetValue(ObjC.Object handle, float value)
-			@{
-				::UISlider* slider = (::UISlider*)handle;
-				[slider setValue:value animated:false];
-			@}
+        [Foreign(Language.ObjC)]
+        static void SetValue(ObjC.Object handle, float value)
+        @{
+            ::UISlider* slider = (::UISlider*)handle;
+            [slider setValue:value animated:false];
+        @}
 
-			void OnValueChanged()
-			{
-				// TODO: implement value changed callback
-			}
-		}
-	}
-</code></pre>
+        void OnValueChanged()
+        {
+            // TODO: implement value changed callback
+        }
+    }
+}</code></pre>
 <blockquote>
 <p>The above example only implements setting the <code>Value</code>, it does not hook onto the <code>UIControlEventValueChanged</code> to feed events back to Fuse when the user interacts with the control. A complete useful wrapper would need that.</p>
 </blockquote>
@@ -806,83 +804,80 @@
 <p>To get access to the <code>ObjC.Object</code> representing the <code>UISlider</code> from within your class later, we can use the <code>Handle</code> property, as seen in how we implement the <code>Value</code> property above.</p>
 <p>The <code>MySlider</code> class has the <code>extern(iOS)</code> attribute, and will therefore only be available when building for iOS. To make it possible to use this class
 in UX markup, it must be valid on all platforms. Therefore we must provide a dummy implementation with just the public interface marked with <code>extern(!iOS)</code> within the same namespace:</p>
-<pre><code class="language-csharp">	namespace Native.iOS
-	{
-		extern(!iOS) public class MySlider
-		{
-			[UXConstructor]
-			public MySlider([UXParameter(&quot;Host&quot;)]ISliderHost host) { }
-		}
-	}
-</code></pre>
+<pre><code class="language-csharp">namespace Native.iOS
+{
+    extern(!iOS) public class MySlider
+    {
+        [UXConstructor]
+        public MySlider([UXParameter(&quot;Host&quot;)]ISliderHost host) { }
+    }
+}</code></pre>
 <h2 id="implementing-leafview-for-android">Implementing <code>LeafView</code> for Android</h2>
 <p>And then, let's write the equivalent Android implementation:</p>
-<pre><code class="language-csharp">	namespace Native.Android
-	{
-		using Uno;
-		using Uno.UX;
-		using Uno.Compiler.ExportTargetInterop;
+<pre><code class="language-csharp">namespace Native.Android
+{
+    using Uno;
+    using Uno.UX;
+    using Uno.Compiler.ExportTargetInterop;
 
-		using Fuse.Controls.Native.Android;
+    using Fuse.Controls.Native.Android;
 
-		extern(Android) public class MySlider : LeafView, ISlider
-		{
-			ISliderHost _host;
-			[UXConstructor]
-			public MySlider([UXParameter(&quot;Host&quot;)]ISliderHost host) : base(Create())
-			{
-				_host = host;AddChangedCallback(Handle, OnValueChanged);
-			}
+    extern(Android) public class MySlider : LeafView, ISlider
+    {
+        ISliderHost _host;
+        [UXConstructor]
+        public MySlider([UXParameter(&quot;Host&quot;)]ISliderHost host) : base(Create())
+        {
+            _host = host;AddChangedCallback(Handle, OnValueChanged);
+        }
 
-			float ISlider.Value
-			{
-				set { SetValue(Handle, value); }
-			}
+        float ISlider.Value
+        {
+            set { SetValue(Handle, value); }
+        }
 
-			[Foreign(Language.Java)]
-	        static Java.Object Create()
-	        @{
-	            android.widget.SeekBar seekBar = new android.widget.SeekBar(@(Activity.Package).@(Activity.Name).GetRootActivity());
-	            seekBar.setMax(100);
-	            return seekBar;
-	        @}
+        [Foreign(Language.Java)]
+        static Java.Object Create()
+        @{
+            android.widget.SeekBar seekBar = new android.widget.SeekBar(@(Activity.Package).@(Activity.Name).GetRootActivity());
+            seekBar.setMax(100);
+            return seekBar;
+        @}
 
-	        [Foreign(Language.Java)]
-			void AddChangedCallback(Java.Object handle, Action&lt;float&gt; onValueChanged)
-			@{
-				((android.widget.SeekBar)handle).setOnSeekBarChangeListener(new android.widget.SeekBar.OnSeekBarChangeListener() {
-					public void onProgressChanged(android.widget.SeekBar seekBar, int progress, boolean fromUser) {
-						onValueChanged.run((float)progress);
-					}
-					public void onStartTrackingTouch(android.widget.SeekBar seekBar) { }
-					public void onStopTrackingTouch(android.widget.SeekBar seekBar) { }
-				});
-			@}
+        [Foreign(Language.Java)]
+        void AddChangedCallback(Java.Object handle, Action&lt;float&gt; onValueChanged)
+        @{
+            ((android.widget.SeekBar)handle).setOnSeekBarChangeListener(new android.widget.SeekBar.OnSeekBarChangeListener() {
+                public void onProgressChanged(android.widget.SeekBar seekBar, int progress, boolean fromUser) {
+                    onValueChanged.run((float)progress);
+                }
+                public void onStartTrackingTouch(android.widget.SeekBar seekBar) { }
+                public void onStopTrackingTouch(android.widget.SeekBar seekBar) { }
+            });
+        @}
 
-			[Foreign(Language.Java)]
-			void SetValue(Java.Object handle, float value)
-			@{
-				((android.widget.SeekBar)handle).setProgress((int)value);
-			@}
+        [Foreign(Language.Java)]
+        void SetValue(Java.Object handle, float value)
+        @{
+            ((android.widget.SeekBar)handle).setProgress((int)value);
+        @}
 
-			void OnValueChanged(float newValue)
-			{
-				_host.OnValueChanged(newValue);
-			}
-		}
-	}
-</code></pre>
+        void OnValueChanged(float newValue)
+        {
+            _host.OnValueChanged(newValue);
+        }
+    }
+}</code></pre>
 <p>The above implementation also shows how to implement an <code>OnSeekBarChangeListener</code> to get events back from android to update the <code>Value</code> proeprty.</p>
 <p>As for iOS, we also need a dummy implementation for <code>extern(!Android)</code> to allow this to be used in UX markup:</p>
-<pre><code class="language-csharp">	namespace Native.Android
-	{
-		extern(!Android) public class MySlider
-		{
-			[UXConstructor]
-			public MySlider([UXParameter(&quot;Host&quot;)]ISliderHost host) { }
-		}
-	}
-</code></pre>
+<pre><code class="language-csharp">namespace Native.Android
+{
+    extern(!Android) public class MySlider
+    {
+        [UXConstructor]
+        public MySlider([UXParameter(&quot;Host&quot;)]ISliderHost host) { }
+    }
+}</code></pre>
 <h3 id="creating-a-ux-wrapper-control">Creating a UX wrapper <code>Control</code></h3>
 <p>The <code>LeafView</code> classes do not inherit <a href="../fuse/controls/graphics/visual.html">Visual</a>, so they can not be used directly in a UX markup tree. We need to create an intermediary <code>Control</code> class that acts as a wrapper. This is nice, because it allows us to distinguish between the public API we expose to UX, and the implementation details of each platform. It also allows us to create a unified wrapper that will work cross-platform.</p>
 <p>The <code>Fuse.Controls.Control</code> class contains a neat piece of magic. It allows you to specify multiple <em>templates</em> for different scenarios, and it will instantiate the correct template at runtime based on context:</p>
@@ -892,14 +887,13 @@ in UX markup, it must be valid on all platforms. Therefore we must provide a dum
 <li><code>GraphicsTemplate</code> - will be used in graphics contexts (when outside <code>NativeViewHost</code>), and as a fallback on desktop</li>
 </ul>
 <p>So in order to make our <code>Slider</code> work on all platforms, we must provide one template for each scenario. We pass <code>this</code> to the <code>Host</code> attibuite to connect <code>Native.MySlider</code> with the native counterpart.</p>
-<pre><code class="language-xml">	&lt;Native.MySlider ux:Class=&quot;NativeSlider&quot;&gt;
-		&lt;Native.Android.MySlider ux:Template=&quot;AndroidAppearance&quot; Host=&quot;this&quot; /&gt;
-		&lt;Native.iOS.MySlider ux:Template=&quot;iOSAppearance&quot; Host=&quot;this&quot; /&gt;
-		&lt;Text ux:Template=&quot;GraphicsAppearance&quot;&gt;
-			MySlider is not available in this context.
-		&lt;/Text&gt;
-	&lt;/Native.MySlider&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Native.MySlider ux:Class=&quot;NativeSlider&quot;&gt;
+    &lt;Native.Android.MySlider ux:Template=&quot;AndroidAppearance&quot; Host=&quot;this&quot; /&gt;
+    &lt;Native.iOS.MySlider ux:Template=&quot;iOSAppearance&quot; Host=&quot;this&quot; /&gt;
+    &lt;Text ux:Template=&quot;GraphicsAppearance&quot;&gt;
+        MySlider is not available in this context.
+    &lt;/Text&gt;
+&lt;/Native.MySlider&gt;</code></pre>
 <p>This hooks everything up, so if we use <code>&lt;NativeSlider /&gt;</code> in UX markup now, it will use the correct implementation on each platform if we are inside a <code>NativeViewHost</code>. It will display an error <code>Text</code> message in other scenarios.</p>
 <p>If you want to, we can certainly provide a proper implementation of a slider as <code>GraphicsTemplate</code> instead of just displaying an error message.</p>
 <h3 id="and-done">And done</h3>

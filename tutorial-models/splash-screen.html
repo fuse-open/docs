@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -687,117 +687,96 @@
 <h2 id="building-our-splash-screen">Building our splash screen</h2>
 <p>The first thing we'll to do for our splash screen is to create a new <a href="../fuse/controls/page.html">Page</a>. In the <code>Pages</code> directory in our project, let's make a new file called <code>SplashPage.ux</code> with the following contents:</p>
 <pre><code class="language-xml">&lt;Page ux:Class=&quot;SplashPage&quot;&gt;
-&lt;/Page&gt;
-</code></pre>
+&lt;/Page&gt;</code></pre>
 <p>Notice how we're using <code>Page</code> as a base class instead of the <code>hikr.Page</code> component we built last chapter. This is because we'll eventually add a video background to this page, so we'll just want app's background color for a background for now.</p>
 <p>Lets also add a <code>SplashPage.js</code> to our <code>Pages</code> folder, and export an empty class with the same name:</p>
-<pre><code class="language-js">export default class SplashPage { }
-</code></pre>
+<pre><code class="language-js">export default class SplashPage { }</code></pre>
 <p>Now that we've got our <code>SplashPage</code>, let's add a template for it in our app's <a href="../fuse/controls/navigator.html">Navigator</a> in <code>MainView.ux</code>:</p>
-<pre><code class="language-xml">		&lt;Navigator Pages=&quot;{pages}&quot;&gt;
-			&lt;SplashPage ux:Template=&quot;SplashPage&quot; /&gt;
-			&lt;HomePage ux:Template=&quot;HomePage&quot; /&gt;
-			&lt;EditHikePage ux:Template=&quot;EditHikePage&quot; /&gt;
-		&lt;/Navigator&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Navigator Pages=&quot;{pages}&quot;&gt;
+    &lt;SplashPage ux:Template=&quot;SplashPage&quot; /&gt;
+    &lt;HomePage ux:Template=&quot;HomePage&quot; /&gt;
+    &lt;EditHikePage ux:Template=&quot;EditHikePage&quot; /&gt;
+&lt;/Navigator&gt;</code></pre>
 <p>We'll also make this the default template as it's the first screen we'll want to show in our app. We do this by instantiating a <code>SplashPage</code> instead of a <code>HomePage</code> in our <code>App</code> contructor:</p>
-<pre><code class="language-js">	constructor() {
-		this.mockBackend = new MockBackend();
-		this.pages = [new SplashPage()];
-		this.hikes = [];
-		this.mockBackend.getHikes().then(hikes =&gt; {
-			this.hikes = hikes;
-		});
-	}
-</code></pre>
+<pre><code class="language-js">constructor() {
+    this.mockBackend = new MockBackend();
+    this.pages = [new SplashPage()];
+    this.hikes = [];
+    this.mockBackend.getHikes().then(hikes =&gt; {
+        this.hikes = hikes;
+    });
+}</code></pre>
 <p>Also make sure you add an import statement to the top of <code>Models/App.js</code>:</p>
-<pre><code class="language-js">import SplashPage from 'Pages/SplashPage';
-</code></pre>
+<pre><code class="language-js">import SplashPage from 'Pages/SplashPage';</code></pre>
 <p>With this saved, we should now see our blank <code>SplashPage</code> on screen! Now that we've got our <code>SplashPage</code> showing, let's look at its design:</p>
 <p><img src="../media/hikr/tutorial/splash.png" alt="Splash Page"></p>
 <p>Here we can see there's two major parts - the title text and slogan, and the &quot;Get Started&quot; button. Both of these parts are placed in the center of the top/bottom halves of the screen, respectively. So, the first thing we'll do is create a <a href="../fuse/controls/grid.html">Grid</a> which will split the screen up into these two cells in <code>SplashScreen.ux</code>:</p>
 <pre><code class="language-xml">&lt;Page ux:Class=&quot;SplashPage&quot;&gt;
-	&lt;Grid RowCount=&quot;2&quot;&gt;
-	&lt;/Grid&gt;
-&lt;/Page&gt;
-</code></pre>
+    &lt;Grid RowCount=&quot;2&quot;&gt;
+    &lt;/Grid&gt;
+&lt;/Page&gt;</code></pre>
 <p>The first child of this <code>Grid</code> will represent the contents of the top cell of the <code>Grid</code>. For our title text and slogan, we'll create a <a href="../fuse/controls/stackpanel.html">StackPanel</a>:</p>
-<pre><code class="language-xml">	&lt;Grid RowCount=&quot;2&quot;&gt;
-		&lt;StackPanel&gt;
-		&lt;/StackPanel&gt;
-	&lt;/Grid&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Grid RowCount=&quot;2&quot;&gt;
+    &lt;StackPanel&gt;
+    &lt;/StackPanel&gt;
+&lt;/Grid&gt;</code></pre>
 <p>Next, we'll add our title text. We'll start with a <code>hikr.Text</code> instance:</p>
-<pre><code class="language-xml">		&lt;StackPanel&gt;
-			&lt;hikr.Text&gt;hikr&lt;/hikr.Text&gt;
-		&lt;/StackPanel&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;StackPanel&gt;
+    &lt;hikr.Text&gt;hikr&lt;/hikr.Text&gt;
+&lt;/StackPanel&gt;</code></pre>
 <p>If we save this, we'll have our <code>hikr</code> text in the top-left corner of the cell. Let's add some alignment to center it horizontally:</p>
-<pre><code class="language-xml">		&lt;StackPanel&gt;
-			&lt;hikr.Text Alignment=&quot;HorizontalCenter&quot;&gt;hikr&lt;/hikr.Text&gt;
-		&lt;/StackPanel&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;StackPanel&gt;
+    &lt;hikr.Text Alignment=&quot;HorizontalCenter&quot;&gt;hikr&lt;/hikr.Text&gt;
+&lt;/StackPanel&gt;</code></pre>
 <p>We'll take care of centering it vertically shortly. For now, we'll also bump up the <code>FontSize</code> a bit:</p>
-<pre><code class="language-xml">		&lt;StackPanel&gt;
-			&lt;hikr.Text Alignment=&quot;HorizontalCenter&quot; FontSize=&quot;70&quot;&gt;hikr&lt;/hikr.Text&gt;
-		&lt;/StackPanel&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;StackPanel&gt;
+    &lt;hikr.Text Alignment=&quot;HorizontalCenter&quot; FontSize=&quot;70&quot;&gt;hikr&lt;/hikr.Text&gt;
+&lt;/StackPanel&gt;</code></pre>
 <p>Now, let's add our slogan text. We'll place it in the same <code>StackPanel</code> as our title text:</p>
-<pre><code class="language-xml">		&lt;StackPanel&gt;
-			&lt;hikr.Text Alignment=&quot;HorizontalCenter&quot; FontSize=&quot;70&quot;&gt;hikr&lt;/hikr.Text&gt;
-			&lt;hikr.Text&gt;get out there&lt;/hikr.Text&gt;
-		&lt;/StackPanel&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;StackPanel&gt;
+    &lt;hikr.Text Alignment=&quot;HorizontalCenter&quot; FontSize=&quot;70&quot;&gt;hikr&lt;/hikr.Text&gt;
+    &lt;hikr.Text&gt;get out there&lt;/hikr.Text&gt;
+&lt;/StackPanel&gt;</code></pre>
 <p>We'll also center this text horizontally, and we'll make it transparent by setting its <code>Opacity</code>:</p>
-<pre><code class="language-xml">		&lt;StackPanel&gt;
-			&lt;hikr.Text Alignment=&quot;HorizontalCenter&quot; FontSize=&quot;70&quot;&gt;hikr&lt;/hikr.Text&gt;
-			&lt;hikr.Text Alignment=&quot;HorizontalCenter&quot; Opacity=&quot;.5&quot;&gt;get out there&lt;/hikr.Text&gt;
-		&lt;/StackPanel&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;StackPanel&gt;
+    &lt;hikr.Text Alignment=&quot;HorizontalCenter&quot; FontSize=&quot;70&quot;&gt;hikr&lt;/hikr.Text&gt;
+    &lt;hikr.Text Alignment=&quot;HorizontalCenter&quot; Opacity=&quot;.5&quot;&gt;get out there&lt;/hikr.Text&gt;
+&lt;/StackPanel&gt;</code></pre>
 <p>And now that we've got both items in place in our <code>StackPanel</code>, we can place the <code>StackPanel</code> in the center of the <code>Grid</code> cell vertically by setting its <code>Alignment</code>:</p>
-<pre><code class="language-xml">		&lt;StackPanel Alignment=&quot;VerticalCenter&quot;&gt;
-			&lt;hikr.Text Alignment=&quot;HorizontalCenter&quot; FontSize=&quot;70&quot;&gt;hikr&lt;/hikr.Text&gt;
-			&lt;hikr.Text Alignment=&quot;HorizontalCenter&quot; Opacity=&quot;.5&quot;&gt;get out there&lt;/hikr.Text&gt;
-		&lt;/StackPanel&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;StackPanel Alignment=&quot;VerticalCenter&quot;&gt;
+    &lt;hikr.Text Alignment=&quot;HorizontalCenter&quot; FontSize=&quot;70&quot;&gt;hikr&lt;/hikr.Text&gt;
+    &lt;hikr.Text Alignment=&quot;HorizontalCenter&quot; Opacity=&quot;.5&quot;&gt;get out there&lt;/hikr.Text&gt;
+&lt;/StackPanel&gt;</code></pre>
 <p>And that's it; our title and slogan text are taken care of!</p>
 <p>Next, we'll add our &quot;Get Started&quot; button. Because of the <code>hikr.Button</code> component we made in the previous chapter, this will be pretty easy. We'll start by creating an instance beneath our <code>StackPanel</code>, so it will occupy the lower cell in the <code>Grid</code>:</p>
-<pre><code class="language-xml">	&lt;Grid RowCount=&quot;2&quot;&gt;
-		&lt;StackPanel Alignment=&quot;VerticalCenter&quot;&gt;
-			&lt;hikr.Text Alignment=&quot;HorizontalCenter&quot; FontSize=&quot;70&quot;&gt;hikr&lt;/hikr.Text&gt;
-			&lt;hikr.Text Alignment=&quot;HorizontalCenter&quot; Opacity=&quot;.5&quot;&gt;get out there&lt;/hikr.Text&gt;
-		&lt;/StackPanel&gt;
+<pre><code class="language-xml">&lt;Grid RowCount=&quot;2&quot;&gt;
+    &lt;StackPanel Alignment=&quot;VerticalCenter&quot;&gt;
+        &lt;hikr.Text Alignment=&quot;HorizontalCenter&quot; FontSize=&quot;70&quot;&gt;hikr&lt;/hikr.Text&gt;
+        &lt;hikr.Text Alignment=&quot;HorizontalCenter&quot; Opacity=&quot;.5&quot;&gt;get out there&lt;/hikr.Text&gt;
+    &lt;/StackPanel&gt;
 
-		&lt;hikr.Button Text=&quot;Get Started&quot; /&gt;
-	&lt;/Grid&gt;
-</code></pre>
+    &lt;hikr.Button Text=&quot;Get Started&quot; /&gt;
+&lt;/Grid&gt;</code></pre>
 <p>Let's center our button vertically and add some margin on the left/right to give it some space:</p>
-<pre><code class="language-xml">		&lt;hikr.Button Text=&quot;Get Started&quot; Margin=&quot;50,0&quot; Alignment=&quot;VerticalCenter&quot; /&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;hikr.Button Text=&quot;Get Started&quot; Margin=&quot;50,0&quot; Alignment=&quot;VerticalCenter&quot; /&gt;</code></pre>
 <p>This looks good, but the font looks a little small. Let's increase its <code>FontSize</code> a bit as well:</p>
-<pre><code class="language-xml">		&lt;hikr.Button Text=&quot;Get Started&quot; FontSize=&quot;18&quot; Margin=&quot;50,0&quot; Alignment=&quot;VerticalCenter&quot; /&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;hikr.Button Text=&quot;Get Started&quot; FontSize=&quot;18&quot; Margin=&quot;50,0&quot; Alignment=&quot;VerticalCenter&quot; /&gt;</code></pre>
 <p>Ah, but wait! Our <code>hikr.Button</code> component, because it was built from a <a href="../fuse/controls/panel.html">Panel</a>, doesn't actually have a <code>FontSize</code> property. But this is no problem, we can just build it ourselves!</p>
 <p>In our <code>Components/Button.ux</code> file, let's first add the <code>FontSize</code> property by creating a <a href="../uno/float.html">float</a> instance (since a font size should be a numeric value) with <code>ux:Property</code> specified:</p>
 <pre><code class="language-xml">&lt;Panel ux:Class=&quot;hikr.Button&quot; Margin=&quot;10&quot; Padding=&quot;10&quot;&gt;
-	&lt;string ux:Property=&quot;Text&quot; /&gt;
-	&lt;float ux:Property=&quot;FontSize&quot; /&gt;
-</code></pre>
+    &lt;string ux:Property=&quot;Text&quot; /&gt;
+    &lt;float ux:Property=&quot;FontSize&quot; /&gt;</code></pre>
 <p>This takes care of creating the property; now let's make sure the component actually uses it. In the <code>hikr.Text</code> instance in the component, we can bind the currently-hardcoded <code>FontSize</code> to our property, just like we did with its <code>Value</code> previously:</p>
-<pre><code class="language-xml">	&lt;hikr.Text Value=&quot;{ReadProperty Text}&quot; FontSize=&quot;{ReadProperty FontSize}&quot; TextAlignment=&quot;Center&quot; /&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;hikr.Text Value=&quot;{ReadProperty Text}&quot; FontSize=&quot;{ReadProperty FontSize}&quot; TextAlignment=&quot;Center&quot; /&gt;</code></pre>
 <p>Now, we could stop here, but remember, this component is used elsewhere in our app, and we didn't specify the <code>FontSize</code> property for those instances. So, we should make sure this property has a default value in our component, so those instances will still look the same. To specify a default value for a property, all we have to do is set the property in the component definition like we would if we were setting it for an instance. In <code>hikr.Button.ux</code>, this looks like this:</p>
-<pre><code class="language-xml">&lt;Panel ux:Class=&quot;hikr.Button&quot; Margin=&quot;10&quot; Padding=&quot;10&quot; FontSize=&quot;16&quot;&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Panel ux:Class=&quot;hikr.Button&quot; Margin=&quot;10&quot; Padding=&quot;10&quot; FontSize=&quot;16&quot;&gt;</code></pre>
 <p>This way, unless otherwise specifed, the value of our <code>FontSize</code> property will be 16 like it was before. Awesome!</p>
 <p>Now, let's make our button navigate to the <code>HomePage</code>. We start by adding a function to <code>App.js</code> called <code>goToHomePage</code>. All it does it replace the top most value with an instance of <code>HomePage</code>.</p>
 <pre><code class="language-js">goToHomePage() {
     this.pages = [new HomePage()]
-}
-</code></pre>
+}</code></pre>
 <p>Then we need to bind our newly created function to our buttons <code>Clicked</code> event:</p>
-<pre><code class="language-xml">		&lt;hikr.Button Text=&quot;Get Started&quot; FontSize=&quot;18&quot; Margin=&quot;50,0&quot; Alignment=&quot;VerticalCenter&quot; Clicked=&quot;{goToHomePage}&quot; /&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;hikr.Button Text=&quot;Get Started&quot; FontSize=&quot;18&quot; Margin=&quot;50,0&quot; Alignment=&quot;VerticalCenter&quot; Clicked=&quot;{goToHomePage}&quot; /&gt;</code></pre>
 <p>And that's all it takes. If we save all our files, and click the &quot;Get started&quot; button, our app navigates to the <code>HomePage</code>. Since we set the <code>pages</code> array to a new array with one element, we do not get any navigation history, which means we cannot use the back button to navigate back to the splash page. This is by design.</p>
 <h2 id="adding-a-video-background">Adding a video background</h2>
 <p>Now, it's time to add a video to the background of our <code>SplashPage</code>! The video we'll be using is called <code>nature.mp4</code> and can be found here:</p>
@@ -807,72 +786,60 @@
 <p>Note: Always use content in your apps that you know you have the rights to. Never ignore content licenses, especially when they're this easy to follow!</p>
 </blockquote>
 <p>Let's go ahead and grab <a href="https://github.com/fuse-open/hikr/blob/master/Assets/nature.mp4">the video file</a> and place it in our <code>Assets</code> directory. Then, in our <code>SplashPage.ux</code> file, we can display the video using a <a href="../fuse/controls/video.html">Video</a> tag, and we'll set <code>Layer=&quot;Background&quot;</code> on it just like we did with the <a href="../fuse/controls/image.html">Image</a> in our <code>hikr.Page</code> component in the <a href="look-and-feel.html">last chapter</a>:</p>
-<pre><code class="language-xml">	&lt;Video Layer=&quot;Background&quot; File=&quot;../Assets/nature.mp4&quot; /&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Video Layer=&quot;Background&quot; File=&quot;../Assets/nature.mp4&quot; /&gt;</code></pre>
 <p>If we save this and wait a moment for Fuse to transfer the video file to all of our connected devices, we'll see that while our video file has loaded, it just looks like a black rectangle. This is because a <code>Video</code> object won't start playing by default; we have to tell it to actually play the video. To do this, we'll set <code>AutoPlay=&quot;true&quot;</code>:</p>
-<pre><code class="language-xml">	&lt;Video Layer=&quot;Background&quot; File=&quot;../Assets/nature.mp4&quot; AutoPlay=&quot;true&quot; /&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Video Layer=&quot;Background&quot; File=&quot;../Assets/nature.mp4&quot; AutoPlay=&quot;true&quot; /&gt;</code></pre>
 <p>Now our video starts playing! However, if we let it get to the end of the video, we can see it simply stops playing. Since we'd like our video to loop, we'll also set <code>IsLooping=&quot;true&quot;</code>:</p>
-<pre><code class="language-xml">	&lt;Video Layer=&quot;Background&quot; File=&quot;../Assets/nature.mp4&quot; IsLooping=&quot;true&quot; AutoPlay=&quot;true&quot; /&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Video Layer=&quot;Background&quot; File=&quot;../Assets/nature.mp4&quot; IsLooping=&quot;true&quot; AutoPlay=&quot;true&quot; /&gt;</code></pre>
 <p>The next thing we'll want to fix is that if our device/preview has a different aspect than our video, the video won't fill up the entire screen. Similarly to our background image in <a href="look-and-feel.html">the previous chapter</a>, this is because the <code>Video</code> element is stretching or squishing its contents to always fit inside its available space while preserving its aspect ratio. Since we always want the video to <em>fill</em> its available space, we'll use <code>StretchMode=&quot;UniformToFill&quot;</code>, just like our <code>hikr.Page</code> component did with its background image:</p>
-<pre><code class="language-xml">	&lt;Video Layer=&quot;Background&quot; File=&quot;../Assets/nature.mp4&quot; IsLooping=&quot;true&quot; AutoPlay=&quot;true&quot; StretchMode=&quot;UniformToFill&quot; /&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Video Layer=&quot;Background&quot; File=&quot;../Assets/nature.mp4&quot; IsLooping=&quot;true&quot; AutoPlay=&quot;true&quot; StretchMode=&quot;UniformToFill&quot; /&gt;</code></pre>
 <p>Now we're looking good! However, our background stands out a bit too much as-is, so let's &quot;push it back&quot; a little bit by adding a bit of blur to it. To blur a <code>Video</code> (or really any element in Fuse), all we have to do is attach a <a href="../fuse/effects/blur.html">Blur</a> element to it:</p>
-<pre><code class="language-xml">	&lt;Video Layer=&quot;Background&quot; File=&quot;../Assets/nature.mp4&quot; IsLooping=&quot;true&quot; AutoPlay=&quot;true&quot; StretchMode=&quot;UniformToFill&quot;&gt;
-		&lt;Blur /&gt;
-	&lt;/Video&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Video Layer=&quot;Background&quot; File=&quot;../Assets/nature.mp4&quot; IsLooping=&quot;true&quot; AutoPlay=&quot;true&quot; StretchMode=&quot;UniformToFill&quot;&gt;
+    &lt;Blur /&gt;
+&lt;/Video&gt;</code></pre>
 <p>With this, we can see our <code>Video</code> is blurred nicely! Let's tweak the <code>Radius</code> a bit as well to adjust how blurry it will be. We want it to be fairly blurry while still preserving some of its shapes:</p>
-<pre><code class="language-xml">	&lt;Video Layer=&quot;Background&quot; File=&quot;../Assets/nature.mp4&quot; IsLooping=&quot;true&quot; AutoPlay=&quot;true&quot; StretchMode=&quot;UniformToFill&quot;&gt;
-		&lt;Blur Radius=&quot;4.75&quot; /&gt;
-	&lt;/Video&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Video Layer=&quot;Background&quot; File=&quot;../Assets/nature.mp4&quot; IsLooping=&quot;true&quot; AutoPlay=&quot;true&quot; StretchMode=&quot;UniformToFill&quot;&gt;
+    &lt;Blur Radius=&quot;4.75&quot; /&gt;
+&lt;/Video&gt;</code></pre>
 <p>Lookin' good! Finally, we'll push the background back a little bit more by making it slightly transparent and letting the background color of our app show through:</p>
-<pre><code class="language-xml">	&lt;Video Layer=&quot;Background&quot; File=&quot;../Assets/nature.mp4&quot; Opacity=&quot;0.5&quot; IsLooping=&quot;true&quot; AutoPlay=&quot;true&quot; StretchMode=&quot;UniformToFill&quot;&gt;
-		&lt;Blur Radius=&quot;4.75&quot; /&gt;
-	&lt;/Video&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Video Layer=&quot;Background&quot; File=&quot;../Assets/nature.mp4&quot; Opacity=&quot;0.5&quot; IsLooping=&quot;true&quot; AutoPlay=&quot;true&quot; StretchMode=&quot;UniformToFill&quot;&gt;
+    &lt;Blur Radius=&quot;4.75&quot; /&gt;
+&lt;/Video&gt;</code></pre>
 <p>And with that, our video looks great! Now, let's add attribution to the original artist like our license required. A small bit of text like &quot;original video by Graham Uhelski&quot; at the bottom of the screen should do quite nicely. So, let's first place all of the content of our <code>SplashPage</code> component into a <a href="../fuse/controls/dockpanel.html">DockPanel</a>:</p>
 <pre><code class="language-xml">&lt;Page ux:Class=&quot;SplashPage&quot;&gt;
-	&lt;DockPanel ClipToBounds=&quot;true&quot;&gt;
-		&lt;Video Layer=&quot;Background&quot; File=&quot;../Assets/nature.mp4&quot; IsLooping=&quot;true&quot; AutoPlay=&quot;true&quot; StretchMode=&quot;UniformToFill&quot; Opacity=&quot;0.5&quot;&gt;
-			&lt;Blur Radius=&quot;4.75&quot; /&gt;
-		&lt;/Video&gt;
+    &lt;DockPanel ClipToBounds=&quot;true&quot;&gt;
+        &lt;Video Layer=&quot;Background&quot; File=&quot;../Assets/nature.mp4&quot; IsLooping=&quot;true&quot; AutoPlay=&quot;true&quot; StretchMode=&quot;UniformToFill&quot; Opacity=&quot;0.5&quot;&gt;
+            &lt;Blur Radius=&quot;4.75&quot; /&gt;
+        &lt;/Video&gt;
 
-		&lt;Grid RowCount=&quot;2&quot;&gt;
-			&lt;StackPanel Alignment=&quot;VerticalCenter&quot;&gt;
-				&lt;hikr.Text Alignment=&quot;HorizontalCenter&quot; FontSize=&quot;70&quot;&gt;hikr&lt;/hikr.Text&gt;
-				&lt;hikr.Text Alignment=&quot;HorizontalCenter&quot; Opacity=&quot;.5&quot;&gt;get out there&lt;/hikr.Text&gt;
-			&lt;/StackPanel&gt;
+        &lt;Grid RowCount=&quot;2&quot;&gt;
+            &lt;StackPanel Alignment=&quot;VerticalCenter&quot;&gt;
+                &lt;hikr.Text Alignment=&quot;HorizontalCenter&quot; FontSize=&quot;70&quot;&gt;hikr&lt;/hikr.Text&gt;
+                &lt;hikr.Text Alignment=&quot;HorizontalCenter&quot; Opacity=&quot;.5&quot;&gt;get out there&lt;/hikr.Text&gt;
+            &lt;/StackPanel&gt;
 
-			&lt;hikr.Button Text=&quot;Get Started&quot; FontSize=&quot;18&quot; Margin=&quot;50,0&quot; Alignment=&quot;VerticalCenter&quot; Clicked=&quot;{goToHomePage}&quot; /&gt;
-		&lt;/Grid&gt;
-	&lt;/DockPanel&gt;
-&lt;/Page&gt;
-</code></pre>
+            &lt;hikr.Button Text=&quot;Get Started&quot; FontSize=&quot;18&quot; Margin=&quot;50,0&quot; Alignment=&quot;VerticalCenter&quot; Clicked=&quot;{goToHomePage}&quot; /&gt;
+        &lt;/Grid&gt;
+    &lt;/DockPanel&gt;
+&lt;/Page&gt;</code></pre>
 <p>Then, we'll add a <code>hikr.Text</code> component docked to the bottom of the <code>DockPanel</code>:</p>
-<pre><code class="language-xml">	&lt;DockPanel ClipToBounds=&quot;true&quot;&gt;
-		&lt;Video Layer=&quot;Background&quot; File=&quot;../Assets/nature.mp4&quot; IsLooping=&quot;true&quot; AutoPlay=&quot;true&quot; StretchMode=&quot;UniformToFill&quot; Opacity=&quot;0.5&quot;&gt;
-			&lt;Blur Radius=&quot;4.75&quot; /&gt;
-		&lt;/Video&gt;
+<pre><code class="language-xml">&lt;DockPanel ClipToBounds=&quot;true&quot;&gt;
+    &lt;Video Layer=&quot;Background&quot; File=&quot;../Assets/nature.mp4&quot; IsLooping=&quot;true&quot; AutoPlay=&quot;true&quot; StretchMode=&quot;UniformToFill&quot; Opacity=&quot;0.5&quot;&gt;
+        &lt;Blur Radius=&quot;4.75&quot; /&gt;
+    &lt;/Video&gt;
 
-		&lt;hikr.Text Dock=&quot;Bottom&quot;&gt;original video by Graham Uhelski&lt;/hikr.Text&gt;
-</code></pre>
+    &lt;hikr.Text Dock=&quot;Bottom&quot;&gt;original video by Graham Uhelski&lt;/hikr.Text&gt;</code></pre>
 <p>Let's also align it to the center of the screen horizontally and add some margin so it's not quite touching the bottom edge:</p>
-<pre><code class="language-xml">		&lt;hikr.Text Dock=&quot;Bottom&quot; Margin=&quot;10&quot; TextAlignment=&quot;Center&quot;&gt;original video by Graham Uhelski&lt;/hikr.Text&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;hikr.Text Dock=&quot;Bottom&quot; Margin=&quot;10&quot; TextAlignment=&quot;Center&quot;&gt;original video by Graham Uhelski&lt;/hikr.Text&gt;</code></pre>
 <p>Then, we'll make the font a bit smaller and adjust its <code>Opacity</code> so it doesn't stand out so much:</p>
-<pre><code class="language-xml">		&lt;hikr.Text Dock=&quot;Bottom&quot; Margin=&quot;10&quot; Opacity=&quot;.5&quot; TextAlignment=&quot;Center&quot; FontSize=&quot;12&quot;&gt;original video by Graham Uhelski&lt;/hikr.Text&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;hikr.Text Dock=&quot;Bottom&quot; Margin=&quot;10&quot; Opacity=&quot;.5&quot; TextAlignment=&quot;Center&quot; FontSize=&quot;12&quot;&gt;original video by Graham Uhelski&lt;/hikr.Text&gt;</code></pre>
 <p>And with that, we've got our content attributed properly and looking great!</p>
 <h2 id="finishing-touches">Finishing touches</h2>
 <p>Now that our <code>SplashScreen</code> is basically finished, we can add a couple finishing touches to our app to seal the deal. For example, if we navigate to the <code>HomePage</code>, and we look at the left edge of the screen, we can see what looks like a small bit of our <a href="../fuse/controls/video.html">Video</a> from the <code>SplashScreen</code> is visible. This is because the <a href="../fuse/effects/blur.html">Blur</a> effect will add a bit of space around the element it's applied on so that the edges of the element are blurred smoothly. However, in our case, this means that parts of the edge of the video are visible in other pages of our app, which is not desirable. To fix this, we have to make sure that the content of our <code>SplashPage</code> is clipped to the bounds of the page, and never drawn outside of it. In our case, in <code>SplashPage.ux</code>, we can simply add <code>ClipToBounds=&quot;true&quot;</code> to our <a href="../fuse/controls/dockpanel.html">DockPanel</a> (which contains the <code>Video</code> background):</p>
-<pre><code class="language-xml">	&lt;DockPanel ClipToBounds=&quot;true&quot;&gt;
-		&lt;Video Layer=&quot;Background&quot; File=&quot;../Assets/nature.mp4&quot; IsLooping=&quot;true&quot; AutoPlay=&quot;true&quot; StretchMode=&quot;UniformToFill&quot; Opacity=&quot;0.5&quot;&gt;
-			&lt;Blur Radius=&quot;4.75&quot; /&gt;
-		&lt;/Video&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;DockPanel ClipToBounds=&quot;true&quot;&gt;
+    &lt;Video Layer=&quot;Background&quot; File=&quot;../Assets/nature.mp4&quot; IsLooping=&quot;true&quot; AutoPlay=&quot;true&quot; StretchMode=&quot;UniformToFill&quot; Opacity=&quot;0.5&quot;&gt;
+        &lt;Blur Radius=&quot;4.75&quot; /&gt;
+    &lt;/Video&gt;</code></pre>
 <p>Now, the video is only displayed within the bounds of the <code>SplashPage</code>. Easy! And that's everything! Now, our <code>SplashPage</code> is complete.</p>
 <h2 id="our-progress">Our progress</h2>
 <p>Looks like we've made it to the end! Our hikr concept app is completely finished. Awesome!</p>
@@ -881,58 +848,53 @@
 <p>And these are the code files we changed in this chapter:</p>
 <p><code>Components/hikr.Button.ux</code>:</p>
 <pre><code class="language-xml">&lt;Panel ux:Class=&quot;hikr.Button&quot; Margin=&quot;10&quot; Padding=&quot;10&quot; FontSize=&quot;16&quot;&gt;
-	&lt;string ux:Property=&quot;Text&quot; /&gt;
-	&lt;float ux:Property=&quot;FontSize&quot; /&gt;
-	
-	&lt;Rectangle Layer=&quot;Background&quot; Color=&quot;#125F63&quot; CornerRadius=&quot;4&quot;&gt;
-		&lt;DropShadow Angle=&quot;90&quot; Distance=&quot;1&quot; Spread=&quot;0.2&quot; Size=&quot;2&quot; Color=&quot;#00000060&quot; /&gt;
-	&lt;/Rectangle&gt;
+    &lt;string ux:Property=&quot;Text&quot; /&gt;
+    &lt;float ux:Property=&quot;FontSize&quot; /&gt;
+    
+    &lt;Rectangle Layer=&quot;Background&quot; Color=&quot;#125F63&quot; CornerRadius=&quot;4&quot;&gt;
+        &lt;DropShadow Angle=&quot;90&quot; Distance=&quot;1&quot; Spread=&quot;0.2&quot; Size=&quot;2&quot; Color=&quot;#00000060&quot; /&gt;
+    &lt;/Rectangle&gt;
 
-	&lt;hikr.Text Value=&quot;{ReadProperty Text}&quot; FontSize=&quot;{ReadProperty FontSize}&quot; TextAlignment=&quot;Center&quot; /&gt;
+    &lt;hikr.Text Value=&quot;{ReadProperty Text}&quot; FontSize=&quot;{ReadProperty FontSize}&quot; TextAlignment=&quot;Center&quot; /&gt;
 
-	&lt;WhilePressed&gt;
-		&lt;Scale Factor=&quot;.95&quot; Duration=&quot;.08&quot; Easing=&quot;QuadraticOut&quot; /&gt;
-	&lt;/WhilePressed&gt;
-&lt;/Panel&gt;
-</code></pre>
+    &lt;WhilePressed&gt;
+        &lt;Scale Factor=&quot;.95&quot; Duration=&quot;.08&quot; Easing=&quot;QuadraticOut&quot; /&gt;
+    &lt;/WhilePressed&gt;
+&lt;/Panel&gt;</code></pre>
 <p><code>MainView.ux</code>:</p>
 <pre><code class="language-xml">&lt;App Model=&quot;Models/App&quot; Background=&quot;#022328&quot;&gt;
-	&lt;iOS.StatusBarConfig Style=&quot;Light&quot; /&gt;
-	&lt;Android.StatusBarConfig Color=&quot;#022328&quot; /&gt;
-	
-	&lt;ClientPanel&gt;
-		&lt;Navigator Pages=&quot;{pages}&quot;&gt;
-			&lt;SplashPage ux:Template=&quot;SplashPage&quot; /&gt;
-			&lt;HomePage ux:Template=&quot;HomePage&quot; /&gt;
-			&lt;EditHikePage ux:Template=&quot;EditHikePage&quot; /&gt;
-		&lt;/Navigator&gt;
-	&lt;/ClientPanel&gt;
-&lt;/App&gt;
-
-</code></pre>
+    &lt;iOS.StatusBarConfig Style=&quot;Light&quot; /&gt;
+    &lt;Android.StatusBarConfig Color=&quot;#022328&quot; /&gt;
+    
+    &lt;ClientPanel&gt;
+        &lt;Navigator Pages=&quot;{pages}&quot;&gt;
+            &lt;SplashPage ux:Template=&quot;SplashPage&quot; /&gt;
+            &lt;HomePage ux:Template=&quot;HomePage&quot; /&gt;
+            &lt;EditHikePage ux:Template=&quot;EditHikePage&quot; /&gt;
+        &lt;/Navigator&gt;
+    &lt;/ClientPanel&gt;
+&lt;/App&gt;</code></pre>
 <p><code>Pages/SplashPage.ux</code>:</p>
 <pre><code class="language-xml">&lt;Page ux:Class=&quot;SplashPage&quot;&gt;
-	&lt;DockPanel ClipToBounds=&quot;true&quot;&gt;
-		&lt;Video Layer=&quot;Background&quot; File=&quot;../Assets/nature.mp4&quot; IsLooping=&quot;true&quot; AutoPlay=&quot;true&quot; StretchMode=&quot;UniformToFill&quot; Opacity=&quot;0.5&quot;&gt;
-			&lt;Blur Radius=&quot;4.75&quot; /&gt;
-		&lt;/Video&gt;
+    &lt;DockPanel ClipToBounds=&quot;true&quot;&gt;
+        &lt;Video Layer=&quot;Background&quot; File=&quot;../Assets/nature.mp4&quot; IsLooping=&quot;true&quot; AutoPlay=&quot;true&quot; StretchMode=&quot;UniformToFill&quot; Opacity=&quot;0.5&quot;&gt;
+            &lt;Blur Radius=&quot;4.75&quot; /&gt;
+        &lt;/Video&gt;
 
-		&lt;hikr.Text Dock=&quot;Bottom&quot; Margin=&quot;10&quot; Opacity=&quot;.5&quot; TextAlignment=&quot;Center&quot; FontSize=&quot;12&quot;&gt;original video by Graham Uhelski&lt;/hikr.Text&gt;
+        &lt;hikr.Text Dock=&quot;Bottom&quot; Margin=&quot;10&quot; Opacity=&quot;.5&quot; TextAlignment=&quot;Center&quot; FontSize=&quot;12&quot;&gt;original video by Graham Uhelski&lt;/hikr.Text&gt;
 
-		&lt;Grid RowCount=&quot;2&quot;&gt;
-			&lt;StackPanel Alignment=&quot;VerticalCenter&quot;&gt;
-				&lt;hikr.Text Alignment=&quot;HorizontalCenter&quot; FontSize=&quot;70&quot;&gt;hikr&lt;/hikr.Text&gt;
-				&lt;hikr.Text Alignment=&quot;HorizontalCenter&quot; Opacity=&quot;.5&quot;&gt;get out there&lt;/hikr.Text&gt;
-			&lt;/StackPanel&gt;
+        &lt;Grid RowCount=&quot;2&quot;&gt;
+            &lt;StackPanel Alignment=&quot;VerticalCenter&quot;&gt;
+                &lt;hikr.Text Alignment=&quot;HorizontalCenter&quot; FontSize=&quot;70&quot;&gt;hikr&lt;/hikr.Text&gt;
+                &lt;hikr.Text Alignment=&quot;HorizontalCenter&quot; Opacity=&quot;.5&quot;&gt;get out there&lt;/hikr.Text&gt;
+            &lt;/StackPanel&gt;
 
-			&lt;hikr.Button Text=&quot;Get Started&quot; FontSize=&quot;18&quot; Margin=&quot;50,0&quot; Alignment=&quot;VerticalCenter&quot; Clicked=&quot;{goToHomePage}&quot; /&gt;
-		&lt;/Grid&gt;
-	&lt;/DockPanel&gt;
-&lt;/Page&gt;
-</code></pre>
+            &lt;hikr.Button Text=&quot;Get Started&quot; FontSize=&quot;18&quot; Margin=&quot;50,0&quot; Alignment=&quot;VerticalCenter&quot; Clicked=&quot;{goToHomePage}&quot; /&gt;
+        &lt;/Grid&gt;
+    &lt;/DockPanel&gt;
+&lt;/Page&gt;</code></pre>
 <p><code>Pages/SplashPage.js</code>:</p>
-<pre><code class="language-js">export default class SplashPage { }
-</code></pre>
+<pre><code class="language-js">export default class SplashPage { }</code></pre>
 <p><code>Models/App.js</code>:</p>
 <pre><code class="language-js">import HomePage from 'Pages/HomePage';
 import EditHikePage from 'Pages/EditHikePage';
@@ -940,35 +902,34 @@ import SplashPage from 'Pages/SplashPage';
 import MockBackend from 'Services/MockBackend';
 
 class Hike {
-	constructor(id, name, location, distance, rating, comments) {
-		this.id = id;
-		this.name = name;
-		this.location = location;
-		this.distance = distance;
-		this.rating = rating;
-		this.comments = comments;
-	}
+    constructor(id, name, location, distance, rating, comments) {
+        this.id = id;
+        this.name = name;
+        this.location = location;
+        this.distance = distance;
+        this.rating = rating;
+        this.comments = comments;
+    }
 }
 
 export default class App {
-	constructor() {
-		this.mockBackend = new MockBackend();
-		this.pages = [new SplashPage()];
-		this.hikes = [];
-		this.mockBackend.getHikes().then(hikes =&gt; {
-			this.hikes = hikes;
-		});
-	}
+    constructor() {
+        this.mockBackend = new MockBackend();
+        this.pages = [new SplashPage()];
+        this.hikes = [];
+        this.mockBackend.getHikes().then(hikes =&gt; {
+            this.hikes = hikes;
+        });
+    }
 
-	goToHike(arg) {
-		this.pages.push(new EditHikePage(arg.data, this.pages, this.mockBackend));
-	}
-	
-	goToHomePage() {
-		this.pages = [new HomePage()]
-	}
-}
-</code></pre>
+    goToHike(arg) {
+        this.pages.push(new EditHikePage(arg.data, this.pages, this.mockBackend));
+    }
+    
+    goToHomePage() {
+        this.pages = [new HomePage()]
+    }
+}</code></pre>
 <h2 id="what-s-next">What's next</h2>
 <p>Now that our app is finished, we've already covered many of the core concepts of Fuse, but there's always more to learn. The <a href="final-thoughts.html">final chapter</a> will be a quick wrap up about what we've learned and where we can go next to improve our Fuse skills. So let's <a href="final-thoughts.html">check it out</a>!</p>
 <!-- todo: update code -->

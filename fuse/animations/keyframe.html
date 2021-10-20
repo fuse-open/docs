@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -702,25 +702,23 @@ Show advanced things
 <p>Allows you to specify several steps for an animation.</p>
 <h3 id="examples">Examples</h3>
 <p>The following <a href="../../fuse/animations/move.html">Move</a> animator will first animate X to 10 over 0.5 second, then from 10 to 15 over 0.5 second. Finally, it will go from an X of 15 to 5 over 1 second.</p>
-<pre><code class="language-xml">    &lt;Move RelativeTo=&quot;ParentSize&quot;&gt;
-        &lt;Keyframe X=&quot;10&quot; Time=&quot;0.5&quot;/&gt;
-        &lt;Keyframe X=&quot;15&quot; Time=&quot;1&quot;/&gt;
-        &lt;Keyframe X=&quot;5&quot; Time=&quot;2&quot;/&gt;
-    &lt;/Move&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Move RelativeTo=&quot;ParentSize&quot;&gt;
+    &lt;Keyframe X=&quot;10&quot; Time=&quot;0.5&quot;/&gt;
+    &lt;Keyframe X=&quot;15&quot; Time=&quot;1&quot;/&gt;
+    &lt;Keyframe X=&quot;5&quot; Time=&quot;2&quot;/&gt;
+&lt;/Move&gt;</code></pre>
 <p>Here is an example of using <a href="../../fuse/animations/trackanimator/keyframes.html">Keyframes</a> with a <a href="../../fuse/animations/change_1.html">Change</a> animator:</p>
-<pre><code class="language-xml">    &lt;Page&gt;
-        &lt;SolidColor ux:Name=&quot;background&quot; Color=&quot;#f00&quot;/&gt;
-        &lt;ActivatingAnimation&gt;
-            &lt;Change Target=&quot;background.Color&quot;&gt;
-                &lt;Keyframe Value=&quot;#0f0&quot; TimeDelta=&quot;0.25&quot;/&gt;
-                &lt;Keyframe Value=&quot;#f00&quot; TimeDelta=&quot;0.25&quot;/&gt;
-                &lt;Keyframe Value=&quot;#ff0&quot; TimeDelta=&quot;0.25&quot;/&gt;
-                &lt;Keyframe Value=&quot;#0ff&quot; TimeDelta=&quot;0.25&quot;/&gt;
-            &lt;/Change&gt;
-        &lt;/ActivatingAnimation&gt;
-    &lt;/Page&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Page&gt;
+    &lt;SolidColor ux:Name=&quot;background&quot; Color=&quot;#f00&quot;/&gt;
+    &lt;ActivatingAnimation&gt;
+        &lt;Change Target=&quot;background.Color&quot;&gt;
+            &lt;Keyframe Value=&quot;#0f0&quot; TimeDelta=&quot;0.25&quot;/&gt;
+            &lt;Keyframe Value=&quot;#f00&quot; TimeDelta=&quot;0.25&quot;/&gt;
+            &lt;Keyframe Value=&quot;#ff0&quot; TimeDelta=&quot;0.25&quot;/&gt;
+            &lt;Keyframe Value=&quot;#0ff&quot; TimeDelta=&quot;0.25&quot;/&gt;
+        &lt;/Change&gt;
+    &lt;/ActivatingAnimation&gt;
+&lt;/Page&gt;</code></pre>
 <p>This time we use <code>TimeDelta</code> instead of time. With <code>TimeDelta</code> we can specify time as a relative term instead of absolute. This means that the order of the <a href="../../fuse/animations/trackanimator/keyframes.html">Keyframes</a> matter, but it lets us reason about the keyframes in terms of their duration instead of their absolute time on the timeline.</p>
 <p>Note: Despite being a <code>PropertyObject</code> the properties in this class are not reactive.</p>
 

@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -691,26 +691,25 @@ be passed with a size hint. The thumbnail will try to fit the provided size hint
 its aspect ratio.</p>
 <p>Its good practice to provide a sizehint if you know what size the thumbnail should be.
 The sizehint will be interpreted as points.</p>
-<pre><code class="language-xml">    &lt;CameraView ux:Name=&quot;Camera&quot; /&gt;
-    &lt;JavaScript&gt;
-        Camera.capturePhoto()
-            .then(function(photo) {
-                var sizehint = {
-                    width: 128,
-                    height: 128
-                };
-                photo.saveThumbnail(sizehint)
-                    .then(function(outputFilePath) {
-                        console.log(&quot;Thumbnail saved to: &quot; + outputFilePath);
-                        photo.release();
-                    })
-                    .catch(function(err) {
-                        photo.release();
-                    })
-            })
-            .catch(function(err) { });
-    &lt;/JavaScript&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;CameraView ux:Name=&quot;Camera&quot; /&gt;
+&lt;JavaScript&gt;
+    Camera.capturePhoto()
+        .then(function(photo) {
+            var sizehint = {
+                width: 128,
+                height: 128
+            };
+            photo.saveThumbnail(sizehint)
+                .then(function(outputFilePath) {
+                    console.log(&quot;Thumbnail saved to: &quot; + outputFilePath);
+                    photo.release();
+                })
+                .catch(function(err) {
+                    photo.release();
+                })
+        })
+        .catch(function(err) { });
+&lt;/JavaScript&gt;</code></pre>
 
 <section class="type-location type-location-leaf">
 <h3 id="section-location">Location</h3>

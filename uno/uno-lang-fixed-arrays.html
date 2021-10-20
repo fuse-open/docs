@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -693,15 +693,12 @@ fixed float FixedArrayField[10];
 
 // Declare some fixed array meta properties with an implicit size 3
 fixed float FixedArrayMetaProperty[]: fixed float[] { 0, 1, 2 };
-fixed float FixedArrayMetaProperty[]: fixed [] { 0.0f, 1.0f, 2.0f };
-</code></pre>
+fixed float FixedArrayMetaProperty[]: fixed [] { 0.0f, 1.0f, 2.0f };</code></pre>
 <p>Fixed arrays can be read and written to the regular way:</p>
 <pre><code class="language-csharp">for (var x = 0; x &lt; FixedArrayField.Length; x++)
     FixedArrayField[x] = 1337.0f;
 
-var f = FixedArrayField[3];
-
-</code></pre>
+var f = FixedArrayField[3];</code></pre>
 <h3 id="remarks">Remarks</h3>
 <p>Fixed arrays are similar to structs in the sense that they are typically stack-allocated, inlined in the containing data structure, or allocated in a static memory region, depending on context. On platforms that don't support this, the compiler will still make the array behave as if it did.</p>
 <p>Note that when using fixed arrays for passing uniform data to shaders, there are quite strict limitations on how much uniform data we can pass into a single shader, typically max 4 KB per draw call if targeting WebGL or OpenGL ES 2.0 based platforms. The Uno compiler will tell you when you exceed this limit.</p>

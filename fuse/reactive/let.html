@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -706,17 +706,13 @@ This entity is experimental and might be changed or removed in a future release.
 </section>
 <p>Binds an expression or value to a name in the data context. This simplifies repeated calculations and allows introduction of new variables.</p>
 <p>To introduce a new value:</p>
-<pre><code class="language-xml">    &lt;Let ux:Name=&quot;a&quot; Value=&quot;5&quot;/&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Let ux:Name=&quot;a&quot; Value=&quot;5&quot;/&gt;</code></pre>
 <p>The value is now part of the data context:</p>
-<pre><code class="language-xml">    &lt;Slider Value=&quot;{a}&quot;/&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Slider Value=&quot;{a}&quot;/&gt;</code></pre>
 <p>It can also be accessed directly outside of the context:</p>
-<pre><code class="language-xml">    &lt;Slider Value=&quot;{Property a.Value}&quot;/&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Slider Value=&quot;{Property a.Value}&quot;/&gt;</code></pre>
 <p>If you are using an expression it's recommended now to use <code>Expression</code> instead of <code>Value</code>:</p>
-<pre><code class="language-xml">    &lt;Let ux:Name=&quot;p&quot; Expression=&quot;{pos} + 5&quot;/&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Let ux:Name=&quot;p&quot; Expression=&quot;{pos} + 5&quot;/&gt;</code></pre>
 <p>This ensures proper propagation of undefined values.  (This is part of the reason this is an experimental API, since we don't really want to distinguish between Expression and Value, but have no choice at the moment).</p>
 <h4 id="lettype">LetType</h4>
 <p>If you are creating a value of a specific type, and/or need to use <code>Change</code> or other animators, consider using one of the LetType classes instead, such as LetFloat or LetString. They have a cleaner conversion mechanism, leading to fewer surprises.</p>

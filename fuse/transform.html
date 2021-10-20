@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -705,10 +705,9 @@ Show advanced things
 <p>Transforms are added to elements just like other elements and triggers.</p>
 <h3 id="example">Example</h3>
 <p>In this example, we scale a circle to become three times its original size:</p>
-<pre><code class="language-xml">    &lt;Circle Color=&quot;Green&quot; Width=&quot;50&quot; Height=&quot;50&quot;&gt;
-        &lt;Scaling Factor=&quot;3&quot; /&gt;
-    &lt;/Circle&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Circle Color=&quot;Green&quot; Width=&quot;50&quot; Height=&quot;50&quot;&gt;
+    &lt;Scaling Factor=&quot;3&quot; /&gt;
+&lt;/Circle&gt;</code></pre>
 <h4 id="available-transforms">Available transforms</h4>
 <section class="table-of-contents">
 <section class="table-of-contents-section">
@@ -1455,15 +1454,14 @@ IEnumerable&lt;Binding&gt;
 <h4 id="why-not-just-move-scale-and-rotate-directly">Why not just Move, Scale and Rotate directly?</h4>
 <p>When you want to do several transformations on the same element, the order in which they are applied matters. Being explicit about adding transforms lets us exploit this fact.</p>
 <pre><code class="language-xml">&lt;Rectangle Color=&quot;Green&quot; Width=&quot;50&quot; Height=&quot;50&quot;&gt;
-	&lt;Translation X=&quot;100&quot; /&gt;
-	&lt;Rotation Degrees=&quot;45&quot; /&gt;
+    &lt;Translation X=&quot;100&quot; /&gt;
+    &lt;Rotation Degrees=&quot;45&quot; /&gt;
 &lt;/Rectangle&gt;
 
 &lt;Rectangle Color=&quot;Red&quot; Width=&quot;50&quot; Height=&quot;50&quot;&gt;
-	&lt;Rotation Degrees=&quot;45&quot; /&gt;
-	&lt;Translation X=&quot;100&quot; /&gt;
-&lt;/Rectangle&gt;
-</code></pre>
+    &lt;Rotation Degrees=&quot;45&quot; /&gt;
+    &lt;Translation X=&quot;100&quot; /&gt;
+&lt;/Rectangle&gt;</code></pre>
 <p>The top rectangle is moved 100 points to the right, and then rotated by 45 degrees. It ends up being placed 100 points to the right of its original position.</p>
 <p>The second rectangle however is rotated first, and then moved. Because of the initial rotation, the positive X direction is now towards the bottom right. Because of this, the rectangle ends up 100 points towards the bottom right.</p>
 <h4 id="caveats">Caveats</h4>

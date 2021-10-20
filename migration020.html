@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -688,8 +688,7 @@
 </ul>
 <p>An empty app now looks like this:</p>
 <pre><code class="language-xml">&lt;App&gt;
-&lt;/App&gt;
-</code></pre>
+&lt;/App&gt;</code></pre>
 <p>Note that all semantic controls (<code>Button</code>, <code>Switch</code>, <code>Slider</code> and <code>TextInput</code>) will no longer get the <code>Basic</code> theme apperance, but instead a much more plain generic look/no look at all. To keep the old appearance, prefix all uses of those controls with <code>Basic.</code>, e.g. <code>&lt;Basic.Button /&gt;</code>. Remember to add a reference to <code>Fuse.BasicTheme</code> in your <code>.unoproj</code> if you want access to this (not default).</p>
 <p>The long deprecated <code>&lt;Style&gt;</code> tag is now finally removed. Rewrite to use <code>ux:Class</code> instead, which is a much nicer and much more performant way of doing consistent styling.</p>
 <p>Some users have a legacy habit of using <code>&lt;Style ux:Class=&quot;MyStyle&quot;&gt;</code> as a dummy-container for a collection of classes. In this case, we can simply replace <code>&lt;Style ..</code> with <code>&lt;Panel ..</code> or any other dummy to keep this pattern.</p>
@@ -708,7 +707,7 @@
 <li><code>&quot;Fuse.BasicTheme&quot;</code></li>
 </ul>
 <p>A minimal .unoproj file should now look something like this:</p>
-<pre><code class="language-json">{
+<pre><code class="language-js">{
   &quot;Packages&quot;: [
     &quot;Fuse&quot;,
     &quot;FuseJS&quot;,
@@ -717,23 +716,20 @@
   &quot;Includes&quot;: [
     &quot;*&quot;
   ]
-}
-</code></pre>
+}</code></pre>
 <p>If you have references to <code>Uno.*</code> packages, whether you need to keep them around depends on whether you have <code>.uno</code> code depending on those packages.</p>
 <p>If you want to use the <code>Basic.</code> controls, add a reference to <code>Fuse.BasicTheme</code>. These are now not included by default to avoid bloat in your generated app if you are not using it.</p>
 <p>You need to keep references to third party packages that you depend on in either UX, Uno or JS.</p>
 <h4 id="ux-global-on-javascript-tags-is-now-deprecated"><code>ux:Global</code> on JavaScript tags is now deprecated</h4>
 <p>Using <code>ux:Global</code> on JavaScript modules to make them accessible to <code>require()</code> will have unpredictable behavior in <code>fuse preview</code>.</p>
 <p>Instead require the JS file directly by including it in your project as a bundle file, for example:</p>
-<pre><code class="language-json">&quot;Includes&quot;: [
+<pre><code class="language-js">&quot;Includes&quot;: [
     &quot;*&quot;,
     &quot;*.js:Bundle&quot;
-]
-</code></pre>
+]</code></pre>
 <p>and then use require with the filename instead:</p>
 <pre><code class="language-js">var foo = require('foo'); // requires foo.js in the project root
-var bar = require('./../bar'); // requires bar.js in the folder above the current file
-</code></pre>
+var bar = require('./../bar'); // requires bar.js in the folder above the current file</code></pre>
 <p>Check out <a href="fusejs/fusejs.html#importing-modules-by-file-name">the detailed docs</a> for more info.</p>
 <h4 id="changes-to-textinput-and-textedit-apis">Changes to TextInput and TextEdit APIs</h4>
 <p><code>TextEdit</code> is now removed. <code>TextInput</code> now gives an undecorated text input control. If you want a decorated text input, we can get the old <code>Basic</code> style by using <code>Basic.TextInput</code>.</p>
@@ -745,37 +741,33 @@ var bar = require('./../bar'); // requires bar.js in the folder above the curren
 <li>As <code>TextInput</code> is invisible by default, we can use the new <code>TextBox</code> to get a decorated text input (easier while prototyping).</li>
 </ul>
 <p>We can now style <code>TextInput</code> by putting elements inside it. It behaves like a <code>DockPanel</code> where remaining space is the actual editor:</p>
-<pre><code class="language-xml">	&lt;TextInput&gt;
-		&lt;Rectangle Dock=&quot;Bottom&quot; Height=&quot;2&quot; Color=&quot;Blue&quot; Margin=&quot;4&quot; /&gt;
-	&lt;/TextInput&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;TextInput&gt;
+    &lt;Rectangle Dock=&quot;Bottom&quot; Height=&quot;2&quot; Color=&quot;Blue&quot; Margin=&quot;4&quot; /&gt;
+&lt;/TextInput&gt;</code></pre>
 <h4 id="changes-bugfixes-to-ux-element-ordering-semantics">Changes (bugfixes) to UX element ordering semantics</h4>
 <ul>
 <li><code>Element</code>s placed inside <code>Trigger</code>s will now be placed at the same location in the children list as their containing <code>Trigger</code>.</li>
 </ul>
 <p>Here is an example where this matters:</p>
 <pre><code class="language-xml">&lt;Panel&gt;
-	&lt;Each Count=&quot;2&quot;&gt;
-		&lt;ElemOne/&gt;
-	&lt;/Each&gt;
-	&lt;ElemTwo/&gt;
-&lt;/Panel&gt;
-</code></pre>
+    &lt;Each Count=&quot;2&quot;&gt;
+        &lt;ElemOne/&gt;
+    &lt;/Each&gt;
+    &lt;ElemTwo/&gt;
+&lt;/Panel&gt;</code></pre>
 <p>The previous behavior turned the above UX into the following equivalent:</p>
 <pre><code class="language-xml">&lt;Panel&gt;
-	&lt;ElemTwo/&gt;
-	&lt;ElemOne/&gt;
-	&lt;ElemOne/&gt;
-&lt;/Panel&gt;
-</code></pre>
+    &lt;ElemTwo/&gt;
+    &lt;ElemOne/&gt;
+    &lt;ElemOne/&gt;
+&lt;/Panel&gt;</code></pre>
 <p>Notice that the element inside the <code>Each</code> are placed after element outside it.</p>
 <p>The new behavior works like this:</p>
 <pre><code class="language-xml">&lt;Panel&gt;
-	&lt;ElemOne/&gt;
-	&lt;ElemOne/&gt;
-	&lt;ElemTwo/&gt;
-&lt;/Panel&gt;
-</code></pre>
+    &lt;ElemOne/&gt;
+    &lt;ElemOne/&gt;
+    &lt;ElemTwo/&gt;
+&lt;/Panel&gt;</code></pre>
 <p>The elements are now placed where you'd intuitively expect them to be.</p>
 <h4 id="consolidated-ux-template-and-ux-factory-concepts">Consolidated ux:Template and ux:Factory concepts</h4>
 <p>In UX markup, the concept of Factory has been renamed to Template. The old Template concept is removed (was used in Styles, which are now removed).</p>
@@ -795,13 +787,11 @@ var bar = require('./../bar'); // requires bar.js in the folder above the curren
 </li>
 </ul>
 <p>If you need to use a custom <code>Easing</code> and <code>Duration</code>, rewrite</p>
-<pre><code class="language-xml">	&lt;LinearNavigation Easing=&quot;CubicOut&quot; Duration=&quot;0.3&quot; /&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;LinearNavigation Easing=&quot;CubicOut&quot; Duration=&quot;0.3&quot; /&gt;</code></pre>
 <p>To this:</p>
-<pre><code class="language-xml">	&lt;LinearNavigation&gt;
-		&lt;NavigationMotion Easing=&quot;CubicOut&quot; Duration=&quot;0.3&quot; /&gt;
-	&lt;/LinearNavigation&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;LinearNavigation&gt;
+    &lt;NavigationMotion Easing=&quot;CubicOut&quot; Duration=&quot;0.3&quot; /&gt;
+&lt;/LinearNavigation&gt;</code></pre>
 <h4 id="uno-api-changes">Uno API Changes</h4>
 <p>These changes are only relevant if you have custom <code>.uno</code> code in your projects.</p>
 <ul>
@@ -816,11 +806,9 @@ var bar = require('./../bar'); // requires bar.js in the folder above the curren
 For example, in the<code>WhileLoaded</code> trigger:</p>
 </li>
 </ul>
-<pre><code class="language-csharp">public static void SetState(Node n, bool loaded)
-</code></pre>
+<pre><code class="language-csharp">public static void SetState(Node n, bool loaded)</code></pre>
 <p>has become</p>
-<pre><code class="language-csharp">public static void SetState(Visual v, bool loading)
-</code></pre>
+<pre><code class="language-csharp">public static void SetState(Visual v, bool loading)</code></pre>
 <p>For further details, please see the <a href="https://fuseopen.com/downloads">change log</a>.</p>
 
             </div>

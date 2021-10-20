@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -702,15 +702,14 @@ Show advanced things
 <p>Controls the animations for page-to-page transitions in a <code>Navigator</code>.</p>
 <p>Unlike the <code>EnteringAnimation</code> and <code>ExitingAnimation</code> triggers, <code>Transition</code> allows you to make different animations depending on which page is being navigating to, or away from.</p>
 <h3 id="example">Example</h3>
-<pre><code class="language-xml">	&lt;Page ux:Template=&quot;Main&quot;&gt;
-		&lt;Transition To=&quot;Contacts&quot;&gt;
-			&lt;Move X=&quot;-1&quot; RelativeTo=&quot;ParentSize&quot; Duration=&quot;1&quot;/&gt;
-		&lt;/Transition&gt;
-		&lt;Transition&gt;
-			&lt;Move Y=&quot;1&quot; RelativeTo=&quot;ParentSize&quot; Duration=&quot;1&quot;/&gt;
-		&lt;/Transition&gt;
-	&lt;/Page&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Page ux:Template=&quot;Main&quot;&gt;
+    &lt;Transition To=&quot;Contacts&quot;&gt;
+        &lt;Move X=&quot;-1&quot; RelativeTo=&quot;ParentSize&quot; Duration=&quot;1&quot;/&gt;
+    &lt;/Transition&gt;
+    &lt;Transition&gt;
+        &lt;Move Y=&quot;1&quot; RelativeTo=&quot;ParentSize&quot; Duration=&quot;1&quot;/&gt;
+    &lt;/Transition&gt;
+&lt;/Page&gt;</code></pre>
 <p>This page has a special transition if navigating to the <code>Contacts</code> page. In this case it will slide the page to the left. All other transitions away from this page will slide down.</p>
 <h3 id="to-from">To / From</h3>
 <p>Every navigation change defines a &quot;To&quot; and &quot;From&quot; page. In <code>Transition</code> these are always defined as the the forward ordering of the pages in the navigation. This ensures that when navigating backward (such as using <code>goBack</code>) the same transitions will be used, but done in reverse.</p>
@@ -732,10 +731,9 @@ Show advanced things
 <h3 id="play-direction">Play direction</h3>
 <p>If the page is becoming inactive the transition will be played forward. If the page is becoming active the transition will be played backward. This means the transition is always defining the animation towards the inactive state.</p>
 <p>With certain combinations of properties this may at first seem odd, for example:</p>
-<pre><code class="language-xml">	&lt;Transition Direction=&quot;ToActive&quot;&gt;
-		&lt;Move X=&quot;100&quot; Duration=&quot;1&quot;/&gt;
-	&lt;/Transition&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Transition Direction=&quot;ToActive&quot;&gt;
+    &lt;Move X=&quot;100&quot; Duration=&quot;1&quot;/&gt;
+&lt;/Transition&gt;</code></pre>
 <p>This <code>Transition</code> is only selected when the page is becoming the active one. The animation will start at <code>X=100</code> and move towards <code>X=0</code> over a duration of <code>1</code>.</p>
 <p>The final state of any active page is always with all transitions deactivated.</p>
 <h4 id="extended-example">Extended Example</h4>

@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -702,18 +702,17 @@ Show advanced things
 <p>A trigger that is active while its parent <a href="../../fuse/controls/webview.html">WebView</a> is loading.</p>
 <h4 id="example">Example</h4>
 <p>The following example displays a loading indicator while the <a href="../../fuse/controls/webview.html">WebView</a> is loading a page.</p>
-<pre><code class="language-xml">    &lt;NativeViewHost&gt;
-        &lt;Panel ux:Name=&quot;loadingIndicator&quot; Opacity=&quot;0&quot; Alignment=&quot;Bottom&quot; Color=&quot;#0006&quot;&gt;
-            &lt;Text Alignment=&quot;Center&quot; Margin=&quot;10&quot; Color=&quot;#fff&quot;&gt;Loading...&lt;/Text&gt;
-        &lt;/Panel&gt;
+<pre><code class="language-xml">&lt;NativeViewHost&gt;
+    &lt;Panel ux:Name=&quot;loadingIndicator&quot; Opacity=&quot;0&quot; Alignment=&quot;Bottom&quot; Color=&quot;#0006&quot;&gt;
+        &lt;Text Alignment=&quot;Center&quot; Margin=&quot;10&quot; Color=&quot;#fff&quot;&gt;Loading...&lt;/Text&gt;
+    &lt;/Panel&gt;
 
-        &lt;WebView Url=&quot;https://example.com/&quot;&gt;
-            &lt;WhilePageLoading&gt;
-                &lt;Change loadingIndicator.Opacity=&quot;1&quot; Duration=&quot;0.2&quot; /&gt;
-            &lt;/WhilePageLoading&gt;
-        &lt;/WebView&gt;
-    &lt;/NativeViewHost&gt;
-</code></pre>
+    &lt;WebView Url=&quot;https://example.com/&quot;&gt;
+        &lt;WhilePageLoading&gt;
+            &lt;Change loadingIndicator.Opacity=&quot;1&quot; Duration=&quot;0.2&quot; /&gt;
+        &lt;/WhilePageLoading&gt;
+    &lt;/WebView&gt;
+&lt;/NativeViewHost&gt;</code></pre>
 
 <section class="type-location">
 <h3 id="section-location">Location</h3>

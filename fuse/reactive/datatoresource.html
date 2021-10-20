@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -702,23 +702,22 @@ Show advanced things
 </section>
 <p>Binds to a resource with the key provided in a context variable. This allows selecting resources from <a href="../../fuse/reactive/javascript.html">JavaScript</a> by key name.</p>
 <p>In this example three different fonts are created as resources. The font is selected by name in the exported JavaScript items.</p>
-<pre><code class="language-xml">    &lt;Font File=&quot;../../Assets/fonts/Roboto-Bold.ttf&quot; ux:Key=&quot;Bold&quot;/&gt;
-    &lt;Font File=&quot;../../Assets/fonts/Roboto-Regular.ttf&quot; ux:Key=&quot;Regular&quot;/&gt;
-    &lt;Font File=&quot;../../Assets/fonts/Roboto-Italic.ttf&quot; ux:Key=&quot;Italic&quot;/&gt;
+<pre><code class="language-xml">&lt;Font File=&quot;../../Assets/fonts/Roboto-Bold.ttf&quot; ux:Key=&quot;Bold&quot;/&gt;
+&lt;Font File=&quot;../../Assets/fonts/Roboto-Regular.ttf&quot; ux:Key=&quot;Regular&quot;/&gt;
+&lt;Font File=&quot;../../Assets/fonts/Roboto-Italic.ttf&quot; ux:Key=&quot;Italic&quot;/&gt;
 
-    &lt;JavaScript&gt;
-        exports.items = [
-            { font: &quot;Bold&quot; },
-            { font: &quot;Regular&quot; },
-            { font: &quot;Italic&quot; },
-        ]
-    &lt;/JavaScript&gt;
-    &lt;StackPanel&gt;
-        &lt;Each Items=&quot;{items}&quot;&gt;
-            &lt;Text Value=&quot;Sample Text&quot; Font=&quot;{DataToResource font}&quot;/&gt;
-        &lt;/Each&gt;
-    &lt;/StackPanel&gt;
-</code></pre>
+&lt;JavaScript&gt;
+    exports.items = [
+        { font: &quot;Bold&quot; },
+        { font: &quot;Regular&quot; },
+        { font: &quot;Italic&quot; },
+    ]
+&lt;/JavaScript&gt;
+&lt;StackPanel&gt;
+    &lt;Each Items=&quot;{items}&quot;&gt;
+        &lt;Text Value=&quot;Sample Text&quot; Font=&quot;{DataToResource font}&quot;/&gt;
+    &lt;/Each&gt;
+&lt;/StackPanel&gt;</code></pre>
 <p><code>{DataToResource variableKey}</code> is similar to <code>{Resource key}</code>, except it allows a variable key name instead of a static one.</p>
 
 <section class="type-location">

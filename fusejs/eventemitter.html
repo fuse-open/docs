@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -686,147 +686,127 @@ Many of Fuse's JavaScript modules are instances of the <code>EventEmitter</code>
 meaning that we can use the methods defined in this module to perform
 operations on the events that the module defines.</p>
 <h3 id="how-to-import">How to import</h3>
-<pre><code class="language-js">	var EventEmitter = require(&quot;FuseJS/EventEmitter&quot;);
-</code></pre>
+<pre><code class="language-js">var EventEmitter = require(&quot;FuseJS/EventEmitter&quot;);</code></pre>
 <p>This imports <code>EventEmitter</code> so we can create our own instances of the class.</p>
 <h3 id="basic-use">Basic use</h3>
 <p>The following code creates an <code>EventEmitter</code> with two events, adds a listener to
 one of the events, and subsequently emits that event.</p>
-<pre><code class="language-js">	var myEmitter = new EventEmitter(&quot;myEvent1&quot;, &quot;myEvent2&quot;);
+<pre><code class="language-js">var myEmitter = new EventEmitter(&quot;myEvent1&quot;, &quot;myEvent2&quot;);
 
-	myEmitter.on(&quot;myEvent1&quot;, function(arg) {
-		console.log(&quot;myEvent1 fired with &quot; + arg);
-	});
+myEmitter.on(&quot;myEvent1&quot;, function(arg) {
+    console.log(&quot;myEvent1 fired with &quot; + arg);
+});
 
-	myEmitter.emit(&quot;myEvent1&quot;, &quot;an arg&quot;);
-</code></pre>
+myEmitter.emit(&quot;myEvent1&quot;, &quot;an arg&quot;);</code></pre>
 <p>This code will print <code>&quot;myEvent1 fired with an arg&quot;</code>.</p>
 <h4 id="creating-observables-from-events">Creating Observables from events</h4>
 <p>Sometimes events represent values that change over time. When this is the case
 it can be more convenient to use an <a href="../fusejs/observable.html">Observable</a> instead of ordinary callbacks.
 <code>EventEmitter</code>s make this easy:</p>
-<pre><code class="language-js">	var obs = myEmitter.observe(&quot;myEvent&quot;);
-</code></pre>
+<pre><code class="language-js">var obs = myEmitter.observe(&quot;myEvent&quot;);</code></pre>
 <p>Any time <code>&quot;myEvent&quot;</code> is emitted, <code>obs</code> will be updated to contain the arguments
 passed to the event. When there are multiple arguments <code>obs</code> will be an
 observable list.</p>
 <h4 id="once-listeners">Once listeners</h4>
 <p>The following code adds a listener to <code>&quot;myEvent&quot;</code> that will only be fired once:</p>
-<pre><code class="language-js">	myEmitter.once(&quot;myEvent&quot;, function() { console.log(&quot;This will be called at most once&quot;); });
-</code></pre>
+<pre><code class="language-js">myEmitter.once(&quot;myEvent&quot;, function() { console.log(&quot;This will be called at most once&quot;); });</code></pre>
 <h4 id="creating-promises-from-events">Creating promises from events</h4>
 <p>An alternative to using <code>once</code> listeners is to use <code>promiseOf</code>, which creates a
 JavaScript Promise from an event name:</p>
-<pre><code class="language-js">	var prom = myEmitter.promiseOf(&quot;myEvent&quot;);
-	prom.then(function(args) {
-		// &quot;myEvent&quot; was emitted with `args`
-	}).catch(function rejected(reason) {
-		// an &quot;error&quot; event was emitted with `reason`
-	});
-</code></pre>
+<pre><code class="language-js">var prom = myEmitter.promiseOf(&quot;myEvent&quot;);
+prom.then(function(args) {
+    // &quot;myEvent&quot; was emitted with `args`
+}).catch(function rejected(reason) {
+    // an &quot;error&quot; event was emitted with `reason`
+});</code></pre>
 <p>The <code>promiseOf</code> method additionally listens to the <code>&quot;error&quot;</code> event (see below),
 and rejects the promise if it's emitted.</p>
 <h4 id="error-handling">Error handling</h4>
 <p>All <code>EventEmitter</code>s have a special built-in event called <code>&quot;error&quot;</code>:</p>
-<pre><code class="language-js">	myEmitter.emit(&quot;error&quot;, &quot;an error occurred :(&quot;);
-</code></pre>
+<pre><code class="language-js">myEmitter.emit(&quot;error&quot;, &quot;an error occurred :(&quot;);</code></pre>
 <p>If <code>&quot;error&quot;</code> doesn't have any listeners when emitted it will throw an
 exception. Other than that, <code>&quot;error&quot;</code> works like an ordinary event.</p>
 <h3 id="members">Members</h3>
 <h4 id="eventemitter-eventnames-constructor">EventEmitter([...eventNames]) constructor</h4>
 <p>Constructs a new <code>EventEmitter</code> that permits the given argument names.</p>
-<pre><code class="language-js">	var myEmitter = new EventEmitter(&quot;anEventName&quot;, &quot;anotherEventName&quot;);
-</code></pre>
+<pre><code class="language-js">var myEmitter = new EventEmitter(&quot;anEventName&quot;, &quot;anotherEventName&quot;);</code></pre>
 <h4 id="on-eventname-func-eventargs">on(eventName, func([...eventArgs]))</h4>
 <p>Adds <code>func</code> as a listener to the event <code>eventName</code>.</p>
-<pre><code class="language-js">	myEmitter.on(&quot;anEventName&quot;, function(arg) {
-		console.log(&quot;anEventName fired with &quot; + arg);
-	});
-</code></pre>
+<pre><code class="language-js">myEmitter.on(&quot;anEventName&quot;, function(arg) {
+    console.log(&quot;anEventName fired with &quot; + arg);
+});</code></pre>
 <h4 id="once-eventname-func-eventargs">once(eventName, func([...eventArgs]))</h4>
 <p>Adds <code>func</code> as a once listener to the event <code>eventName</code>, which means that
 <code>func</code> will only be called the first time the event is emitted after adding the
 listener.</p>
-<pre><code class="language-js">	myEmitter.once(&quot;myEvent1&quot;, function(arg) {
-		console.log(&quot;myEvent1 fired with &quot; + arg);
-	});
-</code></pre>
+<pre><code class="language-js">myEmitter.once(&quot;myEvent1&quot;, function(arg) {
+    console.log(&quot;myEvent1 fired with &quot; + arg);
+});</code></pre>
 <h4 id="removelistener-eventname-func-eventargs">removeListener(eventName, func([...eventArgs]))</h4>
 <p>Removes <code>func</code> from the listeners of <code>eventName</code>.</p>
-<pre><code class="language-js">	var listener = function() { console.log(&quot;Hello&quot;); };
+<pre><code class="language-js">var listener = function() { console.log(&quot;Hello&quot;); };
 
-	myEmitter.on(&quot;anEventName&quot;, listener);
-	// listener will be called on &quot;anEventName&quot; here
-	myEmitter.removeListener(&quot;anEventName&quot;, listener);
-	// listener will no longer be called on &quot;anEventName&quot;
-</code></pre>
+myEmitter.on(&quot;anEventName&quot;, listener);
+// listener will be called on &quot;anEventName&quot; here
+myEmitter.removeListener(&quot;anEventName&quot;, listener);
+// listener will no longer be called on &quot;anEventName&quot;</code></pre>
 <h4 id="emit-eventname-eventargs">emit(eventName, [...eventArgs])</h4>
 <p>Triggers <code>eventName</code>, calling all its listeners with <code>eventArgs</code>.</p>
-<pre><code class="language-js">	myEmitter.on(&quot;anEvent&quot;, function(arg) {
-		console.log(&quot;anEvent fired with &quot; + arg);
-	});
+<pre><code class="language-js">myEmitter.on(&quot;anEvent&quot;, function(arg) {
+    console.log(&quot;anEvent fired with &quot; + arg);
+});
 
-	myEmitter.emit(&quot;anEvent&quot;, &quot;an arg&quot;);
-</code></pre>
+myEmitter.emit(&quot;anEvent&quot;, &quot;an arg&quot;);</code></pre>
 <h4 id="eventnames">eventNames()</h4>
 <p>Returns an array of all the permitted event names that this <code>EventEmitter</code>
 supports, including built-ins.</p>
-<pre><code class="language-js">	var myEmitter = new EventEmitter(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;);
-	var eventNames = myEmitter.eventNames();
+<pre><code class="language-js">var myEmitter = new EventEmitter(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;);
+var eventNames = myEmitter.eventNames();
 
-	// eventNames contains &quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;error&quot;, &quot;newListener&quot;, and &quot;removeListener&quot;
-</code></pre>
+// eventNames contains &quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;error&quot;, &quot;newListener&quot;, and &quot;removeListener&quot;</code></pre>
 <h4 id="observe-eventname">observe(eventName)</h4>
 <p>Creates an observable that listens to <code>eventName</code>.</p>
-<pre><code class="language-js">	var obs = myEmitter.observe(&quot;anEvent&quot;);
-</code></pre>
+<pre><code class="language-js">var obs = myEmitter.observe(&quot;anEvent&quot;);</code></pre>
 <h4 id="promiseof-eventname">promiseOf(eventName)</h4>
 <p>Creates a promise that listens to <code>eventName</code>, and <code>&quot;error&quot;</code>.</p>
-<pre><code class="language-js">	var prom = myEmitter.promiseOf(&quot;anEvent&quot;);
-	prom.then(function(args) {
-		// &quot;anEvent&quot; was emitted with `args`
-	}).catch(function rejected(reason) {
-		// an &quot;error&quot; event was emitted with `reason`
-	});
-</code></pre>
+<pre><code class="language-js">var prom = myEmitter.promiseOf(&quot;anEvent&quot;);
+prom.then(function(args) {
+    // &quot;anEvent&quot; was emitted with `args`
+}).catch(function rejected(reason) {
+    // an &quot;error&quot; event was emitted with `reason`
+});</code></pre>
 <h3 id="advanced-members">Advanced members</h3>
 <p>The following functions are not necessary for basic usage but are provided for
 compatibility and advanced usage scenarios.</p>
 <h4 id="addlistener-eventname-func-eventargs">addListener(eventName, func([...eventArgs]))</h4>
 <p>A synonym for <code>on</code>.</p>
-<pre><code class="language-js">	myEmitter.addListener(&quot;anEvent&quot;, function(arg) {
-		console.log(&quot;anEvent emitted&quot;)
-	});
-</code></pre>
+<pre><code class="language-js">myEmitter.addListener(&quot;anEvent&quot;, function(arg) {
+    console.log(&quot;anEvent emitted&quot;)
+});</code></pre>
 <h4 id="prependlistener-eventname-func-eventargs">prependListener(eventName, func([...eventArgs]))</h4>
 <p>A version of <code>on</code> that causes <code>func</code> to be first in the list of listeners for
 <code>eventName</code>. This means that (barring later calls to <code>prependListener</code> or
 <code>prependOnceListener</code>) <code>func</code> will be called <em>first</em> when <code>eventName</code> is
 emitted.</p>
-<pre><code class="language-js">	myEmitter.prependListener(&quot;anEvent&quot;, function(arg) {
-		console.log(&quot;This will be called first when anEvent is emitted&quot;);
-	});
-</code></pre>
+<pre><code class="language-js">myEmitter.prependListener(&quot;anEvent&quot;, function(arg) {
+    console.log(&quot;This will be called first when anEvent is emitted&quot;);
+});</code></pre>
 <h4 id="prependoncelistener-eventname-func-eventargs">prependOnceListener(eventName, func([...eventArgs])</h4>
 <p>A version of <code>once</code> that causes <code>func</code> to be first in the list of listeners for
 <code>eventName</code>. This means that (barring later calls to <code>prependListener</code> or
 <code>prependOnceListener</code>) <code>func</code> will be called <em>first</em> when <code>eventName</code> is
 emitted.</p>
-<pre><code class="language-js">	myEmitter.prependOnceListener(&quot;anEvent&quot;, function(arg) {
-		console.log(&quot;This will be called first, and at most once, when anEvent is emitted&quot;);
-	});
-</code></pre>
+<pre><code class="language-js">myEmitter.prependOnceListener(&quot;anEvent&quot;, function(arg) {
+    console.log(&quot;This will be called first, and at most once, when anEvent is emitted&quot;);
+});</code></pre>
 <h4 id="registerevent-eventname">registerEvent(eventName)</h4>
 <p>Add <code>eventName</code> to the set of permitted events that this <code>EventEmitter</code> supports.</p>
-<pre><code class="language-js">	myEmitter.registerEvent(&quot;newEventName&quot;);
-</code></pre>
+<pre><code class="language-js">myEmitter.registerEvent(&quot;newEventName&quot;);</code></pre>
 <h4 id="removealllisteners-eventname">removeAllListeners([eventName])</h4>
 <p>Called with an argument, removes all listeners listening to <code>eventName</code>:</p>
-<pre><code class="language-js">	myEmitter.removeAllListeners(&quot;anEvent&quot;);
-</code></pre>
+<pre><code class="language-js">myEmitter.removeAllListeners(&quot;anEvent&quot;);</code></pre>
 <p>Called without an argument, removes all listeners listening to all events:</p>
-<pre><code class="language-js">	myEmitter.removeAllListeners();
-</code></pre>
+<pre><code class="language-js">myEmitter.removeAllListeners();</code></pre>
 <p>This method should normally not be used as it will affect any other parts of
 the code that listen to the <code>EventEmitter</code>.</p>
 <h3 id="built-in-event-names">Built-in event names</h3>
@@ -834,16 +814,14 @@ the code that listen to the <code>EventEmitter</code>.</p>
 all instances of <code>EventEmitter</code> provide the following events:</p>
 <h4 id="-quot-newlistener-quot-eventname-listener">&quot;newListener&quot;(eventName, listener)</h4>
 <p>Triggered when a new listener is added to the <code>EventEmitter</code>.</p>
-<pre><code class="language-js">	myEmitter.on(&quot;newListener&quot;, function(eventName, listener) {
-		console.log(&quot;listener added to &quot; + eventName);
-	});
-</code></pre>
+<pre><code class="language-js">myEmitter.on(&quot;newListener&quot;, function(eventName, listener) {
+    console.log(&quot;listener added to &quot; + eventName);
+});</code></pre>
 <h4 id="-quot-removelistener-quot-eventname-listener">&quot;removeListener&quot;(eventName, listener)</h4>
 <p>Triggered when a listener is removed from the <code>EventEmitter</code>.</p>
-<pre><code class="language-js">	myEmitter.on(&quot;removeListener&quot;, function(eventName, listener) {
-		console.log(&quot;listener removed from &quot; + eventName);
-	});
-</code></pre>
+<pre><code class="language-js">myEmitter.on(&quot;removeListener&quot;, function(eventName, listener) {
+    console.log(&quot;listener removed from &quot; + eventName);
+});</code></pre>
 
             </div>
             <div class="d-none d-sm-block col-md-3 d-xl-3 toc-content">

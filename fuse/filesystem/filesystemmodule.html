@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -700,28 +700,26 @@ Show advanced things
 </ul>
 </section>
 <p>Provides an interface to the file system.</p>
-<pre><code class="language-js">    var FileSystem = require(&quot;FuseJS/FileSystem&quot;);
-</code></pre>
+<pre><code class="language-js">var FileSystem = require(&quot;FuseJS/FileSystem&quot;);</code></pre>
 <p>Using the asynchronous Promise based functions is recommended to keep your UI responsive,
 although synchronous variants are also available if preferred.</p>
 <p>When saving files private to the application you can use the <code>dataDirectory</code> property
 as a base path.</p>
 <h4 id="example">Example</h4>
 <p>This example writes a text to a file, and then reads it back:</p>
-<pre><code class="language-js">    var FileSystem = require(&quot;FuseJS/FileSystem&quot;);
-    var path = FileSystem.dataDirectory + &quot;/&quot; + &quot;testfile.tmp&quot;;
+<pre><code class="language-js">var FileSystem = require(&quot;FuseJS/FileSystem&quot;);
+var path = FileSystem.dataDirectory + &quot;/&quot; + &quot;testfile.tmp&quot;;
 
-    FileSystem.writeTextToFile(path, &quot;hello world&quot;)
-        .then(function() {
-            return FileSystem.readTextFromFile(path);
-        })
-        .then(function(text) {
-            console.log(&quot;The read file content was: &quot; + text);
-        })
-        .catch(function(error) {
-            console.log(&quot;Unable to read file due to error:&quot; + error);
-        });
-</code></pre>
+FileSystem.writeTextToFile(path, &quot;hello world&quot;)
+    .then(function() {
+        return FileSystem.readTextFromFile(path);
+    })
+    .then(function(text) {
+        console.log(&quot;The read file content was: &quot; + text);
+    })
+    .catch(function(error) {
+        console.log(&quot;Unable to read file due to error:&quot; + error);
+    });</code></pre>
 
 <section class="type-location">
 <h3 id="section-location">Location</h3>

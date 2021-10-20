@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -711,8 +711,7 @@ This allows it to instantiate and recycle pages as it needs.</p>
 </code></pre>
 <p>You can read more about templates <a href="/docs/basics/creating-components#templates-ux-template">here</a>.</p>
 <p>Non-template pages can also be used. The <code>Name</code> of the page will be used to match the path:</p>
-<pre><code class="language-xml">	&lt;Page Name=&quot;matchPath&quot;&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Page Name=&quot;matchPath&quot;&gt;</code></pre>
 <p>These pages always just have the one instance, will always be reused, and will never be removed. Otherwise they function the same as the template pages.</p>
 <p>Here are some general rules that will you help decide whether you want to use a template or non-template page:</p>
 <ul>
@@ -731,31 +730,30 @@ This allows it to instantiate and recycle pages as it needs.</p>
 <h4 id="example">Example</h4>
 <p>The following example illustrates a basic navigation setup using a <a href="../../fuse/navigation/router.html">Router</a> and <a href="../../fuse/controls/navigator.html">Navigator</a>.
 For a complete introduction and proper examples of Fuse's navigation system, see the <a href="/docs/navigation/navigation">Navigation guide</a>.</p>
-<pre><code class="language-xml">	&lt;JavaScript&gt;
-		module.exports = {
-			gotoFirst: function() { router.goto(&quot;firstPage&quot;); },
-			gotoSecond: function() { router.goto(&quot;secondPage&quot;); }
-		};
-	&lt;/JavaScript&gt;
+<pre><code class="language-xml">&lt;JavaScript&gt;
+    module.exports = {
+        gotoFirst: function() { router.goto(&quot;firstPage&quot;); },
+        gotoSecond: function() { router.goto(&quot;secondPage&quot;); }
+    };
+&lt;/JavaScript&gt;
 
-	&lt;Router ux:Name=&quot;router&quot; /&gt;
+&lt;Router ux:Name=&quot;router&quot; /&gt;
 
-	&lt;DockPanel&gt;
-		&lt;Navigator DefaultPath=&quot;firstPage&quot;&gt;
-			&lt;Page ux:Template=&quot;firstPage&quot;&gt;
-				&lt;Text Alignment=&quot;Center&quot;&gt;This is the first page.&lt;/Text&gt;
-			&lt;/Page&gt;
-			&lt;Page ux:Template=&quot;secondPage&quot;&gt;
-				&lt;Text Alignment=&quot;Center&quot;&gt;This is the second page.&lt;/Text&gt;
-			&lt;/Page&gt;
-		&lt;/Navigator&gt;
+&lt;DockPanel&gt;
+    &lt;Navigator DefaultPath=&quot;firstPage&quot;&gt;
+        &lt;Page ux:Template=&quot;firstPage&quot;&gt;
+            &lt;Text Alignment=&quot;Center&quot;&gt;This is the first page.&lt;/Text&gt;
+        &lt;/Page&gt;
+        &lt;Page ux:Template=&quot;secondPage&quot;&gt;
+            &lt;Text Alignment=&quot;Center&quot;&gt;This is the second page.&lt;/Text&gt;
+        &lt;/Page&gt;
+    &lt;/Navigator&gt;
 
-		&lt;Grid Dock=&quot;Bottom&quot; Columns=&quot;1*,1*&quot;&gt;
-			&lt;Button Text=&quot;First page&quot; Padding=&quot;20&quot; Clicked=&quot;{gotoFirst}&quot; /&gt;
-			&lt;Button Text=&quot;Second page&quot; Padding=&quot;20&quot; Clicked=&quot;{gotoSecond}&quot; /&gt;
-		&lt;/Grid&gt;
-	&lt;/DockPanel&gt;
-</code></pre>
+    &lt;Grid Dock=&quot;Bottom&quot; Columns=&quot;1*,1*&quot;&gt;
+        &lt;Button Text=&quot;First page&quot; Padding=&quot;20&quot; Clicked=&quot;{gotoFirst}&quot; /&gt;
+        &lt;Button Text=&quot;Second page&quot; Padding=&quot;20&quot; Clicked=&quot;{gotoSecond}&quot; /&gt;
+    &lt;/Grid&gt;
+&lt;/DockPanel&gt;</code></pre>
 <h4 id="navigation-order">Navigation Order</h4>
 <p>The <code>Navigator</code> uses discrete page progress changes while navigating. The active page will have progress <code>0</code>. If a page is pushed it will start at <code>1</code> and be switched immediately to <code>0</code>. The previously active page will become <code>-1</code>. A &quot;back&quot; operation will reverse the transition.</p>
 <p>Only progresses <code>-1</code>, <code>0</code>, and <code>1</code> are used. Further distance is not calculated, nor are partial values possible.</p>

@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -690,37 +690,33 @@ It also exposes a JavaScript API that lets you read these files from JavaScript.
 <pre><code>&lt;filename or glob pattern&gt;:Bundle
 </code></pre>
 <p>Here is an example that will include all JavaScript files in the <code>js/</code> directory, as well as the file <code>dogs.json</code> as bundled files.</p>
-<pre><code class="language-json">&quot;Includes&quot;: [
-	...other includes...
-	
-	&quot;dogs.json:Bundle&quot;,
-	&quot;js/*.js:Bundle&quot;
-]
-</code></pre>
+<pre><code class="language-js">&quot;Includes&quot;: [
+    ...other includes...
+    
+    &quot;dogs.json:Bundle&quot;,
+    &quot;js/*.js:Bundle&quot;
+]</code></pre>
 <p>We can now <code>require()</code> bundled JavaScript modules:</p>
 <pre><code class="language-js">var foo = require(&quot;./js/foo.js&quot;);
 
-foo.bar();
-</code></pre>
+foo.bar();</code></pre>
 <p>We can also read the contents of a bundled file to a string. The below example loads JSON from a bundled file and parses it.</p>
 <pre><code class="language-js">var Bundle = require(&quot;FuseJS/Bundle&quot;);
 
 Bundle.read(&quot;dogs.json&quot;)
-	.then(function(dogsJson) {
-		var parsedDogs = JSON.parse(dogsJson);
-		
-		// ...do something with parsedDogs...
-	});
-</code></pre>
+    .then(function(dogsJson) {
+        var parsedDogs = JSON.parse(dogsJson);
+        
+        // ...do something with parsedDogs...
+    });</code></pre>
 <p>Bundled files can also be referred to by path relative to the project root, and data bound to for example an image:</p>
-<pre><code class="language-xml">	&lt;Panel&gt;
-		&lt;JavaScript&gt;
-		    var Observable = require(&quot;FuseJS/Observable&quot;);
-		    module.exports.cat = Observable(&quot;cat.jpg&quot;);
-		&lt;/JavaScript&gt;
-		&lt;Image File=&quot;{cat}&quot; /&gt;
-	&lt;/Panel&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Panel&gt;
+    &lt;JavaScript&gt;
+        var Observable = require(&quot;FuseJS/Observable&quot;);
+        module.exports.cat = Observable(&quot;cat.jpg&quot;);
+    &lt;/JavaScript&gt;
+    &lt;Image File=&quot;{cat}&quot; /&gt;
+&lt;/Panel&gt;</code></pre>
 <h2 id="further-reading">Further reading</h2>
 <ul>
 <li><a href="../fusejs/bundle.html">FuseJS/Bundle</a></li>

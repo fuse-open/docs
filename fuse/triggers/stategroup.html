@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -704,122 +704,117 @@ A <a href="../../fuse/triggers/state.html">State</a> is a regular <a href="../..
 Animators inside a <a href="../../fuse/triggers/state.html">State</a> define what should change while that state is active.</p>
 <p>The basic structure of a StateGroup looks like this:</p>
 <pre><code class="language-xml">&lt;StateGroup&gt;
-	&lt;State ux:Name=&quot;firstState&quot; /&gt;
-	&lt;State ux:Name=&quot;secondState&quot; /&gt;
-&lt;/StateGroup&gt;
-</code></pre>
+    &lt;State ux:Name=&quot;firstState&quot; /&gt;
+    &lt;State ux:Name=&quot;secondState&quot; /&gt;
+&lt;/StateGroup&gt;</code></pre>
 <p>Now, this setup does nothing at all. We need to add some animators to our <a href="../../fuse/triggers/state.html">State</a>s, so that they actually do something.
 We'll add a <a href="../../fuse/controls/panel.html">Panel</a> as well, so we have something to animate.</p>
 <pre><code class="language-xml">&lt;Panel ux:Name=&quot;thePanel&quot; Width=&quot;100&quot; Height=&quot;100&quot; /&gt;
-	&lt;StateGroup&gt;
-		&lt;State ux:Name=&quot;firstState&quot;&gt;
-			&lt;Change thePanel.Color=&quot;#f00&quot; /&gt;
-		&lt;/State&gt;
-		&lt;State ux:Name=&quot;secondState&quot;&gt;
-			&lt;Change thePanel.Color=&quot;#00f&quot; /&gt;
-		&lt;/State&gt;
-	&lt;/StateGroup&gt;
-&lt;/Panel&gt;
-</code></pre>
+    &lt;StateGroup&gt;
+        &lt;State ux:Name=&quot;firstState&quot;&gt;
+            &lt;Change thePanel.Color=&quot;#f00&quot; /&gt;
+        &lt;/State&gt;
+        &lt;State ux:Name=&quot;secondState&quot;&gt;
+            &lt;Change thePanel.Color=&quot;#00f&quot; /&gt;
+        &lt;/State&gt;
+    &lt;/StateGroup&gt;
+&lt;/Panel&gt;</code></pre>
 <p>Since the first <a href="../../fuse/triggers/state.html">State</a> in a StateGroup will be activated by default, the above example will display a red <a href="../../fuse/controls/panel.html">Panel</a>.</p>
 <p>At this point, we'd like to switch to a different state somehow. This can be achieved in several ways, as seen below.</p>
 <h4 id="the-active-property">The <code>Active</code> property</h4>
 <p>The <code>Active</code> property can be used to activate a particular <a href="../../fuse/triggers/state.html">State</a>.
 The below example displays a colored <a href="../../fuse/controls/panel.html">Panel</a>, along with three buttons that change its color.</p>
 <pre><code class="language-xml">&lt;StackPanel&gt;
-	&lt;Panel ux:Name=&quot;thePanel&quot; Width=&quot;100&quot; Height=&quot;100&quot; /&gt;
+    &lt;Panel ux:Name=&quot;thePanel&quot; Width=&quot;100&quot; Height=&quot;100&quot; /&gt;
 
-	&lt;StateGroup ux:Name=&quot;stateGroup&quot;&gt;
-		&lt;State ux:Name=&quot;redState&quot;&gt;
-			&lt;Change thePanel.Color=&quot;#f00&quot; Duration=&quot;0.2&quot;/&gt;
-		&lt;/State&gt;
-		&lt;State ux:Name=&quot;greenState&quot;&gt;
-			&lt;Change thePanel.Color=&quot;#0f0&quot; Duration=&quot;0.2&quot;/&gt;
-		&lt;/State&gt;
-		&lt;State ux:Name=&quot;blueState&quot;&gt;
-			&lt;Change thePanel.Color=&quot;#00f&quot; Duration=&quot;0.2&quot;/&gt;
-		&lt;/State&gt;
-	&lt;/StateGroup&gt;
+    &lt;StateGroup ux:Name=&quot;stateGroup&quot;&gt;
+        &lt;State ux:Name=&quot;redState&quot;&gt;
+            &lt;Change thePanel.Color=&quot;#f00&quot; Duration=&quot;0.2&quot;/&gt;
+        &lt;/State&gt;
+        &lt;State ux:Name=&quot;greenState&quot;&gt;
+            &lt;Change thePanel.Color=&quot;#0f0&quot; Duration=&quot;0.2&quot;/&gt;
+        &lt;/State&gt;
+        &lt;State ux:Name=&quot;blueState&quot;&gt;
+            &lt;Change thePanel.Color=&quot;#00f&quot; Duration=&quot;0.2&quot;/&gt;
+        &lt;/State&gt;
+    &lt;/StateGroup&gt;
 
-	&lt;Grid ColumnCount=&quot;3&quot;&gt;
-		&lt;Button Text=&quot;Red&quot;&gt;
-			&lt;Clicked&gt;
-				&lt;Set stateGroup.Active=&quot;redState&quot;/&gt;
-			&lt;/Clicked&gt;
-		&lt;/Button&gt;
-		&lt;Button Text=&quot;Green&quot;&gt;
-			&lt;Clicked&gt;
-				&lt;Set stateGroup.Active=&quot;greenState&quot;/&gt;
-			&lt;/Clicked&gt;
-		&lt;/Button&gt;
-		&lt;Button Text=&quot;Blue&quot;&gt;
-			&lt;Clicked&gt;
-				&lt;Set stateGroup.Active=&quot;blueState&quot;/&gt;
-			&lt;/Clicked&gt;
-		&lt;/Button&gt;
-	&lt;/Grid&gt;
-&lt;/StackPanel&gt;
-</code></pre>
+    &lt;Grid ColumnCount=&quot;3&quot;&gt;
+        &lt;Button Text=&quot;Red&quot;&gt;
+            &lt;Clicked&gt;
+                &lt;Set stateGroup.Active=&quot;redState&quot;/&gt;
+            &lt;/Clicked&gt;
+        &lt;/Button&gt;
+        &lt;Button Text=&quot;Green&quot;&gt;
+            &lt;Clicked&gt;
+                &lt;Set stateGroup.Active=&quot;greenState&quot;/&gt;
+            &lt;/Clicked&gt;
+        &lt;/Button&gt;
+        &lt;Button Text=&quot;Blue&quot;&gt;
+            &lt;Clicked&gt;
+                &lt;Set stateGroup.Active=&quot;blueState&quot;/&gt;
+            &lt;/Clicked&gt;
+        &lt;/Button&gt;
+    &lt;/Grid&gt;
+&lt;/StackPanel&gt;</code></pre>
 <h4 id="transitionstate">TransitionState</h4>
 <p>Instead of directly jumping to a particular state, the TransitionState action can be used to advance to the next <a href="../../fuse/triggers/state.html">State</a> in a StateGroup, following the order in which they are declared.
 If a TransitionState is triggered while the last <a href="../../fuse/triggers/state.html">State</a> is active, it wraps around to activate the first <a href="../../fuse/triggers/state.html">State</a>.</p>
 <p>The following example displays a panel that will cycle its color between red, green and blue when clicked.</p>
 <pre><code class="language-xml">&lt;Panel ux:Name=&quot;thePanel&quot; Width=&quot;100&quot; Height=&quot;100&quot;&gt;
-	&lt;StateGroup ux:Name=&quot;stateGroup&quot;&gt;
-		&lt;State ux:Name=&quot;redState&quot;&gt;
-			&lt;Change thePanel.Color=&quot;#f00&quot; Duration=&quot;0.2&quot;/&gt;
-		&lt;/State&gt;
-		&lt;State ux:Name=&quot;greenState&quot;&gt;
-			&lt;Change thePanel.Color=&quot;#0f0&quot; Duration=&quot;0.2&quot;/&gt;
-		&lt;/State&gt;
-		&lt;State ux:Name=&quot;blueState&quot;&gt;
-			&lt;Change thePanel.Color=&quot;#00f&quot; Duration=&quot;0.2&quot;/&gt;
-		&lt;/State&gt;
-	&lt;/StateGroup&gt;
+    &lt;StateGroup ux:Name=&quot;stateGroup&quot;&gt;
+        &lt;State ux:Name=&quot;redState&quot;&gt;
+            &lt;Change thePanel.Color=&quot;#f00&quot; Duration=&quot;0.2&quot;/&gt;
+        &lt;/State&gt;
+        &lt;State ux:Name=&quot;greenState&quot;&gt;
+            &lt;Change thePanel.Color=&quot;#0f0&quot; Duration=&quot;0.2&quot;/&gt;
+        &lt;/State&gt;
+        &lt;State ux:Name=&quot;blueState&quot;&gt;
+            &lt;Change thePanel.Color=&quot;#00f&quot; Duration=&quot;0.2&quot;/&gt;
+        &lt;/State&gt;
+    &lt;/StateGroup&gt;
 
-	&lt;Clicked&gt;
-		&lt;TransitionState Type=&quot;Next&quot; Target=&quot;stateGroup&quot; /&gt;
-	&lt;/Clicked&gt;
-&lt;/Panel&gt;
-</code></pre>
+    &lt;Clicked&gt;
+        &lt;TransitionState Type=&quot;Next&quot; Target=&quot;stateGroup&quot; /&gt;
+    &lt;/Clicked&gt;
+&lt;/Panel&gt;</code></pre>
 <h4 id="controlling-stategroup-using-javascript">Controlling StateGroup using JavaScript</h4>
 <p>A <code>StateGroup</code> may be controlled via its JavaScript interface.
 This is done either by calling the <code>goto(state)</code> or <code>gotoNext()</code> methods on the <a href="../../fuse/triggers/stategroup.html">StateGroup</a> itself, or by calling the <code>goto()</code> method on a particular <a href="../../fuse/triggers/state.html">State</a>.</p>
 <pre><code class="language-xml">&lt;JavaScript&gt;
-	exports.gotoNextState = function()
-	{
-		stateGroup.gotoNext();
-	}
+    exports.gotoNextState = function()
+    {
+        stateGroup.gotoNext();
+    }
 
-	exports.gotoSecondState = function()
-	{
-		stateGroup.goto(secondState);
-	}
+    exports.gotoSecondState = function()
+    {
+        stateGroup.goto(secondState);
+    }
 
-	exports.gotoThirdState = function()
-	{
-		thirdState.goto();
-	}
+    exports.gotoThirdState = function()
+    {
+        thirdState.goto();
+    }
 &lt;/JavaScript&gt;
 
 &lt;StateGroup ux:Name=&quot;stateGroup&quot;&gt;
-	&lt;State ux:Name=&quot;firstState&quot;&gt;
-		&lt;!-- ... --&gt;
-	&lt;/State&gt;
-	&lt;State ux:Name=&quot;secondState&quot;&gt;
-		&lt;!-- ... --&gt;
-	&lt;/State&gt;
-	&lt;State ux:Name=&quot;thirdState&quot;&gt;
-		&lt;!-- ... --&gt;
-	&lt;/State&gt;
+    &lt;State ux:Name=&quot;firstState&quot;&gt;
+        &lt;!-- ... --&gt;
+    &lt;/State&gt;
+    &lt;State ux:Name=&quot;secondState&quot;&gt;
+        &lt;!-- ... --&gt;
+    &lt;/State&gt;
+    &lt;State ux:Name=&quot;thirdState&quot;&gt;
+        &lt;!-- ... --&gt;
+    &lt;/State&gt;
 &lt;/StateGroup&gt;
 
 &lt;StackPanel&gt;
-	&lt;Button Clicked=&quot;{gotoNextState}&quot; Text=&quot;Next state&quot; /&gt;
-	&lt;Button Clicked=&quot;{gotoSecondState}&quot; Text=&quot;Second state&quot; /&gt;
-	&lt;Button Clicked=&quot;{gotoThirdState}&quot; Text=&quot;Third state&quot; /&gt;
-&lt;/StackPanel&gt;
-</code></pre>
+    &lt;Button Clicked=&quot;{gotoNextState}&quot; Text=&quot;Next state&quot; /&gt;
+    &lt;Button Clicked=&quot;{gotoSecondState}&quot; Text=&quot;Second state&quot; /&gt;
+    &lt;Button Clicked=&quot;{gotoThirdState}&quot; Text=&quot;Third state&quot; /&gt;
+&lt;/StackPanel&gt;</code></pre>
 <h4 id="transition">Transition</h4>
 <p>We can also specify the <code>Transition</code> property, which can be either <code>Exclusive</code> or <code>Parallel</code>.
 <code>Exclusive</code> means that each state will have to be fully deactivated before the next state becomes active.

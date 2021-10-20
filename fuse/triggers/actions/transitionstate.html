@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -702,21 +702,20 @@ Show advanced things
 <p>An action that controls state of a <a href="../../../fuse/triggers/stategroup.html">StateGroup</a>.</p>
 <h4 id="example">Example</h4>
 <p>The following example displays a red panel that will turn its color in green when clicked.</p>
-<pre><code class="language-xml">    &lt;Panel ux:Name=&quot;thePanel&quot; Width=&quot;100&quot; Height=&quot;100&quot;&gt;
-        &lt;StateGroup ux:Name=&quot;stateGroup&quot;&gt;
-            &lt;State ux:Name=&quot;redState&quot;&gt;
-                &lt;Change thePanel.Color=&quot;#f00&quot; Duration=&quot;0.2&quot;/&gt;
-            &lt;/State&gt;
-            &lt;State ux:Name=&quot;greenState&quot;&gt;
-                &lt;Change thePanel.Color=&quot;#0f0&quot; Duration=&quot;0.2&quot;/&gt;
-            &lt;/State&gt;
-        &lt;/StateGroup&gt;
+<pre><code class="language-xml">&lt;Panel ux:Name=&quot;thePanel&quot; Width=&quot;100&quot; Height=&quot;100&quot;&gt;
+    &lt;StateGroup ux:Name=&quot;stateGroup&quot;&gt;
+        &lt;State ux:Name=&quot;redState&quot;&gt;
+            &lt;Change thePanel.Color=&quot;#f00&quot; Duration=&quot;0.2&quot;/&gt;
+        &lt;/State&gt;
+        &lt;State ux:Name=&quot;greenState&quot;&gt;
+            &lt;Change thePanel.Color=&quot;#0f0&quot; Duration=&quot;0.2&quot;/&gt;
+        &lt;/State&gt;
+    &lt;/StateGroup&gt;
 
-        &lt;Clicked&gt;
-            &lt;TransitionState Value=&quot;greenState&quot; Target=&quot;stateGroup&quot; /&gt;
-        &lt;/Clicked&gt;
-    &lt;/Panel&gt;
-</code></pre>
+    &lt;Clicked&gt;
+        &lt;TransitionState Value=&quot;greenState&quot; Target=&quot;stateGroup&quot; /&gt;
+    &lt;/Clicked&gt;
+&lt;/Panel&gt;</code></pre>
 
 <section class="type-location">
 <h3 id="section-location">Location</h3>

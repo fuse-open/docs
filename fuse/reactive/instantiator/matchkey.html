@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -693,17 +693,15 @@ The default template is the one explicitly marked with <code>ux:DefaultTemplate=
 <p>MatchKey can be used together with <code>ux:Template</code> to select the correct template based on
 a string field in the data source.</p>
 <p>Instead of:</p>
-<pre><code class="language-xml">    &lt;Each Items=&quot;{listData}&quot;&gt;
-    &lt;Deferred&gt;
-        &lt;Match Value=&quot;{type}&quot;&gt;
-            &lt;Case String=&quot;month&quot;&gt;
-                &lt;Panel ...
-</code></pre>
+<pre><code class="language-xml">&lt;Each Items=&quot;{listData}&quot;&gt;
+&lt;Deferred&gt;
+    &lt;Match Value=&quot;{type}&quot;&gt;
+        &lt;Case String=&quot;month&quot;&gt;
+            &lt;Panel ...</code></pre>
 <p>Do:</p>
-<pre><code class="language-xml">    &lt;Each Items=&quot;{listData}&quot; MatchKey=&quot;type&quot;&gt;
-        &lt;Deferred ux:Template=&quot;month&quot;&gt;
-            &lt;Panel ...
-</code></pre>
+<pre><code class="language-xml">&lt;Each Items=&quot;{listData}&quot; MatchKey=&quot;type&quot;&gt;
+    &lt;Deferred ux:Template=&quot;month&quot;&gt;
+        &lt;Panel ...</code></pre>
 
 <section class="type-location type-location-leaf">
 <h3 id="section-location">Location</h3>

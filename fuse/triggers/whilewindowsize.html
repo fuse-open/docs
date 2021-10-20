@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -707,26 +707,22 @@ representing the target width and height (in points) to match against.</p>
 <h4 id="examples">Examples</h4>
 <p>The following example changes the color of <code>myRect</code> if the size of the
 app's viewport exceeds 400x400 points.</p>
-<pre><code class="language-xml">    &lt;Rectangle ux:Name=&quot;myRect&quot; Color=&quot;#f00&quot; /&gt;
-    &lt;WhileWindowSize GreaterThan=&quot;400,400&quot;&gt;
-        &lt;Change myRect.Color=&quot;#00f&quot; Duration=&quot;.5&quot;/&gt;
-    &lt;/WhileWindowSize&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Rectangle ux:Name=&quot;myRect&quot; Color=&quot;#f00&quot; /&gt;
+&lt;WhileWindowSize GreaterThan=&quot;400,400&quot;&gt;
+    &lt;Change myRect.Color=&quot;#00f&quot; Duration=&quot;.5&quot;/&gt;
+&lt;/WhileWindowSize&gt;</code></pre>
 <p>If you want to match on a single axis only, you can provide a value for
 the other axis that is greater than zero, and that you can safely assume
 will always match.</p>
 <p>For instance, if you want to check if only the width of the viewport is
 greater than 400 points, you could do the following:</p>
-<pre><code class="language-xml">    &lt;WhileWindowSize GreaterThan=&quot;400,1&quot;&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;WhileWindowSize GreaterThan=&quot;400,1&quot;&gt;</code></pre>
 <p>This also works for LessThan by providing a big value.</p>
-<pre><code class="language-xml">    &lt;WhileWindowSize LessThan=&quot;400,99999&quot;&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;WhileWindowSize LessThan=&quot;400,99999&quot;&gt;</code></pre>
 <p>You can also specify multiple constraints on the same <code>WhileWindowSize</code>
 trigger. Note that all constraints that you specify must be satisfied in
 order for the trigger to activate.</p>
-<pre><code class="language-xml">    &lt;WhileWindowSize GreaterThan=&quot;200,300&quot; LessThan=&quot;700,1000&quot;&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;WhileWindowSize GreaterThan=&quot;200,300&quot; LessThan=&quot;700,1000&quot;&gt;</code></pre>
 
 <section class="type-location">
 <h3 id="section-location">Location</h3>

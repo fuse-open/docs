@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -684,8 +684,7 @@
 <p>The <code>ux:Global</code> attribute in UX Markup converts the element on which it resides into a static global resource.</p>
 <p>Static global resources can be used locally in you project, or used to define resource libraries that can be refered from other projects.</p>
 <h2 id="syntax">Syntax</h2>
-<pre><code class="language-xml">	&lt;type ux:Global=&quot;resource_key&quot; [ux:Value=&quot;value&quot;] ... /&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;type ux:Global=&quot;resource_key&quot; [ux:Value=&quot;value&quot;] ... /&gt;</code></pre>
 <p>Where <code>type</code> is any type available to UX Markup, and <code>resource_key</code> is any string.</p>
 <blockquote>
 <p>Allthough not strictly required, it is recommended to use a <code>resource_key</code> that consists of valid Uno identifiers, separated by periods <code>.</code> for namespacing.</p>
@@ -693,16 +692,13 @@
 <p>If the type is a value type (such as <code>float4</code> or <code>int</code>), the <code>ux:Value</code> attribute must be specified.</p>
 <h2 id="examples">Examples</h2>
 <p>As an example, Fuse defines global resources for common color names like <code>Red</code> and <code>Blue</code>. These can be referred to by their <em>name</em>:</p>
-<pre><code class="language-xml">	&lt;Panel Color=&quot;Blue&quot; /&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Panel Color=&quot;Blue&quot; /&gt;</code></pre>
 <p>You can define custom global resources of any type using the <code>ux:Global</code> attribtue:</p>
-<pre><code class="language-xml">	&lt;float4 ux:Global=&quot;MyProject.WarmBlue&quot; ux:Value=&quot;#18f&quot; /&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;float4 ux:Global=&quot;MyProject.WarmBlue&quot; ux:Value=&quot;#18f&quot; /&gt;</code></pre>
 <p>And then use it anywhere:</p>
-<pre><code class="language-xml">	&lt;Rectangle&gt;
-		&lt;Stroke Width=&quot;3&quot; Color=&quot;MyProject.WarmBlue&quot; /&gt;
-	&lt;/Rectangle&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Rectangle&gt;
+    &lt;Stroke Width=&quot;3&quot; Color=&quot;MyProject.WarmBlue&quot; /&gt;
+&lt;/Rectangle&gt;</code></pre>
 <p>Note that global resource names may contain periods <code>.</code>. It is encouraged to use periods in resource names for grouping according to project, company or context.</p>
 <p>Global resources are resolved at <em>compile-time</em> and can not change dynamically. For dynamic resources, see <em>Resources</em>.</p>
 <h2 id="globals-as-default-resources">Globals as default resources</h2>

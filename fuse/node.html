@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -1326,22 +1326,20 @@ IEnumerable&lt;Binding&gt;
 <p>Nodes can be <em>rooted</em> within an <a href="../fuse/app.html">App</a>. This means that they form part of the subtree currently
 connected to the <a href="../fuse/app.html">App</a> singleton. In the following example, the <a href="../fuse/controls/panel.html">Panel</a> and <a href="../fuse/controls/rectangle.html">Rectangle</a> are always
 rooted:</p>
-<pre><code class="language-xml">	&lt;App&gt;
-		&lt;Panel&gt;
-			&lt;Rectangle /&gt;
-		&lt;/Panel&gt;
-	&lt;/App&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;App&gt;
+    &lt;Panel&gt;
+        &lt;Rectangle /&gt;
+    &lt;/Panel&gt;
+&lt;/App&gt;</code></pre>
 <p>When a node	is removed from a rooted tree, it becomes <em>unrooted</em>.</p>
 <p>While rooted, nodes have a <a href="../fuse/node/parent.html">Parent</a>. Only <a href="../fuse/controls/graphics/visual.html">Visual</a> nodes can be parents of other nodes. However,
 <a href="../fuse/behavior.html">Behaviors</a> may contain other nodes in UX markup. In the following example, the <a href="../fuse/gestures/whilepressed.html">WhilePressed</a>
 (which is a <a href="../fuse/behavior.html">Behavior</a>) contains a <a href="../fuse/controls/circle.html">Circle</a>. The <a href="../fuse/controls/circle.html">Circle</a> is not rooted by default.</p>
-<pre><code class="language-xml">	&lt;Panel&gt;
-		&lt;WhilePressed&gt;
-			&lt;Circle /&gt;
-		&lt;/WhilePressed&gt;
-	&lt;/Panel&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Panel&gt;
+    &lt;WhilePressed&gt;
+        &lt;Circle /&gt;
+    &lt;/WhilePressed&gt;
+&lt;/Panel&gt;</code></pre>
 <p>While the <a href="../fuse/controls/panel.html">Panel</a> is pressed, the <a href="../fuse/controls/circle.html">Circle</a> is added to the <a href="../fuse/controls/panel.html">Panel</a>. Assuming the <a href="../fuse/controls/panel.html">Panel</a> is rooted,
 this will make the <a href="../fuse/controls/circle.html">Circle</a> <em>rooted</em>. When the <a href="../fuse/controls/panel.html">Panel</a> is no longer pressed, the <a href="../fuse/controls/circle.html">Circle</a> is removed
 from the <a href="../fuse/controls/panel.html">Panel</a>, <em>unrooting</em> the <a href="../fuse/controls/circle.html">Circle</a>.</p>

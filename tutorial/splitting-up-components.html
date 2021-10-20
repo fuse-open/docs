@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -696,11 +696,10 @@
 .
 |- MainView.ux
 |- hikes.js
-|- hikr.unoproj
-</code></pre>
+|- hikr.unoproj</code></pre>
 <p>Before we put any content in here, let's first make sure that Fuse will <em>bundle</em> it with our app. Normally, if you write inline JavaScript code in UX by using the <code>JavaScript</code> tag, or refer to a specific file like <code>&lt;JavaScript File=&quot;myFile.js&quot; /&gt;</code>, Fuse will automatically make sure that JavaScript code is bundled with our app. However, when we have individual JavaScript modules in our project that aren't referred to by a <code>JavaScript</code> tag directly, we need to tell Fuse that this code is part of our project.</p>
 <p>For that, we'll add some info to our <em>project file</em> that tells Fuse that our <code>hikes.js</code> file should be bundled with our app. If we open up the <code>hikr.unoproj</code> file, we'll see something like this:</p>
-<pre><code class="language-json">{
+<pre><code class="language-js">{
   &quot;Packages&quot;: [
     &quot;Fuse&quot;,
     &quot;FuseJS&quot;
@@ -708,16 +707,13 @@
   &quot;Includes&quot;: [
     &quot;*&quot;
   ]
-}
-
-</code></pre>
+}</code></pre>
 <p>As you can see, there's not much to it; basically just some simple info about our project. The section we're particularly interested in is the <code>&quot;Includes&quot;</code> section. Currently, it has one entry:</p>
-<pre><code class="language-json">  &quot;Includes&quot;: [
-    &quot;*&quot;
-  ]
-</code></pre>
+<pre><code class="language-js">&quot;Includes&quot;: [
+  &quot;*&quot;
+]</code></pre>
 <p>This basically means that the Fuse project should include a lot of the files commonly associated with Fuse projects. This covers .ux files, .uno files, and a few others. However, it does <em>not</em> include JavaScript files, so we'll have to add our <code>hikes.js</code> file explicitly. To do this, we'll add another item to this list:</p>
-<pre><code class="language-json">{
+<pre><code class="language-js">{
   &quot;Packages&quot;: [
     &quot;Fuse&quot;,
     &quot;FuseJS&quot;
@@ -726,91 +722,86 @@
     &quot;*&quot;,
     &quot;hikes.js:Bundle&quot;
   ]
-}
-</code></pre>
+}</code></pre>
 <p>All we've done here is placed a comma after the <code>&quot;*&quot;</code> entry, and added a <code>&quot;hikes.js:Bundle&quot;</code> entry after it. This is just saying &quot;Hey, Fuse, you know that hikes.js file? Go ahead and bundle that with my app.&quot; Nice and simple! Now we can save this file, and we're all set.</p>
 <p>At this point, we'll need to actually move our <code>hikes</code> array from inside <code>MainView.ux</code> into our <code>hikes.js</code> file. First, we'll copy it from our <code>MainView.ux</code> file, and then remove it:</p>
 <pre><code class="language-xml">&lt;JavaScript&gt;
-	var Observable = require(&quot;FuseJS/Observable&quot;);
+    var Observable = require(&quot;FuseJS/Observable&quot;);
 
-	var hike = Observable();
+    var hike = Observable();
 
-	var name = hike.map(function(x) { return x.name; });
-	var location = hike.map(function(x) { return x.location; });
-	var distance = hike.map(function(x) { return x.distance; });
-	var rating = hike.map(function(x) { return x.rating; });
-	var comments = hike.map(function(x) { return x.comments; });
+    var name = hike.map(function(x) { return x.name; });
+    var location = hike.map(function(x) { return x.location; });
+    var distance = hike.map(function(x) { return x.distance; });
+    var rating = hike.map(function(x) { return x.rating; });
+    var comments = hike.map(function(x) { return x.comments; });
 
-	function chooseHike(arg) {
-		hike.value = arg.data;
-	}
+    function chooseHike(arg) {
+        hike.value = arg.data;
+    }
 
-	module.exports = {
-		hikes: hikes,
+    module.exports = {
+        hikes: hikes,
 
-		name: name,
-		location: location,
-		distance: distance,
-		rating: rating,
-		comments: comments,
+        name: name,
+        location: location,
+        distance: distance,
+        rating: rating,
+        comments: comments,
 
-		chooseHike: chooseHike
-	};
-&lt;/JavaScript&gt;
-</code></pre>
+        chooseHike: chooseHike
+    };
+&lt;/JavaScript&gt;</code></pre>
 <p>Notice how we left the reference to <code>hikes</code> in <code>module.exports</code>. This will cause an error if we save the file, but don't worry - we'll fix this up in a minute.</p>
 <p>But first, we'll place the array inside <code>hikes.js</code>:</p>
 <pre><code class="language-js">var hikes = [
-	{
-		id: 0,
-		name: &quot;Tricky Trails&quot;,
-		location: &quot;Lakebed, Utah&quot;,
-		distance: 10.4,
-		rating: 4,
-		comments: &quot;This hike was nice and hike-like. Glad I didn't bring a bike.&quot;
-	},
-	{
-		id: 1,
-		name: &quot;Mondo Mountains&quot;,
-		location: &quot;Black Hills, South Dakota&quot;,
-		distance: 20.86,
-		rating: 3,
-		comments: &quot;Not the best, but would probably do again. Note to self: don't forget the sandwiches next time.&quot;
-	},
-	{
-		id: 2,
-		name: &quot;Pesky Peaks&quot;,
-		location: &quot;Bergenhagen, Norway&quot;,
-		distance: 8.2,
-		rating: 5,
-		comments: &quot;Short but SO sweet!!&quot;
-	},
-	{
-		id: 3,
-		name: &quot;Rad Rivers&quot;,
-		location: &quot;Moriyama, Japan&quot;,
-		distance: 12.3,
-		rating: 4,
-		comments: &quot;Took my time with this one. Great view!&quot;
-	},
-	{
-		id: 4,
-		name: &quot;Dangerous Dirt&quot;,
-		location: &quot;Cactus, Arizona&quot;,
-		distance: 19.34,
-		rating: 2,
-		comments: &quot;Too long, too hot. Also that snakebite wasn't very fun.&quot;
-	}
-];
-</code></pre>
+    {
+        id: 0,
+        name: &quot;Tricky Trails&quot;,
+        location: &quot;Lakebed, Utah&quot;,
+        distance: 10.4,
+        rating: 4,
+        comments: &quot;This hike was nice and hike-like. Glad I didn't bring a bike.&quot;
+    },
+    {
+        id: 1,
+        name: &quot;Mondo Mountains&quot;,
+        location: &quot;Black Hills, South Dakota&quot;,
+        distance: 20.86,
+        rating: 3,
+        comments: &quot;Not the best, but would probably do again. Note to self: don't forget the sandwiches next time.&quot;
+    },
+    {
+        id: 2,
+        name: &quot;Pesky Peaks&quot;,
+        location: &quot;Bergenhagen, Norway&quot;,
+        distance: 8.2,
+        rating: 5,
+        comments: &quot;Short but SO sweet!!&quot;
+    },
+    {
+        id: 3,
+        name: &quot;Rad Rivers&quot;,
+        location: &quot;Moriyama, Japan&quot;,
+        distance: 12.3,
+        rating: 4,
+        comments: &quot;Took my time with this one. Great view!&quot;
+    },
+    {
+        id: 4,
+        name: &quot;Dangerous Dirt&quot;,
+        location: &quot;Cactus, Arizona&quot;,
+        distance: 19.34,
+        rating: 2,
+        comments: &quot;Too long, too hot. Also that snakebite wasn't very fun.&quot;
+    }
+];</code></pre>
 <p>Once that's done, we'll need to <em>export</em> this array from this new module so that we can see the data from our views again. This is done using <code>module.exports</code>, just like it was when exposing data from our inline JavaScript modules to the surrounding UX code. However, in this case, it gets a little bit simpler. Because we're just going to have this one piece of data in this file, we can simple write the following at the bottom:</p>
-<pre><code class="language-js">module.exports = hikes;
-</code></pre>
+<pre><code class="language-js">module.exports = hikes;</code></pre>
 <p>And that's it! Now we can save this file, and our new module is ready to go.</p>
 <p>Now, back to our view code. Since we've moved our <code>hikes</code> array out of this file, we need to <em>import</em> it from our new module. This is actually super easy to do. Remember the <code>var Observable = require(&quot;FuseJS/Observable&quot;);</code> line in <code>MainView.ux</code>? This tells Fuse to import FuseJS' <a href="../fusejs/observable.html">Observable</a> module, and bind it to the name <code>Observable</code>. For our new <code>hikes</code> module, we'll do almost exactly the same thing:</p>
 <pre><code class="language-js">var Observable = require(&quot;FuseJS/Observable&quot;);
-var hikes = require(&quot;hikes&quot;);
-</code></pre>
+var hikes = require(&quot;hikes&quot;);</code></pre>
 <p>In this case, Fuse will import a module called <code>hikes</code>, which corresponds to our <code>hikes.js</code> file. It will also bind the module's <code>module.exports</code> object to the name <code>hikes</code>, which, in <code>hikes.js</code>, was our <code>hikes</code> array. Cool! That's actually all we need to do to use our newly-created, reusable JavaScript module. If we save <code>MainView.ux</code>, our live preview will reload. It may not look any different on the outside, but on the inside we're well on our way to a very clean and manageable project structure!</p>
 <h2 id="transforming-the-edit-hike-view-into-a-component">Transforming the Edit Hike view into a component</h2>
 <p>Now that we've separated out our <code>hikes</code> array, the next thing we'll want to do is create a new component out of our view code. We'll do this in small steps as well. First, we'll want to create a new folder in our project called <code>Pages</code>:</p>
@@ -819,11 +810,9 @@ var hikes = require(&quot;hikes&quot;);
 |- MainView.ux
 |- hikes.js
 |- hikr.unoproj
-|- Pages
-</code></pre>
+|- Pages</code></pre>
 <p>Inside this new folder, we'll create a new file called <code>EditHikePage.ux</code>. Inside there, we'll place the following code:</p>
-<pre><code class="language-xml">&lt;Page ux:Class=&quot;EditHikePage&quot;&gt;&lt;/Page&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Page ux:Class=&quot;EditHikePage&quot;&gt;&lt;/Page&gt;</code></pre>
 <p>Our directory tree should now look a bit like this:</p>
 <pre><code class="language-s">$ tree
 .
@@ -831,11 +820,9 @@ var hikes = require(&quot;hikes&quot;);
 |- hikes.js
 |- hikr.unoproj
 |- Pages
-   |- EditHikePage.ux
-</code></pre>
+   |- EditHikePage.ux</code></pre>
 <p>Now before we move on, I need to explain a couple things. Let's take another look at our new <code>EditHikePage.ux</code> file's contents:</p>
-<pre><code class="language-xml">&lt;Page ux:Class=&quot;EditHikePage&quot;&gt;&lt;/Page&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Page ux:Class=&quot;EditHikePage&quot;&gt;&lt;/Page&gt;</code></pre>
 <p>At first glance, it looks like we're just creating a <a href="../fuse/controls/page.html">Page</a> with a funny <code>ux:Class</code> property and nothing in it. But what's a <a href="../fuse/controls/page.html">Page</a> exactly? And what's with this <code>ux:Class</code> stuff?</p>
 <p>To answer the first question, a <a href="../fuse/controls/page.html">Page</a> is basically a special kind of UI element that will participate in navigation. We don't actually <em>have</em> to use a <a href="../fuse/controls/page.html">Page</a> here; we could just as well use a <code>Panel</code>, a <code>Button</code>, or something else entirely. But it's generally considered best practice to use a <a href="../fuse/controls/page.html">Page</a> if you're going to use the component with navigation specifically, which we'll do a bit later in this chapter and the following one.</p>
 <p>As for the second question, <code>ux:Class</code> means that instead of creating an <em>instance</em> of a <a href="../fuse/controls/page.html">Page</a>, we're creating a <em>class</em> that <em>extends</em> the <a href="../fuse/controls/page.html">Page</a> class. If you've ever done some object-oriented programming before, this terminology will sound very familiar. If not, it may sound a little strange, but it's actually a pretty simple concept to grasp. Basically, we can think of a <em>class</em> as a <em>kind</em> of element, and an <em>instance</em> is <em>an element of that kind</em>. For example, <a href="../fuse/controls/button.html">Button</a> is a class, and when we say <code>&lt;Button /&gt;</code> in UX, we're making an instance of the <a href="../fuse/controls/button.html">Button</a> class. <a href="../fuse/controls/button.html">Button</a> describes how a button element should look and feel, and <code>&lt;Button /&gt;</code> describes that an actual <a href="../fuse/controls/button.html">Button</a> element exists in our view.</p>
@@ -845,134 +832,130 @@ var hikes = require(&quot;hikes&quot;);
 </blockquote>
 <p>Now that we've understood the basic contents of this file, it's time to migrate the code we want in our view over from <code>MainView.ux</code>. If we take a look at that file, we'll see something like this:</p>
 <pre><code class="language-xml">&lt;App&gt;
-	&lt;ClientPanel&gt;
-		&lt;JavaScript&gt;
-			var Observable = require(&quot;FuseJS/Observable&quot;);
-			var hikes = require(&quot;hikes&quot;);
+    &lt;ClientPanel&gt;
+        &lt;JavaScript&gt;
+            var Observable = require(&quot;FuseJS/Observable&quot;);
+            var hikes = require(&quot;hikes&quot;);
 
-			var hike = Observable();
+            var hike = Observable();
 
-			var name = hike.map(function(x) { return x.name; });
-			var location = hike.map(function(x) { return x.location; });
-			var distance = hike.map(function(x) { return x.distance; });
-			var rating = hike.map(function(x) { return x.rating; });
-			var comments = hike.map(function(x) { return x.comments; });
+            var name = hike.map(function(x) { return x.name; });
+            var location = hike.map(function(x) { return x.location; });
+            var distance = hike.map(function(x) { return x.distance; });
+            var rating = hike.map(function(x) { return x.rating; });
+            var comments = hike.map(function(x) { return x.comments; });
 
-			function chooseHike(arg) {
-				hike.value = arg.data;
-			}
+            function chooseHike(arg) {
+                hike.value = arg.data;
+            }
 
-			module.exports = {
-				hikes: hikes,
+            module.exports = {
+                hikes: hikes,
 
-				name: name,
-				location: location,
-				distance: distance,
-				rating: rating,
-				comments: comments,
+                name: name,
+                location: location,
+                distance: distance,
+                rating: rating,
+                comments: comments,
 
-				chooseHike: chooseHike
-			};
-		&lt;/JavaScript&gt;
+                chooseHike: chooseHike
+            };
+        &lt;/JavaScript&gt;
 
-		&lt;ScrollView&gt;
-			&lt;StackPanel&gt;
-				&lt;Each Items=&quot;{hikes}&quot;&gt;
-					&lt;Button Text=&quot;{name}&quot; Clicked=&quot;{chooseHike}&quot; /&gt;
-				&lt;/Each&gt;
+        &lt;ScrollView&gt;
+            &lt;StackPanel&gt;
+                &lt;Each Items=&quot;{hikes}&quot;&gt;
+                    &lt;Button Text=&quot;{name}&quot; Clicked=&quot;{chooseHike}&quot; /&gt;
+                &lt;/Each&gt;
 
-				&lt;Text Value=&quot;{name}&quot; /&gt;
+                &lt;Text Value=&quot;{name}&quot; /&gt;
 
-				&lt;Text&gt;Name:&lt;/Text&gt;
-				&lt;TextBox Value=&quot;{name}&quot; /&gt;
+                &lt;Text&gt;Name:&lt;/Text&gt;
+                &lt;TextBox Value=&quot;{name}&quot; /&gt;
 
-				&lt;Text&gt;Location:&lt;/Text&gt;
-				&lt;TextBox Value=&quot;{location}&quot; /&gt;
+                &lt;Text&gt;Location:&lt;/Text&gt;
+                &lt;TextBox Value=&quot;{location}&quot; /&gt;
 
-				&lt;Text&gt;Distance (km):&lt;/Text&gt;
-				&lt;TextBox Value=&quot;{distance}&quot; InputHint=&quot;Decimal&quot; /&gt;
+                &lt;Text&gt;Distance (km):&lt;/Text&gt;
+                &lt;TextBox Value=&quot;{distance}&quot; InputHint=&quot;Decimal&quot; /&gt;
 
-				&lt;Text&gt;Rating:&lt;/Text&gt;
-				&lt;TextBox Value=&quot;{rating}&quot; InputHint=&quot;Integer&quot; /&gt;
+                &lt;Text&gt;Rating:&lt;/Text&gt;
+                &lt;TextBox Value=&quot;{rating}&quot; InputHint=&quot;Integer&quot; /&gt;
 
-				&lt;Text&gt;Comments:&lt;/Text&gt;
-				&lt;TextView Value=&quot;{comments}&quot; TextWrapping=&quot;Wrap&quot; /&gt;
-			&lt;/StackPanel&gt;
-		&lt;/ScrollView&gt;
-	&lt;/ClientPanel&gt;
-&lt;/App&gt;
-</code></pre>
+                &lt;Text&gt;Comments:&lt;/Text&gt;
+                &lt;TextView Value=&quot;{comments}&quot; TextWrapping=&quot;Wrap&quot; /&gt;
+            &lt;/StackPanel&gt;
+        &lt;/ScrollView&gt;
+    &lt;/ClientPanel&gt;
+&lt;/App&gt;</code></pre>
 <p>Looking at the top-level parts of this file, we first see our <a href="../fuse/app.html">App</a>, and then a ClientPanel. All of the other contents (in particular, the <code>JavaScript</code> and <a href="../fuse/controls/scrollview.html">ScrollView</a> tags) are what make up our view specifically. So these are the parts we'll want to move over to our <code>EditHikePage.ux</code> file, inside the <a href="../fuse/controls/page.html">Page</a>. This will look something like this:</p>
 <p>MainView.ux:</p>
 <pre><code class="language-xml">&lt;App&gt;
-	&lt;ClientPanel&gt;
-	&lt;/ClientPanel&gt;
-&lt;/App&gt;
-</code></pre>
+    &lt;ClientPanel&gt;
+    &lt;/ClientPanel&gt;
+&lt;/App&gt;</code></pre>
 <p>EditHikePage.ux:</p>
 <pre><code class="language-xml">&lt;Page ux:Class=&quot;EditHikePage&quot;&gt;
-	&lt;JavaScript&gt;
-		var Observable = require(&quot;FuseJS/Observable&quot;);
-		var hikes = require(&quot;hikes&quot;);
+    &lt;JavaScript&gt;
+        var Observable = require(&quot;FuseJS/Observable&quot;);
+        var hikes = require(&quot;hikes&quot;);
 
-		var hike = Observable();
+        var hike = Observable();
 
-		var name = hike.map(function(x) { return x.name; });
-		var location = hike.map(function(x) { return x.location; });
-		var distance = hike.map(function(x) { return x.distance; });
-		var rating = hike.map(function(x) { return x.rating; });
-		var comments = hike.map(function(x) { return x.comments; });
+        var name = hike.map(function(x) { return x.name; });
+        var location = hike.map(function(x) { return x.location; });
+        var distance = hike.map(function(x) { return x.distance; });
+        var rating = hike.map(function(x) { return x.rating; });
+        var comments = hike.map(function(x) { return x.comments; });
 
-		function chooseHike(arg) {
-			hike.value = arg.data;
-		}
+        function chooseHike(arg) {
+            hike.value = arg.data;
+        }
 
-		module.exports = {
-			hikes: hikes,
+        module.exports = {
+            hikes: hikes,
 
-			name: name,
-			location: location,
-			distance: distance,
-			rating: rating,
-			comments: comments,
+            name: name,
+            location: location,
+            distance: distance,
+            rating: rating,
+            comments: comments,
 
-			chooseHike: chooseHike
-		};
-	&lt;/JavaScript&gt;
+            chooseHike: chooseHike
+        };
+    &lt;/JavaScript&gt;
 
-	&lt;ScrollView&gt;
-		&lt;StackPanel&gt;
-			&lt;Each Items=&quot;{hikes}&quot;&gt;
-				&lt;Button Text=&quot;{name}&quot; Clicked=&quot;{chooseHike}&quot; /&gt;
-			&lt;/Each&gt;
+    &lt;ScrollView&gt;
+        &lt;StackPanel&gt;
+            &lt;Each Items=&quot;{hikes}&quot;&gt;
+                &lt;Button Text=&quot;{name}&quot; Clicked=&quot;{chooseHike}&quot; /&gt;
+            &lt;/Each&gt;
 
-			&lt;Text Value=&quot;{name}&quot; /&gt;
+            &lt;Text Value=&quot;{name}&quot; /&gt;
 
-			&lt;Text&gt;Name:&lt;/Text&gt;
-			&lt;TextBox Value=&quot;{name}&quot; /&gt;
+            &lt;Text&gt;Name:&lt;/Text&gt;
+            &lt;TextBox Value=&quot;{name}&quot; /&gt;
 
-			&lt;Text&gt;Location:&lt;/Text&gt;
-			&lt;TextBox Value=&quot;{location}&quot; /&gt;
+            &lt;Text&gt;Location:&lt;/Text&gt;
+            &lt;TextBox Value=&quot;{location}&quot; /&gt;
 
-			&lt;Text&gt;Distance (km):&lt;/Text&gt;
-			&lt;TextBox Value=&quot;{distance}&quot; InputHint=&quot;Decimal&quot; /&gt;
+            &lt;Text&gt;Distance (km):&lt;/Text&gt;
+            &lt;TextBox Value=&quot;{distance}&quot; InputHint=&quot;Decimal&quot; /&gt;
 
-			&lt;Text&gt;Rating:&lt;/Text&gt;
-			&lt;TextBox Value=&quot;{rating}&quot; InputHint=&quot;Integer&quot; /&gt;
+            &lt;Text&gt;Rating:&lt;/Text&gt;
+            &lt;TextBox Value=&quot;{rating}&quot; InputHint=&quot;Integer&quot; /&gt;
 
-			&lt;Text&gt;Comments:&lt;/Text&gt;
-			&lt;TextView Value=&quot;{comments}&quot; TextWrapping=&quot;Wrap&quot; /&gt;
-		&lt;/StackPanel&gt;
-	&lt;/ScrollView&gt;
-&lt;/Page&gt;
-</code></pre>
+            &lt;Text&gt;Comments:&lt;/Text&gt;
+            &lt;TextView Value=&quot;{comments}&quot; TextWrapping=&quot;Wrap&quot; /&gt;
+        &lt;/StackPanel&gt;
+    &lt;/ScrollView&gt;
+&lt;/Page&gt;</code></pre>
 <p>If we save these files, our preview will update, but this time, our contents will vanish! The reason for this is simple - we've only created the <code>EditHikePage</code> class, but we haven't <em>used</em> it anywhere! To fix this, we'll just add an <em>instance</em> of the <code>EditHikePage</code> class inside the ClientPanel in <code>MainView.ux</code>, like so:</p>
 <pre><code class="language-xml">&lt;App&gt;
-	&lt;ClientPanel&gt;
-		&lt;EditHikePage /&gt;
-	&lt;/ClientPanel&gt;
-&lt;/App&gt;
-</code></pre>
+    &lt;ClientPanel&gt;
+        &lt;EditHikePage /&gt;
+    &lt;/ClientPanel&gt;
+&lt;/App&gt;</code></pre>
 <p>Notice how this looks just like we had used any other class that comes standard in Fuse - but this time, it's a class we've created ourselves! If we save <code>MainView.ux</code>, we'll see that our view shows up again in preview. Awesome!</p>
 <p>Now, before we move on, we'll want to do one more thing with our new component, and that's to split out its JavaScript code into its own file. This is very easy to do. First, we'll create a new file called <code>EditHikePage.js</code>, right next to our <code>EditHikePage.ux</code> file in the <code>Pages</code> folder of our project:</p>
 <pre><code class="language-s">$ tree
@@ -982,40 +965,38 @@ var hikes = require(&quot;hikes&quot;);
 |- hikr.unoproj
 |- Pages
    |- EditHikePage.js
-   |- EditHikePage.ux
-</code></pre>
+   |- EditHikePage.ux</code></pre>
 <p>Then we'll take all of the code from our <code>JavaScript</code> tag in <code>EditHikePage.ux</code> and move it over to our <code>EditHikePage.js</code> file:</p>
 <p>EditHikePage.ux:</p>
 <pre><code class="language-xml">&lt;Page ux:Class=&quot;EditHikePage&quot;&gt;
-	&lt;JavaScript&gt;
-	&lt;/JavaScript&gt;
+    &lt;JavaScript&gt;
+    &lt;/JavaScript&gt;
 
-	&lt;ScrollView&gt;
-		&lt;StackPanel&gt;
-			&lt;Each Items=&quot;{hikes}&quot;&gt;
-				&lt;Button Text=&quot;{name}&quot; Clicked=&quot;{chooseHike}&quot; /&gt;
-			&lt;/Each&gt;
+    &lt;ScrollView&gt;
+        &lt;StackPanel&gt;
+            &lt;Each Items=&quot;{hikes}&quot;&gt;
+                &lt;Button Text=&quot;{name}&quot; Clicked=&quot;{chooseHike}&quot; /&gt;
+            &lt;/Each&gt;
 
-			&lt;Text Value=&quot;{name}&quot; /&gt;
+            &lt;Text Value=&quot;{name}&quot; /&gt;
 
-			&lt;Text&gt;Name:&lt;/Text&gt;
-			&lt;TextBox Value=&quot;{name}&quot; /&gt;
+            &lt;Text&gt;Name:&lt;/Text&gt;
+            &lt;TextBox Value=&quot;{name}&quot; /&gt;
 
-			&lt;Text&gt;Location:&lt;/Text&gt;
-			&lt;TextBox Value=&quot;{location}&quot; /&gt;
+            &lt;Text&gt;Location:&lt;/Text&gt;
+            &lt;TextBox Value=&quot;{location}&quot; /&gt;
 
-			&lt;Text&gt;Distance (km):&lt;/Text&gt;
-			&lt;TextBox Value=&quot;{distance}&quot; InputHint=&quot;Decimal&quot; /&gt;
+            &lt;Text&gt;Distance (km):&lt;/Text&gt;
+            &lt;TextBox Value=&quot;{distance}&quot; InputHint=&quot;Decimal&quot; /&gt;
 
-			&lt;Text&gt;Rating:&lt;/Text&gt;
-			&lt;TextBox Value=&quot;{rating}&quot; InputHint=&quot;Integer&quot; /&gt;
+            &lt;Text&gt;Rating:&lt;/Text&gt;
+            &lt;TextBox Value=&quot;{rating}&quot; InputHint=&quot;Integer&quot; /&gt;
 
-			&lt;Text&gt;Comments:&lt;/Text&gt;
-			&lt;TextView Value=&quot;{comments}&quot; TextWrapping=&quot;Wrap&quot; /&gt;
-		&lt;/StackPanel&gt;
-	&lt;/ScrollView&gt;
-&lt;/Page&gt;
-</code></pre>
+            &lt;Text&gt;Comments:&lt;/Text&gt;
+            &lt;TextView Value=&quot;{comments}&quot; TextWrapping=&quot;Wrap&quot; /&gt;
+        &lt;/StackPanel&gt;
+    &lt;/ScrollView&gt;
+&lt;/Page&gt;</code></pre>
 <p>EditHikePage.js:</p>
 <pre><code class="language-js">var Observable = require(&quot;FuseJS/Observable&quot;);
 var hikes = require(&quot;hikes&quot;);
@@ -1029,72 +1010,65 @@ var rating = hike.map(function(x) { return x.rating; });
 var comments = hike.map(function(x) { return x.comments; });
 
 function chooseHike(arg) {
-	hike.value = arg.data;
+    hike.value = arg.data;
 }
 
 module.exports = {
-	hikes: hikes,
+    hikes: hikes,
 
-	name: name,
-	location: location,
-	distance: distance,
-	rating: rating,
-	comments: comments,
+    name: name,
+    location: location,
+    distance: distance,
+    rating: rating,
+    comments: comments,
 
-	chooseHike: chooseHike
-};
-</code></pre>
+    chooseHike: chooseHike
+};</code></pre>
 <p>Go ahead and save this file. Finally, we'll change the <code>JavaScript</code> tags in our <code>EditHikePage.ux</code> file into a single tag that refers to our newly created JavaScript file:</p>
 <pre><code class="language-xml">&lt;Page ux:Class=&quot;EditHikePage&quot;&gt;
-	&lt;JavaScript File=&quot;EditHikePage.js&quot; /&gt;
+    &lt;JavaScript File=&quot;EditHikePage.js&quot; /&gt;
 
-	&lt;ScrollView&gt;
+    &lt;ScrollView&gt;
 
-	...
-</code></pre>
+    ...</code></pre>
 <p>And that's it! If we save our <code>EditHikePage.ux</code> file, again preview will reload, and it will look the same as before. This means everything worked, and we're yet another step closer towards a fantastic Fuse project structure. Also, notice how we didn't have to explicitly include our <code>EditHikePage.js</code> file in our project file, simply because it was referenced from one of the <code>JavaScript</code> tags in our app. Cool!</p>
 <h2 id="separating-our-home-page">Separating our home page</h2>
 <p>At this point, our <code>EditHikePage</code> class is actually two components in one - a hike selector, and a hike editor. Generally, when making components, it's a good idea to make sure they're a simple as possible, and that they only represent one <em>thing</em>, like a single view. What we'll do next is to separate the selector view into its own class, which we'll call the <code>HomePage</code>.</p>
 <p>Now that we've basically done this before, this second time should be a little easier. First, we'll create a blank page class that will become our home page, in a file called <code>HomePage.ux</code> in our <code>Pages</code> directory:</p>
-<pre><code class="language-xml">&lt;Page ux:Class=&quot;HomePage&quot;&gt;&lt;/Page&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Page ux:Class=&quot;HomePage&quot;&gt;&lt;/Page&gt;</code></pre>
 <p>Next, we'll migrate the home page-specific UX code from <code>EditHikePage.ux</code> into <code>HomePage.ux</code>. Specifically, we're after the <a href="../fuse/reactive/each.html">Each</a> tag that displayed the <code>hikes</code> collection:</p>
 <pre><code class="language-xml">&lt;Each Items=&quot;{hikes}&quot;&gt;
-	&lt;Button Text=&quot;{name}&quot; Clicked=&quot;{chooseHike}&quot; /&gt;
-&lt;/Each&gt;
-</code></pre>
+    &lt;Button Text=&quot;{name}&quot; Clicked=&quot;{chooseHike}&quot; /&gt;
+&lt;/Each&gt;</code></pre>
 <p>So let's go ahead and move that over:</p>
 <pre><code class="language-xml">&lt;Page ux:Class=&quot;HomePage&quot;&gt;
-	&lt;Each Items=&quot;{hikes}&quot;&gt;
-		&lt;Button Text=&quot;{name}&quot; Clicked=&quot;{chooseHike}&quot; /&gt;
-	&lt;/Each&gt;
-&lt;/Page&gt;
-</code></pre>
+    &lt;Each Items=&quot;{hikes}&quot;&gt;
+        &lt;Button Text=&quot;{name}&quot; Clicked=&quot;{chooseHike}&quot; /&gt;
+    &lt;/Each&gt;
+&lt;/Page&gt;</code></pre>
 <p>Also, since we're going to be displaying a bunch of these hikes, we'll want to place them inside a <a href="../fuse/controls/stackpanel.html">StackPanel</a>. It's a good idea to also have that inside a <a href="../fuse/controls/scrollview.html">ScrollView</a>, so we'll set that up too:</p>
 <pre><code class="language-xml">&lt;Page ux:Class=&quot;HomePage&quot;&gt;
-	&lt;ScrollView&gt;
-		&lt;StackPanel&gt;
-			&lt;Each Items=&quot;{hikes}&quot;&gt;
-				&lt;Button Text=&quot;{name}&quot; Clicked=&quot;{chooseHike}&quot; /&gt;
-			&lt;/Each&gt;
-		&lt;/StackPanel&gt;
-	&lt;/ScrollView&gt;
-&lt;/Page&gt;
-</code></pre>
+    &lt;ScrollView&gt;
+        &lt;StackPanel&gt;
+            &lt;Each Items=&quot;{hikes}&quot;&gt;
+                &lt;Button Text=&quot;{name}&quot; Clicked=&quot;{chooseHike}&quot; /&gt;
+            &lt;/Each&gt;
+        &lt;/StackPanel&gt;
+    &lt;/ScrollView&gt;
+&lt;/Page&gt;</code></pre>
 <p>However, if we save all this, we'll notice a couple things. Particularly, our new <code>HomePage.ux</code> doesn't yet know about the <code>hikes</code> collection. We'll fix that by adding some JavaScript for this view.</p>
 <p>Like before, we'll create our <code>HomePage.js</code> file, right next to our <code>HomePage.ux</code>, and we'll place the following code in there:</p>
 <pre><code class="language-js">var hikes = require(&quot;hikes&quot;);
 
 function chooseHike(arg) {
-	// TODO
+    // TODO
 }
 
 module.exports = {
-	hikes: hikes,
+    hikes: hikes,
 
-	chooseHike: chooseHike
-};
-</code></pre>
+    chooseHike: chooseHike
+};</code></pre>
 <p>This is basically the same code that's in <code>EditHikePage.js</code> currently, except we've commented out the contents of our <code>chooseHike</code> function. We'll get to that in the next chapter. But we no longer need this code in both places, since <code>EditHikePage</code> won't need to display all of the hikes. So, we'll go ahead and remove the <code>require</code>, <code>chooseHike</code> function, and their exports from <code>EditHikePage.js</code> while we're at it:</p>
 <pre><code class="language-js">var Observable = require(&quot;FuseJS/Observable&quot;);
 
@@ -1107,48 +1081,42 @@ var rating = hike.map(function(x) { return x.rating; });
 var comments = hike.map(function(x) { return x.comments; });
 
 module.exports = {
-	name: name,
-	location: location,
-	distance: distance,
-	rating: rating,
-	comments: comments
-};
-</code></pre>
+    name: name,
+    location: location,
+    distance: distance,
+    rating: rating,
+    comments: comments
+};</code></pre>
 <p>Now that our JavaScript is all ready to go, we'll go ahead and link to that file in <code>HomePage.ux</code>, like so:</p>
 <pre><code class="language-xml">&lt;Page ux:Class=&quot;HomePage&quot;&gt;
-	&lt;JavaScript File=&quot;HomePage.js&quot; /&gt;
-</code></pre>
+    &lt;JavaScript File=&quot;HomePage.js&quot; /&gt;</code></pre>
 <p>At this point, our page should be ready for display!</p>
 <h2 id="displaying-our-home-page">Displaying our home page</h2>
 <p>By now, we've got multiple pages, and we'll need a way to display them and navigate between them. In Fuse, this is handled by the <a href="../fuse/controls/navigator.html">Navigator</a> and <a href="../fuse/navigation/router.html">Router</a> components. These components will need a proper introduction, and we'll want to take our time learning how to use them properly to fully understand how powerful they are, so we'll take a look at those in detail in the next chapter.</p>
 <p>For now, to keep things simple, we'll use a <a href="../fuse/controls/pagecontrol.html">PageControl</a> instead. A <a href="../fuse/controls/pagecontrol.html">PageControl</a> is great for cases where we want to have a few pages side-by-side that we'll to swipe between, which is just fine for initially displaying our two pages.</p>
 <p>So, if we take a look at <code>MainView.ux</code>, it currently looks something like this:</p>
 <pre><code class="language-xml">&lt;App&gt;
-	&lt;ClientPanel&gt;
-		&lt;EditHikePage /&gt;
-	&lt;/ClientPanel&gt;
-&lt;/App&gt;
-
-</code></pre>
+    &lt;ClientPanel&gt;
+        &lt;EditHikePage /&gt;
+    &lt;/ClientPanel&gt;
+&lt;/App&gt;</code></pre>
 <p>Let's place the <code>EditHikePage</code> instance inside a <a href="../fuse/controls/pagecontrol.html">PageControl</a>, like so:</p>
 <pre><code class="language-xml">&lt;App&gt;
-	&lt;ClientPanel&gt;
-		&lt;PageControl&gt;
-			&lt;EditHikePage /&gt;
-		&lt;/PageControl&gt;
-	&lt;/ClientPanel&gt;
-&lt;/App&gt;
-</code></pre>
+    &lt;ClientPanel&gt;
+        &lt;PageControl&gt;
+            &lt;EditHikePage /&gt;
+        &lt;/PageControl&gt;
+    &lt;/ClientPanel&gt;
+&lt;/App&gt;</code></pre>
 <p>Now, all we have to do is add a <code>HomePage</code> instance inside our <a href="../fuse/controls/pagecontrol.html">PageControl</a> as well. Because it's the home page, let's place it above our existing <code>EditHikePage</code> instance:</p>
 <pre><code class="language-xml">&lt;App&gt;
-	&lt;ClientPanel&gt;
-		&lt;PageControl&gt;
-			&lt;HomePage /&gt;
-			&lt;EditHikePage /&gt;
-		&lt;/PageControl&gt;
-	&lt;/ClientPanel&gt;
-&lt;/App&gt;
-</code></pre>
+    &lt;ClientPanel&gt;
+        &lt;PageControl&gt;
+            &lt;HomePage /&gt;
+            &lt;EditHikePage /&gt;
+        &lt;/PageControl&gt;
+    &lt;/ClientPanel&gt;
+&lt;/App&gt;</code></pre>
 <p>And now, when we save all of this, our new <code>HomePage</code> will be displayed, and we can swipe right to reveal the <code>EditHikePage</code> as well. Cool!</p>
 <h2 id="our-progress-so-far">Our progress so far</h2>
 <p>Phew, we've covered a lot of ground here! At this point, we've got our two views separated into components and displayed side-by-side in a <a href="../fuse/controls/pagecontrol.html">PageControl</a>. This is how they look:</p>
@@ -1158,7 +1126,7 @@ module.exports = {
 <p><img src="../media/hikr/chapter-3/edithikepage.png" alt="End of chapter result"></p>
 <p>And here's what the code for all of our various files looks like. It's a few more files now, but they're much simpler now in isolation:</p>
 <p><code>hikr.unoproj</code>:</p>
-<pre><code class="language-json">{
+<pre><code class="language-js">{
   &quot;Packages&quot;: [
     &quot;Fuse&quot;,
     &quot;FuseJS&quot;
@@ -1167,90 +1135,86 @@ module.exports = {
     &quot;*&quot;,
     &quot;hikes.js:Bundle&quot;
   ]
-}
-</code></pre>
+}</code></pre>
 <p><code>MainView.ux</code>:</p>
 <pre><code class="language-xml">&lt;App&gt;
-	&lt;ClientPanel&gt;
-		&lt;PageControl&gt;
-			&lt;HomePage /&gt;
-			&lt;EditHikePage /&gt;
-		&lt;/PageControl&gt;
-	&lt;/ClientPanel&gt;
-&lt;/App&gt;
-</code></pre>
+    &lt;ClientPanel&gt;
+        &lt;PageControl&gt;
+            &lt;HomePage /&gt;
+            &lt;EditHikePage /&gt;
+        &lt;/PageControl&gt;
+    &lt;/ClientPanel&gt;
+&lt;/App&gt;</code></pre>
 <p><code>hikes.js</code>:</p>
 <pre><code class="language-js">var hikes = [
-	{
-		id: 0,
-		name: &quot;Tricky Trails&quot;,
-		location: &quot;Lakebed, Utah&quot;,
-		distance: 10.4,
-		rating: 4,
-		comments: &quot;This hike was nice and hike-like. Glad I didn't bring a bike.&quot;
-	},
-	{
-		id: 1,
-		name: &quot;Mondo Mountains&quot;,
-		location: &quot;Black Hills, South Dakota&quot;,
-		distance: 20.86,
-		rating: 3,
-		comments: &quot;Not the best, but would probably do again. Note to self: don't forget the sandwiches next time.&quot;
-	},
-	{
-		id: 2,
-		name: &quot;Pesky Peaks&quot;,
-		location: &quot;Bergenhagen, Norway&quot;,
-		distance: 8.2,
-		rating: 5,
-		comments: &quot;Short but SO sweet!!&quot;
-	},
-	{
-		id: 3,
-		name: &quot;Rad Rivers&quot;,
-		location: &quot;Moriyama, Japan&quot;,
-		distance: 12.3,
-		rating: 4,
-		comments: &quot;Took my time with this one. Great view!&quot;
-	},
-	{
-		id: 4,
-		name: &quot;Dangerous Dirt&quot;,
-		location: &quot;Cactus, Arizona&quot;,
-		distance: 19.34,
-		rating: 2,
-		comments: &quot;Too long, too hot. Also that snakebite wasn't very fun.&quot;
-	}
+    {
+        id: 0,
+        name: &quot;Tricky Trails&quot;,
+        location: &quot;Lakebed, Utah&quot;,
+        distance: 10.4,
+        rating: 4,
+        comments: &quot;This hike was nice and hike-like. Glad I didn't bring a bike.&quot;
+    },
+    {
+        id: 1,
+        name: &quot;Mondo Mountains&quot;,
+        location: &quot;Black Hills, South Dakota&quot;,
+        distance: 20.86,
+        rating: 3,
+        comments: &quot;Not the best, but would probably do again. Note to self: don't forget the sandwiches next time.&quot;
+    },
+    {
+        id: 2,
+        name: &quot;Pesky Peaks&quot;,
+        location: &quot;Bergenhagen, Norway&quot;,
+        distance: 8.2,
+        rating: 5,
+        comments: &quot;Short but SO sweet!!&quot;
+    },
+    {
+        id: 3,
+        name: &quot;Rad Rivers&quot;,
+        location: &quot;Moriyama, Japan&quot;,
+        distance: 12.3,
+        rating: 4,
+        comments: &quot;Took my time with this one. Great view!&quot;
+    },
+    {
+        id: 4,
+        name: &quot;Dangerous Dirt&quot;,
+        location: &quot;Cactus, Arizona&quot;,
+        distance: 19.34,
+        rating: 2,
+        comments: &quot;Too long, too hot. Also that snakebite wasn't very fun.&quot;
+    }
 ];
 
-module.exports = hikes;
-</code></pre>
+module.exports = hikes;</code></pre>
 <p><code>Pages/EditHikePage.ux</code>:</p>
 <pre><code class="language-xml">&lt;Page ux:Class=&quot;EditHikePage&quot;&gt;
-	&lt;JavaScript File=&quot;EditHikePage.js&quot; /&gt;
+    &lt;JavaScript File=&quot;EditHikePage.js&quot; /&gt;
 
-	&lt;ScrollView&gt;
-		&lt;StackPanel&gt;
-			&lt;Text Value=&quot;{name}&quot; /&gt;
+    &lt;ScrollView&gt;
+        &lt;StackPanel&gt;
+            &lt;Text Value=&quot;{name}&quot; /&gt;
 
-			&lt;Text&gt;Name:&lt;/Text&gt;
-			&lt;TextBox Value=&quot;{name}&quot; /&gt;
+            &lt;Text&gt;Name:&lt;/Text&gt;
+            &lt;TextBox Value=&quot;{name}&quot; /&gt;
 
-			&lt;Text&gt;Location:&lt;/Text&gt;
-			&lt;TextBox Value=&quot;{location}&quot; /&gt;
+            &lt;Text&gt;Location:&lt;/Text&gt;
+            &lt;TextBox Value=&quot;{location}&quot; /&gt;
 
-			&lt;Text&gt;Distance (km):&lt;/Text&gt;
-			&lt;TextBox Value=&quot;{distance}&quot; InputHint=&quot;Decimal&quot; /&gt;
+            &lt;Text&gt;Distance (km):&lt;/Text&gt;
+            &lt;TextBox Value=&quot;{distance}&quot; InputHint=&quot;Decimal&quot; /&gt;
 
-			&lt;Text&gt;Rating:&lt;/Text&gt;
-			&lt;TextBox Value=&quot;{rating}&quot; InputHint=&quot;Integer&quot; /&gt;
+            &lt;Text&gt;Rating:&lt;/Text&gt;
+            &lt;TextBox Value=&quot;{rating}&quot; InputHint=&quot;Integer&quot; /&gt;
 
-			&lt;Text&gt;Comments:&lt;/Text&gt;
-			&lt;TextView Value=&quot;{comments}&quot; TextWrapping=&quot;Wrap&quot; /&gt;
-		&lt;/StackPanel&gt;
-	&lt;/ScrollView&gt;
-&lt;/Page&gt;
-</code></pre>
+            &lt;Text&gt;Comments:&lt;/Text&gt;
+            &lt;TextView Value=&quot;{comments}&quot; TextWrapping=&quot;Wrap&quot; /&gt;
+        &lt;/StackPanel&gt;
+    &lt;/ScrollView&gt;
+&lt;/Page&gt;</code></pre>
 <p><code>Pages/EditHikePage.js</code>:</p>
 <pre><code class="language-js">var Observable = require(&quot;FuseJS/Observable&quot;);
 
@@ -1263,39 +1227,36 @@ var rating = hike.map(function(x) { return x.rating; });
 var comments = hike.map(function(x) { return x.comments; });
 
 module.exports = {
-	name: name,
-	location: location,
-	distance: distance,
-	rating: rating,
-	comments: comments
-};
-</code></pre>
+    name: name,
+    location: location,
+    distance: distance,
+    rating: rating,
+    comments: comments
+};</code></pre>
 <p><code>Pages/HomePage.ux</code>:</p>
 <pre><code class="language-xml">&lt;Page ux:Class=&quot;HomePage&quot;&gt;
-	&lt;JavaScript File=&quot;HomePage.js&quot; /&gt;
+    &lt;JavaScript File=&quot;HomePage.js&quot; /&gt;
 
-	&lt;ScrollView&gt;
-		&lt;StackPanel&gt;
-			&lt;Each Items=&quot;{hikes}&quot;&gt;
-				&lt;Button Text=&quot;{name}&quot; Clicked=&quot;{chooseHike}&quot; /&gt;
-			&lt;/Each&gt;
-		&lt;/StackPanel&gt;
-	&lt;/ScrollView&gt;
-&lt;/Page&gt;
-</code></pre>
+    &lt;ScrollView&gt;
+        &lt;StackPanel&gt;
+            &lt;Each Items=&quot;{hikes}&quot;&gt;
+                &lt;Button Text=&quot;{name}&quot; Clicked=&quot;{chooseHike}&quot; /&gt;
+            &lt;/Each&gt;
+        &lt;/StackPanel&gt;
+    &lt;/ScrollView&gt;
+&lt;/Page&gt;</code></pre>
 <p><code>Pages/HomePage.js</code></p>
 <pre><code class="language-js">var hikes = require(&quot;hikes&quot;);
 
 function chooseHike(arg) {
-	// TODO
+    // TODO
 }
 
 module.exports = {
-	hikes: hikes,
+    hikes: hikes,
 
-	chooseHike: chooseHike
-};
-</code></pre>
+    chooseHike: chooseHike
+};</code></pre>
 <h2 id="what-s-next">What's next</h2>
 <p>Now that we've got our two views separated into different components, the next step on our journey will be to hook them back together so that our selector in <code>HomePage</code> will populate the editor <code>EditHikePage</code> and navigate to it as well. That's where we'll start developing the <em>flow</em> of our app using Fuse's <a href="../fuse/controls/navigator.html">Navigator</a> and <a href="../fuse/navigation/router.html">Router</a> components. This is what we'll cover in the <a href="navigation-and-routing.html">next chapter</a>, so when you're ready, let's <a href="navigation-and-routing.html">move on</a>!</p>
 <p>The final code for this chapter is available <a href="https://github.com/fuse-open/hikr/tree/chapter-3">here</a>.</p>

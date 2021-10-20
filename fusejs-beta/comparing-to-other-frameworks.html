@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -693,8 +693,7 @@
 <h3 id="redux-stores">Redux Stores</h3>
 <p>The <strong>Redux Store</strong> is analogous to the FuseJS <strong>App Model</strong>.</p>
 <p>You specify the app model <em>class</em> like this:</p>
-<pre><code class="language-XML">&lt;App Model=&quot;AppModelClass&quot;&gt;
-</code></pre>
+<pre><code class="language-XML">&lt;App Model=&quot;AppModelClass&quot;&gt;</code></pre>
 <p>This makes the app model available globally in the UX markup data context, throughout the app. Any UX markup component or page can data-bind directly to properties and methods on the app model.</p>
 <p><strong>Redux Reducers</strong> are analogous to <strong>methods on the model classes</strong> in FuseJS. In FuseJS, you don't need to think about immutability, you simply mutate the class instances.</p>
 <p><strong>Redux Action records</strong> are analogous to serializing <strong>the method names and arguments</strong> for each method call on the app model coming from the outside (i.e. when a method is called from UX Markup, or an async callback happens).  By running change detection after each method call from the outside, the exact effects of the actions on the state can also be logged for time travel debugging.</p>
@@ -716,8 +715,7 @@ function todoApp(state = initialState, action) {
 
 function addTodo(description) {
     return { type: 'ADD_TODO', description }
-}
-</code></pre>
+}</code></pre>
 <h4 id="same-example-fusejs">Same example - FuseJS</h4>
 <pre><code class="language-JS">export class TodoApp {
     constructor() {
@@ -726,8 +724,7 @@ function addTodo(description) {
     addTodo(description) {
         this.todos.push(description)
     }
-}
-</code></pre>
+}</code></pre>
 <h3 id="react-components">React Components</h3>
 <p>React's <strong>JSX</strong> is analogous to Fuse's <strong>UX Markup</strong>.</p>
 <p>React's <strong>Components</strong> is analogous to <code>ux:Class</code> in UX Markup. For the most part, components are used for visual styling and organization, and is of no consequence to business logic. This means they don't need a JavaScript counterpart.</p>
@@ -735,8 +732,7 @@ function addTodo(description) {
 <p>React <strong>component state</strong> is analogous to FuseJS <strong>Component Models</strong>.</p>
 <p>You specify the component model <em>class</em> by setting the <code>Model</code> property on your <code>ux:Class</code>:</p>
 <pre><code class="language-XML">&lt;Panel ux:Class=&quot;MyComponent&quot; Model=&quot;MyComponent(this)&quot;&gt;
-    &lt;string ux:Property=&quot;Label&quot; /&gt;
-</code></pre>
+    &lt;string ux:Property=&quot;Label&quot; /&gt;</code></pre>
 <p>Where <code>MyComponent</code> is plain JavaScript class that holds the state and possible actions on this component. The properties and methods of the component class will now be available for data binding within the component.</p>
 <p>Optionally, the <em>component model</em> accepts a <code>view</code> argument to the constructor which gives the JavaScript class access to the <code>ux:Property</code> and gives the illusion of synchronous access to it.</p>
 <pre><code class="language-JS">export class MyComponent {
@@ -746,8 +742,7 @@ function addTodo(description) {
     get fullLabel() {
         return &quot;The label is: &quot; + this.view.Label
     }
-}
-</code></pre>
+}</code></pre>
 <p>Do not use JavaScript for animating properties. Use Fuse's trigger/animator system from UX Markup instead. Animation is usually of no consequence to your business logic and your JavaScript should therefore not be concerned with it.</p>
 <h2 id="vue-js">Vue.js</h2>
 <p>In <a href="https://vuejs.org/">Vue</a>, <strong>components</strong> are analogous to <code>ux:Class</code> in Fuse.</p>

@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -703,14 +703,13 @@ Show advanced things
 <p>This module is an <a href="../../../fusejs/eventemitter.html">EventEmitter</a>, so the methods from <a href="../../../fusejs/eventemitter.html">EventEmitter</a> can be used to listen to events.</p>
 <p>You need to add a reference to <code>&quot;Fuse.Launcher&quot;</code> in your project file to use this feature.</p>
 <h4 id="example">Example</h4>
-<pre><code class="language-javascript">    var InterApp = require(&quot;FuseJS/InterApp&quot;);
+<pre><code class="language-javascript">var InterApp = require(&quot;FuseJS/InterApp&quot;);
 
-    InterApp.on(&quot;receivedUri&quot;, function(uri) {
-        console.log(&quot;Launched with URI&quot;, uri);
-    });
+InterApp.on(&quot;receivedUri&quot;, function(uri) {
+    console.log(&quot;Launched with URI&quot;, uri);
+});
 
-    InterApp.launchUri(&quot;https://fuseopen.com/&quot;);
-</code></pre>
+InterApp.launchUri(&quot;https://fuseopen.com/&quot;);</code></pre>
 <p>In the above example we're using the <a href="../../../fusejs/eventemitter.html">EventEmitter</a> <code>on</code> method to listen to the <code>&quot;receivedUri&quot;</code> event.</p>
 <p>For the <a href="../../../fuse/reactive/fusejs/interapp/onreceiveduri_968f99a6.html">receivedUri</a> event to be triggered, you need register a custom URI scheme for your app, as shown <a href="../../../basics/uno-projects.html#mobile-urischeme">here</a>.</p>
 <h4 id="deep-links-universal-and-app-links">Deep Links - Universal and App Links</h4>
@@ -729,8 +728,7 @@ Show advanced things
             &quot;AssociatedDomains&quot;: [&quot;applinks:example.com&quot;, &quot;applinks:sub.example.com&quot;]
         }
     }
-}
-</code></pre>
+}</code></pre>
 <h5 id="2-add-the-apple-app-site-association-file-to-your-website">2. Add the Apple App Site Association file to your website</h5>
 <p>Apple-app-site-association file format</p>
 <pre><code class="language-JSON">{
@@ -743,8 +741,7 @@ Show advanced things
             }
         ]
     }
-}
-</code></pre>
+}</code></pre>
 <p>Basic example, this allows all urls of the domain to be validated:</p>
 <pre><code class="language-JSON">{
     &quot;applinks&quot;: {
@@ -756,8 +753,7 @@ Show advanced things
             }
         ]
     }
-}
-</code></pre>
+}</code></pre>
 <p>Place this file either in your site’s <code>.well-known</code> directory, or directly in its root directory. If you use the <code>.well-known</code> directory, the file’s URL should match the following format:</p>
 <pre><code>https://&lt;fully qualified domain&gt;/.well-known/apple-app-site-association
 </code></pre>
@@ -773,11 +769,10 @@ Show advanced things
     &quot;Android&quot;: {
         &quot;AssociatedDomains&quot;: [&quot;example.com&quot;, &quot;sub.example.com&quot;]
     }
-}
-</code></pre>
+}</code></pre>
 <h5 id="2-add-the-asset-links-file-to-your-website">2. Add the asset links file to your website</h5>
 <p>Example:</p>
-<pre><code class="language-json">[{
+<pre><code class="language-js">[{
   &quot;relation&quot;: [&quot;delegate_permission/common.handle_all_urls&quot;],
     &quot;target&quot;: {
       &quot;namespace&quot;: &quot;android_app&quot;,
@@ -794,8 +789,7 @@ Show advanced things
       &quot;sha256_cert_fingerprints&quot;:
       [&quot;14:6D:E9:83:C5:73:06:50:D8:EE:B9:95:2F:34:FC:64:16:A0:83:42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:44:E5&quot;]
     }
-}]
-</code></pre>
+}]</code></pre>
 <p>Each group represents an app, you will likely need one for your development version and one for your release version of your app.</p>
 <p>To get the <code>sha256_cert_fingerprints</code>, use the following:</p>
 <pre><code>keytool -list -v -keystore my-release-key.keystore

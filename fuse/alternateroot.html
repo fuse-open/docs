@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -702,26 +702,25 @@ Show advanced things
 <p>Allows placing a node in a different place in the UX tree than the location of this
 behavior, while keeping the data context from this behavior.</p>
 <h4 id="example">Example</h4>
-<pre><code class="language-xml">    &lt;Panel ux:Class=&quot;MyPage&quot;&gt;
-        &lt;Visual ux:Dependency=&quot;navBar&quot; /&gt;
-        &lt;string ux:Property=&quot;Content&quot; /&gt;
-        &lt;float4 ux:Property=&quot;Highlight&quot; /&gt;
-        &lt;Text Alignment=&quot;Center&quot; Value=&quot;{ReadProperty Content}&quot; /&gt;
-        &lt;WhileActive&gt;
-            &lt;AlternateRoot ParentNode=&quot;navBar&quot;&gt;
-                &lt;Rectangle Color=&quot;{ReadProperty Highlight}&quot; /&gt;
-            &lt;/AlternateRoot&gt;
-        &lt;/WhileActive&gt;
-    &lt;/Panel&gt;
+<pre><code class="language-xml">&lt;Panel ux:Class=&quot;MyPage&quot;&gt;
+    &lt;Visual ux:Dependency=&quot;navBar&quot; /&gt;
+    &lt;string ux:Property=&quot;Content&quot; /&gt;
+    &lt;float4 ux:Property=&quot;Highlight&quot; /&gt;
+    &lt;Text Alignment=&quot;Center&quot; Value=&quot;{ReadProperty Content}&quot; /&gt;
+    &lt;WhileActive&gt;
+        &lt;AlternateRoot ParentNode=&quot;navBar&quot;&gt;
+            &lt;Rectangle Color=&quot;{ReadProperty Highlight}&quot; /&gt;
+        &lt;/AlternateRoot&gt;
+    &lt;/WhileActive&gt;
+&lt;/Panel&gt;
 
-    &lt;ClientPanel&gt;
-        &lt;Panel ux:Name=&quot;navBar&quot; Dock=&quot;Top&quot; Height=&quot;56&quot; /&gt;
-        &lt;PageControl&gt;
-            &lt;MyPage Content=&quot;Page 1&quot; Highlight=&quot;#18f&quot; navBar=&quot;navBar&quot; /&gt;
-            &lt;MyPage Content=&quot;Page 2&quot; Highlight=&quot;#1f8&quot; navBar=&quot;navBar&quot; /&gt;
-        &lt;/PageControl&gt;
-    &lt;/ClientPanel&gt;
-</code></pre>
+&lt;ClientPanel&gt;
+    &lt;Panel ux:Name=&quot;navBar&quot; Dock=&quot;Top&quot; Height=&quot;56&quot; /&gt;
+    &lt;PageControl&gt;
+        &lt;MyPage Content=&quot;Page 1&quot; Highlight=&quot;#18f&quot; navBar=&quot;navBar&quot; /&gt;
+        &lt;MyPage Content=&quot;Page 2&quot; Highlight=&quot;#1f8&quot; navBar=&quot;navBar&quot; /&gt;
+    &lt;/PageControl&gt;
+&lt;/ClientPanel&gt;</code></pre>
 
 <section class="type-location">
 <h3 id="section-location">Location</h3>

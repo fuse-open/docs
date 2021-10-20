@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -704,18 +704,17 @@ Show advanced things
 <p>The following example changes the value of a <a href="../../fuse/controls/text.html">Text</a> element to <code>Inactive</code> when the
 first page of a <a href="../../fuse/controls/pagecontrol.html">PageControl</a> is inactive. We set the <code>Threshold</code> low to make the
 change happen earlier when transitioning from the page.</p>
-<pre><code class="language-xml">    &lt;PageControl&gt;
-        &lt;Page&gt;
-            &lt;Panel Alignment=&quot;Center&quot;&gt;
-                &lt;Text ux:Name=&quot;text&quot;&gt;Active&lt;/Text&gt;
-                &lt;WhileInactive Threshold=&quot;0.1&quot;&gt;
-                    &lt;Change text.Value=&quot;Inactive&quot; /&gt;
-                &lt;/WhileInactive&gt;
-            &lt;/Panel&gt;
-        &lt;/Page&gt;
-        &lt;Page Background=&quot;Blue&quot; /&gt;
-    &lt;/PageControl&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;PageControl&gt;
+    &lt;Page&gt;
+        &lt;Panel Alignment=&quot;Center&quot;&gt;
+            &lt;Text ux:Name=&quot;text&quot;&gt;Active&lt;/Text&gt;
+            &lt;WhileInactive Threshold=&quot;0.1&quot;&gt;
+                &lt;Change text.Value=&quot;Inactive&quot; /&gt;
+            &lt;/WhileInactive&gt;
+        &lt;/Panel&gt;
+    &lt;/Page&gt;
+    &lt;Page Background=&quot;Blue&quot; /&gt;
+&lt;/PageControl&gt;</code></pre>
 <p>The progress of this trigger is calculated as the page's distance from the active page (or the navigation position for continuous navigation). For example, the active page has a distance of 0, meaning this trigger will not be activated, and a page 1 away from the active has a distance of 1, meaning this trigger will be activated. The <code>Threshold=0.1</code> in this example means the trigger activates after the page has been swiped only 10% of the distance away from the active position.</p>
 
 <section class="type-location">

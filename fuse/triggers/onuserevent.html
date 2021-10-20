@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -708,45 +708,42 @@ for a more complete explanation of user events.</p>
 declared in one of its ancestor nodes. If you want to listen for
 events coming from anywhere, set the <code>Filter</code> property to <code>Global</code>.</p>
 <p><code>OnUserEvent</code> also lets you attach a JavaScript handler to the event.</p>
-<pre><code class="language-xml">    &lt;OnUserEvent EventName=&quot;myEvent&quot; Handler=&quot;{myHandler}&quot; /&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;OnUserEvent EventName=&quot;myEvent&quot; Handler=&quot;{myHandler}&quot; /&gt;</code></pre>
 <p>The handler function is called with the arguments that were passed
 with the event as a plain JavaScript object.</p>
 <h4 id="example">Example</h4>
 <p>This example defines a <a href="../../fuse/userevent.html">UserEvent</a> and triggers it when the panel
 is clicked:</p>
-<pre><code class="language-xml">    &lt;Panel ux:Name=&quot;panel&quot; Color=&quot;Blue&quot;&gt;
-        &lt;UserEvent Name=&quot;myEvent&quot;/&gt;
-        &lt;OnUserEvent EventName=&quot;myEvent&quot;&gt;
-            &lt;Change panel.Color=&quot;Red&quot; DurationBack=&quot;0.5&quot; /&gt;
-        &lt;/OnUserEvent&gt;
-        &lt;Clicked&gt;
-            &lt;RaiseUserEvent EventName=&quot;myEvent&quot; /&gt;
-        &lt;/Clicked&gt;
-    &lt;/Panel&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Panel ux:Name=&quot;panel&quot; Color=&quot;Blue&quot;&gt;
+    &lt;UserEvent Name=&quot;myEvent&quot;/&gt;
+    &lt;OnUserEvent EventName=&quot;myEvent&quot;&gt;
+        &lt;Change panel.Color=&quot;Red&quot; DurationBack=&quot;0.5&quot; /&gt;
+    &lt;/OnUserEvent&gt;
+    &lt;Clicked&gt;
+        &lt;RaiseUserEvent EventName=&quot;myEvent&quot; /&gt;
+    &lt;/Clicked&gt;
+&lt;/Panel&gt;</code></pre>
 <p>This example illustrates how you can read the arguments that were
 passed with the event from a JavaScript handler.</p>
-<pre><code class="language-xml">    &lt;UserEvent ux:Name=&quot;myEvent&quot; /&gt;
+<pre><code class="language-xml">&lt;UserEvent ux:Name=&quot;myEvent&quot; /&gt;
 
-    &lt;Panel Color=&quot;#123&quot;&gt;
-        &lt;Clicked&gt;
-            &lt;RaiseUserEvent EventName=&quot;myEvent&quot;&gt;
-                &lt;UserEventArg Name=&quot;myArgument&quot; StringValue=&quot;Some value&quot; /&gt;
-            &lt;/RaiseUserEvent&gt;
-        &lt;/Clicked&gt;
-    &lt;/Panel&gt;
+&lt;Panel Color=&quot;#123&quot;&gt;
+    &lt;Clicked&gt;
+        &lt;RaiseUserEvent EventName=&quot;myEvent&quot;&gt;
+            &lt;UserEventArg Name=&quot;myArgument&quot; StringValue=&quot;Some value&quot; /&gt;
+        &lt;/RaiseUserEvent&gt;
+    &lt;/Clicked&gt;
+&lt;/Panel&gt;
 
-    &lt;OnUserEvent EventName=&quot;myEvent&quot; Handler=&quot;{eventHandler}&quot; /&gt;
+&lt;OnUserEvent EventName=&quot;myEvent&quot; Handler=&quot;{eventHandler}&quot; /&gt;
 
-    &lt;JavaScript&gt;
-        function eventHandler(args) {
-            console.log(&quot;myEvent raised with argument 'myArgument': &quot; + args.myArgument);
-        }
+&lt;JavaScript&gt;
+    function eventHandler(args) {
+        console.log(&quot;myEvent raised with argument 'myArgument': &quot; + args.myArgument);
+    }
 
-        module.exports = { eventHandler: eventHandler };
-    &lt;/JavaScript&gt;
-</code></pre>
+    module.exports = { eventHandler: eventHandler };
+&lt;/JavaScript&gt;</code></pre>
 
 <section class="type-location">
 <h3 id="section-location">Location</h3>

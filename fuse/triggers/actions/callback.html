@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -702,19 +702,18 @@ Show advanced things
 <p>Calls a JavaScript function when a trigger is activated.</p>
 <h4 id="example">Example</h4>
 <p>This example calls the JavaScript function <code>someJSFunction</code> when a <a href="../../../fuse/controls/button.html">Button</a> is <a href="../../../fuse/gestures/clicked.html">Clicked</a>.</p>
-<pre><code class="language-xml">    &lt;JavaScript&gt;
-        var someJSFunction = function () {
-            console.log(&quot;some function called&quot;);
-        }
-        module.exports = { someJSFunction: someJSFunction };
-    &lt;/JavaScript&gt;
+<pre><code class="language-xml">&lt;JavaScript&gt;
+    var someJSFunction = function () {
+        console.log(&quot;some function called&quot;);
+    }
+    module.exports = { someJSFunction: someJSFunction };
+&lt;/JavaScript&gt;
 
-    &lt;Button Text=&quot;Do something&quot;&gt;
-        &lt;Clicked&gt;
-            &lt;Callback Handler=&quot;{someJSFunction}&quot;/&gt;
-        &lt;/Clicked&gt;
-    &lt;/Button&gt;
-</code></pre>
+&lt;Button Text=&quot;Do something&quot;&gt;
+    &lt;Clicked&gt;
+        &lt;Callback Handler=&quot;{someJSFunction}&quot;/&gt;
+    &lt;/Clicked&gt;
+&lt;/Button&gt;</code></pre>
 
 <section class="type-location">
 <h3 id="section-location">Location</h3>

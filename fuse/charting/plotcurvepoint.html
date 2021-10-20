@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -703,31 +703,30 @@ Show advanced things
 <p>This shares most of the functionality of <code>PlotPoint</code> except creates a <code>CurvePoint</code> suitable for a `Curve.</p>
 <h3 id="example">Example</h3>
 <p>This example demonstrates a simple line graph built using <code>PlotCurvePoint</code></p>
-<pre><code class="language-javascript">    &lt;Panel xmlns:c=&quot;Fuse.Charting&quot; &gt;
-        &lt;JavaScript&gt;
-            var Observable = require(&quot;FuseJS/Observable&quot;);
+<pre><code class="language-javascript">&lt;Panel xmlns:c=&quot;Fuse.Charting&quot; &gt;
+    &lt;JavaScript&gt;
+        var Observable = require(&quot;FuseJS/Observable&quot;);
 
-            function Item(val) {
-                this.value = val;
-            }
-            var data = Observable(new Item(3), new Item(4), new Item(6), new Item(0), new Item(4));
+        function Item(val) {
+            this.value = val;
+        }
+        var data = Observable(new Item(3), new Item(4), new Item(6), new Item(0), new Item(4));
 
-            module.exports = {
-                data: data
-            }
-        &lt;/JavaScript&gt;
-        &lt;Panel BoxSizing=&quot;FillAspect&quot; Aspect=&quot;1&quot; &gt;
-            &lt;c:Plot &gt;
-                &lt;c:DataSeries Data=&quot;{data}&quot; /&gt;
-                &lt;Curve StrokeWidth=&quot;5&quot; StrokeColor=&quot;#008&quot; &gt;
-                    &lt;c:PlotData&gt;
-                        &lt;c:PlotCurvePoint/&gt;
-                    &lt;/c:PlotData&gt;
-                &lt;/Curve&gt;
-            &lt;/c:Plot&gt;
-        &lt;/Panel&gt;
+        module.exports = {
+            data: data
+        }
+    &lt;/JavaScript&gt;
+    &lt;Panel BoxSizing=&quot;FillAspect&quot; Aspect=&quot;1&quot; &gt;
+        &lt;c:Plot &gt;
+            &lt;c:DataSeries Data=&quot;{data}&quot; /&gt;
+            &lt;Curve StrokeWidth=&quot;5&quot; StrokeColor=&quot;#008&quot; &gt;
+                &lt;c:PlotData&gt;
+                    &lt;c:PlotCurvePoint/&gt;
+                &lt;/c:PlotData&gt;
+            &lt;/Curve&gt;
+        &lt;/c:Plot&gt;
     &lt;/Panel&gt;
-</code></pre>
+&lt;/Panel&gt;</code></pre>
 
 <section class="type-location">
 <h3 id="section-location">Location</h3>

@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -706,47 +706,42 @@ Show advanced things
 <p>When interacting with an element, it is sometimes desirable to be able to differentiate which elements can be interacted with and how. This is typically referred to as &quot;hit testing&quot;. In Fuse, how elements interact with user input can be set using <code>HitTestMode</code>.</p>
 <h5 id="example">Example</h5>
 <p>This example will layout two <code>Rectangle</code>s and add <code>Clicked</code>-triggers to both of them. However, only the left one will output anything when clicked, as the hit testing has been explicitly disabled on the right rectangle:</p>
-<pre><code class="language-xml">	&lt;Grid ColumnCount=&quot;2&quot;&gt;
-		&lt;Rectangle Width=&quot;100&quot; Height=&quot;100&quot; Fill=&quot;#808&quot; &gt;
-			&lt;Clicked&gt;
-				&lt;DebugAction Message=&quot;Clicked left&quot; /&gt;
-			&lt;/Clicked&gt;
-		&lt;/Rectangle&gt;
-		&lt;Rectangle Width=&quot;100&quot; Height=&quot;100&quot; Fill=&quot;#808&quot; HitTestMode=&quot;None&quot; &gt;
-			&lt;Clicked&gt;
-				&lt;DebugAction Message=&quot;Clicked right&quot; /&gt;
-			&lt;/Clicked&gt;
-		&lt;/Rectangle&gt;
-	&lt;/Grid&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Grid ColumnCount=&quot;2&quot;&gt;
+    &lt;Rectangle Width=&quot;100&quot; Height=&quot;100&quot; Fill=&quot;#808&quot; &gt;
+        &lt;Clicked&gt;
+            &lt;DebugAction Message=&quot;Clicked left&quot; /&gt;
+        &lt;/Clicked&gt;
+    &lt;/Rectangle&gt;
+    &lt;Rectangle Width=&quot;100&quot; Height=&quot;100&quot; Fill=&quot;#808&quot; HitTestMode=&quot;None&quot; &gt;
+        &lt;Clicked&gt;
+            &lt;DebugAction Message=&quot;Clicked right&quot; /&gt;
+        &lt;/Clicked&gt;
+    &lt;/Rectangle&gt;
+&lt;/Grid&gt;</code></pre>
 <p>This can be very helpful if you have visual elements obscuring elements below it, where you want the lower elements respond to input.</p>
 <h4 id="cliptobounds">ClipToBounds</h4>
 <p>Normally, when laying out an element inside the other, the inner element can freely live outside the parent element:</p>
-<pre><code class="language-xml">	&lt;Panel Width=&quot;100&quot; Height=&quot;100&quot;&gt;
-			&lt;Image Margin=&quot;-100&quot; File=&quot;Pictures/Picture1.jpg&quot; StretchMode=&quot;UniformToFill&quot; /&gt;
-	&lt;/Panel&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Panel Width=&quot;100&quot; Height=&quot;100&quot;&gt;
+        &lt;Image Margin=&quot;-100&quot; File=&quot;Pictures/Picture1.jpg&quot; StretchMode=&quot;UniformToFill&quot; /&gt;
+&lt;/Panel&gt;</code></pre>
 <p>This <code>Image</code> will appear to be 300pt wide and tall, as the <code>Panel</code> doesn't clip children to its bounds.</p>
 <p>If you intend to have the <code>Image</code> clip to its parent size, simply set <code>ClipToBounds=&quot;true&quot;</code> on the <code>Panel</code>:</p>
-<pre><code class="language-xml">	&lt;Panel Width=&quot;100&quot; Height=&quot;100&quot; ClipToBounds=&quot;true&quot;&gt;
-		&lt;Image Margin=&quot;-100&quot; File=&quot;Pictures/Picture1.jpg&quot; StretchMode=&quot;UniformToFill&quot; /&gt;
-	&lt;/Panel&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Panel Width=&quot;100&quot; Height=&quot;100&quot; ClipToBounds=&quot;true&quot;&gt;
+    &lt;Image Margin=&quot;-100&quot; File=&quot;Pictures/Picture1.jpg&quot; StretchMode=&quot;UniformToFill&quot; /&gt;
+&lt;/Panel&gt;</code></pre>
 <p>Now, the <code>Image</code> will not overflow the bounds of the <code>Panel</code>.</p>
 <h4 id="opacity">Opacity</h4>
 <p>You can set the transparency of objects using the <code>Opacity</code>-property. When <code>Opacity=&quot;0&quot;</code>, the element is completely transparent.</p>
 <h5 id="example">Example</h5>
 <p>In this example, a panel's opacity is set to 0.5</p>
-<pre><code class="language-xml">	&lt;Panel&gt;
-		&lt;Opacity Value=&quot;0.5&quot; /&gt;
-	&lt;/Panel&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Panel&gt;
+    &lt;Opacity Value=&quot;0.5&quot; /&gt;
+&lt;/Panel&gt;</code></pre>
 <h4 id="layers">Layers</h4>
 <p>It is often helpful to redefine what existing controls should look like. Elements that are added to containers can be assigned to different layers. If you want a button to appear with a red background, you can redefine its <code>Background</code> <code>Layer</code>:</p>
-<pre><code class="language-xml">	&lt;Button Text=&quot;Hello!&quot;&gt;
-		&lt;Rectangle Fill=&quot;#931&quot; Layer=&quot;Background&quot; /&gt;
-	&lt;/Button&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Button Text=&quot;Hello!&quot;&gt;
+    &lt;Rectangle Fill=&quot;#931&quot; Layer=&quot;Background&quot; /&gt;
+&lt;/Button&gt;</code></pre>
 <p>This will not change the layout or behavior of the <a href="../../fuse/controls/button.html">Button</a>, but its appearance will change.</p>
 <h3 id="available-element-classes">Available Element classes</h3>
 <section class="table-of-contents">
@@ -2198,10 +2193,9 @@ Viewbox
 </h5>
 <div class="table-of-contents-item-brief">
 <p>Forces the content (by scaling) to fit inside the available space.</p>
-<pre><code class="language-xml">    &lt;Viewbox&gt;
-        &lt;Rectangle Color=&quot;#808&quot; Width=&quot;200&quot; Height=&quot;100&quot; /&gt;
-    &lt;/Viewbox&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Viewbox&gt;
+    &lt;Rectangle Color=&quot;#808&quot; Width=&quot;200&quot; Height=&quot;100&quot; /&gt;
+&lt;/Viewbox&gt;</code></pre>
 <p>This will maintain its aspect ratio of 2:1 while stretching the Rectangle to be the size of the Viewbox. <a class="table-of-contents-item-has-more" title="There is more information available for this entry" href="../../fuse/controls/viewbox.html"><i class="fa fa-ellipsis-h"></i></a></p>
 
 </div>

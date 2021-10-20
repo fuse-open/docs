@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -690,36 +690,33 @@
 <p>So, how do we request which component to navigate to when using a <a href="../fuse/controls/navigator.html">Navigator</a>? we'll cover that in the next section when we cover the <a href="../fuse/navigation/router.html">Router</a>. Essentially, the best way to explain these concepts is to see them in action, and before we do that, we need a <a href="../fuse/controls/navigator.html">Navigator</a>. So let's start by replacing our <a href="../fuse/controls/pagecontrol.html">PageControl</a> with a <a href="../fuse/controls/navigator.html">Navigator</a>!</p>
 <p>First, let's open up <code>MainView.ux</code>, and simply replace <a href="../fuse/controls/pagecontrol.html">PageControl</a> with <a href="../fuse/controls/navigator.html">Navigator</a>:</p>
 <pre><code class="language-xml">&lt;App&gt;
-	&lt;ClientPanel&gt;
-		&lt;Navigator&gt;
-			&lt;HomePage /&gt;
-			&lt;EditHikePage /&gt;
-		&lt;/Navigator&gt;
-	&lt;/ClientPanel&gt;
-&lt;/App&gt;
-</code></pre>
+    &lt;ClientPanel&gt;
+        &lt;Navigator&gt;
+            &lt;HomePage /&gt;
+            &lt;EditHikePage /&gt;
+        &lt;/Navigator&gt;
+    &lt;/ClientPanel&gt;
+&lt;/App&gt;</code></pre>
 <p>Now, because the <a href="../fuse/controls/navigator.html">Navigator</a> expects <em>templates</em> instead of instances for its children, we'll need to update these as well. Luckily, Fuse makes this pretty easy - all we have to do is add a <code>ux:Template</code> attribute to each of our <a href="../fuse/controls/navigator.html">Navigator</a>'s children, like so:</p>
 <pre><code class="language-xml">&lt;App&gt;
-	&lt;ClientPanel&gt;
-		&lt;Navigator&gt;
-			&lt;HomePage ux:Template=&quot;home&quot; /&gt;
-			&lt;EditHikePage ux:Template=&quot;editHike&quot; /&gt;
-		&lt;/Navigator&gt;
-	&lt;/ClientPanel&gt;
-&lt;/App&gt;
-</code></pre>
+    &lt;ClientPanel&gt;
+        &lt;Navigator&gt;
+            &lt;HomePage ux:Template=&quot;home&quot; /&gt;
+            &lt;EditHikePage ux:Template=&quot;editHike&quot; /&gt;
+        &lt;/Navigator&gt;
+    &lt;/ClientPanel&gt;
+&lt;/App&gt;</code></pre>
 <p>Basically, what each of these attributes says is that for a given <em>key</em> (<code>home</code> and <code>editHike</code> in this case), we want the <a href="../fuse/controls/navigator.html">Navigator</a> to instantiate the associated class. So, if the <a href="../fuse/controls/navigator.html">Navigator</a> is asked to navigate to <code>home</code>, it will instantiate a <code>HomePage</code> instance (if it hasn't already) and navigate there. Similarly, when asked to navigate to <code>editHike</code>, it will instantiate an <code>EditHikePage</code> instance (if it hasn't already) and navigate to that instead. We can add any amount of templates we want, given each of the keys is <em>unique</em> (if they weren't, the <a href="../fuse/controls/navigator.html">Navigator</a> wouldn't know which template to use for a given key).</p>
 <p>Now, if we save this, our previews will update, but our pages will disappear! This makes sense, because we've only specified which templates our <a href="../fuse/controls/navigator.html">Navigator</a> will use to create its child components, but we haven't asked it to actually instantiate anything yet. Typically, we'll do this by navigating to a specific <em>route</em>, as we'll see in the next section. However, <a href="../fuse/controls/navigator.html">Navigator</a> also supports specifying a <em>default path</em> that will be used to create a default child if we haven't navigated to one of its children yet. This is a common case that's perfect for our use case, as we'll want our <a href="../fuse/controls/navigator.html">Navigator</a> to display our <code>HomePage</code> first, and then navigate to the <code>EditHikePage</code> once we've selected a hike to edit.</p>
 <p>To specify the default path for our <a href="../fuse/controls/navigator.html">Navigator</a>, all we have to do is add a <code>DefaultPath</code> attribute which will specify the key of the template we want the <a href="../fuse/controls/navigator.html">Navigator</a> to instantiate initially:</p>
 <pre><code class="language-xml">&lt;App&gt;
-	&lt;ClientPanel&gt;
-		&lt;Navigator DefaultPath=&quot;home&quot;&gt;
-			&lt;HomePage ux:Template=&quot;home&quot; /&gt;
-			&lt;EditHikePage ux:Template=&quot;editHike&quot; /&gt;
-		&lt;/Navigator&gt;
-	&lt;/ClientPanel&gt;
-&lt;/App&gt;
-</code></pre>
+    &lt;ClientPanel&gt;
+        &lt;Navigator DefaultPath=&quot;home&quot;&gt;
+            &lt;HomePage ux:Template=&quot;home&quot; /&gt;
+            &lt;EditHikePage ux:Template=&quot;editHike&quot; /&gt;
+        &lt;/Navigator&gt;
+    &lt;/ClientPanel&gt;
+&lt;/App&gt;</code></pre>
 <p>Now, when we save this, our <code>HomePage</code> will be displayed like we expect. Cool! Note that we can also change the <code>DefaultPath</code> to <code>editHike</code> to show our <code>EditHikePage</code> if we'd like. Feel free to try it!</p>
 <h2 id="routing-with-router">Routing with <a href="../fuse/navigation/router.html">Router</a></h2>
 <p>Now that we're using a <a href="../fuse/controls/navigator.html">Navigator</a> and templates, it's time to tell the <a href="../fuse/controls/navigator.html">Navigator</a> which <a href="../fuse/controls/page.html">Page</a> we want to navigate to. This is where the <a href="../fuse/navigation/router.html">Router</a> comes in!</p>
@@ -727,138 +724,120 @@
 <p>Now, that can be a lot to take in. Indeed, the <a href="../fuse/navigation/router.html">Router</a> is capable of quite a lot of things, and it's very powerful! It's also very easy to use and quite intuitive, so let's add a <a href="../fuse/navigation/router.html">Router</a> to our app and see how we can use it to navigate between our two pages.</p>
 <p>The first thing we'll do is actually create a <a href="../fuse/navigation/router.html">Router</a> instance. In our case, we'll only need one <a href="../fuse/navigation/router.html">Router</a> for the entire app. This is quite common. So, we'll add our <a href="../fuse/navigation/router.html">Router</a> near the top of our <code>App</code> class:</p>
 <pre><code class="language-xml">&lt;App&gt;
-	&lt;Router /&gt;
+    &lt;Router /&gt;
 
-	&lt;ClientPanel&gt;
-		&lt;Navigator DefaultPath=&quot;home&quot;&gt;
+    &lt;ClientPanel&gt;
+        &lt;Navigator DefaultPath=&quot;home&quot;&gt;
 
-		...
-</code></pre>
+        ...</code></pre>
 <p>Now that we've got a <a href="../fuse/navigation/router.html">Router</a> instance, we need to <em>inject</em> it into our <code>HomePage</code> so that it can tell the <a href="../fuse/navigation/router.html">Router</a> to navigate to the <code>EditHikePage</code>. There are a few ways to do this, but the best in our case is going to be through the use of a <em>dependency</em>. Dependencies allow us to specify additional things that our components need in order to function properly. If we add a dependency to one of our components, then Fuse will make sure we specify something to <em>satisfy</em> this dependency, or else a compile error will be thrown. This ensures that our components' dependencies are always met, and is very helpful for ensuring correct code.</p>
 <p>So, let's add a <a href="../fuse/navigation/router.html">Router</a> dependency to our <code>HomePage</code>. This is very similar to adding a <a href="../fuse/navigation/router.html">Router</a> instance, so we'll do that first at the top of the <a href="../fuse/controls/page.html">Page</a>:</p>
 <pre><code class="language-xml">&lt;Page ux:Class=&quot;HomePage&quot;&gt;
-	&lt;Router /&gt;
+    &lt;Router /&gt;
 
-	...
-</code></pre>
+    ...</code></pre>
 <p>All we have to do to make this a dependency is to add a <code>ux:Dependency</code> attribute that will specify the <em>name</em> of this dependency in the context of our component. For example, let's add this attribute and call our dependency <a href="../fuse/navigation/router.html">Router</a>:</p>
 <pre><code class="language-xml">&lt;Page ux:Class=&quot;HomePage&quot;&gt;
-	&lt;Router ux:Dependency=&quot;router&quot; /&gt;
+    &lt;Router ux:Dependency=&quot;router&quot; /&gt;
 
-	...
-</code></pre>
+    ...</code></pre>
 <p>Now, instead of creating a <a href="../fuse/navigation/router.html">Router</a> instance, Fuse will expect that we specified a <a href="../fuse/navigation/router.html">Router</a> for our <a href="../fuse/navigation/router.html">Router</a> dependency when creating our component instance. This means that in addition to specifying our dependency, we need to hook up our <a href="../fuse/navigation/router.html">Router</a> in <code>MainView</code> to this dependency as well.</p>
 <p>To do this, we'll go back to <code>MainView.ux</code>. First, we'll give our <a href="../fuse/navigation/router.html">Router</a> a name by using a <code>ux:Name</code> attribute:</p>
 <pre><code class="language-xml">&lt;App&gt;
-	&lt;Router ux:Name=&quot;router&quot; /&gt;
+    &lt;Router ux:Name=&quot;router&quot; /&gt;
 
-	...
-</code></pre>
+    ...</code></pre>
 <p>By giving it a name, we can now refer to this particular <a href="../fuse/navigation/router.html">Router</a> instance easily. Next, we'll make sure that this instance is provided to our <code>HomePage</code> instance like so:</p>
 <pre><code class="language-xml">&lt;App&gt;
-	&lt;Router ux:Name=&quot;router&quot; /&gt;
+    &lt;Router ux:Name=&quot;router&quot; /&gt;
 
-	&lt;ClientPanel&gt;
-		&lt;Navigator DefaultPath=&quot;home&quot;&gt;
-			&lt;HomePage ux:Template=&quot;home&quot; router=&quot;router&quot; /&gt;
+    &lt;ClientPanel&gt;
+        &lt;Navigator DefaultPath=&quot;home&quot;&gt;
+            &lt;HomePage ux:Template=&quot;home&quot; router=&quot;router&quot; /&gt;
 
-			...
-</code></pre>
+            ...</code></pre>
 <p>By adding <code>router=&quot;router&quot;</code> to our <code>HomePage</code> instance, we've communicated that the <a href="../fuse/navigation/router.html">Router</a> dependency in <code>HomePage</code> (denoted by <code>router=</code>) will be satisfied with our <a href="../fuse/navigation/router.html">Router</a> object (denoted by <code>&quot;router&quot;</code>). Notice how this looks a lot like specifying a property value, except we tend to use lower-case names for dependencies. Also, if we <em>didn't</em> specify this value, Fuse would give us an error, because dependencies for a component <em>must</em> be satisfied for a component to work properly.</p>
 <p>At this point, we can save both <code>MainView.ux</code> and <code>HomePage.ux</code>. Note that if we're running preview, Fuse might give us an error in between saving the files. Which error you get will depend on which order you save the files, and comes from the fact that Fuse either doesn't know about our dependency or the value we specified to satisfy it. However, after saving both files, everything should be back to normal, and now <code>HomePage</code> will have access to a <a href="../fuse/navigation/router.html">Router</a>. Cool!</p>
 <p>Now that our <code>HomePage</code> has a <a href="../fuse/navigation/router.html">Router</a> instance to work with, we'll want it to use that <a href="../fuse/navigation/router.html">Router</a> to navigate to the <code>EditHikePage</code>. If we look at our <code>HomePage.js</code> file, we already have a function hooked up to our selector view that we'll want to fill in for this, called <code>chooseHike</code>:</p>
 <pre><code class="language-js">function chooseHike(arg) {
-	// TODO
-}
-</code></pre>
+    // TODO
+}</code></pre>
 <p>Before we fill in this function, I'd like to rename it from <code>chooseHike</code> to <code>goToHike</code>. This is a small detail, but will better communicate the intent of the function and keep things a bit cleaner. So, let's change its name:</p>
 <pre><code class="language-js">function goToHike(arg) {
-	// TODO
-}
-</code></pre>
+    // TODO
+}</code></pre>
 <p>We'll also update its name in our <code>module.exports</code> below:</p>
 <pre><code class="language-js">module.exports = {
-	hikes: hikes,
+    hikes: hikes,
 
-	goToHike: goToHike
-};
-</code></pre>
+    goToHike: goToHike
+};</code></pre>
 <p>Finally, we'll update the reference to it in <code>HomePage.ux</code>:</p>
 <pre><code class="language-xml">&lt;Each Items=&quot;{hikes}&quot;&gt;
-	&lt;Button Text=&quot;{name}&quot; Clicked=&quot;{goToHike}&quot; /&gt;
-&lt;/Each&gt;
-</code></pre>
+    &lt;Button Text=&quot;{name}&quot; Clicked=&quot;{goToHike}&quot; /&gt;
+&lt;/Each&gt;</code></pre>
 <p>That's better! Now we can save these files, and we're ready to go back to <code>HomePage.js</code> and fill in our <code>goToHike</code> function!</p>
 <p>The first thing we'll need to do is grab the hike object from the function's argument. We'll do this exactly like we did in <a href="multiple-hikes.html">chapter 2</a>, which looks like this:</p>
 <pre><code class="language-js">function goToHike(arg) {
-	var hike = arg.data;
-}
-</code></pre>
+    var hike = arg.data;
+}</code></pre>
 <p>Now that we've got our hike object, we'll want to navigate to our <code>EditHikePage</code>, so we'll also need our <a href="../fuse/navigation/router.html">Router</a> dependency from UX. Luckily, in Fuse, the value of a <code>ux:Dependency</code> can be retrieved from JavaScript simply by referring to its name. So, if we refer to <a href="../fuse/navigation/router.html">Router</a> in <code>HomePage.js</code>, we're actually referring to the <a href="../fuse/navigation/router.html">Router</a> that was passed in from <code>MainView.ux</code> through the <code>ux:Dependency</code> in <code>HomePage.ux</code>:</p>
 <pre><code class="language-js">function goToHike(arg) {
-	var hike = arg.data;
-	router // We have our Router, but what will we do with it?
-}
-</code></pre>
+    var hike = arg.data;
+    router // We have our Router, but what will we do with it?
+}</code></pre>
 <p>It's that easy! Now, all we need to do is tell <a href="../fuse/navigation/router.html">Router</a> to navigate to the <code>EditHikePage</code>. To do this, we'll use a JavaScript function that's available on <a href="../fuse/navigation/router.html">Router</a> called <code>push</code>:</p>
 <pre><code class="language-js">function goToHike(arg) {
-	var hike = arg.data;
-	router.push(&quot;editHike&quot;);
-}
-</code></pre>
+    var hike = arg.data;
+    router.push(&quot;editHike&quot;);
+}</code></pre>
 <p>The <code>push</code> function will navigate to the given <em>route</em>, which in this case is specified to be simply <code>&quot;editHike&quot;</code>. This means that the <a href="../fuse/navigation/router.html">Router</a> will navigate to <code>editHike</code>, which, if we remember our <a href="../fuse/controls/navigator.html">Navigator</a> and templates from <code>MainView.ux</code>, will specify an instance of <code>EditHikePage</code>, just like we wanted! If we save <code>HomePage.js</code> and select one of the hikes, our app will take us to the <code>EditHike</code> page just like we'd expect. Of course, we still haven't actually sent our hike object to this page yet, but we'll get to that shortly.</p>
 <p>While it's certainly cool that we've finally got our navigation from <code>HomePage</code> to <code>EditHikePage</code> set up, we'll need a way to get back to our <code>HomePage</code> before we move on. If we look at our original design, we can see that we had <code>Save</code> and <code>Cancel</code> buttons:</p>
 <p><img src="../media/hikr/tutorial/app-flow.png" alt="Flow Diagram"></p>
 <p>However, since we're not making any model changes yet, we'll start by making a <code>Back</code> button instead. This will be easy to change into a <code>Cancel</code> button later.</p>
 <p>First, we'll need to add a <a href="../fuse/navigation/router.html">Router</a> dependency to <code>EditHikePage</code>, just like we did with <code>HomePage</code>. In <code>EditHikePage.ux</code>, we'll add the dependency:</p>
 <pre><code class="language-xml">&lt;Page ux:Class=&quot;EditHikePage&quot;&gt;
-	&lt;Router ux:Dependency=&quot;router&quot; /&gt;
+    &lt;Router ux:Dependency=&quot;router&quot; /&gt;
 
-	...
-</code></pre>
+    ...</code></pre>
 <p>And in <code>MainView.ux</code>, we'll satisfy that dependency:</p>
 <pre><code class="language-xml">&lt;Navigator DefaultPath=&quot;home&quot;&gt;
-	&lt;HomePage ux:Template=&quot;home&quot; router=&quot;router&quot; /&gt;
-	&lt;EditHikePage ux:Template=&quot;editHike&quot; router=&quot;router&quot; /&gt;
-</code></pre>
+    &lt;HomePage ux:Template=&quot;home&quot; router=&quot;router&quot; /&gt;
+    &lt;EditHikePage ux:Template=&quot;editHike&quot; router=&quot;router&quot; /&gt;</code></pre>
 <p>Easy enough! Let's save these files, and then we'll head back to <code>EditHikePage.ux</code> and create a simple back button at the bottom, like so:</p>
-<pre><code class="language-xml">			...
+<pre><code class="language-xml">            ...
 
-			&lt;TextView Value=&quot;{comments}&quot; TextWrapping=&quot;Wrap&quot; /&gt;
+            &lt;TextView Value=&quot;{comments}&quot; TextWrapping=&quot;Wrap&quot; /&gt;
 
-			&lt;Button Text=&quot;Back&quot; /&gt;
-		&lt;/StackPanel&gt;
-	&lt;/ScrollView&gt;
-&lt;/Page&gt;
-</code></pre>
+            &lt;Button Text=&quot;Back&quot; /&gt;
+        &lt;/StackPanel&gt;
+    &lt;/ScrollView&gt;
+&lt;/Page&gt;</code></pre>
 <p>Let's also add a <code>Clicked</code> handler while we're at it, even though we haven't created the function it will refer to yet (we'll do that right after):</p>
-<pre><code class="language-xml">			...
+<pre><code class="language-xml">            ...
 
-			&lt;TextView Value=&quot;{comments}&quot; TextWrapping=&quot;Wrap&quot; /&gt;
+            &lt;TextView Value=&quot;{comments}&quot; TextWrapping=&quot;Wrap&quot; /&gt;
 
-			&lt;Button Text=&quot;Back&quot; Clicked=&quot;{goBack}&quot; /&gt;
-		&lt;/StackPanel&gt;
-	&lt;/ScrollView&gt;
-&lt;/Page&gt;
-</code></pre>
+            &lt;Button Text=&quot;Back&quot; Clicked=&quot;{goBack}&quot; /&gt;
+        &lt;/StackPanel&gt;
+    &lt;/ScrollView&gt;
+&lt;/Page&gt;</code></pre>
 <p>Our handler will be called <code>goBack</code>. Let's go to <code>EditHikePage.js</code>, create this function, and add it to our exports:</p>
 <pre><code class="language-js">...
 
 function goBack() {
-	// TODO
+    // TODO
 }
 
 module.exports = {
-	...
+    ...
 
-	goBack: goBack
-};
-</code></pre>
+    goBack: goBack
+};</code></pre>
 <p>Now, we're ready to fill in this function. This is really simple:</p>
 <pre><code class="language-js">function goBack() {
-	router.goBack();
-}
-</code></pre>
+    router.goBack();
+}</code></pre>
 <p>Here we're just telling our <a href="../fuse/navigation/router.html">Router</a> object to go back to the route it was at previously by calling its <code>goBack</code> function. This works because a <a href="../fuse/navigation/router.html">Router</a> can keep track of its history as it moves through the app, and because we navigated to this page using the <code>push</code> function, we've guaranteed this would happen. Interestingly enough, if we had used the <a href="../fuse/navigation/router.html">Router</a>'s <code>goto</code> function, we still would have been able to get to our <code>EditHikePage</code>, but the <a href="../fuse/navigation/router.html">Router</a> wouldn't have kept track of the history for us.</p>
 <blockquote>
 <p>Note: <code>goBack</code> is automatically hooked up to the device's built-in back button, where applicable. We can simulate pushing this button in PC preview by using Cmd+B (macOS) or Control+B (Windows).</p>
@@ -868,17 +847,15 @@ module.exports = {
 <p>The last thing we need to do is send our hike to <code>EditHikePage</code> in addition to navigating to it. There's actually two parts to this; sending the hike from <code>HomePage</code>, and receiving the hike in <code>EditHikePage</code>. We'll start with the first part; sending the hike.</p>
 <p>This part will be pretty easy. If we go back to <code>HomePage.js</code>, we already have most of the parts there in our <code>goToHike</code> function:</p>
 <pre><code class="language-js">function goToHike(arg) {
-	var hike = arg.data;
-	router.push(&quot;editHike&quot;);
-}
-</code></pre>
+    var hike = arg.data;
+    router.push(&quot;editHike&quot;);
+}</code></pre>
 <p>All we need to do is add our hike object to the route when calling <code>push</code>, and the <a href="../fuse/navigation/router.html">Router</a> will send this data along for us. This works because our hike object is <em>plain old data</em>; it only contains simple string data, no functions or anything fancy like that. This is a requirement for objects sent via the <a href="../fuse/navigation/router.html">Router</a>.</p>
 <p>To send our hike, we'll just pass the <code>hike</code> object along with our route in the call to <code>push</code>, like so:</p>
 <pre><code class="language-js">function goToHike(arg) {
-	var hike = arg.data;
-	router.push(&quot;editHike&quot;, hike);
-}
-</code></pre>
+    var hike = arg.data;
+    router.push(&quot;editHike&quot;, hike);
+}</code></pre>
 <p>This way, we tell the <a href="../fuse/navigation/router.html">Router</a> to navigate to the <code>editHike</code> route, and pass our <code>hike</code> object to the target there (in our case, to an <code>EditHikePage</code> instance).</p>
 <blockquote>
 <p>Note: Although we're only going to use simple navigation in this tutorial, it's possible to do multi-level navigation as well. See the <a href="../navigation/navigation.html#multi-level-navigation">Multi-level navigation</a> section of our <a href="../navigation/navigation.html">Navigation article</a> for more info!</p>
@@ -888,13 +865,11 @@ module.exports = {
 
 var hike = Observable();
 
-...
-</code></pre>
+...</code></pre>
 <p>Ideally, what we want to do is populate this <code>hike</code> <a href="../fusejs/observable.html">Observable</a> with all of the values that come in via the <code>Parameter</code> <a href="../fusejs/observable.html">Observable</a>. There are a couple ways we can do that, but the simplest is to just do the following:</p>
 <pre><code class="language-js">var hike = this.Parameter;
 
-...
-</code></pre>
+...</code></pre>
 <p>In fact, we don't need to create a new <a href="../fusejs/observable.html">Observable</a> at all; we can just use <code>Parameter</code> since we know it will be receiving hike objects. Notice how we've also removed the <code>var Observable = require(&quot;FuseJS/Observable&quot;);</code> line, as we no longer need to reference that directly. This makes things really simple!</p>
 <blockquote>
 <p>Note: <code>Parameter</code> is referred to using <code>this.Parameter</code>, not just <code>Parameter</code>. This is because <code>Parameter</code> is part of our module definition, and refers to this specific instance of <code>EditHikePage</code>, so it needs to be qualified using <code>this</code>. Also note that <code>this</code> can take on different meanings depending on where it's used in JavaScript, so it's important to use the right instance in the root of the module.</p>
@@ -906,75 +881,71 @@ var hike = Observable();
 <p>And here's the code for the various files we modified in this chapter:</p>
 <p><code>MainView.ux</code></p>
 <pre><code class="language-xml">&lt;App&gt;
-	&lt;Router ux:Name=&quot;router&quot; /&gt;
+    &lt;Router ux:Name=&quot;router&quot; /&gt;
 
-	&lt;ClientPanel&gt;
-		&lt;Navigator DefaultPath=&quot;home&quot;&gt;
-			&lt;HomePage ux:Template=&quot;home&quot; router=&quot;router&quot; /&gt;
-			&lt;EditHikePage ux:Template=&quot;editHike&quot; router=&quot;router&quot; /&gt;
-		&lt;/Navigator&gt;
-	&lt;/ClientPanel&gt;
-&lt;/App&gt;
-</code></pre>
+    &lt;ClientPanel&gt;
+        &lt;Navigator DefaultPath=&quot;home&quot;&gt;
+            &lt;HomePage ux:Template=&quot;home&quot; router=&quot;router&quot; /&gt;
+            &lt;EditHikePage ux:Template=&quot;editHike&quot; router=&quot;router&quot; /&gt;
+        &lt;/Navigator&gt;
+    &lt;/ClientPanel&gt;
+&lt;/App&gt;</code></pre>
 <p><code>Pages/HomePage.ux</code>:</p>
 <pre><code class="language-xml">&lt;Page ux:Class=&quot;HomePage&quot;&gt;
-	&lt;Router ux:Dependency=&quot;router&quot; /&gt;
+    &lt;Router ux:Dependency=&quot;router&quot; /&gt;
 
-	&lt;JavaScript File=&quot;HomePage.js&quot; /&gt;
+    &lt;JavaScript File=&quot;HomePage.js&quot; /&gt;
 
-	&lt;ScrollView&gt;
-		&lt;StackPanel&gt;
-			&lt;Each Items=&quot;{hikes}&quot;&gt;
-				&lt;Button Text=&quot;{name}&quot; Clicked=&quot;{goToHike}&quot; /&gt;
-			&lt;/Each&gt;
-		&lt;/StackPanel&gt;
-	&lt;/ScrollView&gt;
-&lt;/Page&gt;
-</code></pre>
+    &lt;ScrollView&gt;
+        &lt;StackPanel&gt;
+            &lt;Each Items=&quot;{hikes}&quot;&gt;
+                &lt;Button Text=&quot;{name}&quot; Clicked=&quot;{goToHike}&quot; /&gt;
+            &lt;/Each&gt;
+        &lt;/StackPanel&gt;
+    &lt;/ScrollView&gt;
+&lt;/Page&gt;</code></pre>
 <p><code>Pages/HomePage.js</code>:</p>
 <pre><code class="language-js">var hikes = require(&quot;hikes&quot;);
 
 function goToHike(arg) {
-	var hike = arg.data;
-	router.push(&quot;editHike&quot;, hike);
+    var hike = arg.data;
+    router.push(&quot;editHike&quot;, hike);
 }
 
 module.exports = {
-	hikes: hikes,
+    hikes: hikes,
 
-	goToHike: goToHike
-};
-</code></pre>
+    goToHike: goToHike
+};</code></pre>
 <p><code>Pages/EditHikePage.ux</code>:</p>
 <pre><code class="language-xml">&lt;Page ux:Class=&quot;EditHikePage&quot;&gt;
-	&lt;Router ux:Dependency=&quot;router&quot; /&gt;
-	
-	&lt;JavaScript File=&quot;EditHikePage.js&quot; /&gt;
+    &lt;Router ux:Dependency=&quot;router&quot; /&gt;
+    
+    &lt;JavaScript File=&quot;EditHikePage.js&quot; /&gt;
 
-	&lt;ScrollView&gt;
-		&lt;StackPanel&gt;
-			&lt;Text Value=&quot;{name}&quot; /&gt;
+    &lt;ScrollView&gt;
+        &lt;StackPanel&gt;
+            &lt;Text Value=&quot;{name}&quot; /&gt;
 
-			&lt;Text&gt;Name:&lt;/Text&gt;
-			&lt;TextBox Value=&quot;{name}&quot; /&gt;
+            &lt;Text&gt;Name:&lt;/Text&gt;
+            &lt;TextBox Value=&quot;{name}&quot; /&gt;
 
-			&lt;Text&gt;Location:&lt;/Text&gt;
-			&lt;TextBox Value=&quot;{location}&quot; /&gt;
+            &lt;Text&gt;Location:&lt;/Text&gt;
+            &lt;TextBox Value=&quot;{location}&quot; /&gt;
 
-			&lt;Text&gt;Distance (km):&lt;/Text&gt;
-			&lt;TextBox Value=&quot;{distance}&quot; InputHint=&quot;Decimal&quot; /&gt;
+            &lt;Text&gt;Distance (km):&lt;/Text&gt;
+            &lt;TextBox Value=&quot;{distance}&quot; InputHint=&quot;Decimal&quot; /&gt;
 
-			&lt;Text&gt;Rating:&lt;/Text&gt;
-			&lt;TextBox Value=&quot;{rating}&quot; InputHint=&quot;Integer&quot; /&gt;
+            &lt;Text&gt;Rating:&lt;/Text&gt;
+            &lt;TextBox Value=&quot;{rating}&quot; InputHint=&quot;Integer&quot; /&gt;
 
-			&lt;Text&gt;Comments:&lt;/Text&gt;
-			&lt;TextView Value=&quot;{comments}&quot; TextWrapping=&quot;Wrap&quot; /&gt;
+            &lt;Text&gt;Comments:&lt;/Text&gt;
+            &lt;TextView Value=&quot;{comments}&quot; TextWrapping=&quot;Wrap&quot; /&gt;
 
-			&lt;Button Text=&quot;Back&quot; Clicked=&quot;{goBack}&quot; /&gt;
-		&lt;/StackPanel&gt;
-	&lt;/ScrollView&gt;
-&lt;/Page&gt;
-</code></pre>
+            &lt;Button Text=&quot;Back&quot; Clicked=&quot;{goBack}&quot; /&gt;
+        &lt;/StackPanel&gt;
+    &lt;/ScrollView&gt;
+&lt;/Page&gt;</code></pre>
 <p><code>Pages/EditHikePage.js</code>:</p>
 <pre><code class="language-js">var hike = this.Parameter;
 
@@ -985,19 +956,18 @@ var rating = hike.map(function(x) { return x.rating; });
 var comments = hike.map(function(x) { return x.comments; });
 
 function goBack() {
-	router.goBack();
+    router.goBack();
 }
 
 module.exports = {
-	name: name,
-	location: location,
-	distance: distance,
-	rating: rating,
-	comments: comments,
+    name: name,
+    location: location,
+    distance: distance,
+    rating: rating,
+    comments: comments,
 
-	goBack: goBack
-};
-</code></pre>
+    goBack: goBack
+};</code></pre>
 <h2 id="what-s-next">What's next</h2>
 <p>Our components are working together, which is awesome! However, we're still not able to make any actual changes to data in our model; we're only able to change some data in our view model. In the <a href="mock-backend.html">next chapter</a>, we'll work on mocking up a backend to get this sorted. This will help us nail down the architecture of our app to make it easier to add a real backend at some point in the future. So <a href="mock-backend.html">let's dig in</a>!</p>
 <p>The final code for this chapter is available <a href="https://github.com/fuse-open/hikr/tree/chapter-4">here</a>.</p>

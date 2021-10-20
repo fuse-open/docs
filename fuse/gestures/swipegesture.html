@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -706,20 +706,18 @@ Show advanced things
 <h3 id="basic-usage">Basic usage</h3>
 <p>A SwipeGesture must be attached to an <a href="../../fuse/elements/element.html">Element</a>, and will begin detecting swipes when the pointer is pressed
 down on that element. Attaching a <a href="../../fuse/gestures/swipegesture.html">SwipeGesture</a> to an <a href="../../fuse/elements/element.html">Element</a> is simply adding it as a child:</p>
-<pre><code class="language-xml">	&lt;Panel&gt;
-		&lt;SwipeGesture ux:Name=&quot;swipe&quot; Direction=&quot;Right&quot; Length=&quot;200&quot; /&gt;
-	&lt;/Panel&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Panel&gt;
+    &lt;SwipeGesture ux:Name=&quot;swipe&quot; Direction=&quot;Right&quot; Length=&quot;200&quot; /&gt;
+&lt;/Panel&gt;</code></pre>
 <p>The snippet above will recognize swipe gestures moving from left to right,
 over a distance of 200 points.</p>
 <p>However, this isn't doing anything useful yet. Let's add a trigger!</p>
-<pre><code class="language-xml">	&lt;Panel Width=&quot;100&quot; Height=&quot;100&quot; Background=&quot;Black&quot;&gt;
-		&lt;SwipeGesture ux:Name=&quot;swipe&quot; Direction=&quot;Right&quot; Length=&quot;200&quot; /&gt;
-		&lt;SwipingAnimation Source=&quot;swipe&quot;&gt;
-			&lt;Move X=&quot;200&quot; /&gt;
-		&lt;/SwipingAnimation&gt;
-	&lt;/Panel&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Panel Width=&quot;100&quot; Height=&quot;100&quot; Background=&quot;Black&quot;&gt;
+    &lt;SwipeGesture ux:Name=&quot;swipe&quot; Direction=&quot;Right&quot; Length=&quot;200&quot; /&gt;
+    &lt;SwipingAnimation Source=&quot;swipe&quot;&gt;
+        &lt;Move X=&quot;200&quot; /&gt;
+    &lt;/SwipingAnimation&gt;
+&lt;/Panel&gt;</code></pre>
 <p>We've now added a <a href="../../fuse/gestures/swipinganimation.html">SwipingAnimation</a>, which will map the progress of our swipe gesture onto a series of
 animations. In this case, we are moving the panel over the same distance as the <code>Length</code> of our
 SwipeGesture, resulting in the panel moving along with the pointer.</p>
@@ -730,17 +728,16 @@ so it must be referenced explicitly. All swipe-related triggers share this prope
 </blockquote>
 <p>We also want to respond when the swipe has completed, which is achieved using the
 <a href="../../fuse/gestures/swiped.html">Swiped</a> trigger. Let's extend our previous example a bit.</p>
-<pre><code class="language-xml">	&lt;Panel Width=&quot;100&quot; Height=&quot;100&quot; Background=&quot;Black&quot;&gt;
-		&lt;SwipeGesture ux:Name=&quot;swipe&quot; Direction=&quot;Right&quot; Length=&quot;200&quot; /&gt;
-		&lt;SwipingAnimation Source=&quot;swipe&quot;&gt;
-			&lt;Move X=&quot;200&quot; /&gt;
-		&lt;/SwipingAnimation&gt;
+<pre><code class="language-xml">&lt;Panel Width=&quot;100&quot; Height=&quot;100&quot; Background=&quot;Black&quot;&gt;
+    &lt;SwipeGesture ux:Name=&quot;swipe&quot; Direction=&quot;Right&quot; Length=&quot;200&quot; /&gt;
+    &lt;SwipingAnimation Source=&quot;swipe&quot;&gt;
+        &lt;Move X=&quot;200&quot; /&gt;
+    &lt;/SwipingAnimation&gt;
 
-		&lt;Swiped&gt;
-			&lt;DebugAction Message=&quot;Swiped!&quot; /&gt;
-		&lt;/Swiped&gt;
-	&lt;/Panel&gt;
-</code></pre>
+    &lt;Swiped&gt;
+        &lt;DebugAction Message=&quot;Swiped!&quot; /&gt;
+    &lt;/Swiped&gt;
+&lt;/Panel&gt;</code></pre>
 <p>For illustrative purposes, we are using <a href="../../fuse/triggers/actions/debugaction.html">DebugAction</a> to log a message
 to the console when the swipe has completed.</p>
 <h3 id="swipe-types">Swipe types</h3>
@@ -765,9 +762,8 @@ while swiping in the opposite direction will transition to the <em>inactive</em>
 <h5 id="reacting-to-state-transitions">Reacting to state transitions</h5>
 <p>When using the <code>Active</code> type, we can optionally configure the <a href="../../fuse/gestures/swiped.html">Swiped</a> trigger
 to respond to only activation or only deactivation.</p>
-<pre><code class="language-xml">	&lt;Swiped How=&quot;ToActive&quot;&gt;
-	&lt;Swiped How=&quot;ToInactive&quot;&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Swiped How=&quot;ToActive&quot;&gt;
+&lt;Swiped How=&quot;ToInactive&quot;&gt;</code></pre>
 <p>In addition, the <a href="../../fuse/gestures/whileswipeactive.html">WhileSwipeActive</a> trigger will be active while its source <a href="../../fuse/gestures/swipegesture.html">SwipeGesture</a> is an Active-type
 SwipeGesture, and has been swiped to its active state.</p>
 <h3 id="edge">Edge</h3>
@@ -781,17 +777,16 @@ begin at.</p>
 we can supply an <a href="../../fuse/elements/element.html">Element</a> to be measured via the <code>LengthNode</code> property.</p>
 <p>This is a powerful feature, as it allows us to create swipe-based controls that work regardless of their size.</p>
 <p>Below is an example of a size-independent switch control implemented using SwipeGesture.</p>
-<pre><code class="language-xml">	&lt;Panel Height=&quot;50&quot;&gt;
-		&lt;Circle Width=&quot;50&quot; Height=&quot;50&quot; Color=&quot;#000&quot; Alignment=&quot;Left&quot;&gt;
-			&lt;SwipeGesture ux:Name=&quot;swipe&quot; LengthNode=&quot;track&quot; Direction=&quot;Right&quot; Type=&quot;Active&quot; /&gt;
-			&lt;SwipingAnimation Source=&quot;swipe&quot;&gt;
-				&lt;Move X=&quot;1&quot; RelativeTo=&quot;Size&quot; RelativeNode=&quot;track&quot; /&gt;
-			&lt;/SwipingAnimation&gt;
-		&lt;/Circle&gt;
+<pre><code class="language-xml">&lt;Panel Height=&quot;50&quot;&gt;
+    &lt;Circle Width=&quot;50&quot; Height=&quot;50&quot; Color=&quot;#000&quot; Alignment=&quot;Left&quot;&gt;
+        &lt;SwipeGesture ux:Name=&quot;swipe&quot; LengthNode=&quot;track&quot; Direction=&quot;Right&quot; Type=&quot;Active&quot; /&gt;
+        &lt;SwipingAnimation Source=&quot;swipe&quot;&gt;
+            &lt;Move X=&quot;1&quot; RelativeTo=&quot;Size&quot; RelativeNode=&quot;track&quot; /&gt;
+        &lt;/SwipingAnimation&gt;
+    &lt;/Circle&gt;
 
-		&lt;Rectangle ux:Name=&quot;track&quot; Height=&quot;15&quot; Color=&quot;#0003&quot; Margin=&quot;25,0&quot; CornerRadius=&quot;15&quot; /&gt;
-	&lt;/Panel&gt;
-</code></pre>
+    &lt;Rectangle ux:Name=&quot;track&quot; Height=&quot;15&quot; Color=&quot;#0003&quot; Margin=&quot;25,0&quot; CornerRadius=&quot;15&quot; /&gt;
+&lt;/Panel&gt;</code></pre>
 
 <section class="type-location">
 <h3 id="section-location">Location</h3>

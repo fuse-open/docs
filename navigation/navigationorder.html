@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -687,26 +687,24 @@
 </blockquote>
 <p>The ordering of navigation pages is important for triggers such as EnteringAnimation, ExitingAnimation, WhileInEnterState and WhileInExitState. In these names, &quot;enter&quot; refers to pages in front and &quot;exit&quot; refers to pages in the back.</p>
 <p>For example, consider this <code>PageControl</code>:</p>
-<pre><code class="language-xml">	&lt;PageControl&gt;
-		&lt;Page ux:Name=&quot;A&quot;&gt;...&lt;/Page&gt;
-		&lt;Page ux:Name=&quot;B&quot;&gt;...&lt;/Page&gt;
-		&lt;Page ux:Name=&quot;C&quot;&gt;...&lt;/Page&gt;
-		&lt;Page ux:Name=&quot;D&quot;&gt;...&lt;/Page&gt;
-	&lt;/PageControl&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;PageControl&gt;
+    &lt;Page ux:Name=&quot;A&quot;&gt;...&lt;/Page&gt;
+    &lt;Page ux:Name=&quot;B&quot;&gt;...&lt;/Page&gt;
+    &lt;Page ux:Name=&quot;C&quot;&gt;...&lt;/Page&gt;
+    &lt;Page ux:Name=&quot;D&quot;&gt;...&lt;/Page&gt;
+&lt;/PageControl&gt;</code></pre>
 <p>If the active page is <code>C</code>, then both <code>A</code> and <code>B</code> are in front of it, and <code>D</code> is behind it. When the active page changes to <code>B</code>, then <code>A</code> remains in front, <code>C</code> moves to the back, and <code>D</code> remains in the back.</p>
 <h2 id="page-progress">Page Progress</h2>
 <p>The position of a page relative to the active one is referred to as it's progress. Pages behind the active one will have a negative progress, those in front will have a positive one, and the active page itself will have 0.</p>
 <p>Many navigation controls, such as <code>Navigator</code>, will discretly switch the progress of a page. For example, <code>0</code> will become <code>1</code> when a back operation is performed, and <code>0</code> will become <code>-1</code> when a push operation is performed. This type of control only defines the positions <code>-1</code>, <code>0</code>, and <code>1</code>.</p>
 <p>Some navigation controls, such as <code>PageControl</code>, manage the transition between pages internally. The progress of a page going forward will changed smoothly from <code>0</code> to <code>1</code>. This type of control also allows for positions beyond <code>1</code> and <code>-1</code>. A page that is two behind the active one will have progress <code>-2</code>.</p>
 <p>For example, consider this <code>PageControl</code>:</p>
-<pre><code class="language-xml">	&lt;PageControl&gt;
-		&lt;Page ux:Name=&quot;A&quot;&gt;...&lt;/Page&gt;
-		&lt;Page ux:Name=&quot;B&quot;&gt;...&lt;/Page&gt;
-		&lt;Page ux:Name=&quot;C&quot;&gt;...&lt;/Page&gt;
-		&lt;Page ux:Name=&quot;D&quot;&gt;...&lt;/Page&gt;
-	&lt;/PageControl&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;PageControl&gt;
+    &lt;Page ux:Name=&quot;A&quot;&gt;...&lt;/Page&gt;
+    &lt;Page ux:Name=&quot;B&quot;&gt;...&lt;/Page&gt;
+    &lt;Page ux:Name=&quot;C&quot;&gt;...&lt;/Page&gt;
+    &lt;Page ux:Name=&quot;D&quot;&gt;...&lt;/Page&gt;
+&lt;/PageControl&gt;</code></pre>
 <p>Assume the user is in the middle of swiping from B -&gt; C. The page progress of B will be <code>0.5</code> and C will be <code>-0.5</code>. This partial distance is used by the <code>Threshold</code> property of the Fuse.Navigation.WhileNavigationTrigger triggers.</p>
 <blockquote>
 <p>How far a page is from the active one can also be exploited in the Fuse.Navigation.NavigationAnimation triggers. The <code>Scale</code> property adjusts the activiation level of the trigger based on the distance.</p>

@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -702,23 +702,21 @@ Show advanced things
 <p>Vibrate the device for a duration or by vibration type (only on iOS)</p>
 <p>You'll find this trigger action in the Fuse.Vibration package, which have to be referenced from your uno project.
 For example:</p>
-<pre><code class="language-json">    {
-        &quot;Packages&quot;: [
-            &quot;Fuse&quot;,
-            &quot;FuseJS&quot;,
-            &quot;Fuse.Vibration&quot;
-        ]
-      }
-</code></pre>
+<pre><code class="language-js">{
+    &quot;Packages&quot;: [
+        &quot;Fuse&quot;,
+        &quot;FuseJS&quot;,
+        &quot;Fuse.Vibration&quot;
+    ]
+  }</code></pre>
 <h4 id="example">Example</h4>
-<pre><code class="language-xml">    &lt;StackPanel Margin=&quot;20&quot;&gt;
-        &lt;Button Margin=&quot;10&quot; Text=&quot;Vibrate&quot;&gt;
-            &lt;Clicked&gt;
-                &lt;Vibrate Duration=&quot;5&quot; /&gt;
-            &lt;/Clicked&gt;
-        &lt;/Button&gt;
-    &lt;/StackPanel&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;StackPanel Margin=&quot;20&quot;&gt;
+    &lt;Button Margin=&quot;10&quot; Text=&quot;Vibrate&quot;&gt;
+        &lt;Clicked&gt;
+            &lt;Vibrate Duration=&quot;5&quot; /&gt;
+        &lt;/Clicked&gt;
+    &lt;/Button&gt;
+&lt;/StackPanel&gt;</code></pre>
 <p>On iOS you can do vibration by leveraging Taptic Engine. There are 9 types of vibration :</p>
 <ul>
 <li>Soft</li>
@@ -733,15 +731,14 @@ For example:</p>
 To activate it, just pass those value to <code>VibrationType</code> property</li>
 </ul>
 <p>##Example</p>
-<pre><code class="language-xml">    &lt;StackPanel Margin=&quot;20&quot;&gt;
-        &lt;!-- Works on iOS using Taptic Engine --&gt;
-        &lt;Button Margin=&quot;10&quot; Text=&quot;Heavy Vibrate&quot;&gt;
-            &lt;Clicked&gt;
-                &lt;Vibrate VibrationType=&quot;Heavy&quot; /&gt;
-            &lt;/Clicked&gt;
-        &lt;/Button&gt;
-    &lt;/StackPanel&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;StackPanel Margin=&quot;20&quot;&gt;
+    &lt;!-- Works on iOS using Taptic Engine --&gt;
+    &lt;Button Margin=&quot;10&quot; Text=&quot;Heavy Vibrate&quot;&gt;
+        &lt;Clicked&gt;
+            &lt;Vibrate VibrationType=&quot;Heavy&quot; /&gt;
+        &lt;/Clicked&gt;
+    &lt;/Button&gt;
+&lt;/StackPanel&gt;</code></pre>
 
 <section class="type-location">
 <h3 id="section-location">Location</h3>

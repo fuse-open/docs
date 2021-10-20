@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -688,12 +688,10 @@
 <h2 id="quick-summary">Quick Summary</h2>
 <p>UX Markup's <em>Reactive Expressions</em> allow you to combine <em>literals</em>, <em>resources</em> and all supported <em>bindings</em> into expressions using <em>operators</em> and <em>functions</em>. These expressions update on a push-based, automatic basis if any of the <em>bindings</em> produce a new value.</p>
 <p>In the following example, a slider controls the position of a rectangle.</p>
-<pre><code class="language-xml">	&lt;Rectangle X=&quot;spring({Property slider.Value})*30% + 50%&quot; Alignment=&quot;TopLeft&quot; Width=&quot;32&quot; Height=&quot;32&quot; /&gt;
-	&lt;Slider ux:Name=&quot;slider&quot; Minimum=&quot;-1&quot; Maximum=&quot;1&quot; /&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Rectangle X=&quot;spring({Property slider.Value})*30% + 50%&quot; Alignment=&quot;TopLeft&quot; Width=&quot;32&quot; Height=&quot;32&quot; /&gt;
+&lt;Slider ux:Name=&quot;slider&quot; Minimum=&quot;-1&quot; Maximum=&quot;1&quot; /&gt;</code></pre>
 <p>Note in particular the expression for the <code>X</code>-offset of the rectangle:</p>
-<pre><code class="language-js">	spring({Property slider.Value})*30% + 50%
-</code></pre>
+<pre><code class="language-js">spring({Property slider.Value})*30% + 50%</code></pre>
 <p>This means that the rectangle will be offset by <code>50%</code>, plus a value that ranges between <code>-30%</code> and <code>30%</code> through a <code>spring</code> physics function.</p>
 <h2 id="bindings">Bindings</h2>
 <p>Bindings are objects that listen for changes in the environment and produces a new value that feeds into the UX expression. All binding types can be used as part of expressions:</p>
@@ -705,27 +703,21 @@
 <p>Note that inline expressions (<code>{= expression}</code>) also use the curly brace syntax, yet these are technically not bindings.</p>
 <h2 id="arithmetic">Arithmetic</h2>
 <p>UX expressions can add (<code>+</code>), subtract (<code>-</code>), multiply (<code>*</code>) and divide (<code>/</code>) any scalar or vector value, with or without units (such as <code>%</code> and <code>px</code>).</p>
-<pre><code class="language-xml">	&lt;Panel Width=&quot;{foo} * 100% + 40%&quot; /&gt;
-	&lt;Slider Margin=&quot;{foo}&quot; /&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Panel Width=&quot;{foo} * 100% + 40%&quot; /&gt;
+&lt;Slider Margin=&quot;{foo}&quot; /&gt;</code></pre>
 <p>Arithmetic can only be performed between values of the same unit, or between one value with unit and one value without unit. You can <strong>not</strong> do <code>10% + 10px</code>, for example. This will give a runtime error.</p>
 <h2 id="vectors">Vectors</h2>
 <p>Vectors (up to 4 components) can be constructed using the comma <code>,</code> operator:</p>
-<pre><code class="language-xml">	&lt;Panel Margin=&quot;10, {spacing}, 10, {spacing} / 2&quot; /&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Panel Margin=&quot;10, {spacing}, 10, {spacing} / 2&quot; /&gt;</code></pre>
 <p>Vectors will also be automatically expanded to the appropriate size from a shorter vector, according to the following rules: <code>X</code> -&gt; <code>XXXX</code>, <code>XY -&gt; XYXY</code> and <code>XYZ</code> -&gt; <code>XYZ1</code>.</p>
-<pre><code class="language-xml">	&lt;Panel Margin=&quot;{spacing}&quot; /&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Panel Margin=&quot;{spacing}&quot; /&gt;</code></pre>
 <h2 id="strings-and-text">Strings and text</h2>
 <p>String properties (such as <code>&lt;Text Value=&quot;&quot;</code>) are parsed differently from other properties. A string property is treated as a literal string, except for curly braced operands.</p>
-<pre><code class="language-xml">	&lt;Text&gt;Hello, {username}!&lt;/Text&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Text&gt;Hello, {username}!&lt;/Text&gt;</code></pre>
 <p>Or, equivalently:</p>
-<pre><code class="language-xml">	&lt;Text Value=&quot;Hello, {username}&quot; /&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Text Value=&quot;Hello, {username}&quot; /&gt;</code></pre>
 <p>To embed a computed expression inside a string value, you can use the <code>{= expression}</code> syntax, for example:</p>
-<pre><code class="language-xml">	&lt;Text&gt;Hello, {= toLower({username})}!&lt;/Text&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Text&gt;Hello, {= toLower({username})}!&lt;/Text&gt;</code></pre>
 <h2 id="functions">Functions</h2>
 <blockquote>
 <p>Note: The current set of functions are experimental and will change. Keep an eye on future changelogs.</p>
@@ -779,9 +771,8 @@
 </ul>
 <pre><code class="language-xml">&lt;AttractorConfig Unit=&quot;Points&quot; Easing=&quot;SinusoidalInOut&quot; Duration=&quot;0.3&quot; ux:Global=&quot;asPoints&quot; /&gt;
 &lt;Panel&gt;
-	&lt;Translation X=&quot;attract({xOffset}, asPoints)&quot; /&gt;
-&lt;/Panel&gt;
-</code></pre>
+    &lt;Translation X=&quot;attract({xOffset}, asPoints)&quot; /&gt;
+&lt;/Panel&gt;</code></pre>
 <ul>
 <li><code>alternate(value, groupSize)</code> - alternate between true/false value for ranges of integers</li>
 <li><code>spring(value)</code> - performs a spring physics simulation that chases the given <code>value</code>.</li>
@@ -791,22 +782,20 @@
 <li><code>offsetIndex()</code> - returns the index of this item inside <code>Each.Items</code>, relative to <code>Each.Offset</code></li>
 </ul>
 <pre><code class="language-xml">&lt;JavaScript&gt;
-	var items = [1,2,3,4,5,6,7,8,9,10];
-	module.exports = {
-		items: items
-	};
+    var items = [1,2,3,4,5,6,7,8,9,10];
+    module.exports = {
+        items: items
+    };
 &lt;/JavaScript&gt;
 &lt;StackPanel ItemSpacing=&quot;8&quot; Margin=&quot;8&quot;&gt;
-	&lt;Each Items=&quot;{items}&quot; Offset=&quot;2&quot; Limit=&quot;4&quot;&gt;
-		&lt;Panel ux:Name=&quot;item&quot; Height=&quot;48&quot;&gt;
-			&lt;Text Value=&quot;value: {}; index: {= index(item)}; offsetIndex: {= offsetIndex(item)}&quot; Alignment=&quot;CenterLeft&quot; /&gt;
-		&lt;/Panel&gt;
-	&lt;/Each&gt;
-&lt;/StackPanel&gt;
-</code></pre>
+    &lt;Each Items=&quot;{items}&quot; Offset=&quot;2&quot; Limit=&quot;4&quot;&gt;
+        &lt;Panel ux:Name=&quot;item&quot; Height=&quot;48&quot;&gt;
+            &lt;Text Value=&quot;value: {}; index: {= index(item)}; offsetIndex: {= offsetIndex(item)}&quot; Alignment=&quot;CenterLeft&quot; /&gt;
+        &lt;/Panel&gt;
+    &lt;/Each&gt;
+&lt;/StackPanel&gt;</code></pre>
 <p><strong>Note:</strong> Avoid using layout functions (like <code>width(element)</code>, <code>height(element)</code>, <code>x(element)</code> or <code>y(element)</code>) as input to layout parameters (like <code>Width</code>, <code>Height</code>, <code>Margin</code> or <code>Padding</code>) . Doing this can cause unwanted or glitchy behavior:</p>
-<pre><code class="language-xml">&lt;Panel Width=&quot;10&quot; Height=&quot;width(this)&quot; /&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Panel Width=&quot;10&quot; Height=&quot;width(this)&quot; /&gt;</code></pre>
 
             </div>
             <div class="d-none d-sm-block col-md-3 d-xl-3 toc-content">

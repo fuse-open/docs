@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -733,8 +733,7 @@ Show advanced things
                 });
         &lt;/JavaScript&gt;
     &lt;/NativeViewHost&gt;
-&lt;/DockPanel&gt;
-</code></pre>
+&lt;/DockPanel&gt;</code></pre>
 <p>The <code>&lt;CameraView /&gt;</code> tag is the UI element that will display a live preview from the camera. The camera is loading asynchronously and the <code>getCameraInfo</code> promise wont resolve until it is loaded. This can be used to reflect if the camera is ready and its initial state in your UI.</p>
 <h5 id="capturing-a-photo">Capturing a photo</h5>
 <p>To capture a photo, make sure the camera is loaded as discussed above and set its capture mode to photo. If a photo capture was successful you will get an object representing the native photo result, you can call <code>save()</code> to store the photo on disk and get a filepath. A photo may require a lot of memory on your device, make sure to call <code>release()</code> on it when you are done using it. It is considered bad practice to keep many photo objects around as this can lead to out-of-memory crashes.</p>
@@ -758,8 +757,7 @@ function capturePhoto() {
         .catch(function(error) {
             console.log(&quot;Failed to capture photo: &quot; + error);
         });
-}
-</code></pre>
+}</code></pre>
 <h5 id="recording-video">Recording video</h5>
 <p>Make sure the capture mode is set to video. When you start a recording you get a session object which you need to hold onto. When you call <code>stop()</code> on the recording session you will get a file path to the result.</p>
 <pre><code class="language-js">Camera.setCaptureMode(Camera.CAPTURE_MODE_VIDEO)
@@ -792,8 +790,7 @@ function stopRecording() {
             console.log(&quot;Failed to stop recording: &quot; + error);
             session = null;
         });
-}
-</code></pre>
+}</code></pre>
 <h5 id="change-camera-facing">Change camera facing</h5>
 <p>You can change the camera facing when the camera is not busy. For example, you cannot change camera facing while recording video or capturing a photo.</p>
 <pre><code class="language-js">var currentFacing = Camera.CAMERA_FACING_BACK;
@@ -810,8 +807,7 @@ function flipFacing() {
         .catch(function(error) {
             console.log(&quot;Failed to set camera facing: &quot; + error);
         });
-}
-</code></pre>
+}</code></pre>
 <h5 id="set-photo-resolution-android-only">Set photo resolution (Android only)</h5>
 <p>On iOS you cannot specify an output resoltuion for captured photos, however on Android you must specify what resolution you want your photos captured in. There is no sensible default value, so if not explicilty set this abstraction will chose a resolution based on the current aspect ratio of your <code>&lt;CameraView /&gt;</code>. But you have the option to set this yourself, although that code will only work on Android.</p>
 <pre><code class="language-js">Camera.getCameraInfo()
@@ -835,8 +831,7 @@ function flipFacing() {
                     console.log(&quot;Failed to set photo options: &quot; + error);
                 });
         }
-    });
-</code></pre>
+    });</code></pre>
 
 <section class="type-location">
 <h3 id="section-location">Location</h3>

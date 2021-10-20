@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -684,31 +684,29 @@
 <p>The <code>ux:Class</code> attribute defines a new UX (Uno) class where the type of the XML element is the <em>base class</em>. This means the new class inherits all public properties, events and behaviors from the superclass.</p>
 <p>Any tree of UX Markup elements can easily be converted into a component using the <code>ux:Class</code> attribute. Classes can contain <a href="../fuse/reactive/javascript.html">JavaScript</a> tags that manages the inner business logic of the component.</p>
 <h2 id="syntax">Syntax</h2>
-<pre><code class="language-xml">	&lt;base_class ux:Class=&quot;class_name&quot; /&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;base_class ux:Class=&quot;class_name&quot; /&gt;</code></pre>
 <p>Where <code>base_class</code> is any <code>class</code> accesible to UX Markup, and <code>class_name</code> is a fully qualified class name (including namespace path, if desired, separated by <code>.</code>).</p>
 <h2 id="example">Example</h2>
 <p>The following example defines a new class <code>MyCheckBox</code> which is blue while unchecked, and red while checked. Tapping the checkbox changes the state.</p>
-<pre><code class="language-xml">	&lt;Panel ux:Class=&quot;MyCheckBox&quot; Color=&quot;Blue&quot;&gt;
-		&lt;bool ux:Property=&quot;Value&quot; /&gt;
-		&lt;JavaScript&gt;
+<pre><code class="language-xml">&lt;Panel ux:Class=&quot;MyCheckBox&quot; Color=&quot;Blue&quot;&gt;
+    &lt;bool ux:Property=&quot;Value&quot; /&gt;
+    &lt;JavaScript&gt;
 
-			function toggle() {
-				this.Value.value = !this.Value.value;
-			}
+        function toggle() {
+            this.Value.value = !this.Value.value;
+        }
 
-			module.exports = { toggle: toggle };
-			
-		&lt;/JavaScript&gt;
+        module.exports = { toggle: toggle };
+        
+    &lt;/JavaScript&gt;
 
-		&lt;WhileTrue Value=&quot;{Property Value}&quot; /&gt;
-			&lt;Change this.Color=&quot;Red&quot; Duration=&quot;0.2&quot; /&gt;
-		&lt;/WhileTrue&gt;
-		&lt;Tapped&gt;
-			&lt;Callback Handler=&quot;{toggle}&quot; /&gt;
-		&lt;/Tapped&gt;
-	&lt;/Panel&gt;
-</code></pre>
+    &lt;WhileTrue Value=&quot;{Property Value}&quot; /&gt;
+        &lt;Change this.Color=&quot;Red&quot; Duration=&quot;0.2&quot; /&gt;
+    &lt;/WhileTrue&gt;
+    &lt;Tapped&gt;
+        &lt;Callback Handler=&quot;{toggle}&quot; /&gt;
+    &lt;/Tapped&gt;
+&lt;/Panel&gt;</code></pre>
 <h2 id="why-use-classes">Why use classes?</h2>
 <p>Fuse encourages breaking your app into components (classes) for several reasons:</p>
 <ul>
@@ -722,32 +720,30 @@
 <p>Note: <code>InnerClass</code> can seem like a very convenient feature at first glance, but you should be careful about using it as it can lead to tight coupling of components. Its usually a good idea to stick with <code>ux:Class</code> in most situations.</p>
 </blockquote>
 <h2 id="syntax">Syntax</h2>
-<pre><code class="language-xml">	&lt;base_class ux:InnerClass=&quot;class_name&quot; /&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;base_class ux:InnerClass=&quot;class_name&quot; /&gt;</code></pre>
 <h2 id="example">Example</h2>
 <p>In the following example, notice that we access <code>toggleStatusPanel</code> which is defined outside of our class definition of <code>MyInnerClass</code>. We can do this because we declare it using <code>ux:InnerClass</code> instead of <code>ux:Class</code>.</p>
-<pre><code class="language-xml">	&lt;App&gt;
-		&lt;DockPanel&gt;
-			&lt;Panel ux:Name=&quot;statusPanel&quot; Color=&quot;#f00&quot; Height=&quot;80&quot; Dock=&quot;Top&quot; /&gt;
-			&lt;WhileTrue ux:Name=&quot;toggleStatusPanel&quot;&gt;
-				&lt;Change statusPanel.Color=&quot;#0f0&quot; /&gt;
-			&lt;/WhileTrue&gt;
-			
-			&lt;Panel ux:InnerClass=&quot;MyInnerClass&quot; Height=&quot;80&quot; Color=&quot;Blue&quot; Margin=&quot;5&quot;&gt;
-				&lt;Clicked&gt;
-					&lt;Toggle Target=&quot;toggleStatusPanel&quot; /&gt;
-				&lt;/Clicked&gt;
-			&lt;/Panel&gt;
-			
-			&lt;StackPanel&gt;
-				&lt;MyInnerClass /&gt;
-				&lt;MyInnerClass /&gt;
-				&lt;MyInnerClass /&gt;
-				&lt;MyInnerClass /&gt;
-			&lt;/StackPanel&gt;
-		&lt;/DockPanel&gt;
-	&lt;/App&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;App&gt;
+    &lt;DockPanel&gt;
+        &lt;Panel ux:Name=&quot;statusPanel&quot; Color=&quot;#f00&quot; Height=&quot;80&quot; Dock=&quot;Top&quot; /&gt;
+        &lt;WhileTrue ux:Name=&quot;toggleStatusPanel&quot;&gt;
+            &lt;Change statusPanel.Color=&quot;#0f0&quot; /&gt;
+        &lt;/WhileTrue&gt;
+        
+        &lt;Panel ux:InnerClass=&quot;MyInnerClass&quot; Height=&quot;80&quot; Color=&quot;Blue&quot; Margin=&quot;5&quot;&gt;
+            &lt;Clicked&gt;
+                &lt;Toggle Target=&quot;toggleStatusPanel&quot; /&gt;
+            &lt;/Clicked&gt;
+        &lt;/Panel&gt;
+        
+        &lt;StackPanel&gt;
+            &lt;MyInnerClass /&gt;
+            &lt;MyInnerClass /&gt;
+            &lt;MyInnerClass /&gt;
+            &lt;MyInnerClass /&gt;
+        &lt;/StackPanel&gt;
+    &lt;/DockPanel&gt;
+&lt;/App&gt;</code></pre>
 <h2 id="remarks">Remarks</h2>
 <p>Note that <code>ux:InnerClass</code> covers a very special case of componentization in Fuse and should generally not be needed. Prefer creating an explicit interface in and out of your components using <code>ux:Property</code> and <code>ux:Dependency</code>.</p>
 

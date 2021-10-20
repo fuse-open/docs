@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -695,44 +695,42 @@
 </blockquote>
 <p><code>TodoApp.js</code></p>
 <pre><code class="language-JS">class TodoItem {
-	constructor(description) {
-		this.description = description
-		this.isDone = false
-	}
+    constructor(description) {
+        this.description = description
+        this.isDone = false
+    }
 }
 
 export default class TodoApp {
-	constructor() {
-		this.todos = [ new TodoItem(&quot;Buy milk&quot;) ]
-		this.newTodo = &quot;&quot;
-	}
+    constructor() {
+        this.todos = [ new TodoItem(&quot;Buy milk&quot;) ]
+        this.newTodo = &quot;&quot;
+    }
 
-	addTodo() {
-		this.todos.push(new TodoItem(this.newTodo))
-		this.newTodo = &quot;&quot;
-	}
+    addTodo() {
+        this.todos.push(new TodoItem(this.newTodo))
+        this.newTodo = &quot;&quot;
+    }
 
-	get todosRemaining() {
-		return this.todos.filter(x =&gt; !x.isDone).length
-	}
-}
-</code></pre>
+    get todosRemaining() {
+        return this.todos.filter(x =&gt; !x.isDone).length
+    }
+}</code></pre>
 <p>And here is a simple UX Markup view for this app:</p>
 <p><code>TodoApp.ux</code></p>
 <pre><code class="language-XML">&lt;App Model=&quot;TodoApp&quot;&gt;
-	&lt;StackPanel&gt;
-		&lt;Each Items=&quot;{todos}&quot;&gt;
-			&lt;DockPanel&gt;
-				&lt;Text&gt;{description}&lt;/Text&gt;
-				&lt;Switch Dock=&quot;Right&quot; Value=&quot;{isDone}&quot;&gt;
-			&lt;/DockPanel&gt;
-		&lt;/Each&gt;
-		&lt;Text&gt;You have {todosRemaining} things left to do&lt;/Text&gt;
-		&lt;TextBox Value=&quot;{newTodo}&quot; /&gt;
-		&lt;Button Text=&quot;Add new todo&quot; Clicked=&quot;{addTodo}&quot; /&gt;
-	&lt;/StackPanel&gt;
-&lt;/App&gt;
-</code></pre>
+    &lt;StackPanel&gt;
+        &lt;Each Items=&quot;{todos}&quot;&gt;
+            &lt;DockPanel&gt;
+                &lt;Text&gt;{description}&lt;/Text&gt;
+                &lt;Switch Dock=&quot;Right&quot; Value=&quot;{isDone}&quot;&gt;
+            &lt;/DockPanel&gt;
+        &lt;/Each&gt;
+        &lt;Text&gt;You have {todosRemaining} things left to do&lt;/Text&gt;
+        &lt;TextBox Value=&quot;{newTodo}&quot; /&gt;
+        &lt;Button Text=&quot;Add new todo&quot; Clicked=&quot;{addTodo}&quot; /&gt;
+    &lt;/StackPanel&gt;
+&lt;/App&gt;</code></pre>
 <p>Finally make sure we include <code>TodoApp.js</code> (or all <code>**.js</code> files) as a <code>FuseJS</code> item in the project includes:</p>
 <p><code>Todo.unoproj</code></p>
 <pre><code class="language-JSON">{
@@ -744,8 +742,7 @@ export default class TodoApp {
     &quot;*&quot;,
     &quot;**.js:FuseJS&quot;
   ]
-}
-</code></pre>
+}</code></pre>
 <p>That's the gist of it. The rest of this documents explains all the concepts in more detail.</p>
 <h2 id="app-models-state-container">App models  (state container)</h2>
 <p><em>Models</em> are simply plain ES6 classes composed into an object graph like in the above example.</p>
@@ -756,17 +753,15 @@ export default class TodoApp {
 <li><strong>Separation of logic and view</strong>. The different model classes can be tested in isolation or combination without any hard ties to a view heirarchy.</li>
 </ul>
 <p>We specify what the app model is by setting the <code>Model</code> property on the <code>App</code> tag to point to the <code>FuseJS</code> module that exports the class.</p>
-<pre><code class="language-XML">&lt;App Model=&quot;TodoApp&quot;&gt;
-</code></pre>
+<pre><code class="language-XML">&lt;App Model=&quot;TodoApp&quot;&gt;</code></pre>
 <p>This will look for <code>TodoApp.js</code> among the files included as <code>FuseJS</code> in the project, and instantiate the exported <code>default</code> class. The resulting object is added to the data context for the UX Markup subtree.</p>
 <h2 id="automatic-change-detection">Automatic change detection</h2>
 <p>FuseJS will automatically detect changes to your models and update the view (declared in UX Markup) accordingly. There is no need to use observables or send change notifications manually.</p>
 <p>In our above example, we do this:</p>
 <pre><code class="language-JS">addTodo() {
-	this.todos.push(new TodoItem(this.newTodo))
-	this.newTodo = &quot;&quot;
-}
-</code></pre>
+    this.todos.push(new TodoItem(this.newTodo))
+    this.newTodo = &quot;&quot;
+}</code></pre>
 <p>What will happen is that FuseJS notices you called the <code>addTodo</code> method on this particular object, which will mark this particular object as <em>dirty</em> and schedule it for change detection later. When your JS code is idle, scheduled dirty objects are scanned for changes and the UI is notified about the changes since last scan.</p>
 <p>Things to note:</p>
 <ul>
@@ -778,73 +773,63 @@ export default class TodoApp {
 <p>Doing changes in asynchronous callbacks is also (mostly) fine. FuseJS uses <a href="https://github.com/angular/zone.js">Zone.js</a> (borrowed from <a href="https://angular.io/">Angular</a>). FuseJS will note what object is expecting the callback and mark it as dirty when the callback happens.</p>
 <p>So this is perfectly fine; FuseJS will detect the changes to <code>this.items</code>:</p>
 <pre><code class="language-JS">fetchMore() {
-	fetch(some_url)
-		.then(data =&gt; data.json())
-		.then(newItems =&gt; { this.items = items.concat(newItems); })
-}
-</code></pre>
+    fetch(some_url)
+        .then(data =&gt; data.json())
+        .then(newItems =&gt; { this.items = items.concat(newItems); })
+}</code></pre>
 <p>Please note that, while this works most of the time, Zone.js cannot intercept <em>every</em> imaginable async event.
 If you encounter a situation where the UI is not updating after assigning to a field from an asynchronous callback,
 you can move the assignment to its own method to force change detection.</p>
 <p><strong>Before:</strong></p>
 <pre><code class="language-js">getNewData() {
-	doSomethingAsync((result) =&gt; {
-		this.result = result;
-	});
-}
-</code></pre>
+    doSomethingAsync((result) =&gt; {
+        this.result = result;
+    });
+}</code></pre>
 <p><strong>After:</strong></p>
 <pre><code class="language-js">onGotResult(result) {
-	this.result = result;
+    this.result = result;
 }
 
 getNewData() {
-	doSomethingAsync((result) =&gt; {
-		this.onGotResult(result);
-	});
-}
-</code></pre>
+    doSomethingAsync((result) =&gt; {
+        this.onGotResult(result);
+    });
+}</code></pre>
 <h2 id="derived-state">Derived state</h2>
 <p>You can add <em>derived state</em> to your models by using simple property <code>get</code>'ers:</p>
 <pre><code class="language-JS">get todosRemaining() {
-	return this.todos.filter(x =&gt; !x.isDone).length
-}
-</code></pre>
+    return this.todos.filter(x =&gt; !x.isDone).length
+}</code></pre>
 <p>Derived state is not explicitly stored in the model, but computed on demand based on other state. If the change detector detects a change in the object's state, all derived state for that object, as well as any object that holds a reference to it, is recomputed for the UI.</p>
 <h2 id="two-way-data-binding">Two-way data binding</h2>
 <p>Note that <code>isDone</code> and <code>newTodo</code> in our above <code>TodoApp</code> example are bound to interactive UI controls (<code>Switch</code> and <code>TextBox</code> respectively).</p>
-<pre><code class="language-XML">&lt;Switch Dock=&quot;Right&quot; Value=&quot;{isDone}&quot;&gt;
-</code></pre>
+<pre><code class="language-XML">&lt;Switch Dock=&quot;Right&quot; Value=&quot;{isDone}&quot;&gt;</code></pre>
 <p>By default, this creates a two-way data binding to the model. If the user manipulates the control, the model is updated, and vice versa. Derived properties are automatically re-calculated.</p>
 <p>You can disable two-way data binding by adding <code>Read</code> to the binding:</p>
-<pre><code class="language-XML">&lt;Switch Dock=&quot;Right&quot; Value=&quot;{Read isDone}&quot; &gt;
-</code></pre>
+<pre><code class="language-XML">&lt;Switch Dock=&quot;Right&quot; Value=&quot;{Read isDone}&quot; &gt;</code></pre>
 <p>You also two-way-bind to <em>derived state</em> by adding a corresponding <code>set</code> method for your <code>get</code> methods:</p>
 <pre><code class="language-JS">get radians() {
-	return this.degrees / 180 * Math.PI
+    return this.degrees / 180 * Math.PI
 }
 set radians(value) {
-	this.degrees = value / Math.PI * 180
-}
-</code></pre>
+    this.degrees = value / Math.PI * 180
+}</code></pre>
 <h2 id="splitting-into-files-and-folders">Splitting into files and folders</h2>
 <p>You can safely split your FuseJS code into as many files and folders you want, and use EcmaScript6 <code>import</code>/<code>export</code> syntax to stitch it back together. It is recommended to do so on a class-by-class basis, so each class can be tested in isolation.</p>
 <p><code>Model/TodoItem.js</code></p>
 <pre><code class="language-JS">export default class TodoItem {
-	constructor(description) {
-		this.description = description
-		this.isDone = false
-	}
-}
-</code></pre>
+    constructor(description) {
+        this.description = description
+        this.isDone = false
+    }
+}</code></pre>
 <pre><code class="language-JS">import TodoItem from './TodoItem'
 
 export default class TodoList {
-	...
-</code></pre>
+    ...</code></pre>
 <p><code>TodoApp.ux</code></p>
-<pre><code class="language-XML">&lt;App Model=&quot;Model/TodoList&quot;&gt;
-</code></pre>
+<pre><code class="language-XML">&lt;App Model=&quot;Model/TodoList&quot;&gt;</code></pre>
 <p>A typical project structure may look like this:</p>
 <pre><code>Assets/
 	done.png
@@ -873,26 +858,25 @@ Todo.unoproj
 <p>As an example, let's create a new page class that can display details about a particular todo, and some relevant derived stats.</p>
 <p><code>Pages/TodoItemPage.js</code></p>
 <pre><code class="language-JS">export default class TodoItemPage {
-	constructor(todoItem, todoList) {
-		this.todoItem = todoItem
-		this.todoList = todoList
-	}
+    constructor(todoItem, todoList) {
+        this.todoItem = todoItem
+        this.todoList = todoList
+    }
 
-	get label() {
-		return this.todoItem.description
-	}
+    get label() {
+        return this.todoItem.description
+    }
 
-	get isDone() {
-		return this.todoItem.isDone
-	}
+    get isDone() {
+        return this.todoItem.isDone
+    }
 
-	// Computes a list of other todos that needs doing 
-	// or is done (depending on what this one is)
-	get similarTodos() {
-		return this.todoList.filter(x =&gt; x.isDone === this.todoItem.isDone)
-	}
-}
-</code></pre>
+    // Computes a list of other todos that needs doing 
+    // or is done (depending on what this one is)
+    get similarTodos() {
+        return this.todoList.filter(x =&gt; x.isDone === this.todoItem.isDone)
+    }
+}</code></pre>
 <h3 id="page-stacks-hierarchical-navigation">Page stacks (hierarchical navigation)</h3>
 <p>A common way to structure navigation in an app is as a <em>stack</em> of pages, where pages can be <em>pushed</em> (when we <em>go to</em> a page)  and <em>popped</em> (when we <em>go back</em>).</p>
 <p>In FuseJS we represent a page stack with a simple array. We initialize the array with the default page.</p>
@@ -902,59 +886,53 @@ import TodoListPage from 'Pages/TodoListPage'
 import TodoItemPage from 'Pages/TodoItemPage'
 
 export class TodoApp {
-	constructor() {
-		this.todoList = new TodoList()
-		this.pages = [ new TodoListPage(this.todoList) ]
-	}
+    constructor() {
+        this.todoList = new TodoList()
+        this.pages = [ new TodoListPage(this.todoList) ]
+    }
 
-	gotoTodo(e) {
-		this.pages.push(new TodoItemPage(e.data, this.todoList))
-	}
+    gotoTodo(e) {
+        this.pages.push(new TodoItemPage(e.data, this.todoList))
+    }
 
-	goBack() {
-		this.pages.pop()
-	}
-}
-</code></pre>
+    goBack() {
+        this.pages.pop()
+    }
+}</code></pre>
 <p>By linking the <code>pages</code> array to a <code>Navigator</code>'s <code>Pages</code> property, we have a working navigation system:</p>
 <pre><code class="language-XML">&lt;App Model=&quot;TodoApp&quot;&gt;
-	&lt;Navigator Pages=&quot;{pages}&quot;&gt;
-		&lt;TodoListPage ux:Template=&quot;TodoListPage&quot; /&gt;
-		&lt;TodoItemPage ux:Template=&quot;TodoItemPage&quot; /&gt;
-	&lt;/Navigator&gt;
-&lt;/App&gt;
-</code></pre>
+    &lt;Navigator Pages=&quot;{pages}&quot;&gt;
+        &lt;TodoListPage ux:Template=&quot;TodoListPage&quot; /&gt;
+        &lt;TodoItemPage ux:Template=&quot;TodoItemPage&quot; /&gt;
+    &lt;/Navigator&gt;
+&lt;/App&gt;</code></pre>
 <p>The appropriate <code>ux:Template</code> is chosen based on the name of the ES6 class.</p>
 <p>We can now create a corresponding view for <code>TodoItemPage.ux</code> that allows us to navigate &quot;deeper&quot; into related todos:</p>
 <p><code>Pages/TodoItemPage.ux</code></p>
 <pre><code class="language-XML">&lt;Page ux:Class=&quot;TodoItemPage&quot;&gt;
-	&lt;StackPanel&gt;
-		&lt;Text&gt;{label}&lt;/Text&gt;
-		&lt;Text&gt;{isDone ? 'This todo is done' : 'This todo needs doing'}&lt;Text&gt;
-		&lt;Button Text=&quot;Go back&quot; Clicked=&quot;{goBack}&quot; /&gt;
-		
-		&lt;Text Margin=&quot;0,20,0,0&quot;&gt;Other things that {isDone ? 'is done' : 'needs doing'}:&lt;/Text&gt;
-		&lt;Each Items=&quot;{similarTodos}&quot;&gt;
-			&lt;Button Clicked=&quot;{gotoTodo}&quot; Text=&quot;{description}&quot;&gt;
-		&lt;/Each&gt;
-	&lt;/StackPanel&gt;
-&lt;/Page&gt;
-</code></pre>
+    &lt;StackPanel&gt;
+        &lt;Text&gt;{label}&lt;/Text&gt;
+        &lt;Text&gt;{isDone ? 'This todo is done' : 'This todo needs doing'}&lt;Text&gt;
+        &lt;Button Text=&quot;Go back&quot; Clicked=&quot;{goBack}&quot; /&gt;
+        
+        &lt;Text Margin=&quot;0,20,0,0&quot;&gt;Other things that {isDone ? 'is done' : 'needs doing'}:&lt;/Text&gt;
+        &lt;Each Items=&quot;{similarTodos}&quot;&gt;
+            &lt;Button Clicked=&quot;{gotoTodo}&quot; Text=&quot;{description}&quot;&gt;
+        &lt;/Each&gt;
+    &lt;/StackPanel&gt;
+&lt;/Page&gt;</code></pre>
 <p>We can navigate back to the default state (or any other state) from anywhere by simply rewriting the <code>pages</code> array to something appropriate:</p>
 <pre><code class="language-JS">goHome() {
-	this.pages = [ new TodoListPage(this.todoList) ]
-}
-</code></pre>
+    this.pages = [ new TodoListPage(this.todoList) ]
+}</code></pre>
 <h3 id="page-lists-linear-navigation">Page lists (linear navigation)</h3>
 <p>You can also navigate linearly among a set of pages by using a <code>PageControl</code> and a plain array of pages:</p>
-<pre><code class="language-JS">this.pages = [ new HomePage(), new ContactsPage(), new SettingsPage() ]
-</code></pre>
+<pre><code class="language-JS">this.pages = [ new HomePage(), new ContactsPage(), new SettingsPage() ]</code></pre>
 <pre><code class="language-XML">&lt;PageControl Pages=&quot;{pages}&quot;&gt;
-	&lt;HomePage ux:Template=&quot;HomePage&quot; /&gt;
-	&lt;ContactsPage ux:Template=&quot;ContactsPage&quot; /&gt;
-	&lt;SettingsPage ux:Template=&quot;SettingsPage&quot; /&gt;
-&lt;/PageControl&gt;
-</code></pre>
+    &lt;HomePage ux:Template=&quot;HomePage&quot; /&gt;
+    &lt;ContactsPage ux:Template=&quot;ContactsPage&quot; /&gt;
+    &lt;SettingsPage ux:Template=&quot;SettingsPage&quot; /&gt;
+&lt;/PageControl&gt;</code></pre>
 <h3 id="multi-level-navigation">Multi-level navigation</h3>
 <p>You can create multi-level navigation by using <code>pages</code>-arrays within pages and nest navigators and page controls arbitrarily.</p>
 <h2 id="component-models-advanced">Component models (advanced)</h2>
@@ -962,27 +940,24 @@ export class TodoApp {
 <p>To create a component with internal state, you can simply set the <code>Model</code> property on any visual UX element:</p>
 <p><code>Components/MyCompontent.ux</code></p>
 <pre><code class="language-XML">&lt;StackPanel ux:Class=&quot;MyComponent&quot; Model=&quot;Components/MyComponent&quot;&gt;
-	...
-&lt;/StackPanel&gt;
-</code></pre>
+    ...
+&lt;/StackPanel&gt;</code></pre>
 <p>This looks for <code>Components/MyComponent.js</code> and instantiates either the exported <code>default</code> class. Note that <code>Model</code> paths are <em>not</em> relative to the UX file.</p>
 <h3 id="accessing-the-view">Accessing the view</h3>
 <h4 id="modelargs">ModelArgs</h4>
 <p>Component models can take a comma-separated list of arguments from UX, using the <code>ModelArgs</code> property.
 These are passed on to your model's constructor.</p>
 <pre><code class="language-xml">&lt;Panel ux:Class=&quot;MyComponent&quot; Model=&quot;Components/MyComponent&quot; ModelArgs=&quot;router, scrollView&quot;&gt;
-	&lt;Router ux:Dependency=&quot;router&quot; /&gt;
-	&lt;ScrollView ux:ame=&quot;scrollView&quot; /&gt;
-&lt;/Panel&gt;
-</code></pre>
+    &lt;Router ux:Dependency=&quot;router&quot; /&gt;
+    &lt;ScrollView ux:ame=&quot;scrollView&quot; /&gt;
+&lt;/Panel&gt;</code></pre>
 <p>These are then available in your model class' constructor:</p>
 <pre><code class="language-js">export default class MyComponent {
-	constructor(router, scrollView) {
-		this.router = router;
-		this.scrollView = scrollView;
-	}
-}
-</code></pre>
+    constructor(router, scrollView) {
+        this.router = router;
+        this.scrollView = scrollView;
+    }
+}</code></pre>
 <blockquote class="callout-warn">
 <p><em>Warning:</em> The JavaScript module you specify using the <code>Model</code> attribute will be re-evaluated every time one of the <code>ModelArgs</code> change.</p>
 </blockquote>
@@ -991,9 +966,8 @@ These are passed on to your model's constructor.</p>
 <p>Say, for instance, that our component has a <code>Title</code> property:</p>
 <p><code>Components/MyComponent.ux</code></p>
 <pre><code class="language-xml">&lt;StackPanel ux:Class=&quot;MyComponent&quot; Model=&quot;Components/MyComponent&quot;&gt;
-	&lt;string ux:Property=&quot;Title&quot; /&gt;
-&lt;/StackPanel&gt;
-</code></pre>
+    &lt;string ux:Property=&quot;Title&quot; /&gt;
+&lt;/StackPanel&gt;</code></pre>
 <p>To use this property inside our model class, we must first declare it in our constructor, thereby giving it a default value.</p>
 <blockquote>
 <p><strong>Note:</strong> Since Fuse runs JavaScript on a separate thread, the constructor can only assign a <em>default value</em> to the UX property. Its effective value will not be available until sometime after our constructor has been called.
@@ -1002,34 +976,31 @@ If we give the property a default value in UX, or one is explicitly set when ins
 </blockquote>
 <p><code>Components/MyComponent.js</code></p>
 <pre><code class="language-js">export default class MyComponent {
-	constructor() {
-		this.Title = &quot;&quot;;
-	}
-}
-</code></pre>
+    constructor() {
+        this.Title = &quot;&quot;;
+    }
+}</code></pre>
 <p>We can now read and write to the <code>ux:Property</code> by accessing the corresponding field on our model:</p>
 <p><code>Components/MyComponent.js</code></p>
 <pre><code class="language-js">export class MyComponent {
-	constructor() {
-		this.Title = &quot;&quot;;
-	}
+    constructor() {
+        this.Title = &quot;&quot;;
+    }
 
-	get label() {
-		return &quot;The title is: &quot; + this.Title
-	}
+    get label() {
+        return &quot;The title is: &quot; + this.Title
+    }
 
-	changeTitle() {
-		this.Title = &quot;Different title&quot;
-	}
-}
-</code></pre>
+    changeTitle() {
+        this.Title = &quot;Different title&quot;
+    }
+}</code></pre>
 <p><code>Components/MyComponent.ux</code></p>
 <pre><code class="language-xml">&lt;StackPanel ux:Class=&quot;MyComponent&quot; Model=&quot;Components/MyComponent&quot;&gt;
-	&lt;string ux:Property=&quot;Title&quot; /&gt;
-	&lt;Text Value=&quot;{label}&quot; /&gt;
-	&lt;Button Clicked=&quot;{changeTitle}&quot; /&gt;
-&lt;/StackPanel&gt;
-</code></pre>
+    &lt;string ux:Property=&quot;Title&quot; /&gt;
+    &lt;Text Value=&quot;{label}&quot; /&gt;
+    &lt;Button Clicked=&quot;{changeTitle}&quot; /&gt;
+&lt;/StackPanel&gt;</code></pre>
 
             </div>
             <div class="d-none d-sm-block col-md-3 d-xl-3 toc-content">

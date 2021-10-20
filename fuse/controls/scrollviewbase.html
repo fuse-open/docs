@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -718,13 +718,12 @@ For example a <code>Bottom</code> aligned element will start with the bottom of 
 <h4 id="layoutmode">LayoutMode</h4>
 <p>By default a <code>ScrollView</code> keeps a consistent <code>ScrollPosition</code> when the layout changes. This may result in jumping when content is added/removed.</p>
 <p>An alternate mode <code>LayoutMode=&quot;PreserveVisual&quot;</code> instead attempts to maintain visual consistency when its children or parent layout is changed. It assumes it's immediate content is a container and looks at that container's children.  For example, a layout like this:</p>
-<pre><code class="language-xml">    &lt;ScrollView&gt;
-        &lt;StackPanel&gt;
-            &lt;Panel/&gt;
-            &lt;Panel/&gt;
-        &lt;StackPanel&gt;
-    &lt;/ScrollView&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;ScrollView&gt;
+    &lt;StackPanel&gt;
+        &lt;Panel/&gt;
+        &lt;Panel/&gt;
+    &lt;StackPanel&gt;
+&lt;/ScrollView&gt;</code></pre>
 <p>Visuals without <code>LayoutRole=Standard</code> are not considered when retaining the visual consistency. The <code>LayoutMode</code> property can be used to adjust this behavior.</p>
 
 <section class="type-location">
@@ -969,11 +968,10 @@ MotionConfig
 </h5>
 <div class="table-of-contents-item-brief">
 <p>The animation and scrolling behavior of a <code>ScrollView</code> can be configured using <a href="../../fuse/motion/scrollviewmotion.html">ScrollViewMotion</a>.</p>
-<pre><code class="language-xml">    &lt;ScrollView&gt;
-        &lt;ScrollViewMotion GotoEasing=&quot;Linear&quot; GotoDuration=&quot;0.5&quot;/&gt;
-        &lt;Panel&gt;...content...&lt;/Panel&gt;
-    &lt;/ScrollView&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;ScrollView&gt;
+    &lt;ScrollViewMotion GotoEasing=&quot;Linear&quot; GotoDuration=&quot;0.5&quot;/&gt;
+    &lt;Panel&gt;...content...&lt;/Panel&gt;
+&lt;/ScrollView&gt;</code></pre>
 
 </div>
 </article>

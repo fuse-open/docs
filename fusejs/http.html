@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -684,23 +684,22 @@
 <h2 id="fetch">fetch()</h2>
 <p><code>fetch</code> is the main way to do HTTP requests.</p>
 <p>This is an example on how to take a JavaScript object, POST it as JSON and receive JSON data which is turned back into a JavaScript object using <code>fetch</code>:</p>
-<pre><code class="language-js">	var status = 0;
-	var response_ok = false;
+<pre><code class="language-js">var status = 0;
+var response_ok = false;
 
-	fetch('http://example.com', {
-		method: 'POST',
-		headers: { &quot;Content-type&quot;: &quot;application/json&quot;},
-		body: JSON.stringify(requestObject)
-	}).then(function(response) {
-		status = response.status;  // Get the HTTP status code
-		response_ok = response.ok; // Is response.status in the 200-range?
-		return response.json();    // This returns a promise
-	}).then(function(responseObject) {
-		// Do something with the result
-	}).catch(function(err) {
-		// An error occurred somewhere in the Promise chain
-	});
-</code></pre>
+fetch('http://example.com', {
+    method: 'POST',
+    headers: { &quot;Content-type&quot;: &quot;application/json&quot;},
+    body: JSON.stringify(requestObject)
+}).then(function(response) {
+    status = response.status;  // Get the HTTP status code
+    response_ok = response.ok; // Is response.status in the 200-range?
+    return response.json();    // This returns a promise
+}).then(function(responseObject) {
+    // Do something with the result
+}).catch(function(err) {
+    // An error occurred somewhere in the Promise chain
+});</code></pre>
 <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/GlobalFetch/fetch">Complete documentation for <code>fetch</code> can be found here</a></p>
 <h2 id="xmlhttprequest">XMLHttpRequest</h2>
 <p>FuseJS supports <code>XMLHttpRequest</code>, <a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest">go here for more information</a>.</p>

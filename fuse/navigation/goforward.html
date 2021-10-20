@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -702,23 +702,22 @@ Show advanced things
 <p>Navigates forward in a <a href="../../fuse/navigation/navigation.html">Navigation</a>, <a href="../../fuse/controls/pagecontrol.html">PageControl</a>, or <a href="../../fuse/controls/webview.html">WebView</a>.</p>
 <h3 id="example">Example</h3>
 <p>In this example, <code>GoForward</code> will be used to navigate back to the first page of a <code>PageControl</code>. This is because &quot;Forward&quot; means &quot;towards the first page&quot; when used in linear navigation.</p>
-<pre><code class="language-xml">    &lt;PageControl&gt;
-        &lt;Panel Background=&quot;#F00&quot; ux:Name=&quot;page1&quot;&gt;
-            &lt;Button Alignment=&quot;Center&quot; Text=&quot;Go to page 2&quot;&gt;
-                &lt;Clicked&gt;
-                    &lt;NavigateTo Target=&quot;page2&quot; /&gt;
-                &lt;/Clicked&gt;
-            &lt;/Button&gt;
-        &lt;/Panel&gt;
-        &lt;Panel Background=&quot;#0F0&quot; ux:Name=&quot;page2&quot;&gt;
-            &lt;Button Text=&quot;Go back&quot; Alignment=&quot;Center&quot; Margin=&quot;10&quot;&gt;
-                &lt;Clicked&gt;
-                    &lt;GoForward /&gt;
-                &lt;/Clicked&gt;
-            &lt;/Button&gt;
-        &lt;/Panel&gt;
-    &lt;/PageControl&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;PageControl&gt;
+    &lt;Panel Background=&quot;#F00&quot; ux:Name=&quot;page1&quot;&gt;
+        &lt;Button Alignment=&quot;Center&quot; Text=&quot;Go to page 2&quot;&gt;
+            &lt;Clicked&gt;
+                &lt;NavigateTo Target=&quot;page2&quot; /&gt;
+            &lt;/Clicked&gt;
+        &lt;/Button&gt;
+    &lt;/Panel&gt;
+    &lt;Panel Background=&quot;#0F0&quot; ux:Name=&quot;page2&quot;&gt;
+        &lt;Button Text=&quot;Go back&quot; Alignment=&quot;Center&quot; Margin=&quot;10&quot;&gt;
+            &lt;Clicked&gt;
+                &lt;GoForward /&gt;
+            &lt;/Clicked&gt;
+        &lt;/Button&gt;
+    &lt;/Panel&gt;
+&lt;/PageControl&gt;</code></pre>
 <p>Forward refers to pages that are in front of the active one in navigation order.  This trigger is not suitable for navigation that does not have a history or sequence of pages.</p>
 <p>See <a href="../../navigation/navigationorder.html">Navigation Order</a></p>
 

@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -709,23 +709,21 @@ Show advanced things
 <h4 id="setting-up-the-client-side">Setting up the client side</h4>
 <h5 id="step-1">Step 1.</h5>
 <p>Include the Fuse push notification library by adding the following to your <code>.unoproj</code> file</p>
-<pre><code class="language-json">    &quot;Packages&quot;: [
-        ...
-        &quot;Fuse.PushNotifications&quot;,
-        ...
-    ],
-</code></pre>
+<pre><code class="language-js">&quot;Packages&quot;: [
+    ...
+    &quot;Fuse.PushNotifications&quot;,
+    ...
+],</code></pre>
 <h5 id="step-2-only-for-android">Step 2. (Only for Android)</h5>
 <p>Google notifications require a little extra info.</p>
 <p>Add the following to you <code>.unoproj</code></p>
-<pre><code class="language-json">    &quot;Android&quot;: {
-        ...
-        &quot;GooglePlay&quot;: {
-            &quot;SenderID&quot;: &quot;111781901112&quot;
-        }
-        ...
-    },
-</code></pre>
+<pre><code class="language-js">&quot;Android&quot;: {
+    ...
+    &quot;GooglePlay&quot;: {
+        &quot;SenderID&quot;: &quot;111781901112&quot;
+    }
+    ...
+},</code></pre>
 <p>The <code>SenderID</code> is the sender ID from the <a href="https://console.firebase.google.com">Firebase Console</a>.
 If you don't yet have a project set up please see the <a href="#android-setup">Android setup</a> section later in this document.</p>
 <h4 id="how-this-behaves-in-your-app">How this behaves in your app</h4>
@@ -747,31 +745,29 @@ If you don't yet have a project set up please see the <a href="#android-setup">A
 <li>When your app starts it registers with APNS. As all access is controlled through Apple's certificate system there is no extra info to provide (we will mention server side a bit later)</li>
 </ul>
 <p>If you wish to disable auto-registration you can place the following in your unoproj file:</p>
-<pre><code class="language-json">    &quot;iOS&quot;: {
-        &quot;PushNotifications&quot;: {
-            &quot;RegisterOnLaunch&quot;: false
-        }
-    },
-</code></pre>
+<pre><code class="language-js">&quot;iOS&quot;: {
+    &quot;PushNotifications&quot;: {
+        &quot;RegisterOnLaunch&quot;: false
+    }
+},</code></pre>
 <p>You must then register for push notifications by calling <code>register()</code> from JS. This option is useful as when the notifications are registered the OS may ask the user for permission to use push notifications and this may be undesirable on launch.</p>
 <h4 id="using-the-api-from-javascript">Using the API from JavaScript</h4>
 <p>Integrating with notifications from JavaScript is simple. Here is an example that just logs when the callbacks fire:</p>
-<pre><code class="language-xml">    &lt;JavaScript&gt;
-        var push = require(&quot;FuseJS/Push&quot;);
+<pre><code class="language-xml">&lt;JavaScript&gt;
+    var push = require(&quot;FuseJS/Push&quot;);
 
-        push.on(&quot;registrationSucceeded&quot;, function(regID) {
-            console.log(&quot;Reg Succeeded: &quot; + regID);
-        });
+    push.on(&quot;registrationSucceeded&quot;, function(regID) {
+        console.log(&quot;Reg Succeeded: &quot; + regID);
+    });
 
-        push.on(&quot;error&quot;, function(reason) {
-            console.log(&quot;Reg Failed: &quot; + reason);
-        });
+    push.on(&quot;error&quot;, function(reason) {
+        console.log(&quot;Reg Failed: &quot; + reason);
+    });
 
-        push.on(&quot;receivedMessage&quot;, function(payload) {
-            console.log(&quot;Recieved Push Notification: &quot; + payload);
-        });
-    &lt;/JavaScript&gt;
-</code></pre>
+    push.on(&quot;receivedMessage&quot;, function(payload) {
+        console.log(&quot;Recieved Push Notification: &quot; + payload);
+    });
+&lt;/JavaScript&gt;</code></pre>
 <p>Here we're using the <a href="../../fusejs/eventemitter.html">EventEmitter</a> <code>on</code> method to register our functions with the different events.
 In a real app we should send our <code>registration ID</code> to our server when <code>registrationSucceeded</code> is triggered.</p>
 <h4 id="server-side">Server Side</h4>
@@ -789,22 +785,20 @@ In a real app we should send our <code>registration ID</code> to our server when
 </ul>
 <p>Apple and Google's APIs define how the data in the payload is used to populate the system notification, however we have normalized it a little.</p>
 <p>For iOS we'll just include an <code>aps</code> entry in the notification's JSON, like so:</p>
-<pre><code class="language-json">    'aps': {
-        alert: {
-            'title': 'Well would ya look at that!',
-            'body': 'Hello from the server'
-        }
-    },
-</code></pre>
+<pre><code class="language-js">'aps': {
+    alert: {
+        'title': 'Well would ya look at that!',
+        'body': 'Hello from the server'
+    }
+},</code></pre>
 <p>And 'title' and 'body' will be used as the title and body of the system notification.</p>
 <p>For Android we can use exactly the same <code>'aps'</code> entry or the alternatively the following:</p>
-<pre><code class="language-json">    'notification': {
-        alert: {
-            'title': 'Well would ya look at that!',
-            'body': 'Hello from the server'
-        }
-    },
-</code></pre>
+<pre><code class="language-js">'notification': {
+    alert: {
+        'title': 'Well would ya look at that!',
+        'body': 'Hello from the server'
+    }
+},</code></pre>
 <p>The <code>notification</code> entry is the standard Google way of doing this but we felt that it wouldn't hurt to support the Apple way too.</p>
 <blockquote>
 <p>The current implementation only guarantees the <code>title</code> and <code>body</code> entries will work. We also always use your app's icon as the notification icon. This is an area we will extend as Fuse matures. If you have specific requests, be sure to let us know!</p>
@@ -842,163 +836,148 @@ In a real app we should send our <code>registration ID</code> to our server when
 </ul>
 <p>We'll show you how to implement them here in fuse but read more about each feature <a href="https://developer.android.com/guide/topics/ui/notifiers/notifications">here</a>.</p>
 <h6 id="notification-sound-value-default">Notification Sound - Value - default</h6>
-<pre><code class="language-json">    'notification': {
-        alert: {
-            'title': 'Well would ya look at that!',
-            'body': 'Hello from the server',
-            'sound': 'default'
-        }
-    },
-</code></pre>
+<pre><code class="language-js">'notification': {
+    alert: {
+        'title': 'Well would ya look at that!',
+        'body': 'Hello from the server',
+        'sound': 'default'
+    }
+},</code></pre>
 <h6 id="notification-color-values-rrggbb-aarrggbb">Notification Color - Values - #RRGGBB | #AARRGGBB</h6>
-<pre><code class="language-json">    'notification': {
-        alert: {
-            'title': 'Well would ya look at that!',
-            'body': 'Hello from the server',
-            'color': '#8811FF'
-        }
-    },
-</code></pre>
+<pre><code class="language-js">'notification': {
+    alert: {
+        'title': 'Well would ya look at that!',
+        'body': 'Hello from the server',
+        'color': '#8811FF'
+    }
+},</code></pre>
 <h6 id="notification-priority-values-high-low-max-min">Notification Priority - Values - high | low | max | min</h6>
-<pre><code class="language-json">    'notification': {
-        alert: {
-            'title': 'Well would ya look at that!',
-            'body': 'Hello from the server',
-            'notificationPriority': 'high'
-        }
-    },
-</code></pre>
+<pre><code class="language-js">'notification': {
+    alert: {
+        'title': 'Well would ya look at that!',
+        'body': 'Hello from the server',
+        'notificationPriority': 'high'
+    }
+},</code></pre>
 <h6 id="notification-category-values-alarm-reminder-event-call-message-email-promo-recommendation-social-error-progress-service-status-system-transport">Notification Category - Values - alarm | reminder | event | call | message | email | promo | recommendation | social | error | progress | service | status | system | transport</h6>
-<pre><code class="language-json">    'notification': {
-        alert: {
-            'title': 'Well would ya look at that!',
-            'body': 'Hello from the server',
-            'notificationCategory': 'social'
-        }
-    },
-</code></pre>
+<pre><code class="language-js">'notification': {
+    alert: {
+        'title': 'Well would ya look at that!',
+        'body': 'Hello from the server',
+        'notificationCategory': 'social'
+    }
+},</code></pre>
 <h6 id="notification-lockscreen-visibility-values-public-secret-private">Notification Lockscreen Visibility - Values - public | secret | private</h6>
-<pre><code class="language-json">    'notification': {
-        alert: {
-            'title': 'Well would ya look at that!',
-            'body': 'Hello from the server',
-            'notificationLockscreenVisibility': 'secret'
-        }
-    },
-</code></pre>
+<pre><code class="language-js">'notification': {
+    alert: {
+        'title': 'Well would ya look at that!',
+        'body': 'Hello from the server',
+        'notificationLockscreenVisibility': 'secret'
+    }
+},</code></pre>
 <h6 id="notification-channel">Notification Channel</h6>
 <p>Notification Channel and a Notification Channel Group:</p>
-<pre><code class="language-json">    'notification': {
-        alert: {
-            'title': 'Well would ya look at that!',
-            'body': 'Hello from the server',
-            'notificationChannelGroupId': 'sports',
-            'notificationChannelGroupName': 'Sports',
-            'notificationChannelId': 'sports_football_highlights',
-            'notificationChannelName': 'Football Highlights',
-            'notificationChannelDescription': 'Video commentary once a week'
-        }
-    },
-</code></pre>
+<pre><code class="language-js">'notification': {
+    alert: {
+        'title': 'Well would ya look at that!',
+        'body': 'Hello from the server',
+        'notificationChannelGroupId': 'sports',
+        'notificationChannelGroupName': 'Sports',
+        'notificationChannelId': 'sports_football_highlights',
+        'notificationChannelName': 'Football Highlights',
+        'notificationChannelDescription': 'Video commentary once a week'
+    }
+},</code></pre>
 <p>Notification Channel Importance - Values - urgent | high | medium | low | none</p>
-<pre><code class="language-json">    'notification': {
-        alert: {
-            'title': 'Well would ya look at that!',
-            'body': 'Hello from the server',
-            'notificationChannelGroupId': 'sports',
-            'notificationChannelGroupName': 'Sports',
-            'notificationChannelId': 'sports_basketball_highlights',
-            'notificationChannelName': 'Basketball Highlights',
-            'notificationChannelDescription': 'Video commentary once a week',
-            'notificationChannelImportance': 'urgent',
+<pre><code class="language-js">'notification': {
+    alert: {
+        'title': 'Well would ya look at that!',
+        'body': 'Hello from the server',
+        'notificationChannelGroupId': 'sports',
+        'notificationChannelGroupName': 'Sports',
+        'notificationChannelId': 'sports_basketball_highlights',
+        'notificationChannelName': 'Basketball Highlights',
+        'notificationChannelDescription': 'Video commentary once a week',
+        'notificationChannelImportance': 'urgent',
 
-        }
-    },
-</code></pre>
+    }
+},</code></pre>
 <p>Notification Channel Lockscreen Visibility - Values - public | secret | private</p>
-<pre><code class="language-json">    'notification': {
-        alert: {
-            'title': 'Well would ya look at that!',
-            'body': 'Hello from the server',
-            'notificationChannelLockscreenVisibility': 'private'
-        }
-    },
-</code></pre>
+<pre><code class="language-js">'notification': {
+    alert: {
+        'title': 'Well would ya look at that!',
+        'body': 'Hello from the server',
+        'notificationChannelLockscreenVisibility': 'private'
+    }
+},</code></pre>
 <p>Notification Channel Light Color - Values - #RRGGBB</p>
-<pre><code class="language-json">    'notification': {
-        alert: {
-            'title': 'Well would ya look at that!',
-            'body': 'Hello from the server',
-            'notificationChannelLightColor': '#1188FF'
-        }
-    },
-</code></pre>
+<pre><code class="language-js">'notification': {
+    alert: {
+        'title': 'Well would ya look at that!',
+        'body': 'Hello from the server',
+        'notificationChannelLightColor': '#1188FF'
+    }
+},</code></pre>
 <p>Notification Channel Sound - Values - true | false</p>
-<pre><code class="language-json">    'notification': {
-        alert: {
-            'title': 'Well would ya look at that!',
-            'body': 'Hello from the server',
-            'notificationChannelIsSoundOn': 'true'
-        }
-    },
-</code></pre>
+<pre><code class="language-js">'notification': {
+    alert: {
+        'title': 'Well would ya look at that!',
+        'body': 'Hello from the server',
+        'notificationChannelIsSoundOn': 'true'
+    }
+},</code></pre>
 <p>Notification Channel Vibration - Values - true | false</p>
-<pre><code class="language-json">    'notification': {
-        alert: {
-            'title': 'Well would ya look at that!',
-            'body': 'Hello from the server',
-            'notificationChannelIsVibrationOn': 'true'
-        }
-    },
-</code></pre>
+<pre><code class="language-js">'notification': {
+    alert: {
+        'title': 'Well would ya look at that!',
+        'body': 'Hello from the server',
+        'notificationChannelIsVibrationOn': 'true'
+    }
+},</code></pre>
 <p>Notification Channel Show Badge - Values - true | false</p>
-<pre><code class="language-json">    'notification': {
-        alert: {
-            'title': 'Well would ya look at that!',
-            'body': 'Hello from the server',
-            'notificationChannelIsShowBadgeOn': 'true'
-        }
-    },
-</code></pre>
+<pre><code class="language-js">'notification': {
+    alert: {
+        'title': 'Well would ya look at that!',
+        'body': 'Hello from the server',
+        'notificationChannelIsShowBadgeOn': 'true'
+    }
+},</code></pre>
 <h6 id="notification-badge">Notification Badge</h6>
 <p>Notification Channel Badge Number</p>
-<pre><code class="language-json">   'notification': {
-        alert: {
-            'title': 'Well would ya look at that!',
-            'body': 'Hello from the server',
-            'notificationBadgeNumber': '23'
-        }
-    },
-</code></pre>
+<pre><code class="language-js">'notification': {
+     alert: {
+         'title': 'Well would ya look at that!',
+         'body': 'Hello from the server',
+         'notificationBadgeNumber': '23'
+     }
+ },</code></pre>
 <p>Notification Channel Badge Icon Type - Values - none | small | large</p>
-<pre><code class="language-json">    'notification': {
-        alert: {
-            'title': 'Well would ya look at that!',
-            'body': 'Hello from the server',
-            'notificationBadgeIconType': 'small'
-        }
-    },
-</code></pre>
+<pre><code class="language-js">'notification': {
+    alert: {
+        'title': 'Well would ya look at that!',
+        'body': 'Hello from the server',
+        'notificationBadgeIconType': 'small'
+    }
+},</code></pre>
 <h6 id="notification-uno-project-configurations">Notification Uno Project Configurations</h6>
 <p>The following notification settings can be set via the <code>.unoproj</code> settings:</p>
-<pre><code class="language-json">    &quot;Android&quot;: {
-        ...
-        &quot;Notification&quot;: {
-            &quot;DefaultChannelGroupId&quot;: &quot;default_group&quot;,
-            &quot;DefaultChannelGroupName&quot;: &quot;Categories&quot;,
-            &quot;DefaultChannelId&quot;: &quot;default_channel&quot;,
-            &quot;DefaultChannelName&quot;: &quot;App&quot;,
-            &quot;DefaultChannelDescription&quot;: &quot;&quot;,
-            &quot;DefaultChannelImportance&quot;: &quot;high&quot;,
-            &quot;DefaultChannelLightColor&quot;: &quot;#FF2C37&quot;,
-            &quot;NotificationChannelLockscreenVisibility&quot;: &quot;secret&quot;,
-            &quot;NotificationChannelIsSoundOn&quot;: true,
-            &quot;NotificationChannelIsShowBadgeOn&quot;: true,
-            &quot;NotificationChannelIsVibrationOn&quot;: true
-        }
-        ...
-    },
-</code></pre>
+<pre><code class="language-js">&quot;Android&quot;: {
+    ...
+    &quot;Notification&quot;: {
+        &quot;DefaultChannelGroupId&quot;: &quot;default_group&quot;,
+        &quot;DefaultChannelGroupName&quot;: &quot;Categories&quot;,
+        &quot;DefaultChannelId&quot;: &quot;default_channel&quot;,
+        &quot;DefaultChannelName&quot;: &quot;App&quot;,
+        &quot;DefaultChannelDescription&quot;: &quot;&quot;,
+        &quot;DefaultChannelImportance&quot;: &quot;high&quot;,
+        &quot;DefaultChannelLightColor&quot;: &quot;#FF2C37&quot;,
+        &quot;NotificationChannelLockscreenVisibility&quot;: &quot;secret&quot;,
+        &quot;NotificationChannelIsSoundOn&quot;: true,
+        &quot;NotificationChannelIsShowBadgeOn&quot;: true,
+        &quot;NotificationChannelIsVibrationOn&quot;: true
+    }
+    ...
+},</code></pre>
 <p>Note: notification payload settings will always override the notification settings from <code>.unoproj</code>.
 NB! Once a channel is created, you CANNOT change its properties later.</p>
 <h4 id="remarks">Remarks</h4>
@@ -1014,12 +993,11 @@ NB! Once a channel is created, you CANNOT change its properties later.</p>
 <li>Navigate to the &quot;Cloud Messaging&quot; tab</li>
 <li>Copy the &quot;Sender ID&quot; into your <code>.unoproj</code> like this:</li>
 </ul>
-<pre><code class="language-json">		&quot;Android&quot;: {
-			&quot;GooglePlay&quot;: {
-				&quot;SenderID&quot;: &quot;&lt;Sender ID goes here&gt;&quot;
-			}
-		}
-</code></pre>
+<pre><code class="language-js">&quot;Android&quot;: {
+    &quot;GooglePlay&quot;: {
+        &quot;SenderID&quot;: &quot;&lt;Sender ID goes here&gt;&quot;
+    }
+}</code></pre>
 <h5 id="registering-the-android-app">Registering the Android app</h5>
 <p>To enable Firebase Cloud Messaging, you need to register an Android app with your Firebase project.
 If you haven't already registered an Android app, follow these steps:</p>
@@ -1029,10 +1007,9 @@ If you haven't already registered an Android app, follow these steps:</p>
 By default, this will be <code>com.apps.&lt;yourappnameinlowercase&gt;</code>.
 However, it is recommended to set your own:</li>
 </ul>
-<pre><code class="language-json">		&quot;Android&quot;: {
-			&quot;Package&quot;: &quot;com.mycompany.myapp&quot;,
-		}
-</code></pre>
+<pre><code class="language-js">&quot;Android&quot;: {
+    &quot;Package&quot;: &quot;com.mycompany.myapp&quot;,
+}</code></pre>
 <ul>
 <li>After adding the Android app, you will be prompted to download a <code>google-services.json</code> file. Download and copy it to the root of your project.</li>
 <li>Add the following file to tell fuse to copy google-services.json to your android app folder:</li>
@@ -1040,8 +1017,7 @@ However, it is recommended to set your own:</li>
 <p>Android.uxl</p>
 <pre><code class="language-xml">&lt;Extensions Backend=&quot;CPlusPlus&quot; Condition=&quot;Android&quot;&gt;
     &lt;CopyFile Condition=&quot;Android&quot; Name=&quot;google-services.json&quot; TargetName=&quot;app/google-services.json&quot; /&gt;
-&lt;/Extensions&gt;
-</code></pre>
+&lt;/Extensions&gt;</code></pre>
 <h5 id="sending-notifications">Sending notifications</h5>
 <p>After rebuilding your project with the new settings, you should be ready to send and receive push notifications.</p>
 <blockquote>
@@ -1053,37 +1029,36 @@ See the example below for an example of how to send messages to a Fuse app.</p>
 This, along with your FCM Server key, are the details that is needed to send that app a notification.</p>
 <p>Your server key can be found under the &quot;Cloud Messaging&quot; tab of the Project Settings page (where you obtained your Sender ID).</p>
 <p>Here some example Fuse code for sending your app a notification.</p>
-<pre><code class="language-xml">    &lt;JavaScript&gt;
-        var API_ACCESS_KEY = '----HARDCODED API KEY----';
-        var regID = '----HARDCODED REG ID FROM THE APP YOU ARE SENDING TO----';
+<pre><code class="language-xml">&lt;JavaScript&gt;
+    var API_ACCESS_KEY = '----HARDCODED API KEY----';
+    var regID = '----HARDCODED REG ID FROM THE APP YOU ARE SENDING TO----';
 
-        module.exports.send = function() {
-            fetch('https://android.googleapis.com/gcm/send', {
-                method: 'post',
-                headers: {
-                    'Authorization': 'key=' + API_ACCESS_KEY,
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    registration_ids: [regID],
-                    data: {
-                        notification: {
-                            alert: {
-                                title: 'Well would ya look at that!',
-                                body: 'Hello from some other app'
-                            }
-                        },
-                        payload: 'anything you like'
-                    }
-                })
-            }).then(function(response) {
-                console.log(JSON.stringify(response));
-            }, function(error) {
-                console.log(error);
-            });
-        }
-    &lt;/JavaScript&gt;
-</code></pre>
+    module.exports.send = function() {
+        fetch('https://android.googleapis.com/gcm/send', {
+            method: 'post',
+            headers: {
+                'Authorization': 'key=' + API_ACCESS_KEY,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                registration_ids: [regID],
+                data: {
+                    notification: {
+                        alert: {
+                            title: 'Well would ya look at that!',
+                            body: 'Hello from some other app'
+                        }
+                    },
+                    payload: 'anything you like'
+                }
+            })
+        }).then(function(response) {
+            console.log(JSON.stringify(response));
+        }, function(error) {
+            console.log(error);
+        });
+    }
+&lt;/JavaScript&gt;</code></pre>
 <p>Whilst hardcoding the RegID is clearly not a good idea, it serves the purpose for this simple test.</p>
 <h4 id="ios-setup">iOS setup</h4>
 <p>This section covers how to set up a iOS Push Notifications to the point that you can send messages to a Fuse App.</p>

@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -705,28 +705,27 @@ Show advanced things
 This means that using <code>ZOffset</code> can still cause this <a href="../../../fuse/controls/graphics/visual.html">Visual</a> to be rendered on top of its siblings.</p>
 </blockquote>
 <h4 id="example">Example</h4>
-<pre><code class="language-xml">    &lt;ScrollView&gt;
-        &lt;Grid Rows=&quot;400, 1*&quot; Margin=&quot;10&quot;&gt;
-            &lt;Panel&gt;
-                &lt;TextBlock ux:Name=&quot;textInFront&quot; Alignment=&quot;Center&quot; FontSize=&quot;20&quot; Color=&quot;#fff&quot;&gt;I'll be sent to the back!&lt;/TextBlock&gt;
-                &lt;Rectangle Margin=&quot;10&quot; CornerRadius=&quot;4&quot; ux:Name=&quot;topRect&quot;&gt;
-                    &lt;LinearGradient&gt;
-                        &lt;GradientStop Offset=&quot;0&quot; Color=&quot;#a542db&quot; /&gt;
-                        &lt;GradientStop Offset=&quot;1&quot; Color=&quot;#3579e6&quot; /&gt;
-                    &lt;/LinearGradient&gt;
-                &lt;/Rectangle&gt;
-            &lt;/Panel&gt;
-            &lt;Rectangle Margin=&quot;10&quot;&gt;
-                &lt;Stroke Offset=&quot;4&quot; Width=&quot;1&quot; Color=&quot;#3579e6&quot; /&gt;
-                &lt;Button Text=&quot;Send element to back&quot; Alignment=&quot;Bottom&quot;&gt;
-                    &lt;Clicked&gt;
-                        &lt;SendToBack Target=&quot;textInFront&quot; /&gt;
-                    &lt;/Clicked&gt;
-                &lt;/Button&gt;
+<pre><code class="language-xml">&lt;ScrollView&gt;
+    &lt;Grid Rows=&quot;400, 1*&quot; Margin=&quot;10&quot;&gt;
+        &lt;Panel&gt;
+            &lt;TextBlock ux:Name=&quot;textInFront&quot; Alignment=&quot;Center&quot; FontSize=&quot;20&quot; Color=&quot;#fff&quot;&gt;I'll be sent to the back!&lt;/TextBlock&gt;
+            &lt;Rectangle Margin=&quot;10&quot; CornerRadius=&quot;4&quot; ux:Name=&quot;topRect&quot;&gt;
+                &lt;LinearGradient&gt;
+                    &lt;GradientStop Offset=&quot;0&quot; Color=&quot;#a542db&quot; /&gt;
+                    &lt;GradientStop Offset=&quot;1&quot; Color=&quot;#3579e6&quot; /&gt;
+                &lt;/LinearGradient&gt;
             &lt;/Rectangle&gt;
-        &lt;/Grid&gt;
-    &lt;/ScrollView&gt;
-</code></pre>
+        &lt;/Panel&gt;
+        &lt;Rectangle Margin=&quot;10&quot;&gt;
+            &lt;Stroke Offset=&quot;4&quot; Width=&quot;1&quot; Color=&quot;#3579e6&quot; /&gt;
+            &lt;Button Text=&quot;Send element to back&quot; Alignment=&quot;Bottom&quot;&gt;
+                &lt;Clicked&gt;
+                    &lt;SendToBack Target=&quot;textInFront&quot; /&gt;
+                &lt;/Clicked&gt;
+            &lt;/Button&gt;
+        &lt;/Rectangle&gt;
+    &lt;/Grid&gt;
+&lt;/ScrollView&gt;</code></pre>
 
 <section class="type-location">
 <h3 id="section-location">Location</h3>

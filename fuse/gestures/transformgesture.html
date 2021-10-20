@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -702,15 +702,14 @@ Show advanced things
 </section>
 <p>A <code>TransformGesture</code> interprets pointer gestures and modifies an <code>InteractiveTransform</code> in response.</p>
 <p>Note that the <code>TransformGesture</code> on its own has no visual impact, it only modifies the <code>InteractiveTransform</code>, which provides the actual visual transformation.  For example here is a simple image viewing setup:</p>
-<pre><code class="language-xml">    &lt;Panel HitTestMode=&quot;LocalBounds&quot;&gt;
-        &lt;Image File=&quot;my_image.jpg&quot;&gt;
-            &lt;InteractiveTransform ux:Name=&quot;ImageTrans&quot;/&gt;
-        &lt;/Image&gt;
-        &lt;ZoomGesture Target=&quot;ImageTrans&quot;/&gt;
-        &lt;PanGesture Target=&quot;ImageTrans&quot;/&gt;
-        &lt;RotateGesture Target=&quot;ImageTrans&quot;/&gt;
-    &lt;/Panel&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Panel HitTestMode=&quot;LocalBounds&quot;&gt;
+    &lt;Image File=&quot;my_image.jpg&quot;&gt;
+        &lt;InteractiveTransform ux:Name=&quot;ImageTrans&quot;/&gt;
+    &lt;/Image&gt;
+    &lt;ZoomGesture Target=&quot;ImageTrans&quot;/&gt;
+    &lt;PanGesture Target=&quot;ImageTrans&quot;/&gt;
+    &lt;RotateGesture Target=&quot;ImageTrans&quot;/&gt;
+&lt;/Panel&gt;</code></pre>
 <p>One <code>InteractiveTransform</code> can be the target of multiple gestures. They will coorindate correctly with each other to provide a unified experience. The <code>InteractiveTransform</code> will contain values that represent the total transformation.</p>
 <p>For a complete list of single-finger gestures such as <a href="../../fuse/gestures/tapped.html">Tapped</a>, LongPress etc., see <a href="../../fuse/triggers/trigger.html">Triggers</a>.</p>
 <h4 id="available-gestures">Available gestures</h4>

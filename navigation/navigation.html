@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -690,35 +690,32 @@
 <h2 id="creating-pages">Creating pages</h2>
 <p>When designing a multi-page app, it is recommended to define each page in its own UX file as an <code>ux:Class</code>, like this:</p>
 <p><code>LoginPage.ux</code></p>
-<pre><code class="language-xml">	&lt;Page ux:Class=&quot;LoginPage&quot;&gt;
-		&lt;Router ux:Dependency=&quot;router&quot; /&gt;
-		&lt;JavaScript File=&quot;LoginPage.js&quot; /&gt;
-		...
-	&lt;/Page&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Page ux:Class=&quot;LoginPage&quot;&gt;
+    &lt;Router ux:Dependency=&quot;router&quot; /&gt;
+    &lt;JavaScript File=&quot;LoginPage.js&quot; /&gt;
+    ...
+&lt;/Page&gt;</code></pre>
 <p><code>SettingsPage.ux</code></p>
-<pre><code class="language-xml">	&lt;Page ux:Class=&quot;SettingsPage&quot;&gt;
-		&lt;Router ux:Dependency=&quot;router&quot; /&gt;
-		&lt;JavaScript File=&quot;SettingsPage.js&quot; /&gt;
-		...
-	&lt;/Page&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Page ux:Class=&quot;SettingsPage&quot;&gt;
+    &lt;Router ux:Dependency=&quot;router&quot; /&gt;
+    &lt;JavaScript File=&quot;SettingsPage.js&quot; /&gt;
+    ...
+&lt;/Page&gt;</code></pre>
 <p>And so on, for each page.</p>
 <p>Notice how each page can have its own <code>&lt;JavaScript&gt;</code> tag to handle internal logic for that page.</p>
 <p>Most pages will need access to the app's <code>Router</code>, so we declare that as an <code>ux:Dependency=&quot;router&quot;</code>. This means the JavaScript on that page can access that router.
 If our page has other dependencies, we can declare them the same way.</p>
 <h2 id="assembling-the-app">Assembling the <code>App</code></h2>
 <p>The basic structure of your main UX file should be something like this:</p>
-<pre><code class="language-xml">	&lt;App&gt;
-		&lt;Router ux:Name=&quot;router&quot; /&gt;
-		&lt;Navigator DefaultPath=&quot;login&quot;&gt;
-			&lt;LoginPage ux:Template=&quot;login&quot; router=&quot;router&quot; /&gt;
-			&lt;HomePage ux:Template=&quot;home&quot; router=&quot;router&quot; /&gt;
-			&lt;SettingsPage ux:Template=&quot;settings&quot; router=&quot;router&quot; /&gt;
-			&lt;UserProfilePage ux:Template=&quot;user&quot; router=&quot;router&quot; /&gt;
-		&lt;/Navigator&gt;
-	&lt;/App&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;App&gt;
+    &lt;Router ux:Name=&quot;router&quot; /&gt;
+    &lt;Navigator DefaultPath=&quot;login&quot;&gt;
+        &lt;LoginPage ux:Template=&quot;login&quot; router=&quot;router&quot; /&gt;
+        &lt;HomePage ux:Template=&quot;home&quot; router=&quot;router&quot; /&gt;
+        &lt;SettingsPage ux:Template=&quot;settings&quot; router=&quot;router&quot; /&gt;
+        &lt;UserProfilePage ux:Template=&quot;user&quot; router=&quot;router&quot; /&gt;
+    &lt;/Navigator&gt;
+&lt;/App&gt;</code></pre>
 <p>The <code>ux:Template</code> attribute indicates that this is not a real object instance, but rather a template that can be instantiated on demand. The <code>Navigator</code> will take care of instantiating as many instances of each template as needed, and recycle instances when they are not needed anymore.</p>
 <p>The <code>DefaultPath</code> specifies what templates should be instantiated by default when the app starts up and no route is set yet.</p>
 <p>Notice how we inject the dependencies just like properties. It is good practice to keep names of dependencies lowercase, like names. This allows you to extract components without renaming your objects, and makes it easy to spot the difference between a dependency and a property.</p>
@@ -729,15 +726,13 @@ If our page has other dependencies, we can declare them the same way.</p>
 <h2 id="navigating-around-flat-navigation">Navigating around (flat navigation)</h2>
 <p>In the above example, the <code>login</code> template (<code>LoginPage</code> class) will be our starting page.</p>
 <p>Let's give the <code>LoginPage</code> a button:</p>
-<pre><code class="language-xml">	&lt;Button Text=&quot;Login&quot; Clicked=&quot;{loginClicked}&quot; /&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Button Text=&quot;Login&quot; Clicked=&quot;{loginClicked}&quot; /&gt;</code></pre>
 <p>Hook its <code>Clicked</code> event up to this function in <code>LoginPage.js</code>:</p>
-<pre><code class="language-js">	function loginClicked() {
-		// TODO: validate login credentials
+<pre><code class="language-js">function loginClicked() {
+    // TODO: validate login credentials
 
-		router.goto(&quot;home&quot;);
-	}
-</code></pre>
+    router.goto(&quot;home&quot;);
+}</code></pre>
 <p>This will do what you expect, the navigator will animate the login screen out, and bam! We're on the <code>home</code> page.</p>
 <blockquote>
 <p>Remember to add <code>loginClicked</code> to your <code>module.exports</code>.</p>
@@ -745,43 +740,38 @@ If our page has other dependencies, we can declare them the same way.</p>
 <h2 id="hierarchical-navigation">Hierarchical navigation</h2>
 <p>Hierarchical navigation is navigating to (&quot;pushing&quot;) a temporary page, and then later &quot;popping&quot; (going back) to wherever you came from, either using an on-screen button, or the device's physical back-button.</p>
 <p>Let's say a button is supposed to open the <code>settings</code> page, and then the back-button should take us back to wherever we came from:</p>
-<pre><code class="language-js">	router.push(&quot;settings&quot;);
-</code></pre>
+<pre><code class="language-js">router.push(&quot;settings&quot;);</code></pre>
 <p>Easy, right? Now the back button on Android will take us back.</p>
 <blockquote>
 <p>In local preview, use Cmd/Ctrl+B to emulate the back button.
 On iOS, hold 3 fingers for 1 second to bring up a menu where we can emulate the back button.</p>
 </blockquote>
 <p>We can also trigger a go-back from JavaScript:</p>
-<pre><code class="language-js">	router.goBack();
-</code></pre>
+<pre><code class="language-js">router.goBack();</code></pre>
 <p>We can use <code>push()</code> multiple times to navigate &quot;deeper&quot;. Then you have to tap the back button multiple times to get all the way back out.</p>
 <p>We can use <code>goto()</code> while inside a deep stack of pushed pages to discard the stack and simply go to that page. Using the back button after that will not take you back.</p>
 <h2 id="passing-parameters-to-pages">Passing parameters to pages</h2>
 <p>Sometimes you want to use the same page template, but open it with different parameters.</p>
 <p>For example, our <code>user</code> page could really benefit from knowing the ID of the user to display the profile for.</p>
 <p>This is easy by passing argument objects to the router:</p>
-<pre><code class="language-js">	router.push(&quot;user&quot;, { userId: id });
-</code></pre>
+<pre><code class="language-js">router.push(&quot;user&quot;, { userId: id });</code></pre>
 <p>This will temporarily open a new instance of our <code>user</code> template, with the provided object as parameter.</p>
 <p>In <code>UserPage.js</code> we can read the parameter using the <a href="../fusejs/observable.html">Observable</a> <code>Parameter</code>, which lets you react to changes to the parameters:</p>
-<pre><code class="language-js">	var userId = this.Parameter.map(function(param) {
-		return param.userId;
-	});
-	
-	module.exports = {
-		userId: userId
-	};
-</code></pre>
+<pre><code class="language-js">var userId = this.Parameter.map(function(param) {
+    return param.userId;
+});
+
+module.exports = {
+    userId: userId
+};</code></pre>
 <p>Make a note of the fact that <code>this.Parameter</code> is an <a href="../fusejs/observable.html">Observable</a>, which means that its value is not necessarily available when the module is being evaluated.
 Make sure you either expose it using an observable operator (like in the example above), or add a handler to it using the <code>onValueChanged</code> function:</p>
 <pre><code class="language-js">this.Parameter.onValueChanged(module, function(param) {
-	//At this point we know then new parameter value.
-	
-	//module is used to connect the lifetime of the
-	//subscription to the lifetime of the module
-});
-</code></pre>
+    //At this point we know then new parameter value.
+    
+    //module is used to connect the lifetime of the
+    //subscription to the lifetime of the module
+});</code></pre>
 <p>Note that <code>this</code> in the root scope of <code>UserPage.js</code> refers to the current instance of the <code>UserPage</code> class.</p>
 <blockquote>
 <p>Be aware that in JavaScript, the meaning of the <code>this</code> keyword varies with function scope. Make sure you grab the reference to the right instance in the root of your module.</p>
@@ -790,48 +780,44 @@ Make sure you either expose it using an observable operator (like in the example
 <h2 id="multi-level-navigation">Multi-level navigation</h2>
 <p>Sometimes, it is not enough to just have one level of navigation. Our <code>home</code> screen, for example, may contain multiple pages within itself.</p>
 <p>No worries, the <code>Router</code> can deal with this just as easily. Say that our <code>HomePage.ux</code> looks something like this:</p>
-<pre><code class="language-xml">	&lt;Page ux:Class=&quot;HomePage&quot;&gt;
-		&lt;Router ux:Dependency=&quot;router&quot; /&gt;
-		&lt;JavaScript File=&quot;HomePage.js&quot; /&gt;
-		&lt;PageControl&gt;
-			&lt;SocialFeedPage ux:Name=&quot;socialfeed&quot; /&gt;
-			&lt;DirectChatsPage ux:Name=&quot;chats&quot; /&gt;
-			&lt;PinnedMessagesPage ux:Name=&quot;pinned&quot; /&gt;
-			&lt;RecentNotificationsPage ux:Name=&quot;recent&quot; /&gt;
-		&lt;/PageControl&gt;
-	&lt;/Page&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Page ux:Class=&quot;HomePage&quot;&gt;
+    &lt;Router ux:Dependency=&quot;router&quot; /&gt;
+    &lt;JavaScript File=&quot;HomePage.js&quot; /&gt;
+    &lt;PageControl&gt;
+        &lt;SocialFeedPage ux:Name=&quot;socialfeed&quot; /&gt;
+        &lt;DirectChatsPage ux:Name=&quot;chats&quot; /&gt;
+        &lt;PinnedMessagesPage ux:Name=&quot;pinned&quot; /&gt;
+        &lt;RecentNotificationsPage ux:Name=&quot;recent&quot; /&gt;
+    &lt;/PageControl&gt;
+&lt;/Page&gt;</code></pre>
 <blockquote>
 <p>Note: PageControl expects to get live page objects, not templates. PageControl keeps all pages alive and only one instance of each, to e.g. allow swipe navigation between them.</p>
 </blockquote>
 <p>Both <code>Navigator</code> and <code>PageControl</code> are so-called <em>router outlets</em>. This means they participate in routing. When using <code>.goto()</code> or <code>.push()</code>, we can provide a multi-level route, with parameters for each level.</p>
 <p>For example, our login-screen might want to send us directly to the <code>RecentNotificationsPage</code> instead of <code>SocialFeedPage</code>. That's done like this:</p>
-<pre><code class="language-js">	router.goto(&quot;home&quot;, {}, &quot;recent&quot;, { scrollOffset: 300 });
-</code></pre>
+<pre><code class="language-js">router.goto(&quot;home&quot;, {}, &quot;recent&quot;, { scrollOffset: 300 });</code></pre>
 <p>And that's all! First the <code>Navigator</code> will get you to the <code>home</code> template, and then the <code>PageControl</code> within that template will go to the <code>recent</code> page. This is a <em>path</em>, and can also be specified relatively, as we will see below. This can be compared to the path of an URL, which would look like this: <code>home/recent?scrollOffset=300</code></p>
 <p>The <code>home</code> template in this case does not take any parameters, so we pass it an empty object (<code>{}</code>).</p>
 <p>Meanwhile, the <code>recent</code> template will get the parameter <code>{ scrollOffset: 300 }</code> object to its <code>Parameter</code> <a href="../fusejs/observable.html">Observable</a>, as an example of how we can pass parameters to pages.</p>
 <h3 id="relative-navigation">Relative navigation</h3>
 <p>A neat trick to making custom pages independent of a large navigation tree, is to navigate relative to the closest <a href="../fuse/controls/navigator.html">Navigator</a> object, instead of the whole tree. This is done using the <code>gotoRelative</code> and <code>pushRelative</code> functions.</p>
 <p>These two functions behave in the same way as their other variants(<code>goto</code>, and <code>push</code>), except that they expect a <code>Navigator</code> or <code>PageControl</code> as the first argument. Any path specified after this will be relative to the provided <a href="../fuse/controls/navigator.html">Navigator</a>/<a href="../fuse/controls/pagecontrol.html">PageControl</a>.</p>
-<pre><code class="language-xml">	&lt;JavaScript&gt;
-		module.exports.toSub1 = function() {
-			router.pushRelative(secondNav, &quot;option1&quot;);
-		}
-	&lt;/JavaScript&gt;
-	&lt;Navigator ux:Name=&quot;secondNav&quot; DefaultTemplate=&quot;optionList&quot;&gt;
-		&lt;Panel ux:Template=&quot;optionList&quot;&gt;
-			&lt;Button Margin=&quot;10&quot; Text=&quot;Subpage 1&quot; Clicked=&quot;{toSub1}&quot; /&gt;
-		&lt;/Panel&gt;
-		&lt;Panel Color=&quot;#FAA&quot; ux:Template=&quot;option1&quot; /&gt;
-	&lt;/Navigator&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;JavaScript&gt;
+    module.exports.toSub1 = function() {
+        router.pushRelative(secondNav, &quot;option1&quot;);
+    }
+&lt;/JavaScript&gt;
+&lt;Navigator ux:Name=&quot;secondNav&quot; DefaultTemplate=&quot;optionList&quot;&gt;
+    &lt;Panel ux:Template=&quot;optionList&quot;&gt;
+        &lt;Button Margin=&quot;10&quot; Text=&quot;Subpage 1&quot; Clicked=&quot;{toSub1}&quot; /&gt;
+    &lt;/Panel&gt;
+    &lt;Panel Color=&quot;#FAA&quot; ux:Template=&quot;option1&quot; /&gt;
+&lt;/Navigator&gt;</code></pre>
 <h2 id="custom-animations-transitions">Custom animations/transitions</h2>
 <p>Note that by default <code>Page</code> objects have a built-in default <code>Transition=&quot;Default&quot;</code>, which means the containing control defines a meaningful default transition. For example, <code>PageControl</code> by default makes pages slide horizontally to enter and exit, while
 in <code>Navigator</code> enter sliding in from the left, and exit shrinking and fading out into the background.</p>
 <p>If you want to customize the transtion, you probably want to disable the default transition first:</p>
-<pre><code class="language-xml">	&lt;Page ux:Class=&quot;SettingsPage&quot; Transition=&quot;None&quot;&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Page ux:Class=&quot;SettingsPage&quot; Transition=&quot;None&quot;&gt;</code></pre>
 <p>If you don't specify <code>Transition=&quot;None&quot;</code>, your custom animation will be &quot;on top of&quot;/&quot;in addition to&quot; the default transition.</p>
 <p>The <code>Navigator</code> works with the standard navigation animation system in Fuse. This means that page transitions are defined by the following triggers:</p>
 <ul>
@@ -846,33 +832,30 @@ in <code>Navigator</code> enter sliding in from the left, and exit shrinking and
 </ul>
 <p>This system can be a bit tricky to wrap your head around, but it is actually necessary to allow you to fully customize all the four different cases.</p>
 <p>For example:</p>
-<pre><code class="language-xml">	&lt;Page ux:Class=&quot;SettingsPage&quot; Transition=&quot;None&quot;&gt;
-		&lt;EnteringAnimation&gt;
-			&lt;Move X=&quot;1&quot; RelativeTo=&quot;Size&quot; Duration=&quot;0.4&quot; Easing=&quot;BackOut&quot; /&gt;
-		&lt;/EnteringAnimation&gt;
-		&lt;ExitingAnimation&gt;
-			&lt;Move Y=&quot;1&quot; RelativeTo=&quot;Size&quot; Duration=&quot;0.4&quot; Easing=&quot;CubicIn&quot; /&gt;
-		&lt;/ExitingAnimation&gt;
-		...
-	&lt;/Page&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Page ux:Class=&quot;SettingsPage&quot; Transition=&quot;None&quot;&gt;
+    &lt;EnteringAnimation&gt;
+        &lt;Move X=&quot;1&quot; RelativeTo=&quot;Size&quot; Duration=&quot;0.4&quot; Easing=&quot;BackOut&quot; /&gt;
+    &lt;/EnteringAnimation&gt;
+    &lt;ExitingAnimation&gt;
+        &lt;Move Y=&quot;1&quot; RelativeTo=&quot;Size&quot; Duration=&quot;0.4&quot; Easing=&quot;CubicIn&quot; /&gt;
+    &lt;/ExitingAnimation&gt;
+    ...
+&lt;/Page&gt;</code></pre>
 <p>This will make your settings page fly in from the left, and exit by falling out the bottom of your screen. Feel free
 to spice it up by adding <code>&lt;Change this.Opacity=&quot;0&quot; Duration=&quot;0.3&quot; ../&gt;</code>, scaling, rotation or whatever you feel like.</p>
 <p>If you have a lot of pages and want them to share the transition code, we can make a common base class:</p>
-<pre><code class="language-xml">	&lt;Page ux:Class=&quot;FancyTransitionPage&quot; Transition=&quot;None&quot;&gt;
-		&lt;EnteringAnimation&gt;
-			&lt;Move X=&quot;1&quot; RelativeTo=&quot;Size&quot; Duration=&quot;0.4&quot; Easing=&quot;BackOut&quot; /&gt;
-		&lt;/EnteringAnimation&gt;
-		&lt;ExitingAnimation&gt;
-			&lt;Move Y=&quot;1&quot; RelativeTo=&quot;Size&quot; Duration=&quot;0.4&quot; Easing=&quot;CubicIn&quot; /&gt;
-		&lt;/ExitingAnimation&gt;
-	&lt;/Page&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Page ux:Class=&quot;FancyTransitionPage&quot; Transition=&quot;None&quot;&gt;
+    &lt;EnteringAnimation&gt;
+        &lt;Move X=&quot;1&quot; RelativeTo=&quot;Size&quot; Duration=&quot;0.4&quot; Easing=&quot;BackOut&quot; /&gt;
+    &lt;/EnteringAnimation&gt;
+    &lt;ExitingAnimation&gt;
+        &lt;Move Y=&quot;1&quot; RelativeTo=&quot;Size&quot; Duration=&quot;0.4&quot; Easing=&quot;CubicIn&quot; /&gt;
+    &lt;/ExitingAnimation&gt;
+&lt;/Page&gt;</code></pre>
 <p>And then use that as base class for your pages:</p>
-<pre><code class="language-xml">	&lt;FancyTransitionPage ux:Class=&quot;SettingsPage&quot;&gt;
-		...
-	&lt;/FancyTransitionPage&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;FancyTransitionPage ux:Class=&quot;SettingsPage&quot;&gt;
+    ...
+&lt;/FancyTransitionPage&gt;</code></pre>
 <p>Other navigation-based triggers such as <code>ActivatingAnimation</code>, <code>WhileActive</code> etc. also works as expected in both <code>PageControl</code> and <code>Navigator</code>.</p>
 <h2 id="and-done">And done!</h2>
 <p>That's it, you now have an elegant, scalable model for navigation and structuring your app.</p>

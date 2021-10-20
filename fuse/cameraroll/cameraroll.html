@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -709,29 +709,27 @@ All images are temporary &quot;scratch images&quot; until storage has been speci
 </blockquote>
 <h4 id="examples">Examples</h4>
 <p>Requesting an image from the camera roll:</p>
-<pre><code class="language-javascript">    var cameraRoll = require(&quot;FuseJS/CameraRoll&quot;);
+<pre><code class="language-javascript">var cameraRoll = require(&quot;FuseJS/CameraRoll&quot;);
 
-    cameraRoll.getImage()
-        .then(function(image) {
-            // Will be called if the user successfully selected an image.
-        }, function(error) {
-            // Will be called if the user aborted the selection or if an error occurred.
-        });
-</code></pre>
+cameraRoll.getImage()
+    .then(function(image) {
+        // Will be called if the user successfully selected an image.
+    }, function(error) {
+        // Will be called if the user aborted the selection or if an error occurred.
+    });</code></pre>
 <p>Taking a picture with the camera and adding it to the camera roll:</p>
-<pre><code class="language-javascript">    var cameraRoll = require(&quot;FuseJS/CameraRoll&quot;);
-    var camera = require(&quot;FuseJS/Camera&quot;);
+<pre><code class="language-javascript">var cameraRoll = require(&quot;FuseJS/CameraRoll&quot;);
+var camera = require(&quot;FuseJS/Camera&quot;);
 
-    camera.takePicture(640, 480)
-        .then(function(image) {
-            return cameraRoll.publishImage(image);
-        })
-        .then(function() {
-            // Will be called if the image was successfully added to the camera roll.
-        }, function(error) {
-            // Will called if an error occurred.
-        });
-</code></pre>
+camera.takePicture(640, 480)
+    .then(function(image) {
+        return cameraRoll.publishImage(image);
+    })
+    .then(function() {
+        // Will be called if the image was successfully added to the camera roll.
+    }, function(error) {
+        // Will called if an error occurred.
+    });</code></pre>
 <blockquote>
 <p><strong>Note</strong>: You also need to add a package reference to <code>Fuse.Camera</code> for the above example to work.</p>
 </blockquote>

@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -703,14 +703,13 @@ Show advanced things
 <p>A cubic bezier curve is defined by four control points. In an Easing curve, the first control point is fixed at (0,0),
 while the last control point is fixed at (1,1) the two remaining control points are configurable.</p>
 <h4 id="example">Example</h4>
-<pre><code class="language-xml">    &lt;Rectangle Width=&quot;100&quot; Height=&quot;100&quot; Color=&quot;#18f&quot; CornerRadius=&quot;10&quot;&gt;
-        &lt;WhilePressed&gt;
-            &lt;Move X=&quot;100&quot; Duration=&quot;0.3&quot;&gt;
-                &lt;CubicBezierEasing ControlPoints=&quot;0.4, 0.0, 1.0, 1.0&quot; /&gt;
-            &lt;/Move&gt;
-        &lt;/WhilePressed&gt;
-    &lt;/Rectangle&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Rectangle Width=&quot;100&quot; Height=&quot;100&quot; Color=&quot;#18f&quot; CornerRadius=&quot;10&quot;&gt;
+    &lt;WhilePressed&gt;
+        &lt;Move X=&quot;100&quot; Duration=&quot;0.3&quot;&gt;
+            &lt;CubicBezierEasing ControlPoints=&quot;0.4, 0.0, 1.0, 1.0&quot; /&gt;
+        &lt;/Move&gt;
+    &lt;/WhilePressed&gt;
+&lt;/Rectangle&gt;</code></pre>
 <p>The above <code>CubicBezierEasing</code> is equivalent to:</p>
 <pre><code>// In iOS
 [CAMediaTimingFunction alloc] initWithControlPoints:0.4f:0.0f:1.0f:1.0f]
@@ -727,18 +726,15 @@ Incoming Velocity: 0%
 </code></pre>
 <h4 id="different-easing-and-easingback">Different <code>Easing</code> and <code>EasingBack</code></h4>
 <p>You can use <code>ux:Binding</code> to specify two different easing curves for <code>Easing</code> and <code>EasingBack</code>:</p>
-<pre><code class="language-xml">    &lt;Move X=&quot;100&quot; Duration=&quot;0.3&quot;&gt;
-        &lt;CubicBezierEasing ux:Binding=&quot;Easing&quot; ControlPoints=&quot;0.4, 0.0, 1.0, 1.0&quot; /&gt;
-        &lt;CubicBezierEasing ux:Binding=&quot;EasingBack&quot; ControlPoints=&quot;0.3, 0.0, 0.3, 1.0&quot; /&gt;
-    &lt;/Move&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Move X=&quot;100&quot; Duration=&quot;0.3&quot;&gt;
+    &lt;CubicBezierEasing ux:Binding=&quot;Easing&quot; ControlPoints=&quot;0.4, 0.0, 1.0, 1.0&quot; /&gt;
+    &lt;CubicBezierEasing ux:Binding=&quot;EasingBack&quot; ControlPoints=&quot;0.3, 0.0, 0.3, 1.0&quot; /&gt;
+&lt;/Move&gt;</code></pre>
 <h4 id="creating-new-global-easing-functions">Creating new global easing functions</h4>
 <p>You can use `ux:Global to define a new global easing curve:</p>
-<pre><code class="language-xml">    &lt;CubicBezierEasing ux:Global=&quot;MyStandardEasing&quot; ControlPoints=&quot;0.4, 0.0, 1.0, 1.0&quot; /&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;CubicBezierEasing ux:Global=&quot;MyStandardEasing&quot; ControlPoints=&quot;0.4, 0.0, 1.0, 1.0&quot; /&gt;</code></pre>
 <p>And then:</p>
-<pre><code class="language-xml">    &lt;Move X=&quot;100&quot; Duration=&quot;0.3&quot; Easing=&quot;MyStandardEasing&quot; /&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Move X=&quot;100&quot; Duration=&quot;0.3&quot; Easing=&quot;MyStandardEasing&quot; /&gt;</code></pre>
 
 <section class="type-location">
 <h3 id="section-location">Location</h3>

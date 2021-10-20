@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -716,31 +716,30 @@ kept for part of the app.</p>
 <h4 id="example">Example</h4>
 <p>The following example illustrates a basic navigation setup using a <a href="../../fuse/navigation/router.html">Router</a> and <a href="../../fuse/controls/navigator.html">Navigator</a>.
 For a complete introduction and proper examples of Fuse's navigation system, see the <a href="/docs/navigation/navigation">Navigation guide</a>.</p>
-<pre><code class="language-xml">    &lt;JavaScript&gt;
-        module.exports = {
-            gotoFirst: function() { router.goto(&quot;firstPage&quot;); },
-            gotoSecond: function() { router.goto(&quot;secondPage&quot;); }
-        };
-    &lt;/JavaScript&gt;
+<pre><code class="language-xml">&lt;JavaScript&gt;
+    module.exports = {
+        gotoFirst: function() { router.goto(&quot;firstPage&quot;); },
+        gotoSecond: function() { router.goto(&quot;secondPage&quot;); }
+    };
+&lt;/JavaScript&gt;
 
-    &lt;Router ux:Name=&quot;router&quot; /&gt;
+&lt;Router ux:Name=&quot;router&quot; /&gt;
 
-    &lt;DockPanel&gt;
-        &lt;Navigator DefaultTemplate=&quot;firstPage&quot;&gt;
-            &lt;Page ux:Template=&quot;firstPage&quot;&gt;
-                &lt;Text Alignment=&quot;Center&quot;&gt;This is the first page.&lt;/Text&gt;
-            &lt;/Page&gt;
-            &lt;Page ux:Template=&quot;secondPage&quot;&gt;
-                &lt;Text Alignment=&quot;Center&quot;&gt;This is the second page.&lt;/Text&gt;
-            &lt;/Page&gt;
-        &lt;/Navigator&gt;
+&lt;DockPanel&gt;
+    &lt;Navigator DefaultTemplate=&quot;firstPage&quot;&gt;
+        &lt;Page ux:Template=&quot;firstPage&quot;&gt;
+            &lt;Text Alignment=&quot;Center&quot;&gt;This is the first page.&lt;/Text&gt;
+        &lt;/Page&gt;
+        &lt;Page ux:Template=&quot;secondPage&quot;&gt;
+            &lt;Text Alignment=&quot;Center&quot;&gt;This is the second page.&lt;/Text&gt;
+        &lt;/Page&gt;
+    &lt;/Navigator&gt;
 
-        &lt;Grid Dock=&quot;Bottom&quot; Columns=&quot;1*,1*&quot;&gt;
-            &lt;Button Text=&quot;First page&quot; Padding=&quot;20&quot; Clicked=&quot;{gotoFirst}&quot; /&gt;
-            &lt;Button Text=&quot;Second page&quot; Padding=&quot;20&quot; Clicked=&quot;{gotoSecond}&quot; /&gt;
-        &lt;/Grid&gt;
-    &lt;/DockPanel&gt;
-</code></pre>
+    &lt;Grid Dock=&quot;Bottom&quot; Columns=&quot;1*,1*&quot;&gt;
+        &lt;Button Text=&quot;First page&quot; Padding=&quot;20&quot; Clicked=&quot;{gotoFirst}&quot; /&gt;
+        &lt;Button Text=&quot;Second page&quot; Padding=&quot;20&quot; Clicked=&quot;{gotoSecond}&quot; /&gt;
+    &lt;/Grid&gt;
+&lt;/DockPanel&gt;</code></pre>
 <h4 id="page-navigation-order">Page Navigation Order</h4>
 <p>The history of the router follows the standard history ordering, newest routes are at the front of the history, older routes at the back.</p>
 <p>The router however does not decide on the navigation order of the pages in the individual controls, as described in <a href="../../navigation/navigationorder.html">Navigation Order</a>. This is controlled by each outlet being used.</p>

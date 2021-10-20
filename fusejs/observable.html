@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -684,55 +684,47 @@
 <p>Observables are a key concept to understand in order to be effective with Fuse. Observables let us automatically update the UI whenever there are changes to the data-model. They are also extremely useful for describing view-models; which means mapping the data-model into a view friendly format. When <a href="../fuse/reactive/databinding.html">data-binding</a> to an <code>Observable</code> using the curly brace syntax (<code>{&lt;some_observable&gt;}</code>), a subscription is automatically created that will update the UI whenever the <code>Observable</code> changes. This article is a quick introduction to understanding and using the FuseJS/Observable API.</p>
 <p>Here is a tiny example to give you an idea of what we'll be looking at:</p>
 <pre><code class="language-xml">&lt;App&gt;
-	&lt;JavaScript&gt;
-		var Observable = require(&quot;FuseJS/Observable&quot;);
-		module.exports.myValue = Observable(1);
-	&lt;/JavaScript&gt;
-	
-	&lt;Text Value=&quot;{myValue}&quot; /&gt;
-&lt;/App&gt;
-</code></pre>
+    &lt;JavaScript&gt;
+        var Observable = require(&quot;FuseJS/Observable&quot;);
+        module.exports.myValue = Observable(1);
+    &lt;/JavaScript&gt;
+    
+    &lt;Text Value=&quot;{myValue}&quot; /&gt;
+&lt;/App&gt;</code></pre>
 <h2 id="video-tutorial">Video tutorial</h2>
 <p>For a nice introduction to working with observables, take a look at this video:</p>
-<pre><code class="language-xml">&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/bB9P4mTGtVU&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/bB9P4mTGtVU&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;</code></pre>
 <h2 id="using-observables">Using observables</h2>
 <p>An <code>Observable</code> can hold a single value, or be treated as a list of values with 0 or more elements. When the value(s) of the <code>Observable</code> changes, all <em>subscribers</em> are automatically notified. The concept of subscribers/subscriptions is discussed in detail later in this article.</p>
 <p>Start off by importing the observable module, which returns a function:</p>
-<pre><code class="language-js">	var Observable = require(&quot;FuseJS/Observable&quot;);
-</code></pre>
+<pre><code class="language-js">var Observable = require(&quot;FuseJS/Observable&quot;);</code></pre>
 <p>Observables are created by calling the <code>Observable</code> function directly with zero or more initial values.</p>
-<pre><code class="language-js">	var emptyObservable = Observable();
-	var singleValueObservable = Observable(true);
-	var listObservable = Observable(1,2,3,4);
+<pre><code class="language-js">var emptyObservable = Observable();
+var singleValueObservable = Observable(true);
+var listObservable = Observable(1,2,3,4);
 
-	var singleValueObservable = Observable(10); //now has .value == 10
-	singleValueObservable.value = 20; //now has .value == 20
-	var theValue = singleValueObservable.value; //theValue is now == 20
-</code></pre>
+var singleValueObservable = Observable(10); //now has .value == 10
+singleValueObservable.value = 20; //now has .value == 20
+var theValue = singleValueObservable.value; //theValue is now == 20</code></pre>
 <p>When using an observable as a list, we can add and remove items using the <code>.add</code> and <code>.remove</code> methods.</p>
-<pre><code class="language-js">	var multiValueObservable = Observable(1,2);
-	multiValueObservable.add(5); //now contains 1,2,5
-	multiValueObservable.remove(2); //now contains 1,5
-</code></pre>
+<pre><code class="language-js">var multiValueObservable = Observable(1,2);
+multiValueObservable.add(5); //now contains 1,2,5
+multiValueObservable.remove(2); //now contains 1,5</code></pre>
 <p>We can also apply various transformations to observables using a set of methods we collectively call &quot;reactive operators&quot;. These operators are methods we can call on observables that return new observables. We cover them in more detail later in this article. The following example squares all the numbers in the <code>someNumbers</code> observable using the <code>.map</code> operator. Map works by converting all the items in an <code>Observable</code> from one form into an other using the supplied function.</p>
-<pre><code class="language-js">	var someNumbers = Observable(1,2,3,4); //now contains 1,2,3,4
-	var someNumbersSquared = someNumbers.map(function(x){ return x * x; }); //someNumbersSquared will eventually contain 1,4,9,16
-</code></pre>
+<pre><code class="language-js">var someNumbers = Observable(1,2,3,4); //now contains 1,2,3,4
+var someNumbersSquared = someNumbers.map(function(x){ return x * x; }); //someNumbersSquared will eventually contain 1,4,9,16</code></pre>
 <p>Since all the reactive operators return new observables, we can put several of them after one another to create a long chain of reactive operations.</p>
-<pre><code class="language-js">	var someNumbers = Observable(1,2,3,4);
-	var someTransformedNumbers = someNumbers
-		.map(function(x){ return x * x; })
-		.where(function(x){ return x &lt; 10; })
-		.map(function(x){ return -x; }); //will eventually contain -1, -4, -9
-</code></pre>
+<pre><code class="language-js">var someNumbers = Observable(1,2,3,4);
+var someTransformedNumbers = someNumbers
+    .map(function(x){ return x * x; })
+    .where(function(x){ return x &lt; 10; })
+    .map(function(x){ return -x; }); //will eventually contain -1, -4, -9</code></pre>
 <h2 id="state-observables-and-derived-observables">State Observables and derived Observables</h2>
 <p>When working with Observables, it is important to understand the difference between <strong>state Observables</strong> and <strong>derived Observables</strong>. A state Observable is an Observable that is explicitly <em>made by you</em>, while a derived Observable is returned by other APIs, such as <a href="../fusejs/observable-api.html#reactive-operators">reactive operators</a>.</p>
 <p>One thing to note about the example above, that catches a lot of new Fusers off guard, is that <code>someTransformedNumbers</code> won't actually contain data immediately after the statement that declares it:</p>
-<pre><code class="language-js">	var someNumbers = Observable(1,2,3,4); // someNumbers is a state Observable
-	var someNumbersSquared = someNumbers.map(function(x){ return x * x; }); // someNumbersSquared is a derived Observable
-	console.log(&quot;SquaredNumbers length: &quot; + someNumbersSquared.length); // this will print 0
-</code></pre>
+<pre><code class="language-js">var someNumbers = Observable(1,2,3,4); // someNumbers is a state Observable
+var someNumbersSquared = someNumbers.map(function(x){ return x * x; }); // someNumbersSquared is a derived Observable
+console.log(&quot;SquaredNumbers length: &quot; + someNumbersSquared.length); // this will print 0</code></pre>
 <p>The difference between state Observables and derived Observables is explained in <a href="../fusejs/observable-api.html#state-observables-and-derived-observables">Observable API docs</a>. In short, derived Observables won't propagate data unless there is a subscriber at the end of the chain, while the data in state Observables is available synchronously. Keep reading to learn more about how subscriptions work.</p>
 <h2 id="subscribing-to-changes-in-observables">Subscribing to changes in Observables</h2>
 <p>A really important thing to understand about Observables is that they need at least one <em>subscriber</em> before they start propagating data. There are a few ways to subscribe to an Observable:</p>
@@ -742,9 +734,8 @@
 <p>In some cases, we're interested in running some imperative code in response to an <code>Observable</code> changing. We can do this by subscribing using the <code>.onValueChanged(module, func(item))</code> function, which fires the function <code>func</code> every time the value of a single value Observable changes. The module parameter lets us connect the lifetime of this subscription to the lifetime of a module. In most cases we just pass the module we're currently in:</p>
 <pre><code class="language-js">var myObservable = Observable(1);
 myObservable.onValueChanged(module, function(item) {
-	//do something
-});
-</code></pre>
+    //do something
+});</code></pre>
 <h3 id="-addsubscriber-func">.addSubscriber(func)</h3>
 <p>We can also explicitly add subscriptions by using the <code>.addSubscriber(func(item))</code> method. The drawback of using <code>.addSubscriber</code> is that we manually have to remove the subscription when we no longer need it using <code>.removeSubscriber</code>. Always prefer using <code>.onValueChanged</code> unless we're defining custom reactive operators. We mention it here only for completeness.</p>
 <h3 id="-subscribe-module">.subscribe(module)</h3>
@@ -758,28 +749,26 @@ myObservable.onValueChanged(module, function(item) {
 <pre><code class="language-js">var source = Observable(2);
 
 var destination = source.map(function(x) {
-	return x * x;
+    return x * x;
 }).where(function(x) {
-	return x &lt; 50;
-});
-</code></pre>
+    return x &lt; 50;
+});</code></pre>
 <p>In the code above, we create a source <code>Observable</code> with a single initial value; the number 2. We then use the reactive operator <code>.map</code> to transform the value with a &quot;mapping-function&quot; that squares the number. Lastly, we use the reactive operator <code>.where</code> to filter the observable so that only values that are below 50 will be propagated further. The <code>.where</code> operator is expected to return either <code>true</code> or <code>false</code>; <code>true</code> if we allow the value to propagate, <code>false</code> if not.</p>
 <h2 id="passing-observables-through-properties">Passing observables through properties</h2>
 <p>Observables can also be passed into custom made components using Properties. We can add a property which accepts Observables by making an <code>object</code> property:</p>
 <pre><code class="language-xml">&lt;Panel ux:Class=&quot;CoolPanel&quot;&gt;
-	&lt;object ux:Property=&quot;ObservableProperty&quot; /&gt;
-	&lt;JavaScript&gt;
-		var passedInObservable = this.ObservableProperty.inner();
-	&lt;/JavaScript&gt;
+    &lt;object ux:Property=&quot;ObservableProperty&quot; /&gt;
+    &lt;JavaScript&gt;
+        var passedInObservable = this.ObservableProperty.inner();
+    &lt;/JavaScript&gt;
 &lt;/Panel&gt;
 &lt;JavaScript&gt;
-	var Observable = require(&quot;FuseJS/Observable&quot;);
-	module.exports = {
-		valueToPass: Observable(&quot;123&quot;)
-	};
+    var Observable = require(&quot;FuseJS/Observable&quot;);
+    module.exports = {
+        valueToPass: Observable(&quot;123&quot;)
+    };
 &lt;/JavaScript&gt;
-&lt;CoolPanel ObservableProperty=&quot;{valueToPass}&quot; /&gt;
-</code></pre>
+&lt;CoolPanel ObservableProperty=&quot;{valueToPass}&quot; /&gt;</code></pre>
 <p>In most cases you'll want to use <code>inner()</code> when fetching an Observable passed in through properties. This is because the javascript value <code>this.Propertyname</code> is an observable with whatever <code>Propertyname</code> contains. If we pass an Observable in, <code>this.Propertyname</code> will contain an observable with the observable we passed through.</p>
 
             </div>

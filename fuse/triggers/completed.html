@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -702,22 +702,20 @@ Show advanced things
 <p>Pulses when the busy status of a node is cleared.</p>
 <p><code>Completed</code> is used to respond to the completion of a preparation, loading, or other busy task.</p>
 <p>This example draws attention to an <code>Image</code> when it has completed loading:</p>
-<pre><code class="language-xml">    &lt;Image Url=&quot;some_big_image&quot;&gt;
-        &lt;Completed&gt;
-            &lt;Scale Factor=&quot;0.8&quot; Duration=&quot;0.4&quot;/&gt;
-        &lt;/Completed&gt;
-    &lt;/Image&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Image Url=&quot;some_big_image&quot;&gt;
+    &lt;Completed&gt;
+        &lt;Scale Factor=&quot;0.8&quot; Duration=&quot;0.4&quot;/&gt;
+    &lt;/Completed&gt;
+&lt;/Image&gt;</code></pre>
 <p><code>Completed</code> always fires, even if the node wasn't busy before. This makes it suitable for things that should always run. It also makes it useful in combination with other triggers. For example, the below scales the image when the navigation page is both active and completed.</p>
-<pre><code class="language-xml">    &lt;Page&gt;
-        &lt;Image Alignment=&quot;Center&quot; Url=&quot;some_image&quot; ux:Name=&quot;theImage&quot;/&gt;
-        &lt;WhileActive&gt;
-            &lt;Completed&gt;
-                &lt;Scale Target=&quot;theImage&quot; Factor=&quot;1.5&quot; Duration=&quot;0.3&quot;/&gt;
-            &lt;/Completed&gt;
-        &lt;/WhileActive&gt;
-    &lt;/Page&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Page&gt;
+    &lt;Image Alignment=&quot;Center&quot; Url=&quot;some_image&quot; ux:Name=&quot;theImage&quot;/&gt;
+    &lt;WhileActive&gt;
+        &lt;Completed&gt;
+            &lt;Scale Target=&quot;theImage&quot; Factor=&quot;1.5&quot; Duration=&quot;0.3&quot;/&gt;
+        &lt;/Completed&gt;
+    &lt;/WhileActive&gt;
+&lt;/Page&gt;</code></pre>
 
 <section class="type-location">
 <h3 id="section-location">Location</h3>

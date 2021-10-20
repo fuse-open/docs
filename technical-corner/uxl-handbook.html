@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -689,108 +689,100 @@
 <p><code>extern()</code> allows us to include uno code in our build only if it meets our condition.</p>
 <p>For the rest of the document the phrases 'meets the condition' or 'the condition is met' can be read as 'the condition evaluated to true'.</p>
 <p>For example the following class will only be included when you are building for iOS:</p>
-<pre><code class="language-csharp">    public extern(iOS) class Test0
+<pre><code class="language-csharp">public extern(iOS) class Test0
+{
+    public void SayHi()
     {
-        public void SayHi()
-        {
-            debug_log &quot;hi from ios&quot;;
-        }
+        debug_log &quot;hi from ios&quot;;
     }
-</code></pre>
+}</code></pre>
 <p>We can also use simple boolean logic inside the <code>extern()</code> condition</p>
-<pre><code class="language-csharp">    public extern(!iOS) class Test0
+<pre><code class="language-csharp">public extern(!iOS) class Test0
+{
+    public void SayHi()
     {
-        public void SayHi()
-        {
-            debug_log &quot;hi from anything but iOS :)&quot;;
-        }
+        debug_log &quot;hi from anything but iOS :)&quot;;
     }
-</code></pre>
+}</code></pre>
 <p>Stripping of <code>extern()</code> happens very early in the compilation process (while processing the AST) so most syntax bugs will not be caught if the condition is not met. Be sure to test <em>all targets</em> for code using UXL.</p>
 <p>Because <code>extern()</code> stripping is done so early we can 'break' many Uno rules. For example, the above two classes can be in the same namespace without causing a name collision. This means we don't need factory methods for instantiating platform specific instances of a class, we can just conditionally compile them using <code>extern()</code>.</p>
 <p><code>extern()</code> can also be used on methods and fields</p>
-<pre><code class="language-csharp">    class Test1 // we can use extern on methods too
+<pre><code class="language-csharp">class Test1 // we can use extern on methods too
+{
+    public extern(ANDROID) void SayHi()
     {
-        public extern(ANDROID) void SayHi()
-        {
-            debug_log &quot;hi from android&quot;;
-        }
-        public extern(!ANDROID) void SayHi()
-        {
-            debug_log &quot;hi from not android&quot;;
-        }
+        debug_log &quot;hi from android&quot;;
     }
-</code></pre>
+    public extern(!ANDROID) void SayHi()
+    {
+        debug_log &quot;hi from not android&quot;;
+    }
+}</code></pre>
 <p>And, as with types, we don't get a collision even though the method signatures are identical.</p>
 <p><strong>NOTE:</strong> For you own sanity, don't have different public interfaces for different extern conditions. While it works, it tends to come back to haunt you eventually.</p>
 <h2 id="if-defined"><code>if defined()</code></h2>
 <p><code>if defined()</code> does the same thing for statements that <code>extern()</code> did for types, methods and fields.</p>
-<pre><code class="language-csharp">    class Test2
+<pre><code class="language-csharp">class Test2
+{
+    public void SomeMethod()
     {
-        public void SomeMethod()
+        if defined(ANDROID)
         {
-            if defined(ANDROID)
-            {
-                debug_log &quot;works for android&quot;;
-            } else if defined(IOS) {
-                debug_log &quot;works for ios&quot;;
-            } else {
-                debug_log &quot;anything else&quot;;
-            }
+            debug_log &quot;works for android&quot;;
+        } else if defined(IOS) {
+            debug_log &quot;works for ios&quot;;
+        } else {
+            debug_log &quot;anything else&quot;;
         }
     }
-</code></pre>
+}</code></pre>
 <p>Note that the syntax is <code>if defined(CONDITION)</code> and not <code>if (defined(CONDITION))</code>. This by design to highlight the difference of <em>when</em> this is being evaluated.</p>
 <h2 id="extern-quot-quot"><code>extern &quot;&quot;</code></h2>
 <p><code>extern &quot;&quot;</code> (pronounced 'extern string') is a way of writing expressions in the native target language inline in your uno code. For example:</p>
-<pre><code class="language-csharp">    public class Test
+<pre><code class="language-csharp">public class Test
+{
+    // note that the extern can go before the access modifiers
+    extern(MOBILE) // MOBILE is equivalent to (IOS||ANDROID)
+    public void SomeMethod()
     {
-        // note that the extern can go before the access modifiers
-        extern(MOBILE) // MOBILE is equivalent to (IOS||ANDROID)
-        public void SomeMethod()
-        {
-            extern &quot;Xli::Console::WriteLine(\&quot;I can has null deref exceptions\&quot;)&quot;;
-        }
-
-        extern(JAVASCRIPT)
-        public void SomeMethod()
-        {
-            extern &quot;Console.log(\&quot;I can has Ï€\&quot;)&quot;;
-        }
-
-        extern(!(MOBILE||JAVASCRIPT))
-        public void SomeMethod()
-        {
-            debug_log &quot;why not do this in the first place?!&quot;
-        }
+        extern &quot;Xli::Console::WriteLine(\&quot;I can has null deref exceptions\&quot;)&quot;;
     }
-</code></pre>
+
+    extern(JAVASCRIPT)
+    public void SomeMethod()
+    {
+        extern &quot;Console.log(\&quot;I can has Ï€\&quot;)&quot;;
+    }
+
+    extern(!(MOBILE||JAVASCRIPT))
+    public void SomeMethod()
+    {
+        debug_log &quot;why not do this in the first place?!&quot;
+    }
+}</code></pre>
 <p>Any time you use <code>extern &quot;&quot;</code> make sure it gets used only in the correct backend. For example in the above code we know the MOBILE platforms imply C++.</p>
 <p><code>extern &quot;&quot;</code> is awesome and should be used for all places you need native code unless it makes things too complicated; in those cases we will fall back to target-specific UXL files, but that will discussed in a later section.</p>
 <p><code>extern &quot;&quot;</code> can return values:</p>
-<pre><code class="language-csharp">    extern(CPLUSPLUS)
-    public int AddOne()
-    {
-        var result = extern&lt;int&gt;&quot;10 + 1&quot;; // note that the `extern &quot;&quot;` is an expression and doesnt need a `;` inside the string
-        return result;
-    }
-</code></pre>
+<pre><code class="language-csharp">extern(CPLUSPLUS)
+public int AddOne()
+{
+    var result = extern&lt;int&gt;&quot;10 + 1&quot;; // note that the `extern &quot;&quot;` is an expression and doesnt need a `;` inside the string
+    return result;
+}</code></pre>
 <p>The generic-style type specifier can be any valid Uno type.</p>
 <p><code>extern &quot;&quot;</code> can also have values passed into it:</p>
-<pre><code class="language-csharp">    extern(CPLUSPLUS)
-    public int AddOne(int x)
-    {
-        return extern&lt;int&gt;(x)&quot;$0 + 1&quot;;
-    }
-</code></pre>
+<pre><code class="language-csharp">extern(CPLUSPLUS)
+public int AddOne(int x)
+{
+    return extern&lt;int&gt;(x)&quot;$0 + 1&quot;;
+}</code></pre>
 <p><code>$0</code> is a UXL macro naming the first argument pass in to the form.</p>
 <p><code>extern &quot;&quot;</code> can take multiple arguments:</p>
-<pre><code class="language-csharp">    extern(CPLUSPLUS)
-    public int AddIntAndFloat(int x, float y)
-    {
-        return extern&lt;int&gt;(x,y)&quot;$0 + (int)$1&quot;;
-    }
-</code></pre>
+<pre><code class="language-csharp">extern(CPLUSPLUS)
+public int AddIntAndFloat(int x, float y)
+{
+    return extern&lt;int&gt;(x,y)&quot;$0 + (int)$1&quot;;
+}</code></pre>
 <p>Just like <code>$0</code> names the first argument, <code>$1</code> names the second, and this applies to as many arguments as you like.</p>
 <p>Do be aware that inside the extern syntax, when we say <code>int</code>, we are saying <code>C++ int</code>, whilst the <code>&lt;int&gt;</code> is an Uno <code>int</code>.</p>
 <h2 id="uxl-macros">UXL Macros</h2>
@@ -798,13 +790,12 @@
 <h4 id="specify-an-uno-type-with-type-syntax">Specify an Uno type with <code>@{type}</code> syntax</h4>
 <p>You may want to define a variable with an Uno type inside the native code. Or maybe cast a native type to an Uno type.</p>
 <p>This can be done as follows:</p>
-<pre><code class="language-csharp">    extern(CPLUSPLUS)
-    public int AddIntAndFloat(long x, float y)
-    {
-        extern(x) &quot;@{long} z = $0&quot;;
-        return extern&lt;long&gt;(x,y)&quot;z + (@{long})$1&quot;;
-    }
-</code></pre>
+<pre><code class="language-csharp">extern(CPLUSPLUS)
+public int AddIntAndFloat(long x, float y)
+{
+    extern(x) &quot;@{long} z = $0&quot;;
+    return extern&lt;long&gt;(x,y)&quot;z + (@{long})$1&quot;;
+}</code></pre>
 <p>Here we can see a few interesting features of <code>extern</code>:</p>
 <ul>
 <li><code>@{someUnoType}</code> will expand the native version of that Uno type</li>
@@ -819,64 +810,60 @@
 </ul>
 <h4 id="refer-to-static-field-in-uxl">Refer to static field in UXL</h4>
 <p>We can access a static field of type easily from UXL. Below we show how to access the <code>_name</code> field of the <code>Test0</code> class:</p>
-<pre><code class="language-csharp">    public class Test0 {
-        public static string _name = &quot;Jeff&quot;;
-    }
+<pre><code class="language-csharp">public class Test0 {
+    public static string _name = &quot;Jeff&quot;;
+}
 
-    public class Test1 {
-        public string getTest0Name()
-        {
-            extern &quot;@{string} tmp = @{Test0._name}&quot;;
-            return extern&lt;string&gt;&quot;tmp&quot;;
-        }
+public class Test1 {
+    public string getTest0Name()
+    {
+        extern &quot;@{string} tmp = @{Test0._name}&quot;;
+        return extern&lt;string&gt;&quot;tmp&quot;;
     }
-</code></pre>
+}</code></pre>
 <p>As you can see, the <code>@{type}</code> syntax works for classes too.</p>
 <h4 id="refer-to-a-field-on-an-instance-of-a-type-using-the-of-macro">Refer to a field on an instance of a type using the <code>:Of</code> macro</h4>
 <p>UXL cannot infer the type of a C++ variable, so when we need access to instance data we have to tell UXL the type. We use the <code>:Of</code> macro for this:</p>
-<pre><code class="language-csharp">    public class Test0 {
-        public string _instanceName = &quot;Jeff&quot;;
-    }
+<pre><code class="language-csharp">public class Test0 {
+    public string _instanceName = &quot;Jeff&quot;;
+}
 
-    public class Test1 {
-        public string getTest0Name(Test0 x)
-        {
-            extern(x) &quot;@{Test0} tmp = @0&quot;;
-            extern&quot;@{string} tmp2 = @{Test0:Of(tmp)._instanceName}&quot;
-            return extern&lt;string&gt;&quot;tmp2&quot;;
-        }
+public class Test1 {
+    public string getTest0Name(Test0 x)
+    {
+        extern(x) &quot;@{Test0} tmp = @0&quot;;
+        extern&quot;@{string} tmp2 = @{Test0:Of(tmp)._instanceName}&quot;
+        return extern&lt;string&gt;&quot;tmp2&quot;;
     }
-</code></pre>
+}</code></pre>
 <p>This is a somewhat convoluted example but should show the point. Of course, if you really need the value of a field in UXL, then you should pass it in from Uno using:</p>
 <pre><code>extern(x._instanceName)&quot;..some code using $0 here&quot;;
 </code></pre>
 <h4 id="call-a-static-method-using-uxl-with-the-call-macro">Call a static method using UXL with the <code>:Call</code> macro</h4>
-<pre><code class="language-csharp">    public class Test0 {
-        public static string AgeJeff(int x) { return &quot;Jeff is &quot; + x;  }
-    }
+<pre><code class="language-csharp">public class Test0 {
+    public static string AgeJeff(int x) { return &quot;Jeff is &quot; + x;  }
+}
 
-    public class Test1 {
-        public string getTest0Name()
-        {
-            return extern&lt;string&gt;&quot;@{Test0.AgeJeff(int):Call(253)}&quot;;
-        }
+public class Test1 {
+    public string getTest0Name()
+    {
+        return extern&lt;string&gt;&quot;@{Test0.AgeJeff(int):Call(253)}&quot;;
     }
-</code></pre>
+}</code></pre>
 <p>To accurately specify the method to call we need to provide the signature (only the types are needed).</p>
 <p>Then in the <code>Call</code> we provide the actual arguments.</p>
 <h4 id="call-an-instance-method-using-uxl">Call an instance method using UXL</h4>
 <p>As you could guess, you use the <code>:Of</code> macro in the same way as we did for fields:</p>
-<pre><code class="language-csharp">    public class Test0 {
-        public string AgeJeff(int x) { return &quot;Jeff is &quot; + x;  }
-    }
+<pre><code class="language-csharp">public class Test0 {
+    public string AgeJeff(int x) { return &quot;Jeff is &quot; + x;  }
+}
 
-    public class Test1 {
-        public string getTest0Name(Test0 x)
-        {
-            return extern&lt;string&gt;(x)&quot;@{Test0:Of($0).AgeJeff(int):Call(253)}&quot;;
-        }
+public class Test1 {
+    public string getTest0Name(Test0 x)
+    {
+        return extern&lt;string&gt;(x)&quot;@{Test0:Of($0).AgeJeff(int):Call(253)}&quot;;
     }
-</code></pre>
+}</code></pre>
 <h4 id="notes-on-access-modifiers">Notes on access modifiers</h4>
 <p>UXL sees all (with caveats): it doesn't obey access modifers. If native can reference it, it can. Obviously the converse is also true, so when compiling to C# you most likely can't access everything.</p>
 <h4 id="make-a-new-instance-of-a-class-from-uxl-using-the-new-macro">Make a new instance of a class from UXL using the <code>:New</code> macro</h4>
@@ -907,29 +894,28 @@ Even now, there are many cases where these files are neccesary.</p>
 <p>To tell Uno that a given type has a native implementation we use the <code>[TargetSpecificImplementation]</code> attribute.</p>
 <p>We also use the attribute on any method we want to implement in native code.</p>
 <p>Here is an example class:</p>
-<pre><code class="language-csharp">    [TargetSpecificImplementation]
-    class Test3
+<pre><code class="language-csharp">[TargetSpecificImplementation]
+class Test3
+{
+    [TargetSpecificImplementation]
+    public extern float FirstMethod(int a);
+
+    [TargetSpecificImplementation]
+    public extern float SecondMethod(int a) // SecondMethod has a default implementation
     {
-        [TargetSpecificImplementation]
-        public extern float FirstMethod(int a);
-
-        [TargetSpecificImplementation]
-        public extern float SecondMethod(int a) // SecondMethod has a default implementation
-        {
-            return 0f;
-        }
-
-        public static float Helper(int a)
-        {
-            return (float)a*a;
-        }
-
-        public float NonStaticHelper(int a)
-        {
-            return (float)a*a;
-        }
+        return 0f;
     }
-</code></pre>
+
+    public static float Helper(int a)
+    {
+        return (float)a*a;
+    }
+
+    public float NonStaticHelper(int a)
+    {
+        return (float)a*a;
+    }
+}</code></pre>
 <p>There are some things to be aware of here:</p>
 <ul>
 <li>Each method that needs a native implementation has the extern modifier</li>
@@ -947,22 +933,21 @@ Even now, there are many cases where these files are neccesary.</p>
 </ul>
 <p>The compiler doesn't enforce this, though.</p>
 <p>Here is a possible UXL file for the <code>Test3</code> class we saw above:</p>
-<pre><code class="language-xml">    &lt;Extensions Backend=&quot;CPlusPlus&quot;&gt;
-        &lt;Type Name=&quot;Test3&quot;&gt;
-            &lt;Method Signature=&quot;FirstMethod(int):float&quot;&gt;
-                &lt;Expression&gt;((@{float})$0)&lt;/Expression&gt;
-            &lt;/Method&gt;
+<pre><code class="language-xml">&lt;Extensions Backend=&quot;CPlusPlus&quot;&gt;
+    &lt;Type Name=&quot;Test3&quot;&gt;
+        &lt;Method Signature=&quot;FirstMethod(int):float&quot;&gt;
+            &lt;Expression&gt;((@{float})$0)&lt;/Expression&gt;
+        &lt;/Method&gt;
 
-            &lt;Method Signature=&quot;SecondMethod(int):float&quot;&gt;
-                &lt;Require Entity=&quot;Test3.NonStaticHelper(int)&quot; /&gt;
-                &lt;Body&gt;&lt;![CDATA[
-                    @{float} tmp = @{Test3.Helper(int):Call($0)};
-                    return tmp + @{Test3:Of($$).NonStaticHelper(int):Call($0)};
-                ]]&gt;&lt;/Body&gt;
-            &lt;/Method&gt;
-        &lt;/Type&gt;
-    &lt;/Extensions&gt;
-</code></pre>
+        &lt;Method Signature=&quot;SecondMethod(int):float&quot;&gt;
+            &lt;Require Entity=&quot;Test3.NonStaticHelper(int)&quot; /&gt;
+            &lt;Body&gt;&lt;![CDATA[
+                @{float} tmp = @{Test3.Helper(int):Call($0)};
+                return tmp + @{Test3:Of($$).NonStaticHelper(int):Call($0)};
+            ]]&gt;&lt;/Body&gt;
+        &lt;/Method&gt;
+    &lt;/Type&gt;
+&lt;/Extensions&gt;</code></pre>
 <p>Here we can see some macros we will recognize, and some we may not.</p>
 <p>The <code>$$</code> macro is the <code>this</code> variable of the instance.</p>
 <p>The <code>Extensions</code> tag specific what backend the contents are valid for.</p>
@@ -994,38 +979,33 @@ Even now, there are many cases where these files are neccesary.</p>
 </code></pre>
 <h4 id="uxl-equivalent-of-using">UXL Equivalent of using</h4>
 <p>Writing out fully qualified types can get tedious. The <code>Using</code> tag does the same job s Uno's <code>using</code> statement:</p>
-<pre><code class="language-xml">    &lt;Using Namespace=&quot;iOS.Foundation&quot; /&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Using Namespace=&quot;iOS.Foundation&quot; /&gt;</code></pre>
 <h4 id="adding-includes-using-the-require-tag-and-the-include-macro">Adding includes using the <code>Require</code> tag and the <code>:Include</code> macro</h4>
 <p>In your UXL you may reference other Uno types, for example by calling one of their methods. However for some targets you need to include the header file for that type before you can use it. We do this with the require tag</p>
-<pre><code class="language-xml">    &lt;Require Source.Include=&quot;@{Android.Base.AndroidBindingMacros:Include}&quot; /&gt;
-    &lt;Require Header.Include=&quot;@{Android.Base.AndroidBindingMacros:Include}&quot; /&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Require Source.Include=&quot;@{Android.Base.AndroidBindingMacros:Include}&quot; /&gt;
+&lt;Require Header.Include=&quot;@{Android.Base.AndroidBindingMacros:Include}&quot; /&gt;</code></pre>
 <p>In the above we use the <code>:Include</code> macro to get the path of the <code>.h</code> file we require.</p>
 <p>By using <code>Source.Include</code> we say the <code>#include</code> will be added to the <code>.cpp</code> file for the type.</p>
 <p>By using <code>Header.Include</code> we say the <code>#include</code> will be added to the <code>.h</code> file for the type.</p>
 <p>It is always preferable to use <code>Source.Include</code> where you can and <code>Header.Include</code> if you must.</p>
 <p>We can also include regular C/C++ header files by providing the path explicitly:</p>
-<pre><code class="language-xml">    &lt;Require Header.Include=&quot;Uno/Platform2.h&quot; /&gt;
-    &lt;Require Header.Include=&quot;Uno/Platform2.h&quot; /&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Require Header.Include=&quot;Uno/Platform2.h&quot; /&gt;
+&lt;Require Header.Include=&quot;Uno/Platform2.h&quot; /&gt;</code></pre>
 <h4 id="adding-arbitrary-source-to-native-files-using-the-require-source-declaration-tag">Adding arbitrary source to native files using the <code>Require Source.Declaration</code> tag</h4>
 <p>This feature is documented for completeness and as it is <em>very, very occasionally</em> the right thing to use, however, if you are using it, it should be because there is no other option.</p>
-<pre><code class="language-xml">        &lt;Require Source.Declaration&gt;&lt;![CDATA[
-            void JNICALL Android_NativeActivityHelper_onActionModeFinished(JNIEnv *env, jclass clazz, jobject arg)
-            {
-                uAutoReleasePool pool;
-                @{Activity.OnActionModeFinished:Call(arg)};
-            }
-        ]]&gt;&lt;/Require&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Require Source.Declaration&gt;&lt;![CDATA[
+    void JNICALL Android_NativeActivityHelper_onActionModeFinished(JNIEnv *env, jclass clazz, jobject arg)
+    {
+        uAutoReleasePool pool;
+        @{Activity.OnActionModeFinished:Call(arg)};
+    }
+]]&gt;&lt;/Require&gt;</code></pre>
 <p><code>Source.Declaration</code> will add the block of native code to the top of the compiled C++ code of the type. It will be after the includes but before the opening of any namespaces.</p>
 <p><code>Header.Declaration</code> does the same but for the <code>.h</code> file.</p>
 <p>If you add multiple <code>Source.Declaration</code> blocks to a single class there is no guarentee what the order will be in the final C++.</p>
 <h4 id="uxl-conditions-using-condition">UXL Conditions using <code>Condition=</code></h4>
 <p>UXL has an equivalent to <code>extern(CONDITION)</code>:</p>
-<pre><code class="language-xml">    &lt;Require Entity=&quot;Uno.Platform2.Display.OnTick(Uno.Platform2.TimerEventArgs)&quot; Condition=&quot;MOBILE&quot; /&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Require Entity=&quot;Uno.Platform2.Display.OnTick(Uno.Platform2.TimerEventArgs)&quot; Condition=&quot;MOBILE&quot; /&gt;</code></pre>
 <p>For example, here we only add a reference to the <code>OnTick</code> method if we are compiling for mobile devices.</p>
 <p>This can also be used on <code>Type</code> and <code>Method</code> tags so we can provide different implementations for <code>ANDROID</code> and <code>iOS</code> (for example).</p>
 <h4 id="expanding-macros-in-arbitrary-types-using-the-processfile-tag">Expanding Macros in arbitrary types using the <code>ProcessFile</code> tag</h4>
@@ -1039,19 +1019,16 @@ Even now, there are many cases where these files are neccesary.</p>
 <p>Note that in the last case you should define where the file will be put in the output build directory of the project.</p>
 <h4 id="copying-a-file-without-expanding-any-macros-using-the-copyfile-tag">Copying a file without expanding any macros using the <code>CopyFile</code> tag</h4>
 <p>Much like <code>ProcessFile</code>, this copies a file into the build output, but by not having to parse for UXL macros, it is much faster. Use this wherever possible.</p>
-<pre><code class="language-xml">&lt;CopyFile Name=&quot;Camera.java&quot; TargetName=&quot;src/com/fuse/Native/Camera.java&quot; /&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;CopyFile Name=&quot;Camera.java&quot; TargetName=&quot;src/com/fuse/Native/Camera.java&quot; /&gt;</code></pre>
 <h2 id="targetspecifictype-s"><code>TargetSpecificType</code>'s</h2>
 <p>Whilst the name is quite similar to <code>TargetSpecificImplementation</code>, the purpose of <code>TargetSpecificType</code>'s is very different.</p>
 <p><code>TargetSpecificType</code>'s allow you to pass a native type around in Uno in a type-safe way. You can write Uno methods that operate on that type, and generally use it in a convenient way. You don't get extra overhead either as the final type definition is that of the native type you are wrapping.</p>
 <p>Here is the simplest possible example of a <code>TargetSpecificType</code>:</p>
-<pre><code class="language-csharp">    [TargetSpecificType]
-    public extern(ANDROID) struct UJObject {}
-</code></pre>
-<pre><code class="language-xml">    &lt;Type Name=&quot;UJObject&quot; Condition=&quot;ANDROID&quot;
-        TypeName=&quot;jobject&quot;
-        Include=&quot;jni.h&quot; /&gt;
-</code></pre>
+<pre><code class="language-csharp">[TargetSpecificType]
+public extern(ANDROID) struct UJObject {}</code></pre>
+<pre><code class="language-xml">&lt;Type Name=&quot;UJObject&quot; Condition=&quot;ANDROID&quot;
+    TypeName=&quot;jobject&quot;
+    Include=&quot;jni.h&quot; /&gt;</code></pre>
 <p>Here we are defining an Uno type that will stand in for the JNI <code>jobject</code> type. Some things to know:</p>
 <ul>
 <li><code>TargetSpecificType</code>s must be struct's. We used to allow them to be classes, but this is deprecated.</li>
@@ -1104,8 +1081,7 @@ public extern(ANDROID) struct AndroidNativeView
     {
         return extern&lt;bool&gt; &quot;$0 == $1&quot;;
     }
-}
-</code></pre>
+}</code></pre>
 <pre><code class="language-xml">&lt;Type Name=&quot;AndroidNativeView&quot; Condition=&quot;Android&quot;
     TypeName=&quot;jobject&quot;
     Include=&quot;jni.h&quot;&gt;
@@ -1120,25 +1096,22 @@ public extern(ANDROID) struct AndroidNativeView
             jni-&gt;IsSameObject($0, $1);
         &lt;/Body&gt;
     &lt;/Method&gt;
-&lt;/Type&gt;
-</code></pre>
+&lt;/Type&gt;</code></pre>
 <h2 id="what-values-are-available-in-uxl">What values are available in UXL</h2>
 <p>This section is coming soon.</p>
 <h2 id="templates">Templates</h2>
 <p>Templates are a way to group UXL tags under one name that can then be used in other UXL. For example, maybe you need to add references to a lot of methods if either of two classes are used. You could write:</p>
-<pre><code class="language-xml">    &lt;Template Name=&quot;Example&quot;&gt;
-        &lt;Require Entity=&quot;Uno.Platform2.Application.Start()&quot; /&gt;
-        &lt;Require Entity=&quot;Uno.Platform2.Application.EnterForeground()&quot; /&gt;
-        &lt;Require Entity=&quot;Uno.Platform2.Application.EnterInteractive()&quot; /&gt;
-        &lt;Require Entity=&quot;Uno.Platform2.Application.ExitInteractive()&quot; /&gt;
-        &lt;Require Entity=&quot;Uno.Platform2.Application.EnterBackground()&quot; /&gt;
-        &lt;Require Entity=&quot;Uno.Platform2.Application.Terminate()&quot; /&gt;
-        &lt;Require Entity=&quot;Uno.Platform2.Application.OnReceivedLowMemoryWarning()&quot; /&gt;
-    &lt;/Template&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Template Name=&quot;Example&quot;&gt;
+    &lt;Require Entity=&quot;Uno.Platform2.Application.Start()&quot; /&gt;
+    &lt;Require Entity=&quot;Uno.Platform2.Application.EnterForeground()&quot; /&gt;
+    &lt;Require Entity=&quot;Uno.Platform2.Application.EnterInteractive()&quot; /&gt;
+    &lt;Require Entity=&quot;Uno.Platform2.Application.ExitInteractive()&quot; /&gt;
+    &lt;Require Entity=&quot;Uno.Platform2.Application.EnterBackground()&quot; /&gt;
+    &lt;Require Entity=&quot;Uno.Platform2.Application.Terminate()&quot; /&gt;
+    &lt;Require Entity=&quot;Uno.Platform2.Application.OnReceivedLowMemoryWarning()&quot; /&gt;
+&lt;/Template&gt;</code></pre>
 <p>and then simply add...</p>
-<pre><code class="language-xml">    &lt;Require Template=&quot;Example&quot; /&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Require Template=&quot;Example&quot; /&gt;</code></pre>
 <p>...to the two classes that need these methods.</p>
 <p>The only valid UXL tags that can put in a template are:</p>
 <ul>
@@ -1171,12 +1144,10 @@ In file included from include/iOSCanvasTexture.h:5:
 In file included from /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSDictionary.h:5:
 In file included from /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSObject.h:8:
 /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSZone.h:8:1: error: expected unqualified-id
-@class NSString;
-</code></pre>
+@class NSString;</code></pre>
 <h4 id="answer">Answer:</h4>
 <p>You are using Objective C in a file that is being compiled as 'regular' C++. For this to work, you need the file extension to be <code>.mm</code>. Add the following to your UXL file:</p>
-<pre><code class="language-xml">    &lt;Set Source.FileExtension=&quot;mm&quot; /&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Set Source.FileExtension=&quot;mm&quot; /&gt;</code></pre>
 <p>This means if it was in an inline <code>extern &quot;&quot;</code> expression that you need to create a small UXL file.</p>
 <p>In a future version we will have an Uno based method for doing this.</p>
 <h3 id="uno-can-t-find-my-method-even-though-it-s-definitely-there-and-even-giving-the-full-qualified-type-isn-t-working">Uno can't find my method even though it's definitely there, and even giving the full qualified type isn't working</h3>
@@ -1186,8 +1157,7 @@ In file included from /Applications/Xcode.app/Contents/Developer/Platforms/iPhon
 <h3 id="writing-out-all-these-paths-is-very-tedious-is-there-an-equivalent-of-using">Writing out all these paths is very tedious. Is there an equivalent of <code>using</code>?</h3>
 <h4 id="answer">Answer:</h4>
 <p>yes :)</p>
-<pre><code class="language-xml">    &lt;Using Namespace=&quot;iOS.Foundation&quot; /&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Using Namespace=&quot;iOS.Foundation&quot; /&gt;</code></pre>
 
             </div>
             <div class="d-none d-sm-block col-md-3 d-xl-3 toc-content">

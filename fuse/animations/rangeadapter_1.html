@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -703,17 +703,16 @@ Show advanced things
 <p>This allows finer control over animations such as <code>Timeline</code> and <code>..Animation</code>triggers.</p>
 <h3 id="example">Example</h3>
 <p>In the following example, a rotation of 90 degrees will be adapted into a rotation of 45 degrees by using a <code>RangeAdapter</code> to change the range our <code>WhilePressed</code> trigger:</p>
-<pre><code class="language-xml">    &lt;Panel Alignment=&quot;Center&quot; Width=&quot;200&quot; Height=&quot;200&quot;&gt;
-        &lt;Rectangle Color=&quot;#2196F3&quot; CornerRadius=&quot;5&quot; /&gt;
-        &lt;Timeline ux:Name=&quot;rotationTimeline&quot;&gt;
-            &lt;Rotate DegreesZ=&quot;90&quot; Duration=&quot;1&quot;/&gt;
-        &lt;/Timeline&gt;
-        &lt;RangeAdapter ux:Name=&quot;range&quot; Source=&quot;rotationTimeline.Progress&quot; SourceRangeMax=&quot;.5&quot; SourceRangeMin=&quot;0&quot; /&gt;
-        &lt;WhilePressed&gt;
-            &lt;Change range.Value=&quot;1&quot; Duration=&quot;1&quot;/&gt;
-        &lt;/WhilePressed&gt;
-    &lt;/Panel&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Panel Alignment=&quot;Center&quot; Width=&quot;200&quot; Height=&quot;200&quot;&gt;
+    &lt;Rectangle Color=&quot;#2196F3&quot; CornerRadius=&quot;5&quot; /&gt;
+    &lt;Timeline ux:Name=&quot;rotationTimeline&quot;&gt;
+        &lt;Rotate DegreesZ=&quot;90&quot; Duration=&quot;1&quot;/&gt;
+    &lt;/Timeline&gt;
+    &lt;RangeAdapter ux:Name=&quot;range&quot; Source=&quot;rotationTimeline.Progress&quot; SourceRangeMax=&quot;.5&quot; SourceRangeMin=&quot;0&quot; /&gt;
+    &lt;WhilePressed&gt;
+        &lt;Change range.Value=&quot;1&quot; Duration=&quot;1&quot;/&gt;
+    &lt;/WhilePressed&gt;
+&lt;/Panel&gt;</code></pre>
 
 <section class="type-location">
 <h3 id="section-location">Location</h3>

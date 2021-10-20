@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -705,41 +705,39 @@ Show advanced things
 <h4 id="examples">Examples</h4>
 <h5 id="loading-data">Loading data</h5>
 <p>We might wish to display a loading indicator while making an HTTP request.</p>
-<pre><code class="language-xml">    &lt;Panel&gt;
-        &lt;WhileBusy&gt;
-            &lt;Text Value=&quot;Loading...&quot;/&gt;
-        &lt;/WhileBusy&gt;
-        &lt;Busy IsActive=&quot;false&quot; ux:Name=&quot;busy&quot;/&gt;
-        &lt;JavaScript&gt;
-            exports.startLoad = function() {
-                busy.activate()
-                fetch( &quot;http://example.com/some/data&quot; ).then( function(response) {
-                    //use the response
-                    busy.deactivate()
-                }).catch(function(err) {
-                    //make sure to disable the busy status here as well
-                    busy.deactivate()
-                })
-            }
-        &lt;/JavaScript&gt;
-        &lt;Activated Handler=&quot;{startLoad}&quot;/&gt;
-    &lt;/Panel&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Panel&gt;
+    &lt;WhileBusy&gt;
+        &lt;Text Value=&quot;Loading...&quot;/&gt;
+    &lt;/WhileBusy&gt;
+    &lt;Busy IsActive=&quot;false&quot; ux:Name=&quot;busy&quot;/&gt;
+    &lt;JavaScript&gt;
+        exports.startLoad = function() {
+            busy.activate()
+            fetch( &quot;http://example.com/some/data&quot; ).then( function(response) {
+                //use the response
+                busy.deactivate()
+            }).catch(function(err) {
+                //make sure to disable the busy status here as well
+                busy.deactivate()
+            })
+        }
+    &lt;/JavaScript&gt;
+    &lt;Activated Handler=&quot;{startLoad}&quot;/&gt;
+&lt;/Panel&gt;</code></pre>
 <p>This example starts loading data when the page is activated. The <code>Loading...</code> text will be shown while it is loading, and removed once it is completed.</p>
 <h5 id="preparing-for-navigation">Preparing for navigation</h5>
 <p>The <a href="../../fuse/controls/navigator.html">Navigator</a> waits for a busy page to finish preparing before navigating to it. We can use <code>Busy</code> to ensure our bindings our done before this happens.</p>
-<pre><code class="language-xml">    &lt;Page&gt;
-        &lt;Busy Activity=&quot;Preparing&quot; On=&quot;ParameterChanged&quot; ux:Name=&quot;busy&quot;/&gt;
-        &lt;JavaScript&gt;
-            exports.name = Observable()
-            this.Parameter.onValueChanged( module, function(v) {
-                exports.name.value = v.name
-                busy.deactivate()
-            })
-        &lt;/JavaScript&gt;
-        &lt;Text Value=&quot;{name}&quot;/&gt;
-    &lt;/Page&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Page&gt;
+    &lt;Busy Activity=&quot;Preparing&quot; On=&quot;ParameterChanged&quot; ux:Name=&quot;busy&quot;/&gt;
+    &lt;JavaScript&gt;
+        exports.name = Observable()
+        this.Parameter.onValueChanged( module, function(v) {
+            exports.name.value = v.name
+            busy.deactivate()
+        })
+    &lt;/JavaScript&gt;
+    &lt;Text Value=&quot;{name}&quot;/&gt;
+&lt;/Page&gt;</code></pre>
 
 <section class="type-location">
 <h3 id="section-location">Location</h3>

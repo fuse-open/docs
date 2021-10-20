@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -693,27 +693,26 @@ For this guide, we'll also assume that all responses from the API are encoded as
 <pre><code class="language-js">var ROOT_URL = &quot;https://api.example.com/v2/&quot;;
 
 function apiFetch(path, options) {
-	var url = encodeURI(ROOT_URL + path);
+    var url = encodeURI(ROOT_URL + path);
 
-	if(options === undefined) {
-		options = {};
-	}
-	
-	// If a body is provided, serialize it as JSON and set the Content-Type header
-	if(options.body !== undefined) {
-		options = Object.assign({}, options, {
-			body: JSON.stringify(options.body),
-			headers: Object.assign({}, options.headers, {
-				&quot;Content-Type&quot;: &quot;application/json&quot;
-			})
-		});
-	}
-	
-	// Fetch the resource and parse the response as JSON
-	return fetch(url, options)
-		.then(function(response) { return response.json(); });
-}
-</code></pre>
+    if(options === undefined) {
+        options = {};
+    }
+    
+    // If a body is provided, serialize it as JSON and set the Content-Type header
+    if(options.body !== undefined) {
+        options = Object.assign({}, options, {
+            body: JSON.stringify(options.body),
+            headers: Object.assign({}, options.headers, {
+                &quot;Content-Type&quot;: &quot;application/json&quot;
+            })
+        });
+    }
+    
+    // Fetch the resource and parse the response as JSON
+    return fetch(url, options)
+        .then(function(response) { return response.json(); });
+}</code></pre>
 <p>This <code>apiFetch</code> function prepends the API's root URL and serializes the body as JSON (if one is provided), before sending off the request. It also attempts to parse the response as JSON upon completion.
 Note that we are making somewhat heavy use of the <code>Object.assign()</code> function.
 This is to avoid changing the properties of the <code>options</code> object that was passed in to the function – instead copying all the properties over to a new object and changing that.</p>
@@ -726,63 +725,56 @@ The <em>method</em> of the HTTP request determines which action to perform with 
 Say we are dealing with an API for a blog which exposes a collection of articles.</p>
 <p>Getting a list of articles is as simple as sending a GET request to <code>/articles</code>.</p>
 <pre><code class="language-js">function getAllArticles() {
-	return apiFetch(&quot;articles&quot;);
-}
-</code></pre>
+    return apiFetch(&quot;articles&quot;);
+}</code></pre>
 <p>This should return something along the lines of the following:</p>
-<pre><code class="language-json">[
-	{ &quot;id&quot;: 1, &quot;title&quot;: &quot;Welcome to my new blog!&quot;, &quot;contents&quot;: &quot;...&quot; },
-	{ &quot;id&quot;: 2, &quot;title&quot;: &quot;Why I've decided to quit blogging&quot;, &quot;contents&quot;: &quot;...&quot; }
-]
-</code></pre>
+<pre><code class="language-js">[
+    { &quot;id&quot;: 1, &quot;title&quot;: &quot;Welcome to my new blog!&quot;, &quot;contents&quot;: &quot;...&quot; },
+    { &quot;id&quot;: 2, &quot;title&quot;: &quot;Why I've decided to quit blogging&quot;, &quot;contents&quot;: &quot;...&quot; }
+]</code></pre>
 <blockquote>
 <p>Note: More often than not, REST APIs will wrap the collection in an outer object to allow for error handling, pagination, and so forth.
 However, for sake of simplicity, we'll assume the response is a simple array of items.</p>
 </blockquote>
 <p>To get the data associated with a specific blog post, we'll send a GET request to <code>/articles/&lt;ARTICLE_ID&gt;</code>.</p>
 <pre><code class="language-js">function getArticle(id) {
-	return apiFetch(&quot;articles/&quot; + id);
-}
-</code></pre>
+    return apiFetch(&quot;articles/&quot; + id);
+}</code></pre>
 <p>If we want to publish a new article, we issue a POST request to <code>/articles</code>, providing the JSON-encoded title and contents as the request body.</p>
 <pre><code class="language-js">function publishArticle(title, contents) {
-	return apiFetch(&quot;articles&quot;, {
-		method: &quot;POST&quot;,
-		body: {
-			title: title,
-			contents: contents
-		}
-	});
-}
-</code></pre>
+    return apiFetch(&quot;articles&quot;, {
+        method: &quot;POST&quot;,
+        body: {
+            title: title,
+            contents: contents
+        }
+    });
+}</code></pre>
 <p>To <em>update</em> an already existing article, we issue a PATCH request to the URL representing that particular article:</p>
 <pre><code class="language-js">function updateArticle(id, title, contents) {
-	return apiFetch(&quot;articles/&quot; + id, {
-		method: &quot;PATCH&quot;,
-		body: {
-			title: title,
-			contents: contents
-		}
-	});
-}
-</code></pre>
+    return apiFetch(&quot;articles/&quot; + id, {
+        method: &quot;PATCH&quot;,
+        body: {
+            title: title,
+            contents: contents
+        }
+    });
+}</code></pre>
 <p>Query parameters are often used for more granular control over how results are returned.
 For example, the <code>GET /articles</code> endpoint might allow an optional <code>search_query</code> parameter that, if set, will limit results to those containing a given piece of text.
 When supplying query parameters, it's important to escape the value of each parameter using the <code>encodeURIComponent()</code> function.
 Otherwise, if the query contains a character like <code>&amp;</code>, the server will interpret this as the start of the next query parameter, wreaking all kinds of havoc.</p>
 <pre><code class="language-js">function search(query) {
-	return apiFetch(&quot;articles?search_query=&quot; + encodeURIComponent(query));
-}
-</code></pre>
+    return apiFetch(&quot;articles?search_query=&quot; + encodeURIComponent(query));
+}</code></pre>
 <p>Now let's export these functions, and place all the code inside its own module, which we'll call <code>api.js</code>:</p>
 <pre><code class="language-js">module.exports = {
-	getAllArticles: getAllArticles,
-	getArticle: getArticle,
-	publishArticle: publishArticle,
-	updateArticle: updateArticle,
-	search: search
-};
-</code></pre>
+    getAllArticles: getAllArticles,
+    getArticle: getArticle,
+    publishArticle: publishArticle,
+    updateArticle: updateArticle,
+    search: search
+};</code></pre>
 <p>We can then <code>require()</code> this module from elsewhere, and start using the actual API:</p>
 <pre><code class="language-js">var Observable = require(&quot;FuseJS/Observable&quot;);
 var API = require(&quot;api&quot;);
@@ -790,18 +782,17 @@ var API = require(&quot;api&quot;);
 var articles = Observable();
 
 function refreshArticles() {
-	API.getAllArticles().then(function(newArticles) {
-		articles.replaceAll(newArticles);
-	});
+    API.getAllArticles().then(function(newArticles) {
+        articles.replaceAll(newArticles);
+    });
 }
 
 refreshArticles();
 
 module.exports = {
-	articles: articles,
-	refreshArticles: refreshArticles
-}
-</code></pre>
+    articles: articles,
+    refreshArticles: refreshArticles
+}</code></pre>
 <h2 id="oauth2">OAuth2</h2>
 <p>If the API you are using deals with user accounts, they are very likely to be using <a href="https://oauth.net/">OAuth2</a>.
 This is <em>not</em> intended to be a complete guide on OAuth2, as there are already a number of <a href="https://aaronparecki.com/2012/07/29/2/oauth2-simplified">great articles on the subject</a>.
@@ -827,12 +818,11 @@ This fragment identifier contains, <a href="https://tools.ietf.org/html/rfc6749#
 <p>Let's consider an example.</p>
 <p>We'll register <code>my-app</code> as the <a href="../basics/uno-projects.html#mobile-urischeme">URI scheme</a> in our Uno project file (<code>.unoproj</code>).
 This will make our app launch when an URI starting in <code>my-app:</code> is launched.</p>
-<pre><code class="language-json">{
-	&quot;Mobile&quot;: {
-		&quot;UriScheme&quot;: &quot;my-app&quot;
-	}
-}
-</code></pre>
+<pre><code class="language-js">{
+    &quot;Mobile&quot;: {
+        &quot;UriScheme&quot;: &quot;my-app&quot;
+    }
+}</code></pre>
 <p>Our <em>redirect URI</em> can for example be <code>my-app:oauth-callback</code> (although you can use anything in place of <code>oauth-callback</code> as long as it's consistent).</p>
 <p>When using the <em>implicit</em> grant, we don't have the client secret to verify that our app is who it says it is.
 Thus, we need to register this <em>redirect URI</em> with the API provider, so that an attacker can't request a redirect to <em>any</em> URI, potentially sending the user's token to a malicious application.
@@ -854,15 +844,14 @@ var CLIENT_ID = &quot;YOUR_CLIENT_ID_GOES_HERE&quot;;
 
 // Launches the authentication dialog in the system browser
 function authenticate() {
-	var authUri = &quot;https://auth.example.com/auth_dialog&quot;
-		+ &quot;?redirect_uri=&quot; + encodeURIComponent(REDIRECT_URI)
-		+ &quot;&amp;client_id=&quot; + encodeURIComponent(CLIENT_ID)
-		+ &quot;&amp;scope=email&quot;
-		+ &quot;&amp;response_type=token&quot;;
+    var authUri = &quot;https://auth.example.com/auth_dialog&quot;
+        + &quot;?redirect_uri=&quot; + encodeURIComponent(REDIRECT_URI)
+        + &quot;&amp;client_id=&quot; + encodeURIComponent(CLIENT_ID)
+        + &quot;&amp;scope=email&quot;
+        + &quot;&amp;response_type=token&quot;;
 
-	InterApp.launchUri(authUri);
-}
-</code></pre>
+    InterApp.launchUri(authUri);
+}</code></pre>
 <p>When the user has successfully authorized, the fragment identifier containing the access token is appended to the original <em>redirect URI</em>, and the user is redirected there.
 In the case of this example, it will look something like the following:</p>
 <pre><code>my-app:oauth-callback#access_token=0123456789abcdef&amp;token_type=bearer
@@ -874,37 +863,36 @@ The <em>Fragment Identifier</em> is appended by the API provider, and contains t
 <p>The <a href="../fuse/reactive/fusejs/interapp.html">InterApp module</a> allows us to register a function that will be called upon launching the app through its URI Scheme.
 Inside this function, we parse the URL's <em>fragment identifier</em>, and extract the access token.</p>
 <pre><code class="language-js">function parseUriFragment(uri) {
-	var uriAndFragment = uri.split(&quot;#&quot;);
+    var uriAndFragment = uri.split(&quot;#&quot;);
 
-	if(uriAndFragment.length &lt; 2) {
-		return {};
-	}
-	var fragment = uriAndFragment[uriAndFragment.length - 1];
+    if(uriAndFragment.length &lt; 2) {
+        return {};
+    }
+    var fragment = uriAndFragment[uriAndFragment.length - 1];
 
-	var query = {};
-	fragment.split(&quot;&amp;&quot;).forEach(function(pairString) {
-		var parts = pairString.split(&quot;=&quot;);
-		var key = decodeURIComponent(parts[0]);
-		var value = (parts.length &gt; 1) ? decodeURIComponent(parts[1]) : &quot;&quot;;	
-		query[key] = value;
-	});
-	return query;
+    var query = {};
+    fragment.split(&quot;&amp;&quot;).forEach(function(pairString) {
+        var parts = pairString.split(&quot;=&quot;);
+        var key = decodeURIComponent(parts[0]);
+        var value = (parts.length &gt; 1) ? decodeURIComponent(parts[1]) : &quot;&quot;;    
+        query[key] = value;
+    });
+    return query;
 }
 
 // Specifies a function to handle the redirect after the user has successfully authenticated
 InterApp.on('receivedUri', function(uri) {
-	if(uri.indexOf(REDIRECT_URI) !== 0) {
-		return;
-	}
+    if(uri.indexOf(REDIRECT_URI) !== 0) {
+        return;
+    }
 
-	var query = parseUriFragment(uri);
-	var accessToken = query.access_token;
-	
-	//
-	// Here, save the access token and use it for further requests.
-	//
-});
-</code></pre>
+    var query = parseUriFragment(uri);
+    var accessToken = query.access_token;
+    
+    //
+    // Here, save the access token and use it for further requests.
+    //
+});</code></pre>
 <p>That's it! we now have all we need to begin making authenticated requests to the API.
 How to actually send an authenticated request will vary between APIs, but should be clear from reading the docs for the API in question.</p>
 

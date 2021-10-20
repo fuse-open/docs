@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -710,37 +710,33 @@ Some <a href="../../fuse/controls/control.html">Controls</a> are only available 
 </blockquote>
 <h4 id="examples">Examples</h4>
 <p><a href="../../fuse/controls/webview.html">WebView</a> is only available as a native view. Here's how to display one:</p>
-<pre><code class="language-xml">    &lt;Panel&gt;
-        &lt;NativeViewHost&gt;
-            &lt;WebView Url=&quot;http://example.com&quot; /&gt;
-        &lt;/NativeViewHost&gt;
-    &lt;/Panel&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Panel&gt;
+    &lt;NativeViewHost&gt;
+        &lt;WebView Url=&quot;http://example.com&quot; /&gt;
+    &lt;/NativeViewHost&gt;
+&lt;/Panel&gt;</code></pre>
 <p>We can also layer native <a href="../../fuse/controls/control.html">Controls</a> over each other and form heirarchies within the <code>NativeViewHost</code>, just like with regular UX markup:</p>
-<pre><code class="language-xml">    &lt;Panel&gt;
-        &lt;NativeViewHost&gt;
-            &lt;Panel Alignment=&quot;Top&quot; Padding=&quot;15&quot; Color=&quot;#0006&quot;&gt;
-                &lt;Text&gt;This text is layered on top of the WebView&lt;/Text&gt;
-            &lt;/Panel&gt;
-            &lt;WebView Url=&quot;http://example.com&quot; /&gt;
-        &lt;/NativeViewHost&gt;
-    &lt;/Panel&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Panel&gt;
+    &lt;NativeViewHost&gt;
+        &lt;Panel Alignment=&quot;Top&quot; Padding=&quot;15&quot; Color=&quot;#0006&quot;&gt;
+            &lt;Text&gt;This text is layered on top of the WebView&lt;/Text&gt;
+        &lt;/Panel&gt;
+        &lt;WebView Url=&quot;http://example.com&quot; /&gt;
+    &lt;/NativeViewHost&gt;
+&lt;/Panel&gt;</code></pre>
 <p>You can use the <code>RenderToTexture</code> property to render the native view to a texture to enable correct layer-compositing with
 other graphics-based <a href="../../fuse/controls/graphics/visual.html">Visuals</a>. Note that this comes at a performance cost, and <em>native views are not interactive while being
 rendered to texture</em>.</p>
-<pre><code class="language-xml">    &lt;Text Alignment=&quot;Center&quot;&gt;This text is layered on top of the NativeViewHost&lt;/Text&gt;
-    &lt;NativeViewHost RenderToTexture=&quot;true&quot;&gt;
-        &lt;Rectangle Color=&quot;#324&quot; /&gt;
-    &lt;/NativeViewHost&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Text Alignment=&quot;Center&quot;&gt;This text is layered on top of the NativeViewHost&lt;/Text&gt;
+&lt;NativeViewHost RenderToTexture=&quot;true&quot;&gt;
+    &lt;Rectangle Color=&quot;#324&quot; /&gt;
+&lt;/NativeViewHost&gt;</code></pre>
 <p>To make an app consisting solely of native components, place a <code>&lt;NativeViewHost&gt;</code> at the root level of your app:</p>
-<pre><code class="language-xml">    &lt;App&gt;
-        &lt;NativeViewHost&gt;
-            &lt;!-- entire app goes here --&gt;
-        &lt;/NativeViewHost&gt;
-    &lt;/App&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;App&gt;
+    &lt;NativeViewHost&gt;
+        &lt;!-- entire app goes here --&gt;
+    &lt;/NativeViewHost&gt;
+&lt;/App&gt;</code></pre>
 
 <section class="type-location">
 <h3 id="section-location">Location</h3>

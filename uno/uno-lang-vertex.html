@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -691,11 +691,9 @@
 <p>Note that the vertex keyword does not guarantee that the evaluation will happen in the vertex shader specifically, it can also be moved to a later shader stage, such as the pixel shader, if the expression involves other meta properties that are evaluated at a later stage.</p>
 <h2 id="example">Example</h2>
 <p>In the following code, if the matrix u can be evaluated on the cpu, the following meta property will also be evaluated there. This is because the compiler will always prefer to do calculations on the CPU instead of the vertex shader as this will result in a lot of redundant shading operations.</p>
-<pre><code class="language-csharp">float4x4 m: Matrix.Invert(u);
-</code></pre>
+<pre><code class="language-csharp">float4x4 m: Matrix.Invert(u);</code></pre>
 <p>If you for some reason want the operation to be performed in the vertex shader, e.g. to ease the job for the CPU, we can use the vertex operator to force the evaluation into the shader.</p>
-<pre><code class="language-csharp">float4x4 m: Matrix.Invert(vertex u);
-</code></pre>
+<pre><code class="language-csharp">float4x4 m: Matrix.Invert(vertex u);</code></pre>
 
             </div>
             <div class="d-none d-sm-block col-md-3 d-xl-3 toc-content">

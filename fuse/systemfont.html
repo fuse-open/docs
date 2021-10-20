@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -705,21 +705,19 @@ By using this we can save space by not bundling fonts that are known to be avail
 <p>Returns the default font if no matching font is found.</p>
 <h4 id="example">Example</h4>
 <p>The following example shows how to use a bold font from the Baskerville font family:</p>
-<pre><code class="language-xml">    &lt;SystemFont Family=&quot;Baskerville&quot; Style=&quot;Normal&quot; Weight=&quot;Bold&quot; ux:Global=&quot;BaskervilleBold&quot; /&gt;
-    &lt;Text Font=&quot;BaskervilleBold&quot;&gt;Hello, world!&lt;/Text&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;SystemFont Family=&quot;Baskerville&quot; Style=&quot;Normal&quot; Weight=&quot;Bold&quot; ux:Global=&quot;BaskervilleBold&quot; /&gt;
+&lt;Text Font=&quot;BaskervilleBold&quot;&gt;Hello, world!&lt;/Text&gt;</code></pre>
 <p>Android typically uses abstract font families (e.g. <code>sans-serif</code>),
 whereas iOS uses concrete (e.g. <code>Helvetica Neue</code>), so it is often the case that
 we want to specify different font families that are depending on the target. To do this,
 we can use local resources:</p>
-<pre><code class="language-xml">    &lt;Android&gt;
-        &lt;SystemFont Family=&quot;monospace&quot; Style=&quot;Normal&quot; Weight=&quot;Normal&quot; ux:Key=&quot;Monospace&quot; /&gt;
-    &lt;/Android&gt;
-    &lt;iOS&gt;
-        &lt;SystemFont Family=&quot;Courier&quot; Style=&quot;Normal&quot; Weight=&quot;Normal&quot; ux:Key=&quot;Monospace&quot; /&gt;
-    &lt;/iOS&gt;
-    &lt;Text Font=&quot;{Resource Monospace}&quot;&gt;Hello, world!&lt;/Text&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Android&gt;
+    &lt;SystemFont Family=&quot;monospace&quot; Style=&quot;Normal&quot; Weight=&quot;Normal&quot; ux:Key=&quot;Monospace&quot; /&gt;
+&lt;/Android&gt;
+&lt;iOS&gt;
+    &lt;SystemFont Family=&quot;Courier&quot; Style=&quot;Normal&quot; Weight=&quot;Normal&quot; ux:Key=&quot;Monospace&quot; /&gt;
+&lt;/iOS&gt;
+&lt;Text Font=&quot;{Resource Monospace}&quot;&gt;Hello, world!&lt;/Text&gt;</code></pre>
 <p>Note that this only works on iOS and Android, and that it is not guaranteed to
 be consistent across devices, OSes, or OS versions.</p>
 

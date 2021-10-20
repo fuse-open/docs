@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -705,13 +705,11 @@ Show advanced things
 a <a href="../../fuse/reactive/javascript.html">JavaScript</a> or other data context.</p>
 <p>Data bindings are most easily expressed in UX Markup using the <code>{expression}</code> syntax, where <code>expression</code> is
 the binding path, like so:</p>
-<pre><code class="language-xml">    &lt;Text Value=&quot;{textKey}&quot; /&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Text Value=&quot;{textKey}&quot; /&gt;</code></pre>
 <p>Data bindings can also be declared explicitly. Explicit databindings allow you
 to specify a default value that is used before the data binding is resolved:</p>
-<pre><code class="language-xml">    &lt;Panel ux:Name=&quot;panel1&quot; Width=&quot;100&quot; /&gt;
-    &lt;DataBinding Target=&quot;panel1.Width&quot; Key=&quot;panelWidth&quot; /&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Panel ux:Name=&quot;panel1&quot; Width=&quot;100&quot; /&gt;
+&lt;DataBinding Target=&quot;panel1.Width&quot; Key=&quot;panelWidth&quot; /&gt;</code></pre>
 <blockquote>
 <p>Note: The expression passed to <code>Key</code> in explicit mode is by default in the data scope. To reference global names, escape it using <code>{= }</code></p>
 </blockquote>
@@ -1023,125 +1021,114 @@ IListener
 <p>To set the data context, you typically add a <em>behavior</em> to a node that provides the data context, such as <code>&lt;JavaScript&gt;</code>.</p>
 <h4 id="javascript-module-as-data-source">JavaScript module as data source</h4>
 <p>The simplest way to create a data source is through JavaScript, here is a databound &quot;Hello world&quot; minimal example:</p>
-<pre><code class="language-xml">	&lt;App&gt;
-		&lt;JavaScript&gt;
-			module.exports = {
-				greeting: &quot;Hello databound world!&quot;
-			};
-		&lt;/JavaScript&gt;
-		&lt;Text Value=&quot;{greeting}&quot; /&gt;
-	&lt;/App&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;App&gt;
+    &lt;JavaScript&gt;
+        module.exports = {
+            greeting: &quot;Hello databound world!&quot;
+        };
+    &lt;/JavaScript&gt;
+    &lt;Text Value=&quot;{greeting}&quot; /&gt;
+&lt;/App&gt;</code></pre>
 <p>Similarly, you can bind to collections:</p>
-<pre><code class="language-xml">	&lt;App&gt;
-		&lt;JavaScript&gt;
-			var data = [&quot;1&quot;, &quot;2&quot;, &quot;3&quot;];
+<pre><code class="language-xml">&lt;App&gt;
+    &lt;JavaScript&gt;
+        var data = [&quot;1&quot;, &quot;2&quot;, &quot;3&quot;];
 
-			module.exports = {
-				data: data
-			};
-		&lt;/JavaScript&gt;
-		&lt;StackPanel&gt;
-			&lt;Each Items=&quot;{data}&quot;&gt;
-				&lt;Text Value=&quot;{= data () }&quot; /&gt;
-			&lt;/Each&gt;
-		&lt;/StackPanel&gt;
-	&lt;/App&gt;
-</code></pre>
+        module.exports = {
+            data: data
+        };
+    &lt;/JavaScript&gt;
+    &lt;StackPanel&gt;
+        &lt;Each Items=&quot;{data}&quot;&gt;
+            &lt;Text Value=&quot;{= data () }&quot; /&gt;
+        &lt;/Each&gt;
+    &lt;/StackPanel&gt;
+&lt;/App&gt;</code></pre>
 <p>This will predictably list out the text strings 1, 2 and 3. When binding the <code>Text Value</code> <code>{= data()}</code> means <em>the prime data context</em>, in this case the enumerated item from <code>Each</code>. Typically, you will bind to more complex data sources, so each element will have something interesting to bind to:</p>
-<pre><code class="language-xml">	&lt;App&gt;
-		&lt;JavaScript&gt;
-			var Observable = require(&quot;FuseJS/Observable&quot;);
+<pre><code class="language-xml">&lt;App&gt;
+    &lt;JavaScript&gt;
+        var Observable = require(&quot;FuseJS/Observable&quot;);
 
-			var data = Observable(
-				{name: &quot;Hubert Cumberdale&quot;, age: 12},
-				{name: &quot;Marjory Stewart-Baxter&quot;, age: 43},
-				{name: &quot;Jeremy Fisher&quot;, age: 25});
+        var data = Observable(
+            {name: &quot;Hubert Cumberdale&quot;, age: 12},
+            {name: &quot;Marjory Stewart-Baxter&quot;, age: 43},
+            {name: &quot;Jeremy Fisher&quot;, age: 25});
 
-			module.exports = {
-				data: data
-			};
-		&lt;/JavaScript&gt;
-		&lt;StackPanel&gt;
-			&lt;Each Items=&quot;{data}&quot;&gt;
-				&lt;DockPanel&gt;
-					&lt;Text Dock=&quot;Right&quot; Value=&quot;{age}&quot; /&gt;
-					&lt;Text Value=&quot;{name}&quot; /&gt;
-				&lt;/DockPanel&gt;
-			&lt;/Each&gt;
-		&lt;/StackPanel&gt;
-	&lt;/App&gt;
-</code></pre>
+        module.exports = {
+            data: data
+        };
+    &lt;/JavaScript&gt;
+    &lt;StackPanel&gt;
+        &lt;Each Items=&quot;{data}&quot;&gt;
+            &lt;DockPanel&gt;
+                &lt;Text Dock=&quot;Right&quot; Value=&quot;{age}&quot; /&gt;
+                &lt;Text Value=&quot;{name}&quot; /&gt;
+            &lt;/DockPanel&gt;
+        &lt;/Each&gt;
+    &lt;/StackPanel&gt;
+&lt;/App&gt;</code></pre>
 <p>In this case, we have also made the data source Observable. This means that it supports propagating changes to the data source at runtime. In this case, the collection itself is <code>Observable</code>, but the items are not. You can bind to the children, but if they were to change, these changes would not be reflected in the UI. If you wanted to make the children also propagate their changes to the UI, you would make them <code>Observable</code> also:</p>
-<pre><code class="language-xml">	&lt;JavaScript&gt;
-		var Observable = require(&quot;FuseJS/Observable&quot;);
-		var data = Observable(
-			{ name: Observable(&quot;Hubert&quot;) },
-			{ name: Observable(&quot;Marjory&quot;) });
-		module.exports = {
-			data: data
-		};
-	&lt;/JavaScript&gt;
-	&lt;StackPanel&gt;
-		&lt;Each Items=&quot;{data}&quot;&gt;
-			&lt;Text Value=&quot;{name}&quot; /&gt;
-		&lt;/Each&gt;
-	&lt;/StackPanel&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;JavaScript&gt;
+    var Observable = require(&quot;FuseJS/Observable&quot;);
+    var data = Observable(
+        { name: Observable(&quot;Hubert&quot;) },
+        { name: Observable(&quot;Marjory&quot;) });
+    module.exports = {
+        data: data
+    };
+&lt;/JavaScript&gt;
+&lt;StackPanel&gt;
+    &lt;Each Items=&quot;{data}&quot;&gt;
+        &lt;Text Value=&quot;{name}&quot; /&gt;
+    &lt;/Each&gt;
+&lt;/StackPanel&gt;</code></pre>
 <p>You can also bind to a path:</p>
-<pre><code class="language-xml">	&lt;JavaScript&gt;
-		var complex = {
-			user: {
-				userinfo: {
-					name: &quot;Bob&quot;
-				}
-			}
-		};
-		module.exports = {
-			complex: complex
-		};
-	&lt;/JavaScript&gt;
-	&lt;Text Value=&quot;{complex.user.userinfo.name}&quot; /&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;JavaScript&gt;
+    var complex = {
+        user: {
+            userinfo: {
+                name: &quot;Bob&quot;
+            }
+        }
+    };
+    module.exports = {
+        complex: complex
+    };
+&lt;/JavaScript&gt;
+&lt;Text Value=&quot;{complex.user.userinfo.name}&quot; /&gt;</code></pre>
 <p>This is very useful when binding to arbitrary data sources such as those returned from a REST service as JSON, as it often allows you to bind directly to complex data without processing the data in code first. <a href="https://fuseopen.com/examples/news-feed/">See this in-depth example</a>.</p>
 <h4 id="binding-directions">Binding directions</h4>
 <h5 id="two-way-binding-default">Two-way binding (default)</h5>
 <p>By default, data bindings are <em>two-way</em> when possible. This means if the property that emits changed events changes by some other means
 than the data binding, such as user input or animation, the binding object will write the new value back to the source if it is an <code>Observable</code>.</p>
-<pre><code class="language-xml">	&lt;TextInput Value=&quot;{text}&quot; /&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;TextInput Value=&quot;{text}&quot; /&gt;</code></pre>
 <p>In the above example, if the user manipulates the text input, and <code>text</code> is a bound observable, the observable will be updated.</p>
 <h5 id="read-only-bindings-one-way">Read-only bindings (one-way)</h5>
 <p>To create a strictly <em>one way</em> binding that <em>reads</em> from the data source and upates the property, use the <code>Read</code> binding alias:</p>
-<pre><code class="language-xml">	&lt;TextInput Value=&quot;{Read text}&quot; /&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;TextInput Value=&quot;{Read text}&quot; /&gt;</code></pre>
 <p>In the above example, a bound observable <code>text</code> will not be updated if the user manipulates the text input.</p>
 <h5 id="write-only-bindings-one-way">Write-only bindings (one-way)</h5>
 <p>To create a strictly <em>one way</em> binding that <em>writes</em> to the data source when the property is changed by external actors, use the <code>Write</code> binding alias:</p>
-<pre><code class="language-xml">	&lt;TextInput Value=&quot;{Write text}&quot; /&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;TextInput Value=&quot;{Write text}&quot; /&gt;</code></pre>
 <p>In the above example, the <code>Value</code> will not respect the value of <code>text</code> coming from JavaScript, but it will update <code>text</code> observable when the user manipulates the text box.</p>
 <h4 id="event-binding-to-javascript-functions">Event binding to JavaScript functions</h4>
 <p>You can hook up event handlers to call JavaScript functions with similar syntax:</p>
-<pre><code class="language-xml">	&lt;JavaScript&gt;
-		module.exports = {
-			clickHandler: function (args) {
-				console.log(&quot;I was clicked: &quot; + JSON.stringify(args));
-			}
-		};
-	&lt;/JavaScript&gt;
-	&lt;Button Clicked=&quot;{clickHandler}&quot; Text=&quot;Click me!&quot; /&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;JavaScript&gt;
+    module.exports = {
+        clickHandler: function (args) {
+            console.log(&quot;I was clicked: &quot; + JSON.stringify(args));
+        }
+    };
+&lt;/JavaScript&gt;
+&lt;Button Clicked=&quot;{clickHandler}&quot; Text=&quot;Click me!&quot; /&gt;</code></pre>
 <h4 id="clear-bindings">Clear-bindings</h4>
 <p>Sometimes it is desireable for the data binding to clear the target property value when the binding is unrooted, for example when the containing page is removed or navigated away from, and later added back or navigated back to with a different data context. In some scenarios, the page will then show some undesired, outdated data while the new data is being loaded.</p>
 <p>To avoid that, so called clear-bindings can be used:</p>
-<pre><code class="language-xml">	&lt;Text Value=&quot;{Clear foo}&quot; /&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Text Value=&quot;{Clear foo}&quot; /&gt;</code></pre>
 <p>This will cause the <code>Value</code> of the <code>Text</code> to be reset to <code>null</code> (empty string) when the containing page is unrooted, so that the old text does not linger if the page is reused later.</p>
 <p>There are also variants of clear binidngs for read-only and write-only bindings:</p>
-<pre><code class="language-xml">	&lt;Text Value=&quot;{ReadClear foo}&quot; /&gt;
-	&lt;Text Value=&quot;{WriteClear foo}&quot; /&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Text Value=&quot;{ReadClear foo}&quot; /&gt;
+&lt;Text Value=&quot;{WriteClear foo}&quot; /&gt;</code></pre>
 <blockquote>
 <p>Note: Clear-bindings always push <code>default(T)</code> (e.g. <code>null</code>, <code>false</code>, <code>0</code> or <code>0.0</code>) when unrooted, which is not neccessarily the default value of the property.</p>
 </blockquote>
@@ -1150,60 +1137,56 @@ than the data binding, such as user input or animation, the binding object will 
 <p>The <code>Each</code> behavior maintains one copy of its subtree per item in its Items collection, and adds and removes these from the parent node accordingly. The <code>Items</code> collection can be an Observable that can be changed dynamically.</p>
 <p>When using <code>Each</code>, we typically data-bind the <code>Items</code> property to an array data source to produce one visual
 node per object in the data source.</p>
-<pre><code class="language-xml">	&lt;Each Items=&quot;{items}&quot;&gt;
-		&lt;Rectangle Width=&quot;{width}&quot; Height=&quot;{height}&quot; Fill=&quot;#808&quot; /&gt;
-	&lt;/Each&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Each Items=&quot;{items}&quot;&gt;
+    &lt;Rectangle Width=&quot;{width}&quot; Height=&quot;{height}&quot; Fill=&quot;#808&quot; /&gt;
+&lt;/Each&gt;</code></pre>
 <p>Observable add/remove operations on the <code>Items</code> collection can be animated using AddingAnimation, RemovingAnimation and LayoutAnimation</p>
 <p>It is also possible to nest <code>Each</code> behaviors:</p>
-<pre><code class="language-xml">	&lt;JavaScript&gt;
-		var Observable = require(&quot;FuseJS/Observable&quot;);
-		module.exports = {
-			items: [
-				{
-					inner: [
-						{ child: &quot;John&quot; },
-						{ child: &quot;Paul&quot; }
-					]
-				},
-				{
-					inner: [
-						{ child: &quot;Ringo&quot; },
-						{ child: &quot;George&quot; }
-					]
-				}
-			]
-		};
-	&lt;/JavaScript&gt;
-	&lt;ScrollView&gt;
-		&lt;StackPanel&gt;
-			&lt;Each Items=&quot;{items}&quot;&gt;
-				&lt;StackPanel Orientation=&quot;Horizontal&quot;&gt;
-					&lt;Each Items=&quot;{inner}&quot;&gt;
-						&lt;Text Value=&quot;{child}&quot; Margin=&quot;10&quot; /&gt;
-					&lt;/Each&gt;
-				&lt;/StackPanel&gt;
-			&lt;/Each&gt;
-		&lt;/StackPanel&gt;
-	&lt;/ScrollView&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;JavaScript&gt;
+    var Observable = require(&quot;FuseJS/Observable&quot;);
+    module.exports = {
+        items: [
+            {
+                inner: [
+                    { child: &quot;John&quot; },
+                    { child: &quot;Paul&quot; }
+                ]
+            },
+            {
+                inner: [
+                    { child: &quot;Ringo&quot; },
+                    { child: &quot;George&quot; }
+                ]
+            }
+        ]
+    };
+&lt;/JavaScript&gt;
+&lt;ScrollView&gt;
+    &lt;StackPanel&gt;
+        &lt;Each Items=&quot;{items}&quot;&gt;
+            &lt;StackPanel Orientation=&quot;Horizontal&quot;&gt;
+                &lt;Each Items=&quot;{inner}&quot;&gt;
+                    &lt;Text Value=&quot;{child}&quot; Margin=&quot;10&quot; /&gt;
+                &lt;/Each&gt;
+            &lt;/StackPanel&gt;
+        &lt;/Each&gt;
+    &lt;/StackPanel&gt;
+&lt;/ScrollView&gt;</code></pre>
 <p>You can get the number of items being iterated over using the <code>Count</code> property.</p>
 <p>You can also just use <code>Each</code> as a simple repeater:</p>
-<pre><code class="language-xml">	&lt;Grid ColumnCount=&quot;3&quot;&gt;
-		&lt;Each Count=&quot;9&quot;&gt;
-			&lt;Rectangle Margin=&quot;10&quot; Fill=&quot;#610&quot; /&gt;
-		&lt;/Each&gt;
-	&lt;/Grid&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Grid ColumnCount=&quot;3&quot;&gt;
+    &lt;Each Count=&quot;9&quot;&gt;
+        &lt;Rectangle Margin=&quot;10&quot; Fill=&quot;#610&quot; /&gt;
+    &lt;/Each&gt;
+&lt;/Grid&gt;</code></pre>
 <h4 id="whilecount-and-whileempty">WhileCount and WhileEmpty</h4>
 <p>The <code>WhileEmpty</code> and <code>WhileCount</code> Triggertriggers) can be used to act on the number of items in a collection:</p>
-<pre><code class="language-xml">	&lt;Each Items=&quot;{friends}&quot;&gt;
-		&lt;!-- ... List friend ... --&gt;
-	&lt;/Each&gt;
-	&lt;WhileEmpty Items=&quot;{friends}&quot;&gt;
-		&lt;Text&gt;No friends. :(&lt;/Text&gt;
-	&lt;/WhileEmpty&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Each Items=&quot;{friends}&quot;&gt;
+    &lt;!-- ... List friend ... --&gt;
+&lt;/Each&gt;
+&lt;WhileEmpty Items=&quot;{friends}&quot;&gt;
+    &lt;Text&gt;No friends. :(&lt;/Text&gt;
+&lt;/WhileEmpty&gt;</code></pre>
 <p><code>WhileEmpty</code> is a special case of <code>WhileCount</code> where the <code>EqualTo</code>-property is set to <code>0</code>. <code>WhileCount</code> accepts the following properties:</p>
 <ul>
 <li><code>EqualTo</code> - Active when the count of the collection is equal to the provided value</li>
@@ -1211,42 +1194,39 @@ node per object in the data source.</p>
 <li><code>LessThan</code> - Active when the count of the collection is less than the provided value</li>
 </ul>
 <p>For example:</p>
-<pre><code class="language-xml">	&lt;WhileCount Items=&quot;{things}&quot; EqualTo=&quot;3&quot; GreaterThan=&quot;3&quot; &gt;
-		&lt;Text&gt;You have 3 or more things.&lt;/Text&gt;
-	&lt;/WhileCount&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;WhileCount Items=&quot;{things}&quot; EqualTo=&quot;3&quot; GreaterThan=&quot;3&quot; &gt;
+    &lt;Text&gt;You have 3 or more things.&lt;/Text&gt;
+&lt;/WhileCount&gt;</code></pre>
 <h4 id="select">Select</h4>
 <p>If you have a complex data context and want to narrow the data context down, you can use <code>Select</code>:</p>
-<pre><code class="language-xml">	&lt;JavaScript&gt;
-		module.exports = {
-			complex: {
-				item1: {
-					subitem1: { name: &quot;Spongebob&quot;, age: 32 }
-				}
-			}
-		};
-	&lt;/JavaScript&gt;
-	&lt;Select Data=&quot;{complex.item1.subitem1}&quot;&gt;
-		&lt;Text Value=&quot;{name}&quot; /&gt;
-		&lt;Text Value=&quot;{age}&quot; /&gt;
-	&lt;/Select&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;JavaScript&gt;
+    module.exports = {
+        complex: {
+            item1: {
+                subitem1: { name: &quot;Spongebob&quot;, age: 32 }
+            }
+        }
+    };
+&lt;/JavaScript&gt;
+&lt;Select Data=&quot;{complex.item1.subitem1}&quot;&gt;
+    &lt;Text Value=&quot;{name}&quot; /&gt;
+    &lt;Text Value=&quot;{age}&quot; /&gt;
+&lt;/Select&gt;</code></pre>
 <h4 id="match-and-case">Match and Case</h4>
 <p>You can drive which subtree should be active using <code>Match</code> and <code>Case</code>:</p>
-<pre><code class="language-xml">	&lt;JavaScript&gt;
-		module.exports = {
-			active: &quot;blue&quot;
-		};
-	&lt;/JavaScript&gt;
-	&lt;Match Value=&quot;{active}&quot;&gt;
-		&lt;Case String=&quot;red&quot;&gt;
-			&lt;Rectangle Fill=&quot;#f00&quot; Height=&quot;50&quot; Width=&quot;50&quot; /&gt;
-		&lt;/Case&gt;
-		&lt;Case String=&quot;blue&quot;&gt;
-			&lt;Rectangle Fill=&quot;#00f&quot; Height=&quot;50&quot; Width=&quot;50&quot; /&gt;
-		&lt;/Case&gt;
-	&lt;/Match&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;JavaScript&gt;
+    module.exports = {
+        active: &quot;blue&quot;
+    };
+&lt;/JavaScript&gt;
+&lt;Match Value=&quot;{active}&quot;&gt;
+    &lt;Case String=&quot;red&quot;&gt;
+        &lt;Rectangle Fill=&quot;#f00&quot; Height=&quot;50&quot; Width=&quot;50&quot; /&gt;
+    &lt;/Case&gt;
+    &lt;Case String=&quot;blue&quot;&gt;
+        &lt;Rectangle Fill=&quot;#00f&quot; Height=&quot;50&quot; Width=&quot;50&quot; /&gt;
+    &lt;/Case&gt;
+&lt;/Match&gt;</code></pre>
 <p>Valid match properties for <code>Case</code> are:</p>
 <ul>
 <li><code>String</code> - match a string</li>
@@ -1259,14 +1239,13 @@ node per object in the data source.</p>
 </ul>
 <h4 id="datatoresource">DataToResource</h4>
 <p>You can bind to a defined resource using DataToResource:</p>
-<pre><code class="language-xml">	&lt;FileImageSource ux:Key=&quot;picture&quot; File=&quot;Pictures/Picture1.jpg&quot; /&gt;
-	&lt;JavaScript&gt;
-		module.exports = {
-			picture: &quot;picture&quot;
-		}
-	&lt;/JavaScript&gt;
-	&lt;Image Source=&quot;{DataToResource picture}&quot; /&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;FileImageSource ux:Key=&quot;picture&quot; File=&quot;Pictures/Picture1.jpg&quot; /&gt;
+&lt;JavaScript&gt;
+    module.exports = {
+        picture: &quot;picture&quot;
+    }
+&lt;/JavaScript&gt;
+&lt;Image Source=&quot;{DataToResource picture}&quot; /&gt;</code></pre>
 
 </section>
 

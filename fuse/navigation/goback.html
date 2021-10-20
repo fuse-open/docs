@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -702,23 +702,22 @@ Show advanced things
 <p>Navigates backward in the navigation stack/z-order of a <a href="../../fuse/navigation/navigation.html">Navigation</a>, <a href="../../fuse/controls/pagecontrol.html">PageControl</a>, or <a href="../../fuse/controls/webview.html">WebView</a>.</p>
 <h3 id="example">Example</h3>
 <p>In this example, <code>GoBack</code> will be used to navigate away from the first page of a <code>PageControl</code>.</p>
-<pre><code class="language-xml">    &lt;PageControl&gt;
-        &lt;Panel Background=&quot;#0F0&quot; ux:Name=&quot;firstPage&quot;&gt;
-            &lt;Button Text=&quot;GoBack&quot; Alignment=&quot;Center&quot; Margin=&quot;10&quot;&gt;
-                &lt;Clicked&gt;
-                    &lt;GoBack /&gt;
-                &lt;/Clicked&gt;
-            &lt;/Button&gt;
-        &lt;/Panel&gt;
-        &lt;Panel Background=&quot;#F00&quot; ux:Name=&quot;secondPage&quot;&gt;
-            &lt;Button Alignment=&quot;Center&quot; Text=&quot;Go to page 1&quot;&gt;
-                &lt;Clicked&gt;
-                    &lt;NavigateTo Target=&quot;firstPage&quot; /&gt;
-                &lt;/Clicked&gt;
-            &lt;/Button&gt;
-        &lt;/Panel&gt;
-    &lt;/PageControl&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;PageControl&gt;
+    &lt;Panel Background=&quot;#0F0&quot; ux:Name=&quot;firstPage&quot;&gt;
+        &lt;Button Text=&quot;GoBack&quot; Alignment=&quot;Center&quot; Margin=&quot;10&quot;&gt;
+            &lt;Clicked&gt;
+                &lt;GoBack /&gt;
+            &lt;/Clicked&gt;
+        &lt;/Button&gt;
+    &lt;/Panel&gt;
+    &lt;Panel Background=&quot;#F00&quot; ux:Name=&quot;secondPage&quot;&gt;
+        &lt;Button Alignment=&quot;Center&quot; Text=&quot;Go to page 1&quot;&gt;
+            &lt;Clicked&gt;
+                &lt;NavigateTo Target=&quot;firstPage&quot; /&gt;
+            &lt;/Clicked&gt;
+        &lt;/Button&gt;
+    &lt;/Panel&gt;
+&lt;/PageControl&gt;</code></pre>
 <p>Backward refers to pages that are behind the active one in navigation order. This trigger is not suitable for navigation that does not have a history or sequence of pages.</p>
 <p>See <a href="../../navigation/navigationorder.html">Navigation Order</a></p>
 

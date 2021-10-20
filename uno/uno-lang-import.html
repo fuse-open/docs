@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -687,8 +687,7 @@
 <p>It is recommended to use import instead of loading directly from files whenever you can, which is whenever the data file is available compile-time. Note that this is the only way to ensure that a file will be supported, load and behave correctly and optimally on all target platforms!</p>
 <h2 id="syntax">Syntax</h2>
 <p>An import expression has the following syntax:</p>
-<pre><code class="language-csharp">import importerClass( [ importerArguments ... ] )
-</code></pre>
+<pre><code class="language-csharp">import importerClass( [ importerArguments ... ] )</code></pre>
 <p>Where importerClass is the name of a class which derives from Uno.Compiler.ImportServices.Importer, and has a name that ends in 'Importer'. The 'Importer' suffix must be ommited from the importerClass.</p>
 <p>The importer typically takes one or more arguments. All importer arguments must be compile-time constants.</p>
 <h2 id="technical-behavior">Technical behavior</h2>
@@ -707,8 +706,7 @@ using Uno.Content.Models;
 ...
 
 var tex = import Texture2D(&quot;image.png&quot;);
-var model = import Model(&quot;model.fbx&quot;);
-</code></pre>
+var model = import Model(&quot;model.fbx&quot;);</code></pre>
 <p>Note that the 'Importer' suffix to the class names should not be used in import expressions. The compiler will assume the referred class has this suffix.</p>
 
             </div>

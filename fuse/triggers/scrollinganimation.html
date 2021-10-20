@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -702,23 +702,22 @@ Show advanced things
 <p>Animates over a given scroll range.</p>
 <p>This trigger allows you to animate properties based on the absolute position of a <a href="../../fuse/controls/scrollview.html">ScrollView</a>.</p>
 <p>In this example, we remove a top ledge as a ScrollView scrolls down:</p>
-<pre><code class="language-xml">    &lt;Panel&gt;
-        &lt;Panel Alignment=&quot;Top&quot; Height=&quot;50&quot; ux:Name=&quot;ledge&quot;&gt;
-            &lt;Text Alignment=&quot;Center&quot; TextAlignment=&quot;Center&quot; Color=&quot;#fff&quot; Value=&quot;TopLedge&quot; /&gt;
-            &lt;Rectangle  Fill=&quot;#000&quot; /&gt;
-        &lt;/Panel&gt;
-        &lt;ScrollView&gt;
-            &lt;ScrollingAnimation From=&quot;0&quot; To=&quot;50&quot;&gt;
-                &lt;Change ledge.Opacity=&quot;0&quot; /&gt;
-            &lt;/ScrollingAnimation&gt;
-            &lt;StackPanel&gt;
-                &lt;!-- Block out the top ledge in the scrollview --&gt;
-                &lt;Panel Height=&quot;50&quot; /&gt;
-                &lt;!-- ... Content ... --&gt;
-            &lt;/StackPanel&gt;
-        &lt;/ScrollView&gt;
+<pre><code class="language-xml">&lt;Panel&gt;
+    &lt;Panel Alignment=&quot;Top&quot; Height=&quot;50&quot; ux:Name=&quot;ledge&quot;&gt;
+        &lt;Text Alignment=&quot;Center&quot; TextAlignment=&quot;Center&quot; Color=&quot;#fff&quot; Value=&quot;TopLedge&quot; /&gt;
+        &lt;Rectangle  Fill=&quot;#000&quot; /&gt;
     &lt;/Panel&gt;
-</code></pre>
+    &lt;ScrollView&gt;
+        &lt;ScrollingAnimation From=&quot;0&quot; To=&quot;50&quot;&gt;
+            &lt;Change ledge.Opacity=&quot;0&quot; /&gt;
+        &lt;/ScrollingAnimation&gt;
+        &lt;StackPanel&gt;
+            &lt;!-- Block out the top ledge in the scrollview --&gt;
+            &lt;Panel Height=&quot;50&quot; /&gt;
+            &lt;!-- ... Content ... --&gt;
+        &lt;/StackPanel&gt;
+    &lt;/ScrollView&gt;
+&lt;/Panel&gt;</code></pre>
 
 <section class="type-location">
 <h3 id="section-location">Location</h3>

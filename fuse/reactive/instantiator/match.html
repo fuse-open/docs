@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -688,11 +688,10 @@ Instantiator.Match Property
 <p>The template which should be instantiated.</p>
 <p>Unset by default, meaning all templates will be instantiated (assuming MatchKey, and TemplateKey are also unset).</p>
 <p>If you intend on using a binding, or expression, for this value it is recommend to set <code>Defaults</code> as well. This avoids an momentary creation of the defaults while the binding has not yet resolved.</p>
-<pre><code class="language-xml">    &lt;Instance Match=&quot;{type}&quot; Defaults=&quot;None&quot;&gt;
-        &lt;Panel ux:Template=&quot;side&quot;/&gt;
-        &lt;Panel ux:Template=&quot;fore&quot;/&gt;
-    &lt;/Instance&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Instance Match=&quot;{type}&quot; Defaults=&quot;None&quot;&gt;
+    &lt;Panel ux:Template=&quot;side&quot;/&gt;
+    &lt;Panel ux:Template=&quot;fore&quot;/&gt;
+&lt;/Instance&gt;</code></pre>
 <p><code>{type}</code> may resolve to an async JavaScript variable, meaning it won't produce an immediate value. This will result in <code>Match</code> not yet having a value, thus all templates would be instantiated by default. <code>Defaults=&quot;None&quot;</code> prevents this behaviour.</p>
 
 <section class="type-location type-location-leaf">

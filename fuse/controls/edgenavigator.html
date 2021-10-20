@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -704,37 +704,35 @@ Show advanced things
 <p>Use a <code>GoBack</code> inside this navigation to dismiss side-panels from UX, or use the <code>dismiss</code> method from JavaScript.</p>
 <h4 id="model">Model</h4>
 <p>The EdgeNavigator can be bound to a model with the <code>Pages</code> property. For example:</p>
-<pre><code class="language-xml">   &lt;EdgeNavigator Pages=&quot;{pages}&quot;&gt;
-       &lt;Panel Edge=&quot;Left&quot; ux:Template=&quot;left&quot;/&gt;
-       &lt;Panel Edge=&quot;Right&quot; ux:Template=&quot;right&quot;/&gt;
-       &lt;Panel ux:Template=&quot;main&quot;/&gt;
-   &lt;/EdgeNavigator&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;EdgeNavigator Pages=&quot;{pages}&quot;&gt;
+    &lt;Panel Edge=&quot;Left&quot; ux:Template=&quot;left&quot;/&gt;
+    &lt;Panel Edge=&quot;Right&quot; ux:Template=&quot;right&quot;/&gt;
+    &lt;Panel ux:Template=&quot;main&quot;/&gt;
+&lt;/EdgeNavigator&gt;</code></pre>
 <p>Then in your main model state you define <code>pages</code></p>
-<pre><code class="language-js">   export default class MainState {
-       constructor() {
-           this.pages = [ new LeftPage(), new RightPage(), new MainPage() ]
-       }
-   }
+<pre><code class="language-js">export default class MainState {
+    constructor() {
+        this.pages = [ new LeftPage(), new RightPage(), new MainPage() ]
+    }
+}
 
-   class LeftPage {
-       constructor() {
-           this.$path = &quot;left&quot;
-       }
-   }
+class LeftPage {
+    constructor() {
+        this.$path = &quot;left&quot;
+    }
+}
 
-   class RightPage {
-       constructor() {
-           this.$path = &quot;right&quot;
-       }
-   }
+class RightPage {
+    constructor() {
+        this.$path = &quot;right&quot;
+    }
+}
 
-   class MainPage {
-       constructor() {
-           this.$path = &quot;main&quot;
-       }
-   }
-</code></pre>
+class MainPage {
+    constructor() {
+        this.$path = &quot;main&quot;
+    }
+}</code></pre>
 
 <section class="type-location">
 <h3 id="section-location">Location</h3>

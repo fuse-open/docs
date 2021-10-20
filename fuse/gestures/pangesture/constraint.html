@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -688,14 +688,13 @@ PanGesture.Constraint Property
 <p>Constrains the gesture so the resulting scaled and translated item will remain visible. Unlike ConstrainElement this works only with items exposing an ISizeConstraint, such as <a href="../../../fuse/controls/image.html">Image</a>, but provides stricter bounds calculations (based on the actual visual content, not just the element bounds).</p>
 <h4 id="example">Example</h4>
 <p>The zoomed image cannot be panned outside the extents of the control.</p>
-<pre><code class="language-xml">    &lt;Panel HitTestMode=&quot;LocalBounds&quot; Width=&quot;400&quot; Height=&quot;400&quot; Color=&quot;#aaa&quot; ClipToBounds=&quot;true&quot;&gt;
-        &lt;Image File=&quot;../../Assets/large_troll.jpg&quot; ux:Name=&quot;TheImage&quot;&gt;
-            &lt;InteractiveTransform ux:Name=&quot;ImageTrans&quot;/&gt;
-        &lt;/Image&gt;
-        &lt;ZoomGesture Target=&quot;ImageTrans&quot;/&gt;
-        &lt;PanGesture Target=&quot;ImageTrans&quot; Constraint=&quot;TheImage&quot;/&gt;
-    &lt;/Panel&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Panel HitTestMode=&quot;LocalBounds&quot; Width=&quot;400&quot; Height=&quot;400&quot; Color=&quot;#aaa&quot; ClipToBounds=&quot;true&quot;&gt;
+    &lt;Image File=&quot;../../Assets/large_troll.jpg&quot; ux:Name=&quot;TheImage&quot;&gt;
+        &lt;InteractiveTransform ux:Name=&quot;ImageTrans&quot;/&gt;
+    &lt;/Image&gt;
+    &lt;ZoomGesture Target=&quot;ImageTrans&quot;/&gt;
+    &lt;PanGesture Target=&quot;ImageTrans&quot; Constraint=&quot;TheImage&quot;/&gt;
+&lt;/Panel&gt;</code></pre>
 
 <section class="type-location type-location-leaf">
 <h3 id="section-location">Location</h3>

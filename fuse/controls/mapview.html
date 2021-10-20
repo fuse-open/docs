@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -705,17 +705,15 @@ Show advanced things
 <p>The <code>MapView</code> allows you to present annotated, interactive world-wide maps to the user using the mapping APIs native to the platform: Google Maps on Android and Apple Maps on iOS.</p>
 <p>The <code>MapView</code> is a native control, and thus needs to be contained in a <a href="../../fuse/controls/nativeviewhost.html">NativeViewHost</a> to be displayed. As with other native mobile controls, there currently isn't a <code>MapView</code> available for desktop targets.</p>
 <p><em>Note:</em> You need to add a reference to <code>Fuse.Maps</code> in the <code>Packages</code> section of your <code>.unoproj</code>:</p>
-<pre><code class="language-json">&quot;Packages&quot;: [
-	&quot;Fuse.Maps&quot;,
-	&quot;Fuse&quot;,
-	&quot;FuseJS&quot;
-]
-</code></pre>
+<pre><code class="language-js">&quot;Packages&quot;: [
+    &quot;Fuse.Maps&quot;,
+    &quot;Fuse&quot;,
+    &quot;FuseJS&quot;
+]</code></pre>
 <p>Getting a <code>MapView</code> included in your app is straight forward: Simply include the node in your UX as you normally would with a native control:</p>
 <pre><code class="language-XML">&lt;NativeViewHost&gt;
-	&lt;MapView/&gt;
-&lt;/NativeViewHost&gt;
-</code></pre>
+    &lt;MapView/&gt;
+&lt;/NativeViewHost&gt;</code></pre>
 <p>To initialize and manipulate the map camera, use the <a href="../../fuse/controls/mapview/latitude.html">Latitude</a>, <a href="../../fuse/controls/mapview/longitude.html">Longitude</a>, <a href="../../fuse/controls/mapview/zoom.html">Zoom</a>, <a href="../../fuse/controls/mapview/tilt.html">Tilt</a> and <a href="../../fuse/controls/mapview/bearing.html">Bearing</a> properties, all of which are two-way bindable.
 <code>Zoom</code> follows Google's &quot;zoom levels&quot;, which can be read about in detail <a href="https://developers.google.com/maps/documentation/static-maps/intro#Zoomlevels">here</a>.</p>
 <p>The map can be further customized by setting the rendering style using the <a href="../../fuse/controls/mapview/style.html">Style</a> property.
@@ -727,23 +725,20 @@ Options are <code>Normal</code>, <code>Satellite</code> and <code>Hybrid</code>.
    &quot;Geo&quot;: {
         &quot;ApiKey&quot;: &quot;your_key_here&quot;
     }
-}
-</code></pre>
+}</code></pre>
 <p>This example displays a map with an average zoom level focused on Fuse's home in Oslo, Norway</p>
 
 <section class="documentation-ux">
 <h3 id="section-ux">UX</h3>
-<pre><code class="language-ux">&lt;App&gt;
-	&lt;ClientPanel&gt;
-		&lt;NativeViewHost&gt;
-			&lt;MapView Latitude=&quot;59.911567&quot; Longitude=&quot;10.741030&quot; Zoom=&quot;10&quot;&gt;
-				&lt;MapMarker Latitude=&quot;59.911567&quot; Longitude=&quot;10.741030&quot; Label=&quot;Fuse HQ&quot;/&gt;
-			&lt;/MapView&gt;
-		&lt;/NativeViewHost&gt;
-	&lt;/ClientPanel&gt;
-&lt;/App&gt;
-
-</code></pre>
+<pre><code class="language-xml">&lt;App&gt;
+    &lt;ClientPanel&gt;
+        &lt;NativeViewHost&gt;
+            &lt;MapView Latitude=&quot;59.911567&quot; Longitude=&quot;10.741030&quot; Zoom=&quot;10&quot;&gt;
+                &lt;MapMarker Latitude=&quot;59.911567&quot; Longitude=&quot;10.741030&quot; Label=&quot;Fuse HQ&quot;/&gt;
+            &lt;/MapView&gt;
+        &lt;/NativeViewHost&gt;
+    &lt;/ClientPanel&gt;
+&lt;/App&gt;</code></pre>
 
 </section>
 <section class="type-location">

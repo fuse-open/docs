@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -692,11 +692,9 @@
 |- MainView.ux
 |- App.js
 |- hikr.unoproj
-|- Pages
-</code></pre>
+|- Pages</code></pre>
 <p>Inside this new folder, we'll create a new file called <code>EditHikePage.ux</code>. Inside there, we'll place the following code:</p>
-<pre><code class="language-xml">&lt;Page ux:Class=&quot;EditHikePage&quot;&gt;&lt;/Page&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Page ux:Class=&quot;EditHikePage&quot;&gt;&lt;/Page&gt;</code></pre>
 <p>Our directory tree should now look a bit like this:</p>
 <pre><code class="language-sh">$ tree
 .
@@ -704,11 +702,9 @@
 |- App.js
 |- hikr.unoproj
 |- Pages
-   |- EditHikePage.ux
-</code></pre>
+   |- EditHikePage.ux</code></pre>
 <p>Now before we move on, I need to explain a couple things. Let's take another look at our new <code>EditHikePage.ux</code> file's contents:</p>
-<pre><code class="language-xml">&lt;Page ux:Class=&quot;EditHikePage&quot;&gt;&lt;/Page&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Page ux:Class=&quot;EditHikePage&quot;&gt;&lt;/Page&gt;</code></pre>
 <p>At first glance, it looks like we're just creating a <a href="../fuse/controls/page.html">Page</a> with a funny <code>ux:Class</code> property and nothing in it. But what's a <a href="../fuse/controls/page.html">Page</a> exactly? And what's with this <code>ux:Class</code> stuff?</p>
 <p>To answer the first question, a <a href="../fuse/controls/page.html">Page</a> is basically a special kind of UI element that will participate in navigation. We don't actually <em>have</em> to use a <a href="../fuse/controls/page.html">Page</a> here; we could just as well use a <code>Panel</code>, a <code>Button</code>, or something else entirely. But it's generally considered best practice to use a <a href="../fuse/controls/page.html">Page</a> if you're going to use the component with navigation specifically, which we'll do a bit later in this chapter and the following one.</p>
 <p>As for the second question, <code>ux:Class</code> means that instead of creating an <em>instance</em> of a <a href="../fuse/controls/page.html">Page</a>, we're creating a <em>class</em> that <em>extends</em> the <a href="../fuse/controls/page.html">Page</a> class. If you've ever done some object-oriented programming before, this terminology will sound very familiar. If not, it may sound a little strange, but it's actually a pretty simple concept to grasp. Basically, we can think of a <em>class</em> as a <em>kind</em> of element, and an <em>instance</em> is <em>an element of that kind</em>. For example, <a href="../fuse/controls/button.html">Button</a> is a class, and when we say <code>&lt;Button /&gt;</code> in UX, we're making an instance of the <a href="../fuse/controls/button.html">Button</a> class. <a href="../fuse/controls/button.html">Button</a> describes how a button element should look and feel, and <code>&lt;Button /&gt;</code> describes that an actual <a href="../fuse/controls/button.html">Button</a> element exists in our view.</p>
@@ -718,132 +714,120 @@
 </blockquote>
 <p>Now that we've understood the basic contents of this file, it's time to migrate the code we want in our view over from <code>MainView.ux</code>. If we take a look at that file, we'll see something like this:</p>
 <pre><code class="language-xml">&lt;App Model=&quot;App&quot;&gt;
-	&lt;ClientPanel&gt;
-		&lt;ScrollView&gt;
-			&lt;StackPanel&gt;
-				&lt;Each Items=&quot;{hikes}&quot;&gt;
-					&lt;Button Text=&quot;{name}&quot; Clicked=&quot;{chooseHike}&quot; /&gt;
-				&lt;/Each&gt;
+    &lt;ClientPanel&gt;
+        &lt;ScrollView&gt;
+            &lt;StackPanel&gt;
+                &lt;Each Items=&quot;{hikes}&quot;&gt;
+                    &lt;Button Text=&quot;{name}&quot; Clicked=&quot;{chooseHike}&quot; /&gt;
+                &lt;/Each&gt;
 
-				&lt;Text&gt;Name:&lt;/Text&gt;
-				&lt;TextBox Value=&quot;{hike.name}&quot; /&gt;
+                &lt;Text&gt;Name:&lt;/Text&gt;
+                &lt;TextBox Value=&quot;{hike.name}&quot; /&gt;
 
-				&lt;Text&gt;Location:&lt;/Text&gt;
-				&lt;TextBox Value=&quot;{hike.location}&quot; /&gt;
+                &lt;Text&gt;Location:&lt;/Text&gt;
+                &lt;TextBox Value=&quot;{hike.location}&quot; /&gt;
 
-				&lt;Text&gt;Distance (km):&lt;/Text&gt;
-				&lt;TextBox Value=&quot;{hike.distance}&quot; InputHint=&quot;Decimal&quot; /&gt;
+                &lt;Text&gt;Distance (km):&lt;/Text&gt;
+                &lt;TextBox Value=&quot;{hike.distance}&quot; InputHint=&quot;Decimal&quot; /&gt;
 
-				&lt;Text&gt;Rating:&lt;/Text&gt;
-				&lt;TextBox Value=&quot;{hike.rating}&quot; InputHint=&quot;Integer&quot; /&gt;
+                &lt;Text&gt;Rating:&lt;/Text&gt;
+                &lt;TextBox Value=&quot;{hike.rating}&quot; InputHint=&quot;Integer&quot; /&gt;
 
-				&lt;Text&gt;Comments:&lt;/Text&gt;
-				&lt;TextView Value=&quot;{hike.comments}&quot; TextWrapping=&quot;Wrap&quot; /&gt;
-			&lt;/StackPanel&gt;
-		&lt;/ScrollView&gt;
-	&lt;/ClientPanel&gt;
-&lt;/App&gt;
-</code></pre>
+                &lt;Text&gt;Comments:&lt;/Text&gt;
+                &lt;TextView Value=&quot;{hike.comments}&quot; TextWrapping=&quot;Wrap&quot; /&gt;
+            &lt;/StackPanel&gt;
+        &lt;/ScrollView&gt;
+    &lt;/ClientPanel&gt;
+&lt;/App&gt;</code></pre>
 <p>Looking at the top-level parts of this file, we first see our <a href="../fuse/app.html">App</a>, and then a ClientPanel. All of the other contents are what make up our view specifically. So these are the parts we'll want to move over to our <code>EditHikePage.ux</code> file, inside the <a href="../fuse/controls/page.html">Page</a>. This will look something like this:</p>
 <p>MainView.ux:</p>
 <pre><code class="language-xml">&lt;App Model=&quot;App&quot;&gt;
-	&lt;ClientPanel&gt;
-	&lt;/ClientPanel&gt;
-&lt;/App&gt;
-</code></pre>
+    &lt;ClientPanel&gt;
+    &lt;/ClientPanel&gt;
+&lt;/App&gt;</code></pre>
 <p>EditHikePage.ux:</p>
 <pre><code class="language-xml">&lt;Page ux:Class=&quot;EditHikePage&quot;&gt;
-	&lt;ScrollView&gt;
-		&lt;StackPanel&gt;
-			&lt;Each Items=&quot;{hikes}&quot;&gt;
-				&lt;Button Text=&quot;{name}&quot; Clicked=&quot;{chooseHike}&quot; /&gt;
-			&lt;/Each&gt;
+    &lt;ScrollView&gt;
+        &lt;StackPanel&gt;
+            &lt;Each Items=&quot;{hikes}&quot;&gt;
+                &lt;Button Text=&quot;{name}&quot; Clicked=&quot;{chooseHike}&quot; /&gt;
+            &lt;/Each&gt;
 
-			&lt;Text&gt;Name:&lt;/Text&gt;
-			&lt;TextBox Value=&quot;{hike.name}&quot; /&gt;
+            &lt;Text&gt;Name:&lt;/Text&gt;
+            &lt;TextBox Value=&quot;{hike.name}&quot; /&gt;
 
-			&lt;Text&gt;Location:&lt;/Text&gt;
-			&lt;TextBox Value=&quot;{hike.location}&quot; /&gt;
+            &lt;Text&gt;Location:&lt;/Text&gt;
+            &lt;TextBox Value=&quot;{hike.location}&quot; /&gt;
 
-			&lt;Text&gt;Distance (km):&lt;/Text&gt;
-			&lt;TextBox Value=&quot;{hike.distance}&quot; InputHint=&quot;Decimal&quot; /&gt;
+            &lt;Text&gt;Distance (km):&lt;/Text&gt;
+            &lt;TextBox Value=&quot;{hike.distance}&quot; InputHint=&quot;Decimal&quot; /&gt;
 
-			&lt;Text&gt;Rating:&lt;/Text&gt;
-			&lt;TextBox Value=&quot;{hike.rating}&quot; InputHint=&quot;Integer&quot; /&gt;
+            &lt;Text&gt;Rating:&lt;/Text&gt;
+            &lt;TextBox Value=&quot;{hike.rating}&quot; InputHint=&quot;Integer&quot; /&gt;
 
-			&lt;Text&gt;Comments:&lt;/Text&gt;
-			&lt;TextView Value=&quot;{hike.comments}&quot; TextWrapping=&quot;Wrap&quot; /&gt;
-		&lt;/StackPanel&gt;
-	&lt;/ScrollView&gt;
-&lt;/Page&gt;
-</code></pre>
+            &lt;Text&gt;Comments:&lt;/Text&gt;
+            &lt;TextView Value=&quot;{hike.comments}&quot; TextWrapping=&quot;Wrap&quot; /&gt;
+        &lt;/StackPanel&gt;
+    &lt;/ScrollView&gt;
+&lt;/Page&gt;</code></pre>
 <p>If we save these files, our preview will update, but this time, our contents will vanish! The reason for this is simple - we've only created the <code>EditHikePage</code> class, but we haven't <em>used</em> it anywhere! To fix this, we'll just add an <em>instance</em> of the <code>EditHikePage</code> class inside the ClientPanel in <code>MainView.ux</code>, like so:</p>
 <pre><code class="language-xml">&lt;App Model=&quot;App&quot;&gt;
-	&lt;ClientPanel&gt;
-		&lt;EditHikePage /&gt;
-	&lt;/ClientPanel&gt;
-&lt;/App&gt;
-</code></pre>
+    &lt;ClientPanel&gt;
+        &lt;EditHikePage /&gt;
+    &lt;/ClientPanel&gt;
+&lt;/App&gt;</code></pre>
 <p>Notice how this looks just like we had used any other class that comes standard in Fuse - but this time, it's a class we've created ourselves! If we save <code>MainView.ux</code>, we'll see that our view shows up again in preview. Awesome!</p>
 <h2 id="separating-our-home-page">Separating our home page</h2>
 <p>At this point, our <code>EditHikePage</code> class is actually two components in one - a hike selector, and a hike editor. Generally, when making components, it's a good idea to make sure they're a simple as possible, and that they only represent one <em>thing</em>, like a single view. What we'll do next is to separate the selector view into its own class, which we'll call the <code>HomePage</code>.</p>
 <p>Now that we've basically done this before, this second time should be a little easier. First, we'll create a blank page class that will become our home page, in a file called <code>HomePage.ux</code> in our <code>Pages</code> directory:</p>
-<pre><code class="language-xml">&lt;Page ux:Class=&quot;HomePage&quot;&gt;&lt;/Page&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Page ux:Class=&quot;HomePage&quot;&gt;&lt;/Page&gt;</code></pre>
 <p>Next, we'll migrate the home page-specific UX code from <code>EditHikePage.ux</code> into <code>HomePage.ux</code>. Specifically, we're after the <a href="../fuse/reactive/each.html">Each</a> tag that displayed the <code>hikes</code> collection:</p>
 <pre><code class="language-xml">&lt;Each Items=&quot;{hikes}&quot;&gt;
-	&lt;Button Text=&quot;{name}&quot; Clicked=&quot;{chooseHike}&quot; /&gt;
-&lt;/Each&gt;
-</code></pre>
+    &lt;Button Text=&quot;{name}&quot; Clicked=&quot;{chooseHike}&quot; /&gt;
+&lt;/Each&gt;</code></pre>
 <p>So let's go ahead and move that over:</p>
 <pre><code class="language-xml">&lt;Page ux:Class=&quot;HomePage&quot;&gt;
-	&lt;Each Items=&quot;{hikes}&quot;&gt;
-		&lt;Button Text=&quot;{name}&quot; Clicked=&quot;{chooseHike}&quot; /&gt;
-	&lt;/Each&gt;
-&lt;/Page&gt;
-</code></pre>
+    &lt;Each Items=&quot;{hikes}&quot;&gt;
+        &lt;Button Text=&quot;{name}&quot; Clicked=&quot;{chooseHike}&quot; /&gt;
+    &lt;/Each&gt;
+&lt;/Page&gt;</code></pre>
 <p>Also, since we're going to be displaying a bunch of these hikes, we'll want to place them inside a <a href="../fuse/controls/stackpanel.html">StackPanel</a>. It's a good idea to also have that inside a <a href="../fuse/controls/scrollview.html">ScrollView</a>, so we'll set that up too:</p>
 <pre><code class="language-xml">&lt;Page ux:Class=&quot;HomePage&quot;&gt;
-	&lt;ScrollView&gt;
-		&lt;StackPanel&gt;
-			&lt;Each Items=&quot;{hikes}&quot;&gt;
-				&lt;Button Text=&quot;{name}&quot; Clicked=&quot;{chooseHike}&quot; /&gt;
-			&lt;/Each&gt;
-		&lt;/StackPanel&gt;
-	&lt;/ScrollView&gt;
-&lt;/Page&gt;
-</code></pre>
+    &lt;ScrollView&gt;
+        &lt;StackPanel&gt;
+            &lt;Each Items=&quot;{hikes}&quot;&gt;
+                &lt;Button Text=&quot;{name}&quot; Clicked=&quot;{chooseHike}&quot; /&gt;
+            &lt;/Each&gt;
+        &lt;/StackPanel&gt;
+    &lt;/ScrollView&gt;
+&lt;/Page&gt;</code></pre>
 <p>And that's it! At this point, our page should be ready for display.</p>
 <h2 id="displaying-our-home-page">Displaying our home page</h2>
 <p>By now, we've got multiple pages, and we'll need a way to display them and navigate between them. In Fuse, this is handled by the <a href="../fuse/controls/navigator.html">Navigator</a> component. Navigation in general will need a proper introduction, and we'll want to take our time learning how to do it properly, so we'll take a closer look at it in the next chapter.</p>
 <p>For now, to keep things simple, we'll use a <a href="../fuse/controls/pagecontrol.html">PageControl</a> instead. A <a href="../fuse/controls/pagecontrol.html">PageControl</a> is great for cases where we want to have a few pages side-by-side that we'll to swipe between, which is just fine for initially displaying our two pages.</p>
 <p>So, if we take a look at <code>MainView.ux</code>, it currently looks something like this:</p>
 <pre><code class="language-xml">&lt;App Model=&quot;App&quot;&gt;
-	&lt;ClientPanel&gt;
-		&lt;EditHikePage /&gt;
-	&lt;/ClientPanel&gt;
-&lt;/App&gt;
-
-</code></pre>
+    &lt;ClientPanel&gt;
+        &lt;EditHikePage /&gt;
+    &lt;/ClientPanel&gt;
+&lt;/App&gt;</code></pre>
 <p>Let's place the <code>EditHikePage</code> instance inside a <a href="../fuse/controls/pagecontrol.html">PageControl</a>, like so:</p>
 <pre><code class="language-xml">&lt;App Model=&quot;App&quot;&gt;
-	&lt;ClientPanel&gt;
-		&lt;PageControl&gt;
-			&lt;EditHikePage /&gt;
-		&lt;/PageControl&gt;
-	&lt;/ClientPanel&gt;
-&lt;/App&gt;
-</code></pre>
+    &lt;ClientPanel&gt;
+        &lt;PageControl&gt;
+            &lt;EditHikePage /&gt;
+        &lt;/PageControl&gt;
+    &lt;/ClientPanel&gt;
+&lt;/App&gt;</code></pre>
 <p>Now, all we have to do is add a <code>HomePage</code> instance inside our <a href="../fuse/controls/pagecontrol.html">PageControl</a> as well. Because it's the home page, let's place it above our existing <code>EditHikePage</code> instance:</p>
 <pre><code class="language-xml">&lt;App Model=&quot;App&quot;&gt;
-	&lt;ClientPanel&gt;
-		&lt;PageControl&gt;
-			&lt;HomePage /&gt;
-			&lt;EditHikePage /&gt;
-		&lt;/PageControl&gt;
-	&lt;/ClientPanel&gt;
-&lt;/App&gt;
-</code></pre>
+    &lt;ClientPanel&gt;
+        &lt;PageControl&gt;
+            &lt;HomePage /&gt;
+            &lt;EditHikePage /&gt;
+        &lt;/PageControl&gt;
+    &lt;/ClientPanel&gt;
+&lt;/App&gt;</code></pre>
 <p>And now, when we save all of this, our new <code>HomePage</code> will be displayed, and we can swipe right to reveal the <code>EditHikePage</code> as well. Selecting hikes also works exactly as it did before. Cool!</p>
 <h2 id="our-progress-so-far">Our progress so far</h2>
 <p>Phew, we've covered a lot of ground here! At this point, we've got our two views separated into components and displayed side-by-side in a <a href="../fuse/controls/pagecontrol.html">PageControl</a>. This is how they look:</p>
@@ -853,7 +837,7 @@
 <p><img src="../media/hikr/chapter-3/edithikepage.png" alt="End of chapter result"></p>
 <p>And here's what the code for all of our various files looks like. It's a few more files now, but they're much simpler now in isolation:</p>
 <p><code>hikr.unoproj</code>:</p>
-<pre><code class="language-json">{
+<pre><code class="language-js">{
   &quot;Packages&quot;: [
     &quot;Fuse&quot;,
     &quot;FuseJS&quot;
@@ -862,117 +846,112 @@
       &quot;*&quot;,
       &quot;**.js:FuseJS&quot;
   ]
-}
-</code></pre>
+}</code></pre>
 <p><code>MainView.ux</code>:</p>
 <pre><code class="language-xml">&lt;App Model=&quot;App&quot;&gt;
-	&lt;ClientPanel&gt;
-		&lt;PageControl&gt;
-			&lt;HomePage /&gt;
-			&lt;EditHikePage /&gt;
-		&lt;/PageControl&gt;
-	&lt;/ClientPanel&gt;
-&lt;/App&gt;
-</code></pre>
+    &lt;ClientPanel&gt;
+        &lt;PageControl&gt;
+            &lt;HomePage /&gt;
+            &lt;EditHikePage /&gt;
+        &lt;/PageControl&gt;
+    &lt;/ClientPanel&gt;
+&lt;/App&gt;</code></pre>
 <p><code>App.js</code></p>
 <pre><code class="language-js">class Hike {
-	constructor(name, location, distance, rating, comments) {
-		this.name = name;
-		this.location = location;
-		this.distance = distance;
-		this.rating = rating;
-		this.comments = comments;
-	}
+    constructor(name, location, distance, rating, comments) {
+        this.name = name;
+        this.location = location;
+        this.distance = distance;
+        this.rating = rating;
+        this.comments = comments;
+    }
 }
 
 export default class App {
-	constructor() {
-		this.hike = new Hike(
-			&quot;Tricky Trails&quot;,
-			&quot;Lakebed, Utah&quot;,
-			10.4,
-			4,
-			&quot;This hike was nice and hike-like. Glad I didn't bring a bike.&quot;
-		);
-		this.hikes = [
-			new Hike(
-				&quot;Tricky Trails&quot;,
-				&quot;Lakebed, Utah&quot;,
-				10.4,
-				4,
-				&quot;This hike was nice and hike-like. Glad I didn't bring a bike.&quot;
-			),
-			new Hike(
-				&quot;Mondo Mountains&quot;,
-				&quot;Black Hills, South Dakota&quot;,
-				20.86,
-				3,
-				&quot;Not the best, but would probably do again. Note to self: don't forget the sandwiches next time.&quot;
-			),
-			new Hike(
-				&quot;Pesky Peaks&quot;,
-				&quot;Bergenhagen, Norway&quot;,
-				8.2,
-				5,
-				&quot;Short but SO sweet!!&quot;
-			),
-			new Hike(
-				&quot;Rad Rivers&quot;,
-				&quot;Moriyama, Japan&quot;,
-				12.3,
-				4,
-				&quot;Took my time with this one. Great view!&quot;
-			),
-			new Hike(
-				&quot;Dangerous Dirt&quot;,
-				&quot;Cactus, Arizona&quot;,
-				19.34,
-				2,
-				&quot;Too long, too hot. Also that snakebite wasn't very fun.&quot;
-			)
-		];
-	}
+    constructor() {
+        this.hike = new Hike(
+            &quot;Tricky Trails&quot;,
+            &quot;Lakebed, Utah&quot;,
+            10.4,
+            4,
+            &quot;This hike was nice and hike-like. Glad I didn't bring a bike.&quot;
+        );
+        this.hikes = [
+            new Hike(
+                &quot;Tricky Trails&quot;,
+                &quot;Lakebed, Utah&quot;,
+                10.4,
+                4,
+                &quot;This hike was nice and hike-like. Glad I didn't bring a bike.&quot;
+            ),
+            new Hike(
+                &quot;Mondo Mountains&quot;,
+                &quot;Black Hills, South Dakota&quot;,
+                20.86,
+                3,
+                &quot;Not the best, but would probably do again. Note to self: don't forget the sandwiches next time.&quot;
+            ),
+            new Hike(
+                &quot;Pesky Peaks&quot;,
+                &quot;Bergenhagen, Norway&quot;,
+                8.2,
+                5,
+                &quot;Short but SO sweet!!&quot;
+            ),
+            new Hike(
+                &quot;Rad Rivers&quot;,
+                &quot;Moriyama, Japan&quot;,
+                12.3,
+                4,
+                &quot;Took my time with this one. Great view!&quot;
+            ),
+            new Hike(
+                &quot;Dangerous Dirt&quot;,
+                &quot;Cactus, Arizona&quot;,
+                19.34,
+                2,
+                &quot;Too long, too hot. Also that snakebite wasn't very fun.&quot;
+            )
+        ];
+    }
 
-	chooseHike(arg) {
-		this.hike = arg.data;
-	}
-}
-</code></pre>
+    chooseHike(arg) {
+        this.hike = arg.data;
+    }
+}</code></pre>
 <p><code>Pages/EditHikePage.ux</code>:</p>
 <pre><code class="language-xml">&lt;Page ux:Class=&quot;EditHikePage&quot;&gt;
-	&lt;ScrollView&gt;
-		&lt;StackPanel&gt;
-			&lt;Text Value=&quot;{name}&quot; /&gt;
+    &lt;ScrollView&gt;
+        &lt;StackPanel&gt;
+            &lt;Text Value=&quot;{name}&quot; /&gt;
 
-			&lt;Text&gt;Name:&lt;/Text&gt;
-			&lt;TextBox Value=&quot;{name}&quot; /&gt;
+            &lt;Text&gt;Name:&lt;/Text&gt;
+            &lt;TextBox Value=&quot;{name}&quot; /&gt;
 
-			&lt;Text&gt;Location:&lt;/Text&gt;
-			&lt;TextBox Value=&quot;{location}&quot; /&gt;
+            &lt;Text&gt;Location:&lt;/Text&gt;
+            &lt;TextBox Value=&quot;{location}&quot; /&gt;
 
-			&lt;Text&gt;Distance (km):&lt;/Text&gt;
-			&lt;TextBox Value=&quot;{distance}&quot; InputHint=&quot;Decimal&quot; /&gt;
+            &lt;Text&gt;Distance (km):&lt;/Text&gt;
+            &lt;TextBox Value=&quot;{distance}&quot; InputHint=&quot;Decimal&quot; /&gt;
 
-			&lt;Text&gt;Rating:&lt;/Text&gt;
-			&lt;TextBox Value=&quot;{rating}&quot; InputHint=&quot;Integer&quot; /&gt;
+            &lt;Text&gt;Rating:&lt;/Text&gt;
+            &lt;TextBox Value=&quot;{rating}&quot; InputHint=&quot;Integer&quot; /&gt;
 
-			&lt;Text&gt;Comments:&lt;/Text&gt;
-			&lt;TextView Value=&quot;{comments}&quot; TextWrapping=&quot;Wrap&quot; /&gt;
-		&lt;/StackPanel&gt;
-	&lt;/ScrollView&gt;
-&lt;/Page&gt;
-</code></pre>
+            &lt;Text&gt;Comments:&lt;/Text&gt;
+            &lt;TextView Value=&quot;{comments}&quot; TextWrapping=&quot;Wrap&quot; /&gt;
+        &lt;/StackPanel&gt;
+    &lt;/ScrollView&gt;
+&lt;/Page&gt;</code></pre>
 <p><code>Pages/HomePage.ux</code>:</p>
 <pre><code class="language-xml">&lt;Page ux:Class=&quot;HomePage&quot;&gt;
-	&lt;ScrollView&gt;
-		&lt;StackPanel&gt;
-			&lt;Each Items=&quot;{hikes}&quot;&gt;
-				&lt;Button Text=&quot;{name}&quot; Clicked=&quot;{chooseHike}&quot; /&gt;
-			&lt;/Each&gt;
-		&lt;/StackPanel&gt;
-	&lt;/ScrollView&gt;
-&lt;/Page&gt;
-</code></pre>
+    &lt;ScrollView&gt;
+        &lt;StackPanel&gt;
+            &lt;Each Items=&quot;{hikes}&quot;&gt;
+                &lt;Button Text=&quot;{name}&quot; Clicked=&quot;{chooseHike}&quot; /&gt;
+            &lt;/Each&gt;
+        &lt;/StackPanel&gt;
+    &lt;/ScrollView&gt;
+&lt;/Page&gt;</code></pre>
 <h2 id="what-s-next">What's next</h2>
 <p>Now that we've got our two views separated into different components, it is time to take a closer look at how we do navigation in Fuse. In the <a href="navigation-and-routing.html">next chapter</a> we'll start creating a propert <em>flow</em> through our app, and learn how we can create separate models per page to make our app even more structured. So when you're ready, let's <a href="navigation-and-routing.html">move on</a>!</p>
 <p>The final code for this chapter is available <a href="https://github.com/fuse-open/hikr/tree/models-chapter-3">here</a>.</p>

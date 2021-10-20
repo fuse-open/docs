@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -687,19 +687,18 @@ FileSystemModule.writeBufferToFile(filename, data) Method (JS)
 </header>
 <p>Asynchronously writes an <code>ArrayBuffer</code> to a file.</p>
 <h4 id="example">Example</h4>
-<pre><code class="language-js">    var FileSystem = require(&quot;FuseJS/FileSystem&quot;);
+<pre><code class="language-js">var FileSystem = require(&quot;FuseJS/FileSystem&quot;);
 
-    var data = new ArrayBuffer(4);
-    var view = new Int32Array(data);
-    view[0] = 0x1337;
+var data = new ArrayBuffer(4);
+var view = new Int32Array(data);
+view[0] = 0x1337;
 
-    FileSystem.writeBufferToFile(FileSystem.dataDirectory + &quot;/&quot; + &quot;myfile.txt&quot;, data)
-        .then(function() {
-            console.log(&quot;Successful write&quot;);
-        }, function(error) {
-            console.log(error);
-        });
-</code></pre>
+FileSystem.writeBufferToFile(FileSystem.dataDirectory + &quot;/&quot; + &quot;myfile.txt&quot;, data)
+    .then(function() {
+        console.log(&quot;Successful write&quot;);
+    }, function(error) {
+        console.log(error);
+    });</code></pre>
 
 <section class="type-location type-location-leaf">
 <h3 id="section-location">Location</h3>

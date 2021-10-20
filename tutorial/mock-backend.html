@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -695,38 +695,34 @@
 <pre><code class="language-js">// Returns an array of item objects
 function getItems() { ... }
 // Updates an item
-function updateItem(...) { ... }
-</code></pre>
+function updateItem(...) { ... }</code></pre>
 <p>Then, our app would use this interface in a very straightforward way:</p>
 <pre><code class="language-js">// Get the item objects from the backend
 var someItems = getItems();
 // Update one of the items in the backend
-updateItem(...);
-</code></pre>
+updateItem(...);</code></pre>
 <p>This should be straightforward enough. However, we've ignored a very important detail that most (if not all) backends have to deal with: <em>distribution</em>. Our simple interface should work just fine if we already have the data locally, but what if the data is stored on a server somewhere else? We can't have our code just stalling, waiting for the backend server (or disk, etc) to respond with the data we asked for. It could take an indeterminate amount of time for our requests to get to the backend and for the backend to send data back. So, retrieving and updating the data should happen <em>asynchronously</em>. And, in JavaScript, when any asynchronous computations are involved, it's very likely you'll find a <code>Promise</code> or two nearby.</p>
 <p>To paraphrase <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Promise">MDN's article about <code>Promise</code>s</a>: &quot;A <code>Promise</code> represents a value which may be available now, or in the future, or never.&quot; This is a pretty basic explanation of what a <code>Promise</code> can do for us, but already from that description, we can see that this fits our use case of asynchronously communicating with our backend. With <code>Promise</code>s, our typical backend interface looks more like this:</p>
 <pre><code class="language-js">// Returns a Promise that represents an array of item objects
 function getItems() { ... }
 // Returns a Promise that will be fulfilled when the item is updated in the backend
-function updateItem(...) { ... }
-</code></pre>
+function updateItem(...) { ... }</code></pre>
 <p>From this, it doesn't look like our interface has really changed at all! Of course, actually <em>using</em> these functions (and implementing them in the case of our mock backend) is slightly different, but not by much. For example, the code that uses this interface could look something like this:</p>
 <pre><code class="language-js">// Get the item objects from the backend asynchronously
 var someItems = [];
 getItems()
-	.then(function(items) {
-		someItems = items;
-	})
-	.catch(function(error) {
-		console.log(&quot;Couldn't get items: &quot; + error);
-	});
+    .then(function(items) {
+        someItems = items;
+    })
+    .catch(function(error) {
+        console.log(&quot;Couldn't get items: &quot; + error);
+    });
 
 // Update one of the items in the backend asynchronously
 updateItem(...)
-	.catch(function(error) {
-		console.log(&quot;Couldn't update item: &quot; + error);
-	})
-</code></pre>
+    .catch(function(error) {
+        console.log(&quot;Couldn't update item: &quot; + error);
+    })</code></pre>
 <p>To properly use a <code>Promise</code>, we have to introduce some of our own asynchronous code. The simplest way to interact with a <code>Promise</code> is by calling two of the functions it provides: <code>then</code> and <code>catch</code>.</p>
 <p>By calling the <code>then</code> function, we can describe what will happen when the <code>Promise</code> is fulfilled. We do this by passing in another function that optionally accepts the value the <code>Promise</code> is fulfilled with; in this case, the items from the backend. This argument is optional, though. For example, in the case of our <code>updateItem</code> function, the <code>Promise</code> it returns isn't meant to yield a value when the update is complete. We only care about whether or not the <code>Promise</code> was actually completed, so the argument wouldn't be used in this case.</p>
 <p>By calling the <code>catch</code> function, we can describe what will happen if an error occured while trying to fulfill the <code>Promise</code>. In this case, we can pass in a function that accepts a description of what caused the failure. For example, a real backend might report an error if it can't connect to the backend server, or authentication failed. Error detection/handling is a complex topic, however, so for the sake of keeping things simple, we're going to skim over a lot of these details. But we'll still want to attach some simple error handlers to our <code>Promise</code>s so we have them if we hook up to a real backend later.</p>
@@ -747,136 +743,121 @@ updateItem(...)
 |- Pages
 |  |- EditHikePage.js
 
-...
-</code></pre>
+...</code></pre>
 <p>The next thing we'll do is make sure Fuse knows about our modules in this directory. Previously, when we added our <code>hikes.js</code> file to the project, we added a reference to it in our project file (<code>hikr.unoproj</code>) so it would be bundled with our app. Now that we've created our <code>Modules</code> folder, we'll replace that entry with one that will include every JavaScript file in the <code>Modules</code> directory as a bundle instead:</p>
-<pre><code class="language-json">...
+<pre><code class="language-js">...
 
   &quot;Includes&quot;: [
     &quot;*&quot;,
     &quot;Modules/*.js:Bundle&quot;
   ]
-}
-</code></pre>
+}</code></pre>
 <p>Now we're ready to start implementing our mock backend. Since our old <code>hikes.js</code> file already contains all the data we'll need to present, we can use it as a starting point. First, we'll move the file into our <code>Modules</code> directory, and then we'll rename it to <code>Backend.js</code>.</p>
 <p>If we take a look at our new <code>Backend.js</code> file, it simply exports the <code>hikes</code> array as-is. But since this will be our mock backend, we'll want it to expose an interface similar to the one we discussed previously instead. This should look something like this:</p>
 <pre><code class="language-js">// Returns a Promise that represents an array of hike objects
 function getHikes() { ... }
 // Returns a Promise that will be fulfilled when the hike is updated in the backend
-function updateHike(...) { ... }
-</code></pre>
+function updateHike(...) { ... }</code></pre>
 <p>We'll create our <code>getHikes</code> function first. Below our <code>hikes</code> array, we'll start with an empty function:</p>
 <pre><code class="language-js">function getHikes() {
-}
-</code></pre>
+}</code></pre>
 <p>If we wanted this function to return our <code>hikes</code> array, we could simply write something like this:</p>
 <pre><code class="language-js">function getHikes() {
-	return hikes;
-}
-</code></pre>
+    return hikes;
+}</code></pre>
 <p>But instead, we want the function to return a <code>Promise</code> which will be fulfilled when our <code>hikes</code> are ready to simulate fetching them from a backend. So, our actual <code>getHikes</code> function will look something like this instead:</p>
 <pre><code class="language-js">function getHikes() {
-	return new Promise(function(resolve, reject) {
-		resolve(hikes);
-	});
-}
-</code></pre>
+    return new Promise(function(resolve, reject) {
+        resolve(hikes);
+    });
+}</code></pre>
 <p>Now, instead of returning the <code>hikes</code> array, we create a <code>Promise</code> using <code>new Promise</code>. The <code>Promise</code> constructor takes in a function that will be called in order to fulfill or reject the promise. This function takes in two arguments: <code>resolve</code>, and <code>reject</code>. These arguments are actually functions themselves. <code>resolve</code> is a function that fulfills the <code>Promise</code> we're creating, and if we attached a handler to our <code>Promise</code> using its <code>then</code> function, that handler will be called. In our code, this is all our function needs to call in order to resolve our <code>Promise</code> with our <code>hikes</code> collection. The <code>reject</code> function can be called instead if an error occurs, and any handlers we attached to our <code>Promise</code> via <code>catch</code> will subsequently be called.</p>
 <p>We can also use JS' built-in <code>setTimeout</code> function to delay when this will actually be fulfilled by any number of milliseconds. <code>setTimeout</code> also takes two arguments. The first one is a function that will be called sometime in the future, and the second one is a number of milliseconds to delay before calling that function. For example, this code would resolve our <code>Promise</code> after half a second:</p>
 <pre><code class="language-js">function getHikes() {
-	return new Promise(function(resolve, reject) {
-		setTimeout(function() {
-			resolve(hikes);
-		}, 500);
-	});
-}
-</code></pre>
+    return new Promise(function(resolve, reject) {
+        setTimeout(function() {
+            resolve(hikes);
+        }, 500);
+    });
+}</code></pre>
 <p>This code is very useful if we want to test how our app deals with having to wait for data coming from the backend. However, to keep things simple for ourselves during testing, let's use <code>0</code> for the delay instead:</p>
 <pre><code class="language-js">function getHikes() {
-	return new Promise(function(resolve, reject) {
-		setTimeout(function() {
-			resolve(hikes);
-		}, 0);
-	});
-}
-</code></pre>
+    return new Promise(function(resolve, reject) {
+        setTimeout(function() {
+            resolve(hikes);
+        }, 0);
+    });
+}</code></pre>
 <p>Perfect, now we've got a nice <code>getHikes</code> function with a proper interface and some optional simulated delay!</p>
 <p>Now for our <code>updateHike</code> function. This is a function that will take in some information about a specific hike to update in our mock backend, and return a <code>Promise</code> that will be fulfilled when the update has completed. We'll start with an empty function:</p>
 <pre><code class="language-js">function updateHike() {
-}
-</code></pre>
+}</code></pre>
 <p>Then, we'll add some arguments to identify and update a specific hike:</p>
 <pre><code class="language-js">function updateHike(id, name, location, distance, rating, comments) {
-}
-</code></pre>
+}</code></pre>
 <p>In this case, we'll use the <code>id</code> argument to identify the hike we want to update, and the rest of the arguments will be used to overwrite all of the corresponding fields on that hike.</p>
 <p>Next, we'll use the <code>Promise</code> constructor and <code>setTimeout</code> just like in <code>getHikes</code> to return a <code>Promise</code> with an optional time delay:</p>
 <pre><code class="language-js">function updateHike(id, name, location, distance, rating, comments) {
-	return new Promise(function(resolve, reject) {
-		setTimeout(function() {
-		}, 0);
-	});
-}
-</code></pre>
+    return new Promise(function(resolve, reject) {
+        setTimeout(function() {
+        }, 0);
+    });
+}</code></pre>
 <p>Looking good! Now, we'll add the code to actually identify the hike by its <code>id</code> and update its members. To keep things simple, we'll just do a simple linear search to find the hike we're looking for:</p>
 <pre><code class="language-js">function updateHike(id, name, location, distance, rating, comments) {
-	return new Promise(function(resolve, reject) {
-		setTimeout(function() {
-			for (var i = 0; i &lt; hikes.length; i++) {
-				var hike = hikes[i];
-				if (hike.id == id) {
-				}
-			}
-		}, 0);
-	});
-}
-</code></pre>
+    return new Promise(function(resolve, reject) {
+        setTimeout(function() {
+            for (var i = 0; i &lt; hikes.length; i++) {
+                var hike = hikes[i];
+                if (hike.id == id) {
+                }
+            }
+        }, 0);
+    });
+}</code></pre>
 <p>Once we've identified the hike, we'll update its data with our function's arguments and break out of the search loop:</p>
 <pre><code class="language-js">function updateHike(id, name, location, distance, rating, comments) {
-	return new Promise(function(resolve, reject) {
-		setTimeout(function() {
-			for (var i = 0; i &lt; hikes.length; i++) {
-				var hike = hikes[i];
-				if (hike.id == id) {
-					hike.name = name;
-					hike.location = location;
-					hike.distance = distance;
-					hike.rating = rating;
-					hike.comments = comments;
-					break;
-				}
-			}
-		}, 0);
-	});
-}
-</code></pre>
+    return new Promise(function(resolve, reject) {
+        setTimeout(function() {
+            for (var i = 0; i &lt; hikes.length; i++) {
+                var hike = hikes[i];
+                if (hike.id == id) {
+                    hike.name = name;
+                    hike.location = location;
+                    hike.distance = distance;
+                    hike.rating = rating;
+                    hike.comments = comments;
+                    break;
+                }
+            }
+        }, 0);
+    });
+}</code></pre>
 <p>Almost done. Finally, we'll make sure we resolve the <code>Promise</code> after the hike object has been updated. Since the <code>Promise</code> we're creating won't return any data, we just call <code>resolve</code> without any parameters, like so:</p>
 <pre><code class="language-js">function updateHike(id, name, location, distance, rating, comments) {
-	return new Promise(function(resolve, reject) {
-		setTimeout(function() {
-			for (var i = 0; i &lt; hikes.length; i++) {
-				var hike = hikes[i];
-				if (hike.id == id) {
-					hike.name = name;
-					hike.location = location;
-					hike.distance = distance;
-					hike.rating = rating;
-					hike.comments = comments;
-					break;
-				}
-			}
+    return new Promise(function(resolve, reject) {
+        setTimeout(function() {
+            for (var i = 0; i &lt; hikes.length; i++) {
+                var hike = hikes[i];
+                if (hike.id == id) {
+                    hike.name = name;
+                    hike.location = location;
+                    hike.distance = distance;
+                    hike.rating = rating;
+                    hike.comments = comments;
+                    break;
+                }
+            }
 
-			resolve();
-		}, 0);
-	});
-}
-</code></pre>
+            resolve();
+        }, 0);
+    });
+}</code></pre>
 <p>And that about does it for our mock backend's interface. The last thing we'll do is make sure to export these functions instead of our <code>hikes</code> array, like so:</p>
 <pre><code class="language-js">module.exports = {
-	getHikes: getHikes,
-	updateHike: updateHike
-};
-</code></pre>
+    getHikes: getHikes,
+    updateHike: updateHike
+};</code></pre>
 <p>And with that, our mock backend is complete!</p>
 <h2 id="our-context-abstraction">Our <code>Context</code> abstraction</h2>
 <p>As I mentioned earler, we <em>could</em> have our view models interact with our mock backend directly. While there's technically nothing wrong with that, it tends to be beneficial to build a small abstraction layer over the backend that our view models interact with instead. This helps us provide a more consistent interface to our model, and also allows us to implement things like caching to help reduce the amount of bandwidth and battery our app uses. So, the next thing we'll do is build this abstraction, which we'll call the <code>Context</code>.</p>
@@ -889,107 +870,93 @@ function updateHike(...) { ... }
 |- Pages
 |  |- EditHikePage.js
 
-...
-</code></pre>
+...</code></pre>
 <p>In this file, we'll import FuseJS' <code>Observable</code> module:</p>
-<pre><code class="language-js">var Observable = require(&quot;FuseJS/Observable&quot;);
-</code></pre>
+<pre><code class="language-js">var Observable = require(&quot;FuseJS/Observable&quot;);</code></pre>
 <p>And we'll also import our <code>Backend</code> module, like so:</p>
 <pre><code class="language-js">var Observable = require(&quot;FuseJS/Observable&quot;);
-var Backend = require(&quot;./Backend&quot;);
-</code></pre>
+var Backend = require(&quot;./Backend&quot;);</code></pre>
 <p>Notice how we imported the <code>Backend</code> module as <code>./Backend</code>. Normally, when importing JS modules that are bundled in our app, we use the <code>require</code> expression and specify a path relative to our project's root directory to resolve the module. However, we can use relative paths to resolve a module as well. In this case, that's exactly what we're doing - we know <code>Backend.js</code> is in our <code>Modules</code> directory, which is the same directory as our <code>Context.js</code> file. So, using <code>./Backend</code> works just fine.</p>
 <p>Now for the meat of our <code>Context</code> module. The <code>Context</code> should provide our view models with a simple interface that makes it easy for them to consume and modify our app's data. Since we know our views will eventually display data from our view models via data binding, the <code>Context</code> should ideally expose our data via one or more <a href="../fusejs/observable.html">Observable</a>s. So, we'll start with a simple <code>hikes</code> <code>Observable</code>:</p>
-<pre><code class="language-js">var hikes = Observable();
-</code></pre>
+<pre><code class="language-js">var hikes = Observable();</code></pre>
 <p>This <code>Observable</code> will be used by our view models to display all of the available hikes. When our app starts up, we'll populate this <code>Observable</code> using data from our backend, and as our app runs, this collection will essentially be a local mirror of the same collection in the backend. As we make changes, we'll update the contents of this collection so that our view models will get updated instantly. We'll also communicate with the backend, so it can update its information asynchronously.</p>
 <p>When our app starts up, we'll call the <code>Backend</code> module's <code>getHikes</code> function and use the <code>Promise</code> it returns to populate our <code>hikes</code> <code>Observable</code> with its initial data:</p>
 <pre><code class="language-js">var hikes = Observable();
 
 Backend.getHikes()
-	.then(function(newHikes) {
-		hikes.replaceAll(newHikes);
-	})
-	.catch(function(error) {
-		console.log(&quot;Couldn't get hikes: &quot; + error);
-	});
-</code></pre>
+    .then(function(newHikes) {
+        hikes.replaceAll(newHikes);
+    })
+    .catch(function(error) {
+        console.log(&quot;Couldn't get hikes: &quot; + error);
+    });</code></pre>
 <p>Notice how we use the <code>replaceAll</code> function on our <code>hikes</code> <code>Observable</code> to overwrite its contents with the contents of the array we get when our <code>Promise</code> is fulfilled. We've also attached a small error handler for good measure. This takes care of filling our <code>hikes</code> <code>Observable</code> with initial data from the backend on startup.</p>
 <p>Next, we'll need to provide a mechanism for our view models to update the data as well. Similar to our mock backend, we can provide an <code>updateHike</code> function that takes an <code>id</code> to identify the hike to be updated, and the data to update it with. This function will both update our local <code>hikes</code> <code>Observable</code> (using a similar search the backend used to keep things simple and consistent) and tell the backend to update its data as well:</p>
 <pre><code class="language-js">function updateHike(id, name, location, distance, rating, comments) {
-	for (var i = 0; i &lt; hikes.length; i++) {
-		var hike = hikes.getAt(i);
-		if (hike.id == id) {
-			hike.name = name;
-			hike.location = location;
-			hike.distance = distance;
-			hike.rating = rating;
-			hike.comments = comments;
-			hikes.replaceAt(i, hike);
-			break;
-		}
-	}
-	Backend.updateHike(id, name, location, distance, rating, comments)
-		.catch(function(error) {
-			console.log(&quot;Couldn't update hike: &quot; + id);
-		});
-}
-</code></pre>
+    for (var i = 0; i &lt; hikes.length; i++) {
+        var hike = hikes.getAt(i);
+        if (hike.id == id) {
+            hike.name = name;
+            hike.location = location;
+            hike.distance = distance;
+            hike.rating = rating;
+            hike.comments = comments;
+            hikes.replaceAt(i, hike);
+            break;
+        }
+    }
+    Backend.updateHike(id, name, location, distance, rating, comments)
+        .catch(function(error) {
+            console.log(&quot;Couldn't update hike: &quot; + id);
+        });
+}</code></pre>
 <p>Finally, we'll expose <code>hikes</code> and <code>updateHike</code> in our module's exports like so:</p>
 <pre><code class="language-js">module.exports = {
-	hikes: hikes,
+    hikes: hikes,
 
-	updateHike: updateHike
-};
-</code></pre>
+    updateHike: updateHike
+};</code></pre>
 <p>And with that, we've finished our <code>Context</code> module as well!</p>
 <h2 id="hooking-everything-up">Hooking everything up</h2>
 <p>Now that we've got our <code>Backend</code> and <code>Context</code> modules set up, it's time to refactor our view models to use these instead of the <code>hikes</code> module that we had before.</p>
 <p>We'll start by migrating the <code>HomePage</code>. Since this page only displayed the list of hikes from the old <code>hikes</code> module, this will be pretty straightforward. We'll only need to make a couple changes in <code>Pages/HomePage.js</code>. First off, if we take a look at <code>HomePage.js</code>, the very first line imports our old <code>hikes</code> module. Let's change it to import our <code>Context</code> module instead:</p>
-<pre><code class="language-js">var Context = require(&quot;Modules/Context&quot;);
-</code></pre>
+<pre><code class="language-js">var Context = require(&quot;Modules/Context&quot;);</code></pre>
 <p>The only other thing we have to do is change the reference to <code>hikes</code> in the module exports to reference <code>Context.hikes</code> instead:</p>
 <pre><code class="language-js">module.exports = {
-	hikes: Context.hikes,
+    hikes: Context.hikes,
 
-	goToHike: goToHike
-};
-</code></pre>
+    goToHike: goToHike
+};</code></pre>
 <p>And that should cover our <code>HomePage</code>.</p>
 <p>Now for our <code>EditHikePage</code>. Because this page receives its hike data from the <a href="../fuse/navigation/router.html">Router</a>, this page won't need any changes to display this data. However, we <em>will</em> need to make some changes before we can actually edit the data. But to hook things up meaningfully, we'll want to set up the <code>Save</code> and <code>Cancel</code> buttons from our original design, rather than the temporary <code>Back</code> button we made in the <a href="navigation-and-routing.html">last chapter</a>:</p>
 <p><img src="../media/hikr/tutorial/app-flow.png" alt="Flow Diagram"></p>
 <p>We'll start with the <code>Save</code> button. This button will be almost identical to the <code>Back</code> button we made previously, except that it will also commit the changes made in the editor to our data model in addition to going back to the previous page. So, let's start by simply renaming the existing <code>Back</code> button to <code>Save</code>.</p>
 <p>First, in <code>Pages/EditHikePage.ux</code>, we'll change both the text of our button and its clicked handler:</p>
-<pre><code class="language-xml">	&lt;Text&gt;Comments:&lt;/Text&gt;
-	&lt;TextView Value=&quot;{comments}&quot; TextWrapping=&quot;Wrap&quot; /&gt;
+<pre><code class="language-xml">    &lt;Text&gt;Comments:&lt;/Text&gt;
+    &lt;TextView Value=&quot;{comments}&quot; TextWrapping=&quot;Wrap&quot; /&gt;
 
-	&lt;Button Text=&quot;Save&quot; Clicked=&quot;{save}&quot; /&gt;
-&lt;/StackPanel&gt;
-</code></pre>
+    &lt;Button Text=&quot;Save&quot; Clicked=&quot;{save}&quot; /&gt;
+&lt;/StackPanel&gt;</code></pre>
 <p>Next, in <code>Pages/EditHikePage.js</code>, we'll rename the <code>goBack</code> handler to <code>save</code>:</p>
 <pre><code class="language-js">function save() {
-	router.goBack();
-}
-</code></pre>
+    router.goBack();
+}</code></pre>
 <p>And we'll update its name in the module's exports as well:</p>
-<pre><code class="language-js">	rating: rating,
-	comments: comments,
+<pre><code class="language-js">    rating: rating,
+    comments: comments,
 
-	save: save
-};
-</code></pre>
+    save: save
+};</code></pre>
 <p>Finally, we'll make this button commit any edits we've made in the view. To do this, we'll call our <code>Context</code> module's <code>updateHike</code> function, passing in the <code>id</code> from our <code>hike</code> <a href="../fusejs/observable.html">Observable</a>'s <code>value</code> and the data contained in our view model's <code>Observable</code>s:</p>
 <pre><code class="language-js">function save() {
-	Context.updateHike(hike.value.id, name.value, location.value, distance.value, rating.value, comments.value);
-	router.goBack();
-}
-</code></pre>
+    Context.updateHike(hike.value.id, name.value, location.value, distance.value, rating.value, comments.value);
+    router.goBack();
+}</code></pre>
 <p>Great! Now our <code>Save</code> button should be all hooked up. Now, let's implement the <code>Cancel</code> button as well. The <code>Cancel</code> button will be very similar to our <code>Save</code> button, except we'll have to cancel the changes we've made in the editor somehow. But before we worry about that detail, let's go ahead and make our <code>Cancel</code> button, along with a corresponding <code>cancel</code> handler for it.</p>
 <p>We'll first add the UX code for the button in <code>Pages/EditHikePage.ux</code> right beneath the code we just wrote for our <code>Save</code> button:</p>
-<pre><code class="language-xml">	&lt;Button Text=&quot;Save&quot; Clicked=&quot;{save}&quot; /&gt;
-	&lt;Button Text=&quot;Cancel&quot; Clicked=&quot;{cancel}&quot; /&gt;
-&lt;/StackPanel&gt;
-</code></pre>
+<pre><code class="language-xml">    &lt;Button Text=&quot;Save&quot; Clicked=&quot;{save}&quot; /&gt;
+    &lt;Button Text=&quot;Cancel&quot; Clicked=&quot;{cancel}&quot; /&gt;
+&lt;/StackPanel&gt;</code></pre>
 <p>Next, we'll add an empty <code>cancel</code> function and export it in <code>Pages/EditHikePage.js</code>:</p>
 <pre><code class="language-js">function cancel() {
 }
@@ -997,30 +964,26 @@ Backend.getHikes()
 ...
 
 module.exports = {
-	...
+    ...
 
-	cancel: cancel,
-	save: save
-};
-</code></pre>
+    cancel: cancel,
+    save: save
+};</code></pre>
 <p>Then, we'll make sure the <code>cancel</code> function will take us back to the previous page by calling <code>goBack</code> on our <code>Router</code> instance, just like our <code>save</code> handler:</p>
 <pre><code class="language-js">function cancel() {
-	router.goBack();
-}
-</code></pre>
+    router.goBack();
+}</code></pre>
 <p>Finally, before the handler navigates back to the previous page, we want to revert any changes we've made in the view model. There are a few ways we could do this, but one of the easiest is to take advantage of the fact that all of the backing <code>Observable</code>s in our view model are the result of <code>map</code>'s of our <code>EditHikePage</code>'s <code>hike</code> <code>Observable</code>. Because of this, if we're to &quot;refresh&quot; the value of this <code>Observable</code>, all of the editor values will be reset to their original values. This can be achieved by simply assigning the <code>hike</code> <code>Observable</code>'s value to itself, like so:</p>
 <pre><code class="language-js">function cancel() {
-	hike.value = hike.value;
-	router.goBack();
-}
-</code></pre>
+    hike.value = hike.value;
+    router.goBack();
+}</code></pre>
 <p>Easy! Now, while this code makes sense to us now, it may not be immediately clear why we're doing this to someone who hasn't read the code (or us in the future if we've forgotten about this trick), so let's go ahead and add a comment to go with it:</p>
 <pre><code class="language-js">function cancel() {
-	// Refresh hike value to reset dependent Observables' values
-	hike.value = hike.value;
-	router.goBack();
-}
-</code></pre>
+    // Refresh hike value to reset dependent Observables' values
+    hike.value = hike.value;
+    router.goBack();
+}</code></pre>
 <p>Perfect! Now everything should be hooked up. At this point, we can go ahead and save all of our different files. Once Fuse is finished reloading preview, we finally can try out our fully-functional views!</p>
 <h2 id="our-progress-so-far">Our progress so far</h2>
 <p>Finally, we've got basically all of the major functional pieces of our app in place and hooked up. Now we've got our various pages and modules working together in perfect harmony and fitted together with a nice, scalable architecture. It looks something like this:</p>
@@ -1028,81 +991,80 @@ module.exports = {
 <p>And here's the code for the various files we modified in this chapter:</p>
 <p><code>Modules/Backend.js</code>:</p>
 <pre><code class="language-js">var hikes = [
-	{
-		id: 0,
-		name: &quot;Tricky Trails&quot;,
-		location: &quot;Lakebed, Utah&quot;,
-		distance: 10.4,
-		rating: 4,
-		comments: &quot;This hike was nice and hike-like. Glad I didn't bring a bike.&quot;
-	},
-	{
-		id: 1,
-		name: &quot;Mondo Mountains&quot;,
-		location: &quot;Black Hills, South Dakota&quot;,
-		distance: 20.86,
-		rating: 3,
-		comments: &quot;Not the best, but would probably do again. Note to self: don't forget the sandwiches next time.&quot;
-	},
-	{
-		id: 2,
-		name: &quot;Pesky Peaks&quot;,
-		location: &quot;Bergenhagen, Norway&quot;,
-		distance: 8.2,
-		rating: 5,
-		comments: &quot;Short but SO sweet!!&quot;
-	},
-	{
-		id: 3,
-		name: &quot;Rad Rivers&quot;,
-		location: &quot;Moriyama, Japan&quot;,
-		distance: 12.3,
-		rating: 4,
-		comments: &quot;Took my time with this one. Great view!&quot;
-	},
-	{
-		id: 4,
-		name: &quot;Dangerous Dirt&quot;,
-		location: &quot;Cactus, Arizona&quot;,
-		distance: 19.34,
-		rating: 2,
-		comments: &quot;Too long, too hot. Also that snakebite wasn't very fun.&quot;
-	}
+    {
+        id: 0,
+        name: &quot;Tricky Trails&quot;,
+        location: &quot;Lakebed, Utah&quot;,
+        distance: 10.4,
+        rating: 4,
+        comments: &quot;This hike was nice and hike-like. Glad I didn't bring a bike.&quot;
+    },
+    {
+        id: 1,
+        name: &quot;Mondo Mountains&quot;,
+        location: &quot;Black Hills, South Dakota&quot;,
+        distance: 20.86,
+        rating: 3,
+        comments: &quot;Not the best, but would probably do again. Note to self: don't forget the sandwiches next time.&quot;
+    },
+    {
+        id: 2,
+        name: &quot;Pesky Peaks&quot;,
+        location: &quot;Bergenhagen, Norway&quot;,
+        distance: 8.2,
+        rating: 5,
+        comments: &quot;Short but SO sweet!!&quot;
+    },
+    {
+        id: 3,
+        name: &quot;Rad Rivers&quot;,
+        location: &quot;Moriyama, Japan&quot;,
+        distance: 12.3,
+        rating: 4,
+        comments: &quot;Took my time with this one. Great view!&quot;
+    },
+    {
+        id: 4,
+        name: &quot;Dangerous Dirt&quot;,
+        location: &quot;Cactus, Arizona&quot;,
+        distance: 19.34,
+        rating: 2,
+        comments: &quot;Too long, too hot. Also that snakebite wasn't very fun.&quot;
+    }
 ];
 
 function getHikes() {
-	return new Promise(function(resolve, reject) {
-		setTimeout(function() {
-			resolve(hikes);
-		}, 0);
-	});
+    return new Promise(function(resolve, reject) {
+        setTimeout(function() {
+            resolve(hikes);
+        }, 0);
+    });
 }
 
 function updateHike(id, name, location, distance, rating, comments) {
-	return new Promise(function(resolve, reject) {
-		setTimeout(function() {
-			for (var i = 0; i &lt; hikes.length; i++) {
-				var hike = hikes[i];
-				if (hike.id == id) {
-					hike.name = name;
-					hike.location = location;
-					hike.distance = distance;
-					hike.rating = rating;
-					hike.comments = comments;
-					break;
-				}
-			}
+    return new Promise(function(resolve, reject) {
+        setTimeout(function() {
+            for (var i = 0; i &lt; hikes.length; i++) {
+                var hike = hikes[i];
+                if (hike.id == id) {
+                    hike.name = name;
+                    hike.location = location;
+                    hike.distance = distance;
+                    hike.rating = rating;
+                    hike.comments = comments;
+                    break;
+                }
+            }
 
-			resolve();
-		}, 0);
-	});
+            resolve();
+        }, 0);
+    });
 }
 
 module.exports = {
-	getHikes: getHikes,
-	updateHike: updateHike
-};
-</code></pre>
+    getHikes: getHikes,
+    updateHike: updateHike
+};</code></pre>
 <p><code>Modules/Context.js</code>:</p>
 <pre><code class="language-js">var Observable = require(&quot;FuseJS/Observable&quot;);
 var Backend = require(&quot;./Backend&quot;);
@@ -1110,83 +1072,80 @@ var Backend = require(&quot;./Backend&quot;);
 var hikes = Observable();
 
 Backend.getHikes()
-	.then(function(newHikes) {
-		hikes.replaceAll(newHikes);
-	})
-	.catch(function(error) {
-		console.log(&quot;Couldn't get hikes: &quot; + error);
-	});
+    .then(function(newHikes) {
+        hikes.replaceAll(newHikes);
+    })
+    .catch(function(error) {
+        console.log(&quot;Couldn't get hikes: &quot; + error);
+    });
 
 function updateHike(id, name, location, distance, rating, comments) {
-	for (var i = 0; i &lt; hikes.length; i++) {
-		var hike = hikes.getAt(i);
-		if (hike.id == id) {
-			hike.name = name;
-			hike.location = location;
-			hike.distance = distance;
-			hike.rating = rating;
-			hike.comments = comments;
-			hikes.replaceAt(i, hike);
-			break;
-		}
-	}
-	Backend.updateHike(id, name, location, distance, rating, comments)
-		.catch(function(error) {
-			console.log(&quot;Couldn't update hike: &quot; + id);
-		});
+    for (var i = 0; i &lt; hikes.length; i++) {
+        var hike = hikes.getAt(i);
+        if (hike.id == id) {
+            hike.name = name;
+            hike.location = location;
+            hike.distance = distance;
+            hike.rating = rating;
+            hike.comments = comments;
+            hikes.replaceAt(i, hike);
+            break;
+        }
+    }
+    Backend.updateHike(id, name, location, distance, rating, comments)
+        .catch(function(error) {
+            console.log(&quot;Couldn't update hike: &quot; + id);
+        });
 }
 
 module.exports = {
-	hikes: hikes,
+    hikes: hikes,
 
-	updateHike: updateHike
-};
-</code></pre>
+    updateHike: updateHike
+};</code></pre>
 <p><code>Pages/HomePage.js</code>:</p>
 <pre><code class="language-js">var Context = require(&quot;Modules/Context&quot;);
 
 function goToHike(arg) {
-	var hike = arg.data;
-	router.push(&quot;editHike&quot;, hike);
+    var hike = arg.data;
+    router.push(&quot;editHike&quot;, hike);
 }
 
 module.exports = {
-	hikes: Context.hikes,
+    hikes: Context.hikes,
 
-	goToHike: goToHike
-};
-</code></pre>
+    goToHike: goToHike
+};</code></pre>
 <p><code>Pages/EditHikePage.ux</code>:</p>
 <pre><code class="language-xml">&lt;Page ux:Class=&quot;EditHikePage&quot;&gt;
-	&lt;Router ux:Dependency=&quot;router&quot; /&gt;
-	
-	&lt;JavaScript File=&quot;EditHikePage.js&quot; /&gt;
+    &lt;Router ux:Dependency=&quot;router&quot; /&gt;
+    
+    &lt;JavaScript File=&quot;EditHikePage.js&quot; /&gt;
 
-	&lt;ScrollView&gt;
-		&lt;StackPanel&gt;
-			&lt;Text Value=&quot;{name}&quot; /&gt;
+    &lt;ScrollView&gt;
+        &lt;StackPanel&gt;
+            &lt;Text Value=&quot;{name}&quot; /&gt;
 
-			&lt;Text&gt;Name:&lt;/Text&gt;
-			&lt;TextBox Value=&quot;{name}&quot; /&gt;
+            &lt;Text&gt;Name:&lt;/Text&gt;
+            &lt;TextBox Value=&quot;{name}&quot; /&gt;
 
-			&lt;Text&gt;Location:&lt;/Text&gt;
-			&lt;TextBox Value=&quot;{location}&quot; /&gt;
+            &lt;Text&gt;Location:&lt;/Text&gt;
+            &lt;TextBox Value=&quot;{location}&quot; /&gt;
 
-			&lt;Text&gt;Distance (km):&lt;/Text&gt;
-			&lt;TextBox Value=&quot;{distance}&quot; InputHint=&quot;Decimal&quot; /&gt;
+            &lt;Text&gt;Distance (km):&lt;/Text&gt;
+            &lt;TextBox Value=&quot;{distance}&quot; InputHint=&quot;Decimal&quot; /&gt;
 
-			&lt;Text&gt;Rating:&lt;/Text&gt;
-			&lt;TextBox Value=&quot;{rating}&quot; InputHint=&quot;Integer&quot; /&gt;
+            &lt;Text&gt;Rating:&lt;/Text&gt;
+            &lt;TextBox Value=&quot;{rating}&quot; InputHint=&quot;Integer&quot; /&gt;
 
-			&lt;Text&gt;Comments:&lt;/Text&gt;
-			&lt;TextView Value=&quot;{comments}&quot; TextWrapping=&quot;Wrap&quot; /&gt;
+            &lt;Text&gt;Comments:&lt;/Text&gt;
+            &lt;TextView Value=&quot;{comments}&quot; TextWrapping=&quot;Wrap&quot; /&gt;
 
-			&lt;Button Text=&quot;Save&quot; Clicked=&quot;{save}&quot; /&gt;
-			&lt;Button Text=&quot;Cancel&quot; Clicked=&quot;{cancel}&quot; /&gt;
-		&lt;/StackPanel&gt;
-	&lt;/ScrollView&gt;
-&lt;/Page&gt;
-</code></pre>
+            &lt;Button Text=&quot;Save&quot; Clicked=&quot;{save}&quot; /&gt;
+            &lt;Button Text=&quot;Cancel&quot; Clicked=&quot;{cancel}&quot; /&gt;
+        &lt;/StackPanel&gt;
+    &lt;/ScrollView&gt;
+&lt;/Page&gt;</code></pre>
 <p><code>Pages/EditHikePage.js</code>:</p>
 <pre><code class="language-js">var Context = require(&quot;Modules/Context&quot;);
 
@@ -1199,29 +1158,28 @@ var rating = hike.map(function(x) { return x.rating; });
 var comments = hike.map(function(x) { return x.comments; });
 
 function cancel() {
-	// Refresh hike value to reset dependent Observables' values
-	hike.value = hike.value;
-	router.goBack();
+    // Refresh hike value to reset dependent Observables' values
+    hike.value = hike.value;
+    router.goBack();
 }
 
 function save() {
-	Context.updateHike(hike.value.id, name.value, location.value, distance.value, rating.value, comments.value);
-	router.goBack();
+    Context.updateHike(hike.value.id, name.value, location.value, distance.value, rating.value, comments.value);
+    router.goBack();
 }
 
 module.exports = {
-	name: name,
-	location: location,
-	distance: distance,
-	rating: rating,
-	comments: comments,
+    name: name,
+    location: location,
+    distance: distance,
+    rating: rating,
+    comments: comments,
 
-	cancel: cancel,
-	save: save
-};
-</code></pre>
+    cancel: cancel,
+    save: save
+};</code></pre>
 <p><code>hikr.unoproj</code>:</p>
-<pre><code class="language-json">{
+<pre><code class="language-js">{
   &quot;Packages&quot;: [
     &quot;Fuse&quot;,
     &quot;FuseJS&quot;
@@ -1230,8 +1188,7 @@ module.exports = {
     &quot;*&quot;,
     &quot;Modules/*.js:Bundle&quot;
   ]
-}
-</code></pre>
+}</code></pre>
 <h2 id="what-s-next">What's next</h2>
 <p>Now that all of the major parts of our app are in place, it's time to iteratively tweak the look and feel of our app to really make it pop. In the <a href="look-and-feel.html">next chapter</a>, we'll build various reusable components with a custom look/feel and sprinkle them all over our app to polish the app and make it look great. So <a href="look-and-feel.html">let's get to it</a>!</p>
 <p>The final code for this chapter is available <a href="https://github.com/fuse-open/hikr/tree/chapter-5">here</a>.</p>

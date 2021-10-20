@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -686,55 +686,50 @@
 <p>UIs in Fuse are created by a hierarchy of <a href="../fuse/controls/panel.html">Panels</a>, as well as other primitives like <a href="../fuse/controls/rectangle.html">Rectangle</a> and <a href="../fuse/controls/image.html">Image</a>. The various <a href="../fuse/controls/panel.html">Panel</a> types like <a href="../fuse/controls/stackpanel.html">StackPanel</a>, <a href="../fuse/controls/grid.html">Grid</a> and <a href="../fuse/controls/dockpanel.html">DockPanel</a> are used to position and size multiple elements relative to each other as well as relative to the available screen size.</p>
 <p>The following example shows how to make a grid with two rows and three columns filled with rectangles of various colors.</p>
 <pre><code class="language-xml">&lt;App&gt;
-	&lt;Grid RowCount=&quot;2&quot; ColumnCount=&quot;3&quot;&gt;
-		&lt;Rectangle Color=&quot;#ff4500&quot; /&gt;
-		&lt;Rectangle Color=&quot;#ee7942&quot; /&gt;
-		&lt;Rectangle Color=&quot;#ee6363&quot; /&gt;
-		&lt;Rectangle Color=&quot;#ffb90f&quot; /&gt;
-		&lt;Rectangle Color=&quot;#eeb422&quot; /&gt;
-		&lt;Rectangle Color=&quot;#eedc82&quot; /&gt;
-	&lt;/Grid&gt;
-&lt;/App&gt;
-</code></pre>
+    &lt;Grid RowCount=&quot;2&quot; ColumnCount=&quot;3&quot;&gt;
+        &lt;Rectangle Color=&quot;#ff4500&quot; /&gt;
+        &lt;Rectangle Color=&quot;#ee7942&quot; /&gt;
+        &lt;Rectangle Color=&quot;#ee6363&quot; /&gt;
+        &lt;Rectangle Color=&quot;#ffb90f&quot; /&gt;
+        &lt;Rectangle Color=&quot;#eeb422&quot; /&gt;
+        &lt;Rectangle Color=&quot;#eedc82&quot; /&gt;
+    &lt;/Grid&gt;
+&lt;/App&gt;</code></pre>
 <p>We can nest several panels to create more complex structures:</p>
 <pre><code class="language-xml">&lt;App&gt;
-	&lt;StackPanel&gt;
-		&lt;DockPanel Height=&quot;50&quot;&gt;
-			&lt;Text Value=&quot;Hello&quot; Dock=&quot;Left&quot; /&gt;
-			&lt;Rectangle Color=&quot;#f00&quot; /&gt;
-		&lt;/DockPanel&gt;
-		&lt;DockPanel Height=&quot;50&quot;&gt;
-			&lt;Text Value=&quot;World&quot; Dock=&quot;Left&quot; /&gt;
-			&lt;Rectangle Color=&quot;#00f&quot; /&gt;
-		&lt;/DockPanel&gt;
-	&lt;/StackPanel&gt;
-&lt;/App&gt;
-</code></pre>
+    &lt;StackPanel&gt;
+        &lt;DockPanel Height=&quot;50&quot;&gt;
+            &lt;Text Value=&quot;Hello&quot; Dock=&quot;Left&quot; /&gt;
+            &lt;Rectangle Color=&quot;#f00&quot; /&gt;
+        &lt;/DockPanel&gt;
+        &lt;DockPanel Height=&quot;50&quot;&gt;
+            &lt;Text Value=&quot;World&quot; Dock=&quot;Left&quot; /&gt;
+            &lt;Rectangle Color=&quot;#00f&quot; /&gt;
+        &lt;/DockPanel&gt;
+    &lt;/StackPanel&gt;
+&lt;/App&gt;</code></pre>
 <h2 id="element-layout">Element layout</h2>
 <p>For each UX-tag representing a <code>Visual</code> element, we can set properties that will affect the elements <code>Width</code>, <code>Height</code>, <code>Opacity</code> and much more. We can also control how it relates to its parent node and its children nodes using <code>Alignment</code>, <code>Padding</code> and <code>Margin</code>.</p>
 <h3 id="margin-padding">Margin / Padding</h3>
 <p><code>Margin</code> and <code>Padding</code> are two of the most used element properties. <code>Margin</code> controls the distance from the edges of an element to the corresponding edges of its container. <a href="../fuse/elements/element/padding.html">Padding</a> works similarly to <a href="../fuse/elements/element/margin.html">Margin</a>, but instead works inwards. It sets the distance from its edges to the corresponding edges of its child elements.</p>
 <p>Both <code>Margin</code> and <code>Padding</code> are of type <code>float4</code>, which means they have four floating point value components. They are specified in UX as comma separated lists:</p>
 <pre><code class="language-xml">&lt;Panel Margin=&quot;10,20,30,40&quot; /&gt;
-&lt;Panel Padding=&quot;10,20,30,40&quot; /&gt;
-</code></pre>
+&lt;Panel Padding=&quot;10,20,30,40&quot; /&gt;</code></pre>
 <p>Each value represents one of the elements four edges: &quot;10(left),20(top),30(right),40(bottom)&quot;.</p>
 <p>We can also write in shortened forms:</p>
 <pre><code class="language-xml">&lt;Panel Margin=&quot;10&quot; /&gt; &lt;!-- is expanded to &quot;10,10,10,10&quot; --&gt;
-&lt;Panel Padding=&quot;10,20&quot; /&gt; &lt;!-- is expanded to &quot;10,20,10,20&quot; --&gt;
-</code></pre>
+&lt;Panel Padding=&quot;10,20&quot; /&gt; &lt;!-- is expanded to &quot;10,20,10,20&quot; --&gt;</code></pre>
 <h3 id="alignment">Alignment</h3>
 <p>In the cases where an element is smaller than the available space it is assigned by its parent, we can use the <code>Alignment</code> property to control where in its available space it is placed.</p>
 <p>The following example shows how to place rectangles in the four corners of the screen.</p>
 <pre><code class="language-xml">&lt;App&gt;
-	&lt;Panel&gt;
-		&lt;Rectangle Alignment=&quot;TopLeft&quot;     Width=&quot;40&quot; Height=&quot;40&quot; Color=&quot;Red&quot; /&gt;
-		&lt;Rectangle Alignment=&quot;TopRight&quot;    Width=&quot;40&quot; Height=&quot;40&quot; Color=&quot;Blue&quot; /&gt;
-		&lt;Rectangle Alignment=&quot;BottomLeft&quot;  Width=&quot;40&quot; Height=&quot;40&quot; Color=&quot;Green&quot; /&gt;
-		&lt;Rectangle Alignment=&quot;BottomRight&quot; Width=&quot;40&quot; Height=&quot;40&quot; Color=&quot;Yellow&quot; /&gt;
-	&lt;/Panel&gt;
-&lt;/App&gt;
-</code></pre>
+    &lt;Panel&gt;
+        &lt;Rectangle Alignment=&quot;TopLeft&quot;     Width=&quot;40&quot; Height=&quot;40&quot; Color=&quot;Red&quot; /&gt;
+        &lt;Rectangle Alignment=&quot;TopRight&quot;    Width=&quot;40&quot; Height=&quot;40&quot; Color=&quot;Blue&quot; /&gt;
+        &lt;Rectangle Alignment=&quot;BottomLeft&quot;  Width=&quot;40&quot; Height=&quot;40&quot; Color=&quot;Green&quot; /&gt;
+        &lt;Rectangle Alignment=&quot;BottomRight&quot; Width=&quot;40&quot; Height=&quot;40&quot; Color=&quot;Yellow&quot; /&gt;
+    &lt;/Panel&gt;
+&lt;/App&gt;</code></pre>
 <h3 id="width-height">Width / Height</h3>
 <p>The <code>Width</code> and <code>Height</code> properties can be used to ensure a given <code>Element</code> will have specific dimensions on-screen. By default, these are usually set to <code>Auto</code>, which means the element's size will be determined automatically by the layout engine. By explicitly setting them to concrete values, we can have fine-grained control over the dimensions of our element.</p>
 <p>These properties can be set independently of each other, e.g. <code>Width=&quot;30px&quot;</code> and <code>Height=&quot;Auto&quot;</code>.</p>
@@ -756,24 +751,21 @@
 </ul>
 <p>Here is an example of how it looks in UX:</p>
 <pre><code class="language-xml">&lt;Grid ColumnCount=&quot;3&quot; RowCount=&quot;1&quot;&gt;
-	&lt;Panel Row=&quot;0&quot; Column=&quot;0&quot; Color=&quot;#f00&quot; /&gt;
-	&lt;Panel Row=&quot;0&quot; Column=&quot;2&quot; Color=&quot;#00f&quot; /&gt;
-&lt;/Grid&gt;
-</code></pre>
+    &lt;Panel Row=&quot;0&quot; Column=&quot;0&quot; Color=&quot;#f00&quot; /&gt;
+    &lt;Panel Row=&quot;0&quot; Column=&quot;2&quot; Color=&quot;#00f&quot; /&gt;
+&lt;/Grid&gt;</code></pre>
 <h2 id="draw-order-and-the-zoffset-property">Draw order and the ZOffset property</h2>
 <p>Normally, the order in which elements are drawn depends on their place in the child list. Elements defined further up in the document are drawn on top of elements defined further down. In the following case, The red rectangle will be drawn on top of the green circle.</p>
 <pre><code class="language-xml">&lt;Panel&gt;
-	&lt;Rectangle Color=&quot;Red&quot; Margin=&quot;100&quot; /&gt;
-	&lt;Circle Color=&quot;Green&quot; /&gt;
-&lt;/Panel&gt;
-</code></pre>
+    &lt;Rectangle Color=&quot;Red&quot; Margin=&quot;100&quot; /&gt;
+    &lt;Circle Color=&quot;Green&quot; /&gt;
+&lt;/Panel&gt;</code></pre>
 <p>To take control over this behavior, we can use the <a href="../fuse/visual/zoffset.html">ZOffset</a> property. This property is a float value with a default of 0.0. The higher it is the higher on top the element will be drawn.</p>
 <p>In the following example, the <a href="../fuse/controls/circle.html">Circle</a> is drawn on top of the <a href="../fuse/controls/rectangle.html">Rectangle</a> because its <code>ZOffset</code> of 1.0 is higher than the rectangles <code>ZOffset</code> of 0.0 (default).</p>
 <pre><code class="language-xml">&lt;Panel&gt;
-	&lt;Rectangle Color=&quot;Red&quot; ZOffset=&quot;0.0&quot; Margin=&quot;100&quot; /&gt;
-	&lt;Circle Color=&quot;Green&quot; ZOffset=&quot;1.0&quot; /&gt;
-&lt;/Panel&gt;
-</code></pre>
+    &lt;Rectangle Color=&quot;Red&quot; ZOffset=&quot;0.0&quot; Margin=&quot;100&quot; /&gt;
+    &lt;Circle Color=&quot;Green&quot; ZOffset=&quot;1.0&quot; /&gt;
+&lt;/Panel&gt;</code></pre>
 
             </div>
             <div class="d-none d-sm-block col-md-3 d-xl-3 toc-content">

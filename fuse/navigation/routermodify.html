@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -705,70 +705,66 @@ Show advanced things
 </blockquote>
 <p>Basic use requires setting the property <code>Bookmark</code> to specify the route to navigate to,
 and the <code>How</code> property to specify what navigation action will be used, most frequently <code>Push</code> or <code>Goto</code>.</p>
-<pre><code class="language-xml">    &lt;Router ux:Name=&quot;router&quot; /&gt;
-    ...
-    &lt;JavaScript&gt;
-        router.bookmark({
-            name: &quot;myBookmark&quot;,
-            path: [&quot;myPage&quot;, {}, &quot;mySubpage&quot;, {}]
-        });
-    &lt;/JavaScript&gt;
-    ...
-    &lt;Panel&gt;
-        &lt;Clicked&gt;
-            &lt;RouterModify How=&quot;Push&quot; Bookmark=&quot;myBookmark&quot; /&gt;
-        &lt;/Clicked&gt;
-        &lt;Text Value=&quot;Open subpage&quot; /&gt;
-    &lt;/Panel&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Router ux:Name=&quot;router&quot; /&gt;
+...
+&lt;JavaScript&gt;
+    router.bookmark({
+        name: &quot;myBookmark&quot;,
+        path: [&quot;myPage&quot;, {}, &quot;mySubpage&quot;, {}]
+    });
+&lt;/JavaScript&gt;
+...
+&lt;Panel&gt;
+    &lt;Clicked&gt;
+        &lt;RouterModify How=&quot;Push&quot; Bookmark=&quot;myBookmark&quot; /&gt;
+    &lt;/Clicked&gt;
+    &lt;Text Value=&quot;Open subpage&quot; /&gt;
+&lt;/Panel&gt;</code></pre>
 <p>If we only need to go back in navigation history, the <code>Bookmark</code> property can be omitted:</p>
-<pre><code class="language-xml">    &lt;RouterModify How=&quot;GoBack&quot; /&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;RouterModify How=&quot;GoBack&quot; /&gt;</code></pre>
 <p>When using <code>Navigator</code> or <code>PageControl</code>, the default transitions can be overriden by setting <code>Transition</code>
 and <code>Style</code> properties on <code>RouterModify</code>. This pushes another page without a transition:</p>
-<pre><code class="language-xml">    &lt;RouterModify How=&quot;Push&quot; Transition=&quot;Bypass&quot; Bookmark=&quot;myBookmark&quot; /&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;RouterModify How=&quot;Push&quot; Transition=&quot;Bypass&quot; Bookmark=&quot;myBookmark&quot; /&gt;</code></pre>
 <p>We can use the <code>Style</code> property to refer to specific <code>Transition</code> triggers on target pages, allowing us
 to trigger different transitions for separate use cases:</p>
-<pre><code class="language-xml">    &lt;Router ux:Name=&quot;router&quot; /&gt;
-    ...
-    &lt;JavaScript&gt;
-        router.bookmark({
-            name: &quot;myBookmark&quot;,
-            path: [&quot;secondPage&quot;, {}]
-        });
-    &lt;/JavaScript&gt;
-    ...
-    &lt;Navigator DefaultPath=&quot;firstPage&quot;&gt;
-        &lt;StackPanel ux:Template=&quot;firstPage&quot;&gt;
-            &lt;Panel&gt;
-                &lt;Clicked&gt;
-                    &lt;RouterModify How=&quot;Push&quot; Bookmark=&quot;myBookmark&quot; Style=&quot;fromTop&quot; /&gt;
-                &lt;/Clicked&gt;
-                &lt;Text Value=&quot;Transition from top&quot; /&gt;
-            &lt;/Panel&gt;
-            &lt;Panel&gt;
-                &lt;Clicked&gt;
-                    &lt;RouterModify How=&quot;Push&quot; Bookmark=&quot;myBookmark&quot; Style=&quot;fromBottom&quot; /&gt;
-                &lt;/Clicked&gt;
-                &lt;Text Value=&quot;Transition from bottom&quot; /&gt;
-            &lt;/Panel&gt;
-        &lt;/StackPanel&gt;
-
-        &lt;Panel ux:Template=&quot;secondPage&quot;&gt;
-            &lt;Transition Style=&quot;fromTop&quot;&gt;
-                &lt;Move Y=&quot;-1&quot; RelativeTo=&quot;ParentSize&quot; Duration=&quot;0.4&quot; Easing=&quot;SinusoidalInOut&quot; /&gt;
-            &lt;/Transition&gt;
-            &lt;Transition Style=&quot;fromBottom&quot;&gt;
-                &lt;Move Y=&quot;1&quot; RelativeTo=&quot;ParentSize&quot; Duration=&quot;0.4&quot; Easing=&quot;SinusoidalInOut&quot; /&gt;
-            &lt;/Transition&gt;
+<pre><code class="language-xml">&lt;Router ux:Name=&quot;router&quot; /&gt;
+...
+&lt;JavaScript&gt;
+    router.bookmark({
+        name: &quot;myBookmark&quot;,
+        path: [&quot;secondPage&quot;, {}]
+    });
+&lt;/JavaScript&gt;
+...
+&lt;Navigator DefaultPath=&quot;firstPage&quot;&gt;
+    &lt;StackPanel ux:Template=&quot;firstPage&quot;&gt;
+        &lt;Panel&gt;
             &lt;Clicked&gt;
-                &lt;RouterModify How=&quot;GoBack&quot; /&gt;
+                &lt;RouterModify How=&quot;Push&quot; Bookmark=&quot;myBookmark&quot; Style=&quot;fromTop&quot; /&gt;
             &lt;/Clicked&gt;
-            &lt;Text Value=&quot;Go back&quot; /&gt;
+            &lt;Text Value=&quot;Transition from top&quot; /&gt;
         &lt;/Panel&gt;
-    &lt;/Navigator&gt;
-</code></pre>
+        &lt;Panel&gt;
+            &lt;Clicked&gt;
+                &lt;RouterModify How=&quot;Push&quot; Bookmark=&quot;myBookmark&quot; Style=&quot;fromBottom&quot; /&gt;
+            &lt;/Clicked&gt;
+            &lt;Text Value=&quot;Transition from bottom&quot; /&gt;
+        &lt;/Panel&gt;
+    &lt;/StackPanel&gt;
+
+    &lt;Panel ux:Template=&quot;secondPage&quot;&gt;
+        &lt;Transition Style=&quot;fromTop&quot;&gt;
+            &lt;Move Y=&quot;-1&quot; RelativeTo=&quot;ParentSize&quot; Duration=&quot;0.4&quot; Easing=&quot;SinusoidalInOut&quot; /&gt;
+        &lt;/Transition&gt;
+        &lt;Transition Style=&quot;fromBottom&quot;&gt;
+            &lt;Move Y=&quot;1&quot; RelativeTo=&quot;ParentSize&quot; Duration=&quot;0.4&quot; Easing=&quot;SinusoidalInOut&quot; /&gt;
+        &lt;/Transition&gt;
+        &lt;Clicked&gt;
+            &lt;RouterModify How=&quot;GoBack&quot; /&gt;
+        &lt;/Clicked&gt;
+        &lt;Text Value=&quot;Go back&quot; /&gt;
+    &lt;/Panel&gt;
+&lt;/Navigator&gt;</code></pre>
 
 <section class="type-location">
 <h3 id="section-location">Location</h3>

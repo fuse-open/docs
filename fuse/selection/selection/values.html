@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -717,48 +717,47 @@ object
 <section class="documentation-examples">
 <h3 id="section-examples">Examples</h3>
 <p>The following example uses <a href="../../../fuse/selection/selection.html">Selection</a> to create a simple list of options. Tap the items to toggle their selection. <code>Values</code> is bound to a JavaScript <code>Observable</code> in order to track the currently selected items.</p>
-<pre><code class="language-xml">	&lt;Panel ux:Class=&quot;MyItem&quot; Color=&quot;#aaa&quot;&gt;
-		&lt;string ux:Property=&quot;Label&quot; /&gt;
-		&lt;string ux:Property=&quot;Value&quot; /&gt;
+<pre><code class="language-xml">&lt;Panel ux:Class=&quot;MyItem&quot; Color=&quot;#aaa&quot;&gt;
+    &lt;string ux:Property=&quot;Label&quot; /&gt;
+    &lt;string ux:Property=&quot;Value&quot; /&gt;
 
-		&lt;Selectable Value=&quot;{ReadProperty this.Value}&quot; /&gt;
-		&lt;Text Value=&quot;{ReadProperty this.Label}&quot; /&gt;
+    &lt;Selectable Value=&quot;{ReadProperty this.Value}&quot; /&gt;
+    &lt;Text Value=&quot;{ReadProperty this.Label}&quot; /&gt;
 
-		&lt;WhileSelected&gt;
-			&lt;Change this.Color=&quot;#ffc&quot; /&gt;
-		&lt;/WhileSelected&gt;
-		&lt;Tapped&gt;
-			&lt;ToggleSelection /&gt;
-		&lt;/Tapped&gt;
-	&lt;/Panel&gt;
+    &lt;WhileSelected&gt;
+        &lt;Change this.Color=&quot;#ffc&quot; /&gt;
+    &lt;/WhileSelected&gt;
+    &lt;Tapped&gt;
+        &lt;ToggleSelection /&gt;
+    &lt;/Tapped&gt;
+&lt;/Panel&gt;
 
-	&lt;JavaScript&gt;
-		var Observable = require(&quot;FuseJS/Observable&quot;);
+&lt;JavaScript&gt;
+    var Observable = require(&quot;FuseJS/Observable&quot;);
 
-		var values = Observable();
-		var list = Observable(function() {
-			return values.toArray().join(&quot;,&quot;);
-		});
+    var values = Observable();
+    var list = Observable(function() {
+        return values.toArray().join(&quot;,&quot;);
+    });
 
-		module.exports = {
-			values: values,
-			list: list
-		};
-	&lt;/JavaScript&gt;
+    module.exports = {
+        values: values,
+        list: list
+    };
+&lt;/JavaScript&gt;
 
-	&lt;StackPanel&gt;
-		&lt;Selection Values=&quot;{values}&quot; /&gt;
+&lt;StackPanel&gt;
+    &lt;Selection Values=&quot;{values}&quot; /&gt;
 
-		&lt;MyItem Label=&quot;Big Red One&quot; Value=&quot;sku-01&quot; /&gt;
-		&lt;MyItem Label=&quot;Small Green Two&quot; Value=&quot;sku-02&quot; /&gt;
-		&lt;MyItem Label=&quot;Third Last One&quot; Value=&quot;sku-03&quot; /&gt;
-		&lt;MyItem Label=&quot;Four Fore For&quot; Value=&quot;sku-04&quot; /&gt;
-		&lt;MyItem Label=&quot;Point Oh-Five&quot; Value=&quot;sku-05&quot; /&gt;
+    &lt;MyItem Label=&quot;Big Red One&quot; Value=&quot;sku-01&quot; /&gt;
+    &lt;MyItem Label=&quot;Small Green Two&quot; Value=&quot;sku-02&quot; /&gt;
+    &lt;MyItem Label=&quot;Third Last One&quot; Value=&quot;sku-03&quot; /&gt;
+    &lt;MyItem Label=&quot;Four Fore For&quot; Value=&quot;sku-04&quot; /&gt;
+    &lt;MyItem Label=&quot;Point Oh-Five&quot; Value=&quot;sku-05&quot; /&gt;
 
-		&lt;Text Value=&quot;Selected:&quot; Margin=&quot;0,10,0,0&quot; /&gt;
-		&lt;Text Value=&quot;{list}&quot; /&gt;
-	&lt;/StackPanel&gt;
-</code></pre>
+    &lt;Text Value=&quot;Selected:&quot; Margin=&quot;0,10,0,0&quot; /&gt;
+    &lt;Text Value=&quot;{list}&quot; /&gt;
+&lt;/StackPanel&gt;</code></pre>
 
 </section>
 

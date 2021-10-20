@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -687,87 +687,81 @@
 <h2 id="creating-our-list-of-hikes">Creating our List of Hikes</h2>
 <p>In order for us to display a list of hikes to choose from, we first need a list of hikes. This is where we'll start building something that looks like a <em>model</em> for our app. At first, we'll just use a simple array of hikes. Near the top of the JavaScript portion of our <code>MainView.ux</code> file, we'll place the following array:</p>
 <pre><code class="language-js">var hikes = [
-	{
-		id: 0,
-		name: &quot;Tricky Trails&quot;,
-		location: &quot;Lakebed, Utah&quot;,
-		distance: 10.4,
-		rating: 4,
-		comments: &quot;This hike was nice and hike-like. Glad I didn't bring a bike.&quot;
-	},
-	{
-		id: 1,
-		name: &quot;Mondo Mountains&quot;,
-		location: &quot;Black Hills, South Dakota&quot;,
-		distance: 20.86,
-		rating: 3,
-		comments: &quot;Not the best, but would probably do again. Note to self: don't forget the sandwiches next time.&quot;
-	},
-	{
-		id: 2,
-		name: &quot;Pesky Peaks&quot;,
-		location: &quot;Bergenhagen, Norway&quot;,
-		distance: 8.2,
-		rating: 5,
-		comments: &quot;Short but SO sweet!!&quot;
-	},
-	{
-		id: 3,
-		name: &quot;Rad Rivers&quot;,
-		location: &quot;Moriyama, Japan&quot;,
-		distance: 12.3,
-		rating: 4,
-		comments: &quot;Took my time with this one. Great view!&quot;
-	},
-	{
-		id: 4,
-		name: &quot;Dangerous Dirt&quot;,
-		location: &quot;Cactus, Arizona&quot;,
-		distance: 19.34,
-		rating: 2,
-		comments: &quot;Too long, too hot. Also that snakebite wasn't very fun.&quot;
-	}
-];
-</code></pre>
+    {
+        id: 0,
+        name: &quot;Tricky Trails&quot;,
+        location: &quot;Lakebed, Utah&quot;,
+        distance: 10.4,
+        rating: 4,
+        comments: &quot;This hike was nice and hike-like. Glad I didn't bring a bike.&quot;
+    },
+    {
+        id: 1,
+        name: &quot;Mondo Mountains&quot;,
+        location: &quot;Black Hills, South Dakota&quot;,
+        distance: 20.86,
+        rating: 3,
+        comments: &quot;Not the best, but would probably do again. Note to self: don't forget the sandwiches next time.&quot;
+    },
+    {
+        id: 2,
+        name: &quot;Pesky Peaks&quot;,
+        location: &quot;Bergenhagen, Norway&quot;,
+        distance: 8.2,
+        rating: 5,
+        comments: &quot;Short but SO sweet!!&quot;
+    },
+    {
+        id: 3,
+        name: &quot;Rad Rivers&quot;,
+        location: &quot;Moriyama, Japan&quot;,
+        distance: 12.3,
+        rating: 4,
+        comments: &quot;Took my time with this one. Great view!&quot;
+    },
+    {
+        id: 4,
+        name: &quot;Dangerous Dirt&quot;,
+        location: &quot;Cactus, Arizona&quot;,
+        distance: 19.34,
+        rating: 2,
+        comments: &quot;Too long, too hot. Also that snakebite wasn't very fun.&quot;
+    }
+];</code></pre>
 <p>You'll notice each item in this array has the same fields our edit hike view had, with the exception of an added <code>id</code> field, which is just a unique identifier for each of our items.</p>
 <h2 id="displaying-our-list-of-hikes">Displaying our List of Hikes</h2>
 <p>Now that we've got our list of hikes, we'll make a simple view to display them.</p>
 <p>The first thing we'll do is export our <code>hikes</code> variable to make it available from UX:</p>
 <pre><code class="language-js">module.exports = {
-	hikes: hikes,
+    hikes: hikes,
 
-	name: name,
-	location: location,
-	distance: distance,
-	rating: rating,
-	comments: comments
-};
-</code></pre>
+    name: name,
+    location: location,
+    distance: distance,
+    rating: rating,
+    comments: comments
+};</code></pre>
 <p>Since we want to be able to select one of the hikes we're displaying, we'll display each hike as a button that, when pressed, will select that specific hike and populate the edit hike view.</p>
 <p>First, we'll just display our array of hikes as buttons. But how do we do that in UX? For these kinds of scenarios, UX provides a very helpful mechanism called <a href="../fuse/reactive/each.html">Each</a>:</p>
 <pre><code class="language-xml">&lt;ScrollView&gt;
-	&lt;StackPanel&gt;
-		&lt;Each Items=&quot;{hikes}&quot;&gt;
-			&lt;Text Value=&quot;{name}&quot; /&gt;
-		&lt;/Each&gt;
-</code></pre>
+    &lt;StackPanel&gt;
+        &lt;Each Items=&quot;{hikes}&quot;&gt;
+            &lt;Text Value=&quot;{name}&quot; /&gt;
+        &lt;/Each&gt;</code></pre>
 <p><a href="../fuse/reactive/each.html">Each</a> is a very powerful UX feature. What <a href="../fuse/reactive/each.html">Each</a> does is take the collection specified by its <code>Items</code> property and <em>project</em> each item into a copy of the visual subtree inside the <a href="../fuse/reactive/each.html">Each</a> tag. We can think of it kind of like copying and pasting the code inside <a href="../fuse/reactive/each.html">Each</a> for each item in <code>Items</code>.</p>
 <p>In our case, we'll use <a href="../fuse/reactive/each.html">Each</a> to create a <a href="../fuse/controls/button.html">Button</a> for each of our hikes whose <a href="../fuse/controls/text.html">Text</a> will be set to that hike's <code>name</code>. That will look like this:</p>
 <pre><code class="language-xml">&lt;Each Items=&quot;{hikes}&quot;&gt;
-	&lt;Button Text=&quot;{name}&quot; /&gt;
-&lt;/Each&gt;
-</code></pre>
+    &lt;Button Text=&quot;{name}&quot; /&gt;
+&lt;/Each&gt;</code></pre>
 <p>If we save here, we can see that now <a href="../fuse/reactive/each.html">Each</a> has created a <a href="../fuse/controls/button.html">Button</a> for each item in <code>hikes</code>, just like we expected. Cool! This works for pretty much all code we can put inside <a href="../fuse/reactive/each.html">Each</a>, but in our case one <a href="../fuse/controls/button.html">Button</a> for each hike is all we need.</p>
 <p>Notice how we also databound each <a href="../fuse/controls/button.html">Button</a>'s <a href="../fuse/controls/text.html">Text</a> property to <code>name</code>, but we never exposed any variable called <code>name</code>. One of the awesome things about <a href="../fuse/reactive/each.html">Each</a> is that for each of our <code>Items</code>, <a href="../fuse/reactive/each.html">Each</a> will &quot;narrow down&quot; the data context that we're binding to to be the current item. So when we bind to <code>name</code>, we're not binding to a variable called <code>name</code> exported from JS; we're binding to the <code>name</code> property of the current item, which in this case is the current hike. It's that easy!</p>
 <h2 id="selecting-hikes">Selecting Hikes</h2>
 <p>Now that we've got a button for each of the hikes in our model, we want to be able to select one by clicking one of these buttons.</p>
 <p>Currently, our view model consists of many separate <a href="../fusejs/observable.html">Observable</a>'s for the various fields we can edit. Let's also add an <a href="../fusejs/observable.html">Observable</a> whose <code>value</code> represents the hike we're currently editing. Initially, this will be empty, as we haven't yet selected a hike to edit:</p>
-<pre><code class="language-js">var hike = Observable();
-</code></pre>
+<pre><code class="language-js">var hike = Observable();</code></pre>
 <p>Now we need to get the data from <code>hike</code> to our other <a href="../fusejs/observable.html">Observable</a>'s, and this is where things get interesting. On one hand, we could imperatively populate all of our field <a href="../fusejs/observable.html">Observable</a>'s whenever <code>hike</code> is populated, but this would mean we'd have to subscribe to the <a href="../fusejs/observable.html">Observable</a> and is frankly a bit too imperative for my taste. We'd much prefer doing something declarative instead!</p>
 <p>Rather, what we'll do is <em>transform</em>, or <em>map</em>, the value of the <code>hike</code> <a href="../fusejs/observable.html">Observable</a> into the value of its various properties. For example, this is what that might look like for <code>name</code>:</p>
-<pre><code class="language-js">var name = hike.map(function(x) { return x.name; });
-</code></pre>
+<pre><code class="language-js">var name = hike.map(function(x) { return x.name; });</code></pre>
 <p>This might look a bit daunting at first if you're not yet used to functional reactive programming, but not to worry - it can be quite intuitive once you get a feel for it.</p>
 <p>If we break down this code into parts, you'll notice a couple things. First of all, we're calling the <code>map</code> function on <code>hike</code>. <code>map</code> itself will return a new <a href="../fusejs/observable.html">Observable</a> that acts just like any other <a href="../fusejs/observable.html">Observable</a>, with the added benefit that each value that goes inside our <code>hike</code> <a href="../fusejs/observable.html">Observable</a> will be <em>propagated</em> to our new <a href="../fusejs/observable.html">Observable</a>. In other words, all of the values in <code>name</code> will be <em>based on</em>, or <em>mapped from</em>, values in <code>hike</code>.</p>
 <p>You'll also notice we're passing a function into <code>map</code>. This function is (unsurprisingly) called a <em>mapping function</em>. A mapping function is just like any other function - it takes an argument and returns a new value based on that argument. Sometimes, these functions have <em>side-effects</em>, which means they can affect the world around them. But typically, these functions are <em>pure functions</em>, which means they only return values based on their arguments, and nothing more.</p>
@@ -781,143 +775,136 @@
 var location = hike.map(function(x) { return x.location; });
 var distance = hike.map(function(x) { return x.distance; });
 var rating = hike.map(function(x) { return x.rating; });
-var comments = hike.map(function(x) { return x.comments; });
-</code></pre>
+var comments = hike.map(function(x) { return x.comments; });</code></pre>
 <p>Finally, we need to hook up each of our buttons to a function that will populate our <code>hike</code> <a href="../fusejs/observable.html">Observable</a> (which in turn will populate all of the <a href="../fusejs/observable.html">Observable</a>'s for individual fields). We'll start by creating an empty function in JavaScript, which we'll fill in in a moment:</p>
 <pre><code class="language-js">function chooseHike() {
-}
-</code></pre>
+}</code></pre>
 <p>Next, let's add it to our exports so that UX can see it:</p>
 <pre><code class="language-js">module.exports = {
-	hikes: hikes,
+    hikes: hikes,
 
-	name: name,
-	location: location,
-	distance: distance,
-	rating: rating,
-	comments: comments,
+    name: name,
+    location: location,
+    distance: distance,
+    rating: rating,
+    comments: comments,
 
-	chooseHike: chooseHike
-};
-</code></pre>
+    chooseHike: chooseHike
+};</code></pre>
 <p>And we'll go ahead and hook up all of our buttons to it like this:</p>
-<pre><code class="language-xml">&lt;Button Text=&quot;{name}&quot; Clicked=&quot;{chooseHike}&quot; /&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Button Text=&quot;{name}&quot; Clicked=&quot;{chooseHike}&quot; /&gt;</code></pre>
 <p>Now it's time to fill in our function. The basic idea is that we'll fill in the value of our <code>hike</code> <a href="../fusejs/observable.html">Observable</a>:</p>
 <pre><code class="language-js">function chooseHike() {
-	hike.value = ???
-}
-</code></pre>
+    hike.value = ???
+}</code></pre>
 <p>But what will we set it to, exactly? As it turns out, when we databind a function to <code>Clicked</code> on a <a href="../fuse/controls/button.html">Button</a>, that function can receive an argument. This argument contains a <code>data</code> field, which will represent the current data context for the <a href="../fuse/controls/button.html">Button</a>. And because of the way we've used <a href="../fuse/reactive/each.html">Each</a>, that means that <code>data</code> will actually be the <code>hike</code> we're after. Cool! So, let's update our function to accept that argument and put its <code>data</code> property into our <code>hike</code> <a href="../fusejs/observable.html">Observable</a>:</p>
 <pre><code class="language-js">function chooseHike(arg) {
-	hike.value = arg.data;
-}
-</code></pre>
+    hike.value = arg.data;
+}</code></pre>
 <p>And now when we save this, we can see that our hike selectors work as we expect! When we click on one of them, the edit hike view gets populated properly and we can edit the individual fields. Cool!</p>
 <h2 id="our-progress-so-far">Our progress so far</h2>
 <p>So now we've started to get a basic model made up of many hikes, a view to select one of these hikes, and a view to edit the selected hike. Altogether, it looks like this:</p>
 <p><img src="../media/hikr/chapter-2/end-of-chapter.png" alt="End of chapter result"></p>
 <p>The code hasn't grown too much, either. It looks like this:</p>
 <pre><code class="language-xml">&lt;App&gt;
-	&lt;ClientPanel&gt;
-		&lt;JavaScript&gt;
-			var Observable = require(&quot;FuseJS/Observable&quot;);
+    &lt;ClientPanel&gt;
+        &lt;JavaScript&gt;
+            var Observable = require(&quot;FuseJS/Observable&quot;);
 
-			var hikes = [
-				{
-					id: 0,
-					name: &quot;Tricky Trails&quot;,
-					location: &quot;Lakebed, Utah&quot;,
-					distance: 10.4,
-					rating: 4,
-					comments: &quot;This hike was nice and hike-like. Glad I didn't bring a bike.&quot;
-				},
-				{
-					id: 1,
-					name: &quot;Mondo Mountains&quot;,
-					location: &quot;Black Hills, South Dakota&quot;,
-					distance: 20.86,
-					rating: 3,
-					comments: &quot;Not the best, but would probably do again. Note to self: don't forget the sandwiches next time.&quot;
-				},
-				{
-					id: 2,
-					name: &quot;Pesky Peaks&quot;,
-					location: &quot;Bergenhagen, Norway&quot;,
-					distance: 8.2,
-					rating: 5,
-					comments: &quot;Short but SO sweet!!&quot;
-				},
-				{
-					id: 3,
-					name: &quot;Rad Rivers&quot;,
-					location: &quot;Moriyama, Japan&quot;,
-					distance: 12.3,
-					rating: 4,
-					comments: &quot;Took my time with this one. Great view!&quot;
-				},
-				{
-					id: 4,
-					name: &quot;Dangerous Dirt&quot;,
-					location: &quot;Cactus, Arizona&quot;,
-					distance: 19.34,
-					rating: 2,
-					comments: &quot;Too long, too hot. Also that snakebite wasn't very fun.&quot;
-				}
-			];
+            var hikes = [
+                {
+                    id: 0,
+                    name: &quot;Tricky Trails&quot;,
+                    location: &quot;Lakebed, Utah&quot;,
+                    distance: 10.4,
+                    rating: 4,
+                    comments: &quot;This hike was nice and hike-like. Glad I didn't bring a bike.&quot;
+                },
+                {
+                    id: 1,
+                    name: &quot;Mondo Mountains&quot;,
+                    location: &quot;Black Hills, South Dakota&quot;,
+                    distance: 20.86,
+                    rating: 3,
+                    comments: &quot;Not the best, but would probably do again. Note to self: don't forget the sandwiches next time.&quot;
+                },
+                {
+                    id: 2,
+                    name: &quot;Pesky Peaks&quot;,
+                    location: &quot;Bergenhagen, Norway&quot;,
+                    distance: 8.2,
+                    rating: 5,
+                    comments: &quot;Short but SO sweet!!&quot;
+                },
+                {
+                    id: 3,
+                    name: &quot;Rad Rivers&quot;,
+                    location: &quot;Moriyama, Japan&quot;,
+                    distance: 12.3,
+                    rating: 4,
+                    comments: &quot;Took my time with this one. Great view!&quot;
+                },
+                {
+                    id: 4,
+                    name: &quot;Dangerous Dirt&quot;,
+                    location: &quot;Cactus, Arizona&quot;,
+                    distance: 19.34,
+                    rating: 2,
+                    comments: &quot;Too long, too hot. Also that snakebite wasn't very fun.&quot;
+                }
+            ];
 
-			var hike = Observable();
+            var hike = Observable();
 
-			var name = hike.map(function(x) { return x.name; });
-			var location = hike.map(function(x) { return x.location; });
-			var distance = hike.map(function(x) { return x.distance; });
-			var rating = hike.map(function(x) { return x.rating; });
-			var comments = hike.map(function(x) { return x.comments; });
+            var name = hike.map(function(x) { return x.name; });
+            var location = hike.map(function(x) { return x.location; });
+            var distance = hike.map(function(x) { return x.distance; });
+            var rating = hike.map(function(x) { return x.rating; });
+            var comments = hike.map(function(x) { return x.comments; });
 
-			function chooseHike(arg) {
-				hike.value = arg.data;
-			}
+            function chooseHike(arg) {
+                hike.value = arg.data;
+            }
 
-			module.exports = {
-				hikes: hikes,
+            module.exports = {
+                hikes: hikes,
 
-				name: name,
-				location: location,
-				distance: distance,
-				rating: rating,
-				comments: comments,
+                name: name,
+                location: location,
+                distance: distance,
+                rating: rating,
+                comments: comments,
 
-				chooseHike: chooseHike
-			};
-		&lt;/JavaScript&gt;
+                chooseHike: chooseHike
+            };
+        &lt;/JavaScript&gt;
 
-		&lt;ScrollView&gt;
-			&lt;StackPanel&gt;
-				&lt;Each Items=&quot;{hikes}&quot;&gt;
-					&lt;Button Text=&quot;{name}&quot; Clicked=&quot;{chooseHike}&quot; /&gt;
-				&lt;/Each&gt;
+        &lt;ScrollView&gt;
+            &lt;StackPanel&gt;
+                &lt;Each Items=&quot;{hikes}&quot;&gt;
+                    &lt;Button Text=&quot;{name}&quot; Clicked=&quot;{chooseHike}&quot; /&gt;
+                &lt;/Each&gt;
 
-				&lt;Text Value=&quot;{name}&quot; /&gt;
+                &lt;Text Value=&quot;{name}&quot; /&gt;
 
-				&lt;Text&gt;Name:&lt;/Text&gt;
-				&lt;TextBox Value=&quot;{name}&quot; /&gt;
+                &lt;Text&gt;Name:&lt;/Text&gt;
+                &lt;TextBox Value=&quot;{name}&quot; /&gt;
 
-				&lt;Text&gt;Location:&lt;/Text&gt;
-				&lt;TextBox Value=&quot;{location}&quot; /&gt;
+                &lt;Text&gt;Location:&lt;/Text&gt;
+                &lt;TextBox Value=&quot;{location}&quot; /&gt;
 
-				&lt;Text&gt;Distance (km):&lt;/Text&gt;
-				&lt;TextBox Value=&quot;{distance}&quot; InputHint=&quot;Decimal&quot; /&gt;
+                &lt;Text&gt;Distance (km):&lt;/Text&gt;
+                &lt;TextBox Value=&quot;{distance}&quot; InputHint=&quot;Decimal&quot; /&gt;
 
-				&lt;Text&gt;Rating:&lt;/Text&gt;
-				&lt;TextBox Value=&quot;{rating}&quot; InputHint=&quot;Integer&quot; /&gt;
+                &lt;Text&gt;Rating:&lt;/Text&gt;
+                &lt;TextBox Value=&quot;{rating}&quot; InputHint=&quot;Integer&quot; /&gt;
 
-				&lt;Text&gt;Comments:&lt;/Text&gt;
-				&lt;TextView Value=&quot;{comments}&quot; TextWrapping=&quot;Wrap&quot; /&gt;
-			&lt;/StackPanel&gt;
-		&lt;/ScrollView&gt;
-	&lt;/ClientPanel&gt;
-&lt;/App&gt;
-</code></pre>
+                &lt;Text&gt;Comments:&lt;/Text&gt;
+                &lt;TextView Value=&quot;{comments}&quot; TextWrapping=&quot;Wrap&quot; /&gt;
+            &lt;/StackPanel&gt;
+        &lt;/ScrollView&gt;
+    &lt;/ClientPanel&gt;
+&lt;/App&gt;</code></pre>
 <p>Now we should be getting a feel for how data might flow through our Fuse app and how different views will start to interact.</p>
 <h2 id="what-s-next">What's Next</h2>
 <p>While being able to select from our list of hikes is really helpful, we'll ideally want to separate the parts of this view into separate views entirely. In <a href="splitting-up-components.html">the next chapter</a>, that's exactly what we'll do - we'll separate our views, view models, and model into organized, isolated components. Let's <a href="splitting-up-components.html">dig in</a>!</p>

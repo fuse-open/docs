@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -706,36 +706,34 @@ like a clock timepicker or dials.</p>
 <h4 id="example">Example</h4>
 <h5 id="andgle-based-circular-range-control">Andgle-based circular range control</h5>
 <p>The following example shows a simple circular RangeControl implemented using <code>CircularRangeBehavior</code>, where a visual is rotated as the RangeControl is changed. The range is calculated from the angle between the mouse and the X-axis</p>
-<pre><code class="language-xml">    &lt;RangeControl Width=&quot;180&quot; Height=&quot;180&quot; Margin=&quot;2&quot;&gt;
-        &lt;CircularRangeBehavior /&gt;
-        &lt;Panel ux:Name=&quot;thumb&quot; Margin=&quot;4&quot;&gt;
-            &lt;Rectangle Color=&quot;#fff&quot; Alignment=&quot;Right&quot; Height=&quot;18&quot; Width=&quot;48&quot; CornerRadius=&quot;4&quot; /&gt;
-        &lt;/Panel&gt;
-        &lt;ProgressAnimation&gt;
-            &lt;Rotate Target=&quot;thumb&quot; Degrees=&quot;360&quot; /&gt;
-        &lt;/ProgressAnimation&gt;
-        &lt;Circle Color=&quot;#aaa&quot; /&gt;
-    &lt;/RangeControl&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;RangeControl Width=&quot;180&quot; Height=&quot;180&quot; Margin=&quot;2&quot;&gt;
+    &lt;CircularRangeBehavior /&gt;
+    &lt;Panel ux:Name=&quot;thumb&quot; Margin=&quot;4&quot;&gt;
+        &lt;Rectangle Color=&quot;#fff&quot; Alignment=&quot;Right&quot; Height=&quot;18&quot; Width=&quot;48&quot; CornerRadius=&quot;4&quot; /&gt;
+    &lt;/Panel&gt;
+    &lt;ProgressAnimation&gt;
+        &lt;Rotate Target=&quot;thumb&quot; Degrees=&quot;360&quot; /&gt;
+    &lt;/ProgressAnimation&gt;
+    &lt;Circle Color=&quot;#aaa&quot; /&gt;
+&lt;/RangeControl&gt;</code></pre>
 <h5 id="angle-and-radius-based-circular-range-control">Angle and radius based circular range control</h5>
 <p>When used with a RangeControl2D, you can get both the angle progress, and the radius progress. This effectively means that your range control allows the user to control two ranges at once.</p>
-<pre><code class="language-xml">    &lt;RangeControl2D Width=&quot;180&quot; Height=&quot;180&quot; Margin=&quot;2&quot; ux:Name=&quot;rangeControl&quot;&gt;
-        &lt;CircularRangeBehavior/&gt;
-        &lt;Panel ux:Name=&quot;thumb&quot; Margin=&quot;4&quot;&gt;
-            &lt;Rectangle Color=&quot;#fff&quot; Alignment=&quot;Right&quot; Height=&quot;18&quot; Width=&quot;48&quot; CornerRadius=&quot;4&quot; /&gt;
-        &lt;/Panel&gt;
-        &lt;RangeAnimation Minimum=&quot;0&quot; Maximum=&quot;100&quot; Value=&quot;{ReadProperty rangeControl.ValueX}&quot;&gt;
-            &lt;Rotate Target=&quot;thumb&quot; Degrees=&quot;360&quot; /&gt;
-        &lt;/RangeAnimation&gt;
-        &lt;RangeAnimation Minimum=&quot;0&quot; Maximum=&quot;100&quot; Value=&quot;{ReadProperty rangeControl.ValueY}&quot;&gt;
-            &lt;Change radiusCircle.Factor=&quot;1&quot; /&gt;
-        &lt;/RangeAnimation&gt;
-        &lt;Circle Color=&quot;#0FF&quot; Alignment=&quot;Center&quot; Width=&quot;180&quot; Height=&quot;180&quot;&gt;
-            &lt;Scaling ux:Name=&quot;radiusCircle&quot; Factor=&quot;0&quot; /&gt;
-        &lt;/Circle&gt;
-        &lt;Circle Color=&quot;#aaa&quot; /&gt;
-    &lt;/RangeControl2D&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;RangeControl2D Width=&quot;180&quot; Height=&quot;180&quot; Margin=&quot;2&quot; ux:Name=&quot;rangeControl&quot;&gt;
+    &lt;CircularRangeBehavior/&gt;
+    &lt;Panel ux:Name=&quot;thumb&quot; Margin=&quot;4&quot;&gt;
+        &lt;Rectangle Color=&quot;#fff&quot; Alignment=&quot;Right&quot; Height=&quot;18&quot; Width=&quot;48&quot; CornerRadius=&quot;4&quot; /&gt;
+    &lt;/Panel&gt;
+    &lt;RangeAnimation Minimum=&quot;0&quot; Maximum=&quot;100&quot; Value=&quot;{ReadProperty rangeControl.ValueX}&quot;&gt;
+        &lt;Rotate Target=&quot;thumb&quot; Degrees=&quot;360&quot; /&gt;
+    &lt;/RangeAnimation&gt;
+    &lt;RangeAnimation Minimum=&quot;0&quot; Maximum=&quot;100&quot; Value=&quot;{ReadProperty rangeControl.ValueY}&quot;&gt;
+        &lt;Change radiusCircle.Factor=&quot;1&quot; /&gt;
+    &lt;/RangeAnimation&gt;
+    &lt;Circle Color=&quot;#0FF&quot; Alignment=&quot;Center&quot; Width=&quot;180&quot; Height=&quot;180&quot;&gt;
+        &lt;Scaling ux:Name=&quot;radiusCircle&quot; Factor=&quot;0&quot; /&gt;
+    &lt;/Circle&gt;
+    &lt;Circle Color=&quot;#aaa&quot; /&gt;
+&lt;/RangeControl2D&gt;</code></pre>
 
 <section class="type-location">
 <h3 id="section-location">Location</h3>

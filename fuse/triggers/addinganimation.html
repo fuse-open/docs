@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -706,26 +706,25 @@ animate from progress 1 back to 0.</p>
 <p>The following example showcases a list that you can add elements to by
 pressing a button. Elements added are animated in using an
 <code>AddingAnimation</code>:</p>
-<pre><code class="language-xml">    &lt;StackPanel Width=&quot;100%&quot;&gt;
-        &lt;JavaScript&gt;
-            var Observable = require('FuseJS/Observable');
-            var elements = Observable({value: &quot;Element&quot;});
-            function addElement() {
-                elements.add({value: &quot;Element&quot;});
-            }
-            module.exports = {elements, addElement};
-        &lt;/JavaScript&gt;
-        &lt;Each Items=&quot;{elements}&quot;&gt;
-            &lt;Panel Width=&quot;100%&quot; &gt;
-                &lt;Text Value=&quot;{value}&quot; Alignment=&quot;CenterLeft&quot;/&gt;
-                &lt;AddingAnimation&gt;
-                    &lt;Move RelativeTo=&quot;Size&quot; Duration=&quot;.2&quot; X=&quot;2&quot; /&gt;
-                &lt;/AddingAnimation&gt;
-            &lt;/Panel&gt;
-        &lt;/Each&gt;
-        &lt;Button Text=&quot;Add more&quot; Clicked=&quot;{addElement}&quot;/&gt;
-    &lt;/StackPanel&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;StackPanel Width=&quot;100%&quot;&gt;
+    &lt;JavaScript&gt;
+        var Observable = require('FuseJS/Observable');
+        var elements = Observable({value: &quot;Element&quot;});
+        function addElement() {
+            elements.add({value: &quot;Element&quot;});
+        }
+        module.exports = {elements, addElement};
+    &lt;/JavaScript&gt;
+    &lt;Each Items=&quot;{elements}&quot;&gt;
+        &lt;Panel Width=&quot;100%&quot; &gt;
+            &lt;Text Value=&quot;{value}&quot; Alignment=&quot;CenterLeft&quot;/&gt;
+            &lt;AddingAnimation&gt;
+                &lt;Move RelativeTo=&quot;Size&quot; Duration=&quot;.2&quot; X=&quot;2&quot; /&gt;
+            &lt;/AddingAnimation&gt;
+        &lt;/Panel&gt;
+    &lt;/Each&gt;
+    &lt;Button Text=&quot;Add more&quot; Clicked=&quot;{addElement}&quot;/&gt;
+&lt;/StackPanel&gt;</code></pre>
 
 <section class="type-location">
 <h3 id="section-location">Location</h3>

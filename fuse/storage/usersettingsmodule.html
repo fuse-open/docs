@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -705,33 +705,32 @@ You can use this module to store information such as configuration data, applica
 <p><code>UserSettings</code> module is implemented atop NSUserDefaults on iOS and Shared Preferences on Android</p>
 </blockquote>
 <h4 id="example">Example</h4>
-<pre><code class="language-xml">    &lt;JavaScript&gt;
-        var userSettings = require(&quot;FuseJS/UserSettings&quot;)
+<pre><code class="language-xml">&lt;JavaScript&gt;
+    var userSettings = require(&quot;FuseJS/UserSettings&quot;)
 
-        userSettings.putString('email', 'john.appleseed@example.com');
-        userSettings.putString('password', 's3c1ReT');
-        userSettings.putString('api_token', '73awnljqurelcvxiy832a');
-        userSettings.putBoolean('logged', true);
-        userSettings.putNumber('state_num', 2);
-        userSettings.putArray('preferences', ['Technology', 'Cars', 'Foods']);
-        userSettings.putObject('profile', {
-            'first_name': 'John',
-            'last_name': 'Appleseed',
-            'gender': 'male',
-            'address': '5 avenue'
-            'age': 25,
-            'married': false
-        });
+    userSettings.putString('email', 'john.appleseed@example.com');
+    userSettings.putString('password', 's3c1ReT');
+    userSettings.putString('api_token', '73awnljqurelcvxiy832a');
+    userSettings.putBoolean('logged', true);
+    userSettings.putNumber('state_num', 2);
+    userSettings.putArray('preferences', ['Technology', 'Cars', 'Foods']);
+    userSettings.putObject('profile', {
+        'first_name': 'John',
+        'last_name': 'Appleseed',
+        'gender': 'male',
+        'address': '5 avenue'
+        'age': 25,
+        'married': false
+    });
 
-        var username = userSettings.getString('username');
-        var password = userSettings.getString('password');
-        var api_token = userSettings.getString('api_token');
-        var logged = userSettings.getBoolean('logged');
-        var state_num = userSettings.getNumber('state_num');
-        var preferences = userSettings.getArray('preferences');
-        var profile = userSettings.getObject('profile');
-    &lt;/JavaScript&gt;
-</code></pre>
+    var username = userSettings.getString('username');
+    var password = userSettings.getString('password');
+    var api_token = userSettings.getString('api_token');
+    var logged = userSettings.getBoolean('logged');
+    var state_num = userSettings.getNumber('state_num');
+    var preferences = userSettings.getArray('preferences');
+    var profile = userSettings.getObject('profile');
+&lt;/JavaScript&gt;</code></pre>
 
 <section class="type-location">
 <h3 id="section-location">Location</h3>

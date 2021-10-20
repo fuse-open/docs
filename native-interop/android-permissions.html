@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -685,22 +685,21 @@
 <p>It was not always this way however. Before Android 6 you only had to declare the permission in the manifest (and the runtime request api was not available).</p>
 <p>Fuse unifies these two different declarations to hopefully make android's approach slightly easier to work with.</p>
 <p>Let's look and an example and then we will break it down:</p>
-<pre><code class="language-csharp">    public void TakePicture(object a1, EventArgs a2)
-    {
-        var permissionPromise = Permissions.Request(Permissions.Android.CAMERA); // [0]
-        permissionPromise.Then(OnPermitted, OnRejected); // [1]
-    }
+<pre><code class="language-csharp">public void TakePicture(object a1, EventArgs a2)
+{
+    var permissionPromise = Permissions.Request(Permissions.Android.CAMERA); // [0]
+    permissionPromise.Then(OnPermitted, OnRejected); // [1]
+}
 
-    void OnPermitted(PlatformPermission permission)
-    {
-        debug_log &quot;Woo, we can take the picture now&quot;;
-    }
+void OnPermitted(PlatformPermission permission)
+{
+    debug_log &quot;Woo, we can take the picture now&quot;;
+}
 
-    void OnRejected(Exception e)
-    {
-        debug_log &quot;Blast: &quot; + e.Message;
-    }
-</code></pre>
+void OnRejected(Exception e)
+{
+    debug_log &quot;Blast: &quot; + e.Message;
+}</code></pre>
 <p><code>[0]</code> - Here we request the permission by calling the <code>Request</code> method and passing in the permission we want to be granted. Simply be referencing that permission Fuse will add it to your <code>AndroidManifest.xml</code> file.</p>
 <p><code>[1]</code> - We now specify which method to call if the permission is granted or if the permission is rejected.</p>
 <p>And that's all there is to it!</p>

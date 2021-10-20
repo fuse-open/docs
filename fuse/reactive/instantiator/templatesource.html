@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -693,22 +693,20 @@ to using the regular list of <code>Templates</code>.  Refer to <code>Defaults</c
 component to be overridden by the user.</p>
 <h4 id="example">Example</h4>
 <p>This example uses <code>Each</code>, but it applies equally to <code>Instance</code> and other subclasses of <code>Instantiator</code>.</p>
-<pre><code class="language-xml">    &lt;Panel ux:Class=&quot;MyListControl&quot;&gt;
-        &lt;StackPanel&gt;
-            &lt;Each Count=&quot;10&quot; TemplateSource=&quot;this&quot; TemplateKey=&quot;ListItem&quot;&gt;
-                &lt;Text Value=&quot;This is an item&quot; /&gt;
-            &lt;/Each&gt;
-        &lt;/StackPanel&gt;
-    &lt;/Panel&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Panel ux:Class=&quot;MyListControl&quot;&gt;
+    &lt;StackPanel&gt;
+        &lt;Each Count=&quot;10&quot; TemplateSource=&quot;this&quot; TemplateKey=&quot;ListItem&quot;&gt;
+            &lt;Text Value=&quot;This is an item&quot; /&gt;
+        &lt;/Each&gt;
+    &lt;/StackPanel&gt;
+&lt;/Panel&gt;</code></pre>
 <p>If we instantiate <code>&lt;MyListControl&gt;</code> now, it will display the text &quot;This is an item&quot; 10 times.</p>
 <p>However, we can override the template like this:</p>
-<pre><code class="language-xml">    &lt;MyListControl&gt;
-        &lt;Rectangle ux:Template=&quot;ListItem&quot; Color=&quot;Red&quot;&gt;
-            &lt;Text&gt;This is a red item&lt;/Text&gt;
-        &lt;/Rectangle&gt;
-    &lt;/MyListControl&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;MyListControl&gt;
+    &lt;Rectangle ux:Template=&quot;ListItem&quot; Color=&quot;Red&quot;&gt;
+        &lt;Text&gt;This is a red item&lt;/Text&gt;
+    &lt;/Rectangle&gt;
+&lt;/MyListControl&gt;</code></pre>
 <p>This will display a red rectangle with the text &quot;This is a red item&quot; 10 times, instead of the default
 template defined in the component itself.</p>
 <p>The <code>TemplateSource</code> property, along with the templates in the source, as well as the <code>TemplateKey</code>, must be set prior to

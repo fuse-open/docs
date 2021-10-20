@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -691,50 +691,39 @@
 .4
 </code></pre>
 <p>Example:</p>
-<pre><code class="language-xml">	&lt;Panel Width=&quot;10.5&quot; /&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Panel Width=&quot;10.5&quot; /&gt;</code></pre>
 <h2 id="units">Units</h2>
 <p>Some properties allow units <code>%</code> (percent), <code>pt</code> (points) or <code>px</code> (pixels). This is noted by simply placing the unit after the number literal.</p>
 <p>Examples:</p>
-<pre><code class="language-xml">	&lt;Panel Width=&quot;50%&quot; Height=&quot;200px&quot; /&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Panel Width=&quot;50%&quot; Height=&quot;200px&quot; /&gt;</code></pre>
 <p>The default unit is <code>unspecified</code>, which unless involved in arithmetic with a value with a specified unit, is interpreted as <code>pt</code> (points)</p>
 <h2 id="vectors">Vectors</h2>
 <p>Vector types (<code>float2</code>, <code>float3</code>, <code>float4</code>, <code>Size2</code>, etc.) can be noted in various ways, which is interpreted according to the the following rules.</p>
 <p>If a <em>single number</em> value is provided, this value is repeated for each component.</p>
 <p>For example;</p>
-<pre><code class="language-xml">	&lt;Panel Margin=&quot;10&quot; /&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Panel Margin=&quot;10&quot; /&gt;</code></pre>
 <p>is equivalent to:</p>
-<pre><code class="language-xml">	&lt;Panel Margin=&quot;10, 10, 10, 10&quot; /&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Panel Margin=&quot;10, 10, 10, 10&quot; /&gt;</code></pre>
 <p>If <em>two numbers</em> (<code>X</code> and <code>Y</code>), separated by a comma (<code>,</code>) are provided then these two components are repeated as [<code>X</code>, <code>Y</code>, <code>X</code>, <code>Y</code>] up to the size of the target vector, for example;</p>
-<pre><code class="language-xml">	&lt;Panel Margin=&quot;4, 8&quot; /&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Panel Margin=&quot;4, 8&quot; /&gt;</code></pre>
 <p>is equivalent to:</p>
-<pre><code class="language-xml">	&lt;Panel Margin=&quot;4, 8, 4, 8&quot; /&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Panel Margin=&quot;4, 8, 4, 8&quot; /&gt;</code></pre>
 <p>This means in the case of <code>Margin</code>, two components specify horizontal (left/right) and vertical (top/bottom) margin respectively.</p>
 <p>If <em>three numbers</em> (<code>X</code>, <code>Y</code> and <code>Z</code>) separated by commas (<code>,</code>) are provided, then these components are padded with an extra <code>1.0</code> if needed, that is:</p>
-<pre><code class="language-xml">	&lt;Panel Color=&quot;1,0,1&quot; /&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Panel Color=&quot;1,0,1&quot; /&gt;</code></pre>
 <p>is equivalent to:</p>
-<pre><code class="language-xml">	&lt;Panel Color=&quot;1,0,1,1&quot; /&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Panel Color=&quot;1,0,1,1&quot; /&gt;</code></pre>
 <p>This means in the case of <code>Color</code>, the alpha channel (<code>W</code>) will be set to <code>1</code> by default, giving an opaque color if not otherwise specified.</p>
 <h2 id="vectors-in-expressions">Vectors in expressions</h2>
 <p>To write a vector as part of an expression, make sure to encapsulate the vector in parentheses to make it parse correctly:</p>
-<pre><code class="language-xml">	&lt;Panel Color=&quot;(1,0,1,1) / {fadeValue}&quot; /&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Panel Color=&quot;(1,0,1,1) / {fadeValue}&quot; /&gt;</code></pre>
 <h2 id="size-vectors">Size Vectors</h2>
 <p>Some properties are of type <code>Size2</code> and support separate units for <code>X</code> and <code>Y</code>. An example of such a property is <code>Element.Offset</code>. These values are noted like vectors, where each vector component may specify a unit:</p>
-<pre><code class="language-xml">	&lt;Panel Offset=&quot;10%, 20px&quot; /&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Panel Offset=&quot;10%, 20px&quot; /&gt;</code></pre>
 <h2 id="colors">Colors</h2>
 <p>Colors are represented by the type <code>float4</code> (or <code>float3</code> if no alpha channel). This means they can be noted the same way as vectors (see above).</p>
 <p>To ease working with colors, <code>float4</code> and <code>float3</code> vectors may also be denoted in <em>hexadecimal</em> notation using the <code>#</code> sign:</p>
-<pre><code class="language-xml">	&lt;Panel Color=&quot;#18f&quot; /&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Panel Color=&quot;#18f&quot; /&gt;</code></pre>
 <p>Hexadecimal colors (vectors) can be given with 3, 4, 6 or 8 hexadecimal digits, interpreted as follows:</p>
 <ul>
 <li><code>#RGB</code> (or <code>#XYZ</code>)</li>
@@ -745,14 +734,11 @@
 <p>When the alpha channel (<code>A</code> or <code>W</code>) is ommited, an alpha value of 1.0 (<code>f</code> or <code>ff</code>) is assumed.</p>
 <h2 id="strings">Strings</h2>
 <p>String properties are parsed a bit differently from other properties. Strings properties are by default treated as raw string literals.</p>
-<pre><code class="language-xml">	&lt;Text Value=&quot;Hello, World!&quot; /&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Text Value=&quot;Hello, World!&quot; /&gt;</code></pre>
 <p>To inject a binding expression, we simply place a curly brace expression in the middle of the string, like this:</p>
-<pre><code class="language-xml">	&lt;Text Value=&quot;Hello, {username}!&quot; /&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Text Value=&quot;Hello, {username}!&quot; /&gt;</code></pre>
 <p>To compute a string from an expression, use the <em>inline expression</em> syntax:</p>
-<pre><code class="language-xml">	&lt;Text Value=&quot;Hello {= toLower({username})}&quot; /&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Text Value=&quot;Hello {= toLower({username})}&quot; /&gt;</code></pre>
 
             </div>
             <div class="d-none d-sm-block col-md-3 d-xl-3 toc-content">

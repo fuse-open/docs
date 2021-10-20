@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -709,28 +709,27 @@ Show advanced things
 <li>Using both a <code>LessThan</code> or <code>LessThanEqual</code> and <code>GreaterThan</code> or <code>GreaterThanEqual</code> creates a closed range to compare. The number of items must be within this range.</li>
 </ul>
 <p>This example shows how to use <a href="../../fuse/reactive/whilecount.html">WhileCount</a> and <a href="../../fuse/reactive/whileempty.html">WhileEmpty</a> with an <a href="../../fusejs/observable.html">Observable</a>:</p>
-<pre><code class="language-xml">    &lt;JavaScript&gt;
-        var Observable = require(&quot;FuseJS/Observable&quot;);
-        module.exports = {
-            friends: Observable(&quot;Alice&quot;, &quot;Bob&quot;, &quot;Courtney&quot;)
-        }
-    &lt;/JavaScript&gt;
-    &lt;WhileEmpty Items=&quot;{friends}&quot;&gt;
-        &lt;Text&gt;Your friends list is empty.&lt;/Text&gt;
-    &lt;/WhileEmpty&gt;
-    &lt;WhileCount Items=&quot;{friends}&quot; EqualTo=&quot;1&quot;&gt;
-        &lt;Text&gt;Your have 1 friend.&lt;/Text&gt;
-    &lt;/WhileCount&gt;
-    &lt;WhileCount Items=&quot;{friends}&quot; GreaterThan=&quot;3&quot; &gt;
-        &lt;Text&gt;You have more than 3 friends.&lt;/Text&gt;
-    &lt;/WhileCount&gt;
-    &lt;WhileCount Items=&quot;{friends}&quot; GreaterThanEqual=&quot;1&quot; LessThanEqual=&quot;3&quot; &gt;
-        &lt;Text&gt;You have 1-3 friends.&lt;/Text&gt;
-    &lt;/WhileCount&gt;
-    &lt;WhileCount Items=&quot;{friends}&quot; GreaterThanEqual=&quot;2&quot; LessThanEqual=&quot;5&quot; Invert=&quot;true&quot;&gt;
-        &lt;Text&gt;You do not have 2-5 friends.&lt;/Text&gt;
-    &lt;/WhileCount&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;JavaScript&gt;
+    var Observable = require(&quot;FuseJS/Observable&quot;);
+    module.exports = {
+        friends: Observable(&quot;Alice&quot;, &quot;Bob&quot;, &quot;Courtney&quot;)
+    }
+&lt;/JavaScript&gt;
+&lt;WhileEmpty Items=&quot;{friends}&quot;&gt;
+    &lt;Text&gt;Your friends list is empty.&lt;/Text&gt;
+&lt;/WhileEmpty&gt;
+&lt;WhileCount Items=&quot;{friends}&quot; EqualTo=&quot;1&quot;&gt;
+    &lt;Text&gt;Your have 1 friend.&lt;/Text&gt;
+&lt;/WhileCount&gt;
+&lt;WhileCount Items=&quot;{friends}&quot; GreaterThan=&quot;3&quot; &gt;
+    &lt;Text&gt;You have more than 3 friends.&lt;/Text&gt;
+&lt;/WhileCount&gt;
+&lt;WhileCount Items=&quot;{friends}&quot; GreaterThanEqual=&quot;1&quot; LessThanEqual=&quot;3&quot; &gt;
+    &lt;Text&gt;You have 1-3 friends.&lt;/Text&gt;
+&lt;/WhileCount&gt;
+&lt;WhileCount Items=&quot;{friends}&quot; GreaterThanEqual=&quot;2&quot; LessThanEqual=&quot;5&quot; Invert=&quot;true&quot;&gt;
+    &lt;Text&gt;You do not have 2-5 friends.&lt;/Text&gt;
+&lt;/WhileCount&gt;</code></pre>
 
 <section class="type-location">
 <h3 id="section-location">Location</h3>

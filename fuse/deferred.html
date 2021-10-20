@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -702,16 +702,15 @@ Show advanced things
 <p>Defers the creation of nodes to improve initialization time.</p>
 <p><code>Deferred</code> says that the content is not required immediately and may be created somewhat later. This allows the app to startup faster, or to create new pages faster. Without <code>Deferred</code> the nodes are initialized all in the same frame, which can lead to delays. With <code>Deferred</code> the node creation is staggered over several frames. This allows the app to start rendering and displaying prior to being completely initialized.</p>
 <p>A common use is with an <a href="../fuse/reactive/each.html">Each</a>:</p>
-<pre><code class="language-xml">    &lt;Each Items=&quot;{items}&quot;&gt;
-        &lt;Deferred&gt;
-            &lt;StackPanel Orientation=&quot;Horizontal&quot;&gt;
-                &lt;Text Value=&quot;{name}&quot;/&gt;
-                &lt;Text Value=&quot;{address}&quot;/&gt;
-                &lt;Text Value=&quot;{phone}&quot;/&gt;
-            &lt;/StackPanel&gt;
-        &lt;/Deferred&gt;
-    &lt;/Each&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Each Items=&quot;{items}&quot;&gt;
+    &lt;Deferred&gt;
+        &lt;StackPanel Orientation=&quot;Horizontal&quot;&gt;
+            &lt;Text Value=&quot;{name}&quot;/&gt;
+            &lt;Text Value=&quot;{address}&quot;/&gt;
+            &lt;Text Value=&quot;{phone}&quot;/&gt;
+        &lt;/StackPanel&gt;
+    &lt;/Deferred&gt;
+&lt;/Each&gt;</code></pre>
 <p>Note that the delay is measured in frames: deferred content will still be added quickly. Nonetheless it may result in some popping of the new elements and a change in layout.</p>
 <p>You only need to use this feature when you are having initializaiton time problems at startup or on new pages. Wrapping the content of <a href="../fuse/reactive/each.html">Each</a> in <code>Deferred</code> is a simple change that can help when you are using lists of items. The individual pages of a top-level <a href="../fuse/controls/pagecontrol.html">PageControl</a> may also be suitable for <code>Deferred</code>.</p>
 <p>Do not use this on the pages of a <a href="../fuse/controls/navigator.html">Navigator</a> or other control that accepts templates. Templates are already created on demand and wrapping them in <code>Deferred</code> usually won't be helpful.</p>

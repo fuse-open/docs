@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -703,20 +703,19 @@ Show advanced things
 <p>As it is a pulse trigger, the forward animation will play in one continous run when the trigger is activated, and play the backwards animation continously when deactivated.</p>
 <h4 id="example">Example</h4>
 <p>In the following example, a circle with a <code>PointAttractor</code> in the middle of the screen flashes green if a smaller, blue circle, is removed from the forcefield.</p>
-<pre><code class="language-xml">    &lt;Panel&gt;
-        &lt;Panel Width=&quot;60&quot; Height=&quot;60&quot; Alignment=&quot;Center&quot;&gt;
-            &lt;Circle Color=&quot;#42A5F5&quot; /&gt;
-            &lt;Draggable /&gt;
-            &lt;ExitedForceField ForceField=&quot;centerAttract&quot;&gt;
-                &lt;Change centerCircle.Color=&quot;#66BB6A&quot; Duration=&quot;.5&quot;/&gt;
-            &lt;/ExitedForceField&gt;
-        &lt;/Panel&gt;
-        &lt;Panel Width=&quot;200&quot; Height=&quot;200&quot; Alignment=&quot;Center&quot; &gt;
-            &lt;Circle ux:Name=&quot;centerCircle&quot; Color=&quot;#EF5350&quot; /&gt;
-            &lt;PointAttractor ux:Name=&quot;centerAttract&quot; Radius=&quot;150&quot; Strength=&quot;250&quot; /&gt;
-        &lt;/Panel&gt;
+<pre><code class="language-xml">&lt;Panel&gt;
+    &lt;Panel Width=&quot;60&quot; Height=&quot;60&quot; Alignment=&quot;Center&quot;&gt;
+        &lt;Circle Color=&quot;#42A5F5&quot; /&gt;
+        &lt;Draggable /&gt;
+        &lt;ExitedForceField ForceField=&quot;centerAttract&quot;&gt;
+            &lt;Change centerCircle.Color=&quot;#66BB6A&quot; Duration=&quot;.5&quot;/&gt;
+        &lt;/ExitedForceField&gt;
     &lt;/Panel&gt;
-</code></pre>
+    &lt;Panel Width=&quot;200&quot; Height=&quot;200&quot; Alignment=&quot;Center&quot; &gt;
+        &lt;Circle ux:Name=&quot;centerCircle&quot; Color=&quot;#EF5350&quot; /&gt;
+        &lt;PointAttractor ux:Name=&quot;centerAttract&quot; Radius=&quot;150&quot; Strength=&quot;250&quot; /&gt;
+    &lt;/Panel&gt;
+&lt;/Panel&gt;</code></pre>
 
 <section class="type-location">
 <h3 id="section-location">Location</h3>

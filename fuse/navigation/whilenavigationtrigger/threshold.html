@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -688,17 +688,16 @@ WhileNavigationTrigger.Threshold Property
 <p>At which progress should this trigger become active.</p>
 <p>The default is <code>1</code>, meaning the trigger will only become active when the page is fully reaches the matching state; partial page progress will be ignored.</p>
 <p>Using the threshold we can lower the point at which the trigger is activated.</p>
-<pre><code class="language-xml">    &lt;Page ux:Class=&quot;MyPage&quot; Color=&quot;#FAA&quot;&gt;
-        &lt;WhileActive Threshold=&quot;0.5&quot;&gt;
-            &lt;Change this.Color=&quot;#AFA&quot;/&gt;
-        &lt;/WhileActive&gt;
-    &lt;/Page&gt;
-    &lt;PageControl Active=&quot;B&quot;&gt;
-        &lt;MyPage ux:Name=&quot;A&quot;/&gt;
-        &lt;MyPage ux:Name=&quot;B&quot;/&gt;
-        &lt;MyPage ux:Name=&quot;C&quot;/&gt;
-    &lt;/PageControl&gt;
-</code></pre>
+<pre><code class="language-xml">&lt;Page ux:Class=&quot;MyPage&quot; Color=&quot;#FAA&quot;&gt;
+    &lt;WhileActive Threshold=&quot;0.5&quot;&gt;
+        &lt;Change this.Color=&quot;#AFA&quot;/&gt;
+    &lt;/WhileActive&gt;
+&lt;/Page&gt;
+&lt;PageControl Active=&quot;B&quot;&gt;
+    &lt;MyPage ux:Name=&quot;A&quot;/&gt;
+    &lt;MyPage ux:Name=&quot;B&quot;/&gt;
+    &lt;MyPage ux:Name=&quot;C&quot;/&gt;
+&lt;/PageControl&gt;</code></pre>
 <p>As the user swipes from B to C the progress of B will reduce from 1 towards 0 and the progress of C increases from 0 towards 1. The <code>Threadhold=&quot;0.5&quot;</code> here causes the trigger swtich at the mid-way point of the transition. In this setup this means that one page is green and the rest are red -- the one closest to active is green.</p>
 
 <section class="type-location type-location-leaf">

@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -685,11 +685,10 @@
 <p>The way we describe animations in Fuse is as deviations from what we call the &quot;rest state&quot;. The rest state is the layout as it normally looks, when there has been no external inputs or events.
 We then apply animations to this rest state in response to input, for example to scale down a button while it is being pressed:</p>
 <pre><code class="language-xml">&lt;Button Text=&quot;Hello world!&quot;&gt;
-	&lt;WhilePressed&gt;
-		&lt;Scale Factor=&quot;0.8&quot; Duration=&quot;0.2&quot; /&gt;
-	&lt;/WhilePressed&gt;
-&lt;/Button&gt;
-</code></pre>
+    &lt;WhilePressed&gt;
+        &lt;Scale Factor=&quot;0.8&quot; Duration=&quot;0.2&quot; /&gt;
+    &lt;/WhilePressed&gt;
+&lt;/Button&gt;</code></pre>
 <p>The code above shows one of the simplest animations you can make in Fuse. It consists of one &quot;trigger&quot; (the <code>WhilePressed</code> object) and one &quot;animator&quot; (the <code>Scale</code> object). You also see a <code>Button</code> object containing the trigger, and which is therefore the object that will get affected by the <code>Scale</code> animator.
 There are many different triggers available that allow us to react to a variety of different user inputs and app events. There are also quite a few different animators that allow us to make changes to virtually anything within our app as a response to triggers being activated.</p>
 <p>The triggers/animator system is designed so that it reads almost like an English sentence. The example above for instance can be read as follows: &quot;While the button is being pressed, scale it by a factor of 0.8 over a duration of 0.2 seconds.&quot;.</p>
@@ -701,11 +700,10 @@ There are many different triggers available that allow us to react to a variety 
 <p>As mentioned, we use animators to make changes and animate our UI. There is a bunch of <a href="https://fuseopen.com/docs/fuse/animations/animator">different animators</a> to pick from, but you will find that most of your needs are covered by the three transform-animators, <code>Move</code>, <code>Scale</code> and <code>Rotate</code>, and the generic animator <code>Change</code>, which allows us to animate almost any property on any element (like <code>Color</code>, <code>Width</code>/<code>Height</code>, and <code>Opacity</code>).</p>
 <p>A really neat thing about Fuse' declarative animation, is that it automatically knows how to undo its own effects. Say we for example change the color of a <code>Rectangle</code> to red using a change animator:</p>
 <pre><code class="language-xml">&lt;Rectangle ux:Name=&quot;myRectangle&quot; Color=&quot;#00f&quot;&gt;
-	&lt;WhilePressed&gt;
-		&lt;Change myRectangle.Color=&quot;#f00&quot; Duration=&quot;0.5&quot; /&gt;
-	&lt;/WhilePressed&gt;
-&lt;/Rectangle&gt;
-</code></pre>
+    &lt;WhilePressed&gt;
+        &lt;Change myRectangle.Color=&quot;#f00&quot; Duration=&quot;0.5&quot; /&gt;
+    &lt;/WhilePressed&gt;
+&lt;/Rectangle&gt;</code></pre>
 <p>As soon as the <code>WhilePressed</code> trigger is deactivated, the <code>Change</code> animator knows how to animate back to the original color, even if that color changes from some other source in the meantime. This means that all animation using these animators is only a temporary change, meaning it is in affect only as long as its containing trigger is active.</p>
 <h3 id="common-animator-properties">Common animator properties</h3>
 <p>There is a set of common properties that you can expect to find on all animators:</p>
@@ -721,28 +719,25 @@ There are many different triggers available that allow us to react to a variety 
 <p>Animators play relative to the moment the trigger they are in is activated. This means that all animators inside a trigger are played simultaneously.
 In the following example, we have a rectangle that, while pressed, rotates 180 degrees over 0.5 seconds, then fades to blue over a duration half a second.</p>
 <pre><code class="language-xml">&lt;Rectangle ux:Name=&quot;myRectangle&quot; Color=&quot;#f00&quot;&gt;
-	&lt;WhilePressed&gt;
-		&lt;Rotate Degrees=&quot;180&quot; Duration=&quot;0.5&quot; /&gt;
-		&lt;Change myRectangle.Color=&quot;#00f&quot; Duration=&quot;0.5&quot; Delay=&quot;0.5&quot; /&gt;
-	&lt;/WhilePressed&gt;
-&lt;/Rectangle&gt;
-</code></pre>
+    &lt;WhilePressed&gt;
+        &lt;Rotate Degrees=&quot;180&quot; Duration=&quot;0.5&quot; /&gt;
+        &lt;Change myRectangle.Color=&quot;#00f&quot; Duration=&quot;0.5&quot; Delay=&quot;0.5&quot; /&gt;
+    &lt;/WhilePressed&gt;
+&lt;/Rectangle&gt;</code></pre>
 <h3 id="easing">Easing</h3>
 <p>Animations are linear by default. This means that while they interpolate between the original value and the target value, the value change happens at a constant rate. This can often lead to unrealistic and stiff animations.
 The solution to this problem is to change the easing curve using the <code>Easing</code> and <code>EasingBack</code> properties. For the cases when we need a truly custom easing curve, you can use the <code>CubicBezierEasing</code> class. You can find its reference documentation <a href="https://fuseopen.com/docs/fuse/animations/cubicbeziereasing">here</a>.</p>
 <p>To get started, the <code>CubicInOut</code> easing tends to give a nice result for general use-cases.</p>
 <pre><code class="language-xml">&lt;WhilePressed&gt;
-	&lt;Rotate Easing=&quot;CubicInOut&quot; Degrees=&quot;180&quot; Duration=&quot;0.5&quot; /&gt;
-	&lt;Change Easing=&quot;CubicInOut&quot; myRectangle.Color=&quot;#00f&quot; Duration=&quot;0.5&quot; Delay=&quot;0.5&quot; /&gt;
-&lt;/WhilePressed&gt;
-</code></pre>
+    &lt;Rotate Easing=&quot;CubicInOut&quot; Degrees=&quot;180&quot; Duration=&quot;0.5&quot; /&gt;
+    &lt;Change Easing=&quot;CubicInOut&quot; myRectangle.Color=&quot;#00f&quot; Duration=&quot;0.5&quot; Delay=&quot;0.5&quot; /&gt;
+&lt;/WhilePressed&gt;</code></pre>
 <h3 id="backwards-animation">Backwards animation</h3>
 <p>As we briefly discussed earlier, animators in Fuse know how to reverse themselves so that when their containing triggers gets deactivated, they can return the UI to its rest state automatically.
 It achieves this by creating a reversed version of its animation under the hood, and playing it back.</p>
 <p>Say we have an animation that looks something like this:</p>
 <pre><code class="language-xml">&lt;Change Duration=&quot;0.5&quot; /&gt;
-&lt;Move Duration=&quot;0.5&quot; Delay=&quot;0.25&quot; /&gt;
-</code></pre>
+&lt;Move Duration=&quot;0.5&quot; Delay=&quot;0.25&quot; /&gt;</code></pre>
 <p><img src="media/declarative-animation/timeline_1.png" alt="timeline_1"></p>
 <p>The full forward and backward animation can be visualized as follows (where the part after the middle line animates back to the original values).</p>
 <p><img src="media/declarative-animation/timeline_2.png" alt="timeline_2"></p>
@@ -750,18 +745,16 @@ It achieves this by creating a reversed version of its animation under the hood,
 The common animator properties each have a corresponding <code>Back</code> variant (<code>DurationBack</code>, <code>DelayBack</code>, and <code>EasingBack</code>). This lets us change the timeline so that it acts differently when the trigger is being deactivated from when its being activated.</p>
 <p>Here is an example of the above timeline after we've altered the <code>DelayBack</code> property of both animators as follows:</p>
 <pre><code class="language-xml">&lt;Change Duration=&quot;0.5&quot; DelayBack=&quot;0&quot; /&gt;
-&lt;Move Duration=&quot;0.5&quot; Delay=&quot;0.25&quot; DelayBack=&quot;0.25&quot; /&gt;
-</code></pre>
+&lt;Move Duration=&quot;0.5&quot; Delay=&quot;0.25&quot; DelayBack=&quot;0.25&quot; /&gt;</code></pre>
 <p><img src="media/declarative-animation/timeline_3.png" alt="timeline_3"></p>
 <p>For the rare case when we want a completely different set of animators for when a trigger deactivates, we can use the <code>TriggerAnimation</code> class, and bind it to the triggers <code>BackwardAnimation</code> property. Here is an example of what that looks like:</p>
 <pre><code class="language-xml">&lt;WhileTrue&gt;
-	&lt;Move X=&quot;100&quot; Duration=&quot;0.5&quot; /&gt;
-	
-	&lt;TriggerAnimation ux:Binding=&quot;BackwardAnimation&quot;&gt;
-		&lt;Rotate Degrees=&quot;90&quot; Duration=&quot;0.25&quot; /&gt;
-	&lt;/TriggerAnimation&gt;
-&lt;/WhileTrue&gt;
-</code></pre>
+    &lt;Move X=&quot;100&quot; Duration=&quot;0.5&quot; /&gt;
+    
+    &lt;TriggerAnimation ux:Binding=&quot;BackwardAnimation&quot;&gt;
+        &lt;Rotate Degrees=&quot;90&quot; Duration=&quot;0.25&quot; /&gt;
+    &lt;/TriggerAnimation&gt;
+&lt;/WhileTrue&gt;</code></pre>
 <p>Of course in this case, that means the object will just &quot;jump&quot; straight back to its original position and then rotate as per the <code>Rotate</code> animator in the <code>TriggerAnimation</code>.</p>
 <h2 id="trigger-types">Trigger types</h2>
 <p>The various triggers in Fuse can be roughly grouped in to three categories: while-triggers, pulse-triggers and animation-triggers. We will discuss their differences in the following sections.</p>
@@ -770,11 +763,10 @@ The common animator properties each have a corresponding <code>Back</code> varia
 <h3 id="pulse-triggers-one-off-events">Pulse triggers (one-off events)</h3>
 <p>Pulse triggers represent one-off events, that can occur due to certain input or events, or changes in app state. They are recognizable by their past tense verb names like <code>Clicked</code>, <code>Activated</code> and <code>Scrolled</code>. Since pulse triggers don't represent persistent state, they are deactivated as soon as their animators have completed. This also means that the triggers don't have any inherent duration themselves. If we therefore put animators without any duration on them inside pulse triggers, the animation will happen &quot;instantly&quot; and won't be visible.</p>
 <pre><code class="language-xml">&lt;Panel Width=&quot;150&quot; Height=&quot;50&quot; Color=&quot;Blue&quot;&gt;
-	&lt;Clicked&gt;
-		&lt;Rotate Degrees=&quot;180&quot; Duration=&quot;0.5&quot; /&gt;
-	&lt;/Clicked&gt;
-&lt;/Panel&gt;
-</code></pre>
+    &lt;Clicked&gt;
+        &lt;Rotate Degrees=&quot;180&quot; Duration=&quot;0.5&quot; /&gt;
+    &lt;/Clicked&gt;
+&lt;/Panel&gt;</code></pre>
 <h3 id="-animation"><code>...Animation</code></h3>
 <p>Some triggers do not play back their animations based on a timer, but instead in response to for example a user gesture. These triggers can be identified by their names, which almost always end with <code>Animation</code>. Some commonly used examples are the <code>AddingAnimation</code>, <code>RemovingAnimation</code>, <code>ScrollingAnimation</code> and <code>SwipingAnimation</code>. Several of these triggers actually do have their own implicit durations, which are bound by the gestures they respond to (and which are defined by the triggers themselves). <code>SwipingAnimation</code> for example activates over the defined range of the <code>SwipeGesture</code> it is connected to. This means that if we don't put any duration on the animators in this trigger, they will extend to the whole range of the trigger, which means that the animators will animate over the whole swipe gesture.</p>
 <h2 id="custom-navigator-page-transitions">Custom <code>Navigator</code> page transitions</h2>
@@ -782,14 +774,13 @@ The common animator properties each have a corresponding <code>Back</code> varia
 <h2 id="custom-pagecontrol-page-transitions">Custom <code>PageControl</code> page transitions</h2>
 <p>The easiest way to customize the animation of pages entering and exiting a <code>PageControl</code>, is to use the <code>EnteringAnimation</code> and <code>ExitingAnimation</code>. Those can be put directly on the page, so give it a completely custom animation:</p>
 <pre><code class="language-xml">&lt;Page ux:Class=&quot;MyPage&quot; Transition=&quot;None&quot;&gt;
-	&lt;EnteringAnimation&gt;
-		&lt;Move X=&quot;-1&quot; RelativeTo=&quot;ParentSize&quot; /&gt;
-	&lt;/EnteringAnimation&gt;
-	&lt;ExitingAnimation&gt;
-		&lt;Move X=&quot;1&quot; RelativeTo=&quot;ParentSize&quot; /&gt;
-	&lt;/ExitingAnimation&gt;
-&lt;/Page&gt;
-</code></pre>
+    &lt;EnteringAnimation&gt;
+        &lt;Move X=&quot;-1&quot; RelativeTo=&quot;ParentSize&quot; /&gt;
+    &lt;/EnteringAnimation&gt;
+    &lt;ExitingAnimation&gt;
+        &lt;Move X=&quot;1&quot; RelativeTo=&quot;ParentSize&quot; /&gt;
+    &lt;/ExitingAnimation&gt;
+&lt;/Page&gt;</code></pre>
 <blockquote class="callout-info">
 <p>Since the <code>PageControl</code> already defines how to animate pages as the user swipes, we need to disable this if we want to add our own. We do this by setting the <code>Transition</code> property of the <code>Page</code> to <code>None</code>.</p>
 </blockquote>
@@ -824,30 +815,28 @@ The common animator properties each have a corresponding <code>Back</code> varia
 <p>Some controls, like <code>Slider</code> and <code>Video</code> have an inherent <em>progress</em> property, which we can animate in response to using the <code>ProgressAnimation</code> trigger. What <em>progress</em> means in either context depends on the control itself. For a <code>Slider</code> for example, <em>progress</em> represents an arbitrary value, while for <code>Video</code>, <em>progress</em> represents how far into playback we have come. In either case however, <em>progress</em> is reported as a value between <code>0</code> and <code>1</code>. WebView uses <em>progress</em> to report how far it's come in loading a page, which we can for example use to implement a custom loading bar.</p>
 <p>Here is an example of how <code>ProgressAnimation</code> can be used with a <code>Slider</code> to scale and rotate a <code>Rectangle</code> in response to the slider being slid by the user.</p>
 <pre><code class="language-xml">&lt;Panel&gt;
-	&lt;Slider&gt;
-		&lt;ProgressAnimation&gt;
-			&lt;Scale Target=&quot;myRect&quot; Factor=&quot;0.5&quot; /&gt;
-			&lt;Rotate Target=&quot;myRect&quot; Degrees=&quot;180&quot; /&gt;
-		&lt;/ProgressAnimation&gt;
-	&lt;/Slider&gt;
+    &lt;Slider&gt;
+        &lt;ProgressAnimation&gt;
+            &lt;Scale Target=&quot;myRect&quot; Factor=&quot;0.5&quot; /&gt;
+            &lt;Rotate Target=&quot;myRect&quot; Degrees=&quot;180&quot; /&gt;
+        &lt;/ProgressAnimation&gt;
+    &lt;/Slider&gt;
 
-	&lt;Rectangle ux:Name=&quot;myRect&quot; Width=&quot;250&quot; Height=&quot;250&quot; Color=&quot;Red&quot; /&gt;
-&lt;/Panel&gt;
-</code></pre>
+    &lt;Rectangle ux:Name=&quot;myRect&quot; Width=&quot;250&quot; Height=&quot;250&quot; Color=&quot;Red&quot; /&gt;
+&lt;/Panel&gt;</code></pre>
 <h2 id="elements-inside-triggers">Elements inside triggers</h2>
 <p>A very useful feature of triggers is that they can also contain arbitrary elements. When the trigger is activated, the elements become rooted to the visual tree, meaning it becomes visible. This is in general a nice way to show and hide elements. Another neat thing about showing elements this way is that this causes them to be <em>added</em> and <em>removed</em>, meaning we can utilize <code>AddingAnimation</code> and <code>RemovingAnimation</code> to animate the elements as they are shown and hidden.</p>
 <p>The following example shows how we can display a <code>Rectangle</code> with a nice fading animation using a <code>WhileTrue</code> trigger. Note that the <code>AddingAnimation</code> trigger does not animate back when the element is removed, and thus we also need a <code>RemovingAnimation</code> to make the <code>Rectangle</code> fade back out. Another thing to note here is that the <code>AddingAnimation</code> animated backwards when the element is added to the visual tree. This is, like with <code>EnteringAnimation</code> and <code>ExitingAnimation</code> because we want to describe the animation as a deviation from the rest state, which in this case is how the <code>Rectangle</code> looks when it is visible.</p>
 <pre><code class="language-xml">&lt;WhileTrue&gt;
-	&lt;Rectangle ux:Name=&quot;rect&quot; Color=&quot;Red&quot; Width=&quot;100&quot; Height=&quot;100&quot;&gt;
-		&lt;AddingAnimation&gt;
-			&lt;Change rect.Opacity=&quot;0&quot; Duration=&quot;0.2&quot; /&gt;
-		&lt;/AddingAnimation&gt;
-		&lt;RemovingAnimation&gt;
-			&lt;Change rect.Opacity=&quot;0&quot; Duration=&quot;0.2&quot; /&gt;
-		&lt;/RemovingAnimation&gt;
-	&lt;/Rectangle&gt;
-&lt;/WhileTrue&gt;
-</code></pre>
+    &lt;Rectangle ux:Name=&quot;rect&quot; Color=&quot;Red&quot; Width=&quot;100&quot; Height=&quot;100&quot;&gt;
+        &lt;AddingAnimation&gt;
+            &lt;Change rect.Opacity=&quot;0&quot; Duration=&quot;0.2&quot; /&gt;
+        &lt;/AddingAnimation&gt;
+        &lt;RemovingAnimation&gt;
+            &lt;Change rect.Opacity=&quot;0&quot; Duration=&quot;0.2&quot; /&gt;
+        &lt;/RemovingAnimation&gt;
+    &lt;/Rectangle&gt;
+&lt;/WhileTrue&gt;</code></pre>
 
             </div>
             <div class="d-none d-sm-block col-md-3 d-xl-3 toc-content">

@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -687,28 +687,26 @@ We can achieve this in an elegant way using a combination of <code>map()</code> 
 This will result in an Observable of an Observable of our future data – <em>almost</em> what we want.
 We therefore use <a href="#inner">inner()</a> to &quot;unwrap&quot; the inner Observable in place of the outer one, and voila!
 We end up with an Observable that will be updated with our asynchronously fetched data whenever the input changes.</p>
-<pre><code class="language-js">	var inputUrl = Observable(&quot;https://example.com/&quot;);
-	
-	var output = inputUrl.map(function(url) {
-	    var resultObservable = Observable(&quot;Placeholder value&quot;);
-	    
-	    fetch(url)
-	        .then(function(response) { return response.text(); })
-	        .then(function(result) {
-	            resultObservable.value = result;
-	        });
-	    
-	    return resultObservable;
-	}).inner();
-</code></pre>
+<pre><code class="language-js">var inputUrl = Observable(&quot;https://example.com/&quot;);
+
+var output = inputUrl.map(function(url) {
+    var resultObservable = Observable(&quot;Placeholder value&quot;);
+    
+    fetch(url)
+        .then(function(response) { return response.text(); })
+        .then(function(result) {
+            resultObservable.value = result;
+        });
+    
+    return resultObservable;
+}).inner();</code></pre>
 <h2 id="using-observables-to-define-view-models">Using Observables to define view-models</h2>
 <p>Since the Observable API easily lets us do complex transformations on our data, it is a great way to define view-models. A view-model is a mapping from our original data-model, to one that is more suitable to be displayed on a particular screen. This lets us view the same data in many different ways, without having to store it differently.</p>
 <h3 id="observable-condition">Observable condition</h3>
 <p>In order to filter a list based on an observable condition you use a combination of <code>.flatMap</code> and <code>.where</code>.</p>
-<pre><code class="language-js">	var items = conditionObservable.flatMap(function(v) {
-		return itemsObservable.where(function(x) { return v != x; });
-	});
-</code></pre>
+<pre><code class="language-js">var items = conditionObservable.flatMap(function(v) {
+    return itemsObservable.where(function(x) { return v != x; });
+});</code></pre>
 
             </div>
             <div class="d-none d-sm-block col-md-3 d-xl-3 toc-content">
