@@ -103,9 +103,13 @@ namespace Builder.Services
 
         private static string NormalizeCodeLanguageAndIndentation(string html)
         {
-            // Replace uno/ux languages with csharp/xml
+            // Replace uno/ux languages with csharp/xml and more
             html = html.Replace("<code class=\"language-uno\"", "<code class=\"language-csharp\"")
-                       .Replace("<code class=\"language-ux\"", "<code class=\"language-xml\"");
+                       .Replace("<code class=\"language-ux\"", "<code class=\"language-xml\"")
+                       .Replace("<code class=\"language-cs\"", "<code class=\"language-csharp\"")
+                       .Replace("<code class=\"language-json\"", "<code class=\"language-js\"")
+                       .Replace("<code class=\"language-java\"", "<code class=\"language-js\"")
+                       .Replace("<code class=\"language-swift\"", "<code class=\"language-js\"");
 
             // Normalize indentation inside <code> tags
             return NormalizeCodeIndentation(html);
