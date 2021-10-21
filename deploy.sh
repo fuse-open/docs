@@ -16,6 +16,12 @@ set -e
 SRC="_site"
 DST="gh-pages"
 
+if [[ "$OSTYPE" = msys* ]]; then
+    # We don't process images properly on Windows :(
+    >&2 echo "fatal: Not supported on Windows"
+    exit 1
+fi
+
 if [ ! -d "$DST"/.git ]; then
     >&2 echo "fatal: Destination '$DST' is not a Git repository"
     exit 1
