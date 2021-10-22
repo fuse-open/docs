@@ -26,6 +26,29 @@ brew install imagemagick pngquant optipng
 
 > For more details about build commands see [build.sh](build.sh).
 
+### Fast Mode™
+
+When building locally using `npm start`, Fast Mode™ is enabled by
+default for the ability to test and iterate quickly. 🚀
+
+In Fast Mode™ we skip processing `api-docs/`, images, and take a few
+shortcuts -- so the resulting HTML pages are not complete, missing
+Uno/UX reference pages and related links. Most things are still fine.
+
+If you need to test a complete build, run this command instead.
+
+```shell
+npm run start-slow
+```
+
+### Other commands
+
+Type this to see all commands that are available.
+
+```shell
+npm run
+```
+
 ## Updating API docs
 
 ```shell
@@ -33,9 +56,12 @@ npm run api-docs
 ```
 
 1. Run `npm install` to install dependencies.
-2. *Optional:* Run `npm install -D fuse-sdk` to upgrade to the latest version of Fuse SDK.
-    * Or, if you wish you update API docs from another module you can do that, e.g. `@fuse-open/fuselibs` or `@fuse-open/uno`.
-    * Or, from a custom artifact, e.g. `https://ci.appveyor.com/api/buildjobs/wqgf7r6oiiwb16ff/artifacts/fuse-open-fuselibs-2.0.0.tgz`.
+2. *Optional:* Run `npm install -D fuse-sdk` to upgrade to latest versions of Fuse SDK modules.
+    * Or, if you wish specific versions you can do that. Just install the versions of `@fuse-open/fuselibs` and/or `@fuse-open/uno` that you want.
+    * Or, install a custom artifact, e.g. `https://ci.appveyor.com/api/buildjobs/wqgf7r6oiiwb16ff/artifacts/fuse-open-fuselibs-2.0.0.tgz`. You can find build artifacts on our AppVeyor pages for Uno and Fuselibs.
+    * Or, install another module for adding to our API references.
+    * Or, use `npm link` for any local modules you're working on.
+    * Run `npm outdated` to see if anything is out of date.
 3. Run `npm run api-docs` to update files in `api-docs/`, based on modules installed in step 2.
-4. Run `npm start` to build new HTML pages, presented at http://localhost:8080/.
+4. Run `npm run start-slow` to build new HTML pages, presented at http://localhost:8080/.
 5. *Optional:* Open a [Pull Request](https://github.com/fuse-open/docs/pulls) if you did something good. :)

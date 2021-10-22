@@ -21,6 +21,7 @@ namespace Builder.Services
         private readonly string _contentRoot;
         private readonly string _metaDataRoot;
         private readonly string _baseUrl;
+        private readonly bool _fastMode;
         private readonly ReferenceMap _referenceMap;
         private readonly LinkCollector _linkCollector;
         private readonly LinkVerifier _linkVerifier;
@@ -39,6 +40,7 @@ namespace Builder.Services
             _contentRoot = settings.OutputPath;
             _metaDataRoot = settings.RootPath;
             _baseUrl = settings.BaseUrl;
+            _fastMode = settings.FastMode;
             _referenceMap = referenceMap;
             _linkCollector = linkCollector;
             _linkVerifier = linkVerifier;
@@ -47,9 +49,16 @@ namespace Builder.Services
 
             if (Directory.Exists(_contentRoot))
             {
+                if (settings.FastMode)
+                {
+                    _logger.LogInformation($"Keeping existing {_contentRoot} in Fast Mode");
+                    return;
+                }
+
                 _logger.LogDebug($"Output path {_contentRoot} already exists, deleting");
                 Directory.Delete(_contentRoot, true);
             }
+
             Directory.CreateDirectory(_contentRoot);
         }
 
@@ -84,20 +93,27 @@ namespace Builder.Services
             var sw = Stopwatch.StartNew();
             var result = await Task.WhenAll(writtenFiles.Select(e => ApplyContentPostProcessorAsync(e, outline, callbacks.ContainsKey(e) ? callbacks[e] : null)));
 
-            var filesWithMissingLinks = result.Where(e => e.InvalidLinks.Count > 0).ToList();
-            if (filesWithMissingLinks.Count > 0)
+            if (_fastMode)
             {
-                _logger.LogError($"{filesWithMissingLinks.Count} files had in total {filesWithMissingLinks.Sum(e => e.InvalidLinks.Count)} invalid/dead links in them:");
-                foreach (var file in filesWithMissingLinks)
+                _logger.LogInformation("Skipping link checking in Fast Mode");
+            }
+            else
+            {
+                var filesWithMissingLinks = result.Where(e => e.InvalidLinks.Count > 0).ToList();
+                if (filesWithMissingLinks.Count > 0)
                 {
-                    _logger.LogError($"Missing links in file {file.Filename}:");
-                    foreach (var linkedFile in file.InvalidLinks)
+                    _logger.LogError($"{filesWithMissingLinks.Count} files had in total {filesWithMissingLinks.Sum(e => e.InvalidLinks.Count)} invalid/dead links in them:");
+                    foreach (var file in filesWithMissingLinks)
                     {
-                        _logger.LogError($" - {linkedFile}");
+                        _logger.LogError($"Missing links in file {file.Filename}:");
+                        foreach (var linkedFile in file.InvalidLinks)
+                        {
+                            _logger.LogError($" - {linkedFile}");
+                        }
                     }
-                }
 
-                throw new Exception($"Missing links found, please correct before re-running");
+                    throw new Exception($"Missing links found, please correct before re-running");
+                }
             }
 
             // Generate a sitemap.xml based on the retrieved data.
