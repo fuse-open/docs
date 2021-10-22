@@ -763,7 +763,7 @@ android:configChanges=&quot;orientation|keyboardHidden|screenSize|smallestScreen
 <h4 id="objective-c">Objective-C</h4>
 <p>Add the following in your <code>AppDelegate</code></p>
 <pre><code class="language-objectivec">#import &lt;FuseProjectName/Context.h&gt;</code></pre>
-<pre><code class="language-csharp">- (BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+<pre><code class="language-objectivec">- (BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [uContext initSharedContextWithWindow:^UIWindow* () { return [self window]; }];
     [[uContext sharedContext] application:application willFinishLaunchingWithOptions:launchOptions];
@@ -801,7 +801,7 @@ Through the handle you can get a native View that will display your exported vie
 <pre><code class="language-objectivec">#import &lt;ProjectName/ExportedViews.h&gt;
 #import &lt;ProjectName/ViewHandle.h&gt;</code></pre>
 <p>Instantiating the view handle and getting the native view:</p>
-<pre><code class="language-csharp">ViewHandle* videoView = [ExportedViews instantiate:@&quot;VideoView&quot;];
+<pre><code class="language-objectivec">ViewHandle* videoView = [ExportedViews instantiate:@&quot;VideoView&quot;];
 UIView* nativeView = [videoView view];</code></pre>
 <h4 id="swift">Swift</h4>
 <p>Make sure to have these headers imported in your Swift-Objective-C bridging header:</p>
@@ -820,7 +820,7 @@ android.view.View nativeView = videoView.getView();</code></pre>
 <h2 id="step-5-use-the-fuse-view-in-a-native-layout">Step 5: Use the fuse view in a native layout</h2>
 <p>A Fuse View will interop with the native layout, for size it relies on the native layout doing a measure pass on its views. On iOS this might not be the case depending on what kind of layout you have used. So you might have to manage the size by yourself. Using the super view's <code>bounds</code> should be sufficient in most cases.</p>
 <h4 id="objective-c">Objective-C</h4>
-<pre><code class="language-csharp">UIView* parent = ...;
+<pre><code class="language-objectivec">UIView* parent = ...;
 
 ViewHandle* videoView = [ExportedViews instantiate:@&quot;VideoView&quot;];
 UIView* nativeView = [videoView view];
@@ -853,7 +853,7 @@ parent.addView(nativeView);</code></pre>
 <p>As mentioned the <code>ViewHandle</code> object acts as your interface with fuse. You can set a data context for your view in the form of JSON, a key-value pair and add callbacks.</p>
 <p>Lets take a look at the API:</p>
 <h4 id="objective-c">Objective-C</h4>
-<pre><code class="language-csharp">@interface ViewHandle : NSObject
+<pre><code class="language-objectivec">@interface ViewHandle : NSObject
 
 @property (readonly) UIView* view;
 
@@ -863,7 +863,7 @@ parent.addView(nativeView);</code></pre>
 
 @end</code></pre>
 <p>The signature of <code>Callback</code> is as follows:</p>
-<pre><code class="language-csharp">typedef void(^Callback)(Arguments*);</code></pre>
+<pre><code class="language-objectivec">typedef void(^Callback)(Arguments*);</code></pre>
 <h4 id="java">Java</h4>
 <pre><code class="language-js">public class ViewHandle {
     public android.view.View getView();
@@ -876,7 +876,7 @@ parent.addView(nativeView);</code></pre>
     void invoke(IArguments args);
 }</code></pre>
 <p>If you are familiar with <a href="https://fuseopen.com/docs/fuse/reactive/javascript"><code>JavaScript</code></a> and <a href="https://fuseopen.com/docs/fuse/reactive/databinding"><code>DataBinding</code></a> in fuse this will be quite easy to understand. <code>setDataJson</code> is the equivalent of having a <code>module.exports</code> in JavaScript and <code>setCallback</code> is the equivalent of adding a function to the <code>exports</code>. The function arguments passed to the native callback in Fuse views will contain the same data you would get in <code>JavaScript</code>, but you get the through the methods available on the <code>Arguments</code>. Since the function arguments needs to be serialized to strings and JSON, accessing the <code>Arguments</code> will lazily serialize what you request. In the common case you are more interested in getting the callback than accessing the whole data context. Please have a look at <a href="https://fuseopen.com/docs/scripting/scripting#binding-functions"><code>Binding functions</code></a> for an overview of what arguments will be passed.</p>
-<pre><code class="language-csharp">@interface Arguments : NSObject
+<pre><code class="language-objectivec">@interface Arguments : NSObject
 
 @property (readonly) NSDictionary&lt;NSString*,NSString*&gt;* args;
 @property (readonly) NSString* dataJson;
@@ -905,7 +905,7 @@ parent.addView(nativeView);</code></pre>
 }</code></pre>
 <p>The equivalent in fuse views will look like this:</p>
 <h4 id="objective-c">Objective-C</h4>
-<pre><code class="language-csharp">ViewHandle* usersListView = [ExportedViews instantiate:@&quot;UsersListView&quot;];
+<pre><code class="language-objectivec">ViewHandle* usersListView = [ExportedViews instantiate:@&quot;UsersListView&quot;];
 [usersListView setDataString:@&quot;Meetup attendees&quot; forKey:@&quot;title&quot;];
 [usersListView setDataJson:@&quot;{ \&quot;users\&quot; : [...] }&quot;];
 [usersListView setCallback:^void(NSDictionary&lt;NSString*,NSString*&gt;* args) { ... } forKey:@&quot;user_clicked&quot;];</code></pre>
