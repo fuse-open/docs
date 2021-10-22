@@ -701,25 +701,44 @@ Show advanced things
 </section>
 <p>A striped list of items, with optional Adding/Removing/LayoutAnimations.</p>
 <p>ListView takes its items directly as a property.</p>
-<p><strong>Note:</strong> <code>Items</code> must be an <a href="../fusejs/observable.html">Observable</a>.</p>
+<blockquote>
+<p><strong>Note:</strong> <code>Items</code> must be an <a href="../fusejs/observable.html">Observable</a>.
+<strong>Note:</strong> The <strong>child</strong> of the ListView MUST HAVE the property <code>ux:Template=&quot;Item&quot;</code></p>
+</blockquote>
 <pre><code class="language-xml">&lt;JavaScript&gt;
     var Observable = require(&quot;FuseJS/Observable&quot;);
-
-    exports.tasks = Observable(
+    var tasks = Observable(
         { task: &quot;Groceries&quot; },
         { task: &quot;Finish TPS report&quot; },
         { task: &quot;Purchase boat&quot; }
     );
+    var isAnimated = Observable(true);
+    var add = function() {
+        tasks.add({ task: `New task ${tasks.length + 1}` });
+    };
+    var remove = function(ctx) {
+        tasks.remove(ctx.data);
+    };
+
+    module.exports = {
+        tasks,
+        add,
+        remove,
+        isAnimated,
+    };
 &lt;/JavaScript&gt;
 
-&lt;Alive.ListView Items=&quot;{tasks}&quot;&gt;
-    &lt;Panel Height=&quot;80&quot;&gt;
+&lt;Alive.ListView Items=&quot;{tasks}&quot; IsAnimated=&quot;False&quot;&gt;
+    &lt;Panel ux:Template=&quot;Item&quot; Height=&quot;50&quot; Clicked=&quot;{remove}&quot;&gt;
         &lt;Alive.Body Value=&quot;{task}&quot; Alignment=&quot;Center&quot; /&gt;
     &lt;/Panel&gt;
-&lt;/Alive.ListView&gt;</code></pre>
+&lt;/Alive.ListView&gt;
+&lt;Button Text=&quot;Add&quot; Clicked=&quot;{add}&quot; Alignment=&quot;BottomCenter&quot; Margin=&quot;30&quot;/&gt;</code></pre>
+<p><img src="../../docs/media/alive/listview.gif" alt="actionButton"></p>
 <p>ListView applies <a href="../fuse/triggers/addinganimation.html">AddingAnimation</a>, <a href="../fuse/triggers/removinganimation.html">RemovingAnimation</a> and <a href="../fuse/triggers/layoutanimation.html">LayoutAnimation</a> to each element by default.
 This behavior can be disabled using the <code>IsAnimated</code> property.</p>
-<pre><code class="language-xml">&lt;Alive.ListView IsAnimated=&quot;false&quot; Items=&quot;{data}&quot;&gt;</code></pre>
+<pre><code class="language-xml">&lt;Alive.ListView IsAnimated=&quot;false&quot; Items=&quot;{tasks}&quot;&gt;</code></pre>
+<p><img src="../../docs/media/alive/listviewnoanima.gif" alt="actionButton"></p>
 
 <section class="type-location">
 <h3 id="section-location">Location</h3>
