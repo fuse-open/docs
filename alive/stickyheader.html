@@ -703,34 +703,64 @@ Show advanced things
 while in the vertical range of the <code>StickyHeader</code>.</p>
 <p><strong>Note:</strong> StickyHeader <em>must</em> be placed directly inside the ScrollView's root element.
 This is because <code>StickyHeader</code> calculates its own position relative to its parent.</p>
-<pre><code class="language-xml">&lt;ScrollView&gt;
-    &lt;StackPanel&gt;
-        &lt;Alive.StickyHeader&gt;
-            &lt;Panel ux:Binding=&quot;Header&quot;&gt;
-                &lt;Alive.Title Margin=&quot;15&quot;&gt;Header&lt;/Alive.Title&gt;
+<pre><code class="language-xml">&lt;App &gt;
+    &lt;Rectangle ux:Class=&quot;Body&quot; Color=&quot;#cea&quot; Size=&quot;100%, 300&quot; &gt;
+        &lt;Text TextWrapping=&quot;Wrap&quot; ClipToBounds=&quot;true&quot;&gt;
+            Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.
+Maecenas sed diam eget risus varius blandit sit amet non magna.
+Donec id elit non mi porta gravida at eget metus. Fusce dapibus,
+tellus ac cursus commodo
+        &lt;/Text&gt;
+    &lt;/Rectangle&gt;
 
-                &lt;StackPanel ItemSpacing=&quot;20&quot; Margin=&quot;20&quot;&gt;
-                    &lt;Alive.Body&gt;Content&lt;/Alive.Body&gt;
-                    &lt;Alive.Body&gt;Content&lt;/Alive.Body&gt;
-                    &lt;Alive.Body&gt;Content&lt;/Alive.Body&gt;
-                    &lt;Alive.Body&gt;Content&lt;/Alive.Body&gt;
-                &lt;/StackPanel&gt;
-            &lt;/Panel&gt;
-        &lt;/Alive.StickyHeader&gt;
-    &lt;/StackPanel&gt;
-&lt;/ScrollView&gt;</code></pre>
+    &lt;Alive.FallbackTheme /&gt;
+    &lt;ScrollView&gt;
+        &lt;StackPanel&gt;
+            &lt;Alive.StickyHeader&gt;
+                &lt;Panel ux:Binding=&quot;Header&quot; Color=&quot;#aaa&quot;&gt;
+                    &lt;Alive.Title Margin=&quot;15&quot;&gt;Header 1&lt;/Alive.Title&gt;
+                &lt;/Panel&gt;
+                &lt;Body /&gt;
+            &lt;/Alive.StickyHeader&gt;
+            &lt;Alive.StickyHeader&gt;
+                &lt;Panel ux:Binding=&quot;Header&quot; Color=&quot;#aba&quot;&gt;
+                    &lt;Alive.Title Margin=&quot;15&quot;&gt;Header 2&lt;/Alive.Title&gt;
+                &lt;/Panel&gt;
+                &lt;Body /&gt;
+            &lt;/Alive.StickyHeader&gt;
+            &lt;Alive.StickyHeader&gt;
+                &lt;Panel ux:Binding=&quot;Header&quot; Color=&quot;#caa&quot;&gt;
+                    &lt;Alive.Title Margin=&quot;15&quot;&gt;Header 3&lt;/Alive.Title&gt;
+                &lt;/Panel&gt;
+                &lt;Body /&gt;
+            &lt;/Alive.StickyHeader&gt;
+        &lt;/StackPanel&gt;
+    &lt;/ScrollView&gt;
+&lt;/App&gt;</code></pre>
+<p><img src="../../docs/media/alive/stickyheader.gif" alt="actionButton"></p>
 <p><a href="../alive/mediascroller.html">MediaScroller</a> wraps a StackPanel around its children,
 and so any StickyHeader must be a direct child of the <code>MediaScroller</code> itself.</p>
 <pre><code class="language-xml">&lt;Alive.MediaScroller&gt;
-    &lt;Panel ux:Binding=&quot;Media&quot; /&gt;
+&lt;Panel ux:Binding=&quot;Media&quot; /&gt;
 
-    &lt;Alive.StickyHeader&gt;
-        &lt;Panel ux:Binding=&quot;Header&quot;&gt;
-            &lt;Alive.Title Margin=&quot;15&quot;&gt;Header&lt;/Alive.Title&gt;
-
-            &lt;!-- content --&gt;
-        &lt;/Panel&gt;
-    &lt;/Alive.StickyHeader&gt;
+&lt;Alive.StickyHeader&gt;
+    &lt;Panel ux:Binding=&quot;Header&quot; Color=&quot;#aba&quot;&gt;
+        &lt;Alive.Title Margin=&quot;15&quot;&gt;Header 1&lt;/Alive.Title&gt;
+    &lt;/Panel&gt;
+    &lt;Body /&gt; &lt;!-- from examle above  --&gt;
+&lt;/Alive.StickyHeader&gt;
+&lt;Alive.StickyHeader&gt;
+    &lt;Panel ux:Binding=&quot;Header&quot; Color=&quot;#aba&quot;&gt;
+        &lt;Alive.Title Margin=&quot;15&quot;&gt;Header 2&lt;/Alive.Title&gt;
+    &lt;/Panel&gt;
+    &lt;Body /&gt;
+&lt;/Alive.StickyHeader&gt;
+&lt;Alive.StickyHeader&gt;
+    &lt;Panel ux:Binding=&quot;Header&quot; Color=&quot;#caa&quot;&gt;
+        &lt;Alive.Title Margin=&quot;15&quot;&gt;Header 3&lt;/Alive.Title&gt;
+    &lt;/Panel&gt;
+    &lt;Body /&gt;
+&lt;/Alive.StickyHeader&gt;
 &lt;/Alive.MediaScroller&gt;</code></pre>
 <p>See also StickyHeaderAnimation</p>
 
