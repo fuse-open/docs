@@ -2,7 +2,7 @@
 
 <blockquote class="callout-info">
 
-*Note:* We also provide a [plugin for Atom](atom-plugin.md) and [Visual Studo Code](visual-studio-code-plugin.md).
+*Note:* We also provide a [plugin for Atom](atom-plugin.md) and [Visual Studo Code](vscode-extension.md).
 
 </blockquote>
 
