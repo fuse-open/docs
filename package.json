@@ -3,8 +3,10 @@
   "description": "This is our Fuse documentation project",
   "private": true,
   "devDependencies": {
+    "concurrently": "^6.3.0",
     "fuse-sdk": "^2.0.0",
     "http-server": "^14.0.0",
+    "npm-watch": "^0.11.0",
     "rimraf": "^3.0.2",
     "xbash": "^1.6.0"
   },
@@ -16,8 +18,19 @@
     "local": "bash build.sh --local --fast",
     "local-slow": "bash build.sh --local",
     "http-server": "http-server -p 8080 _site",
-    "start": "bash build.sh --local --fast && http-server -p 8080 _site",
-    "start-slow": "bash build.sh --local && http-server -p 8080 _site"
+    "start": "concurrently npm:watch npm:http-server",
+    "start-slow": "bash build.sh --local && http-server -p 8080 _site",
+    "watch": "npm-watch local"
+  },
+  "watch": {
+    "local": {
+      "patterns": [
+        "articles",
+        "media",
+        "static"
+      ],
+      "extensions": "md,png,js,css"
+    }
   },
   "repository": {
     "type": "git",

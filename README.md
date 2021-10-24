@@ -16,6 +16,9 @@ npm start
 
 This will build HTML pages based on documentation files and start a webserver at http://localhost:8080/.
 
+This will also watch your source files and rebuild HTML pages automatically while you're making changes.
+Just save in your editor and refresh in your browser (give it a second or two). 🙂
+
 Some system dependencies are required to process files. On macOS they can be installed by running the following command.
 
 ```shell
@@ -40,6 +43,8 @@ If you need to test a complete build, run this command instead.
 ```shell
 npm run start-slow
 ```
+
+> Rebuilding HTML pages automatically while making changes only works in Fast Mode™.
 
 ### Other commands
 
