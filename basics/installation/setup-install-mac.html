@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Preview and Export - Fuse Documentation</title>
+    <title>macOS Installation - Fuse Documentation</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
@@ -71,10 +71,10 @@
                 <input type="search" class="form-control" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
               </form>
             </div>
-            <ul class="list-unstyled outline-nav  outline-nav-level-0 show">
+            <ul class="list-unstyled outline-nav  outline-nav-level-0">
 	<li>
 		<a href="https://fuseopen.com/docs/index.html" data-menu="index"><span>Fuse</span></a>
-	<ul class="list-unstyled outline-nav  outline-nav-level-1 show">
+	<ul class="list-unstyled outline-nav  outline-nav-level-1">
 		<li>
 			<a href="#start" data-toggle="collapse"><span>Getting Started</span></a>
 		<ul id="start" class="list-unstyled outline-nav collapse outline-nav-level-2">
@@ -129,10 +129,10 @@
 		</li>
 		<li>
 			<a href="#development" data-toggle="collapse"><span>Development</span></a>
-		<ul id="development" class="list-unstyled outline-nav collapse outline-nav-level-2 show">
+		<ul id="development" class="list-unstyled outline-nav collapse outline-nav-level-2">
 			<li>
 				<a href="#ux_markup" data-toggle="collapse"><span>UX Markup</span></a>
-			<ul id="ux_markup" class="list-unstyled outline-nav collapse outline-nav-level-3 show">
+			<ul id="ux_markup" class="list-unstyled outline-nav collapse outline-nav-level-3">
 				<li>
 					<a href="https://fuseopen.com/docs/ux-markup/ux-markup.html" data-menu="ux-markup"><span>Introduction</span></a>
 				</li>
@@ -155,7 +155,7 @@
 					<a href="https://fuseopen.com/docs/structuring-app-resources.html" data-menu="structuring-app-resources"><span>Structuring app resources</span></a>
 				</li>
 				<li>
-					<a href="https://fuseopen.com/docs/basics/preview-and-export.html" data-menu="preview-and-export" class="active"><span>Preview and export</span></a>
+					<a href="https://fuseopen.com/docs/basics/preview-and-export.html" data-menu="preview-and-export"><span>Preview and export</span></a>
 				</li>
 				<li>
 					<a href="https://fuseopen.com/docs/ux-markup/literals.html" data-menu="literals"><span>Literals</span></a>
@@ -680,80 +680,162 @@
         <div role="main" class="col-12 col-md-9 col-xl-10 order-1 order-md-2 px-4 main">
           <div class="row">
             <div class="col-12 col-sm-12 col-md-9 col-xl-9 main-content">
-              <h1 id="preview-and-export">Preview and Export</h1>
-<p>Fuse offers two ways of running your app:</p>
-<ul>
-<li><em>Preview</em> - A fully working build of your app, which also updates in real-time as you make changes to your UX markup or JavaScript.</li>
-<li><em>Export</em> - The final version of your app, which can be shipped to app stores or used for private testing.</li>
-</ul>
-<p>When developing your app, you typically work in preview all the time, to be able to iterate quickly. Then you export when you want to deploy it. Note that in some scenarios, preview performance can be a bit slower than in export.</p>
-<h2 id="fuse-x-preview-app">Fuse X Preview app</h2>
-<p>This stand-alone app is by far the simplest way of previewing your projects and <em>does not require the installation of Xcode or the Android SDKs</em>. It also lets you preview on iOS devices while developing on a Windows computer.</p>
-<p>You can use the preview app as long as your project only contains UX markup, JavaScript and the standard Fuse packages (including Pro features / Premium libs), but excluding <code>Fuse.PushNotifications</code>.</p>
-<p>If your project contains <code>.uno</code> files or custom / 3rd party packages then you must instead build your own <a href="./preview-and-export.html#export-and-custom-preview">custom preview</a>.</p>
-<h3 id="preview-app-setup">Preview App Setup</h3>
-<p>You can download the app <a href="https://play.google.com/store/apps/details?id=com.fuse.preview">for Android from Google Play</a> and <a href="https://apps.apple.com/no/app/fuse-x-preview/id1549637259">for iOS from the Apple App Store</a>.</p>
-<p>To run a preview <em>first make sure your test device and development computer are on the same wifi</em>.
-Then open your project in Fuse and click the <em>&quot;Devices&quot;</em> button in the upper right corner. This will open a window containing the necessary information for connecting the preview. Follow the instructions inside the app to <em>either</em> scan the QR code <em>or</em> manually enter the IP and code.</p>
-<p>Check out this video to see how it's done! <a href="https://www.youtube.com/watch?v=KJYHUHpMmto">fuse preview app</a></p>
-<h2 id="export-and-custom-preview">Export and custom preview</h2>
-<h3 id="android-setup">Android setup</h3>
-<p>To be able to preview or export to Android, you need to install the required SDK components.
-Pull up your terminal and run the following:</p>
-<pre><code class="language-s">fuse install android</code></pre>
-<p>(You do not need <code>sudo</code> on macOS)</p>
-<p>This will attempt to locate existing Android SDK components, and install them if necessary.</p>
-<p>If you are running Windows you also need to install the right USB driver for your device. A list of drivers for common vendors, as well as instructions to install them <a href="https://developer.android.com/studio/run/oem-usb.html#Drivers">can be found here</a>.</p>
-<p>Also on your android device itself you will need to enable 'developer options' &amp; 'USB debugging'. For info on how to do this please see <a href="https://developer.android.com/studio/run/device.html">the official docs here</a>.</p>
-<h3 id="ios-setup">iOS setup</h3>
-<p>You will need macOS and <a href="https://developer.apple.com/xcode/">Xcode</a> to preview and export your app to iOS.</p>
-<p>You also need to create a free Apple Developer account and register it under Xcode's settings as shown below.</p>
-<p><img src="../media/preview-and-export-xcode-add-apple-id.jpg" alt="Add Apple ID to Xcode"></p>
-<h2 id="custom-preview">Custom Preview</h2>
-<p>We can easily preview apps both locally and on Android/iOS devices while getting immediate feedback on changes to the UX markup and JavaScript.
-These are the instructions for building your own custom preview. If your app project does not contain <code>.uno</code> files or custom packages you can use the <a href="./preview-and-export.html#fuse-preview-app">fuse preview app</a> instead (without having to install Xcode or Android SDKs).</p>
-<blockquote>
-<p><strong>Note:</strong> When running preview for iOS, Fuse doesn't run your app directly, but will open the project in Xcode.
-From there, press the &quot;play&quot; button to run the preview session.</p>
+              <h1 id="macos-installation">macOS Installation</h1>
+<p>This is a step-by-step tutorial that takes you through setting up Fuse X and creating your first project. Should you happen to run into problems during installation, please <a href="https://fuse-x.com/issues">let us know</a>!</p>
+<blockquote class="callout-info">
+<p><a target="_blank" href="https://www.mono-project.com/download/stable/">Mono</a> and <a target="_blank" href="https://nodejs.org/en/download/">Node.js</a> are required to install this software.</p>
 </blockquote>
-<p>When we open a project in Fuse, it starts in preview mode inside the tool, along with visual tools to inspect and modify the app. To start preview on a device, use the &quot;Preview&quot; menu.</p>
-<p><img src="../media/preview-menu.png" alt="Preview menu"></p>
-<p>You can start preview on as many devices as you like. A USB connection is only required when starting preview, after that all changes are streamed over wifi.</p>
-<h3 id="preview-from-editor-plugins">Preview from editor plugins</h3>
-<p>Preview can also be launched from one of our editor plugins. Select preview target <code>Android</code>/<code>iOS</code> to launch on a device, or <code>local</code> to open it in Fuse.</p>
-<h4 id="preview-from-sublime-text">Preview from Sublime Text</h4>
-<p>To preview from sublime text, right-click any <code>ux</code> or <code>unoproj</code> file in the sidebar and select your target platform under the <code>Fuse: Preview</code> menu.</p>
-<p><img src="../media/preview-and-export-device-preview-osx-sublime-preview-menu.png" alt="Sublime preview from sidebar"></p>
-<p>We can also start preview from the command palette. Press <code>Cmd+Shift+P</code> (macOS) or <code>Ctrl+Shift+P</code> (Windows) to bring up the palette, and type <code>Fuse Preview</code> to see a list of preview targets.</p>
-<p><img src="../media/preview-and-export-device-preview-sublime-command-palette.png" alt="Sublime Text preview from command palette"></p>
-<h4 id="preview-from-atom">Preview from Atom</h4>
-<p>Press <code>Cmd+Shift+P</code> (macOS) or <code>Ctrl+Shift+P</code> (Windows) to bring up the command palette, and type <code>Fuse Preview</code> to see a list of preview targets.</p>
-<p><img src="../media/preview-and-export-device-preview-atom-command-palette.png" alt="Atom preview from command palette"></p>
-<h3 id="preview-from-command-line">Preview from command line</h3>
-<p>In your terminal, <code>cd</code> to the your project's directory, and run the command that corresponds to your build target.</p>
-<pre><code class="language-s">fuse preview -t=Android
-fuse preview -t=iOS
-fuse preview -t=Local   # The -t=Local flag is optional in this case</code></pre>
-<p>We can get further documentation on <code>fuse preview</code> by running <code>fuse help preview</code>.</p>
-<h2 id="export">Export</h2>
-<p>When exporting your app, your UX markup is compiled to native C++ code, meaning that you lose the ability to preview your app in real time. However your app will function on its own, without a network connection back to your computer. Performance is also better in many cases. This is what you want when distributing your app.</p>
-<p>The simplest way to export is to use the &quot;Export&quot; menu in Fuse. However, the command line provides more options.</p>
-<h3 id="android">Android</h3>
-<p>In the project root, run the following command in your shell:</p>
-<pre><code class="language-s">uno build android --run</code></pre>
-<p>This will deploy and start the project on your connected Android device.</p>
-<p>To make a <strong>release build</strong>, run:</p>
-<pre><code class="language-s">uno build android --configuration=Release</code></pre>
-<p><em>Note:</em> to export your app to the Google Play Store, you need to <a href="../preview-and-export/signing.html">sign it first</a>.</p>
-<h3 id="ios">iOS</h3>
-<p>In the project root, run the following command in your shell:</p>
-<pre><code class="language-s">uno build ios --run</code></pre>
-<p>If you instead want to open the generated project in Xcode, run <code>uno build ios --debug</code></p>
-<p>To make a <strong>release build</strong>, run:</p>
-<pre><code class="language-s">uno build ios --configuration=Release</code></pre>
-<p><em>Note:</em> to export your app to the App Store, you need to <a href="../preview-and-export/signing.html">sign it first</a>.</p>
-<h2 id="signing">Signing</h2>
-<p>See <a href="../preview-and-export/signing.html">the signing article</a> for a guide on signing your app for release.</p>
+<blockquote class="callout-info">
+<p>A working internet connection is required to install this software.</p>
+</blockquote>
+<h2 id="requirements">Requirements</h2>
+<ul>
+<li>macOS 10.10 Yosemite or newer, but 11.x Big Sur is recommended</li>
+<li>Intel processor (M1 support is planned)</li>
+<li><a target="_blank" href="https://www.mono-project.com/download/stable/">Mono</a> 6.10 or newer</li>
+<li><a target="_blank" href="https://nodejs.org/en/download/">Node.js</a> 12 or newer</li>
+</ul>
+<h2 id="running-the-installer">Running the installer</h2>
+<p>The latest version of Fuse X can always be downloaded from the <a href="https://fuse-x.com/download">download page</a>. Download the <strong>macOS installer (.dmg)</strong>.</p>
+<p>You should have downloaded a file called <code>fuse-x-2.0.0-mac.dmg</code> or similar. Open it and follow the installation procedure.</p>
+<p>This chapter will guide you through it.</p>
+<blockquote class="callout-info">
+<p>You can <a href="#starting-fuse-x">skip this chapter</a> if you already know how to do this.</p>
+</blockquote>
+<h3 id="prerequisites">Prerequisites</h3>
+<p>Make sure you have up-to-date <a target="_blank" href="https://www.mono-project.com/download/stable/">Mono</a> and <a target="_blank" href="https://nodejs.org/en/download/">Node.js</a> installations on your system.</p>
+<p>This can be verified by running the following commands.</p>
+<pre><code>$ mono --version
+
+Mono JIT compiler version 6.10.0.0 (or newer)
+...
+</code></pre>
+<pre><code>$ node --version
+
+v12.0.0 (or newer)
+</code></pre>
+<h3 id="opening-the-installer">Opening the installer</h3>
+<p><img src="../../media/setup/mac/dmg.png" alt="dmg"></p>
+<blockquote>
+<p>This is how the DMG looks when it is opened.</p>
+</blockquote>
+<p>Run <strong>Install fuse X.pkg</strong> to continue.</p>
+<h3 id="installation-process">Installation process</h3>
+<p><img src="../../media/setup/mac/setup1.png" alt="setup1"></p>
+<blockquote>
+<p>Hi, and welcome to our cool installer!</p>
+</blockquote>
+<p>Click <strong>Continue</strong> to continue.</p>
+<p><img src="../../media/setup/mac/setup2.png" alt="setup2"></p>
+<blockquote>
+<p>Please read the License Agreement carefully.</p>
+</blockquote>
+<p>Click <strong>Continue</strong> to continue.</p>
+<p><img src="../../media/setup/mac/setup2b.png" alt="setup2b"></p>
+<blockquote>
+<p>Confirm that you have read the License Agreement.</p>
+</blockquote>
+<p>Click <strong>Agree</strong> to continue.</p>
+<p><img src="../../media/setup/mac/setup3.png" alt="setup3"></p>
+<blockquote>
+<p><em>Optional:</em> Sometimes this screen is shown. <strong>Install for all users of this computer</strong> should be selected.</p>
+</blockquote>
+<p>Click <strong>Continue</strong> to continue.</p>
+<p><img src="../../media/setup/mac/setup4.png" alt="setup4"></p>
+<blockquote>
+<p>The installation will actually take a bit more space due to dependencies being downloading while installing.</p>
+</blockquote>
+<p>Click <strong>Install</strong> to continue.</p>
+<p><img src="../../media/setup/mac/setup5.png" alt="setup5"></p>
+<blockquote>
+<p>The installer needs to run as Administrator in order to complete.</p>
+</blockquote>
+<p>Enter your password and click <strong>Install Software</strong> to continue.</p>
+<p><img src="../../media/setup/mac/setup6.png" alt="setup6"></p>
+<blockquote>
+<p>Time for a quick coffee ☕</p>
+</blockquote>
+<p>Please wait a few minutes...</p>
+<p><img src="../../media/setup/mac/setup7.png" alt="setup7"></p>
+<blockquote>
+<p>Done and done. Good job!</p>
+</blockquote>
+<p>Click <strong>Close</strong> to exit.</p>
+<h2 id="starting-fuse-x">Starting Fuse X</h2>
+<p>Fuse X can be started in four different ways.</p>
+<blockquote>
+<p><strong>1.</strong> From <em>Installer</em>: <strong>fuse X</strong> was started when finishing the installer.</p>
+</blockquote>
+<blockquote>
+<p><strong>2.</strong> From <em>Finder</em>: Go to <strong>Applications</strong> and start the <strong>fuse X</strong> app.</p>
+</blockquote>
+<blockquote>
+<p><strong>3.</strong> From <em>Spotlight</em>: Search for <code>fuse X</code> and hit <kbd>Enter</kbd>.</p>
+</blockquote>
+<blockquote>
+<p><strong>4.</strong> From <em>Terminal</em>: Type <code>fuse</code> and hit <kbd>Enter</kbd>.</p>
+</blockquote>
+<h2 id="finding-a-text-editor">Finding a text editor</h2>
+<p>Fuse X requires an external text editor in order to make changes to the UX markup in our app. To streamline your experience with Fuse X, we provide plugins for some of the more popular text editors which provide code completion, error lists, output logs and the ability to launch Fuse apps from within the text editor.</p>
+<p>We currently provide plugins for the following text editors:</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Editor</th>
+      <th>Installation</th>
+      <th>Plugin homepage</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="https://code.visualstudio.com/">Visual Studio Code</a></td>
+      <td><a href="../../basics/installation/vscode-extension.html">link</a></td>
+      <td><a href="https://marketplace.visualstudio.com/items?itemName=fuseopen.fuse-vscode">link</a></td>
+    </tr>
+    <tr>
+      <td><a href="https://atom.io/">Atom</a></td>
+      <td><a href="../../basics/installation/atom-plugin.html">link</a></td>
+      <td><a href="https://atom.io/packages/fuse">link</a></td>
+    </tr>
+    <tr>
+      <td><a href="https://www.sublimetext.com/3">Sublime Text 3</a></td>
+      <td><a href="../../basics/installation/sublime-plugin.html">link</a></td>
+      <td><a href="https://packagecontrol.io/packages/Fuse">link</a></td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="starting-a-new-project">Starting a new project</h2>
+<p>When opening Fuse X, the first thing you'll see is the dashboard:</p>
+<p><img src="../../media/setup/mac/dashboard.png" alt="image of dashboard"></p>
+<p>To start a new project, we first have to pick a template. Fuse X comes with a few templates which provide a good starting point when starting from scratch. For the purpose of this guide, we want to choose the &quot;New fuse X project&quot; template. This template gives a project with one file in which we can easily start building our app. Choose this template by clicking the box with its name, and then click the &quot;create&quot; button. You will then have to pick a name and a directory for your project.</p>
+<p><img src="../../media/setup/mac/new.png" alt="create project"></p>
+<p>After clicking the &quot;create&quot; button, Fuse X starts a local preview viewport. You'll notice that this process take some time, as Fuse X has to download the packages containing the <a href="http://github.com/fuse-open/fuselibs">framework code</a> used to create apps with Fuse X. This only happens the first time Fuse X is run after installation. You can see the download progress in the &quot;Log&quot; panel at the bottom of the window.</p>
+<p><img src="../../media/installation_quickstart/preview.png" alt="preview"></p>
+<p>After Fuse X is done downloading all the required packages, the preview viewport is started, and you'll notice that all we have to start with is a white background.</p>
+<h3 id="making-some-changes">Making some changes</h3>
+<p>To open the project in your text editor, either click the &quot;Project&quot; tab and select <code>MainView.ux</code> or open the project folder directly from your text editor.</p>
+<p>To get started, paste the following code directly into <code>MainView.ux</code>, replacing the existing code:</p>
+<pre><code class="language-xml">&lt;App Background=&quot;#2196F3&quot;&gt;
+  &lt;ClientPanel&gt;
+      &lt;StackPanel ItemSpacing=&quot;10&quot;&gt;
+          &lt;Text FontSize=&quot;30&quot;&gt;Hello, world!&lt;/Text&gt;
+          &lt;Slider /&gt;
+          &lt;Button Text=&quot;Button&quot; /&gt;
+          &lt;Switch Alignment=&quot;Left&quot; /&gt;
+      &lt;/StackPanel&gt;
+  &lt;/ClientPanel&gt;
+&lt;/App&gt;</code></pre>
+<p>As soon as you save the document, you should notice the preview viewport update to display some <code>Text</code>, a <code>Slider</code>, a <code>Button</code> and a <code>Switch</code> control, stacked on top of each other vertically. Fuse X picks up any change you make to your documents, and updates automatically and immediately to reflect those changes. This even works on your devices which you can read about in the next section.</p>
+<h2 id="running-preview-on-device">Running preview on device</h2>
+<p>Fuse X can do live preview on both Android and iOS devices, even at the same time!</p>
+<p>The simplest way to get started is with the <a href="../preview-and-export.html#fuse-preview-app">fuse preview app</a> so you should definitely try that one out first.</p>
+<p>If you ever need to include non-standard packages or Uno code in your project then you can instead build your own <a href="../preview-and-export.html#custom-preview">custom preview</a>, but you can make that switch whenever you want to so there's no harm in starting out with the Fuse X Preview app.</p>
+<h2 id="uninstall">Uninstall</h2>
+<p>If for any reason we need to remove all of the Fuse X components, we can use <a href="https://github.com/fuse-x/studio/blob/master/uninstall.sh">this uninstall script</a>.</p>
+<h2 id="xcode">Xcode</h2>
+<p>In order to do iOS <em>app exports</em> and custom previews you will need the latest version of Xcode. Follow <a href="https://developer.apple.com/xcode/downloads/">these instruction</a>, or search for it in the Mac App Store.</p>
+<h2 id="what-next">What next?</h2>
+<p>Now that you're all set up, it's time to get started learning the fundamentals of Fuse. A good next step is to take a look at the <a href="https://fuseopen.com/docs/basics/introduction-to-fuse">Introduction to Fuse</a> module, which will take you through the fundamentals of Fuse. If you prefer learning by example, the <a href="https://fuseopen.com/docs/tutorial-models/tutorial">hikr tutorial</a> will lead you through the creation of a simple hiking app, while explaining each step along the way. If you simply want to start digging into example code and play around on your own, there is a ton of content to look at on our <a href="https://fuseopen.com/examples">examples page</a> as well as in the <a href="https://github.com/fuse-open/fuse-samples/">fuse-samples github repo</a>.</p>
 
             </div>
             <div class="d-none d-sm-block col-md-3 d-xl-3 toc-content">
