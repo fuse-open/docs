@@ -55,7 +55,7 @@ But what does _extend_ mean in this context? It simply means that we're going to
 
 <blockquote class="callout-info">
 
-You can find out more about classes in our [Creating Components](https://fuseopen.com/docs/basics/creating-components) documentation.
+You can find out more about classes in our [Creating Components](articles:basics/creating-components) documentation.
 
 </blockquote>
 
