@@ -48,7 +48,3 @@ if [ "$ASSETS" != 0 ]; then
         find "$DST"/media -type f -iname "*.png" -exec pngquant {} \; -exec optipng -silent {} \;
     fi
 fi
-
-if [ ! -f "$DST"/.nojekyll ]; then
-    touch "$DST"/.nojekyll
-fi
