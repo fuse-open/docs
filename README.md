@@ -14,7 +14,7 @@ npm install
 npm start
 ```
 
-This will build HTML pages based on documentation files and start a webserver at http://localhost:8080/.
+This will build HTML pages based on documentation files, start a webserver at http://localhost:8080/, and finally open your default browser at this URL.
 
 This will also watch your source files and rebuild HTML pages automatically while you're making changes.
 Just save in your editor and refresh in your browser (give it a second or two). 🙂
