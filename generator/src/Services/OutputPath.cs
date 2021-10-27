@@ -116,6 +116,9 @@ namespace Builder.Services
                 }
             }
 
+            // Sort result first to avoid needless changes in Git on every deploy.
+            Array.Sort(result, (a, b) => a.Filename.CompareTo(b.Filename));
+
             // Generate a sitemap.xml based on the retrieved data.
             var sitemapBuilder = new StringBuilder();
             var lastmod = DateTime.UtcNow.ToString("yyyy-MM-dd");
