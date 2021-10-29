@@ -679,7 +679,7 @@
         <div role="main" class="col-12 col-md-9 col-xl-10 order-1 order-md-2 px-4 main">
           <div class="row">
             <div class="col-12 col-sm-12 col-md-9 col-xl-9 main-content">
-              <h1 id="uno-projects-unoproj">Uno Projects (.unoproj)</h1>
+              <h1 id="uno-projects-unoproj">Uno Projects (<code>.unoproj</code>)</h1>
 <p>Uno is a portable, lightweight dialect of C# that sits at the heart of Fuse and allows you to export native apps for iOS and Android. To learn more about Uno, see the <a href="../native-interop/native-interop.html">Native Interop section</a>.</p>
 <p>Fuse projects are basically Uno projects which references the Fuse libraries. The Fuse libraries are written in the Uno language.</p>
 <p>An Uno project file (<code>.unoproj</code>) is a plain JSON text file, that has this basic stucture:</p>
@@ -902,9 +902,7 @@ Defaults to <code>$(BuildDirectory)/@(Target)/@(Configuration)</code>.</p>
 <pre><code class="language-js">{
     &quot;CacheDirectory&quot;: &quot;.cache&quot;
 }</code></pre>
-<blockquote>
-<h2 id="unocorereference">UnoCoreReference</h2>
-</blockquote>
+<h3 id="unocorereference">UnoCoreReference</h3>
 <p>Whether or not UnoCore should be referenced. You will probably never need this, as it's only used internally. Defaults to <code>true</code>.</p>
 <pre><code class="language-js">{
     &quot;UnoCoreReference&quot;: true
@@ -995,7 +993,7 @@ Defaults to <code>$(BuildDirectory)/@(Target)/@(Configuration)</code>.</p>
 }</code></pre>
 <h4 id="android-previewpackage">Android.PreviewPackage</h4>
 <p>The name of the java package to use for Android export in preview mode. Defaults to <code>Android.Package</code>.
-It's only used during <code>fuse preview -t=android</code>, to differentiate between a normal package and a preview package.
+It's only used during <code>fuse preview android</code>, to differentiate between a normal package and a preview package.
 Use this setting if you want to have both a preview version and an exported version of your app installed on the device simultaneously.</p>
 <pre><code class="language-js">{
     &quot;Android&quot;: {
@@ -1070,7 +1068,7 @@ The following example shows the default values of each property.</p>
 }</code></pre>
 <h4 id="ios-previewbundleidentifier">iOS.PreviewBundleIdentifier</h4>
 <p>The iOS bundle identifier in preview mode. Defaults to <code>iOS.BundleIdentifier</code>.
-It's only used during <code>fuse preview -t=iOS</code>, to differentiate between a normal bundle and a preview bundle.
+It's only used during <code>fuse preview ios</code>, to differentiate between a normal bundle and a preview bundle.
 Use this setting if you want to have both a preview version and an exported version of your app installed on the device simultaneously.</p>
 <pre><code class="language-js">{
     &quot;iOS&quot;: {
