@@ -7,7 +7,6 @@
     "fuse-sdk": "^2.0.0",
     "http-server": "^14.0.0",
     "npm-watch": "^0.11.0",
-    "open-cli": "^7.0.1",
     "rimraf": "^3.0.2",
     "xbash": "^1.6.0"
   },
@@ -18,10 +17,9 @@
     "deploy": "bash deploy.sh",
     "local": "bash build.sh --local --fast",
     "local-slow": "bash build.sh --local",
-    "http-server": "http-server -p 8080 _site",
-    "open": "open-cli http://localhost:8080/",
-    "start": "npm run local && concurrently --kill-others-on-fail npm:watch npm:http-server npm:open",
-    "start-slow": "npm run local-slow && concurrently --kill-others-on-fail npm:http-server npm:open",
+    "http-server": "http-server -o -c-1 -p 8080 _site",
+    "start": "npm run local && concurrently --kill-others-on-fail npm:http-server npm:watch",
+    "start-slow": "npm run local-slow && npm run http-server",
     "watch": "npm-watch local"
   },
   "watch": {
@@ -29,9 +27,10 @@
       "patterns": [
         "articles",
         "media",
-        "static"
+        "static",
+        "layout.html"
       ],
-      "extensions": "md,png,js,css",
+      "extensions": "md,png,js,css,html",
       "runOnChangeOnly": true
     }
   },
