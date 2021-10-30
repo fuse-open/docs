@@ -8,7 +8,7 @@
     <title>FuseJS/Push Module (JS) - Fuse Documentation</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/prism.css?1">
     <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -708,7 +708,7 @@ Show advanced things
 <h4 id="setting-up-the-client-side">Setting up the client side</h4>
 <h5 id="step-1">Step 1.</h5>
 <p>Include the Fuse push notification library by adding the following to your <code>.unoproj</code> file</p>
-<pre><code class="language-js">&quot;Packages&quot;: [
+<pre><code class="language-json">&quot;Packages&quot;: [
     ...
     &quot;Fuse.PushNotifications&quot;,
     ...
@@ -716,7 +716,7 @@ Show advanced things
 <h5 id="step-2-only-for-android">Step 2. (Only for Android)</h5>
 <p>Google notifications require a little extra info.</p>
 <p>Add the following to you <code>.unoproj</code></p>
-<pre><code class="language-js">&quot;Android&quot;: {
+<pre><code class="language-json">&quot;Android&quot;: {
     ...
     &quot;GooglePlay&quot;: {
         &quot;SenderID&quot;: &quot;111781901112&quot;
@@ -744,7 +744,7 @@ If you don't yet have a project set up please see the <a href="#android-setup">A
 <li>When your app starts it registers with APNS. As all access is controlled through Apple's certificate system there is no extra info to provide (we will mention server side a bit later)</li>
 </ul>
 <p>If you wish to disable auto-registration you can place the following in your unoproj file:</p>
-<pre><code class="language-js">&quot;iOS&quot;: {
+<pre><code class="language-json">&quot;iOS&quot;: {
     &quot;PushNotifications&quot;: {
         &quot;RegisterOnLaunch&quot;: false
     }
@@ -784,7 +784,7 @@ In a real app we should send our <code>registration ID</code> to our server when
 </ul>
 <p>Apple and Google's APIs define how the data in the payload is used to populate the system notification, however we have normalized it a little.</p>
 <p>For iOS we'll just include an <code>aps</code> entry in the notification's JSON, like so:</p>
-<pre><code class="language-js">'aps': {
+<pre><code class="language-json">'aps': {
     alert: {
         'title': 'Well would ya look at that!',
         'body': 'Hello from the server'
@@ -792,7 +792,7 @@ In a real app we should send our <code>registration ID</code> to our server when
 },</code></pre>
 <p>And 'title' and 'body' will be used as the title and body of the system notification.</p>
 <p>For Android we can use exactly the same <code>'aps'</code> entry or the alternatively the following:</p>
-<pre><code class="language-js">'notification': {
+<pre><code class="language-json">'notification': {
     alert: {
         'title': 'Well would ya look at that!',
         'body': 'Hello from the server'
@@ -835,7 +835,7 @@ In a real app we should send our <code>registration ID</code> to our server when
 </ul>
 <p>We'll show you how to implement them here in fuse but read more about each feature <a href="https://developer.android.com/guide/topics/ui/notifiers/notifications">here</a>.</p>
 <h6 id="notification-sound-value-default">Notification Sound - Value - default</h6>
-<pre><code class="language-js">'notification': {
+<pre><code class="language-json">'notification': {
     alert: {
         'title': 'Well would ya look at that!',
         'body': 'Hello from the server',
@@ -843,7 +843,7 @@ In a real app we should send our <code>registration ID</code> to our server when
     }
 },</code></pre>
 <h6 id="notification-color-values-rrggbb-aarrggbb">Notification Color - Values - #RRGGBB | #AARRGGBB</h6>
-<pre><code class="language-js">'notification': {
+<pre><code class="language-json">'notification': {
     alert: {
         'title': 'Well would ya look at that!',
         'body': 'Hello from the server',
@@ -851,7 +851,7 @@ In a real app we should send our <code>registration ID</code> to our server when
     }
 },</code></pre>
 <h6 id="notification-priority-values-high-low-max-min">Notification Priority - Values - high | low | max | min</h6>
-<pre><code class="language-js">'notification': {
+<pre><code class="language-json">'notification': {
     alert: {
         'title': 'Well would ya look at that!',
         'body': 'Hello from the server',
@@ -859,7 +859,7 @@ In a real app we should send our <code>registration ID</code> to our server when
     }
 },</code></pre>
 <h6 id="notification-category-values-alarm-reminder-event-call-message-email-promo-recommendation-social-error-progress-service-status-system-transport">Notification Category - Values - alarm | reminder | event | call | message | email | promo | recommendation | social | error | progress | service | status | system | transport</h6>
-<pre><code class="language-js">'notification': {
+<pre><code class="language-json">'notification': {
     alert: {
         'title': 'Well would ya look at that!',
         'body': 'Hello from the server',
@@ -867,7 +867,7 @@ In a real app we should send our <code>registration ID</code> to our server when
     }
 },</code></pre>
 <h6 id="notification-lockscreen-visibility-values-public-secret-private">Notification Lockscreen Visibility - Values - public | secret | private</h6>
-<pre><code class="language-js">'notification': {
+<pre><code class="language-json">'notification': {
     alert: {
         'title': 'Well would ya look at that!',
         'body': 'Hello from the server',
@@ -876,7 +876,7 @@ In a real app we should send our <code>registration ID</code> to our server when
 },</code></pre>
 <h6 id="notification-channel">Notification Channel</h6>
 <p>Notification Channel and a Notification Channel Group:</p>
-<pre><code class="language-js">'notification': {
+<pre><code class="language-json">'notification': {
     alert: {
         'title': 'Well would ya look at that!',
         'body': 'Hello from the server',
@@ -888,7 +888,7 @@ In a real app we should send our <code>registration ID</code> to our server when
     }
 },</code></pre>
 <p>Notification Channel Importance - Values - urgent | high | medium | low | none</p>
-<pre><code class="language-js">'notification': {
+<pre><code class="language-json">'notification': {
     alert: {
         'title': 'Well would ya look at that!',
         'body': 'Hello from the server',
@@ -902,7 +902,7 @@ In a real app we should send our <code>registration ID</code> to our server when
     }
 },</code></pre>
 <p>Notification Channel Lockscreen Visibility - Values - public | secret | private</p>
-<pre><code class="language-js">'notification': {
+<pre><code class="language-json">'notification': {
     alert: {
         'title': 'Well would ya look at that!',
         'body': 'Hello from the server',
@@ -910,7 +910,7 @@ In a real app we should send our <code>registration ID</code> to our server when
     }
 },</code></pre>
 <p>Notification Channel Light Color - Values - #RRGGBB</p>
-<pre><code class="language-js">'notification': {
+<pre><code class="language-json">'notification': {
     alert: {
         'title': 'Well would ya look at that!',
         'body': 'Hello from the server',
@@ -918,7 +918,7 @@ In a real app we should send our <code>registration ID</code> to our server when
     }
 },</code></pre>
 <p>Notification Channel Sound - Values - true | false</p>
-<pre><code class="language-js">'notification': {
+<pre><code class="language-json">'notification': {
     alert: {
         'title': 'Well would ya look at that!',
         'body': 'Hello from the server',
@@ -926,7 +926,7 @@ In a real app we should send our <code>registration ID</code> to our server when
     }
 },</code></pre>
 <p>Notification Channel Vibration - Values - true | false</p>
-<pre><code class="language-js">'notification': {
+<pre><code class="language-json">'notification': {
     alert: {
         'title': 'Well would ya look at that!',
         'body': 'Hello from the server',
@@ -934,7 +934,7 @@ In a real app we should send our <code>registration ID</code> to our server when
     }
 },</code></pre>
 <p>Notification Channel Show Badge - Values - true | false</p>
-<pre><code class="language-js">'notification': {
+<pre><code class="language-json">'notification': {
     alert: {
         'title': 'Well would ya look at that!',
         'body': 'Hello from the server',
@@ -943,7 +943,7 @@ In a real app we should send our <code>registration ID</code> to our server when
 },</code></pre>
 <h6 id="notification-badge">Notification Badge</h6>
 <p>Notification Channel Badge Number</p>
-<pre><code class="language-js">'notification': {
+<pre><code class="language-json">'notification': {
      alert: {
          'title': 'Well would ya look at that!',
          'body': 'Hello from the server',
@@ -951,7 +951,7 @@ In a real app we should send our <code>registration ID</code> to our server when
      }
  },</code></pre>
 <p>Notification Channel Badge Icon Type - Values - none | small | large</p>
-<pre><code class="language-js">'notification': {
+<pre><code class="language-json">'notification': {
     alert: {
         'title': 'Well would ya look at that!',
         'body': 'Hello from the server',
@@ -960,7 +960,7 @@ In a real app we should send our <code>registration ID</code> to our server when
 },</code></pre>
 <h6 id="notification-uno-project-configurations">Notification Uno Project Configurations</h6>
 <p>The following notification settings can be set via the <code>.unoproj</code> settings:</p>
-<pre><code class="language-js">&quot;Android&quot;: {
+<pre><code class="language-json">&quot;Android&quot;: {
     ...
     &quot;Notification&quot;: {
         &quot;DefaultChannelGroupId&quot;: &quot;default_group&quot;,
@@ -992,7 +992,7 @@ NB! Once a channel is created, you CANNOT change its properties later.</p>
 <li>Navigate to the &quot;Cloud Messaging&quot; tab</li>
 <li>Copy the &quot;Sender ID&quot; into your <code>.unoproj</code> like this:</li>
 </ul>
-<pre><code class="language-js">&quot;Android&quot;: {
+<pre><code class="language-json">&quot;Android&quot;: {
     &quot;GooglePlay&quot;: {
         &quot;SenderID&quot;: &quot;&lt;Sender ID goes here&gt;&quot;
     }
@@ -1006,7 +1006,7 @@ If you haven't already registered an Android app, follow these steps:</p>
 By default, this will be <code>com.apps.&lt;yourappnameinlowercase&gt;</code>.
 However, it is recommended to set your own:</li>
 </ul>
-<pre><code class="language-js">&quot;Android&quot;: {
+<pre><code class="language-json">&quot;Android&quot;: {
     &quot;Package&quot;: &quot;com.mycompany.myapp&quot;,
 }</code></pre>
 <ul>

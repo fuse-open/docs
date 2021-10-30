@@ -8,7 +8,7 @@
     <title>Uno Projects (.unoproj) - Fuse Documentation</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/prism.css?1">
     <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -683,7 +683,7 @@
 <p>Uno is a portable, lightweight dialect of C# that sits at the heart of Fuse and allows you to export native apps for iOS and Android. To learn more about Uno, see the <a href="../native-interop/native-interop.html">Native Interop section</a>.</p>
 <p>Fuse projects are basically Uno projects which references the Fuse libraries. The Fuse libraries are written in the Uno language.</p>
 <p>An Uno project file (<code>.unoproj</code>) is a plain JSON text file, that has this basic stucture:</p>
-<pre><code class="language-js">{
+<pre><code class="language-json">{
     &quot;Packages&quot;: [
         &quot;Fuse&quot;,
         &quot;FuseJS&quot;
@@ -698,7 +698,7 @@
 <p>The <code>Packages</code> section is the list of packages to be referenced in your project. Packages are pre-compiled Uno projects ready to use, registered with a canonical package name in the Uno package manager.</p>
 <p>To make a Fuse project, you typically have to reference at least the <code>Fuse</code> and <code>FuseJS</code> packages. When scaffolding your application, however, Fuse will include a standard set of packages to get you up and running.</p>
 <p>What packages you reference may affect the <em>permissions</em> your app requires.</p>
-<pre><code class="language-js">{
+<pre><code class="language-json">{
     &quot;Packages&quot;: [
         &quot;Fuse&quot;,
         &quot;FuseJS&quot;
@@ -708,11 +708,11 @@
 <p>The Uno project format supports a basic macro system.
 This feature is used to implement many of the top-level properties, such as <a href="#title">Title</a> and <a href="#version">Version</a>.</p>
 <p>For instance, say you set the <code>Version</code> property as follows:</p>
-<pre><code class="language-js">{
+<pre><code class="language-json">{
     &quot;Version&quot;: &quot;0.9.4&quot;
 }</code></pre>
 <p>By default, both <a href="#android-versionname">Android.VersionName</a> and <a href="#ios-bundleversion">iOS.BundleVersion</a> are set as follows:</p>
-<pre><code class="language-js">{
+<pre><code class="language-json">{
     &quot;Android&quot;: {
         &quot;VersionName&quot;: &quot;$(Version)&quot;
     },
@@ -723,14 +723,14 @@ This feature is used to implement many of the top-level properties, such as <a h
 <p>This will make those properties inherit the top-level <code>Version</code> property.</p>
 <h2 id="projects">Projects</h2>
 <p>The <code>Projects</code> section is optional, and allows you to reference other Uno projects in the local file system. By relative paths to other <code>.unoproj</code> files.</p>
-<pre><code class="language-js">{
+<pre><code class="language-json">{
     &quot;Projects&quot;: [
         &quot;../../SomeOtherProject/SomeOtherProject.unoproj&quot;
     ]
 }</code></pre>
 <h2 id="includes-and-excludes">Includes and Excludes</h2>
 <p>The <code>Includes</code> and <code>Excludes</code> properties lets you control which files to include in your project. They are both arrays of strings, as shown in the snippet below:</p>
-<pre><code class="language-js">{
+<pre><code class="language-json">{
     &quot;Includes&quot;: [
         &quot;*.ux&quot;,
         &quot;js/**/*.js&quot;,
@@ -745,7 +745,7 @@ This feature is used to implement many of the top-level properties, such as <a h
 <p>An include/exclude entry can take one of the following forms:</p>
 <h3 id="globpattern"><code>GlobPattern</code></h3>
 <p>A glob pattern, as described further down in this document.</p>
-<pre><code class="language-js">{
+<pre><code class="language-json">{
     &quot;Includes&quot;: [
         &quot;*.ux&quot;,
         &quot;js/**/*.js&quot;,
@@ -821,14 +821,14 @@ This feature is used to implement many of the top-level properties, such as <a h
 </table>
 <h3 id="filename-type"><code>FileName:Type</code></h3>
 <p>This tells the Uno compiler to include a single file, interpreting it as a certain <a href="#allowed-include-types">type</a>.</p>
-<pre><code class="language-js">{
+<pre><code class="language-json">{
     &quot;Includes&quot;: [
         &quot;MainView.ux:UX&quot;
     ]
 }</code></pre>
 <h3 id="filename-type-condition"><code>FileName:Type:Condition</code></h3>
 <p>In addition to a file of a certain <a href="#allowed-include-types">type</a>, you may specify a condition that will determine if the file will be included or not.</p>
-<pre><code class="language-js">{
+<pre><code class="language-json">{
     &quot;Includes&quot;: [
         &quot;AndroidOnly.java:Java:Android&quot;,
         &quot;iOSOnly.hh:ObjCHeader:iOS&quot;,
@@ -852,59 +852,59 @@ This feature is used to implement many of the top-level properties, such as <a h
 <h3 id="title">Title</h3>
 <p>The user-readable title of your app. Defaults to <code>$(Name)</code>.</p>
 <p><em>unrealisticallyLongNameForAnApp.unoproj</em>:</p>
-<pre><code class="language-js">{
+<pre><code class="language-json">{
     &quot;Title&quot;: &quot;ShorterName&quot;
 }</code></pre>
 <h3 id="description">Description</h3>
 <p>User-readable description of your app. Empty by default.</p>
-<pre><code class="language-js">{
+<pre><code class="language-json">{
     &quot;Description&quot;: &quot;An app that helps you organize, track and analyze cat pictures on the internet.&quot;
 }</code></pre>
 <h3 id="copyright">Copyright</h3>
 <p>Your app's copyright notice. Defaults to <code>Copyright (C) &lt;current year&gt; $(Publisher)</code>.</p>
-<pre><code class="language-js">{
+<pre><code class="language-json">{
     &quot;Copyright&quot;: &quot;Copyright © 2003-2016 $(Publisher)&quot;
 }</code></pre>
 <h3 id="publisher">Publisher</h3>
 <p>The legal entity in charge of publishing the application. Defaults to <code>$(Publisher)</code>.</p>
-<pre><code class="language-js">{
+<pre><code class="language-json">{
     &quot;Publisher&quot;: &quot;VeryBusinessCorp Inc.&quot;
 }</code></pre>
 <h3 id="version">Version</h3>
 <p>The current version of your app,  Defaults to <code>0.0.0</code>.</p>
-<pre><code class="language-js">{
+<pre><code class="language-json">{
     &quot;Version&quot;: &quot;1.2.9&quot;
 }</code></pre>
 <h3 id="versioncode">VersionCode</h3>
 <p>Some platforms (currently only Android) want an integral version code in addition to a version string. Further documentation can be found <a href="http://developer.Android.com/tools/publishing/versioning.html#appversioning">here</a>. Defaults to <code>0</code>.</p>
-<pre><code class="language-js">{
+<pre><code class="language-json">{
     &quot;VersionCode&quot;: 125
 }</code></pre>
 <h3 id="rootnamespace">RootNamespace</h3>
 <p>The root namespace to use. Defaults to <code>$(QIdentifier)</code>.</p>
-<pre><code class="language-js">{
+<pre><code class="language-json">{
     &quot;RootNamespace&quot;: &quot;MyCompany.MyApp&quot;
 }</code></pre>
 <h3 id="builddirectory">BuildDirectory</h3>
 <p>Where to place temporary files and executables for various build configurations and targets. Defaults to <code>build</code>.</p>
-<pre><code class="language-js">{
+<pre><code class="language-json">{
     &quot;BuildDirectory&quot;: &quot;build&quot;
 }</code></pre>
 <p>Paths are relative to the project root by default. Note that it can be unwise to use absolute paths, as it can cause issues when building from another machine with a different setup.</p>
 <h3 id="outputdirectory">OutputDirectory</h3>
 <p>Where to place temporary files and executables for <em>the current build target and configuration</em>.
 Defaults to <code>$(BuildDirectory)/@(Target)/@(Configuration)</code>.</p>
-<pre><code class="language-js">{
+<pre><code class="language-json">{
     &quot;OutputDirectory&quot;: &quot;$(BuildDirectory)/@(Target)/@(Configuration)&quot;
 }</code></pre>
 <h3 id="cachedirectory">CacheDirectory</h3>
 <p>Where to place Uno's cache files. Defaults to <code>.uno</code>.</p>
-<pre><code class="language-js">{
+<pre><code class="language-json">{
     &quot;CacheDirectory&quot;: &quot;.cache&quot;
 }</code></pre>
 <h3 id="unocorereference">UnoCoreReference</h3>
 <p>Whether or not UnoCore should be referenced. You will probably never need this, as it's only used internally. Defaults to <code>true</code>.</p>
-<pre><code class="language-js">{
+<pre><code class="language-json">{
     &quot;UnoCoreReference&quot;: true
 }</code></pre>
 <h3 id="mobile">Mobile</h3>
@@ -912,28 +912,28 @@ Defaults to <code>$(BuildDirectory)/@(Target)/@(Configuration)</code>.</p>
 <h4 id="mobile-urischeme">Mobile.UriScheme</h4>
 <p>Specifies an URI scheme that can be used to launch your app.</p>
 <p>For instance, setting <code>&quot;UriScheme&quot;: &quot;abcd&quot;</code> will make your app launch when an <code>abcd://</code> URI is launched.</p>
-<pre><code class="language-js">{
+<pre><code class="language-json">{
     &quot;Mobile&quot;: {
         &quot;UriScheme&quot;: &quot;abcd&quot;
     }
 }</code></pre>
 <h4 id="mobile-keepalive">Mobile.KeepAlive</h4>
 <p>If set to <code>true</code>, the screen won't dim and eventually turn off while your app is open. Defaults to <code>false</code>.</p>
-<pre><code class="language-js">{
+<pre><code class="language-json">{
     &quot;Mobile&quot;: {
         &quot;KeepAlive&quot;: false
     }
 }</code></pre>
 <h4 id="mobile-showstatusbar">Mobile.ShowStatusbar</h4>
 <p>Whether or not to show the status bar. Defaults to <code>true</code>.</p>
-<pre><code class="language-js">{
+<pre><code class="language-json">{
     &quot;Mobile&quot;: {
         &quot;ShowStatusbar&quot;: true
     }
 }</code></pre>
 <h4 id="mobile-runsinbackground">Mobile.RunsInBackground</h4>
 <p>Controls whether or not your app should continue running when the user presses the home button. Defaults to <code>true</code>.</p>
-<pre><code class="language-js">{
+<pre><code class="language-json">{
     &quot;Mobile&quot;: {
         &quot;RunsInBackground&quot;: false
     }
@@ -949,7 +949,7 @@ Defaults to <code>$(BuildDirectory)/@(Target)/@(Configuration)</code>.</p>
 <li><code>LandscapeLeft</code></li>
 <li><code>LandscapeRight</code></li>
 </ul>
-<pre><code class="language-js">{
+<pre><code class="language-json">{
     &quot;Mobile&quot;: {
         &quot;Orientations&quot;: &quot;Portrait&quot;
     }
@@ -958,35 +958,35 @@ Defaults to <code>$(BuildDirectory)/@(Target)/@(Configuration)</code>.</p>
 <p>A dictionary of options that apply to Android targets only.</p>
 <h4 id="android-applicationlabel">Android.ApplicationLabel</h4>
 <p>A user-readable label for the application, specific to Android. This is the Android equivalent of the top-level <a href="#title">Title</a> property. defaults to <code>$(Title)</code>.</p>
-<pre><code class="language-js">{
+<pre><code class="language-json">{
     &quot;Android&quot;: {
         &quot;ApplicationLabel&quot;: &quot;MyFancyApp&quot;
     }
 }</code></pre>
 <h4 id="android-description">Android.Description</h4>
 <p>The same as <a href="#description">Description</a>, but specific to Android. Defaults to <code>$(Description)</code>.</p>
-<pre><code class="language-js">{
+<pre><code class="language-json">{
     &quot;Android&quot;: {
         &quot;Description&quot;: &quot;This is an Android-specific description!&quot;
     }
 }</code></pre>
 <h4 id="android-versioncode">Android.VersionCode</h4>
 <p>The same as <a href="#versioncode">VersionCode</a>, but specific to Android. Defaults to <code>$(VersionCode)</code>.</p>
-<pre><code class="language-js">{
+<pre><code class="language-json">{
     &quot;Android&quot;: {
         &quot;VersionCode&quot;: 412
     }
 }</code></pre>
 <h4 id="android-versionname">Android.VersionName</h4>
 <p>The same as <a href="#version">Version</a>, but specific to Android. Defaults to <code>$(Version)</code>.</p>
-<pre><code class="language-js">{
+<pre><code class="language-json">{
     &quot;Android&quot;: {
         &quot;VersionName&quot;: &quot;0.5.2&quot;
     }
 }</code></pre>
 <h4 id="android-package">Android.Package</h4>
 <p>The name of the java package to use for Android export. Defaults to <code>$(QIdentifier)</code>.</p>
-<pre><code class="language-js">{
+<pre><code class="language-json">{
     &quot;Android&quot;: {
         &quot;Package&quot;: &quot;com.mycompany.myapp&quot;
     }
@@ -995,7 +995,7 @@ Defaults to <code>$(BuildDirectory)/@(Target)/@(Configuration)</code>.</p>
 <p>The name of the java package to use for Android export in preview mode. Defaults to <code>Android.Package</code>.
 It's only used during <code>fuse preview android</code>, to differentiate between a normal package and a preview package.
 Use this setting if you want to have both a preview version and an exported version of your app installed on the device simultaneously.</p>
-<pre><code class="language-js">{
+<pre><code class="language-json">{
     &quot;Android&quot;: {
         &quot;PreviewPackage&quot;: &quot;com.mycompany.myapp.preview&quot;
     }
@@ -1003,7 +1003,7 @@ Use this setting if you want to have both a preview version and an exported vers
 <h4 id="android-icons">Android.Icons</h4>
 <p>Instead of providing one uniformly sized icon to be used on all platforms, we can specify different icons for different screen densities, specific to Android. These are grouped according to Android's <a href="http://developer.Android.com/guide/practices/screens_support.html#range">generalized densities</a>. All of them default to <code>$(Icon)</code>.</p>
 <p><em>Note:</em> This only applies to Android, however we can achieve the same on iOS using <a href="#ios-icons">iOS.Icons</a>.</p>
-<pre><code class="language-js">{
+<pre><code class="language-json">{
     &quot;Android&quot;: {
         &quot;Icons&quot;: {
             &quot;LDPI&quot;: &quot;Icon-ldpi-36x36.png&quot;,
@@ -1019,7 +1019,7 @@ Use this setting if you want to have both a preview version and an exported vers
 <p>See <a href="../preview-and-export/signing.html">signing</a>.</p>
 <h4 id="android-geo-apikey">Android.Geo.ApiKey</h4>
 <p>Your Google Maps API key, for use with <a href="../fuse/controls/mapview.html">MapView</a>.</p>
-<pre><code class="language-js">{
+<pre><code class="language-json">{
     &quot;Android&quot;: {
         &quot;Geo&quot;: {
             &quot;ApiKey&quot;: &quot;&lt;your Google Maps API key&gt;&quot;
@@ -1028,7 +1028,7 @@ Use this setting if you want to have both a preview version and an exported vers
 }</code></pre>
 <h4 id="android-googleplay-senderid">Android.GooglePlay.SenderID</h4>
 <p>In order to use the <a href="../fuse/pushnotifications/push.html">push notification api</a> on Android, you have to specify a project ID from the <a href="https://console.developers.google.com/">Google Developers Console</a>.</p>
-<pre><code class="language-js">{
+<pre><code class="language-json">{
     &quot;Android&quot;: {
         &quot;GooglePlay&quot;: {
             &quot;SenderID&quot;: &quot;111781901112&quot;
@@ -1037,7 +1037,7 @@ Use this setting if you want to have both a preview version and an exported vers
 }</code></pre>
 <h4 id="android-ndk-platformversion">Android.NDK.PlatformVersion</h4>
 <p>The NDK platform version to use. Defaults to <code>9</code>.</p>
-<pre><code class="language-js">{
+<pre><code class="language-json">{
     &quot;Android&quot;: {
         &quot;NDK&quot;: {
             &quot;PlatformVersion&quot;: 9
@@ -1047,7 +1047,7 @@ Use this setting if you want to have both a preview version and an exported vers
 <h4 id="android-sdk">Android.SDK</h4>
 <p>Specifies version constraints for the Android SDK to build against.
 The following example shows the default values of each property.</p>
-<pre><code class="language-js">{
+<pre><code class="language-json">{
     &quot;Android&quot;: {
         &quot;SDK&quot;: {
             &quot;BuildToolsVersion&quot;: &quot;23.0.0&quot;,
@@ -1061,7 +1061,7 @@ The following example shows the default values of each property.</p>
 <h4 id="ios-bundleidentifier">iOS.BundleIdentifier</h4>
 <p>The iOS bundle identifier.</p>
 <p>Corresponds to <a href="https://developer.apple.com/library/ios/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html#//apple_ref/doc/uid/20001431-102070">CFBundleIdentifier</a>.</p>
-<pre><code class="language-js">{
+<pre><code class="language-json">{
     &quot;iOS&quot;: {
         &quot;BundleIdentifier&quot;: &quot;com.mycompany.myapp&quot;
     }
@@ -1070,7 +1070,7 @@ The following example shows the default values of each property.</p>
 <p>The iOS bundle identifier in preview mode. Defaults to <code>iOS.BundleIdentifier</code>.
 It's only used during <code>fuse preview ios</code>, to differentiate between a normal bundle and a preview bundle.
 Use this setting if you want to have both a preview version and an exported version of your app installed on the device simultaneously.</p>
-<pre><code class="language-js">{
+<pre><code class="language-json">{
     &quot;iOS&quot;: {
         &quot;PreviewBundleIdentifier&quot;: &quot;com.mycompany.myapp.preview&quot;
     }
@@ -1079,7 +1079,7 @@ Use this setting if you want to have both a preview version and an exported vers
 <p>A user-readable label for the application specific to iOS. This is the iOS equivalent of <a href="#android-applicationlabel">Android.ApplicationLabel</a>.
 Corresponds to <a href="https://developer.apple.com/library/ios/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html#//apple_ref/doc/uid/TP40009249-109585">CFBundleName</a>.
 Defaults to <code>$(Title)</code>.</p>
-<pre><code class="language-js">{
+<pre><code class="language-json">{
     &quot;iOS&quot;: {
         &quot;BundleName&quot;: &quot;MyAwesomeApp&quot;
     }
@@ -1088,7 +1088,7 @@ Defaults to <code>$(Title)</code>.</p>
 <p>The same as <a href="#version">Version</a>, but specific to iOS.
 Defaults to <code>$(Version)</code>.</p>
 <p>Corresponds to <a href="https://developer.apple.com/library/ios/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html#//apple_ref/doc/uid/20001431-102364">CFBundleVersion</a>.</p>
-<pre><code class="language-js">{
+<pre><code class="language-json">{
     &quot;iOS&quot;: {
         &quot;BundleVersion&quot;: &quot;0.5.2&quot;
     }
@@ -1096,7 +1096,7 @@ Defaults to <code>$(Version)</code>.</p>
 <h4 id="ios-deploymenttarget">iOS.DeploymentTarget</h4>
 <p>The minimum iOS version your app can run on.
 Defaults to <code>8.0</code>.</p>
-<pre><code class="language-js">{
+<pre><code class="language-json">{
     &quot;iOS&quot;: {
         &quot;DeploymentTarget&quot;: &quot;8.0&quot;
     }
@@ -1106,7 +1106,7 @@ Defaults to <code>8.0</code>.</p>
 All of them default to <code>$(Icon)</code>. These icons are applied to release builds, meaning a preview build will keep the Fuse preview icon.</p>
 <p>Corresponds to <a href="https://developer.apple.com/library/ios/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html#//apple_ref/doc/uid/TP40009249-SW10">CFBundleIconFiles</a>.</p>
 <p><em>Note:</em> This only applies to iOS, however we can achieve the same on Android using <a href="#android-icons">Android.Icons</a>.</p>
-<pre><code class="language-js">{
+<pre><code class="language-json">{
     &quot;iOS&quot;: {
         &quot;Icons&quot;: {
             &quot;iPhone_20_2x&quot;: &quot;Icon-iPhone-20@2x.png&quot;,
@@ -1133,7 +1133,7 @@ All of them default to <code>$(Icon)</code>. These icons are applied to release 
 <h4 id="ios-launchimages">iOS.LaunchImages</h4>
 <p>Specifies launch images of different sizes to be used on iOS.
 Corresponds to <a href="https://developer.apple.com/library/ios/documentation/General/Reference/InfoPlistKeyReference/Articles/iPhoneOSKeys.html#//apple_ref/doc/uid/TP40009252-SW28">UILaunchImages</a>.</p>
-<pre><code class="language-js">{
+<pre><code class="language-json">{
     &quot;iOS&quot;: {
         &quot;LaunchImages&quot;: {
             &quot;iPhone_Portrait_iPhoneX_3x&quot;: &quot;...&quot;,  // 1125x2436
@@ -1154,7 +1154,7 @@ Corresponds to <a href="https://developer.apple.com/library/ios/documentation/Ge
 <p>Capabilities are App Services which need special declarations in the Xcode project.</p>
 <p>In all cases where it is reliable to do so, Fuse will also add the appropriate Entitlements to your project.</p>
 <p>For more info on the valid values for <code>AssociatedDomains</code>, <code>KeychainSharing</code> &amp; <code>ApplicationGroups</code> please see the <a href="https://developer.apple.com/library/content/documentation/IDEs/Conceptual/AppDistributionGuide/AddingCapabilities/AddingCapabilities.html">Apple documentation</a></p>
-<pre><code class="language-js">{
+<pre><code class="language-json">{
     &quot;iOS&quot;: {
         &quot;SystemCapabilities&quot;: {
             &quot;ApplicationGroups&quot;: [&quot;group.A&quot;, &quot;group.B&quot;],
@@ -1177,7 +1177,7 @@ Corresponds to <a href="https://developer.apple.com/library/ios/documentation/Ge
 <h5 id="ios-plist-mkdirectionsapplicationsupportedmodes">iOS.PList.MKDirectionsApplicationSupportedModes</h5>
 <p>An array of strings, specifying the modes of transportation for which the app is capable of giving map directions.
 Reference can be found <a href="https://developer.apple.com/library/ios/documentation/General/Reference/InfoPlistKeyReference/Articles/iPhoneOSKeys.html#//apple_ref/doc/uid/TP40009252-SW33">here</a>.</p>
-<pre><code class="language-js">{
+<pre><code class="language-json">{
     &quot;iOS&quot;: {
         &quot;PList&quot;: {
             &quot;MKDirectionsApplicationSupportedModes&quot;: [
@@ -1190,7 +1190,7 @@ Reference can be found <a href="https://developer.apple.com/library/ios/document
 <h5 id="ios-plist-uirequireddevicecapabilities">iOS.PList.UIRequiredDeviceCapabilities</h5>
 <p>An array of strings, specifying which device-related capabilities must be available for the app to function.
 Reference can be found <a href="https://developer.apple.com/library/ios/documentation/General/Reference/InfoPlistKeyReference/Articles/iPhoneOSKeys.html#//apple_ref/doc/uid/TP40009252-SW3">here</a>.</p>
-<pre><code class="language-js">{
+<pre><code class="language-json">{
     &quot;iOS&quot;: {
         &quot;PList&quot;: {
             &quot;UIRequiredDeviceCapabilities&quot;: [
@@ -1202,7 +1202,7 @@ Reference can be found <a href="https://developer.apple.com/library/ios/document
 }</code></pre>
 <h5 id="ios-plist-nshealthshareusagedescription">iOS.PList.NSHealthShareUsageDescription</h5>
 <p>A message that will be shown to the user when the app is requesting HealthKit data.</p>
-<pre><code class="language-js">{
+<pre><code class="language-json">{
     &quot;iOS&quot;: {
         &quot;PList&quot;: {
             &quot;NSHealthShareUsageDescription&quot;: &quot;We need access to your HealthKit data because...&quot;
@@ -1212,7 +1212,7 @@ Reference can be found <a href="https://developer.apple.com/library/ios/document
 <h5 id="ios-plist-uiapplicationexitsonsuspend">iOS.PList.UIApplicationExitsOnSuspend</h5>
 <p>When <code>true</code>, the app will terminate rather than being sent to the background when the user presses the home button. Defaults to <code>false</code>.</p>
 <p>Reference can be found <a href="https://developer.apple.com/library/ios/documentation/General/Reference/InfoPlistKeyReference/Articles/iPhoneOSKeys.html#//apple_ref/doc/uid/TP40009252-SW23">here</a>.</p>
-<pre><code class="language-js">{
+<pre><code class="language-json">{
     &quot;iOS&quot;: {
         &quot;PList&quot;: {
             &quot;UIApplicationExitsOnSuspend&quot;: false
@@ -1223,7 +1223,7 @@ Reference can be found <a href="https://developer.apple.com/library/ios/document
 <p>Specifies whether the app can share files through iTunes when connected to a computer.
 Defaults to <code>false</code>.</p>
 <p>Reference can be found <a href="https://developer.apple.com/library/ios/documentation/General/Reference/InfoPlistKeyReference/Articles/iPhoneOSKeys.html#//apple_ref/doc/uid/TP40009252-SW20">here</a>.</p>
-<pre><code class="language-js">{
+<pre><code class="language-json">{
     &quot;iOS&quot;: {
         &quot;PList&quot;: {
             &quot;UIFileSharingEnabled&quot;: true
@@ -1233,7 +1233,7 @@ Defaults to <code>false</code>.</p>
 <h5 id="ios-plist-uinewsstandapp">iOS.PList.UINewsstandApp</h5>
 <p>Specifies whether the app presents its contents in the iOS Newsstand app. Defaults to <code>false</code>.</p>
 <p>Reference can be found <a href="https://developer.apple.com/library/ios/documentation/General/Reference/InfoPlistKeyReference/Articles/iPhoneOSKeys.html#//apple_ref/doc/uid/TP40009252-SW25">here</a>.</p>
-<pre><code class="language-js">{
+<pre><code class="language-json">{
     &quot;iOS&quot;: {
         &quot;PList&quot;: {
             &quot;UINewsstandApp&quot;: true
@@ -1241,7 +1241,7 @@ Defaults to <code>false</code>.</p>
     }
 }</code></pre>
 <h5 id="ios-plist-uiprerenderedicon">iOS.PList.UIPrerenderedIcon</h5>
-<pre><code class="language-js">{
+<pre><code class="language-json">{
     &quot;iOS&quot;: {
         &quot;PList&quot;: {
             &quot;UIPrerenderedIcon&quot;: true
@@ -1251,7 +1251,7 @@ Defaults to <code>false</code>.</p>
 <h5 id="ios-plist-uisupportedexternalaccessoryprotocols">iOS.PList.UISupportedExternalAccessoryProtocols</h5>
 <p>An array of strings specifying which external accessory protocols your app is capable of communicating over. Defaults to <code>[]</code>.</p>
 <p>Reference can be found <a href="https://developer.apple.com/library/ios/documentation/General/Reference/InfoPlistKeyReference/Articles/iPhoneOSKeys.html#//apple_ref/doc/uid/TP40009252-SW4">here</a>.</p>
-<pre><code class="language-js">{
+<pre><code class="language-json">{
     &quot;iOS&quot;: {
         &quot;PList&quot;: {
             &quot;UISupportedExternalAccessoryProtocols&quot;: [
@@ -1268,7 +1268,7 @@ TODO: Figure out what this means for Fuse apps.
 <h5 id="ios-plist-uiviewedgeantialiasing">iOS.PList.UIViewEdgeAntialiasing</h5>
 <p>Specifies whether Core Animation layers use antialiasing when drawing a layer that is not aligned to pixel boundaries. Defaults to <code>false</code>.</p>
 <p>Reference can be found <a href="https://developer.apple.com/library/ios/documentation/General/Reference/InfoPlistKeyReference/Articles/iPhoneOSKeys.html#//apple_ref/doc/uid/TP40009252-SW5">here</a>.</p>
-<pre><code class="language-js">{
+<pre><code class="language-json">{
     &quot;iOS&quot;: {
         &quot;PList&quot;: {
             &quot;UIViewEdgeAntialiasing&quot;: true

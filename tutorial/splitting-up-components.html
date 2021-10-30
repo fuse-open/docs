@@ -8,7 +8,7 @@
     <title>Introduction - Fuse Documentation</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/prism.css?1">
     <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -698,7 +698,7 @@
 |- hikr.unoproj</code></pre>
 <p>Before we put any content in here, let's first make sure that Fuse will <em>bundle</em> it with our app. Normally, if you write inline JavaScript code in UX by using the <code>JavaScript</code> tag, or refer to a specific file like <code>&lt;JavaScript File=&quot;myFile.js&quot; /&gt;</code>, Fuse will automatically make sure that JavaScript code is bundled with our app. However, when we have individual JavaScript modules in our project that aren't referred to by a <code>JavaScript</code> tag directly, we need to tell Fuse that this code is part of our project.</p>
 <p>For that, we'll add some info to our <em>project file</em> that tells Fuse that our <code>hikes.js</code> file should be bundled with our app. If we open up the <code>hikr.unoproj</code> file, we'll see something like this:</p>
-<pre><code class="language-js">{
+<pre><code class="language-json">{
   &quot;Packages&quot;: [
     &quot;Fuse&quot;,
     &quot;FuseJS&quot;
@@ -708,11 +708,11 @@
   ]
 }</code></pre>
 <p>As you can see, there's not much to it; basically just some simple info about our project. The section we're particularly interested in is the <code>&quot;Includes&quot;</code> section. Currently, it has one entry:</p>
-<pre><code class="language-js">&quot;Includes&quot;: [
+<pre><code class="language-json">&quot;Includes&quot;: [
   &quot;*&quot;
 ]</code></pre>
 <p>This basically means that the Fuse project should include a lot of the files commonly associated with Fuse projects. This covers .ux files, .uno files, and a few others. However, it does <em>not</em> include JavaScript files, so we'll have to add our <code>hikes.js</code> file explicitly. To do this, we'll add another item to this list:</p>
-<pre><code class="language-js">{
+<pre><code class="language-json">{
   &quot;Packages&quot;: [
     &quot;Fuse&quot;,
     &quot;FuseJS&quot;
@@ -1125,7 +1125,7 @@ module.exports = {
 <p><img src="../media/hikr/chapter-3/edithikepage.png" alt="End of chapter result"></p>
 <p>And here's what the code for all of our various files looks like. It's a few more files now, but they're much simpler now in isolation:</p>
 <p><code>hikr.unoproj</code>:</p>
-<pre><code class="language-js">{
+<pre><code class="language-json">{
   &quot;Packages&quot;: [
     &quot;Fuse&quot;,
     &quot;FuseJS&quot;

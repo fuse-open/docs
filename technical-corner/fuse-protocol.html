@@ -8,7 +8,7 @@
     <title>Fuse Plugin API - Fuse Documentation</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/prism.css?1">
     <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -693,19 +693,19 @@ foo bar</code></pre>
 <h2 id="daemon-protocol">Daemon Protocol</h2>
 <p>On top of the <em>Fuse Protocol</em> is the <em>Daemon protocol</em>. The daemon protocol defines three types of <em>Fuse Protocol</em> messages, called <strong>Event</strong>, <strong>Request</strong> and <strong>Response</strong>. The payload for each of these types is UTF-8 encoded JSON, and looks as follows:</p>
 <h3 id="event">Event</h3>
-<pre><code class="language-js">{
+<pre><code class="language-json">{
     &quot;Name&quot;: &quot;ExampleEvent&quot;,
     &quot;SubscriptionId&quot;: 32, // The id of the event subscription (set automatically by the daemon),
     &quot;Data&quot;: { ... }, // An event-specific JSON-object with the event data
 }</code></pre>
 <h3 id="request">Request</h3>
-<pre><code class="language-js">{
+<pre><code class="language-json">{
     &quot;Name&quot;: &quot;MyRequest&quot;,
     &quot;Id&quot;: 242, // Make this a unique number for each request, so we can recognize the matching response message
     &quot;Arguments&quot;: { ... }, // A request-specific JSON-object with the request
 }</code></pre>
 <h3 id="response">Response</h3>
-<pre><code class="language-js">{
+<pre><code class="language-json">{
     &quot;Id&quot;: 242, // The id of the request to which this is a response
     &quot;Status&quot;: &quot;Success&quot;, // Can be &quot;Success&quot;, &quot;Error&quot; or &quot;Unhandled&quot;
     &quot;Result&quot;: { ... }, // If status is &quot;Succsess&quot;, a request-specific JSON-object with the response
@@ -714,7 +714,7 @@ foo bar</code></pre>
 <h3 id="request-and-response">Request and Response</h3>
 <p><a name="indepth-request"></a>The request and response system is based on RPC (remote procedure call). The Fuse daemon acts as a switch between requesters and responders. A request sent from a client to the daemon will be forwarded to the <strong>last</strong> client which provides a handler for a specific request type. A client can publish that it provides a service (handles a request type) by sending a <a href="#publishservice">PublishService</a> request to the daemon. A service provider is supposed to handle one or more request types, by transforming the request to a response. The concept is similar to method invocation, where request message store the method name and arguments for the method to be invoked, and the return value of the method is either something valid or an error (similar to exceptions in exception based languages), which in turn is sent back as a response to the requester (response is sent to the daemon, which forwards it to the requester).</p>
 <p><strong>A PublishService request</strong><a name="publishservice"></a></p>
-<pre><code class="language-js">{
+<pre><code class="language-json">{
     &quot;Name&quot;: &quot;PublishService&quot;,
     &quot;Arguments&quot;: {
         &quot;RequestNames&quot;: [&quot;MyRequest&quot;, ...], // An array of names of requests that we respond to
@@ -724,7 +724,7 @@ foo bar</code></pre>
 <p>Events are broadcasted on a message bus in a typical pub/sub fashion, where clients can subscribe to certain event types. Subscribing is done by sending a <a href="#subscriberequest">subscribe</a> request to the daemon. A client can send events that are forwarded to the bus, by sending an event to the daemon.</p>
 <p>One thing to note about our protocol is that there is never a direct connection between two clients, and they don't know about each other. All communication goes through the daemon, which works as a switch and a broadcaster.</p>
 <p><strong>A Subscribe request</strong><a name="subscriberequest"></a></p>
-<pre><code class="language-js">{
+<pre><code class="language-json">{
     &quot;Name&quot;: &quot;Subscribe&quot;,
     &quot;Arguments&quot;: {
         &quot;Filter&quot;: &quot;&lt;regex&gt;&quot;, // .Net style regex filtering incoming events based on type
@@ -734,7 +734,7 @@ foo bar</code></pre>
 }</code></pre>
 <p>The <em>Daemon Protocol</em> itself does not define a set of message types; any user of the <em>Daemon Protocol</em> is free to define types. Here's an example of a custom event message:</p>
 <p><strong>A user-defined event</strong></p>
-<pre><code class="language-js">{
+<pre><code class="language-json">{
     &quot;Name&quot;: &quot;MyMouseEvent&quot;,
     &quot;Data&quot;: {
         &quot;MouseX&quot;: 200,
@@ -745,15 +745,15 @@ foo bar</code></pre>
 <p>The command <code>fuse daemon-client &lt;name-of-client&gt;</code> will create a connection to the daemon and forward all data written to and read from stdin/stdout. Since this only requires you to have access to an API for starting processes, it should be usable from all major languages. In other words to send data to the daemon write to stdin and to receive data read from stdout. Also, protocol errors can be read from stderr. In addition to that <code>fuse daemon-client</code> quits with exit code 1 when the connection is considered lost. Any other error codes are considered fatal failures, which should not occur (please report to us if it happens).</p>
 <h2 id="requests-and-events">Requests and Events</h2>
 <p>One of the first thing you probably want to do after you have established a connection to the daemon, is to send a request. The two most important request types are <a href="#publishservice">PublishService</a> and <a href="#subscriberequest">Subscribe</a>, more are listed in our <a href="#fuse-api-reference">api reference</a>. One example is to subscribe to all build logged events, which can be done by sending the following data (full test example <a href="#example">here</a>):</p>
-<pre><code class="language-js">Request // Message type ended with a newline as described in the `Fuse Protocol` paragraph at the top
+<pre><code class="language-json">Request // Message type ended with a newline as described in the `Fuse Protocol` paragraph at the top
 106 // Size of payload in bytes ended with a newline as described in the `Fuse Protocol` paragraph at the top
 {&quot;Name&quot;:&quot;Subscribe&quot;,&quot;Id&quot;:101,&quot;Arguments&quot;:{&quot;Filter&quot;:&quot;Fuse.BuildLogged&quot;,&quot;Replay&quot;:false,&quot;SubscriptionId&quot;:42}}</code></pre>
 <p>After sending the <code>Subscribe</code> request above, you should receive all events named <code>Fuse.BuildLogged</code>. (Run <code>fuse preview</code> of a project to trigger this event). The events received should look similar to:</p>
-<pre><code class="language-js">Event
+<pre><code class="language-json">Event
 144
 {&quot;Name&quot;:&quot;Fuse.BuildLogged&quot;,&quot;Data&quot;:{&quot;BuildId&quot;:&quot;6c7e6f55-74de-45d1-bdb5-9f9cf2bafbf7&quot;,&quot;Message&quot;:&quot;Generating code and data\n&quot;},&quot;SubscriptionId&quot;:42}</code></pre>
 <p>You may also broadcast an event, which is done by sending it to the daemon. The daemon will handle the broadcasting of the event to all registered listeners. For example you may send a <code>Fuse.BuildLogged</code> event yourself (altough it's <strong>not</strong> recommended to broadcast custom events named the same as existing events). This is how your <code>Fuse.BuildLogged</code> event might look like:</p>
-<pre><code class="language-js">{
+<pre><code class="language-json">{
     &quot;Name&quot;:&quot;Fuse.BuildLogged&quot;,
     &quot;Data&quot;: {
         &quot;BuildId&quot;: &quot;1c7e6f55-74de-45d1-bdb5-9f9cf2bafbf7&quot;,
@@ -762,14 +762,14 @@ foo bar</code></pre>
 }</code></pre>
 <p>Note that we have omitted the <em>Fuse Protocol</em> header and we will continue doing it for the rest of the article for clarity. However keep in mind that a message also have a header as explained <a href="#fuseprotocol">here</a>.</p>
 <p><em>PublishService</em> is a request you may consider sending when you want to respond to custom request types. This means you provide functionality which other clients may request. For instance say that you provide a feature called <code>GetAgeOfStudent</code>, which means that something like the following should be sent to the daemon:</p>
-<pre><code class="language-js">{
+<pre><code class="language-json">{
     &quot;Name&quot;: &quot;PublishService&quot;,
     &quot;Arguments&quot;: {
         &quot;RequestNames&quot;: [&quot;GetAgeOfStudent&quot;]
     }
 }</code></pre>
 <p>All <code>GetAgeOfStudent</code> requests will be routed to you from this point. If for instance a client connected to the daemon sends a <code>GetAgeOfStudent</code> request, you will receive it and it will also be your responsibility to send a response back.</p>
-<pre><code class="language-js">{
+<pre><code class="language-json">{
     &quot;Name&quot;: &quot;GetAgeOfStudent&quot;,
     &quot;Id&quot;: 2,
     &quot;Arguments&quot;: {
@@ -777,7 +777,7 @@ foo bar</code></pre>
     }
 }</code></pre>
 <p>You may receive a request as above. However how you respond to it is up to you, for example:</p>
-<pre><code class="language-js">{
+<pre><code class="language-json">{
     &quot;Id&quot;: 2,
     &quot;Status&quot;: &quot;Success&quot;,
     &quot;Result&quot;: {
@@ -896,7 +896,7 @@ function send(fuseClient, msgType, serializedMsg) {
 <p>There are a few build events that you may want to subscribe to, when you for example are making an error list.</p>
 <p><strong>Fuse.BuildStarted - Event</strong></p>
 <p>Sent after a build was started, and contains information related to the build.</p>
-<pre><code class="language-js">{
+<pre><code class="language-json">{
     &quot;Name&quot;: &quot;Fuse.BuildStarted&quot;,
     &quot;SubscriptionId&quot;: 32, // The id provided in the subscribe response
     &quot;Data&quot;:
@@ -911,7 +911,7 @@ function send(fuseClient, msgType, serializedMsg) {
 }</code></pre>
 <p><strong>Fuse.BuildLogged - Event</strong></p>
 <p>Sent after build has logged something.</p>
-<pre><code class="language-js">{
+<pre><code class="language-json">{
     &quot;Name&quot;: &quot;Fuse.BuildLogged&quot;,
     &quot;SubscriptionId&quot;: 32, 
     &quot;Data&quot;:
@@ -922,7 +922,7 @@ function send(fuseClient, msgType, serializedMsg) {
 }</code></pre>
 <p><strong>Fuse.BuildIssueDetected - Event</strong></p>
 <p>Sent when a build issue was detected.</p>
-<pre><code class="language-js">{
+<pre><code class="language-json">{
     &quot;Name&quot;: &quot;Fuse.BuildIssueDetected&quot;,
     &quot;SubscriptionId&quot;: 32, 
     &quot;Data&quot;:
@@ -938,7 +938,7 @@ function send(fuseClient, msgType, serializedMsg) {
 }</code></pre>
 <p><strong>Fuse.BuildEnded - Event</strong></p>
 <p>Sent after build completed (successfully or not).</p>
-<pre><code class="language-js">{
+<pre><code class="language-json">{
     &quot;Name&quot;: &quot;Fuse.BuildEnded&quot;,
     &quot;SubscriptionId&quot;: 32, 
     &quot;Data&quot;:
@@ -950,7 +950,7 @@ function send(fuseClient, msgType, serializedMsg) {
 <h3 id="code-completion">Code Completion</h3>
 <p><strong>Fuse.GetCodeSuggestions - Method</strong></p>
 <p><strong>Request example</strong></p>
-<pre><code class="language-js">{
+<pre><code class="language-json">{
     &quot;Id&quot;: 42, // Unique request id
     &quot;Name&quot;: &quot;Fuse.GetCodeSuggestions&quot;,
     &quot;Arguments&quot;: 
@@ -962,7 +962,7 @@ function send(fuseClient, msgType, serializedMsg) {
     }
 }</code></pre>
 <p><strong>Response example</strong></p>
-<pre><code class="language-js">{
+<pre><code class="language-json">{
     &quot;Id&quot;: 42, // Id of request
     &quot;Status&quot;: &quot;Success&quot;,
     &quot;Result&quot;: 
@@ -991,7 +991,7 @@ function send(fuseClient, msgType, serializedMsg) {
 <h2 id="monitor">Monitor</h2>
 <p><strong>Fuse.LogEvent - Event</strong></p>
 <p>Sent from a preview instance as a result of calling <em>debug_log</em>, <em>console.log</em> or using <em>DebugAction</em>.</p>
-<pre><code class="language-js">{
+<pre><code class="language-json">{
     &quot;Name&quot;: &quot;Fuse.LogEvent&quot;,
     &quot;Data&quot;: 
     {
@@ -1003,7 +1003,7 @@ function send(fuseClient, msgType, serializedMsg) {
 }</code></pre>
 <p><strong>Fuse.ExceptionEvent - Event</strong></p>
 <p>Sent after an exception occured in a preview instance.</p>
-<pre><code class="language-js">{
+<pre><code class="language-json">{
     &quot;Name&quot;: &quot;Fuse.ExceptionEvent&quot;,
     &quot;Data&quot;: 
     {
@@ -1017,7 +1017,7 @@ function send(fuseClient, msgType, serializedMsg) {
 <h2 id="preview">Preview</h2>
 <p><strong>Fuse.SelectionChanged - Event</strong></p>
 <p>Send this event if you want to set selection in preview.</p>
-<pre><code class="language-js">{
+<pre><code class="language-json">{
     &quot;Name&quot;: &quot;Fuse.Preview.SelectionChanged&quot;,
     &quot;Data&quot;:
     {

@@ -8,7 +8,7 @@
     <title>Signing - Fuse Documentation</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/prism.css?1">
     <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -683,7 +683,7 @@
 <p>When publishing your app to Google Play or the iOS App Store, it needs to be signed before it's sent off.</p>
 <h2 id="android">Android</h2>
 <p>A Uno Project set up for signing can look like this:</p>
-<pre><code class="language-js">{
+<pre><code class="language-json">{
     &quot;Android&quot;: {
         &quot;Key&quot;: {
             &quot;Alias&quot;: &quot;application&quot;,
@@ -708,7 +708,7 @@
 <p>For this to work you need to set a Development Team ID, and then Xcode will usually handle the rest automatically.</p>
 <p>Your Team ID can be found <a href="https://developer.apple.com/account/#/membership/">here</a>.</p>
 <p>Uno attempts to automatically find an Xcode Development Team ID by querying the machine's code-signing identities and selecting the first valid one it finds. If this is not the correct one it can be set manually in an <code>unoproj</code>s as follows:</p>
-<pre><code class="language-js">{
+<pre><code class="language-json">{
   &quot;iOS&quot;: {
     &quot;DevelopmentTeam&quot;: &quot;YOURTEAMID&quot;
   },
@@ -717,7 +717,7 @@
 <p>It can also be set by passing the <code>--set:Project.iOS.DevelopmentTeam=&quot;YOURTEAMID&quot;</code> flag to <code>uno build</code>, e.g.</p>
 <pre><code class="language-s">uno build ios --set:Project.iOS.DevelopmentTeam=&quot;YOURTEAMID&quot;</code></pre>
 <p>The Development Team ID can also be set user-wide by adding the following to ~/.unoconfig:</p>
-<pre><code class="language-js">iOS.DevelopmentTeam: &quot;YOURTEAMID&quot;</code></pre>
+<pre><code class="language-json">iOS.DevelopmentTeam: &quot;YOURTEAMID&quot;</code></pre>
 <p>The file can be created if it doesn't already exist.</p>
 <h3 id="troubleshooting">Troubleshooting</h3>
 <p>Error messages such as <code>No matching provisioning profiles found</code> are usually resolved automatically just by opening the generated Uno project in Xcode once by building with <code>--debug</code>. Also make sure that the Development Team ID has been correctly set.</p>

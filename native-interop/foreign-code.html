@@ -8,7 +8,7 @@
     <title>Working with foreign code - Fuse Documentation</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/prism.css?1">
     <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -1074,7 +1074,7 @@ class Example
 <h2 id="external-source-files">External source files</h2>
 <p>A lot of Fuse's philosophy revolves around the idea of 'using the right tool for the right job'. Foreign code makes it easy to call into Java to get something done fast. We also believe that, if you need to write a lot of Java, it's best to do it in Java. To achieve this we have support for adding <code>.java</code>, <code>.mm</code> &amp; <code>.hh</code> files to <code>.unoproj</code>s to get them included in the build.</p>
 <p>We add Java and Objective-C files like this:</p>
-<pre><code class="language-js">{
+<pre><code class="language-json">{
     ...
 
     &quot;Includes&quot;: [
@@ -1114,7 +1114,7 @@ public class HelloSwiftWorld: NSObject {
     }
 }</code></pre>
 <p><code>unoproj</code>:</p>
-<pre><code class="language-js">{
+<pre><code class="language-json">{
     &quot;Includes&quot;: [
         &quot;Hello.swift:Swift:iOS&quot;,
         ...
@@ -1133,13 +1133,13 @@ public class Example
     @}
 }</code></pre>
 <p>The version of Swift that is used can be configured with the <code>iOS.SwiftVersion</code> project property:</p>
-<pre><code class="language-js">&quot;iOS&quot;: {
+<pre><code class="language-json">&quot;iOS&quot;: {
 &quot;SwiftVersion&quot;: 3.0,
 },</code></pre>
 <p>Swift files currently do not get the foreign macro expansion that <code>ObjCSource</code> files get.</p>
 <h2 id="getting-the-root-activity">Getting the root Activity</h2>
 <p>Most Android-related tasks involve the app's root Activity in some way or another. We can get the root activity by calling the following method:</p>
-<pre><code class="language-js">com.fuse.Activity.getRootActivity()</code></pre>
+<pre><code class="language-java">com.fuse.Activity.getRootActivity()</code></pre>
 
             </div>
             <div class="d-none d-sm-block col-md-3 d-xl-3 toc-content">

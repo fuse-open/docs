@@ -8,7 +8,7 @@
     <title>Introduction - Fuse Documentation</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/prism.css?1">
     <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -709,7 +709,7 @@
 <h3 id="importing-modules">Importing modules</h3>
 <p>Each code file (or inline snippet) is a module.</p>
 <p>To make a module available to other modules through <code>require</code>, you have to place it in a separate <code>.js</code> file make sure it is included in the <code>:Bundle</code> in your <code>.unoproj</code>, for example like this:</p>
-<pre><code class="language-js">&quot;Includes&quot;: [
+<pre><code class="language-json">&quot;Includes&quot;: [
     &quot;MyLibrary/SomeModule.js:Bundle&quot;,
     ...</code></pre>
 <p>We can then access this module in any other module in the same project like this:</p>
@@ -719,7 +719,7 @@
 </blockquote>
 <p>You can also use globs to auto-bundle entire folders, e.g. <code>&quot;MyLibrary/*.js:Bundle&quot;</code>.</p>
 <p>If you want to make all JavaScript files in your project be includes as bundled files, do:</p>
-<pre><code class="language-js">&quot;Includes&quot;: [
+<pre><code class="language-json">&quot;Includes&quot;: [
     &quot;**.js:Bundle&quot;
 ]</code></pre>
 <p>We can then require any JavaScript file by name:</p>

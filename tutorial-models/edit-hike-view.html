@@ -8,7 +8,7 @@
     <title>Introduction - Fuse Documentation</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/prism-tomorrow.css">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/prism.css?1">
     <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?6">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -725,7 +725,7 @@ fuse preview</code></pre>
 <p>Cool! So now we've got some text on the screen, but it's displaying a hardcoded string from UX. Since this view will eventually be used to edit one of our hikes, we'll need this text to be dynamic instead. This is where our <em>app model</em> comes in, which we'll implement in JavaScript (pure EcmaScript 6). Then, we'll use databinding to tie it all together.</p>
 <p>Before we can add JavaScript to our app, we need to make a small change to our project file. Since Fuse allows us to write both plain vanilla JavaScript and the newer, more modern, EcmaScript 6 (ES6), we need to tell Fuse which way it should interpret JavaScript files.</p>
 <p>To do this, open up the file called <code>hikr.unoproj</code>. It currently looks like this:</p>
-<pre><code class="language-js">{
+<pre><code class="language-json">{
   &quot;RootNamespace&quot;:&quot;&quot;,
   &quot;Packages&quot;: [
     &quot;Fuse&quot;,
@@ -736,7 +736,7 @@ fuse preview</code></pre>
   ]
 }</code></pre>
 <p>It is a file consisting of pure JSON, and describes various properties about our project. Under the <code>&quot;includes&quot;</code> field, you'll see a single <code>*</code> inside a pair of square brackets. This basically means that we let Fuse include all files it recognizes by default. This does not include JavaScript files however, so we'll have to instruct Fuse on how we want those files inluded. Change the <code>includes</code> part to the following:</p>
-<pre><code class="language-js">&quot;Includes&quot;: [
+<pre><code class="language-json">&quot;Includes&quot;: [
   &quot;*&quot;,
   &quot;**.js:FuseJS&quot;
 ]</code></pre>
