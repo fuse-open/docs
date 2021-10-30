@@ -102,6 +102,27 @@ form#search > span {
     position: relative;
 }
 
+/** Only h{1..3}.anchor-header to avoid issues on Uno/UX reference pages */
+h1.anchor-header, h2.anchor-header, h3.anchor-header {
+    /* Offset anchor to compensate for fixed header */
+    padding-top: 120px;
+    top: -120px;
+    margin-bottom: -100px;
+    /* Avoid overlapping links in padding-area :( */
+    /* TODO: Come up with a better solution... */
+    z-index: -1;
+}
+
+/* Increase margin-top on headers */
+h1, h2, h3 {
+    margin-top: 30px;
+}
+
+/* Disable margin-top on first header */
+h1:first-child, h2:first-child, h3:first-child {
+    margin-top: 0 !important;
+}
+
 .anchor-header-link {
     font-size: 1rem;
     color: #332f2f;
