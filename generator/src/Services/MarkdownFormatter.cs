@@ -107,9 +107,10 @@ namespace Builder.Services
             html = html.Replace("<code class=\"language-uno\"", "<code class=\"language-csharp\"")
                        .Replace("<code class=\"language-ux\"", "<code class=\"language-xml\"")
                        .Replace("<code class=\"language-cs\"", "<code class=\"language-csharp\"")
-                       .Replace("<code class=\"language-json\"", "<code class=\"language-js\"")
-                       .Replace("<code class=\"language-java\"", "<code class=\"language-js\"")
-                       .Replace("<code class=\"language-swift\"", "<code class=\"language-js\"");
+                       .Replace("<code class=\"language-sh\"", "<code class=\"language-shell\"")
+                       // ".s" is usually used for Assembly languages, but we call it "shell" here
+                       // https://github.com/github/linguist/blob/master/lib/linguist/languages.yml
+                       .Replace("<code class=\"language-s\"", "<code class=\"language-shell\"");
 
             // Normalize indentation inside <code> tags
             return NormalizeCodeIndentation(html);
