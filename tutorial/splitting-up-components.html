@@ -8,8 +8,8 @@
     <title>Introduction - Fuse Documentation</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/prism.css?1">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?8">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/prism.css?2">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?9">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -691,7 +691,7 @@
 </blockquote>
 <p>However, in the case of our <code>hikes</code> array, we're not going to tie the module to a specific UX file. Instead, we'll just place the data into its own separate .js file, and tell Fuse to bundle this module with our app. Then, we'll <em>import</em> this module into each of our views' modules.</p>
 <p>To do this, we'll first create a new (empty) file in our project called <code>hikes.js</code>. We'll place this in the root of our project directory, so our directory should look something like this:</p>
-<pre><code class="language-s">$ tree
+<pre><code class="language-shell">$ tree
 .
 |- MainView.ux
 |- hikes.js
@@ -804,7 +804,7 @@ var hikes = require(&quot;hikes&quot;);</code></pre>
 <p>In this case, Fuse will import a module called <code>hikes</code>, which corresponds to our <code>hikes.js</code> file. It will also bind the module's <code>module.exports</code> object to the name <code>hikes</code>, which, in <code>hikes.js</code>, was our <code>hikes</code> array. Cool! That's actually all we need to do to use our newly-created, reusable JavaScript module. If we save <code>MainView.ux</code>, our live preview will reload. It may not look any different on the outside, but on the inside we're well on our way to a very clean and manageable project structure!</p>
 <h2 id="transforming-the-edit-hike-view-into-a-component">Transforming the Edit Hike view into a component</h2>
 <p>Now that we've separated out our <code>hikes</code> array, the next thing we'll want to do is create a new component out of our view code. We'll do this in small steps as well. First, we'll want to create a new folder in our project called <code>Pages</code>:</p>
-<pre><code class="language-s">$ tree
+<pre><code class="language-shell">$ tree
 .
 |- MainView.ux
 |- hikes.js
@@ -813,7 +813,7 @@ var hikes = require(&quot;hikes&quot;);</code></pre>
 <p>Inside this new folder, we'll create a new file called <code>EditHikePage.ux</code>. Inside there, we'll place the following code:</p>
 <pre><code class="language-xml">&lt;Page ux:Class=&quot;EditHikePage&quot;&gt;&lt;/Page&gt;</code></pre>
 <p>Our directory tree should now look a bit like this:</p>
-<pre><code class="language-s">$ tree
+<pre><code class="language-shell">$ tree
 .
 |- MainView.ux
 |- hikes.js
@@ -957,7 +957,7 @@ var hikes = require(&quot;hikes&quot;);</code></pre>
 &lt;/App&gt;</code></pre>
 <p>Notice how this looks just like we had used any other class that comes standard in Fuse - but this time, it's a class we've created ourselves! If we save <code>MainView.ux</code>, we'll see that our view shows up again in preview. Awesome!</p>
 <p>Now, before we move on, we'll want to do one more thing with our new component, and that's to split out its JavaScript code into its own file. This is very easy to do. First, we'll create a new file called <code>EditHikePage.js</code>, right next to our <code>EditHikePage.ux</code> file in the <code>Pages</code> folder of our project:</p>
-<pre><code class="language-s">$ tree
+<pre><code class="language-shell">$ tree
 .
 |- MainView.ux
 |- hikes.js

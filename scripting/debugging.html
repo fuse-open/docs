@@ -8,8 +8,8 @@
     <title>Debugging - Fuse Documentation</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/prism.css?1">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?8">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/prism.css?2">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?9">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -704,7 +704,7 @@ which is available both for macOS and Windows.</p>
 done using <code>adb</code>, which is bundled with Fuse and can be invoked using <code>uno adb</code>.
 Using a standard Fuse installation and with a single Android device
 connected, run (in a terminal or command prompt):</p>
-<pre><code class="language-s">uno adb forward tcp:5858 tcp:5858</code></pre>
+<pre><code class="language-shell">uno adb forward tcp:5858 tcp:5858</code></pre>
 <p>It's likely that you will have to re-run this command every time you
 reconnect your device. Also remember to remove the forwarding using e.g.
 <code>uno adb forward --remove-all</code> if you want to debug another target after you
@@ -739,9 +739,9 @@ start of your JavaScript code, like the following:</p>
 </li>
 <li>
 <p>Build and run your app with <code>-DDEBUG_V8</code>. For example, run</p>
-<pre><code class="language-s">fuse preview . -DDEBUG_V8</code></pre>
+<pre><code class="language-shell">fuse preview . -DDEBUG_V8</code></pre>
 <p>to preview the project in the current working directory locally or</p>
-<pre><code class="language-s">uno build android --run -DDEBUG_V8</code></pre>
+<pre><code class="language-shell">uno build android --run -DDEBUG_V8</code></pre>
 <p>to build and run on Android.</p>
 </li>
 <li>

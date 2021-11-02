@@ -8,8 +8,8 @@
     <title>Introduction - Fuse Documentation</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/prism.css?1">
-    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?8">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/prism.css?2">
+    <link rel="stylesheet" href="https://fuseopen.com/docs/site.css?9">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
@@ -736,7 +736,7 @@ updateItem(...)
 <p>Note: Keep in mind that we'll be moving things around a bit in our project, so we won't be able to compile and/or preview for a while, but we'll be back up and running by the end of the chapter.</p>
 </blockquote>
 <p>Before we start implementing our mock backend, we'll want to talk about how we'll organize our JavaScript moving forward. Currently, we only have one standalone JS module in our project (besides our view models of course), and that's our <code>hikes.js</code> file. Since we'll be adding some more modules, we'll want to make sure we keep our project nice and organized. Similar to our <code>Pages</code> folder, where we placed all of our files pertaining to the different pages in our app, let's create a <code>Modules</code> folder at the root of our project where we'll place all of our standalone JS modules:</p>
-<pre><code class="language-s">.
+<pre><code class="language-shell">.
 |- MainView.ux
 |- Modules
 |- Pages
@@ -861,7 +861,7 @@ function updateHike(...) { ... }</code></pre>
 <h2 id="our-context-abstraction">Our <code>Context</code> abstraction</h2>
 <p>As I mentioned earler, we <em>could</em> have our view models interact with our mock backend directly. While there's technically nothing wrong with that, it tends to be beneficial to build a small abstraction layer over the backend that our view models interact with instead. This helps us provide a more consistent interface to our model, and also allows us to implement things like caching to help reduce the amount of bandwidth and battery our app uses. So, the next thing we'll do is build this abstraction, which we'll call the <code>Context</code>.</p>
 <p>To create our <code>Context</code> module, we'll start by making a new file in our <code>Modules</code> directory called <code>Context.js</code>:</p>
-<pre><code class="language-s">.
+<pre><code class="language-shell">.
 |- MainView.ux
 |- Modules
 |  |- Backend.js
