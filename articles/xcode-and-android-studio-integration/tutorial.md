@@ -50,7 +50,7 @@ We can then export these components by providing them as [UX Templates](articles
 
 Export an [Xcode Framework](https://developer.apple.com/library/content/documentation/MacOSX/Conceptual/BPFrameworks/Concepts/WhatAreFrameworks.html) or an [Android aar](https://developer.android.com/studio/projects/android-library.html) by compiling with `-DLIBRARY` set.
 
-```sh
+```s
 uno build ios -DLIBRARY
 uno build android -DLIBRARY
 ```
@@ -137,7 +137,7 @@ Add the following in your `AppDelegate`
 #import <FuseProjectName/Context.h>
 ```
 
-```objectivec
+```cs
 - (BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [uContext initSharedContextWithWindow:^UIWindow* () { return [self window]; }];
@@ -205,7 +205,7 @@ Make sure to have these headers imported:
 
 Instantiating the view handle and getting the native view:
 
-```objectivec
+```cs
 ViewHandle* videoView = [ExportedViews instantiate:@"VideoView"];
 UIView* nativeView = [videoView view];
 ```
@@ -248,7 +248,7 @@ A Fuse View will interop with the native layout, for size it relies on the nativ
 
 #### Objective-C
 
-```objectivec
+```cs
 UIView* parent = ...;
 
 ViewHandle* videoView = [ExportedViews instantiate:@"VideoView"];
@@ -296,7 +296,7 @@ Lets take a look at the API:
 
 #### Objective-C
 
-```objectivec
+```cs
 @interface ViewHandle : NSObject
 
 @property (readonly) UIView* view;
@@ -310,7 +310,7 @@ Lets take a look at the API:
 
 The signature of `Callback` is as follows:
 
-```objectivec
+```cs
 typedef void(^Callback)(Arguments*);
 ```
 
@@ -336,7 +336,7 @@ public interface ICallback {
 
 If you are familiar with [`JavaScript`](api:fuse/reactive/javascript) and [`DataBinding`](api:fuse/reactive/databinding) in fuse this will be quite easy to understand. `setDataJson` is the equivalent of having a `module.exports` in JavaScript and `setCallback` is the equivalent of adding a function to the `exports`. The function arguments passed to the native callback in Fuse views will contain the same data you would get in `JavaScript`, but you get the through the methods available on the `Arguments`. Since the function arguments needs to be serialized to strings and JSON, accessing the `Arguments` will lazily serialize what you request. In the common case you are more interested in getting the callback than accessing the whole data context. Please have a look at [`Binding functions`](articles:scripting/scripting#binding-functions) for an overview of what arguments will be passed.
 
-```objectivec
+```cs
 @interface Arguments : NSObject
 
 @property (readonly) NSDictionary<NSString*,NSString*>* args;
@@ -345,7 +345,7 @@ If you are familiar with [`JavaScript`](api:fuse/reactive/javascript) and [`Data
 @end
 ```
 
-```objectivec
+```cs
 public interface IArguments {
     HashMap<String,String> getArgs();
     String getDataJson();
@@ -381,7 +381,7 @@ The equivalent in fuse views will look like this:
 
 #### Objective-C
 
-```objectivec
+```cs
 ViewHandle* usersListView = [ExportedViews instantiate:@"UsersListView"];
 [usersListView setDataString:@"Meetup attendees" forKey:@"title"];
 [usersListView setDataJson:@"{ \"users\" : [...] }"];

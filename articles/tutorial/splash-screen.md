@@ -47,61 +47,61 @@ Here we can see there's two major parts - the title text and slogan, and the "Ge
 The first child of this `Grid` will represent the contents of the top cell of the `Grid`. For our title text and slogan, we'll create a [StackPanel](api:fuse/controls/stackpanel):
 
 ```xml
-	<Grid RowCount="2">
-		<StackPanel>
-		</StackPanel>
-	</Grid>
+<Grid RowCount="2">
+	<StackPanel>
+	</StackPanel>
+</Grid>
 ```
 
 Next, we'll add our title text. We'll start with a `hikr.Text` instance:
 
 ```xml
-		<StackPanel>
-			<hikr.Text>hikr</hikr.Text>
-		</StackPanel>
+<StackPanel>
+	<hikr.Text>hikr</hikr.Text>
+</StackPanel>
 ```
 
 If we save this, we'll have our `hikr` text in the top-left corner of the cell. Let's add some alignment to center it horizontally:
 
 ```xml
-		<StackPanel>
-			<hikr.Text Alignment="HorizontalCenter">hikr</hikr.Text>
-		</StackPanel>
+<StackPanel>
+	<hikr.Text Alignment="HorizontalCenter">hikr</hikr.Text>
+</StackPanel>
 ```
 
 We'll take care of centering it vertically shortly. For now, we'll also bump up the `FontSize` a bit:
 
 ```xml
-		<StackPanel>
-			<hikr.Text Alignment="HorizontalCenter" FontSize="70">hikr</hikr.Text>
-		</StackPanel>
+<StackPanel>
+	<hikr.Text Alignment="HorizontalCenter" FontSize="70">hikr</hikr.Text>
+</StackPanel>
 ```
 
 Now, let's add our slogan text. We'll place it in the same `StackPanel` as our title text:
 
 ```xml
-		<StackPanel>
-			<hikr.Text Alignment="HorizontalCenter" FontSize="70">hikr</hikr.Text>
-			<hikr.Text>get out there</hikr.Text>
-		</StackPanel>
+<StackPanel>
+	<hikr.Text Alignment="HorizontalCenter" FontSize="70">hikr</hikr.Text>
+	<hikr.Text>get out there</hikr.Text>
+</StackPanel>
 ```
 
 We'll also center this text horizontally, and we'll make it transparent by setting its `Opacity`:
 
 ```xml
-		<StackPanel>
-			<hikr.Text Alignment="HorizontalCenter" FontSize="70">hikr</hikr.Text>
-			<hikr.Text Alignment="HorizontalCenter" Opacity=".5">get out there</hikr.Text>
-		</StackPanel>
+<StackPanel>
+	<hikr.Text Alignment="HorizontalCenter" FontSize="70">hikr</hikr.Text>
+	<hikr.Text Alignment="HorizontalCenter" Opacity=".5">get out there</hikr.Text>
+</StackPanel>
 ```
 
 And now that we've got both items in place in our `StackPanel`, we can place the `StackPanel` in the center of the `Grid` cell vertically by setting its `Alignment`:
 
 ```xml
-		<StackPanel Alignment="VerticalCenter">
-			<hikr.Text Alignment="HorizontalCenter" FontSize="70">hikr</hikr.Text>
-			<hikr.Text Alignment="HorizontalCenter" Opacity=".5">get out there</hikr.Text>
-		</StackPanel>
+<StackPanel Alignment="VerticalCenter">
+	<hikr.Text Alignment="HorizontalCenter" FontSize="70">hikr</hikr.Text>
+	<hikr.Text Alignment="HorizontalCenter" Opacity=".5">get out there</hikr.Text>
+</StackPanel>
 ```
 
 And that's it; our title and slogan text are taken care of!
@@ -109,26 +109,26 @@ And that's it; our title and slogan text are taken care of!
 Next, we'll add our "Get Started" button. Because of the `hikr.Button` component we made in the previous chapter, this will be pretty easy. We'll start by creating an instance beneath our `StackPanel`, so it will occupy the lower cell in the `Grid`:
 
 ```xml
-	<Grid RowCount="2">
-		<StackPanel Alignment="VerticalCenter">
-			<hikr.Text Alignment="HorizontalCenter" FontSize="70">hikr</hikr.Text>
-			<hikr.Text Alignment="HorizontalCenter" Opacity=".5">get out there</hikr.Text>
-		</StackPanel>
+<Grid RowCount="2">
+	<StackPanel Alignment="VerticalCenter">
+		<hikr.Text Alignment="HorizontalCenter" FontSize="70">hikr</hikr.Text>
+		<hikr.Text Alignment="HorizontalCenter" Opacity=".5">get out there</hikr.Text>
+	</StackPanel>
 
-		<hikr.Button Text="Get Started" />
-	</Grid>
+	<hikr.Button Text="Get Started" />
+</Grid>
 ```
 
 Let's center our button vertically and add some margin on the left/right to give it some space:
 
 ```xml
-		<hikr.Button Text="Get Started" Margin="50,0" Alignment="VerticalCenter" />
+<hikr.Button Text="Get Started" Margin="50,0" Alignment="VerticalCenter" />
 ```
 
 This looks good, but the font looks a little small. Let's increase its `FontSize` a bit as well:
 
 ```xml
-		<hikr.Button Text="Get Started" FontSize="18" Margin="50,0" Alignment="VerticalCenter" />
+<hikr.Button Text="Get Started" FontSize="18" Margin="50,0" Alignment="VerticalCenter" />
 ```
 
 Ah, but wait! Our `hikr.Button` component, because it was built from a [Panel](api:fuse/controls/panel), doesn't actually have a `FontSize` property. But this is no problem, we can just build it ourselves!
@@ -144,7 +144,7 @@ In our `Components/hikr.Button.ux` file, let's first add the `FontSize` property
 This takes care of creating the property; now let's make sure the component actually uses it. In the `hikr.Text` instance in the component, we can bind the currently-hardcoded `FontSize` to our property, just like we did with its `Value` previously:
 
 ```xml
-	<hikr.Text Value="{ReadProperty Text}" FontSize="{ReadProperty FontSize}" TextAlignment="Center" />
+<hikr.Text Value="{ReadProperty Text}" FontSize="{ReadProperty FontSize}" TextAlignment="Center" />
 ```
 
 Now, we could stop here, but remember, this component is used elsewhere in our app, and we didn't specify the `FontSize` property for those instances. So, we should make sure this property has a default value in our component, so those instances will still look the same. To specify a default value for a property, all we have to do is set the property in the component definition like we would if we were setting it for an instance. In `hikr.Button.ux`, this looks like this:
@@ -187,7 +187,7 @@ Then, we'll include this module in our `SplashPage.ux` file using a `JavaScript`
 Finally, we'll hook up this function to our button:
 
 ```xml
-		<hikr.Button Text="Get Started" FontSize="18" Margin="50,0" Alignment="VerticalCenter" Clicked="{goToHomePage}" />
+<hikr.Button Text="Get Started" FontSize="18" Margin="50,0" Alignment="VerticalCenter" Clicked="{goToHomePage}" />
 ```
 
 Now that we've got our `SplashPage`'s JS module set up and a `Clicked` handler for our button, we can implement this handler properly so it will navigate to our `HomePage`. However, if you recall from our [Navigation and routing](navigation-and-routing.md) chapter, we'll need our component to have access to one more thing in order to perform navigation - our app's [Router](api:fuse/navigation/router) instance!
@@ -204,11 +204,11 @@ So, let's first add a `Router` dependency to our `SplashPage` called `router`:
 Then, we'll be sure to satisfy this dependency in `MainView.ux` by passing in our `Router` instance, just like with the other `Page`s:
 
 ```xml
-		<Navigator DefaultPath="splash">
-			<SplashPage ux:Template="splash" router="router" />
-			<HomePage ux:Template="home" router="router" />
-			<EditHikePage ux:Template="editHike" router="router" />
-		</Navigator>
+<Navigator DefaultPath="splash">
+	<SplashPage ux:Template="splash" router="router" />
+	<HomePage ux:Template="home" router="router" />
+	<EditHikePage ux:Template="editHike" router="router" />
+</Navigator>
 ```
 
 With that done, we can now use this `Router` instance to perform the navigation we want. Going back to `SplashPage.js`, let's make our `goToHomePage` function navigate to our `HomePage` using the `home` route:
@@ -234,51 +234,51 @@ Before we stick this in our app, it's important to note where this video came fr
 Let's go ahead and grab [the video file](https://github.com/fuse-open/hikr/blob/master/Assets/nature.mp4) and place it in our `Assets` directory. Then, in our `SplashPage.ux` file, we can display the video using a [Video](api:fuse/controls/video) tag, and we'll set `Layer="Background"` on it just like we did with the [Image](api:fuse/controls/image) in our `hikr.Page` component in the [last chapter](look-and-feel.md):
 
 ```xml
-	<JavaScript File="SplashPage.js" />
+<JavaScript File="SplashPage.js" />
 
-	<Video Layer="Background" File="../Assets/nature.mp4" />
+<Video Layer="Background" File="../Assets/nature.mp4" />
 ```
 
 If we save this and wait a moment for Fuse to transfer the video file to all of our connected devices, we'll see that while our video file has loaded, it just looks like a black rectangle. This is because a `Video` object won't start playing by default; we have to tell it to actually play the video. To do this, we'll set `AutoPlay="true"`:
 
 ```xml
-	<Video Layer="Background" File="../Assets/nature.mp4" AutoPlay="true" />
+<Video Layer="Background" File="../Assets/nature.mp4" AutoPlay="true" />
 ```
 
 Now our video starts playing! However, if we let it get to the end of the video, we can see it simply stops playing. Since we'd like our video to loop, we'll also set `IsLooping="true"`:
 
 ```xml
-	<Video Layer="Background" File="../Assets/nature.mp4" IsLooping="true" AutoPlay="true" />
+<Video Layer="Background" File="../Assets/nature.mp4" IsLooping="true" AutoPlay="true" />
 ```
 
 The next thing we'll want to fix is that if our device/preview has a different aspect than our video, the video won't fill up the entire screen. Similarly to our background image in [the previous chapter](look-and-feel.md), this is because the `Video` element is stretching or squishing its contents to always fit inside its available space while preserving its aspect ratio. Since we always want the video to _fill_ its available space, we'll use `StretchMode="UniformToFill"`, just like our `hikr.Page` component did with its background image:
 
 ```xml
-	<Video Layer="Background" File="../Assets/nature.mp4" IsLooping="true" AutoPlay="true" StretchMode="UniformToFill" />
+<Video Layer="Background" File="../Assets/nature.mp4" IsLooping="true" AutoPlay="true" StretchMode="UniformToFill" />
 ```
 
 Now we're looking good! However, our background stands out a bit too much as-is, so let's "push it back" a little bit by adding a bit of blur to it. To blur a `Video` (or really any element in Fuse), all we have to do is attach a [Blur](api:fuse/effects/blur) element to it:
 
 ```xml
-	<Video Layer="Background" File="../Assets/nature.mp4" IsLooping="true" AutoPlay="true" StretchMode="UniformToFill">
-		<Blur />
-	</Video>
+<Video Layer="Background" File="../Assets/nature.mp4" IsLooping="true" AutoPlay="true" StretchMode="UniformToFill">
+	<Blur />
+</Video>
 ```
 
 With this, we can see our `Video` is blurred nicely! Let's tweak the `Radius` a bit as well to adjust how blurry it will be. We want it to be fairly blurry while still preserving some of its shapes:
 
 ```xml
-	<Video Layer="Background" File="../Assets/nature.mp4" IsLooping="true" AutoPlay="true" StretchMode="UniformToFill">
-		<Blur Radius="4.75" />
-	</Video>
+<Video Layer="Background" File="../Assets/nature.mp4" IsLooping="true" AutoPlay="true" StretchMode="UniformToFill">
+	<Blur Radius="4.75" />
+</Video>
 ```
 
 Lookin' good! Finally, we'll push the background back a little bit more by making it slightly transparent and letting the background color of our app show through:
 
 ```xml
-	<Video Layer="Background" File="../Assets/nature.mp4" Opacity="0.5" IsLooping="true" AutoPlay="true" StretchMode="UniformToFill">
-		<Blur Radius="4.75" />
-	</Video>
+<Video Layer="Background" File="../Assets/nature.mp4" Opacity="0.5" IsLooping="true" AutoPlay="true" StretchMode="UniformToFill">
+	<Blur Radius="4.75" />
+</Video>
 ```
 
 And with that, our video looks great! Now, let's add attribution to the original artist like our license required. A small bit of text like "original video by Graham Uhelski" at the bottom of the screen should do quite nicely. So, let's first place all of the content of our `SplashPage` component into a [DockPanel](api:fuse/controls/dockpanel):
@@ -309,24 +309,24 @@ And with that, our video looks great! Now, let's add attribution to the original
 Then, we'll add a `hikr.Text` component docked to the bottom of the `DockPanel`:
 
 ```xml
-	<DockPanel ClipToBounds="true">
-		<Video Layer="Background" File="../Assets/nature.mp4" IsLooping="true" AutoPlay="true" StretchMode="UniformToFill" Opacity="0.5">
-			<Blur Radius="4.75" />
-		</Video>
+<DockPanel ClipToBounds="true">
+	<Video Layer="Background" File="../Assets/nature.mp4" IsLooping="true" AutoPlay="true" StretchMode="UniformToFill" Opacity="0.5">
+		<Blur Radius="4.75" />
+	</Video>
 
-		<hikr.Text Dock="Bottom">original video by Graham Uhelski</hikr.Text>
+	<hikr.Text Dock="Bottom">original video by Graham Uhelski</hikr.Text>
 ```
 
 Let's also align it to the center of the screen horizontally and add some margin so it's not quite touching the bottom edge:
 
 ```xml
-		<hikr.Text Dock="Bottom" Margin="10" TextAlignment="Center">original video by Graham Uhelski</hikr.Text>
+<hikr.Text Dock="Bottom" Margin="10" TextAlignment="Center">original video by Graham Uhelski</hikr.Text>
 ```
 
 Then, we'll make the font a bit smaller and adjust its `Opacity` so it doesn't stand out so much:
 
 ```xml
-		<hikr.Text Dock="Bottom" Margin="10" Opacity=".5" TextAlignment="Center" FontSize="12">original video by Graham Uhelski</hikr.Text>
+<hikr.Text Dock="Bottom" Margin="10" Opacity=".5" TextAlignment="Center" FontSize="12">original video by Graham Uhelski</hikr.Text>
 ```
 
 And with that, we've got our content attributed properly and looking great!
@@ -336,10 +336,10 @@ And with that, we've got our content attributed properly and looking great!
 Now that our `SplashScreen` is basically finished, we can add a couple finishing touches to our app to seal the deal. For example, if we navigate to the `HomePage`, and we look at the left edge of the screen, we can see what looks like a small bit of our [Video](api:fuse/controls/video) from the `SplashScreen` is visible. This is because the [Blur](api:fuse/effects/blur) effect will add a bit of space around the element it's applied on so that the edges of the element are blurred smoothly. However, in our case, this means that parts of the edge of the video are visible in other pages of our app, which is not desirable. To fix this, we have to make sure that the content of our `SplashPage` is clipped to the bounds of the page, and never drawn outside of it. In our case, in `SplashPage.ux`, we can simply add `ClipToBounds="true"` to our [DockPanel](api:fuse/controls/dockpanel) (which contains the `Video` background):
 
 ```xml
-	<DockPanel ClipToBounds="true">
-		<Video Layer="Background" File="../Assets/nature.mp4" IsLooping="true" AutoPlay="true" StretchMode="UniformToFill" Opacity="0.5">
-			<Blur Radius="4.75" />
-		</Video>
+<DockPanel ClipToBounds="true">
+	<Video Layer="Background" File="../Assets/nature.mp4" IsLooping="true" AutoPlay="true" StretchMode="UniformToFill" Opacity="0.5">
+		<Blur Radius="4.75" />
+	</Video>
 ```
 
 Now, the video is only displayed within the bounds of the `SplashPage`. Easy!

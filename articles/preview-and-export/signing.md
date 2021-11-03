@@ -23,7 +23,7 @@ A file named `release.keystore` is expected to be found in the same folder as th
 
 This file can be created by running the following command in your shell (`keytool` is part of the JDK):
 
-```sh
+```s
 keytool -genkey -v -keystore release.keystore \
     -alias application -keyalg RSA -keysize 2048 -validity 10000
 ```
@@ -36,7 +36,7 @@ Note that only release builds are signed using the specified key. Debug builds a
 
 Run the following command in your shell:
 
-```sh
+```s
 uno build ios --configuration=Release --debug
 ```
 
@@ -63,7 +63,7 @@ Uno attempts to automatically find an Xcode Development Team ID by querying the 
 
 It can also be set by passing the `--set:Project.iOS.DevelopmentTeam="YOURTEAMID"` flag to `uno build`, e.g.
 
-```sh
+```s
 uno build ios --set:Project.iOS.DevelopmentTeam="YOURTEAMID"
 
 ```

@@ -11,7 +11,7 @@ The core layer is _Fuse Protocol_. _Fuse Protocol_ is a general purpose protocol
 Data sent through the *Fuse Protocol* consists of two parts, a _header_ and a _payload_. Together they represent what we call a _message_. The header consists of two UTF-8 encoded strings, terminated by line breaks. The first string represents the type of the message, the second string represents the length of the payload.
 
 Here is an example of how a message is structured:
-```
+```s
 MyMessageType\n
 7\n
 foo bar
@@ -21,7 +21,7 @@ foo bar
 On top of the _Fuse Protocol_ is the _Daemon protocol_. The daemon protocol defines three types of _Fuse Protocol_ messages, called **Event**, **Request** and **Response**. The payload for each of these types is UTF-8 encoded JSON, and looks as follows:
 
 ### Event
-```javascript
+```json
 {
 	"Name": "ExampleEvent",
 	"SubscriptionId": 32, // The id of the event subscription (set automatically by the daemon),
@@ -30,7 +30,7 @@ On top of the _Fuse Protocol_ is the _Daemon protocol_. The daemon protocol defi
 ```
 
 ### Request
-```javascript
+```json
 {
 	"Name": "MyRequest",
 	"Id": 242, // Make this a unique number for each request, so we can recognize the matching response message
@@ -39,7 +39,7 @@ On top of the _Fuse Protocol_ is the _Daemon protocol_. The daemon protocol defi
 ```
 
 ### Response
-```javascript
+```json
 {
     "Id": 242, // The id of the request to which this is a response
     "Status": "Success", // Can be "Success", "Error" or "Unhandled"
@@ -52,7 +52,7 @@ On top of the _Fuse Protocol_ is the _Daemon protocol_. The daemon protocol defi
 <a name="indepth-request"></a>The request and response system is based on RPC (remote procedure call). The Fuse daemon acts as a switch between requesters and responders. A request sent from a client to the daemon will be forwarded to the **last** client which provides a handler for a specific request type. A client can publish that it provides a service (handles a request type) by sending a [PublishService](#publishservice) request to the daemon. A service provider is supposed to handle one or more request types, by transforming the request to a response. The concept is similar to method invocation, where request message store the method name and arguments for the method to be invoked, and the return value of the method is either something valid or an error (similar to exceptions in exception based languages), which in turn is sent back as a response to the requester (response is sent to the daemon, which forwards it to the requester).
 
 **A PublishService request**<a name="publishservice"></a>
-```javascript
+```json
 {
 	"Name": "PublishService",
 	"Arguments": {
@@ -67,7 +67,7 @@ Events are broadcasted on a message bus in a typical pub/sub fashion, where clie
 One thing to note about our protocol is that there is never a direct connection between two clients, and they don't know about each other. All communication goes through the daemon, which works as a switch and a broadcaster.
 
 **A Subscribe request**<a name="subscriberequest"></a>
-```javascript
+```json
 {
 	"Name": "Subscribe",
 	"Arguments": {
@@ -81,7 +81,7 @@ One thing to note about our protocol is that there is never a direct connection 
 The _Daemon Protocol_ itself does not define a set of message types; any user of the _Daemon Protocol_ is free to define types. Here's an example of a custom event message:
 
 **A user-defined event**
-```javascript
+```json
 {
 	"Name": "MyMouseEvent",
 	"Data": {
@@ -97,14 +97,14 @@ The command `fuse daemon-client <name-of-client>` will create a connection to th
 ## Requests and Events
 One of the first thing you probably want to do after you have established a connection to the daemon, is to send a request. The two most important request types are [PublishService](#publishservice) and [Subscribe](#subscriberequest), more are listed in our [api reference](#fuse-api-reference). One example is to subscribe to all build logged events, which can be done by sending the following data (full test example [here](#example)):
 
-```javascript
+```json
 Request // Message type ended with a newline as described in the `Fuse Protocol` paragraph at the top
 106 // Size of payload in bytes ended with a newline as described in the `Fuse Protocol` paragraph at the top
 {"Name":"Subscribe","Id":101,"Arguments":{"Filter":"Fuse.BuildLogged","Replay":false,"SubscriptionId":42}}
 ```
 
 After sending the `Subscribe` request above, you should receive all events named `Fuse.BuildLogged`. (Run `fuse preview` of a project to trigger this event). The events received should look similar to:
-```javascript
+```json
 Event
 144
 {"Name":"Fuse.BuildLogged","Data":{"BuildId":"6c7e6f55-74de-45d1-bdb5-9f9cf2bafbf7","Message":"Generating code and data\n"},"SubscriptionId":42}
@@ -112,7 +112,7 @@ Event
 
 You may also broadcast an event, which is done by sending it to the daemon. The daemon will handle the broadcasting of the event to all registered listeners. For example you may send a `Fuse.BuildLogged` event yourself (altough it's **not** recommended to broadcast custom events named the same as existing events). This is how your `Fuse.BuildLogged` event might look like:
 
-```javascript
+```json
 {
 	"Name":"Fuse.BuildLogged",
     "Data": {
@@ -125,7 +125,7 @@ You may also broadcast an event, which is done by sending it to the daemon. The 
 Note that we have omitted the _Fuse Protocol_ header and we will continue doing it for the rest of the article for clarity. However keep in mind that a message also have a header as explained [here](#fuseprotocol).
 
 _PublishService_ is a request you may consider sending when you want to respond to custom request types. This means you provide functionality which other clients may request. For instance say that you provide a feature called `GetAgeOfStudent`, which means that something like the following should be sent to the daemon:
-```javascript
+```json
 {
 	"Name": "PublishService",
 	"Arguments": {
@@ -136,7 +136,7 @@ _PublishService_ is a request you may consider sending when you want to respond 
 
 All `GetAgeOfStudent` requests will be routed to you from this point. If for instance a client connected to the daemon sends a `GetAgeOfStudent` request, you will receive it and it will also be your responsibility to send a response back.
 
-```javascript
+```json
 {
 	"Name": "GetAgeOfStudent",
     "Id": 2,
@@ -148,7 +148,7 @@ All `GetAgeOfStudent` requests will be routed to you from this point. If for ins
 
 You may receive a request as above. However how you respond to it is up to you, for example:
 
-```javascript
+```json
 {
     "Id": 2,
     "Status": "Success",
@@ -282,7 +282,7 @@ There are a few build events that you may want to subscribe to, when you for exa
 
 Sent after a build was started, and contains information related to the build.
 
-```javascript
+```json
 {
 	"Name": "Fuse.BuildStarted",
 	"SubscriptionId": 32, // The id provided in the subscribe response
@@ -301,7 +301,7 @@ Sent after a build was started, and contains information related to the build.
 **Fuse.BuildLogged - Event**
 
 Sent after build has logged something.
-```javascript
+```json
 {
 	"Name": "Fuse.BuildLogged",
 	"SubscriptionId": 32, 
@@ -316,7 +316,7 @@ Sent after build has logged something.
 **Fuse.BuildIssueDetected - Event**
 
 Sent when a build issue was detected.
-```javascript
+```json
 {
 	"Name": "Fuse.BuildIssueDetected",
 	"SubscriptionId": 32, 
@@ -336,7 +336,7 @@ Sent when a build issue was detected.
 **Fuse.BuildEnded - Event**
 
 Sent after build completed (successfully or not).
-```javascript
+```json
 {
 	"Name": "Fuse.BuildEnded",
 	"SubscriptionId": 32, 
@@ -354,7 +354,7 @@ Sent after build completed (successfully or not).
 
 **Request example**
 
-```javascript
+```json
 {
 	"Id": 42, // Unique request id
 	"Name": "Fuse.GetCodeSuggestions",
@@ -370,7 +370,7 @@ Sent after build completed (successfully or not).
 
 **Response example**
 
-```javascript
+```json
 {
 	"Id": 42, // Id of request
 	"Status": "Success",
@@ -404,7 +404,7 @@ Sent after build completed (successfully or not).
 **Fuse.LogEvent - Event**
 
 Sent from a preview instance as a result of calling *debug_log*, *console.log* or using *DebugAction*.
-```javascript
+```json
 {
 	"Name": "Fuse.LogEvent",
 	"Data": 
@@ -420,7 +420,7 @@ Sent from a preview instance as a result of calling *debug_log*, *console.log* o
 **Fuse.ExceptionEvent - Event**
 
 Sent after an exception occured in a preview instance.
-```javascript
+```json
 {
 	"Name": "Fuse.ExceptionEvent",
 	"Data": 
@@ -439,7 +439,7 @@ Sent after an exception occured in a preview instance.
 **Fuse.SelectionChanged - Event**
 
 Send this event if you want to set selection in preview.
-```javascript
+```json
 {
 	"Name": "Fuse.Preview.SelectionChanged",
     "Data":

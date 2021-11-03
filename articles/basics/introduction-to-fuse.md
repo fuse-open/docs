@@ -138,16 +138,16 @@ With our newly acquired prowess in UX we can read the UX above as:
 
 We could also get super technical and point out some details:
 
-```
-        ------------------------------------ Opening tag
+```xml
+       ____________________________________ Opening tag
       /
      v
  <StackPanel Orientation="Horizontal">
-    <Text Value="Hello" /> <--------------- self closing tag
+    <Text Value="Hello" /> <--------------- self closing tag 
     <Text Value="World" />  <--------------- self closing tag
  </StackPanel>
        ^
-        ------------------------------------ Closing tag
+        \___________________________________ Closing tag
 ```
 
 But you may be looking at those opening and self closing tags above and wondering why they have extra stuff in them. If you are then well spotted! Those are called `Properties`.
@@ -165,7 +165,7 @@ Just like how an apple and a truck have different properties in real life, diffe
 
 One last note on properties: when we have an _object_ with *opening* & *closing* tags we only add the properties to the *opening* tag, so:
 
-```
+```xml
       / Only need properties on this one.
      v
  <StackPanel Orientation="Horizontal">
@@ -178,9 +178,9 @@ And given that we are talking about small details: _objects_ that are inside oth
 
 Before we wrap up this part lets annotate our UX again with what we have learned
 
-```
-	   ------------------------------------ Opening tag (named StackPanel). Parent to two objects.
-	  /            ------------------------ Has an Orientation Property
+```xml
+	   _______________ Opening tag (named StackPanel). Parent to two objects.
+	  /            ___________________ Has an Orientation Property
 	 /            /
 	v            v
 <StackPanel Orientation="Horizontal">
@@ -188,7 +188,7 @@ Before we wrap up this part lets annotate our UX again with what we have learned
    <Text Value="World" />  <--------------- Another child / self closing tag / Has a Value Property
 </StackPanel>
 	  ^
-	   ------------------------------------ Closing tag
+	   \__________________ Closing tag
 ```
 
 ### Classes
@@ -631,7 +631,7 @@ You can easily add unit tests for your Fuse projects using the `ux:Test` attribu
 
 We can then run our tests using the following command from the terminal (on macOS) or command prompt (on Windows) while in your project directory:
 
-```
+```s
 uno test ProjectName.unoproj
 ```
 
