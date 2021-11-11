@@ -354,7 +354,7 @@ At some point you will probably want to use assets in your app. It’s pretty si
 
 ![Asset Structure](../media/fuse-for-designers/Images/Assets_Folder_Structure.png)
 
-```s
+```sh
 Project Folder> Assets> Asset Type
 ```
 Then when you include the file in MainView.ux, you do so relative to the project root folder like this:

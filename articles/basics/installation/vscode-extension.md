@@ -28,7 +28,7 @@ The **Fuse Open** extension can be installed from the **Extensions** tab:
 
 Run the following command:
 
-```s
+```sh
 fuse install vscode-extension
 ```
 

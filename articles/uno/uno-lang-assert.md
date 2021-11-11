@@ -9,7 +9,7 @@ assert a>5;
 
 Results in the runtime message:
 
-```s
+```sh
 Assertion Failed: 'a > 5' in /Path/MyApplication/App.uno(14)
 ```
 

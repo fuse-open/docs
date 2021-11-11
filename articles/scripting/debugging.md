@@ -27,7 +27,7 @@ which is available both for macOS and Windows.
   Using a standard Fuse installation and with a single Android device
   connected, run (in a terminal or command prompt):
 
-  ```s
+  ```sh
   uno adb forward tcp:5858 tcp:5858
   ```
 
@@ -64,13 +64,13 @@ which is available both for macOS and Windows.
 
 * Build and run your app with `-DDEBUG_V8`. For example, run
 
-  ```s
+  ```sh
   fuse preview . -DDEBUG_V8
   ```
 
   to preview the project in the current working directory locally or
 
-  ```s
+  ```sh
   uno build android --run -DDEBUG_V8
   ```
 
@@ -82,7 +82,6 @@ which is available both for macOS and Windows.
 * When you hit the breakpoint that was previously added, the JS code will pause
   and Visual Studio Code will show the location in the code and allow you to
   view local variables, step into your code, continue, and so on.
-
 
 ## iOS
 

@@ -85,7 +85,7 @@ All in all, using `Promise`s, we've arrived at a fairly good approximation of wh
 
 Before we start implementing our mock backend, we'll want to talk about how we'll organize our JavaScript moving forward. Currently, we only have one standalone JS module in our project (besides our view models of course), and that's our `hikes.js` file. Since we'll be adding some more modules, we'll want to make sure we keep our project nice and organized. Similar to our `Pages` folder, where we placed all of our files pertaining to the different pages in our app, let's create a `Modules` folder at the root of our project where we'll place all of our standalone JS modules:
 
-```s
+```sh
 .
 |- MainView.ux
 |- Modules
@@ -277,7 +277,7 @@ As I mentioned earler, we _could_ have our view models interact with our mock ba
 
 To create our `Context` module, we'll start by making a new file in our `Modules` directory called `Context.js`:
 
-```s
+```sh
 .
 |- MainView.ux
 |- Modules

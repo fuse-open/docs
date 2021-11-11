@@ -247,7 +247,7 @@ Great! That was easy. Looking at the code, however, we've got two different `Tex
 
 Since we'll want our reusable component to be used throughout the app, we probably don't want to specify it in this file. Instead, we'll want to place it in its own file. In the root of our project dir, let's create a folder called `Components`:
 
-```s
+```sh
 .
 |- MainView.ux
 |- Components
@@ -740,7 +740,7 @@ And that concludes the content in our `EditHikePage`!
 
 With the content of our [Page](api:fuse/controls/page)s finished, let's focus on finishing the design for these `Page`s. We got pretty far with just a solid background color, but now it's time to add a background image to our `Page`s that matches our design. This image will be a _static asset_ that our app will use, so we'll first create an `Assets` folder in our project's root dir:
 
-```s
+```sh
 .
 |- MainView.ux
 |- Assets

@@ -18,7 +18,7 @@ However, in the case of our `hikes` array, we're not going to tie the module to 
 
 To do this, we'll first create a new (empty) file in our project called `hikes.js`. We'll place this in the root of our project directory, so our directory should look something like this:
 
-```s
+```sh
 $ tree
 .
 |- MainView.ux
@@ -170,7 +170,7 @@ In this case, Fuse will import a module called `hikes`, which corresponds to our
 
 Now that we've separated out our `hikes` array, the next thing we'll want to do is create a new component out of our view code. We'll do this in small steps as well. First, we'll want to create a new folder in our project called `Pages`:
 
-```s
+```sh
 $ tree
 .
 |- MainView.ux
@@ -187,7 +187,7 @@ Inside this new folder, we'll create a new file called `EditHikePage.ux`. Inside
 
 Our directory tree should now look a bit like this:
 
-```s
+```sh
 $ tree
 .
 |- MainView.ux
@@ -360,7 +360,7 @@ Notice how this looks just like we had used any other class that comes standard 
 
 Now, before we move on, we'll want to do one more thing with our new component, and that's to split out its JavaScript code into its own file. This is very easy to do. First, we'll create a new file called `EditHikePage.js`, right next to our `EditHikePage.ux` file in the `Pages` folder of our project:
 
-```s
+```sh
 $ tree
 .
 |- MainView.ux

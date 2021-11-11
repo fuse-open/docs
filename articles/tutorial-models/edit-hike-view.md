@@ -8,13 +8,13 @@ The final code for this chapter is available [here](https://github.com/fuse-open
 
 The first thing we'll do is create our project, and we'll call it "hikr". Just like in the [quickstart](../basics/quickstart.md), this can be done using the Fuse dashboard or the Fuse command like tools. For example:
 
-```s
+```sh
 fuse create app hikr [optional path]
 ```
 
 This should create the following directory structure:
 
-```s
+```sh
 $ tree
 .
 |- MainView.ux
@@ -25,7 +25,7 @@ These two files are all it takes to build a Fuse app! `MainView.ux` will contain
 
 If the project was created from the command line, open it in Fuse:
 
-```s
+```sh
 cd hikr
 fuse preview
 ```

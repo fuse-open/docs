@@ -246,7 +246,7 @@ Great! That was easy. Looking at the code, however, we've got two different `Tex
 
 Since we'll want our reusable component to be used throughout the app, we probably don't want to specify it in this file. Instead, we'll want to place it in its own file. In the root of our project dir, let's create a folder called `Components`:
 
-```s
+```sh
 .
 |- MainView.ux
 |- Components

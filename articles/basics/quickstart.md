@@ -161,7 +161,7 @@ Now that your app has at least one feature of (questionable) value, it is time t
 
 From the command line you do this by typing
 
-```s
+```sh
 	uno build <ios or android> --run
 ```
 
