@@ -23,7 +23,7 @@
       "namespaceTitle": "Fuse.Gestures",
       "namespaceUri": "fuse/gestures",
       "packageName": "Fuse.Gestures",
-      "packageVersion": "2.0.0"
+      "packageVersion": "2.0.1"
     },
     "inheritance": {
       "root": {
@@ -230,7 +230,7 @@
     },
     "comment": {
       "brief": "Pulse trigger that activates when a swipe has occurred.",
-      "full": "Pulse trigger that activates when a swipe has occurred.\n\nBy default, `Swiped` will only trigger when swiping to the primary swipe direction (when it enters the active state).\nFor instance, if the @SwipeGesture has `Direction=\"Left\"` it only triggers on a `Left` swipe and ignores the matching closing swipe.\nWe can control this behavior by setting the `How` property to either `ToActive` (default), `ToInactive` or `ToEither`.\n\n> **Note:** For a `Type=\"Active\"` @SwipeGesture, this only fires when the state actually changes.\n> If the user starts swiping but release the pointer without completing the gesture, it will not activate.\n\n# Example\n\nThis example shows a quick animation after a panel has been swiped.\n\n    <Panel Width=\"100\" Height=\"100\">\n        <SwipeGesture ux:Name=\"swipe\" Direction=\"Up\" Length=\"50\" Type=\"Simple\" />\n        <Swiped Source=\"swipe\">\n            <Scale Factor=\"1.5\" Duration=\"0.4\" DurationBack=\"0.2\" />\n        </Swiped>\n    </Panel>"
+      "full": "Pulse trigger that activates when a swipe has occurred.\n\nBy default, `Swiped` will only trigger when swiping to the primary swipe direction (when it enters the active state).\nFor instance, if the @SwipeGesture has `Direction=\"Left\"` it only triggers on a `Left` swipe and ignores the matching closing swipe.\nWe can control this behavior by setting the `How` property to either `ToActive` (default), `ToInactive` or `ToEither`.\n\n> **Note:** For a `Type=\"Active\"` @SwipeGesture, this only fires when the state actually changes.\n> If the user starts swiping but release the pointer without completing the gesture, it will not activate.\n\n# Example\n\nThis example shows a quick animation after a panel has been swiped.\n```xml\n    <Panel Width=\"100\" Height=\"100\">\n        <SwipeGesture ux:Name=\"swipe\" Direction=\"Up\" Length=\"50\" Type=\"Simple\" />\n        <Swiped Source=\"swipe\">\n            <Scale Factor=\"1.5\" Duration=\"0.4\" DurationBack=\"0.2\" />\n        </Swiped>\n    </Panel>\n```"
     }
   },
   "tableOfContents": {
@@ -366,7 +366,7 @@
           {
             "comment": {
               "brief": "Specifies an explicit backward animation instead of using the implied backward animation\nof the animators involved. Be aware that actions are not part of the animation.",
-              "full": "Specifies an explicit backward animation instead of using the implied backward animation\nof the animators involved. Be aware that actions are not part of the animation.\n\nTriggers normally use the same animators when deactivating as they do when they activate. There are however\nanimations that require a different set of animators when animating back from the active state. For this purpose\none can bind a new set of animators to the `BackwardAnimation` property like so:\n\n    <Panel Width=\"100\" Height=\"100\" Color=\"#00b2ee\">\n        <WhilePressed>\n            <Rotate Degrees=\"90\" Duration=\"0.5\" />\n            <Scale Factor=\"1.5\" Duration=\"1\" Easing=\"QuadraticInOut\" />\n            <TriggerAnimation ux:Binding=\"BackwardAnimation\">\n                <Scale Factor=\"1.5\" Duration=\"1\" Easing=\"QuadraticInOut\" />\n            </TriggerAnimation>\n        </WhilePressed>\n    </Panel>\n\nIn this example, the @Panel only rotates when pressed. When the pointer is released, it does not animate back.\nNote that the effect of the animators are still reversed. The only difference is that they loose their duration."
+              "full": "Specifies an explicit backward animation instead of using the implied backward animation\nof the animators involved. Be aware that actions are not part of the animation.\n\nTriggers normally use the same animators when deactivating as they do when they activate. There are however\nanimations that require a different set of animators when animating back from the active state. For this purpose\none can bind a new set of animators to the `BackwardAnimation` property like so:\n```xml\n    <Panel Width=\"100\" Height=\"100\" Color=\"#00b2ee\">\n        <WhilePressed>\n            <Rotate Degrees=\"90\" Duration=\"0.5\" />\n            <Scale Factor=\"1.5\" Duration=\"1\" Easing=\"QuadraticInOut\" />\n            <TriggerAnimation ux:Binding=\"BackwardAnimation\">\n                <Scale Factor=\"1.5\" Duration=\"1\" Easing=\"QuadraticInOut\" />\n            </TriggerAnimation>\n        </WhilePressed>\n    </Panel>\n```xml\nIn this example, the @Panel only rotates when pressed. When the pointer is released, it does not animate back.\nNote that the effect of the animators are still reversed. The only difference is that they loose their duration."
             },
             "returns": {
               "href": "fuse/animations/triggeranimation",

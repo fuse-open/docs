@@ -22,7 +22,7 @@
     {
       "comment": {
         "brief": "A call-to-action button that can optionally have a glowing outline.",
-        "full": "A call-to-action button that can optionally have a glowing outline.\n\n    <Alive.CallToActionButton Text=\"Buy now!\" />\n    <Alive.CallToActionButton Text=\"Look at it glow!\" Glow=\"true\" />"
+        "full": "A call-to-action button that can optionally have a glowing outline.\n\n```xml\n<Alive.CallToActionButton Text=\"Buy now!\" />\n<Alive.CallToActionButton Text=\"Look at it glow!\" Glow=\"true\" />\n```\n\n![actionButton](../../docs/media/alive/calltoactionbutton.png)"
       },
       "id": {
         "id": "alive/calltoactionbutton",
@@ -45,7 +45,7 @@
     {
       "comment": {
         "brief": "Cards are generally light. Thus, they have an implicit LightTheme by default.\nYou can disable this behavior by using its base class, [ThemedCard](api:alive/themedcard) instead.",
-        "full": "Cards are generally light. Thus, they have an implicit LightTheme by default.\nYou can disable this behavior by using its base class, [ThemedCard](api:alive/themedcard) instead.\n\n    <Alive.ThemedCard>\n        <Alive.DarkTheme />\n    </Alive.ThemedCard>\n\nCards are Rectangles, which means they can have children and/or fills.\n\n    <Alive.Card Color=\"Alive.Gray200\" />\n\n[Alive.ImageFill](api:alive/imagefill) can be used to fill a card with an image.\n\n    <Alive.Card>\n        <Alive.ImageFill File=\"Assets/image.jpg\" />\n    </Alive.Card>\n\n[CardMedia](api:alive/cardmedia) can be used to only fill the top of a Card.\nNote: [CardMedia](api:alive/cardmedia) has an implicit [DarkTheme](api:alive/darktheme).\n\n[CardBody](api:alive/cardbody) is a @StackPanel with proper margin and spacing for text content in a Card.\n\n    <Alive.Card>\n        <StackPanel>\n            <Alive.CardMedia>\n                <Alive.ImageFill File=\"Assets/image.jpg\" />\n            </Alive.CardMedia>\n            <Alive.CardBody>\n                <Alive.Title>Whee, I'm a card!</Alive.Title>\n            </Alive.CardBody>\n        </StackPanel>\n    </Alive.Card>"
+        "full": "Cards are generally light. Thus, they have an implicit LightTheme by default.\nYou can disable this behavior by using its base class, [ThemedCard](api:alive/themedcard) instead.\n\n```xml\n<Alive.ThemedCard>\n    <Alive.DarkTheme />\n</Alive.ThemedCard>\n```\n\nCards are Rectangles, which means they can have children and/or fills.\n```xml\n<Alive.Card Color=\"Alive.Gray200\" />\n```\n\n[Alive.ImageFill](api:alive/imagefill) can be used to fill a card with an image.\n\n```xml\n<Alive.Card>\n    <Alive.ImageFill File=\"Assets/image.jpg\" />\n</Alive.Card>\n```\n\n[CardMedia](api:alive/cardmedia) can be used to only fill the top of a Card.\nNote: [CardMedia](api:alive/cardmedia) has an implicit [DarkTheme](api:alive/darktheme).\n\n[CardBody](api:alive/cardbody) is a @StackPanel with proper margin and spacing for text content in a Card.\n\n```xml\n<Alive.Card>\n    <StackPanel>\n        <Alive.CardMedia>\n            <Alive.ImageFill File=\"Assets/image.jpg\" />\n        </Alive.CardMedia>\n        <Alive.CardBody>\n            <Alive.Title>Whee, I'm a card!</Alive.Title>\n        </Alive.CardBody>\n    </StackPanel>\n</Alive.Card>\n```"
       },
       "id": {
         "id": "alive/card",
@@ -91,7 +91,7 @@
     {
       "comment": {
         "brief": "A horizontal rectangle, generally used to communicate category using color.",
-        "full": "A horizontal rectangle, generally used to communicate category using color.\n\n    <Alive.ColorBadge Color=\"{Resource Alive.Blue}\" />\n\nSee also [Donut](api:alive/donut)."
+        "full": "A horizontal rectangle, generally used to communicate category using color.\n\n```xml\n<Alive.ColorBadge Color=\"{Resource Alive.Blue}\" />\n```\n\nPossible usage\n\n```xml\n<App>\n    <Alive.FallbackTheme />\n    <ClientPanel>\n        <StackPanel ItemSpacing=\"10\" Alignment=\"Center\">\n            <Text Value=\"Categories list:\" Color=\"White\"/>\n            <Each Count=\"5\">\n                <StackPanel Orientation=\"Horizontal\" ItemSpacing=\"10\" Margin=\"25,0\">\n                    <Alive.ColorBadge />\n                    <Text Value=\"Catigory - {index()}\" Color=\"White\"/>\n                </StackPanel>\n            </Each>\n        </StackPanel>\n    </ClientPanel>\n</App>\n```\n\n![actionButton](../../docs/media/alive/colorbadge.png)\n\n> **Note** Color can be changed only by overriding an AccentColor of the Theme\n\nSee also [Donut](api:alive/donut)."
       },
       "id": {
         "id": "alive/colorbadge",
@@ -114,7 +114,7 @@
     {
       "comment": {
         "brief": "A @Rectangle with a gradient fading out near the bottom of an element.",
-        "full": "A @Rectangle with a gradient fading out near the bottom of an element.\n\n    <Panel>\n        <Alive.ContentGradient />\n        <Image File=\"image.jpg\" />\n    </Panel>"
+        "full": "A @Rectangle with a gradient fading out near the bottom of an element.\n\nBefore\n```xml\n<Panel Color=\"White\" Size=\"400\">\n    <Image Url=\"https://icons-for-free.com/iconfiles/png/512/profile+profile+page+user+icon-1320186864367220794.png\" />\n</Panel>\n```\nAfter\n```xml\n<Panel Color=\"White\" Size=\"400\">\n    <Alive.ContentGradient />\n    <Image Url=\"https://icons-for-free.com/iconfiles/png/512/profile+profile+page+user+icon-1320186864367220794.png\" />\n</Panel>\n```\n\n![actionButton](../../docs/media/alive/contentgradient.png)"
       },
       "id": {
         "id": "alive/contentgradient",

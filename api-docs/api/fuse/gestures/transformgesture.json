@@ -23,7 +23,7 @@
       "namespaceTitle": "Fuse.Gestures",
       "namespaceUri": "fuse/gestures",
       "packageName": "Fuse.Gestures",
-      "packageVersion": "2.0.0"
+      "packageVersion": "2.0.1"
     },
     "inheritance": {
       "root": {
@@ -211,7 +211,7 @@
     },
     "comment": {
       "brief": "A `TransformGesture` interprets pointer gestures and modifies an `InteractiveTransform` in response.",
-      "full": "A `TransformGesture` interprets pointer gestures and modifies an `InteractiveTransform` in response.\n\nNote that the `TransformGesture` on its own has no visual impact, it only modifies the `InteractiveTransform`, which provides the actual visual transformation.  For example here is a simple image viewing setup:\n\n    <Panel HitTestMode=\"LocalBounds\">\n        <Image File=\"my_image.jpg\">\n            <InteractiveTransform ux:Name=\"ImageTrans\"/>\n        </Image>\n        <ZoomGesture Target=\"ImageTrans\"/>\n        <PanGesture Target=\"ImageTrans\"/>\n        <RotateGesture Target=\"ImageTrans\"/>\n    </Panel>\n\nOne `InteractiveTransform` can be the target of multiple gestures. They will coorindate correctly with each other to provide a unified experience. The `InteractiveTransform` will contain values that represent the total transformation.\n\nFor a complete list of single-finger gestures such as @Tapped, @LongPress etc., see @Triggers.\n\n## Available gestures\n\n[subclass Fuse.Gestures.TransformGesture]",
+      "full": "A `TransformGesture` interprets pointer gestures and modifies an `InteractiveTransform` in response.\n\nNote that the `TransformGesture` on its own has no visual impact, it only modifies the `InteractiveTransform`, which provides the actual visual transformation.  For example here is a simple image viewing setup:\n```xml\n    <Panel HitTestMode=\"LocalBounds\">\n        <Image File=\"my_image.jpg\">\n            <InteractiveTransform ux:Name=\"ImageTrans\"/>\n        </Image>\n        <ZoomGesture Target=\"ImageTrans\"/>\n        <PanGesture Target=\"ImageTrans\"/>\n        <RotateGesture Target=\"ImageTrans\"/>\n    </Panel>\n```\nOne `InteractiveTransform` can be the target of multiple gestures. They will coorindate correctly with each other to provide a unified experience. The `InteractiveTransform` will contain values that represent the total transformation.\n\nFor a complete list of single-finger gestures such as @Tapped, @LongPress etc., see @Triggers.\n\n## Available gestures\n\n[subclass Fuse.Gestures.TransformGesture]",
       "attributes": {
         "topic": "Gestures"
       }

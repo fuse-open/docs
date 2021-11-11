@@ -4,7 +4,7 @@
       "namespaceTitle": "Fuse.Controls",
       "namespaceUri": "fuse/controls",
       "packageName": "Fuse.Controls.Navigation",
-      "packageVersion": "2.0.0"
+      "packageVersion": "2.0.1"
     },
     "parameters": [
       {
@@ -45,7 +45,7 @@
     },
     "comment": {
       "brief": "Goto the desired page and modify the local history.",
-      "full": "Goto the desired page and modify the local history.\n\nThe properties here match the same named properties of `router.modify`\n\nThe navigationSpec is a JavaScript object that specifies all the properties for the modification,\nfor example:\n\n    nav.modifyPath({\n        how: \"Goto\",\n        path: [ \"one\", {} ],\n        transition: \"Bypass\",\n    })\n\nThis gotos to the \"one\" page without a transition.\n\nThe options are:\n    - `how`: One of:\n        - `Goto`: Clears the current route stack, like `goto()`\n        - `Push`: Pushes a new path onto the route stack, like `push()`\n        - `Replace`: Replaces the current item on the route stack wtih a new path\n        - `GoBack`: Returns to the previous page in the local history (or an explictily provided one)\n    - `path`: An array specifying the path and parameter parts in pairs, or an object page specification. The result must be a single path component as it affects only the local NavigationControl.\n    - `transition`: An optional argument:\n        - `Transition`: A normal animated transition. This is the default.\n        - `Bypass`: A bypass transtiion that skips animation.\n    - `style`: The style of the operation, which can be used as a matching criteria in transitions.",
+      "full": "Goto the desired page and modify the local history.\n\nThe properties here match the same named properties of `router.modify`\n\nThe navigationSpec is a JavaScript object that specifies all the properties for the modification,\nfor example:\n```js\n    nav.modifyPath({\n        how: \"Goto\",\n        path: [ \"one\", {} ],\n        transition: \"Bypass\",\n    });\n```\nThis gotos to the \"one\" page without a transition.\n\nThe options are:\n    - `how`: One of:\n        - `Goto`: Clears the current route stack, like `goto()`\n        - `Push`: Pushes a new path onto the route stack, like `push()`\n        - `Replace`: Replaces the current item on the route stack wtih a new path\n        - `GoBack`: Returns to the previous page in the local history (or an explictily provided one)\n    - `path`: An array specifying the path and parameter parts in pairs, or an object page specification. The result must be a single path component as it affects only the local NavigationControl.\n    - `transition`: An optional argument:\n        - `Transition`: A normal animated transition. This is the default.\n        - `Bypass`: A bypass transtiion that skips animation.\n    - `style`: The style of the operation, which can be used as a matching criteria in transitions.",
       "attributes": {
         "scriptMethod": {
           "name": "modifyPath",

@@ -23,7 +23,7 @@
       "namespaceTitle": "Fuse",
       "namespaceUri": "fuse",
       "packageName": "Fuse.Triggers",
-      "packageVersion": "2.0.0"
+      "packageVersion": "2.0.1"
     },
     "inheritance": {
       "root": {
@@ -239,7 +239,7 @@
     },
     "comment": {
       "brief": "Defers the creation of nodes to improve initialization time.",
-      "full": "Defers the creation of nodes to improve initialization time.\n\n`Deferred` says that the content is not required immediately and may be created somewhat later. This allows the app to startup faster, or to create new pages faster. Without `Deferred` the nodes are initialized all in the same frame, which can lead to delays. With `Deferred` the node creation is staggered over several frames. This allows the app to start rendering and displaying prior to being completely initialized.\n\nA common use is with an @Each:\n\n    <Each Items=\"{items}\">\n        <Deferred>\n            <StackPanel Orientation=\"Horizontal\">\n                <Text Value=\"{name}\"/>\n                <Text Value=\"{address}\"/>\n                <Text Value=\"{phone}\"/>\n            </StackPanel>\n        </Deferred>\n    </Each>\n\nNote that the delay is measured in frames: deferred content will still be added quickly. Nonetheless it may result in some popping of the new elements and a change in layout.\n\nYou only need to use this feature when you are having initializaiton time problems at startup or on new pages. Wrapping the content of @Each in `Deferred` is a simple change that can help when you are using lists of items. The individual pages of a top-level @PageControl may also be suitable for `Deferred`.\n\nDo not use this on the pages of a @Navigator or other control that accepts templates. Templates are already created on demand and wrapping them in `Deferred` usually won't be helpful."
+      "full": "Defers the creation of nodes to improve initialization time.\n\n`Deferred` says that the content is not required immediately and may be created somewhat later. This allows the app to startup faster, or to create new pages faster. Without `Deferred` the nodes are initialized all in the same frame, which can lead to delays. With `Deferred` the node creation is staggered over several frames. This allows the app to start rendering and displaying prior to being completely initialized.\n\nA common use is with an @Each:\n```xml\n    <Each Items=\"{items}\">\n        <Deferred>\n            <StackPanel Orientation=\"Horizontal\">\n                <Text Value=\"{name}\"/>\n                <Text Value=\"{address}\"/>\n                <Text Value=\"{phone}\"/>\n            </StackPanel>\n        </Deferred>\n    </Each>\n```\n\nNote that the delay is measured in frames: deferred content will still be added quickly. Nonetheless it may result in some popping of the new elements and a change in layout.\n\nYou only need to use this feature when you are having initializaiton time problems at startup or on new pages. Wrapping the content of @Each in `Deferred` is a simple change that can help when you are using lists of items. The individual pages of a top-level @PageControl may also be suitable for `Deferred`.\n\nDo not use this on the pages of a @Navigator or other control that accepts templates. Templates are already created on demand and wrapping them in `Deferred` usually won't be helpful."
     }
   },
   "tableOfContents": {

@@ -4,7 +4,7 @@
       "namespaceTitle": "Fuse.Controls",
       "namespaceUri": "fuse/controls",
       "packageName": "Fuse.Controls.Primitives",
-      "packageVersion": "2.0.0"
+      "packageVersion": "2.0.1"
     },
     "parameters": [],
     "returns": {
@@ -37,7 +37,7 @@
     },
     "comment": {
       "brief": "This can be useful if your app has a lot of text since the\ninitial loading time for such an app's text elements can be too\nhigh to do without a noticable delay.",
-      "full": "This can be useful if your app has a lot of text since the\ninitial loading time for such an app's text elements can be too\nhigh to do without a noticable delay.\n\nIf this property is set to true, the @WhileLoading trigger is\nactive while the text is loading.\n\n## Example\n\nThe following code displays a green background while a piece of\ntext is loading on the background thread, and fades in the text\nwhen it's available.\n\n    <Panel ux:Name=\"_loading\" Background=\"#0F0\" Opacity=\"0.0\"/>\n    <Text ux:Name=\"_text\" Value=\"Some text\" LoadAsync=\"true\" >\n        <WhileLoading>\n            <Change _loading.Opacity=\"1.0\" Duration=\"0.5\" />\n            <Change _text.Opacity=\"0.0\"  Duration=\"0.5\" />\n        </WhileLoading>\n    </Text>\n\n## Remarks\n\nThis property currently only works when running on an actual\ndevice and using the Harbuzz text renderer (enabled on desktop\nor by building for device with `-DUSE_HARFBUZZ`).",
+      "full": "This can be useful if your app has a lot of text since the\ninitial loading time for such an app's text elements can be too\nhigh to do without a noticable delay.\n\nIf this property is set to true, the @WhileLoading trigger is\nactive while the text is loading.\n\n## Example\n\nThe following code displays a green background while a piece of\ntext is loading on the background thread, and fades in the text\nwhen it's available.\n```xml\n    <Panel ux:Name=\"_loading\" Background=\"#0F0\" Opacity=\"0.0\"/>\n    <Text ux:Name=\"_text\" Value=\"Some text\" LoadAsync=\"true\" >\n        <WhileLoading>\n            <Change _loading.Opacity=\"1.0\" Duration=\"0.5\" />\n            <Change _text.Opacity=\"0.0\"  Duration=\"0.5\" />\n        </WhileLoading>\n    </Text>\n```\n## Remarks\n\nThis property currently only works when running on an actual\ndevice and using the Harbuzz text renderer (enabled on desktop\nor by building for device with `-DUSE_HARFBUZZ`).",
       "attributes": {
         "experimental": true
       }

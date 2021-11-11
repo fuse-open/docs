@@ -4,7 +4,7 @@
       "namespaceTitle": "Fuse.FileSystem",
       "namespaceUri": "fuse/filesystem",
       "packageName": "Fuse.FileSystem",
-      "packageVersion": "2.0.0"
+      "packageVersion": "2.0.1"
     },
     "parameters": [
       {
@@ -43,7 +43,7 @@
     },
     "comment": {
       "brief": "Asynchronously writes an `ArrayBuffer` to a file.",
-      "full": "Asynchronously writes an `ArrayBuffer` to a file.\n\n## Example\n\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    var data = new ArrayBuffer(4);\n    var view = new Int32Array(data);\n    view[0] = 0x1337;\n\n    FileSystem.writeBufferToFile(FileSystem.dataDirectory + \"/\" + \"myfile.txt\", data)\n        .then(function() {\n            console.log(\"Successful write\");\n        }, function(error) {\n            console.log(error);\n        });",
+      "full": "Asynchronously writes an `ArrayBuffer` to a file.\n\n## Example\n```js\n    var FileSystem = require(\"FuseJS/FileSystem\");\n\n    var data = new ArrayBuffer(4);\n    var view = new Int32Array(data);\n    view[0] = 0x1337;\n\n    FileSystem.writeBufferToFile(FileSystem.dataDirectory + \"/\" + \"myfile.txt\", data)\n        .then(function() {\n            console.log(\"Successful write\");\n        }, function(error) {\n            console.log(error);\n        });\n```",
       "attributes": {
         "scriptMethod": {
           "name": "writeBufferToFile",

@@ -22,7 +22,7 @@
     {
       "comment": {
         "brief": "A bordered circle, generally used for profile images.",
-        "full": "A bordered circle, generally used for profile images.\n\n    <Alive.Bubble>\n        <Alive.ImageFill File=\"Assets/image.jpg\" />\n    </Alive.Bubble>\n\n[Bubbles](api:alive/bubbles) displays a row of partially overlapping Bubbles.\n\n    <Alive.Bubbles>\n        <Each Items=\"{friends}\">\n            <Alive.Bubble>\n                <Alive.ImageFill Url=\"{profileImageUrl}\" />\n            </Alive.Bubble>\n        </Each>\n    </Alive.Bubbles>"
+        "full": "A bordered circle, generally used for profile images.\n\n```xml\n<Alive.Bubble>\n    <Alive.ImageFill Url=\"https://icons-for-free.com/iconfiles/png/512/profile+profile+page+user+icon-1320186864367220794.png\" />\n</Alive.Bubble>\n```\n\n![actionButton](../../docs/media/alive/bubbles/single.png)\n\n[Bubbles](api:alive/bubbles) displays a row of partially overlapping Bubbles.\n\n```xml\n<Alive.Bubbles>\n    <Alive.Bubble Color=\"Red\">\n        <Alive.ImageFill Url=\"https://icons-for-free.com/iconfiles/png/512/profile+profile+page+user+icon-1320186864367220794.png\" />\n    </Alive.Bubble>\n    <Alive.Bubble Color=\"Yellow\">\n        <Alive.ImageFill Url=\"https://icons-for-free.com/iconfiles/png/512/profile+profile+page+user+icon-1320186864367220794.png\" />\n    </Alive.Bubble>\n    <Alive.Bubble Color=\"Green\">\n        <Alive.ImageFill Url=\"https://icons-for-free.com/iconfiles/png/512/profile+profile+page+user+icon-1320186864367220794.png\" />\n    </Alive.Bubble>\n</Alive.Bubbles>\n```\n\n![actionButton](../../docs/media/alive/bubbles/multiple.png)\n\nor using `Each` for that\n\n```xml\n<Alive.Bubbles>\n    <Each Items=\"{friends}\">\n        <Alive.Bubble>\n            <Alive.ImageFill Url=\"{profileImageUrl}\" />\n        </Alive.Bubble>\n    </Each>\n</Alive.Bubbles>\n```"
       },
       "id": {
         "id": "alive/bubble",
@@ -45,7 +45,7 @@
     {
       "comment": {
         "brief": "A colored circle, generally used to communicate category.",
-        "full": "A colored circle, generally used to communicate category.\n\n    <Alive.Donut StrokeColor=\"{Resource Alive.Red}\" />\n\nSee also [ColorBadge](api:alive/colorbadge)"
+        "full": "A colored circle, generally used to communicate category.\n\n```xml\n<Alive.Donut StrokeColor=\"{Resource Alive.Red}\" />\n```\n\nPossible usage\n\n```xml\n<App>\n    <Alive.FallbackTheme />\n    <ClientPanel>\n        <StackPanel ItemSpacing=\"10\" Alignment=\"Center\">\n            <Text Value=\"Categories list:\" Color=\"White\"/>\n            <Each Count=\"5\">\n                <StackPanel Orientation=\"Horizontal\" ItemSpacing=\"10\" Margin=\"25,0\">\n                    <Alive.Donut StrokeColor=\"{Resource Alive.Red}\" />\n                    <Text Value=\"Catigory - {index()}\" Color=\"White\"/>\n                </StackPanel>\n            </Each>\n        </StackPanel>\n    </ClientPanel>\n</App>\n```\n\n![actionButton](../../docs/media/alive/donut.png)\n\nSee also [ColorBadge](api:alive/colorbadge)"
       },
       "id": {
         "id": "alive/donut",

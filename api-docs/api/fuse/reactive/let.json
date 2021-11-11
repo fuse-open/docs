@@ -23,7 +23,7 @@
       "namespaceTitle": "Fuse.Reactive",
       "namespaceUri": "fuse/reactive",
       "packageName": "Fuse.Reactive.Bindings",
-      "packageVersion": "2.0.0"
+      "packageVersion": "2.0.1"
     },
     "inheritance": {
       "root": {
@@ -310,7 +310,7 @@
     },
     "comment": {
       "brief": "Binds an expression or value to a name in the data context. This simplifies repeated calculations and allows introduction of new variables.",
-      "full": "Binds an expression or value to a name in the data context. This simplifies repeated calculations and allows introduction of new variables.\n\nTo introduce a new value:\n\n    <Let ux:Name=\"a\" Value=\"5\"/>\n\nThe value is now part of the data context:\n\n    <Slider Value=\"{a}\"/>\n\nIt can also be accessed directly outside of the context:\n\n    <Slider Value=\"{Property a.Value}\"/>\n\nIf you are using an expression it's recommended now to use `Expression` instead of `Value`:\n\n    <Let ux:Name=\"p\" Expression=\"{pos} + 5\"/>\n\nThis ensures proper propagation of undefined values.  (This is part of the reason this is an experimental API, since we don't really want to distinguish between Expression and Value, but have no choice at the moment).\n\n## LetType\n\nIf you are creating a value of a specific type, and/or need to use `Change` or other animators, consider using one of the @LetType classes instead, such as @LetFloat or @LetString. They have a cleaner conversion mechanism, leading to fewer surprises.\n\nExperimental since there are some fine details about handling observables, nulls, and expressions that aren't quite defined and might subtlely alter the behaviour. For typical use-cases it should be okay though.",
+      "full": "Binds an expression or value to a name in the data context. This simplifies repeated calculations and allows introduction of new variables.\n\nTo introduce a new value:\n```xml\n    <Let ux:Name=\"a\" Value=\"5\"/>\n```\nThe value is now part of the data context:\n```xml\n    <Slider Value=\"{a}\"/>\n```\nIt can also be accessed directly outside of the context:\n```xml\n    <Slider Value=\"{Property a.Value}\"/>\n```\n\nIf you are using an expression it's recommended now to use `Expression` instead of `Value`:\n```xml\n    <Let ux:Name=\"p\" Expression=\"{pos} + 5\"/>\n```\nThis ensures proper propagation of undefined values.  (This is part of the reason this is an experimental API, since we don't really want to distinguish between Expression and Value, but have no choice at the moment).\n\n## LetType\n\nIf you are creating a value of a specific type, and/or need to use `Change` or other animators, consider using one of the @LetType classes instead, such as @LetFloat or @LetString. They have a cleaner conversion mechanism, leading to fewer surprises.\n\nExperimental since there are some fine details about handling observables, nulls, and expressions that aren't quite defined and might subtlely alter the behaviour. For typical use-cases it should be okay though.",
       "attributes": {
         "experimental": true
       }

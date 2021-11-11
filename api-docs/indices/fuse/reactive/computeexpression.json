@@ -231,8 +231,8 @@
     },
     {
       "comment": {
-        "brief": "The invserse trigonometric tangent of the input components",
-        "full": "The invserse trigonometric tangent of the input components\n\n    atan2(y, x)"
+        "brief": "The invserse trigonometric tangent of the input components\n```uno\n    atan2(y, x)\n```",
+        "full": "The invserse trigonometric tangent of the input components\n```uno\n    atan2(y, x)\n```"
       },
       "id": {
         "id": "fuse/reactive/atan2",
@@ -254,8 +254,8 @@
     },
     {
       "comment": {
-        "brief": "The inverse trigonometric tangent of the input components. Like `atan2` but uses the input vector for the X and Y values.",
-        "full": "The inverse trigonometric tangent of the input components. Like `atan2` but uses the input vector for the X and Y values.\n\n    atanVector( v ) == atan2( v.Y, v.X )"
+        "brief": "The inverse trigonometric tangent of the input components. Like `atan2` but uses the input vector for the X and Y values.\n```uno\n    atanVector( v ) == atan2( v.Y, v.X )\n```",
+        "full": "The inverse trigonometric tangent of the input components. Like `atan2` but uses the input vector for the X and Y values.\n```uno\n    atanVector( v ) == atan2( v.Y, v.X )\n```"
       },
       "id": {
         "id": "fuse/reactive/atanvector",
@@ -365,8 +365,8 @@
     },
     {
       "comment": {
-        "brief": "Restricts the range of a value to between two numbers.",
-        "full": "Restricts the range of a value to between two numbers.\n\n    clamp( value, min, max)\n\nReturns\n- `min` when `value < min`\n- `max` when `value > max`\n- `value` otherwise\n\nValue may be a 1-4 component value. `min` and `max` must both be a single value."
+        "brief": "Restricts the range of a value to between two numbers.\n```uno\n    clamp( value, min, max)\n```\nReturns\n- `min` when `value < min`\n- `max` when `value > max`\n- `value` otherwise",
+        "full": "Restricts the range of a value to between two numbers.\n```uno\n    clamp( value, min, max)\n```\nReturns\n- `min` when `value < min`\n- `max` when `value > max`\n- `value` otherwise\n\nValue may be a 1-4 component value. `min` and `max` must both be a single value."
       },
       "id": {
         "id": "fuse/reactive/clamp",
@@ -860,7 +860,7 @@
     {
       "comment": {
         "brief": "Returns false if the value exists and is non-null, true otherwise.",
-        "full": "Returns false if the value exists and is non-null, true otherwise.\n\nThis is the same condition used in the NullCoalesce operator:\n\n    expr ?? res\n\nIs the same as:\n\n    isNull(expr) ? res : expr"
+        "full": "Returns false if the value exists and is non-null, true otherwise.\n\nThis is the same condition used in the NullCoalesce operator:\n```uno\n    expr ?? res\n```\nIs the same as:\n```uno\n    isNull(expr) ? res : expr\n```"
       },
       "id": {
         "id": "fuse/reactive/isnull",
@@ -901,8 +901,8 @@
     },
     {
       "comment": {
-        "brief": "Calculates the linear interpolation between two values.",
-        "full": "Calculates the linear interpolation between two values.\n\n    lerp( from, to, step )\n\nWhen step==0 the result is `from`, when step==1 the result is `to`. Partial values are linearly interpolated. Step values <0 and >1 are also supported.\n\nThe input supports a 1-4 component value for `from` and `to`. The result will be same size.\n`step` must always be a single value."
+        "brief": "Calculates the linear interpolation between two values.\n```uno\n    lerp( from, to, step )\n```\nWhen step==0 the result is `from`, when step==1 the result is `to`. Partial values are linearly interpolated. Step values <0 and >1 are also supported.",
+        "full": "Calculates the linear interpolation between two values.\n```uno\n    lerp( from, to, step )\n```\nWhen step==0 the result is `from`, when step==1 the result is `to`. Partial values are linearly interpolated. Step values <0 and >1 are also supported.\n\nThe input supports a 1-4 component value for `from` and `to`. The result will be same size.\n`step` must always be a single value."
       },
       "id": {
         "id": "fuse/reactive/lerp",
@@ -1724,7 +1724,7 @@
     {
       "comment": {
         "brief": "Forces conversion to a Size or Size2 depending on input size.",
-        "full": "Forces conversion to a Size or Size2 depending on input size.\n\nThis is useful when using operators that may not be able to infer the desired types. For example:\n\n    <JavaScript>\n        exports.jsArray = [0.2, 0.4]\n    </JavaScript>\n    <Panel Offset=\"size({jsArray}) * 100%\"/>\n\nThis function follows the conversion rules as though the operand was being converted directly to a `Size` or `Size2` property type. If the input is a `float2`, array, or already a Size2, then it will be converted to a `Size2`, otherwise a `Size` type."
+        "full": "Forces conversion to a Size or Size2 depending on input size.\n\nThis is useful when using operators that may not be able to infer the desired types. For example:\n```xml\n    <JavaScript>\n        exports.jsArray = [0.2, 0.4]\n    </JavaScript>\n    <Panel Offset=\"size({jsArray}) * 100%\"/>\n```\nThis function follows the conversion rules as though the operand was being converted directly to a `Size` or `Size2` property type. If the input is a `float2`, array, or already a Size2, then it will be converted to a `Size2`, otherwise a `Size` type."
       },
       "id": {
         "id": "fuse/reactive/tosize",

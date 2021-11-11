@@ -23,7 +23,7 @@
       "namespaceTitle": "Fuse.Gestures",
       "namespaceUri": "fuse/gestures",
       "packageName": "Fuse.Gestures",
-      "packageVersion": "2.0.0"
+      "packageVersion": "2.0.1"
     },
     "inheritance": {
       "root": {
@@ -256,7 +256,7 @@
     },
     "comment": {
       "brief": "Active whenever an [Active](api:fuse/gestures/swipegesture#swipetype-active-overview)-type\n@SwipeGesture has been swiped to the active state.",
-      "full": "Active whenever an [Active](api:fuse/gestures/swipegesture#swipetype-active-overview)-type\n@SwipeGesture has been swiped to the active state.\n\n# Example\n\nThis example shows a `Panel` that is scaled by a factor of 1.5 while the `SwipeGesture` is active:\n\n    <Panel Width=\"100\" Height=\"100\" Background=\"#000\">\n        <SwipeGesture ux:Name=\"swipe\" Direction=\"Up\" Length=\"50\" Type=\"Simple\" />\n        <WhileSwipeActive Source=\"swipe\">\n            <Scale Factor=\"1.5\" Duration=\"0.4\" />\n        </WhileSwipeActive>\n    </Panel>"
+      "full": "Active whenever an [Active](api:fuse/gestures/swipegesture#swipetype-active-overview)-type\n@SwipeGesture has been swiped to the active state.\n\n# Example\n\nThis example shows a `Panel` that is scaled by a factor of 1.5 while the `SwipeGesture` is active:\n```xml\n    <Panel Width=\"100\" Height=\"100\" Background=\"#000\">\n        <SwipeGesture ux:Name=\"swipe\" Direction=\"Up\" Length=\"50\" Type=\"Simple\" />\n        <WhileSwipeActive Source=\"swipe\">\n            <Scale Factor=\"1.5\" Duration=\"0.4\" />\n        </WhileSwipeActive>\n    </Panel>\n```"
     }
   },
   "tableOfContents": {
@@ -283,8 +283,8 @@
         "items": [
           {
             "comment": {
-              "brief": "The gesture progress at which this trigger is active. The gesture has a progress from 0..1 measured across it's length.",
-              "full": "The gesture progress at which this trigger is active. The gesture has a progress from 0..1 measured across it's length.\n\n    <Panel Width=\"100\" Height=\"100\" Background=\"#000\">\n        <SwipeGesture ux:Name=\"swipe\" Direction=\"Up\" Length=\"50\"/>\n        <WhileSwipeActive Source=\"swipe\" Threshold=\"0.5\">\n            <Scale Factor=\"1.5\" Duration=\"0.4\" />\n        </WhileSwipeActive>\n    </Panel>\n\nThe `Scale` will apply as soon as the user swipes 25 points, `0.5` of the total `Length`."
+              "brief": "The gesture progress at which this trigger is active. The gesture has a progress from 0..1 measured across it's length.\n```xml\n    <Panel Width=\"100\" Height=\"100\" Background=\"#000\">\n        <SwipeGesture ux:Name=\"swipe\" Direction=\"Up\" Length=\"50\"/>\n        <WhileSwipeActive Source=\"swipe\" Threshold=\"0.5\">\n            <Scale Factor=\"1.5\" Duration=\"0.4\" />\n        </WhileSwipeActive>\n    </Panel>\n```\nThe `Scale` will apply as soon as the user swipes 25 points, `0.5` of the total `Length`.",
+              "full": "The gesture progress at which this trigger is active. The gesture has a progress from 0..1 measured across it's length.\n```xml\n    <Panel Width=\"100\" Height=\"100\" Background=\"#000\">\n        <SwipeGesture ux:Name=\"swipe\" Direction=\"Up\" Length=\"50\"/>\n        <WhileSwipeActive Source=\"swipe\" Threshold=\"0.5\">\n            <Scale Factor=\"1.5\" Duration=\"0.4\" />\n        </WhileSwipeActive>\n    </Panel>\n```\nThe `Scale` will apply as soon as the user swipes 25 points, `0.5` of the total `Length`."
             },
             "returns": {
               "href": "uno/float",
@@ -443,7 +443,7 @@
           {
             "comment": {
               "brief": "Specifies an explicit backward animation instead of using the implied backward animation\nof the animators involved. Be aware that actions are not part of the animation.",
-              "full": "Specifies an explicit backward animation instead of using the implied backward animation\nof the animators involved. Be aware that actions are not part of the animation.\n\nTriggers normally use the same animators when deactivating as they do when they activate. There are however\nanimations that require a different set of animators when animating back from the active state. For this purpose\none can bind a new set of animators to the `BackwardAnimation` property like so:\n\n    <Panel Width=\"100\" Height=\"100\" Color=\"#00b2ee\">\n        <WhilePressed>\n            <Rotate Degrees=\"90\" Duration=\"0.5\" />\n            <Scale Factor=\"1.5\" Duration=\"1\" Easing=\"QuadraticInOut\" />\n            <TriggerAnimation ux:Binding=\"BackwardAnimation\">\n                <Scale Factor=\"1.5\" Duration=\"1\" Easing=\"QuadraticInOut\" />\n            </TriggerAnimation>\n        </WhilePressed>\n    </Panel>\n\nIn this example, the @Panel only rotates when pressed. When the pointer is released, it does not animate back.\nNote that the effect of the animators are still reversed. The only difference is that they loose their duration."
+              "full": "Specifies an explicit backward animation instead of using the implied backward animation\nof the animators involved. Be aware that actions are not part of the animation.\n\nTriggers normally use the same animators when deactivating as they do when they activate. There are however\nanimations that require a different set of animators when animating back from the active state. For this purpose\none can bind a new set of animators to the `BackwardAnimation` property like so:\n```xml\n    <Panel Width=\"100\" Height=\"100\" Color=\"#00b2ee\">\n        <WhilePressed>\n            <Rotate Degrees=\"90\" Duration=\"0.5\" />\n            <Scale Factor=\"1.5\" Duration=\"1\" Easing=\"QuadraticInOut\" />\n            <TriggerAnimation ux:Binding=\"BackwardAnimation\">\n                <Scale Factor=\"1.5\" Duration=\"1\" Easing=\"QuadraticInOut\" />\n            </TriggerAnimation>\n        </WhilePressed>\n    </Panel>\n```xml\nIn this example, the @Panel only rotates when pressed. When the pointer is released, it does not animate back.\nNote that the effect of the animators are still reversed. The only difference is that they loose their duration."
             },
             "returns": {
               "href": "fuse/animations/triggeranimation",

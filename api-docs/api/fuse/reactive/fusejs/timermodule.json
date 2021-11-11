@@ -22,7 +22,7 @@
       "namespaceTitle": "Fuse.Reactive.FuseJS",
       "namespaceUri": "fuse/reactive/fusejs",
       "packageName": "Fuse.Scripting.JavaScript",
-      "packageVersion": "2.0.0"
+      "packageVersion": "2.0.1"
     },
     "inheritance": {
       "root": {
@@ -144,8 +144,8 @@
       "ux": "<FuseJS.TimerModule />"
     },
     "comment": {
-      "brief": "The Timer API lets you schedule functions to be executed after a given time.",
-      "full": "The Timer API lets you schedule functions to be executed after a given time.\n\n    var Timer = require(\"FuseJS/Timer\");\n\n    Timer.create(function() {\n        console.log(\"This will run once, after 3 seconds\");\n    }, 3000, false);\n\n    Timer.create(function() {\n        console.log(\"This will run every 10 seconds until forever\");\n    }, 10000, true);",
+      "brief": "The Timer API lets you schedule functions to be executed after a given time.\n```js\n    var Timer = require(\"FuseJS/Timer\");",
+      "full": "The Timer API lets you schedule functions to be executed after a given time.\n```js\n    var Timer = require(\"FuseJS/Timer\");\n\n    Timer.create(function() {\n        console.log(\"This will run once, after 3 seconds\");\n    }, 3000, false);\n\n    Timer.create(function() {\n        console.log(\"This will run every 10 seconds until forever\");\n    }, 10000, true);\n```",
       "attributes": {
         "scriptModule": "FuseJS/Timer"
       }
@@ -316,8 +316,8 @@
         "items": [
           {
             "comment": {
-              "brief": "Schedules `func` to be called after `time` milliseconds.",
-              "full": "Schedules `func` to be called after `time` milliseconds.\n\n    var Timer = require(\"FuseJS/Timer\");\n    Timer.create(function() {\n        console.log(\"This will run once, after 3 seconds\");\n    }, 3000, false);\n\n    Timer.create(function() {\n        console.log(\"This will run every 10 seconds until forever\");\n    }, 10000, true);",
+              "brief": "Schedules `func` to be called after `time` milliseconds.\n```js\n    var Timer = require(\"FuseJS/Timer\");\n    Timer.create(function() {\n        console.log(\"This will run once, after 3 seconds\");\n    }, 3000, false);",
+              "full": "Schedules `func` to be called after `time` milliseconds.\n```js\n    var Timer = require(\"FuseJS/Timer\");\n    Timer.create(function() {\n        console.log(\"This will run once, after 3 seconds\");\n    }, 3000, false);\n\n    Timer.create(function() {\n        console.log(\"This will run every 10 seconds until forever\");\n    }, 10000, true);\n```",
               "attributes": {
                 "scriptMethod": {
                   "name": "create",
@@ -389,7 +389,7 @@
           {
             "comment": {
               "brief": "Deletes/unschedules a running timer.",
-              "full": "Deletes/unschedules a running timer.\n\n```\nvar Timer = require(\"FuseJS/Timer\");\n\nvar callCount = 0;\n\nvar timerId = Timer.create(function() {\n    console.log(\"This will happen 3 times.\");\n\n    callCount++;\n    if(callCount >= 3) {\n        Timer.destroy(timerId);\n    }\n}, 2000, true);\n```",
+              "full": "Deletes/unschedules a running timer.\n\n```js\nvar Timer = require(\"FuseJS/Timer\");\n\nvar callCount = 0;\n\nvar timerId = Timer.create(function() {\n    console.log(\"This will happen 3 times.\");\n\n    callCount++;\n    if(callCount >= 3) {\n        Timer.destroy(timerId);\n    }\n}, 2000, true);\n```",
               "attributes": {
                 "scriptMethod": {
                   "name": "destroy",

@@ -22,7 +22,7 @@
       "namespaceTitle": "Fuse",
       "namespaceUri": "fuse",
       "packageName": "Fuse.Nodes",
-      "packageVersion": "2.0.0"
+      "packageVersion": "2.0.1"
     },
     "inheritance": {
       "root": {
@@ -198,7 +198,7 @@
     "comment": {
       "brief": "Nodes are the basic building blocks of Fuse apps.",
       "full": "Nodes are the basic building blocks of Fuse apps.\n\nNodes are typically instantiated in UX Markup, and come in many different subclasses.\n\nSubclasses inheriting @Visual have a visual representation on the screen, and/or manages input for a\nspecific visual region.\n\nSubclasses inheriting @Behaviors modify the behavior of @Visuals.",
-      "remarks": "## The \"rooted\" concept\n\nNodes can be *rooted* within an @App. This means that they form part of the subtree currently\nconnected to the @App singleton. In the following example, the @Panel and @Rectangle are always\nrooted:\n\n\t<App>\n\t\t<Panel>\n\t\t\t<Rectangle />\n\t\t</Panel>\n\t</App>\n\nWhen a node\tis removed from a rooted tree, it becomes *unrooted*.\n\nWhile rooted, nodes have a @Parent. Only @Visual nodes can be parents of other nodes. However,\n@Behaviors may contain other nodes in UX markup. In the following example, the @WhilePressed\n(which is a @Behavior) contains a @Circle. The @Circle is not rooted by default.\n\n\t<Panel>\n\t\t<WhilePressed>\n\t\t\t<Circle />\n\t\t</WhilePressed>\n\t</Panel>\n\nWhile the @Panel is pressed, the @Circle is added to the @Panel. Assuming the @Panel is rooted,\nthis will make the @Circle *rooted*. When the @Panel is no longer pressed, the @Circle is removed\nfrom the @Panel, *unrooting* the @Circle.",
+      "remarks": "## The \"rooted\" concept\n\nNodes can be *rooted* within an @App. This means that they form part of the subtree currently\nconnected to the @App singleton. In the following example, the @Panel and @Rectangle are always\nrooted:\n```xml\n\t<App>\n\t\t<Panel>\n\t\t\t<Rectangle />\n\t\t</Panel>\n\t</App>\n```\nWhen a node\tis removed from a rooted tree, it becomes *unrooted*.\n\nWhile rooted, nodes have a @Parent. Only @Visual nodes can be parents of other nodes. However,\n@Behaviors may contain other nodes in UX markup. In the following example, the @WhilePressed\n(which is a @Behavior) contains a @Circle. The @Circle is not rooted by default.\n```xml\n\t<Panel>\n\t\t<WhilePressed>\n\t\t\t<Circle />\n\t\t</WhilePressed>\n\t</Panel>\n```\nWhile the @Panel is pressed, the @Circle is added to the @Panel. Assuming the @Panel is rooted,\nthis will make the @Circle *rooted*. When the @Panel is no longer pressed, the @Circle is removed\nfrom the @Panel, *unrooting* the @Circle.",
       "attributes": {
         "topic": "Nodes"
       }

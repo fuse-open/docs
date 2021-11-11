@@ -23,7 +23,7 @@
       "namespaceTitle": "Fuse.Triggers",
       "namespaceUri": "fuse/triggers",
       "packageName": "Fuse.Triggers",
-      "packageVersion": "2.0.0"
+      "packageVersion": "2.0.1"
     },
     "inheritance": {
       "root": {
@@ -230,7 +230,7 @@
     },
     "comment": {
       "brief": "Triggers when a specific key is pressed",
-      "full": "Triggers when a specific key is pressed\n\nFor a complete list of supported keys, check out the @Key enum list.\n\n> Please note that not all platforms support all settings for Key.\n\n## Example\n\nThe following example will flash the screen blue when the \"menu\" button\n(which is present on some older Android devices) is pressed:\n\n    <Panel>\n        <Rectangle ux:Name=\"rect\" Layer=\"Background\" Color=\"#F00\" />\n        <OnKeyPress Key=\"MenuButton\">\n            <Change rect.Color=\"#00F\" Duration=\"0.2\" />\n        </OnKeyPress>\n    </Panel>"
+      "full": "Triggers when a specific key is pressed\n\nFor a complete list of supported keys, check out the @Key enum list.\n\n> Please note that not all platforms support all settings for Key.\n\n## Example\n\nThe following example will flash the screen blue when the \"menu\" button\n(which is present on some older Android devices) is pressed:\n```xml\n    <Panel>\n        <Rectangle ux:Name=\"rect\" Layer=\"Background\" Color=\"#F00\" />\n        <OnKeyPress Key=\"MenuButton\">\n            <Change rect.Color=\"#00F\" Duration=\"0.2\" />\n        </OnKeyPress>\n    </Panel>\n```"
     }
   },
   "tableOfContents": {
@@ -366,7 +366,7 @@
           {
             "comment": {
               "brief": "Specifies an explicit backward animation instead of using the implied backward animation\nof the animators involved. Be aware that actions are not part of the animation.",
-              "full": "Specifies an explicit backward animation instead of using the implied backward animation\nof the animators involved. Be aware that actions are not part of the animation.\n\nTriggers normally use the same animators when deactivating as they do when they activate. There are however\nanimations that require a different set of animators when animating back from the active state. For this purpose\none can bind a new set of animators to the `BackwardAnimation` property like so:\n\n    <Panel Width=\"100\" Height=\"100\" Color=\"#00b2ee\">\n        <WhilePressed>\n            <Rotate Degrees=\"90\" Duration=\"0.5\" />\n            <Scale Factor=\"1.5\" Duration=\"1\" Easing=\"QuadraticInOut\" />\n            <TriggerAnimation ux:Binding=\"BackwardAnimation\">\n                <Scale Factor=\"1.5\" Duration=\"1\" Easing=\"QuadraticInOut\" />\n            </TriggerAnimation>\n        </WhilePressed>\n    </Panel>\n\nIn this example, the @Panel only rotates when pressed. When the pointer is released, it does not animate back.\nNote that the effect of the animators are still reversed. The only difference is that they loose their duration."
+              "full": "Specifies an explicit backward animation instead of using the implied backward animation\nof the animators involved. Be aware that actions are not part of the animation.\n\nTriggers normally use the same animators when deactivating as they do when they activate. There are however\nanimations that require a different set of animators when animating back from the active state. For this purpose\none can bind a new set of animators to the `BackwardAnimation` property like so:\n```xml\n    <Panel Width=\"100\" Height=\"100\" Color=\"#00b2ee\">\n        <WhilePressed>\n            <Rotate Degrees=\"90\" Duration=\"0.5\" />\n            <Scale Factor=\"1.5\" Duration=\"1\" Easing=\"QuadraticInOut\" />\n            <TriggerAnimation ux:Binding=\"BackwardAnimation\">\n                <Scale Factor=\"1.5\" Duration=\"1\" Easing=\"QuadraticInOut\" />\n            </TriggerAnimation>\n        </WhilePressed>\n    </Panel>\n```xml\nIn this example, the @Panel only rotates when pressed. When the pointer is released, it does not animate back.\nNote that the effect of the animators are still reversed. The only difference is that they loose their duration."
             },
             "returns": {
               "href": "fuse/animations/triggeranimation",
@@ -823,7 +823,7 @@
           {
             "comment": {
               "brief": "An event that triggers when the specified key is pressed, and can\nbe listened to through data-binding.",
-              "full": "An event that triggers when the specified key is pressed, and can\nbe listened to through data-binding.\n\n## Example\n\n    <Panel>\n        <JavaScript>\n            module.exports = {\n                menuButtonClicked: function() { debug_log(\"menu button clicked\"); }\n            }\n        </JavaScript>\n        <OnKeyPress Key=\"BackButton\" Handler=\"{menuButtonClicked}\" />\n    </Panel>"
+              "full": "An event that triggers when the specified key is pressed, and can\nbe listened to through data-binding.\n\n## Example\n```xml\n    <Panel>\n        <JavaScript>\n            module.exports = {\n                menuButtonClicked: function() { debug_log(\"menu button clicked\"); }\n            }\n        </JavaScript>\n        <OnKeyPress Key=\"BackButton\" Handler=\"{menuButtonClicked}\" />\n    </Panel>\n```"
             },
             "returns": {
               "href": "fuse/triggers/keypresshandler",

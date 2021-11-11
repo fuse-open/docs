@@ -23,7 +23,7 @@
       "namespaceTitle": "Fuse.Triggers",
       "namespaceUri": "fuse/triggers",
       "packageName": "Fuse.Triggers",
-      "packageVersion": "2.0.0"
+      "packageVersion": "2.0.1"
     },
     "inheritance": {
       "root": {
@@ -230,7 +230,7 @@
     },
     "comment": {
       "brief": "Animates using a value clamped between a minimum and a maximum as progress.",
-      "full": "Animates using a value clamped between a minimum and a maximum as progress.\n\nThis is useful when you want to animate something between two arbitrary values.\n\n## Example\nIn this example, an @(RangeAnimation) is used to animate a panel 360 degrees as a @(RangeControl2D) goes from 0 to 100.\n\n    <RangeControl2D Width=\"180\" Height=\"180\" Margin=\"2\" ux:Name=\"rangeControl\">\n        <CircularRangeBehavior/>\n        <Panel ux:Name=\"thumb\" Margin=\"4\">\n            <Rectangle Color=\"#fff\" Alignment=\"Right\" Height=\"18\" Width=\"48\" CornerRadius=\"4\" />\n        </Panel>\n        <RangeAnimation Minimum=\"0\" Maximum=\"100\" Value=\"{ReadProperty rangeControl.ValueX}\">\n            <Rotate Target=\"thumb\" Degrees=\"360\" />\n        </RangeAnimation>\n        <Circle Color=\"#aaa\" />\n    </RangeControl2D>"
+      "full": "Animates using a value clamped between a minimum and a maximum as progress.\n\nThis is useful when you want to animate something between two arbitrary values.\n\n## Example\nIn this example, an @(RangeAnimation) is used to animate a panel 360 degrees as a @(RangeControl2D) goes from 0 to 100.\n```xml\n    <RangeControl2D Width=\"180\" Height=\"180\" Margin=\"2\" ux:Name=\"rangeControl\">\n        <CircularRangeBehavior/>\n        <Panel ux:Name=\"thumb\" Margin=\"4\">\n            <Rectangle Color=\"#fff\" Alignment=\"Right\" Height=\"18\" Width=\"48\" CornerRadius=\"4\" />\n        </Panel>\n        <RangeAnimation Minimum=\"0\" Maximum=\"100\" Value=\"{ReadProperty rangeControl.ValueX}\">\n            <Rotate Target=\"thumb\" Degrees=\"360\" />\n        </RangeAnimation>\n        <Circle Color=\"#aaa\" />\n    </RangeControl2D>\n```"
     }
   },
   "tableOfContents": {
@@ -420,7 +420,7 @@
           {
             "comment": {
               "brief": "Specifies an explicit backward animation instead of using the implied backward animation\nof the animators involved. Be aware that actions are not part of the animation.",
-              "full": "Specifies an explicit backward animation instead of using the implied backward animation\nof the animators involved. Be aware that actions are not part of the animation.\n\nTriggers normally use the same animators when deactivating as they do when they activate. There are however\nanimations that require a different set of animators when animating back from the active state. For this purpose\none can bind a new set of animators to the `BackwardAnimation` property like so:\n\n    <Panel Width=\"100\" Height=\"100\" Color=\"#00b2ee\">\n        <WhilePressed>\n            <Rotate Degrees=\"90\" Duration=\"0.5\" />\n            <Scale Factor=\"1.5\" Duration=\"1\" Easing=\"QuadraticInOut\" />\n            <TriggerAnimation ux:Binding=\"BackwardAnimation\">\n                <Scale Factor=\"1.5\" Duration=\"1\" Easing=\"QuadraticInOut\" />\n            </TriggerAnimation>\n        </WhilePressed>\n    </Panel>\n\nIn this example, the @Panel only rotates when pressed. When the pointer is released, it does not animate back.\nNote that the effect of the animators are still reversed. The only difference is that they loose their duration."
+              "full": "Specifies an explicit backward animation instead of using the implied backward animation\nof the animators involved. Be aware that actions are not part of the animation.\n\nTriggers normally use the same animators when deactivating as they do when they activate. There are however\nanimations that require a different set of animators when animating back from the active state. For this purpose\none can bind a new set of animators to the `BackwardAnimation` property like so:\n```xml\n    <Panel Width=\"100\" Height=\"100\" Color=\"#00b2ee\">\n        <WhilePressed>\n            <Rotate Degrees=\"90\" Duration=\"0.5\" />\n            <Scale Factor=\"1.5\" Duration=\"1\" Easing=\"QuadraticInOut\" />\n            <TriggerAnimation ux:Binding=\"BackwardAnimation\">\n                <Scale Factor=\"1.5\" Duration=\"1\" Easing=\"QuadraticInOut\" />\n            </TriggerAnimation>\n        </WhilePressed>\n    </Panel>\n```xml\nIn this example, the @Panel only rotates when pressed. When the pointer is released, it does not animate back.\nNote that the effect of the animators are still reversed. The only difference is that they loose their duration."
             },
             "returns": {
               "href": "fuse/animations/triggeranimation",

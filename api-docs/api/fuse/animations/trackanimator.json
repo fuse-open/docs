@@ -23,7 +23,7 @@
       "namespaceTitle": "Fuse.Animations",
       "namespaceUri": "fuse/animations",
       "packageName": "Fuse.Animations",
-      "packageVersion": "2.0.0"
+      "packageVersion": "2.0.1"
     },
     "inheritance": {
       "root": {
@@ -277,7 +277,7 @@
           {
             "comment": {
               "brief": "The list of keyframes for this animator.",
-              "full": "The list of keyframes for this animator.\n\nIf no keyframes are specified, the animator simply uses the @Easing and @Duration properties to determine\ninterpolation between start and end values.\n\nFor the cases where we want to specify several steps for an animation, we can specify keyframes.\n\nExample:\n\n    <Move RelativeTo=\"ParentSize\">\n        <Keyframe X=\"10\" Time=\"0.5\"/>\n        <Keyframe X=\"15\" Time=\"1\"/>\n        <Keyframe X=\"5\" Time=\"2\"/>\n    </Move>\n\nThis @(Move) animator will first animate X to 10 over 0.5 second, then from 10 to 15 over 0.5 second. Finally, it will go from an\nX of 15 to 5 over 1 second.    Here is an example of using @Keyframes with a @Change animator:\n\n    <Page>\n        <SolidColor ux:Name=\"background\" Color=\"#f00\"/>\n        <ActivatingAnimation>\n            <Change Target=\"background.Color\">\n                <Keyframe Value=\"#0f0\" TimeDelta=\"0.25\"/>\n                <Keyframe Value=\"#f00\" TimeDelta=\"0.25\"/>\n                <Keyframe Value=\"#ff0\" TimeDelta=\"0.25\"/>\n                <Keyframe Value=\"#0ff\" TimeDelta=\"0.25\"/>\n            </Change>\n        </ActivatingAnimation>\n    </Page>\n\nThis time we use `TimeDelta` instead of time. With `TimeDelta` we can specify time as a relative term instead of absolute.\nThis means that the order of the @Keyframes matter, but it lets us reason about the keyframes in terms of\ntheir duration instead of their absolute time on the timeline.",
+              "full": "The list of keyframes for this animator.\n\nIf no keyframes are specified, the animator simply uses the @Easing and @Duration properties to determine\ninterpolation between start and end values.\n\nFor the cases where we want to specify several steps for an animation, we can specify keyframes.\n\nExample:\n```xml\n    <Move RelativeTo=\"ParentSize\">\n        <Keyframe X=\"10\" Time=\"0.5\"/>\n        <Keyframe X=\"15\" Time=\"1\"/>\n        <Keyframe X=\"5\" Time=\"2\"/>\n    </Move>\n```\nThis @(Move) animator will first animate X to 10 over 0.5 second, then from 10 to 15 over 0.5 second. Finally, it will go from an\nX of 15 to 5 over 1 second.    Here is an example of using @Keyframes with a @Change animator:\n```xml\n    <Page>\n        <SolidColor ux:Name=\"background\" Color=\"#f00\"/>\n        <ActivatingAnimation>\n            <Change Target=\"background.Color\">\n                <Keyframe Value=\"#0f0\" TimeDelta=\"0.25\"/>\n                <Keyframe Value=\"#f00\" TimeDelta=\"0.25\"/>\n                <Keyframe Value=\"#ff0\" TimeDelta=\"0.25\"/>\n                <Keyframe Value=\"#0ff\" TimeDelta=\"0.25\"/>\n            </Change>\n        </ActivatingAnimation>\n    </Page>\n```\nThis time we use `TimeDelta` instead of time. With `TimeDelta` we can specify time as a relative term instead of absolute.\nThis means that the order of the @Keyframes matter, but it lets us reason about the keyframes in terms of\ntheir duration instead of their absolute time on the timeline.",
               "attributes": {
                 "topic": "Keyframes"
               }

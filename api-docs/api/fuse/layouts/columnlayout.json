@@ -23,7 +23,7 @@
       "namespaceTitle": "Fuse.Layouts",
       "namespaceUri": "fuse/layouts",
       "packageName": "Fuse.Controls.Panels",
-      "packageVersion": "2.0.0"
+      "packageVersion": "2.0.1"
     },
     "inheritance": {
       "root": {
@@ -111,7 +111,7 @@
     },
     "comment": {
       "brief": "Lays out elements in vertical or horizontal columns.",
-      "full": "Lays out elements in vertical or horizontal columns.\n\nThe columns will use a vertical orientation by default, but this can be changed\nby setting the `Orientation` attribute to `Horizontal`.\n\n## Example\n\n    <Panel>\n        <ColumnLayout />\n        <Each Count=\"10\">\n            <Circle Margin=\"5\" Color=\"Blue\" />\n        </Each>\n    </Panel>"
+      "full": "Lays out elements in vertical or horizontal columns.\n\nThe columns will use a vertical orientation by default, but this can be changed\nby setting the `Orientation` attribute to `Horizontal`.\n\n## Example\n```xml\n    <Panel>\n        <ColumnLayout />\n        <Each Count=\"10\">\n            <Circle Margin=\"5\" Color=\"Blue\" />\n        </Each>\n    </Panel>\n```"
     }
   },
   "tableOfContents": {
@@ -140,7 +140,7 @@
           {
             "comment": {
               "brief": "Number of columns to lay out.",
-              "full": "Number of columns to lay out.\n\n    <Panel Color=\"Black\" >\n        <!-- Lay out lots of yellow circles and red rectangles in columns -->\n        <ColumnLayout ColumnCount=\"10\" />\n        <Each Count=\"70\">\n            <Circle Margin=\"5\" Width=\"10\" Height=\"10\" Color=\"Yellow\" />\n            <Rectangle Margin=\"5\" Width=\"10\" Height=\"40\" Color=\"Red\" />\n        </Each>\n    </Panel>"
+              "full": "Number of columns to lay out.\n\n```xml\n    <Panel Color=\"Black\" >\n        <!-- Lay out lots of yellow circles and red rectangles in columns -->\n        <ColumnLayout ColumnCount=\"10\" />\n        <Each Count=\"70\">\n            <Circle Margin=\"5\" Width=\"10\" Height=\"10\" Color=\"Yellow\" />\n            <Rectangle Margin=\"5\" Width=\"10\" Height=\"40\" Color=\"Red\" />\n        </Each>\n    </Panel>\n```"
             },
             "returns": {
               "href": "uno/int",
@@ -167,7 +167,7 @@
           {
             "comment": {
               "brief": "Set size of a column.",
-              "full": "Set size of a column.\n\nWhen set the elements will be arranged in as many columns of size `ColumnSize` as will fit on\nthe display.\n\nIf `Orientation` is set to `Vertical`, which is the default, size means width of the column.\nOtherwise, when `Orientation` is `Horizontal`, size means height.\n\n> Note that `ColumnSize` and `ColumnCount` are exclusive, and should not be set at the same time.\n\n    <Panel Color=\"Black\">\n        <ColumnLayout ColumnSize=\"12\" />\n        <Each Count=\"150\">\n            <Circle Margin=\"1\" Width=\"10\" Height=\"10\" Color=\"Yellow\" />\n            <Rectangle Margin=\"1\" Width=\"10\" Height=\"40\" Color=\"Red\" />\n            <Rectangle Margin=\"1\" CornerRadius=\"4\" Width=\"10\" Height=\"20\"  Color=\"Teal\" />\n        </Each>\n    </Panel>"
+              "full": "Set size of a column.\n\nWhen set the elements will be arranged in as many columns of size `ColumnSize` as will fit on\nthe display.\n\nIf `Orientation` is set to `Vertical`, which is the default, size means width of the column.\nOtherwise, when `Orientation` is `Horizontal`, size means height.\n\n> Note that `ColumnSize` and `ColumnCount` are exclusive, and should not be set at the same time.\n```xml\n    <Panel Color=\"Black\">\n        <ColumnLayout ColumnSize=\"12\" />\n        <Each Count=\"150\">\n            <Circle Margin=\"1\" Width=\"10\" Height=\"10\" Color=\"Yellow\" />\n            <Rectangle Margin=\"1\" Width=\"10\" Height=\"40\" Color=\"Red\" />\n            <Rectangle Margin=\"1\" CornerRadius=\"4\" Width=\"10\" Height=\"20\"  Color=\"Teal\" />\n        </Each>\n    </Panel>\n```"
             },
             "returns": {
               "href": "uno/float",
@@ -248,7 +248,7 @@
           {
             "comment": {
               "brief": "The orientation in which columns are arranged.",
-              "full": "The orientation in which columns are arranged.\n\nThe `Orientation` property can be used to make a horizontal @ColumnLayout:\n\n    <Panel>\n        <ColumnLayout Orientation=\"Horizontal\" ColumnCount=\"4\" />\n        <Each Count=\"10\">\n            <Circle Margin=\"5\" Width=\"100\" Height=\"100\" Color=\"Blue\" />\n        </Each>\n    </Panel>"
+              "full": "The orientation in which columns are arranged.\n\nThe `Orientation` property can be used to make a horizontal @ColumnLayout:\n```xml\n    <Panel>\n        <ColumnLayout Orientation=\"Horizontal\" ColumnCount=\"4\" />\n        <Each Count=\"10\">\n            <Circle Margin=\"5\" Width=\"100\" Height=\"100\" Color=\"Blue\" />\n        </Each>\n    </Panel>\n```"
             },
             "returns": {
               "href": "fuse/layouts/orientation",
@@ -275,7 +275,7 @@
           {
             "comment": {
               "brief": "Controls whether columns fills available space.",
-              "full": "Controls whether columns fills available space.\n\nBy default `Sizing` is set to `Fixed`, which means each column will be the exact size\nspecified in `ColumnSize`.\n\nWhen `Sizing` is set to `Fill` the columns will stretch out to fill the space remaning\nafter placing as many `ColumnSize`-sized columns as will fit on the display.\n\n> Note that `Sizing` only will only affect the layout when the `ColumnSize` attribute is defined.\n\n    <Panel Color=\"#000000\" >\n        <ColumnLayout Sizing=\"Fill\" ColumnSize=\"50\" />\n        <Each Count=\"10\">\n            <Rectangle Height=\"30\" Color=\"White\" />\n            <Rectangle Height=\"30\" Color=\"Red\" />\n        </Each>\n    </Panel>"
+              "full": "Controls whether columns fills available space.\n\nBy default `Sizing` is set to `Fixed`, which means each column will be the exact size\nspecified in `ColumnSize`.\n\nWhen `Sizing` is set to `Fill` the columns will stretch out to fill the space remaning\nafter placing as many `ColumnSize`-sized columns as will fit on the display.\n\n> Note that `Sizing` only will only affect the layout when the `ColumnSize` attribute is defined.\n\n```xml\n    <Panel Color=\"#000000\" >\n        <ColumnLayout Sizing=\"Fill\" ColumnSize=\"50\" />\n        <Each Count=\"10\">\n            <Rectangle Height=\"30\" Color=\"White\" />\n            <Rectangle Height=\"30\" Color=\"Red\" />\n        </Each>\n    </Panel>\n```"
             },
             "returns": {
               "href": "fuse/layouts/columnlayoutsizing",
