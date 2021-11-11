@@ -18,9 +18,9 @@ Here is a tiny example to give you an idea of what we'll be looking at:
 ## Video tutorial
 
 For a nice introduction to working with observables, take a look at this video:
-
+```xml
 <iframe width="560" height="315" src="https://www.youtube.com/embed/bB9P4mTGtVU" frameborder="0" allowfullscreen></iframe>
-
+```
 ## Using observables
 
 An `Observable` can hold a single value, or be treated as a list of values with 0 or more elements. When the value(s) of the `Observable` changes, all _subscribers_ are automatically notified. The concept of subscribers/subscriptions is discussed in detail later in this article.

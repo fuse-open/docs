@@ -111,7 +111,7 @@ However, in this first example we'll simply create a counter which increases whe
 
 First add the following JavaScript snippet inside the DockPanel:
 
-```js
+```xml
 	<JavaScript>
 		var Observable = require('FuseJS/Observable');
 		var buttonText = Observable('Button');

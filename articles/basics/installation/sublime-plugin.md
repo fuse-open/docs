@@ -16,6 +16,8 @@ Use the "Tools -> Setup Guide" menu option.
 
 Run the following command:
 
+```sh
 	fuse install sublime-plugin
+```
 
 That's it! You're now ready to start using Sublime Text 3 with Fuse.

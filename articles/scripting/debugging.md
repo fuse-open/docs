@@ -83,7 +83,6 @@ which is available both for macOS and Windows.
   and Visual Studio Code will show the location in the code and allow you to
   view local variables, step into your code, continue, and so on.
 
-
 ## iOS
 
 [Click here](https://youtu.be/EDjymiMxHSw) for a video tutorial showing you how to do this.

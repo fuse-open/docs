@@ -9,14 +9,14 @@ It should look something like the following.
 
 ```json
 {
-	"Packages": [
-		"Fuse",
-		"FuseJS",
-		"Fuse.Views"
-	],
-	"Includes": [
-		"*"
-	]
+ "Packages": [
+  "Fuse",
+  "FuseJS",
+  "Fuse.Views"
+ ],
+ "Includes": [
+  "*"
+ ]
 }
 ```
 
@@ -47,7 +47,6 @@ We can then export these components by providing them as [UX Templates](articles
 </App>
 ```
 
-
 Export an [Xcode Framework](https://developer.apple.com/library/content/documentation/MacOSX/Conceptual/BPFrameworks/Concepts/WhatAreFrameworks.html) or an [Android aar](https://developer.android.com/studio/projects/android-library.html) by compiling with `-DLIBRARY` set.
 
 ```sh
@@ -71,11 +70,10 @@ Add the framework you just built as an embedded binary in Xcode
 ![Embedded Binaries](../../media/fuse-views/embedded_binaries.png)
 
 ![Add Framework](../../media/fuse-views/add_framework.png)
-	
+ 
 And finally, disable Bitcode.
 
 ![Disable Bitcode](../../media/fuse-views/disable_bitcode.png)
-
 
 #### Android
 
@@ -119,11 +117,13 @@ And finally, copy `build/Android/Debug/app/build/outputs/aar/app-debug.aar` to `
 After a rebuild you need to manually update the framework or aar in your native project. Do this by overwriting the old library with the one you just produced. This is easily automated by scripting the copy-overwrite procedure.
 
 Notes when updating the framework/aar:
+
 - By default Xcode imports frameworks to the project root directory. This is where you want to overwrite.
 - If you are using Android Studio you must do a rebuild after updating the aar for code completion and code errors to work properly.
 
 Notes when updating Fuse:
-- To ensure that your project is running the last FuseViews package, cut `compile(name:'app-debug', ext:'aar')` line from your gradle file, Sync and add the dependency again. 
+
+- To ensure that your project is running the last FuseViews package, cut `compile(name:'app-debug', ext:'aar')` line from your gradle file, Sync and add the dependency again.
 
 ## Step 3: Bootstrapping Fuse Views
 
@@ -173,31 +173,35 @@ public class MainActivity extends com.fuse.views.FuseViewsActivity {
 ```
 
 ##### Fragment support
-To use your View as `Fragment`, inherit from `com.fuse.views.FuseViewsFragment` 
+
+To use your View as `Fragment`, inherit from `com.fuse.views.FuseViewsFragment`
+
 ```java
 public class FuseFragment extends com.fuse.views.FuseViewsFragment {
 ```
 
 In your `Activity` init FuseViewsFragment on your `onCreate()` method just before the `setContentView()`
+
 ```java
 @Override
 protected void onCreate(Bundle savedInstanceState) {
-	super.onCreate(savedInstanceState);
-	FuseViewsFragment.init(this, savedInstanceState);
-	setContentView(R.layout.activity_main);
-	...
+ super.onCreate(savedInstanceState);
+ FuseViewsFragment.init(this, savedInstanceState);
+ setContentView(R.layout.activity_main);
+ ...
 }
 ```
+
 ## Step 4: Instantiating a View
 
 You are now ready to instantiate your exported views.
 To interop with your views you will get a handle object with some methods that act as the interface for interop.
 Through the handle you can get a native View that will display your exported view.
 
-
 #### Objective-C
 
 Make sure to have these headers imported:
+
 ```objectivec
 #import <ProjectName/ExportedViews.h>
 #import <ProjectName/ViewHandle.h>
@@ -314,7 +318,6 @@ The signature of `Callback` is as follows:
 typedef void(^Callback)(Arguments*);
 ```
 
-
 #### Java
 
 ```java
@@ -410,8 +413,10 @@ usersListView.setCallback("user_clicked", new ICallback() {
 ```
 
 ##### Fragment support
+
 The full workaround when using `Fragment`
-```csharp
+
+```uno
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -419,7 +424,7 @@ The full workaround when using `Fragment`
         ViewHandle videoView = ExportedViews.instantiate("VideoView");
         android.view.View nativeView = videoView.getView();
 
-	videoView.setDataJson("{ \"users\" : [...] }");
+        videoView.setDataJson("{ \"users\" : [...] }");
         videoView.setCallback("user_clicked", new ICallback() {
             @Override
             public void invoke(IArguments iArguments) { ... }

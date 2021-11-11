@@ -138,16 +138,16 @@ With our newly acquired prowess in UX we can read the UX above as:
 
 We could also get super technical and point out some details:
 
-```
-        ------------------------------------ Opening tag
+```xml
+       ____________________________________ Opening tag
       /
      v
  <StackPanel Orientation="Horizontal">
-    <Text Value="Hello" /> <--------------- self closing tag
+    <Text Value="Hello" /> <--------------- self closing tag 
     <Text Value="World" />  <--------------- self closing tag
  </StackPanel>
        ^
-        ------------------------------------ Closing tag
+        \___________________________________ Closing tag
 ```
 
 But you may be looking at those opening and self closing tags above and wondering why they have extra stuff in them. If you are then well spotted! Those are called `Properties`.
@@ -159,13 +159,14 @@ Let's look back at the example above:
 ```xml
 <Text Value="Hello Jim!" />
 ```
+
 The `Text` _object_ is what we use to show text in our App and the `Value` Property tells Fuse you want the text to be "Hello Jim".
 
 Just like how an apple and a truck have different properties in real life, different _objects_ in UX have different properties too. To find what properties you can put on each _object_ type, we have lots of [documentation](articles:full-ux-class-reference.md) to help.
 
 One last note on properties: when we have an _object_ with *opening* & *closing* tags we only add the properties to the *opening* tag, so:
 
-```
+```xml
       / Only need properties on this one.
      v
  <StackPanel Orientation="Horizontal">
@@ -178,9 +179,9 @@ And given that we are talking about small details: _objects_ that are inside oth
 
 Before we wrap up this part lets annotate our UX again with what we have learned
 
-```
-	   ------------------------------------ Opening tag (named StackPanel). Parent to two objects.
-	  /            ------------------------ Has an Orientation Property
+```xml
+	   _______________ Opening tag (named StackPanel). Parent to two objects.
+	  /            ___________________ Has an Orientation Property
 	 /            /
 	v            v
 <StackPanel Orientation="Horizontal">
@@ -188,7 +189,7 @@ Before we wrap up this part lets annotate our UX again with what we have learned
    <Text Value="World" />  <--------------- Another child / self closing tag / Has a Value Property
 </StackPanel>
 	  ^
-	   ------------------------------------ Closing tag
+	   \__________________ Closing tag
 ```
 
 ### Classes
@@ -631,7 +632,7 @@ You can easily add unit tests for your Fuse projects using the `ux:Test` attribu
 
 We can then run our tests using the following command from the terminal (on macOS) or command prompt (on Windows) while in your project directory:
 
-```
+```sh
 uno test ProjectName.unoproj
 ```
 

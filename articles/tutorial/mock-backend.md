@@ -394,11 +394,11 @@ We'll start with the `Save` button. This button will be almost identical to the 
 First, in `Pages/EditHikePage.ux`, we'll change both the text of our button and its clicked handler:
 
 ```xml
-			<Text>Comments:</Text>
-			<TextView Value="{comments}" TextWrapping="Wrap" />
+	<Text>Comments:</Text>
+	<TextView Value="{comments}" TextWrapping="Wrap" />
 
-			<Button Text="Save" Clicked="{save}" />
-		</StackPanel>
+	<Button Text="Save" Clicked="{save}" />
+</StackPanel>
 ```
 
 Next, in `Pages/EditHikePage.js`, we'll rename the `goBack` handler to `save`:
@@ -433,9 +433,9 @@ Great! Now our `Save` button should be all hooked up. Now, let's implement the `
 We'll first add the UX code for the button in `Pages/EditHikePage.ux` right beneath the code we just wrote for our `Save` button:
 
 ```xml
-			<Button Text="Save" Clicked="{save}" />
-			<Button Text="Cancel" Clicked="{cancel}" />
-		</StackPanel>
+	<Button Text="Save" Clicked="{save}" />
+	<Button Text="Cancel" Clicked="{cancel}" />
+</StackPanel>
 ```
 
 Next, we'll add an empty `cancel` function and export it in `Pages/EditHikePage.js`:

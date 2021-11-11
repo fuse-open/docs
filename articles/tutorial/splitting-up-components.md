@@ -71,33 +71,33 @@ All we've done here is placed a comma after the `"*"` entry, and added a `"hikes
 At this point, we'll need to actually move our `hikes` array from inside `MainView.ux` into our `hikes.js` file. First, we'll copy it from our `MainView.ux` file, and then remove it:
 
 ```xml
-		<JavaScript>
-			var Observable = require("FuseJS/Observable");
+<JavaScript>
+	var Observable = require("FuseJS/Observable");
 
-			var hike = Observable();
+	var hike = Observable();
 
-			var name = hike.map(function(x) { return x.name; });
-			var location = hike.map(function(x) { return x.location; });
-			var distance = hike.map(function(x) { return x.distance; });
-			var rating = hike.map(function(x) { return x.rating; });
-			var comments = hike.map(function(x) { return x.comments; });
+	var name = hike.map(function(x) { return x.name; });
+	var location = hike.map(function(x) { return x.location; });
+	var distance = hike.map(function(x) { return x.distance; });
+	var rating = hike.map(function(x) { return x.rating; });
+	var comments = hike.map(function(x) { return x.comments; });
 
-			function chooseHike(arg) {
-				hike.value = arg.data;
-			}
+	function chooseHike(arg) {
+		hike.value = arg.data;
+	}
 
-			module.exports = {
-				hikes: hikes,
+	module.exports = {
+		hikes: hikes,
 
-				name: name,
-				location: location,
-				distance: distance,
-				rating: rating,
-				comments: comments,
+		name: name,
+		location: location,
+		distance: distance,
+		rating: rating,
+		comments: comments,
 
-				chooseHike: chooseHike
-			};
-		</JavaScript>
+		chooseHike: chooseHike
+	};
+</JavaScript>
 ```
 
 Notice how we left the reference to `hikes` in `module.exports`. This will cause an error if we save the file, but don't worry - we'll fix this up in a minute.
@@ -160,8 +160,8 @@ And that's it! Now we can save this file, and our new module is ready to go.
 Now, back to our view code. Since we've moved our `hikes` array out of this file, we need to _import_ it from our new module. This is actually super easy to do. Remember the `var Observable = require("FuseJS/Observable");` line in `MainView.ux`? This tells Fuse to import FuseJS' @Observable module, and bind it to the name `Observable`. For our new `hikes` module, we'll do almost exactly the same thing:
 
 ```js
-			var Observable = require("FuseJS/Observable");
-			var hikes = require("hikes");
+var Observable = require("FuseJS/Observable");
+var hikes = require("hikes");
 ```
 
 In this case, Fuse will import a module called `hikes`, which corresponds to our `hikes.js` file. It will also bind the module's `module.exports` object to the name `hikes`, which, in `hikes.js`, was our `hikes` array. Cool! That's actually all we need to do to use our newly-created, reusable JavaScript module. If we save `MainView.ux`, our live preview will reload. It may not look any different on the outside, but on the inside we're well on our way to a very clean and manageable project structure!
