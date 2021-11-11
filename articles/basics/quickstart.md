@@ -1,22 +1,22 @@
 # Quickstart
 
-This is a step-by-step tutorial that takes you through installation, creating, previewing and exporting your first app with Fuse.
+This is a step-by-step tutorial that takes you through installation, creating, previewing and exporting your first app with Fuse X.
 
 Depending on your background (experienced coder, rookie coder, experienced design ninja or otherwise), some things will be obvious and some things will be new to you.
 
 ## Setup
 
-Simply [download the latest version of Fuse](https://fuseopen.com/downloads/), install it and you're ready to go.
+Simply [download the latest version of Fuse X](https://fuse-x.com/downloads/), install it and you're ready to go.
 
-Installation should be a breeze, but in case something iffy happens there are also detailed setup instructions for [macOS](installation/setup-install-osx.md) and [Windows](installation/setup-install-win.md), plus [uninstall instructions for macOS](https://gist.github.com/Tapped/daa78c08882f33b0c7c3) if you need them.
+Installation should be a breeze, but in case something iffy happens there are also detailed setup instructions for [macOS](installation/setup-install-mac.md) and [Windows](installation/setup-install-win.md), plus [uninstall instructions for macOS](https://github.com/fuse-x/studio/blob/master/uninstall.sh) if you need them.
 
 ## Creating a new Project
 
-When you launch Fuse, the first thing you see is the Dashboard:
+When you launch Fuse X, the first thing you see is the Dashboard:
 
 ![Dashboard](../../media/dashboard.png)
 
-To create an empty project, double click "New Fuse project", fill in a name, and where the project should be created. Alternatively, we can select to create an example project, to instantly have something to start playing with.
+To create an empty project, double click "New fuse X project", fill in a name, and where the project should be created. Alternatively, we can select to create an example project, to instantly have something to start playing with.
 
 > We can also create a project from the command line, by doing `fuse create app <projectname> [optional path]`.
 > If the path is omitted, it will be created as a subdirectory of your current directory.
@@ -25,7 +25,7 @@ A freshly created Fuse project should contain exactly one .ux file, by default c
 
 ## Running your app
 
-After a project is created from the dashboard, it opens in Fuse. The app is now running in preview mode, which means any changes we make to it will instantly be reflected.
+After a project is created from the dashboard, it opens in Fuse X. The app is now running in preview mode, which means any changes we make to it will instantly be reflected.
 
 > We can also open a project from the command line through `fuse preview`.
 
@@ -35,10 +35,10 @@ For this to work, make sure that your device is connected via USB, and on the sa
 
 Then, use the preview menu to start previewing on your device(s):
 
-![Preview menu](../../media/preview-menu.png)
+![preview menu](../../media/preview-menu.png)
 
 > We can also preview on device from the command line:
-> `fuse preview -tios` or `fuse preview -tandroid`
+> `fuse preview ios` or `fuse preview android`
 
 The USB connection is only needed when initially building and installing the preview app to the phone. Once the preview app is installed, you don't need the USB connection. The preview app can be restarted as many times as you need on the phone. The app remembers the local IP address of the computer that built the preview app, and will connect wirelessly. This allows you to run preview with as many devices as you want during development.
 
@@ -50,8 +50,9 @@ When you're ready to deploy a production version of your app, you need to export
 
 It's time to open up the .ux file in a text editor and take a look at the markup inside. We recommend using one of the following text editors:
 
- * [Sublime Text 3](https://www.sublimetext.com/3) together with the [Fuse plugin](installation/sublime-plugin.md)
- * [Atom](https://atom.io/) together with the [Fuse package](installation/atom-plugin.md)
+* [Visual Studio Code](https://code.visualstudio.com/) together with the [Fuse Open extension](installation/vscode-extension.md)
+* [Sublime Text 3](https://www.sublimetext.com/3) together with the [Fuse plugin](installation/sublime-plugin.md)
+* [Atom](https://atom.io/) together with the [Fuse package](installation/atom-plugin.md)
 
 Using one of the above editors with their plugin provides syntax highlighting and auto-completion.
 

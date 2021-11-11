@@ -176,7 +176,7 @@ The more information we have on an issue, the easier it is for us to solve it. H
 4. On which targets does your issue occur; for example if you're testing on both Android and iOS, does your issue manifest on both platforms?
 5. See if your issue is triggered both in preview and when exporting a build:
     - Local preview - run `fuse preview`
-	- Device preview - run `fuse preview -tios` or `fuse preview -tandroid`
+	- Device preview - run `fuse preview ios` or `fuse preview android`
 	- Export build - run `uno build ios` or `uno build android`
 6. A link to a minimal reproduction project and instructions on how to trigger the bug (be specific).
     - If the repro case is quite small, you can paste your code in the issue description.

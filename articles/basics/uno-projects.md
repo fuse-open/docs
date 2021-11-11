@@ -1,5 +1,4 @@
-
-# Uno Projects (.unoproj)
+# Uno Projects (`.unoproj`)
 
 Uno is a portable, lightweight dialect of C# that sits at the heart of Fuse and allows you to export native apps for iOS and Android. To learn more about Uno, see the [Native Interop section](../native-interop/native-interop.md).
 
@@ -171,7 +170,6 @@ Add `/` or `./` to disable recursion:
 	</tbody>
 </table>
 
-
 Use globstar (`**`) for explicit recursion:
 
 <table class="table">
@@ -188,8 +186,6 @@ Use globstar (`**`) for explicit recursion:
 		</tr>
 	</tbody>
 </table>
-
-
 
 ### `FileName:Type`
 
@@ -337,7 +333,7 @@ Where to place Uno's cache files. Defaults to `.uno`.
 }
 ```
 
-> ## UnoCoreReference
+### UnoCoreReference
 
 Whether or not UnoCore should be referenced. You will probably never need this, as it's only used internally. Defaults to `true`.
 
@@ -488,7 +484,7 @@ The name of the java package to use for Android export. Defaults to `$(QIdentifi
 
 #### Android.PreviewPackage
 The name of the java package to use for Android export in preview mode. Defaults to `Android.Package`.
-It's only used during `fuse preview -t=android`, to differentiate between a normal package and a preview package.
+It's only used during `fuse preview android`, to differentiate between a normal package and a preview package.
 Use this setting if you want to have both a preview version and an exported version of your app installed on the device simultaneously.
 
 ```json
@@ -602,7 +598,7 @@ Corresponds to [CFBundleIdentifier](https://developer.apple.com/library/ios/docu
 
 #### iOS.PreviewBundleIdentifier
 The iOS bundle identifier in preview mode. Defaults to `iOS.BundleIdentifier`.
-It's only used during `fuse preview -t=iOS`, to differentiate between a normal bundle and a preview bundle.
+It's only used during `fuse preview ios`, to differentiate between a normal bundle and a preview bundle.
 Use this setting if you want to have both a preview version and an exported version of your app installed on the device simultaneously.
 
 ```json
