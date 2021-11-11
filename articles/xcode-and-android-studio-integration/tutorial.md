@@ -348,7 +348,7 @@ If you are familiar with [`JavaScript`](api:fuse/reactive/javascript) and [`Data
 @end
 ```
 
-```cs
+```objectivec
 public interface IArguments {
     HashMap<String,String> getArgs();
     String getDataJson();
