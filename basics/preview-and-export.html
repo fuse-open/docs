@@ -84,6 +84,12 @@
 				<a href="https://fuseopen.com/docs/basics/installation-and-quickstart.html" data-menu="installation-and-quickstart"><span>Installation and quickstart</span></a>
 			</li>
 			<li>
+				<a href="https://fuseopen.com/docs/basics/installation/setup-install-mac.html" data-menu="setup-install-mac"><span>macOS installation</span></a>
+			</li>
+			<li>
+				<a href="https://fuseopen.com/docs/basics/installation/setup-install-win.html" data-menu="setup-install-win"><span>Windows installation</span></a>
+			</li>
+			<li>
 				<a href="https://fuseopen.com/docs/basics/introduction-to-fuse.html" data-menu="introduction-to-fuse"><span>Introduction to Fuse</span></a>
 			</li>
 			<li>
@@ -694,7 +700,7 @@
 <p>You can download the app <a href="https://play.google.com/store/apps/details?id=com.fuse.preview">for Android from Google Play</a> and <a href="https://apps.apple.com/no/app/fuse-x-preview/id1549637259">for iOS from the Apple App Store</a>.</p>
 <p>To run a preview <em>first make sure your test device and development computer are on the same WiFi</em>.
 Then open your project in Fuse and click the <em>&quot;Devices&quot;</em> button in the upper right corner. This will open a window containing the necessary information for connecting the preview. Follow the instructions inside the app to <em>either</em> scan the QR code <em>or</em> manually enter the IP and code.</p>
-<p>Check out this video to see how it's done! <a href="https://www.youtube.com/watch?v=KJYHUHpMmto">fuse preview app</a></p>
+<p>Check out this video to see how it's done! <a href="https://www.youtube.com/watch?v=KJYHUHpMmto">Fuse X Preview app</a></p>
 <h2 id="export-and-custom-preview">Export and custom preview</h2>
 <h3 id="android-setup">Android setup</h3>
 <p>To be able to preview or export to Android, you need to install the required SDK components.
@@ -720,7 +726,7 @@ Pull up your terminal and run the following:</p>
 npm install ios-sim -g</code></pre>
 <h2 id="custom-preview">Custom Preview</h2>
 <p>We can easily preview apps both locally and on Android/iOS devices while getting immediate feedback on changes to the UX markup and JavaScript.
-These are the instructions for building your own custom preview. If your app project does not contain <code>.uno</code> files or custom packages you can use the <a href="./preview-and-export.html#fuse-preview-app">fuse preview app</a> instead (without having to install Xcode or Android SDK).</p>
+These are the instructions for building your own custom preview. If your app project does not contain <code>.uno</code> files or custom packages you can use the <a href="./preview-and-export.html#fuse-x-preview-app">Fuse X Preview app</a> instead (without having to install Xcode or Android SDK).</p>
 <blockquote>
 <p>When running preview for iOS, Fuse X doesn't run your app directly, but will open the project in Xcode.
 From there, press the &quot;play&quot; button to run the preview session.</p>
@@ -741,7 +747,9 @@ From there, press the &quot;play&quot; button to run the preview session.</p>
 <h3 id="preview-from-command-line">Preview from command line</h3>
 <p>In your terminal, <code>cd</code> to the your project's directory, and run the command that corresponds to your build target.</p>
 <pre><code class="language-shell">fuse preview android
+fuse preview android-emu
 fuse preview ios
+fuse preview ios-sim
 fuse preview            # Start local preview</code></pre>
 <p>We can get further documentation on <code>fuse preview</code> by running <code>fuse help preview</code>.</p>
 <h2 id="export">Export</h2>
@@ -751,6 +759,9 @@ fuse preview            # Start local preview</code></pre>
 <p>In the project root, run the following command in your shell:</p>
 <pre><code class="language-shell">uno build android --run</code></pre>
 <p>This will deploy and start the project on your connected Android device.</p>
+<p>To run in <strong>Emulator (x86_64)</strong> instead, run:</p>
+<pre><code class="language-shell">uno build android-emu --run</code></pre>
+<p>Please make sure the emulator is started first. It doesn't start automatically.</p>
 <p>To make a <strong>release build</strong>, run:</p>
 <pre><code class="language-shell">uno build android --configuration=Release</code></pre>
 <blockquote>
@@ -760,7 +771,7 @@ fuse preview            # Start local preview</code></pre>
 <p>In the project root, run the following command in your shell:</p>
 <pre><code class="language-shell">uno build ios --debug</code></pre>
 <p>This will generate an Xcode project and open it in <strong>Xcode</strong> (required for provisioning profiles). You can start your app from Xcode.</p>
-<p>To run your app using <strong>iOS Simulator</strong>, without going via Xcode, run:</p>
+<p>To run your app directly in <strong>iOS Simulator</strong>, without going via Xcode first, run:</p>
 <pre><code class="language-shell">uno build ios-sim --run</code></pre>
 <blockquote>
 <p>To export your app to the App Store, you need to <a href="../preview-and-export/signing.html">sign it first</a>. You can also do this from Xcode.</p>

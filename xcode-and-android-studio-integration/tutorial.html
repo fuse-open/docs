@@ -84,6 +84,12 @@
 				<a href="https://fuseopen.com/docs/basics/installation-and-quickstart.html" data-menu="installation-and-quickstart"><span>Installation and quickstart</span></a>
 			</li>
 			<li>
+				<a href="https://fuseopen.com/docs/basics/installation/setup-install-mac.html" data-menu="setup-install-mac"><span>macOS installation</span></a>
+			</li>
+			<li>
+				<a href="https://fuseopen.com/docs/basics/installation/setup-install-win.html" data-menu="setup-install-win"><span>Windows installation</span></a>
+			</li>
+			<li>
 				<a href="https://fuseopen.com/docs/basics/introduction-to-fuse.html" data-menu="introduction-to-fuse"><span>Introduction to Fuse</span></a>
 			</li>
 			<li>
@@ -685,14 +691,14 @@
 <p>In your <code>.unoproj</code>, add a package reference to <code>Fuse.Views</code>.
 It should look something like the following.</p>
 <pre><code class="language-json">{
-    &quot;Packages&quot;: [
-        &quot;Fuse&quot;,
-        &quot;FuseJS&quot;,
-        &quot;Fuse.Views&quot;
-    ],
-    &quot;Includes&quot;: [
-        &quot;*&quot;
-    ]
+ &quot;Packages&quot;: [
+  &quot;Fuse&quot;,
+  &quot;FuseJS&quot;,
+  &quot;Fuse.Views&quot;
+ ],
+ &quot;Includes&quot;: [
+  &quot;*&quot;
+ ]
 }</code></pre>
 <h2 id="step-1-exporting-views">Step 1: Exporting Views</h2>
 <p>In Fuse Views you must explicitly specify which views you want to be able to instantiate from Swift, Objective-C and Java. You can export any UX component, except for non-UI elements (like Triggers and Animations) and <a href="../ux-markup/classes.html">UX Classes</a> that have <a href="../ux-markup/dependencies.html">dependencies</a>.</p>
@@ -786,10 +792,10 @@ android:configChanges=&quot;orientation|keyboardHidden|screenSize|smallestScreen
 <p>In your <code>Activity</code> init FuseViewsFragment on your <code>onCreate()</code> method just before the <code>setContentView()</code></p>
 <pre><code class="language-java">@Override
 protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    FuseViewsFragment.init(this, savedInstanceState);
-    setContentView(R.layout.activity_main);
-    ...
+ super.onCreate(savedInstanceState);
+ FuseViewsFragment.init(this, savedInstanceState);
+ setContentView(R.layout.activity_main);
+ ...
 }</code></pre>
 <h2 id="step-4-instantiating-a-view">Step 4: Instantiating a View</h2>
 <p>You are now ready to instantiate your exported views.
@@ -881,7 +887,7 @@ parent.addView(nativeView);</code></pre>
 @property (readonly) NSString* dataJson;
 
 @end</code></pre>
-<pre><code class="language-java">public interface IArguments {
+<pre><code class="language-objectivec">public interface IArguments {
     HashMap&lt;String,String&gt; getArgs();
     String getDataJson();
 }</code></pre>
@@ -929,7 +935,7 @@ usersListView.setCallback(&quot;user_clicked&quot;, new ICallback() {
        ViewHandle videoView = ExportedViews.instantiate(&quot;VideoView&quot;);
        android.view.View nativeView = videoView.getView();
 
-   videoView.setDataJson(&quot;{ \&quot;users\&quot; : [...] }&quot;);
+       videoView.setDataJson(&quot;{ \&quot;users\&quot; : [...] }&quot;);
        videoView.setCallback(&quot;user_clicked&quot;, new ICallback() {
            @Override
            public void invoke(IArguments iArguments) { ... }
