@@ -30,7 +30,7 @@ Check out this video to see how it's done! [fuse preview app](https://www.youtub
 To be able to preview or export to Android, you need to install the required SDK components.
 Pull up your terminal and run the following:
 
-```s
+```sh
 fuse install android
 ```
 
@@ -88,7 +88,7 @@ Press `Cmd+Shift+P` (macOS) or `Ctrl+Shift+P` (Windows) to bring up the command 
 
 In your terminal, `cd` to the your project's directory, and run the command that corresponds to your build target.
 
-```s
+```sh
 fuse preview -t=Android
 fuse preview -t=iOS
 fuse preview -t=Local   # The -t=Local flag is optional in this case
@@ -106,7 +106,7 @@ The simplest way to export is to use the "Export" menu in Fuse. However, the com
 
 In the project root, run the following command in your shell:
 
-```s
+```sh
 uno build android --run
 ```
 
@@ -114,7 +114,7 @@ This will deploy and start the project on your connected Android device.
 
 To make a **release build**, run:
 
-```s
+```sh
 uno build android --configuration=Release
 ```
 
@@ -124,7 +124,7 @@ uno build android --configuration=Release
 
 In the project root, run the following command in your shell:
 
-```s
+```sh
 uno build ios --run
 ```
 
@@ -132,7 +132,7 @@ If you instead want to open the generated project in Xcode, run `uno build ios -
 
 To make a **release build**, run:
 
-```s
+```sh
 uno build ios --configuration=Release
 ```
 

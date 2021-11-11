@@ -159,6 +159,7 @@ Let's look back at the example above:
 ```xml
 <Text Value="Hello Jim!" />
 ```
+
 The `Text` _object_ is what we use to show text in our App and the `Value` Property tells Fuse you want the text to be "Hello Jim".
 
 Just like how an apple and a truck have different properties in real life, different _objects_ in UX have different properties too. To find what properties you can put on each _object_ type, we have lots of [documentation](articles:full-ux-class-reference.md) to help.
@@ -631,7 +632,7 @@ You can easily add unit tests for your Fuse projects using the `ux:Test` attribu
 
 We can then run our tests using the following command from the terminal (on macOS) or command prompt (on Windows) while in your project directory:
 
-```s
+```sh
 uno test ProjectName.unoproj
 ```
 

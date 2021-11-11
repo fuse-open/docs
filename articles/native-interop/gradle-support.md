@@ -8,13 +8,13 @@ You can specify the build tools version and target version for your project.
 
 For example:
 
-```s
+```sh
 uno build android --run --set:SDK.BuildToolsVersion="23.0.3" --set:SDK.CompileVersion="23" --set:SDK.TargetVersion="23"`
 ```
 
 To find out which version of the tools you have installed run:
 
-```s
+```sh
 uno android
 ```
 

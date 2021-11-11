@@ -9,14 +9,14 @@ It should look something like the following.
 
 ```json
 {
-	"Packages": [
-		"Fuse",
-		"FuseJS",
-		"Fuse.Views"
-	],
-	"Includes": [
-		"*"
-	]
+ "Packages": [
+  "Fuse",
+  "FuseJS",
+  "Fuse.Views"
+ ],
+ "Includes": [
+  "*"
+ ]
 }
 ```
 
@@ -47,10 +47,9 @@ We can then export these components by providing them as [UX Templates](articles
 </App>
 ```
 
-
 Export an [Xcode Framework](https://developer.apple.com/library/content/documentation/MacOSX/Conceptual/BPFrameworks/Concepts/WhatAreFrameworks.html) or an [Android aar](https://developer.android.com/studio/projects/android-library.html) by compiling with `-DLIBRARY` set.
 
-```s
+```sh
 uno build ios -DLIBRARY
 uno build android -DLIBRARY
 ```
@@ -71,11 +70,10 @@ Add the framework you just built as an embedded binary in Xcode
 ![Embedded Binaries](../../media/fuse-views/embedded_binaries.png)
 
 ![Add Framework](../../media/fuse-views/add_framework.png)
-	
+ 
 And finally, disable Bitcode.
 
 ![Disable Bitcode](../../media/fuse-views/disable_bitcode.png)
-
 
 #### Android
 
@@ -119,11 +117,13 @@ And finally, copy `build/Android/Debug/app/build/outputs/aar/app-debug.aar` to `
 After a rebuild you need to manually update the framework or aar in your native project. Do this by overwriting the old library with the one you just produced. This is easily automated by scripting the copy-overwrite procedure.
 
 Notes when updating the framework/aar:
+
 - By default Xcode imports frameworks to the project root directory. This is where you want to overwrite.
 - If you are using Android Studio you must do a rebuild after updating the aar for code completion and code errors to work properly.
 
 Notes when updating Fuse:
-- To ensure that your project is running the last FuseViews package, cut `compile(name:'app-debug', ext:'aar')` line from your gradle file, Sync and add the dependency again. 
+
+- To ensure that your project is running the last FuseViews package, cut `compile(name:'app-debug', ext:'aar')` line from your gradle file, Sync and add the dependency again.
 
 ## Step 3: Bootstrapping Fuse Views
 
@@ -137,7 +137,7 @@ Add the following in your `AppDelegate`
 #import <FuseProjectName/Context.h>
 ```
 
-```cs
+```objectivec
 - (BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [uContext initSharedContextWithWindow:^UIWindow* () { return [self window]; }];
@@ -173,31 +173,35 @@ public class MainActivity extends com.fuse.views.FuseViewsActivity {
 ```
 
 ##### Fragment support
-To use your View as `Fragment`, inherit from `com.fuse.views.FuseViewsFragment` 
+
+To use your View as `Fragment`, inherit from `com.fuse.views.FuseViewsFragment`
+
 ```java
 public class FuseFragment extends com.fuse.views.FuseViewsFragment {
 ```
 
 In your `Activity` init FuseViewsFragment on your `onCreate()` method just before the `setContentView()`
+
 ```java
 @Override
 protected void onCreate(Bundle savedInstanceState) {
-	super.onCreate(savedInstanceState);
-	FuseViewsFragment.init(this, savedInstanceState);
-	setContentView(R.layout.activity_main);
-	...
+ super.onCreate(savedInstanceState);
+ FuseViewsFragment.init(this, savedInstanceState);
+ setContentView(R.layout.activity_main);
+ ...
 }
 ```
+
 ## Step 4: Instantiating a View
 
 You are now ready to instantiate your exported views.
 To interop with your views you will get a handle object with some methods that act as the interface for interop.
 Through the handle you can get a native View that will display your exported view.
 
-
 #### Objective-C
 
 Make sure to have these headers imported:
+
 ```objectivec
 #import <ProjectName/ExportedViews.h>
 #import <ProjectName/ViewHandle.h>
@@ -205,7 +209,7 @@ Make sure to have these headers imported:
 
 Instantiating the view handle and getting the native view:
 
-```cs
+```objectivec
 ViewHandle* videoView = [ExportedViews instantiate:@"VideoView"];
 UIView* nativeView = [videoView view];
 ```
@@ -248,7 +252,7 @@ A Fuse View will interop with the native layout, for size it relies on the nativ
 
 #### Objective-C
 
-```cs
+```objectivec
 UIView* parent = ...;
 
 ViewHandle* videoView = [ExportedViews instantiate:@"VideoView"];
@@ -296,7 +300,7 @@ Lets take a look at the API:
 
 #### Objective-C
 
-```cs
+```objectivec
 @interface ViewHandle : NSObject
 
 @property (readonly) UIView* view;
@@ -310,10 +314,9 @@ Lets take a look at the API:
 
 The signature of `Callback` is as follows:
 
-```cs
+```objectivec
 typedef void(^Callback)(Arguments*);
 ```
-
 
 #### Java
 
@@ -336,7 +339,7 @@ public interface ICallback {
 
 If you are familiar with [`JavaScript`](api:fuse/reactive/javascript) and [`DataBinding`](api:fuse/reactive/databinding) in fuse this will be quite easy to understand. `setDataJson` is the equivalent of having a `module.exports` in JavaScript and `setCallback` is the equivalent of adding a function to the `exports`. The function arguments passed to the native callback in Fuse views will contain the same data you would get in `JavaScript`, but you get the through the methods available on the `Arguments`. Since the function arguments needs to be serialized to strings and JSON, accessing the `Arguments` will lazily serialize what you request. In the common case you are more interested in getting the callback than accessing the whole data context. Please have a look at [`Binding functions`](articles:scripting/scripting#binding-functions) for an overview of what arguments will be passed.
 
-```cs
+```objectivec
 @interface Arguments : NSObject
 
 @property (readonly) NSDictionary<NSString*,NSString*>* args;
@@ -381,7 +384,7 @@ The equivalent in fuse views will look like this:
 
 #### Objective-C
 
-```cs
+```objectivec
 ViewHandle* usersListView = [ExportedViews instantiate:@"UsersListView"];
 [usersListView setDataString:@"Meetup attendees" forKey:@"title"];
 [usersListView setDataJson:@"{ \"users\" : [...] }"];
@@ -410,8 +413,10 @@ usersListView.setCallback("user_clicked", new ICallback() {
 ```
 
 ##### Fragment support
+
 The full workaround when using `Fragment`
-```csharp
+
+```uno
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -419,7 +424,7 @@ The full workaround when using `Fragment`
         ViewHandle videoView = ExportedViews.instantiate("VideoView");
         android.view.View nativeView = videoView.getView();
 
-	videoView.setDataJson("{ \"users\" : [...] }");
+        videoView.setDataJson("{ \"users\" : [...] }");
         videoView.setCallback("user_clicked", new ICallback() {
             @Override
             public void invoke(IArguments iArguments) { ... }

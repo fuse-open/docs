@@ -155,13 +155,13 @@ You may want to declare your objects some time in your class...
 
 For Objective-C:
 
-```cs
+```uno
 extern(iOS) ObjC.Object _objcObject;
 ```
 
 For Java:
 
-```cs
+```uno
 extern(Android) Java.Object _javaObject;
 ```
 
@@ -191,7 +191,7 @@ Most types are already boxed, but note that primitive types like `int`, `bool`, 
 
 It's possible to circumvent the boxing behaviour by using UXL macros. The following examples contrast the two ways to use arrays in foreign Objective-C code:
 
-```csharp
+```uno
 [Foreign(Language.ObjC)]
 public static extern(iOS) void ForeignIntArray(int[] xs)
 @{
@@ -203,7 +203,7 @@ public static extern(iOS) void ForeignIntArray(int[] xs)
 @}
 ```
 
-```csharp
+```uno
 [Foreign(Language.ObjC)]
 public static extern(iOS) void ForeignIntArray(int[] xs)
 @{
@@ -219,7 +219,7 @@ public static extern(iOS) void ForeignIntArray(int[] xs)
 
 Just like in Objective-C, Uno arrays are boxed when passed to Java. You can access a value from the Uno array by calling `get(index)` on it. E.g.
 
-```csharp
+```uno
 [Foreign(Language.Java)]
 public void Test0(string[] strArr)
 @{
@@ -229,7 +229,7 @@ public void Test0(string[] strArr)
 
 You can set an element of the array using `set(index, newValue)`
 
-```csharp
+```uno
 [Foreign(Language.Java)]
 public void Test1(int[] intArr)
 @{
@@ -239,7 +239,7 @@ public void Test1(int[] intArr)
 
 Updates to the array it are reflected in the original Uno array --- it's a wrapper, not a copy. As mentioned, it's also possible to copy the uno array to an java array by calling `copyArray`.
 
-```csharp
+```uno
 [Foreign(Language.Java)]
 public void Test1(int[] intArr)
 @{
@@ -268,7 +268,7 @@ Next we may want to pass java arrays to Uno
 
 If we have a boxed Uno array in Java it is easy to return it as an uno array again:
 
-```csharp
+```uno
 [Foreign(Language.Java)]
 public string[] Test2(string[] wee)
 @{
@@ -278,7 +278,7 @@ public string[] Test2(string[] wee)
 
 But what if we return a Java array? In that case it will be a `Java.Object` just like all other Java objects passed to Uno
 
-```csharp
+```uno
 [Foreign(Language.Java)]
 public Java.Object Test3()
 @{
@@ -289,7 +289,7 @@ public Java.Object Test3()
 
 And passing it back to Java is the same too:
 
-```csharp
+```uno
 [Foreign(Language.Java)]
 public void Test4(Java.Object arr)
 @{
@@ -300,7 +300,7 @@ public void Test4(Java.Object arr)
 
 There also may be occasions where you want to make an Uno array from Java.
 
-```csharp
+```uno
 [Foreign(Language.Java)]
 public string[] Test5()
 @{
@@ -322,7 +322,7 @@ Delegates get converted to an Objective-C block of the corresponding type. As an
 
 Here is a simple example of this in action:
 
-```csharp
+```uno
 [Foreign(Language.ObjC)]
 public static extern(iOS) double DelegateArgument(Func<int, double> f)
 @{
@@ -337,7 +337,7 @@ It's worth noting that Uno boxes ObjC booleans as `bool` as opposed to Apple's `
 
 If we define a delegate like this:
 
-```csharp
+```uno
 namespace Foo
 {
 	public delegate void Bar(float x, float y, float z);
@@ -346,13 +346,14 @@ namespace Foo
 
 Then it can be used in foreign Java as follows.
 
-```csharp
+```uno
 [Foreign(Language.Java)]
 public static extern(Android) void ForeignDelegate(Bar x)
 @{
 	x.run(1.0f, 2.0f, 3.0f);
 @}
 ```
+
 Until version 8 Java didn't have lambdas, and `Runnable` and `Callable`s don't take arguments, so behind the scenes the Uno compiler creates a Java class called `com.foreign.Foo.Bar` with a `public void run(float x, float y, float z) { ... }` method.
 
 The foreign Java type conversions for primitives, strings, objects, and arrays apply to arguments of delegates.
@@ -361,7 +362,7 @@ We can also pass Uno `Action`s to Java. Since Java delegates don't support primi
 
 The type conversions follow this pattern:
 
-```cs
+```cpp
 Action -> com.foreign.Uno.Action
 Action<int> -> com.foreign.Uno.Action_int
 Action<int[],int> -> com.foreign.Uno.Action_IntArray_int
@@ -374,7 +375,7 @@ The Objective-C type for such a parameter is a pointer to the Objective-C type o
 
 The following two examples show how it works:
 
-```csharp
+```uno
 [Foreign(Language.ObjC)]
 extern(iOS) void PrimitiveOutParam(ref int m, out int n)
 @{
@@ -420,7 +421,7 @@ We can get or set the value of a property using the `Get` and `Set` macros.
 
 The anatomy of a UXL `Get` expression is as follows:
 
-```csharp
+```uno
 v¯¯¯¯¯¯¯¯¯¯v¯ The `@{` `}` syntax means its a UXL macro
 @{Foo:Get()}
    ^
@@ -429,7 +430,7 @@ v¯¯¯¯¯¯¯¯¯¯v¯ The `@{` `}` syntax means its a UXL macro
 
 And for `Set` expressions it looks like this:
 
-```csharp
+```uno
           v¯¯¯¯¯¯ this is a foreign value
 @{Foo:Set(20)}
    ^
@@ -439,7 +440,7 @@ And for `Set` expressions it looks like this:
 Let's see this in some example code:
 
 
-```csharp
+```uno
 using Uno.Compiler.ExportTargetInterop;
 
 public class Example
@@ -478,7 +479,7 @@ The above code says *"the Uno type of `_this` is `MyClass`"*
 
 The following code shows how it works:
 
-```csharp
+```uno
 using Uno.Compiler.ExportTargetInterop;
 
 public class Example
@@ -509,7 +510,7 @@ UXL's `Call` macro lets us call Uno methods (and other foreign methods) from ins
 
 Let's start with a little anatomy:
 
-```csharp
+```uno
  the Uno method name          The foreign values to be passed as arguments
       v                         v  v
 @{Foobernator(int,string):Call(1, "jam")}
@@ -521,7 +522,7 @@ Let's start with a little anatomy:
 
 Let's see an example of this:
 
-```csharp
+```uno
 using Uno.Compiler.ExportTargetInterop;
 
 public class Example
@@ -549,7 +550,7 @@ public class Example
 
 To call Uno instance methods, we use the `Of` macro with `_this` again:
 
-```csharp
+```uno
 using Uno.Compiler.ExportTargetInterop;
 
 class Example
@@ -623,7 +624,7 @@ Fuse will parse the `package` statement in included Java files and ensure the fo
 
 We can use the `ForeignInclude` attribute to add imports in Java. It can only be used on classes. The includes affect all foreign methods in the Uno class.
 
-```csharp
+```uno
 [ForeignInclude(Language.Java, "java.lang.Runnable", "java.lang.Boolean", "android.app.Activity")]
 public class SomeUnoClass : Uno.Application
 {
@@ -637,7 +638,7 @@ public class SomeUnoClass : Uno.Application
 
 To use external Objective-C headers, we include them in the class, like so:
 
-```csharp
+```uno
 [ForeignInclude(Language.ObjC, "Example.hh")]
 class Example
 {
@@ -654,7 +655,7 @@ It's possible to add Swift files to our `unoproj`s. While we do not yet have sup
 The following example shows how to use this feature:
 
 `Hello.swift:`
-```csharp
+```uno
 import Foundation
 
 public class HelloSwiftWorld: NSObject {
@@ -677,7 +678,7 @@ public class HelloSwiftWorld: NSObject {
 
 Since Swift can be used from Objective-C, we call into the Swift code by using Foreign Objective-C, for instance as follows:
 
-```csharp
+```uno
 [ForeignInclude(Language.ObjC, "@(Project.Name)-Swift.h")]
 public class Example
 {
