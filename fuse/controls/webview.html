@@ -711,7 +711,7 @@ Navigation triggers like <a href="../../fuse/navigation/goback.html">GoBack</a> 
 <p>The <a href="../../fuse/triggers/actions/evaluatejs.html">EvaluateJS</a> trigger is noteworthy, since it allows arbitrary JavaScript to be run in the WebView's context and the resulting data be fed back into Fuse:</p>
 <pre><code class="language-XML">&lt;App Background=&quot;#333&quot;&gt;
     &lt;JavaScript&gt;
-            module.exports = {
+        module.exports = {
                 onPageLoaded : function(res) {
                     console.log(&quot;WebView arrived at &quot;+ JSON.parse(res.json).url);
             }
@@ -720,7 +720,7 @@ Navigation triggers like <a href="../../fuse/navigation/goback.html">GoBack</a> 
     &lt;DockPanel&gt;
         &lt;StatusBarBackground Dock=&quot;Top&quot;/&gt;
         &lt;NativeViewHost&gt;
-            &lt;WebView Dock=&quot;Fill&quot; Url=&quot;http://www.google.com&quot;&gt;
+            &lt;WebView Dock=&quot;Fill&quot; Url=&quot;https://www.google.com&quot;&gt;
                 &lt;PageLoaded&gt;
                     &lt;EvaluateJS Handler=&quot;{onPageLoaded}&quot;&gt;
                         var result = {
@@ -748,7 +748,7 @@ Fuse.Controls
 </a>
 </dd>
 <dt>Package</dt>
-<dd>Fuse.Controls.WebView 2.0.1</dd>
+<dd>Fuse.Controls.WebView 2.1.0</dd>
 </dl>
 </section>
 <section class="table-of-contents">
@@ -772,6 +772,25 @@ string
 </h5>
 <div class="table-of-contents-item-brief">
 <p>When loading HTML from source; The base URL serving as scope for the HTML.</p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxevent fa fa-bolt" title="UxEvent"></span>
+<h5 id="begindownload-eventhandler-object-eventargs-ux">
+<a href="../../fuse/controls/webview/begindownload.html">
+BeginDownload
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../../uno/eventhandler.html">
+EventHandler (object, EventArgs)
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Callback that fires when a file will start to download</p>
 
 </div>
 </article>
@@ -875,6 +894,25 @@ FileSource
 </h5>
 <div class="table-of-contents-item-brief">
 <p>The File from which to load HTML</p>
+
+</div>
+</article>
+
+<article class="table-of-contents-item">
+<span class="table-of-contents-item-type table-of-contents-item-type-uxevent fa fa-bolt" title="UxEvent"></span>
+<h5 id="filedownloaded-eventhandler-object-eventargs-ux">
+<a href="../../fuse/controls/webview/filedownloaded.html">
+FileDownloaded
+</a>
+<span class="table-of-contents-item-inline-returns"> : 
+<a href="../../uno/eventhandler.html">
+EventHandler (object, EventArgs)
+</a>
+</span>
+<span class="table-of-contents-item-language table-of-contents-item-language-ux">ux</span>
+</h5>
+<div class="table-of-contents-item-brief">
+<p>Callback that fires when a file has been downloaded</p>
 
 </div>
 </article>
