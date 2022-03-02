@@ -34,7 +34,7 @@ done
 echo -e "URL: $URL (Please wait for docs to finish building...)\n"
 
 if [ "$BUILD" != 0 ]; then
-    dotnet run -p generator/src/generator.csproj -- . "$URL" "$DST" $GEN_FLAGS
+    dotnet run --project generator/src/generator.csproj -- . "$URL" "$DST" $GEN_FLAGS
 fi
 
 if [ "$ASSETS" != 0 ]; then
