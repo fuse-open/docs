@@ -196,7 +196,7 @@ Packages can be all sorts of things; examples, libraries, plugins or tools. Inst
 
 We welcome new package contributions from the community!
 
-To submit a package to this list, please publish the package in a public GitHub repository, and [let us know about it](https://www.fusetools.com/contact)! Please include the package name, description, author (your Fusetools.com username) as well as the URL to the repo of course.
+To submit a package to this list, please publish the package in a public GitHub repository, and [let us know about it](https://fusecommunity.slack.com/)! Please include the package name, description, author, as well as the URL to the repo of course.
 
 To release new versions of your package, simply publish new branches or tags on your repo.
 

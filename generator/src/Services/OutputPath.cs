@@ -280,8 +280,8 @@ namespace Builder.Services
                 var url = href.Value;
                 if (url.StartsWith("/examples/"))
                 {
-                    // If the URL is a hard-link to the old examples, redirect it to examples.fusetools.com
-                    url = "https://examples.fusetools.com/" + url.Substring("/examples/".Length);
+                    // If the URL is a hard-link to the old examples, redirect it to fuseopen.com/examples
+                    url = "https://fuseopen.com/examples/" + url.Substring("/examples/".Length);
                 }
 
                 anchor.Attributes.Add("href", url);

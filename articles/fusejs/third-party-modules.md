@@ -9,7 +9,7 @@ It is important to explain that Fuse is not a web or browser-based platform desp
 
 With that in mind, this chapter contains a list of libraries that are known to work/not work, and explains workarounds/caveats.
 
-If you have tested a library and found it to work/not work/have a work-around, please [share your experience on our forums](https://forums.fusetools.com/) or [let us know via email!](https://www.fusetools.com/contact)
+If you have tested a library and found it to work/not work/have a work-around, please [share your experience on our forums](https://forums.fusetools.com/) or [let us know via email!](https://fuseopen.com/contact)
 
 > This list will be expanded as FuseJS develops.
 

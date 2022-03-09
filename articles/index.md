@@ -24,7 +24,7 @@ The best way to gain a quick, early overview is by [following our quickstart tut
 
 The side-menu covers most topics you'd need to learn Fuse, such as [setting up navigation](navigation/navigation.html), [working with layout](layout/layout.html), how you [animate elements](fuse/animations/animator.html) and a whole lot more.
 
-Connect with our amazing community in the [Slack group](http://slackcommunity.fusetools.com/).
+Connect with our amazing community in the [Slack group](http://fusecommunity.slack.com/).
 
 Have fun!
 

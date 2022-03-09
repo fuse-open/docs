@@ -147,7 +147,7 @@ The `PageControl.DotFactory` has been renamed to `PageControl.DotTemplate`.
 
 #### Changes to animation APIs
 
-* `Attractor.SimulationType` has been removed in favor of two new properties; `Type` and `Unit`. Take a look [here](https://www.fusetools.com/learn/reference/fuse/animations/attractor_1) for details.
+* `Attractor.SimulationType` has been removed in favor of two new properties; `Type` and `Unit`. Take a look [here](https://fuseopen.com/learn/reference/fuse/animations/attractor_1) for details.
 
 * `LinearNavigation` no longer has an `Easing` and `Duration` property.
 
