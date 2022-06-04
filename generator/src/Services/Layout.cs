@@ -1,36 +1,35 @@
 using System.IO;
 using System.Text.Encodings.Web;
 
-namespace Builder.Services
+namespace Builder.Services;
+
+public class Layout
 {
-    public class Layout
+    private readonly string _template;
+    private readonly string _baseUrl;
+
+    public Layout(BuilderSettings settings)
     {
-        private readonly string _template;
-        private readonly string _baseUrl;
+        _template = ReadTemplate(settings.RootPath);
+        _baseUrl = settings.BaseUrl;
+    }
 
-        public Layout(BuilderSettings settings)
+    public string Apply(string html, string outline, string title)
+    {
+        var fullTitle = "Fuse Documentation";
+        if (!string.IsNullOrEmpty(title))
         {
-            _template = ReadTemplate(settings.RootPath);
-            _baseUrl = settings.BaseUrl;
+            fullTitle = $"{title} - {fullTitle}";
         }
 
-        public string Apply(string html, string outline, string title)
-        {
-            var fullTitle = "Fuse Documentation";
-            if (!string.IsNullOrEmpty(title))
-            {
-                fullTitle = $"{title} - {fullTitle}";
-            }
+        html = _template.Replace("##BODY##", html)
+                        .Replace("##NAVIGATION##", outline)
+                        .Replace("##TITLE##", HtmlEncoder.Default.Encode(fullTitle))
+                        .Replace("##BASE_URL##", _baseUrl);
+        return html;
+    }
 
-            html = _template.Replace("##BODY##", html)
-                            .Replace("##NAVIGATION##", outline)
-                            .Replace("##TITLE##", HtmlEncoder.Default.Encode(fullTitle))
-                            .Replace("##BASE_URL##", _baseUrl);
-            return html;
-        }
-
-        private string ReadTemplate(string root) {
-            return File.ReadAllText(Path.Combine(root, "layout.html"));
-        }
+    private string ReadTemplate(string root) {
+        return File.ReadAllText(Path.Combine(root, "layout.html"));
     }
 }

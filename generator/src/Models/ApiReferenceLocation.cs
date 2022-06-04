@@ -1,10 +1,9 @@
-namespace Builder.Models
+namespace Builder.Models;
+
+public class ApiReferenceLocation
 {
-    public class ApiReferenceLocation
-    {
-        public string NamespaceTitle { get; set; }
-        public string NamespaceUri { get; set; }
-        public string PackageName { get; set; }
-        public string PackageVersion { get; set; }
-    }
+    public string NamespaceTitle { get; set; }
+    public string NamespaceUri { get; set; }
+    public string PackageName { get; set; }
+    public string PackageVersion { get; set; }
 }
