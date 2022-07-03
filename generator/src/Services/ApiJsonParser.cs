@@ -8,77 +8,76 @@ using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
-namespace Builder.Services
+namespace Builder.Services;
+
+public abstract class ApiJsonParser<T> where T : class, IApiJsonDocument, new()
 {
-    public abstract class ApiJsonParser<T> where T : class, IApiJsonDocument, new()
+    private static readonly JsonSerializerSettings SerializerSettings = new JsonSerializerSettings
     {
-        private static readonly JsonSerializerSettings SerializerSettings = new JsonSerializerSettings
+        ContractResolver = new CamelCasePropertyNamesContractResolver()
+    };
+
+    private readonly bool _fastMode;
+    private readonly string _sourcePath;
+    private readonly ILogger<ApiJsonParser<T>> _logger;
+
+    protected abstract string SourceDirectoryName { get; }
+    protected abstract string SourceDirectoryDisplayName { get; }
+
+    protected ApiJsonParser(BuilderSettings settings, ILogger<ApiJsonParser<T>> logger)
+    {
+        _fastMode = settings.FastMode;
+        _sourcePath = Path.Combine(settings.RootPath, "api-docs", SourceDirectoryName);
+        _logger = logger;
+
+        if (!_fastMode && !Directory.Exists(_sourcePath))
         {
-            ContractResolver = new CamelCasePropertyNamesContractResolver()
-        };
-
-        private readonly bool _fastMode;
-        private readonly string _sourcePath;
-        private readonly ILogger<ApiJsonParser<T>> _logger;
-
-        protected abstract string SourceDirectoryName { get; }
-        protected abstract string SourceDirectoryDisplayName { get; }
-
-        protected ApiJsonParser(BuilderSettings settings, ILogger<ApiJsonParser<T>> logger)
-        {
-            _fastMode = settings.FastMode;
-            _sourcePath = Path.Combine(settings.RootPath, "api-docs", SourceDirectoryName);
-            _logger = logger;
-
-            if (!_fastMode && !Directory.Exists(_sourcePath))
-            {
-                throw new DirectoryNotFoundException($"API {SourceDirectoryDisplayName} directory '{_sourcePath}' not found");
-            }
+            throw new DirectoryNotFoundException($"API {SourceDirectoryDisplayName} directory '{_sourcePath}' not found");
         }
-        
-        protected virtual TModel NormalizeModel<TModel>(TModel model) where TModel : T
+    }
+
+    protected virtual TModel NormalizeModel<TModel>(TModel model) where TModel : T
+    {
+        return model;
+    }
+
+    public Task<List<T>> ReadAsync()
+    {
+        if (_fastMode)
         {
-            return model;
-        }
-
-        public Task<List<T>> ReadAsync()
-        {
-            if (_fastMode)
-            {
-                _logger.LogInformation("Skipping ApiJsonParser.ReadAsync() in Fast Mode");
-                return Task.FromResult(new List<T>());
-            }
-
-            var sw = Stopwatch.StartNew();
-            var result = new List<T>();
-            
-            _logger.LogDebug($"Reading API {SourceDirectoryDisplayName} from '{_sourcePath}'");
-            var files = Directory.EnumerateFiles(_sourcePath, "*.json", SearchOption.AllDirectories).ToList();
-            _logger.LogDebug($"{files.Count} API {SourceDirectoryDisplayName} source files identified");
-
-            foreach (var file in files)
-            {
-                result.Add(Deserialize(file));
-            }
-
-            _logger.LogDebug($"{result.Count} API {SourceDirectoryDisplayName} source files parsed in {sw.Elapsed.TotalMilliseconds} ms");
-
-            return Task.FromResult(result);
+            _logger.LogInformation("Skipping ApiJsonParser.ReadAsync() in Fast Mode");
+            return Task.FromResult(new List<T>());
         }
 
-        private T Deserialize(string path)
+        var sw = Stopwatch.StartNew();
+        var result = new List<T>();
+
+        _logger.LogDebug($"Reading API {SourceDirectoryDisplayName} from '{_sourcePath}'");
+        var files = Directory.EnumerateFiles(_sourcePath, "*.json", SearchOption.AllDirectories).ToList();
+        _logger.LogDebug($"{files.Count} API {SourceDirectoryDisplayName} source files identified");
+
+        foreach (var file in files)
         {
-            try
-            {
-                var model = JsonConvert.DeserializeObject<T>(File.ReadAllText(path), SerializerSettings);
-                model.SourceFileLastModifiedAt = File.GetLastWriteTimeUtc(path);
-                return NormalizeModel(model);
-            }
-            catch (JsonReaderException)
-            {
-                _logger.LogError($"Failed to parse '{path}'");
-                throw;
-            }
+            result.Add(Deserialize(file));
+        }
+
+        _logger.LogDebug($"{result.Count} API {SourceDirectoryDisplayName} source files parsed in {sw.Elapsed.TotalMilliseconds} ms");
+
+        return Task.FromResult(result);
+    }
+
+    private T Deserialize(string path)
+    {
+        try
+        {
+            var model = JsonConvert.DeserializeObject<T>(File.ReadAllText(path), SerializerSettings);
+            model.SourceFileLastModifiedAt = File.GetLastWriteTimeUtc(path);
+            return NormalizeModel(model);
+        }
+        catch (JsonReaderException)
+        {
+            _logger.LogError($"Failed to parse '{path}'");
+            throw;
         }
     }
 }

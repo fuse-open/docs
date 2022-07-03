@@ -1,9 +1,8 @@
 using System;
 
-namespace Builder.Models
+namespace Builder.Models;
+
+public interface IApiJsonDocument
 {
-    public interface IApiJsonDocument
-    {
-        DateTime SourceFileLastModifiedAt { get; set; }
-    }
+    DateTime SourceFileLastModifiedAt { get; set; }
 }
