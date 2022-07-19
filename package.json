@@ -7,6 +7,7 @@
     "concurrently": "^7.3.0",
     "fuse-sdk": "^2.2.0",
     "http-server": "^14.1.1",
+    "is-git-status-clean": "^1.0.0",
     "npm-watch": "^0.11.0",
     "rimraf": "^3.0.2",
     "xbash": "^1.6.0"
@@ -15,7 +16,7 @@
     "api-docs": "uno build docs doc-export --output-dir api-docs -f",
     "build": "bash build.sh",
     "clean": "rimraf _site",
-    "deploy": "bash deploy.sh",
+    "deploy": "is-git-status-clean && bash deploy.sh",
     "local": "bash build.sh --local --fast",
     "local-slow": "bash build.sh --local",
     "http-server": "http-server -o -c-1 -p 8080 _site",
