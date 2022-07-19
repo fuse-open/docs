@@ -1,0 +1,1015 @@
+{
+  "entity": {
+    "base": {
+      "id": {
+        "id": "fuse/scripting/nativeeventemittermodule",
+        "parentId": "fuse/scripting",
+        "type": "Class",
+        "modifiers": [
+          "public"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/scripting/nativeeventemittermodule",
+        "href": "fuse/scripting/nativeeventemittermodule"
+      },
+      "titles": {
+        "indexTitle": "NativeEventEmitterModule",
+        "fullyQualifiedIndexTitle": "Fuse.Scripting.NativeEventEmitterModule"
+      }
+    },
+    "location": {
+      "namespaceTitle": "Fuse.Shortcut",
+      "namespaceUri": "fuse/shortcut",
+      "packageName": "Fuse.Shortcut",
+      "packageVersion": "2.2.1"
+    },
+    "inheritance": {
+      "root": {
+        "uri": "uno/object",
+        "title": "object",
+        "children": [
+          {
+            "uri": "fuse/scripting/module",
+            "title": "Fuse.Scripting.Module",
+            "children": [
+              {
+                "uri": "fuse/scripting/nativemodule",
+                "title": "Fuse.Scripting.NativeModule",
+                "children": [
+                  {
+                    "uri": "fuse/scripting/nativeeventemittermodule",
+                    "title": "Fuse.Scripting.NativeEventEmitterModule",
+                    "children": [
+                      {
+                        "uri": "fuse/shortcut/shortcutmodule",
+                        "title": "Fuse.Shortcut.ShortcutModule",
+                        "children": [],
+                        "isCurrent": true
+                      }
+                    ],
+                    "isAncestor": true
+                  }
+                ],
+                "isAncestor": true
+              }
+            ],
+            "isAncestor": true
+          }
+        ],
+        "isAncestor": true
+      },
+      "hasInheritance": true
+    },
+    "uxProperties": {
+      "uxNamespaceTitle": "Fuse",
+      "uxNamespaceUri": "fuse",
+      "uxName": "Shortcut.ShortcutModule"
+    },
+    "implementedInterfaces": [
+      {
+        "id": {
+          "id": "fuse/scripting/imoduleprovider",
+          "parentId": "fuse/scripting",
+          "type": "Interface",
+          "modifiers": [
+            "public",
+            "abstract"
+          ]
+        },
+        "uri": {
+          "idUri": "fuse/scripting/imoduleprovider",
+          "href": "fuse/scripting/imoduleprovider"
+        },
+        "titles": {
+          "indexTitle": "IModuleProvider",
+          "fullyQualifiedIndexTitle": "Fuse.Scripting.IModuleProvider"
+        }
+      },
+      {
+        "id": {
+          "id": "uno/idisposable",
+          "parentId": "uno",
+          "type": "Interface",
+          "modifiers": [
+            "public",
+            "abstract"
+          ]
+        },
+        "uri": {
+          "idUri": "uno/idisposable",
+          "href": "uno/idisposable"
+        },
+        "titles": {
+          "indexTitle": "IDisposable",
+          "fullyQualifiedIndexTitle": "Uno.IDisposable"
+        }
+      }
+    ],
+    "attributes": [
+      {
+        "id": {
+          "id": "uno/ux/uxglobalmoduleattribute",
+          "parentId": "uno/ux",
+          "type": "Class",
+          "modifiers": [
+            "public",
+            "sealed"
+          ]
+        },
+        "uri": {
+          "idUri": "uno/ux/uxglobalmoduleattribute",
+          "href": "uno/ux/uxglobalmoduleattribute"
+        },
+        "titles": {
+          "indexTitle": "UXGlobalModuleAttribute",
+          "fullyQualifiedIndexTitle": "Uno.UX.UXGlobalModuleAttribute"
+        }
+      }
+    ],
+    "id": {
+      "id": "fuse/shortcut/shortcutmodule",
+      "parentId": "fuse/shortcut",
+      "type": "JsModule",
+      "modifiers": [
+        "public"
+      ]
+    },
+    "uri": {
+      "idUri": "fuse/shortcut/shortcutmodule",
+      "href": "fuse/shortcut/shortcutmodule"
+    },
+    "titles": {
+      "pageTitle": "ShortcutModule Class",
+      "navigationTitle": "ShortcutModule Class",
+      "fullTitle": "Fuse.Shortcut.ShortcutModule",
+      "indexTitle": "ShortcutModule",
+      "fullyQualifiedIndexTitle": "Fuse.Shortcut.ShortcutModule"
+    },
+    "syntax": {
+      "uno": "[Uno.UX.UXGlobalModule]\npublic class ShortcutModule : Fuse.Scripting.NativeEventEmitterModule {}",
+      "ux": "<Shortcut.ShortcutModule />"
+    },
+    "comment": {
+      "brief": "This module allows you to shows menu items when pressing App Icon on the device home screen.\nThis feature refer to the [home screen actions](https://developer.apple.com/design/human-interface-guidelines/ios/system-capabilities/home-screen-actions/) on iOS and [App Shortcut](https://developer.android.com/guide/topics/ui/shortcuts.html) on Android (introduced in Android 7.1 / API Level 25).",
+      "full": "This module allows you to shows menu items when pressing App Icon on the device home screen.\nThis feature refer to the [home screen actions](https://developer.apple.com/design/human-interface-guidelines/ios/system-capabilities/home-screen-actions/) on iOS and [App Shortcut](https://developer.android.com/guide/topics/ui/shortcuts.html) on Android (introduced in Android 7.1 / API Level 25).\n\nYou need to add a reference to `\"Fuse.Shortcut\"` in your project file to use this feature.\n\nThis module is an @EventEmitter, so the methods from @EventEmitter can be used to listen to events.\n\n## Usage\n\nThe following example shows how create shortcut:\n```xml\n        <App>\n            <JavaScript>\n\n                var Observable = require(\"FuseJS/Observable\")\n                var selectedShortcut = new Observable(\"-\")\n\n                var shortcut = require(\"FuseJS/Shortcut\");\n                shortcut.registerShortcuts([\n                    {\n                        id: 'compose',\n                        title: \"Compose\",\n                        icon: \"assets/images/compose.png\"\n                    },\n                    {\n                        id: 'profile',\n                        title: \"Profile\",\n                        icon: \"assets/images/user.png\"\n                    },\n                    {\n                        id: 'book_store',\n                        title: \"Book Store\",\n                        icon: \"assets/images/book.png\"\n                    }\n                ])\n\n                shortcut.on('shortcutClicked', (type) => {\n                    selectedShortcut.value = type;\n                })\n\n                module.exports = {\n                    selectedShortcut\n                }\n\n            </JavaScript>\n            <StackPanel Margin=\"20\">\n                <Text Value=\"Selected Shortcut: {selectedShortcut}\" />\n            </StackPanel>\n        </App>\n\nNote that on the `registerShortcuts` method accepts array of json objects with the following properties:\n* id, id of the shortcut, and will be passed on the `shortcutClicked` callback when particular shortcut get clicked. This property is mandatory\n* title, to display menu title. This property is mandatory\n* subtitle, to display sub title (displayed below the title on iOS). This property is optional\n* icon, to display icon beside the menu title, value of the icon is a local image path (i.e asset path) not a url and must be registered as a Bundle. More info about Bundle [here.](/docs/assets/bundle). This property is optional",
+      "attributes": {
+        "scriptModule": "FuseJS/Shortcut"
+      }
+    }
+  },
+  "tableOfContents": {
+    "attachedUxProperties": [
+      {
+        "items": [
+          {
+            "comment": {
+              "brief": "The `ux:Global` attribute creates a global resource that is accessible everywhere in UX markup.",
+              "full": "The `ux:Global` attribute creates a global resource that is accessible everywhere in UX markup.\n\nSee @Resources for more information.\n\nThe `ux:Global` attribute on an UX element creates a single object (singleton) that is globally available.\nUsing this attribute will prevent the object from being inserted by default the object at its defined location\nin the UX tree."
+            },
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "parameters": [
+              {
+                "name": "obj",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              },
+              {
+                "name": "key",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              }
+            ],
+            "id": {
+              "id": "fuse/shortcut/shortcutmodule/resource_globalkey_setglobalkey_4c3ac72d",
+              "parentId": "fuse/shortcut/shortcutmodule",
+              "type": "AttachedUxProperty",
+              "modifiers": []
+            },
+            "uri": {
+              "idUri": "fuse/shortcut/shortcutmodule/resource_globalkey_setglobalkey_4c3ac72d",
+              "href": "uno/ux/resource/setglobalkey_4c3ac72d",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Resource.GlobalKey",
+              "fullyQualifiedIndexTitle": "Resource.GlobalKey"
+            }
+          }
+        ]
+      }
+    ],
+    "uxEvents": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/scripting/nativemodule",
+            "parentId": "fuse/scripting",
+            "type": "Class",
+            "modifiers": [
+              "public"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/scripting/nativemodule",
+            "href": "fuse/scripting/nativemodule"
+          },
+          "titles": {
+            "indexTitle": "NativeModule",
+            "fullyQualifiedIndexTitle": "Fuse.Scripting.NativeModule"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/eventhandler",
+              "title": "EventHandler (object, EventArgs)",
+              "fullyQualifiedTitle": "Uno.EventHandler (object, Uno.EventArgs)"
+            },
+            "id": {
+              "id": "fuse/shortcut/shortcutmodule/reset",
+              "parentId": "fuse/shortcut/shortcutmodule",
+              "type": "UxEvent",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/shortcut/shortcutmodule/reset",
+              "href": "fuse/scripting/nativemodule/reset",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Reset",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.NativeModule.Reset"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/scripting/module",
+            "parentId": "fuse/scripting",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/scripting/module",
+            "href": "fuse/scripting/module"
+          },
+          "titles": {
+            "indexTitle": "Module",
+            "fullyQualifiedIndexTitle": "Fuse.Scripting.Module"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/eventhandler",
+              "title": "EventHandler (object, EventArgs)",
+              "fullyQualifiedTitle": "Uno.EventHandler (object, Uno.EventArgs)"
+            },
+            "id": {
+              "id": "fuse/shortcut/shortcutmodule/evaluated",
+              "parentId": "fuse/shortcut/shortcutmodule",
+              "type": "UxEvent",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/shortcut/shortcutmodule/evaluated",
+              "href": "fuse/scripting/module/evaluated",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Evaluated",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.Module.Evaluated"
+            }
+          }
+        ]
+      }
+    ],
+    "constructors": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/shortcut/shortcutmodule",
+            "parentId": "fuse/shortcut",
+            "type": "JsModule",
+            "modifiers": [
+              "public"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/shortcut/shortcutmodule",
+            "href": "fuse/shortcut/shortcutmodule"
+          },
+          "titles": {
+            "indexTitle": "ShortcutModule",
+            "fullyQualifiedIndexTitle": "Fuse.Shortcut.ShortcutModule"
+          }
+        },
+        "items": [
+          {
+            "id": {
+              "id": "fuse/shortcut/shortcutmodule/_ctor",
+              "parentId": "fuse/shortcut/shortcutmodule",
+              "type": "Constructor",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/shortcut/shortcutmodule/_ctor",
+              "href": "fuse/shortcut/shortcutmodule/_ctor"
+            },
+            "titles": {
+              "indexTitle": "ShortcutModule",
+              "fullyQualifiedIndexTitle": "Fuse.Shortcut.ShortcutModule.ShortcutModule"
+            }
+          }
+        ]
+      }
+    ],
+    "properties": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/scripting/module",
+            "parentId": "fuse/scripting",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/scripting/module",
+            "href": "fuse/scripting/module"
+          },
+          "titles": {
+            "indexTitle": "Module",
+            "fullyQualifiedIndexTitle": "Fuse.Scripting.Module"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "id": {
+              "id": "fuse/shortcut/shortcutmodule/isevaluated",
+              "parentId": "fuse/shortcut/shortcutmodule",
+              "type": "Property",
+              "modifiers": [
+                "protected"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/shortcut/shortcutmodule/isevaluated",
+              "href": "fuse/scripting/module/isevaluated",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "IsEvaluated",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.Module.IsEvaluated"
+            }
+          }
+        ]
+      }
+    ],
+    "methods": [
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/scripting/nativeeventemittermodule",
+            "parentId": "fuse/scripting",
+            "type": "Class",
+            "modifiers": [
+              "public"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/scripting/nativeeventemittermodule",
+            "href": "fuse/scripting/nativeeventemittermodule"
+          },
+          "titles": {
+            "indexTitle": "NativeEventEmitterModule",
+            "fullyQualifiedIndexTitle": "Fuse.Scripting.NativeEventEmitterModule"
+          }
+        },
+        "items": [
+          {
+            "comment": {
+              "brief": "Call `emit` with the given arguments on the underlying JS EventEmitter.",
+              "full": "Call `emit` with the given arguments on the underlying JS EventEmitter.\n\nThe `emit` action is dispatched to the JS thread."
+            },
+            "parameters": [
+              {
+                "name": "args",
+                "href": "uno/object",
+                "title": "object[]",
+                "fullyQualifiedTitle": "object[]"
+              }
+            ],
+            "id": {
+              "id": "fuse/shortcut/shortcutmodule/emit_95a738ba",
+              "parentId": "fuse/shortcut/shortcutmodule",
+              "type": "Method",
+              "modifiers": [
+                "protected"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/shortcut/shortcutmodule/emit_95a738ba",
+              "href": "fuse/scripting/nativeeventemittermodule/emit_95a738ba",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Emit(object[])",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.NativeEventEmitterModule.Emit(object[])"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Call `emit(\"error\", reason)` on the underlying JS EventEmitter.",
+              "full": "Call `emit(\"error\", reason)` on the underlying JS EventEmitter."
+            },
+            "parameters": [
+              {
+                "name": "reason",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              }
+            ],
+            "id": {
+              "id": "fuse/shortcut/shortcutmodule/emiterror_968f99a6",
+              "parentId": "fuse/shortcut/shortcutmodule",
+              "type": "Method",
+              "modifiers": [
+                "protected"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/shortcut/shortcutmodule/emiterror_968f99a6",
+              "href": "fuse/scripting/nativeeventemittermodule/emiterror_968f99a6",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "EmitError(string)",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.NativeEventEmitterModule.EmitError(string)"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Call `emit(\"error\", new Error(reason))` on the underlying JS EventEmitter.",
+              "full": "Call `emit(\"error\", new Error(reason))` on the underlying JS EventEmitter."
+            },
+            "parameters": [
+              {
+                "name": "reason",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              }
+            ],
+            "id": {
+              "id": "fuse/shortcut/shortcutmodule/emiterrorobject_968f99a6",
+              "parentId": "fuse/shortcut/shortcutmodule",
+              "type": "Method",
+              "modifiers": [
+                "protected"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/shortcut/shortcutmodule/emiterrorobject_968f99a6",
+              "href": "fuse/scripting/nativeeventemittermodule/emiterrorobject_968f99a6",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "EmitErrorObject(string)",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.NativeEventEmitterModule.EmitErrorObject(string)"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Call `emit` on the underlying JS EventEmitter with factory-generated arguments.",
+              "full": "Call `emit` on the underlying JS EventEmitter with factory-generated arguments.\n\nThe `argsFactory` parameter will be called on the JS\nthread with a valid context, allowing us to use it to\ngenerate the arguments to `emit`."
+            },
+            "parameters": [
+              {
+                "name": "argsFactory",
+                "href": "uno/func_2",
+                "title": "Func<Context, object[]> (Context)",
+                "fullyQualifiedTitle": "Uno.Func<Fuse.Scripting.Context, object[]> (Fuse.Scripting.Context)"
+              }
+            ],
+            "id": {
+              "id": "fuse/shortcut/shortcutmodule/emitfactory_77c0158b",
+              "parentId": "fuse/shortcut/shortcutmodule",
+              "type": "Method",
+              "modifiers": [
+                "protected"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/shortcut/shortcutmodule/emitfactory_77c0158b",
+              "href": "fuse/scripting/nativeeventemittermodule/emitfactory_77c0158b",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "EmitFactory(Func<Context, object[]> (Context))",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.NativeEventEmitterModule.EmitFactory(Uno.Func<Fuse.Scripting.Context, object[]> (Fuse.Scripting.Context))"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Call `emit` on the underlying JS EventEmitter with factory-generated arguments.",
+              "full": "Call `emit` on the underlying JS EventEmitter with factory-generated arguments.\n\nThe `argsFactory` parameter will be called on the JS\nthread with a valid context, allowing us to use it to\ngenerate the arguments to `emit`."
+            },
+            "parameters": [
+              {
+                "name": "argsFactory",
+                "href": "uno/func_3",
+                "title": "Func<Context, T, object[]> (Context, T)",
+                "fullyQualifiedTitle": "Uno.Func<Fuse.Scripting.Context, T, object[]> (Fuse.Scripting.Context, T)"
+              },
+              {
+                "name": "t",
+                "isVirtual": true,
+                "title": "T",
+                "fullyQualifiedTitle": "Fuse.Scripting.T"
+              }
+            ],
+            "id": {
+              "id": "fuse/shortcut/shortcutmodule/emitfactory_1_964a64f9",
+              "parentId": "fuse/shortcut/shortcutmodule",
+              "type": "Method",
+              "modifiers": [
+                "protected"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/shortcut/shortcutmodule/emitfactory_1_964a64f9",
+              "href": "fuse/scripting/nativeeventemittermodule/emitfactory_1_964a64f9",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "EmitFactory<T>(Func<Context, T, object[]> (Context, T), T)",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.NativeEventEmitterModule.EmitFactory<T>(Uno.Func<Fuse.Scripting.Context, T, object[]> (Fuse.Scripting.Context, T), T)"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Connect a @Callback to an event.",
+              "full": "Connect a @Callback to an event.\n\nThe @Callback will be called whenever the event is triggered."
+            },
+            "parameters": [
+              {
+                "name": "eventName",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              },
+              {
+                "name": "listener",
+                "href": "fuse/scripting/callback",
+                "title": "Callback (Context, object[])",
+                "fullyQualifiedTitle": "Fuse.Scripting.Callback (Fuse.Scripting.Context, object[])"
+              }
+            ],
+            "id": {
+              "id": "fuse/shortcut/shortcutmodule/on_a22edd7d",
+              "parentId": "fuse/shortcut/shortcutmodule",
+              "type": "Method",
+              "modifiers": [
+                "protected"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/shortcut/shortcutmodule/on_a22edd7d",
+              "href": "fuse/scripting/nativeeventemittermodule/on_a22edd7d",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "On(object, Callback (Context, object[]))",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.NativeEventEmitterModule.On(object, Fuse.Scripting.Callback (Fuse.Scripting.Context, object[]))"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Connect a @NativeEvent to an event.",
+              "full": "Connect a @NativeEvent to an event.\n\nThe @NativeEvent will be triggered whenever the event is triggered."
+            },
+            "parameters": [
+              {
+                "name": "eventName",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              },
+              {
+                "name": "nativeEvent",
+                "href": "fuse/scripting/nativeevent",
+                "title": "NativeEvent",
+                "fullyQualifiedTitle": "Fuse.Scripting.NativeEvent"
+              }
+            ],
+            "id": {
+              "id": "fuse/shortcut/shortcutmodule/on_d9bc62ce",
+              "parentId": "fuse/shortcut/shortcutmodule",
+              "type": "Method",
+              "modifiers": [
+                "protected"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/shortcut/shortcutmodule/on_d9bc62ce",
+              "href": "fuse/scripting/nativeeventemittermodule/on_d9bc62ce",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "On(object, NativeEvent)",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.NativeEventEmitterModule.On(object, Fuse.Scripting.NativeEvent)"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/scripting/nativemodule",
+            "parentId": "fuse/scripting",
+            "type": "Class",
+            "modifiers": [
+              "public"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/scripting/nativemodule",
+            "href": "fuse/scripting/nativemodule"
+          },
+          "titles": {
+            "indexTitle": "NativeModule",
+            "fullyQualifiedIndexTitle": "Fuse.Scripting.NativeModule"
+          }
+        },
+        "items": [
+          {
+            "parameters": [
+              {
+                "name": "member",
+                "href": "fuse/scripting/nativemember",
+                "title": "NativeMember",
+                "fullyQualifiedTitle": "Fuse.Scripting.NativeMember"
+              }
+            ],
+            "id": {
+              "id": "fuse/shortcut/shortcutmodule/addmember_645dc1d4",
+              "parentId": "fuse/shortcut/shortcutmodule",
+              "type": "Method",
+              "modifiers": [
+                "protected"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/shortcut/shortcutmodule/addmember_645dc1d4",
+              "href": "fuse/scripting/nativemodule/addmember_645dc1d4",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "AddMember(NativeMember)",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.NativeModule.AddMember(Fuse.Scripting.NativeMember)"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "fuse/scripting/module",
+            "parentId": "fuse/scripting",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "abstract"
+            ]
+          },
+          "uri": {
+            "idUri": "fuse/scripting/module",
+            "href": "fuse/scripting/module"
+          },
+          "titles": {
+            "indexTitle": "Module",
+            "fullyQualifiedIndexTitle": "Fuse.Scripting.Module"
+          }
+        },
+        "items": [
+          {
+            "id": {
+              "id": "fuse/shortcut/shortcutmodule/dispose",
+              "parentId": "fuse/shortcut/shortcutmodule",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/shortcut/shortcutmodule/dispose",
+              "href": "fuse/scripting/module/dispose",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Dispose",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.Module.Dispose"
+            }
+          },
+          {
+            "parameters": [
+              {
+                "name": "c",
+                "href": "fuse/scripting/context",
+                "title": "Context",
+                "fullyQualifiedTitle": "Fuse.Scripting.Context"
+              },
+              {
+                "name": "result",
+                "href": "fuse/scripting/moduleresult",
+                "title": "ModuleResult",
+                "fullyQualifiedTitle": "Fuse.Scripting.ModuleResult"
+              }
+            ],
+            "id": {
+              "id": "fuse/shortcut/shortcutmodule/evaluate_0c699bd3",
+              "parentId": "fuse/shortcut/shortcutmodule",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "abstract"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/shortcut/shortcutmodule/evaluate_0c699bd3",
+              "href": "fuse/scripting/module/evaluate_0c699bd3",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Evaluate(Context, ModuleResult)",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.Module.Evaluate(Fuse.Scripting.Context, Fuse.Scripting.ModuleResult)"
+            }
+          },
+          {
+            "returns": {
+              "href": "fuse/scripting/moduleresult",
+              "title": "ModuleResult",
+              "fullyQualifiedTitle": "Fuse.Scripting.ModuleResult"
+            },
+            "parameters": [
+              {
+                "name": "c",
+                "href": "fuse/scripting/context",
+                "title": "Context",
+                "fullyQualifiedTitle": "Fuse.Scripting.Context"
+              },
+              {
+                "name": "id",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              }
+            ],
+            "id": {
+              "id": "fuse/shortcut/shortcutmodule/evaluate_8fde98fd",
+              "parentId": "fuse/shortcut/shortcutmodule",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/shortcut/shortcutmodule/evaluate_8fde98fd",
+              "href": "fuse/scripting/module/evaluate_8fde98fd",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Evaluate(Context, string)",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.Module.Evaluate(Fuse.Scripting.Context, string)"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/object",
+              "title": "object",
+              "fullyQualifiedTitle": "object"
+            },
+            "parameters": [
+              {
+                "name": "c",
+                "href": "fuse/scripting/context",
+                "title": "Context",
+                "fullyQualifiedTitle": "Fuse.Scripting.Context"
+              },
+              {
+                "name": "id",
+                "href": "uno/string",
+                "title": "string",
+                "fullyQualifiedTitle": "string"
+              }
+            ],
+            "id": {
+              "id": "fuse/shortcut/shortcutmodule/evaluateexports_8fde98fd",
+              "parentId": "fuse/shortcut/shortcutmodule",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/shortcut/shortcutmodule/evaluateexports_8fde98fd",
+              "href": "fuse/scripting/module/evaluateexports_8fde98fd",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "EvaluateExports(Context, string)",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.Module.EvaluateExports(Fuse.Scripting.Context, string)"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Returns the file source that will be watched by the Context for changes in Fuse preview.\nOverride in subclasses and return correct file source to support live updates\nin Fuse preview.",
+              "full": "Returns the file source that will be watched by the Context for changes in Fuse preview.\nOverride in subclasses and return correct file source to support live updates\nin Fuse preview."
+            },
+            "returns": {
+              "href": "uno/ux/filesource",
+              "title": "FileSource",
+              "fullyQualifiedTitle": "Uno.UX.FileSource"
+            },
+            "id": {
+              "id": "fuse/shortcut/shortcutmodule/getfile",
+              "parentId": "fuse/shortcut/shortcutmodule",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/shortcut/shortcutmodule/getfile",
+              "href": "fuse/scripting/module/getfile",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetFile",
+              "fullyQualifiedIndexTitle": "Fuse.Scripting.Module.GetFile"
+            }
+          }
+        ]
+      },
+      {
+        "declaredIn": {
+          "id": {
+            "id": "uno/object",
+            "parentId": "uno",
+            "type": "Class",
+            "modifiers": [
+              "public",
+              "intrinsic"
+            ]
+          },
+          "uri": {
+            "idUri": "uno/object",
+            "href": "uno/object"
+          },
+          "titles": {
+            "indexTitle": "object",
+            "fullyQualifiedIndexTitle": "object"
+          }
+        },
+        "items": [
+          {
+            "returns": {
+              "href": "uno/bool",
+              "title": "bool",
+              "fullyQualifiedTitle": "bool"
+            },
+            "parameters": [
+              {
+                "name": "o",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              }
+            ],
+            "id": {
+              "id": "fuse/shortcut/shortcutmodule/equals_a09c80e3",
+              "parentId": "fuse/shortcut/shortcutmodule",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/shortcut/shortcutmodule/equals_a09c80e3",
+              "href": "uno/object/equals_a09c80e3",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "Equals(object)",
+              "fullyQualifiedIndexTitle": "Uno.Object.Equals(object)"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/int",
+              "title": "int",
+              "fullyQualifiedTitle": "int"
+            },
+            "id": {
+              "id": "fuse/shortcut/shortcutmodule/gethashcode",
+              "parentId": "fuse/shortcut/shortcutmodule",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/shortcut/shortcutmodule/gethashcode",
+              "href": "uno/object/gethashcode",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetHashCode",
+              "fullyQualifiedIndexTitle": "Uno.Object.GetHashCode"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/type",
+              "title": "Type",
+              "fullyQualifiedTitle": "Uno.Type"
+            },
+            "id": {
+              "id": "fuse/shortcut/shortcutmodule/gettype",
+              "parentId": "fuse/shortcut/shortcutmodule",
+              "type": "Method",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/shortcut/shortcutmodule/gettype",
+              "href": "uno/object/gettype",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "GetType",
+              "fullyQualifiedIndexTitle": "Uno.Object.GetType"
+            }
+          },
+          {
+            "returns": {
+              "href": "uno/string",
+              "title": "string",
+              "fullyQualifiedTitle": "string"
+            },
+            "id": {
+              "id": "fuse/shortcut/shortcutmodule/tostring",
+              "parentId": "fuse/shortcut/shortcutmodule",
+              "type": "Method",
+              "modifiers": [
+                "public",
+                "virtual"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/shortcut/shortcutmodule/tostring",
+              "href": "uno/object/tostring",
+              "isVirtual": true
+            },
+            "titles": {
+              "indexTitle": "ToString",
+              "fullyQualifiedIndexTitle": "Uno.Object.ToString"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

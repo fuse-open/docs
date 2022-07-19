@@ -1,0 +1,81 @@
+{
+  "entity": {
+    "id": {
+      "id": "fuse/shortcut",
+      "parentId": "fuse",
+      "type": "Namespace",
+      "modifiers": []
+    },
+    "uri": {
+      "idUri": "fuse/shortcut",
+      "href": "fuse/shortcut"
+    },
+    "titles": {
+      "pageTitle": "Fuse.Shortcut Namespace",
+      "navigationTitle": "Fuse.Shortcut Namespace",
+      "fullTitle": "Fuse.Shortcut",
+      "indexTitle": "Fuse.Shortcut",
+      "fullyQualifiedIndexTitle": "Fuse.Shortcut"
+    },
+    "syntax": {
+      "uno": "namespace Shortcut {}"
+    }
+  },
+  "tableOfContents": {
+    "jsModules": [
+      {
+        "items": [
+          {
+            "comment": {
+              "brief": "This module allows you to shows menu items when pressing App Icon on the device home screen.\nThis feature refer to the [home screen actions](https://developer.apple.com/design/human-interface-guidelines/ios/system-capabilities/home-screen-actions/) on iOS and [App Shortcut](https://developer.android.com/guide/topics/ui/shortcuts.html) on Android (introduced in Android 7.1 / API Level 25).",
+              "full": "This module allows you to shows menu items when pressing App Icon on the device home screen.\nThis feature refer to the [home screen actions](https://developer.apple.com/design/human-interface-guidelines/ios/system-capabilities/home-screen-actions/) on iOS and [App Shortcut](https://developer.android.com/guide/topics/ui/shortcuts.html) on Android (introduced in Android 7.1 / API Level 25).\n\nYou need to add a reference to `\"Fuse.Shortcut\"` in your project file to use this feature.\n\nThis module is an @EventEmitter, so the methods from @EventEmitter can be used to listen to events.\n\n## Usage\n\nThe following example shows how create shortcut:\n```xml\n        <App>\n            <JavaScript>\n\n                var Observable = require(\"FuseJS/Observable\")\n                var selectedShortcut = new Observable(\"-\")\n\n                var shortcut = require(\"FuseJS/Shortcut\");\n                shortcut.registerShortcuts([\n                    {\n                        id: 'compose',\n                        title: \"Compose\",\n                        icon: \"assets/images/compose.png\"\n                    },\n                    {\n                        id: 'profile',\n                        title: \"Profile\",\n                        icon: \"assets/images/user.png\"\n                    },\n                    {\n                        id: 'book_store',\n                        title: \"Book Store\",\n                        icon: \"assets/images/book.png\"\n                    }\n                ])\n\n                shortcut.on('shortcutClicked', (type) => {\n                    selectedShortcut.value = type;\n                })\n\n                module.exports = {\n                    selectedShortcut\n                }\n\n            </JavaScript>\n            <StackPanel Margin=\"20\">\n                <Text Value=\"Selected Shortcut: {selectedShortcut}\" />\n            </StackPanel>\n        </App>\n\nNote that on the `registerShortcuts` method accepts array of json objects with the following properties:\n* id, id of the shortcut, and will be passed on the `shortcutClicked` callback when particular shortcut get clicked. This property is mandatory\n* title, to display menu title. This property is mandatory\n* subtitle, to display sub title (displayed below the title on iOS). This property is optional\n* icon, to display icon beside the menu title, value of the icon is a local image path (i.e asset path) not a url and must be registered as a Bundle. More info about Bundle [here.](/docs/assets/bundle). This property is optional",
+              "attributes": {
+                "scriptModule": "FuseJS/Shortcut"
+              }
+            },
+            "id": {
+              "id": "fuse/shortcut/shortcutmodule",
+              "parentId": "fuse/shortcut",
+              "type": "JsModule",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/shortcut/shortcutmodule",
+              "href": "fuse/shortcut/shortcutmodule"
+            },
+            "titles": {
+              "indexTitle": "ShortcutModule",
+              "fullyQualifiedIndexTitle": "Fuse.Shortcut.ShortcutModule"
+            }
+          }
+        ]
+      }
+    ],
+    "uxClasses": [
+      {
+        "items": [
+          {
+            "id": {
+              "id": "fuse/shortcut/shortcutprovider",
+              "parentId": "fuse/shortcut",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/shortcut/shortcutprovider",
+              "href": "fuse/shortcut/shortcutprovider"
+            },
+            "titles": {
+              "indexTitle": "ShortcutProvider",
+              "fullyQualifiedIndexTitle": "Fuse.Shortcut.ShortcutProvider"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
