@@ -1511,6 +1511,28 @@
     },
     {
       "comment": {
+        "brief": "Lays out its children in vertical or horizontal groups.",
+        "full": "Lays out its children in vertical or horizontal groups.\n\nThe `CollectionPanel` will use a vertical orientation by default, but this can be changed\nby setting the `Orientation` attribute to `Horizontal`.\n\n## Example\n\n    <CollectionPanel GroupCount=\"3\">\n        <Each Count=\"10\">\n            <Circle Margin=\"5\" Color=\"Blue\" />\n        </Each>\n    </CollectionPanel>"
+      },
+      "id": {
+        "id": "fuse/controls/collectionpanel",
+        "parentId": "fuse/controls",
+        "type": "UxClass",
+        "modifiers": [
+          "public"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/controls/collectionpanel",
+        "href": "fuse/controls/collectionpanel"
+      },
+      "titles": {
+        "indexTitle": "CollectionPanel",
+        "fullyQualifiedIndexTitle": "Fuse.Controls.CollectionPanel"
+      }
+    },
+    {
+      "comment": {
         "brief": "A panel that places children in a dedicated `Subtree` visual, allowing you to create custom container.",
         "full": "A panel that places children in a dedicated `Subtree` visual, allowing you to create custom container.\n\n## Usage example\n\nWe use the `Subtree` property to identify the inner visual that will receive the children.\n```xml\n    <Container ux:Class=\"MyContainer\" Subtree=\"innerPanel\">\n        <Rectangle ux:Binding=\"Children\" CornerRadius=\"10\" Margin=\"10\">\n            <Stroke Color=\"Red\" Width=\"2\" />\n            <Panel Margin=\"10\" ux:Name=\"innerPanel\" />\n        </Rectangle>\n    </Container>\n```\nNote that to add nodes that make up the container itself (e.g. decoration), we need to explicitly mark them\nwith `ux:Binding=\"Children\"`, otherwise these nodes will be added to `innerPanel`.\n\nTo use the container, we can simply do:\n```xml\n    <MyContainer>\n        <Panel Color=\"Blue\" />\n    </MyContainer>\n```\nHere, the blue panel will be placed as a child of `innerPanel`, instead of as a direct child of the\ncontainer."
       },
