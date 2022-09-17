@@ -2,8 +2,10 @@
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
+using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using Builder.Services;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -13,6 +15,11 @@ namespace Builder;
 
 public class Program
 {
+    static Program()
+    {
+        Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
+    }
+
     public static int Main(string[] args)
     {
         if (args == null || args.Length < 2)
