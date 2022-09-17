@@ -17,8 +17,8 @@ A working internet connection is required to install this software.
 ## Requirements
 
 - OS X 10.10 Yosemite or newer
-- macOS 11.2 Big Sur (or latest) is recommended
-- Intel processor (M1 support is planned)
+- macOS 11.3 Monterey (or latest) is recommended
+- Intel processor (works on M1 via Rosetta)
 - <a href="https://www.mono-project.com/download/stable/" target="_blank">Mono</a> 6.10 or newer
 - <a href="https://nodejs.org/en/download/" target="_blank">Node.js</a> 12 or newer
 
@@ -67,13 +67,9 @@ Run **Install fuse X.pkg** to continue.
 
 ![setup1](../../../media/setup/mac/setup1.png)
 
-> Hi, and welcome to our cool installer!
-
 Click **Continue** to continue.
 
 ![setup2](../../../media/setup/mac/setup2.png)
-
-> Please read the License Agreement carefully.
 
 Click **Continue** to continue.
 
@@ -103,13 +99,9 @@ Enter your password and click **Install Software** to continue.
 
 ![setup6](../../../media/setup/mac/setup6.png)
 
-> Time for a quick coffee ☕
-
 Please wait a few minutes...
 
 ![setup7](../../../media/setup/mac/setup7.png)
-
-> Done and done. Good job!
 
 Click **Close** to exit.
 
