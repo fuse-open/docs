@@ -54,9 +54,11 @@ Click **Yes** to continue.
 
 Click **Next** to continue.
 
-![setup2](../../../media/setup/win/setup2.png)
+![setup1b](../../../media/setup/win/setup1b.png)
 
-> Please read the License Agreement carefully.
+Click **Next** to continue.
+
+![setup2](../../../media/setup/win/setup2.png)
 
 Click **I Agree** to continue.
 
@@ -68,13 +70,9 @@ Click **Install** to continue.
 
 ![setup4](../../../media/setup/win/setup4.png)
 
-> Time for a quick coffee ☕
-
 Please wait a few minutes...
 
 ![setup5](../../../media/setup/win/setup5.png)
-
-> Done and done. Good job!
 
 Click **Finish** to exit.
 
