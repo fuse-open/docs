@@ -26,6 +26,22 @@
         "items": [
           {
             "id": {
+              "id": "fuse/alerts",
+              "parentId": "fuse",
+              "type": "Namespace",
+              "modifiers": []
+            },
+            "uri": {
+              "idUri": "fuse/alerts",
+              "href": "fuse/alerts"
+            },
+            "titles": {
+              "indexTitle": "Fuse.Alerts",
+              "fullyQualifiedIndexTitle": "Fuse.Alerts"
+            }
+          },
+          {
+            "id": {
               "id": "fuse/android",
               "parentId": "fuse",
               "type": "Namespace",
@@ -995,6 +1011,50 @@
           },
           {
             "comment": {
+              "brief": "This is trigger action for showing native alert dialog with a single button. Only available on iOS or Android",
+              "full": "This is trigger action for showing native alert dialog with a single button. Only available on iOS or Android\n\n## Example\n\nThe following example shows how to use it:\n\n```javascript\n<JavaScript>\n    module.exports = {\n        handler: function(data) {\n            if (data.buttonLabel == 'Yes'){\n                console.log(\"yes button clicked\")\n            }\n        }\n    };\n</JavaScript>\n<Panel>\n    <Button Text=\"Display Alert\" Alignment=\"Center\">\n        <Clicked>\n            <ShowAlert Message=\"Hello world!\" OkLabelButton=\"Yes\" Handler=\"{handler}\"/>\n        </Clicked>\n    </Button>\n</Panel>\n```"
+            },
+            "id": {
+              "id": "fuse/showalert",
+              "parentId": "fuse",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/showalert",
+              "href": "fuse/showalert"
+            },
+            "titles": {
+              "indexTitle": "ShowAlert",
+              "fullyQualifiedIndexTitle": "Fuse.ShowAlert"
+            }
+          },
+          {
+            "comment": {
+              "brief": "This is trigger action for showing an ok/cancel dialog. Only available on iOS or Android",
+              "full": "This is trigger action for showing an ok/cancel dialog. Only available on iOS or Android\n\n## Example\n\nThe following example shows how to use it:\n\n```javascript\n<JavaScript>\n    module.exports = {\n        handler: function(data) {\n            if (data.buttonLabel == 'Yes'){\n                console.log(\"yes button clicked\")\n            } else if (data.buttonLabel == 'Cancel'){\n                console.log(\"cancel button clicked\")\n            }\n        }\n    };\n</JavaScript>\n<Panel>\n    <Button Text=\"Display Alert\" Alignment=\"Center\">\n        <Clicked>\n            <ShowConfirm Message=\"Are you sure want to logout?\" OkLabelButton=\"Yes\" CancelLabelButton=\"Cancel\" Handler=\"{handler}\"/>\n        </Clicked>\n    </Button>\n</Panel>\n```"
+            },
+            "id": {
+              "id": "fuse/showconfirm",
+              "parentId": "fuse",
+              "type": "UxClass",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/showconfirm",
+              "href": "fuse/showconfirm"
+            },
+            "titles": {
+              "indexTitle": "ShowConfirm",
+              "fullyQualifiedIndexTitle": "Fuse.ShowConfirm"
+            }
+          },
+          {
+            "comment": {
               "brief": "Javascript Module for taking Platform SignIn. Platform SignIn is a SignIn mechanism that use `Sign In With Apple` on iOS and `Google SignIn` on Android.",
               "full": "Javascript Module for taking Platform SignIn. Platform SignIn is a SignIn mechanism that use `Sign In With Apple` on iOS and `Google SignIn` on Android.\n\nPlatform SignIn is only available on the mobile target platform (iOS and Android).\n\nYou need to add a reference to `\"Fuse.Auth\"` in your project file to use this feature.\n\n> For more information on what are the pre-request when implementing `Sign In With Apple` or `Google Sign In`, you can check the documentation on the apple developer website or android developer website\n> for iOS add \"SystemCapabilities\": { \"SignInWithApple\":true }  in the unoproj file.\n\n## Example\n\nThe following example shows how to use it:\n\n```javascript\n    <App>\n        <JavaScript>\n            var Auth = require('useJS/Auth');\n\n            function doSignIn() {\n                Auth.signIn().then(function(result) {\n                    // result is json object containing these properties :\n                    // email -> user email that has been sign in / sign up\n                    // firstName -> User firstname\n                    // lastName -> User Lastname\n                    // userId -> User uniqe Id\n                }, function (ex) {\n                    // failed login\n                })\n            }\n            Auth.hasSignedIn().then(function (result) {\n                if (result) {\n                    // user has already sign in\n                }\n            })\n\n            module.exports = {\n                doSignIn\n            }\n\n        </JavaScript>\n        <Button Text=\"Sign In\">\n            <Clicked>\n                <Callback Handler=\"{doSignIn}\" />\n            </Clicked>\n        </Button>\n    </App\n```\n\n> When the callback handler is fired for the first time and the result object of `status` property is true, save those logged user information immediately to the server especially on iOS,\n>  because as stated in the documentation on the apple website, the Sign In With Apple  will only send userId informataion the next time user do the authentication again"
             },
@@ -1112,6 +1172,24 @@
     "classes": [
       {
         "items": [
+          {
+            "id": {
+              "id": "fuse/alertargs",
+              "parentId": "fuse",
+              "type": "Class",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/alertargs",
+              "href": "fuse/alertargs"
+            },
+            "titles": {
+              "indexTitle": "AlertArgs",
+              "fullyQualifiedIndexTitle": "Fuse.AlertArgs"
+            }
+          },
           {
             "comment": {
               "brief": "Base class for apps.\nA Fuse project should contain exactly one `App` tag, which is the root\nnode for the entire application.",
@@ -2063,6 +2141,38 @@
     "delegates": [
       {
         "items": [
+          {
+            "parameters": [
+              {
+                "name": "sender",
+                "href": "uno/object",
+                "title": "object",
+                "fullyQualifiedTitle": "object"
+              },
+              {
+                "name": "args",
+                "href": "fuse/alertargs",
+                "title": "AlertArgs",
+                "fullyQualifiedTitle": "Fuse.AlertArgs"
+              }
+            ],
+            "id": {
+              "id": "fuse/alerthandler",
+              "parentId": "fuse",
+              "type": "Delegate",
+              "modifiers": [
+                "public"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/alerthandler",
+              "href": "fuse/alerthandler"
+            },
+            "titles": {
+              "indexTitle": "AlertHandler (object, AlertArgs)",
+              "fullyQualifiedIndexTitle": "Fuse.AlertHandler (object, Fuse.AlertArgs)"
+            }
+          },
           {
             "parameters": [
               {

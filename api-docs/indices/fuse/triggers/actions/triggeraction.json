@@ -429,6 +429,50 @@
     },
     {
       "comment": {
+        "brief": "This is trigger action for showing native alert dialog with a single button. Only available on iOS or Android",
+        "full": "This is trigger action for showing native alert dialog with a single button. Only available on iOS or Android\n\n## Example\n\nThe following example shows how to use it:\n\n```javascript\n<JavaScript>\n    module.exports = {\n        handler: function(data) {\n            if (data.buttonLabel == 'Yes'){\n                console.log(\"yes button clicked\")\n            }\n        }\n    };\n</JavaScript>\n<Panel>\n    <Button Text=\"Display Alert\" Alignment=\"Center\">\n        <Clicked>\n            <ShowAlert Message=\"Hello world!\" OkLabelButton=\"Yes\" Handler=\"{handler}\"/>\n        </Clicked>\n    </Button>\n</Panel>\n```"
+      },
+      "id": {
+        "id": "fuse/showalert",
+        "parentId": "fuse",
+        "type": "UxClass",
+        "modifiers": [
+          "public"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/showalert",
+        "href": "fuse/showalert"
+      },
+      "titles": {
+        "indexTitle": "ShowAlert",
+        "fullyQualifiedIndexTitle": "Fuse.ShowAlert"
+      }
+    },
+    {
+      "comment": {
+        "brief": "This is trigger action for showing an ok/cancel dialog. Only available on iOS or Android",
+        "full": "This is trigger action for showing an ok/cancel dialog. Only available on iOS or Android\n\n## Example\n\nThe following example shows how to use it:\n\n```javascript\n<JavaScript>\n    module.exports = {\n        handler: function(data) {\n            if (data.buttonLabel == 'Yes'){\n                console.log(\"yes button clicked\")\n            } else if (data.buttonLabel == 'Cancel'){\n                console.log(\"cancel button clicked\")\n            }\n        }\n    };\n</JavaScript>\n<Panel>\n    <Button Text=\"Display Alert\" Alignment=\"Center\">\n        <Clicked>\n            <ShowConfirm Message=\"Are you sure want to logout?\" OkLabelButton=\"Yes\" CancelLabelButton=\"Cancel\" Handler=\"{handler}\"/>\n        </Clicked>\n    </Button>\n</Panel>\n```"
+      },
+      "id": {
+        "id": "fuse/showconfirm",
+        "parentId": "fuse",
+        "type": "UxClass",
+        "modifiers": [
+          "public"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/showconfirm",
+        "href": "fuse/showconfirm"
+      },
+      "titles": {
+        "indexTitle": "ShowConfirm",
+        "fullyQualifiedIndexTitle": "Fuse.ShowConfirm"
+      }
+    },
+    {
+      "comment": {
         "brief": "Scrolls a @fuse/controls/scrollview so that the target element becomes visible",
         "full": "Scrolls a @fuse/controls/scrollview so that the target element becomes visible\n\n## Example\n```xml\n        <ScrollView>\n            <Grid Rows=\"auto, 400, 400, 400, auto\" Margin=\"10\">\n                <Button Text=\"Go to Bottom\" Alignment=\"Bottom\">\n                    <Clicked>\n                        <BringIntoView TargetNode=\"bottomRect\" />\n                    </Clicked>\n                </Button>\n                <Rectangle Margin=\"10\" CornerRadius=\"4\" ux:Name=\"topRect\">\n                    <SolidColor Color=\"#a542db\" />\n                </Rectangle>\n                <Rectangle Margin=\"10\" CornerRadius=\"4\">\n                    <LinearGradient>\n                        <GradientStop Offset=\"0\" Color=\"#a542db\" />\n                        <GradientStop Offset=\"1\" Color=\"#3579e6\" />\n                    </LinearGradient>\n                </Rectangle>\n                <Rectangle Margin=\"10\" CornerRadius=\"4\" ux:Name=\"bottomRect\">\n                    <Stroke Offset=\"4\" Width=\"1\" Color=\"#3579e6\" />\n                    <SolidColor Color=\"#3579e6\" />\n                </Rectangle>\n                <Button Text=\"Go to Top\" Alignment=\"Bottom\">\n                    <Clicked>\n                        <BringIntoView TargetNode=\"topRect\" />\n                    </Clicked>\n                </Button>\n            </Grid>\n        </ScrollView>\n```"
       },

@@ -1598,6 +1598,24 @@
       }
     },
     {
+      "id": {
+        "id": "fuse/alertargs",
+        "parentId": "fuse",
+        "type": "Class",
+        "modifiers": [
+          "public"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/alertargs",
+        "href": "fuse/alertargs"
+      },
+      "titles": {
+        "indexTitle": "AlertArgs",
+        "fullyQualifiedIndexTitle": "Fuse.AlertArgs"
+      }
+    },
+    {
       "comment": {
         "brief": "Allows placing a node in a different place in the UX tree than the location of this\nbehavior, while keeping the data context from this behavior.",
         "full": "Allows placing a node in a different place in the UX tree than the location of this\nbehavior, while keeping the data context from this behavior.\n\n## Example\n```xml\n    <Panel ux:Class=\"MyPage\">\n        <Visual ux:Dependency=\"navBar\" />\n        <string ux:Property=\"Content\" />\n        <float4 ux:Property=\"Highlight\" />\n        <Text Alignment=\"Center\" Value=\"{ReadProperty Content}\" />\n        <WhileActive>\n            <AlternateRoot ParentNode=\"navBar\">\n                <Rectangle Color=\"{ReadProperty Highlight}\" />\n            </AlternateRoot>\n        </WhileActive>\n    </Panel>\n\n    <ClientPanel>\n        <Panel ux:Name=\"navBar\" Dock=\"Top\" Height=\"56\" />\n        <PageControl>\n            <MyPage Content=\"Page 1\" Highlight=\"#18f\" navBar=\"navBar\" />\n            <MyPage Content=\"Page 2\" Highlight=\"#1f8\" navBar=\"navBar\" />\n        </PageControl>\n    </ClientPanel>\n```"
@@ -15949,6 +15967,50 @@
       "titles": {
         "indexTitle": "ShortcutProvider",
         "fullyQualifiedIndexTitle": "Fuse.Shortcut.ShortcutProvider"
+      }
+    },
+    {
+      "comment": {
+        "brief": "This is trigger action for showing native alert dialog with a single button. Only available on iOS or Android",
+        "full": "This is trigger action for showing native alert dialog with a single button. Only available on iOS or Android\n\n## Example\n\nThe following example shows how to use it:\n\n```javascript\n<JavaScript>\n    module.exports = {\n        handler: function(data) {\n            if (data.buttonLabel == 'Yes'){\n                console.log(\"yes button clicked\")\n            }\n        }\n    };\n</JavaScript>\n<Panel>\n    <Button Text=\"Display Alert\" Alignment=\"Center\">\n        <Clicked>\n            <ShowAlert Message=\"Hello world!\" OkLabelButton=\"Yes\" Handler=\"{handler}\"/>\n        </Clicked>\n    </Button>\n</Panel>\n```"
+      },
+      "id": {
+        "id": "fuse/showalert",
+        "parentId": "fuse",
+        "type": "UxClass",
+        "modifiers": [
+          "public"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/showalert",
+        "href": "fuse/showalert"
+      },
+      "titles": {
+        "indexTitle": "ShowAlert",
+        "fullyQualifiedIndexTitle": "Fuse.ShowAlert"
+      }
+    },
+    {
+      "comment": {
+        "brief": "This is trigger action for showing an ok/cancel dialog. Only available on iOS or Android",
+        "full": "This is trigger action for showing an ok/cancel dialog. Only available on iOS or Android\n\n## Example\n\nThe following example shows how to use it:\n\n```javascript\n<JavaScript>\n    module.exports = {\n        handler: function(data) {\n            if (data.buttonLabel == 'Yes'){\n                console.log(\"yes button clicked\")\n            } else if (data.buttonLabel == 'Cancel'){\n                console.log(\"cancel button clicked\")\n            }\n        }\n    };\n</JavaScript>\n<Panel>\n    <Button Text=\"Display Alert\" Alignment=\"Center\">\n        <Clicked>\n            <ShowConfirm Message=\"Are you sure want to logout?\" OkLabelButton=\"Yes\" CancelLabelButton=\"Cancel\" Handler=\"{handler}\"/>\n        </Clicked>\n    </Button>\n</Panel>\n```"
+      },
+      "id": {
+        "id": "fuse/showconfirm",
+        "parentId": "fuse",
+        "type": "UxClass",
+        "modifiers": [
+          "public"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/showconfirm",
+        "href": "fuse/showconfirm"
+      },
+      "titles": {
+        "indexTitle": "ShowConfirm",
+        "fullyQualifiedIndexTitle": "Fuse.ShowConfirm"
       }
     },
     {

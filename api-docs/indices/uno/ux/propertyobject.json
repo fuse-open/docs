@@ -8039,6 +8039,50 @@
     },
     {
       "comment": {
+        "brief": "This is trigger action for showing native alert dialog with a single button. Only available on iOS or Android",
+        "full": "This is trigger action for showing native alert dialog with a single button. Only available on iOS or Android\n\n## Example\n\nThe following example shows how to use it:\n\n```javascript\n<JavaScript>\n    module.exports = {\n        handler: function(data) {\n            if (data.buttonLabel == 'Yes'){\n                console.log(\"yes button clicked\")\n            }\n        }\n    };\n</JavaScript>\n<Panel>\n    <Button Text=\"Display Alert\" Alignment=\"Center\">\n        <Clicked>\n            <ShowAlert Message=\"Hello world!\" OkLabelButton=\"Yes\" Handler=\"{handler}\"/>\n        </Clicked>\n    </Button>\n</Panel>\n```"
+      },
+      "id": {
+        "id": "fuse/showalert",
+        "parentId": "fuse",
+        "type": "UxClass",
+        "modifiers": [
+          "public"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/showalert",
+        "href": "fuse/showalert"
+      },
+      "titles": {
+        "indexTitle": "ShowAlert",
+        "fullyQualifiedIndexTitle": "Fuse.ShowAlert"
+      }
+    },
+    {
+      "comment": {
+        "brief": "This is trigger action for showing an ok/cancel dialog. Only available on iOS or Android",
+        "full": "This is trigger action for showing an ok/cancel dialog. Only available on iOS or Android\n\n## Example\n\nThe following example shows how to use it:\n\n```javascript\n<JavaScript>\n    module.exports = {\n        handler: function(data) {\n            if (data.buttonLabel == 'Yes'){\n                console.log(\"yes button clicked\")\n            } else if (data.buttonLabel == 'Cancel'){\n                console.log(\"cancel button clicked\")\n            }\n        }\n    };\n</JavaScript>\n<Panel>\n    <Button Text=\"Display Alert\" Alignment=\"Center\">\n        <Clicked>\n            <ShowConfirm Message=\"Are you sure want to logout?\" OkLabelButton=\"Yes\" CancelLabelButton=\"Cancel\" Handler=\"{handler}\"/>\n        </Clicked>\n    </Button>\n</Panel>\n```"
+      },
+      "id": {
+        "id": "fuse/showconfirm",
+        "parentId": "fuse",
+        "type": "UxClass",
+        "modifiers": [
+          "public"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/showconfirm",
+        "href": "fuse/showconfirm"
+      },
+      "titles": {
+        "indexTitle": "ShowConfirm",
+        "fullyQualifiedIndexTitle": "Fuse.ShowConfirm"
+      }
+    },
+    {
+      "comment": {
         "brief": "Triggers if device has biometric sensor and user has already configure it",
         "full": "Triggers if device has biometric sensor and user has already configure it\n\n## Example\n```xml\n    <Panel>\n        <SupportBiometric>\n            <Button Text=\"Sign In With Biometric\">\n                <Clicked>\n                    <Authenticate />\n                </Clicked>\n            </Button>\n        </SupportBiometric>\n    </Panel>\n```"
       },
