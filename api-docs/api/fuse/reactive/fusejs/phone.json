@@ -22,7 +22,7 @@
       "namespaceTitle": "Fuse.Reactive.FuseJS",
       "namespaceUri": "fuse/reactive/fusejs",
       "packageName": "Fuse.Launcher.Phone",
-      "packageVersion": "2.6.0"
+      "packageVersion": "2.7.0"
     },
     "inheritance": {
       "root": {
@@ -145,8 +145,8 @@
       "ux": "<FuseJS.Phone />"
     },
     "comment": {
-      "brief": "The Phone API allows you to launch your device's built-in\nphone app and make calls.",
-      "full": "The Phone API allows you to launch your device's built-in\nphone app and make calls.\n\nYou need to add a reference to `\"Fuse.Launcher\"` in your project file to use this feature.\n\n## Example\n```js\n    var phone = require(\"FuseJS/Phone\");\n    phone.call(\"+47 123 45 678\");\n```",
+      "brief": "The Phone API allows you to launch your device's built-in\nphone app and make calls or send messages.",
+      "full": "The Phone API allows you to launch your device's built-in\nphone app and make calls or send messages.\n\nYou need to add a reference to `\"Fuse.Launcher\"` in your project file to use this feature.\n\n## Example\n```js\n    var phone = require(\"FuseJS/Phone\");\n    phone.call(\"+47 123 45 678\");\n    phone.sms(\"+47 123 45 678\", \"Hi there\");\n```",
       "attributes": {
         "scriptModule": "FuseJS/Phone"
       }
@@ -371,6 +371,69 @@
             "titles": {
               "indexTitle": "Call(Context, object[])",
               "fullyQualifiedIndexTitle": "Fuse.Reactive.FuseJS.Phone.Call(Fuse.Scripting.Context, object[])"
+            }
+          },
+          {
+            "comment": {
+              "brief": "Launches your device's messages app with the specified number.",
+              "full": "Launches your device's messages app with the specified number.\n\n## Example\n```js\n    var phone = require(\"FuseJS/Phone\");\n    phone.sms(\"+47 123 45 678\", \"Hi there\");\n```",
+              "attributes": {
+                "scriptMethod": {
+                  "name": "sms",
+                  "parameters": [
+                    "number",
+                    "body"
+                  ]
+                },
+                "parameters": [
+                  {
+                    "name": "number",
+                    "typeHint": "String",
+                    "description": "The number to to send a message"
+                  },
+                  {
+                    "name": "body",
+                    "typeHint": "String",
+                    "description": "The message to to send"
+                  }
+                ]
+              }
+            },
+            "returns": {
+              "href": "uno/object",
+              "title": "object",
+              "fullyQualifiedTitle": "object"
+            },
+            "parameters": [
+              {
+                "name": "context",
+                "href": "fuse/scripting/context",
+                "title": "Context",
+                "fullyQualifiedTitle": "Fuse.Scripting.Context"
+              },
+              {
+                "name": "args",
+                "href": "uno/object",
+                "title": "object[]",
+                "fullyQualifiedTitle": "object[]"
+              }
+            ],
+            "id": {
+              "id": "fuse/reactive/fusejs/phone/sms_bbef95e2",
+              "parentId": "fuse/reactive/fusejs/phone",
+              "type": "JsMethod",
+              "modifiers": [
+                "public",
+                "static"
+              ]
+            },
+            "uri": {
+              "idUri": "fuse/reactive/fusejs/phone/sms_bbef95e2",
+              "href": "fuse/reactive/fusejs/phone/sms_bbef95e2"
+            },
+            "titles": {
+              "indexTitle": "Sms(Context, object[])",
+              "fullyQualifiedIndexTitle": "Fuse.Reactive.FuseJS.Phone.Sms(Fuse.Scripting.Context, object[])"
             }
           }
         ]

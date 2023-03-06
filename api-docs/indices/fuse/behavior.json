@@ -634,6 +634,32 @@
     },
     {
       "comment": {
+        "brief": "Add scroll snapping behavior to the `ScrollView`. Scroll snapping allows you to lock the viewport to certain location after a user has finished scrolling.",
+        "full": "Add scroll snapping behavior to the `ScrollView`. Scroll snapping allows you to lock the viewport to certain location after a user has finished scrolling.\n\nYou can use `SnapAlignment` property to control the lock position. There are three lock position available, `Start`, `Center` and `End`.\n\nThe setup that works now is with a `StackPanel` (Horizontal or Vertical)\n```xml\n    <ScrollView LayoutMode=\"PreserveVisual\">\n        <StackPanel>\n            <Each Count=\"100\" Reuse=\"Frame\" >\n                <Panel Color=\"#AAA\">\n                    <Text Value=\"Data {= index() }\"/>\n                </Panel>\n            </Each>\n        </StackPanel>\n\n        <ScrollViewSnap SnapAlignment=\"Center\" />\n    </ScrollView>\n```\nIt's required to use `LayoutMode=\"PreserveVisual\"` on the `ScrollView` and the child element in the `StackPanel` has an equal size.",
+        "attributes": {
+          "experimental": true
+        }
+      },
+      "id": {
+        "id": "fuse/controls/scrollviewsnap",
+        "parentId": "fuse/controls",
+        "type": "UxClass",
+        "modifiers": [
+          "public",
+          "partial"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/controls/scrollviewsnap",
+        "href": "fuse/controls/scrollviewsnap"
+      },
+      "titles": {
+        "indexTitle": "ScrollViewSnap",
+        "fullyQualifiedIndexTitle": "Fuse.Controls.ScrollViewSnap"
+      }
+    },
+    {
+      "comment": {
         "brief": "Draws a shadow behind an element.",
         "full": "Draws a shadow behind an element.\n\n## Example\n\nThis example shows a rounded rectangle with a shadow that animates in size when pressed:\n```xml\n    <Rectangle Width=\"100\" Height=\"100\" Color=\"Red\" CornerRadius=\"5\">\n        <Shadow ux:Name=\"RectangleShadow\" Size=\"10\" />\n        <Clicked>\n            <Change DurationBack=\"0.2\" RectangleShadow.Size=\"20\" />\n        </Clicked>\n    </Rectangle>\n```"
       },
@@ -4201,6 +4227,31 @@
       "titles": {
         "indexTitle": "WhileScrolled",
         "fullyQualifiedIndexTitle": "Fuse.Triggers.WhileScrolled"
+      }
+    },
+    {
+      "comment": {
+        "brief": "Active while an element is positioned within the snapping area.\n```xml\n    <ScrollView LayoutMode=\"PreserveVisual\">\n        <StackPanel>\n            <Each Count=\"100\" Reuse=\"Frame\" >\n                <Panel ux:Name=\"panel\" Color=\"#AAA\">\n                    <Text ux:Name=\"text\" Value=\"Data-{= index() }\"/>",
+        "full": "Active while an element is positioned within the snapping area.\n```xml\n    <ScrollView LayoutMode=\"PreserveVisual\">\n        <StackPanel>\n            <Each Count=\"100\" Reuse=\"Frame\" >\n                <Panel ux:Name=\"panel\" Color=\"#AAA\">\n                    <Text ux:Name=\"text\" Value=\"Data-{= index() }\"/>\n\n                    <WhileScrollSnapping>\n                        <Change panel.Color=\"Blue\" />\n                        <Change text.Color=\"White\" />\n                    </WhileScrollSnapping>\n                </Panel>\n            </Each>\n        </StackPanel>\n\n        <ScrollViewSnap SnapAlignment=\"Center\" />\n    </ScrollView>\n```",
+        "attributes": {
+          "experimental": true
+        }
+      },
+      "id": {
+        "id": "fuse/triggers/whilescrollsnapping",
+        "parentId": "fuse/triggers",
+        "type": "UxClass",
+        "modifiers": [
+          "public"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/triggers/whilescrollsnapping",
+        "href": "fuse/triggers/whilescrollsnapping"
+      },
+      "titles": {
+        "indexTitle": "WhileScrollSnapping",
+        "fullyQualifiedIndexTitle": "Fuse.Triggers.WhileScrollSnapping"
       }
     },
     {

@@ -2670,6 +2670,31 @@
     },
     {
       "comment": {
+        "brief": "Active while an element is positioned within the snapping area.\n```xml\n    <ScrollView LayoutMode=\"PreserveVisual\">\n        <StackPanel>\n            <Each Count=\"100\" Reuse=\"Frame\" >\n                <Panel ux:Name=\"panel\" Color=\"#AAA\">\n                    <Text ux:Name=\"text\" Value=\"Data-{= index() }\"/>",
+        "full": "Active while an element is positioned within the snapping area.\n```xml\n    <ScrollView LayoutMode=\"PreserveVisual\">\n        <StackPanel>\n            <Each Count=\"100\" Reuse=\"Frame\" >\n                <Panel ux:Name=\"panel\" Color=\"#AAA\">\n                    <Text ux:Name=\"text\" Value=\"Data-{= index() }\"/>\n\n                    <WhileScrollSnapping>\n                        <Change panel.Color=\"Blue\" />\n                        <Change text.Color=\"White\" />\n                    </WhileScrollSnapping>\n                </Panel>\n            </Each>\n        </StackPanel>\n\n        <ScrollViewSnap SnapAlignment=\"Center\" />\n    </ScrollView>\n```",
+        "attributes": {
+          "experimental": true
+        }
+      },
+      "id": {
+        "id": "fuse/triggers/whilescrollsnapping",
+        "parentId": "fuse/triggers",
+        "type": "UxClass",
+        "modifiers": [
+          "public"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/triggers/whilescrollsnapping",
+        "href": "fuse/triggers/whilescrollsnapping"
+      },
+      "titles": {
+        "indexTitle": "WhileScrollSnapping",
+        "fullyQualifiedIndexTitle": "Fuse.Triggers.WhileScrollSnapping"
+      }
+    },
+    {
+      "comment": {
         "brief": "Activate when the condition on the string value is true",
         "full": "Activate when the condition on the string value is true"
       },
