@@ -2113,6 +2113,47 @@
       }
     },
     {
+      "id": {
+        "id": "fuse/controls/drawingpanel",
+        "parentId": "fuse/controls",
+        "type": "UxClass",
+        "modifiers": [
+          "public",
+          "partial"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/controls/drawingpanel",
+        "href": "fuse/controls/drawingpanel"
+      },
+      "titles": {
+        "indexTitle": "DrawingPanel",
+        "fullyQualifiedIndexTitle": "Fuse.Controls.DrawingPanel"
+      }
+    },
+    {
+      "comment": {
+        "brief": "A Panel that can be used to draw lines using your finger. As the DrawingPanel is native only, it must be contained in a @NativeViewHost.",
+        "full": "A Panel that can be used to draw lines using your finger. As the DrawingPanel is native only, it must be contained in a @NativeViewHost.\n\nTo use this control, You need to add a reference to `Fuse.Controls.DrawingPanel` and `Fuse.ImageTools` on your .unoproj file\n\n### Example:\n\n```XML\n<App Background=\"White\">\n    <JavaScript>\n        var drawing = DrawingPanel\n\n        module.exports = {\n            undoClicked: function(args) {\n                drawing.undo();\n            },\n            redoClicked: function(args) {\n                drawing.redo();\n            },\n            clearClicked: function(args) {\n                drawing.clear();\n            },\n            clearHistoryClicked: function(args) {\n                drawing.clearHistory();\n            }\n        }\n    </JavaScript>\n    <ClientPanel>\n        <DockPanel>\n            <NativeViewHost>\n                <DrawingPanel ux:Name=\"DrawingPanel\" />\n            </NativeViewHost>\n            <StackPanel Height=\"70\" ItemSpacing=\"10\" Alignment=\"Center\" Padding=\"10\" Dock=\"Bottom\" Orientation=\"Horizontal\">\n                <Button Text=\"Undo\" Clicked=\"{undoClicked}\" />\n                <Button Text=\"Redo\" Clicked=\"{redoClicked}\"/>\n                <Button Text=\"Clear Canvas\" Clicked=\"{clearClicked}\"/>\n                <Button Text=\"Clear History\" Clicked=\"{clearHistoryClicked}\"/>\n            </StackPanel>\n        </DockPanel>\n    </ClientPanel>\n</App>\n```"
+      },
+      "id": {
+        "id": "fuse/controls/drawingpanelbase",
+        "parentId": "fuse/controls",
+        "type": "UxClass",
+        "modifiers": [
+          "public"
+        ]
+      },
+      "uri": {
+        "idUri": "fuse/controls/drawingpanelbase",
+        "href": "fuse/controls/drawingpanelbase"
+      },
+      "titles": {
+        "indexTitle": "DrawingPanelBase",
+        "fullyQualifiedIndexTitle": "Fuse.Controls.DrawingPanelBase"
+      }
+    },
+    {
       "comment": {
         "brief": "A navigation control for panels that slide in from the sides of the display.",
         "full": "A navigation control for panels that slide in from the sides of the display.\n\nAdd an `Edge` property to the children to define on which edge they attach. The user can swipe from that side to reveal the panel.\n\nUse a `GoBack` inside this navigation to dismiss side-panels from UX, or use the `dismiss` method from JavaScript.\n\n## Model\n\nThe EdgeNavigator can be bound to a model with the `Pages` property. For example:\n```xml\n   <EdgeNavigator Pages=\"{pages}\">\n       <Panel Edge=\"Left\" ux:Template=\"left\"/>\n       <Panel Edge=\"Right\" ux:Template=\"right\"/>\n       <Panel ux:Template=\"main\"/>\n   </EdgeNavigator>\n```\nThen in your main model state you define `pages`\n```js\n   export default class MainState {\n       constructor() {\n           this.pages = [ new LeftPage(), new RightPage(), new MainPage() ]\n       }\n   }\n\n   class LeftPage {\n       constructor() {\n           this.$path = \"left\"\n       }\n   }\n\n   class RightPage {\n       constructor() {\n           this.$path = \"right\"\n       }\n   }\n\n   class MainPage {\n       constructor() {\n           this.$path = \"main\"\n       }\n   }\n```"
