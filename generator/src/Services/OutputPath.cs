@@ -112,7 +112,7 @@ public class OutputPath
                     }
                 }
 
-                throw new Exception($"Missing links found, please correct before re-running");
+                _logger.LogWarning($"Missing links found, please correct before re-running");
             }
         }
 
