@@ -4,7 +4,7 @@ This is a step-by-step tutorial that takes you through setting up Fuse X and cre
 
 <blockquote class="callout-info">
 
-<a href="https://www.mono-project.com/download/stable/" target="_blank">Mono</a> and <a href="https://nodejs.org/en/download/" target="_blank">Node.js</a> are required to install this software.
+<a href="https://dotnet.microsoft.com/en-us/download/dotnet/6.0" target="_blank">.NET</a> and <a href="https://nodejs.org/en/download/" target="_blank">Node.js</a> are required to install this software.
 
 </blockquote>
 
@@ -17,10 +17,10 @@ A working internet connection is required to install this software.
 ## Requirements
 
 - OS X 10.10 Yosemite or newer
-- macOS 11.3 Monterey (or latest) is recommended
+- macOS 13.2 Ventura (or latest) is recommended
 - Intel processor (works on M1 via Rosetta)
-- <a href="https://www.mono-project.com/download/stable/" target="_blank">Mono</a> 6.10 or newer
-- <a href="https://nodejs.org/en/download/" target="_blank">Node.js</a> 12 or newer
+- <a href="https://dotnet.microsoft.com/en-us/download/dotnet/6.0" target="_blank">.NET</a> 6.0 or newer
+- <a href="https://nodejs.org/en/download/" target="_blank">Node.js</a> 16 or newer
 
 ## Running the installer
 
@@ -30,29 +30,23 @@ You should have downloaded a file called `fuse-x-2.0.0-mac.dmg` or similar. Open
 
 This chapter will guide you through it.
 
-<blockquote class="callout-info">
-
-You can [skip this chapter](#starting-fuse-x) if you already know how to do this.
-
-</blockquote>
-
 ### Prerequisites
 
-Make sure you have up-to-date <a href="https://www.mono-project.com/download/stable/" target="_blank">Mono</a> and <a href="https://nodejs.org/en/download/" target="_blank">Node.js</a> installations on your system.
+Make sure you have up-to-date <a href="https://dotnet.microsoft.com/en-us/download/dotnet/6.0" target="_blank">.NET</a> and <a href="https://nodejs.org/en/download/" target="_blank">Node.js</a> installations on your system.
 
 This can be verified by running the following commands.
 
 ```s
-$ mono --version
+$ dotnet --version
 
-Mono JIT compiler version 6.10.0.0 (or newer)
+6.0.300 (or newer)
 ...
 ```
 
 ```s
 $ node --version
 
-v12.0.0 (or newer)
+v16.0.0 (or newer)
 ```
 
 ### Opening the installer

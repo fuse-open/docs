@@ -21,25 +21,25 @@ The installers require a working internet connection in order to complete.
 ### macOS Requirements
 
 - OS X 10.10 Yosemite or newer
-- macOS 11.2 Big Sur (or latest) is recommended
+- macOS 13.2 Ventura (or latest) is recommended
 - Intel processor (M1 support is planned)
-- <a href="https://www.mono-project.com/download/stable/" target="_blank">Mono</a> 6.10 or newer
-- <a href="https://nodejs.org/en/download/" target="_blank">Node.js</a> 12 or newer
+- <a href="https://dotnet.microsoft.com/en-us/download/dotnet/6.0" target="_blank">.NET</a> 6.0 or newer
+- <a href="https://nodejs.org/en/download/" target="_blank">Node.js</a> 16 or newer
 
 > Read the [step-by-step guide for macOS](installation/setup-install-mac.md).
 
 ### Windows Requirements
 
-- Windows 7 or newer
-- Windows 10 is recommended
-- <a href="https://nodejs.org/en/download/" target="_blank">Node.js</a> 12 or newer
+- Windows 10 or newer
+- <a href="https://dotnet.microsoft.com/en-us/download/dotnet/6.0" target="_blank">.NET</a> 6.0 or newer
+- <a href="https://nodejs.org/en/download/" target="_blank">Node.js</a> 16 or newer
 
 > Read the [step-by-step guide for Windows](installation/setup-install-win.md).
 
 ### Linux Requirements
 
-- <a href="https://www.mono-project.com/download/stable/" target="_blank">Mono</a> 6.0 or newer
-- <a href="https://nodejs.org/en/download/" target="_blank">Node.js</a> 12 or newer
+- <a href="https://dotnet.microsoft.com/en-us/download/dotnet/6.0" target="_blank">.NET</a> 6.0 or newer
+- <a href="https://nodejs.org/en/download/" target="_blank">Node.js</a> 16 or newer
 
 <blockquote class="callout-info">
 

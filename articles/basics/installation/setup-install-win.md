@@ -16,9 +16,9 @@ A working internet connection is required to install this software.
 
 ## Requirements
 
-- Windows 7 or newer
-- Windows 10 is recommended
-- <a href="https://nodejs.org/en/download/" target="_blank">Node.js</a> 12 or newer
+- Windows 10 or newer
+- <a href="https://dotnet.microsoft.com/en-us/download/dotnet/6.0" target="_blank">.NET</a> 6.0 or newer
+- <a href="https://nodejs.org/en/download/" target="_blank">Node.js</a> 16 or newer
 
 ## Running the installer
 
@@ -28,15 +28,9 @@ You should have downloaded a file called `fuse-x-2.0.0-win.exe` or similar. Open
 
 This chapter will guide you through it.
 
-<blockquote class="callout-info">
-
-You can [skip this chapter](#starting-fuse-x) if you already know how to do this.
-
-</blockquote>
-
 ### Prerequisites
 
-Make sure you have an up-to-date <a href="https://nodejs.org/en/download/" target="_blank">Node.js</a> installation on your system.
+Make sure you have up-to-date <a href="https://dotnet.microsoft.com/en-us/download/dotnet/6.0" target="_blank">.NET</a> and <a href="https://nodejs.org/en/download/" target="_blank">Node.js</a> installations on your system.
 
 ### Opening the installer
 
