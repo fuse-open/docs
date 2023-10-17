@@ -17,7 +17,7 @@ For the rest of the document the phrases 'meets the condition' or 'the condition
 For example the following class will only be included when you are building for iOS:
 
 ```csharp
-    public extern(iOS) class Test0
+    public extern(IOS) class Test0
     {
         public void SayHi()
         {
@@ -29,7 +29,7 @@ For example the following class will only be included when you are building for 
 We can also use simple boolean logic inside the `extern()` condition
 
 ```csharp
-    public extern(!iOS) class Test0
+    public extern(!IOS) class Test0
     {
         public void SayHi()
         {
@@ -203,8 +203,8 @@ We can access a static field of type easily from UXL. Below we show how to acces
 
 As you can see, the `@{type}` syntax works for classes too.
 
-#### Refer to a field on an instance of a type using the `:Of` macro
-UXL cannot infer the type of a C++ variable, so when we need access to instance data we have to tell UXL the type. We use the `:Of` macro for this:
+#### Refer to a field on an instance of a type using the `:of` macro
+UXL cannot infer the type of a C++ variable, so when we need access to instance data we have to tell UXL the type. We use the `:of` macro for this:
 
 ```csharp
     public class Test0 {
@@ -215,7 +215,7 @@ UXL cannot infer the type of a C++ variable, so when we need access to instance 
         public string getTest0Name(Test0 x)
         {
             extern(x) "@{Test0} tmp = @0";
-            extern"@{string} tmp2 = @{Test0:Of(tmp)._instanceName}"
+            extern"@{string} tmp2 = @{Test0:of(tmp)._instanceName}"
             return extern<string>"tmp2";
         }
     }
@@ -225,7 +225,7 @@ This is a somewhat convoluted example but should show the point. Of course, if y
 
     extern(x._instanceName)"..some code using $0 here";
 
-#### Call a static method using UXL with the `:Call` macro
+#### Call a static method using UXL with the `:call` macro
 
 ```csharp
     public class Test0 {
@@ -235,17 +235,17 @@ This is a somewhat convoluted example but should show the point. Of course, if y
     public class Test1 {
         public string getTest0Name()
         {
-            return extern<string>"@{Test0.AgeJeff(int):Call(253)}";
+            return extern<string>"@{Test0.AgeJeff(int):call(253)}";
         }
     }
 ```
 
 To accurately specify the method to call we need to provide the signature (only the types are needed).
 
-Then in the `Call` we provide the actual arguments.
+Then in the `call` we provide the actual arguments.
 
 #### Call an instance method using UXL
-As you could guess, you use the `:Of` macro in the same way as we did for fields:
+As you could guess, you use the `:of` macro in the same way as we did for fields:
 
 ```csharp
     public class Test0 {
@@ -255,7 +255,7 @@ As you could guess, you use the `:Of` macro in the same way as we did for fields
     public class Test1 {
         public string getTest0Name(Test0 x)
         {
-            return extern<string>(x)"@{Test0:Of($0).AgeJeff(int):Call(253)}";
+            return extern<string>(x)"@{Test0:of($0).AgeJeff(int):call(253)}";
         }
     }
 ```
@@ -265,10 +265,10 @@ As you could guess, you use the `:Of` macro in the same way as we did for fields
 UXL sees all (with caveats): it doesn't obey access modifers. If native can reference it, it can. Obviously the converse is also true, so when compiling to C# you most likely can't access everything.
 
 
-#### Make a new instance of a class from UXL using the `:New` macro
-Making a new instance of the class is very similar to `:Call`. The syntax is:
+#### Make a new instance of a class from UXL using the `:new` macro
+Making a new instance of the class is very similar to `:call`. The syntax is:
 
-`@{Test2} someVar = @{Test2(int,float):New(1,1.2f)}`
+`@{Test2} someVar = @{Test2(int,float):new(1,1.2f)}`
 
 Where:
 - `Test2` is the type,
@@ -279,22 +279,22 @@ As usual, if we can, you should use `new` in Uno and pass it into the UXL as an 
 
 `extern(new Test2(1,1.2f))"..some native code"`
 
-#### Get the Uno Type object using the `:TypeOf` macro
+#### Get the Uno Type object using the `:typeof` macro
 
-`@{Android.android.accessibilityservice.AccessibilityService:TypeOf}`
+`@{Android.android.accessibilityservice.AccessibilityService:typeof}`
 
 is the equivalent of:
 
 `typeof(Android.android.accessibilityservice.AccessibilityService)`
 
-#### Get or Set a property using the `:Get` and `:Set` macros
+#### Get or Set a property using the `:get` and `:set` macros
 Here is how to get the value of a property using UXL:
 
-`@{Uno.Exception:Of($0).Message:Get()}`
+`@{Uno.Exception:of($0).Message:get()}`
 
 Set is very similar:
 
-`@{Uno.Exception:Of($0).Message:Set($1)}`
+`@{Uno.Exception:of($0).Message:set($1)}`
 
 #### And more...
 There are more macros to be seen but Î™ think that an introduction to UXL files is needed first.
@@ -357,55 +357,55 @@ The compiler doesn't enforce this, though.
 Here is a possible UXL file for the `Test3` class we saw above:
 
 ```xml
-    <Extensions Backend="CPlusPlus">
-        <Type Name="Test3">
-            <Method Signature="FirstMethod(int):float">
-                <Expression>((@{float})$0)</Expression>
-            </Method>
+    <extensions backend="cplusplus">
+        <type name="Test3">
+            <method signature="FirstMethod(int):float">
+                <expression>((@{float})$0)</expression>
+            </method>
 
-            <Method Signature="SecondMethod(int):float">
-                <Require Entity="Test3.NonStaticHelper(int)" />
-                <Body><![CDATA[
-                    @{float} tmp = @{Test3.Helper(int):Call($0)};
-                    return tmp + @{Test3:Of($$).NonStaticHelper(int):Call($0)};
-                ]]></Body>
-            </Method>
-        </Type>
-    </Extensions>
+            <method signature="SecondMethod(int):float">
+                <require entity="Test3.NonStaticHelper(int)" />
+                <body><![CDATA[
+                    @{float} tmp = @{Test3.Helper(int):call($0)};
+                    return tmp + @{Test3:of($$).NonStaticHelper(int):call($0)};
+                ]]></body>
+            </method>
+        </type>
+    </extensions>
 ```
 
 Here we can see some macros we will recognize, and some we may not.
 
 The `$$` macro is the `this` variable of the instance.
 
-The `Extensions` tag specific what backend the contents are valid for.
+The `extensions` tag specific what backend the contents are valid for.
 
-The `Type` tag specifies the Uno type we are implementing. That type must have a `[TargetSpecificImplementation]` attribute.
+The `type` tag specifies the Uno type we are implementing. That type must have a `[TargetSpecificImplementation]` attribute.
 
-Then we have the method implementations. The signature is almost the same as used in the `:Call` macro, except here we also have to specify the return type after a colon (but only if there is a return type).
+Then we have the method implementations. The signature is almost the same as used in the `:call` macro, except here we also have to specify the return type after a colon (but only if there is a return type).
 
-The implementation for `FirstMethod` is inside the `Expression` tags. This means the code will be inlined and so, like the `extern ""`, we don't need a semicolon.
+The implementation for `FirstMethod` is inside the `expression` tags. This means the code will be inlined and so, like the `extern ""`, we don't need a semicolon.
 
-The implementation for `SecondMethod` is inside the `Body` tags, this means the code will not be inlined in the callsite but will instead be the body of the method in C++. Also, inside body we can have multiple lines. The use of `CDATA` is not mandatory but means you don't have to escape as many characters and generally makes your life as a programmer easier.
+The implementation for `SecondMethod` is inside the `body` tags, this means the code will not be inlined in the callsite but will instead be the body of the method in C++. Also, inside body we can have multiple lines. The use of `CDATA` is not mandatory but means you don't have to escape as many characters and generally makes your life as a programmer easier.
 
-In `SecondMethod` we also see something new, the `Require Entity` tag. This requires a brief interlude to talk about how Uno strips code.
+In `SecondMethod` we also see something new, the `require entity` tag. This requires a brief interlude to talk about how Uno strips code.
 
 ### Code Stripping and UXL
 Uno tries to remove everything that is not used by some part of the program. To do this the compiler walks the Uno code, adding references to everything that is 'touched'. At the end of the walk, if a method, field or type has a reference count of 0, then it is stripped.
 
-Note that the references are only added if something is used in Uno, **not** if it is used in UXL. This means that if we want to ensure an 'entity' is not stripped we should add a reference to it. We do this with the `Require Entity` tag.
+Note that the references are only added if something is used in Uno, **not** if it is used in UXL. This means that if we want to ensure an 'entity' is not stripped we should add a reference to it. We do this with the `require entity` tag.
 
-- `<Require Entity="Test3.NonStaticHelper(int)" />` adds a reference to a method
-- `<Require Entity="Test3._someField" />` adds a reference to a field
-- `<Require Entity="Test3" />` adds a reference to a type
+- `<require entity="Test3.NonStaticHelper(int)" />` adds a reference to a method
+- `<require entity="Test3._someField" />` adds a reference to a field
+- `<require entity="Test3" />` adds a reference to a type
 
-Where we place this `Require Entity` is important because it affects when it will take effect.
+Where we place this `require entity` is important because it affects when it will take effect.
 
-- Putting it inside the `Method` block means it will add a reference if that method is not stripped
-- Putting it inside the `Type` block means it will add a reference if that type is not stripped
-- Putting it inside the `Extensions` block means it will always add a reference
+- Putting it inside the `method` block means it will add a reference if that method is not stripped
+- Putting it inside the `type` block means it will add a reference if that type is not stripped
+- Putting it inside the `extensions` block means it will always add a reference
 
-Code stripping is one of Uno's strengths, so be as restrive as possible when choosing where to add the reference. As a rough rule: `Method > Type > Extensions`.
+Code stripping is one of Uno's strengths, so be as restrive as possible when choosing where to add the reference. As a rough rule: `method > type > extensions`.
 
 Now, back to the snooker...
 
@@ -414,86 +414,86 @@ Now, back to the snooker...
 #### Set the file extension of the generated native code
 If you use Objective C in your UXL you need to ensure that the file extension is `.mm` rather than `.cpp`, or you will get some very bizarre include errors from Xcode when you try and compile.
 
-    <Set Source.FileExtension="mm" />
+    <set source.fileExtension="mm" />
 
 #### UXL Equivalent of using
-Writing out fully qualified types can get tedious. The `Using` tag does the same job s Uno's `using` statement:
+Writing out fully qualified types can get tedious. The `using` tag does the same job s Uno's `using` statement:
 
 ```xml
-    <Using Namespace="iOS.Foundation" />
+    <using namespace="iOS.Foundation" />
 ```
 
-#### Adding includes using the `Require` tag and the `:Include` macro
+#### Adding includes using the `require` tag and the `:include` macro
 In your UXL you may reference other Uno types, for example by calling one of their methods. However for some targets you need to include the header file for that type before you can use it. We do this with the require tag
 
 ```xml
-    <Require Source.Include="@{Android.Base.AndroidBindingMacros:Include}" />
-    <Require Header.Include="@{Android.Base.AndroidBindingMacros:Include}" />
+    <require source.include="@{Android.Base.AndroidBindingMacros:Include}" />
+    <require header.include="@{Android.Base.AndroidBindingMacros:Include}" />
 ```
 
-In the above we use the `:Include` macro to get the path of the `.h` file we require.
+In the above we use the `:include` macro to get the path of the `.h` file we require.
 
-By using `Source.Include` we say the `#include` will be added to the `.cpp` file for the type.
+By using `source.include` we say the `#include` will be added to the `.cpp` file for the type.
 
-By using `Header.Include` we say the `#include` will be added to the `.h` file for the type.
+By using `header.include` we say the `#include` will be added to the `.h` file for the type.
 
-It is always preferable to use `Source.Include` where you can and `Header.Include` if you must.
+It is always preferable to use `source.include` where you can and `header.include` if you must.
 
 We can also include regular C/C++ header files by providing the path explicitly:
 
 ```xml
-    <Require Header.Include="Uno/Platform2.h" />
-    <Require Header.Include="Uno/Platform2.h" />
+    <require header.include="uno/Platform2.h" />
+    <require header.include="uno/Platform2.h" />
 ```
 
-#### Adding arbitrary source to native files using the `Require Source.Declaration` tag
+#### Adding arbitrary source to native files using the `require source.declaration` tag
 
 This feature is documented for completeness and as it is _very, very occasionally_ the right thing to use, however, if you are using it, it should be because there is no other option.
 
 ```xml
-        <Require Source.Declaration><![CDATA[
+        <require source.declaration><![CDATA[
             void JNICALL Android_NativeActivityHelper_onActionModeFinished(JNIEnv *env, jclass clazz, jobject arg)
             {
                 uAutoReleasePool pool;
-                @{Activity.OnActionModeFinished:Call(arg)};
+                @{Activity.OnActionModeFinished:call(arg)};
             }
         ]]></Require>
 ```
 
-`Source.Declaration` will add the block of native code to the top of the compiled C++ code of the type. It will be after the includes but before the opening of any namespaces.
+`source.declaration` will add the block of native code to the top of the compiled C++ code of the type. It will be after the includes but before the opening of any namespaces.
 
-`Header.Declaration` does the same but for the `.h` file.
+`header.declaration` does the same but for the `.h` file.
 
-If you add multiple `Source.Declaration` blocks to a single class there is no guarentee what the order will be in the final C++.
+If you add multiple `source.declaration` blocks to a single class there is no guarentee what the order will be in the final C++.
 
-#### UXL Conditions using `Condition=`
+#### UXL conditions using `condition=`
 UXL has an equivalent to `extern(CONDITION)`:
 
 ```xml
-    <Require Entity="Uno.Platform2.Display.OnTick(Uno.Platform2.TimerEventArgs)" Condition="MOBILE" />
+    <require entity="Uno.Platform2.Display.OnTick(Uno.Platform2.TimerEventArgs)" condition="MOBILE" />
 ```
 
 For example, here we only add a reference to the `OnTick` method if we are compiling for mobile devices.
 
-This can also be used on `Type` and `Method` tags so we can provide different implementations for `ANDROID` and `iOS` (for example).
+This can also be used on `type` and `method` tags so we can provide different implementations for `ANDROID` and `IOS` (for example).
 
-#### Expanding Macros in arbitrary types using the `ProcessFile` tag
-There are cases you may find that you want to expand some UXL in a non-UXL block. It may be as simple as putting a `project version=@(Project.Version)` in a readme file, or something more complex like changing the behavior of a Java method if a particular Uno method has been stripped.
+#### Expanding macros in arbitrary types using the `processFile` tag
+There are cases you may find that you want to expand some UXL in a non-UXL block. It may be as simple as putting a `project version=@(project.version)` in a readme file, or something more complex like changing the behavior of a Java method if a particular Uno method has been stripped.
 
 To have the file processed by the UXL processor use the following syntax:
 
-- `<ProcessFile HeaderFile="Uno/Platform2.h" />` for native header files
-- `<ProcessFile SourceFile="Uno/Platform2.h" />` for native source files
-- `<ProcessFile Name="Camera.java" TargetName="src/com/fuse/Native/Camera.java" />` for other kinds of file
+- `<processFile headerFile="uno/Platform2.h" />` for native header files
+- `<processFile sourceFile="uno/Platform2.h" />` for native source files
+- `<processFile name="Camera.java" targetName="src/com/fuse/Native/Camera.java" />` for other kinds of file
 
 Note that in the last case you should define where the file will be put in the output build directory of the project.
 
-#### Copying a file without expanding any macros using the `CopyFile` tag
+#### Copying a file without expanding any macros using the `copyFile` tag
 
-Much like `ProcessFile`, this copies a file into the build output, but by not having to parse for UXL macros, it is much faster. Use this wherever possible.
+Much like `processFile`, this copies a file into the build output, but by not having to parse for UXL macros, it is much faster. Use this wherever possible.
 
 ```xml
-<CopyFile Name="Camera.java" TargetName="src/com/fuse/Native/Camera.java" />
+<copyFile Name="Camera.java" TargetName="src/com/fuse/Native/Camera.java" />
 ```
 
 ## `TargetSpecificType`'s
@@ -510,16 +510,16 @@ Here is the simplest possible example of a `TargetSpecificType`:
 
 
 ```xml
-    <Type Name="UJObject" Condition="ANDROID"
-        TypeName="jobject"
-        Include="jni.h" />
+    <type name="UJObject" condition="ANDROID"
+          typeName="jobject"
+          include="jni.h" />
 ```
 
 Here we are defining an Uno type that will stand in for the JNI `jobject` type. Some things to know:
 
 - `TargetSpecificType`s must be struct's. We used to allow them to be classes, but this is deprecated.
 - `TargetSpecificType`s can be boxed by Uno without issues.
-- The `Include` defined in the UXL will be added to all files that use the `TargetSpecificType`.
+- The `include` defined in the UXL will be added to all files that use the `TargetSpecificType`.
 - Structs are value types, so we can't compare them to Uno's `null`.
 
 ### Defining Uno Methods on `TargetSpecificType`'s
@@ -573,21 +573,21 @@ public extern(ANDROID) struct AndroidNativeView
 ```
 
 ```xml
-<Type Name="AndroidNativeView" Condition="Android"
-    TypeName="jobject"
-    Include="jni.h">
+<type name="AndroidNativeView" condition="ANDROID"
+      typeName="jobject"
+      include="jni.h">
 
-    <Method Signature="GetHashCode():int">
-        <Require Source.Include="Xli/Traits.h" />
-        <Expression>::Xli::DefaultTraits::Hash($$)</Expression>
-    </Method>
-    <Method Signature="IsSameView(AndroidNativeView,AndroidNativeView):bool">
-        <Body>
+    <method signature="GetHashCode():int">
+        <require Source.Include="Xli/Traits.h" />
+        <expression>::Xli::DefaultTraits::Hash($$)</expression>
+    </method>
+    <method signature="IsSameView(AndroidNativeView,AndroidNativeView):bool">
+        <body>
             JniHelper jni;
             jni->IsSameObject($0, $1);
-        </Body>
-    </Method>
-</Type>
+        </body>
+    </method>
+</type>
 ```
 
 ## What values are available in UXL
@@ -599,30 +599,30 @@ This section is coming soon.
 Templates are a way to group UXL tags under one name that can then be used in other UXL. For example, maybe you need to add references to a lot of methods if either of two classes are used. You could write:
 
 ```xml
-    <Template Name="Example">
-        <Require Entity="Uno.Platform2.Application.Start()" />
-        <Require Entity="Uno.Platform2.Application.EnterForeground()" />
-        <Require Entity="Uno.Platform2.Application.EnterInteractive()" />
-        <Require Entity="Uno.Platform2.Application.ExitInteractive()" />
-        <Require Entity="Uno.Platform2.Application.EnterBackground()" />
-        <Require Entity="Uno.Platform2.Application.Terminate()" />
-        <Require Entity="Uno.Platform2.Application.OnReceivedLowMemoryWarning()" />
-    </Template>
+    <template name="example">
+        <require entity="Uno.Platform2.Application.Start()" />
+        <require entity="Uno.Platform2.Application.EnterForeground()" />
+        <require entity="Uno.Platform2.Application.EnterInteractive()" />
+        <require entity="Uno.Platform2.Application.ExitInteractive()" />
+        <require entity="Uno.Platform2.Application.EnterBackground()" />
+        <require entity="Uno.Platform2.Application.Terminate()" />
+        <require entity="Uno.Platform2.Application.OnReceivedLowMemoryWarning()" />
+    </template>
 ```
 
 and then simply add...
 
 ```xml
-    <Require Template="Example" />
+    <require template="example" />
 ```
 
 ...to the two classes that need these methods.
 
 The only valid UXL tags that can put in a template are:
 
-- `<CopyFile>`
-- `<ProcessFile>`
-- `<Require>`
+- `<copyFile>`
+- `<processFile>`∂
+- `<require>`
 
 # Common Issues
 
@@ -680,5 +680,5 @@ TLDR: Try sticking `global::` at the beginning of the fully qualified type.
 yes :)
 
 ```xml
-    <Using Namespace="iOS.Foundation" />
+    <using namespace="iOS.Foundation" />
 ```
